@@ -10,32 +10,22 @@ This describes the Z-Wave device *ZMNHQD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHQD product image](https://www.cd-jackson.com/zwave_device_uploads/1126/1126_default.jpg)
+![ZMNHQD product image](https://opensmarthouse.org/zwavedatabase/1126/image/)
 
 
 The ZMNHQD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Qubino LUXY Smart Light is ideal for gentle illumination of any room and for visual and sound notifications.
+<p&gtThe Qubino LUXY Smart Light is ideal for gentle illumination of any room and for visual and sound notifications. </p&gt
 
 ### Inclusion Information
 
-Manual inclusion is triggered by the following procedure: 
-
-  * Full white needs to be active (c-button 2). The user can select it by quickly pressing the c-button2 once.
-  * When full white is enabled, press c-button3 and hold it for 5 seconds (while white is glowing, hold c-button3 for 5 seconds).
-  * After 5 seconds, the device starts flashing, with the following pattern: green 1 second on, 0.5 second off.
-  * Once the device receives a nodeId or after 10 seconds, it stops flashing and turns green. 
+<p&gtManual inclusion is triggered by the following procedure: </p&gt <ul&gt<li&gtFull white needs to be active (c-button 2). The user can select it by quickly pressing the c-button2 once.</li&gt <li&gtWhen full white is enabled, press c-button3 and hold it for 5 seconds (while white is glowing, hold c-button3 for 5 seconds).</li&gt <li&gtAfter 5 seconds, the device starts flashing, with the following pattern: green 1 second on, 0.5 second off.</li&gt <li&gtOnce the device receives a nodeId or after 10 seconds, it stops flashing and turns green. </li&gt </ul&gt
 
 ### Exclusion Information
 
-Exclusion is triggered by the following procedure:
-
-  * Full white needs to be active (c-button 2).
-  * When full white is enabled, press c-button3 and hold it for 5 seconds (while white is glowing hold c-button3 for 5 seconds).
-  * After 5 seconds, the device starts flashing with the following pattern: red 1 second on, 0.5 second off. 
-  * Once the device loses its nodeId or after 10 seconds, it stops flashing and turns red. 
+<p&gtExclusion is triggered by the following procedure:</p&gt <ul&gt<li&gtFull white needs to be active (c-button 2).</li&gt <li&gtWhen full white is enabled, press c-button3 and hold it for 5 seconds (while white is glowing hold c-button3 for 5 seconds).</li&gt <li&gtAfter 5 seconds, the device starts flashing with the following pattern: red 1 second on, 0.5 second off. </li&gt <li&gtOnce the device loses its nodeId or after 10 seconds, it stops flashing and turns red. </li&gt </ul&gt
 
 ## Channels
 
@@ -125,9 +115,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 5: Motion sensor memory timer 
 
 Time after which the output triggered by motion sensor is turned off.
-0 – 32534 = 0-32534 seconds after which the LED will be turned off.
-
-32535 – never turns off.
+<p&gt0 – 32534 = 0-32534 seconds after which the LED will be turned off.</p&gt <p&gt32535 – never turns off.</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -138,9 +126,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 10: Auto-on timer 
 
 Defines the time after which the device is turned to last known state.
-0 – disabled
-
-30 – 32535 = 30 – 32535 seconds after which the device turns on
+<p&gt0 – disabled</p&gt <p&gt30 – 32535 = 30 – 32535 seconds after which the device turns on</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -151,9 +137,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Auto-off timer 
 
 Defines the time after which the device is turned to last known state.
-0 – disabled
-
-30 – 32535 = 30 – 32535 seconds after which the device turns off
+<p&gt0 – disabled</p&gt <p&gt30 – 32535 = 30 – 32535 seconds after which the device turns off</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -164,9 +148,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 30: Restore state on power failure 
 
 Restore state on power failure
-1 – enabled (the device will restore state on power failure)
-
-0 – disabled (the device will not restore state on power failure and will remain off)
+<p&gt1 – enabled (the device will restore state on power failure)</p&gt <p&gt0 – disabled (the device will not restore state on power failure and will remain off)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -182,9 +164,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 50: Enable/disable beeper
 
 Enable/disable beeper
-0 – disabled (the beeper does not work)
-
-1 – enabled (beeper does work).
+<p&gt0 – disabled (the beeper does not work)</p&gt <p&gt1 – enabled (beeper does work).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -206,7 +186,7 @@ The ZMNHQD supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Reserved for communication with the gateway (hub) 
+<p&gtReserved for communication with the gateway (hub) </p&gt
 
 Association group 1 supports 1 node.
 
@@ -254,9 +234,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1126/Qubino-Luxy-Smart-Light-extended-manual-eng.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1126/Qubino-Luxy-Smart-Light-extended-manual-eng.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1126).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1126).

@@ -10,24 +10,22 @@ This describes the Z-Wave device *Lumi LM-SxZW (C-L)*, manufactured by *[Hogar C
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Lumi LM-SxZW (C-L) product image](https://www.cd-jackson.com/zwave_device_uploads/1112/1112_default.png)
+![Lumi LM-SxZW (C-L) product image](https://opensmarthouse.org/zwavedatabase/1112/image/)
 
 
 The Lumi LM-SxZW (C-L) supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-With a stunning glass face and an advanced capacitive touch sensor, all you need to do is just use a finger for turning your lights on and off. Tap once on the backlit touch button to switch the device on and tap it again to turn it off, it’s that simple. This 4 Touch Switch ensures an accurate response to every command that is sent through it.  
-  
-The Hogar 4 Touch Switch can operate either independently or as a part of the Hogar smart home automation system, and even with any other certified Z-Wave home automation system. It is an extremely easy-to-use panel that can be installed in a standard BS 2 gang box. Its operating capabilities include a bi-stable mode, a relay mode or a touch pulse mode for scene control with a maximum load current of 3 amp. It communicates with the Hogar smart home automation system using the Z-Wave wireless communication protocol.
+<p&gtWith a stunning glass face and an advanced capacitive touch sensor, all you need to do is just use a finger for turning your lights on and off. Tap once on the backlit touch button to switch the device on and tap it again to turn it off, it’s that simple. This 4 Touch Switch ensures an accurate response to every command that is sent through it.<br /&gt<br /&gtThe Hogar 4 Touch Switch can operate either independently or as a part of the Hogar smart home automation system, and even with any other certified Z-Wave home automation system. It is an extremely easy-to-use panel that can be installed in a standard BS 2 gang box. Its operating capabilities include a bi-stable mode, a relay mode or a touch pulse mode for scene control with a maximum load current of 3 amp. It communicates with the Hogar smart home automation system using the Z-Wave wireless communication protocol.</p&gt
 
 ### Inclusion Information
 
-Touch and hold any key on the panel for more than 5 seconds. All indication lights will blink in blue. At this point release the key, the touch panel will start the inclusion process.
+<p&gtTouch and hold any key on the panel for more than 5 seconds. All indication lights will blink in blue. At this point release the key, the touch panel will start the inclusion process.</p&gt
 
 ### Exclusion Information
 
-ouch and hold any key on the panel for more than 5 seconds. All indication lights will blink blue in color. At this point release the key, the touch panel will start the exclusion process. 
+<p&gtouch and hold any key on the panel for more than 5 seconds. All indication lights will blink blue in color. At this point release the key, the touch panel will start the exclusion process. </p&gt
 
 ## Channels
 
@@ -86,49 +84,49 @@ Association group 1 supports 1 node.
 
 ### Group 2: HGT-01 Basic Set
 
-Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 1.
+<p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 1.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: HGT-01 Switch Binary Set 
 
-Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 1.
+<p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 1.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: HGT-02 Basic Set 
 
-Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 2.
+<p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 2.</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: HGT-02 Switch Binary Set 
 
-Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 2.
+<p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 2.</p&gt
 
 Association group 5 supports 5 nodes.
 
 ### Group 6:  HGT-03 Basic Set
 
-Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 3.
+<p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 3.</p&gt
 
 Association group 6 supports 5 nodes.
 
 ### Group 7: HGT-03 Switch Binary Set
 
-Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 3.
+<p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 3.</p&gt
 
 Association group 7 supports 5 nodes.
 
 ### Group 8: HGT-04 Basic Set
 
-Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 4.
+<p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 4.</p&gt
 
 Association group 8 supports 5 nodes.
 
 ### Group 9: HGT-04 Switch Binary Set
 
-Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 4.
+<p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 4.</p&gt
 
 Association group 9 supports 5 nodes.
 
@@ -196,9 +194,9 @@ Association group 9 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1112/4-Touch-Modular-Switch-compressed.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1112/4-Touch-Modular-Switch-compressed.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1112).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1112).

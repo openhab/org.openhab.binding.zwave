@@ -10,35 +10,26 @@ This describes the Z-Wave device *FGRGBW*, manufactured by *[Fibargroup](http://
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![FGRGBW product image](https://www.cd-jackson.com/zwave_device_uploads/131/131_default.jpg)
+![FGRGBW product image](https://opensmarthouse.org/zwavedatabase/131/image/)
 
 
 The FGRGBW supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Fibaro RGBW Controller is a universal, Z-Wave compatible RGB / RGBW controller. Fibaro RGBW Controller uses PWM output signal, which enables it to control LED, RGB, RGBW strips, halogen lights and fans. Controlled devices may be powered by 12 or 24 VDC. In addition the device supports up to four, 0V - 10V analog sensors, such as temperature sensors, humidity sensors, wind sensors, air quality sensors, light sensors etc. All IN and OUT terminals may be user configured for LED control or 0V-10V signal readouts.
+<p&gtFibaro RGBW Controller is a universal, Z-Wave compatible RGB / RGBW controller. Fibaro RGBW Controller uses PWM output signal, which enables it to control LED, RGB, RGBW strips, halogen lights and fans. Controlled devices may be powered by 12 or 24 VDC. In addition the device supports up to four, 0V - 10V analog sensors, such as temperature sensors, humidity sensors, wind sensors, air quality sensors, light sensors etc. All IN and OUT terminals may be user configured for LED control or 0V-10V signal readouts. </p&gt
 
 ### Inclusion Information
 
-Triple click the B-button or any switch connected to I1-I4 inputs
+<p&gtTriple click the B-button or any switch connected to I1-I4 inputs</p&gt
 
 ### Exclusion Information
 
-Triple click the B-button or any switch connected to I1-I4 inputs
+<p&gtTriple click the B-button or any switch connected to I1-I4 inputs</p&gt
 
 ### General Usage Information
 
-**Warning!  
-  
-** 
-
-  1. Fibaro RGBW Controller is dedicated to operate in low voltage circuits of 12VDC or 24VDC. Connecting higher voltage load may result in Fibaro RGBW Controller damage.
-  2. Fibaro RGBW Controller must be powered by the same voltage as the connected light source. I.e. if controlling 12V LED strip, the module must be connected to 12V power supply. Similarly, if controlling 24V RGBW strip, Fibaro RGBW Controller must be powered by 24V voltage supply.
-  3. Fibaro RGBW Controller has 0-10V input. There is no 0-10V output. Output is controlled by PWM at 244Hz.
-  4. Fibaro RGBW Controller must be powered by 12VDC or 24 VDC stabilized power supply with outputs load capacity matched to loads voltage.
-  5. Sensors using 0-10V interface use wire connection to inputs I1 - I4. Maximum length of 0-10V connection line is 10 m. Observe sensor's manufacturer recommendations towards 0-10V line diameter.
-  6. In case of connecting long RGBW/RGB/LED strips voltage drops may occur, resulting in lower light brightness further from R/G/B/W outputs. To eliminate this effect it's recommended to connect few shorter strips in serial connection instead of one long strip connected parallel. Maximum recommended wire length, used to connect R/G/B/W outputs with a RGBW/RGB/LED strip is 10 m. Observe connected loads manufacturer recommendations towards connection wire diameter.
+<p&gt<strong&gtWarning!<br /&gt<br /&gt</strong&gt</p&gt <ol&gt<li&gtFibaro RGBW Controller is dedicated to operate in low voltage circuits of 12VDC or 24VDC. Connecting higher voltage load may result in Fibaro RGBW Controller damage.</li&gt <li&gtFibaro RGBW Controller must be powered by the same voltage as the connected light source. I.e. if controlling 12V LED strip, the module must be connected to 12V power supply. Similarly, if controlling 24V RGBW strip, Fibaro RGBW Controller must be powered by 24V voltage supply.</li&gt <li&gtFibaro RGBW Controller has 0-10V input. There is no 0-10V output. Output is controlled by PWM at 244Hz.</li&gt <li&gtFibaro RGBW Controller must be powered by 12VDC or 24 VDC stabilized power supply with outputs load capacity matched to loads voltage.</li&gt <li&gtSensors using 0-10V interface use wire connection to inputs I1 - I4. Maximum length of 0-10V connection line is 10 m. Observe sensor's manufacturer recommendations towards 0-10V line diameter.</li&gt <li&gtIn case of connecting long RGBW/RGB/LED strips voltage drops may occur, resulting in lower light brightness further from R/G/B/W outputs. To eliminate this effect it's recommended to connect few shorter strips in serial connection instead of one long strip connected parallel. Maximum recommended wire length, used to connect R/G/B/W outputs with a RGBW/RGB/LED strip is 10 m. Observe connected loads manufacturer recommendations towards connection wire diameter.</li&gt </ol&gt
 
 ## Channels
 
@@ -147,7 +138,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: ALL ON / ALL OFF function activation
 
 Activation/deactivation of ALL ON/ALL OFF functions.
-By default, ALL ON active ALL OFF active.
+<p&gtBy default, ALL ON active ALL OFF active.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -165,9 +156,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 6: Associations command class choice
 
 Associations command class choice
-Associations command class choice.
-
-By default, Normal (Dimmer) - BASIC\_SET/SWITCH\_MULTILEVEL_START/STOP
+<p&gtAssociations command class choice.</p&gt <p&gtBy default, Normal (Dimmer) - BASIC\_SET/SWITCH\_MULTILEVEL_START/STOP</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -186,7 +175,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 8: Outputs state change mode
 
 MODE1, Example: change saturation level from 0% to 99%
-Parameter 9: Step = 5, Parameter 10: Time between steps: 10ms, Default setting: MODE1
+<p&gtParameter 9: Step = 5, Parameter 10: Time between steps: 10ms, Default setting: MODE1</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -213,7 +202,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Time between steps (relevant for MODE1)
 
 Time between steps (relevant for MODE1).
-Default setting: 10 ms  0 - immediate change of state, available settings: 1 - 60000 ms.
+<p&gtDefault setting: 10 ms  0 - immediate change of state, available settings: 1 - 60000 ms.</p&gt
 Values in the range 0 to 60000 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -224,11 +213,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Time for changing from start to end value
 
 Step value (relevant for MODE1).
-  * Default setting: 67 (3s)
-  * 0: immediate change
-  * 1-63: 20-126 [ms] value*20ms
-  * 65-127: 1-63 \[s\] (value-64)*1s
-  * 129-191: 10-630 \[s\] (value-128)*10s
+<ul&gt<li&gtDefault setting: 67 (3s)</li&gt <li&gt0: immediate change</li&gt <li&gt1-63: 20-126 \[ms] value\*20ms</li&gt <li&gt65-127: 1-63 [s\] (value-64)\*1s</li&gt <li&gt129-191: 10-630 \[s\] (value-128)*10s</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```67```.
@@ -239,7 +224,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Maximum Brightening level
 
 Maximum Brightening level.
-Default setting: 255, available settings: 3 - 255.
+<p&gtDefault setting: 255, available settings: 3 - 255.</p&gt
 Values in the range 3 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -250,7 +235,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Minimum dim level
 
 Minimum dim level.
-Default setting: 2, available settings: 3 - 255.
+<p&gtDefault setting: 2, available settings: 3 - 255.</p&gt
 Values in the range 2 to 255 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -261,8 +246,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Inputs/Outputs configuration
 
 Relevant for main controllers other than Home Center 2 only
-Inputs/Outputs configuration - relevant for main controllers other than Home Center 2 only.  
-Default setting: 4369, Controlled device: RGBW, toggle switch inputs (NORMAL MODE).
+<p&gtInputs/Outputs configuration - relevant for main controllers other than Home Center 2 only.<br /&gtDefault setting: 4369, Controlled device: RGBW, toggle switch inputs (NORMAL MODE).</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```4369```.
@@ -273,7 +257,7 @@ This parameter has the configuration ID ```config_14_2``` and is of type ```INTE
 ### Parameter 16: Remember device status after power failure
 
 Define how will the Plug react after the power supply is back on.
-Define how will the Plug react after the power supply is back on.
+<p&gtDefine how will the Plug react after the power supply is back on.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -289,9 +273,7 @@ This parameter has the configuration ID ```config_16_1``` and is of type ```INTE
 ### Parameter 30: Alarm response
 
 Alarm response
-Alarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm.)                             
-
-Default setting: INACTIVE
+<p&gtAlarm of any type (General alarm, flood alarm, smoke alarm: CO, CO2, temperature alarm.)                             </p&gt <p&gtDefault setting: INACTIVE</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -309,7 +291,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 38: Alarm sequence program
 
 Alarm sequence program.
-Default setting: 10, 1-10 specifies alarm program number.
+<p&gtDefault setting: 10, 1-10 specifies alarm program number.</p&gt
 Values in the range 1 to 10 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -320,7 +302,7 @@ This parameter has the configuration ID ```config_38_1``` and is of type ```INTE
 ### Parameter 39: Active PROGRAM alarm time
 
 Active PROGRAM alarm time.
-Default setting: 600s, 1-65534 specifies alarm time in seconds.
+<p&gtDefault setting: 600s, 1-65534 specifies alarm time in seconds.</p&gt
 Values in the range 1 to 65534 may be set.
 
 The manufacturer defined default value is ```600```.
@@ -348,8 +330,7 @@ This parameter has the configuration ID ```config_42_1``` and is of type ```INTE
 ### Parameter 43: Reporting 0-10v analog inputs change threshold
 
 Defines which input voltage must change to be reported
-Parameter defines a value by which input voltage must change in order to be reported to the main controller.  
-New value is calculated based on last reported value, default setting: 5
+<p&gtParameter defines a value by which input voltage must change in order to be reported to the main controller.<br /&gtNew value is calculated based on last reported value, default setting: 5</p&gt
 Values in the range 1 to 100 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -360,7 +341,7 @@ This parameter has the configuration ID ```config_43_1``` and is of type ```INTE
 ### Parameter 44: Power load reporting frequency
 
 Parameter defines Time between reports.
-Parameter defines Time between reports. The report will be sent if last reported value differs from the current value, else reports will also be sent in case of polling. Default setting: 3 600 (s)
+<p&gtParameter defines Time between reports. The report will be sent if last reported value differs from the current value, else reports will also be sent in case of polling. Default setting: 3 600 (s)</p&gt
 Values in the range 0 to 65534 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -371,7 +352,7 @@ This parameter has the configuration ID ```config_44_2``` and is of type ```INTE
 ### Parameter 45: Reporting energy consumption changes
 
 Reporting energy consumption changes
-Defines the required change in power to generate an unsolicited power report. New, reported energy value is calculated based on last reported value. Default setting: 10 (0,1 kWh).
+<p&gtDefines the required change in power to generate an unsolicited power report. New, reported energy value is calculated based on last reported value. Default setting: 10 (0,1 kWh).</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -398,7 +379,7 @@ This parameter has the configuration ID ```config_71_1``` and is of type ```INTE
 ### Parameter 72: Starting animation program
 
 Starting predefined program when device set to work in RGB/RGBW mode
-Starting predefined program when device set to work in RGB/RGBW mode (parameter 14) - relevant for main controllers other than Home Center 2 only. Default setting: 1
+<p&gtStarting predefined program when device set to work in RGB/RGBW mode (parameter 14) - relevant for main controllers other than Home Center 2 only. Default setting: 1</p&gt
 Values in the range 1 to 10 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -520,9 +501,9 @@ Association group 5 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual (v2.1-v2.3)](https://www.cd-jackson.com/zwave_device_uploads/131/fibaro-rgbw-controller-2-1-2-3-manual.pdf)
+* [User Manual (v2.1-v2.3)](https://opensmarthouse.org/zwavedatabase/131/fibaro-rgbw-controller-2-1-2-3-manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/131).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/131).

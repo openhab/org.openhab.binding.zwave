@@ -7,9 +7,7 @@
 
   <thing-type id="zwaveproducts_zlpd100_00_000" listed="false">
     <label>ZL-PD-100 Plug-In Dimmer</label>
-    <description><![CDATA[
-Plug-In Dimmer<br /><h1>Overview</h1><p>Plug-in lamp control module with dimmer, supporting incandescent, LED, and CFL bulbs. </p> <br /><h2>Inclusion Information</h2><ol><li>Place your network controller into inclusion mode.</li> <li>When the controller is ready, single click the button on the front of the PD-100.</li> <li>The controller should indicate that the new device was added successfully.</li> </ol><p>If the controller shows it was a fail, repeat the procedure. </p> <p>Note: If inclusion still failed after the 2nd attempt, you need to first reset the PD-100 before repeating the above step. The manual reset method is as follows:</p> <ol><li>Unplug the PD-100 from the AC outlet and also unplug the power plugs of the lighting from the module (if plugged in).</li> <li>Press and hold the button on the PD-100.</li> <li>Plug the PD-100 back into the AC outlet with the button pressed. After 3 seconds, release the button. If you see the button blink, that means that the PD-100 has been reset successfully and you may retry Step 3 above to add the module into your network. Otherwise, please repeat the manual reset procedures.</li> </ol><br /><h2>Exclusion Information</h2><p>Note: If PD-100 was previously Added (Included) in your network, resetting it locally does not mean it has been removed from your network. If you wish to remove PD-100 from your network you will need to Delete (Exclude) the module from the network by your controller.</p> <p>Use the manual reset procedure only in the event that the network primary controller is lost or otherwise inoperable. </p>
-    ]]></description>
+    <description>Plug-In Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtPlug-in lamp control module with dimmer, supporting incandescent, LED, and CFL bulbs. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlace your network controller into inclusion mode.&lt;/li&gt &lt;li&gtWhen the controller is ready, single click the button on the front of the PD-100.&lt;/li&gt &lt;li&gtThe controller should indicate that the new device was added successfully.&lt;/li&gt &lt;/ol&gt&lt;p&gtIf the controller shows it was a fail, repeat the procedure. &lt;/p&gt &lt;p&gtNote: If inclusion still failed after the 2nd attempt, you need to first reset the PD-100 before repeating the above step. The manual reset method is as follows:&lt;/p&gt &lt;ol&gt&lt;li&gtUnplug the PD-100 from the AC outlet and also unplug the power plugs of the lighting from the module (if plugged in).&lt;/li&gt &lt;li&gtPress and hold the button on the PD-100.&lt;/li&gt &lt;li&gtPlug the PD-100 back into the AC outlet with the button pressed. After 3 seconds, release the button. If you see the button blink, that means that the PD-100 has been reset successfully and you may retry Step 3 above to add the module into your network. Otherwise, please repeat the manual reset procedures.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtNote: If PD-100 was previously Added (Included) in your network, resetting it locally does not mean it has been removed from your network. If you wish to remove PD-100 from your network you will need to Delete (Exclude) the module from the network by your controller.&lt;/p&gt &lt;p&gtUse the manual reset procedure only in the event that the network primary controller is lost or otherwise inoperable. &lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -57,36 +55,28 @@ Plug-In Dimmer<br /><h1>Overview</h1><p>Plug-in lamp control module with dimmer,
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="2">
         <label>3: Nightlight</label>
-        <description><![CDATA[
-Controls LED operation<br /><h1>Overview</h1><p>When value = 0, the LED indicator will be OFF when the connected appliance is ON, and the LED indicator will be ON when the connected appliance is OFF. If value = 1, the LED indicator will be OFF when the connected appliance is OFF, and the LED indicator will be ON when the connected appliance is ON. If value = 2, the LED indicator will be always OFF regardless of the load status.</p>
-        ]]></description>
+        <description>Controls LED operation&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen value = 0, the LED indicator will be OFF when the connected appliance is ON, and the LED indicator will be ON when the connected appliance is OFF. If value = 1, the LED indicator will be OFF when the connected appliance is OFF, and the LED indicator will be ON when the connected appliance is ON. If value = 2, the LED indicator will be always OFF regardless of the load status.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>9: Dimming Resolution Level</label>
-        <description><![CDATA[
-Steps to change dimmer level per tick<br /><h1>Overview</h1><p>Indicates the number of levels the lighting will change when the timer runs out.</p>
-        ]]></description>
+        <description>Steps to change dimmer level per tick&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIndicates the number of levels the lighting will change when the timer runs out.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Dimming Resolution Speed</label>
-        <description><![CDATA[
-Tick length in 10ms units<br /><h1>Overview</h1><p>Indicates the time duration of each level. The resolution is 10 ms. For example, a default value of 3 means the timer runs out every 30 milliseconds. Using the combinations of these 2 parameters, you can create a dim rate adjustment range as short as 10 ms to a very slow dim rate. </p>
-        ]]></description>
+        <description>Tick length in 10ms units&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIndicates the time duration of each level. The resolution is 10 ms. For example, a default value of 3 means the timer runs out every 30 milliseconds. Using the combinations of these 2 parameters, you can create a dim rate adjustment range as short as 10 ms to a very slow dim rate. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Association:</p> <p>1. PD-100 supports group #1 for lifeline communication.</p> <p>2. PD-100 supports a maximum of 1 node for group #1.</p> <p>3. Lifeline association only supports the "manual reset" event.</p> <p>4. For instructions on how to "set lifeline associate," please refer to your wireless controller instructions.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAssociation:&lt;/p&gt &lt;p&gt1. PD-100 supports group #1 for lifeline communication.&lt;/p&gt &lt;p&gt2. PD-100 supports a maximum of 1 node for group #1.&lt;/p&gt &lt;p&gt3. Lifeline association only supports the &quot;manual reset&quot; event.&lt;/p&gt &lt;p&gt4. For instructions on how to &quot;set lifeline associate,&quot; please refer to your wireless controller instructions.&lt;/p&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

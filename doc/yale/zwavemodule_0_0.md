@@ -10,38 +10,22 @@ This describes the Z-Wave device *Yale Smart Door Lock Z-Wave Module*, manufactu
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![Yale Smart Door Lock Z-Wave Module product image](https://www.cd-jackson.com/zwave_device_uploads/810/810_default.jpg)
+![Yale Smart Door Lock Z-Wave Module product image](https://opensmarthouse.org/zwavedatabase/810/image/)
 
 
 The Yale Smart Door Lock Z-Wave Module supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-Adds Z-Wave functionality to some locks.
+<p&gtAdds Z-Wave functionality to some locks.</p&gt
 
 ### Inclusion Information
 
-**Conexis L1**
-
-Press the R button on the lock 3 times quickly.
-
-**Keyless Connected or Keyfree Connected**
-
-  1. Enter the Master code on the lock followed by #
-  2. Press the 4 button followed by #
-  3. Press the 1 button followed by #
+<p&gt<strong&gtConexis L1</strong&gt</p&gt <p&gtPress the R button on the lock 3 times quickly.</p&gt <p&gt<strong&gtKeyless Connected or Keyfree Connected</strong&gt</p&gt <ol&gt<li&gtEnter the Master code on the lock followed by #</li&gt <li&gtPress the 4 button followed by #</li&gt <li&gtPress the 1 button followed by #</li&gt </ol&gt
 
 ### Exclusion Information
 
-**Conexis L1**
-
-Press the R button on the lock 3 times quickly.
-
-**Keyless Connected or Keyfree Connected**
-
-  1. Enter the Master code on the lock followed by #
-  2. Press the 4 button followed by #
-  3. Press the 3 button followed by #
+<p&gt<strong&gtConexis L1</strong&gt</p&gt <p&gtPress the R button on the lock 3 times quickly.</p&gt <p&gt<strong&gtKeyless Connected or Keyfree Connected</strong&gt</p&gt <ol&gt<li&gtEnter the Master code on the lock followed by #</li&gt <li&gtPress the 4 button followed by #</li&gt <li&gtPress the 3 button followed by #</li&gt </ol&gt
 
 ## Channels
 
@@ -52,7 +36,7 @@ The following table summarises the channels available for the Yale Smart Door Lo
 | Door Lock | lock_door | lock_door | Door | Switch | 
 | Alarm | alarm_general | alarm_general | Alarm | Switch | 
 | Battery Level | battery-level | system.battery_level | Battery | Number |
-| Clock Time Offset | time_offset | time_offset | Temperature | Number | 
+| Clock Time Offset | time_offset | time_offset | Time | Number | 
 
 ### Door Lock
 Lock and unlock the door.
@@ -85,7 +69,7 @@ This channel provides the battery level as a percentage and also reflects the lo
 ### Clock Time Offset
 Provides the current time difference for the devices time.
 
-The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Temperature``` category.
+The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Time``` category.
 
 
 
@@ -132,9 +116,9 @@ Association group 1 supports 4 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/810/Z-Wave-Module-2-Manual.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/810/Z-Wave-Module-2-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/810).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/810).

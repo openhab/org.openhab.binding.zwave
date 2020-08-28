@@ -7,9 +7,7 @@
 
   <thing-type id="ingersollecolink_dwzwave1_00_000" listed="false">
     <label>DWZWAVE1 Z-Wave Door/Window Sensor</label>
-    <description><![CDATA[
-Z-Wave Door/Window Sensor<br /><h1>Overview</h1><p>Monitor activities at your home with this Z-Wave Door and Window Sensor.  Choose to receive mobile or email alerts when a door or window is opened.  Use the Door/Window sensor to trigger video recording or turn on the lights.  View the status of the sensor from your smartphone, tablet, or computer.</p> <br /><h2>Inclusion Information</h2><p>Remove the battery for 10 seconds and replace the battery to restart enrollment mode.</p> <br /><h2>Exclusion Information</h2><ol><li>Remove the battery from the Sensor.</li> <li>Leave the battery out for at least ten (10) seconds.</li> <li>Reinstall the battery into the Sensor.</li> </ol><br /><h2>Wakeup Information</h2><p>Press the "+" button once.</p>
-    ]]></description>
+    <description>Z-Wave Door/Window Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMonitor activities at your home with this Z-Wave Door and Window Sensor.  Choose to receive mobile or email alerts when a door or window is opened.  Use the Door/Window sensor to trigger video recording or turn on the lights.  View the status of the sensor from your smartphone, tablet, or computer.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtRemove the battery for 10 seconds and replace the battery to restart enrollment mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtRemove the battery from the Sensor.&lt;/li&gt &lt;li&gtLeave the battery out for at least ten (10) seconds.&lt;/li&gt &lt;li&gtReinstall the battery into the Sensor.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtPress the &quot;+&quot; button once.&lt;/p&gt</description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -60,9 +58,7 @@ Z-Wave Door/Window Sensor<br /><h1>Overview</h1><p>Monitor activities at your ho
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_99_1" type="integer" groupName="configuration">
         <label>99: Fault Restore Report</label>
-        <description><![CDATA[
-Fault Restore Report<br /><h1>Overview</h1><p>Enable or disable Basic Sets of 0x00 on a fault restore to nodes in Group 2. Default = Enabled.</p>
-        ]]></description>
+        <description>Fault Restore Report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or disable Basic Sets of 0x00 on a fault restore to nodes in Group 2. Default = Enabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">Disabled</option>

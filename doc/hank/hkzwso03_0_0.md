@@ -10,62 +10,22 @@ This describes the Z-Wave device *HKZW_SO03*, manufactured by *[Hank](http://www
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![HKZW_SO03 product image](https://www.cd-jackson.com/zwave_device_uploads/677/677_default.jpg)
+![HKZW_SO03 product image](https://opensmarthouse.org/zwavedatabase/677/image/)
 
 
 The HKZW_SO03 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-WELL DONE!  
-You have picked the finest solution for your smart home, congratulations!  
-Now it's time to enjoy these great features of your new Smart Plug:
-
-  * Wireless control of floor lamps and small appliances
-  * Energy monitoring in live mode or over time (your Z-Wave gateway needs to support this feature)
-  * Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller
-  * LED indicator displaying Z-Wave signal strength and power usage
-  * Security enabled Z-Wave device with AES signal encryption (requires a security enabled gateway controller for full functionality)
-  * Z-Wave Plus with improved 500 chip for faster and safer wireless communication
-  * Built-in range extender for a stronger, more reliable network
-  * 2 USB charging ports for your smart phone or tablet (no Z-Wave functionality)
-  * Built-in overload protection in Z-Wave outlet and USB ports
+<p&gtWELL DONE!<br /&gt You have picked the finest solution for your smart home, congratulations!<br /&gt Now it's time to enjoy these great features of your new Smart Plug:</p&gt <ul&gt<li&gtWireless control of floor lamps and small appliances</li&gt <li&gtEnergy monitoring in live mode or over time (your Z-Wave gateway needs to support this feature)</li&gt <li&gtScene inclusion for custom automation scenarios when included to a Z-Wave gateway controller</li&gt <li&gtLED indicator displaying Z-Wave signal strength and power usage</li&gt <li&gtSecurity enabled Z-Wave device with AES signal encryption (requires a security enabled gateway controller for full functionality)</li&gt <li&gtZ-Wave Plus with improved 500 chip for faster and safer wireless communication</li&gt <li&gtBuilt-in range extender for a stronger, more reliable network</li&gt <li&gt2 USB charging ports for your smart phone or tablet (no Z-Wave functionality)</li&gt <li&gtBuilt-in overload protection in Z-Wave outlet and USB ports</li&gt </ul&gt
 
 ### Inclusion Information
 
-Auto Z-Wave Inclusion
-
-  1. Put your Z-Wave controller in inclusion mode
-  2. Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller
-  3. LED indicator will flash blue
-  4. A new on / off device should be recognized by your Z-Wave controller
-
-Manual Z-Wave Inclusion
-
-  1.  Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller
-  2. Put your Z-Wave controller in inclusion mode
-  3. Press and release the Z-Wave button 3 TIMES QUICKLY
-  4. LED indicator will flash blue
-  5. A new on / off device should be recognized by your Z-Wave controller
-
-Secure Z-Wave Inclusion
-
-  1.  Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller
-  2. Put your Z-Wave controller in secure inclusion mode
-  3. Press and HOLD the Z-Wave button for at least 3 seconds
-  4. LED indicator will flash green
-  5. LED indicator will turn solid green once the inclusion is completed. Please allow 5 minutes for configuration. DO NOT press any buttons or move the device during that time
-  6. A new secure on / off device should be recognized by your Z-Wave controller
+<p&gtAuto Z-Wave Inclusion</p&gt <ol&gt<li&gtPut your Z-Wave controller in inclusion mode</li&gt <li&gtPlug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller</li&gt <li&gtLED indicator will flash blue</li&gt <li&gtA new on / off device should be recognized by your Z-Wave controller</li&gt </ol&gt<p&gtManual Z-Wave Inclusion</p&gt <ol&gt<li&gt Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller</li&gt <li&gtPut your Z-Wave controller in inclusion mode</li&gt <li&gtPress and release the Z-Wave button 3 TIMES QUICKLY</li&gt <li&gtLED indicator will flash blue</li&gt <li&gtA new on / off device should be recognized by your Z-Wave controller</li&gt </ol&gt<p&gtSecure Z-Wave Inclusion</p&gt <ol&gt<li&gt Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller</li&gt <li&gtPut your Z-Wave controller in secure inclusion mode</li&gt <li&gtPress and HOLD the Z-Wave button for at least 3 seconds</li&gt <li&gtLED indicator will flash green</li&gt <li&gtLED indicator will turn solid green once the inclusion is completed. Please allow 5 minutes for configuration. DO NOT press any buttons or move the device during that time</li&gt <li&gtA new secure on / off device should be recognized by your Z-Wave controller</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Plug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller
-  2. Put your Z-Wave controller in exclusion mode
-  3. Press and release the Z-Wave button 3 TIMES QUICKLY
-  4. LED indicator will flash orange
-  5. The smart plug should disappear from your controller's device list and LED indicator will remain solid orange for a few seconds to indicate exclusion
-
-Please repeat the process following all steps carefully if the first attempt is unsuccessful
+<ol&gt<li&gtPlug the smart plug into a grounded receptacle located within 3 feet from your Z-Wave gateway controller</li&gt <li&gtPut your Z-Wave controller in exclusion mode</li&gt <li&gtPress and release the Z-Wave button 3 TIMES QUICKLY</li&gt <li&gtLED indicator will flash orange</li&gt <li&gtThe smart plug should disappear from your controller's device list and LED indicator will remain solid orange for a few seconds to indicate exclusion</li&gt </ol&gt<p&gtPlease repeat the process following all steps carefully if the first attempt is unsuccessful</p&gt
 
 ## Channels
 
@@ -128,9 +88,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 20: Overload Protection
 
 Overload Protection
-16.5A for over 5 seconds when this setting is enabled.
-
-We **DO NOT** recommend changing this parameter’s value as it may result in device damage and malfunction.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gt16.5A for over 5 seconds when this setting is enabled.</p&gt <p&gtWe <strong&gtDO NOT</strong&gt recommend changing this parameter’s value as it may result in device damage and malfunction.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -146,7 +104,7 @@ This parameter has the configuration ID ```config_20_1``` and is of type ```INTE
 ### Parameter 21: On/Off Status Recovery After Power Failure
 
 On/Off Status Recovery After Power Failure
-Choose the recovery state for your Smart Plug if power outage occurs.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtChoose the recovery state for your Smart Plug if power outage occurs.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -163,9 +121,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 ### Parameter 24: On/Off Status Change Notifications
 
 On/Off Status Change Notifications
-Your Smart Plug will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round.
-
-Choose when you want it to send the report.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtYour Smart Plug will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round.</p&gt <p&gtChoose when you want it to send the report.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -182,7 +138,7 @@ This parameter has the configuration ID ```config_24_1``` and is of type ```INTE
 ### Parameter 27: Led Indicator Control
 
 Led Indicator Control
-You can choose how the LED indicator displays power consumption on the smart plugThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtYou can choose how the LED indicator displays power consumption on the smart plug</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -248,9 +204,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Zooz ZEN06 Manual](https://www.cd-jackson.com/zwave_device_uploads/677/Zooz-Z-Wave-Smart-Plug-ZEN06-Manual.pdf)
+* [Zooz ZEN06 Manual](https://opensmarthouse.org/zwavedatabase/677/Zooz-Z-Wave-Smart-Plug-ZEN06-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/677).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/677).

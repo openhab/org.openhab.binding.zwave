@@ -7,9 +7,7 @@
 
   <thing-type id="devolo_mt2792_00_000" listed="false">
     <label>MT02792 Home Control Metering Plug</label>
-    <description><![CDATA[
-Home Control Metering Plug<br /><h1>Overview</h1><p>The devolo Home Control Smart Metering Plug is an intelligent wall socket that adds useful additional functions to all wall sockets present in the household. This enables connected devices to be switched on and off based on time control, either using rules configured in the Z-Wave-compatible control unit or using the corresponding app. In addition, the devolo Home Control Smart Metering Plug has an energy consumption measurement feature.</p> <br /><h2>Inclusion Information</h2><p>The Home Control Smart Metering Plug can be included using two different procedures:<br /> Variant A: Auto Inclusion with the control unit</p> <ol><li>In the Z-Wave-compatible control unit, start the procedure for adding a new device automatically.</li> <li>Plug the Home Control Smart Metering Plug into an available power socket. The Auto Inclusion is run. During the 2-minute timeout of the Auto Inclusion, Node Information Frames are sent within a few seconds. In the auto inclusion, it is not necessary to press the ON/OFF button.</li> </ol><p><br /> Variant B: Manual Inclusion with the control unit If the time frame (2 minutes) of the Auto Inclusion procedure is exceeded, you can also include the Home Control Smart Metering Plug with the control unit manually.</p> <ol><li>In the Z-Wave -compatible control unit, start the procedure for adding a new device (inclusion).</li> <li>Press the button of the connected Smart Metering Plug 3x within 1.2 seconds to start the inclusion process with the Z-Wave-compatible control unit.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put the Z-Wave controller in Exclusion mode.</li> <li>Press the ON/OFF button 3x within 1.2 seconds to put the device into Exclusion mode. (indicated by white LED: 0.5 sec. ON, 0.5 sec. OFF).</li> <li>Node ID is now removed. (After the removal, the device starts again with Auto Inclusion mode.) Reset: Press the ON/OFF button for at least 10 sec. to reset the device to the factory defaults. After the reboot, the device starts Auto Inclusion again.</li> </ol>
-    ]]></description>
+    <description>Home Control Metering Plug&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe devolo Home Control Smart Metering Plug is an intelligent wall socket that adds useful additional functions to all wall sockets present in the household. This enables connected devices to be switched on and off based on time control, either using rules configured in the Z-Wave-compatible control unit or using the corresponding app. In addition, the devolo Home Control Smart Metering Plug has an energy consumption measurement feature.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtThe Home Control Smart Metering Plug can be included using two different procedures:&lt;br /&gt Variant A: Auto Inclusion with the control unit&lt;/p&gt &lt;ol&gt&lt;li&gtIn the Z-Wave-compatible control unit, start the procedure for adding a new device automatically.&lt;/li&gt &lt;li&gtPlug the Home Control Smart Metering Plug into an available power socket. The Auto Inclusion is run. During the 2-minute timeout of the Auto Inclusion, Node Information Frames are sent within a few seconds. In the auto inclusion, it is not necessary to press the ON/OFF button.&lt;/li&gt &lt;/ol&gt&lt;p&gt&lt;br /&gt Variant B: Manual Inclusion with the control unit If the time frame (2 minutes) of the Auto Inclusion procedure is exceeded, you can also include the Home Control Smart Metering Plug with the control unit manually.&lt;/p&gt &lt;ol&gt&lt;li&gtIn the Z-Wave -compatible control unit, start the procedure for adding a new device (inclusion).&lt;/li&gt &lt;li&gtPress the button of the connected Smart Metering Plug 3x within 1.2 seconds to start the inclusion process with the Z-Wave-compatible control unit.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPut the Z-Wave controller in Exclusion mode.&lt;/li&gt &lt;li&gtPress the ON/OFF button 3x within 1.2 seconds to put the device into Exclusion mode. (indicated by white LED: 0.5 sec. ON, 0.5 sec. OFF).&lt;/li&gt &lt;li&gtNode ID is now removed. (After the removal, the device starts again with Auto Inclusion mode.) Reset: Press the ON/OFF button for at least 10 sec. to reset the device to the factory defaults. After the reboot, the device starts Auto Inclusion again.&lt;/li&gt &lt;/ol&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -110,9 +108,7 @@ Home Control Metering Plug<br /><h1>Overview</h1><p>The devolo Home Control Smar
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>1: Watt counter reporting period</label>
-        <description><![CDATA[
-multiples of 5s<br /><h1>Overview</h1><p>Enable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.</p>
-        ]]></description>
+        <description>multiples of 5s&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
         <options>
           <option value="0">Disable</option>
@@ -123,9 +119,7 @@ multiples of 5s<br /><h1>Overview</h1><p>Enable automatic interval in seconds re
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>2: KWh counter reporting period</label>
-        <description><![CDATA[
-number of 10 minute intervals<br /><h1>Overview</h1><p>Enable automatic interval in minutes reporting with an interval of 10min * the value. Set to 0 will disable the autoreporting function.</p>
-        ]]></description>
+        <description>number of 10 minute intervals&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable automatic interval in minutes reporting with an interval of 10min * the value. Set to 0 will disable the autoreporting function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>6</default>
         <options>
           <option value="0">Disable</option>
@@ -143,17 +137,13 @@ number of 10 minute intervals<br /><h1>Overview</h1><p>Enable automatic interval
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="1" max="10000">
         <label>4: load caution threshold</label>
-        <description><![CDATA[
-load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when the accumulated kWh power consumption exceeds the setting value from 1KWh ~ 10000KWh.. Set to 0 will disable kWh load caution reporting.</p>
-        ]]></description>
+        <description>load caution threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable automatic warning when the accumulated kWh power consumption exceeds the setting value from 1KWh ~ 10000KWh.. Set to 0 will disable kWh load caution reporting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10000</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Mode for restoring status</label>
-        <description><![CDATA[
-Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is disconnected and reconnected from the mains power supply.</p>
-        ]]></description>
+        <description>Restore switch state mode.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtStatus of the plug if it is disconnected and reconnected from the mains power supply.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Switch will remain Off.</option>
@@ -209,9 +199,7 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>The device sends a notification report of the command class battery report, notification report, and local device reset notification, binary report.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe device sends a notification report of the command class battery report, notification report, and local device reset notification, binary report.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

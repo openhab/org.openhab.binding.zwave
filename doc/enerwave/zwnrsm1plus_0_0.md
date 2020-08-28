@@ -10,45 +10,22 @@ This describes the Z-Wave device *ZWN-RSM1-PLUS*, manufactured by *Wenzhou MTLC 
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZWN-RSM1-PLUS product image](https://www.cd-jackson.com/zwave_device_uploads/575/575_default.png)
+![ZWN-RSM1-PLUS product image](https://opensmarthouse.org/zwavedatabase/575/image/)
 
 
 The ZWN-RSM1-PLUS supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Transform any home into a connected home with the Enerwave Z-Wave Plus Smart Single Relay Wireless Lighting Control Module. The lighting control enables wireless control of on/off functions for standard table and floor lamps, and is compatible with incandescent, LED, Xenon, Halogen, fluorescent and compact fluorescent bulbs. The Z-Wave Plus Module provides ultimate flexibility for your home lighting by creating custom scenes and scheduling timed events when you’re either home or away. Compared to Z-Wave Classic models, the Enerwave Z-Wave Plus Smart Meter Module offers 50% more wireless range and energy efficiency a 250% faster processor and 400% more memory
-
-Take charge of your home’s appliances power outlet by installed directly behind your wall sockets.  The Z-Wave Plus Smart Relay Module offers all the power of intelligent automation and remote control.  Discrete and smart, the Smart Module Switch work invisibly behind your existing switches without the need to replace them.
-
-Easily controlled by your mobile device or computer using any Z-Wave certified gateway, Take control of your home lighting with Enerwave Z-Wave Plus Smart Single Relay Wireless Lighting Controls! Z-Wave is the world’s largest ecosystem of interoperable smart home products. Z-Wave lighting controls provide an easy-to-install and affordable system to control lighting and small appliances in your home. Add an Enerwave Z-Wave lighting controls to a Z-Wave certified gateway to access and control your home from anywhere in the world using your smartphone, tablet or computer as a home automation command center.
-
-Never worry if you accidentally left the lights on because you can turn them off remotely or program your lights to go on/off at specific times. Create customized lighting scenes for any occasion such as a “go to sleep” scene or a “movie night” scene. Give the illusion that someone is home by programming the lights to turn on/off while you are away—perfect for deterring crime and adding additional security!
+<p&gtTransform any home into a connected home with the Enerwave Z-Wave Plus Smart Single Relay Wireless Lighting Control Module. The lighting control enables wireless control of on/off functions for standard table and floor lamps, and is compatible with incandescent, LED, Xenon, Halogen, fluorescent and compact fluorescent bulbs. The Z-Wave Plus Module provides ultimate flexibility for your home lighting by creating custom scenes and scheduling timed events when you’re either home or away. Compared to Z-Wave Classic models, the Enerwave Z-Wave Plus Smart Meter Module offers 50% more wireless range and energy efficiency a 250% faster processor and 400% more memory</p&gt <p&gtTake charge of your home’s appliances power outlet by installed directly behind your wall sockets.  The Z-Wave Plus Smart Relay Module offers all the power of intelligent automation and remote control.  Discrete and smart, the Smart Module Switch work invisibly behind your existing switches without the need to replace them.</p&gt <p&gtEasily controlled by your mobile device or computer using any Z-Wave certified gateway, Take control of your home lighting with Enerwave Z-Wave Plus Smart Single Relay Wireless Lighting Controls! Z-Wave is the world’s largest ecosystem of interoperable smart home products. Z-Wave lighting controls provide an easy-to-install and affordable system to control lighting and small appliances in your home. Add an Enerwave Z-Wave lighting controls to a Z-Wave certified gateway to access and control your home from anywhere in the world using your smartphone, tablet or computer as a home automation command center.</p&gt <p&gtNever worry if you accidentally left the lights on because you can turn them off remotely or program your lights to go on/off at specific times. Create customized lighting scenes for any occasion such as a “go to sleep” scene or a “movie night” scene. Give the illusion that someone is home by programming the lights to turn on/off while you are away—perfect for deterring crime and adding additional security!</p&gt
 
 ### Inclusion Information
 
-The process of "Inclusion/ Exclusion" is to Add or Remove the device from the Hub. All Z-Wave devices must be "Included" on the Controller (Hub) before it can be controlled from a smart device. The Hub should be brought physically closer to the device just for the "Inclusion" process (recommended within 10ft). When finished, the Hub and device can be moved back to final installation location. Download the App or log onto the website associated with the Hub you are using and follow their Inclusion/ Exclusion instructions as each Hub's programming and features are different.
-
-  * During the Inclusion/ Exclusion process, the Program Button on the relay or the ON/OFF toggle on the switch can be used for including/ excluding the device.
-  * When using the ON/OFF toggle, the toggle must be toggled ON and OFF 3 times.
-  * It is best to perform an Exclusion of the device prior to performing an Inclusion.
-
-Step 1. From the Control Panel, go the the device Exclusion page.
-
-  * Select "Exclude Device".
-  * When prompted, press the Program Button on the Relay once or the ON/OFF toggle on the switch 3 times.
-
-Step 2. Go to the "Add Device" page.
-
-  * Select "Include Device".
-  * When prompted, press the Program Button on the Relay once or the ON/OFF toggle on the switch 3 times.
-  * The primary controller should indicate that the action was successful. If the controller indicates the action was unsuccessful, please repeat from Step 1. Once the relay is part of the network, the same basic procedure is used to add the relay to groups & scenes or change advanced functions. Refer to the Hub’s instructions for details.
-
-Step 3. Follow the On-Screen instructions in the Control Panel on adding or removing rooms, scenes, other devices, and other functions and features.
+<p&gtThe process of "Inclusion/ Exclusion" is to Add or Remove the device from the Hub. All Z-Wave devices must be "Included" on the Controller (Hub) before it can be controlled from a smart device. The Hub should be brought physically closer to the device just for the "Inclusion" process (recommended within 10ft). When finished, the Hub and device can be moved back to final installation location. Download the App or log onto the website associated with the Hub you are using and follow their Inclusion/ Exclusion instructions as each Hub's programming and features are different.</p&gt <ul&gt<li&gtDuring the Inclusion/ Exclusion process, the Program Button on the relay or the ON/OFF toggle on the switch can be used for including/ excluding the device.</li&gt <li&gtWhen using the ON/OFF toggle, the toggle must be toggled ON and OFF 3 times.</li&gt <li&gtIt is best to perform an Exclusion of the device prior to performing an Inclusion.</li&gt </ul&gt<p&gtStep 1. From the Control Panel, go the the device Exclusion page.</p&gt <ul&gt<li&gtSelect "Exclude Device".</li&gt <li&gtWhen prompted, press the Program Button on the Relay once or the ON/OFF toggle on the switch 3 times.</li&gt </ul&gt<p&gtStep 2. Go to the "Add Device" page.</p&gt <ul&gt<li&gtSelect "Include Device".</li&gt <li&gtWhen prompted, press the Program Button on the Relay once or the ON/OFF toggle on the switch 3 times.</li&gt <li&gtThe primary controller should indicate that the action was successful. If the controller indicates the action was unsuccessful, please repeat from Step 1. Once the relay is part of the network, the same basic procedure is used to add the relay to groups & scenes or change advanced functions. Refer to the Hub’s instructions for details.</li&gt </ul&gt<p&gtStep 3. Follow the On-Screen instructions in the Control Panel on adding or removing rooms, scenes, other devices, and other functions and features.</p&gt
 
 ### Exclusion Information
 
- press the Program Button on the Relay once or the ON/OFF toggle on the switch 3 times
+<p&gt press the Program Button on the Relay once or the ON/OFF toggle on the switch 3 times</p&gt
 
 ## Channels
 
@@ -78,7 +55,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 3: Unsolicited Report Configuration
 
 Unsolicited Report Configuration
-ZWN-RSM1-PLUS can send unsolicited status reports to the primary controller (Node ID 0x1) when the switch is toggled if the controller is designed as a gateway. If your controller is not a gateway or does not need the status reported or you think it could confuse your Z-Wave network, you can use Command\_Class\_Configuration to disable this function. By default this function is disabled.
+<p&gtZWN-RSM1-PLUS can send unsolicited status reports to the primary controller (Node ID 0x1) when the switch is toggled if the controller is designed as a gateway. If your controller is not a gateway or does not need the status reported or you think it could confuse your Z-Wave network, you can use Command\_Class\_Configuration to disable this function. By default this function is disabled.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -138,9 +115,9 @@ Association group 2 supports 3 nodes.
 
 ### Documentation Links
 
-* [ZWN-RSM1-Plus Installation Instructions](https://www.cd-jackson.com/zwave_device_uploads/575/ZWN-RSM1-Plus-0208160043-02.pdf)
+* [ZWN-RSM1-Plus Installation Instructions](https://opensmarthouse.org/zwavedatabase/575/ZWN-RSM1-Plus-0208160043-02.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/575).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/575).

@@ -7,9 +7,7 @@
 
   <thing-type id="wintop_1122r_01_004" listed="false">
     <label>iModuleDouble Dual In-wall Switch</label>
-    <description><![CDATA[
-Dual In-wall Switch<br /><h1>Overview</h1><p>Dual In-Wall Switch Module</p> <br /><h2>Inclusion Information</h2><p>Press and hold the push button for 1 second and release to start the inclusion or exclusion process</p> <br /><h2>Exclusion Information</h2><p>Press and hold the push button for 1 second and release to start the inclusion or exclusion process</p>
-    ]]></description>
+    <description>Dual In-wall Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDual In-Wall Switch Module&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and hold the push button for 1 second and release to start the inclusion or exclusion process&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and hold the push button for 1 second and release to start the inclusion or exclusion process&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

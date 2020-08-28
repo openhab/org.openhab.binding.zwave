@@ -10,7 +10,7 @@ This describes the Z-Wave device *CometZ*, manufactured by *Eurotronics* with th
 
 The device is in the category of *Radiator Control*, defining Controls on radiators used to heat up rooms.
 
-![CometZ product image](https://www.cd-jackson.com/zwave_device_uploads/372/372_default.jpg)
+![CometZ product image](https://opensmarthouse.org/zwavedatabase/372/image/)
 
 
 The CometZ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The CometZ does not permanently listen for messages sent from the controller - i
 
 ## Overview
 
-Comet Z-wave is a Z-Wave radio standard compatible energy-saving radiator thermostat.
+<p&gtComet Z-wave is a Z-Wave radio standard compatible energy-saving radiator thermostat.</p&gt
 
 ### Inclusion Information
 
-Press and hold the button in the battery compartment of the Comet Z-wave for 5 seconds. The device moves into installation position in order to enable (de)installation.
+<p&gtPress and hold the button in the battery compartment of the Comet Z-wave for 5 seconds. The device moves into installation position in order to enable (de)installation.</p&gt
 
 ### Exclusion Information
 
-Press and hold the button in the battery compartment of the Comet Z-wave for 5 seconds. The device moves into installation position in order to enable (de)installation.
+<p&gtPress and hold the button in the battery compartment of the Comet Z-wave for 5 seconds. The device moves into installation position in order to enable (de)installation.</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The CometZ does not permanently listen for messages sent from the controller - i
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Click the button in the battery compartment of the Comet Z-wave once.
+<p&gtClick the button in the battery compartment of the Comet Z-wave once.</p&gt
 
 ## Channels
 
@@ -52,7 +52,7 @@ The following table summarises the channels available for the CometZ -:
 | Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Openness Of The Valve
- openness of the valve 0% equates to a closed valve, 100% an open valve
+<p&gt openness of the valve 0% equates to a closed valve, 100% an open valve</p&gt
 
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
@@ -135,9 +135,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Operating Instructions](https://www.cd-jackson.com/zwave_device_uploads/372/Comet-zwave-BDA-eng.pdf)
+* [Operating Instructions](https://opensmarthouse.org/zwavedatabase/372/Comet-zwave-BDA-eng.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/372).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/372).

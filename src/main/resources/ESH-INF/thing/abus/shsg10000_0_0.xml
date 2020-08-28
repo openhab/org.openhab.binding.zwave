@@ -7,9 +7,7 @@
 
   <thing-type id="abus_shsg10000_00_000" listed="false">
     <label>SHSG10000 High-volume siren (95 dB) and LED strobe light</label>
-    <description><![CDATA[
-High-volume siren (95 dB) and LED strobe light<br /><h1>Overview</h1><p>This is a <b>secure Siren </b>for <b>CEPT (Europe)</b>. </p> <p>Once the device is added to a Z-Wave gateway, the alarm can be released and terminated. In Event of an Alarm the high-volume siren (95dB) will sound and LED strobe lights up.</p> <br /><h2>Inclusion Information</h2><ol><li>Plug the SHSG10000 into a socket</li> <li>Set the Gateway/Controller into inclusion mode</li> <li>Press the Network-button 3 times within 1.5 seconds and the Status-LED will flash 3 times</li> <li>If the Add device process is successful, the Status-LED will turn off.</li> <li>Repeat the inclusion process from step 2 if it was not successful.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Plug the SHSG10000 into a socket</li> <li>Set the Gateway/Controller into exclusion mode</li> <li>Press the Network-button 3 times within 1.5 seconds and the Status-LED will flash 3 times</li> <li>If the Remove device process is successful, the Status-LED flash 6 times.</li> <li>Repeat the exlusion process from step 2 if it was not successful.</li> </ol>
-    ]]></description>
+    <description>High-volume siren (95 dB) and LED strobe light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis is a &lt;b&gtsecure Siren &lt;/b&gtfor &lt;b&gtCEPT (Europe)&lt;/b&gt. &lt;/p&gt &lt;p&gtOnce the device is added to a Z-Wave gateway, the alarm can be released and terminated. In Event of an Alarm the high-volume siren (95dB) will sound and LED strobe lights up.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug the SHSG10000 into a socket&lt;/li&gt &lt;li&gtSet the Gateway/Controller into inclusion mode&lt;/li&gt &lt;li&gtPress the Network-button 3 times within 1.5 seconds and the Status-LED will flash 3 times&lt;/li&gt &lt;li&gtIf the Add device process is successful, the Status-LED will turn off.&lt;/li&gt &lt;li&gtRepeat the inclusion process from step 2 if it was not successful.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug the SHSG10000 into a socket&lt;/li&gt &lt;li&gtSet the Gateway/Controller into exclusion mode&lt;/li&gt &lt;li&gtPress the Network-button 3 times within 1.5 seconds and the Status-LED will flash 3 times&lt;/li&gt &lt;li&gtIf the Remove device process is successful, the Status-LED flash 6 times.&lt;/li&gt &lt;li&gtRepeat the exlusion process from step 2 if it was not successful.&lt;/li&gt &lt;/ol&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -29,7 +27,7 @@ High-volume siren (95 dB) and LED strobe light<br /><h1>Overview</h1><p>This is 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ABUS Security-Center GmbH &amp; Co. KG</property>
+      <property name="vendor">ABUS Security-Center GmbH &amp;amp; Co. KG</property>
       <property name="modelId">SHSG10000</property>
       <property name="manufacturerId">0403</property>
       <property name="manufacturerRef">0003:0000</property>
@@ -49,9 +47,7 @@ High-volume siren (95 dB) and LED strobe light<br /><h1>Overview</h1><p>This is 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Lifeline association group includes command classes: Switch Binary report, Battery and Device Reset Locally notification.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtLifeline association group includes command classes: Switch Binary report, Battery and Device Reset Locally notification.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

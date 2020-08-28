@@ -10,24 +10,22 @@ This describes the Z-Wave device *TechniSat Shutter*, manufactured by *Technisat
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![TechniSat Shutter product image](https://www.cd-jackson.com/zwave_device_uploads/1242/1242_default.jpg)
+![TechniSat Shutter product image](https://opensmarthouse.org/zwavedatabase/1242/image/)
 
 
 The TechniSat Shutter supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-TechniSat roller shutter is a wall switch to control window roller shutters via Z-Wave. At the same time, the roller shutters can still be operated manually via the switch. Furthermore, the power consumption can be determined.
-
-The roller shutter switch is installed in standard flush-mounted boxes
+<p&gtTechniSat roller shutter is a wall switch to control window roller shutters via Z-Wave. At the same time, the roller shutters can still be operated manually via the switch. Furthermore, the power consumption can be determined.</p&gt <p&gtThe roller shutter switch is installed in standard flush-mounted boxes</p&gt
 
 ### Inclusion Information
 
-Press the upper position of the left button (T1) 3x within a second.
+<p&gtPress the upper position of the left button (T1) 3x within a second.</p&gt
 
 ### Exclusion Information
 
-Press and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.
+<p&gtPress and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.</p&gt
 
 ## Channels
 
@@ -101,7 +99,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Central scene notification
 
 Enable/Disable Central scene notifcations for 2x-5x press
-0 - disable, 1 - enable
+<p&gt0 - disable, 1 - enable</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -112,7 +110,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Wattage meter
 
 Interval Current wattage meter report in 10s
-Interval of current wattage meter report in 10 second steps, 30s ... 1day, 0 - disable
+<p&gtInterval of current wattage meter report in 10 second steps, 30s ... 1day, 0 - disable</p&gt
 Values in the range 0 to 8640 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -123,7 +121,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Energy meter report
 
 Interval of active energy meter report in minutes
-Interval of active energy meter report in minutes, 10min ... 3 weeks, 0 - disable
+<p&gtInterval of active energy meter report in minutes, 10min ... 3 weeks, 0 - disable</p&gt
 Values in the range 0 to 30240 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -134,8 +132,7 @@ This parameter has the configuration ID ```config_3_2``` and is of type ```INTEG
 ### Parameter 4: Manual shutter calibration
 
 Manual shutter calibration
-Manual shutter calibration (shutter will move up, down and up again)  
-0 - idle, 1 - start a manual shutter calibration
+<p&gtManual shutter calibration (shutter will move up, down and up again)<br /&gt0 - idle, 1 - start a manual shutter calibration</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -152,17 +149,13 @@ The TechniSat Shutter supports 2 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-  * Device Reset Locally Notification
-  * Central Scene notification
-  * Meter Report
-  * Multilevel Switch Report
-  * Notification Report
+<ul&gt<li&gtDevice Reset Locally Notification</li&gt <li&gtCentral Scene notification</li&gt <li&gtMeter Report</li&gt <li&gtMultilevel Switch Report</li&gt <li&gtNotification Report</li&gt </ul&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Switch State
 
-Basic Set
+<p&gtBasic Set</p&gt
 
 Association group 2 supports 10 nodes.
 
@@ -193,10 +186,10 @@ Association group 2 supports 10 nodes.
 
 ### Documentation Links
 
-* [TechniSat Shutter](https://www.cd-jackson.com/zwave_device_uploads/1242/BDA-Rollladenschalter-V6.pdf)
-* [Manual_english_TechniSat Shutter](https://www.cd-jackson.com/zwave_device_uploads/1242/Manual-SMD01-Shutter--1-.pdf)
+* [TechniSat Shutter](https://opensmarthouse.org/zwavedatabase/1242/BDA-Rollladenschalter-V6.pdf)
+* [Manual_english_TechniSat Shutter](https://opensmarthouse.org/zwavedatabase/1242/Manual-SMD01-Shutter--1-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1242).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1242).

@@ -10,7 +10,7 @@ This describes the Z-Wave device *DX1WL-Z*, manufactured by *Shenzhen iSurpass T
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![DX1WL-Z product image](https://www.cd-jackson.com/zwave_device_uploads/659/659_default.jpg)
+![DX1WL-Z product image](https://opensmarthouse.org/zwavedatabase/659/image/)
 
 
 The DX1WL-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,46 +19,15 @@ The DX1WL-Z does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-Smart Water Leakage sensor adopts Z-Wave wireless module. Super low power consumption circuit design ensures the long battery lifespan. Separate design of body and sensor efficiently prevents the influence resulted from high humidity. High precision and sensitivity applicable for basement, machine room, hotel, water tower, pool, swimming pool, solar, kitchen, bathroom and other places may have water leakage or water overflow.
-
-**SPECIFICATION**
-
-  * Working voltage: DC3V (2 x AAA battery)
-  * Static current: 5uA
-  * Alarm current: 35mA
-  * Networking: Z-Wave
-  * Wireless networking distance: 70 (open area)
-  * Working temperature: -10°C~+50°C
-  * Working humidity: max 95%RH
-  * Body dimensions: 76 x 36.6 x 16.5 mm
-  * Sensor dimensions: 28.3 x 26.5 x 12.2 mm
-
-WARNINGS
-
-  1. Install water leakage sensor at areas where it may leak.
-  2. Don't install water leakage sensor at position of rainwater, lampblack, water vapor, etc.
-  3. Don't install water leakage sensor at water immersed position.
+<p&gtSmart Water Leakage sensor adopts Z-Wave wireless module. Super low power consumption circuit design ensures the long battery lifespan. Separate design of body and sensor efficiently prevents the influence resulted from high humidity. High precision and sensitivity applicable for basement, machine room, hotel, water tower, pool, swimming pool, solar, kitchen, bathroom and other places may have water leakage or water overflow.</p&gt <p&gt<strong&gtSPECIFICATION</strong&gt</p&gt <ul&gt<li&gtWorking voltage: DC3V (2 x AAA battery)</li&gt <li&gtStatic current: 5uA</li&gt <li&gtAlarm current: 35mA</li&gt <li&gtNetworking: Z-Wave</li&gt <li&gtWireless networking distance: 70 (open area)</li&gt <li&gtWorking temperature: -10°C~+50°C</li&gt <li&gtWorking humidity: max 95%RH</li&gt <li&gtBody dimensions: 76 x 36.6 x 16.5 mm</li&gt <li&gtSensor dimensions: 28.3 x 26.5 x 12.2 mm</li&gt </ul&gt<p&gtWARNINGS</p&gt <ol&gt<li&gtInstall water leakage sensor at areas where it may leak.</li&gt <li&gtDon't install water leakage sensor at position of rainwater, lampblack, water vapor, etc.</li&gt <li&gtDon't install water leakage sensor at water immersed position.</li&gt </ol&gt
 
 ### Inclusion Information
 
-INSTALLATION  
-Remove battery insulation film to power it on
-
-DEVICE INCLUSION
-
-  1. Click [Add] icon in Z-Wave PC Controller Program.
-  2. Press the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.
-  3. If Inclusion Process is successful, Green led will turn off.
+<p&gtINSTALLATION<br /&gtRemove battery insulation film to power it on</p&gt <p&gtDEVICE INCLUSION</p&gt <ol&gt<li&gtClick [Add] icon in Z-Wave PC Controller Program.</li&gt <li&gtPress the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.</li&gt <li&gtIf Inclusion Process is successful, Green led will turn off.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Click [Remove] icon in Z-Wave PC Controller Program
-  2. Press the networking button 3 times within 1.5s
-  3. If Exclusion Process is successful, Green led is Blinking 6 times, then turn off.
-
-**FACTORY RESET** 
-
-Long press the networking button, then power on (put into the battery), ID code is clear and reset to factory settings.
+<ol&gt<li&gtClick [Remove] icon in Z-Wave PC Controller Program</li&gt <li&gtPress the networking button 3 times within 1.5s</li&gt <li&gtIf Exclusion Process is successful, Green led is Blinking 6 times, then turn off.</li&gt </ol&gt<p&gt<strong&gtFACTORY RESET </strong&gt</p&gt <p&gtLong press the networking button, then power on (put into the battery), ID code is clear and reset to factory settings.</p&gt
 
 ### Wakeup Information
 
@@ -67,7 +36,7 @@ The DX1WL-Z does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The manual doesn't say, but I've found that tapping the tamper sensor once makes the device blink and that seems to wake it up.
+<p&gtThe manual doesn't say, but I've found that tapping the tamper sensor once makes the device blink and that seems to wake it up.</p&gt
 
 ## Channels
 
@@ -137,50 +106,35 @@ The DX1WL-Z supports 5 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Lifeline association group
-1. Include command classes: 
-
-Battery report,  
-Notification report,  
-Device Reset Locally notification,  
-Binary report. 
+<p&gt1. Include command classes: </p&gt <p&gtBattery report, <br /&gtNotification report, <br /&gtDevice Reset Locally notification, <br /&gtBinary report. </p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Root Device group (Binary Sensor)
 
 Root Device group (Binary Sensor)
-1-Binary Sensor Command Class: Compatible with 300 series   
-2-Binary Sensor reports status of water or no water via Lifeline.   
-3-When the sensor detects status change between water and no water, the device will be triggered.
+<p&gt1-Binary Sensor Command Class: Compatible with 300 series <br /&gt2-Binary Sensor reports status of water or no water via Lifeline. <br /&gt3-When the sensor detects status change between water and no water, the device will be triggered.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Root Device group (Binary Sensor) 
 
 Root Device group (Binary Sensor)
-- Binary Sensor Command Class:Compatible with 300 series   
-1-Binary Sensor reports the removed status of water sensor.   
-2-When the sensor detects status change of tamper, the device will be triggered. 
+<p&gt- Binary Sensor Command Class:Compatible with 300 series <br /&gt1-Binary Sensor reports the removed status of water sensor. <br /&gt2-When the sensor detects status change of tamper, the device will be triggered. </p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Root Device group (Water Notification) 
 
 Root Device group (Notification)
-1-Notification reports reports status of detect water or no water via Lifeline.   
-2-When the sensor detects status change between water and no water, the device will be triggered. 
+<p&gt1-Notification reports reports status of detect water or no water via Lifeline. <br /&gt2-When the sensor detects status change between water and no water, the device will be triggered. </p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Root Device group (Water & Tamper Notification) 
 
 Root Device group (Notification)
-1-Binary Sensor reports the removed status of water sensor   
-1-When the sensor detects status change of tamper, the device will be triggered.
-
-4-Association & Association Group Information   
-- Lifeline between controller and the product   
-- Supported command classes: Battery report, multilevel sensor, and Device Reset Locally notification.
+<p&gt1-Binary Sensor reports the removed status of water sensor <br /&gt1-When the sensor detects status change of tamper, the device will be triggered.</p&gt <p&gt4-Association & Association Group Information <br /&gt- Lifeline between controller and the product <br /&gt- Supported command classes: Battery report, multilevel sensor, and Device Reset Locally notification.</p&gt
 
 Association group 5 supports 5 nodes.
 
@@ -208,9 +162,9 @@ Association group 5 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/659/Domux---DX1WL-Z-scanned.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/659/Domux---DX1WL-Z-scanned.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/659).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/659).

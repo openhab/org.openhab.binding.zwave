@@ -7,9 +7,7 @@
 
   <thing-type id="horstmann_scsc17_00_000" listed="false">
     <label>SCSC-17 7 Day Room Thermostat</label>
-    <description><![CDATA[
-7 Day Room Thermostat<br /><h1>Overview</h1><p>Mains Operated Programmable Room Thermostat</p> <br /><h2>Inclusion Information</h2><ul><li>On the C-Stat programmable stat, go to Zwave Menu</li> <li>Press INCLUDE/NODE RECEIVER</li> </ul><br /><h2>Exclusion Information</h2><p>not provided</p> <br /><h2>Wakeup Information</h2><p>not provided</p>
-    ]]></description>
+    <description>7 Day Room Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMains Operated Programmable Room Thermostat&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtOn the C-Stat programmable stat, go to Zwave Menu&lt;/li&gt &lt;li&gtPress INCLUDE/NODE RECEIVER&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtnot provided&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtnot provided&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -103,9 +101,7 @@
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Delta T</label>
-        <description><![CDATA[
-Defines the temperature steps of the heating control<br /><h1>Overview</h1><p>Defines the temperature steps of the heating control value is 0.1 °С.</p> <p>0.1 ̊C / ̊F - 50 0.1 ̊C / ̊F</p>
-        ]]></description>
+        <description>Defines the temperature steps of the heating control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the temperature steps of the heating control value is 0.1 °С.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0.1 ̊C / ̊F - 50 0.1 ̊C / ̊F&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 

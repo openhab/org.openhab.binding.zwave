@@ -7,9 +7,7 @@
 
   <thing-type id="schlage_be468_00_000" listed="false">
     <label>BE468 Touchscreen Deadbolt</label>
-    <description><![CDATA[
-Touchscreen Deadbolt<br /><h1>Overview</h1><p>Z-Wave Enabled residential auto-throw deadbolt</p> <br /><h2>Inclusion Information</h2><p>Extend the bolt on the lock and then perform the following:</p> <p>Enter 6 Digit Programming Code, then press 0. There will be a green check mark if enrolled or a red X if not enrolled</p> <p>To verify enrollment:</p> <p>1. Remove the battery cover. See Replacing the Batteries on page 4 of the User Guide.</p> <p>2. Disconnect the battery connector.</p> <p>3. While watching the inside Schlage button, reconnect the battery connector.</p> <p>4. The inside Schlage button will blink if the lock is enrolled.</p> <br /><h2>Exclusion Information</h2><p>Same as inclusion</p> <br /><h2>Wakeup Information</h2><p>N/A</p>
-    ]]></description>
+    <description>Touchscreen Deadbolt&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-Wave Enabled residential auto-throw deadbolt&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtExtend the bolt on the lock and then perform the following:&lt;/p&gt &lt;p&gtEnter 6 Digit Programming Code, then press 0. There will be a green check mark if enrolled or a red X if not enrolled&lt;/p&gt &lt;p&gtTo verify enrollment:&lt;/p&gt &lt;p&gt1. Remove the battery cover. See Replacing the Batteries on page 4 of the User Guide.&lt;/p&gt &lt;p&gt2. Disconnect the battery connector.&lt;/p&gt &lt;p&gt3. While watching the inside Schlage button, reconnect the battery connector.&lt;/p&gt &lt;p&gt4. The inside Schlage button will blink if the lock is enrolled.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtSame as inclusion&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtN/A&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -79,7 +77,7 @@ Touchscreen Deadbolt<br /><h1>Overview</h1><p>Z-Wave Enabled residential auto-th
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Lock &amp; Leave</label>
+        <label>5: Lock &amp;amp; Leave</label>
         <description>Press the Schlage button to lock the deadbolt</description>
         <default>255</default>
         <options>

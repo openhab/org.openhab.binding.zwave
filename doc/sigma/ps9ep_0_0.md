@@ -10,22 +10,22 @@ This describes the Z-Wave device *PS9EP*, manufactured by *Sigma Designs (Former
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![PS9EP product image](https://www.cd-jackson.com/zwave_device_uploads/993/993_default.jpg)
+![PS9EP product image](https://opensmarthouse.org/zwavedatabase/993/image/)
 
 
 The PS9EP supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-There is 9 endpoint 3 binary and 6 multi channel with energy metering   
+<p&gtThere is 9 endpoint 3 binary and 6 multi channel with energy metering   </p&gt
 
 ### Inclusion Information
 
-Press the button 3 times for inclusion 
+<p&gtPress the button 3 times for inclusion </p&gt
 
 ### Exclusion Information
 
-Press the button 3 times for exclusion 
+<p&gtPress the button 3 times for exclusion </p&gt
 
 ## Channels
 
@@ -44,21 +44,7 @@ The following table summarises the channels available for the PS9EP -:
 | Brightness  [Deprecated]| switch_dimmer8 | switch_dimmer | DimmableLight | Dimmer | 
 
 ### Switch
-<table>
-  <tr>
-    <td>
-       
-    </td>
-    
-    <td>
-       
-    </td>
-    
-    <td>
-       
-    </td>
-  </tr>
-</table>
+<table&gt<tr&gt<td&gt </td&gt <td&gt </td&gt <td&gt </td&gt </tr&gt</table&gt
 
 Switch the power on and off.
 
@@ -196,9 +182,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [pdf](https://www.cd-jackson.com/zwave_device_uploads/993/Home-Automation.pdf)
+* [pdf](https://opensmarthouse.org/zwavedatabase/993/Home-Automation.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/993).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/993).

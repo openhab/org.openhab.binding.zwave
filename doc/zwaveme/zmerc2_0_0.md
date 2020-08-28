@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZME_RC2*, manufactured by *Z-Wave.Me* with the
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![ZME_RC2 product image](https://www.cd-jackson.com/zwave_device_uploads/149/149_default.png)
+![ZME_RC2 product image](https://opensmarthouse.org/zwavedatabase/149/image/)
 
 
 The ZME_RC2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,27 +19,15 @@ The ZME_RC2 does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-The Z-Wave.Me Remote controls Z-Wave actuators such as dimmers, switches, thermostats or motor controls for blinds or jalousies and it can activate scenes in central gateways or any other Z-Wave devices. Devices can be turned on and off but dimmers and motor controls can also be turned into a desired dimming level to motor position by keeping a button pushed and releasing it. Although it is controlling other devices, the device can not act as ZWave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network.
-
-The device can be used in different modes that are selected by configuration parameters 11-21:
-
-  1. Direct control of associated devices
-  2. Control of all devices in the Z-Wave network
-  3. Simple and enhanced scene activation
-
-10 pair of buttons - illuminated by blue light when operated - allow to control up to 10 control groups (either association groups or scenes)
+<p&gtThe Z-Wave.Me Remote controls Z-Wave actuators such as dimmers, switches, thermostats or motor controls for blinds or jalousies and it can activate scenes in central gateways or any other Z-Wave devices. Devices can be turned on and off but dimmers and motor controls can also be turned into a desired dimming level to motor position by keeping a button pushed and releasing it. Although it is controlling other devices, the device can not act as ZWave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network.</p&gt <p&gtThe device can be used in different modes that are selected by configuration parameters 11-21:</p&gt <ol&gt<li&gtDirect control of associated devices</li&gt <li&gtControl of all devices in the Z-Wave network</li&gt <li&gtSimple and enhanced scene activation</li&gt </ol&gt<p&gt10 pair of buttons - illuminated by blue light when operated - allow to control up to 10 control groups (either association groups or scenes)</p&gt
 
 ### Inclusion Information
 
-Bring your primary controller into inclusion mode
-
-For Inclusion press the "Inclusion" button 3 times. The LED will flash green for a moment for confirmation. 
+<p&gtBring your primary controller into inclusion mode</p&gt <p&gtFor Inclusion press the "Inclusion" button 3 times. The LED will flash green for a moment for confirmation. </p&gt
 
 ### Exclusion Information
 
-Bring your primary controller into inclusion mode
-
-For Exclusion press the "Exclusion" button for 5 secs. The LED will flash green for a moment for confirmation.
+<p&gtBring your primary controller into inclusion mode</p&gt <p&gtFor Exclusion press the "Exclusion" button for 5 secs. The LED will flash green for a moment for confirmation.</p&gt
 
 ### Wakeup Information
 
@@ -48,13 +36,7 @@ The ZME_RC2 does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-This device is battery operated and turned into deep sleep state most of the time to save battery life time. Communication with the device is limited. In order to communicate with the device, a static controller C is needed in the network. This controller will maintain a mailbox for the battery operated devices and store commands that can not be received during deep sleep state. Without such a controller, communication may become impossible and/or the battery life time is significantly decreased.
-
-This device will wakeup regularly and announce the wakeup state by sending out a so called Wakeup Notification. The controller can then empty the mailbox. Therefore, the device needs to be configured with the desired wakeup interval and the node ID of the controller. If the device was included by a static controller this controller will usually perform all necessary configurations. The wakeup interval is a tradeoff between maximal battery life time and the desired responses of the device.
-
-Pressing the "INCL." button for three times will wake up the device.
-
-It is possible to set the node ID to 255 to send wakeup notifications as broadcast. In this mode device takes more time to go to sleep and drains battery faster, but can notify all it's direct neighbors about a wakeup.
+<p&gtThis device is battery operated and turned into deep sleep state most of the time to save battery life time. Communication with the device is limited. In order to communicate with the device, a static controller C is needed in the network. This controller will maintain a mailbox for the battery operated devices and store commands that can not be received during deep sleep state. Without such a controller, communication may become impossible and/or the battery life time is significantly decreased.</p&gt <p&gtThis device will wakeup regularly and announce the wakeup state by sending out a so called Wakeup Notification. The controller can then empty the mailbox. Therefore, the device needs to be configured with the desired wakeup interval and the node ID of the controller. If the device was included by a static controller this controller will usually perform all necessary configurations. The wakeup interval is a tradeoff between maximal battery life time and the desired responses of the device.</p&gt <p&gtPressing the "INCL." button for three times will wake up the device.</p&gt <p&gtIt is possible to set the node ID to 255 to send wakeup notifications as broadcast. In this mode device takes more time to go to sleep and drains battery faster, but can notify all it's direct neighbors about a wakeup.</p&gt
 
 ## Channels
 
@@ -102,7 +84,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 10: Command to Control Group No1 (Assoc. Group 2)
 
 Defines the command sent to group 1 when the button is pressed (Assoc. Group 2)
-This parameter defines the command to be sent to devices of control group №1 when the related button is pressed (association group 2).
+<p&gtThis parameter defines the command to be sent to devices of control group №1 when the related button is pressed (association group 2).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -122,7 +104,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Command to Control Group No2 (association group 3)
 
 Command to Control Group No2 (association group 3)
-This parameter defines the command to be sent to devices of control group No2 when the related button is pressed (association group 3)
+<p&gtThis parameter defines the command to be sent to devices of control group No2 when the related button is pressed (association group 3)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -142,7 +124,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Command to Control Group No3 (association group 4)
 
 Command to Control Group No3 (association group 4)
-This parameter defines the command to be sent to devices of control group No3 when the related button is pressed (association group 4)
+<p&gtThis parameter defines the command to be sent to devices of control group No3 when the related button is pressed (association group 4)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -162,7 +144,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Command to Control Group No4 (association group 5)
 
 Command to Control Group No4 (association group 5)
-This parameter defines the command to be sent to devices of control group No4 when the related button is pressed (association group 5)
+<p&gtThis parameter defines the command to be sent to devices of control group No4 when the related button is pressed (association group 5)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -182,7 +164,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Command to Control Group No5 (association group 6)
 
 Command to Control Group No5 (association group 6)
-This parameter defines the command to be sent to devices of control group No5 when the related button is pressed (association group 6)
+<p&gtThis parameter defines the command to be sent to devices of control group No5 when the related button is pressed (association group 6)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -202,7 +184,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Command to Control Group No6 (association group 7)
 
 Command to Control Group No6 (association group 7)
-This parameter defines the command to be sent to devices of control group No6 when the related button is pressed (association group 7)
+<p&gtThis parameter defines the command to be sent to devices of control group No6 when the related button is pressed (association group 7)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -222,7 +204,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: Command to Control Group No7 (association group 8)
 
 Command to Control Group No7 (association group 8)
-This parameter defines the command to be sent to devices of control group No7 when the related button is pressed (association group 8)
+<p&gtThis parameter defines the command to be sent to devices of control group No7 when the related button is pressed (association group 8)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -242,7 +224,7 @@ This parameter has the configuration ID ```config_16_1``` and is of type ```INTE
 ### Parameter 17: Command to Control Scene No1 (association group 9)
 
 Command to Control Scene No1 (association group 9)
-This parameter defines the command to be sent to devices of control scene group No1 when the related button is pressed (association group 9)
+<p&gtThis parameter defines the command to be sent to devices of control scene group No1 when the related button is pressed (association group 9)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -262,7 +244,7 @@ This parameter has the configuration ID ```config_17_1``` and is of type ```INTE
 ### Parameter 18: Command to Control Scene No2
 
 Command to Control Scene No2
-This parameter defines the command to be sent to devices of control scene group No2 when the related button is pressed (association group 10)
+<p&gtThis parameter defines the command to be sent to devices of control scene group No2 when the related button is pressed (association group 10)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -282,7 +264,7 @@ This parameter has the configuration ID ```config_18_1``` and is of type ```INTE
 ### Parameter 19: Command to Control Scene No3 
 
 Command to Control Scene No3
-This parameter defines the command to be sent to devices of control scene group No3 when the related button is pressed (association group 11)
+<p&gtThis parameter defines the command to be sent to devices of control scene group No3 when the related button is pressed (association group 11)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -302,7 +284,7 @@ This parameter has the configuration ID ```config_19_1``` and is of type ```INTE
 ### Parameter 20: Command to Control group All On/Off
 
 Command to Control group All On/Off
-This parameter defines the command to be sent to devices of control group All On/Off when the related button is pressed (association group 12)
+<p&gtThis parameter defines the command to be sent to devices of control group All On/Off when the related button is pressed (association group 12)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -443,9 +425,9 @@ Association group 12 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/149/zwave-me-RC2.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/149/zwave-me-RC2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/149).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/149).

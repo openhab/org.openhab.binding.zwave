@@ -10,46 +10,26 @@ This describes the Z-Wave device *Z-BRDG-433*, manufactured by *[Vision Security
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![Z-BRDG-433 product image](https://www.cd-jackson.com/zwave_device_uploads/978/978_default.jpg)
+![Z-BRDG-433 product image](https://opensmarthouse.org/zwavedatabase/978/image/)
 
 
 The Z-BRDG-433 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This GoControl (formerly 2GIG) Plug-in Lamp Module is integrates with other Z-Wave products. It can also act as a wireless repeater to ensure that commands intended for another device in the network are received (useful when a device would otherwise be out of radio range).
-
-  * One-controlled outlet for control and dimming of lamps (Z-Wave hub required)
-  * Works with many Z-Wave controllers, including SmartThings, WINK, FIBARO Home Center, Vera, and many more!
-  * For indoor use only
-  * May be packaged referencing 2GIG Energy Bridge; device sold as a Z-Wave lamp dimmer only
-
-**SPECIFICATIONS**
-
-  * Signal (Frequency): 908.42 MHz
-  * Maximum Load (Incandescent): 300W maximum, 120 VAC
-  * Range: Up to 100 feet between the wireless controller and/or the closest Z-Wave device
-  * 120 VAC, 60 H
+<p&gtThis GoControl (formerly 2GIG) Plug-in Lamp Module is integrates with other Z-Wave products. It can also act as a wireless repeater to ensure that commands intended for another device in the network are received (useful when a device would otherwise be out of radio range).</p&gt <ul&gt<li&gtOne-controlled outlet for control and dimming of lamps (Z-Wave hub required)</li&gt <li&gtWorks with many Z-Wave controllers, including SmartThings, WINK, FIBARO Home Center, Vera, and many more!</li&gt <li&gtFor indoor use only</li&gt <li&gtMay be packaged referencing 2GIG Energy Bridge; device sold as a Z-Wave lamp dimmer only</li&gt </ul&gt<p&gt<strong&gtSPECIFICATIONS</strong&gt</p&gt <ul&gt<li&gtSignal (Frequency): 908.42 MHz</li&gt <li&gtMaximum Load (Incandescent): 300W maximum, 120 VAC</li&gt <li&gtRange: Up to 100 feet between the wireless controller and/or the closest Z-Wave device</li&gt <li&gt120 VAC, 60 H</li&gt </ul&gt
 
 ### Inclusion Information
 
-When the device is unpaired, press the button on the front till the relay inside clicks to put it into Zwave pairing mode.
+<p&gtWhen the device is unpaired, press the button on the front till the relay inside clicks to put it into Zwave pairing mode.</p&gt
 
 ### Exclusion Information
 
-At this time I have no idea how to exclude this device, If I figure it out I will update this.
+<p&gtAt this time I have no idea how to exclude this device, If I figure it out I will update this.</p&gt
 
 ### General Usage Information
 
-Works as a plug in lamp dimmer for a 2 wire lamp.
-
-Requires to plugged into a grounded outlet.
-
-Also acts as a Zwave to 433Mhz bridge for connection to various energy monitoring devices
-
-Sold as 2GIG, Vision Security, Norteck Security, and Go Control as far as I can see.
-
-Seems to be intended for installers as finding information on it's use with Zwave is quite difficult.
+<p&gtWorks as a plug in lamp dimmer for a 2 wire lamp.</p&gt <p&gtRequires to plugged into a grounded outlet.</p&gt <p&gtAlso acts as a Zwave to 433Mhz bridge for connection to various energy monitoring devices</p&gt <p&gtSold as 2GIG, Vision Security, Norteck Security, and Go Control as far as I can see.</p&gt <p&gtSeems to be intended for installers as finding information on it's use with Zwave is quite difficult.</p&gt
 
 ## Channels
 
@@ -107,10 +87,10 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Manual for 2GIG version of this](https://www.cd-jackson.com/zwave_device_uploads/978/2GIG-Z-BRDG-433-Manual.pdf)
-* [Sell sheet for 2GIG version](https://www.cd-jackson.com/zwave_device_uploads/978/NPA-Energy-Bridge-1.pdf)
+* [Manual for 2GIG version of this](https://opensmarthouse.org/zwavedatabase/978/2GIG-Z-BRDG-433-Manual.pdf)
+* [Sell sheet for 2GIG version](https://opensmarthouse.org/zwavedatabase/978/NPA-Energy-Bridge-1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/978).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/978).

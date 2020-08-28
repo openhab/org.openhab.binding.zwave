@@ -7,9 +7,7 @@
 
   <thing-type id="everspring_an181_00_000" listed="false">
     <label>AN181 Mini Plug Switch with Metering (Gen5)</label>
-    <description><![CDATA[
-Mini Plug Switch with Metering (Gen5)<br /><h1>Overview</h1><p>The Metering Plug is designed to control the on/off status appliances load in your house. For metering the unit can detect up to 10485.75kW*h and can support wattage, voltage, ampere, and PF detection. The unit can also detect overload upon which the unit will switch off relay and keep LED flashing until power is off and re-applied. At 220-240V voltage, this Plug can support up to 2500W resistive. </p> <br /><h2>Inclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into exclusion mode.</p>
-    ]]></description>
+    <description>Mini Plug Switch with Metering (Gen5)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Metering Plug is designed to control the on/off status appliances load in your house. For metering the unit can detect up to 10485.75kW*h and can support wattage, voltage, ampere, and PF detection. The unit can also detect overload upon which the unit will switch off relay and keep LED flashing until power is off and re-applied. At 220-240V voltage, this Plug can support up to 2500W resistive. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the link key three times within 1.5 seconds to put the unit into inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the link key three times within 1.5 seconds to put the unit into exclusion mode.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -86,9 +84,7 @@ Mini Plug Switch with Metering (Gen5)<br /><h1>Overview</h1><p>The Metering Plug
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>1: Command value</label>
-        <description><![CDATA[
-Set Basic Set Command value to be sent to group 2 when switch is turned on<br /><h1>Overview</h1><p>Meaningful range is 0-99 &amp; 255 where</p> <p>0 = No command will be sent<br />1-99 = Turn on switches and dimmers listening to Group 2 to indicated % level (ON for switches)<br />255 = Turn on switches and dimmers (full power) listening to Group 2</p> <p>Command will be sent if the mini plug is turned on via the button or if it receives a remote command.</p> <p>Basic Set Command = 0 (Off) will be sent to Group 2 only if the button is used to turn off the mini plug, not when the mini plug is turned off via remote command.</p>
-        ]]></description>
+        <description>Set Basic Set Command value to be sent to group 2 when switch is turned on&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtMeaningful range is 0-99 &amp;amp;amp; 255 where&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = No command will be sent&amp;lt;br /&amp;amp;gt1-99 = Turn on switches and dimmers listening to Group 2 to indicated % level (ON for switches)&amp;lt;br /&amp;amp;gt255 = Turn on switches and dimmers (full power) listening to Group 2&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCommand will be sent if the mini plug is turned on via the button or if it receives a remote command.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBasic Set Command = 0 (Off) will be sent to Group 2 only if the button is used to turn off the mini plug, not when the mini plug is turned off via remote command.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">No Basic Set Command will be sent</option>
@@ -161,9 +157,7 @@ Set Basic Set Command value to be sent to group 2 when switch is turned on<br />
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Target for automatic reports</label>
-        <description><![CDATA[
-Binary Switch Report, Notification Report, Device Reset Locally Notification, Meter Report<br /><h1>Overview</h1><p>When powered on, the device will send (Notification Type = 0x08, Event = 0x01) to the node of Group 1. When overload occurs, the device will send (Notification Type = 0x08, Event = 0x08) to the node of Group 1.</p>
-        ]]></description>
+        <description>Binary Switch Report, Notification Report, Device Reset Locally Notification, Meter Report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWhen powered on, the device will send (Notification Type = 0x08, Event = 0x01) to the node of Group 1. When overload occurs, the device will send (Notification Type = 0x08, Event = 0x08) to the node of Group 1.&lt;/p&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

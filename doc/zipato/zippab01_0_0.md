@@ -10,37 +10,22 @@ This describes the Z-Wave device *ZIP-PAB01*, manufactured by *[Zipato](http://w
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZIP-PAB01 product image](https://www.cd-jackson.com/zwave_device_uploads/899/899_default.jpg)
+![ZIP-PAB01 product image](https://opensmarthouse.org/zwavedatabase/899/image/)
 
 
 The ZIP-PAB01 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * Slim, compact remote Z-Wave module measures power parameters of connected device
-  * Dual power meter function
-  * Instant power wattage and
-  * Accumulated power consumption KWh report
-  * Amper meter clamp included in the box
-  * Maximum current measure 60A
-  * Higher output power enhances communication range(+2.5dBm output power compared to -2.5dBm 300 series)
-  * New Z-Wave 500 series chip supports multichannel operation and higher data rates (9.6/40/100kbps)
-  * Very low power power consumption
-  * Over-the-air firmware update Easy installation
+<ul&gt<li&gtSlim, compact remote Z-Wave module measures power parameters of connected device</li&gt <li&gtDual power meter function</li&gt <li&gtInstant power wattage and</li&gt <li&gtAccumulated power consumption KWh report</li&gt <li&gtAmper meter clamp included in the box</li&gt <li&gtMaximum current measure 60A</li&gt <li&gtHigher output power enhances communication range(+2.5dBm output power compared to -2.5dBm 300 series)</li&gt <li&gtNew Z-Wave 500 series chip supports multichannel operation and higher data rates (9.6/40/100kbps)</li&gt <li&gtVery low power power consumption</li&gt <li&gtOver-the-air firmware update Easy installation</li&gt </ul&gt
 
 ### Inclusion Information
 
-In the front casing, there is an On/Off button with LED indicator which is used to carry out inclusion, exclusion, reset or association. After being excluded, its LED flashes on and off alternately and repeatedly at 2-second intervals. It implies that it has not been assigned a node ID and cannot work with Z-Wave enabled devices.
-
-**AUTO INCLUSION**
-
-The function of auto inclusion will be executed as long as the Micromodule does not have Node ID and is plugged into a wall outlet. When first power is applied, its LED flashes on and off alternately and repeatedly at 0.5 second intervals. It implies that it is in learning mode now.
-
-Note: Auto inclusion timeout lasts 2 minutes during which the node information of explorer frame will be emitted once per every 5 seconds. Unlike “inclusion” function as shown in the table below, auto inclusion doesn’t require pressing on/off buttons on the switch.
+<p&gtIn the front casing, there is an On/Off button with LED indicator which is used to carry out inclusion, exclusion, reset or association. After being excluded, its LED flashes on and off alternately and repeatedly at 2-second intervals. It implies that it has not been assigned a node ID and cannot work with Z-Wave enabled devices.</p&gt <p&gt<strong&gtAUTO INCLUSION</strong&gt</p&gt <p&gtThe function of auto inclusion will be executed as long as the Micromodule does not have Node ID and is plugged into a wall outlet. When first power is applied, its LED flashes on and off alternately and repeatedly at 0.5 second intervals. It implies that it is in learning mode now.</p&gt <p&gtNote: Auto inclusion timeout lasts 2 minutes during which the node information of explorer frame will be emitted once per every 5 seconds. Unlike “inclusion” function as shown in the table below, auto inclusion doesn’t require pressing on/off buttons on the switch.</p&gt
 
 ### Exclusion Information
 
-Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.
+<p&gtPressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.</p&gt
 
 ## Channels
 
@@ -185,7 +170,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Power meter report period
 
 Power meter report period, in 5 seconds unit. 720 -> 1 hour
-If the setting is configured for 1 hour (set value 720), the module will report its instant power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its instant power consumption is 45h (5s * 32767 / 3600 = 45h)
+<p&gtIf the setting is configured for 1 hour (set value 720), the module will report its instant power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its instant power consumption is 45h (5s * 32767 / 3600 = 45h)</p&gt
 Values in the range 1 to 32767 may be set.
 
 The manufacturer defined default value is ```720```.
@@ -196,7 +181,7 @@ This parameter has the configuration ID ```config_1_2``` and is of type ```INTEG
 ### Parameter 2: Energy meter report period
 
 The accumulated power consumption report period
-If the setting is configured for 1 hour (set value 720), the module will report its accumulated power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its accumulated power consumption is 45h (5s * 32767 / 3600 = 45h)
+<p&gtIf the setting is configured for 1 hour (set value 720), the module will report its accumulated power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its accumulated power consumption is 45h (5s * 32767 / 3600 = 45h)</p&gt
 Values in the range 1 to 32767 may be set.
 
 The manufacturer defined default value is ```720```.
@@ -207,7 +192,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Selected default endpoint
 
 1 => CT1 and CT2, 2 => CT1, 3 => CT2
-If Controller does not use Multi Channel command class to access the endpoint of the module, you may configure the endpoint that will react to the Basic Command Class, Binary Switch command class or Meter command class V3.
+<p&gtIf Controller does not use Multi Channel command class to access the endpoint of the module, you may configure the endpoint that will react to the Basic Command Class, Binary Switch command class or Meter command class V3.</p&gt
 Values in the range 1 to 3 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -224,26 +209,21 @@ The ZIP-PAB01 supports 3 association groups.
 ### Group 1: CT1 and CT2
 
 Sum of CT1 and CT2
-Sum of :
-
-  * Instant power consumption from CT1 and CT2 (W)
-  * Accumulated power consumption from CT1 and CT2 (kWh)
+<p&gtSum of :</p&gt <ul&gt<li&gtInstant power consumption from CT1 and CT2 (W)</li&gt <li&gtAccumulated power consumption from CT1 and CT2 (kWh)</li&gt </ul&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: CT1
 
 Data from CT1
-  * Instant power consumption from CT1 (W)
-  * Accumulated power consumption from CT1 (kWh)
+<ul&gt<li&gtInstant power consumption from CT1 (W)</li&gt <li&gtAccumulated power consumption from CT1 (kWh)</li&gt </ul&gt
 
 Association group 2 supports 1 node.
 
 ### Group 3: CT2
 
 Data from CT2
-  1. Instant power consumption from CT2 (W)
-  2. Accumulated power consumption from CT2 (kWh)
+<ol&gt<li&gtInstant power consumption from CT2 (W)</li&gt <li&gtAccumulated power consumption from CT2 (kWh)</li&gt </ol&gt
 
 Association group 3 supports 1 node.
 
@@ -288,9 +268,9 @@ Association group 3 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/899/ZIP-PAB01.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/899/ZIP-PAB01.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/899).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/899).

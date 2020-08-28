@@ -10,35 +10,20 @@ This describes the Z-Wave device *RFWC5*, manufactured by *Cooper Wiring Devices
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![RFWC5 product image](https://www.cd-jackson.com/zwave_device_uploads/15/15_default.jpg)
+![RFWC5 product image](https://opensmarthouse.org/zwavedatabase/15/image/)
 
 
 ## Overview
 
-The Z-Wave wall mount 5-scene keypad (RFWC5 & RFWC5D) serves as a flush mounted device for activating up to 5 scenes by manually pushing one of the five buttons on the face of the device. The scene keypad has 5 buttons, with LEDs, for turning individual scenes both ON and OFF. Each individual scene can be brightened or dimmed by pressing and holding any active (ON) scene’s corresponding button. The button located on the side of the device transmits an All-OFF command to only the devices associated with that scene controller. Scenes are a group of devices set to customized levels or states. The 5-scene keypad utilizes existing 120V/AC, 60Hz standard house wiring and fits in standard-sized wallboxes.
-
-**Design features for 5-scene keypad**
-
-  * All OFF button provides easy access for turning off all devices associated with scene keypad
-  * Aesthetic form factor matches our Z-Wave smart dimmers and switches, providing unified look across wall devices
-  * Fits standard-sized wallbox and utilizes existing 120V/AC, 60Hz (neutral wire required)
-  * Activates scenes associated with Z-Wave devices and other Z-Wave® compliant devices
-  * Provides individual scene DIM/BRIGHT function by pressing and holding any active (ON) scene’s button
-  * Stores up to 5 scenes for activation (ON/OFF)
-  * Blue LED provided on each button for scene status notification
-  * Blue LEDs provides night light feature by dimming when scene has been deactivated
-  * Single button programming
-  * Transfer function on Eaton’s primary controllers allows user to easily copy scene information from controller to each button on scene keypad
-  * Patented indicator system alerts if scene keypad is not set up in the network
-  * Keypad button kits available by special order
+<p&gtThe Z-Wave wall mount 5-scene keypad (RFWC5 & RFWC5D) serves as a flush mounted device for activating up to 5 scenes by manually pushing one of the five buttons on the face of the device. The scene keypad has 5 buttons, with LEDs, for turning individual scenes both ON and OFF. Each individual scene can be brightened or dimmed by pressing and holding any active (ON) scene’s corresponding button. The button located on the side of the device transmits an All-OFF command to only the devices associated with that scene controller. Scenes are a group of devices set to customized levels or states. The 5-scene keypad utilizes existing 120V/AC, 60Hz standard house wiring and fits in standard-sized wallboxes.</p&gt <p&gt<strong&gtDesign features for 5-scene keypad</strong&gt</p&gt <ul&gt<li&gtAll OFF button provides easy access for turning off all devices associated with scene keypad</li&gt <li&gtAesthetic form factor matches our Z-Wave smart dimmers and switches, providing unified look across wall devices</li&gt <li&gtFits standard-sized wallbox and utilizes existing 120V/AC, 60Hz (neutral wire required)</li&gt <li&gtActivates scenes associated with Z-Wave devices and other Z-Wave® compliant devices</li&gt <li&gtProvides individual scene DIM/BRIGHT function by pressing and holding any active (ON) scene’s button</li&gt <li&gtStores up to 5 scenes for activation (ON/OFF)</li&gt <li&gtBlue LED provided on each button for scene status notification</li&gt <li&gtBlue LEDs provides night light feature by dimming when scene has been deactivated</li&gt <li&gtSingle button programming</li&gt <li&gtTransfer function on Eaton’s primary controllers allows user to easily copy scene information from controller to each button on scene keypad</li&gt <li&gtPatented indicator system alerts if scene keypad is not set up in the network</li&gt <li&gtKeypad button kits available by special order</li&gt </ul&gt
 
 ### Inclusion Information
 
-Press the All Off (Inclusion) button one time
+<p&gtPress the All Off (Inclusion) button one time </p&gt
 
 ### Exclusion Information
 
-Press the All Off (Inclusion) button one time
+<p&gtPress the All Off (Inclusion) button one time</p&gt
 
 ## Channels
 
@@ -101,7 +86,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Group 1 Level
 
 Group 1 Level
-Value 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 1
+<p&gtValue 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 1</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -112,7 +97,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Group 2 Level
 
 Group 2 Level
-Value 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 2
+<p&gtValue 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 2</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```20```.
@@ -123,7 +108,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Group 3 Level
 
 Group 3 Level
-Value 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 3
+<p&gtValue 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 3</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -134,7 +119,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Group 4 Level
 
 Group 4 Level
-Value 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 4
+<p&gtValue 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 4</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```40```.
@@ -145,7 +130,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Group 5 Level
 
 Group 5 Level
-Value 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 5
+<p&gtValue 0x00-0x63 or 0xFF is the level for all nodes listed in the Group 5</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -230,10 +215,10 @@ Association group 255 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/15/WallMount5-SceneKeypadSpecSheet.pdf)
-* [Detailed Manual](https://www.cd-jackson.com/zwave_device_uploads/15/21895AW.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/15/WallMount5-SceneKeypadSpecSheet.pdf)
+* [Detailed Manual](https://opensmarthouse.org/zwavedatabase/15/21895AW.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/15).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/15).

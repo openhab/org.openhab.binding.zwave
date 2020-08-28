@@ -7,9 +7,7 @@
 
   <thing-type id="kichler_15dc300_00_000" listed="false">
     <label>15DC300 300W Design Pro LED Controller</label>
-    <description><![CDATA[
-300W Design Pro LED Controller<br /><h1>Overview</h1><p>300W Design Pro LED Controller power supply for use with landscape lighting systems.</p> <br /><h2>Inclusion Information</h2><p>On the Controller intended to be the subservient press: <strong>Home&gt;Network&gt;Join Network</strong>. Then press <strong>Enter</strong>.</p> <br /><h2>Exclusion Information</h2><p>On the Controller to be removed press: <strong>Home&gt;Network&gt;Leave Network</strong>. Then press <strong>Enter</strong>.</p>
-    ]]></description>
+    <description>300W Design Pro LED Controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt300W Design Pro LED Controller power supply for use with landscape lighting systems.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOn the Controller intended to be the subservient press: &lt;strong&gtHome&amp;gt;Network&amp;gt;Join Network&lt;/strong&gt. Then press &lt;strong&gtEnter&lt;/strong&gt.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOn the Controller to be removed press: &lt;strong&gtHome&amp;gt;Network&amp;gt;Leave Network&lt;/strong&gt. Then press &lt;strong&gtEnter&lt;/strong&gt.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

@@ -10,7 +10,7 @@ This describes the Z-Wave device *ADC-S2000-T-RA*, manufactured by *Building 36 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![ADC-S2000-T-RA product image](https://www.cd-jackson.com/zwave_device_uploads/931/931_default.jpg)
+![ADC-S2000-T-RA product image](https://opensmarthouse.org/zwavedatabase/931/image/)
 
 
 The ADC-S2000-T-RA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The ADC-S2000-T-RA does not permanently listen for messages sent from the contro
 
 ## Overview
 
-Provides temperature reading from another location so Smart Thermostat can take smarter actions to maximize comfort and energy saving.
+<p&gtProvides temperature reading from another location so Smart Thermostat can take smarter actions to maximize comfort and energy saving.</p&gt
 
 ### Inclusion Information
 
-Press the Pairing button on the Temperature Sensor to add it to the Z-Wave network.You will see the light on the Temperature Sensor turn solid white when it has been successfully added.
+<p&gtPress the Pairing button on the Temperature Sensor to add it to the Z-Wave network.You will see the light on the Temperature Sensor turn solid white when it has been successfully added.</p&gt
 
 ### Exclusion Information
 
-Press the Pairing button on the Temperature Sensor to delete it from the Z-Wave network. The light on the Temperature Sensor will start flashing to indicate it has been successfully deleted.
+<p&gtPress the Pairing button on the Temperature Sensor to delete it from the Z-Wave network. The light on the Temperature Sensor will start flashing to indicate it has been successfully deleted.</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The ADC-S2000-T-RA does not permanently listen for messages sent from the contro
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Every 4 hours.
+<p&gtEvery 4 hours.</p&gt
 
 ## Channels
 
@@ -142,7 +142,7 @@ This parameter has the configuration ID ```config_4_2``` and is of type ```INTEG
 ### Parameter 5: Battery Reporting Interval
 
 Battery Reporting Interval
-Number of wake up intervals between autonomous battery reports. The wake up interval is set in the Wake Up Command Class.
+<p&gtNumber of wake up intervals between autonomous battery reports. The wake up interval is set in the Wake Up Command Class.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -153,9 +153,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 7: Temperature Reporting Interval
 
 Temperature Reporting Interval
-The number of wake up intervals between autonomous temperature reports. 
-
-If this value is zero, autonomous temperature reporting based on wake up interval is disabled.
+<p&gtThe number of wake up intervals between autonomous temperature reports. </p&gt <p&gtIf this value is zero, autonomous temperature reporting based on wake up interval is disabled.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -166,7 +164,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Temperature Calibration Offset
 
 Temperature Calibration Offset
-Tenths of a degree Fahrenheit. A value of 10 would be 1.0F.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtTenths of a degree Fahrenheit. A value of 10 would be 1.0F.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range -100 to 100 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -177,7 +175,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: Mandatory Temperature Reporting Interval
 
 Mandatory Temperature Reporting Interval
-The number of seconds between temperature reports.
+<p&gtThe number of seconds between temperature reports.</p&gt
 Values in the range 60 to 64800 may be set.
 
 The manufacturer defined default value is ```64800```.
@@ -245,10 +243,10 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Guide](https://www.cd-jackson.com/zwave_device_uploads/931/Alarm-com-Temperature-Sensor-ADC-S2000-T-RA-User-Guide.pdf)
-* [Installation Guide](https://www.cd-jackson.com/zwave_device_uploads/931/Alarm-com-Temperature-Sensor-ADC-S2000-T-RA-Installation-Guide.pdf)
+* [User Guide](https://opensmarthouse.org/zwavedatabase/931/Alarm-com-Temperature-Sensor-ADC-S2000-T-RA-User-Guide.pdf)
+* [Installation Guide](https://opensmarthouse.org/zwavedatabase/931/Alarm-com-Temperature-Sensor-ADC-S2000-T-RA-Installation-Guide.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/931).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/931).

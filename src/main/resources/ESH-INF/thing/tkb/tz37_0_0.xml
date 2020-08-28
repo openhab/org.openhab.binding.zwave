@@ -7,9 +7,7 @@
 
   <thing-type id="tkb_tz37_00_000" listed="false">
     <label>TZ37 Double Relay Wall Switch</label>
-    <description><![CDATA[
-Double Relay Wall Switch<br /><h1>Overview</h1><p>Two Channel Switch, AC230V 50Hz, 1380W×2.</p> <p>Shares device ID and properties with TZ57.</p> <br /><h2>Inclusion Information</h2><p>The leds on the buttons will blink on-off (1 second intervals) when the devices is not associated with a network.</p> <ol><li>Have the Z-Wave controller enter inclusion mode.</li> <li>Pressing on either on or off button three times within 1.5 seconds will enter inclusion mode.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have the Z-Wave controller enter exclusion mode.</li> <li>Pressing on either on or off button three times within 1.5 seconds will enter exclusion mode.</li> <li>The leds on the button should link on and off.</li> </ol>
-    ]]></description>
+    <description>Double Relay Wall Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtTwo Channel Switch, AC230V 50Hz, 1380W×2.&lt;/p&gt &lt;p&gtShares device ID and properties with TZ57.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtThe leds on the buttons will blink on-off (1 second intervals) when the devices is not associated with a network.&lt;/p&gt &lt;ol&gt&lt;li&gtHave the Z-Wave controller enter inclusion mode.&lt;/li&gt &lt;li&gtPressing on either on or off button three times within 1.5 seconds will enter inclusion mode.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtHave the Z-Wave controller enter exclusion mode.&lt;/li&gt &lt;li&gtPressing on either on or off button three times within 1.5 seconds will enter exclusion mode.&lt;/li&gt &lt;li&gtThe leds on the button should link on and off.&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -67,9 +65,7 @@ Double Relay Wall Switch<br /><h1>Overview</h1><p>Two Channel Switch, AC230V 50H
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Night light</label>
-        <description><![CDATA[
-Configure LED to reflect load's status<br /><h1>Overview</h1><p>The LED on the switch will by default turn ON when the load attached is turned OFF. To make the LED turn ON when the load attached is turned ON, alter this configuration parameter.</p>
-        ]]></description>
+        <description>Configure LED to reflect load's status&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe LED on the switch will by default turn ON when the load attached is turned OFF. To make the LED turn ON when the load attached is turned ON, alter this configuration parameter.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>
@@ -79,9 +75,7 @@ Configure LED to reflect load's status<br /><h1>Overview</h1><p>The LED on the s
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Memory Function</label>
-        <description><![CDATA[
-Toggles the Switch's memory function<br /><h1>Overview</h1><p>This will turn the Switch's memory function ON/OFF</p>
-        ]]></description>
+        <description>Toggles the Switch's memory function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis will turn the Switch's memory function ON/OFF&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Off</option>
@@ -92,9 +86,7 @@ Toggles the Switch's memory function<br /><h1>Overview</h1><p>This will turn the
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Invert switch</label>
-        <description><![CDATA[
-Inverts switch's top/bottom<br /><h1>Overview</h1><p><strong>If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch. </strong></p>
-        ]]></description>
+        <description>Inverts switch's top/bottom&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtIf you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch. &amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Default</option>
@@ -105,9 +97,7 @@ Inverts switch's top/bottom<br /><h1>Overview</h1><p><strong>If you invert the s
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: LED transmission indication</label>
-        <description><![CDATA[
-LED flickers when transmitting data to any group<br /><h1>Overview</h1><p>Determines whether the switch's LED will flicker when it is transmitting to any of its 4 groups </p>
-        ]]></description>
+        <description>LED flickers when transmitting data to any group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDetermines whether the switch's LED will flicker when it is transmitting to any of its 4 groups &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No indication</option>
@@ -118,9 +108,7 @@ LED flickers when transmitting data to any group<br /><h1>Overview</h1><p>Determ
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Don't transmit to Group 4</label>
-        <description><![CDATA[
-Disables transmitting to Group 4<br /><h1>Overview</h1><p>Disable transmitting commands to Z-Wave devices that are in Group 4 without “disassociating” those devices from from the group. </p>
-        ]]></description>
+        <description>Disables transmitting to Group 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDisable transmitting commands to Z-Wave devices that are in Group 4 without “disassociating” those devices from from the group. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Transmit to Group 4</option>
@@ -132,33 +120,25 @@ Disables transmitting to Group 4<br /><h1>Overview</h1><p>Disable transmitting c
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>If you associate a Z-Wave device into Group 1, you can turn that device:</p> <ul><li>ON and OFF by tapping the top or bottom of the right switch</li> <li>Brighten or dim devices by pushing and holding the top of the right switch</li> <li>Dim by pushing and holding the bottom of the right switch.</li> </ul><p>The load attached to the switch is not affected. The LED on the right switch will indicate the status of Group 1.</p> <p>Group 1 will be polled at a specific interval and the LED on the right switch will indicate the status of Group 1. <br />The polling interval can be configured.</p> <p>The Group1 name is lifeline(Profile MSB=0x00,Profile LSB=0x01)</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIf you associate a Z-Wave device into Group 1, you can turn that device:&lt;/p&gt &lt;ul&gt&lt;li&gtON and OFF by tapping the top or bottom of the right switch&lt;/li&gt &lt;li&gtBrighten or dim devices by pushing and holding the top of the right switch&lt;/li&gt &lt;li&gtDim by pushing and holding the bottom of the right switch.&lt;/li&gt &lt;/ul&gt&lt;p&gtThe load attached to the switch is not affected. The LED on the right switch will indicate the status of Group 1.&lt;/p&gt &lt;p&gtGroup 1 will be polled at a specific interval and the LED on the right switch will indicate the status of Group 1. &lt;br /&gtThe polling interval can be configured.&lt;/p&gt &lt;p&gtThe Group1 name is lifeline(Profile MSB=0x00,Profile LSB=0x01)&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: On/Off Dimmer 1</label>
-        <description><![CDATA[
-Use the Left Switch to control a group<br /><h1>Overview</h1><p>If you associate a Z-Wave device into Group 2, you can:</p> <ul><li>Turn that device ON or OFF by tapping the top or bottom of the left switch twice.</li> <li>You can brighten or dim devices by: <ul><li>Tapping the switch once</li> <li>Then push and hold the top or bottom of the left switch.</li> </ul></li> </ul><p>The load attached to the switch is not affected. The LED on the left switch will indicate the status of Group 2.</p> <p>Group 2 will be polled at a specific interval and the LED on the left switch will indicate the status of Group 2. The polling interval can be configured. The Group2 name is On /Off Dimmer 1(Profile MSB=0x20,Profile LSB=0x01).</p>
-        ]]></description>
+        <description>Use the Left Switch to control a group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIf you associate a Z-Wave device into Group 2, you can:&lt;/p&gt &lt;ul&gt&lt;li&gtTurn that device ON or OFF by tapping the top or bottom of the left switch twice.&lt;/li&gt &lt;li&gtYou can brighten or dim devices by: &lt;ul&gt&lt;li&gtTapping the switch once&lt;/li&gt &lt;li&gtThen push and hold the top or bottom of the left switch.&lt;/li&gt &lt;/ul&gt&lt;/li&gt &lt;/ul&gt&lt;p&gtThe load attached to the switch is not affected. The LED on the left switch will indicate the status of Group 2.&lt;/p&gt &lt;p&gtGroup 2 will be polled at a specific interval and the LED on the left switch will indicate the status of Group 2. The polling interval can be configured. The Group2 name is On /Off Dimmer 1(Profile MSB=0x20,Profile LSB=0x01).&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: On/Off dimmer 2</label>
-        <description><![CDATA[
-Control Group using right switch<br /><h1>Overview</h1><p> If you associate a Z-Wave device into Group 3, you can:</p> <ul><li>Turn that device ON or OFF by tapping the top or bottom of the righ switch twice.</li> <li>Brighten or dim devices by: <ul><li>Tapping the switch once</li> <li>Then push and hold the top or bottom of the righ switch.</li> </ul></li> </ul><p>The load attached to the switch is not affected.</p> <p>The Group3 name is On/Off dimmer 2 (Profile MSB= 0x20,Profile LSB=0x02).</p>
-        ]]></description>
+        <description>Control Group using right switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt If you associate a Z-Wave device into Group 3, you can:&lt;/p&gt &lt;ul&gt&lt;li&gtTurn that device ON or OFF by tapping the top or bottom of the righ switch twice.&lt;/li&gt &lt;li&gtBrighten or dim devices by: &lt;ul&gt&lt;li&gtTapping the switch once&lt;/li&gt &lt;li&gtThen push and hold the top or bottom of the righ switch.&lt;/li&gt &lt;/ul&gt&lt;/li&gt &lt;/ul&gt&lt;p&gtThe load attached to the switch is not affected.&lt;/p&gt &lt;p&gtThe Group3 name is On/Off dimmer 2 (Profile MSB= 0x20,Profile LSB=0x02).&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Wireless</label>
-        <description><![CDATA[
-Switch state controls group<br /><h1>Overview</h1><p>If you associate a Z-Wave device into Group 4, that device will be commanded to turn on or off when the switch is commanded to turn on or off</p> <p>Caution: The switch will not transmit to Z-Wave devices in Group 4 if it is already in the state that the Z-Wave command commanded it to.</p> <p>A note about dimming, if you combine Z-Wave enabled dimmers and other types of Z-Wave devices in a group, place a Z-Wave enabled dimmer into the empty group first to ensure that the dimming operates correctly.</p> <p>The Group4 name is wireless.(Profile MSB=0x20, Profile LSB=0x03) </p>
-        ]]></description>
+        <description>Switch state controls group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIf you associate a Z-Wave device into Group 4, that device will be commanded to turn on or off when the switch is commanded to turn on or off&lt;/p&gt &lt;p&gtCaution: The switch will not transmit to Z-Wave devices in Group 4 if it is already in the state that the Z-Wave command commanded it to.&lt;/p&gt &lt;p&gtA note about dimming, if you combine Z-Wave enabled dimmers and other types of Z-Wave devices in a group, place a Z-Wave enabled dimmer into the empty group first to ensure that the dimming operates correctly.&lt;/p&gt &lt;p&gtThe Group4 name is wireless.(Profile MSB=0x20, Profile LSB=0x03) &lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

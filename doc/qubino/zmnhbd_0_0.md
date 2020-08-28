@@ -10,42 +10,22 @@ This describes the Z-Wave device *ZMNHBD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHBD product image](https://www.cd-jackson.com/zwave_device_uploads/215/215_default.jpg)
+![ZMNHBD product image](https://opensmarthouse.org/zwavedatabase/215/image/)
 
 
 The ZMNHBD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used for switching on or off two electrical devices (e.g. lights or fans,..). The module can be controlled either through Z-Wave network or through the wallswitches. The module is designed to be mounted inside a "flush mountingbox", hidden behind a traditional wall switch. Module measures power consumption of two electrical devices and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.
+<p&gtThis Z-Wave module is used for switching on or off two electrical devices (e.g. lights or fans,..). The module can be controlled either through Z-Wave network or through the wallswitches. The module is designed to be mounted inside a "flush mountingbox", hidden behind a traditional wall switch. Module measures power consumption of two electrical devices and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p&gt
 
 ### Inclusion Information
 
-**Module Inclusion (Adding to Z-Wave network)**
-
-  * Connect module to power supply (with temperature sensor connected -if purchased)
-  * Enable add/remove mode on main controller
-  * Auto-inclusion (works for about 5 seconds after connected to power supply) or
-  * Press push button I1 three times within 3s (3 times change switch state within 3 seconds) or
-  * Press service button **S** (only applicable for 24 V SELV supply voltage) for more than 2 seconds.
-
-**NOTE1:** For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.
-
-**NOTE2:** When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply , connect the sensor and re-include the module.
+<p&gt<b&gtModule Inclusion (Adding to Z-Wave network)</b&gt</p&gt <ul&gt<li&gtConnect module to power supply (with temperature sensor connected -if purchased)</li&gt <li&gtEnable add/remove mode on main controller</li&gt <li&gtAuto-inclusion (works for about 5 seconds after connected to power supply) or</li&gt <li&gtPress push button I1 three times within 3s (3 times change switch state within 3 seconds) or</li&gt <li&gtPress service button <b&gtS</b&gt (only applicable for 24 V SELV supply voltage) for more than 2 seconds.</li&gt </ul&gt<p&gt<strong&gtNOTE1:</strong&gt For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p&gt <p&gt<strong&gtNOTE2:</strong&gt When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply , connect the sensor and re-include the module.</p&gt
 
 ### Exclusion Information
 
-**Module Exclusion/Reset (Removing from Z-Wave network)**
-
-  * Connect module to power supply
-  * Bring module within maximum 1 meter (3 feet) of the main controller,
-  * Enable add/remove mode on main controller,
-  * Press push button **I1** five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply or
-  * Press service button **S** (only applicable for 24 V SELV supply voltage) for more than 6 seconds.
-
-By this function all parameters of the module are set to default values and own ID is deleted.
-
-If push button I1 is pressed three times within 3s (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.
+<p&gt<b&gtModule Exclusion/Reset (Removing from Z-Wave network)</b&gt</p&gt <ul&gt<li&gtConnect module to power supply</li&gt <li&gtBring module within maximum 1 meter (3 feet) of the main controller,</li&gt <li&gtEnable add/remove mode on main controller,</li&gt <li&gtPress push button <b&gtI1 </b&gtfive times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply or</li&gt <li&gtPress service button <b&gtS </b&gt(only applicable for 24 V SELV supply voltage) for more than 6 seconds.</li&gt </ul&gt<p&gtBy this function all parameters of the module are set to default values and own ID is deleted.</p&gt <p&gtIf push button I1 is pressed three times within 3s (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.</p&gt
 
 ## Channels
 
@@ -183,7 +163,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 10: Functions ALL ON/ALL OFF
 
 Activate / deactivate functions ALL ON/ALL OFF
-Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
+<p&gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -201,10 +181,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Automatic turning off output Q1 after set time
 
 When relay Q1 is ON it goes automatically OFF after defined time
-Timer is reset to zero each time the module receive ON command regardless from where it comes  (push button, associated module, controller,..).
-
-  * 0 - Auto OFF disabled
-  * 1 - 32535 = 1second (0,01s) - 32535 seconds (325,35s) Auto OFF enabled with define time, step is 1s or 10ms according to parameter nr.15.
+<p&gtTimer is reset to zero each time the module receive ON command regardless from where it comes  (push button, associated module, controller,..).</p&gt <ul&gt<li&gt0 - Auto OFF disabled</li&gt <li&gt1 - 32535 = 1second (0,01s) - 32535 seconds (325,35s) Auto OFF enabled with define time, step is 1s or 10ms according to parameter nr.15.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -215,10 +192,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: Automatic turning on output Q1 after set time
 
 When relay Q1 is OFF it goes automatically ON after defined time
-Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..).
-
-  * 0 - Auto ON disabled
-  * 1 - 32535 = 1second (0,01s) - 32536 seconds (325,35s) Auto ON enabled with define time, step is 1s or 10ms according to parameter nr.15.
+<p&gtTimer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..).</p&gt <ul&gt<li&gt0 - Auto ON disabled</li&gt <li&gt1 - 32535 = 1second (0,01s) - 32536 seconds (325,35s) Auto ON enabled with define time, step is 1s or 10ms according to parameter nr.15.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -229,10 +203,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 ### Parameter 13: Automatic turning off relay Q2 after set time
 
 When relay Q2 is ON it goes automatically OFF after defined time
-Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..).
-
-  * 0 -Auto OFF disabled
-  * 1 - 32535 = 1second (0,01s) - 32535 seconds (325,35s) Auto OFF enabled with define time, step is 1s or 10ms according to parameter nr.15.
+<p&gtTimer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..).</p&gt <ul&gt<li&gt0 -Auto OFF disabled</li&gt <li&gt1 - 32535 = 1second (0,01s) - 32535 seconds (325,35s) Auto OFF enabled with define time, step is 1s or 10ms according to parameter nr.15.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -243,10 +214,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: Automatic turning on output Q2 after set time
 
 When relay Q2 is OFF it goes automatically ON after defined time
-Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..).
-
-  * 0 -Auto ON disabled
-  * 1 - 32535 = 1second (0,01s) - 32536 seconds (325,35s) Auto ON enabled with define time, step is 1s or 10ms according to parameter nr.15.
+<p&gtTimer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..).</p&gt <ul&gt<li&gt0 -Auto ON disabled</li&gt <li&gt1 - 32535 = 1second (0,01s) - 32536 seconds (325,35s) Auto ON enabled with define time, step is 1s or 10ms according to parameter nr.15.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -257,12 +225,7 @@ This parameter has the configuration ID ```config_14_2``` and is of type ```INTE
 ### Parameter 15: Seconds or milliseconds selection
 
 Automatic turning off / on seconds or milliseconds selection
-Available configuration parameters:
-
-  * 0 – seconds selected
-  * 1 – milliseconds selected
-
-**NOTE:** Parameter is valid for both outputs Q1, Q2 and is the same for turning off or on.
+<p&gtAvailable configuration parameters:</p&gt <ul&gt<li&gt0 – seconds selected</li&gt <li&gt1 – milliseconds selected</li&gt </ul&gt<p&gt<strong&gtNOTE:</strong&gt Parameter is valid for both outputs Q1, Q2 and is the same for turning off or on.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -289,14 +252,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 40: Power reporting in Watts for Q1
 
 Power reporting in Watts on power change for Q1
-Set value means percentage, set value from 0 –100 = 0% -100%.
-
-Available configuration parameters:
-
-  * 0 - reporting disabled
-  * 1 -100 = 1% -100% Reporting enabled. Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.
-
-**NOTE:** If power changed is less than 1W, the report is not send (pushed), independent of percentage set.
+<p&gtSet value means percentage, set value from 0 –100 = 0% -100%.</p&gt <p&gtAvailable configuration parameters:</p&gt <ul&gt<li&gt0 - reporting disabled</li&gt <li&gt1 -100 = 1% -100% Reporting enabled. Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.</li&gt </ul&gt<p&gt<strong&gtNOTE:</strong&gt If power changed is less than 1W, the report is not send (pushed), independent of percentage set.</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -307,12 +263,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 41: Power reporting in Watts for Q2
 
 Power reporting in Watts on power change for Q2
-Set value means percentage, set value from 0 –100 = 0% -100%. Available configuration parameters:
-
-  * 0 - reporting disabled
-  * 1 - 100 = 1% - 100% Reporting enabled. Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.
-
-**NOTE:** If power changed is less than 1W, the report is not send (pushed), independent of percentage set.
+<p&gtSet value means percentage, set value from 0 –100 = 0% -100%. Available configuration parameters:</p&gt <ul&gt<li&gt0 - reporting disabled</li&gt <li&gt1 - 100 = 1% - 100% Reporting enabled. Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.</li&gt </ul&gt<p&gt<strong&gtNOTE:</strong&gt If power changed is less than 1W, the report is not send (pushed), independent of percentage set.</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -323,11 +274,7 @@ This parameter has the configuration ID ```config_41_1``` and is of type ```INTE
 ### Parameter 42: Power reporting time interval for Q1
 
 Power reporting in Watts by time interval for Q1
-Set value means time interval (0 – 32535) in seconds, when power report is send. Available configuration parameters:
-
-  * Default value 300 (power report in Watts is send each 300s)
-  * 0 - reporting disabled
-  * 1 - 32535 = 1 second - 32535 seconds. Reporting enabled, Power report is send with time interval set by entered value.
+<p&gtSet value means time interval (0 – 32535) in seconds, when power report is send. Available configuration parameters:</p&gt <ul&gt<li&gtDefault value 300 (power report in Watts is send each 300s)</li&gt <li&gt0 - reporting disabled</li&gt <li&gt1 - 32535 = 1 second - 32535 seconds. Reporting enabled, Power report is send with time interval set by entered value.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -338,11 +285,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 43: Power reporting time interval for Q2
 
 Power reporting in Watts by time interval for Q2
-Set value means time interval (0 –32535) in seconds, when power report is send. Available configuration parameters:
-
-  * Default value 300 (power report in Watts is send each 300s)
-  * 0 - reporting disabled
-  * 1 - 32535 = 1 second - 32535 seconds. Reporting enabled, Power report is send with time interval set by entered value.
+<p&gtSet value means time interval (0 –32535) in seconds, when power report is send. Available configuration parameters:</p&gt <ul&gt<li&gtDefault value 300 (power report in Watts is send each 300s)</li&gt <li&gt0 - reporting disabled</li&gt <li&gt1 - 32535 = 1 second - 32535 seconds. Reporting enabled, Power report is send with time interval set by entered value.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -385,12 +328,7 @@ This parameter has the configuration ID ```config_64_1``` and is of type ```INTE
 ### Parameter 110: Temperature sensor offset
 
 Temperature sensor offset settings
-Set value is added or subtracted to actual measured value by sensor. Available configuration parameters:
-
-  * Default value 32536
-  * 32536 - offset is 0.0C
-  * From 1 to 100 - value from 0.1 °C to 10.0 °C is added to actual measured temperature.
-  * From 1001 to 1100 -value from -0.1 °C to -10.0 °C is subtracted to actual measured temperature.
+<p&gtSet value is added or subtracted to actual measured value by sensor. Available configuration parameters:</p&gt <ul&gt<li&gtDefault value 32536</li&gt <li&gt32536 - offset is 0.0C</li&gt <li&gtFrom 1 to 100 - value from 0.1 °C to 10.0 °C is added to actual measured temperature.</li&gt <li&gtFrom 1001 to 1100 -value from -0.1 °C to -10.0 °C is subtracted to actual measured temperature.</li&gt </ul&gt
 Values in the range 0 to 32536 may be set.
 
 The manufacturer defined default value is ```32536```.
@@ -401,11 +339,7 @@ This parameter has the configuration ID ```config_110_2``` and is of type ```INT
 ### Parameter 120: Digital temperature sensor reporting
 
 Digital temperature sensor reporting
-If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters:
-
-  * Default value 5 = 0,5°C
-  * 0 – Reporting disabled
-  * 1 - 127 = 0,1°C – 12,7°C, step is 0,1°C
+<p&gtIf digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter. Available configuration parameters:</p&gt <ul&gt<li&gtDefault value 5 = 0,5°C</li&gt <li&gt0 – Reporting disabled</li&gt <li&gt1 - 127 = 0,1°C – 12,7°C, step is 0,1°C</li&gt </ul&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -523,9 +457,9 @@ Association group 8 supports 16 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/215/Qubino-Flush-2-Relays-PLUS-user-manual-eng-V1-4.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/215/Qubino-Flush-2-Relays-PLUS-user-manual-eng-V1-4.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/215).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/215).

@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhtd_00_000" listed="false">
     <label>ZMNHTD Smart Meter</label>
-    <description><![CDATA[
-Smart Meter<br /><h1>Overview</h1><p>This Z-Wave module is used for energy measurements in single-phase electrical power network and can be used in residential, industrial and utility applications. Meters measure energy directly in 2-wire networks according to the principle of fast sampling of voltage and current signals. A built-in microprocessor calculates energy, power and power factor from the measured signals. The module can be controlled through Z-wave network and it acts as repeater in order to improve range and stability of Z-wave network. It is designed to be mounted on DIN rail. </p> <p>Measurements: Voltage V Current I Power – Active W Power – Active total Import kWh Power – Active total Export kWh Power – Reactive var Power – Reactive total kvarh Power – Apparent total kVAh Power Factor PF </p> <p>It is possible to connect two external relay to Smart Meter module. One controlled by built-in optical (IR) communication port on the side, second controlled by output on terminal 5. </p> <br /><h2>Inclusion Information</h2><p>Module Inclusion (Adding to Z-wave network)</p> <ul><li>Connect module to power supply</li> <li>enable add/remove mode on main controller</li> <li>auto-inclusion (works for about 5 seconds after connected to power supply) or</li> <li>press service button S for more than 2 second</li> </ul><p>NOTE: For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p> <br /><h2>Exclusion Information</h2><p>Module Exclusion/Reset (Removing from Z-Wave network):</p> <ul><li>Connect module to power supply</li> <li>bring module within maximum 1 Meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller</li> <li>press service button S for more than 6 seconds.</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted. If service button S is pressed more than 2 and less than 6 seconds module is excluded, but configuration parameters are not set to default values.</p>
-    ]]></description>
+    <description>Smart Meter&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Z-Wave module is used for energy measurements in single-phase electrical power network and can be used in residential, industrial and utility applications. Meters measure energy directly in 2-wire networks according to the principle of fast sampling of voltage and current signals. A built-in microprocessor calculates energy, power and power factor from the measured signals. The module can be controlled through Z-wave network and it acts as repeater in order to improve range and stability of Z-wave network. It is designed to be mounted on DIN rail. &lt;/p&gt &lt;p&gtMeasurements: Voltage V Current I Power – Active W Power – Active total Import kWh Power – Active total Export kWh Power – Reactive var Power – Reactive total kvarh Power – Apparent total kVAh Power Factor PF &lt;/p&gt &lt;p&gtIt is possible to connect two external relay to Smart Meter module. One controlled by built-in optical (IR) communication port on the side, second controlled by output on terminal 5. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtModule Inclusion (Adding to Z-wave network)&lt;/p&gt &lt;ul&gt&lt;li&gtConnect module to power supply&lt;/li&gt &lt;li&gtenable add/remove mode on main controller&lt;/li&gt &lt;li&gtauto-inclusion (works for about 5 seconds after connected to power supply) or&lt;/li&gt &lt;li&gtpress service button S for more than 2 second&lt;/li&gt &lt;/ul&gt&lt;p&gtNOTE: For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtModule Exclusion/Reset (Removing from Z-Wave network):&lt;/p&gt &lt;ul&gt&lt;li&gtConnect module to power supply&lt;/li&gt &lt;li&gtbring module within maximum 1 Meter (3 feet) of the main controller,&lt;/li&gt &lt;li&gtenable add/remove mode on main controller&lt;/li&gt &lt;li&gtpress service button S for more than 6 seconds.&lt;/li&gt &lt;/ul&gt&lt;p&gtBy this function all parameters of the module are set to default values and own ID is deleted. If service button S is pressed more than 2 and less than 6 seconds module is excluded, but configuration parameters are not set to default values.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -103,9 +101,7 @@ Smart Meter<br /><h1>Overview</h1><p>This Z-Wave module is used for energy measu
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Input 1 switch function selection</label>
-        <description><![CDATA[
-IR external relay or External Relay control mode<br /><h1>Overview</h1><p>Available config. parameters (data type is 1 Byte DEC</p>
-        ]]></description>
+        <description>IR external relay or External Relay control mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable config. parameters (data type is 1 Byte DEC&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
         <options>
           <option value="0">Disabled</option>
@@ -119,9 +115,7 @@ IR external relay or External Relay control mode<br /><h1>Overview</h1><p>Availa
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="32535">
         <label>11: Timer turning off IR external relay</label>
-        <description><![CDATA[
-Automatic turning off IR external relay output after set time<br /><h1>Overview</h1><p>When External IR relay is ON it goes automatically OFF after time defined in this parameter. Timer is reset to zero each time the device receives ON command.<br />Values (size is 2 byte dec):<br />• Default value 0<br />• 0-59 = Auto OFF disabled<br />• 60-32535 = 60 seconds – 32535 seconds</p>
-        ]]></description>
+        <description>Automatic turning off IR external relay output after set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen External IR relay is ON it goes automatically OFF after time defined in this parameter. Timer is reset to zero each time the device receives ON command.&amp;lt;br /&amp;amp;gtValues (size is 2 byte dec):&amp;lt;br /&amp;amp;gt• Default value 0&amp;lt;br /&amp;amp;gt• 0-59 = Auto OFF disabled&amp;lt;br /&amp;amp;gt• 60-32535 = 60 seconds – 32535 seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -132,53 +126,41 @@ Automatic turning off IR external relay output after set time<br /><h1>Overview<
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="32535">
         <label>12: Timer turning on IR external relay output</label>
-        <description><![CDATA[
-Automatic turning on IR external relay output after set time<br /><h1>Overview</h1><p>When IR external relay is OFF it goes automatically ON after time defined by this Parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)</p>
-        ]]></description>
+        <description>Automatic turning on IR external relay output after set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen IR external relay is OFF it goes automatically ON after time defined by this Parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="32535">
         <label>13: Timer turning off External relay output</label>
-        <description><![CDATA[
-Automatic turning off External relay output after set time<br /><h1>Overview</h1><p>When External relay is ON it goes automatically OFF after time defined by this parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)</p>
-        ]]></description>
+        <description>Automatic turning off External relay output after set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen External relay is ON it goes automatically OFF after time defined by this parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
                  min="0" max="32535">
         <label>14: Timer turning on External relay after output</label>
-        <description><![CDATA[
-Automatic turning on External relay after output set time<br /><h1>Overview</h1><p>When External relay is OFF it goes automatically ON after time defined by this parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)</p>
-        ]]></description>
+        <description>Automatic turning on External relay after output set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen External relay is OFF it goes automatically ON after time defined by this parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_40_2" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>40: Power reporting (Watts) on power change</label>
-        <description><![CDATA[
-Power reporting in Watts on power change<br /><h1>Overview</h1><p>Set value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC)</p> <p>Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p> <p>NOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power). </p>
-        ]]></description>
+        <description>Power reporting in Watts on power change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtPower report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power). &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="32535">
         <label>42: Power reporting (Watts) by time interval</label>
-        <description><![CDATA[
-Power reporting in Watts by time interval<br /><h1>Overview</h1><p>Set value means time interval (0 – 32535) in seconds, when power report is send. Available config. parameters (data type is 2 Byte DEC).</p> <p>Power report is send with time interval set by entered value. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power)</p>
-        ]]></description>
+        <description>Power reporting in Watts by time interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means time interval (0 – 32535) in seconds, when power report is send. Available config. parameters (data type is 2 Byte DEC).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtPower report is send with time interval set by entered value. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_45_1" type="integer" groupName="configuration">
         <label>45: Reset Power counters</label>
-        <description><![CDATA[
-Reset Power counters<br /><h1>Overview</h1><p>Available config. parameters (data type is 1 Byte DEC</p>
-        ]]></description>
+        <description>Reset Power counters&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable config. parameters (data type is 1 Byte DEC&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No function</option>
@@ -191,9 +173,7 @@ Reset Power counters<br /><h1>Overview</h1><p>Available config. parameters (data
 
       <parameter name="config_100_1" type="integer" groupName="configuration">
         <label>100: Enable / Disable endpoints relays</label>
-        <description><![CDATA[
-Enable / Disable endpoints IR external relay and External relay<br /><h1>Overview</h1><p>Enabling IR external relay and External relay or both of them, means that endpoint (IR external relay) and endpoint (External relay) or both will be present on UI. Disabling them will result in hiding endpoints according to Parameter set value. Note that hiding endpoint has no impact on its functionality. Available configuration parameters (data type is 1 Byte DEC)</p> <p>NOTE1: After parameter change, first exclude module (without setting parameters to default value) and then re include the module. NOTE 2: If you don't have IR BiComm relay module mounted and you enable IR communication (parameter 100 is 2 or 3) there will be no valid IR relay state reported. It will be reported IR COMMUNICATION ERROR and LED2 will BLINK</p>
-        ]]></description>
+        <description>Enable / Disable endpoints IR external relay and External relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnabling IR external relay and External relay or both of them, means that endpoint (IR external relay) and endpoint (External relay) or both will be present on UI. Disabling them will result in hiding endpoints according to Parameter set value. Note that hiding endpoint has no impact on its functionality. Available configuration parameters (data type is 1 Byte DEC)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNOTE1: After parameter change, first exclude module (without setting parameters to default value) and then re include the module. NOTE 2: If you don't have IR BiComm relay module mounted and you enable IR communication (parameter 100 is 2 or 3) there will be no valid IR relay state reported. It will be reported IR COMMUNICATION ERROR and LED2 will BLINK&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">EP IR external relay and External relay disabled</option>
@@ -206,9 +186,7 @@ Enable / Disable endpoints IR external relay and External relay<br /><h1>Overvie
       <parameter name="config_110_2" type="integer" groupName="configuration"
                  min="0" max="15000">
         <label>110: Maximum Power auto off</label>
-        <description><![CDATA[
-Maximum Power auto off<br /><h1>Overview</h1><p>Set value means Maximum Power Consumption (0 - 15000) in watts (W), when relays are turned off according to parameters no. 111 and 112. Available configuration parameters (data type is 2 Bytes DEC</p>
-        ]]></description>
+        <description>Maximum Power auto off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means Maximum Power Consumption (0 - 15000) in watts (W), when relays are turned off according to parameters no. 111 and 112. Available configuration parameters (data type is 2 Bytes DEC&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No function</option>
@@ -220,17 +198,13 @@ Maximum Power auto off<br /><h1>Overview</h1><p>Set value means Maximum Power Co
       <parameter name="config_111_2" type="integer" groupName="configuration"
                  min="0" max="32525">
         <label>111: Delay overpower off</label>
-        <description><![CDATA[
-Delay overpower off<br /><h1>Overview</h1><p>Set value means number of second to power off relay (defined by parameters no. 110 and 112) before restart (30 - 32535) in seconds (s). Available configuration parameters (data type is 2 Bytes DEC): </p>
-        ]]></description>
+        <description>Delay overpower off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means number of second to power off relay (defined by parameters no. 110 and 112) before restart (30 - 32535) in seconds (s). Available configuration parameters (data type is 2 Bytes DEC): &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_112_1" type="integer" groupName="configuration">
         <label>112: Relay to power off</label>
-        <description><![CDATA[
-Relay to power off<br /><h1>Overview</h1><p>Set value selects relay to be powered off when threshold is reached (defined by parameters no. 110 and 111). Available config. parameters (data type is 1 Byte DEC)</p>
-        ]]></description>
+        <description>Relay to power off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value selects relay to be powered off when threshold is reached (defined by parameters no. 110 and 111). Available config. parameters (data type is 1 Byte DEC)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">switch between the 2 relays</option>

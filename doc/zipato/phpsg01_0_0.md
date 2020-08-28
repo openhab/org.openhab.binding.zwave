@@ -10,7 +10,7 @@ This describes the Z-Wave device *PH-PSG01*, manufactured by *[Zipato](http://ww
 
 The device is in the category of *Smoke Detector*, defining Smoke detectors.
 
-![PH-PSG01 product image](https://www.cd-jackson.com/zwave_device_uploads/950/950_default.jpg)
+![PH-PSG01 product image](https://opensmarthouse.org/zwavedatabase/950/image/)
 
 
 The PH-PSG01 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,18 +19,15 @@ The PH-PSG01 does not permanently listen for messages sent from the controller -
 
 ## Overview
 
-Zipato Smoke Sensor (Z-Wave) is designed to give early warning of developing fires by giving off the alarm sounds from its build-in alarm horn, based on Z-Wave technology. Zipato Smoke Sensor is Z-Wave Plus product, it supports security, OTA and all other new features of 500 Series Z-Wave chipset.
+<p&gtZipato Smoke Sensor (Z-Wave) is designed to give early warning of developing fires by giving off the alarm sounds from its build-in alarm horn, based on Z-Wave technology. Zipato Smoke Sensor is Z-Wave Plus product, it supports security, OTA and all other new features of 500 Series Z-Wave chipset.</p&gt
 
 ### Inclusion Information
 
-  1. Have Z-Wave Controller entered inclusion mode.
-  2. Press test button three times within 1.5 seconds to enter the inclusion mode.
-  3. After the adding was successful, the device will wake to receive the setting from Z-Wave Controller about 20 seconds. 
+<ol&gt<li&gtHave Z-Wave Controller entered inclusion mode.</li&gt <li&gtPress test button three times within 1.5 seconds to enter the inclusion mode.</li&gt <li&gtAfter the adding was successful, the device will wake to receive the setting from Z-Wave Controller about 20 seconds. </li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Have Z-Wave Controller entered inclusion mode.
-  2. Pressing test button three times within 1.5 seconds to enter the exclusion mode. Node ID has been removed. 
+<ol&gt<li&gtHave Z-Wave Controller entered inclusion mode.</li&gt <li&gtPressing test button three times within 1.5 seconds to enter the exclusion mode. Node ID has been removed. </li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -39,17 +36,11 @@ The PH-PSG01 does not permanently listen for messages sent from the controller -
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-After device is added to the network, it will wake-up once per day by default.When it wakes-up it will broadcast the “Wake  Up Notification” message to the network, and wake-up 10 seconds to receive the setting commands. The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. Interval step is 30 minutes. If you want to wake-up device immediately, please press the button once. The device will wake-up for 10 seconds. 
+<p&gtAfter device is added to the network, it will wake-up once per day by default.When it wakes-up it will broadcast the “Wake  Up Notification” message to the network, and wake-up 10 seconds to receive the setting commands. The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. Interval step is 30 minutes. If you want to wake-up device immediately, please press the button once. The device will wake-up for 10 seconds. </p&gt
 
 ### General Usage Information
 
-Factory reset:
-
-Notice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.
-
-  1. Have Z-Wave Controller entered inclusion mode.
-  2. After the red LED flash 9 times, release the test button within 2 seconds.
-  3. IDs are removed and all settings will reset to factory default. 
+<p&gtFactory reset:</p&gt <p&gtNotice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.</p&gt <ol&gt<li&gtHave Z-Wave Controller entered inclusion mode.</li&gt <li&gtAfter the red LED flash 9 times, release the test button within 2 seconds.</li&gt <li&gtIDs are removed and all settings will reset to factory default. </li&gt </ol&gt
 
 ## Channels
 
@@ -126,7 +117,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 7: Customer Function
 
 Customer Function
-Notification type 0: Using Notification Report 1: Using Sensor Binary Report
+<p&gtNotification type 0: Using Notification Report 1: Using Sensor Binary Report</p&gt
 Values in the range 0 to 4 may be set.
 
 The manufacturer defined default value is ```4```.
@@ -137,7 +128,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 10: Auto Report Battery Time
 
 Auto Report Battery Time
-The interval time for auto report the battery level.
+<p&gtThe interval time for auto report the battery level.</p&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```127```.
@@ -201,9 +192,9 @@ Association group 1 supports 8 nodes.
 
 ### Documentation Links
 
-* [PSG01 Manual](https://www.cd-jackson.com/zwave_device_uploads/950/ph-psg01---Zipato-Smoke-Sensor-User-Manual-v1-0.pdf)
+* [PSG01 Manual](https://opensmarthouse.org/zwavedatabase/950/ph-psg01---Zipato-Smoke-Sensor-User-Manual-v1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/950).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/950).

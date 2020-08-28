@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsb05_00_000" listed="false">
     <label>DSB05 4 in One MultiSensor</label>
-    <description><![CDATA[
-4 in One MultiSensor<br /><h1>Overview</h1><p>The Aeon Labs MultiSensor is a routing binary sensor device based on Zwave routing slave library V5.03.  </p> <br /><h2>Inclusion Information</h2><p>Press the tamper button 3 times rapidly.</p> <br /><h2>Exclusion Information</h2><p>Press the tamper button 3 times rapidly.</p> <p>NOTE:</p> <p>As soon as the MultiSensor is removed from a z-wave network it will restore itself to factory settings. </p> <br /><h2>Wakeup Information</h2><p>· Waking up the Multisensor for 10 minutes:</p> <p>Try ONE of the following:</p> <ol><li>MultiSensor will wake up 10 minutes after it is included into z-wave network.</li> <li>The button is pressed 3 times, then the MultiSensor will wake 10 minutes.</li> <li>If configured, the MultiSensor can wake 10 minutes when on power</li> </ol>
-    ]]></description>
+    <description>4 in One MultiSensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Aeon Labs MultiSensor is a routing binary sensor device based on Zwave routing slave library V5.03.  &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the tamper button 3 times rapidly.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the tamper button 3 times rapidly.&lt;/p&gt &lt;p&gtNOTE:&lt;/p&gt &lt;p&gtAs soon as the MultiSensor is removed from a z-wave network it will restore itself to factory settings. &lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt· Waking up the Multisensor for 10 minutes:&lt;/p&gt &lt;p&gtTry ONE of the following:&lt;/p&gt &lt;ol&gt&lt;li&gtMultiSensor will wake up 10 minutes after it is included into z-wave network.&lt;/li&gt &lt;li&gtThe button is pressed 3 times, then the MultiSensor will wake 10 minutes.&lt;/li&gt &lt;li&gtIf configured, the MultiSensor can wake 10 minutes when on power&lt;/li&gt &lt;/ol&gt</description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -83,9 +81,7 @@
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="1" max="15300">
         <label>3: On time</label>
-        <description><![CDATA[
-On time before sending off command<br /><h1>Overview</h1><p>How long should the device associated to multi sensor keep state On before sending it Off command (if the value is bigger than 255, the value would be rounded to next integer in minutes)</p>
-        ]]></description>
+        <description>On time before sending off command&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtHow long should the device associated to multi sensor keep state On before sending it Off command (if the value is bigger than 255, the value would be rounded to next integer in minutes)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
@@ -110,27 +106,21 @@ On time before sending off command<br /><h1>Overview</h1><p>How long should the 
       <parameter name="config_101_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="225">
         <label>101: Which reports to send to group 1</label>
-        <description><![CDATA[
-Group 1 automatic report list<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery.</p> <p>The sensors have the values:</p> <p>Temperature=32</p> <p>Humidity=64</p> <p>Lightlevel=128</p> <p>Battery=1                           </p> <p>Therefore if you want all sensors and the battery report set this value to <strong>225</strong> (recommended)</p>
-        ]]></description>
+        <description>Group 1 automatic report list&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual sensors and battery.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe sensors have the values:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTemperature=32&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtHumidity=64&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtLightlevel=128&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBattery=1                           &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTherefore if you want all sensors and the battery report set this value to &amp;lt;strong&amp;amp;gt225&amp;lt;/strong&amp;amp;gt (recommended)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_102_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="225">
         <label>102: Which reports to send to group 2</label>
-        <description><![CDATA[
-Group 2 automatic report list<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery.</p> <p>The sensors have the values:</p> <p>Temperature=32</p> <p>Humidity=64</p> <p>Lightlevel=128</p> <p>Battery=1                           </p> <p>Therefore if you want all sensors and the battery report set this value to 225</p>
-        ]]></description>
+        <description>Group 2 automatic report list&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual sensors and battery.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe sensors have the values:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTemperature=32&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtHumidity=64&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtLightlevel=128&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBattery=1                           &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTherefore if you want all sensors and the battery report set this value to 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_103_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="225">
         <label>103: Which reports to send to group 3</label>
-        <description><![CDATA[
-Group 3 automatic report list<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery.</p> <p>The sensors have the values:</p> <p>Temperature=32</p> <p>Humidity=64</p> <p>Lightlevel=128</p> <p>Battery=1                           </p> <p>Therefore if you want all sensors and the battery report set this value to 225</p>
-        ]]></description>
+        <description>Group 3 automatic report list&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual sensors and battery.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe sensors have the values:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTemperature=32&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtHumidity=64&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtLightlevel=128&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBattery=1                           &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTherefore if you want all sensors and the battery report set this value to 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -165,9 +155,7 @@ Group 3 automatic report list<br /><h1>Overview</h1><p>The value is a combinatio
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1 devices</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Devices to be switched on when motion detected and off after on time</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDevices to be switched on when motion detected and off after on time&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

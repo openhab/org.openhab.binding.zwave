@@ -10,38 +10,22 @@ This describes the Z-Wave device *SES FS-ZW*, manufactured by *Diehl AKO* with t
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![SES FS-ZW product image](https://www.cd-jackson.com/zwave_device_uploads/671/671_default.png)
+![SES FS-ZW product image](https://opensmarthouse.org/zwavedatabase/671/image/)
 
 
 The SES FS-ZW supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Smart outlet with energy monitoring.
+<p&gtSmart outlet with energy monitoring.</p&gt
 
 ### Inclusion Information
 
-The inclusion process is controlled by the central unit – refer to the documentation for the central unit.
-
-  1. Plug the plug actuator into a fixed mains outlet with grounding contacts (CEE 7/4).
-  2. Start “Inclusion” mode on the chosen central unit.
-  3. Press the button on the plug actuator 3 times within a period of around 2 seconds.
-
-The Status LED lights up white.
-
-During the next 5 seconds, the wireless connection is established and the inclusion process for linking the plug actuator to the central unit is performed.
+<p&gtThe inclusion process is controlled by the central unit – refer to the documentation for the central unit.</p&gt <ol&gt<li&gtPlug the plug actuator into a fixed mains outlet with grounding contacts (CEE 7/4).</li&gt <li&gtStart “Inclusion” mode on the chosen central unit.</li&gt <li&gtPress the button on the plug actuator 3 times within a period of around 2 seconds.</li&gt </ol&gt<p&gtThe Status LED lights up white.</p&gt <p&gtDuring the next 5 seconds, the wireless connection is established and the inclusion process for linking the plug actuator to the central unit is performed.</p&gt
 
 ### Exclusion Information
 
-The exclusion process is controlled by the central unit – refer to the documentation for the central unit.
-
-  1. Make sure that no device is plugged into the plug actuator.
-  2. Start “Exclusion” mode on the chosen central unit.
-  3. Press the button on the plug actuator 3 times within a period of around 2 seconds.
-
-The Status LED lights up white.
-
-The exclusion process for disconnecting the plug actuator from the central unit runs for the next 5 seconds. The Status LED flashes white 3x once the exclusion process has been successfully completed.
+<p&gtThe exclusion process is controlled by the central unit – refer to the documentation for the central unit.</p&gt <ol&gt<li&gtMake sure that no device is plugged into the plug actuator.</li&gt <li&gtStart “Exclusion” mode on the chosen central unit.</li&gt <li&gtPress the button on the plug actuator 3 times within a period of around 2 seconds.</li&gt </ol&gt<p&gtThe Status LED lights up white.</p&gt <p&gtThe exclusion process for disconnecting the plug actuator from the central unit runs for the next 5 seconds. The Status LED flashes white 3x once the exclusion process has been successfully completed.</p&gt
 
 ## Channels
 
@@ -193,7 +177,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: Energy delta value
 
 Minimum change required for a new energy value to be transmitted.
-The transmission must take place in the time window between parameter 2 and 3.
+<p&gtThe transmission must take place in the time window between parameter 2 and 3.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -204,7 +188,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 7: Power delta value
 
 Minimum change required for a new power value to be transmitted.
-The transmission must take place in the time window between parameter 4 and 5
+<p&gtThe transmission must take place in the time window between parameter 4 and 5</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```150```.
@@ -215,7 +199,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Safety shutdown configuration
 
 Behaviour in the event of a safety shutdown
-The plug actuator remains OFF after 3x safety shutdowns.
+<p&gtThe plug actuator remains OFF after 3x safety shutdowns.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -231,9 +215,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Reset of overcurrent shutdown
 
 Activation despite 3x safety shutdown
- Activation despite 3x safety shutdown (parameter 8 = 1)
-
- A reset request (“Set” command) is normally executed very quickly, as a result of which a query (“Get” command) for this parameter usually returns the response “0” (no reset) for this parameter. In some cases, this can be interpreted incorrectly. Consequently, this parameter should be treated only as “write only”. 
+<p&gt Activation despite 3x safety shutdown (parameter 8 = 1)</p&gt <p&gt A reset request (“Set” command) is normally executed very quickly, as a result of which a query (“Get” command) for this parameter usually returns the response “0” (no reset) for this parameter. In some cases, this can be interpreted incorrectly. Consequently, this parameter should be treated only as “write only”. </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -329,9 +311,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/671/SES-FS-ZW-BA-06-15-B.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/671/SES-FS-ZW-BA-06-15-B.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/671).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/671).

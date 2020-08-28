@@ -10,25 +10,22 @@ This describes the Z-Wave device *FMS01*, manufactured by *Smartly AS* with the 
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![FMS01 product image](https://www.cd-jackson.com/zwave_device_uploads/1032/1032_default.jpg)
+![FMS01 product image](https://opensmarthouse.org/zwavedatabase/1032/image/)
 
 
 The FMS01 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Multifunction Switch is a Z-Wave Plus mains powered Wallbox mountable Wall Controller. It can be configured to control up to Four separate Light Zones or Central Scenes. Each Light Zone can consist of both Dimmers and Switches. The device can be combined with a Back Unit, which provide local Switch or Dimmer functionality.   
-Room and Floor temperature sensors can also be connected to the device, which enables the device to function as a head-less Thermostat. The Thermostat is fully controllable from a Z-Wave Controller, and can control both a Local and Remote heating relay.
-
-The Multifunction Switch is capable of controlling local loads via a modular Back Unit. The back unit can be mounted and connected to mains electricity inside a Electrical Wall box. Two types of Relay and Dimmer Back Units are currently available. The maximum controllable local load are specified in each Back Unit product sheets. 
+<p&gtThe Multifunction Switch is a Z-Wave Plus mains powered Wallbox mountable Wall Controller. It can be configured to control up to Four separate Light Zones or Central Scenes. Each Light Zone can consist of both Dimmers and Switches. The device can be combined with a Back Unit, which provide local Switch or Dimmer functionality. <br /&gtRoom and Floor temperature sensors can also be connected to the device, which enables the device to function as a head-less Thermostat. The Thermostat is fully controllable from a Z-Wave Controller, and can control both a Local and Remote heating relay.</p&gt <p&gtThe Multifunction Switch is capable of controlling local loads via a modular Back Unit. The back unit can be mounted and connected to mains electricity inside a Electrical Wall box. Two types of Relay and Dimmer Back Units are currently available. The maximum controllable local load are specified in each Back Unit product sheets. </p&gt
 
 ### Inclusion Information
 
-Push and Hold both Lower buttons simultaneously for 5 seconds. Inclusion is indicated by the LEDs flashing in a "U" shaped pattern. 
+<p&gtPush and Hold both Lower buttons simultaneously for 5 seconds. Inclusion is indicated by the LEDs flashing in a "U" shaped pattern. </p&gt
 
 ### Exclusion Information
 
-Push and Hold both Lower buttons simultaneously for 5 seconds. Exclusion is indicated by the LEDs flashing in a "U" shaped pattern. 
+<p&gtPush and Hold both Lower buttons simultaneously for 5 seconds. Exclusion is indicated by the LEDs flashing in a "U" shaped pattern. </p&gt
 
 ## Channels
 
@@ -233,7 +230,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 4: Safety Activate Delay
 
 Safety Activate Delay in seconds
-Safety Mode is activated after the configured number of seconds has elapsed. It will start by turning OFF the Back Unit when activated. A 0 value Disables Safety Mode. The MAX limit is 32767 seconds (9 hours, 6 minutes and 7 seconds). The minimum Actication delay is 60 seconds, and values from 1 to 59 will automatically be translated to a 60 second delay.
+<p&gtSafety Mode is activated after the configured number of seconds has elapsed. It will start by turning OFF the Back Unit when activated. A 0 value Disables Safety Mode. The MAX limit is 32767 seconds (9 hours, 6 minutes and 7 seconds). The minimum Actication delay is 60 seconds, and values from 1 to 59 will automatically be translated to a 60 second delay.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -244,7 +241,7 @@ This parameter has the configuration ID ```config_4_2``` and is of type ```INTEG
 ### Parameter 5: Safety OFF Period
 
 Safety OFF Period in seconds
-The number of seconds to stay in OFF mode when Safety is activated. The Back unit turns ON when the timer have elapsed. If value is 0, the Back Unit will not turn back ON. The MAX limit is 32767 seconds (9 hours, 6 minutes and 7 seconds). A 60 second minimum period applies.
+<p&gtThe number of seconds to stay in OFF mode when Safety is activated. The Back unit turns ON when the timer have elapsed. If value is 0, the Back Unit will not turn back ON. The MAX limit is 32767 seconds (9 hours, 6 minutes and 7 seconds). A 60 second minimum period applies.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```600```.
@@ -255,7 +252,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: Safety ON Period
 
 Safety ON Period in seconds
-The number of seconds to stay in ON mode when Safety is activated. The Back Unit turns back OFF when the timer have elapsed (and continues to turn ON and OFF alternately). If value is 0, the Back Unit WILL NOT turn ON at all. The MAX limit is 32767 seconds (9 hours, 6 minutes and 7 seconds). A 60 second minimum period applies.
+<p&gtThe number of seconds to stay in ON mode when Safety is activated. The Back Unit turns back OFF when the timer have elapsed (and continues to turn ON and OFF alternately). If value is 0, the Back Unit WILL NOT turn ON at all. The MAX limit is 32767 seconds (9 hours, 6 minutes and 7 seconds). A 60 second minimum period applies.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -266,7 +263,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 10: Dimming speed
 
 Dimmer Speed in 1/100th of a Second
-Defines the "fade" time when setting a dim level from a controller. Fade time is defined as the time it takes to dim from MIN level to MAX level, which means an increase of 10% in light level takes 1/10th of the configured time. The value defines the dim time in 1/100'th of a second, which means a value of 200 gives a Dimming Speed of 2.0 seconds from MIN to MAX. Max time is 327.67 seconds (almost 11 minutes). Values below 30 (0.3 seconds) are ignored ̧ and values below 100 (1 second) are discouraged.
+<p&gtDefines the "fade" time when setting a dim level from a controller. Fade time is defined as the time it takes to dim from MIN level to MAX level, which means an increase of 10% in light level takes 1/10th of the configured time. The value defines the dim time in 1/100'th of a second, which means a value of 200 gives a Dimming Speed of 2.0 seconds from MIN to MAX. Max time is 327.67 seconds (almost 11 minutes). Values below 30 (0.3 seconds) are ignored ̧ and values below 100 (1 second) are discouraged.</p&gt
 Values in the range 30 to 32767 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -277,7 +274,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Dimmer mode
 
 Dimmer Operation Mode
-[ Leading Edge (LE) = 0, Tailing Edge (TE) = 1 ] Defines if Dimmer should operate in Leading or Tailing Edge mode. Most Lights work quite OK in the default Leading Edge mode, but this mode also usually cause some noise from the dimmer unit. During installation it is therefore recommended to try TE mode, and use this if the Light operates properly. Tailing Edge mode is known to cause instability in some type of Lights! This configuration does not have any effect on 1-10V Dimmer Back Units!
+<p&gt[ Leading Edge (LE) = 0, Tailing Edge (TE) = 1 ] Defines if Dimmer should operate in Leading or Tailing Edge mode. Most Lights work quite OK in the default Leading Edge mode, but this mode also usually cause some noise from the dimmer unit. During installation it is therefore recommended to try TE mode, and use this if the Light operates properly. Tailing Edge mode is known to cause instability in some type of Lights! This configuration does not have any effect on 1-10V Dimmer Back Units!</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -288,7 +285,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Maximum Level
 
 Maximum Dimmer Level
-The Maximum Light level of the dimmer. Typically there is no visible difference when the dimming level reaches a point in the range 75 - 90, and the installer should set this value to the lowest value where no change is visible. The default value of 90 is usually OK.
+<p&gtThe Maximum Light level of the dimmer. Typically there is no visible difference when the dimming level reaches a point in the range 75 - 90, and the installer should set this value to the lowest value where no change is visible. The default value of 90 is usually OK.</p&gt
 Values in the range 1 to 99 may be set.
 
 The manufacturer defined default value is ```90```.
@@ -299,7 +296,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Minimum Level
 
 Minimum Dimmer Level
-The Minimum Light Level of the dimmer. This should be adjusted so the controlled Light is still ON and stable. Remember that LED type lights may work if dimmed down to a low value, but may not start if the light is turned OFF and ON again.
+<p&gtThe Minimum Light Level of the dimmer. This should be adjusted so the controlled Light is still ON and stable. Remember that LED type lights may work if dimmed down to a low value, but may not start if the light is turned OFF and ON again.</p&gt
 Values in the range 1 to 99 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -310,12 +307,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Button mode
 
 Operating mode for switch
-Controls the operation mode of the buttons. Valid configuration values are:  
-0 – Single Switch Mode (default)  
-1 – Dual Switch Mode  
-2 – Quadruple Switch Mode  
-3 – Legacy Scenario Mode  
-4 – Central Scene Controller Mode
+<p&gtControls the operation mode of the buttons. Valid configuration values are:<br /&gt0 – Single Switch Mode (default)<br /&gt1 – Dual Switch Mode<br /&gt2 – Quadruple Switch Mode<br /&gt3 – Legacy Scenario Mode<br /&gt4 – Central Scene Controller Mode</p&gt
 Values in the range 0 to 4 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -326,15 +318,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Light Zone Control Mode
 
 Light Zone Control Mode
-Controls if the Light Zones should operate in Switch or Dimmer Mode (only used in Button Modes 0, 1 and 2):  
-0 – All Light Zones in Dimmer Mode (default) 1 – All Light Zones in Switch Mode
-
-To control Light Zone switch mode individually, add any of the following values to enable switch mode individually (dimmer is default):  
-2 – Light Zone 1 Switch Mode  
-4 – Light Zone 2 Switch Mode  
-8 – Light Zone 3 Switch Mode  
-16 – Light Zone 4 Switch Mode  
-Example: A value of 10 (8 + 2) enables switch mode in Light Zone 1 and 3.
+<p&gtControls if the Light Zones should operate in Switch or Dimmer Mode (only used in Button Modes 0, 1 and 2):<br /&gt0 – All Light Zones in Dimmer Mode (default) 1 – All Light Zones in Switch Mode</p&gt <p&gtTo control Light Zone switch mode individually, add any of the following values to enable switch mode individually (dimmer is default):<br /&gt2 – Light Zone 1 Switch Mode<br /&gt4 – Light Zone 2 Switch Mode<br /&gt8 – Light Zone 3 Switch Mode<br /&gt16 – Light Zone 4 Switch Mode<br /&gtExample: A value of 10 (8 + 2) enables switch mode in Light Zone 1 and 3.</p&gt
 Values in the range 0 to 30 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -345,11 +329,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 17: Back Unit Role
 
 Selected Back Unit Role
-Configures the Role of the Back Unit, which dictates what Local functionality controls it. Valid configuration values are:  
-0 - The Thermostat will control the Back Unit (if the back unit is a dimmer, then this value has no effect as Thermostats requires a local relay for local control)
-
-1 - The Light Control feature (buttons) will control the Back Unit.  
-2 - Disconnected mode means the Back Unit is not controlled by any local UI or features, and can only be controlled via Z-Wave End-Point 1 (or the Root Device).
+<p&gtConfigures the Role of the Back Unit, which dictates what Local functionality controls it. Valid configuration values are:<br /&gt0 - The Thermostat will control the Back Unit (if the back unit is a dimmer, then this value has no effect as Thermostats requires a local relay for local control)</p&gt <p&gt1 - The Light Control feature (buttons) will control the Back Unit.<br /&gt2 - Disconnected mode means the Back Unit is not controlled by any local UI or features, and can only be controlled via Z-Wave End-Point 1 (or the Root Device).</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -360,12 +340,7 @@ This parameter has the configuration ID ```config_17_1``` and is of type ```INTE
 ### Parameter 18: Back Unit Light Zone
 
 Selected Back Unit Light Zone
-Selects which Light Zone controls the Back Unit (in Light Mode). Possible values are:  
-1 – Light Zone 1 (Button and Z-Wave) (default) 2 – Light Zone 2 (Button and Z-Wave)  
-3 – Light Zone 3 (Button and Z-Wave)  
-4 – Light Zone 4 (Button and Z-Wave)
-
-This does not have any effect however when the BU role is set to Thermostat or Disconnected!
+<p&gtSelects which Light Zone controls the Back Unit (in Light Mode). Possible values are:<br /&gt1 – Light Zone 1 (Button and Z-Wave) (default) 2 – Light Zone 2 (Button and Z-Wave)<br /&gt3 – Light Zone 3 (Button and Z-Wave)<br /&gt4 – Light Zone 4 (Button and Z-Wave)</p&gt <p&gtThis does not have any effect however when the BU role is set to Thermostat or Disconnected!</p&gt
 Values in the range 1 to 4 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -376,7 +351,7 @@ This parameter has the configuration ID ```config_18_1``` and is of type ```INTE
 ### Parameter 32: Thermostat Set Point Max
 
 Set Point Max in 1/10th of a degree Celcius
-Maximum Heat Set Point the Thermostat is allowed to be set to. If the Thermostat is used for Floor Heating, please make sure that this value is configured to the same value as (or lower than) the Max Floor Temperature. Given in 1/10 of a degree Celcius, which means a value of 300 means 30 degrees C. 
+<p&gtMaximum Heat Set Point the Thermostat is allowed to be set to. If the Thermostat is used for Floor Heating, please make sure that this value is configured to the same value as (or lower than) the Max Floor Temperature. Given in 1/10 of a degree Celcius, which means a value of 300 means 30 degrees C. </p&gt
 Values in the range 0 to 500 may be set.
 
 The manufacturer defined default value is ```270```.
@@ -387,7 +362,7 @@ This parameter has the configuration ID ```config_32_2``` and is of type ```INTE
 ### Parameter 34: Thermostat Set Point Min
 
 Set Point Min in 1/10th of a degree Celcius
-Minimum Heat Set Point the Thermostat is allowed to be set to. Given in 1/10 of a degree Celcius, which means a value of 50 means 5 degrees C.
+<p&gtMinimum Heat Set Point the Thermostat is allowed to be set to. Given in 1/10 of a degree Celcius, which means a value of 50 means 5 degrees C.</p&gt
 Values in the range 0 to 500 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -398,7 +373,7 @@ This parameter has the configuration ID ```config_34_2``` and is of type ```INTE
 ### Parameter 36: Thermostat Control Resend Interval
 
 Resend Interval in seconds
-Defines the interval between each time the Thermostat will repeat its last control command. This is used in combination with the Relay Safety configuration when controlling external Relays. If the Thermostat should fail, it would then stop sending control commands which in turn means the Relay will turn itself OFF after the safety mode delay has expired. This insures that heating will not be left ON indefinitely in failure situations.
+<p&gtDefines the interval between each time the Thermostat will repeat its last control command. This is used in combination with the Relay Safety configuration when controlling external Relays. If the Thermostat should fail, it would then stop sending control commands which in turn means the Relay will turn itself OFF after the safety mode delay has expired. This insures that heating will not be left ON indefinitely in failure situations.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```3600```.
@@ -409,7 +384,7 @@ This parameter has the configuration ID ```config_36_2``` and is of type ```INTE
 ### Parameter 37: Thermostat Minimum On/Off Interval
 
 Minimum On/Off interval in seconds
-This configuration defines the minimum interval the controlled Thermostat Relays will be ON and OFF. This is a feature intended to avoid turning control relays ON and OFF too frequently, which should insure a better lifetime of controlled relays. The default value is 5 minutes, which is OK for most electrical heating control. If used to control Water based heating, the value MUST be adjusted in accordance with the manufacturers specifications.
+<p&gtThis configuration defines the minimum interval the controlled Thermostat Relays will be ON and OFF. This is a feature intended to avoid turning control relays ON and OFF too frequently, which should insure a better lifetime of controlled relays. The default value is 5 minutes, which is OK for most electrical heating control. If used to control Water based heating, the value MUST be adjusted in accordance with the manufacturers specifications.</p&gt
 Values in the range 60 to 32767 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -420,13 +395,7 @@ This parameter has the configuration ID ```config_37_2``` and is of type ```INTE
 ### Parameter 38: Thermostat Floor Temp Max
 
 Floor Temp Max in 1/10th of a degree Celcius
-Max floor temperature if a local floor sensor is connected. If the Floor Sensor reads a temperature Higher than the configured value, it will immediately turn the relay (or any associated relays) OFF.
-
-The relay will stay off until the temperature sinks below this value, and the Thermostat issues it's next control command. Disabled if zero (0) value, or if no floor sensor is connected. The value is given as 1/10th of a degree Celcius. Range: 0 – 500 (0-50 degrees).
-
-NOTE! MAX 27 degrees is recommended for Wooden Floors!
-
-NOTE! This function is always active as long as a Floor Sensor is connected, regardless of the sensor configuration described below.
+<p&gtMax floor temperature if a local floor sensor is connected. If the Floor Sensor reads a temperature Higher than the configured value, it will immediately turn the relay (or any associated relays) OFF.</p&gt <p&gtThe relay will stay off until the temperature sinks below this value, and the Thermostat issues it's next control command. Disabled if zero (0) value, or if no floor sensor is connected. The value is given as 1/10th of a degree Celcius. Range: 0 – 500 (0-50 degrees).</p&gt <p&gtNOTE! MAX 27 degrees is recommended for Wooden Floors!</p&gt <p&gtNOTE! This function is always active as long as a Floor Sensor is connected, regardless of the sensor configuration described below.</p&gt
 Values in the range 0 to 500 may be set.
 
 The manufacturer defined default value is ```270```.
@@ -437,12 +406,7 @@ This parameter has the configuration ID ```config_38_2``` and is of type ```INTE
 ### Parameter 40: Temperature Sensor Select
 
 Temperature Sensor Select
-Defines which temperature Sensor should be used for Heating Control. The default value is Both (3), which should work well in most scenarios (even when only a Floor or Room sensor is present). If both a Room and Floor sensor is used, the Thermostat will always control heating based on the lowest temperature reading of the two, to insure a comfortable floor temperature even if the room is already warm enough. If this is not wanted, the Thermostat should be configured to use the Room sensor Only. NOTE! The Floor Max Temperature feature will ALWAYS be active as long as a floor sensor is available, even if the Thermostat is configured to only use the Room Sensor.
-
-1 - Local Room - Use temperature from Locally connected Room sensor ONLY. Max Floor Temp protection is still active as long as a floor sensor is available.
-
-2 - Local Floor - Use temperature from Locally connected Floor sensor ONLY  
-3 - Both - Use temperature from Locally connected Floor AND Room sensor if available (Default).
+<p&gtDefines which temperature Sensor should be used for Heating Control. The default value is Both (3), which should work well in most scenarios (even when only a Floor or Room sensor is present). If both a Room and Floor sensor is used, the Thermostat will always control heating based on the lowest temperature reading of the two, to insure a comfortable floor temperature even if the room is already warm enough. If this is not wanted, the Thermostat should be configured to use the Room sensor Only. NOTE! The Floor Max Temperature feature will ALWAYS be active as long as a floor sensor is available, even if the Thermostat is configured to only use the Room Sensor.</p&gt <p&gt1 - Local Room - Use temperature from Locally connected Room sensor ONLY. Max Floor Temp protection is still active as long as a floor sensor is available.</p&gt <p&gt2 - Local Floor - Use temperature from Locally connected Floor sensor ONLY<br /&gt3 - Both - Use temperature from Locally connected Floor AND Room sensor if available (Default).</p&gt
 Values in the range 1 to 3 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -453,7 +417,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 44: Cold Start Minimum Level
 
 Cold Start Minimum Level
-Sets the minimum level the Dimmer should go to when the light is switched ON. This is typically used for LED lamps which does not switch ON correctly when the dimming level is at the Minimum.
+<p&gtSets the minimum level the Dimmer should go to when the light is switched ON. This is typically used for LED lamps which does not switch ON correctly when the dimming level is at the Minimum.</p&gt
 Values in the range 1 to 99 may be set.
 
 The manufacturer defined default value is ```20```.
@@ -464,7 +428,7 @@ This parameter has the configuration ID ```config_44_1``` and is of type ```INTE
 ### Parameter 64: Temperature Report Inteval
 
 Report Interval in seconds
-Defines the Periodic Report interval for temperature readings. This can be configured to a minimum of 60 seconds and maximum of (32767 seconds. A 0 value disables the Interval based Periodic reporting, and any value below 60 results in a 60 second interval.
+<p&gtDefines the Periodic Report interval for temperature readings. This can be configured to a minimum of 60 seconds and maximum of (32767 seconds. A 0 value disables the Interval based Periodic reporting, and any value below 60 results in a 60 second interval.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```600```.
@@ -475,7 +439,7 @@ This parameter has the configuration ID ```config_64_2``` and is of type ```INTE
 ### Parameter 66: Temperature Report Threshold
 
 Report Threshold in 1/10th of a degree Celcius
-Defines a temperature change threshold where a temperature report is sent regardless of the Report Interval. This also works if the report interval is disabled. The value is given in 1/10 of a degree celsius, and can be in the range 1-127. A zero value disables the Threshold.
+<p&gtDefines a temperature change threshold where a temperature report is sent regardless of the Report Interval. This also works if the report interval is disabled. The value is given in 1/10 of a degree celsius, and can be in the range 1-127. A zero value disables the Threshold.</p&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -486,7 +450,7 @@ This parameter has the configuration ID ```config_66_1``` and is of type ```INTE
 ### Parameter 67: Thermostat On∕Off Interval Override Threshold
 
 Temperature Threshold in 1/10th of a degree Celcius
-Defines a temperature threshold at which the configured On/Off interval is overridden and the Heating relay state will change regardless. The value is given in 1/10th of a degree, supporting a max threshold of 12.7 degrees celcius. A Zero (0) value disables this feature (the default).
+<p&gtDefines a temperature threshold at which the configured On/Off interval is overridden and the Heating relay state will change regardless. The value is given in 1/10th of a degree, supporting a max threshold of 12.7 degrees celcius. A Zero (0) value disables this feature (the default).</p&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -497,13 +461,7 @@ This parameter has the configuration ID ```config_67_1``` and is of type ```INTE
 ### Parameter 80: Button LED Mode
 
 Selected LED Mode
-Controls the operation of the LEDs. Possible values are:  
-0 – LEDs are always OFF (default)  
-1 – Momentary ON
-
-2 – Stable ON
-
-The LED operation is described in details later in this document, and depends on the Button Mode configuration.
+<p&gtControls the operation of the LEDs. Possible values are:<br /&gt0 – LEDs are always OFF (default)<br /&gt1 – Momentary ON</p&gt <p&gt2 – Stable ON</p&gt <p&gtThe LED operation is described in details later in this document, and depends on the Button Mode configuration.</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -514,7 +472,7 @@ This parameter has the configuration ID ```config_80_1``` and is of type ```INTE
 ### Parameter 240: Floor Sensor Temperature Offset
 
 Temperature Offset in 1/10th of a degree Celcius
-Defines an offset to the Floor Temperature, given as a signed integer at 1/10 of a degree celcius. This provides an offset range of –12.8 to +12.7 degrees celcius.
+<p&gtDefines an offset to the Floor Temperature, given as a signed integer at 1/10 of a degree celcius. This provides an offset range of –12.8 to +12.7 degrees celcius.</p&gt
 Values in the range -128 to 127 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -525,7 +483,7 @@ This parameter has the configuration ID ```config_240_1``` and is of type ```INT
 ### Parameter 241: Room Sensor Temperature Offset
 
 Temperature Offset in 1/10th of a degree Celcius
-Defines an offset to the Room Temperature, given as a signed integer at 1/10 of a degree celcius. This provides an offset range of –12.8 to +12.7 degrees celcius.
+<p&gtDefines an offset to the Room Temperature, given as a signed integer at 1/10 of a degree celcius. This provides an offset range of –12.8 to +12.7 degrees celcius.</p&gt
 Values in the range -128 to 127 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -542,53 +500,43 @@ The FMS01 supports 7 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-The Lifeline group where all Local State Changes are reported. All unsolicited Reports for the supported command classes will be issued to this group.  
-Commands Issued:
-
-- Basic Report - Notifies Local Light Zone changes (button press)  
-- Central Scene Notification - Notifies Scene events from the controller (in Scene Mode)  
-- Sensor Multilevel Report - Reports Power Consumption and Temperatures  
-- Meter - Reports power consumption to the Controller every 15 minutes.  
-- Device Reset Locally – Reports factory resets to the Controller
+<p&gtThe Lifeline group where all Local State Changes are reported. All unsolicited Reports for the supported command classes will be issued to this group.<br /&gtCommands Issued:</p&gt <p&gt- Basic Report - Notifies Local Light Zone changes (button press)<br /&gt- Central Scene Notification - Notifies Scene events from the controller (in Scene Mode)<br /&gt- Sensor Multilevel Report - Reports Power Consumption and Temperatures<br /&gt- Meter - Reports power consumption to the Controller every 15 minutes.<br /&gt- Device Reset Locally – Reports factory resets to the Controller</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Light Zone 1
 
-Associated devices will be controlled by Light Zone 1. Also supports multichannel association in any combination. Command Issued: Basic Set
+<p&gtAssociated devices will be controlled by Light Zone 1. Also supports multichannel association in any combination. Command Issued: Basic Set</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Light Zone 2
 
-Associated devices will be controlled by Light Zone 2.  
-Also supports multichannel association in any combination. Command Issued: Basic Set
+<p&gtAssociated devices will be controlled by Light Zone 2.<br /&gtAlso supports multichannel association in any combination. Command Issued: Basic Set</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Light Zone 3
 
-Associated devices will be controlled by Light Zone 3.  
-Also supports multichannel association in any combination. Command Issued: Basic Set
+<p&gtAssociated devices will be controlled by Light Zone 3.<br /&gtAlso supports multichannel association in any combination. Command Issued: Basic Set</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Light Zone 4
 
-Associated devices will be controlled by Light Zone 4.  
-Also supports multichannel association in any combination. Command Issued: Basic Set
+<p&gtAssociated devices will be controlled by Light Zone 4.<br /&gtAlso supports multichannel association in any combination. Command Issued: Basic Set</p&gt
 
 Association group 5 supports 5 nodes.
 
 ### Group 6: Thermostat Control
 
-Control Set-Point and Mode of an external Thermostat Device Commands Issued: Thermostat Setpoint Set and Thermostat Mode Set
+<p&gtControl Set-Point and Mode of an external Thermostat Device Commands Issued: Thermostat Setpoint Set and Thermostat Mode Set</p&gt
 
 Association group 6 supports 5 nodes.
 
 ### Group 7: Thermostat Relay Control
 
-Control external Relay from the Local Thermostat Command Issued: Basic Set (ON and OFF values ONLY).
+<p&gtControl external Relay from the Local Thermostat Command Issued: Basic Set (ON and OFF values ONLY).</p&gt
 
 Association group 7 supports 5 nodes.
 
@@ -684,9 +632,9 @@ Association group 7 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/1032/SEdevices---FMS01-Multifunction-Switch-Z-Wave-User-Manual.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/1032/SEdevices---FMS01-Multifunction-Switch-Z-Wave-User-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1032).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1032).

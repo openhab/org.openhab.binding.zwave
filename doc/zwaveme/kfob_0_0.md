@@ -10,52 +10,22 @@ This describes the Z-Wave device *KFOB*, manufactured by *Z-Wave.Me* with the th
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![KFOB product image](https://www.cd-jackson.com/zwave_device_uploads/146/146_default.png)
+![KFOB product image](https://opensmarthouse.org/zwavedatabase/146/image/)
 
 
 The KFOB does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. Refer to the *Wakeup Information* section below for further information.
 
 ## Overview
 
-The Secure Key Fob Controller is a 4 button Z-Wave device capable to act both as primary or secondary controller. The four buttons can control other Z-Wave devices such as switches, dimmer and even door locks directly. Various options - configurable by Z-Wave configuration commands - define the actions and the commands used for this control. It is possible to use two sets of buttons (one of on/open/up and one for off/closed/down) or 4 single buttons to control 4 different groups of devices.  
-  
-The controller also allows triggering scenes in a central controller. Again different modes can be configured to adapt to the various implementations of scenes in different central controllers in the market.  
-  
-Control options also include special modes like 'all on/off' or always controlling the Z-Wave device in proximity to the fob. The device supports secure communication when included with enhanced security option and when communicating to a device also supporting enhanced security option. Otherwise the device will automatically turn into normal communication. to maintain backward compatibility.
+<p&gtThe Secure Key Fob Controller is a 4 button Z-Wave device capable to act both as primary or secondary controller. The four buttons can control other Z-Wave devices such as switches, dimmer and even door locks directly. Various options - configurable by Z-Wave configuration commands - define the actions and the commands used for this control. It is possible to use two sets of buttons (one of on/open/up and one for off/closed/down) or 4 single buttons to control 4 different groups of devices.<br /&gt<br /&gtThe controller also allows triggering scenes in a central controller. Again different modes can be configured to adapt to the various implementations of scenes in different central controllers in the market.<br /&gt<br /&gtControl options also include special modes like 'all on/off' or always controlling the Z-Wave device in proximity to the fob. The device supports secure communication when included with enhanced security option and when communicating to a device also supporting enhanced security option. Otherwise the device will automatically turn into normal communication. to maintain backward compatibility.</p&gt
 
 ### Inclusion Information
 
-KFOB
-
-When in factory default push Button 3 (secure) or Button 4 (normal) for one second to enter inclusion mode. Inclusion mode is indicated by a blinking green LED.
-
-From second device on you need to enter management mode:
-
-  1. Push all four buttons together for one second - green led blinks slowly)
-  2. Hit button 3 ( enter primary controller functions - green led blinks faster)
-  3. Then button 1 (secure) or button 2 (normal).
-
-KFOB2
-
-When in factory default push any button for one second to enter inclusion mode. The inclusion mode is indicated by a blinking green LED.
-
-From second device on you need to enter management mode:
-
-  1. Enter management mode by pushing all four buttons together for 5 seconds (until green led blinks slowly)
-  2. Hit button 1 (enter primary controller functions - green led blinks faster)
+<p&gtKFOB</p&gt <p&gtWhen in factory default push Button 3 (secure) or Button 4 (normal) for one second to enter inclusion mode. Inclusion mode is indicated by a blinking green LED.</p&gt <p&gtFrom second device on you need to enter management mode:</p&gt <ol&gt<li&gtPush all four buttons together for one second - green led blinks slowly)</li&gt <li&gtHit button 3 ( enter primary controller functions - green led blinks faster)</li&gt <li&gtThen button 1 (secure) or button 2 (normal).</li&gt </ol&gt<p&gtKFOB2</p&gt <p&gtWhen in factory default push any button for one second to enter inclusion mode. The inclusion mode is indicated by a blinking green LED.</p&gt <p&gtFrom second device on you need to enter management mode:</p&gt <ol&gt<li&gtEnter management mode by pushing all four buttons together for 5 seconds (until green led blinks slowly)</li&gt <li&gtHit button 1 (enter primary controller functions - green led blinks faster)</li&gt </ol&gt
 
 ### Exclusion Information
 
-KFOB
-
-  1. Enter management mode by pushing all four buttons together for one second - green led blinks slowly),
-  2. Hit button 3 ( enter primary controller functions - green led blinks faster) and
-  3. Then button 3 again.
-
-KFOB2
-
-  1. Enter management mode by pushing all four buttons together for 5 seconds (until green led blinks slowly)
-  2. Hit button 1 ( enter primary controller functions - green led blinks faster)
+<p&gtKFOB</p&gt <ol&gt<li&gtEnter management mode by pushing all four buttons together for one second - green led blinks slowly),</li&gt <li&gtHit button 3 ( enter primary controller functions - green led blinks faster) and</li&gt <li&gtThen button 3 again.</li&gt </ol&gt<p&gtKFOB2</p&gt <ol&gt<li&gtEnter management mode by pushing all four buttons together for 5 seconds (until green led blinks slowly)</li&gt <li&gtHit button 1 ( enter primary controller functions - green led blinks faster)</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -64,8 +34,7 @@ The KFOB does not permanently listen for messages sent from the controller - it 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  1. Enter management mode by pushing all four buttons together for one second - green led blinks slowly),
-  2. Then hit button 2 .
+<ol&gt<li&gtEnter management mode by pushing all four buttons together for one second - green led blinks slowly),</li&gt <li&gtThen hit button 2 .</li&gt </ol&gt
 
 ## Channels
 
@@ -123,8 +92,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Button 1 and 3 pair mode
 
 Button 1 and 3 pair mode
-  * In separate mode button 1 works with Group A, button 3 with Group C. Click is ON, Hold is dimming UP, Double click is OFF, Click-Hold is dimming DOWN.
-  * In pair button 1/3 are UP/DOWN correspondingly. Click is ON/OFF, Hold is dimming UP/DOWN. Single clicks works with Group A, double click with Group C
+<ul&gt<li&gtIn separate mode button 1 works with Group A, button 3 with Group C. Click is ON, Hold is dimming UP, Double click is OFF, Click-Hold is dimming DOWN.</li&gt <li&gtIn pair button 1/3 are UP/DOWN correspondingly. Click is ON/OFF, Hold is dimming UP/DOWN. Single clicks works with Group A, double click with Group C</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -141,8 +109,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Button 2 and 4 pair mode
 
 Button 2 and 4 pair mode
-  * In separate mode button 2 works with control group B, button 4 with control group D. Click is ON, Hold is dimming UP, Double click is OFF, Click-Hold is dimming DOWN.
-  * In pair button B/D are UP/DOWN correspondingly. Click is ON/OFF, Hold is dimming UP/DOWN. Single clicks works with Group B, double click with Group D.
+<ul&gt<li&gtIn separate mode button 2 works with control group B, button 4 with control group D. Click is ON, Hold is dimming UP, Double click is OFF, Click-Hold is dimming DOWN.</li&gt <li&gtIn pair button B/D are UP/DOWN correspondingly. Click is ON/OFF, Hold is dimming UP/DOWN. Single clicks works with Group B, double click with Group D.</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -159,7 +126,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 11: Action on group A
 
 Action on group A
-This parameter defines the command to be sent to devices of control group A when the related button is pressed.
+<p&gtThis parameter defines the command to be sent to devices of control group A when the related button is pressed.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -180,7 +147,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Action on group B
 
 Action on group B
-This parameter defines the command to be sent to devices of control group B when the related button is pressed.
+<p&gtThis parameter defines the command to be sent to devices of control group B when the related button is pressed.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -201,7 +168,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Action on group C
 
 Action on group C
-This parameter defines the command to be sent to devices of control group C when the related button is pressed
+<p&gtThis parameter defines the command to be sent to devices of control group C when the related button is pressed</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -222,7 +189,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Action on group D
 
 Action on group D
-This parameter defines the command to be sent to devices of control group D when the related button is pressed
+<p&gtThis parameter defines the command to be sent to devices of control group D when the related button is pressed</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -393,9 +360,9 @@ Association group 5 supports 10 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/146/Manual-KFOB-POPP-C-En.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/146/Manual-KFOB-POPP-C-En.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/146).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/146).

@@ -10,7 +10,7 @@ This describes the Z-Wave device *FLF-ZWAVE5 R1*, manufactured by *Ecolink* with
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![FLF-ZWAVE5 R1 product image](https://www.cd-jackson.com/zwave_device_uploads/744/744_default.png)
+![FLF-ZWAVE5 R1 product image](https://opensmarthouse.org/zwavedatabase/744/image/)
 
 
 The FLF-ZWAVE5 R1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,18 +19,15 @@ The FLF-ZWAVE5 R1 does not permanently listen for messages sent from the control
 
 ## Overview
 
-  * Z-Wave+™ enabled device which detects flood and freeze.
-  * Reports tamper condition when cover is open
+<ul&gt<li&gtZ-Wave+™ enabled device which detects flood and freeze.</li&gt <li&gtReports tamper condition when cover is open</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Remove the battery for at least 10 seconds
-  2. Reinstall the battery
+<ol&gt<li&gtRemove the battery for at least 10 seconds</li&gt <li&gtReinstall the battery</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Remove the battery for at least 10 seconds
-  2. Reinstall the battery
+<ol&gt<li&gtRemove the battery for at least 10 seconds</li&gt <li&gtReinstall the battery</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -39,7 +36,7 @@ The FLF-ZWAVE5 R1 does not permanently listen for messages sent from the control
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Not provided
+<p&gtNot provided</p&gt
 
 ## Channels
 
@@ -108,7 +105,7 @@ The FLF-ZWAVE5 R1 supports 1 association group.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Group one is a lifeline group who will receive unsolicited messages relating to flood/freeze notifications, case tampering notifications, low-battery notifications.
+<p&gtGroup one is a lifeline group who will receive unsolicited messages relating to flood/freeze notifications, case tampering notifications, low-battery notifications.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -136,11 +133,11 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Conformance statement](https://www.cd-jackson.com/zwave_device_uploads/744/pics.pdf)
-* [Partial info from user guide](https://www.cd-jackson.com/zwave_device_uploads/744/ecolink-data.pdf)
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/744/Z-Wave-Plus-Wireless-Flood-Sensor-with-a-Probe-FLF-ZWAVE5-V5.pdf)
+* [Conformance statement](https://opensmarthouse.org/zwavedatabase/744/pics.pdf)
+* [Partial info from user guide](https://opensmarthouse.org/zwavedatabase/744/ecolink-data.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/744/Z-Wave-Plus-Wireless-Flood-Sensor-with-a-Probe-FLF-ZWAVE5-V5.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/744).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/744).

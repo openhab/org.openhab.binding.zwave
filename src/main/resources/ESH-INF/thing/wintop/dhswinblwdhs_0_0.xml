@@ -7,9 +7,7 @@
 
   <thing-type id="wintop_dhswinblwdhs_00_000" listed="false">
     <label>DHS-WIN-BLW-DHS Blind controller</label>
-    <description><![CDATA[
-Blind controller<br /><h1>Overview</h1><p>The DHS Z-Wave AC Motor Shutter Controller DHS-WIN-BLW-DHS is Z-Wave Shutter device specifically designed for use in smart homes and offices. </p> <p>The product allows to operate roller blinds/shutters wirelessly using a Z-wave enabled (AUS/NZ version 921.42 MHz) controllers (compatible universal remote controllers, control panels, gateways, PC with Z-Wave USB dongle) or manually via connected manual switch.</p> <p>The shutter controller can act as a wireless repeater to ensure that commands intended for another device in the network are received. This is useful to eliminate “RF deadspots” when the radio range of the Z-Wave network is influenced. This function is part of the Z-Wave network functionality and is set up via Z-Wave controller.</p> <br /><h2>Inclusion Information</h2><ol><li>Connect the Z-Wave Shutter Controller to the motor, power circuits and to the manual switches as per instructions in the section INSTALLATION above.</li> <li>When the Shutter Controller is not yet included in a Z-Wave network, NWI works for 30 seconds when the Shutter Controller is power ON. Make sure your Z-Wave Gateway is in the correct operating mode (inclusion). To include/exclude press 5 times any connected buttons. During the whole procedure controller (Gateway) and Z-Wave Shutter Controller must be in close proximity of 3 m. Successful inclusion will be indicated by your Z-Wave remote controller (Gateway). In case inclusion was not successful, try the procedure again or reset network settings by running exclusion procedure (see below).</li> <li>Once the Z-Wave Shutter Controller has been added into your Z-Wave home network successfully, you may need to assign it to a speciö c button on your controller (Gateway). Refer to your Z-Wave controller (Gateway) / panel for instructions on how to do this.</li> <li>Now, you can control your lamp via your Z-Wave Gateway or other controller</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Install Connect the Z-Wave Shutter Controller to the load, power circuits and to the manual switch as per instructions in the section INSTALLATION above.</li> <li>Start exclusion procedure on your controller and when requested press and release any connected button 5 times. During the whole procedure the controller and Z-Wave Shutter Controller must be close proximity of not more then 3 m.</li> <li>Successful exclusion will be indicated by your Z-Wave remote controller. LED on the Z-Wave Shutter Controller will start slow blinking. In case exclusion was not successful, try the procedure again.</li> </ol>
-    ]]></description>
+    <description>Blind controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe DHS Z-Wave AC Motor Shutter Controller DHS-WIN-BLW-DHS is Z-Wave Shutter device specifically designed for use in smart homes and offices. &lt;/p&gt &lt;p&gtThe product allows to operate roller blinds/shutters wirelessly using a Z-wave enabled (AUS/NZ version 921.42 MHz) controllers (compatible universal remote controllers, control panels, gateways, PC with Z-Wave USB dongle) or manually via connected manual switch.&lt;/p&gt &lt;p&gtThe shutter controller can act as a wireless repeater to ensure that commands intended for another device in the network are received. This is useful to eliminate “RF deadspots” when the radio range of the Z-Wave network is influenced. This function is part of the Z-Wave network functionality and is set up via Z-Wave controller.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtConnect the Z-Wave Shutter Controller to the motor, power circuits and to the manual switches as per instructions in the section INSTALLATION above.&lt;/li&gt &lt;li&gtWhen the Shutter Controller is not yet included in a Z-Wave network, NWI works for 30 seconds when the Shutter Controller is power ON. Make sure your Z-Wave Gateway is in the correct operating mode (inclusion). To include/exclude press 5 times any connected buttons. During the whole procedure controller (Gateway) and Z-Wave Shutter Controller must be in close proximity of 3 m. Successful inclusion will be indicated by your Z-Wave remote controller (Gateway). In case inclusion was not successful, try the procedure again or reset network settings by running exclusion procedure (see below).&lt;/li&gt &lt;li&gtOnce the Z-Wave Shutter Controller has been added into your Z-Wave home network successfully, you may need to assign it to a speciö c button on your controller (Gateway). Refer to your Z-Wave controller (Gateway) / panel for instructions on how to do this.&lt;/li&gt &lt;li&gtNow, you can control your lamp via your Z-Wave Gateway or other controller&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtInstall Connect the Z-Wave Shutter Controller to the load, power circuits and to the manual switch as per instructions in the section INSTALLATION above.&lt;/li&gt &lt;li&gtStart exclusion procedure on your controller and when requested press and release any connected button 5 times. During the whole procedure the controller and Z-Wave Shutter Controller must be close proximity of not more then 3 m.&lt;/li&gt &lt;li&gtSuccessful exclusion will be indicated by your Z-Wave remote controller. LED on the Z-Wave Shutter Controller will start slow blinking. In case exclusion was not successful, try the procedure again.&lt;/li&gt &lt;/ol&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -62,9 +60,7 @@ Blind controller<br /><h1>Overview</h1><p>The DHS Z-Wave AC Motor Shutter Contro
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Buttons mode</label>
-        <description><![CDATA[
-Set number and type of directly connected buttons<br /><h1>Overview</h1><ul><li>One push button: One button is used (chose any), press while moving up and down stops, while stopped moves to opposite direction to previous.</li> <li>Two buttons with neutral position: Up click moves up if stopped and stops if moving down, Down click moves down if stopped and stops if moving up, Hold Up/Down moves in up/down, Release stops.</li> <li>Two toggle switch: Switch to Up/Down moves up/down.</li> <li>Two paddles with Power and Direction: Hold Up button to move blinds up. If Down button is pressed, blinds will move down. Release Up button to stop.</li> </ul>
-        ]]></description>
+        <description>Set number and type of directly connected buttons&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtOne push button: One button is used (chose any), press while moving up and down stops, while stopped moves to opposite direction to previous.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtTwo buttons with neutral position: Up click moves up if stopped and stops if moving down, Down click moves down if stopped and stops if moving up, Hold Up/Down moves in up/down, Release stops.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtTwo toggle switch: Switch to Up/Down moves up/down.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtTwo paddles with Power and Direction: Hold Up button to move blinds up. If Down button is pressed, blinds will move down. Release Up button to stop.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">One push button</option>
@@ -137,9 +133,7 @@ Set number and type of directly connected buttons<br /><h1>Overview</h1><ul><li>
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>10: Full close time</label>
-        <description><![CDATA[
-Time to go from opened to closed state<br /><h1>Overview</h1><p>Time to go from opened to closed state. Used to estimate the current level. Note that in Permanent motion mode the reported value would be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close</p>
-        ]]></description>
+        <description>Time to go from opened to closed state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime to go from opened to closed state. Used to estimate the current level. Note that in Permanent motion mode the reported value would be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -147,9 +141,7 @@ Time to go from opened to closed state<br /><h1>Overview</h1><p>Time to go from 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>11: Full open time</label>
-        <description><![CDATA[
-Time to go from closed to open state<br /><h1>Overview</h1><p> Time to go from closed to open state. This value may differ from full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close</p>
-        ]]></description>
+        <description>Time to go from closed to open state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Time to go from closed to open state. This value may differ from full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -157,18 +149,14 @@ Time to go from closed to open state<br /><h1>Overview</h1><p> Time to go from 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="24">
         <label>12: Node Id of the blocking device</label>
-        <description><![CDATA[
-Node Id of the blocking device<br /><h1>Overview</h1><p>Id of the device which commands would be interpreted not as Open/Close, but as block/unblock. Useful with door opening detector: if the door is open, block the blind not to break shades while they move. </p>
-        ]]></description>
+        <description>Node Id of the blocking device&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtId of the device which commands would be interpreted not as Open/Close, but as block/unblock. Useful with door opening detector: if the door is open, block the blind not to break shades while they move. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Blocking mode command</label>
-        <description><![CDATA[
-Blocking mode command<br /><h1>Overview</h1><p>Defines which command from blocking device to interpret as closed door and hence, unprotected.</p>
-        ]]></description>
+        <description>Blocking mode command&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines which command from blocking device to interpret as closed door and hence, unprotected.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">On</option>

@@ -7,9 +7,7 @@
 
   <thing-type id="willis_nzw39_00_000" listed="false">
     <label>NZW39 Dimming Plug</label>
-    <description><![CDATA[
-Dimming Plug<br /><h1>Overview</h1><p>Z-Wave Plug/Dimmer w/Built-in Z-Wave Repeater, combines a Z-Wave Outlet &amp; Range Extender in 1 Module </p> <br /><h2>Inclusion Information</h2><p>Put the controller into inclusion mode, then push the middle button on the smart plug 3-5 times within 3 seconds</p> <br /><h2>Exclusion Information</h2><p>Put the controller into exclusion mode, then push the middle button on the smart plug 3-5 times within 3 seconds</p>
-    ]]></description>
+    <description>Dimming Plug&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-Wave Plug/Dimmer w/Built-in Z-Wave Repeater, combines a Z-Wave Outlet &amp;amp; Range Extender in 1 Module &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut the controller into inclusion mode, then push the middle button on the smart plug 3-5 times within 3 seconds&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut the controller into exclusion mode, then push the middle button on the smart plug 3-5 times within 3 seconds&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -84,7 +82,7 @@ Dimming Plug<br /><h1>Overview</h1><p>Z-Wave Plug/Dimmer w/Built-in Z-Wave Repea
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
-        <description>Invert on &amp; off on the physical switch</description>
+        <description>Invert on &amp;amp;amp; off on the physical switch</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>

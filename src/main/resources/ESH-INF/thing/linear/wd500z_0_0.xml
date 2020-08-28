@@ -7,9 +7,7 @@
 
   <thing-type id="linear_wd500z_00_000" listed="false">
     <label>WD500Z-1 Wall Dimmer Switch</label>
-    <description><![CDATA[
-Wall Dimmer Switch<br /><h1>Overview</h1><p>500W, 120 VAC Wall Mounted Dimmer</p> <br /><h2>Inclusion Information</h2><p>Pushing the top or bottom of the switch, the WD500Z-1 allows the user to include or exclude the module from the Z-Wave network.</p> <br /><h2>Exclusion Information</h2><p>Pushing the top or bottom of the switch, the WD500Z-1 allows the user to include or exclude the module from the Z-Wave network.</p>
-    ]]></description>
+    <description>Wall Dimmer Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt500W, 120 VAC Wall Mounted Dimmer&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPushing the top or bottom of the switch, the WD500Z-1 allows the user to include or exclude the module from the Z-Wave network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPushing the top or bottom of the switch, the WD500Z-1 allows the user to include or exclude the module from the Z-Wave network.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -50,9 +48,7 @@ Wall Dimmer Switch<br /><h1>Overview</h1><p>500W, 120 VAC Wall Mounted Dimmer</p
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Dim Start Level</label>
-        <description><![CDATA[
-Start dimming from that start level or current level<br /><h1>Overview</h1><p>A dimmer receiving this command will start dimming from that start level if this bit is set to 0. If the bit is set to 1, the dimmer will ignore the start level and instead start dimming from its current level.</p>
-        ]]></description>
+        <description>Start dimming from that start level or current level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtA dimmer receiving this command will start dimming from that start level if this bit is set to 0. If the bit is set to 1, the dimmer will ignore the start level and instead start dimming from its current level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Use Start Level</option>
@@ -72,9 +68,7 @@ Start dimming from that start level or current level<br /><h1>Overview</h1><p>A 
 
       <parameter name="config_4_1" type="integer" groupName="configuration" readOnly="true">
         <label>4: Invert Switch</label>
-        <description><![CDATA[
-Reverse switch direction<br /><h1>Overview</h1><p>To change the top of the switch to OFF and the bottom to ON change parameter to 1.</p>
-        ]]></description>
+        <description>Reverse switch direction&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTo change the top of the switch to OFF and the bottom to ON change parameter to 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Top-ON, Bottom-OFF</option>
@@ -104,9 +98,7 @@ Reverse switch direction<br /><h1>Overview</h1><p>To change the top of the switc
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: LED Transmission Indication</label>
-        <description><![CDATA[
-LED mode while transmitting<br /><h1>Overview</h1><p>The WD500Z-1 will flicker its LED when it is transmitting to any of its groups.</p> <p>Parameter set to 0 = not flicker</p> <p>Parameter set to 1 = flicker the entire time of transmitting</p> <p>Parameter set to 2 = flicker for only 1 second.</p>
-        ]]></description>
+        <description>LED mode while transmitting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe WD500Z-1 will flicker its LED when it is transmitting to any of its groups.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter set to 0 = not flicker&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter set to 1 = flicker the entire time of transmitting&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter set to 2 = flicker for only 1 second.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Disable Flicker</option>

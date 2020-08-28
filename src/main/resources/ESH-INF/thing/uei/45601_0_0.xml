@@ -7,9 +7,7 @@
 
   <thing-type id="uei_45601_00_000" listed="false">
     <label>45601 Advanced Remote Wireless Lighting Control</label>
-    <description><![CDATA[
-Advanced Remote Wireless Lighting Control<br /><h1>Overview</h1><p>- Control your entire home from one remote</p> <ul><li>Turn on/off and adjust the brightness of Z-Wave enabled lights</li> <li>Operates the on/off functions of Z-Wave enabled small appliances</li> <li>Manage up to 18 individual lights, 18 groups, and 18 scenes</li> <li>Create custom lighting groups and scenes</li> <li>On-screen LCD menu provides easy navigation of features and command feedback</li> <li>Program up to nine timed events with advanced timer</li> <li>Controls Z-Wave enabled thermostats</li> <li>Label function allows you to name lights, groups, and scenes</li> </ul><p>Provides wireless radio frequency control of Z-Wave Plug-In/Dimming/Switching Modules and Wall Switches </p> <br /><h2>Inclusion Information</h2><p>N/A</p> <br /><h2>Exclusion Information</h2><p>N/A</p>
-    ]]></description>
+    <description>Advanced Remote Wireless Lighting Control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt- Control your entire home from one remote&lt;/p&gt &lt;ul&gt&lt;li&gtTurn on/off and adjust the brightness of Z-Wave enabled lights&lt;/li&gt &lt;li&gtOperates the on/off functions of Z-Wave enabled small appliances&lt;/li&gt &lt;li&gtManage up to 18 individual lights, 18 groups, and 18 scenes&lt;/li&gt &lt;li&gtCreate custom lighting groups and scenes&lt;/li&gt &lt;li&gtOn-screen LCD menu provides easy navigation of features and command feedback&lt;/li&gt &lt;li&gtProgram up to nine timed events with advanced timer&lt;/li&gt &lt;li&gtControls Z-Wave enabled thermostats&lt;/li&gt &lt;li&gtLabel function allows you to name lights, groups, and scenes&lt;/li&gt &lt;/ul&gt&lt;p&gtProvides wireless radio frequency control of Z-Wave Plug-In/Dimming/Switching Modules and Wall Switches &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtN/A&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtN/A&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

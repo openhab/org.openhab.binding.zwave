@@ -7,9 +7,7 @@
 
   <thing-type id="widom_wps104_00_000" listed="false">
     <label>WPS104 Energy Driven Switch</label>
-    <description><![CDATA[
-Energy Driven Switch<br /><h1>Overview</h1><p>WiDom Energy Driven Switch is a device designed to monitor all <b>parameters</b>, <b>usage</b>, <b>faults</b> and <b>overloads </b>of your electrical system. Unlike an ordinary energy meter, WiDom Energy Driven Switch can be installed to monitor an entire electricity network or a section of the latter.</p> <p>·         <b>Active Energy-saving management</b></p> <p>Automatically connects and disconnects a specific load if the established threshold limit is exceeded, or supplies the required power, momentarily excluding non-priority loads.</p> <p>·         <b>Management and prevention of electrical faults </b></p> <p>Identifies malfunctions based on irregular consumptions and to the maximum time of activity.</p> <p>·         <b>Electrical overload management </b></p> <p>Notifies or disconnects non-priority loads in the eventuality of system overloads.</p> <br /><h2>Inclusion Information</h2><p>If the device is not included into a Z-Wave network, a single click on the (B) button or on the external switch will launch the process of traditional inclusion. If the device inclusion procedure does not start within 2 seconds, the Network Wide Inclusion network will be launched lasting a variable amount of time between 15-30 seconds</p> <br /><h2>Exclusion Information</h2><p>Only a controller can remove a device from the network. WiDom Energy Driven Switch is compatible with all Z-Wave certified controllers. After the exclusion procedure has been activated by the controller, the device can be removed, putting it in <i>Exclusion</i> <i>Mode</i> by three consecutive clicks on the (B) button or on the external switch, when available.</p>
-    ]]></description>
+    <description>Energy Driven Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWiDom Energy Driven Switch is a device designed to monitor all &lt;b&gtparameters&lt;/b&gt, &lt;b&gtusage&lt;/b&gt, &lt;b&gtfaults&lt;/b&gt and &lt;b&gtoverloads &lt;/b&gtof your electrical system. Unlike an ordinary energy meter, WiDom Energy Driven Switch can be installed to monitor an entire electricity network or a section of the latter.&lt;/p&gt &lt;p&gt·         &lt;b&gtActive Energy-saving management&lt;/b&gt&lt;/p&gt &lt;p&gtAutomatically connects and disconnects a specific load if the established threshold limit is exceeded, or supplies the required power, momentarily excluding non-priority loads.&lt;/p&gt &lt;p&gt·         &lt;b&gtManagement and prevention of electrical faults &lt;/b&gt&lt;/p&gt &lt;p&gtIdentifies malfunctions based on irregular consumptions and to the maximum time of activity.&lt;/p&gt &lt;p&gt·         &lt;b&gtElectrical overload management &lt;/b&gt&lt;/p&gt &lt;p&gtNotifies or disconnects non-priority loads in the eventuality of system overloads.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtIf the device is not included into a Z-Wave network, a single click on the (B) button or on the external switch will launch the process of traditional inclusion. If the device inclusion procedure does not start within 2 seconds, the Network Wide Inclusion network will be launched lasting a variable amount of time between 15-30 seconds&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnly a controller can remove a device from the network. WiDom Energy Driven Switch is compatible with all Z-Wave certified controllers. After the exclusion procedure has been activated by the controller, the device can be removed, putting it in &lt;i&gtExclusion&lt;/i&gt &lt;i&gtMode&lt;/i&gt by three consecutive clicks on the (B) button or on the external switch, when available.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -91,9 +89,7 @@ Energy Driven Switch<br /><h1>Overview</h1><p>WiDom Energy Driven Switch is a de
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Device Status</label>
-        <description><![CDATA[
-How to control the relay<br /><h1>Overview</h1><p>Controlling the relay by means of a single click on the external switch or on the integrated button.</p>
-        ]]></description>
+        <description>How to control the relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtControlling the relay by means of a single click on the external switch or on the integrated button.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">TOGGLE:ON/OFF</option>
@@ -105,9 +101,7 @@ How to control the relay<br /><h1>Overview</h1><p>Controlling the relay by means
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Device status upon receipt of a Basic Set command</label>
-        <description><![CDATA[
-Device status upon receipt of a Basic Set command<br /><h1>Overview</h1><p>The final status achieved by the device when it receives a <b><i>Basic Set</i></b> command through the Z-Wave network.</p>
-        ]]></description>
+        <description>Device status upon receipt of a Basic Set command&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe final status achieved by the device when it receives a &amp;lt;b&amp;amp;gt&amp;lt;i&amp;amp;gtBasic Set&amp;lt;/i&amp;amp;gt&amp;lt;/b&amp;amp;gt command through the Z-Wave network.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">AS_RECEIVED</option>
@@ -120,26 +114,20 @@ Device status upon receipt of a Basic Set command<br /><h1>Overview</h1><p>The f
       <parameter name="config_30_2" type="integer" groupName="configuration"
                  min="0" max="4500">
         <label>30: Overcurrent Level</label>
-        <description><![CDATA[
-Sets the overcurrent level<br /><h1>Overview</h1><p>Sets the current level above which the time spent above that level is measured.</p> <p>Version C: From 0 to 4500[1] hundredths of Amperes – Default Value: <b>4500 Hundredths of Amperes</b></p> <p>Version S: From 0 to 1250 hundredths of Amperes – Default Value: <b>1250 Hundredths of Amperes</b></p>
-        ]]></description>
+        <description>Sets the overcurrent level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the current level above which the time spent above that level is measured.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVersion C: From 0 to 4500[1] hundredths of Amperes – Default Value: &amp;lt;b&amp;amp;gt4500 Hundredths of Amperes&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVersion S: From 0 to 1250 hundredths of Amperes – Default Value: &amp;lt;b&amp;amp;gt1250 Hundredths of Amperes&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4500</default>
       </parameter>
 
       <parameter name="config_31_2" type="integer" groupName="configuration"
                  min="0" max="10800">
         <label>31: Overcurrent Time</label>
-        <description><![CDATA[
-Sets the time to recognize an overcurrent event.<br /><h1>Overview</h1><p>Sets the time beyond which, in the case of overcurrent at a level higher than that established in parameter 30, an OverCurrent event occurs.</p> <p>From 0 to 10800 Seconds (3 Hours) – Default Value: <b>10 Seconds</b></p>
-        ]]></description>
+        <description>Sets the time to recognize an overcurrent event.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the time beyond which, in the case of overcurrent at a level higher than that established in parameter 30, an OverCurrent event occurs.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 0 to 10800 Seconds (3 Hours) – Default Value: &amp;lt;b&amp;amp;gt10 Seconds&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration">
         <label>32: Next State</label>
-        <description><![CDATA[
-Defines the next state if an overcurrent event occurr<br /><h1>Overview</h1><p>Defines the next state of the device if an overcurrent event has occurred</p>
-        ]]></description>
+        <description>Defines the next state if an overcurrent event occurr&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the next state of the device if an overcurrent event has occurred&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">IGNORE</option>
@@ -151,9 +139,7 @@ Defines the next state if an overcurrent event occurr<br /><h1>Overview</h1><p>D
 
       <parameter name="config_33_4" type="integer" groupName="configuration">
         <label>33: Meter Reset</label>
-        <description><![CDATA[
-Provides total operating time from last meter reset<br /><h1>Overview</h1><p>Provides total operating time from last meter reset. When set to 0 it resets the cumulative values of energy and total operating time.</p>
-        ]]></description>
+        <description>Provides total operating time from last meter reset&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtProvides total operating time from last meter reset. When set to 0 it resets the cumulative values of energy and total operating time.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Reset Meter and time</option>
@@ -163,9 +149,7 @@ Provides total operating time from last meter reset<br /><h1>Overview</h1><p>Pro
 
       <parameter name="config_34_1" type="integer" groupName="configuration">
         <label>34: Energy flow</label>
-        <description><![CDATA[
-Determines whether if energy consumed or energy produced.<br /><h1>Overview</h1><p>Determines whether energy events are related to energy consumed or energy produced.</p>
-        ]]></description>
+        <description>Determines whether if energy consumed or energy produced.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDetermines whether energy events are related to energy consumed or energy produced.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">CONSUMED</option>
@@ -176,26 +160,20 @@ Determines whether if energy consumed or energy produced.<br /><h1>Overview</h1>
       <parameter name="config_35_2" type="integer" groupName="configuration"
                  min="0" max="11250">
         <label>35: UP Power Level</label>
-        <description><![CDATA[
-Sets the level of instantaneous power in Watts<br /><h1>Overview</h1><p>The upper limit power threshold detector determines when instantaneous power remains above the threshold point (UP Power Level) beyond a specified duration (UP Power Time). When this happens, a <i>UP Power Event</i> occurs.</p> <p>Sets the level of instantaneous power in Watts beyond which time of permanence above this level is calculated. </p> <p>Version C: From 0 to 11250[1] – Default value: <b>11250 </b></p> <p>Version S: From 0 to 3000 – Default value: <b>3000 </b></p>
-        ]]></description>
+        <description>Sets the level of instantaneous power in Watts&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe upper limit power threshold detector determines when instantaneous power remains above the threshold point (UP Power Level) beyond a specified duration (UP Power Time). When this happens, a &amp;lt;i&amp;amp;gtUP Power Event&amp;lt;/i&amp;amp;gt occurs.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSets the level of instantaneous power in Watts beyond which time of permanence above this level is calculated. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVersion C: From 0 to 11250[1] – Default value: &amp;lt;b&amp;amp;gt11250 &amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVersion S: From 0 to 3000 – Default value: &amp;lt;b&amp;amp;gt3000 &amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>11250</default>
       </parameter>
 
       <parameter name="config_36_2" type="integer" groupName="configuration"
                  min="0" max="10800">
         <label>36: UP Power Time</label>
-        <description><![CDATA[
-Sets the time in seconds<br /><h1>Overview</h1><p>Sets the time in seconds beyond which, if instantaneous power remains at levels exceeding threshold defined by parameter 35, a UP Power event occurs.</p> <p>From 0 to 10800 seconds (3 Hours) – Default value: <b>10 Seconds</b></p>
-        ]]></description>
+        <description>Sets the time in seconds&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the time in seconds beyond which, if instantaneous power remains at levels exceeding threshold defined by parameter 35, a UP Power event occurs.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 0 to 10800 seconds (3 Hours) – Default value: &amp;lt;b&amp;amp;gt10 Seconds&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_37_1" type="integer" groupName="configuration">
         <label>37: UP Power State</label>
-        <description><![CDATA[
-Defines the next status case of a UP Power event<br /><h1>Overview</h1><p>Defines the next status of the device in the case of a UP Power event occurring.</p>
-        ]]></description>
+        <description>Defines the next status case of a UP Power event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the next status of the device in the case of a UP Power event occurring.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">IGNORE</option>
@@ -208,35 +186,27 @@ Defines the next status case of a UP Power event<br /><h1>Overview</h1><p>Define
       <parameter name="config_38_1" type="integer" groupName="configuration"
                  min="-1" max="99">
         <label>38: UP Power Associated</label>
-        <description><![CDATA[
-Defines the status of Group 2 devices<br /><h1>Overview</h1><p>Defines the status of associated devices in the presence of a UP Power event.</p> <p>From: 1 to 99 for dimming purpose</p> <p>0 (OFF) and -1(ON) for switching ON/OFF.</p> <p>Default: <b>0 – OFF</b></p>
-        ]]></description>
+        <description>Defines the status of Group 2 devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the status of associated devices in the presence of a UP Power event.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom: 1 to 99 for dimming purpose&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 (OFF) and -1(ON) for switching ON/OFF.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault: &amp;lt;b&amp;amp;gt0 – OFF&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_39_2" type="integer" groupName="configuration"
                  min="0" max="11250">
         <label>39: DOWN Power Level</label>
-        <description><![CDATA[
-Sets the level of instantaneous power in Watts<br /><h1>Overview</h1><p>Sets the level of instantaneous power beyond which the time of permanence below this level is calculated.</p> <p>From 0 to 11250 Watt – Default value: <b>0 W</b></p>
-        ]]></description>
+        <description>Sets the level of instantaneous power in Watts&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the level of instantaneous power beyond which the time of permanence below this level is calculated.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 0 to 11250 Watt – Default value: &amp;lt;b&amp;amp;gt0 W&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_40_2" type="integer" groupName="configuration"
                  min="0" max="10800">
         <label>40: DOWN Power Time</label>
-        <description><![CDATA[
-Sets the time in seconds<br /><h1>Overview</h1><p>Sets the time beyond which, if instantaneous power remains at levels below threshold defined by parameter 39, a DOWN Power event occurs.      From 0 to 10800 Seconds (3 Hours) – Default value: <b>10 Seconds</b></p>
-        ]]></description>
+        <description>Sets the time in seconds&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the time beyond which, if instantaneous power remains at levels below threshold defined by parameter 39, a DOWN Power event occurs.      From 0 to 10800 Seconds (3 Hours) – Default value: &amp;lt;b&amp;amp;gt10 Seconds&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration">
         <label>41: DOWN Power State</label>
-        <description><![CDATA[
-Defines the next state case of a DOWN Power event<br /><h1>Overview</h1><p>Defines the next state of the device in the case of a DOWN Power event occurring.</p>
-        ]]></description>
+        <description>Defines the next state case of a DOWN Power event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the next state of the device in the case of a DOWN Power event occurring.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">IGNORE</option>
@@ -249,26 +219,20 @@ Defines the next state case of a DOWN Power event<br /><h1>Overview</h1><p>Defin
       <parameter name="config_42_1" type="integer" groupName="configuration"
                  min="-1" max="99">
         <label>42: DOWN Power Associated</label>
-        <description><![CDATA[
-Defines the status of Group 3 devices<br /><h1>Overview</h1><p>Defines the status of associated devices in the presence of a DOWN Power event.</p> <p>From: 1 to 99 for dimming purpose</p> <p>– 0 (OFF) and -1(ON) for switching ON/OFF.</p> <p>Default: <b>0 – OFF</b></p>
-        ]]></description>
+        <description>Defines the status of Group 3 devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the status of associated devices in the presence of a DOWN Power event.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom: 1 to 99 for dimming purpose&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt– 0 (OFF) and -1(ON) for switching ON/OFF.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault: &amp;lt;b&amp;amp;gt0 – OFF&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_43_4" type="integer" groupName="configuration"
                  min="0" max="2000000">
         <label>43: Energy Level</label>
-        <description><![CDATA[
-Sets the energy level in KWh<br /><h1>Overview</h1><p>Sets the energy level that once exceeded an Energy Limit event occurs<b>.</b></p> <p>From 0 to 2.000.000 KWh – Default value: <b>2.000.000 KWh</b></p>
-        ]]></description>
+        <description>Sets the energy level in KWh&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the energy level that once exceeded an Energy Limit event occurs&amp;lt;b&amp;amp;gt.&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 0 to 2.000.000 KWh – Default value: &amp;lt;b&amp;amp;gt2.000.000 KWh&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2000000</default>
       </parameter>
 
       <parameter name="config_44_1" type="integer" groupName="configuration">
         <label>44: Energy Limit State</label>
-        <description><![CDATA[
-Defines the next state in case of Energy Limit event<br /><h1>Overview</h1><p>Defines the next state of the device in the case of an Energy Limit event occurring.</p>
-        ]]></description>
+        <description>Defines the next state in case of Energy Limit event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the next state of the device in the case of an Energy Limit event occurring.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">IGNORE</option>
@@ -281,26 +245,20 @@ Defines the next state in case of Energy Limit event<br /><h1>Overview</h1><p>De
       <parameter name="config_45_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>45: Variation Instantaneous Power</label>
-        <description><![CDATA[
-Defines the percentage variation of instantaneous power<br /><h1>Overview</h1><p>Defines the percentage variation of instantaneous power determining the sending of the report<b>. </b></p> <p>From: 1 (1%) to 100 (100%) Default value: <b>10 – 10%</b></p>
-        ]]></description>
+        <description>Defines the percentage variation of instantaneous power&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the percentage variation of instantaneous power determining the sending of the report&amp;lt;b&amp;amp;gt. &amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom: 1 (1%) to 100 (100%) Default value: &amp;lt;b&amp;amp;gt10 – 10%&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_46_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>46: Report Time Frequency</label>
-        <description><![CDATA[
-Defines the time in minutes<br /><h1>Overview</h1><p>Defines the maximum time in minutes since the previous report beyond which an Instantaneous Power Report will still be sent.</p> <p>From: 1 to 100 minutes. Default value: <b>10 minutes</b></p>
-        ]]></description>
+        <description>Defines the time in minutes&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the maximum time in minutes since the previous report beyond which an Instantaneous Power Report will still be sent.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom: 1 to 100 minutes. Default value: &amp;lt;b&amp;amp;gt10 minutes&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_47_1" type="integer" groupName="configuration">
         <label>47: Variation Total Energy</label>
-        <description><![CDATA[
-Defines the increase energy to generate a report<br /><h1>Overview</h1><p>Defines the increase of total energy required to generate a report listing the level of total energy to the devices associated to the Energy Notification Group</p>
-        ]]></description>
+        <description>Defines the increase energy to generate a report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the increase of total energy required to generate a report listing the level of total energy to the devices associated to the Energy Notification Group&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">IGNORE: No report provided.</option>
@@ -314,36 +272,28 @@ Defines the increase energy to generate a report<br /><h1>Overview</h1><p>Define
       <parameter name="config_48_2" type="integer" groupName="configuration"
                  min="1100" max="2500">
         <label>48: Nominal Voltage</label>
-        <description><![CDATA[
-Defines the nominal voltage value in tenths of volts<br /><h1>Overview</h1><p>Defines the nominal voltage value in tenths of volts. Together with parameter No. 49 this is used by the automatic notification system to send reports on variations of voltage.</p> <p>Default value: <b>2300</b></p> <p>From: 1100 to 2500</p>
-        ]]></description>
+        <description>Defines the nominal voltage value in tenths of volts&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the nominal voltage value in tenths of volts. Together with parameter No. 49 this is used by the automatic notification system to send reports on variations of voltage.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value: &amp;lt;b&amp;amp;gt2300&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom: 1100 to 2500&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2300</default>
       </parameter>
 
       <parameter name="config_49_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>49: Fall In Maximum Voltage</label>
-        <description><![CDATA[
-Defines, the nominal value for max voltage fall permitted<br /><h1>Overview</h1><p>Defines, as a percentage, the nominal value for permitted fall in maximum voltage.</p> <p>From: 1 (1%) to 100 (100%) Default value: <b>10 – 10%</b></p>
-        ]]></description>
+        <description>Defines, the nominal value for max voltage fall permitted&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines, as a percentage, the nominal value for permitted fall in maximum voltage.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom: 1 (1%) to 100 (100%) Default value: &amp;lt;b&amp;amp;gt10 – 10%&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_50_2" type="integer" groupName="configuration"
                  min="0" max="62">
         <label>50: Electric parameters</label>
-        <description><![CDATA[
-Defines which parameters will be subjected to notification<br /><h1>Overview</h1><p>Defines which electric parameters, other than power, will be subjected to automatic notification.</p> <p>The value to be set for this parameter must be calculated as the sum of values associated to the individual electric parameter indicated in the table of Manual.</p> <p>To send report only for Power please set the value to 0.</p> <p>To send report only for Power and Energy please set the value to 2 (0+2).</p> <p>To send report for Power, Energy, Voltage, Current, Power Factor please set the value to 30 (0+2+4+8+16).</p> <p>By default the report are sent for (Power, Energy, Voltage, Current, Power Factor) 0+2+4+8+16à30</p> <p>Default value: <b>30</b></p> <p>Permitted values: From 0 to 62</p>
-        ]]></description>
+        <description>Defines which parameters will be subjected to notification&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines which electric parameters, other than power, will be subjected to automatic notification.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe value to be set for this parameter must be calculated as the sum of values associated to the individual electric parameter indicated in the table of Manual.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTo send report only for Power please set the value to 0.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTo send report only for Power and Energy please set the value to 2 (0+2).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTo send report for Power, Energy, Voltage, Current, Power Factor please set the value to 30 (0+2+4+8+16).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBy default the report are sent for (Power, Energy, Voltage, Current, Power Factor) 0+2+4+8+16à30&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value: &amp;lt;b&amp;amp;gt30&amp;lt;/b&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtPermitted values: From 0 to 62&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_51_2" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="65535">
         <label>51: Voltage RMS value</label>
-        <description><![CDATA[
-Reading of this parameter returns the value of voltage RMS<br /><h1>Overview</h1><p>Reading of this parameter returns the value of voltage RMS at the time of the reading expressed in tenths of Volts.</p>
-        ]]></description>
+        <description>Reading of this parameter returns the value of voltage RMS&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReading of this parameter returns the value of voltage RMS at the time of the reading expressed in tenths of Volts.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -425,25 +375,19 @@ Reading of this parameter returns the value of voltage RMS<br /><h1>Overview</h1
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Devices who will receive notification on: status changes; energy level and power;  local reset of the device</p> <p>Received commands: Basic Report, Device Reset Locally Notification, Meter Report, Multilevel Sensor: Power Report</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDevices who will receive notification on: status changes; energy level and power;  local reset of the device&lt;/p&gt &lt;p&gtReceived commands: Basic Report, Device Reset Locally Notification, Meter Report, Multilevel Sensor: Power Report&lt;/p&gt</description>
         <multipleLimit>8</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Up Power Level Group</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Devices controlled from Up Power Event</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDevices controlled from Up Power Event&lt;/p&gt</description>
         <multipleLimit>8</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Down Power Level Group</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Devices controlled from Down Power Event</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDevices controlled from Down Power Event&lt;/p&gt</description>
         <multipleLimit>8</multipleLimit>
       </parameter>
 

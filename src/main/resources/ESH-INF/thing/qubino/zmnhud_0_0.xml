@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhud_00_000" listed="false">
     <label>ZMNHUD Flush pilot (DIN version)</label>
-    <description><![CDATA[
-Flush pilot (DIN version)<br /><h1>Overview</h1><p>The ZMNHUD is used to control electric Radiators with 6 different working modes by pilot wire control signal. The module can be controlled either through a Z-Wave network or through the wall switch.<br />The module is designed to be mounted inside an electrical cabinet onto DIN rail.</p> <br /><h2>Inclusion Information</h2><p>Press the S button for 2 seconds</p> <br /><h2>Exclusion Information</h2><p>Press the S button for 6 seconds</p>
-    ]]></description>
+    <description>Flush pilot (DIN version)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe ZMNHUD is used to control electric Radiators with 6 different working modes by pilot wire control signal. The module can be controlled either through a Z-Wave network or through the wall switch.&lt;br /&gtThe module is designed to be mounted inside an electrical cabinet onto DIN rail.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the S button for 2 seconds&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the S button for 6 seconds&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -179,7 +177,7 @@ Flush pilot (DIN version)<br /><h1>Overview</h1><p>The ZMNHUD is used to control
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Basic on/off - input I2</label>
+        <label>4: Basic on/off -  input I2</label>
         <description>Triggered at change of the input I2 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>

@@ -10,30 +10,22 @@ This describes the Z-Wave device *MIMOlite*, manufactured by *FortrezZ LLC* with
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![MIMOlite product image](https://www.cd-jackson.com/zwave_device_uploads/219/219_default.jpg)
+![MIMOlite product image](https://opensmarthouse.org/zwavedatabase/219/image/)
 
 
 The MIMOlite supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The MIMOlite module provides one analog or digital input and one relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM.  The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications. 
-
-Input SIG1 is an analog input, internally pulled-up to the MIMOlite supply voltage. The system allows trigger conditions to be set based on the input voltage being inside or outside a user-defined range (configured via Z-Wave).  This provides great flexibility for capturing events in a wide variety of applications. The trigger status of the input can be read via Z-WaveTM and/or can be automatically sent to a configured node, typically the Controller.  In addition, a count of the trigger events that have occurred for the input channel is internally recorded (and stored in the ‘pulse count’) and is available to be requested or automatically sent via Z-Wave.  The current triggered/un-triggered status can also be read via ZWave.
-
-The SIG1 input can be associated with up to two other Z-WaveTM devices, such that an associated device will automatically turn on (or off) based on the occurrence of a trigger event.  Finally, the analog input channel can be configured so that the analog input level (not just binary trigger status) is periodically sent to up to two other associated nodes. 
-
-The output relay is typically commanded via Z-WaveTM commands. In addition, the user can configure the input SIG1 trigger condition to be mapped to the output relay.  For example, Relay 1 can be automatically turned on based on Input SIG1 being triggered.  The relay activation can be set via a jumper or via Z-WaveTM for either momentary or latched operation.
+<p&gtThe MIMOlite module provides one analog or digital input and one relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM.  The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications. </p&gt <p&gtInput SIG1 is an analog input, internally pulled-up to the MIMOlite supply voltage. The system allows trigger conditions to be set based on the input voltage being inside or outside a user-defined range (configured via Z-Wave).  This provides great flexibility for capturing events in a wide variety of applications. The trigger status of the input can be read via Z-WaveTM and/or can be automatically sent to a configured node, typically the Controller.  In addition, a count of the trigger events that have occurred for the input channel is internally recorded (and stored in the ‘pulse count’) and is available to be requested or automatically sent via Z-Wave.  The current triggered/un-triggered status can also be read via ZWave.</p&gt <p&gtThe SIG1 input can be associated with up to two other Z-WaveTM devices, such that an associated device will automatically turn on (or off) based on the occurrence of a trigger event.  Finally, the analog input channel can be configured so that the analog input level (not just binary trigger status) is periodically sent to up to two other associated nodes. </p&gt <p&gtThe output relay is typically commanded via Z-WaveTM commands. In addition, the user can configure the input SIG1 trigger condition to be mapped to the output relay.  For example, Relay 1 can be automatically turned on based on Input SIG1 being triggered.  The relay activation can be set via a jumper or via Z-WaveTM for either momentary or latched operation.</p&gt
 
 ### Inclusion Information
 
-  1. Set up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)
-  2. If the LED has a periodic single blink, the unit will be automatically included.  Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active.  In this case, briefly press the button once and the controller will indicate that the unit has been included in the network.  Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.  
+<ol&gt<li&gtSet up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)</li&gt <li&gtIf the LED has a periodic single blink, the unit will be automatically included.  Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active.  In this case, briefly press the button once and the controller will indicate that the unit has been included in the network.  Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.  </li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Set up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)
-  2. Press the MIMOlite button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes.  
+<ol&gt<li&gtSet up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)</li&gt <li&gtPress the MIMOlite button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes.  </li&gt </ol&gt
 
 ## Channels
 
@@ -117,9 +109,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Trigger_Mapping
 
 Input-to-relay Mapping
-The MIMOlite can be configured to automatically turn the relay on when the input is triggered or a Z-Wave command can also turn the relay on. The Configuration Command Class, Parameter 3, is used to set the input-to-relay mapping (See Technical Appendix). When input-to-relay mapping is enabled, Z-WaveTM commands to set the relay are overridden. The default for the relay is no input-to-relay mapping. Momentary vs Latched relay operation is selected by jumper P5 on the circuit board. The Momentary/Latched jumper is read only at power on when the MIMOlite is not in a ZWave network. When the jumper is off, momentary (default 500ms) operation is selected. If desired, once in-network, a Zwave configuration command (Parameter 11) can be used to override the jumper setting. The momentary configuration can be set from 100ms to 25.5ms (approximate) in increments of 100ms via the ZWave command. 
-
-Note that neither a Basic Report nor a Binary Switch Report is sent when relay is automatically set or cleared by Trigger Mapping.
+<p&gtThe MIMOlite can be configured to automatically turn the relay on when the input is triggered or a Z-Wave command can also turn the relay on. The Configuration Command Class, Parameter 3, is used to set the input-to-relay mapping (See Technical Appendix). When input-to-relay mapping is enabled, Z-WaveTM commands to set the relay are overridden. The default for the relay is no input-to-relay mapping. Momentary vs Latched relay operation is selected by jumper P5 on the circuit board. The Momentary/Latched jumper is read only at power on when the MIMOlite is not in a ZWave network. When the jumper is off, momentary (default 500ms) operation is selected. If desired, once in-network, a Zwave configuration command (Parameter 11) can be used to override the jumper setting. The momentary configuration can be set from 100ms to 25.5ms (approximate) in increments of 100ms via the ZWave command. </p&gt <p&gtNote that neither a Basic Report nor a Binary Switch Report is sent when relay is automatically set or cleared by Trigger Mapping.</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -135,7 +125,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Lower_Threshold_High
 
 Lower Threshold, High
-Lower Threshold, High (Default=0xBB; must be less than Upper Threshold Low and greater than Lower Threshold Low).
+<p&gtLower Threshold, High (Default=0xBB; must be less than Upper Threshold Low and greater than Lower Threshold Low).</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -180,7 +170,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Upper_Threshold_Low
 
 Upper Threshold, Low
-Upper Threshold, Low (Default = 0xFE; must be greater than Lower Threshold High and less than Upper Threshold High).
+<p&gtUpper Threshold, Low (Default = 0xFE; must be greater than Lower Threshold High and less than Upper Threshold High).</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -213,7 +203,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Multilevel_AutoReport_Interval
 
 Multilevel AutoReport Interval
-Periodic send interval of Multilevel Sensor Reports (Association Group 2) and/or Pulse Count Reports (Association Group 5) for SIG1. This parameter has a resolution of 10 seconds; for example, 1 = 10 seconds, 2 = 20 seconds, 3 = 30 seconds (Default), …, 255 = 2550 seconds = 42.5 minutes. A value of 0 disables automatic reporting.
+<p&gtPeriodic send interval of Multilevel Sensor Reports (Association Group 2) and/or Pulse Count Reports (Association Group 5) for SIG1. This parameter has a resolution of 10 seconds; for example, 1 = 10 seconds, 2 = 20 seconds, 3 = 30 seconds (Default), …, 255 = 2550 seconds = 42.5 minutes. A value of 0 disables automatic reporting.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -229,7 +219,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 11: Momentary_Relay1_Duration
 
 Momentary Relay1 output enable/disable (100msec).
-Momentary Relay1 output enable/disable. 0 = disable (Default) 1..255 = enable / value sets the approximate momentary on time in increments of 100msec.
+<p&gtMomentary Relay1 output enable/disable. 0 = disable (Default) 1..255 = enable / value sets the approximate momentary on time in increments of 100msec.</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -250,31 +240,31 @@ The MIMOlite supports 5 association groups.
 
 ### Group 1: Binary input Set Group
 
-When the input is triggered or untriggered, the MIMOlite will automatically send a Basic Set command to turn on or off the device(s) associated with this group.
+<p&gtWhen the input is triggered or untriggered, the MIMOlite will automatically send a Basic Set command to turn on or off the device(s) associated with this group.</p&gt
 
 Association group 1 supports 2 nodes.
 
 ### Group 2: MultiLevel Sensor report
 
-The MIMOlite will periodically send a MultiLevel Sensor report indicating the input’s analog voltage level.
+<p&gtThe MIMOlite will periodically send a MultiLevel Sensor report indicating the input’s analog voltage level.</p&gt
 
 Association group 2 supports 2 nodes.
 
 ### Group 3: Power Alarm
 
-If a power dropout occurs, the MIMOlite will send an Alarm Command Class report (if there is enough available residual power).
+<p&gtIf a power dropout occurs, the MIMOlite will send an Alarm Command Class report (if there is enough available residual power).</p&gt
 
 Association group 3 supports 2 nodes.
 
 ### Group 4: Binary Sensor report
 
-When the input is triggered or untriggered, the MIMOlite will automatically send a Binary Sensor report to this group’s associated device(s).
+<p&gtWhen the input is triggered or untriggered, the MIMOlite will automatically send a Binary Sensor report to this group’s associated device(s).</p&gt
 
 Association group 4 supports 2 nodes.
 
 ### Group 5: Pulse Meter Sensor report
 
-Pulse meter counts will be sent to this group’s associated device(s). This will be sent periodically at the same intervals as Association Group 2, MLS Report except that if the pulse meter count is unchanged the report will not be sent.
+<p&gtPulse meter counts will be sent to this group’s associated device(s). This will be sent periodically at the same intervals as Association Group 2, MLS Report except that if the pulse meter count is unchanged the report will not be sent.</p&gt
 
 Association group 5 supports 2 nodes.
 
@@ -299,10 +289,10 @@ Association group 5 supports 2 nodes.
 
 ### Documentation Links
 
-* [FortrezZ MIMOlite User Manual ](https://www.cd-jackson.com/zwave_device_uploads/219/user-manual-mimolite-05may2015.pdf)
-* [FortrezZ MIMOlite Technical Appendix](https://www.cd-jackson.com/zwave_device_uploads/219/tech-appendix-mimolite-05may2015.pdf)
+* [FortrezZ MIMOlite User Manual ](https://opensmarthouse.org/zwavedatabase/219/user-manual-mimolite-05may2015.pdf)
+* [FortrezZ MIMOlite Technical Appendix](https://opensmarthouse.org/zwavedatabase/219/tech-appendix-mimolite-05may2015.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/219).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/219).

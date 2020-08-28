@@ -10,7 +10,7 @@ This describes the Z-Wave device *WALLC-S*, manufactured by *Z-Wave.Me* with the
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![WALLC-S product image](https://www.cd-jackson.com/zwave_device_uploads/145/145_default.jpg)
+![WALLC-S product image](https://opensmarthouse.org/zwavedatabase/145/image/)
 
 
 The WALLC-S supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,36 +19,15 @@ The WALLC-S does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-The Z-Wave.Me Wall Controller is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices, the Wall Controller cannot act as Z-Wave network controller (primary or secondary) and will always need a ZWave network controller to be included into a Z-Wave network. The device can be used in different modes that are selected by configuration parameters:
-
-  1. Control of groups of other Z-Wave devices using 'ON', 'OFF' and Dim commands.
-  2. Activation of predefined scenes in Gateways or other Z-Wave devices.
-
-This device support secure communication when included by a controller that also supports secure communication. The device will then send all commands as secure commands unless the receiving device can not accept them. Then the command is send the normal way automatically.
-
-The device can be operated in two different modes:
-
-  * Operation Mode: This is the mode where the device is controlling other Z-Wave devices or is activating scenes.
-  * Management Mode: The device is turned into the management mode by pushing all four buttons for 5 sec. A blinking green LED indicates the management mode. In the management mode the buttons of the device have different functions. If no further action is performed, the device will turn back to the normal mode after 10 sec. Any management action terminates the management mode as well.
-
-In management mode the following actions can be performed:
-
-  * Button 1 - Re-Inclusion/Exclusion: Every re-inclusion or exclusion attempt is confirmed by hitting this button. Any button press stops the mode as well.
-  * Button 2 - Send Node Information Frame and Wake up Notification.
-  * Button 3 - Factory Default Reset. After clicking on button 3 keep button 4 pushed for >4 seconds
-  * Button 4 - Enter into Association mode to assign target devices to one of the four association. Refer to the manuals section about association for more information how to set and unset association groups.
-
-**Factory Reset**
-
-The device can be set back to factory defaults without performing an exclusion process. Please executes the following steps: (1) Turn the device into Management Mode, (2) click on Button 3, (3) keep button 4 pushed for 4 seconds.
+<p&gtThe Z-Wave.Me Wall Controller is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices, the Wall Controller cannot act as Z-Wave network controller (primary or secondary) and will always need a ZWave network controller to be included into a Z-Wave network. The device can be used in different modes that are selected by configuration parameters:</p&gt <ol&gt<li&gtControl of groups of other Z-Wave devices using 'ON', 'OFF' and Dim commands.</li&gt <li&gtActivation of predefined scenes in Gateways or other Z-Wave devices.</li&gt </ol&gt<p&gtThis device support secure communication when included by a controller that also supports secure communication. The device will then send all commands as secure commands unless the receiving device can not accept them. Then the command is send the normal way automatically.</p&gt <p&gtThe device can be operated in two different modes:</p&gt <ul&gt<li&gtOperation Mode: This is the mode where the device is controlling other Z-Wave devices or is activating scenes.</li&gt <li&gtManagement Mode: The device is turned into the management mode by pushing all four buttons for 5 sec. A blinking green LED indicates the management mode. In the management mode the buttons of the device have different functions. If no further action is performed, the device will turn back to the normal mode after 10 sec. Any management action terminates the management mode as well.</li&gt </ul&gt<p&gtIn management mode the following actions can be performed:</p&gt <ul&gt<li&gtButton 1 - Re-Inclusion/Exclusion: Every re-inclusion or exclusion attempt is confirmed by hitting this button. Any button press stops the mode as well.</li&gt <li&gtButton 2 - Send Node Information Frame and Wake up Notification.</li&gt <li&gtButton 3 - Factory Default Reset. After clicking on button 3 keep button 4 pushed for >4 seconds</li&gt <li&gtButton 4 - Enter into Association mode to assign target devices to one of the four association. Refer to the manuals section about association for more information how to set and unset association groups.</li&gt </ul&gt<p&gt<strong&gtFactory Reset</strong&gt</p&gt <p&gtThe device can be set back to factory defaults without performing an exclusion process. Please executes the following steps: (1) Turn the device into Management Mode, (2) click on Button 3, (3) keep button 4 pushed for 4 seconds.</p&gt
 
 ### Inclusion Information
 
- Push button 1 in management mode
+<p&gt Push button 1 in management mode</p&gt
 
 ### Exclusion Information
 
- Push button 1 in management mode
+<p&gt Push button 1 in management mode</p&gt
 
 ### Wakeup Information
 
@@ -57,7 +36,7 @@ The WALLC-S does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-It is possible to manually wake up the device by pushing button 2 in management mode.
+<p&gtIt is possible to manually wake up the device by pushing button 2 in management mode.</p&gt
 
 ## Channels
 
@@ -121,8 +100,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Button 1 and 3 pair mode
 
 Button 1 and 3 pair mode
-  * In separate mode button 1 works with group A, button 3 with groups C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down.
-  * In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group A, double click with group C. 
+<ul&gt<li&gtIn separate mode button 1 works with group A, button 3 with groups C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down.</li&gt <li&gtIn pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group A, double click with group C. </li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -139,8 +117,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Button 2 and 4 pair mode
 
 Button 2 and 4 pair mode
-  * In separate mode button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down.
-  * In pair button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B, double click with group D. 
+<ul&gt<li&gtIn separate mode button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down.</li&gt <li&gtIn pair button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B, double click with group D. </li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -157,7 +134,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 11: Action on group A
 
 Action on group A
-This parameter defines the command to be sent to devices of control group A when the related button is pressed
+<p&gtThis parameter defines the command to be sent to devices of control group A when the related button is pressed</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -179,7 +156,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Action on group B
 
 Action on group B
-This parameter defines the command to be sent to devices of control group B when the related button is pressed 
+<p&gtThis parameter defines the command to be sent to devices of control group B when the related button is pressed </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -201,7 +178,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Action on group C
 
 Action on group C
-This parameter defines the command to be sent to devices of control group C when the related button is pressed
+<p&gtThis parameter defines the command to be sent to devices of control group C when the related button is pressed</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -223,7 +200,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Action on group D
 
 Action on group D
-This parameter defines the command to be sent to devices of control group D when the related button is pressed 
+<p&gtThis parameter defines the command to be sent to devices of control group D when the related button is pressed </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -278,7 +255,7 @@ This parameter has the configuration ID ```config_22_1``` and is of type ```INTE
 ### Parameter 25: Blocks wakeup even when wakeup interval is set
 
 Blocks wakeup even when wakeup interval is set
-If the device wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery.
+<p&gtIf the device wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -381,9 +358,9 @@ Association group 5 supports 10 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/145/z-wave-me-wall-controller-set-manual.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/145/z-wave-me-wall-controller-set-manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/145).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/145).

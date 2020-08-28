@@ -7,9 +7,7 @@
 
   <thing-type id="ring_dwss_00_000" listed="false">
     <label>DW-SS Door/Window Contact</label>
-    <description><![CDATA[
-Door/Window Contact<br /><h1>Overview</h1><p>Ring Alarm Contact Sensor: Expand your Ring Alarm system to secure each door and window in your home, and get alerts as soon as they open.</p> <br /><h2>Inclusion Information</h2><ol><li>Activate inclusion mode on controller</li> <li>Pull tab/quickly disconnect and reconnect battery</li> <li>Device should appear in Inbox</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Initiate exclusion mode on controller</li> <li>Open contact sensor’s cover Remove and replace battery quickly</li> </ol><p>Reset:</p> <ol><li>Open contact sensor’s cover</li> <li>Press and hold the reset button on sensor circuitry</li> <li>Remove and replace battery quickly – Blue LED will start to blink rapidly</li> <li>Wait for the blue LED to stop blinking</li> </ol><br /><h2>Wakeup Information</h2><p>By opening the top cover, the sensor will get to tamper state and stay awake.</p>
-    ]]></description>
+    <description>Door/Window Contact&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRing Alarm Contact Sensor: Expand your Ring Alarm system to secure each door and window in your home, and get alerts as soon as they open.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtActivate inclusion mode on controller&lt;/li&gt &lt;li&gtPull tab/quickly disconnect and reconnect battery&lt;/li&gt &lt;li&gtDevice should appear in Inbox&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtInitiate exclusion mode on controller&lt;/li&gt &lt;li&gtOpen contact sensor’s cover Remove and replace battery quickly&lt;/li&gt &lt;/ol&gt&lt;p&gtReset:&lt;/p&gt &lt;ol&gt&lt;li&gtOpen contact sensor’s cover&lt;/li&gt &lt;li&gtPress and hold the reset button on sensor circuitry&lt;/li&gt &lt;li&gtRemove and replace battery quickly – Blue LED will start to blink rapidly&lt;/li&gt &lt;li&gtWait for the blue LED to stop blinking&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtBy opening the top cover, the sensor will get to tamper state and stay awake.&lt;/p&gt</description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -61,9 +59,7 @@ Door/Window Contact<br /><h1>Overview</h1><p>Ring Alarm Contact Sensor: Expand 
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="255" max="4200">
         <label>1: Wait time</label>
-        <description><![CDATA[
-Time between sending unsolicited battery reports<br /><h1>Overview</h1><p>255 to 4200 seconds <strong>in 255 second increments</strong> that the sensor should wait between sending unsolicited battery reports.  <br />The default configuration value for parameter 1 is defaulted to 4200 seconds on exclusion.</p>
-        ]]></description>
+        <description>Time between sending unsolicited battery reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt255 to 4200 seconds &amp;lt;strong&amp;amp;gtin 255 second increments&amp;lt;/strong&amp;amp;gt that the sensor should wait between sending unsolicited battery reports.  &amp;lt;br /&amp;amp;gtThe default configuration value for parameter 1 is defaulted to 4200 seconds on exclusion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4200</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -76,9 +72,7 @@ Time between sending unsolicited battery reports<br /><h1>Overview</h1><p>255 to
 
       <parameter name="group_2" type="text" groupName="association">
         <label>2: Basic Report</label>
-        <description><![CDATA[
-Basic report of either 0x00 for CLOSED or 0xFF for OPEN<br /><h1>Overview</h1><p>When a node is associated with Group 2, the sensor will send a basic report of either 0x00 for “Closed” or 0xFF for “Open.” </p>
-        ]]></description>
+        <description>Basic report of either 0x00 for CLOSED or 0xFF for OPEN&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWhen a node is associated with Group 2, the sensor will send a basic report of either 0x00 for “Closed” or 0xFF for “Open.” &lt;/p&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

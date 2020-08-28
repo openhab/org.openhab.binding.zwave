@@ -7,9 +7,7 @@
 
   <thing-type id="qees_qwall_00_000" listed="false">
     <label>Wall Wall mountable mini 4 button remote</label>
-    <description><![CDATA[
-Wall mountable mini 4 button remote<br /><h1>Overview</h1><p>Portable Remote Control for Wall Mount</p>
-    ]]></description>
+    <description>Wall mountable mini 4 button remote&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtPortable Remote Control for Wall Mount&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->

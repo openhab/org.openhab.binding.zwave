@@ -11,28 +11,22 @@ This version of the device is limited to firmware versions above 3.0
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![GWPN1 product image](https://www.cd-jackson.com/zwave_device_uploads/102/102_default.jpg)
+![GWPN1 product image](https://opensmarthouse.org/zwavedatabase/102/image/)
 
 
 The GWPN1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Configuration is for the 1 plug version of the PowerNode.
-
-It should work for both NS210 and NS310 devices.
+<p&gtThis Configuration is for the 1 plug version of the PowerNode.</p&gt <p&gtIt should work for both NS210 and NS310 devices.</p&gt
 
 ### Inclusion Information
 
-On the PowerNode, press and hold the **Sync** button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.
-
-After a few seconds, the rotating pattern on both the PowerNode and the Gateway stops. All bars turn green forming a circle for several seconds. This indicates a successful inclusion.
-
-If all bars on the activity indicator start flashing instead of forming a solid circle, then the PowerNode inclusion process has failed, and you must start the sync process again. If syncing continually fails even though the PowerNode is close to the Gateway, then it may be an indication of a hardware fault, and the PowerNode might need replacing.
+<p&gtOn the PowerNode, press and hold the <strong&gtSync</strong&gt button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.</p&gt <p&gtAfter a few seconds, the rotating pattern on both the PowerNode and the Gateway stops. All bars turn green forming a circle for several seconds. This indicates a successful inclusion.</p&gt <p&gtIf all bars on the activity indicator start flashing instead of forming a solid circle, then the PowerNode inclusion process has failed, and you must start the sync process again. If syncing continually fails even though the PowerNode is close to the Gateway, then it may be an indication of a hardware fault, and the PowerNode might need replacing.</p&gt
 
 ### Exclusion Information
 
-On the PowerNode, press and hold the **Sync** button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.
+<p&gtOn the PowerNode, press and hold the <strong&gtSync</strong&gt button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.</p&gt
 
 ## Channels
 
@@ -97,7 +91,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 0: Min. variation of load current
 
 Minimum variation in load current before a message is sent.
- Value in percent (30 => 30%)
+<p&gt Value in percent (30 => 30%)</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -205,7 +199,7 @@ Association group 2 supports 1 node.
 
 ### Group 3: Power level change
 
-The new power reading is sent if the delta of the change is greater than the defined minimum variation.
+<p&gtThe new power reading is sent if the delta of the change is greater than the defined minimum variation.</p&gt
 
 Association group 3 supports 1 node.
 
@@ -239,11 +233,11 @@ Association group 4 supports 1 node.
 
 ### Documentation Links
 
-* [Documentation of Z-Wave settings](https://www.cd-jackson.com/zwave_device_uploads/102/z-wave-greenwave-powernode-manual.pdf)
-* [ English User Manual](https://www.cd-jackson.com/zwave_device_uploads/102/z-wave-greenwave-powernode-manual.pdf)
-* [Documentation of Z-Wave settings](https://www.cd-jackson.com/zwave_device_uploads/102/Technical-Doc-for-the-powernodes.pdf)
+* [Documentation of Z-Wave settings](https://opensmarthouse.org/zwavedatabase/102/z-wave-greenwave-powernode-manual.pdf)
+* [ English User Manual](https://opensmarthouse.org/zwavedatabase/102/z-wave-greenwave-powernode-manual.pdf)
+* [Documentation of Z-Wave settings](https://opensmarthouse.org/zwavedatabase/102/Technical-Doc-for-the-powernodes.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/102).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/102).

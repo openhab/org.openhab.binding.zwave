@@ -10,44 +10,22 @@ This describes the Z-Wave device *iPlugDim*, manufactured by *Wintop* with the t
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![iPlugDim product image](https://www.cd-jackson.com/zwave_device_uploads/698/698_default.jpg)
+![iPlugDim product image](https://opensmarthouse.org/zwavedatabase/698/image/)
 
 
 The iPlugDim supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * The iPlugDim can be remotely controlled.
-  * The iPlugDim can be controlled by the push button on the front of the device.
-  * The iPlugDim ’s indicator light will indicate the status of the switch (ON or OFF).
-  * The iPlugDim can make a dimming function of the load.
-
-Press and release the push button of the iPlugDim to switch on/off the load of socket, press and hold the push button to dim the load of the socket.
-
-**Indication modes  
-** 
-
-The indicator gives various statuses of the device as follows:
-
-  1. Ready for learn mode: Indicator light blinks every second.
-  2. Learn in progress (add): Indicator light blinks 2 times every second.
-  3. Learn in progress (remove): Indicator light blinks 3 times every second.
-  4. Learn mode success: Indicator light is on for second.
-  5. Learn mode failed: Indicator light blinks 8 times fast.
+<ul&gt<li&gtThe iPlugDim can be remotely controlled.</li&gt <li&gtThe iPlugDim can be controlled by the push button on the front of the device.</li&gt <li&gtThe iPlugDim ’s indicator light will indicate the status of the switch (ON or OFF).</li&gt <li&gtThe iPlugDim can make a dimming function of the load.</li&gt </ul&gt<p&gtPress and release the push button of the iPlugDim to switch on/off the load of socket, press and hold the push button to dim the load of the socket.</p&gt <p&gt<strong&gtIndication modes <br /&gt</strong&gt</p&gt <p&gtThe indicator gives various statuses of the device as follows:</p&gt <ol&gt<li&gtReady for learn mode: Indicator light blinks every second.</li&gt <li&gtLearn in progress (add): Indicator light blinks 2 times every second.</li&gt <li&gtLearn in progress (remove): Indicator light blinks 3 times every second.</li&gt <li&gtLearn mode success: Indicator light is on for second.</li&gt <li&gtLearn mode failed: Indicator light blinks 8 times fast.</li&gt </ol&gt
 
 ### Inclusion Information
 
-  1. Make sure your Z‐Wave controller is in the right operation mode (include or exclude).
-
-  2. Press and hold the push button for 4 seconds and release to start the inclusion or exclusion process
-    
-    (indication mode: Ready for learn mode).
-
-  3. (The product will start NWI automatically after unsuccessful normal inclusion) 
+<ol&gt<li&gt <p&gtMake sure your Z‐Wave controller is in the right operation mode (include or exclude).</p&gt </li&gt <li&gt <p&gtPress and hold the push button for 4 seconds and release to start the inclusion or exclusion process</p&gt <p&gt(indication mode: Ready for learn mode).</p&gt </li&gt <li&gt <p&gt(The product will start NWI automatically after unsuccessful normal inclusion) </p&gt </li&gt </ol&gt
 
 ### Exclusion Information
 
-Press and hold the push button for 4 seconds and release to start the inclusion or exclusion process
+<p&gtPress and hold the push button for 4 seconds and release to start the inclusion or exclusion process</p&gt
 
 ## Channels
 
@@ -128,9 +106,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [iPlugDim Manual](https://www.cd-jackson.com/zwave_device_uploads/698/iplugdim.pdf)
+* [iPlugDim Manual](https://opensmarthouse.org/zwavedatabase/698/iplugdim.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/698).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/698).

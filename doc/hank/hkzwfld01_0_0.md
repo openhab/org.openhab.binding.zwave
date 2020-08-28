@@ -10,7 +10,7 @@ This describes the Z-Wave device *HKZW_FLD01*, manufactured by *[Hank](http://ww
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HKZW_FLD01 product image](https://www.cd-jackson.com/zwave_device_uploads/674/674_default.jpg)
+![HKZW_FLD01 product image](https://opensmarthouse.org/zwavedatabase/674/image/)
 
 
 The HKZW_FLD01 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,57 +19,15 @@ The HKZW_FLD01 does not permanently listen for messages sent from the controller
 
 ## Overview
 
-HANK Flood Sensor is a device that is capable od both detecting leaks and floods when the level of water gest too low in a pool or a tank. Flood Sensor can work with your Z-Wave network to prevent emergencies such as burst water boiler to leakingar conditioners.
-
-It includes:
-
--Lastest Z-Wave protocol.
-
--Security 0 and secutiry 2 framework implemented with AES-128 encryption.
-
--Two installation ways optional.
-
--Temperature sensor.
-
--Vibration sensor.
-
--Up to 1 year battery live.
-
--Low battery alert.
-
--Firmware OTA upgrade supported.
+<p&gtHANK Flood Sensor is a device that is capable od both detecting leaks and floods when the level of water gest too low in a pool or a tank. Flood Sensor can work with your Z-Wave network to prevent emergencies such as burst water boiler to leakingar conditioners.</p&gt <p&gtIt includes:</p&gt <p&gt-Lastest Z-Wave protocol.</p&gt <p&gt-Security 0 and secutiry 2 framework implemented with AES-128 encryption.</p&gt <p&gt-Two installation ways optional.</p&gt <p&gt-Temperature sensor.</p&gt <p&gt-Vibration sensor.</p&gt <p&gt-Up to 1 year battery live.</p&gt <p&gt-Low battery alert.</p&gt <p&gt-Firmware OTA upgrade supported.</p&gt
 
 ### Inclusion Information
 
-Add Flood Sensor into Z-Wave Network:
-
-1- Open the cover.
-
-2- Place the device within the direct range of your Z-Wave controller.
-
-3- Set the main controller's adding mode (see the controller's manual).
-
-4- Click the Z-button once or triple click the Z-button quickly, the LED indicator should blink fast in blue.
-
-5- Wait for the adding process to end.
-
-6- Successful adding will be confirmed by the Z-Wave controller's message.
+<p&gtAdd Flood Sensor into Z-Wave Network:</p&gt <p&gt1- Open the cover.</p&gt <p&gt2- Place the device within the direct range of your Z-Wave controller.</p&gt <p&gt3- Set the main controller's adding mode (see the controller's manual).</p&gt <p&gt4- Click the Z-button once or triple click the Z-button quickly, the LED indicator should blink fast in blue.</p&gt <p&gt5- Wait for the adding process to end.</p&gt <p&gt6- Successful adding will be confirmed by the Z-Wave controller's message.</p&gt
 
 ### Exclusion Information
 
-Remove Flood Sensor into Z-Wave Network:
-
-1- Open the cover.
-
-2- Place the device within the direct range of your Z-Wave controller.
-
-3- Set the main controller's remove mode (see the controller's manual).
-
-4- Click the Z-button once or triple click the Z-button quickly, the LED indicator should blink fast in orange.
-
-5- Wait for the removing process to end.
-
-6- Successful removing will be confirmed by the Z-Wave controller's message.
+<p&gtRemove Flood Sensor into Z-Wave Network:</p&gt <p&gt1- Open the cover.</p&gt <p&gt2- Place the device within the direct range of your Z-Wave controller.</p&gt <p&gt3- Set the main controller's remove mode (see the controller's manual).</p&gt <p&gt4- Click the Z-button once or triple click the Z-button quickly, the LED indicator should blink fast in orange.</p&gt <p&gt5- Wait for the removing process to end.</p&gt <p&gt6- Successful removing will be confirmed by the Z-Wave controller's message.</p&gt
 
 ### Wakeup Information
 
@@ -78,13 +36,7 @@ The HKZW_FLD01 does not permanently listen for messages sent from the controller
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Defining a time period by which the flood Sensor sends a wake up notification command frame to communicate with the assigned device, update parameters, update software detecs battery level. 
-
-Wake up interval set to 0 disables the sending wake up notification command, in such configuration it is needed manually wake the device up by press the Z-button.
-
-Avaliable settings: 0-2678400
-
-Default setting: 0
+<p&gtDefining a time period by which the flood Sensor sends a wake up notification command frame to communicate with the assigned device, update parameters, update software detecs battery level. </p&gt <p&gtWake up interval set to 0 disables the sending wake up notification command, in such configuration it is needed manually wake the device up by press the Z-button.</p&gt <p&gtAvaliable settings: 0-2678400</p&gt <p&gtDefault setting: 0</p&gt
 
 ## Channels
 
@@ -372,10 +324,10 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [User manual](https://www.cd-jackson.com/zwave_device_uploads/674/Hank-Flood-Sensor-User-Manual.pdf)
-* [Test report](https://www.cd-jackson.com/zwave_device_uploads/674/Hank-Flood-Sensor-Test-Report.pdf)
+* [User manual](https://opensmarthouse.org/zwavedatabase/674/Hank-Flood-Sensor-User-Manual.pdf)
+* [Test report](https://opensmarthouse.org/zwavedatabase/674/Hank-Flood-Sensor-Test-Report.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/674).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/674).

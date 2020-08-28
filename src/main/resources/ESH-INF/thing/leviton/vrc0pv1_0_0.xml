@@ -7,9 +7,7 @@
 
   <thing-type id="leviton_vrc0pv1_00_000" listed="false">
     <label>VRC0P (v1) RS-232 Serial Interface</label>
-    <description><![CDATA[
-RS-232 Serial Interface<br /><h1>Overview</h1><p>Serial interface to z-wave over RS-232. Frequently used for integration with older automation systems and alarm panels.</p> <br /><h2>Inclusion Information</h2><ol><li>Plug in VRC0P</li> <li>Press and hold the button on the front of the VRC0P until it flashes amber</li> <li>Place your controller in inclusion mode</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Press and hold the button on the front of the VRC0P until it flashes amber</li> <li>Place your controller in exclusion mode</li> </ol>
-    ]]></description>
+    <description>RS-232 Serial Interface&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSerial interface to z-wave over RS-232. Frequently used for integration with older automation systems and alarm panels.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug in VRC0P&lt;/li&gt &lt;li&gtPress and hold the button on the front of the VRC0P until it flashes amber&lt;/li&gt &lt;li&gtPlace your controller in inclusion mode&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress and hold the button on the front of the VRC0P until it flashes amber&lt;/li&gt &lt;li&gtPlace your controller in exclusion mode&lt;/li&gt &lt;/ol&gt</description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -43,13 +41,13 @@ RS-232 Serial Interface<br /><h1>Overview</h1><p>Serial interface to z-wave over
       <property name="manufacturerRef">0B01:0209</property>
       <property name="dbReference">883</property>
       <property name="commandClass:COMMAND_CLASS_NO_OPERATION">setVersion=1</property>
-      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->

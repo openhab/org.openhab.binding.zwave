@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhaa_00_000" listed="false">
     <label>ZMNHAA Flush 1 relay</label>
-    <description><![CDATA[
-Flush 1 relay<br /><h1>Overview</h1><p>This Z-Wave module is used for switching on or off the electrical device (e.g. light, fan, etc ...). The module can be controlled either through Z-wave network or through the wall switch.</p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds).</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.</li> </ul>
-    ]]></description>
+    <description>Flush 1 relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Z-Wave module is used for switching on or off the electrical device (e.g. light, fan, etc ...). The module can be controlled either through Z-wave network or through the wall switch.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 2 second or&lt;/li&gt &lt;li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds).&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 6 second or&lt;/li&gt &lt;li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.&lt;/li&gt &lt;/ul&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -109,9 +107,7 @@ Flush 1 relay<br /><h1>Overview</h1><p>This Z-Wave module is used for switching 
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
-        <description><![CDATA[
-ctivate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
-        ]]></description>
+        <description>ctivate / deactivate functions ALL ON/ALL OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">ALL ON is not active ALL OFF is not active</option>
@@ -124,9 +120,7 @@ ctivate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 r
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>11: Automatic turning off relay after set time</label>
-        <description><![CDATA[
-Automatic turning off relay after set time<br /><h1>Overview</h1><p>Default value 0</p> <ul><li> 0 - Auto OFF disabled</li> <li> 1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds.</li> </ul>
-        ]]></description>
+        <description>Automatic turning off relay after set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault value 0&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt 0 - Auto OFF disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt 1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -143,38 +137,32 @@ Automatic turning off relay after set time<br /><h1>Overview</h1><p>Default valu
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>40: Power reporting in Watts on percentage change</label>
-        <description><![CDATA[
-Power reporting in Watts on percentage change<br /><h1>Overview</h1><ul><li>0 – Reporting Disabled</li> <li>1 – 100 = 1% - 100% Reporting enabled</li> </ul><p>Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p>
-        ]]></description>
+        <description>Power reporting in Watts on percentage change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 – Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 – 100 = 1% - 100% Reporting enabled&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtPower report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>42: Power reporting in Watts on power change</label>
-        <description><![CDATA[
-Power reporting in Watts on power change<br /><h1>Overview</h1><ul><li>default value 300 (power report in Watts is send each 300s)</li> <li>0 – Reporting Disabled</li> <li>1 – 65535 = 1second – 65535 seconds.</li> </ul><p>Reporting enabled. Power report is send with time interval set by entered value. </p>
-        ]]></description>
+        <description>Power reporting in Watts on power change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtdefault value 300 (power report in Watts is send each 300s)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt0 – Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 – 65535 = 1second – 65535 seconds.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtReporting enabled. Power report is send with time interval set by entered value. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: basic on/off</label>
-        <description><![CDATA[
-triggered at change of the output Q state and reflecting its state<br /><h1>Overview</h1><p>e</p>
-        ]]></description>
+        <description>triggered at change of the output Q state and reflecting its state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gte&lt;/p&gt</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: basic on/off - input I2</label>
+        <label>2: basic on/off -  input I2</label>
         <description>(triggered at change of the input I2 state and reflecting its state)</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: basic on/off - input I3</label>
+        <label>3: basic on/off -  input I3</label>
         <description>ttriggered at change of the input I3 state and reflecting its state)</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

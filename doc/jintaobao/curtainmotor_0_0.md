@@ -10,22 +10,22 @@ This describes the Z-Wave device *Curtain Motor*, manufactured by *Jin Tao Bao* 
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![Curtain Motor product image](https://www.cd-jackson.com/zwave_device_uploads/654/654_default.jpg)
+![Curtain Motor product image](https://opensmarthouse.org/zwavedatabase/654/image/)
 
 
 The Curtain Motor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-JTB-1007 is a Z-Wave enabled curtain motor support scene setting.
+<p&gtJTB-1007 is a Z-Wave enabled curtain motor support scene setting.</p&gt
 
 ### Inclusion Information
 
-Click the PB-button once, located near by motor power socket.
+<p&gtClick the PB-button once, located near by motor power socket.</p&gt
 
 ### Exclusion Information
 
-Click the PB-button once, located near by motor power socket.
+<p&gtClick the PB-button once, located near by motor power socket.</p&gt
 
 ## Channels
 
@@ -74,7 +74,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 17: Motor Open, Go to Direction B
 
 Motor Open, Go to Direction B
-Set only, any value possible
+<p&gtSet only, any value possible</p&gt
 Values in the range 0 to 4294967295 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -146,118 +146,7 @@ This is a write only parameter.
 ### Parameter 32: Return motor status flag
 
 Return motor status flag
-<table>
-  <tr>
-    <td>
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      motor is closing, go to direction A
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      1
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      motor is opening, go to direction B
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      2
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      motor endpoint A has setting
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      3
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      motor endpoint B has setting
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      4
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      (Reserved)
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      5
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      (Reserved)
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      6
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      (Reserved)
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      7
-    </td>
-    
-    <td>
-        ->  
-    </td>
-    
-    <td>
-      direction revert
-    </td>
-  </tr>
-</table>This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<table&gt<tr&gt<td&gt0</td&gt <td&gt  ->  </td&gt <td&gtmotor is closing, go to direction A</td&gt </tr&gt<tr&gt<td&gt1</td&gt <td&gt  ->  </td&gt <td&gtmotor is opening, go to direction B</td&gt </tr&gt<tr&gt<td&gt2</td&gt <td&gt  ->  </td&gt <td&gtmotor endpoint A has setting</td&gt </tr&gt<tr&gt<td&gt3</td&gt <td&gt  ->  </td&gt <td&gtmotor endpoint B has setting</td&gt </tr&gt<tr&gt<td&gt4</td&gt <td&gt  ->  </td&gt <td&gt(Reserved)</td&gt </tr&gt<tr&gt<td&gt5</td&gt <td&gt  ->  </td&gt <td&gt(Reserved)</td&gt </tr&gt<tr&gt<td&gt6</td&gt <td&gt  ->  </td&gt <td&gt(Reserved)</td&gt </tr&gt<tr&gt<td&gt7</td&gt <td&gt  ->  </td&gt <td&gtdirection revert</td&gt </tr&gt</table&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -324,9 +213,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/654/Jin-tao-bao-Curtain-motor.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/654/Jin-tao-bao-Curtain-motor.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/654).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/654).

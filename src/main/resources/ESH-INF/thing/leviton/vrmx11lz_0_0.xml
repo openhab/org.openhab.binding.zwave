@@ -7,9 +7,7 @@
 
   <thing-type id="leviton_vrmx11lz_00_000" listed="false">
     <label>VRMX1 Scene Capable Push On/Off Dimmer</label>
-    <description><![CDATA[
-Scene Capable Push On/Off Dimmer<br /><h1>Overview</h1><p>Scene Capable Incadescent/Magnetic Low Voltage Fluorescent Dimmer</p> <br /><h2>Inclusion Information</h2><p>Press the push pad once.</p> <br /><h2>Exclusion Information</h2><p>Press the push pad once.</p>
-    ]]></description>
+    <description>Scene Capable Push On/Off Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Capable Incadescent/Magnetic Low Voltage Fluorescent Dimmer&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the push pad once.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the push pad once.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

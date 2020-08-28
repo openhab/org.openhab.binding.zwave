@@ -10,7 +10,7 @@ This describes the Z-Wave device *Molite*, manufactured by *[BeNext](http://www.
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![Molite product image](https://www.cd-jackson.com/zwave_device_uploads/374/374_default.png)
+![Molite product image](https://opensmarthouse.org/zwavedatabase/374/image/)
 
 
 The Molite supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,20 +19,15 @@ The Molite does not permanently listen for messages sent from the controller - i
 
 ## Overview
 
-Basic operations
-
-  * The MoLiTe can detect movement,
-  * The MoLiTe can measure light intensity
-  * The MoLiTe can measure the temperature
-  * The MoLiTe can trigger a security system
+<p&gtBasic operations</p&gt <ul&gt<li&gtThe MoLiTe can detect movement,</li&gt <li&gtThe MoLiTe can measure light intensity</li&gt <li&gtThe MoLiTe can measure the temperature</li&gt <li&gtThe MoLiTe can trigger a security system</li&gt </ul&gt
 
 ### Inclusion Information
 
-Press and hold the tamper switch for 2 seconds and release to start the inclusion or exclude process
+<p&gtPress and hold the tamper switch for 2 seconds and release to start the inclusion or exclude process</p&gt
 
 ### Exclusion Information
 
-Press and hold the tamper switch for 2 seconds and release to start the inclusion or exclude process
+<p&gtPress and hold the tamper switch for 2 seconds and release to start the inclusion or exclude process</p&gt
 
 ### Wakeup Information
 
@@ -41,7 +36,7 @@ The Molite does not permanently listen for messages sent from the controller - i
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-It is possible to send a wake up notification on user interaction. To do this press and hold the tamper switch for four seconds (mount the device).
+<p&gtIt is possible to send a wake up notification on user interaction. To do this press and hold the tamper switch for four seconds (mount the device).</p&gt
 
 ## Channels
 
@@ -136,7 +131,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Mode timeout
 
 Mode timeout
-The time used in mode 2 to turn the sensor off. This time will start running as soon as detection is seen.
+<p&gtThe time used in mode 2 to turn the sensor off. This time will start running as soon as detection is seen.</p&gt
 Values in the range 0 to 900 may be set.
 
 The manufacturer defined default value is ```900```.
@@ -147,13 +142,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Switch off time
 
 Switch off time
-The switch off time will start running as soon as mode timeout is done.
-
-The Motion sensor is turned on and when movement is detected again.
-
-The mode timeout (cfg param 1) will start running all over again.
-
-When switch off time is done a basic off message is sent to the associated node
+<p&gtThe switch off time will start running as soon as mode timeout is done.</p&gt <p&gtThe Motion sensor is turned on and when movement is detected again.</p&gt <p&gtThe mode timeout (cfg param 1) will start running all over again.</p&gt <p&gtWhen switch off time is done a basic off message is sent to the associated node</p&gt
 Values in the range 0 to 2700 may be set.
 
 The manufacturer defined default value is ```2700```.
@@ -203,9 +192,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 7: Light table 100 %
 
 Light table 100 %
-If a LDR resistance measured lower then this value the returned light percentage is 100%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 100%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 17 may be set.
 
 The manufacturer defined default value is ```17```.
@@ -216,9 +203,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Light table 90 %
 
 Light table 90 %
-If a LDR resistance measured lower then this value the returned light percentage is 90%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 90%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 38 may be set.
 
 The manufacturer defined default value is ```38```.
@@ -229,9 +214,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: Light table 80 %
 
 Light table 80 %
-If a LDR resistance measured lower then this value the returned light percentage is 80%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 80%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 85 may be set.
 
 The manufacturer defined default value is ```85```.
@@ -242,9 +225,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 ### Parameter 10: Light table 70 %
 
 Light table 70 %
-If a LDR resistance measured lower then this value the returned light percentage is 70%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 70%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 186 may be set.
 
 The manufacturer defined default value is ```186```.
@@ -255,9 +236,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Light table 60 %
 
 Light table 60 %
-If a LDR resistance measured lower then this value the returned light percentage is 60%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 60%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 407 may be set.
 
 The manufacturer defined default value is ```407```.
@@ -268,9 +247,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: Light table 50 %
 
 Light table 50 %
-If a LDR resistance measured lower then this value the returned light percentage is 50%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 50%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 891 may be set.
 
 The manufacturer defined default value is ```891```.
@@ -281,9 +258,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 ### Parameter 13: Light table 40 %
 
 Light table 40 %
-If a LDR resistance measured lower then this value the returned light percentage is 40%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 40%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 1949 may be set.
 
 The manufacturer defined default value is ```1949```.
@@ -294,9 +269,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: Light table 30 %
 
 Light table 30 %
-If a LDR resistance measured lower then this value the returned light percentage is 30%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 30%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 4265 may be set.
 
 The manufacturer defined default value is ```4265```.
@@ -307,9 +280,7 @@ This parameter has the configuration ID ```config_14_2``` and is of type ```INTE
 ### Parameter 15: Light table 20 %
 
 Light table 20 %
-If a LDR resistance measured lower then this value the returned light percentage is 20%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 20%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 9332 may be set.
 
 The manufacturer defined default value is ```9332```.
@@ -320,9 +291,7 @@ This parameter has the configuration ID ```config_15_2``` and is of type ```INTE
 ### Parameter 16: Light table 10 %
 
 Light table 10 %
-If a LDR resistance measured lower then this value the returned light percentage is 10%.
-
-See chapter light table for more information.
+<p&gtIf a LDR resistance measured lower then this value the returned light percentage is 10%.</p&gt <p&gtSee chapter light table for more information.</p&gt
 Values in the range 0 to 20417 may be set.
 
 The manufacturer defined default value is ```20417```.
@@ -355,7 +324,7 @@ The Molite supports 1 association group.
 
 ### Group 1: Devices to be switched on when motion detected
 
-Devices to be switched on when motion detected and off after on time
+<p&gtDevices to be switched on when motion detected and off after on time</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -381,9 +350,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/374/molitesensor.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/374/molitesensor.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/374).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/374).

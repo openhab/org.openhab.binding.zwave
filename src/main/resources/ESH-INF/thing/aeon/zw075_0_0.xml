@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_zw075_00_000" listed="false">
     <label>ZW075 Smart Energy Switch 3rd Edition</label>
-    <description><![CDATA[
-Smart Energy Switch 3rd Edition<br /><h1>Overview</h1><p>Smart Energy Switch 3rd Edition</p> <ul><li>Remotely turn connected device on/off to save electricity</li> <li>Reports wattage consumption or kwh energy usage</li> <li>Small size to help minimize blocking of other AC outlets</li> </ul><br /><h2>Inclusion Information</h2><p>Put your controller into inclusion mode. Press the Action Button on your switch. If your switch has been successfully linked to your network, its LED will no longer blink. If the linking was unsuccessful the LED will continue to blink.</p> <br /><h2>Exclusion Information</h2><p>Put your controller into exclusion mode. Press the Action Button on your switch. If your switch has been successfully removed from your network, its LED will blink. If the removal was unsuccessful its LED will not blink.</p> <br /><h2>Wakeup Information</h2><p>N/A</p>
-    ]]></description>
+    <description>Smart Energy Switch 3rd Edition&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSmart Energy Switch 3rd Edition&lt;/p&gt &lt;ul&gt&lt;li&gtRemotely turn connected device on/off to save electricity&lt;/li&gt &lt;li&gtReports wattage consumption or kwh energy usage&lt;/li&gt &lt;li&gtSmall size to help minimize blocking of other AC outlets&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut your controller into inclusion mode. Press the Action Button on your switch. If your switch has been successfully linked to your network, its LED will no longer blink. If the linking was unsuccessful the LED will continue to blink.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut your controller into exclusion mode. Press the Action Button on your switch. If your switch has been successfully removed from your network, its LED will blink. If the removal was unsuccessful its LED will not blink.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtN/A&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -81,17 +79,13 @@ Smart Energy Switch 3rd Edition<br /><h1>Overview</h1><p>Smart Energy Switch 3rd
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: Blinking Behaviour</label>
-        <description><![CDATA[
-The LSB defines the total time the device need to blink.<br /><h1>Overview</h1><p>The LSB defines the total time the device need to blink. The value if set in seconds. 1 - 255 The MSB defines the on/off interval of the blinking. The unit is 0.1 s. This is a double byte value.</p>
-        ]]></description>
+        <description>The LSB defines the total time the device need to blink.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe LSB defines the total time the device need to blink. The value if set in seconds. 1 - 255 The MSB defines the on/off interval of the blinking. The unit is 0.1 s. This is a double byte value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Current Overload Protection</label>
-        <description><![CDATA[
-Load will be closed when the Current over runs<br /><h1>Overview</h1><p> Load will be closed when the Current over runs (US: 15.5A, other country: 16.2A) for more than 2 minutes.</p>
-        ]]></description>
+        <description>Load will be closed when the Current over runs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Load will be closed when the Current over runs (US: 15.5A, other country: 16.2A) for more than 2 minutes.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -112,9 +106,7 @@ Load will be closed when the Current over runs<br /><h1>Overview</h1><p> Load w
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Notification on Status Change</label>
-        <description><![CDATA[
-Enable device to send notification to associated devices<br /><h1>Overview</h1><p>Enable device to send notification to associated devices (Group 1) when the state of Micro Smart Switch's load changed. DEFAULT is Disable</p>
-        ]]></description>
+        <description>Enable device to send notification to associated devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable device to send notification to associated devices (Group 1) when the state of Micro Smart Switch's load changed. DEFAULT is Disable&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -125,9 +117,7 @@ Enable device to send notification to associated devices<br /><h1>Overview</h1><
 
       <parameter name="config_81_1" type="integer" groupName="configuration">
         <label>81: Configure the state of red LED</label>
-        <description><![CDATA[
-Enable the device to send notification to associated devices (Group 1)<br /><h1>Overview</h1><p>Enable the device to send notification to associated devices (Group 1) when the state of the Micro Smart Switch's load changed</p>
-        ]]></description>
+        <description>Enable the device to send notification to associated devices (Group 1)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable the device to send notification to associated devices (Group 1) when the state of the Micro Smart Switch's load changed&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">The LED will follow the status of its load</option>
@@ -137,9 +127,7 @@ Enable the device to send notification to associated devices (Group 1)<br /><h1>
 
       <parameter name="config_90_1" type="integer" groupName="configuration">
         <label>90: Enables/disables parameter 91/92</label>
-        <description><![CDATA[
-Enable/Disable automated sending of report triggered by minimal change of value.<br /><h1>Overview</h1><p>Users, who want a more constant monitoring of power consumption should set this value to 1. The reporting period is by default quite long ( approx. 35minutes)</p>
-        ]]></description>
+        <description>Enable/Disable automated sending of report triggered by minimal change of value.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUsers, who want a more constant monitoring of power consumption should set this value to 1. The reporting period is by default quite long ( approx. 35minutes)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -150,26 +138,20 @@ Enable/Disable automated sending of report triggered by minimal change of value.
       <parameter name="config_91_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>91: Minimum Change to send Report (Watt)</label>
-        <description><![CDATA[
-The value represents the minimum change in Wattage for a Report to be sent.<br /><h1>Overview</h1><p> Range is 0 - 32000</p>
-        ]]></description>
+        <description>The value represents the minimum change in Wattage for a Report to be sent.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Range is 0 - 32000&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>25</default>
       </parameter>
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>92: Minimum Change to send Report (%)</label>
-        <description><![CDATA[
-Minimum change in Wattage Percent for a report to be sent.<br /><h1>Overview</h1><p>The value represents the minimum change in Wattage Percent for a report to be sent. Range is 0 to 100%</p>
-        ]]></description>
+        <description>Minimum change in Wattage Percent for a report to be sent.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value represents the minimum change in Wattage Percent for a report to be sent. Range is 0 to 100%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_100_1" type="integer" groupName="configuration">
         <label>100: Set 101‐103 to default</label>
-        <description><![CDATA[
- Enable/Disable automated report triggered by min. change of value.<br /><h1>Overview</h1><p> Enable/Disable automated sending of report triggered by minimal change of value.</p>
-        ]]></description>
+        <description> Enable/Disable automated report triggered by min. change of value.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Enable/Disable automated sending of report triggered by minimal change of value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Set to Default</option>
@@ -180,54 +162,42 @@ Minimum change in Wattage Percent for a report to be sent.<br /><h1>Overview</h1
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>101: Report type to send to Group 1</label>
-        <description><![CDATA[
-The value is a combination number<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual parameters.</p> <p>The parameters have the values: KWH=8, Wattage=4, Current=2, Voltage=1.</p> <p>Therefore if you want all parameters sending regular r</p>
-        ]]></description>
+        <description>The value is a combination number&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual parameters.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe parameters have the values: KWH=8, Wattage=4, Current=2, Voltage=1.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTherefore if you want all parameters sending regular r&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>102: Report type to send to Group 2</label>
-        <description><![CDATA[
-The value is a combination number<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual parameters.</p> <p>The parameters have the values: KWH=8, Wattage=4, Current=2, Voltage=1.</p> <p> Therefore if you want all parameters sending regular re</p>
-        ]]></description>
+        <description>The value is a combination number&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual parameters.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe parameters have the values: KWH=8, Wattage=4, Current=2, Voltage=1.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt Therefore if you want all parameters sending regular re&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>103: Report type to send to Group 3</label>
-        <description><![CDATA[
-The value is a combination number<br /><h1>Overview</h1><p>The value is a combination number &lt;br&gt; made up of the sum of the values for the individual parameters. &lt;br&gt; The parameters have the values: KWH=8, Wattage=4, Current=2, Voltage=1. &lt;br&gt; Therefore if you want all parameters sending regular re</p>
-        ]]></description>
+        <description>The value is a combination number&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number &amp;amp;lt;br&amp;amp;gt; made up of the sum of the values for the individual parameters. &amp;amp;lt;br&amp;amp;gt; The parameters have the values: KWH=8, Wattage=4, Current=2, Voltage=1. &amp;amp;lt;br&amp;amp;gt; Therefore if you want all parameters sending regular re&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>111: Interval to send out reports to Group 1</label>
-        <description><![CDATA[
-Time Interval to send reports to Group 1<br /><h1>Overview</h1><p>Defines the time interval when the defined report of Reporting Group 1 is sent out.</p> <p>0 s - 65535 s - Interval</p>
-        ]]></description>
+        <description>Time Interval to send reports to Group 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the time interval when the defined report of Reporting Group 1 is sent out.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 s - 65535 s - Interval&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>112: Interval to send out reports of group 2</label>
-        <description><![CDATA[
-Time interval to send reports of group 2<br /><h1>Overview</h1><p>Defines the time interval when the defined report of Reporting Group 2 is sent out.</p> <p>0 s - 65535 s - Interval</p>
-        ]]></description>
+        <description>Time interval to send reports of group 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the time interval when the defined report of Reporting Group 2 is sent out.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 s - 65535 s - Interval&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>113: Interval to send out reports of group 3</label>
-        <description><![CDATA[
-Time interval when report of Reporting Group 3 is sent.<br /><h1>Overview</h1><p>Defines the time interval when the defined report of Reporting Group 3 is sent out.</p> <p>0 s - 65535 s - Interval</p>
-        ]]></description>
+        <description>Time interval when report of Reporting Group 3 is sent.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the time interval when the defined report of Reporting Group 3 is sent out.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 s - 65535 s - Interval&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>65535</default>
       </parameter>
 

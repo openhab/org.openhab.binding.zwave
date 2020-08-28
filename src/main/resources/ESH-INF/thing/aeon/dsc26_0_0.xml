@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc26_00_000" listed="false">
     <label>DSC26 Micro Switch G2</label>
-    <description><![CDATA[
-Micro Switch G2<br /><h1>Overview</h1><p>Relay based unit designed to be included inside a junction box to switch a load.  Supports external switch.</p> <br /><h2>Inclusion Information</h2><p>Push case button.</p> <p>External switch (if attached) can be toggled 10X quickly to include/exclude.</p> <br /><h2>Exclusion Information</h2><p>Push case button.</p> <p>External switch (if attached) can be toggled 10X quickly to include/exclude.</p>
-    ]]></description>
+    <description>Micro Switch G2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRelay based unit designed to be included inside a junction box to switch a load.  Supports external switch.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPush case button.&lt;/p&gt &lt;p&gtExternal switch (if attached) can be toggled 10X quickly to include/exclude.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPush case button.&lt;/p&gt &lt;p&gtExternal switch (if attached) can be toggled 10X quickly to include/exclude.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -50,26 +48,20 @@ Micro Switch G2<br /><h1>Overview</h1><p>Relay based unit designed to be include
       <parameter name="config_2_2_000000FF" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: LED blink repeat</label>
-        <description><![CDATA[
-Number of times LED should blink<br /><h1>Overview</h1><p>Number of ON-OFF cycles the LED should complete once set.</p>
-        ]]></description>
+        <description>Number of times LED should blink&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNumber of ON-OFF cycles the LED should complete once set.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_2_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: LED duty time</label>
-        <description><![CDATA[
-length of time LED will blink on/off per cycle<br /><h1>Overview</h1><p>LED will turn on and off for this many tenths of a second once set.</p>
-        ]]></description>
+        <description>length of time LED will blink on/off per cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLED will turn on and off for this many tenths of a second once set.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Notification on Status Change</label>
-        <description><![CDATA[
-Notification on Status Change<br /><h1>Overview</h1><p>Send notification to associated devices in Group 1 when device state changed locally.</p>
-        ]]></description>
+        <description>Notification on Status Change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSend notification to associated devices in Group 1 when device state changed locally.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Do nothing</option>
@@ -81,27 +73,21 @@ Notification on Status Change<br /><h1>Overview</h1><p>Send notification to asso
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>101: Group 1 report values to send</label>
-        <description><![CDATA[
-Group 1 report values to send<br /><h1>Overview</h1><p>Value is the sum of the individual parameters:<br /><br />KWH=8<br />Wattage=4<br />Current=2</p> <p>Voltage=1</p>
-        ]]></description>
+        <description>Group 1 report values to send&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue is the sum of the individual parameters:&amp;lt;br /&amp;amp;gt&amp;lt;br /&amp;amp;gtKWH=8&amp;lt;br /&amp;amp;gtWattage=4&amp;lt;br /&amp;amp;gtCurrent=2&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVoltage=1&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>102: Group 2 report variables to send</label>
-        <description><![CDATA[
-Group 2 report variables to send<br /><h1>Overview</h1><p>Value is the sum of the individual parameters:<br /><br />KWH=8<br />Wattage=4<br />Current=2</p> <p>Voltage=1</p>
-        ]]></description>
+        <description>Group 2 report variables to send&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue is the sum of the individual parameters:&amp;lt;br /&amp;amp;gt&amp;lt;br /&amp;amp;gtKWH=8&amp;lt;br /&amp;amp;gtWattage=4&amp;lt;br /&amp;amp;gtCurrent=2&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVoltage=1&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>103: Group 3 report variables to send</label>
-        <description><![CDATA[
-Group 3 report variables to send<br /><h1>Overview</h1><p>Value is the sum of the individual parameters:<br /><br />KWH=8<br />Wattage=4<br />Current=2</p> <p>Voltage=1</p>
-        ]]></description>
+        <description>Group 3 report variables to send&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue is the sum of the individual parameters:&amp;lt;br /&amp;amp;gt&amp;lt;br /&amp;amp;gtKWH=8&amp;lt;br /&amp;amp;gtWattage=4&amp;lt;br /&amp;amp;gtCurrent=2&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtVoltage=1&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -148,9 +134,7 @@ Group 3 report variables to send<br /><h1>Overview</h1><p>Value is the sum of th
       <parameter name="config_250_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>250: CHECK AND DELETE ME formerly parameter 2</label>
-        <description><![CDATA[
-CHECK AND DELETE ME formerly parameter 2<br /><h1>Overview</h1><p>This is a double byte value. The LSB defines the total time the device need to blink. The value if set in seconds. The MSB defines the on/off interval of the blinking. The unit is 0.1 s.</p> <p>CHECK ME!</p> <p>CHECK ME!</p> <p>CHECK ME!</p> <p>CHECK ME!</p> <p>(did I do this right for parameter 2?)</p>
-        ]]></description>
+        <description>CHECK AND DELETE ME formerly parameter 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is a double byte value. The LSB defines the total time the device need to blink. The value if set in seconds. The MSB defines the on/off interval of the blinking. The unit is 0.1 s.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCHECK ME!&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCHECK ME!&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCHECK ME!&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCHECK ME!&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt(did I do this right for parameter 2?)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -177,17 +161,13 @@ CHECK AND DELETE ME formerly parameter 2<br /><h1>Overview</h1><p>This is a doub
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Group 1 will receive hail or basic report (see option 80) when the state of Micro Switch’s load changes.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtGroup 1 will receive hail or basic report (see option 80) when the state of Micro Switch’s load changes.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Retransmit</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>When the Micro Switch receives the following commands, they will be forwarded to all Group 2 nodes:  Basic Set, Switch Binary Set, Scene Activation Set.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWhen the Micro Switch receives the following commands, they will be forwarded to all Group 2 nodes:  Basic Set, Switch Binary Set, Scene Activation Set.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

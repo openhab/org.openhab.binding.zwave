@@ -7,9 +7,7 @@
 
   <thing-type id="vision_zd2201_00_000" listed="false">
     <label>ZD2201 Multisensor 4in1</label>
-    <description><![CDATA[
-Multisensor 4in1<br /><h1>Overview</h1><p>Contact/temperature/humidity/luminance sensor.  Can also be called Zipato Quad Sensor (Z+).</p> <br /><h2>Inclusion Information</h2><p> Press the program switch once on Multisensor 4 in 1</p> <br /><h2>Exclusion Information</h2><p> Press the program switch once on Multisensor 4 in 1 for 1 second at least</p> <br /><h2>Wakeup Information</h2><p> Press the program switch once on Multisensor 4 in 1</p>
-    ]]></description>
+    <description>Multisensor 4in1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtContact/temperature/humidity/luminance sensor.  Can also be called Zipato Quad Sensor (Z+).&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt Press the program switch once on Multisensor 4 in 1&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Press the program switch once on Multisensor 4 in 1 for 1 second at least&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt Press the program switch once on Multisensor 4 in 1&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -88,27 +86,21 @@ Multisensor 4in1<br /><h1>Overview</h1><p>Contact/temperature/humidity/luminance
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="1" max="50">
         <label>2: Temperature Reporting Threshold</label>
-        <description><![CDATA[
-Set up from 0.1C to 5C<br /><h1>Overview</h1><p>Threshold change in temperature to induce an automatic report. 1 to 50 ( Set up from 0.1C to 5C)</p>
-        ]]></description>
+        <description>Set up from 0.1C to 5C&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThreshold change in temperature to induce an automatic report. 1 to 50 ( Set up from 0.1C to 5C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="50">
         <label>3: Humidity Reporting Threshold</label>
-        <description><![CDATA[
-Set up from 1%-50%<br /><h1>Overview</h1><p>Threshold change in humidity to induce an automatic report. 1 to 50 ( Set up from 1%-50%)</p>
-        ]]></description>
+        <description>Set up from 1%-50%&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThreshold change in humidity to induce an automatic report. 1 to 50 ( Set up from 1%-50%)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="50">
         <label>4: Luminance Reporting Threshold</label>
-        <description><![CDATA[
-Set up from 5%-50%<br /><h1>Overview</h1><p>Threshold change in luminance to induce an automatic report. 0 is disabled. 5 to 50 ( Set up from 5%-50%)</p>
-        ]]></description>
+        <description>Set up from 5%-50%&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThreshold change in luminance to induce an automatic report. 0 is disabled. 5 to 50 ( Set up from 5%-50%)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 

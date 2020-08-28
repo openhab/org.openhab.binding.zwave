@@ -7,9 +7,7 @@
 
   <thing-type id="goodway_td1311_00_000" listed="false">
     <label>TD1311 In wall Power Monitor Switch</label>
-    <description><![CDATA[
-In wall Power Monitor Switch<br /><h1>Overview</h1><ul><li>Small form factor that fits in most gang boxes worldwide</li> <li>Switch and Monitor power consumption</li> <li>Switch and Monitor via Z-Wave</li> <li>Latest Z-Wave protocol and commands</li> <li>Optimized antenna range</li> </ul>
-    ]]></description>
+    <description>In wall Power Monitor Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtSmall form factor that fits in most gang boxes worldwide&lt;/li&gt &lt;li&gtSwitch and Monitor power consumption&lt;/li&gt &lt;li&gtSwitch and Monitor via Z-Wave&lt;/li&gt &lt;li&gtLatest Z-Wave protocol and commands&lt;/li&gt &lt;li&gtOptimized antenna range&lt;/li&gt &lt;/ul&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

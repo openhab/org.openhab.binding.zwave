@@ -10,31 +10,22 @@ This describes the Z-Wave device *ZMNHWD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHWD product image](https://www.cd-jackson.com/zwave_device_uploads/567/567_default.jpg)
+![ZMNHWD product image](https://opensmarthouse.org/zwavedatabase/567/image/)
 
 
 The ZMNHWD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Qubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.
-
-Supported control types:
-
-  * Push button (monostable switch)
-  * Bistable switch
-
-This should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different frequencies).
+<p&gtQubino Flush RGBW module controls RGB/RGBW strips and LED strips or bulbs and has 5 special scene effects. It can also control halogen lights and fans. Its extremely small size allows for easy installation behind wall sockets and switches. Controlled devices may be powered by 12 or 24 VDC.</p&gt <p&gtSupported control types:</p&gt <ul&gt<li&gtPush button (monostable switch)</li&gt <li&gtBistable switch</li&gt </ul&gt<p&gtThis should hopefully work with models ZMNHWD1-ZMNHWD8 (which work on different frequencies).</p&gt
 
 ### Inclusion Information
 
-To include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.
-
-The device supports auto inclusion: Install the device and connect the power. The auto inclusion function will be active for about 2 minutes.
+<p&gtTo include the device, press the service button 3 times within 2 seconds. The LED will turn green if the device was properly included.</p&gt <p&gtThe device supports auto inclusion: Install the device and connect the power. The auto inclusion function will be active for about 2 minutes.</p&gt
 
 ### Exclusion Information
 
-To exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.
+<p&gtTo exclude the device, press the service button 3 times within 2 seconds. The green LED will blink if the device was properly included and the device will be reset to factory defaults.</p&gt
 
 ## Channels
 
@@ -79,14 +70,14 @@ The color temperature channel allows to set the color
 The ```color_temperature``` channel is of type ```color_temperature``` and supports the ```Dimmer``` item and is in the ```ColorLight``` category.
 
 ### Scene
-Select one of 6 pre-defined scenes; 1 – Ocean (soft flowing between shades of blue color) 2 – Lightning (fast flashing of white color) 3 – Rainbow (flowing between colors of rainbow) 4 – Snow (flowing between shades of white and cyan color) 5 – Romantic (soft flowing of the red color) 6 – Party scene (random flashing between colors)
+<p&gtSelect one of 6 pre-defined scenes; 1 – Ocean (soft flowing between shades of blue color) 2 – Lightning (fast flashing of white color) 3 – Rainbow (flowing between colors of rainbow) 4 – Snow (flowing between shades of white and cyan color) 5 – Romantic (soft flowing of the red color) 6 – Party scene (random flashing between colors)</p&gt
 
 Generic class for configuration parameter.
 
 The ```config_decimal``` channel is of type ```config_decimal``` and supports the ```Number``` item.
 
 ### Scene Color Change Duration
-Duration between color change in scenes. Has no effect on Lighting and Party Scene. 1-127 – delay duration is 1 sec to 127 sec 1001-1127 – delay duration is from 1 min to 127 min.
+<p&gtDuration between color change in scenes. Has no effect on Lighting and Party Scene. 1-127 – delay duration is 1 sec to 127 sec 1001-1127 – delay duration is from 1 min to 127 min.</p&gt
 
 Generic class for configuration parameter.
 
@@ -259,8 +250,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Auto Scene Mode
 
 Duration between Colour change
-  * 1-127 – delay duration is 1 sec to 127 sec 
-  * 1001-1127 – delay duration is from 1 min to 127 min. This parameter has no effect on Lighting and Party Scene. 
+<ul&gt<li&gt1-127 – delay duration is 1 sec to 127 sec </li&gt <li&gt1001-1127 – delay duration is from 1 min to 127 min. This parameter has no effect on Lighting and Party Scene. </li&gt </ul&gt
 Values in the range 1 to 1127 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -287,8 +277,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Automatic turning off output after set time
 
 Automatic turning off output after set time
-  * 0 – Auto OFF disabled 
-  * 1 – 32536 = 1 second – 32536 seconds Auto OFF
+<ul&gt<li&gt0 – Auto OFF disabled </li&gt <li&gt1 – 32536 = 1 second – 32536 seconds Auto OFF</li&gt </ul&gt
 Values in the range 0 to 32536 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -299,8 +288,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: Automatic turning on output after set time
 
 Automatic turning on output after set time
-  * 0 – Auto ON disabled
-  * 1 – 32536 = 1 second – 32536 seconds Auto ON
+<ul&gt<li&gt0 – Auto ON disabled</li&gt <li&gt1 – 32536 = 1 second – 32536 seconds Auto ON</li&gt </ul&gt
 Values in the range 0 to 32536 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -311,7 +299,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 ### Parameter 10: MAX dimming value
 
 MAX dimming value
-2-99 = 2 % – 99 %
+<p&gt2-99 = 2 % – 99 %</p&gt
 Values in the range 2 to 99 may be set.
 
 The manufacturer defined default value is ```99```.
@@ -322,7 +310,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: MIN dimming value
 
 MIN dimming value
-1-98 = 1 % – 98 %
+<p&gt1-98 = 1 % – 98 %</p&gt
 Values in the range 1 to 98 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -333,8 +321,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Dimming time (soft on/off)
 
 Dimming time (soft on/off)
-  * Default value 10 = 1 s 
-  * 5 – 25 = from 0.5 to 2.5 seconds 
+<ul&gt<li&gtDefault value 10 = 1 s </li&gt <li&gt5 – 25 = from 0.5 to 2.5 seconds </li&gt </ul&gt
 Values in the range 5 to 25 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -345,9 +332,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Dimming time when key pressed
 
 Dimming time when key pressed
-1 – 127 = from 1 to 127 seconds 
-
-NOTE: Dimming time depends also on Min and Max dimming value. 
+<p&gt1 – 127 = from 1 to 127 seconds </p&gt <p&gtNOTE: Dimming time depends also on Min and Max dimming value. </p&gt
 Values in the range 1 to 127 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -358,9 +343,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: 4 Dimmers mode
 
 4 Dimmers mode
-NOTE: If the parameter no. 14 is enabled, parameter no. 1,2,3,4 has no effect. 
-
-NOTE: After parameter change, first exclude device (without setting parameters to default value) and then re include the device. 
+<p&gtNOTE: If the parameter no. 14 is enabled, parameter no. 1,2,3,4 has no effect. </p&gt <p&gtNOTE: After parameter change, first exclude device (without setting parameters to default value) and then re include the device. </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -383,9 +366,7 @@ The ZMNHWD supports 1 association group.
 
 ### Group 1: Send basic report to this group
 
-The Module can be set 1 auto-report ID in Group 1.
-
-The Module will send BASIC_REPORT to device associated in Group 1 when correspond Device is activated.
+<p&gtThe Module can be set 1 auto-report ID in Group 1.</p&gt <p&gtThe Module will send BASIC_REPORT to device associated in Group 1 when correspond Device is activated.</p&gt
 
 Association group 1 supports 1 node.
 
@@ -456,10 +437,10 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual v1.2](https://www.cd-jackson.com/zwave_device_uploads/567/Qubino-Flush-RGBW-Dimmer-PLUS-user-manual-V1-2-eng.pdf)
-* [Extended manual](https://www.cd-jackson.com/zwave_device_uploads/567/Qubino-Flush-RGBW-Dimmer-PLUS-extended-manual-eng-2-2.pdf)
+* [User Manual v1.2](https://opensmarthouse.org/zwavedatabase/567/Qubino-Flush-RGBW-Dimmer-PLUS-user-manual-V1-2-eng.pdf)
+* [Extended manual](https://opensmarthouse.org/zwavedatabase/567/Qubino-Flush-RGBW-Dimmer-PLUS-extended-manual-eng-2-2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/567).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/567).

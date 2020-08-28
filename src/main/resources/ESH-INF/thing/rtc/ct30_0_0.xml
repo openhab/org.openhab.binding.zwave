@@ -7,9 +7,7 @@
 
   <thing-type id="rtc_ct30_00_000" listed="false">
     <label>CT30 Z-Wave Thermostat</label>
-    <description><![CDATA[
-Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio Thermostat Company of America or 2Gig.  It can use either WiFi or Z-Wave or both depending on <br />which USNAP modules are installed.</p> <br /><h2>Inclusion Information</h2><ul><li>Put your primary controller in include mode.</li> <li>Press the MENU button</li> <li>Tap the MATE button under the radio tower icon.  A large "r1" or "r2" wil be displayed indicating which slot the USNAP module is in.</li> <li>Tap the MATE button under the radio tower icon again to include.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Put your primary controller in exclude mode.</li> <li>Press the MENU button</li> <li>Tap the MATE button under the radio tower icon.  A large "r1" or "r2" wil be displayed indicating which slot the USNAP module is in.</li> <li>Tap the MATE button under the radio tower icon again to exclude.</li> </ul>
-    ]]></description>
+    <description>Z-Wave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis thermostat was made by Radio Thermostat Company of America or 2Gig.  It can use either WiFi or Z-Wave or both depending on &lt;br /&gtwhich USNAP modules are installed.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtPut your primary controller in include mode.&lt;/li&gt &lt;li&gtPress the MENU button&lt;/li&gt &lt;li&gtTap the MATE button under the radio tower icon.  A large &quot;r1&quot; or &quot;r2&quot; wil be displayed indicating which slot the USNAP module is in.&lt;/li&gt &lt;li&gtTap the MATE button under the radio tower icon again to include.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtPut your primary controller in exclude mode.&lt;/li&gt &lt;li&gtPress the MENU button&lt;/li&gt &lt;li&gtTap the MATE button under the radio tower icon.  A large &quot;r1&quot; or &quot;r2&quot; wil be displayed indicating which slot the USNAP module is in.&lt;/li&gt &lt;li&gtTap the MATE button under the radio tower icon again to exclude.&lt;/li&gt &lt;/ul&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -84,9 +82,7 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>This thermostat was made by Radio The
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Temperature Reporting Threshold</label>
-        <description><![CDATA[
-Temperature Reporting Threshold<br /><h1>Overview</h1><p>Sets the reporting threshold for changes in the ambient temperature as detected by the thermostat.</p>
-        ]]></description>
+        <description>Temperature Reporting Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the reporting threshold for changes in the ambient temperature as detected by the thermostat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -99,9 +95,7 @@ Temperature Reporting Threshold<br /><h1>Overview</h1><p>Sets the reporting thre
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Utility Lock Enable/Disable</label>
-        <description><![CDATA[
-Utility Lock Enable/Disable<br /><h1>Overview</h1><p>The Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.</p>
-        ]]></description>
+        <description>Utility Lock Enable/Disable&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Utility lock disable</option>
@@ -111,9 +105,7 @@ Utility Lock Enable/Disable<br /><h1>Overview</h1><p>The Utility Lock Configurat
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Humidity Reporting Threshold</label>
-        <description><![CDATA[
-Humidity Reporting Threshold<br /><h1>Overview</h1><p>The Humidity Threshold Configuration Set Command sets the reporting threshold for changes in the relative humidity as detected by the thermostat.</p>
-        ]]></description>
+        <description>Humidity Reporting Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Humidity Threshold Configuration Set Command sets the reporting threshold for changes in the relative humidity as detected by the thermostat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -125,9 +117,7 @@ Humidity Reporting Threshold<br /><h1>Overview</h1><p>The Humidity Threshold Con
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Auxiliary/Emergency</label>
-        <description><![CDATA[
-Auxiliary/Emergency<br /><h1>Overview</h1><p>The Auxiliary/Emergency configuration command enables or disables auxiliary / emergency heating in the thermostat. Auxiliary / emergency heating is only available if the thermostat is configured in heat pump mode and with at least one stage of auxiliary heat.</p>
-        ]]></description>
+        <description>Auxiliary/Emergency&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Auxiliary/Emergency configuration command enables or disables auxiliary / emergency heating in the thermostat. Auxiliary / emergency heating is only available if the thermostat is configured in heat pump mode and with at least one stage of auxiliary heat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Auxiliary/Emergency heat disabled</option>
@@ -137,9 +127,7 @@ Auxiliary/Emergency<br /><h1>Overview</h1><p>The Auxiliary/Emergency configurati
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Thermostat Swing Temperature</label>
-        <description><![CDATA[
-Thermostat Swing Temperature<br /><h1>Overview</h1><p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system. If the thermostat is heating, the swing temper</p>
-        ]]></description>
+        <description>Thermostat Swing Temperature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system. If the thermostat is heating, the swing temper&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">0.05F</option>
@@ -150,9 +138,7 @@ Thermostat Swing Temperature<br /><h1>Overview</h1><p>The Thermostat Swing Tempe
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Thermostat Diff Temperature</label>
-        <description><![CDATA[
-Thermostat Diff Temperature<br /><h1>Overview</h1><p>The Thermostat Differential Temperature configuration command sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. There are two differential tempera</p>
-        ]]></description>
+        <description>Thermostat Diff Temperature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Thermostat Differential Temperature configuration command sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. There are two differential tempera&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
         <options>
           <option value="4">2.0 F</option>
@@ -178,9 +164,9 @@ Thermostat Diff Temperature<br /><h1>Overview</h1><p>The Thermostat Differential
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>

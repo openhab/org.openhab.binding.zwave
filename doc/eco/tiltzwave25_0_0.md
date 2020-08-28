@@ -10,7 +10,7 @@ This describes the Z-Wave device *TILT-ZWAVE2.5-ECO*, manufactured by *Ecolink* 
 
 The device is in the category of *Garage Door*, defining Garage Door.
 
-![TILT-ZWAVE2.5-ECO product image](https://www.cd-jackson.com/zwave_device_uploads/581/581_default.jpg)
+![TILT-ZWAVE2.5-ECO product image](https://opensmarthouse.org/zwavedatabase/581/image/)
 
 
 The TILT-ZWAVE2.5-ECO supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,23 +19,15 @@ The TILT-ZWAVE2.5-ECO does not permanently listen for messages sent from the con
 
 ## Overview
 
-  * Z-Wave PlusTM enabled device which transmits when a garage door is opened or closed
-  * Uses a tilt sensor to detect the angle of a door and transmits open/closed status
-  * Reports tamper condition if cover is removed 
+<ul&gt<li&gtZ-Wave PlusTM enabled device which transmits when a garage door is opened or closed</li&gt <li&gtUses a tilt sensor to detect the angle of a door and transmits open/closed status</li&gt <li&gtReports tamper condition if cover is removed </li&gt </ul&gt
 
 ### Inclusion Information
 
-1. Start by placing the controller into inclusion mode.
-
-2. Activate inclusion mode for the sensor by inserting the battery. When the inclusion process is complete the red LED will turn on for approximately 10 seconds and then it will go out. If the LED continues to flash, repeat the inclusion process.
-
-3. Test the garage door sensor before mounting it. Hold the sensor in your hand. Flip the sensor upside-down and watch the LED while doing so. The LED will flash each time the position of the sensor is changed. If your Z- Wave network has a software interface you may verify that the messages from the sensor are being received each time the sensor is flipped.
-
-If you need to repeat the inclusion process, repeat STEP ONE above, then for STEP TWO you will need to simply remove the cover of the sensor, remove the battery for 5 seconds, reinsert the battery, and replace the sensor cover. This will re-enter the sensor in inclusion mode.
+<p&gt1. Start by placing the controller into inclusion mode.</p&gt <p&gt2. Activate inclusion mode for the sensor by inserting the battery. When the inclusion process is complete the red LED will turn on for approximately 10 seconds and then it will go out. If the LED continues to flash, repeat the inclusion process.</p&gt <p&gt3. Test the garage door sensor before mounting it. Hold the sensor in your hand. Flip the sensor upside-down and watch the LED while doing so. The LED will flash each time the position of the sensor is changed. If your Z- Wave network has a software interface you may verify that the messages from the sensor are being received each time the sensor is flipped.</p&gt <p&gtIf you need to repeat the inclusion process, repeat STEP ONE above, then for STEP TWO you will need to simply remove the cover of the sensor, remove the battery for 5 seconds, reinsert the battery, and replace the sensor cover. This will re-enter the sensor in inclusion mode.</p&gt
 
 ### Exclusion Information
 
-Exclusion mode on the sensor is activated on the sensor by the exact same procedure as inclusion.
+<p&gtExclusion mode on the sensor is activated on the sensor by the exact same procedure as inclusion.</p&gt
 
 ### Wakeup Information
 
@@ -44,9 +36,7 @@ The TILT-ZWAVE2.5-ECO does not permanently listen for messages sent from the con
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-To save power, this sensor sleeps most of the time and is therefore not awake to receive messages from a gateway for testing. Removing the top case from the sensor will put in device into a tampered mode in which the sensor will stay awake and able to receive messages. Most of the time an end user would not do this, but if the sensor needs to be configured after inclusion, an end user can follow the instructions below for sending Wake-Up notifications.
-
-The sensor will wake up every so often and when the case is closed, it will send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor. **The time between Wake-Up Notifications can be configured with the Wake-Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.**
+<p&gtTo save power, this sensor sleeps most of the time and is therefore not awake to receive messages from a gateway for testing. Removing the top case from the sensor will put in device into a tampered mode in which the sensor will stay awake and able to receive messages. Most of the time an end user would not do this, but if the sensor needs to be configured after inclusion, an end user can follow the instructions below for sending Wake-Up notifications.</p&gt <p&gtThe sensor will wake up every so often and when the case is closed, it will send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor. <strong&gtThe time between Wake-Up Notifications can be configured with the Wake-Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.</strong&gt</p&gt
 
 ## Channels
 
@@ -158,7 +148,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Basic Sets for Association Group 2
 
 Send or not send Basic Set commands
-Send or not send Basic Set commands of 0x00 to nodes in Association group 2 turning the devices off when the sensor is in a restored state i.e. the door is closed
+<p&gtSend or not send Basic Set commands of 0x00 to nodes in Association group 2 turning the devices off when the sensor is in a restored state i.e. the door is closed</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -174,7 +164,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Send Reports
 
 Send Reports
-Send or not to send Sensor Binary Report commands to Association Group 1 when the sensor is faulted and restored
+<p&gtSend or not to send Sensor Binary Report commands to Association Group 1 when the sensor is faulted and restored</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -214,14 +204,14 @@ The TILT-ZWAVE2.5-ECO supports 2 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Sends low-battery, tamper, open/close, and sensor binary reports
-Group one is a lifeline group who will receive unsolicited messages relating to door/window open/close notifications (because there is no association group for tilt switches), case tampering notifications, low-battery notifications, and sensor binary reports.
+<p&gtGroup one is a lifeline group who will receive unsolicited messages relating to door/window open/close notifications (because there is no association group for tilt switches), case tampering notifications, low-battery notifications, and sensor binary reports.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Basic Set
 
 Sends ON/OFF commands to other devices based on state
-Group 2 is intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set
+<p&gtGroup 2 is intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set</p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -250,9 +240,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [ECOLINK ZWAVE PLUS 2.5 Manual](https://www.cd-jackson.com/zwave_device_uploads/581/ecolink-z-wave-plus-garage-door-tilt-sensor-tiltzwave2-5-eco-manual.pdf)
+* [ECOLINK ZWAVE PLUS 2.5 Manual](https://opensmarthouse.org/zwavedatabase/581/ecolink-z-wave-plus-garage-door-tilt-sensor-tiltzwave2-5-eco-manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/581).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/581).

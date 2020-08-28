@@ -10,24 +10,22 @@ This describes the Z-Wave device *ZMNHIA*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![ZMNHIA product image](https://www.cd-jackson.com/zwave_device_uploads/211/211_default.jpg)
+![ZMNHIA product image](https://opensmarthouse.org/zwavedatabase/211/image/)
 
 
 The ZMNHIA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used to regulate temperature. The module can be controlled either through Z-wave network or through the wall switch
+<p&gtThis Z-Wave module is used to regulate temperature. The module can be controlled either through Z-wave network or through the wall switch</p&gt
 
 ### Inclusion Information
 
-  * press service button S for more than 2 second or
-  * press push button I1 three times within 3s (3 times change switch state within 3 seconds
+<ul&gt<li&gtpress service button S for more than 2 second or</li&gt <li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * press service button S for more than 6 second or
-  * press push button I1 five times within 3s (5 times change switch state within 3 seconds).
+<ul&gt<li&gtpress service button S for more than 6 second or</li&gt <li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds).</li&gt </ul&gt
 
 ## Channels
 
@@ -220,7 +218,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 10: Activate / deactivate functions ALL ON/ALL OFF
 
 Module responds to commands ALL ON / ALL OFF
-Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
+<p&gtModule responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -238,15 +236,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Set point set by I2
 
 Set point set by I2
-When I2 is pressed set point will be set according to the value of this parameter. Available config. parameters:
-
-default value 65535
-
-65535 – input I2 does not influence on the set point
-
-From 0 to 990 – set point from 0.0 °C to 99.0 °C
-
-From 1001 to 1150 – set point from -0.1 °C to -15.0 °C
+<p&gtWhen I2 is pressed set point will be set according to the value of this parameter. Available config. parameters:</p&gt <p&gtdefault value 65535</p&gt <p&gt65535 – input I2 does not influence on the set point</p&gt <p&gtFrom 0 to 990 – set point from 0.0 °C to 99.0 °C</p&gt <p&gtFrom 1001 to 1150 – set point from -0.1 °C to -15.0 °C</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -257,15 +247,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: Set point set by I3
 
 Set point set by I3
-When I3 is pressed set point will be set according to the value of this parameter. Available config. parameters
-
-default value 65535
-
-65535 – input I3 does not influence on the set point
-
-From 0 to 990 – set point from 0.0 °C to 99.0 °C
-
-From 1001 to 1150 – set point from -0.1 °C to -15.0 °C
+<p&gtWhen I3 is pressed set point will be set according to the value of this parameter. Available config. parameters</p&gt <p&gtdefault value 65535</p&gt <p&gt65535 – input I3 does not influence on the set point</p&gt <p&gtFrom 0 to 990 – set point from 0.0 °C to 99.0 °C</p&gt <p&gtFrom 1001 to 1150 – set point from -0.1 °C to -15.0 °C</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -292,15 +274,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 40: Power reporting in Watts on power change for Q1
 
 Power reporting in Watts on power change
-Set value means percentage, set value from 0 - 100=0% - 100%. Available configuration parameters
-
-default value 3
-
-0 – Reporting Disabled
-
-1–100 = 1%-100% Reporting enabled. Power report is sent (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.
-
-NOTE: If power changed is less than 1W, the report is not sent (pushed), independent of percentage set.
+<p&gtSet value means percentage, set value from 0 - 100=0% - 100%. Available configuration parameters</p&gt <p&gtdefault value 3</p&gt <p&gt0 – Reporting Disabled</p&gt <p&gt1–100 = 1%-100% Reporting enabled. Power report is sent (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.</p&gt <p&gtNOTE: If power changed is less than 1W, the report is not sent (pushed), independent of percentage set.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -311,13 +285,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 42: Power reporting in Watts by time interval for Q1
 
 Power reporting in Watts by time interval
-Set value means time interval (0 – 65535) in seconds, when power report is send. Available config. parameters
-
-default value 300 (power report in Watts is send each 300s)
-
-0 – Reporting Disabled
-
-1 – 65535 = 1second – 65535 seconds. Reporting enabled. Power report is send with time interval set by entered value.
+<p&gtSet value means time interval (0 – 65535) in seconds, when power report is send. Available config. parameters</p&gt <p&gtdefault value 300 (power report in Watts is send each 300s)</p&gt <p&gt0 – Reporting Disabled</p&gt <p&gt1 – 65535 = 1second – 65535 seconds. Reporting enabled. Power report is send with time interval set by entered value.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -328,11 +296,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 43: Hysteresis On
 
 Hysteresis On
-This parameter defines temperature min difference between real measured temperature and set-point temperature to turn device on. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.
-
-Available configuration parameters
-
-default value 132 (-0.5 °C)
+<p&gtThis parameter defines temperature min difference between real measured temperature and set-point temperature to turn device on. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.</p&gt <p&gtAvailable configuration parameters</p&gt <p&gtdefault value 132 (-0.5 °C)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```132```.
@@ -343,11 +307,7 @@ This parameter has the configuration ID ```config_43_1``` and is of type ```INTE
 ### Parameter 44: Hysteresis Off
 
 Hysteresis Off
-This parameter defines temperature min difference between real measured temperature and set-point temperature to turn device off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.
-
-Available configuration parameters
-
-default value 5 (+0.5 °C)
+<p&gtThis parameter defines temperature min difference between real measured temperature and set-point temperature to turn device off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.</p&gt <p&gtAvailable configuration parameters</p&gt <p&gtdefault value 5 (+0.5 °C)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -358,13 +318,7 @@ This parameter has the configuration ID ```config_44_1``` and is of type ```INTE
 ### Parameter 45: Antifreeze
 
 Antifreeze function Temperature
-Set value means at which temperature the device will be turned on even if the thermostat was manually set to off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 254 means from - 0.1 °C to -12.6 °C.
-
-Available configuration parameters
-
-default value 50 (5,0 °C)
-
-255 – Antifreeze functionality disabled
+<p&gtSet value means at which temperature the device will be turned on even if the thermostat was manually set to off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 254 means from - 0.1 °C to -12.6 °C.</p&gt <p&gtAvailable configuration parameters</p&gt <p&gtdefault value 50 (5,0 °C)</p&gt <p&gt255 – Antifreeze functionality disabled</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -375,11 +329,7 @@ This parameter has the configuration ID ```config_45_1``` and is of type ```INTE
 ### Parameter 60: Too low temperature limit
 
 Too low temperature limit
-Available configuration parameters
-
-Default value 50 (Too low temperature limit is 5.0°C)
-
-1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.
+<p&gtAvailable configuration parameters</p&gt <p&gtDefault value 50 (Too low temperature limit is 5.0°C)</p&gt <p&gt1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -390,11 +340,7 @@ This parameter has the configuration ID ```config_60_2``` and is of type ```INTE
 ### Parameter 61: Too high temperature limit
 
 Too high temperature limit
-Available configuration parameters:
-
-Default value 50 (Too low temperature limit is 5.0°C)
-
-1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.
+<p&gtAvailable configuration parameters:</p&gt <p&gtDefault value 50 (Too low temperature limit is 5.0°C)</p&gt <p&gt1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```700```.
@@ -405,13 +351,7 @@ This parameter has the configuration ID ```config_61_2``` and is of type ```INTE
 ### Parameter 63: Switch selection
 
 Connected device type can be (NO) or (NC)
-Set value means the type of the device that is connected to the relay output. The device type can be normally open (NO) or normally close (NC). Available configuration parameters
-
-default value 0
-
-0 - When system is turned off the output is 0 V.
-
-1 - When system is turned off the output is 230 V.
+<p&gtSet value means the type of the device that is connected to the relay output. The device type can be normally open (NO) or normally close (NC). Available configuration parameters</p&gt <p&gtdefault value 0</p&gt <p&gt0 - When system is turned off the output is 0 V.</p&gt <p&gt1 - When system is turned off the output is 230 V.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -490,9 +430,9 @@ Association group 6 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual V1.0](https://www.cd-jackson.com/zwave_device_uploads/211/Qubino-Flush-On-Off-thermostat-user-manual-V1-0-eng.pdf)
+* [User Manual V1.0](https://opensmarthouse.org/zwavedatabase/211/Qubino-Flush-On-Off-thermostat-user-manual-V1-0-eng.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/211).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/211).

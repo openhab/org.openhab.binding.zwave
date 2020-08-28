@@ -10,7 +10,7 @@ This describes the Z-Wave device *Tag Reader 500*, manufactured by *[BeNext](htt
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![Tag Reader 500 product image](https://www.cd-jackson.com/zwave_device_uploads/1122/1122_default.png)
+![Tag Reader 500 product image](https://opensmarthouse.org/zwavedatabase/1122/image/)
 
 
 The Tag Reader 500 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,17 +19,15 @@ The Tag Reader 500 does not permanently listen for messages sent from the contro
 
 ## Overview
 
-A Z-Wave security enabled entry control device. You can arm/disarm your house to home or away with the Tag Reader 500. With the use of a RFID tag or a numerical code the device can send an entry control message which can be handled by a supported gateway. In addition the Tag Reader supports the activation of scenes.
+<p&gtA Z-Wave security enabled entry control device. You can arm/disarm your house to home or away with the Tag Reader 500. With the use of a RFID tag or a numerical code the device can send an entry control message which can be handled by a supported gateway. In addition the Tag Reader supports the activation of scenes.</p&gt
 
 ### Inclusion Information
 
-  1. To include the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). 
-  2. Release the enter button now to start the inclusion (during the inclusion routine the indication LED willblink twice per second).
+<ol&gt<li&gtTo include the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). </li&gt <li&gtRelease the enter button now to start the inclusion (during the inclusion routine the indication LED willblink twice per second).</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. To exclude the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). 
-  2. Release the enter button now to start the exclusion (during the exclusion routine the indication LED willblink twice three times per 1,5 second).
+<ol&gt<li&gtTo exclude the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). </li&gt <li&gtRelease the enter button now to start the exclusion (during the exclusion routine the indication LED willblink twice three times per 1,5 second).</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -38,7 +36,7 @@ The Tag Reader 500 does not permanently listen for messages sent from the contro
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press and hold the button for 7 seconds, the indication LED will go on for 1 full second.
+<p&gtPress and hold the button for 7 seconds, the indication LED will go on for 1 full second.</p&gt
 
 ## Channels
 
@@ -94,7 +92,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Set to Default
 
 Set all configuration values to default values (factory settings)
-If the Value is set to 0xFF (255) this device will return to factory settings.
+<p&gtIf the Value is set to 0xFF (255) this device will return to factory settings.</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -109,7 +107,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Feedback time
 
 the time the beep goes to off
-0x00 = Off, 0xFF = endless
+<p&gt0x00 = Off, 0xFF = endless</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -120,11 +118,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Feedback time-out
 
 waiting for the wake-up-no-more command
-Too configure the time-out, waiting on the wakeup\_no\_more_information command before the error sound starts automatically. The error sound is set to 8 short beeps.
-
-0x00 = off
-
-0x01 – 0xFF: Value in seconds
+<p&gtToo configure the time-out, waiting on the wakeup\_no\_more_information command before the error sound starts automatically. The error sound is set to 8 short beeps.</p&gt <p&gt0x00 = off</p&gt <p&gt0x01 – 0xFF: Value in seconds</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -135,7 +129,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: feedback beeps per second
 
 Amount of beeps a second
-To set the amount of beeps per second, every beep is around 10ms.
+<p&gtTo set the amount of beeps per second, every beep is around 10ms.</p&gt
 Values in the range 0 to 5 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -146,11 +140,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Always awake mode
 
 Always awake mode
-Mode 1 =  normal working mode
-
-Mode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.
-
-Any other value will be reported after a GET, but will be seen as a mode 1.
+<p&gtMode 1 =  normal working mode</p&gt <p&gtMode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.</p&gt <p&gtAny other value will be reported after a GET, but will be seen as a mode 1.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -166,8 +156,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 7: Operation mode
 
 Operation mode
-  * 0x00: the RFID and Numeric codes are reported in gateway mode
-  * 0x01 – 0xFF: the RFID and Numeric codes are reported in local mode
+<ul&gt<li&gt0x00: the RFID and Numeric codes are reported in gateway mode</li&gt <li&gt0x01 – 0xFF: the RFID and Numeric codes are reported in local mode</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -183,8 +172,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Gateway confirmation
 
 Gateway confirmation
-  * In gateway mode it is possible to let the gateway decide if the Tag Reader 500 can arm to home or away.
-  * If gateway indication is disabled the Tag Reader 500 automatically assumes that it can arm and will wait for a user input of RFID TAG or numeric code. 
+<ul&gt<li&gtIn gateway mode it is possible to let the gateway decide if the Tag Reader 500 can arm to home or away.</li&gt <li&gtIf gateway indication is disabled the Tag Reader 500 automatically assumes that it can arm and will wait for a user input of RFID TAG or numeric code. </li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -255,9 +243,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1122/tagreader500.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1122/tagreader500.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1122).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1122).

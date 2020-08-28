@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc13_00_000" listed="false">
     <label>DSC13 Micro Smart Energy Illuminator</label>
-    <description><![CDATA[
-Micro Smart Energy Illuminator<br /><h1>Overview</h1><p>The Aeon Labs Micro SEI is a scene multilevel switch device based on Zwave enhanced slave library V4.54.</p> <br /><h2>Inclusion Information</h2><p>Click the button once.</p> <br /><h2>Exclusion Information</h2><p>Click the button once.</p>
-    ]]></description>
+    <description>Micro Smart Energy Illuminator&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Aeon Labs Micro SEI is a scene multilevel switch device based on Zwave enhanced slave library V4.54.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtClick the button once.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtClick the button once.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -81,9 +79,7 @@ Micro Smart Energy Illuminator<br /><h1>Overview</h1><p>The Aeon Labs Micro SEI 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: Blinking Behavior</label>
-        <description><![CDATA[
-See overview<br /><h1>Overview</h1><p>The LSB defines the total time the device need to blink. The value if set in seconds. The MSB defines the on/off interval of the blinking. The unit is 0.1 s.</p>
-        ]]></description>
+        <description>See overview&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe LSB defines the total time the device need to blink. The value if set in seconds. The MSB defines the on/off interval of the blinking. The unit is 0.1 s.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -128,27 +124,21 @@ See overview<br /><h1>Overview</h1><p>The LSB defines the total time the device 
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>101: Reports to send to Group 1</label>
-        <description><![CDATA[
-See overview<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.</p>
-        ]]></description>
+        <description>See overview&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>102: Reports to send to Group 2</label>
-        <description><![CDATA[
-See overview<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.</p>
-        ]]></description>
+        <description>See overview&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>103: Reports to send to Group 3</label>
-        <description><![CDATA[
-See overview<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.</p>
-        ]]></description>
+        <description>See overview&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 

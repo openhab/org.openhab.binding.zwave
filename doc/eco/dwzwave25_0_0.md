@@ -10,7 +10,7 @@ This describes the Z-Wave device *DWZWAVE25*, manufactured by *Ecolink* with the
 
 The device is in the category of *Door*, defining Door sensors.
 
-![DWZWAVE25 product image](https://www.cd-jackson.com/zwave_device_uploads/947/947_default.jpg)
+![DWZWAVE25 product image](https://opensmarthouse.org/zwavedatabase/947/image/)
 
 
 The DWZWAVE25 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,29 +19,15 @@ The DWZWAVE25 does not permanently listen for messages sent from the controller 
 
 ## Overview
 
-Z-Wave+ enabled device which provides open/closed position status
-
-Transmits open/closed status
-
-Reports tamper condition when cover is open
+<p&gtZ-Wave+ enabled device which provides open/closed position status</p&gt <p&gtTransmits open/closed status</p&gt <p&gtReports tamper condition when cover is open</p&gt
 
 ### Inclusion Information
 
-Start by placing the controller into inclusion mode.
-
-Activate inclusion mode for the sensor by removing the plastic pull-tab from the back of the sensor. When the inclusion process in complete, the LED on the sensor will be solid blue, then go out.
-
-Test the sensor. Place the magnet next to the sensor to represent a closed position (see Installation section to see where to position the magnet). If the LED flashes ONE TIME, it is successfully communicating on your Zwave network. If the LED on the sensor flashes slow and steady for 5 seconds, you need to repeat the inclusion process.
-
-Notes:
-
-If you need to repeat the inclusion process, repeat STEP ONE above, then for STEP TWO you will need to simply remove the cover of the sensor, remove the battery for 10 seconds, reinsert the battery, and replace the sensor cover. This will re-enter the sensor in inclusion mode.
-
-This sensor also supports Network Wide Inclusion such that the Sensor can be included into the Z-Wave network over the mesh network and not directly near the main controller. This mode is automatically activated after regular inclusion was not successful.
+<p&gtStart by placing the controller into inclusion mode.</p&gt <p&gtActivate inclusion mode for the sensor by removing the plastic pull-tab from the back of the sensor. When the inclusion process in complete, the LED on the sensor will be solid blue, then go out.</p&gt <p&gtTest the sensor. Place the magnet next to the sensor to represent a closed position (see Installation section to see where to position the magnet). If the LED flashes ONE TIME, it is successfully communicating on your Zwave network. If the LED on the sensor flashes slow and steady for 5 seconds, you need to repeat the inclusion process.</p&gt <p&gtNotes:</p&gt <p&gtIf you need to repeat the inclusion process, repeat STEP ONE above, then for STEP TWO you will need to simply remove the cover of the sensor, remove the battery for 10 seconds, reinsert the battery, and replace the sensor cover. This will re-enter the sensor in inclusion mode.</p&gt <p&gtThis sensor also supports Network Wide Inclusion such that the Sensor can be included into the Z-Wave network over the mesh network and not directly near the main controller. This mode is automatically activated after regular inclusion was not successful.</p&gt
 
 ### Exclusion Information
 
-Exclusion mode on the sensor is initiated following the same exact procedure as inclusion.
+<p&gtExclusion mode on the sensor is initiated following the same exact procedure as inclusion.</p&gt
 
 ### Wakeup Information
 
@@ -50,9 +36,7 @@ The DWZWAVE25 does not permanently listen for messages sent from the controller 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The sensor will wake up every so often and when the case is closed to send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor. The time between Wake-Up Notifications can be configured with the Wake- Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.
-
-To save power, this sensor sleeps most of the time and is therefore not awake to receive messages from a gateway for testing. Removing the top case from the sensor will put in device into a tampered mode in which the sensor will stay awake and able to receive messages. Most of the time an end user would not do this, but if the sensor needs to be configured after inclusion, an end user can follow the instructions below for sending Wake-Up notifications.
+<p&gtThe sensor will wake up every so often and when the case is closed to send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor. The time between Wake-Up Notifications can be configured with the Wake- Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.</p&gt <p&gtTo save power, this sensor sleeps most of the time and is therefore not awake to receive messages from a gateway for testing. Removing the top case from the sensor will put in device into a tampered mode in which the sensor will stay awake and able to receive messages. Most of the time an end user would not do this, but if the sensor needs to be configured after inclusion, an end user can follow the instructions below for sending Wake-Up notifications.</p&gt
 
 ## Channels
 
@@ -136,7 +120,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Send Basic Set
 
 Send Basic Set to Association Group 2
-Configures the sensor to send or not send Basic Set commands of 0x00 to nodes in Association group 2 turning the devices off when the sensor is in a restored state i.e. the door is closed. By default the sensor does NOT send Basic Set commands of 0x00.
+<p&gtConfigures the sensor to send or not send Basic Set commands of 0x00 to nodes in Association group 2 turning the devices off when the sensor is in a restored state i.e. the door is closed. By default the sensor does NOT send Basic Set commands of 0x00.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -152,7 +136,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Send Sensor Binary Report
 
 Send Sensor Binary Report to Association Group 1
-Configures the sensor to either to send or not to send Sensor Binary Report commands to Association Group 1 when the sensor is faulted and restored. If the controller is fully compatible with the Notification Command Class thereby making the Sensor Binary Reports redundant, the controller can disable the Sensor Binary Report Commands completely.
+<p&gtConfigures the sensor to either to send or not to send Sensor Binary Report commands to Association Group 1 when the sensor is faulted and restored. If the controller is fully compatible with the Notification Command Class thereby making the Sensor Binary Reports redundant, the controller can disable the Sensor Binary Report Commands completely.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -191,14 +175,14 @@ The DWZWAVE25 supports 2 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Receive unsolicited messages relating to door/window open/close notifications, case tampering notifications, low-battery notifications, and sensor binary reports.
+<p&gtReceive unsolicited messages relating to door/window open/close notifications, case tampering notifications, low-battery notifications, and sensor binary reports.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Control
 
 Group to receive Basic Set
-Intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set.
+<p&gtIntended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set. </p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -226,9 +210,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/947/D-W--Zwave-Manual-R1-04.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/947/D-W--Zwave-Manual-R1-04.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/947).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/947).

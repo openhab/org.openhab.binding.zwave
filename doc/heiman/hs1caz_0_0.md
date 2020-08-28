@@ -10,7 +10,7 @@ This describes the Z-Wave device *HS1CA-Z*, manufactured by *[Heiman Technology 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HS1CA-Z product image](https://www.cd-jackson.com/zwave_device_uploads/790/790_default.png)
+![HS1CA-Z product image](https://opensmarthouse.org/zwavedatabase/790/image/)
 
 
 The HS1CA-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,45 +19,15 @@ The HS1CA-Z does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-Carbon monoxide Sensor
-
-Battery Type: CR123A
-
-The device has two operation buttons: A big button that can be pressed with your fingers on the side of the device (for function test only) and a hidden button behind a small hole on the side of the device (used for inclusion/exclusion to z-wave network, and to reset the device to factory defaults)
-
-After inserting battery, the device will make a short sound. The device will then perform a preheat cycle. While preheating cycle is active (about 90 s) the LED will flash green, red, yellow alternately. After that the device will enter normal mode and LED will stop flashing. After that, device will be ready to be included into z-wave network.
-
-Device Factory Reset
-
--Long press Net_Button (small button behind hole on the side of the device) while installing battery in HS1CA-Z. 
-
-You can use a needle or a SIM card extractor (included in package) to press the button.
-
-- Device Reset Locally notification is transmitted.
-
-- Please use this procedure only when the network primary controller is 
-
-missing or otherwise inoperable.
-
-Manual:
-
-https://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/1940/HS1CA-Z%20documentation.doc
+<p&gtCarbon monoxide Sensor</p&gt <p&gtBattery Type: CR123A</p&gt <p&gtThe device has two operation buttons: A big button that can be pressed with your fingers on the side of the device (for function test only) and a hidden button behind a small hole on the side of the device (used for inclusion/exclusion to z-wave network, and to reset the device to factory defaults)</p&gt <p&gtAfter inserting battery, the device will make a short sound. The device will then perform a preheat cycle. While preheating cycle is active (about 90 s) the LED will flash green, red, yellow alternately. After that the device will enter normal mode and LED will stop flashing. After that, device will be ready to be included into z-wave network.</p&gt <p&gtDevice Factory Reset</p&gt <p&gt-Long press Net_Button (small button behind hole on the side of the device) while installing battery in HS1CA-Z. </p&gt <p&gtYou can use a needle or a SIM card extractor (included in package) to press the button.</p&gt <p&gt- Device Reset Locally notification is transmitted.</p&gt <p&gt- Please use this procedure only when the network primary controller is </p&gt <p&gtmissing or otherwise inoperable.</p&gt <p&gtManual:</p&gt <p&gthttps://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/1940/HS1CA-Z%20documentation.doc</p&gt
 
 ### Inclusion Information
 
-Set the z-Wave controller to inclusion mode.
-
-Then quickly triple press button behind small hole on the side of the CO-Sensor device (within 1.5 s) to include. This button is called „NET Button“ in manual. You can use a needle or an SIM card extractor to push the button behind the small hole on the side of the device.
-
-Green LED will blink 3 times within 1 second.
-
-If inclusion process is successful, green LED will turn off.
+<p&gtSet the z-Wave controller to inclusion mode.</p&gt <p&gtThen quickly triple press button behind small hole on the side of the CO-Sensor device (within 1.5 s) to include. This button is called „NET Button“ in manual. You can use a needle or an SIM card extractor to push the button behind the small hole on the side of the device.</p&gt <p&gtGreen LED will blink 3 times within 1 second.</p&gt <p&gtIf inclusion process is successful, green LED will turn off.</p&gt
 
 ### Exclusion Information
 
-Set the z-Wave controller to exclusion mode and then quickly triple press button behind small hole on the side of the CO-Sensor device (within 1.5 s) to exclude. This button is called „NET Button“ in manual. You can use a needle or an SIM card extractor to push the button behind the small hole on the side of the device.
-
-If exclusion process is successful, green LED will blink 6 times and then turn off.
+<p&gtSet the z-Wave controller to exclusion mode and then quickly triple press button behind small hole on the side of the CO-Sensor device (within 1.5 s) to exclude. This button is called „NET Button“ in manual. You can use a needle or an SIM card extractor to push the button behind the small hole on the side of the device.</p&gt <p&gtIf exclusion process is successful, green LED will blink 6 times and then turn off.</p&gt
 
 ### Wakeup Information
 
@@ -66,7 +36,7 @@ The HS1CA-Z does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Not provided
+<p&gtNot provided</p&gt
 
 ## Channels
 
@@ -123,27 +93,21 @@ The HS1CA-Z supports 3 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Battery, Notification, Reset locally Notification, Binary report
-<table>
-  <tr>
-    <td>
-      Association group 1: Lifeline association group Include command classes: Battery report, Notification report, and Device Reset Locally notification, Binary report.
-    </td>
-  </tr>
-</table>
+<table&gt<tr&gt<td&gtAssociation group 1: Lifeline association group Include command classes: Battery report, Notification report, and Device Reset Locally notification, Binary report.</td&gt </tr&gt</table&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Root device Group (binary sensor)
 
 Binary Sensor CO via lifeline and on status Chance of CO detection
-u25b6 Association group 2: Root Device group(Binary Sensor) Binary Sensor Command Class: Compatible with 300 series 1-Binary Sensor reports status of CO or no CO via Lifeline. 2-When the sensor detects status change of CO and no CO, the device will be triggered.
+<p&gtu25b6 Association group 2: Root Device group(Binary Sensor) Binary Sensor Command Class: Compatible with 300 series 1-Binary Sensor reports status of CO or no CO via Lifeline. 2-When the sensor detects status change of CO and no CO, the device will be triggered.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Root device Group (notification)
 
 CO status as notification report and on status change of CO detection
-u25b6Association group 3: Root Device group(Notification) 1-Notification reports status of detect CO or no CO via Lifeline. 2-When the sensor detects status change of CO and no CO, the device will be triggered.
+<p&gtu25b6Association group 3: Root Device group(Notification) 1-Notification reports status of detect CO or no CO via Lifeline. 2-When the sensor detects status change of CO and no CO, the device will be triggered.</p&gt
 
 Association group 3 supports 5 nodes.
 
@@ -176,9 +140,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/790/User-Manual-HS1CAZ.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/790/User-Manual-HS1CAZ.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/790).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/790).

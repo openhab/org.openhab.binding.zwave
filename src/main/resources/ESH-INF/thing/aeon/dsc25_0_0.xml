@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc25_00_000" listed="false">
     <label>DSC25 Smart Energy Illuminator G2</label>
-    <description><![CDATA[
-Smart Energy Illuminator G2<br /><h1>Overview</h1><p>Plugin dimmer for a lamp</p> <br /><h2>Inclusion Information</h2><ol><li>Press the Action Button</li> <li>If successfully linked, the LED will no longer blink</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Press the Action Button</li> <li>If successfully removed, the LED will blink</li> </ol>
-    ]]></description>
+    <description>Smart Energy Illuminator G2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtPlugin dimmer for a lamp&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress the Action Button&lt;/li&gt &lt;li&gtIf successfully linked, the LED will no longer blink&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress the Action Button&lt;/li&gt &lt;li&gtIf successfully removed, the LED will blink&lt;/li&gt &lt;/ol&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

@@ -7,9 +7,7 @@
 
   <thing-type id="ge_14280_00_000" listed="false">
     <label>ZW3107 / GE 14280 Plug-In Smart Dimmer (Dual Linked Outlets)</label>
-    <description><![CDATA[
-Plug-In Smart Dimmer (Dual Linked Outlets)<br /><h1>Overview</h1><ul><li>2 Simultaneously Controlled Outlets</li> <li>Only Blocks One Outlet / Cords Exit Sideways</li> <li>Indoor</li> <li>Wall Plug</li> <li>120 VAC, 60 Hz</li> <li>908.42/916 MHz</li> <li>Max Incandescent Load 600W (5A)</li> <li>Max Resistive Load 1800W (15A)</li> <li>Max Motor 1/2 HP</li> <li>Max Range 45 m</li> <li>Operating Temperature Range 0°C to 40°C</li> <li>UL Listed</li> <li>FCC ID U2ZZW4104</li> <li>IC 6924A-ZW4104</li> </ul><p>Appears to be the same as the Honeywell 39339 / Jasco ZW3107.</p> <br /><h2>Inclusion Information</h2><p>Press and release the manual/program button.  (Tested to work with Network Wide Inclusion.)</p> <br /><h2>Exclusion Information</h2><p>Press and release the manual/program button.</p>
-    ]]></description>
+    <description>Plug-In Smart Dimmer (Dual Linked Outlets)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gt2 Simultaneously Controlled Outlets&lt;/li&gt &lt;li&gtOnly Blocks One Outlet / Cords Exit Sideways&lt;/li&gt &lt;li&gtIndoor&lt;/li&gt &lt;li&gtWall Plug&lt;/li&gt &lt;li&gt120 VAC, 60 Hz&lt;/li&gt &lt;li&gt908.42/916 MHz&lt;/li&gt &lt;li&gtMax Incandescent Load 600W (5A)&lt;/li&gt &lt;li&gtMax Resistive Load 1800W (15A)&lt;/li&gt &lt;li&gtMax Motor 1/2 HP&lt;/li&gt &lt;li&gtMax Range 45 m&lt;/li&gt &lt;li&gtOperating Temperature Range 0°C to 40°C&lt;/li&gt &lt;li&gtUL Listed&lt;/li&gt &lt;li&gtFCC ID U2ZZW4104&lt;/li&gt &lt;li&gtIC 6924A-ZW4104&lt;/li&gt &lt;/ul&gt&lt;p&gtAppears to be the same as the Honeywell 39339 / Jasco ZW3107.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and release the manual/program button.  (Tested to work with Network Wide Inclusion.)&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the manual/program button.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -83,18 +81,14 @@ Plug-In Smart Dimmer (Dual Linked Outlets)<br /><h1>Overview</h1><ul><li>2 Simul
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Dim Timing (When Manually Controlled)</label>
-        <description><![CDATA[
-(When Manually Controlled)<br /><h1>Overview</h1><p>Timing of the steps</p>
-        ]]></description>
+        <description>(When Manually Controlled)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTiming of the steps&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>11: Dim Rate Adjustments</label>
-        <description><![CDATA[
-(When Receiving All-On/All-Off Command)<br /><h1>Overview</h1><p>number of steps of levels</p>
-        ]]></description>
+        <description>(When Receiving All-On/All-Off Command)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtnumber of steps of levels&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

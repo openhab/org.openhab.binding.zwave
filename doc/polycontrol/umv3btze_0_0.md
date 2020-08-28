@@ -10,24 +10,22 @@ This describes the Z-Wave device *UMV3-BTZ*, manufactured by *[Poly-control](htt
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![UMV3-BTZ product image](https://www.cd-jackson.com/zwave_device_uploads/1053/1053_default.jpg)
+![UMV3-BTZ product image](https://opensmarthouse.org/zwavedatabase/1053/image/)
 
 
 The UMV3-BTZ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The Universal Model V3 supports: - S0/S2 Z-Wave Security - Can operate 3 outputs. - Outputs can be delayed. - Bluetooth Smart
-
-The UMV3 can be set to factory settings by pushing the switch 10 times. Please use this procedure only when the primary controller is missing or otherwise inoperable.
+<p&gtThe Universal Model V3 supports: - S0/S2 Z-Wave Security - Can operate 3 outputs. - Outputs can be delayed. - Bluetooth Smart</p&gt <p&gtThe UMV3 can be set to factory settings by pushing the switch 10 times. Please use this procedure only when the primary controller is missing or otherwise inoperable.</p&gt
 
 ### Inclusion Information
 
-To add or include the UMV3 into a Z-Wave network 1. Set the controller in inclusion mode 2. Push the switch once. 3. Wait 5 seconds.
+<p&gtTo add or include the UMV3 into a Z-Wave network 1. Set the controller in inclusion mode 2. Push the switch once. 3. Wait 5 seconds.</p&gt
 
 ### Exclusion Information
 
-To remove or exclude the UMV3 into a Z-Wave network 1. Set the controller in exclusion mode 2. Push the switch once. 3. Wait 5 seconds.
+<p&gtTo remove or exclude the UMV3 into a Z-Wave network 1. Set the controller in exclusion mode 2. Push the switch once. 3. Wait 5 seconds.</p&gt
 
 ## Channels
 
@@ -275,9 +273,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1053/Danalock-UMV3-ZWave-Manual-V0-03.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1053/Danalock-UMV3-ZWave-Manual-V0-03.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1053).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1053).

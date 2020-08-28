@@ -10,34 +10,22 @@ This describes the Z-Wave device *NZW31*, manufactured by *NIE Technology* with 
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![NZW31 product image](https://www.cd-jackson.com/zwave_device_uploads/807/807_default.jpg)
+![NZW31 product image](https://opensmarthouse.org/zwavedatabase/807/image/)
 
 
 The NZW31 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Inovelli's In-Wall Smart Dimmer not only has the ability to control lights from anywhere in the world, but it acts as a Z-Wave signal repeater, which amplifies your Z-Wave signal, growing the capabilities of your network. 
+<p&gtInovelli's In-Wall Smart Dimmer not only has the ability to control lights from anywhere in the world, but it acts as a Z-Wave signal repeater, which amplifies your Z-Wave signal, growing the capabilities of your network. </p&gt
 
 ### Inclusion Information
 
-**Including Steps:**
-
-  * This will vary based on the HUB/Gateway you’re using, but you need to go one (1) step before putting your HUB/Gateway in inclusion process — once you are one (1) step away from physically starting the inclusion/pairing process — **THEN STOP!**
-  * Walk down to your circuit breaker and flip on the power (you will now have 30 seconds to physically start the inclusion process on your HUB/Gateway)
-  * While next to the breaker, start the inclusion process and your HUB/Gateway will automatically start looking for devices
-  * Wait for auto-inclusion to do its thing. Your switch will automatically include/pair to your HUB/Gateway 
-      * If successful, your device will flash twice (**NOTE:** Auto-Inclusion will time out after 30 seconds)
-      * If the switch does not flash within 30 seconds, please use the alternate method of pairing which is pressing the top (UP) button 6x within 2 seconds
-  * Confirm that your HUB/Gateway shows the switch
-
-Congratulations, you now have a remote controlled switch!
-
-**\*\*If you are having issues pairing your device, please ensure your switch is within range of your HUB. 95% of the pairing/including failures stem from this issue. Best practice is to start with Z-Wave products near your HUB and build your network out. The more Z-Wave devices, the more efficient your network.\*\***
+<p&gt<strong&gtIncluding Steps:</strong&gt</p&gt <ul&gt<li&gtThis will vary based on the HUB/Gateway you’re using, but you need to go one (1) step before putting your HUB/Gateway in inclusion process — once you are one (1) step away from physically starting the inclusion/pairing process — <strong&gtTHEN STOP!</strong&gt</li&gt <li&gtWalk down to your circuit breaker and flip on the power (you will now have 30 seconds to physically start the inclusion process on your HUB/Gateway)</li&gt <li&gtWhile next to the breaker, start the inclusion process and your HUB/Gateway will automatically start looking for devices</li&gt <li&gtWait for auto-inclusion to do its thing. Your switch will automatically include/pair to your HUB/Gateway <ul&gt<li&gtIf successful, your device will flash twice (<strong&gtNOTE:</strong&gt Auto-Inclusion will time out after 30 seconds)</li&gt <li&gtIf the switch does not flash within 30 seconds, please use the alternate method of pairing which is pressing the top (UP) button 6x within 2 seconds</li&gt </ul&gt</li&gt <li&gtConfirm that your HUB/Gateway shows the switch</li&gt </ul&gt<p&gtCongratulations, you now have a remote controlled switch!</p&gt <p&gt<strong&gt\*\*If you are having issues pairing your device, please ensure your switch is within range of your HUB. 95% of the pairing/including failures stem from this issue. Best practice is to start with Z-Wave products near your HUB and build your network out. The more Z-Wave devices, the more efficient your network.\*\*</strong&gt</p&gt
 
 ### Exclusion Information
 
-  * Press the Top (UP) Button on your NZW31 six (6) times within 2 seconds
+<ul&gt<li&gtPress the Top (UP) Button on your NZW31 six (6) times within 2 seconds</li&gt </ul&gt
 
 ## Channels
 
@@ -71,7 +59,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Dimmer Step configuration
 
 Dimmer Speed Setting (On/Off)
-Control the speed with which the dimmer turns on and off.
+<p&gtControl the speed with which the dimmer turns on and off.</p&gt
 Values in the range 1 to 99 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -82,7 +70,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Dimmer Minimum Configuration
 
 Lowest dim setting before turning off
-Lowest dim setting before turning off
+<p&gtLowest dim setting before turning off</p&gt
 Values in the range 1 to 99 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -93,11 +81,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 4: Switch Orientation
 
 Invert On/Off from Top/Bottom
-Invert the switch on/off position.
-
-00 - Up = On, Down = Off
-
-01 - Up = Off, Down = On
+<p&gtInvert the switch on/off position.</p&gt <p&gt00 - Up = On, Down = Off</p&gt <p&gt01 - Up = Off, Down = On</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -113,9 +97,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Countdown Timer
 
 Shutoff Timer
-Countdown timer.
-
-0x00 - x8000 - 0-32768 Seconds
+<p&gtCountdown timer.</p&gt <p&gt0x00 - x8000 - 0-32768 Seconds</p&gt
 Values in the range 0 to 32768 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -146,7 +128,7 @@ The NZW31 supports 1 association group.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-An association command class that allows the device to communicate with other Z-Wave devices directly -- such as sending BASIC REPORT whenever the switch is turned on or off.
+<p&gtAn association command class that allows the device to communicate with other Z-Wave devices directly -- such as sending BASIC REPORT whenever the switch is turned on or off.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -175,10 +157,10 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/807/NZW31manual171102.pdf)
-* [NZw31 Command Classes and Parameters](https://www.cd-jackson.com/zwave_device_uploads/807/nzw31-command-classes.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/807/NZW31manual171102.pdf)
+* [NZw31 Command Classes and Parameters](https://opensmarthouse.org/zwavedatabase/807/nzw31-command-classes.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/807).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/807).

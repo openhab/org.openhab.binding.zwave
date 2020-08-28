@@ -10,33 +10,22 @@ This describes the Z-Wave device *VRCS4*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![VRCS4 product image](https://www.cd-jackson.com/zwave_device_uploads/197/197_default.jpg)
+![VRCS4 product image](https://opensmarthouse.org/zwavedatabase/197/image/)
 
 
 The VRCS4 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Vizia RF + 4-Button Remote Scene Controller, rated @ 120/240 VAC, 50/60HZ;  
-The top four buttons provide ON/OFF switching of four scenes.  Each button can have up to 32 devices associated with it. The bottom button transmits DIM/BRIGHT commands to the most recently switched-ON scene.
+<p&gtVizia RF + 4-Button Remote Scene Controller, rated @ 120/240 VAC, 50/60HZ;<br /&gtThe top four buttons provide ON/OFF switching of four scenes.  Each button can have up to 32 devices associated with it. The bottom button transmits DIM/BRIGHT commands to the most recently switched-ON scene.</p&gt
 
 ### Inclusion Information
 
-To access programming mode, press and hold the left side of buttons 1 and 3. Wait 5 seconds until the LEDs turn amber then release the buttons.  The LEDs will blink amber.
-
-While holding your system controller close the the 4-Scene controller (approximately 1 foot) put your system comptroller into inclusion mode. When the 4-Scene controller is included in your system the LEDs will turn off. If the LEDs on the 4-Scene controller turn red while including, there has been a communications problem.
-
-The instructions state that only one device may be included at a time and it seems that inclusion works best if the system controller is put in including mode after the device is in programming mode.
-
-If the 4-Scene controller has been successfully included in the network and the user tries to include it again without first excluding it from the network, the controller will retain the first node ID it had received and ignore the second.
+<p&gtTo access programming mode, press and hold the left side of buttons 1 and 3. Wait 5 seconds until the LEDs turn amber then release the buttons.  The LEDs will blink amber.</p&gt <p&gtWhile holding your system controller close the the 4-Scene controller (approximately 1 foot) put your system comptroller into inclusion mode. When the 4-Scene controller is included in your system the LEDs will turn off. If the LEDs on the 4-Scene controller turn red while including, there has been a communications problem.</p&gt <p&gtThe instructions state that only one device may be included at a time and it seems that inclusion works best if the system controller is put in including mode after the device is in programming mode.</p&gt <p&gtIf the 4-Scene controller has been successfully included in the network and the user tries to include it again without first excluding it from the network, the controller will retain the first node ID it had received and ignore the second.</p&gt
 
 ### Exclusion Information
 
-To access programming mode, press and hold the left side of buttons 1 and 3. Wait 5 seconds until the LEDs turn amber then release the buttons.  The LEDs will blink amber.
-
-While holding your system controller close the the 4-Scene controller (approximately 1 foot) put your system comptroller into exclusion mode. When the 4-Scene controller is excluded from your system the LEDs will turn off.
-
-If the LEDs on the 4-Zone controller turn red while excluding, there has been a communications problem.
+<p&gtTo access programming mode, press and hold the left side of buttons 1 and 3. Wait 5 seconds until the LEDs turn amber then release the buttons.  The LEDs will blink amber.</p&gt <p&gtWhile holding your system controller close the the 4-Scene controller (approximately 1 foot) put your system comptroller into exclusion mode. When the 4-Scene controller is excluded from your system the LEDs will turn off.</p&gt <p&gtIf the LEDs on the 4-Zone controller turn red while excluding, there has been a communications problem.</p&gt
 
 ## Channels
 
@@ -66,28 +55,28 @@ The VRCS4 supports 4 association groups.
 ### Group 1: Group 1
 
 Button 1
-First (top) button on controller. Can be associated with up to 32 devices.
+<p&gtFirst (top) button on controller. Can be associated with up to 32 devices.</p&gt
 
 Association group 1 supports 32 nodes.
 
 ### Group 2: Group 2
 
 Button 2
-Second button on controller. Can be associated with up to 32 devices.
+<p&gtSecond button on controller. Can be associated with up to 32 devices.</p&gt
 
 Association group 2 supports 32 nodes.
 
 ### Group 3: Group 3
 
 Button 3
-Third button on controller. Can be associated with up to 32 devices.
+<p&gtThird button on controller. Can be associated with up to 32 devices.</p&gt
 
 Association group 3 supports 32 nodes.
 
 ### Group 4: Group 4
 
 Button 4
-Fourth button on controller. Can be associated with up to 32 devices.
+<p&gtFourth button on controller. Can be associated with up to 32 devices.</p&gt
 
 Association group 4 supports 32 nodes.
 
@@ -112,11 +101,11 @@ Association group 4 supports 32 nodes.
 
 ### Documentation Links
 
-* [Product Specifications](https://www.cd-jackson.com/zwave_device_uploads/197/Vizia-RF---Controllers-Spec-Sheet.pdf)
-* [Z-Wave Certification](https://www.cd-jackson.com/zwave_device_uploads/197/ZC08-08070003.pdf)
-* [Instruction sheet VRCS4](https://www.cd-jackson.com/zwave_device_uploads/197/Instruction-Sheet-VRCS4.pdf)
+* [Product Specifications](https://opensmarthouse.org/zwavedatabase/197/Vizia-RF---Controllers-Spec-Sheet.pdf)
+* [Z-Wave Certification](https://opensmarthouse.org/zwavedatabase/197/ZC08-08070003.pdf)
+* [Instruction sheet VRCS4](https://opensmarthouse.org/zwavedatabase/197/Instruction-Sheet-VRCS4.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/197).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/197).

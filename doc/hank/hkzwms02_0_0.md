@@ -10,61 +10,26 @@ This describes the Z-Wave device *HKZW_MS02*, manufactured by *[Hank](http://www
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HKZW_MS02 product image](https://www.cd-jackson.com/zwave_device_uploads/676/676_default.jpg)
+![HKZW_MS02 product image](https://opensmarthouse.org/zwavedatabase/676/image/)
 
 
 The HKZW_MS02 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Motion sensor is a universal Z-Wave Sensor. It can detect motion and communicate with other associated Z-Wave devices, such as Gateway, Siren, Smart Switch, etc.
-
-Motion sensor can be included and operated in any Z-Wave network with other Z-Wave certified devices.
-
-The features list:
-
-  1. Z-Wave Plus certified for wide compatibility (500 serials product).
-  2. Supports security 0 and security 2 protected mode with AES-128 encryption.
-  3. Motion sensor.
-  4. Product shock alarm.
-  5. The battery life is up to 1 year.
-  6. Low battery alarm.
-  7. Support firmware OTA
+<p&gtMotion sensor is a universal Z-Wave Sensor. It can detect motion and communicate with other associated Z-Wave devices, such as Gateway, Siren, Smart Switch, etc.</p&gt <p&gtMotion sensor can be included and operated in any Z-Wave network with other Z-Wave certified devices.</p&gt <p&gtThe features list:</p&gt <ol&gt<li&gtZ-Wave Plus certified for wide compatibility (500 serials product).</li&gt <li&gtSupports security 0 and security 2 protected mode with AES-128 encryption.</li&gt <li&gtMotion sensor.</li&gt <li&gtProduct shock alarm.</li&gt <li&gtThe battery life is up to 1 year.</li&gt <li&gtLow battery alarm.</li&gt <li&gtSupport firmware OTA</li&gt </ol&gt
 
 ### Inclusion Information
 
-Adding the device:
-
-  1. Open the cover.
-  2. Place the device within the direct range of your Z-Wave controller.
-  3. Set the main controller’s adding mode (see the controller’s manual).
-  4. Click the Z-button once or triple click the Z-button quickly, the LED indicator should blink fast.
-  5. Wait for the adding process to end.
-  6. Successful adding will be confirmed by the Z-Wave controller’s message.
+<p&gtAdding the device:</p&gt <ol&gt<li&gtOpen the cover.</li&gt <li&gtPlace the device within the direct range of your Z-Wave controller.</li&gt <li&gtSet the main controller’s adding mode (see the controller’s manual).</li&gt <li&gtClick the Z-button once or triple click the Z-button quickly, the LED indicator should blink fast.</li&gt <li&gtWait for the adding process to end.</li&gt <li&gtSuccessful adding will be confirmed by the Z-Wave controller’s message.</li&gt </ol&gt
 
 ### Exclusion Information
 
-Removing the device:
-
-  1. Open the cover.
-  2. Place the device within the direct range of your Z-Wave controller.
-  3. Set the main controller remove mode (see the controller’s manual).
-  4. Triple click the Z-button quickly, the LED indicator should blink fast.Wait for the removing process to end.
-  5. Successful removing will be confirmed by the Z-Wave controller’s message.
+<p&gtRemoving the device:</p&gt <ol&gt<li&gtOpen the cover.</li&gt <li&gtPlace the device within the direct range of your Z-Wave controller.</li&gt <li&gtSet the main controller remove mode (see the controller’s manual).</li&gt <li&gtTriple click the Z-button quickly, the LED indicator should blink fast.Wait for the removing process to end.</li&gt <li&gtSuccessful removing will be confirmed by the Z-Wave controller’s message.</li&gt </ol&gt
 
 ### General Usage Information
 
-Installation:
-
-  1. Turn the cover counter-clockwise and open it. 
-  2. Remove the battery blocker.
-  3. Add the device (see “Adding/removing the device”).
-  4. Close the cover and turn it clockwise.
-  5. Place the sensor to anywhere you want.
-
-Detection Area:
-
-Actual range of the sensor can be influenced by environment conditions. Should false motion alarms be reported, check for any moving objects within the sensor’s detection area, such as trees blowing in the wind, cars passing by, windmills. False motion alarms may be caused by moving masses of air and heat as well. If the device keeps on reporting false alarms, despite eliminating all of the above-mentioned factors, install the device in another place.
+<p&gtInstallation:</p&gt <ol&gt<li&gtTurn the cover counter-clockwise and open it. </li&gt <li&gtRemove the battery blocker.</li&gt <li&gtAdd the device (see “Adding/removing the device”).</li&gt <li&gtClose the cover and turn it clockwise.</li&gt <li&gtPlace the sensor to anywhere you want.</li&gt </ol&gt<p&gtDetection Area:</p&gt <p&gtActual range of the sensor can be influenced by environment conditions. Should false motion alarms be reported, check for any moving objects within the sensor’s detection area, such as trees blowing in the wind, cars passing by, windmills. False motion alarms may be caused by moving masses of air and heat as well. If the device keeps on reporting false alarms, despite eliminating all of the above-mentioned factors, install the device in another place.</p&gt
 
 ## Channels
 
@@ -183,7 +148,7 @@ This parameter has the configuration ID ```config_17_1``` and is of type ```INTE
 ### Parameter 18: Motion Alarm Cancellation Delay
 
 Period of time after which Motion alarm will be cancelled.
-The Motion alarm will be cancelled in the main controller and the associated devices after 3 seconds, the alarm cancellation can be delay by this parameter. Any motion detected during the cancellation delay time countdown will result in the countdown being restarted.
+<p&gtThe Motion alarm will be cancelled in the main controller and the associated devices after 3 seconds, the alarm cancellation can be delay by this parameter. Any motion detected during the cancellation delay time countdown will result in the countdown being restarted.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -262,10 +227,10 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/676/HKZW-MS02.pdf)
-* [HKZW-MS02-V1 Product Manual](https://www.cd-jackson.com/zwave_device_uploads/676/HKZW-MS02-V1-ProductManual.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/676/HKZW-MS02.pdf)
+* [HKZW-MS02-V1 Product Manual](https://opensmarthouse.org/zwavedatabase/676/HKZW-MS02-V1-ProductManual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/676).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/676).

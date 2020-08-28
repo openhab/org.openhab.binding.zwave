@@ -10,7 +10,7 @@ This describes the Z-Wave device *PH-PSR03*, manufactured by *[Philio Technology
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![PH-PSR03 product image](https://www.cd-jackson.com/zwave_device_uploads/985/985_default.jpg)
+![PH-PSR03 product image](https://opensmarthouse.org/zwavedatabase/985/image/)
 
 
 The PH-PSR03 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,40 +19,15 @@ The PH-PSR03 does not permanently listen for messages sent from the controller -
 
 ## Overview
 
-Zipato Z-Wave Remote is a simple controller for controlling AV device through Z-Wave-to-IR extender, and it can also control 8 ON/OFF lighting groups via basic set, based on Z-Wave technology. It is the Z-Wave plus product, it support the security, OTA... all the newest features of the Z-Wave technology.   
-Z-Wave is a wireless communication protocol designed for home automation, specifically to remotely control applications in residential and light commercial environments. The technology uses a low-power RF radio embedded or retrofitted into home electronics devices and systems, such as lighting, home access control, entertainment systems and household appliances.   
-This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.
-
-The device adopts the Z-Wave 500 series chip. When your Z-Wave network system is all made by Z-Wave 500 series devices, the network system will have the advantages as below.
-
-  * Concurrent multi-channel support reduces external interference
-  * Better RF range, about 10 meters improvement indoors.
-  * Supports 100 Kbps transmission speed
-
-# POWER UP PROCEDURE
-
-The device can not work normally in the first time. Please activate the battery through micro USB before the first use. After the device is activated by connecting to micro USB, the device will start charging and LED will light on with red color. If the battery is full charged, LED will light on with green color. When device is charging, it will send Wake Up Notification to controller minutely.
-
-## BATTERY POWER CHECK
-
-When any keys around the central key is pressed, the device will check the battery power. If the power level is too low, the red LED will flash once after pressing. Please charge the device through micro USB immediately.
-
-## NWI
-
-When it poweres up, the device will check if it is already added to the network. If it isn’t, it will automatically start the NWI mode. The LED will flash in every second and continue for about 30 seconds, until timeout or successful inclusion by controller. You can hold down the central key and then press the top-right key 3 times within 1.5 seconds to abort the NWI mode.
+<p&gtZipato Z-Wave Remote is a simple controller for controlling AV device through Z-Wave-to-IR extender, and it can also control 8 ON/OFF lighting groups via basic set, based on Z-Wave technology. It is the Z-Wave plus product, it support the security, OTA... all the newest features of the Z-Wave technology. <br /&gtZ-Wave is a wireless communication protocol designed for home automation, specifically to remotely control applications in residential and light commercial environments. The technology uses a low-power RF radio embedded or retrofitted into home electronics devices and systems, such as lighting, home access control, entertainment systems and household appliances. <br /&gtThis product can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.</p&gt <p&gtThe device adopts the Z-Wave 500 series chip. When your Z-Wave network system is all made by Z-Wave 500 series devices, the network system will have the advantages as below.</p&gt <ul&gt<li&gtConcurrent multi-channel support reduces external interference</li&gt <li&gtBetter RF range, about 10 meters improvement indoors.</li&gt <li&gtSupports 100 Kbps transmission speed</li&gt </ul&gt<h1&gtPOWER UP PROCEDURE</h1&gt <p&gtThe device can not work normally in the first time. Please activate the battery through micro USB before the first use. After the device is activated by connecting to micro USB, the device will start charging and LED will light on with red color. If the battery is full charged, LED will light on with green color. When device is charging, it will send Wake Up Notification to controller minutely.</p&gt <h2&gtBATTERY POWER CHECK</h2&gt <p&gtWhen any keys around the central key is pressed, the device will check the battery power. If the power level is too low, the red LED will flash once after pressing. Please charge the device through micro USB immediately.</p&gt <h2&gtNWI</h2&gt <p&gtWhen it poweres up, the device will check if it is already added to the network. If it isn’t, it will automatically start the NWI mode. The LED will flash in every second and continue for about 30 seconds, until timeout or successful inclusion by controller. You can hold down the central key and then press the top-right key 3 times within 1.5 seconds to abort the NWI mode.</p&gt
 
 ### Inclusion Information
 
-  1. Put the Z-Wave Controller in inclusion mode.
-  2. Hold down the central key, then press the top-right key 3 times
-  3. within 1.5 seconds to enter inclusion mode.
-  4. After successful inclusion, the device will wake to receive the
-  5. setting command from Z-Wave Controller in about 20 seconds.
+<ol&gt<li&gtPut the Z-Wave Controller in inclusion mode.</li&gt <li&gtHold down the central key, then press the top-right key 3 times</li&gt <li&gtwithin 1.5 seconds to enter inclusion mode.</li&gt <li&gtAfter successful inclusion, the device will wake to receive the</li&gt <li&gtsetting command from Z-Wave Controller in about 20 seconds.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Put the Z-Wave Controller in exclusion mode.
-  2. Hold down the central key, then press the top-right key 3 times within 1.5 seconds to enter exclusion mode. Node ID has been excluded.
+<ol&gt<li&gtPut the Z-Wave Controller in exclusion mode.</li&gt <li&gtHold down the central key, then press the top-right key 3 times within 1.5 seconds to enter exclusion mode. Node ID has been excluded.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -61,9 +36,7 @@ The PH-PSR03 does not permanently listen for messages sent from the controller -
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-After the device is added to the network, it will wake-up once per day in default. When it wakes up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds to receive the setting commands. To wake-up the device immediately, please hold down the central key, then press the top-right key once within. The device will wake-up for 10 seconds.
-
-When device is charging, it will send Wake Up Notification to controller minutely.
+<p&gtAfter the device is added to the network, it will wake-up once per day in default. When it wakes up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds to receive the setting commands. To wake-up the device immediately, please hold down the central key, then press the top-right key once within. The device will wake-up for 10 seconds.</p&gt <p&gtWhen device is charging, it will send Wake Up Notification to controller minutely.</p&gt
 
 ## Channels
 
@@ -109,10 +82,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 2: Basic Set Level
 
 Basic Set Level
-Setting the BASIC command value to turn on the light.
-
-  * The 255 means turn on the light.
-  * For dimmer equipment 1 to 100 means the light strength. 0 means turn off the light.
+<p&gtSetting the BASIC command value to turn on the light.</p&gt <ul&gt<li&gtThe 255 means turn on the light.</li&gt <li&gtFor dimmer equipment 1 to 100 means the light strength. 0 means turn off the light.</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -123,9 +93,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 7: Customer Function
 
 Customer Function
-Customer function switch, using bit control.
-
-Bit0: Switch AV control/ Lighting group control. (0: AV control, 1: lighting group control)
+<p&gtCustomer function switch, using bit control.</p&gt <p&gtBit0: Switch AV control/ Lighting group control. (0: AV control, 1: lighting group control)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -136,11 +104,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 10: Auto Report Battery Time
 
 Auto Report Battery Time
-The interval time for auto report the battery level.
-
-  * 0 means turn off auto report battery.
-  * Each tick means 30 minutes.
-  * The default value is 12(6 hours).
+<p&gtThe interval time for auto report the battery level.</p&gt <ul&gt<li&gt0 means turn off auto report battery.</li&gt <li&gtEach tick means 30 minutes.</li&gt <li&gtThe default value is 12(6 hours).</li&gt </ul&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -243,9 +207,9 @@ Association group 9 supports 4 nodes.
 
 ### Documentation Links
 
-* [Device Manual](https://www.cd-jackson.com/zwave_device_uploads/985/ph-psr03-Zipato-Z-Wave-Remote-User-Manual-v1-0.pdf)
+* [Device Manual](https://opensmarthouse.org/zwavedatabase/985/ph-psr03-Zipato-Z-Wave-Remote-User-Manual-v1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/985).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/985).

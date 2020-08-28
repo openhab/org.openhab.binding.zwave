@@ -7,9 +7,7 @@
 
   <thing-type id="ge_zw3102_00_000" listed="false">
     <label>ZW3102 Jasco Energy Monitoring Lamp Dimmer</label>
-    <description><![CDATA[
-Jasco Energy Monitoring Lamp Dimmer<br /><h1>Overview</h1><p>Energy Monitoring Lamp Module</p>
-    ]]></description>
+    <description>Jasco Energy Monitoring Lamp Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtEnergy Monitoring Lamp Module&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -74,9 +72,7 @@ Jasco Energy Monitoring Lamp Dimmer<br /><h1>Overview</h1><p>Energy Monitoring L
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Ignore start level</label>
-        <description><![CDATA[
-Ignore start level when receiving zwave dim commands<br /><h1>Overview</h1><p>Every "Dim" command from your remote controller includes a start level embedded in it.  This device can be set to ignore the start level that is part of the dim command</p>
-        ]]></description>
+        <description>Ignore start level when receiving zwave dim commands&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEvery &quot;Dim&quot; command from your remote controller includes a start level embedded in it.  This device can be set to ignore the start level that is part of the dim command&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Obey commend start level</option>

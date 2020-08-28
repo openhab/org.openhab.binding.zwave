@@ -7,9 +7,7 @@
 
   <thing-type id="eurotronic_vocsensor_00_000" listed="false">
     <label>VOC-SENSOR Air Quality Sensor</label>
-    <description><![CDATA[
-Air Quality Sensor<br /><h1>Overview</h1><p>Z-Wave sensor in an ultra slim design housing provides comprehensive information on indoor air quality.</p> <p>Based on these information it is possible to always ensure a healthy living climate.</p> <p>• Ultra-flat design housing</p> <p>• Use of high-precision, Swiss sensor technology</p> <p>• Multicolor LED for signalling ventilation recommendations</p> <p>• Returns the following values:</p> <p>- VOC value (volatile organic compounds) in ppm</p> <p>- CO2 value (as CO2 equivalent) in ppm</p> <p>- Temperature (°C) and humidity (%)</p> <p>- Dew point (°C)</p> <p>• Supports Z-Wave Plus S2 security (encryption)</p> <p>• Z-Wave repeater function</p> <p>• Operation with plug-in power supply unit</p> <br /><h2>Inclusion Information</h2><p>Press the back button three times within 1 second.</p> <p>While the inclusion is active, the LED is blinking green. If the inclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.</p> <br /><h2>Exclusion Information</h2><p>Press the back button three times within 1 second.</p> <p>While the exclusion is active, the LED is blinking green. If the exclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.</p> <br /><h2>Wakeup Information</h2><p>n/a</p>
-    ]]></description>
+    <description>Air Quality Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-Wave sensor in an ultra slim design housing provides comprehensive information on indoor air quality.&lt;/p&gt &lt;p&gtBased on these information it is possible to always ensure a healthy living climate.&lt;/p&gt &lt;p&gt• Ultra-flat design housing&lt;/p&gt &lt;p&gt• Use of high-precision, Swiss sensor technology&lt;/p&gt &lt;p&gt• Multicolor LED for signalling ventilation recommendations&lt;/p&gt &lt;p&gt• Returns the following values:&lt;/p&gt &lt;p&gt- VOC value (volatile organic compounds) in ppm&lt;/p&gt &lt;p&gt- CO2 value (as CO2 equivalent) in ppm&lt;/p&gt &lt;p&gt- Temperature (°C) and humidity (%)&lt;/p&gt &lt;p&gt- Dew point (°C)&lt;/p&gt &lt;p&gt• Supports Z-Wave Plus S2 security (encryption)&lt;/p&gt &lt;p&gt• Z-Wave repeater function&lt;/p&gt &lt;p&gt• Operation with plug-in power supply unit&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the back button three times within 1 second.&lt;/p&gt &lt;p&gtWhile the inclusion is active, the LED is blinking green. If the inclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the back button three times within 1 second.&lt;/p&gt &lt;p&gtWhile the exclusion is active, the LED is blinking green. If the exclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtn/a&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -80,9 +78,7 @@ Air Quality Sensor<br /><h1>Overview</h1><p>Z-Wave sensor in an ultra slim desig
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="50">
         <label>1: Temperature on-change reporting</label>
-        <description><![CDATA[
-Temperature on-change reporting<br /><h1>Overview</h1><p>0x00 No on-change reporting (only time-based reports).</p> <p>0x01 - 0x32 report if temperature changed by delta = 0,1°C - 5,0°C</p>
-        ]]></description>
+        <description>Temperature on-change reporting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No on-change reporting (only time-based reports).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 - 0x32 report if temperature changed by delta = 0,1°C - 5,0°C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <options>
           <option value="0">No on-change reporting</option>
@@ -93,9 +89,7 @@ Temperature on-change reporting<br /><h1>Overview</h1><p>0x00 No on-change repor
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>2: Humidity on-change reporting</label>
-        <description><![CDATA[
-Humidity on-change reporting<br /><h1>Overview</h1><p>0x00 No on-change reporting (only time-based reports)</p> <p>0x01 - 0x0A report if humidity changed by delta = 1% ...10%</p>
-        ]]></description>
+        <description>Humidity on-change reporting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No on-change reporting (only time-based reports)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 - 0x0A report if humidity changed by delta = 1% ...10%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <options>
           <option value="0">No on change reporting</option>
@@ -105,9 +99,7 @@ Humidity on-change reporting<br /><h1>Overview</h1><p>0x00 No on-change reportin
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Unit Temperature</label>
-        <description><![CDATA[
-Unit for Temperature (Celsius or Fahrenheit)<br /><h1>Overview</h1><p>0x00 Temperature reports in Celsius </p> <p>0x01 Temperature reports in Fahrenheit</p>
-        ]]></description>
+        <description>Unit for Temperature (Celsius or Fahrenheit)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 Temperature reports in Celsius &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 Temperature reports in Fahrenheit&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Celsius</option>
@@ -117,9 +109,7 @@ Unit for Temperature (Celsius or Fahrenheit)<br /><h1>Overview</h1><p>0x00 Tempe
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Resolution Temperature</label>
-        <description><![CDATA[
-Resolution for Temperature<br /><h1>Overview</h1><p>0x00 No resolution (example 22°C)</p> <p>0x01 1/10 resolution (example 22.3°C)</p> <p>0x02 1/100 resolution (example 22.35°C)</p>
-        ]]></description>
+        <description>Resolution for Temperature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No resolution (example 22°C)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 1/10 resolution (example 22.3°C)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x02 1/100 resolution (example 22.35°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No resolution</option>
@@ -130,9 +120,7 @@ Resolution for Temperature<br /><h1>Overview</h1><p>0x00 No resolution (example 
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Resolution Humidity</label>
-        <description><![CDATA[
-Resolution Humidity<br /><h1>Overview</h1><p>0x00 No resolution (example 33%)</p> <p>0x01 1/10 resolution (example 33.4%)</p> <p>0x02 1/100 resolution (example 33.45%)</p>
-        ]]></description>
+        <description>Resolution Humidity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No resolution (example 33%)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 1/10 resolution (example 33.4%)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x02 1/100 resolution (example 33.45%)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No resolution</option>
@@ -144,43 +132,33 @@ Resolution Humidity<br /><h1>Overview</h1><p>0x00 No resolution (example 33%)</p
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>6: VOC on-change reporting</label>
-        <description><![CDATA[
-VOC on-change reporting<br /><h1>Overview</h1><p>0x00 No on-change reporting (only time-based reports)</p> <p>0x01 - 0x0A report if VOC reading changed by 100ppb - 1000ppb</p>
-        ]]></description>
+        <description>VOC on-change reporting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No on-change reporting (only time-based reports)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 - 0x0A report if VOC reading changed by 100ppb - 1000ppb&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>7: CO2eq on-change reporting</label>
-        <description><![CDATA[
-CO2eq on-change reporting<br /><h1>Overview</h1><p>0x00 No on-change reporting (only time-based reports)</p> <p>0x01 - 0x0A report if CO2eq reading changed by 100ppm - 1000ppm</p>
-        ]]></description>
+        <description>CO2eq on-change reporting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No on-change reporting (only time-based reports)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 - 0x0A report if CO2eq reading changed by 100ppm - 1000ppm&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>8: Air quality indication via LED</label>
-        <description><![CDATA[
-Air quality indication via LED<br /><h1>Overview</h1><p>0x00 No air quality indication via LEDs</p> <p>0x01 Indicate measured air quality via LEDs </p>
-        ]]></description>
+        <description>Air quality indication via LED&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 No air quality indication via LEDs&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 Indicate measured air quality via LEDs &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-Air Quality Sensor Z-Wave Plus can be associated with other devices.<br /><h1>Overview</h1><p>Commands:</p> <p>DEVICE_RESET_LOCALLY_NOTIFICATION,NOTIFICATION_REPORT,SENSOR_MULTILEVEL_REPORT</p>
-        ]]></description>
+        <description>Air Quality Sensor Z-Wave Plus can be associated with other devices.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommands:&lt;/p&gt &lt;p&gtDEVICE_RESET_LOCALLY_NOTIFICATION,NOTIFICATION_REPORT,SENSOR_MULTILEVEL_REPORT&lt;/p&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Temperature</label>
-        <description><![CDATA[
-Air Quality Sensor Z-Wave Plus can be associated with other devices.<br /><h1>Overview</h1><p>Command: SENSOR_MULTILEVEL_REPORT</p>
-        ]]></description>
+        <description>Air Quality Sensor Z-Wave Plus can be associated with other devices.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: SENSOR_MULTILEVEL_REPORT&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

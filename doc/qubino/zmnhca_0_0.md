@@ -10,24 +10,22 @@ This describes the Z-Wave device *ZMNHCA*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![ZMNHCA product image](https://www.cd-jackson.com/zwave_device_uploads/635/635_default.png)
+![ZMNHCA product image](https://opensmarthouse.org/zwavedatabase/635/image/)
 
 
 The ZMNHCA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Flush Shutter module is used to control the motor of blinds, rollers, shades, garage doors, gates, venetian blinds (including slates tilting positioning), etc… The module can be controlled either through a Z-Wave network or through the wall switch.
+<p&gtFlush Shutter module is used to control the motor of blinds, rollers, shades, garage doors, gates, venetian blinds (including slates tilting positioning), etc… The module can be controlled either through a Z-Wave network or through the wall switch.</p&gt
 
 ### Inclusion Information
 
-  * press service button S for more than 2 second or
-  * press push button I1 three times within 3s (3 times change switch state within 3 seconds)
+<ul&gt<li&gtpress service button S for more than 2 second or</li&gt <li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds)</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * press service button S for more than 6 second or
-  * press push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply
+<ul&gt<li&gtpress service button S for more than 6 second or</li&gt <li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li&gt </ul&gt
 
 ## Channels
 
@@ -122,15 +120,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 10: ALL ON / ALL OFF
 
 Responds to commands ALL ON / ALL OFF from Main Controller
-Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
-
-Available config. parameters (data type is 2 Byte DEC):
-
-  *  default value 255
-  *  255 - ALL ON active, ALL OFF active.
-  *  0 - ALL ON is not active, ALL OFF is not active
-  *  1 - ALL ON is not active ALL OFF active
-  *  2 - ALL ON active ALL OFF is not active
+<p&gtModule responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p&gt <p&gtAvailable config. parameters (data type is 2 Byte DEC):</p&gt <ul&gt<li&gt default value 255</li&gt <li&gt 255 - ALL ON active, ALL OFF active.</li&gt <li&gt 0 - ALL ON is not active, ALL OFF is not active</li&gt <li&gt 1 - ALL ON is not active ALL OFF active</li&gt <li&gt 2 - ALL ON active ALL OFF is not active</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -148,15 +138,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 40: Reporting in Watts on power change for Q1 or Q2
 
 Power consumption change threshold for sending updates
-Power report is send (push) only when actual power (in Watts) in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.
-
-Set value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 1
-  *  0 - reporting disabled
-  *  1 - 100 = 1% - 100% Reporting enabled.
-
-NOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set.
+<p&gtPower report is send (push) only when actual power (in Watts) in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.</p&gt <p&gtSet value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 1</li&gt <li&gt 0 - reporting disabled</li&gt <li&gt 1 - 100 = 1% - 100% Reporting enabled.</li&gt </ul&gt<p&gtNOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set.</p&gt
 Values in the range 1 to 100 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -167,11 +149,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 42: Reporting in Watts by time interval for Q1 or Q2
 
 Power reporting in Watts by time interval for Q1 or Q2
-Set value means time interval (0 – 32767) in seconds, when power report is send. Available configuration parameters (data type is 2 Byte DEC):
-
-  *  default value 300 = 300s
-  *  0 - Reporting Disabled
-  *  1 - 32767 = 1 second - 32767 seconds. Reporting enabled, power report is send with time interval set by entered value.
+<p&gtSet value means time interval (0 – 32767) in seconds, when power report is send. Available configuration parameters (data type is 2 Byte DEC):</p&gt <ul&gt<li&gt default value 300 = 300s</li&gt <li&gt 0 - Reporting Disabled</li&gt <li&gt 1 - 32767 = 1 second - 32767 seconds. Reporting enabled, power report is send with time interval set by entered value.</li&gt </ul&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -182,11 +160,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 71: Operating modes
 
 Operation Mode (Shutter or Venetian)
-This parameter defines selection between two available operating modes. Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 0
-  *  0 - Shutter mode
-  *  1 - venetian mode (up/down and slate rotation) NOTE1: After parameter change, first exclude module (without setting parameters to default value) then wait at least 30s and then re include the module!
+<p&gtThis parameter defines selection between two available operating modes. Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 0</li&gt <li&gt 0 - Shutter mode</li&gt <li&gt 1 - venetian mode (up/down and slate rotation) NOTE1: After parameter change, first exclude module (without setting parameters to default value) then wait at least 30s and then re include the module!</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -202,13 +176,7 @@ This parameter has the configuration ID ```config_71_1``` and is of type ```INTE
 ### Parameter 72: Slats tilting full turn time
 
 Slat full turn time in tenths of a second.
-This parameter defines the time necessary for slats to make full turn (180 degrees). Available configuration parameters (data type is 2 Byte DEC):
-
-  * default value 150 = 1,5 seconds
-  * 0 - tilting time disabled
-  * 1 - 32767 = 0,01seconds - 327,67 seconds
-
-NOTE: If time set is too high, this will result that after full turn, Shutter will start move up/down, for time remaining.
+<p&gtThis parameter defines the time necessary for slats to make full turn (180 degrees). Available configuration parameters (data type is 2 Byte DEC):</p&gt <ul&gt<li&gtdefault value 150 = 1,5 seconds</li&gt <li&gt0 - tilting time disabled</li&gt <li&gt1 - 32767 = 0,01seconds - 327,67 seconds</li&gt </ul&gt<p&gtNOTE: If time set is too high, this will result that after full turn, Shutter will start move up/down, for time remaining.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```150```.
@@ -219,12 +187,7 @@ This parameter has the configuration ID ```config_72_2``` and is of type ```INTE
 ### Parameter 73: Slats position
 
 Slats position
-This parameter defines slats position after up/down movement through Z-wave or push-buttons. Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 1
-  *  0 - Slats return to previously set position only in case of UI control.
-  *  1 - Slats return to previously set position in case of UI control, push button operation or when the limit switch is reached.
-  * 2 - Slats return to previously set position in case of UI control, push button, when the limit switch is reached or after receiving a “STOP” control frame (Switch Multilevel Stop Level Change) from UI
+<p&gtThis parameter defines slats position after up/down movement through Z-wave or push-buttons. Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 1</li&gt <li&gt 0 - Slats return to previously set position only in case of UI control.</li&gt <li&gt 1 - Slats return to previously set position in case of UI control, push button operation or when the limit switch is reached.</li&gt <li&gt2 - Slats return to previously set position in case of UI control, push button, when the limit switch is reached or after receiving a “STOP” control frame (Switch Multilevel Stop Level Change) from UI</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -241,19 +204,7 @@ This parameter has the configuration ID ```config_73_1``` and is of type ```INTE
 ### Parameter 74: Motor moving up/down time
 
 Shutter motor moving time of complete opening or complete closing
-This parameter defines Shutter motor moving time of complete opening or complete closing. Available configuration parameters (data type is 2 Byte DEC):
-
-  *  default value 0
-  *  0 - moving time disabled (working with limit switches)
-  *  1 - 32767 = 0,1seconds - 3276,7seconds. After that time motor is stopped (relay goes to off state)
-
-NOTE: Important is that the reference position to manually set moving time is always Shutter lower position!
-
-Set parameter 74 to 0 and move the Shutter (using up/down push buttons or main controller UI) to the lowest desired position. On this Shutter position, set parameter 74 to time for complete opening or complete closing. At this point Shutter can be moved up (open) for set time, but can't be moved down because this position is already set as lower Shutter position.
-
-To change Shutter lower position below already set (manual recalibration), parameter 74 must be set to 0 and repeat the procedure described above.
-
-In case Shutter has limit switches, but anyhow you would like to limit opening/closing position by time, you can still do it. In case you put time that is longer that opening/closing real time limited by limit switches, Shutter will stop at limit switch, but the module relay will switch off after define time, not by Shutter limit switch. Take in consideration that in this condition, the positioning with slider through UI will not show correct Shutter position. NOTE that is not recommended using this for slates operation since its positioning can be compromised during time.
+<p&gtThis parameter defines Shutter motor moving time of complete opening or complete closing. Available configuration parameters (data type is 2 Byte DEC):</p&gt <ul&gt<li&gt default value 0</li&gt <li&gt 0 - moving time disabled (working with limit switches)</li&gt <li&gt 1 - 32767 = 0,1seconds - 3276,7seconds. After that time motor is stopped (relay goes to off state)</li&gt </ul&gt<p&gtNOTE: Important is that the reference position to manually set moving time is always Shutter lower position!</p&gt <p&gtSet parameter 74 to 0 and move the Shutter (using up/down push buttons or main controller UI) to the lowest desired position. On this Shutter position, set parameter 74 to time for complete opening or complete closing. At this point Shutter can be moved up (open) for set time, but can't be moved down because this position is already set as lower Shutter position.</p&gt <p&gtTo change Shutter lower position below already set (manual recalibration), parameter 74 must be set to 0 and repeat the procedure described above.</p&gt <p&gtIn case Shutter has limit switches, but anyhow you would like to limit opening/closing position by time, you can still do it. In case you put time that is longer that opening/closing real time limited by limit switches, Shutter will stop at limit switch, but the module relay will switch off after define time, not by Shutter limit switch. Take in consideration that in this condition, the positioning with slider through UI will not show correct Shutter position. NOTE that is not recommended using this for slates operation since its positioning can be compromised during time.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -264,12 +215,7 @@ This parameter has the configuration ID ```config_74_2``` and is of type ```INTE
 ### Parameter 76: Motor operation detection
 
 Power threshold
-Power threshold to be interpreted when motor reach the limit switch. Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 10 = 10W
-  *  0 - 127 = 1-127 W. The value 0 means reaching a limit switch will not be detected
-
-NOTE: Motors with power consumption less than 0,5W could not be auto calibrated. In that case set time manually (par. 74).
+<p&gtPower threshold to be interpreted when motor reach the limit switch. Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 10 = 10W</li&gt <li&gt 0 - 127 = 1-127 W. The value 0 means reaching a limit switch will not be detected</li&gt </ul&gt<p&gtNOTE: Motors with power consumption less than 0,5W could not be auto calibrated. In that case set time manually (par. 74).</p&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -280,10 +226,7 @@ This parameter has the configuration ID ```config_76_1``` and is of type ```INTE
 ### Parameter 78: Forced Shutter calibration
 
 0 to 1 a Shutter enters the calibration mode
-By modifying the parameters setting from 0 to 1 a Shutter DC module enters the calibration mode. Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 0
-  *  1 - Start calibration process (when calibration process is finished, completing full cycle - up, down and up, set the parameter 78 (Forced Shutter calibration) value back to 0.
+<p&gtBy modifying the parameters setting from 0 to 1 a Shutter DC module enters the calibration mode. Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 0</li&gt <li&gt 1 - Start calibration process (when calibration process is finished, completing full cycle - up, down and up, set the parameter 78 (Forced Shutter calibration) value back to 0.</li&gt </ul&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -294,10 +237,7 @@ This parameter has the configuration ID ```config_78_1``` and is of type ```INTE
 ### Parameter 80: Reporting to controller
 
 reports regarding to main controller
-This parameter defines if reporting regarding power level, multilevel, etc,…is reported to controller or not. Available configuration parameters: default value 1
-
-  * 0 reporting to controller is disabled
-  * 1 reporting to controller
+<p&gtThis parameter defines if reporting regarding power level, multilevel, etc,…is reported to controller or not. Available configuration parameters: default value 1</p&gt <ul&gt<li&gt0 reporting to controller is disabled</li&gt <li&gt1 reporting to controller</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -313,11 +253,7 @@ This parameter has the configuration ID ```config_80_1``` and is of type ```INTE
 ### Parameter 85: Power consumption max delay time
 
 max time before motor power consumption is read
-This parameter defines the max time before motor power consumption is read after one of the relays is switched ON. If there is no power consumption during this max time (motor not connected, damaged or requires higher time to start, motor in end position,...) the relay will switch OFF. Time is defined by entering it manually. Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 8 = 800ms
-  *  3 - 50 = 0,3seconds - 5seconds (100ms resolution)
-  *  0 = time is set automatically
+<p&gtThis parameter defines the max time before motor power consumption is read after one of the relays is switched ON. If there is no power consumption during this max time (motor not connected, damaged or requires higher time to start, motor in end position,...) the relay will switch OFF. Time is defined by entering it manually. Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 8 = 800ms</li&gt <li&gt 3 - 50 = 0,3seconds - 5seconds (100ms resolution)</li&gt <li&gt 0 = time is set automatically</li&gt </ul&gt
 Values in the range 0 to 50 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -328,10 +264,7 @@ This parameter has the configuration ID ```config_85_1``` and is of type ```INTE
 ### Parameter 90: Relay delay time
 
 This parameter defines the time delay between output relay switching
-This parameter defines the minimum time delay between next motor movement (minimum time between switching motor off and on again). Available configuration parameters (data type is 1 Byte DEC):
-
-  *  default value 5 = 500ms
-  *  1 - 30 = 0,1seconds - 3seconds (100ms resolution)
+<p&gtThis parameter defines the minimum time delay between next motor movement (minimum time between switching motor off and on again). Available configuration parameters (data type is 1 Byte DEC):</p&gt <ul&gt<li&gt default value 5 = 500ms</li&gt <li&gt 1 - 30 = 0,1seconds - 3seconds (100ms resolution)</li&gt </ul&gt
 Values in the range 1 to 30 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -426,9 +359,9 @@ Association group 5 supports 16 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/635/flush-shutter-ZMNHCA2.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/635/flush-shutter-ZMNHCA2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/635).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/635).

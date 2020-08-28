@@ -7,9 +7,7 @@
 
   <thing-type id="samsungsds_hmdm100_00_000" listed="false">
     <label>hmdm100 Doorlock Control Module for Samsung Locks</label>
-    <description><![CDATA[
-Doorlock Control Module for Samsung Locks<br /><h1>Overview</h1><p>Chip Insert for Zwave controll of the Samsung Lock</p> <br /><h2>Inclusion Information</h2><p>triple press the inclusing button</p> <br /><h2>Exclusion Information</h2><p>Triple press inclusion button</p> <br /><h2>Wakeup Information</h2><p>triple press inclusion button</p>
-    ]]></description>
+    <description>Doorlock Control Module for Samsung Locks&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtChip Insert for Zwave controll of the Samsung Lock&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gttriple press the inclusing button&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTriple press inclusion button&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gttriple press inclusion button&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -55,36 +53,28 @@ Doorlock Control Module for Samsung Locks<br /><h1>Overview</h1><p>Chip Insert f
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="5">
         <label>1: Security Function</label>
-        <description><![CDATA[
-0=Disable 1=Enable 2=SystemDisable 3=SystemEnable 4=RequestForEnable 5=Fail<br /><h1>Overview</h1><p>0=Disable 1=Enable 2=SystemDisable 3=SystemEnable 4=RequestForEnable 5=Fail</p> <p>- 0x02 : Command for disable which is set by platform of Samsung SDS. After setting, if you try to get value of Security Function , '0x00' will be reported.</p> <p>- 0x03 : Command for enable which is set by platform of Samsung SDS. After setting, if you try to get value of Security Function, '0x01' will be reported.</p> <p>- 0x04 : 'Request for Enable' command which is reported by Doorlock. This cannot be set. (8th function in manual)</p> <p>- 0x05 : If the request for 'Request for Enable' command is failed in platform, this will be set by platform of Samsung SDS.</p>
-        ]]></description>
+        <description>0=Disable 1=Enable 2=SystemDisable 3=SystemEnable 4=RequestForEnable 5=Fail&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0=Disable 1=Enable 2=SystemDisable 3=SystemEnable 4=RequestForEnable 5=Fail&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt- 0x02 : Command for disable which is set by platform of Samsung SDS. After setting, if you try to get value of Security Function , '0x00' will be reported.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt- 0x03 : Command for enable which is set by platform of Samsung SDS. After setting, if you try to get value of Security Function, '0x01' will be reported.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt- 0x04 : 'Request for Enable' command which is reported by Doorlock. This cannot be set. (8th function in manual)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt- 0x05 : If the request for 'Request for Enable' command is failed in platform, this will be set by platform of Samsung SDS.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>2: Privacy Mode</label>
-        <description><![CDATA[
-0=Disable 1=Enable<br /><h1>Overview</h1><p>0=Disable 1=Enable</p>
-        ]]></description>
+        <description>0=Disable 1=Enable&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0=Disable 1=Enable&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration" readOnly="true"
                  min="1" max="130">
         <label>3: Registered User ID</label>
-        <description><![CDATA[
-The number of registered user codes.2<br /><h1>Overview</h1><p>The number of registered user codes.</p> <p>This parameter is supported to ‘Configuration Get Command’ only.</p>
-        ]]></description>
+        <description>The number of registered user codes.2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe number of registered user codes.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is supported to ‘Configuration Get Command’ only.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>10: Platform</label>
-        <description><![CDATA[
-0=Common 1=Samsung SDS<br /><h1>Overview</h1><p>0=Common 1=Samsung SDS</p> <p>This value set by platform after device connected with platform of Samsung SDS.</p>
-        ]]></description>
+        <description>0=Common 1=Samsung SDS&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0=Common 1=Samsung SDS&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis value set by platform after device connected with platform of Samsung SDS.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

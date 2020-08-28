@@ -7,9 +7,7 @@
 
   <thing-type id="technisat_seriesswitch_00_000" listed="false">
     <label>Series switch 0300/9498 Series ON/OFF Switch Relay</label>
-    <description><![CDATA[
-Series ON/OFF Switch Relay<br /><h1>Overview</h1><p>The TechniSat series switch lets you operate two ceiling lamps in a smart home system controlled by Z-Wave, for example. At the same time, the switch itself can still be switched on and off manually. </p> <p>What's more, you can determine how much electricity you use and the switch can be integrated into complex schemes in smart home systems. So it's perfect for providing more home comfort.</p> <br /><h2>Inclusion Information</h2><ol><li>Install the TechniSat Wall Switch.</li> <li>After checking the correct installation, re-enable electrical power at the main fuse or circuit breaker.</li> <li>Start the Z-Wave device add mode on your Z-Wave gateway, according to the gateway‘s manual.</li> <li>Press T1 3x within 1 second.</li> <li>The red status LED is on while the device is added to the Z-Wave network.</li> <li>The green LED is on for 5 seconds after successfully adding the device.</li> </ol><br /><h2>Exclusion Information</h2><p>Press and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.</p>
-    ]]></description>
+    <description>Series ON/OFF Switch Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe TechniSat series switch lets you operate two ceiling lamps in a smart home system controlled by Z-Wave, for example. At the same time, the switch itself can still be switched on and off manually. &lt;/p&gt &lt;p&gtWhat's more, you can determine how much electricity you use and the switch can be integrated into complex schemes in smart home systems. So it's perfect for providing more home comfort.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtInstall the TechniSat Wall Switch.&lt;/li&gt &lt;li&gtAfter checking the correct installation, re-enable electrical power at the main fuse or circuit breaker.&lt;/li&gt &lt;li&gtStart the Z-Wave device add mode on your Z-Wave gateway, according to the gateway‘s manual.&lt;/li&gt &lt;li&gtPress T1 3x within 1 second.&lt;/li&gt &lt;li&gtThe red status LED is on while the device is added to the Z-Wave network.&lt;/li&gt &lt;li&gtThe green LED is on for 5 seconds after successfully adding the device.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -132,42 +130,32 @@ Series ON/OFF Switch Relay<br /><h1>Overview</h1><p>The TechniSat series switch 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="8640">
         <label>2: Current wattage meter</label>
-        <description><![CDATA[
-Interval of current wattage meter reports in 10 seconds<br /><h1>Overview</h1><p><strong>0</strong> - disable unsolicited reports</p> <p><strong>3 ... 8640</strong> (30 seconds - 1 day)</p>
-        ]]></description>
+        <description>Interval of current wattage meter reports in 10 seconds&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt - disable unsolicited reports&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gt3 ... 8640&amp;lt;/strong&amp;amp;gt (30 seconds - 1 day)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="30240">
         <label>3: Active energy meter</label>
-        <description><![CDATA[
-Interval of active energy meter reports in minutes<br /><h1>Overview</h1><p><strong>0</strong> - disable unsolicited reports</p> <p><strong>10 ... 30240</strong> (10 minutes - 3 weeks)</p>
-        ]]></description>
+        <description>Interval of active energy meter reports in minutes&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt - disable unsolicited reports&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gt10 ... 30240&amp;lt;/strong&amp;amp;gt (10 minutes - 3 weeks)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Device Reset Locally Notification</li> <li>Central Scene notification</li> <li>Meter Report</li> <li>Switch Binary Report</li> <li>Notification Report</li> </ul>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtDevice Reset Locally Notification&lt;/li&gt &lt;li&gtCentral Scene notification&lt;/li&gt &lt;li&gtMeter Report&lt;/li&gt &lt;li&gtSwitch Binary Report&lt;/li&gt &lt;li&gtNotification Report&lt;/li&gt &lt;/ul&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Switch State 1</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Basic Set</li> </ul>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtBasic Set&lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Switch State 2</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Basic Set</li> </ul>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtBasic Set&lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 

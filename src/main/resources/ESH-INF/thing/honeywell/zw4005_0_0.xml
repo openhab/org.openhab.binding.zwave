@@ -7,9 +7,7 @@
 
   <thing-type id="honeywell_zw4005_00_000" listed="false">
     <label>ZW4005 In Wall Paddle</label>
-    <description><![CDATA[
-In Wall Paddle<br /><h1>Overview</h1><p>On/Off Power Switch </p> <br /><h2>Inclusion Information</h2><p>Once the controller is ready to include your device, press and release the top or bottom of the wireless smart switch (rocker) to include it in the network. </p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network. </p>
-    ]]></description>
+    <description>In Wall Paddle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOn/Off Power Switch &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to include your device, press and release the top or bottom of the wireless smart switch (rocker) to include it in the network. &lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network. &lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

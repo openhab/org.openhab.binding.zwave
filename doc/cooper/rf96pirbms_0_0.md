@@ -10,7 +10,7 @@ This describes the Z-Wave device *RF96PIRBMS*, manufactured by *Cooper Wiring De
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![RF96PIRBMS product image](https://www.cd-jackson.com/zwave_device_uploads/1210/1210_default.jpg)
+![RF96PIRBMS product image](https://opensmarthouse.org/zwavedatabase/1210/image/)
 
 
 The RF96PIRBMS supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,21 +19,15 @@ The RF96PIRBMS does not permanently listen for messages sent from the controller
 
 ## Overview
 
-Z-Wave Plus Wireless Motion Sensor, with 120 degree field of view & 1000 sq. ft coverage, detects motion in a space with in-built Passive Infra-red & light sensor.
+<p&gtZ-Wave Plus Wireless Motion Sensor, with 120 degree field of view & 1000 sq. ft coverage, detects motion in a space with in-built Passive Infra-red & light sensor.</p&gt
 
 ### Inclusion Information
 
-The sensor supports Auto Inclusion feature where it will automatically enter Inclusion mode when first powered up after a factory reset.
-
- Manual Inclusion:
-
-  * Put the Z-Wave Controller into Inclusion mode
-  * Press the tamper switch 3 times within 1.5 seconds to put the unit into inclusion mode
+<p&gtThe sensor supports Auto Inclusion feature where it will automatically enter Inclusion mode when first powered up after a factory reset.</p&gt <p&gt Manual Inclusion:</p&gt <ul&gt<li&gtPut the Z-Wave Controller into Inclusion mode</li&gt <li&gtPress the tamper switch 3 times within 1.5 seconds to put the unit into inclusion mode</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * 1. Put the Z-Wave Controller into Exclusion mode
-  * 2. Press the tamper switch 3 times within 1.5 seconds to put the unit into exclusion mode
+<ul&gt<li&gt1. Put the Z-Wave Controller into Exclusion mode</li&gt <li&gt2. Press the tamper switch 3 times within 1.5 seconds to put the unit into exclusion mode</li&gt </ul&gt
 
 ### Wakeup Information
 
@@ -42,9 +36,7 @@ The RF96PIRBMS does not permanently listen for messages sent from the controller
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-To save power for the battery, the motion sensor is normally in sleep mode. In order to wake the device up, press the tamper switch once. This will keep the device awake for 30 seconds indicated by the LED blinking every second.
-
-While this is the official wakeup procedure in the device manual, it did not work.  Pressing the tamper switch 5 to 6 times quickly did wake the device up.
+<p&gtTo save power for the battery, the motion sensor is normally in sleep mode. In order to wake the device up, press the tamper switch once. This will keep the device awake for 30 seconds indicated by the LED blinking every second.</p&gt <p&gtWhile this is the official wakeup procedure in the device manual, it did not work.  Pressing the tamper switch 5 to 6 times quickly did wake the device up.</p&gt
 
 ## Channels
 
@@ -217,9 +209,9 @@ Association group 2 supports 4 nodes.
 
 ### Documentation Links
 
-* [RF96PIRBMS Manual](https://www.cd-jackson.com/zwave_device_uploads/1210/RF96PIRBMS-Manual-.pdf)
+* [RF96PIRBMS Manual](https://opensmarthouse.org/zwavedatabase/1210/RF96PIRBMS-Manual-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1210).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1210).

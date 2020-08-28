@@ -10,58 +10,22 @@ This describes the Z-Wave device *DZPD3*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![DZPD3 product image](https://www.cd-jackson.com/zwave_device_uploads/322/322_default.jpg)
+![DZPD3 product image](https://opensmarthouse.org/zwavedatabase/322/image/)
 
 
 The DZPD3 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-300 Watt Scene Capable Plug-In Lamp Dimming Module with Z-Wave Technology for CFL/LED/Incandescent. Turn any standard receptacle into the essence of ‘smart’ lighting with the scene capable plug in lamp dimming module. The low-power radio waves travel easily throughout the walls and floors of your home. Features: On/Off/Dim/Bright incandescent load scene and zone control switching capabilities. 
+<p&gt300 Watt Scene Capable Plug-In Lamp Dimming Module with Z-Wave Technology for CFL/LED/Incandescent. Turn any standard receptacle into the essence of ‘smart’ lighting with the scene capable plug in lamp dimming module. The low-power radio waves travel easily throughout the walls and floors of your home. Features: On/Off/Dim/Bright incandescent load scene and zone control switching capabilities. </p&gt
 
 ### Inclusion Information
 
-Leviton Decora SmartTM Z-Wave® devices support two methods of inclusion. When using a Z-Wave PlusTM certified controller choose Network Wide Inclusion.  
-  
-_Network Wide Inclusion_:  
-Network Wide Inclusion allows your device to be added to the network using devices already in the network to assist with communication. Work your way from the closest devices to the controller outward.
-
-  * Enter Programming Mode by holding the control button for 7 seconds, the Locator LED will blink amber.
-  * Tap the control button one time. The Locator LED will quickly flash green.
-  * The Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave® network.
-  * Follow directions in the Z-Wave® controller to complete the adding process.
-  * Upon successful addition to network the LED will turn off and then blink green 3 times.
-  * If the adding process is not successful the LED will flash red 3 times.
-
-_Traditional Inclusion:_  
-For older controllers Traditional Inclusion is supported. Depending on the age of the controller the controller will need to be 3 to 35 feet from the device when including.
-
-  * Enter Programming Mode by holding the control button for 7 seconds, the Locator LED will blink amber.
-  * The Decora SmartTM Z-Wave® device is ready to add to the Z-Wave® network.
-  * Follow directions in the Z-Wave® controller to enter learn mode.
-  * Tap the control button one time. The Locator LED will quickly flash green. The Z-Wave® controller will begin to pair with the Decora SmartTM device.
-  * Upon successful addition to the network the LED will turn off and then blink green 3 times.
-  * If the adding process is not successful the LED will flash red 3 times.
+<p&gtLeviton Decora SmartTM Z-Wave® devices support two methods of inclusion. When using a Z-Wave PlusTM certified controller choose Network Wide Inclusion.<br /&gt<br /&gt<em&gtNetwork Wide Inclusion</em&gt:<br /&gtNetwork Wide Inclusion allows your device to be added to the network using devices already in the network to assist with communication. Work your way from the closest devices to the controller outward.</p&gt <ul&gt<li&gtEnter Programming Mode by holding the control button for 7 seconds, the Locator LED will blink amber.</li&gt <li&gtTap the control button one time. The Locator LED will quickly flash green.</li&gt <li&gtThe Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave® network.</li&gt <li&gtFollow directions in the Z-Wave® controller to complete the adding process.</li&gt <li&gtUpon successful addition to network the LED will turn off and then blink green 3 times.</li&gt <li&gtIf the adding process is not successful the LED will flash red 3 times.</li&gt </ul&gt<p&gt<em&gtTraditional Inclusion:</em&gt<br /&gtFor older controllers Traditional Inclusion is supported. Depending on the age of the controller the controller will need to be 3 to 35 feet from the device when including.</p&gt <ul&gt<li&gtEnter Programming Mode by holding the control button for 7 seconds, the Locator LED will blink amber.</li&gt <li&gtThe Decora SmartTM Z-Wave® device is ready to add to the Z-Wave® network.</li&gt <li&gtFollow directions in the Z-Wave® controller to enter learn mode.</li&gt <li&gtTap the control button one time. The Locator LED will quickly flash green. The Z-Wave® controller will begin to pair with the Decora SmartTM device.</li&gt <li&gtUpon successful addition to the network the LED will turn off and then blink green 3 times.</li&gt <li&gtIf the adding process is not successful the LED will flash red 3 times.</li&gt </ul&gt
 
 ### Exclusion Information
 
-When removing a device from a Z-Wave® network best practice is to use the exclusion command found in the Z-Wave® controller.
-
-  * Enter Programming Mode by holding the control button for 7 seconds, the Locator LED will turn amber.
-  * Follow directions in the Z-Wave® controller to enter exclusion mode.
-  * Tap the control button one time. The Locator LED will quickly flash green. The Z-Wave® controller will exclude the Decora SmartTM device.
-  * The Z-Wave® controller will confirm successful exclusion from the network.
-
-  
-_Factory Reset_  
-  
-When removing a device from a network it is best practice to use the Exclusion process. In situations where a device needs to be returned to factory default follow the following steps.
-
-  * A reset should only be used when a controller is inoperable or missing:
-  * Holding the control button for a total of 14 seconds.
-  * After the first 7 seconds the LED turns amber.
-  * The Locator LED will quickly flash red/amber after 14 seconds.
-  * Release the control button and the device will reset.
+<p&gtWhen removing a device from a Z-Wave® network best practice is to use the exclusion command found in the Z-Wave® controller.</p&gt <ul&gt<li&gtEnter Programming Mode by holding the control button for 7 seconds, the Locator LED will turn amber.</li&gt <li&gtFollow directions in the Z-Wave® controller to enter exclusion mode.</li&gt <li&gtTap the control button one time. The Locator LED will quickly flash green. The Z-Wave® controller will exclude the Decora SmartTM device.</li&gt <li&gtThe Z-Wave® controller will confirm successful exclusion from the network.</li&gt </ul&gt<p&gt<br /&gt<em&gtFactory Reset</em&gt<br /&gt<br /&gtWhen removing a device from a network it is best practice to use the Exclusion process. In situations where a device needs to be returned to factory default follow the following steps.</p&gt <ul&gt<li&gtA reset should only be used when a controller is inoperable or missing:</li&gt <li&gtHolding the control button for a total of 14 seconds.</li&gt <li&gtAfter the first 7 seconds the LED turns amber.</li&gt <li&gtThe Locator LED will quickly flash red/amber after 14 seconds.</li&gt <li&gtRelease the control button and the device will reset.</li&gt </ul&gt
 
 ## Channels
 
@@ -103,7 +67,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Fade On Time
 
 Time it takes to fade on
-0 is instant on 1-127 is in seconds 128-253 is in minutes
+<p&gt0 is instant on 1-127 is in seconds 128-253 is in minutes</p&gt
 Values in the range 0 to 253 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -114,7 +78,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Fade off time
 
 Time it takes to fade off
-0 is instant on 1-127 is in seconds 128-253 is in minutes
+<p&gt0 is instant on 1-127 is in seconds 128-253 is in minutes</p&gt
 Values in the range 0 to 253 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -230,9 +194,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/322/DI-000-DZPD3-02B-W.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/322/DI-000-DZPD3-02B-W.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/322).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/322).

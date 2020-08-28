@@ -7,9 +7,7 @@
 
   <thing-type id="zwaveme_zme05461_00_000" listed="false">
     <label>ZME_05461 Double switch</label>
-    <description><![CDATA[
-Double switch<br /><h1>Overview</h1><p>The Z-Wave.Me Switch Flush Mountable is a wireless actuator able to switch two loads up to 1700 W each. Single clicks operate one load, double click operates the other load. The device is delivered as complete set with flush mountable insert, paddle and mounting frame compatible to the design of the switching series selected. The paddle of the device is used to control the device itself but can also be configured to activate scenes in a central IP gateway or controller. The device is able to meter the power consumed on the two loads if the attached load (in W) is configured correctly using a configuration parameter. The status of the switch is indicated on a dual color LED for test purposes and every status change is - if configured - reported to a central IP gateway or controller. The function of the local paddle can be configured as detached from the local operation. In this local control, different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave. This device is designed for a 3 wire system and needs a neutral wire in the wall box.</p> <br /><h2>Inclusion Information</h2><p>Triple click one of the buttons on the device will include the device.</p> <br /><h2>Exclusion Information</h2><p>The device is excluded by triple click to one of the buttons. </p>
-    ]]></description>
+    <description>Double switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Z-Wave.Me Switch Flush Mountable is a wireless actuator able to switch two loads up to 1700 W each. Single clicks operate one load, double click operates the other load. The device is delivered as complete set with flush mountable insert, paddle and mounting frame compatible to the design of the switching series selected. The paddle of the device is used to control the device itself but can also be configured to activate scenes in a central IP gateway or controller. The device is able to meter the power consumed on the two loads if the attached load (in W) is configured correctly using a configuration parameter. The status of the switch is indicated on a dual color LED for test purposes and every status change is - if configured - reported to a central IP gateway or controller. The function of the local paddle can be configured as detached from the local operation. In this local control, different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave. This device is designed for a 3 wire system and needs a neutral wire in the wall box.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click one of the buttons on the device will include the device.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtThe device is excluded by triple click to one of the buttons. &lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -114,9 +112,7 @@ Double switch<br /><h1>Overview</h1><p>The Z-Wave.Me Switch Flush Mountable is a
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Function of RF off command on first channel</label>
-        <description><![CDATA[
-Function of RF off command on first channel<br /><h1>Overview</h1><p>Defines how to interpret RF first channel Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).</p>
-        ]]></description>
+        <description>Function of RF off command on first channel&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines how to interpret RF first channel Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Switch OFF</option>
@@ -128,9 +124,7 @@ Function of RF off command on first channel<br /><h1>Overview</h1><p>Defines how
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Switch on/off by holding buttons</label>
-        <description><![CDATA[
-Switch on/off by holding buttons<br /><h1>Overview</h1><p>Defines if the switch should change it state to on/off if buttons are being hold.</p>
-        ]]></description>
+        <description>Switch on/off by holding buttons&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines if the switch should change it state to on/off if buttons are being hold.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No</option>
@@ -142,9 +136,7 @@ Switch on/off by holding buttons<br /><h1>Overview</h1><p>Defines if the switch 
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Restore switch state after power cycle</label>
-        <description><![CDATA[
-Restore switch state after power cycle<br /><h1>Overview</h1><p>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</p>
-        ]]></description>
+        <description>Restore switch state after power cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines if the switch should restore switch state to the last state prior to device power off (power cycle).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No, turn off</option>
@@ -166,9 +158,7 @@ Restore switch state after power cycle<br /><h1>Overview</h1><p>Defines if the s
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Switch by buttons (first channel)</label>
-        <description><![CDATA[
-Switch by buttons (first channel)<br /><h1>Overview</h1><p>If disabled, the local operations by buttons will not switch relay on first channel, but only send commands to On/Off association group. In this mode buttons are not linked with the switch anymore. They can be used separately: buttons to control remote device, switch will operate by RF commands only</p>
-        ]]></description>
+        <description>Switch by buttons (first channel)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf disabled, the local operations by buttons will not switch relay on first channel, but only send commands to On/Off association group. In this mode buttons are not linked with the switch anymore. They can be used separately: buttons to control remote device, switch will operate by RF commands only&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No</option>
@@ -179,9 +169,7 @@ Switch by buttons (first channel)<br /><h1>Overview</h1><p>If disabled, the loca
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Action on button single press or hold</label>
-        <description><![CDATA[
-Action on button single press or hold<br /><h1>Overview</h1><p>Defines which command should be sent on button single press or hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast.</p>
-        ]]></description>
+        <description>Action on button single press or hold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines which command should be sent on button single press or hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Disabled</option>
@@ -193,9 +181,7 @@ Action on button single press or hold<br /><h1>Overview</h1><p>Defines which com
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Action on button double press or hold</label>
-        <description><![CDATA[
-Action on button double press or hold<br /><h1>Overview</h1><p>Defines which command should be sent on button double press or press-hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast.</p> <p>If not disabled, the device will wait for a click timeout to see if the second click would be pressed. This will introduce a small delay for single click commands</p>
-        ]]></description>
+        <description>Action on button double press or hold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines which command should be sent on button double press or press-hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf not disabled, the device will wait for a click timeout to see if the second click would be pressed. This will introduce a small delay for single click commands&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Disabled</option>
@@ -207,9 +193,7 @@ Action on button double press or hold<br /><h1>Overview</h1><p>Defines which com
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: What to do on button Down press (both)</label>
-        <description><![CDATA[
-What to do on button Down press (both)<br /><h1>Overview</h1><p>Defines how to interpret button Down press. Depends on parameters 12 and 32 'Switch by buttons' parameter. If not Disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with Auto Off function.</p>
-        ]]></description>
+        <description>What to do on button Down press (both)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines how to interpret button Down press. Depends on parameters 12 and 32 'Switch by buttons' parameter. If not Disabled this parameter will affect the action selected by the latter parameter. Can be used in conjunction with Auto Off function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Switch off</option>
@@ -221,9 +205,7 @@ What to do on button Down press (both)<br /><h1>Overview</h1><p>Defines how to i
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="0" max="1800">
         <label>20: Energy consumption for first channel</label>
-        <description><![CDATA[
-Energy consumption for first channel<br /><h1>Overview</h1><p>Specify the consumption of the load in watts, for the calculation of power consumption. Max load 1800 W.</p>
-        ]]></description>
+        <description>Energy consumption for first channel&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecify the consumption of the load in watts, for the calculation of power consumption. Max load 1800 W.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -240,9 +222,7 @@ Energy consumption for first channel<br /><h1>Overview</h1><p>Specify the consum
 
       <parameter name="config_23_1" type="integer" groupName="configuration">
         <label>23: Function of RF off command on second channel</label>
-        <description><![CDATA[
-Function of RF off command on second channel<br /><h1>Overview</h1><p>Defines how to interpret RF second channel Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).</p>
-        ]]></description>
+        <description>Function of RF off command on second channel&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines how to interpret RF second channel Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Switch OFF</option>
@@ -254,9 +234,7 @@ Function of RF off command on second channel<br /><h1>Overview</h1><p>Defines ho
 
       <parameter name="config_32_1" type="integer" groupName="configuration">
         <label>32: Switch by buttons (second channel)</label>
-        <description><![CDATA[
-Switch by buttons (second channel)<br /><h1>Overview</h1><p>If disabled, the local operations by buttons will not switch relay on second channel, but only send commands to On/Off association group. In this mode buttons are not linked with the switch anymore. They can be used separately: buttons to control remote device, switch will operate by RF commands only. </p>
-        ]]></description>
+        <description>Switch by buttons (second channel)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf disabled, the local operations by buttons will not switch relay on second channel, but only send commands to On/Off association group. In this mode buttons are not linked with the switch anymore. They can be used separately: buttons to control remote device, switch will operate by RF commands only. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">No</option>
@@ -268,9 +246,7 @@ Switch by buttons (second channel)<br /><h1>Overview</h1><p>If disabled, the loc
       <parameter name="config_40_2" type="integer" groupName="configuration"
                  min="0" max="1800">
         <label>40: Energy consumption for second channel</label>
-        <description><![CDATA[
-Energy consumption for second channel<br /><h1>Overview</h1><p>Specify the consumption of the load in watts, for the calculation of power consumption. Max load 1800 W.</p>
-        ]]></description>
+        <description>Energy consumption for second channel&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecify the consumption of the load in watts, for the calculation of power consumption. Max load 1800 W.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>

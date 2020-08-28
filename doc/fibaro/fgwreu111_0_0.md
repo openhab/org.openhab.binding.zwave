@@ -10,42 +10,22 @@ This describes the Z-Wave device *FGWREU-111*, manufactured by *[Fibargroup](htt
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![FGWREU-111 product image](https://www.cd-jackson.com/zwave_device_uploads/1083/1083_default.jpg)
+![FGWREU-111 product image](https://opensmarthouse.org/zwavedatabase/1083/image/)
 
 
 The FGWREU-111 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Smart wall switch designed to control motors of roller blinds, awnings, venetian blinds and other single phase, AC powered devices via Z-Wave network.
-
-It measures active power and energy consumed by the controlled load.
-
-You can install it with provided cover plate and switch button or other compatible.
+<p&gtSmart wall switch designed to control motors of roller blinds, awnings, venetian blinds and other single phase, AC powered devices via Z-Wave network.</p&gt <p&gtIt measures active power and energy consumed by the controlled load.</p&gt <p&gtYou can install it with provided cover plate and switch button or other compatible.</p&gt
 
 ### Inclusion Information
 
-Z-Wave device learning mode, allowing to add the device to existing Z-Wave network:
-
-  1. Power the device.
-  2. Set the main controller into the adding mode (OH2: search for new things, select Z-Wave binding).
-  3. Quickly, three times click one of the buttons.
-  4. If you are adding in Security S2 Authenticated, input the underlined part of the DSK (label on the bottom of the box).
-  5. LED will start blinking yellow, wait for the adding process to end.
-  6. Adding result will be confirmed by the Z-Wave controller’s message and the LED frame: 
-      * **Green** – successful (non-secure, S0, S2 non-authenticated),
-      * **Magenta** – successful (Security S2 Authenticated),
-      * **Red** – not successful.
+<p&gtZ-Wave device learning mode, allowing to add the device to existing Z-Wave network:</p&gt <ol&gt<li&gtPower the device.</li&gt <li&gtSet the main controller into the adding mode (OH2: search for new things, select Z-Wave binding).</li&gt <li&gtQuickly, three times click one of the buttons.</li&gt <li&gtIf you are adding in Security S2 Authenticated, input the underlined part of the DSK (label on the bottom of the box).</li&gt <li&gtLED will start blinking yellow, wait for the adding process to end.</li&gt <li&gtAdding result will be confirmed by the Z-Wave controller’s message and the LED frame: <ul&gt<li&gt<strong&gtGreen</strong&gt – successful (non-secure, S0, S2 non-authenticated),</li&gt <li&gt<strong&gtMagenta</strong&gt – successful (Security S2 Authenticated),</li&gt <li&gt<strong&gtRed</strong&gt – not successful.</li&gt </ul&gt</li&gt </ol&gt
 
 ### Exclusion Information
 
-Z-Wave device learning mode, allowing to remove the device from existing Z-Wave network. Removing also results in resetting the device to factory defaults:
-
-  1. Power the device.
-  2. Set the main controller in remove mode (see the controller's manual).
-  3. Quickly, three times click one of the buttons.
-  4. LED will start blinking yellow, wait for the removing process to end.
-  5. Successful removing will be confirmed by the Z-Wave controller’s message and red LED colour.
+<p&gtZ-Wave device learning mode, allowing to remove the device from existing Z-Wave network. Removing also results in resetting the device to factory defaults:</p&gt <ol&gt<li&gtPower the device.</li&gt <li&gtSet the main controller in remove mode (see the controller's manual).</li&gt <li&gtQuickly, three times click one of the buttons.</li&gt <li&gtLED will start blinking yellow, wait for the removing process to end.</li&gt <li&gtSuccessful removing will be confirmed by the Z-Wave controller’s message and red LED colour.</li&gt </ol&gt
 
 ## Channels
 
@@ -206,21 +186,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 11: LED frame colour when moving
 
 This parameter defines the LED colour when the motor is running.
-0 – LED disabled
-
-1 – White
-
-2 – Red
-
-3 – Green
-
-4 – Blue
-
-5 – Yellow
-
-6 – Cyan
-
-7 – Magenta
+<p&gt0 – LED disabled</p&gt <p&gt1 – White</p&gt <p&gt2 – Red</p&gt <p&gt3 – Green</p&gt <p&gt4 – Blue</p&gt <p&gt5 – Yellow</p&gt <p&gt6 – Cyan</p&gt <p&gt7 – Magenta</p&gt
 Values in the range 0 to 7 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -231,21 +197,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: LED frame – colour when not moving
 
 This parameter defines the LED colour when the device motor is not running.
-0 – LED disabled
-
-1 – White
-
-2 – Red
-
-3 – Green
-
-4 – Blue
-
-5 – Yellow
-
-6 – Cyan
-
-7 – Magenta
+<p&gt0 – LED disabled</p&gt <p&gt1 – White</p&gt <p&gt2 – Red</p&gt <p&gt3 – Green</p&gt <p&gt4 – Blue</p&gt <p&gt5 – Yellow</p&gt <p&gt6 – Cyan</p&gt <p&gt7 – Magenta</p&gt
 Values in the range 0 to 7 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -256,9 +208,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: LED frame – brightness
 
 This parameter allows to adjust the LED frame brightness.
-0 – LED disabled
-
-1-100 (1-100% brightness)
+<p&gt0 – LED disabled</p&gt <p&gt1-100 (1-100% brightness)</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -269,9 +219,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 24: Buttons orientation
 
 This parameter allows reversing the operation of the buttons.
-0 – default (1st button UP, 2nd button DOWN)
-
-1 – reversed (1st button DOWN, 2nd button UP)
+<p&gt0 – default (1st button UP, 2nd button DOWN)</p&gt <p&gt1 – reversed (1st button DOWN, 2nd button UP)</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -282,11 +230,7 @@ This parameter has the configuration ID ```config_24_1``` and is of type ```INTE
 ### Parameter 25: Outputs orientation
 
 reversing the operation of Q1 and Q2
-This parameter allows reversing the operation of Q1 and Q2 without changing the wiring (e.g. in case of invalid motor connection).
-
-0 - default (Q1 – UP, Q2 – DOWN)
-
-1 - reversed (Q1 – DOWN, Q2 – UP)
+<p&gtThis parameter allows reversing the operation of Q1 and Q2 without changing the wiring (e.g. in case of invalid motor connection).</p&gt <p&gt0 - default (Q1 – UP, Q2 – DOWN)</p&gt <p&gt1 - reversed (Q1 – DOWN, Q2 – UP)</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -297,25 +241,7 @@ This parameter has the configuration ID ```config_25_1``` and is of type ```INTE
 ### Parameter 30: Alarm configuration - 1st slot
 
 Which alarm frames and how the device should react
-This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.
-
-1B [MSB] – Notification Type
-
-2B – Notification Status
-
-3B – Event/State Parameters
-
-4B [LSB] – action:
-
-  * 0x00 – no action,
-  * 0xX1 – open,
-  * 0xX2 – close,
-  * 0x0X – no action on LED frame,
-  * 0x1X – LED frame blinks red,
-  * 0x2X – LED frame blinks green,
-  * 0x4X – LED frame blinks blue,
-  * 0x8X – dis-able LED frame,
-  * 0xFX – LED frame LAPD signal (red-white-blue)
+<p&gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.</p&gt <p&gt1B [MSB] – Notification Type</p&gt <p&gt2B – Notification Status</p&gt <p&gt3B – Event/State Parameters</p&gt <p&gt4B [LSB] – action:</p&gt <ul&gt<li&gt0x00 – no action,</li&gt <li&gt0xX1 – open,</li&gt <li&gt0xX2 – close,</li&gt <li&gt0x0X – no action on LED frame,</li&gt <li&gt0x1X – LED frame blinks red,</li&gt <li&gt0x2X – LED frame blinks green,</li&gt <li&gt0x4X – LED frame blinks blue,</li&gt <li&gt0x8X – dis-able LED frame,</li&gt <li&gt0xFX – LED frame LAPD signal (red-white-blue)</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -326,27 +252,7 @@ This parameter has the configuration ID ```config_30_4_0000000F``` and is of typ
 ### Parameter 31: Alarm configuration - 2nd slot
 
 which alarm frames and how the device should react
-This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.
-
-default: \[0x05, 0xFF, 0x00, 0x00\](Water Alarm, any notification, no action)
-
-1B [MSB] – Notification Type
-
-2B – Notification Status
-
-3B – Event/State Parameters
-
-4B [LSB] – action:
-
-  * 0x00 – no action,
-  * 0xX1 – open,
-  * 0xX2 – close,
-  * 0x0X – no action on LED frame,
-  * 0x1X – LED frame blinks red,
-  * 0x2X – LED frame blinks green,
-  * 0x4X – LED frame blinks blue,
-  * 0x8X – dis-able LED frame,
-  * 0xFX – LED frame LAPD signal (red-white-blue)
+<p&gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.</p&gt <p&gtdefault: \[0x05, 0xFF, 0x00, 0x00\](Water Alarm, any notification, no action)</p&gt <p&gt1B [MSB] – Notification Type</p&gt <p&gt2B – Notification Status</p&gt <p&gt3B – Event/State Parameters</p&gt <p&gt4B [LSB] – action:</p&gt <ul&gt<li&gt0x00 – no action,</li&gt <li&gt0xX1 – open,</li&gt <li&gt0xX2 – close,</li&gt <li&gt0x0X – no action on LED frame,</li&gt <li&gt0x1X – LED frame blinks red,</li&gt <li&gt0x2X – LED frame blinks green,</li&gt <li&gt0x4X – LED frame blinks blue,</li&gt <li&gt0x8X – dis-able LED frame,</li&gt <li&gt0xFX – LED frame LAPD signal (red-white-blue)</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -357,27 +263,7 @@ This parameter has the configuration ID ```config_31_4_0000000F``` and is of typ
 ### Parameter 32: Alarm configuration - 3rd slot
 
 which alarm frames and how the device should react
-This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.
-
-Default: \[0x01, 0xFF, 0x00, 0x00\](Smoke Alarm, any notification, no action)
-
-1B [MSB] – Notification Type
-
-2B – Notification Status
-
-3B – Event/State Parameters
-
-4B [LSB] – action:
-
-  * 0x00 – no action,
-  * 0xX1 – open,
-  * 0xX2 – close,
-  * 0x0X – no action on LED frame,
-  * 0x1X – LED frame blinks red,
-  * 0x2X – LED frame blinks green,
-  * 0x4X – LED frame blinks blue,
-  * 0x8X – dis-able LED frame,
-  * 0xFX – LED frame LAPD signal (red-white-blue)
+<p&gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.</p&gt <p&gtDefault: \[0x01, 0xFF, 0x00, 0x00\](Smoke Alarm, any notification, no action)</p&gt <p&gt1B [MSB] – Notification Type</p&gt <p&gt2B – Notification Status</p&gt <p&gt3B – Event/State Parameters</p&gt <p&gt4B [LSB] – action:</p&gt <ul&gt<li&gt0x00 – no action,</li&gt <li&gt0xX1 – open,</li&gt <li&gt0xX2 – close,</li&gt <li&gt0x0X – no action on LED frame,</li&gt <li&gt0x1X – LED frame blinks red,</li&gt <li&gt0x2X – LED frame blinks green,</li&gt <li&gt0x4X – LED frame blinks blue,</li&gt <li&gt0x8X – dis-able LED frame,</li&gt <li&gt0xFX – LED frame LAPD signal (red-white-blue)</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -389,27 +275,7 @@ This is a read only parameter.
 ### Parameter 33: Alarm configuration - 4th slot
 
 which alarm frames and how the device should react
-This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.
-
-default: \[0x02, 0xFF, 0x00, 0x00\](CO Alarm, any notification, no action)
-
-1B [MSB] – Notification Type
-
-2B – Notification Status
-
-3B – Event/State Parameters
-
-4B [LSB] – action:
-
-  * 0x00 – no action,
-  * 0xX1 – open,
-  * 0xX2 – close,
-  * 0x0X – no action on LED frame,
-  * 0x1X – LED frame blinks red,
-  * 0x2X – LED frame blinks green,
-  * 0x4X – LED frame blinks blue,
-  * 0x8X – dis-able LED frame,
-  * 0xFX – LED frame LAPD signal (red-white-blue)
+<p&gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.</p&gt <p&gtdefault: \[0x02, 0xFF, 0x00, 0x00\](CO Alarm, any notification, no action)</p&gt <p&gt1B [MSB] – Notification Type</p&gt <p&gt2B – Notification Status</p&gt <p&gt3B – Event/State Parameters</p&gt <p&gt4B [LSB] – action:</p&gt <ul&gt<li&gt0x00 – no action,</li&gt <li&gt0xX1 – open,</li&gt <li&gt0xX2 – close,</li&gt <li&gt0x0X – no action on LED frame,</li&gt <li&gt0x1X – LED frame blinks red,</li&gt <li&gt0x2X – LED frame blinks green,</li&gt <li&gt0x4X – LED frame blinks blue,</li&gt <li&gt0x8X – dis-able LED frame,</li&gt <li&gt0xFX – LED frame LAPD signal (red-white-blue)</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -420,27 +286,7 @@ This parameter has the configuration ID ```config_33_4_0000000F``` and is of typ
 ### Parameter 34: Alarm configuration - 5th slot
 
 which alarm frames and how the device should react
-This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.
-
-default: 0x04, 0xFF, 0x00, 0x00](Heat Alarm, any notification, no action)
-
-1B [MSB] – Notification Type
-
-2B – Notification Status
-
-3B – Event/State Parameters
-
-4B [LSB] – action:
-
-  * 0x00 – no action,
-  * 0xX1 – open,
-  * 0xX2 – close,
-  * 0x0X – no action on LED frame,
-  * 0x1X – LED frame blinks red,
-  * 0x2X – LED frame blinks green,
-  * 0x4X – LED frame blinks blue,
-  * 0x8X – dis-able LED frame,
-  * 0xFX – LED frame LAPD signal (red-white-blue)
+<p&gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most sig-nificant bytes are set according to the official Z-Wave protocol specification.</p&gt <p&gtdefault: 0x04, 0xFF, 0x00, 0x00](Heat Alarm, any notification, no action)</p&gt <p&gt1B [MSB] – Notification Type</p&gt <p&gt2B – Notification Status</p&gt <p&gt3B – Event/State Parameters</p&gt <p&gt4B [LSB] – action:</p&gt <ul&gt<li&gt0x00 – no action,</li&gt <li&gt0xX1 – open,</li&gt <li&gt0xX2 – close,</li&gt <li&gt0x0X – no action on LED frame,</li&gt <li&gt0x1X – LED frame blinks red,</li&gt <li&gt0x2X – LED frame blinks green,</li&gt <li&gt0x4X – LED frame blinks blue,</li&gt <li&gt0x8X – dis-able LED frame,</li&gt <li&gt0xFX – LED frame LAPD signal (red-white-blue)</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -451,11 +297,7 @@ This parameter has the configuration ID ```config_34_4_0000000F``` and is of typ
 ### Parameter 35: Alarm configuration – duration
 
 duration of alarm sequence
-This parameter defines duration of alarm se-quence. When time set in this parameter elaps-es, alarm is cancelled, LED frame and relay re-store normal operation, but do not recover state from before the alarm.
-
-0 – infinite
-
-1-32400 (1s-9h, 1s step) – duration
+<p&gtThis parameter defines duration of alarm se-quence. When time set in this parameter elaps-es, alarm is cancelled, LED frame and relay re-store normal operation, but do not recover state from before the alarm.</p&gt <p&gt0 – infinite</p&gt <p&gt1-32400 (1s-9h, 1s step) – duration</p&gt
 Values in the range 0 to 32400 may be set.
 
 The manufacturer defined default value is ```600```.
@@ -466,17 +308,7 @@ This parameter has the configuration ID ```config_35_2``` and is of type ```INTE
 ### Parameter 40: First button – scenes sent
 
 which actions result in sending scene IDs
-This parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent).Enabling scenes for triple click disables entering the device in learn mode by triple clicking
-
-0 (no scenes)
-
-1 – Key pressed 1 time
-
-2 – Key pressed 2 times
-
-4 – Key pressed 3 times
-
-8 – Key hold down and key released
+<p&gtThis parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent).Enabling scenes for triple click disables entering the device in learn mode by triple clicking</p&gt <p&gt0 (no scenes)</p&gt <p&gt1 – Key pressed 1 time</p&gt <p&gt2 – Key pressed 2 times</p&gt <p&gt4 – Key pressed 3 times</p&gt <p&gt8 – Key hold down and key released</p&gt
 Values in the range 0 to 15 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -487,17 +319,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 41: Second button – scenes sent
 
 which actions result in sending scene IDs
-This parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent).Enabling scenes for triple click disables entering the device in learn mode by triple clicking.
-
-0 (no scenes)
-
-1 – Key pressed 1 time
-
-2 – Key pressed 2 times
-
-4 – Key pressed 3 times
-
-8 – Key hold down and key released
+<p&gtThis parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent).Enabling scenes for triple click disables entering the device in learn mode by triple clicking.</p&gt <p&gt0 (no scenes)</p&gt <p&gt1 – Key pressed 1 time</p&gt <p&gt2 – Key pressed 2 times</p&gt <p&gt4 – Key pressed 3 times</p&gt <p&gt8 – Key hold down and key released</p&gt
 Values in the range 0 to 15 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -508,11 +330,7 @@ This parameter has the configuration ID ```config_41_1``` and is of type ```INTE
 ### Parameter 60: Power reports – include self-consumption
 
 power measurements include device itself
-whether the power measurements should include power consumed by the device itself
-
-0 – self-consumption not included
-
-1 – self-consumption included
+<p&gtwhether the power measurements should include power consumed by the device itself</p&gt <p&gt0 – self-consumption not included</p&gt <p&gt1 – self-consumption included</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -523,11 +341,7 @@ This parameter has the configuration ID ```config_60_1``` and is of type ```INTE
 ### Parameter 61: Power reports – on change
 
 minimal change in measured power to report
-This parameter defines minimal change (from the last reported) in measured power that re-sults in sending new report. For loads under 50W the parameter is irrelevant, report are sent every 5W change.
-
-0 - reporting on change disabled
-
-1-500 (1-500%, 1% step) – minimal change
+<p&gtThis parameter defines minimal change (from the last reported) in measured power that re-sults in sending new report. For loads under 50W the parameter is irrelevant, report are sent every 5W change.</p&gt <p&gt0 - reporting on change disabled</p&gt <p&gt1-500 (1-500%, 1% step) – minimal change</p&gt
 Values in the range 0 to 500 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -538,11 +352,7 @@ This parameter has the configuration ID ```config_61_2``` and is of type ```INTE
 ### Parameter 62: Power reports – periodic
 
 reporting interval for measured power
-This parameter defines reporting interval for measured power. Periodic reports are indepen-dent from changes in value (parameter 61).
-
-0 – periodic reports disabled
-
-30-32400 (30s-9h, 1s step) – time interval
+<p&gtThis parameter defines reporting interval for measured power. Periodic reports are indepen-dent from changes in value (parameter 61).</p&gt <p&gt0 – periodic reports disabled</p&gt <p&gt30-32400 (30s-9h, 1s step) – time interval</p&gt
 Values in the range 0 to 32400 may be set.
 
 The manufacturer defined default value is ```3600```.
@@ -553,11 +363,7 @@ This parameter has the configuration ID ```config_62_2``` and is of type ```INTE
 ### Parameter 65: Energy reports – on change
 
 minimal change in measured energy to report
-This parameter defines minimal change (from the last reported) in measured energy that re-sults in sending new report.
-
-0 - reporting on change disabled
-
-1-500 (0.01-5kWh, 0.01kWh step) – minimal change
+<p&gtThis parameter defines minimal change (from the last reported) in measured energy that re-sults in sending new report.</p&gt <p&gt0 - reporting on change disabled</p&gt <p&gt1-500 (0.01-5kWh, 0.01kWh step) – minimal change</p&gt
 Values in the range 0 to 500 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -568,11 +374,7 @@ This parameter has the configuration ID ```config_65_2``` and is of type ```INTE
 ### Parameter 66: Energy reports – periodic
 
 This reporting interval for measured energy
-This parameter defines reporting interval for measured energy. Periodic reports are indepen-dent from changes in value (parameter 65).
-
-0 – periodic reports disabled
-
-30-32400 (30s-9h, 1s step) – time interval
+<p&gtThis parameter defines reporting interval for measured energy. Periodic reports are indepen-dent from changes in value (parameter 65).</p&gt <p&gt0 – periodic reports disabled</p&gt <p&gt30-32400 (30s-9h, 1s step) – time interval</p&gt
 Values in the range 0 to 32400 may be set.
 
 The manufacturer defined default value is ```3600```.
@@ -583,13 +385,7 @@ This parameter has the configuration ID ```config_66_2``` and is of type ```INTE
 ### Parameter 150: Force calibration
 
 Set 2 to force device into calibration mode
-By setting this parameter to 2 the device enters the calibration mode. The parameter relevant only if the device is set to work in positioning mode (parameter 151 set to 1 or 2).
-
-0 - device is not calibrated
-
-1 - device is calibrated
-
-2 - force device calibration
+<p&gtBy setting this parameter to 2 the device enters the calibration mode. The parameter relevant only if the device is set to work in positioning mode (parameter 151 set to 1 or 2).</p&gt <p&gt0 - device is not calibrated</p&gt <p&gt1 - device is calibrated</p&gt <p&gt2 - force device calibration</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -600,13 +396,7 @@ This parameter has the configuration ID ```config_150_1``` and is of type ```INT
 ### Parameter 151: Operating mode
 
 This parameter allows adjusting operation ac-cording to the connected device.
-1 – roller blind (with positioning)
-
-2 – Venetian blind (with positioning)
-
-5 – roller blind with built-in driver
-
-6 – roller blind with built-in driver (impulse)
+<p&gt1 – roller blind (with positioning)</p&gt <p&gt2 – Venetian blind (with positioning)</p&gt <p&gt5 – roller blind with built-in driver</p&gt <p&gt6 – roller blind with built-in driver (impulse)</p&gt
 Values in the range 1 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -617,9 +407,7 @@ This parameter has the configuration ID ```config_151_1``` and is of type ```INT
 ### Parameter 152: Venetian blind – time of full turn of the slats
 
 time of full turn cycle of the slats
-For Venetian blinds (parameter 151 set to 2) the parameter determines time of full turn cycle of the slats. The parameter is irrelevant for other modes.
-
-0-65535 (0 - 655.35s, every 0.01s) - time of turn
+<p&gtFor Venetian blinds (parameter 151 set to 2) the parameter determines time of full turn cycle of the slats. The parameter is irrelevant for other modes.</p&gt <p&gt0-65535 (0 - 655.35s, every 0.01s) - time of turn</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```150```.
@@ -630,13 +418,7 @@ This parameter has the configuration ID ```config_152_4``` and is of type ```INT
 ### Parameter 153: Set slats back to previous position
 
 slats positioning in various situations
-For Venetian blinds (parameter 151 set to 2) the parameter determines slats positioning in various situations. The parameter is irrelevant for other modes.
-
-0 – slats return to previously set position only in case of the main controller operation
-
-1 – slats return to previously set position in case of the main controller operation, momentary switch operation, or when the limit switch is reached
-
-2 – slats return to previously set position in case of the main controller operation, momen-tary switch operation, when the limit switch is reached or after receiving the Switch Multilevel Stop control frame
+<p&gtFor Venetian blinds (parameter 151 set to 2) the parameter determines slats positioning in various situations. The parameter is irrelevant for other modes.</p&gt <p&gt0 – slats return to previously set position only in case of the main controller operation</p&gt <p&gt1 – slats return to previously set position in case of the main controller operation, momentary switch operation, or when the limit switch is reached</p&gt <p&gt2 – slats return to previously set position in case of the main controller operation, momen-tary switch operation, when the limit switch is reached or after receiving the Switch Multilevel Stop control frame</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -647,9 +429,7 @@ This parameter has the configuration ID ```config_153_1``` and is of type ```INT
 ### Parameter 154: Delay motor stop after reaching end switch
 
 time after which the motor will be stopped after contacts closed
-The parameter determines the time after which the motor will be stopped after end switch contacts are closed.
-
-1-255 (0.1s - 25.5 seconds)
+<p&gtThe parameter determines the time after which the motor will be stopped after end switch contacts are closed.</p&gt <p&gt1-255 (0.1s - 25.5 seconds)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -660,9 +440,7 @@ This parameter has the configuration ID ```config_154_2``` and is of type ```INT
 ### Parameter 155: Motor operation detection
 
 Power threshold interpreted as reaching a limit switch.
-1-255 (1-255W) - report interval
-
-0 - no detection
+<p&gt1-255 (1-255W) - report interval</p&gt <p&gt0 - no detection</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -673,9 +451,7 @@ This parameter has the configuration ID ```config_155_2``` and is of type ```INT
 ### Parameter 156: Time of up movement
 
 time needed for roller blinds to reach the top
-This parameter determines the time needed for roller blinds to reach the top. For modes with positioning value is set automatically during calibration, otherwise, it must be set manually.
-
-1-65535 (0.01 - 655.35 seconds)
+<p&gtThis parameter determines the time needed for roller blinds to reach the top. For modes with positioning value is set automatically during calibration, otherwise, it must be set manually.</p&gt <p&gt1-65535 (0.01 - 655.35 seconds)</p&gt
 Values in the range 1 to 65535 may be set.
 
 The manufacturer defined default value is ```6000```.
@@ -686,9 +462,7 @@ This parameter has the configuration ID ```config_156_4``` and is of type ```INT
 ### Parameter 157: Time of down movement
 
 time needed for roller blinds to reach the bottom
-This parameter determines the time needed for roller blinds to reach the bottom.For modes with positioning value is set automatically during calibration, otherwise, it must be set manually.
-
-1-65535 (0.01 - 655.35 seconds)
+<p&gtThis parameter determines the time needed for roller blinds to reach the bottom.For modes with positioning value is set automatically during calibration, otherwise, it must be set manually.</p&gt <p&gt1-65535 (0.01 - 655.35 seconds)</p&gt
 Values in the range 1 to 65535 may be set.
 
 The manufacturer defined default value is ```6000```.
@@ -776,9 +550,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Operating Manual](https://www.cd-jackson.com/zwave_device_uploads/1083/FGWREU-111-T-EN-v1-0.pdf)
+* [Operating Manual](https://opensmarthouse.org/zwavedatabase/1083/FGWREU-111-T-EN-v1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1083).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1083).

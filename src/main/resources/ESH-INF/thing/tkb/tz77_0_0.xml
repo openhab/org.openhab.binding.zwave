@@ -7,9 +7,7 @@
 
   <thing-type id="tkb_tz77_00_000" listed="false">
     <label>TZ77 RGB dimmer switch</label>
-    <description><![CDATA[
-RGB dimmer switch<br /><h1>Overview</h1><p>12V DC operating voltage.</p> <p>This insert switch module is a transceiver which is a Z-Wave enabled device<br />and is fully compatible with any Z-Wave enabled network. <br />Remote on/off control of the connected load is possible with other manufacturer's<br />wireless controller. Each switch is designed to act as a repeater.</p> <br /><h2>Inclusion Information</h2><p>Pressing ON/OFF button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Pressing ON/OFF button three times within 1.5 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>RGB dimmer switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt12V DC operating voltage.&lt;/p&gt &lt;p&gtThis insert switch module is a transceiver which is a Z-Wave enabled device&lt;br /&gtand is fully compatible with any Z-Wave enabled network. &lt;br /&gtRemote on/off control of the connected load is possible with other manufacturer's&lt;br /&gtwireless controller. Each switch is designed to act as a repeater.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPressing ON/OFF button three times within 1.5 seconds will enter inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPressing ON/OFF button three times within 1.5 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -87,18 +85,14 @@ RGB dimmer switch<br /><h1>Overview</h1><p>12V DC operating voltage.</p> <p>This
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>1: Indicator light state</label>
-        <description><![CDATA[
-Change the state of indicator light<br /><h1>Overview</h1><p>Default status of socket: LED is on as indicator when the load is off</p>
-        ]]></description>
+        <description>Change the state of indicator light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault status of socket: LED is on as indicator when the load is off&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>2: Memory function</label>
-        <description><![CDATA[
-Socket status when powered on<br /><h1>Overview</h1><p>Default with memory: the socket status is same as before when power on</p>
-        ]]></description>
+        <description>Socket status when powered on&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault with memory: the socket status is same as before when power on&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

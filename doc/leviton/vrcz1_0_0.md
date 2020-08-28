@@ -10,49 +10,26 @@ This describes the Z-Wave device *VRCZ1*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![VRCZ1 product image](https://www.cd-jackson.com/zwave_device_uploads/1208/1208_default.png)
+![VRCZ1 product image](https://opensmarthouse.org/zwavedatabase/1208/image/)
 
 
 The VRCZ1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * Leviton Vizia+ 1 Zone dimming controller/Virtual matching dimmer remote
-  * Controls dimming of remote load
+<ul&gt<li&gtLeviton Vizia+ 1 Zone dimming controller/Virtual matching dimmer remote</li&gt <li&gtControls dimming of remote load</li&gt </ul&gt
 
 ### Inclusion Information
 
-  * To access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard.
-  * Wait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber.
-  * Release the push pad and the LED should blink Amber. You are now in Programming mode.
-  * If the LED on the 1-zone controller turns solid Red while including, there has been a communication error.
+<ul&gt<li&gtTo access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard.</li&gt <li&gtWait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber.</li&gt <li&gtRelease the push pad and the LED should blink Amber. You are now in Programming mode.</li&gt <li&gtIf the LED on the 1-zone controller turns solid Red while including, there has been a communication error.</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * To access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard.
-  * Wait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber.
-  * Release the push pad and the LED should blink Amber. You are now in Programming mode.
-  * If the LED on the 1-zone controller turns solid Red while including, there has been a communication error.
+<ul&gt<li&gtTo access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard.</li&gt <li&gtWait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber.</li&gt <li&gtRelease the push pad and the LED should blink Amber. You are now in Programming mode.</li&gt <li&gtIf the LED on the 1-zone controller turns solid Red while including, there has been a communication error.</li&gt </ul&gt
 
 ### General Usage Information
 
-DIM/BRIGHT Bar  
-  
-BRIGHTEN:  
-Press the right half of the DIM/BRIGHT Bar – Lights brighten to desired level.  
-  
-DIM:  
-Press the left half of the DIM/BRIGHT Bar – Lights dim to desired level.  
-If there is a power outage, when the power is restored, the lights will return to the last setting before the power interruption.  
-  
-Virtual Matching Remote Application:  
-Push Pad (Default settings)
-
-Turn ON from OFF position:  
-Tap – Lights turn ON, LED turns OFF.
-
-Turn OFF from ON position:  
-Tap – Lights turn OFF, LED turns ON.
+<p&gtDIM/BRIGHT Bar<br /&gt<br /&gtBRIGHTEN:<br /&gtPress the right half of the DIM/BRIGHT Bar – Lights brighten to desired level.<br /&gt<br /&gtDIM:<br /&gtPress the left half of the DIM/BRIGHT Bar – Lights dim to desired level.<br /&gtIf there is a power outage, when the power is restored, the lights will return to the last setting before the power interruption.<br /&gt<br /&gtVirtual Matching Remote Application:<br /&gtPush Pad (Default settings)</p&gt <p&gtTurn ON from OFF position:<br /&gtTap – Lights turn ON, LED turns OFF.</p&gt <p&gtTurn OFF from ON position:<br /&gtTap – Lights turn OFF, LED turns ON.</p&gt
 
 ## Channels
 
@@ -83,7 +60,7 @@ The VRCZ1 supports 1 association group.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-The VRCZ1 can be associated with a single device.
+<p&gtThe VRCZ1 can be associated with a single device.</p&gt
 
 Association group 1 supports 1 node.
 
@@ -107,9 +84,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Product Specification](https://www.cd-jackson.com/zwave_device_uploads/1208/Spec-VRCZ4-VRCS4-VRCZ1-VRCS1-VRMR1.pdf)
+* [Product Specification](https://opensmarthouse.org/zwavedatabase/1208/Spec-VRCZ4-VRCS4-VRCZ1-VRCS1-VRMR1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1208).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1208).

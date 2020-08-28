@@ -10,33 +10,22 @@ This describes the Z-Wave device *VRPD3*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![VRPD3 product image](https://www.cd-jackson.com/zwave_device_uploads/199/199_default.jpg)
+![VRPD3 product image](https://opensmarthouse.org/zwavedatabase/199/image/)
 
 
 The VRPD3 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * Smart plug-in module for use with table and floor lamps
-  * ON/OFF/DIM/BRIGHT switching of CFL/LED loads up to 100W and incandescent loads up to 300W 
-  * ON/OFF scene and zone compatibility
-  * 2-way status updates
-  * Supports Z-Wave Beaming
+<ul&gt<li&gtSmart plug-in module for use with table and floor lamps</li&gt <li&gtON/OFF/DIM/BRIGHT switching of CFL/LED loads up to 100W and incandescent loads up to 300W </li&gt <li&gtON/OFF scene and zone compatibility</li&gt <li&gt2-way status updates</li&gt <li&gtSupports Z-Wave Beaming</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Plug in Leviton VRPD3
-  2. Place controller in inclusion mode
-  3. Press button on front of VRPD3
-
-If successful, the VRPD3 LED will turn orange during inclusion and then green. The LED will flash red if it fails.
+<ol&gt<li&gtPlug in Leviton VRPD3</li&gt <li&gtPlace controller in inclusion mode</li&gt <li&gtPress button on front of VRPD3</li&gt </ol&gt<p&gtIf successful, the VRPD3 LED will turn orange during inclusion and then green. The LED will flash red if it fails.</p&gt
 
 ### Exclusion Information
 
-  1. Place controller in exclusion mode
-  2. Press button on front of VRPD3
-
-If successful, the VRPD3 LED will turn orange during exclusion and then green. The LED will flash red if it fails.
+<ol&gt<li&gtPlace controller in exclusion mode</li&gt <li&gtPress button on front of VRPD3</li&gt </ol&gt<p&gtIf successful, the VRPD3 LED will turn orange during exclusion and then green. The LED will flash red if it fails.</p&gt
 
 ## Channels
 
@@ -90,9 +79,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Product Information](https://www.cd-jackson.com/zwave_device_uploads/199/VRF-plugin-modules-techsht-BW-v1p4HR.pdf)
+* [Product Information](https://opensmarthouse.org/zwavedatabase/199/VRF-plugin-modules-techsht-BW-v1p4HR.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/199).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/199).

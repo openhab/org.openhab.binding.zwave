@@ -10,22 +10,22 @@ This describes the Z-Wave device *ARZ*, manufactured by *Fakro* with the thing t
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![ARZ product image](https://www.cd-jackson.com/zwave_device_uploads/248/248_default.jpg)
+![ARZ product image](https://opensmarthouse.org/zwavedatabase/248/image/)
 
 
 The ARZ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The ARZ Z-Wave roller shutters are intended for mounting onto FAKRO roof windows.
+<p&gtThe ARZ Z-Wave roller shutters are intended for mounting onto FAKRO roof windows.</p&gt
 
 ### Inclusion Information
 
-Press "P" button on the device and hold it for 0.5 sec.
+<p&gtPress "P" button on the device and hold it for 0.5 sec.</p&gt
 
 ### Exclusion Information
 
-Press "P" button on the device and hold it for 0.5 sec.
+<p&gtPress "P" button on the device and hold it for 0.5 sec.</p&gt
 
 ## Channels
 
@@ -76,9 +76,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/248/AJP-Z-WAVE-FAKRO-EN.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/248/AJP-Z-WAVE-FAKRO-EN.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/248).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/248).

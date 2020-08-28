@@ -7,9 +7,7 @@
 
   <thing-type id="everspring_se812_00_000" listed="false">
     <label>SE812 Siren</label>
-    <description><![CDATA[
-Siren<br /><h1>Overview</h1><p>The Indoor Siren integrates both functions of siren and strobe into one unit. Two sound levels, 100dB and 90dB, are available for selection. When it receives a RF command, it will either activate its sounder and flash lights or stop these visual and audible alarm indications. </p> <br /><h2>Inclusion Information</h2><p>Pressing link key 3 times within 1.5 seconds will enter inclusion mode</p> <br /><h2>Exclusion Information</h2><p> Pressing link key 3 times within 1.5 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>Siren&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Indoor Siren integrates both functions of siren and strobe into one unit. Two sound levels, 100dB and 90dB, are available for selection. When it receives a RF command, it will either activate its sounder and flash lights or stop these visual and audible alarm indications. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPressing link key 3 times within 1.5 seconds will enter inclusion mode&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Pressing link key 3 times within 1.5 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->

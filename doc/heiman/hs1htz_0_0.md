@@ -10,7 +10,7 @@ This describes the Z-Wave device *HS1HT-Z *, manufactured by *[Heiman Technology
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HS1HT-Z  product image](https://www.cd-jackson.com/zwave_device_uploads/709/709_default.png)
+![HS1HT-Z  product image](https://opensmarthouse.org/zwavedatabase/709/image/)
 
 
 The HS1HT-Z  supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,24 +19,15 @@ The HS1HT-Z  does not permanently listen for messages sent from the controller -
 
 ## Overview
 
-Smart Temperature and Humidity Sensor is designed to detect the temperature and humidity in house, and reports the abnormal conditions to users' mobile phone, Users could also check the real-time temperature and humidity via mobile phone, The sensor adopts Z-Wave wireless communication protocol with high sensitivity.
-
-See:  
-https://products.z-wavealliance.org/products/2321 and http://www.heimantech.com/product/80.html
+<p&gtSmart Temperature and Humidity Sensor is designed to detect the temperature and humidity in house, and reports the abnormal conditions to users' mobile phone, Users could also check the real-time temperature and humidity via mobile phone, The sensor adopts Z-Wave wireless communication protocol with high sensitivity.</p&gt <p&gtSee: <br /&gthttps://products.z-wavealliance.org/products/2321 and http://www.heimantech.com/product/80.html</p&gt
 
 ### Inclusion Information
 
-Click [Add] icon in Z-Wave Controller.
-
-  * Press the Net_Button 3 times within 1.5s, Green LED is Blinking 3 times within 1 second.
-  * If Inclusion Process is successful, Green LED will turn off.
+<p&gtClick [Add] icon in Z-Wave Controller.</p&gt <ul&gt<li&gtPress the Net_Button 3 times within 1.5s, Green LED is Blinking 3 times within 1 second.</li&gt <li&gtIf Inclusion Process is successful, Green LED will turn off.</li&gt </ul&gt
 
 ### Exclusion Information
 
-Click [Remove] icon in Z-Wave Controller.
-
-  * Press the Net_Button 3 times within 1.5s
-  * If Exclusion Process is successful, Green LED is Blinking 6 times, then turn off
+<p&gtClick [Remove] icon in Z-Wave Controller.</p&gt <ul&gt<li&gtPress the Net_Button 3 times within 1.5s</li&gt <li&gtIf Exclusion Process is successful, Green LED is Blinking 6 times, then turn off</li&gt </ul&gt
 
 ### Wakeup Information
 
@@ -45,9 +36,7 @@ The HS1HT-Z  does not permanently listen for messages sent from the controller -
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  Wake up Notification is transmitted every 24 hours by default.
-
--  Wake up Notification is transmitted after Notification Report is Transmitted
+<p&gt  Wake up Notification is transmitted every 24 hours by default.</p&gt <p&gt-  Wake up Notification is transmitted after Notification Report is Transmitted</p&gt
 
 ## Channels
 
@@ -128,10 +117,10 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/709/HS1HT-Z.pdf)
-* [Instructions](https://www.cd-jackson.com/zwave_device_uploads/709/HS1HT-Z-S2doc.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/709/HS1HT-Z.pdf)
+* [Instructions](https://opensmarthouse.org/zwavedatabase/709/HS1HT-Z-S2doc.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/709).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/709).

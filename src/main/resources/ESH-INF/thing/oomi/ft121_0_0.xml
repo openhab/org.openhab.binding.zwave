@@ -7,9 +7,7 @@
 
   <thing-type id="oomi_ft121_00_000" listed="false">
     <label>FT121 LED RGBWW Strip</label>
-    <description><![CDATA[
-LED RGBWW Strip<br /><h1>Overview</h1><p>The LED Strip is a multi-colored LED Strip which allows control of color temperature (warm/cold white), RGB, and dimming via Z-Wave commands.</p> <br /><h2>Inclusion Information</h2><p>Set your Z-Wave controller into pairing mode. Press the Action Button located on the back of the LED Strip's white controller box once (The network LED will blink green as an indication it is pairing insecurely, please refer to section "Enabling Security Encryption" in the Advanced Function section of the manual to pair it securely). If the LED Strip has been successfully added to your Z-Wave network, its Network LED will become solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colorful gradient, repeat the instructions above from step 1.</p> <br /><h2>Exclusion Information</h2><p>Set your Z-Wave controller into device removal mode. Press the Action Button located on the back of the LED Strip's white controller box once. If the LED Strip has been successfully removed from your Z-Wave network, its Network LED will remain colorful gradient. If the removal was unsuccessful, the Network LED will still be solid, repeat the instructions above from step 1.</p>
-    ]]></description>
+    <description>LED RGBWW Strip&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe LED Strip is a multi-colored LED Strip which allows control of color temperature (warm/cold white), RGB, and dimming via Z-Wave commands.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtSet your Z-Wave controller into pairing mode. Press the Action Button located on the back of the LED Strip's white controller box once (The network LED will blink green as an indication it is pairing insecurely, please refer to section &quot;Enabling Security Encryption&quot; in the Advanced Function section of the manual to pair it securely). If the LED Strip has been successfully added to your Z-Wave network, its Network LED will become solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colorful gradient, repeat the instructions above from step 1.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtSet your Z-Wave controller into device removal mode. Press the Action Button located on the back of the LED Strip's white controller box once. If the LED Strip has been successfully removed from your Z-Wave network, its Network LED will remain colorful gradient. If the removal was unsuccessful, the Network LED will still be solid, repeat the instructions above from step 1.&lt;/p&gt</description>
     <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -81,9 +79,7 @@ LED RGBWW Strip<br /><h1>Overview</h1><p>The LED Strip is a multi-colored LED St
 
       <parameter name="config_34_1" type="integer" groupName="configuration">
         <label>34: Brightness Level Control</label>
-        <description><![CDATA[
-Brightness Level Control<br /><h1>Overview</h1><p>Enable/disable to turn on the last brightness level of the LED Strip when using the Color Switch Set CC to change its color.</p>
-        ]]></description>
+        <description>Brightness Level Control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable to turn on the last brightness level of the LED Strip when using the Color Switch Set CC to change its color.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disable (default)</option>
@@ -104,17 +100,13 @@ Brightness Level Control<br /><h1>Overview</h1><p>Enable/disable to turn on the 
       <parameter name="config_37_4_0000001F" type="integer" groupName="configuration"
                  min="0" max="31">
         <label>37: Colour Change Speed Level</label>
-        <description><![CDATA[
-Colour Change Speed Level<br /><h1>Overview</h1><ul><li>0 = Constant speed</li> <li>1 - 30 = Accelerate/decelerate speed from level 1 to 30</li> <li>31 = Inactive (keep the current configuration values)</li> </ul>
-        ]]></description>
+        <description>Colour Change Speed Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Constant speed&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 - 30 = Accelerate/decelerate speed from level 1 to 30&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt31 = Inactive (keep the current configuration values)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_37_4_000000E0" type="integer" groupName="configuration">
         <label>37: Time Base of Colour Change Speed</label>
-        <description><![CDATA[
-Time Base of Colour Change Speed<br /><h1>Overview</h1><p>Time Base of Colour Change Speed</p>
-        ]]></description>
+        <description>Time Base of Colour Change Speed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime Base of Colour Change Speed&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Time base is 1s.</option>
@@ -126,18 +118,14 @@ Time Base of Colour Change Speed<br /><h1>Overview</h1><p>Time Base of Colour Ch
       <parameter name="config_37_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>37: Cycle Count</label>
-        <description><![CDATA[
-Cycle Count<br /><h1>Overview</h1><ul><li>0 = Unlimited</li> <li>1 - 254 = Total number of cycles before stopping</li> <li>255 = Inactive (keep the current configuration values)</li> </ul>
-        ]]></description>
+        <description>Cycle Count&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Unlimited&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 - 254 = Total number of cycles before stopping&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt255 = Inactive (keep the current configuration values)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_37_4_00FF0000" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>37: Brightness</label>
-        <description><![CDATA[
-Brightness<br /><h1>Overview</h1><ul><li> 1 = Min level.</li> <li>99 = Max level</li> </ul>
-        ]]></description>
+        <description>Brightness&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt 1 = Min level.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt99 = Max level&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
@@ -157,9 +145,7 @@ Brightness<br /><h1>Overview</h1><ul><li> 1 = Min level.</li> <li>99 = Max leve
       <parameter name="config_37_4_38000000" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>37: Colour Change Speed Option</label>
-        <description><![CDATA[
-Colour Change Speed Option<br /><h1>Overview</h1><p>Colour Change Speed Option</p>
-        ]]></description>
+        <description>Colour Change Speed Option&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtColour Change Speed Option&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -175,9 +161,7 @@ Colour Change Speed Option<br /><h1>Overview</h1><p>Colour Change Speed Option</
 
       <parameter name="config_40_1_wo" type="integer" groupName="configuration">
         <label>40: Colorful mode configuration</label>
-        <description><![CDATA[
-Colorful mode configuration<br /><h1>Overview</h1><p>Set-only parameter</p>
-        ]]></description>
+        <description>Colorful mode configuration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet-only parameter&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Default</option>

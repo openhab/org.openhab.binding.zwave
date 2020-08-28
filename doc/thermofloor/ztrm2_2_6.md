@@ -11,63 +11,22 @@ This version of the device is limited to firmware version 2.6
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![Heatit Z-TRM 2 product image](https://www.cd-jackson.com/zwave_device_uploads/854/854_default.jpg)
+![Heatit Z-TRM 2 product image](https://opensmarthouse.org/zwavedatabase/854/image/)
 
 
 The Heatit Z-TRM 2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-### FEATURES
-
-  * Floor sensor
-  * Built-in room sensor
-  * External room sensor
-  * Temperature limiter
-  * Weekly program/setback via gateway or pilot wire
-  * Multilevel sensor command class
-  * Firmware updates (OTA)
-  * Power metering
-  * LED-diode
-  * Can be used in connection with different NTC-sensors
-  * Lock mode/child lock
-  * Calibration
-  * 8 associations
-  * Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class
+<h3&gtFEATURES</h3&gt <ul&gt<li&gtFloor sensor</li&gt <li&gtBuilt-in room sensor</li&gt <li&gtExternal room sensor</li&gt <li&gtTemperature limiter</li&gt <li&gtWeekly program/setback via gateway or pilot wire</li&gt <li&gtMultilevel sensor command class</li&gt <li&gtFirmware updates (OTA)</li&gt <li&gtPower metering</li&gt <li&gtLED-diode</li&gt <li&gtCan be used in connection with different NTC-sensors</li&gt <li&gtLock mode/child lock</li&gt <li&gtCalibration</li&gt <li&gt8 associations</li&gt <li&gtSupports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li&gt </ul&gt
 
 ### Inclusion Information
 
-To include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.
-
-The display will show OFF. Press Right (down) 4 times till you see Con in the display.
-
-Now start add device in your home automation software.
-
-Start inclusion mode by pressing Center (confirm) for approximately 2 seconds.
-
-Adding mode is indicated in the display by some 'circling' LED segments in the display until the timeout occurs after 20 seconds or the module has been added in the network.
-
-Confirmation will show Inc in the display. If inclusion fails, Err (error) will appear.
-
-Leave programming mode by choosing ESC in the menu.
-
-Your thermostat is ready for use with default settings.
+<p&gtTo include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.</p&gt <p&gtThe display will show OFF. Press Right (down) 4 times till you see Con in the display.</p&gt <p&gtNow start add device in your home automation software.</p&gt <p&gtStart inclusion mode by pressing Center (confirm) for approximately 2 seconds.</p&gt <p&gtAdding mode is indicated in the display by some 'circling' LED segments in the display until the timeout occurs after 20 seconds or the module has been added in the network.</p&gt <p&gtConfirmation will show Inc in the display. If inclusion fails, Err (error) will appear.</p&gt <p&gtLeave programming mode by choosing ESC in the menu.</p&gt <p&gtYour thermostat is ready for use with default settings.</p&gt
 
 ### Exclusion Information
 
-To exclude the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.
-
-The display will show OFF. Press Right (down) 4 times till you see Con in the display.
-
-Now start excluding device in your home automation software.
-
-Start exclusion mode by pressing Center (confirm) for approximately 2 seconds.
-
-Adding mode is indicated in the display by some 'circling' LED segments in the display until the timeout occurs after 20 seconds or the module has been excluded from the network.
-
-Confirmation will show Ecl in the display. If exclusion fails, Err (error) will appear.
-
-Leave programming mode by choosing ESC in the menu.
+<p&gtTo exclude the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.</p&gt <p&gtThe display will show OFF. Press Right (down) 4 times till you see Con in the display.</p&gt <p&gtNow start excluding device in your home automation software.</p&gt <p&gtStart exclusion mode by pressing Center (confirm) for approximately 2 seconds.</p&gt <p&gtAdding mode is indicated in the display by some 'circling' LED segments in the display until the timeout occurs after 20 seconds or the module has been excluded from the network.</p&gt <p&gtConfirmation will show Ecl in the display. If exclusion fails, Err (error) will appear.</p&gt <p&gtLeave programming mode by choosing ESC in the menu.</p&gt
 
 ## Channels
 
@@ -240,10 +199,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Operation mode
 
 Operation mode
-Value = 0, Off (default)  
-Value = 1, Heating mode  
-Value = 2, Cooling mode (not implemented)  
-Value = 11, Energy saving mode
+<p&gtValue = 0, Off (default)<br /&gtValue = 1, Heating mode<br /&gtValue = 2, Cooling mode (not implemented)<br /&gtValue = 11, Energy saving mode</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -261,12 +217,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Sensor mode
 
 Sensor mode
-Value = 0, F-mode, floor sensor mode  
-Value = 1, A-mode, internal room sensor mode (default)  
-Value = 2, AF-mode, internal sensor and floor sensor mode  
-Value = 3, A2-mode, external room sensor mode  
-Value = 4, P-mode, power regulator mode  
-Value = 5, FP-mode, floor sensor and power regulator mode
+<p&gtValue = 0, F-mode, floor sensor mode<br /&gtValue = 1, A-mode, internal room sensor mode (default)<br /&gtValue = 2, AF-mode, internal sensor and floor sensor mode<br /&gtValue = 3, A2-mode, external room sensor mode<br /&gtValue = 4, P-mode, power regulator mode<br /&gtValue = 5, FP-mode, floor sensor and power regulator mode</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -286,12 +237,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Floor sensor type
 
 Floor sensor type
-1. Value = 0, 10K-NTC (default)  
-2. Value = 1, 12K-NTC  
-3. Value = 2, 15K-NTC  
-4. Value = 3, 22K-NTC  
-5. Value = 4, 33K-NTC  
-6. Value = 5, 47K-NTC
+<p&gt1. Value = 0, 10K-NTC (default)<br /&gt2. Value = 1, 12K-NTC<br /&gt3. Value = 2, 15K-NTC<br /&gt4. Value = 3, 22K-NTC<br /&gt5. Value = 4, 33K-NTC<br /&gt6. Value = 5, 47K-NTC</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -311,8 +257,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Temperature control hysteresis (DIFF I)
 
 Temperature control hysteresis (DIFF I)
-1. Value = 0 - 30, 0.3C - 3.0C (default is 0.5C)  
-When using a water-based heating, the recommended hysteresis is a minimum of 1.0C
+<p&gt1. Value = 0 - 30, 0.3C - 3.0C (default is 0.5C)<br /&gtWhen using a water-based heating, the recommended hysteresis is a minimum of 1.0C</p&gt
 Values in the range 0 to 30 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -323,7 +268,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Floor minimum temperature limit (FLo)
 
 Floor minimum temperature limit (FLo)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -334,7 +279,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: Floor maximum temperature (FHi)
 
 Floor maximum temperature (FHi)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```400```.
@@ -345,7 +290,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 7: Air minimum temperature limit (ALo)
 
 Air minimum temperature limit (ALo)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -356,7 +301,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Air maximum temperature limit (AHi)
 
 Air maximum temperature limit (AHi)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```400```.
@@ -367,7 +312,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: FP mode P setting (PLo)
 
 FP mode P setting (PLo)
-1. Value = 0 - 9, default = 0
+<p&gt1. Value = 0 - 9, default = 0</p&gt
 Values in the range 0 to 9 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -378,7 +323,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Heating mode setpoint (CO)
 
 Heating mode setpoint (CO)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```210```.
@@ -389,7 +334,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Energy saving mode setpoint (ECO)
 
 Energy saving mode setpoint (ECO)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 18.0C
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 18.0C</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```180```.
@@ -400,7 +345,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: P setting
 
 P setting
-1. Value = 0 - 10, default = 2
+<p&gt1. Value = 0 - 10, default = 2</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -411,7 +356,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Cooling setpoint (COOL)
 
 Cooling setpoint (COOL)
-1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C
+<p&gt1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```210```.
@@ -422,7 +367,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: Room sensor calibration
 
 Room sensor calibration
-1. Value = -40 - 40, -4.0V - 4.0C, default = 0.0C
+<p&gt1. Value = -40 - 40, -4.0V - 4.0C, default = 0.0C</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -433,7 +378,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Floor sensor calibration
 
 Floor sensor calibration
-1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C
+<p&gt1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -444,7 +389,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: External sensor calibration
 
 External sensor calibration
-1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C
+<p&gt1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -455,8 +400,7 @@ This parameter has the configuration ID ```config_16_1``` and is of type ```INTE
 ### Parameter 17: Temperature display
 
 Temperature display
-1. Value = 0, Display setpoint temperature (default)  
-2. Value = 1, Display calculated temperature
+<p&gt1. Value = 0, Display setpoint temperature (default)<br /&gt2. Value = 1, Display calculated temperature</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -472,7 +416,7 @@ This parameter has the configuration ID ```config_17_1``` and is of type ```INTE
 ### Parameter 18: Button brightness - dimmed state
 
 Button brightness - dimmed state
-1. Value = 0 - 100, 0% - 100%, default = 50%
+<p&gt1. Value = 0 - 100, 0% - 100%, default = 50%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -483,7 +427,7 @@ This parameter has the configuration ID ```config_18_1``` and is of type ```INTE
 ### Parameter 19: Button brightness - active state
 
 Button brightness - active state
-1. Value = 0 - 100, 0% - 100%, default = 100%
+<p&gt1. Value = 0 - 100, 0% - 100%, default = 100%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -494,7 +438,7 @@ This parameter has the configuration ID ```config_19_1``` and is of type ```INTE
 ### Parameter 20: Display brightness - dimmed state
 
 Display brightness - dimmed state
-1. Value = 0 - 100, 0% - 100%, default = 50%
+<p&gt1. Value = 0 - 100, 0% - 100%, default = 50%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -505,7 +449,7 @@ This parameter has the configuration ID ```config_20_1``` and is of type ```INTE
 ### Parameter 21: Display brightness - active state
 
 Display brightness - active state
-1. Value = 0 - 100, 0% - 100%, default = 100%
+<p&gt1. Value = 0 - 100, 0% - 100%, default = 100%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -516,11 +460,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 ### Parameter 22: Temperature report interval
 
 Temperature report interval
-1. Value = 0, Reporting of temperature disabled  
-2. Value = 1 - 32767, 1s - 32767s, default = 60s
-
-Time interval between consecutive temperature reports.  
-Temperature reports can also be sent as a result of polling.
+<p&gt1. Value = 0, Reporting of temperature disabled<br /&gt2. Value = 1 - 32767, 1s - 32767s, default = 60s</p&gt <p&gtTime interval between consecutive temperature reports.<br /&gtTemperature reports can also be sent as a result of polling.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -531,11 +471,7 @@ This parameter has the configuration ID ```config_22_2``` and is of type ```INTE
 ### Parameter 23: Temperature report hysteresis
 
 Temperature report hysteresis
-1. Value = 1 - 100, 0.1C - 10.0C, default = 1.0C
-
-The temperature report will be sent if there is a difference in temperature from the previous value reported,  
-defined in this parameter (hysteresis).  
-Temperature reports can also be sent as a result of polling.
+<p&gt1. Value = 1 - 100, 0.1C - 10.0C, default = 1.0C</p&gt <p&gtThe temperature report will be sent if there is a difference in temperature from the previous value reported,<br /&gtdefined in this parameter (hysteresis).<br /&gtTemperature reports can also be sent as a result of polling.</p&gt
 Values in the range 1 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -546,11 +482,7 @@ This parameter has the configuration ID ```config_23_1``` and is of type ```INTE
 ### Parameter 24: Meter report interval
 
 Meter report interval
-1. Value = 0, Reporting of metering values is disabled  
-2. Value = 1 - 32767, 1s - 32767s, default = 60s
-
-Time interval between consecutive meter reports.  
-Meter reports can also be sent as a result of polling.
+<p&gt1. Value = 0, Reporting of metering values is disabled<br /&gt2. Value = 1 - 32767, 1s - 32767s, default = 60s</p&gt <p&gtTime interval between consecutive meter reports.<br /&gtMeter reports can also be sent as a result of polling.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -561,10 +493,7 @@ This parameter has the configuration ID ```config_24_2``` and is of type ```INTE
 ### Parameter 25: Meter report delta value
 
 Meter report delta value
-1. Value = 0 - 255, 0kWh - 25.5kWh, default = 1.0kWh
-
-Delta value in kWh between consecutive meter reports.  
-Meter reports can also be sent as a result of polling.
+<p&gt1. Value = 0 - 255, 0kWh - 25.5kWh, default = 1.0kWh</p&gt <p&gtDelta value in kWh between consecutive meter reports.<br /&gtMeter reports can also be sent as a result of polling.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -581,35 +510,31 @@ The Heatit Z-TRM 2 supports 5 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Lifeline. (Normally used by the Z-Wave Controller)  
-Sends:  
-- Device Reset Notifications  
-- Thermostat Setpoint Reports  
-- Thermostat Mode Reports
+<p&gtLifeline. (Normally used by the Z-Wave Controller)<br /&gtSends:<br /&gt- Device Reset Notifications<br /&gt- Thermostat Setpoint Reports<br /&gt- Thermostat Mode Reports</p&gt
 
 Association group 1 supports 7 nodes.
 
 ### Group 2: Thermostat Binary Switch Set
 
-Send Binary Switch Set commands representing the status of the internal relay.
+<p&gtSend Binary Switch Set commands representing the status of the internal relay.</p&gt
 
 Association group 2 supports 7 nodes.
 
 ### Group 3: Thermostat Internal Multilevel Sensor Reports
 
-Send Multilevel Sensor Reports for internal temperature sensor.
+<p&gtSend Multilevel Sensor Reports for internal temperature sensor.</p&gt
 
 Association group 3 supports 7 nodes.
 
 ### Group 4: Thermostat External Multilevel Sensor Reports
 
-Send Multilevel Sensor Reports for external temperature sensor.
+<p&gtSend Multilevel Sensor Reports for external temperature sensor.</p&gt
 
 Association group 4 supports 7 nodes.
 
 ### Group 5: Thermostat Floor Multilevel Sensor Reports
 
-Send Multilevel Sensor Reports for floor temperature sensor.
+<p&gtSend Multilevel Sensor Reports for floor temperature sensor.</p&gt
 
 Association group 5 supports 7 nodes.
 
@@ -683,11 +608,11 @@ Association group 5 supports 7 nodes.
 
 ### Documentation Links
 
-* [Product Sheet](https://www.cd-jackson.com/zwave_device_uploads/854/Heatit-ztrm2.pdf)
-* [Manual 2018-06-01](https://www.cd-jackson.com/zwave_device_uploads/854/manual-heatit-z-trm2-eng-2018-06-01.pdf)
-* [Manual FW 3.4 Ver. 2018-A](https://www.cd-jackson.com/zwave_device_uploads/854/A4-Manual-Heatit-Z-TRM2fx-FW-3-4-Ver2018-A-ENG.pdf)
+* [Product Sheet](https://opensmarthouse.org/zwavedatabase/854/Heatit-ztrm2.pdf)
+* [Manual 2018-06-01](https://opensmarthouse.org/zwavedatabase/854/manual-heatit-z-trm2-eng-2018-06-01.pdf)
+* [Manual FW 3.4 Ver. 2018-A](https://opensmarthouse.org/zwavedatabase/854/A4-Manual-Heatit-Z-TRM2fx-FW-3-4-Ver2018-A-ENG.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/854).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/854).

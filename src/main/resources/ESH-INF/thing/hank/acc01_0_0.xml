@@ -7,9 +7,7 @@
 
   <thing-type id="hank_acc01_00_000" listed="false">
     <label>ACC01 HKZW</label>
-    <description><![CDATA[
-HKZW<br /><h1>Overview</h1><p>ACC01 is an IR Transceiver based on Z-Wave technology. It is used for sending IR codes to infrared communicaiton controlling devices suchas TV, air condition, and TV box.</p> <br /><h2>Inclusion Information</h2><p>Triple click the Z-Button within 1.5 seconds.</p> <p>For secure inclusion, press and hold the button for 3 seconds.</p> <br /><h2>Exclusion Information</h2><p>Triple click the Z-Button within 1.5 seconds.</p>
-    ]]></description>
+    <description>HKZW&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtACC01 is an IR Transceiver based on Z-Wave technology. It is used for sending IR codes to infrared communicaiton controlling devices suchas TV, air condition, and TV box.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click the Z-Button within 1.5 seconds.&lt;/p&gt &lt;p&gtFor secure inclusion, press and hold the button for 3 seconds.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTriple click the Z-Button within 1.5 seconds.&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -59,11 +57,11 @@ HKZW<br /><h1>Overview</h1><p>ACC01 is an IR Transceiver based on Z-Wave technol
 
       <parameter name="config_255_4" type="integer" groupName="configuration"
                  min="1" max="1431655765">
-        <label>255: Reset &amp; remove from Z-Wave network</label>
-        <description>Reset &amp; remove from Z-Wave network</description>
+        <label>255: Reset &amp;amp; remove from Z-Wave network</label>
+        <description>Reset &amp;amp;amp; remove from Z-Wave network</description>
         <default>1</default>
         <options>
-          <option value="1431655765">Reset &amp; remove from network</option>
+          <option value="1431655765">Reset &amp;amp; remove from network</option>
         </options>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>

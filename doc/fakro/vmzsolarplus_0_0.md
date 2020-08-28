@@ -10,14 +10,14 @@ This describes the Z-Wave device *VMZ Solar z-wave plus*, manufactured by *Fakro
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![VMZ Solar z-wave plus product image](https://www.cd-jackson.com/zwave_device_uploads/750/750_default.jpg)
+![VMZ Solar z-wave plus product image](https://opensmarthouse.org/zwavedatabase/750/image/)
 
 
 The VMZ Solar z-wave plus supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-No device information is provided in the database. Consider [updating the database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/750) to improve the documentation.
+No device information is provided in the database. Consider [updating the database](https://opensmarthouse.org/zwavedatabase/750) to improve the documentation.
 
 ## Channels
 
@@ -86,13 +86,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: operating mode
 
 operating mode
-Operating mode. Available values:
-
-0 - manual
-
-1 - semiauto: goes down automatically but does not go up.
-
-2 - auto
+<p&gtOperating mode. Available values:</p&gt <p&gt0 - manual</p&gt <p&gt1 - semiauto: goes down automatically but does not go up.</p&gt <p&gt2 - auto</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -109,9 +103,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: winter mode
 
 Summer/Winter mode
-summer mode: go down if sun shines and go up if it is cloudy
-
-winter mode: if temperature is below 0 deg C and sun shines then go up if it is cloudy go down. If temperature is above 0 deg C works as a summer mode
+<p&gtsummer mode: go down if sun shines and go up if it is cloudy</p&gt <p&gtwinter mode: if temperature is below 0 deg C and sun shines then go up if it is cloudy go down. If temperature is above 0 deg C works as a summer mode</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -127,7 +119,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Delay time
 
 delay to auto shade
-Delay time in minutes after which the shade is open or closed in auto mode
+<p&gtDelay time in minutes after which the shade is open or closed in auto mode</p&gt
 Values in the range 0 to 30 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -138,7 +130,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Level of sensitivity for day
 
 Level of insolation to open/close the shades
-Level of insolation in mA to open/close the shades in the auto mode
+<p&gtLevel of insolation in mA to open/close the shades in the auto mode</p&gt
 Values in the range 3 to 100 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -149,7 +141,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Temperature
 
 Temperature
-T[<sup>o</sup>C] = x minus 50
+<p&gtT[<sup&gto</sup&gtC] = x minus 50</p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -177,7 +169,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 13: Restore last position
 
 Restore last position
-Restore last position or always go down till the end.
+<p&gtRestore last position or always go down till the end.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -193,7 +185,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 17: Insolation level
 
 Current on autoshade solar panel
-Current from autoshade solar panel for loading battery: 0 - 255 mA
+<p&gtCurrent from autoshade solar panel for loading battery: 0 - 255 mA</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -205,7 +197,7 @@ This is a read only parameter.
 ### Parameter 21: Motor current
 
 Motor current
-Current used by motor: 10[mA] - 2,55[A]
+<p&gtCurrent used by motor: 10[mA] - 2,55[A]</p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -217,7 +209,7 @@ This is a read only parameter.
 ### Parameter 77: CLOSE current
 
 CLOSE current
-CLOSE current: 1[mA] - 255[mA]
+<p&gtCLOSE current: 1[mA] - 255[mA]</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -228,7 +220,7 @@ This parameter has the configuration ID ```config_77_1``` and is of type ```INTE
 ### Parameter 78: OPEN current
 
 OPEN current
-OPEN current: 1[mA] - 255[mA]
+<p&gtOPEN current: 1[mA] - 255[mA]</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -239,7 +231,7 @@ This parameter has the configuration ID ```config_78_1``` and is of type ```INTE
 ### Parameter 79: CLOSE overload current
 
 CLOSE overload current
-CLOSE overload current: 10[mA] - 2,55[A]
+<p&gtCLOSE overload current: 10[mA] - 2,55[A]</p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -250,7 +242,7 @@ This parameter has the configuration ID ```config_79_1``` and is of type ```INTE
 ### Parameter 80: OPEN overload current
 
 OPEN overload current
-OPEN overload current: 10[mA] - 2,55[A]
+<p&gtOPEN overload current: 10[mA] - 2,55[A]</p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -261,7 +253,7 @@ This parameter has the configuration ID ```config_80_1``` and is of type ```INTE
 ### Parameter 99: Restore default config values
 
 Restore default config values
-Restore default config values.
+<p&gtRestore default config values.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -318,19 +310,19 @@ Association group 1 supports 1 node.
 
 ### Group 2: BasicRepeat
 
-<commandClass>BASIC</commandClass>
+<p&gt<commandClass>BASIC</commandClass></p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: MultilevelRepeat
 
-<commandClass>SWITCH_MULTILEVEL</commandClass>
+<p&gt<commandClass>SWITCH_MULTILEVEL</commandClass></p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: BasicControl
 
-<commandClass>BASIC</commandClass>
+<p&gt<commandClass>BASIC</commandClass></p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -361,9 +353,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/750/VMZ-SOLAR-FAKRO-EN.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/750/VMZ-SOLAR-FAKRO-EN.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/750).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/750).

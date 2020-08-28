@@ -7,9 +7,7 @@
 
   <thing-type id="remotec_zds210na_00_000" listed="false">
     <label>ZDS-210NA Dimming Switch Module (Dual Mode)</label>
-    <description><![CDATA[
-Dimming Switch Module (Dual Mode)<br /><h1>Overview</h1><p>Thank you for choosing the ZDS-210 (Dimming Switch Module) Z-Wave control product. ZDS-210 enabled product allows users to remotely control lighting, home appliance, and make home control easy with low installation and maintenance costs.</p> <br /><h2>Inclusion Information</h2><h1>Note:</h1> <p>ZDS-210 can be configured as either a "DIMMER" or a "SWITCH" device, and it will detect the operation mode using the position of the slide switch when powering on. The ZDS-210 will stay in the selected operation mode after inclusion process, and it will not respond to the slide switch selection after removing and re-adding power.</p> <p>If the user needs to change the operation mode, the user must first perform an exclusion process. The user will then switch to the target operation mode (Dimmer or Switch), and re-include the ZDS-210 afterwards.</p> <p>When prompted by your primary controller, triple click the PROG button within 1 second.</p> <br /><h2>Exclusion Information</h2><p>When prompted by your primary controller, triple click the PROG button within 1 second.</p>
-    ]]></description>
+    <description>Dimming Switch Module (Dual Mode)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThank you for choosing the ZDS-210 (Dimming Switch Module) Z-Wave control product. ZDS-210 enabled product allows users to remotely control lighting, home appliance, and make home control easy with low installation and maintenance costs.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;h1&gtNote:&lt;/h1&gt &lt;p&gtZDS-210 can be configured as either a &quot;DIMMER&quot; or a &quot;SWITCH&quot; device, and it will detect the operation mode using the position of the slide switch when powering on. The ZDS-210 will stay in the selected operation mode after inclusion process, and it will not respond to the slide switch selection after removing and re-adding power.&lt;/p&gt &lt;p&gtIf the user needs to change the operation mode, the user must first perform an exclusion process. The user will then switch to the target operation mode (Dimmer or Switch), and re-include the ZDS-210 afterwards.&lt;/p&gt &lt;p&gtWhen prompted by your primary controller, triple click the PROG button within 1 second.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtWhen prompted by your primary controller, triple click the PROG button within 1 second.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -65,9 +63,7 @@ Dimming Switch Module (Dual Mode)<br /><h1>Overview</h1><p>Thank you for choosin
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Double click option</label>
-        <description><![CDATA[
-Double click option<br /><h1>Overview</h1><p>Double click option (set to max. brightness)</p>
-        ]]></description>
+        <description>Double click option&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDouble click option (set to max. brightness)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -78,9 +74,7 @@ Double click option<br /><h1>Overview</h1><p>Double click option (set to max. br
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="5">
         <label>17: Dimmer time from 0% to max.</label>
-        <description><![CDATA[
-Dimmer time from 0% to max.<br /><h1>Overview</h1><p>Time to move the Dimmer from 0% to max. dimming values.</p> <p>(The ZDS-210 will implement the dimming duration if received this parameter value from controller/gateway.Otherwise, the ZDS-210 will implement the local parameter value)</p>
-        ]]></description>
+        <description>Dimmer time from 0% to max.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime to move the Dimmer from 0% to max. dimming values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt(The ZDS-210 will implement the dimming duration if received this parameter value from controller/gateway.Otherwise, the ZDS-210 will implement the local parameter value)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
@@ -105,9 +99,7 @@ Dimmer time from 0% to max.<br /><h1>Overview</h1><p>Time to move the Dimmer fro
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><h1>Dimmer mode:</h1> <p>After receiving a dimming command from a local switch or gateway (e.g. 50%), the ZDS-210 will automatically send out a related basic set command (e.g. 50%) to its associated group.</p> <h1>Switch mode:</h1> <p>After receiving a basic set command from a local switch or gateway, On (0xFF) or Off (0x00), the ZDS-210 will automatically send out a related basic set command, On (0xFF) or Off (0x00) to its associated group.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h1&gtDimmer mode:&lt;/h1&gt &lt;p&gtAfter receiving a dimming command from a local switch or gateway (e.g. 50%), the ZDS-210 will automatically send out a related basic set command (e.g. 50%) to its associated group.&lt;/p&gt &lt;h1&gtSwitch mode:&lt;/h1&gt &lt;p&gtAfter receiving a basic set command from a local switch or gateway, On (0xFF) or Off (0x00), the ZDS-210 will automatically send out a related basic set command, On (0xFF) or Off (0x00) to its associated group.&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 

@@ -10,54 +10,26 @@ This describes the Z-Wave device *GE Outdoor Switch*, manufactured by *Jasco Pro
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![GE Outdoor Switch product image](https://www.cd-jackson.com/zwave_device_uploads/643/643_default.png)
+![GE Outdoor Switch product image](https://opensmarthouse.org/zwavedatabase/643/image/)
 
 
 The GE Outdoor Switch supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Maximum load for the Z-Wave controlled outlet: 600W Incandescent; 1800W (15A) Resistive or 1⁄2 HP Motor
-
-  * One Z-Wave controlled grounded outlet for lighting & small appliances
-  * Remote ON/OFF control via the Z-Wave controller
-  * Manual ON/OFF control with the manual/program button
-  * Grounded 3-wire power connection for safety
-  * Weather and impact resistant housing. suitable for outdoors in a wet or damp conditions
-  * Integrated outlet cover keeps dirt and debris out when the smart switch is not in use
+<p&gtMaximum load for the Z-Wave controlled outlet: 600W Incandescent; 1800W (15A) Resistive or 1⁄2 HP Motor</p&gt <ul&gt<li&gtOne Z-Wave controlled grounded outlet for lighting & small appliances</li&gt <li&gtRemote ON/OFF control via the Z-Wave controller</li&gt <li&gtManual ON/OFF control with the manual/program button</li&gt <li&gtGrounded 3-wire power connection for safety</li&gt <li&gtWeather and impact resistant housing. suitable for outdoors in a wet or damp conditions</li&gt <li&gtIntegrated outlet cover keeps dirt and debris out when the smart switch is not in use</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Follow the instructions for your Z-Wave certified controller to add the smart switch to the Z-Wave network.
-  2. Once the controller is ready to add your outdoor smart switch, single press and release the manual/program button on the smart switch to add it in the network.
-  3. Please reference the controller/gateway’s manual for instructions.  
-    Now you have complete control to turn your lamp ON/OFF according to groups, scenes, schedules and interactive automations programmed by your controller. If your Z-Wave certified controller features Remote Access, you can now control your lighting from your mobile devices.
+<ol&gt<li&gtFollow the instructions for your Z-Wave certified controller to add the smart switch to the Z-Wave network.</li&gt <li&gtOnce the controller is ready to add your outdoor smart switch, single press and release the manual/program button on the smart switch to add it in the network.</li&gt <li&gtPlease reference the controller/gateway’s manual for instructions.<br /&gtNow you have complete control to turn your lamp ON/OFF according to groups, scenes, schedules and interactive automations programmed by your controller. If your Z-Wave certified controller features Remote Access, you can now control your lighting from your mobile devices.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Follow the instructions for your Z-Wave certi ed controller to remove a device from the Z-Wave network.
-  2. Once the controller is ready to remove your device, press and release the manual/program button on the smart switch to remove it from the network.
-
-To return your switch to factory defaults
-
-  1. If plugged in, unplug the Switch from the receptacle. 2. Press and hold the button for at least 3 seconds while you plug the switch into a receptacle.
-
-Note: This should only be used in the event your network’s primary controller is missing or otherwise inoperable.
+<ol&gt<li&gtFollow the instructions for your Z-Wave certi ed controller to remove a device from the Z-Wave network.</li&gt <li&gtOnce the controller is ready to remove your device, press and release the manual/program button on the smart switch to remove it from the network.</li&gt </ol&gt<p&gtTo return your switch to factory defaults</p&gt <ol&gt<li&gtIf plugged in, unplug the Switch from the receptacle. 2. Press and hold the button for at least 3 seconds while you plug the switch into a receptacle.</li&gt </ol&gt<p&gtNote: This should only be used in the event your network’s primary controller is missing or otherwise inoperable.</p&gt
 
 ### General Usage Information
 
-This unit is suitable for outdoor use in damp locations. Do not expose to rain or immerse in water. Install at least 3 feet above ground level with the receptacle pointed down. When used outdoors you should plug the unit into a GFCI receptacle with a receptacle cover rated for outdoor use.  
-The manual/program button on the outdoor switch allows the user to:  
-Turn the connected lamp ON or OFF. If the outdoor switch is OFF, press and release the button once to turn it ON and vice versa to turn OFF.
-
-A. Z-Wave controlled outlets
-
-  * This outlet can remotely turn the connected light or appliance ON/OFF.
-
-B. Manual/Program button
-
-  * Single press — turn ON/OFF
-  * Single press — add or remove in Z-Wave network
+<p&gtThis unit is suitable for outdoor use in damp locations. Do not expose to rain or immerse in water. Install at least 3 feet above ground level with the receptacle pointed down. When used outdoors you should plug the unit into a GFCI receptacle with a receptacle cover rated for outdoor use.<br /&gtThe manual/program button on the outdoor switch allows the user to:<br /&gtTurn the connected lamp ON or OFF. If the outdoor switch is OFF, press and release the button once to turn it ON and vice versa to turn OFF.</p&gt <p&gtA. Z-Wave controlled outlets</p&gt <ul&gt<li&gtThis outlet can remotely turn the connected light or appliance ON/OFF.</li&gt </ul&gt<p&gtB. Manual/Program button</p&gt <ul&gt<li&gtSingle press — turn ON/OFF</li&gt <li&gtSingle press — add or remove in Z-Wave network</li&gt </ul&gt
 
 ## Channels
 
@@ -135,9 +107,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/643/14284-EnFrSp-QSG-v1.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/643/14284-EnFrSp-QSG-v1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/643).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/643).

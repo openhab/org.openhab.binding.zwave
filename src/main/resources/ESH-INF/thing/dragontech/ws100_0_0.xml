@@ -7,9 +7,7 @@
 
   <thing-type id="dragontech_ws100_00_000" listed="false">
     <label>WS-100 Wall On/Off Switch</label>
-    <description><![CDATA[
-Wall On/Off Switch<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Works with incandescent, florescent (CFL), or LED lighting and appliance</li> <li>ON/OFF status and location LED indicator</li> <li>Can be controlled wirelessly or manually</li> <li>Fits into standard single or multiple gang junction box and standard wall plates</li> <li>Decorative keypad can be replaced manually to match color with other wall switches</li> <li>Over-­‐The-­‐Air firmware upgrade available with compatible gateway, Z-­‐Wave® static controller, PC and software</li> <li>Z-­‐Wave 500 Series module inside</li> <li>Internal resettable fuse to protect from surge current</li> <li>manual reset capability</li> </ul><br /><h2>Inclusion Information</h2><p>Single click and release the rocker switch</p> <br /><h2>Exclusion Information</h2><p>Single click and release the rocker switch</p>
-    ]]></description>
+    <description>Wall On/Off Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFEATURES&lt;/p&gt &lt;ul&gt&lt;li&gtWorks with incandescent, florescent (CFL), or LED lighting and appliance&lt;/li&gt &lt;li&gtON/OFF status and location LED indicator&lt;/li&gt &lt;li&gtCan be controlled wirelessly or manually&lt;/li&gt &lt;li&gtFits into standard single or multiple gang junction box and standard wall plates&lt;/li&gt &lt;li&gtDecorative keypad can be replaced manually to match color with other wall switches&lt;/li&gt &lt;li&gtOver-­‐The-­‐Air firmware upgrade available with compatible gateway, Z-­‐Wave® static controller, PC and software&lt;/li&gt &lt;li&gtZ-­‐Wave 500 Series module inside&lt;/li&gt &lt;li&gtInternal resettable fuse to protect from surge current&lt;/li&gt &lt;li&gtmanual reset capability&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtSingle click and release the rocker switch&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtSingle click and release the rocker switch&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

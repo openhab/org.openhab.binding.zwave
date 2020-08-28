@@ -10,22 +10,22 @@ This describes the Z-Wave device *AMZ Solar*, manufactured by *Fakro* with the t
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![AMZ Solar product image](https://www.cd-jackson.com/zwave_device_uploads/1030/1030_default.png)
+![AMZ Solar product image](https://opensmarthouse.org/zwavedatabase/1030/image/)
 
 
 The AMZ Solar supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The AMZ Z-Wave Solar Awning Blind is intended for installation in Fakro roof windows and is adapted to cooperation with elements of wireless remote control system offered by FAKRO and other manufacturers offering products with Z-Wave logo. The awning blind is equipped with a two-way radio communication module. For communication, Z-Wave utilizes radio wave frequency of 868,42 MHz.
+<p&gtThe AMZ Z-Wave Solar Awning Blind is intended for installation in Fakro roof windows and is adapted to cooperation with elements of wireless remote control system offered by FAKRO and other manufacturers offering products with Z-Wave logo. The awning blind is equipped with a two-way radio communication module. For communication, Z-Wave utilizes radio wave frequency of 868,42 MHz.</p&gt
 
 ### Inclusion Information
 
-Start the INCLUDE procedure by means of the controller of the existing network and then press the “Programming” button on the awning blind being added to the network.
+<p&gtStart the INCLUDE procedure by means of the controller of the existing network and then press the “Programming” button on the awning blind being added to the network.</p&gt
 
 ### Exclusion Information
 
-Put your controller into exclusion mode, then press the programming button on the awning blind for longer than 1 sec.
+<p&gtPut your controller into exclusion mode, then press the programming button on the awning blind for longer than 1 sec.</p&gt
 
 ## Channels
 
@@ -72,9 +72,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Operation Mode
 
 Operation Mode
-0 – manual  
-1 – semi  
-2 – auto
+<p&gt0 – manual<br /&gt1 – semi<br /&gt2 – auto</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -85,8 +83,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Season
 
 Season
-1 – summer  
-2 – winter
+<p&gt1 – summer<br /&gt2 – winter</p&gt
 Values in the range 1 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -119,8 +116,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 12: Calibration
 
 Calibration
-Value 1 – calibrated  
-Value 2 – discalibrated – to enter the calibration mode must first time discalibrate and then calibrate.
+<p&gtValue 1 – calibrated<br /&gtValue 2 – discalibrated – to enter the calibration mode must first time discalibrate and then calibrate.</p&gt
 Values in the range 1 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -131,8 +127,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Positioning
 
 Positioning
-1 – FF go to Max  
-2 – FF go to previous position
+<p&gt1 – FF go to Max<br /&gt2 – FF go to previous position</p&gt
 Values in the range 1 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -202,11 +197,11 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual (EN)](https://www.cd-jackson.com/zwave_device_uploads/1030/AMZ-SOLAR-FAKRO-EN.pdf)
-* [Manual (DE)](https://www.cd-jackson.com/zwave_device_uploads/1030/AMZ-Solar-Z-Wave-DE.pdf)
-* [Zwave User Manual (EN)](https://www.cd-jackson.com/zwave_device_uploads/1030/MZ-SOLAR-User-Manual-Zwave.pdf)
+* [Manual (EN)](https://opensmarthouse.org/zwavedatabase/1030/AMZ-SOLAR-FAKRO-EN.pdf)
+* [Manual (DE)](https://opensmarthouse.org/zwavedatabase/1030/AMZ-Solar-Z-Wave-DE.pdf)
+* [Zwave User Manual (EN)](https://opensmarthouse.org/zwavedatabase/1030/MZ-SOLAR-User-Manual-Zwave.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1030).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1030).

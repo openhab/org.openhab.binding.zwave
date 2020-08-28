@@ -10,7 +10,7 @@ This describes the Z-Wave device *Motion Sensor*, manufactured by *Wink Inc.* wi
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![Motion Sensor product image](https://www.cd-jackson.com/zwave_device_uploads/1243/1243_default.png)
+![Motion Sensor product image](https://opensmarthouse.org/zwavedatabase/1243/image/)
 
 
 The Motion Sensor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The Motion Sensor does not permanently listen for messages sent from the control
 
 ## Overview
 
-Magnetically mounted motion sensor
+<p&gtMagnetically mounted motion sensor</p&gt
 
 ### Inclusion Information
 
-Twist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times until unit blinks blue five times.
+<p&gtTwist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times until unit blinks blue five times.</p&gt
 
 ### Exclusion Information
 
-Twist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times until unit blinks blue five times.
+<p&gtTwist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times until unit blinks blue five times.</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The Motion Sensor does not permanently listen for messages sent from the control
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Twist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times and light will blink blue five times.
+<p&gtTwist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times and light will blink blue five times.</p&gt
 
 ## Channels
 
@@ -108,7 +108,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Motion Sensitivity
 
 Motion Sensitivity
-This parameter sets the sensitivity of the Motion Detector. It is a unitless parameter ranging in values from 8 up to 255, with 8 being the highest sensitivity level and 255 being the lowest.After physical installation, make sure the farthest part of the coverage area is still visible to the Motion Detector by adjusting this parameter
+<p&gtThis parameter sets the sensitivity of the Motion Detector. It is a unitless parameter ranging in values from 8 up to 255, with 8 being the highest sensitivity level and 255 being the lowest.After physical installation, make sure the farthest part of the coverage area is still visible to the Motion Detector by adjusting this parameter</p&gt
 Values in the range 8 to 255 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -119,7 +119,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Motion Cleared Time Delay
 
 Motion Cleared Time Delay
-This parameters sets (in seconds) the amount of time after a motion event before the Motion Detector reports no activity to the main controller (see Notification and Binary Sensor command classes for more information.) This also sets the amount of time before a BASIC_SET (00) command is sent to Association Group 2 to turn off any activated devices. This value must be higher than the value of Parameter 6, and if this parameter is reset to default settings, Parameter 6 will also be reset.
+<p&gtThis parameters sets (in seconds) the amount of time after a motion event before the Motion Detector reports no activity to the main controller (see Notification and Binary Sensor command classes for more information.) This also sets the amount of time before a BASIC_SET (00) command is sent to Association Group 2 to turn off any activated devices. This value must be higher than the value of Parameter 6, and if this parameter is reset to default settings, Parameter 6 will also be reset.</p&gt
 Values in the range 5 to 600 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -130,7 +130,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Basic Set Level
 
 Basic Set Level
-This parameter sets the value sent by the BASIC_SET command to Association Group 2
+<p&gtThis parameter sets the value sent by the BASIC_SET command to Association Group 2</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -141,7 +141,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Enable/Disable Motion Detection
 
 Enable/Disable Motion Detection
-This setting enables or disables motion detection.
+<p&gtThis setting enables or disables motion detection. </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -158,7 +158,7 @@ This is a write only parameter.
 ### Parameter 5: Group 2 Ambient Light Threshold
 
 Group 2 Ambient Light Threshold
-If Parameter 8 is enabled, this setting sets the light level (in lux) below which the Motion Detector will send BASIC_SET commands to Association Group 2 when motion is detected.
+<p&gtIf Parameter 8 is enabled, this setting sets the light level (in lux) below which the Motion Detector will send BASIC_SET commands to Association Group 2 when motion is detected.</p&gt
 Values in the range 5 to 1000 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -169,9 +169,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6:  Retrigger Interval
 
 Retrigger Interval
-After each motion event, the Motion Detector is disabled for the amount of time (in seconds) set by this parameter before it can send out another Motion Detected Notification Report/Binary Sensor Report.This value must be lower than the value of Parameter 2, and if this parameter is reset to default settings, Parameter 2 will also be reset.
-
-Essentially, when motion is detected the sensor will send a motion event every X seconds to the controller, as controlled by this parameter. (When motion is not detected, it fires off one and is done.)
+<p&gtAfter each motion event, the Motion Detector is disabled for the amount of time (in seconds) set by this parameter before it can send out another Motion Detected Notification Report/Binary Sensor Report.This value must be lower than the value of Parameter 2, and if this parameter is reset to default settings, Parameter 2 will also be reset.</p&gt <p&gtEssentially, when motion is detected the sensor will send a motion event every X seconds to the controller, as controlled by this parameter. (When motion is not detected, it fires off one and is done.)</p&gt
 Values in the range 1 to 8 may be set.
 
 The manufacturer defined default value is ```8```.
@@ -182,7 +180,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Light Sensing Interval
 
 Light Sensing Interval
-This parameter sets the amount of time (in seconds) between each successive ambient light level reading that is sent. This value must be less than the Wakeup Interval Time (which is 43,200 seconds or 12 hours by default). This defaults to 180.
+<p&gtThis parameter sets the amount of time (in seconds) between each successive ambient light level reading that is sent. This value must be less than the Wakeup Interval Time (which is 43,200 seconds or 12 hours by default). This defaults to 180.</p&gt
 Values in the range 60 to 3600 may be set.
 
 The manufacturer defined default value is ```180```.
@@ -193,7 +191,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Enable/Disable Group 2 Ambient Light Threshold
 
 Enable/Disable Group 2 Ambient Light Threshold
-If this parameter is enabled, the Motion Detector will only send Basic Set commands to Associon Group 2 if the ambient light level is below the value set in Parameter 05. For more information, see Group 2 on page 14.
+<p&gtIf this parameter is enabled, the Motion Detector will only send Basic Set commands to Associon Group 2 if the ambient light level is below the value set in Parameter 05. For more information, see Group 2 on page 14. </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -209,7 +207,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Ambient Light Sensitivity Level
 
 Ambient Light Sensitivity Level
-This Parameter sets the minimum change in ambient light level (in lux) the Motion Detector must detect before a Multilevel Sensor Report is sent to the main controller.
+<p&gtThis Parameter sets the minimum change in ambient light level (in lux) the Motion Detector must detect before a Multilevel Sensor Report is sent to the main controller. </p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -220,7 +218,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: LED enable/disable
 
 LED enable/disable
-If this parameter is enabled, the LED INDICATOR will flash everytime there motion is detected.If this is disabled, the LED INDICATOR will not flash to indicate motion events.
+<p&gtIf this parameter is enabled, the LED INDICATOR will flash everytime there motion is detected.If this is disabled, the LED INDICATOR will not flash to indicate motion events.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -259,25 +257,25 @@ The Motion Sensor supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Group 1 is the Lifeline group, which can hold five devices.The Motion Detector sends this group a Notification Report and Binary Sensor Report whenever motion is detected and when it stops.It also sends a Multilevel Sensor Report incrementally based on time (see Param 7,) or when a relative change in light level is detected (see Param 9.) Finally, the Motion Detector sends this group Battery Reports and a Device Reset Locally notification to remove itself from the Z-Wave network.
+<p&gtGroup 1 is the Lifeline group, which can hold five devices.The Motion Detector sends this group a Notification Report and Binary Sensor Report whenever motion is detected and when it stops.It also sends a Multilevel Sensor Report incrementally based on time (see Param 7,) or when a relative change in light level is detected (see Param 9.) Finally, the Motion Detector sends this group Battery Reports and a Device Reset Locally notification to remove itself from the Z-Wave network.</p&gt <p&gt<br /&gt<br /&gt<br /&gt</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: BASIC_SET
 
-The Motion Detector sends a BASIC_SET command to Association Group 2 to directly trigger devices (like a siren, chime, etc.) when motion is detected and when it stops.Optionally, the Motion Detector can be set to only send this when ambient light levels fall below a predetermined level (see Configuration Parameters 5 and 8.)See Configuration Parameters 2, 3, 5, and 8 for more details regarding Association Group 2.
+<p&gtThe Motion Detector sends a BASIC_SET command to Association Group 2 to directly trigger devices (like a siren, chime, etc.) when motion is detected and when it stops.Optionally, the Motion Detector can be set to only send this when ambient light levels fall below a predetermined level (see Configuration Parameters 5 and 8.)See Configuration Parameters 2, 3, 5, and 8 for more details regarding Association Group 2.</p&gt <p&gt<br /&gt<br /&gt<br /&gt</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Notification report
 
-Group 3 supports up to 5 members and the Motion Detector sends it a NOTIFICATION_REPORT when motion is detected and when it stops
+<p&gtGroup 3 supports up to 5 members and the Motion Detector sends it a NOTIFICATION_REPORT when motion is detected and when it stops</p&gt <p&gt<br /&gt<br /&gt<br /&gt</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Sensor binary report
 
-Group 4 supports up to 5 members and the Motion Detector sends it a SENSOR\_BINARY\_REPORT when motion is detected and when it stops.
+<p&gtGroup 4 supports up to 5 members and the Motion Detector sends it a SENSOR\_BINARY\_REPORT when motion is detected and when it stops.</p&gt <p&gt<br /&gt<br /&gt<br /&gt</p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -303,10 +301,10 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1243/wink-motion-sensor-manual.pdf)
-* [Additional configuration information](https://www.cd-jackson.com/zwave_device_uploads/1243/wink-motion-sensor-european-manual.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1243/wink-motion-sensor-manual.pdf)
+* [Additional configuration information](https://opensmarthouse.org/zwavedatabase/1243/wink-motion-sensor-european-manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1243).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1243).

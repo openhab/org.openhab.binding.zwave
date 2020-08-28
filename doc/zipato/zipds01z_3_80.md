@@ -17,28 +17,15 @@ The 0131 does not permanently listen for messages sent from the controller - it 
 
 ## Overview
 
-Door sensor is an intelligent security equipment that can transmit through Z-Wave network and radio waves. In the Z-Wave network communications, door sensor can be connected to any Z-Wave gateway. Door sensor can send messages to Z-Wave gateway, then realize association with other devices. Different countries or areas, the radio frequency is different.
-
-Each door sensor has a unique ID code. When we add or remove door sensor from gateway, just place it in the Z-Wave network range of gateway. Then we can easily find the door sensor through device ID code. In the communication with Z-Wave gateway, door sensor can only send messages to Z-Wave gateway, but can not receive messages. When alarm is triggered, door sensor would send messages to gateway, then Z-Wave gateway would display the current status of door sensor. At the same time, door sensor can realize association with other devices through Z-Wave gateway. Door sensor is powered by batteries, with small body, and can be installed on the window or door easily. When door or window is open, door sensor would be triggered, then associates with other devices to work, to realize the goal of safety protection.
+<p&gtDoor sensor is an intelligent security equipment that can transmit through Z-Wave network and radio waves. In the Z-Wave network communications, door sensor can be connected to any Z-Wave gateway. Door sensor can send messages to Z-Wave gateway, then realize association with other devices. Different countries or areas, the radio frequency is different.</p&gt <p&gtEach door sensor has a unique ID code. When we add or remove door sensor from gateway, just place it in the Z-Wave network range of gateway. Then we can easily find the door sensor through device ID code. In the communication with Z-Wave gateway, door sensor can only send messages to Z-Wave gateway, but can not receive messages. When alarm is triggered, door sensor would send messages to gateway, then Z-Wave gateway would display the current status of door sensor. At the same time, door sensor can realize association with other devices through Z-Wave gateway. Door sensor is powered by batteries, with small body, and can be installed on the window or door easily. When door or window is open, door sensor would be triggered, then associates with other devices to work, to realize the goal of safety protection.</p&gt
 
 ### Inclusion Information
 
-ADD DOOR SENSOR TO Z-WAVE NETWORK
-
-  1. Disassemble the main body of door sensor by pressing the disassemble button, then install battery. After making it powered on, please do not operate it within 20 s.
-  2. Place door sensor within Z-Wave network range of gateway.
-  3. Set Z-Wave gateway into inclusion mode (Refer to gateway user manual).
-  4. Press the code button in door sensor three times continuously, then door sensor will enter inclusion mode. Meanwhile, LED light would flash red color five times on and off alternately.
-  5. Door sensor will be detected and included in the Z
+<p&gtADD DOOR SENSOR TO Z-WAVE NETWORK</p&gt <ol&gt<li&gtDisassemble the main body of door sensor by pressing the disassemble button, then install battery. After making it powered on, please do not operate it within 20 s.</li&gt <li&gtPlace door sensor within Z-Wave network range of gateway.</li&gt <li&gtSet Z-Wave gateway into inclusion mode (Refer to gateway user manual).</li&gt <li&gtPress the code button in door sensor three times continuously, then door sensor will enter inclusion mode. Meanwhile, LED light would flash red color five times on and off alternately.</li&gt <li&gtDoor sensor will be detected and included in the Z</li&gt </ol&gt
 
 ### Exclusion Information
 
-REMOVE DOOR SENSOR FROM Z-WAVE NETWORK
-
-  1. Make sure doorsensoris powered on.
-  2. Set Z-Wave gateway into exclusion mode (Refer to gateway user manual).
-  3. Press the code button in door sensor three times continuously, then door sensor will enter exclusion mode. Meanwhile, LED light would flash red color five times on and off alternately.
-  4. Wait for gateway to remove the sensor.
+<p&gtREMOVE DOOR SENSOR FROM Z-WAVE NETWORK</p&gt <ol&gt<li&gtMake sure doorsensoris powered on.</li&gt <li&gtSet Z-Wave gateway into exclusion mode (Refer to gateway user manual).</li&gt <li&gtPress the code button in door sensor three times continuously, then door sensor will enter exclusion mode. Meanwhile, LED light would flash red color five times on and off alternately.</li&gt <li&gtWait for gateway to remove the sensor.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -47,15 +34,7 @@ The 0131 does not permanently listen for messages sent from the controller - it 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Door sensor stays in dormant state for the majority of time in orderto conserve battery life.
-
-The minimum wakeup interval is 300s (5 minutes).
-
-The maximum wakeup interval is 16,777,200s (about 194 days)
-
-Allowable min step among each wakeup interval is 60 seconds, such as 360s, 420s, 480s...
-
-NOTE: The default value is 12 hours. The larger the value is, the greater the battery life is.
+<p&gtDoor sensor stays in dormant state for the majority of time in orderto conserve battery life.</p&gt <p&gtThe minimum wakeup interval is 300s (5 minutes).</p&gt <p&gtThe maximum wakeup interval is 16,777,200s (about 194 days)</p&gt <p&gtAllowable min step among each wakeup interval is 60 seconds, such as 360s, 420s, 480s...</p&gt <p&gtNOTE: The default value is 12 hours. The larger the value is, the greater the battery life is.</p&gt
 
 ## Channels
 
@@ -83,4 +62,4 @@ The device does not support associations.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/844).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/844).

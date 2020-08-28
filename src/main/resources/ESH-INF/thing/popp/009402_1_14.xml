@@ -7,9 +7,7 @@
 
   <thing-type id="popp_009402_01_014" listed="false">
     <label>009402 10 Year Smoke Detector with Siren Function</label>
-    <description><![CDATA[
-10 Year Smoke Detector with Siren Function<br /><h1>Overview</h1><p>This product combines a certified '10 year' stand-alone smoke detector with a plug-in Z-Wave module to form a wirelessly reporting automatically meshing smoke sensor plus wirelessly controllable indoor siren. The smoke detector’s sensor head is certified with the Q quality label, conforms DIN EN 14604 and satisfies all contemporary legal requirements.</p> <p>The High-End 10-years smoke detector offers a large test button conveniently accessible even with a broomstick when mounted on the sealing. The smoke chamber is monitored electronically to avoid any malfunction and wrong alerts. The device will also report its end of life to make sure it is getting replaced on time.</p> <p>Furthermore, the device can be used as an independent indoor siren within the Z-Wave network, which can alarm in case of detected flood or burglary. Please consider that the additional siren function will influence battery lifetime!</p> <p>The smoke sensor and the Z-Wave controller communicate via a secure protocol to prevent manipulation.</p> <br /><h2>Inclusion Information</h2><ul><li>Pressing the Z-Wave button includes the device.</li> <li>If the button is pressed for at least 3 seconds, the inclusion will be done without the Security Command Class.</li> </ul><br /><h2>Exclusion Information</h2><p> A single click on the  Z-Wave button will exclude the device. </p>
-    ]]></description>
+    <description>10 Year Smoke Detector with Siren Function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis product combines a certified '10 year' stand-alone smoke detector with a plug-in Z-Wave module to form a wirelessly reporting automatically meshing smoke sensor plus wirelessly controllable indoor siren. The smoke detector’s sensor head is certified with the Q quality label, conforms DIN EN 14604 and satisfies all contemporary legal requirements.&lt;/p&gt &lt;p&gtThe High-End 10-years smoke detector offers a large test button conveniently accessible even with a broomstick when mounted on the sealing. The smoke chamber is monitored electronically to avoid any malfunction and wrong alerts. The device will also report its end of life to make sure it is getting replaced on time.&lt;/p&gt &lt;p&gtFurthermore, the device can be used as an independent indoor siren within the Z-Wave network, which can alarm in case of detected flood or burglary. Please consider that the additional siren function will influence battery lifetime!&lt;/p&gt &lt;p&gtThe smoke sensor and the Z-Wave controller communicate via a secure protocol to prevent manipulation.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtPressing the Z-Wave button includes the device.&lt;/li&gt &lt;li&gtIf the button is pressed for at least 3 seconds, the inclusion will be done without the Security Command Class.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt A single click on the  Z-Wave button will exclude the device. &lt;/p&gt</description>
     <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -53,7 +51,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp &amp; Co</property>
+      <property name="vendor">Popp &amp;amp; Co</property>
       <property name="modelId">009402</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0004:0004</property>
@@ -80,18 +78,14 @@
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="3" max="129">
         <label>1: Siren alarm sequence interval</label>
-        <description><![CDATA[
-Siren alarm sequence interval<br /><h1>Overview</h1><p>The additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly  off.</p> <p>This parameter defines the total length of the interval in seconds.</p>
-        ]]></description>
+        <description>Siren alarm sequence interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly  off.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines the total length of the interval in seconds.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>2: Siren alarm tone length</label>
-        <description><![CDATA[
-Siren alarm tone length<br /><h1>Overview</h1><p>The  additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly  off.</p> <p>This parameter defines the total  length of the sound versus silence within this interval.</p>
-        ]]></description>
+        <description>Siren alarm tone length&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe  additional siren is creating a different acoustic signal differentiate from the smoke alarm. This sound is partly on and partly  off.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines the total  length of the sound versus silence within this interval.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>8</default>
       </parameter>
 
@@ -110,9 +104,7 @@ Siren alarm tone length<br /><h1>Overview</h1><p>The  additional siren is creat
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>10: Auto Report Battery Time</label>
-        <description><![CDATA[
-Auto Report Battery Time<br /><h1>Overview</h1><p>The interval time for auto report the battery level.</p>
-        ]]></description>
+        <description>Auto Report Battery Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time for auto report the battery level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>127</default>
       </parameter>
 

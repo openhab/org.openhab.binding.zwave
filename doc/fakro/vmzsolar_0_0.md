@@ -10,22 +10,22 @@ This describes the Z-Wave device *VMZ Solar*, manufactured by *Fakro* with the t
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![VMZ Solar product image](https://www.cd-jackson.com/zwave_device_uploads/670/670_default.jpg)
+![VMZ Solar product image](https://opensmarthouse.org/zwavedatabase/670/image/)
 
 
 The VMZ Solar supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The VMZ Solar awning blind is intended for installation on facade windows. The device is equippedin the wireless module of the ZWave control system
+<p&gtThe VMZ Solar awning blind is intended for installation on facade windows. The device is equippedin the wireless module of the ZWave control system</p&gt
 
 ### Inclusion Information
 
-Within 10s press the programming button P on the awning blind until the network status LED flashes once 0.5s
+<p&gtWithin 10s press the programming button P on the awning blind until the network status LED flashes once 0.5s</p&gt
 
 ### Exclusion Information
 
-Within 10s press P on the awning and hold until the network status LED will light up for 5s
+<p&gtWithin 10s press P on the awning and hold until the network status LED will light up for 5s</p&gt
 
 ## Channels
 
@@ -72,13 +72,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: mode
 
 operating mode
-Operating mode. Available values:
-
-0 - manual
-
-1 - semiauto
-
-2 - auto
+<p&gtOperating mode. Available values:</p&gt <p&gt0 - manual</p&gt <p&gt1 - semiauto</p&gt <p&gt2 - auto</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -95,11 +89,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: winter mode
 
 Summer/Winter mode
-Summer / Winter mode
-
-50 - Auto (summer / winter mode)
-
-0 - summer mode only
+<p&gtSummer / Winter mode</p&gt <p&gt50 - Auto (summer / winter mode)</p&gt <p&gt0 - summer mode only</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -197,9 +187,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual (PL)](https://www.cd-jackson.com/zwave_device_uploads/670/VMZ-Solar-FAKRO.pdf)
+* [User Manual (PL)](https://opensmarthouse.org/zwavedatabase/670/VMZ-Solar-FAKRO.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/670).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/670).

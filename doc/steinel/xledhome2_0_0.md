@@ -10,40 +10,22 @@ This describes the Z-Wave device *XLED Home 2*, manufactured by *Steinel* with t
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-![XLED Home 2 product image](https://www.cd-jackson.com/zwave_device_uploads/688/688_default.png)
+![XLED Home 2 product image](https://opensmarthouse.org/zwavedatabase/688/image/)
 
 
 The XLED Home 2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-–  Sensor-switched floodlight suitable for wall  
-mounting outdoors.  
-–  Fully swivelling LED panel and moveable sensor.  
-Movement triggers lights, alarms and many other  
-devices. With the fully swivelling panel, the flood-  
-light can be used at home to provide perfect illumi-  
-nation for lighting up property, or commercially for  
-lighting up business premises. In conjunction with  
-the opal cover, this extremely efficient technology  
-provides wide-area lighting
+<p&gt–  Sensor-switched floodlight suitable for wall <br /&gtmounting outdoors.<br /&gt–  Fully swivelling LED panel and moveable sensor. <br /&gtMovement triggers lights, alarms and many other <br /&gtdevices. With the fully swivelling panel, the flood-<br /&gtlight can be used at home to provide perfect illumi-<br /&gtnation for lighting up property, or commercially for <br /&gtlighting up business premises. In conjunction with <br /&gtthe opal cover, this extremely efficient technology <br /&gtprovides wide-area lighting</p&gt
 
 ### Inclusion Information
 
-1. Set the Z-Wave controller to inclusion mode.  
-2. Press the link key once brieﬂy to set the device to inclusion mode.  
-3. Turn the knob from 0 to SET for max. 5 seconds and back. (SKNOB)  
-4. Press the link key 3x brieﬂy to set the device into inclusion mode.  
-(STOGGLE)
+<p&gt1. Set the Z-Wave controller to inclusion mode.<br /&gt2. Press the link key once brieﬂy to set the device to inclusion mode.<br /&gt3. Turn the knob from 0 to SET for max. 5 seconds and back. (SKNOB)<br /&gt4. Press the link key 3x brieﬂy to set the device into inclusion mode.<br /&gt(STOGGLE)</p&gt
 
 ### Exclusion Information
 
-1. Set the Z-Wave controller to exclusion mode.  
-2. Press the link key once brieﬂy to set the device to exclusion  
-mode.  
-3. Turn the knob from 0 to SET for max. 5 seconds and back. (SKNOB)  
-4. Press the link key 3x brieﬂy to set the device into exclusion mode.  
-(STOGGLE)
+<p&gt1. Set the Z-Wave controller to exclusion mode.<br /&gt2. Press the link key once brieﬂy to set the device to exclusion<br /&gtmode.<br /&gt3. Turn the knob from 0 to SET for max. 5 seconds and back. (SKNOB)<br /&gt4. Press the link key 3x brieﬂy to set the device into exclusion mode.<br /&gt(STOGGLE)</p&gt
 
 ## Channels
 
@@ -178,11 +160,7 @@ This parameter has the configuration ID ```config_1_2``` and is of type ```INTEG
 ### Parameter 2: LIGHT
 
 Light threshold [lx]:
-0          – run Learn ambient light sequence.  
-2000 – is used as daylight (always night mode).  
-Value can be controlled via potentiometer (if present on device) –  
-potentiometer value is then used as the default value and any  
-potentiometer movement rewrites the current setting
+<p&gt0          – run Learn ambient light sequence.<br /&gt2000 – is used as daylight (always night mode).<br /&gtValue can be controlled via potentiometer (if present on device) –<br /&gtpotentiometer value is then used as the default value and any<br /&gtpotentiometer movement rewrites the current setting</p&gt
 Values in the range 2 to 2000 may be set.
 
 The manufacturer defined default value is ```2000```.
@@ -193,9 +171,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 5: SENSITIVITY
 
 Motion Radar Sensitivity [%]
-Value can be controlled via potentiometer (if present on device) – potentiom-  
-eter value is then used as the default value and any potentiometer movement  
-rewrites the current setting.
+<p&gtValue can be controlled via potentiometer (if present on device) – potentiom-<br /&gteter value is then used as the default value and any potentiometer movement<br /&gtrewrites the current setting.</p&gt
 Values in the range 2 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -206,8 +182,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: BRIGHTNES MEAS 1 INTERVAL
 
 Brightness measuring interval [min]
-nterval for measuring ambient light when lamp is on (lamp switches off  
-briefly and measures). 0 = function is off.
+<p&gtnterval for measuring ambient light when lamp is on (lamp switches off<br /&gtbriefly and measures). 0 = function is off.</p&gt
 Values in the range 5 to 120 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -218,11 +193,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 8: GLOBAL_LIGHT
 
 Use external Ambient Light value
-When GLOBAL_LIGHT mode is ON – device overrides its own light sensor  
-values and uses Light Report values from any Z-Wave light sensor instead –  
-this has to be configured appropriately to send light automatically.  
-If the last remote light level value is older than 30 minutes, the internal light  
-value is used again until the next external value is received.
+<p&gtWhen GLOBAL_LIGHT mode is ON – device overrides its own light sensor<br /&gtvalues and uses Light Report values from any Z-Wave light sensor instead –<br /&gtthis has to be configured appropriately to send light automatically.<br /&gtIf the last remote light level value is older than 30 minutes, the internal light<br /&gtvalue is used again until the next external value is received.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -233,49 +204,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: SLAVE_MODE
 
 Disable local control
-"Stupid" mode (bit 2 = 1):  
-- has higher priority then slave mode  
-- lamp/relay is permanently on (for simple power wall switch controlling)
-
-Slave mode (bit 0 =1):  
-- only if included in Z-Wave network  
-- useful for controlling via third-party sensor  
-- lamp/relay is directly controlled via Z-Wave, internal sensors are not used  
-for controlling it
-
-Central unit checking (bit 1 =1): (useful especially for controlling via gateway)  
-When slave bit is 0:  
-- device signalises fail of lifeline connection (if this bit is zero, fail of lifeline  
-connection is not signalised)
-
-When slave bit is 1:  
-- device checks presence of Z-Wave device in lifeline group (gateway).  
-If it is not present for 2 minutes (testing repeatedly every 30 seconds)  
-device switches to normal mode in the same way as after the end of  
-local disabled mode (ON_BEHAVIOUR)  
-- the device checks every 1 minute for recovery of lifeline connection  
-- if no lifeline specified - it works in normal mode
-
-Do not use button for lamp switching (bit 6 = 1): only for STOGGLE variant  
-- disables button controlling device itself along with controlling group 5.  
-When enabled also works in stand-alone.
-
-Be careful with this option, device stops using its own motion sensor in  
-Slave and "Stupid" mode.
-
-bit field:
-
-bit 7 6 5 4 3 2 1 0 Function - Don’t use  
-button  
-for lamp -  
-switching  
-(STOGGLE) \- - - "Stupid"  
-mode Central  
-unit  
-checking  
-in slave  
-mode Slave  
-mode
+<p&gt"Stupid" mode (bit 2 = 1):<br /&gt- has higher priority then slave mode<br /&gt- lamp/relay is permanently on (for simple power wall switch controlling)</p&gt <p&gtSlave mode (bit 0 =1):<br /&gt- only if included in Z-Wave network<br /&gt- useful for controlling via third-party sensor<br /&gt- lamp/relay is directly controlled via Z-Wave, internal sensors are not used<br /&gtfor controlling it</p&gt <p&gtCentral unit checking (bit 1 =1): (useful especially for controlling via gateway)<br /&gtWhen slave bit is 0:<br /&gt- device signalises fail of lifeline connection (if this bit is zero, fail of lifeline<br /&gtconnection is not signalised)</p&gt <p&gtWhen slave bit is 1:<br /&gt- device checks presence of Z-Wave device in lifeline group (gateway).<br /&gtIf it is not present for 2 minutes (testing repeatedly every 30 seconds)<br /&gtdevice switches to normal mode in the same way as after the end of<br /&gtlocal disabled mode (ON_BEHAVIOUR)<br /&gt- the device checks every 1 minute for recovery of lifeline connection<br /&gt- if no lifeline specified - it works in normal mode</p&gt <p&gtDo not use button for lamp switching (bit 6 = 1): only for STOGGLE variant<br /&gt- disables button controlling device itself along with controlling group 5.<br /&gtWhen enabled also works in stand-alone.</p&gt <p&gtBe careful with this option, device stops using its own motion sensor in<br /&gtSlave and "Stupid" mode.</p&gt <p&gtbit field:</p&gt <p&gtbit 7 6 5 4 3 2 1 0 Function - Don’t use<br /&gtbutton<br /&gtfor lamp -<br /&gtswitching<br /&gt(STOGGLE) \- - - "Stupid"<br /&gtmode Central<br /&gtunit<br /&gtchecking<br /&gtin slave<br /&gtmode Slave<br /&gtmode</p&gt
 Values in the range 0 to 4 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -286,24 +215,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: (OFF_BEHAVIOUR)
 
 Off behaviour (timeout)
-Behaviour after BASIC OFF (and similar commands).  
-If a transition (even with zero change) with a non-default duration is to be pro-  
-cessed, the transition cannot be interrupted by any motion event in any case.
-
-0 = Lamp/Relay is switched off and remains so until any new motion  
-event (local or remote) is received.
-
-1 - 209 = Lamp/Relay is switched off and remains so until after a specified  
-timeout once a new motion event (local or remote) is received.  
-Timeout:  
-1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution  
-101..200 – 1 minute (101) to 100 minutes (200) 1-minute resolution  
-201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution
-
-210 - 254 = Reserved
-
-255 = Lamp/relay is switched off for TIME (cfg 1). It does not wait for a  
-motion event and works normally via current motion evaluation.
+<p&gtBehaviour after BASIC OFF (and similar commands).<br /&gtIf a transition (even with zero change) with a non-default duration is to be pro-<br /&gtcessed, the transition cannot be interrupted by any motion event in any case.</p&gt <p&gt0 = Lamp/Relay is switched off and remains so until any new motion<br /&gtevent (local or remote) is received.</p&gt <p&gt1 - 209 = Lamp/Relay is switched off and remains so until after a specified<br /&gttimeout once a new motion event (local or remote) is received.<br /&gtTimeout:<br /&gt1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution<br /&gt101..200 – 1 minute (101) to 100 minutes (200) 1-minute resolution<br /&gt201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution</p&gt <p&gt210 - 254 = Reserved</p&gt <p&gt255 = Lamp/relay is switched off for TIME (cfg 1). It does not wait for a<br /&gtmotion event and works normally via current motion evaluation.</p&gt
 The following option values may be configured, in addition to values in the range 0 to 209 -:
 
 | Value  | Description |
@@ -318,33 +230,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: ON_BEHAVIOUR
 
 On behaviour (timeout)
-Behaviour after BASIC ON (and similar commands).  
-If a transition (even with zero change) with a non-default duration is to be  
-processed, the transition cannot be interrupted by any motion event in any  
-case.
-
-0 = Lamp/relay is switched on and remains so until any new motion  
-event (local or remote) is received. It then works normally via current  
-motion evaluation.  
-Notice – during the day, this mode cannot be ended remotely due  
-to motion events not being transmitted – only via local motion sen-  
-sor if enabled.
-
-1 - 209 = Lamp/relay is switched on and remains so until after a specified  
-timeout once a new motion event (local or remote) is received. It then  
-works normally via current motion evaluation.  
-Timeout:  
-1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution  
-101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution  
-201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution  
-Notice – during the day, this mode cannot be ended remotely due to  
-motion events not being transmitted – only via local motion sensor if  
-enabled.
-
-210 - 254 = Reserved
-
-255 = Lamp/relay is switched on for TIME (cfg 1). It does not wait for a  
-motion event and works normally via current motion evaluation.
+<p&gtBehaviour after BASIC ON (and similar commands).<br /&gtIf a transition (even with zero change) with a non-default duration is to be<br /&gtprocessed, the transition cannot be interrupted by any motion event in any<br /&gtcase.</p&gt <p&gt0 = Lamp/relay is switched on and remains so until any new motion<br /&gtevent (local or remote) is received. It then works normally via current<br /&gtmotion evaluation.<br /&gtNotice – during the day, this mode cannot be ended remotely due<br /&gtto motion events not being transmitted – only via local motion sen-<br /&gtsor if enabled.</p&gt <p&gt1 - 209 = Lamp/relay is switched on and remains so until after a specified<br /&gttimeout once a new motion event (local or remote) is received. It then<br /&gtworks normally via current motion evaluation.<br /&gtTimeout:<br /&gt1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution<br /&gt101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution<br /&gt201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution<br /&gtNotice – during the day, this mode cannot be ended remotely due to<br /&gtmotion events not being transmitted – only via local motion sensor if<br /&gtenabled.</p&gt <p&gt210 - 254 = Reserved</p&gt <p&gt255 = Lamp/relay is switched on for TIME (cfg 1). It does not wait for a<br /&gtmotion event and works normally via current motion evaluation.</p&gt
 Values in the range 2 to 209 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -355,19 +241,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: ON_TIME_OVER
 
 On behaviour time over (timeout)
-Time limit to stop waiting for motion after timeout of ON_BEHAVIOUR or  
-OFF\_ON\_BEHAVIOUR (0-209) to prevent staying ON forever when there is  
-no motion.
-
-0 = No additional waiting for motion.
-
-1 - 209 =  1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution  
-                  101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution  
-                  201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution
-
-210 - 254 = Reserved
-
-255 = Never stop waiting for motion.
+<p&gtTime limit to stop waiting for motion after timeout of ON\_BEHAVIOUR or<br /&gtOFF\_ON_BEHAVIOUR (0-209) to prevent staying ON forever when there is<br /&gtno motion.</p&gt <p&gt0 = No additional waiting for motion.</p&gt <p&gt1 - 209 =  1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution<br /&gt                  101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution<br /&gt                  201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution</p&gt <p&gt210 - 254 = Reserved</p&gt <p&gt255 = Never stop waiting for motion.</p&gt
 Values in the range 0 to 209 may be set.
 
 The manufacturer defined default value is ```204```.
@@ -378,11 +252,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 ### Parameter 13: ON_OFF_ BEHAVIOUR
 
 Sequence On-Off behaviour (timeout)
-Behaviour after a rapid sequence of BASIC ON and BASIC OFF commands.  
-The intention is to use a much longer timeout value than the time after a  
-single ON command which should then be followed by a short timeout value.  
-The behaviour is the same as for parameter 10 (OFF\_LOCAL\_DISABLE)  
-except: 255 – device ignores ON - OFF sequence and uses OFF behaviour.
+<p&gtBehaviour after a rapid sequence of BASIC ON and BASIC OFF commands.<br /&gtThe intention is to use a much longer timeout value than the time after a<br /&gtsingle ON command which should then be followed by a short timeout value.<br /&gtThe behaviour is the same as for parameter 10 (OFF\_LOCAL\_DISABLE)<br /&gtexcept: 255 – device ignores ON - OFF sequence and uses OFF behaviour.</p&gt
 Values in the range 0 to 209 may be set.
 
 The manufacturer defined default value is ```204```.
@@ -393,11 +263,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: OFF_ON_ BEHAVIOUR
 
 Sequence Off-On behaviour (timeout)
-Behaviour after a rapid sequence of BASIC OFF and BASIC ON commands.  
-The intention is to use a much longer timeout value than the time after a sin-  
-gle OFF command which should then be followed by a short timeout value.  
-The behaviour is the same as for parameter 11 (ON\_LOCAL\_DISABLE)  
-except: 255 – device ignores OFF - ON sequence and uses ON behaviour.
+<p&gtBehaviour after a rapid sequence of BASIC OFF and BASIC ON commands.<br /&gtThe intention is to use a much longer timeout value than the time after a sin-<br /&gtgle OFF command which should then be followed by a short timeout value.<br /&gtThe behaviour is the same as for parameter 11 (ON\_LOCAL\_DISABLE)<br /&gtexcept: 255 – device ignores OFF - ON sequence and uses ON behaviour.</p&gt
 Values in the range 0 to 209 may be set.
 
 The manufacturer defined default value is ```204```.
@@ -408,10 +274,7 @@ This parameter has the configuration ID ```config_14_2``` and is of type ```INTE
 ### Parameter 15: SEQUENCE_ TIME
 
 Sequence timing
-Time in [100 milliseconds] of maximum delay between BASIC ON and BASIC  
-OFF (and vice versa) to consider this as a sequence. It is typically 1 second,  
-but can be exceptionally longer due to retransmissions and overload – in this  
-case, a longer interval can be allowed (up to 5 seconds).
+<p&gtTime in [100 milliseconds] of maximum delay between BASIC ON and BASIC<br /&gtOFF (and vice versa) to consider this as a sequence. It is typically 1 second,<br /&gtbut can be exceptionally longer due to retransmissions and overload – in this<br /&gtcase, a longer interval can be allowed (up to 5 seconds).</p&gt
 Values in the range 10 to 50 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -422,25 +285,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: MOTION_ DISABLE
 
 Motion Off behaviour (timeout)
-Motion disable timeout after BASIC SET to motion endpoint when the inter-  
-nal motion sensor is not used for evaluating the behaviour of the lamp (SLAMP)  
-relay (SPIR) and groups 2 and 3. Events are, however, still transmitted to the  
-Lifeline, and the device can be controlled via remote motion sensors.
-
-0 = BASIC SET to motion sensor endpoint ignored, BASIC to root is  
-mapped to relay endpoint, (SPIR) motion sensor still enabled
-
-  
-1 - 209 = Internal motion sensor is disabled for specified timeout after BASIC  
-SET 0x00 to motion endpoint.  
-Timeout:  
-1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution  
-101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution  
-201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution
-
-210 - 254 = Reserved
-
-255 = BASIC SET to motion endpoint ignored, motion sensor still disabled.
+<p&gtMotion disable timeout after BASIC SET to motion endpoint when the inter-<br /&gtnal motion sensor is not used for evaluating the behaviour of the lamp (SLAMP)<br /&gtrelay (SPIR) and groups 2 and 3. Events are, however, still transmitted to the<br /&gtLifeline, and the device can be controlled via remote motion sensors.</p&gt <p&gt0 = BASIC SET to motion sensor endpoint ignored, BASIC to root is<br /&gtmapped to relay endpoint, (SPIR) motion sensor still enabled</p&gt <p&gt<br /&gt1 - 209 = Internal motion sensor is disabled for specified timeout after BASIC<br /&gtSET 0x00 to motion endpoint.<br /&gtTimeout:<br /&gt1..100 – 1 second (1) to 100 seconds (100) in 1-second resolution<br /&gt101..200 – 1 minute (101) to 100 minutes (200) in 1-minute resolution<br /&gt201..209 – 1 hour (201) to 9 hours (209) in 1-hour resolution</p&gt <p&gt210 - 254 = Reserved</p&gt <p&gt255 = BASIC SET to motion endpoint ignored, motion sensor still disabled.</p&gt
 Values in the range 2 to 209 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -472,78 +317,21 @@ The XLED Home 2 supports 4 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Lifeline
-- Device Reset Locally (immediately)  
-- Notifications:  
-0x09 (System) – Hardware failure with manufacturer proprietary code (0x03)  
-0x09 (System) – Software failure with manufacturer proprietary code (0x04)  
-0x07 (Home security) – Motion Begin event (0x08)  
-0x07 (Home security) – Motion End event (0x00, 0x08)  
-- Binary Switch Report (SPIR)  
-- Binary Switch Report (SBIN)  
-- Multilevel Switch Report (SMUL)  
-- Multilevel Sensor Report – value of internal ambient light sensor  
-- Central scene notification (STOGGLE)  
-Motion Begin and Motion End events are sent along with frames to group 3.  
-If multichannel association is created the events are sent from motion sensor  
-endpoint.  
-Switch Report is sent immediately upon a change of status along with  
-frames to group 2. If multichannel association is created the events are sent  
-from lamp/relay endpoint.  
-Multilevel Sensor Report is sent a maximum of once per 1 minute  
-(if the value has changed by at least 3%) and a minimum of once per 15 min-  
-utes (if the value has not changed). If the ambient light value is old (cannot  
-be measured because of permanent light), the value is not transmitted via  
-lifeline. Multilevel Sensor Report can also be added to some other events to  
-send in bulk. If multichannel association is created the events are sent from  
-light sensor endpoint.  
-Central scene notification is sent as reaction to user interaction. If multichan-  
-nel association is created the events are sent from toggle button endpoint.
-
-All notifications to lifeline are sent as sensor states regardless of sensor  
-settings and states as SLAVE\_MODE, LOCAL\_DISABLED and MOTION_  
-ENABLE
+<p&gt- Device Reset Locally (immediately)<br /&gt- Notifications:<br /&gt0x09 (System) – Hardware failure with manufacturer proprietary code (0x03)<br /&gt0x09 (System) – Software failure with manufacturer proprietary code (0x04)<br /&gt0x07 (Home security) – Motion Begin event (0x08)<br /&gt0x07 (Home security) – Motion End event (0x00, 0x08)<br /&gt- Binary Switch Report (SPIR)<br /&gt- Binary Switch Report (SBIN)<br /&gt- Multilevel Switch Report (SMUL)<br /&gt- Multilevel Sensor Report – value of internal ambient light sensor<br /&gt- Central scene notification (STOGGLE)<br /&gtMotion Begin and Motion End events are sent along with frames to group 3.<br /&gtIf multichannel association is created the events are sent from motion sensor<br /&gtendpoint.<br /&gtSwitch Report is sent immediately upon a change of status along with<br /&gtframes to group 2. If multichannel association is created the events are sent<br /&gtfrom lamp/relay endpoint.<br /&gtMultilevel Sensor Report is sent a maximum of once per 1 minute<br /&gt(if the value has changed by at least 3%) and a minimum of once per 15 min-<br /&gtutes (if the value has not changed). If the ambient light value is old (cannot<br /&gtbe measured because of permanent light), the value is not transmitted via<br /&gtlifeline. Multilevel Sensor Report can also be added to some other events to<br /&gtsend in bulk. If multichannel association is created the events are sent from<br /&gtlight sensor endpoint.<br /&gtCentral scene notification is sent as reaction to user interaction. If multichan-<br /&gtnel association is created the events are sent from toggle button endpoint.</p&gt <p&gtAll notifications to lifeline are sent as sensor states regardless of sensor<br /&gtsettings and states as SLAVE\_MODE, LOCAL\_DISABLED and MOTION_<br /&gtENABLE</p&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Control: Key01
 
 On/Off control (Never ever add controller, only third-party devices!)
-Group 2 is used for directly controlling Z-Wave devices via BASIC SET com-  
-mands through the evaluation of movement and light, as with internal use  
-(so that all of these devices work together). This is intended for use especially  
-with third-party devices that do not implement reactions for motion events.  
-BASIC_SET and similar Z-Wave commands are not retransmitted intention-  
-ally to slaves and must be sent to slave devices via the controlling device  
-simultaneously. Only for use in master-slave system, multi-device control is  
-not possible.  
-Group 2 is evaluated and frames are transmitted there also in SLAVE_  
-MODE, regardless of LOCAL\_DISABLED state and when MOTION\_ENABLE  
-is off (not using internal motion sensor, just reacting to remote motion events  
-in this case).  
-If multichannel association is created the events are sent from motion sensor  
-endpoint.
+<p&gtGroup 2 is used for directly controlling Z-Wave devices via BASIC SET com-<br /&gtmands through the evaluation of movement and light, as with internal use<br /&gt(so that all of these devices work together). This is intended for use especially<br /&gtwith third-party devices that do not implement reactions for motion events.<br /&gtBASIC\_SET and similar Z-Wave commands are not retransmitted intention-<br /&gtally to slaves and must be sent to slave devices via the controlling device<br /&gtsimultaneously. Only for use in master-slave system, multi-device control is<br /&gtnot possible.<br /&gtGroup 2 is evaluated and frames are transmitted there also in SLAVE\_<br /&gtMODE, regardless of LOCAL\_DISABLED state and when MOTION\_ENABLE<br /&gtis off (not using internal motion sensor, just reacting to remote motion events<br /&gtin this case).<br /&gtIf multichannel association is created the events are sent from motion sensor<br /&gtendpoint.</p&gt
 
 Association group 2 supports 16 nodes.
 
 ### Group 3: Motion Begin/End (PIR/radar/iHF)
 
 Notification: Motion
-Group 3 sends MOTION\_BEGIN and MOTION\_END frames.  
-MOTION_BEGIN frame = Notification 0x07 (Home security) –  
-Motion detection without location (0x08)  
-MOTION_END frame = Notification 0x07 (Home security) –  
-Event inactive (0x00, parameter 0x08)
-
-After the first motion detection, MOTION_BEGIN is sent. If continual move-  
-ment is detected, MOTION_BEGIN is sent every 1 minute repeatedly. When  
-motion ends, MOTION_END is sent 5 seconds after the last motion detec-  
-tion.  
-Notification to group 3 is sent only when NIGHT\_MODE = ON and MOTION\_  
-ENABLE = ON, regardless of LOCAL_DISABLE state.  
-All devices in a group should have the same TIME settings in order that they  
-switch off at the same time.  
-If multichannel association is created the events are sent from motion sensor  
-endpoint.
+<p&gtGroup 3 sends MOTION\_BEGIN and MOTION\_END frames.<br /&gtMOTION\_BEGIN frame = Notification 0x07 (Home security) –<br /&gtMotion detection without location (0x08)<br /&gtMOTION\_END frame = Notification 0x07 (Home security) –<br /&gtEvent inactive (0x00, parameter 0x08)</p&gt <p&gtAfter the first motion detection, MOTION\_BEGIN is sent. If continual move-<br /&gtment is detected, MOTION\_BEGIN is sent every 1 minute repeatedly. When<br /&gtmotion ends, MOTION\_END is sent 5 seconds after the last motion detec-<br /&gttion.<br /&gtNotification to group 3 is sent only when NIGHT\_MODE = ON and MOTION\_<br /&gtENABLE = ON, regardless of LOCAL\_DISABLE state.<br /&gtAll devices in a group should have the same TIME settings in order that they<br /&gtswitch off at the same time.<br /&gtIf multichannel association is created the events are sent from motion sensor<br /&gtendpoint.</p&gt
 
 Association group 3 supports 16 nodes.
 
@@ -620,10 +408,10 @@ Association group 4 supports 15 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/688/bedien-110043509.pdf)
-* [Steinel Z-Wave Interface v 1.0.0](https://www.cd-jackson.com/zwave_device_uploads/688/bdal2-110043507-1.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/688/bedien-110043509.pdf)
+* [Steinel Z-Wave Interface v 1.0.0](https://opensmarthouse.org/zwavedatabase/688/bdal2-110043507-1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/688).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/688).

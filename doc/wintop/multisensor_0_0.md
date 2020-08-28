@@ -10,7 +10,7 @@ This describes the Z-Wave device *Multisensor*, manufactured by *Wintop* with th
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![Multisensor product image](https://www.cd-jackson.com/zwave_device_uploads/326/326_default.png)
+![Multisensor product image](https://opensmarthouse.org/zwavedatabase/326/image/)
 
 
 The Multisensor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,19 +19,15 @@ The Multisensor does not permanently listen for messages sent from the controlle
 
 ## Overview
 
-motion sensor
+<p&gtmotion sensor</p&gt
 
 ### Inclusion Information
 
-Please press the tamper switch at the back of the device for 3-8 seconds.
-
-After 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.
+<p&gtPlease press the tamper switch at the back of the device for 3-8 seconds.</p&gt <p&gtAfter 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.</p&gt
 
 ### Exclusion Information
 
-Please press the tamper switch at the back of the device for 3-8 seconds.
-
-After 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.
+<p&gtPlease press the tamper switch at the back of the device for 3-8 seconds.</p&gt <p&gtAfter 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.</p&gt
 
 ### Wakeup Information
 
@@ -40,7 +36,7 @@ The Multisensor does not permanently listen for messages sent from the controlle
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
- Press the temper button on the device and keep it for 3-7 seconds, then release.
+<p&gt Press the temper button on the device and keep it for 3-7 seconds, then release.</p&gt
 
 ## Channels
 
@@ -131,9 +127,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Mode Timeout
 
 The time used in mode 2 to turn the sensor off .
-The time used in mode 2 to turn the sensor off . 
-
-This Time will start running as soon as detection is seen.
+<p&gtThe time used in mode 2 to turn the sensor off . </p&gt <p&gtThis Time will start running as soon as detection is seen.</p&gt
 Values in the range 0 to 3600 may be set.
 
 The manufacturer defined default value is ```900```.
@@ -144,7 +138,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Switch off time
 
 Switch off time starts after timeout.
-The switch off time will start running as soon as mode timeout is done. Motion sensor is turned on and when movement is de tected again the mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message is s
+<p&gtThe switch off time will start running as soon as mode timeout is done. Motion sensor is turned on and when movement is de tected again the mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message is s</p&gt
 Values in the range 0 to 7200 may be set.
 
 The manufacturer defined default value is ```2700```.
@@ -166,7 +160,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Mode
 
 The mode that is entered after detection
-Normal operation mode is default.
+<p&gtNormal operation mode is default.</p&gt
 Values in the range 1 to 3 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -177,7 +171,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: The temperature offset
 
 An offset for the temperature.
-Param1,2: A signed integer to determine the offset off the temperature.
+<p&gtParam1,2: A signed integer to determine the offset off the temperature.</p&gt
 Values in the range -10 to 10 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -248,9 +242,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/326/DHS-Zwave-Motion-Sensor-v1.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/326/DHS-Zwave-Motion-Sensor-v1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/326).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/326).

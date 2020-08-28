@@ -10,29 +10,22 @@ This describes the Z-Wave device *builtInDimmer*, manufactured by *[BeNext](http
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![builtInDimmer product image](https://www.cd-jackson.com/zwave_device_uploads/225/225_default.png)
+![builtInDimmer product image](https://opensmarthouse.org/zwavedatabase/225/image/)
 
 
 The builtInDimmer supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Basic operations
-
-  * The Built-in Dimmer can trigger any rule or lifestyle.
-  * The Built-in Dimmer can dim up to 125Watt.
-  * The Built-in Dimmer can be placed behind your wall switch (41\*41\*13mm).
-  * The Built-in Dimmer is easy to install and configured.
-  * The Built-in Dimmer will power itself through halogen or incandescent light. (no blue wire or neutral line is needed)
-  * Indoor use only. 
+<p&gtBasic operations</p&gt <ul&gt<li&gtThe Built-in Dimmer can trigger any rule or lifestyle.</li&gt <li&gtThe Built-in Dimmer can dim up to 125Watt.</li&gt <li&gtThe Built-in Dimmer can be placed behind your wall switch (41\*41\*13mm).</li&gt <li&gtThe Built-in Dimmer is easy to install and configured.</li&gt <li&gtThe Built-in Dimmer will power itself through halogen or incandescent light. (no blue wire or neutral line is needed)</li&gt <li&gtIndoor use only. </li&gt </ul&gt
 
 ### Inclusion Information
 
-When the light is off (!) press/flip the wall switch once, after circa two seconds release/flip back the wall switch to start the inclusion process. 
+<p&gtWhen the light is off (!) press/flip the wall switch once, after circa two seconds release/flip back the wall switch to start the inclusion process. </p&gt
 
 ### Exclusion Information
 
-When the light is off (!) press/flip the wall switch once, after circa two seconds release/flip back the wall switch to start the exclusion process.
+<p&gtWhen the light is off (!) press/flip the wall switch once, after circa two seconds release/flip back the wall switch to start the exclusion process.</p&gt
 
 ## Channels
 
@@ -130,9 +123,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Enable dimming
 
 Enable dimming
-This parameter is used to enable the dimming option of the product.
-
-When disabled the dimming and fading routine are disabled.
+<p&gtThis parameter is used to enable the dimming option of the product.</p&gt <p&gtWhen disabled the dimming and fading routine are disabled.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -148,7 +139,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 6: Maximum load
 
 Maximum load
-The maximum power load in watts when light is turned on, when measured higher then this value the Inline Dimmer is automatically turned off.
+<p&gtThe maximum power load in watts when light is turned on, when measured higher then this value the Inline Dimmer is automatically turned off.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```200```.
@@ -159,7 +150,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 7: Dimming speed
 
 Dimming speed
-The speed of dimming when activated (manual and RF). Dim speed is 1% per value (* 10 ms)
+<p&gtThe speed of dimming when activated (manual and RF). Dim speed is 1% per value (* 10 ms)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -170,7 +161,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Fading up speed
 
 Fading up speed
-The speed of fading when activated (manual and RF). Fade speed is 1% per value (* 10 ms)
+<p&gtThe speed of fading when activated (manual and RF). Fade speed is 1% per value (* 10 ms)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -181,7 +172,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Toggle time
 
 Toggle time
-The time window to re-press button to start dimming. Toggle time is value (* 10ms)
+<p&gtThe time window to re-press button to start dimming. Toggle time is value (* 10ms)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -192,9 +183,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 11: Auto meter report: percentage
 
 Auto meter report: percentage
-A percentage that an energy value must be different compared to a previous sent value before an unsolicited meter report is sent.
-
-Minimum value = 10%  Maximum value = 100%
+<p&gtA percentage that an energy value must be different compared to a previous sent value before an unsolicited meter report is sent.</p&gt <p&gtMinimum value = 10%  Maximum value = 100%</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```20```.
@@ -205,9 +194,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Auto meter report: watt
 
 Auto meter report: watt
-A watt value that an energy value must be different compared to a previous sent value before an unsolicited meter report is sent.
-
-Minimum value = 5 watt  Maximum value = 255 watt
+<p&gtA watt value that an energy value must be different compared to a previous sent value before an unsolicited meter report is sent.</p&gt <p&gtMinimum value = 5 watt  Maximum value = 255 watt</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -218,9 +205,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Auto meter report: time
 
 Auto meter report: time
-A time value that has to be passed compared to a previous sent value before a unsolicited meter report is sent.
-
-Minimum value = 10 seconds  Maximum value = 255 seconds
+<p&gtA time value that has to be passed compared to a previous sent value before a unsolicited meter report is sent.</p&gt <p&gtMinimum value = 10 seconds  Maximum value = 255 seconds</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -231,11 +216,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Last known status
 
 Last known status
-What to do with lamp status when power applied.
-
-If 0x00: Always switch light off when power applied.
-
-If > 0x00: Switch lamp on/off depending on last known lamp status before power was disconnected.
+<p&gtWhat to do with lamp status when power applied.</p&gt <p&gtIf 0x00: Always switch light off when power applied.</p&gt <p&gtIf > 0x00: Switch lamp on/off depending on last known lamp status before power was disconnected.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -246,9 +227,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Fading down speed
 
 Fading down speed
-The speed of fading when activated (manual and RF).
-
-Fade speed is 1% per value (* 10 ms)
+<p&gtThe speed of fading when activated (manual and RF).</p&gt <p&gtFade speed is 1% per value (* 10 ms)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -265,33 +244,19 @@ The builtInDimmer supports 3 association groups.
 ### Group 1: Group 1
 
 All nodes in this group will receive a BASIC_SET frame
-All nodes in this group will receive a BASIC_SET frame when light is set to a certain state with the button of the Built-in Dimmer (manual switching).
-
-When light is switched off with button: BASIC_SET frame with value 0 is sent to associated nodes.
-
-When light is set to a dim level with button: BASIC_SET frame with value 0 – 99 is sent to associated nodes.
-
-When light is switched on with button: BASIC_SET frame with value 255 is sent to associated nodes.
-
-It is most likely that switch\_binary/switch\_multilevel devices are associated in this group so that you can switch multiple nodes on/off with 1 button pres
+<p&gtAll nodes in this group will receive a BASIC\_SET frame when light is set to a certain state with the button of the Built-in Dimmer (manual switching).</p&gt <p&gtWhen light is switched off with button: BASIC\_SET frame with value 0 is sent to associated nodes.</p&gt <p&gtWhen light is set to a dim level with button: BASIC\_SET frame with value 0 – 99 is sent to associated nodes.</p&gt <p&gtWhen light is switched on with button: BASIC\_SET frame with value 255 is sent to associated nodes.</p&gt <p&gtIt is most likely that switch\_binary/switch\_multilevel devices are associated in this group so that you can switch multiple nodes on/off with 1 button pres</p&gt
 
 Association group 1 supports 8 nodes.
 
 ### Group 2: Group 2
 
-The node associated in this group will receive a SWITCH\_MULTILEVEL\_REPORT frame every time the level of light is changed, where the value represents the (changed) dim level. The status is reported after every change that means manual but also if changed by Z-Wave.
-
-The node in this group will also received the (auto) METER\_REPORT (see § COMMAND\_CLASS\_METER à unsolicited METER\_REPORT for more information about this feature).
-
-It is most likely that a controller or screen is associated in this group to report (unsolicited) any changes to the light.
+<p&gtThe node associated in this group will receive a SWITCH\_MULTILEVEL\_REPORT frame every time the level of light is changed, where the value represents the (changed) dim level. The status is reported after every change that means manual but also if changed by Z-Wave.</p&gt <p&gtThe node in this group will also received the (auto) METER\_REPORT (see § COMMAND\_CLASS\_METER à unsolicited METER\_REPORT for more information about this feature).</p&gt <p&gtIt is most likely that a controller or screen is associated in this group to report (unsolicited) any changes to the light.</p&gt
 
 Association group 2 supports 1 node.
 
 ### Group 3: Group 3
 
-If configured that the control mode is extern only (configuration param3 à value 1) then a BASIC\_SET frame is sent to the node in this group when the button is changed. Note that the light of the Built-in Dimmer is not switched on/off but instead the BASIC\_SET frame is sent, because the Built-in Dimmer doesn’t know what the extern status is the value of the BASIC_SET frame toggles between the values 0 and 255.
-
-It is most likely that a Gateway (controller) is associated in this group. A Gateway can handle upon the received frame. With a Gateway controlled network it possible to add multiple functionalities to the button of the Builtin Dimmer.
+<p&gtIf configured that the control mode is extern only (configuration param3 à value 1) then a BASIC\_SET frame is sent to the node in this group when the button is changed. Note that the light of the Built-in Dimmer is not switched on/off but instead the BASIC\_SET frame is sent, because the Built-in Dimmer doesn’t know what the extern status is the value of the BASIC_SET frame toggles between the values 0 and 255.</p&gt <p&gtIt is most likely that a Gateway (controller) is associated in this group. A Gateway can handle upon the received frame. With a Gateway controlled network it possible to add multiple functionalities to the button of the Builtin Dimmer.</p&gt
 
 Association group 3 supports 1 node.
 
@@ -315,9 +280,9 @@ Association group 3 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/225/builtindimmer-quickstart.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/225/builtindimmer-quickstart.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/225).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/225).

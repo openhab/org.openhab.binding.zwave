@@ -7,9 +7,7 @@
 
   <thing-type id="zipato_zippab01_00_000" listed="false">
     <label>ZIP-PAB01 Micro Module Energy Meter</label>
-    <description><![CDATA[
-Micro Module Energy Meter<br /><h1>Overview</h1><ul><li>Slim, compact remote Z-Wave module measures power parameters of connected device</li> <li>Dual power meter function</li> <li>Instant power wattage and</li> <li>Accumulated power consumption KWh report</li> <li>Amper meter clamp included in the box</li> <li>Maximum current measure 60A</li> <li>Higher output power enhances communication range(+2.5dBm output power compared to -2.5dBm 300 series)</li> <li>New Z-Wave 500 series chip supports multichannel operation and higher data rates (9.6/40/100kbps)</li> <li>Very low power power consumption</li> <li>Over-the-air firmware update Easy installation</li> </ul><br /><h2>Inclusion Information</h2><p>In the front casing, there is an On/Off button with LED indicator which is used to carry out inclusion, exclusion, reset or association. After being excluded, its LED flashes on and off alternately and repeatedly at 2-second intervals. It implies that it has not been assigned a node ID and cannot work with Z-Wave enabled devices.</p> <p><strong>AUTO INCLUSION</strong></p> <p>The function of auto inclusion will be executed as long as the Micromodule does not have Node ID and is plugged into a wall outlet. When first power is applied, its LED flashes on and off alternately and repeatedly at 0.5 second intervals. It implies that it is in learning mode now.</p> <p>Note: Auto inclusion timeout lasts 2 minutes during which the node information of explorer frame will be emitted once per every 5 seconds. Unlike “inclusion” function as shown in the table below, auto inclusion doesn’t require pressing on/off buttons on the switch.</p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>Micro Module Energy Meter&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtSlim, compact remote Z-Wave module measures power parameters of connected device&lt;/li&gt &lt;li&gtDual power meter function&lt;/li&gt &lt;li&gtInstant power wattage and&lt;/li&gt &lt;li&gtAccumulated power consumption KWh report&lt;/li&gt &lt;li&gtAmper meter clamp included in the box&lt;/li&gt &lt;li&gtMaximum current measure 60A&lt;/li&gt &lt;li&gtHigher output power enhances communication range(+2.5dBm output power compared to -2.5dBm 300 series)&lt;/li&gt &lt;li&gtNew Z-Wave 500 series chip supports multichannel operation and higher data rates (9.6/40/100kbps)&lt;/li&gt &lt;li&gtVery low power power consumption&lt;/li&gt &lt;li&gtOver-the-air firmware update Easy installation&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtIn the front casing, there is an On/Off button with LED indicator which is used to carry out inclusion, exclusion, reset or association. After being excluded, its LED flashes on and off alternately and repeatedly at 2-second intervals. It implies that it has not been assigned a node ID and cannot work with Z-Wave enabled devices.&lt;/p&gt &lt;p&gt&lt;strong&gtAUTO INCLUSION&lt;/strong&gt&lt;/p&gt &lt;p&gtThe function of auto inclusion will be executed as long as the Micromodule does not have Node ID and is plugged into a wall outlet. When first power is applied, its LED flashes on and off alternately and repeatedly at 0.5 second intervals. It implies that it is in learning mode now.&lt;/p&gt &lt;p&gtNote: Auto inclusion timeout lasts 2 minutes during which the node information of explorer frame will be emitted once per every 5 seconds. Unlike “inclusion” function as shown in the table below, auto inclusion doesn’t require pressing on/off buttons on the switch.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -164,50 +162,38 @@ Micro Module Energy Meter<br /><h1>Overview</h1><ul><li>Slim, compact remote Z-W
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="1" max="32767">
         <label>1: Power meter report period</label>
-        <description><![CDATA[
-Power meter report period, in 5 seconds unit. 720 -&gt; 1 hour<br /><h1>Overview</h1><p>If the setting is configured for 1 hour (set value 720), the module will report its instant power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its instant power consumption is 45h (5s * 32767 / 3600 = 45h)</p>
-        ]]></description>
+        <description>Power meter report period, in 5 seconds unit. 720 -&amp;amp;gt; 1 hour&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf the setting is configured for 1 hour (set value 720), the module will report its instant power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its instant power consumption is 45h (5s * 32767 / 3600 = 45h)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="1" max="32767">
         <label>2: Energy meter report period</label>
-        <description><![CDATA[
-The accumulated power consumption report period<br /><h1>Overview</h1><p>If the setting is configured for 1 hour (set value 720), the module will report its accumulated power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its accumulated power consumption is 45h (5s * 32767 / 3600 = 45h)</p>
-        ]]></description>
+        <description>The accumulated power consumption report period&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf the setting is configured for 1 hour (set value 720), the module will report its accumulated power consumption every 1 hour to the node of the corresponding group. The maximum interval to report its accumulated power consumption is 45h (5s * 32767 / 3600 = 45h)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="3">
         <label>3: Selected default endpoint</label>
-        <description><![CDATA[
-1 =&gt; CT1 and CT2, 2 =&gt; CT1, 3 =&gt; CT2<br /><h1>Overview</h1><p>If Controller does not use Multi Channel command class to access the endpoint of the module, you may configure the endpoint that will react to the Basic Command Class, Binary Switch command class or Meter command class V3.</p>
-        ]]></description>
+        <description>1 =&amp;amp;gt; CT1 and CT2, 2 =&amp;amp;gt; CT1, 3 =&amp;amp;gt; CT2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf Controller does not use Multi Channel command class to access the endpoint of the module, you may configure the endpoint that will react to the Basic Command Class, Binary Switch command class or Meter command class V3.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: CT1 and CT2</label>
-        <description><![CDATA[
-Sum of CT1 and CT2<br /><h1>Overview</h1><p>Sum of :</p> <ul><li>Instant power consumption from CT1 and CT2 (W)</li> <li>Accumulated power consumption from CT1 and CT2 (kWh)</li> </ul>
-        ]]></description>
+        <description>Sum of CT1 and CT2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSum of :&lt;/p&gt &lt;ul&gt&lt;li&gtInstant power consumption from CT1 and CT2 (W)&lt;/li&gt &lt;li&gtAccumulated power consumption from CT1 and CT2 (kWh)&lt;/li&gt &lt;/ul&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association">
         <label>2: CT1</label>
-        <description><![CDATA[
-Data from CT1<br /><h1>Overview</h1><ul><li>Instant power consumption from CT1 (W)</li> <li>Accumulated power consumption from CT1 (kWh)</li> </ul>
-        ]]></description>
+        <description>Data from CT1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtInstant power consumption from CT1 (W)&lt;/li&gt &lt;li&gtAccumulated power consumption from CT1 (kWh)&lt;/li&gt &lt;/ul&gt</description>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association">
         <label>3: CT2</label>
-        <description><![CDATA[
-Data from CT2<br /><h1>Overview</h1><ol><li>Instant power consumption from CT2 (W)</li> <li>Accumulated power consumption from CT2 (kWh)</li> </ol>
-        ]]></description>
+        <description>Data from CT2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ol&gt&lt;li&gtInstant power consumption from CT2 (W)&lt;/li&gt &lt;li&gtAccumulated power consumption from CT2 (kWh)&lt;/li&gt &lt;/ol&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

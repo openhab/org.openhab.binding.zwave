@@ -7,9 +7,7 @@
 
   <thing-type id="devolo_pan11_00_000" listed="false">
     <label>PAN11 Smart Energy Plug-in Switch</label>
-    <description><![CDATA[
-Smart Energy Plug-in Switch<br /><h1>Overview</h1><p>This plug-in ON/OFF switch PAN11 is a security enabled wireless switch, based on Z-Wave Plus technology.</p> <p>Remote On/Off control of the connected load is possible with other manufacturer’s wireless Controller. Each switch is designed to act as a repeater. Repeaters will re-transmit the RF signal to ensure that the signal is received by its intended destination by routing the signal around obstacles and radio dead spots. Because PAN11 supports Security Command Class, it can learn with Secured controller. Its functionality and supported command classes is identical when included as a secure and non-secure device.</p> <br /><h2>Inclusion Information</h2><p>Pressing On/Off button three times within 2 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off button three times within 2 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>Smart Energy Plug-in Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis plug-in ON/OFF switch PAN11 is a security enabled wireless switch, based on Z-Wave Plus technology.&lt;/p&gt &lt;p&gtRemote On/Off control of the connected load is possible with other manufacturer’s wireless Controller. Each switch is designed to act as a repeater. Repeaters will re-transmit the RF signal to ensure that the signal is received by its intended destination by routing the signal around obstacles and radio dead spots. Because PAN11 supports Security Command Class, it can learn with Secured controller. Its functionality and supported command classes is identical when included as a secure and non-secure device.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPressing On/Off button three times within 2 seconds will enter inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPressing On/Off button three times within 2 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -80,27 +78,21 @@ Smart Energy Plug-in Switch<br /><h1>Overview</h1><p>This plug-in ON/OFF switch 
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="1" max="32767">
         <label>1: Wall Meter Report Period</label>
-        <description><![CDATA[
-Wall Meter Report Period<br /><h1>Overview</h1><p><strong>Unit is 5 seconds</strong></p> <p>Default value is 720 * 5 s = 3600 s = 1 hour</p>
-        ]]></description>
+        <description>Wall Meter Report Period&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtUnit is 5 seconds&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value is 720 * 5 s = 3600 s = 1 hour&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="1" max="32767">
         <label>2: KWH Meter Report Period</label>
-        <description><![CDATA[
-KWH Meter Report Period<br /><h1>Overview</h1><p><strong>Unit is 10 minutes</strong></p> <p>Default is 6 * 10 min = 1 hour</p>
-        ]]></description>
+        <description>KWH Meter Report Period&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtUnit is 10 minutes&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault is 6 * 10 min = 1 hour&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>6</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="10" max="1300">
         <label>3: Threshold of current for Load caution</label>
-        <description><![CDATA[
-Threshold of current for Load caution<br /><h1>Overview</h1><p><strong>Unit is 0.01 Ampere</strong></p> <p>Default is 1300 * .01 A = 13 A</p>
-        ]]></description>
+        <description>Threshold of current for Load caution&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtUnit is 0.01 Ampere&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault is 1300 * .01 A = 13 A&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1300</default>
       </parameter>
 

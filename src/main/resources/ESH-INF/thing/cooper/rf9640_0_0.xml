@@ -7,9 +7,7 @@
 
   <thing-type id="cooper_rf9640_00_000" listed="false">
     <label>RF9640 Z-Wave Plus universal smart dimmer</label>
-    <description><![CDATA[
-Z-Wave Plus universal smart dimmer<br /><h1>Overview</h1><p><strong>OPERATION INSTRUCTIONS</strong></p> <ul><li>Press once to turn lights ON at previously selected level.</li> <li>Press again to turn lights OFF.</li> <li>When lights are OFF, press and hold for 2 seconds for full brightness.</li> <li>When lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).</li> <li>Amber ON/OFF LED indicates that dimmer is turned on</li> </ul><br /><h2>Inclusion Information</h2><ol><li>This product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.</li> <li>To include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.</li> </ol><br /><h2>Exclusion Information</h2><p>To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.</p>
-    ]]></description>
+    <description>Z-Wave Plus universal smart dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtOPERATION INSTRUCTIONS&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtPress once to turn lights ON at previously selected level.&lt;/li&gt &lt;li&gtPress again to turn lights OFF.&lt;/li&gt &lt;li&gtWhen lights are OFF, press and hold for 2 seconds for full brightness.&lt;/li&gt &lt;li&gtWhen lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).&lt;/li&gt &lt;li&gtAmber ON/OFF LED indicates that dimmer is turned on&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtThis product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.&lt;/li&gt &lt;li&gtTo include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -76,27 +74,21 @@ Z-Wave Plus universal smart dimmer<br /><h1>Overview</h1><p><strong>OPERATION IN
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Delayed OFF time</label>
-        <description><![CDATA[
-Time in seconds to delay OFF<br /><h1>Overview</h1><p>The amount of time in seconds the switch will delay when trigger the delayed off feature</p>
-        ]]></description>
+        <description>Time in seconds to delay OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will delay when trigger the delayed off feature&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: Panic ON time</label>
-        <description><![CDATA[
-Time in seconds for panic mode ON<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn on for when panic mode is triggered</p>
-        ]]></description>
+        <description>Time in seconds for panic mode ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will turn on for when panic mode is triggered&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>3: Panic OFF time</label>
-        <description><![CDATA[
-time in seconds for OFF in panic mode<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn off for when panic mode is triggered</p>
-        ]]></description>
+        <description>time in seconds for OFF in panic mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will turn off for when panic mode is triggered&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -124,17 +116,13 @@ time in seconds for OFF in panic mode<br /><h1>Overview</h1><p>The amount of tim
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>7: Dimmer Ramp Time</label>
-        <description><![CDATA[
-Time in seconds to reach desired level<br /><h1>Overview</h1><p>The amount of time in seconds the switch will take to reach the desired dim level</p>
-        ]]></description>
+        <description>Time in seconds to reach desired level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will take to reach the desired dim level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Kickstart / Rapid Start</label>
-        <description><![CDATA[
-Ensures that LED / CFL bulbs turn on when the preset dim level is low<br /><h1>Overview</h1><p>Ensures that LED / CFL bulbs turn on when the preset dim level is low. Enabling this feature may cause the lights brightness to momentarily be bright when the switch is turned on before reducing in brightness to desired level</p>
-        ]]></description>
+        <description>Ensures that LED / CFL bulbs turn on when the preset dim level is low&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnsures that LED / CFL bulbs turn on when the preset dim level is low. Enabling this feature may cause the lights brightness to momentarily be bright when the switch is turned on before reducing in brightness to desired level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">disables</option>
@@ -145,9 +133,7 @@ Ensures that LED / CFL bulbs turn on when the preset dim level is low<br /><h1>O
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>9: Reset max/min levels to factory default</label>
-        <description><![CDATA[
-Reset max/min levels to factory default<br /><h1>Overview</h1><p>Sets the max/min levels to factory default</p>
-        ]]></description>
+        <description>Reset max/min levels to factory default&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the max/min levels to factory default&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -214,5 +200,13 @@ Reset max/min levels to factory default<br /><h1>Overview</h1><p>Sets the max/mi
     </config-description>
 
   </thing-type>
+
+  <channel-type id="cooper_rf9640_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Dimmer Ramp Time</label>
+    <description>Time in seconds to reach desired level</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

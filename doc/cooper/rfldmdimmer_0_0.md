@@ -10,23 +10,22 @@ This describes the Z-Wave device *RFLDM*, manufactured by *Cooper Wiring Devices
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![RFLDM product image](https://www.cd-jackson.com/zwave_device_uploads/1130/1130_default.jpg)
+![RFLDM product image](https://opensmarthouse.org/zwavedatabase/1130/image/)
 
 
 The RFLDM supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Plug-in dimmer; 300W. ASPIRE RF Wireless Plug-In Module 15A, 120V/AC grounding receptacle for use with a wide variety of lamps and appliances. Module can be controlled remotely by other RF devices through association of up to 5 devices.
+<p&gtPlug-in dimmer; 300W. ASPIRE RF Wireless Plug-In Module 15A, 120V/AC grounding receptacle for use with a wide variety of lamps and appliances. Module can be controlled remotely by other RF devices through association of up to 5 devices.</p&gt
 
 ### Inclusion Information
 
-  1. This product may be added to a new or existing Z-Wave network. The device has an amber LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.
-  2. To include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device control switch one time to include it in the network. The LED will stop blinking.
+<ol&gt<li&gtThis product may be added to a new or existing Z-Wave network. The device has an amber LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.</li&gt <li&gtTo include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device control switch one time to include it in the network. The LED will stop blinking.</li&gt </ol&gt
 
 ### Exclusion Information
 
-To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device control switch one time to exclude it from the network. The LED will start blinking.
+<p&gtTo exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device control switch one time to exclude it from the network. The LED will start blinking.</p&gt
 
 ## Channels
 
@@ -218,9 +217,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1130/B004FW1QAC-Eaton-Aspire-RFLDM-Spec-Sheet.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1130/B004FW1QAC-Eaton-Aspire-RFLDM-Spec-Sheet.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1130).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1130).

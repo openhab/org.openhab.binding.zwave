@@ -10,38 +10,22 @@ This describes the Z-Wave device *ZMNHBA*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHBA product image](https://www.cd-jackson.com/zwave_device_uploads/208/208_default.png)
+![ZMNHBA product image](https://opensmarthouse.org/zwavedatabase/208/image/)
 
 
 The ZMNHBA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used for switching on or off two electrical devices (e.g. lights, fans, etc ...).  
-The module can be controlled either through Z-Wave network or through the wall switches.  
-The module is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch.  
-Module measures power consumption of two electrical devices and supports connection of digital temperature sensor.
+<p&gtThis Z-Wave module is used for switching on or off two electrical devices (e.g. lights, fans, etc ...).<br /&gtThe module can be controlled either through Z-Wave network or through the wall switches.<br /&gtThe module is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch.<br /&gtModule measures power consumption of two electrical devices and supports connection of digital temperature sensor.</p&gt
 
 ### Inclusion Information
 
-  * Connect module to power supply,
-  * bring module within maximum 1 meter (3 feet) of the main controller,
-  * enable add/remove mode on main controller,
-  * auto-inclusion (30 minutes after connected to power supply) or
-  * press service button S for more than 2 second or
-  * press push button I1 three times within 3s (3 times change switch state within 3  
-    seconds).
+<ul&gt<li&gtConnect module to power supply,</li&gt <li&gtbring module within maximum 1 meter (3 feet) of the main controller,</li&gt <li&gtenable add/remove mode on main controller,</li&gt <li&gtauto-inclusion (30 minutes after connected to power supply) or</li&gt <li&gtpress service button S for more than 2 second or</li&gt <li&gtpress push button I1 three times within 3s (3 times change switch state within 3<br /&gtseconds).</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Connect module to power supply
-  * bring module within maximum 1 meter (3 feet) of the main controller,
-  * enable add/remove mode on main controller,
-  * press service button S for more than 6 second or
-  * press push button I1 five times within 3s (5 times change switch state within 3 seconds).
-
-By this function all parameters of the module are set to default values and own ID is deleted.  
-If service button S is pressed more than 2 and less than 6second module is excluded, but configuration parameters are not set to default values
+<ul&gt<li&gtConnect module to power supply</li&gt <li&gtbring module within maximum 1 meter (3 feet) of the main controller,</li&gt <li&gtenable add/remove mode on main controller,</li&gt <li&gtpress service button S for more than 6 second or</li&gt <li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds).</li&gt </ul&gt<p&gtBy this function all parameters of the module are set to default values and own ID is deleted.<br /&gtIf service button S is pressed more than 2 and less than 6second module is excluded, but configuration parameters are not set to default values</p&gt
 
 ## Channels
 
@@ -166,7 +150,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 10: Activate / deactivate functions ALL ON/ALL OFF
 
 Activate / deactivate functions ALL ON/ALL OFF
-Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
+<p&gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -184,10 +168,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Automatic turning off relay Q1 after set time
 
 Automatic turning off relay Q1 after set time
-Auto OFF enabled with define time, step is 10 mseconds
-
-  * 0 = Auto OFF disabled
-  * 1–65535 = 0,01 second – 655,35 seconds
+<p&gtAuto OFF enabled with define time, step is 10 mseconds</p&gt <ul&gt<li&gt0 = Auto OFF disabled</li&gt <li&gt1–65535 = 0,01 second – 655,35 seconds</li&gt </ul&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -198,10 +179,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: Automatic turning off relay Q2 after set time
 
 Automatic turning off relay Q2 after set time
-Auto OFF enabled with define time, step is 10 mseconds
-
-  * 0 = Auto OFF disabled
-  * 1–65535 = 0,01 second – 655,35 seconds
+<p&gtAuto OFF enabled with define time, step is 10 mseconds</p&gt <ul&gt<li&gt0 = Auto OFF disabled</li&gt <li&gt1–65535 = 0,01 second – 655,35 seconds</li&gt </ul&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -228,10 +206,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 40: Power reporting in Watts on power change for Q1
 
 Power reporting in Watts on power change for Q1
-Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.
-
-  * 0 = Reporting Disabled
-  * 1–100 = 1% - 100% Reporting enabled
+<p&gtPower report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.</p&gt <ul&gt<li&gt0 = Reporting Disabled</li&gt <li&gt1–100 = 1% - 100% Reporting enabled</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -242,10 +217,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 41: Power reporting in Watts on power change for Q2
 
 Power reporting in Watts on power change for Q2
-Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.
-
-  * 0 = Reporting Disabled
-  * 1–100 = 1% - 100% Reporti
+<p&gtPower report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.</p&gt <ul&gt<li&gt0 = Reporting Disabled</li&gt <li&gt1–100 = 1% - 100% Reporti</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -256,12 +228,7 @@ This parameter has the configuration ID ```config_41_1``` and is of type ```INTE
 ### Parameter 42: Power reporting in Watts by time interval for Q1
 
 Power reporting in Watts by time interval for Q1
-Default value is 300 (power report in Watts is sent each 300s)
-
-  * 0 = Reporting Disabled
-  * 1–65535 = 1 second – 65535 seconds. Reporting enabled.
-
-Power report is sent with time interval set by entered value.
+<p&gtDefault value is 300 (power report in Watts is sent each 300s)</p&gt <ul&gt<li&gt0 = Reporting Disabled</li&gt <li&gt1–65535 = 1 second – 65535 seconds. Reporting enabled.</li&gt </ul&gt<p&gtPower report is sent with time interval set by entered value.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -272,12 +239,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 43: Power reporting in Watts by time interval for Q2
 
 Power reporting in Watts by time interval for Q2
-Default value is 300 (power report in Watts is sent each 300s)
-
-  * 0 = Reporting Disabled
-  * 1–65535 = 1 second – 65535 seconds. Reporting enabled.  
-
-Power report is sent with time interval set by entered value.
+<p&gtDefault value is 300 (power report in Watts is sent each 300s)</p&gt <ul&gt<li&gt0 = Reporting Disabled</li&gt <li&gt1–65535 = 1 second – 65535 seconds. Reporting enabled.  </li&gt </ul&gt<p&gtPower report is sent with time interval set by entered value.</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -356,9 +318,9 @@ Association group 3 supports 4 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/208/flush-2-relays-ZMNHBA2.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/208/flush-2-relays-ZMNHBA2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/208).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/208).

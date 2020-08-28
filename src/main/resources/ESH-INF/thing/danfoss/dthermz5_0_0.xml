@@ -7,9 +7,7 @@
 
   <thing-type id="danfoss_dthermz5_00_000" listed="false">
     <label>DTHERMZ5 Z-Wave room sensor</label>
-    <description><![CDATA[
-Z-Wave room sensor<br /><h1>Overview</h1><p>qheat RS is a battery operated temperature sensor. When included into Z-Wave wireless network, its buttons can also be used to control the heating system.</p> <br /><h2>Inclusion Information</h2><p>Press the LED button on the qheat RS</p> <br /><h2>Exclusion Information</h2><p>Hold down the 3 buttons on the qheat RS for 5 seconds (up, down and LED buttons).</p> <br /><h2>Wakeup Information</h2><p> The qheat RS can be woken manually by pushing any of the three buttons, and will stay awake for 10 seconds</p>
-    ]]></description>
+    <description>Z-Wave room sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtqheat RS is a battery operated temperature sensor. When included into Z-Wave wireless network, its buttons can also be used to control the heating system.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the LED button on the qheat RS&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtHold down the 3 buttons on the qheat RS for 5 seconds (up, down and LED buttons).&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt The qheat RS can be woken manually by pushing any of the three buttons, and will stay awake for 10 seconds&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -67,9 +65,7 @@ Z-Wave room sensor<br /><h1>Overview</h1><p>qheat RS is a battery operated tempe
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>1: Temperature Report threshold</label>
-        <description><![CDATA[
-Temperature Report threshold<br /><h1>Overview</h1><p>Range is from 0.1 to 10°C 1=0.1°C 100=10°C, default value 5 = 0.5 °C</p>
-        ]]></description>
+        <description>Temperature Report threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtRange is from 0.1 to 10°C 1=0.1°C 100=10°C, default value 5 = 0.5 °C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 

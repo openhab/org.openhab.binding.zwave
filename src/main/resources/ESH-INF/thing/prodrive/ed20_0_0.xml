@@ -7,9 +7,7 @@
 
   <thing-type id="prodrive_ed20_00_000" listed="false">
     <label>ED2.0 Eneco Meter Adapter</label>
-    <description><![CDATA[
-Eneco Meter Adapter<br /><h1>Overview</h1><p>The meter adapter measures gas and electricity usage of analog and digital meters. Analog meters are read by means of optical sensors that can be placed on the meter to monitor the rotating disc or the blinking LED. In case of a digital meter, the meter adapter can be connected to the digital meter by means of a P1 digital communication interface. The meter adapter measures the cumulative and instantaneous gas and electricity consumption and sends this information to a Z-Wave enabled display (ED2.0 Display).</p> <br /><h2>Inclusion Information</h2><p>Triple click the button.</p> <br /><h2>Exclusion Information</h2><p>Triple click the button.</p>
-    ]]></description>
+    <description>Eneco Meter Adapter&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe meter adapter measures gas and electricity usage of analog and digital meters. Analog meters are read by means of optical sensors that can be placed on the meter to monitor the rotating disc or the blinking LED. In case of a digital meter, the meter adapter can be connected to the digital meter by means of a P1 digital communication interface. The meter adapter measures the cumulative and instantaneous gas and electricity consumption and sends this information to a Z-Wave enabled display (ED2.0 Display).&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click the button.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTriple click the button.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -99,9 +97,7 @@ Eneco Meter Adapter<br /><h1>Overview</h1><p>The meter adapter measures gas and 
       <parameter name="config_2_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: Analog gas/heat port resolution</label>
-        <description><![CDATA[
-Analog gas/heat port resolution<br /><h1>Overview</h1><p>pulses per cubic meter / pulses per MJ; in Q14.2 notation</p>
-        ]]></description>
+        <description>Analog gas/heat port resolution&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtpulses per cubic meter / pulses per MJ; in Q14.2 notation&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>400</default>
       </parameter>
 
@@ -121,9 +117,7 @@ Analog gas/heat port resolution<br /><h1>Overview</h1><p>pulses per cubic meter 
       <parameter name="config_4_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>4: Analog electricity port resolution</label>
-        <description><![CDATA[
-Analog electricity port resolution<br /><h1>Overview</h1><p>pulses per kWh; in Q14.2 notation</p>
-        ]]></description>
+        <description>Analog electricity port resolution&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtpulses per kWh; in Q14.2 notation&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>400</default>
       </parameter>
 

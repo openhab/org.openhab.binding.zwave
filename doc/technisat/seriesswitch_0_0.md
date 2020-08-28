@@ -10,29 +10,22 @@ This describes the Z-Wave device *Series switch 0300/9498*, manufactured by *Tec
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Series switch 0300/9498 product image](https://www.cd-jackson.com/zwave_device_uploads/1273/1273_default.png)
+![Series switch 0300/9498 product image](https://opensmarthouse.org/zwavedatabase/1273/image/)
 
 
 The Series switch 0300/9498 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The TechniSat series switch lets you operate two ceiling lamps in a smart home system controlled by Z-Wave, for example. At the same time, the switch itself can still be switched on and off manually. 
-
-What's more, you can determine how much electricity you use and the switch can be integrated into complex schemes in smart home systems. So it's perfect for providing more home comfort.
+<p&gtThe TechniSat series switch lets you operate two ceiling lamps in a smart home system controlled by Z-Wave, for example. At the same time, the switch itself can still be switched on and off manually. </p&gt <p&gtWhat's more, you can determine how much electricity you use and the switch can be integrated into complex schemes in smart home systems. So it's perfect for providing more home comfort.</p&gt
 
 ### Inclusion Information
 
-  1. Install the TechniSat Wall Switch.
-  2. After checking the correct installation, re-enable electrical power at the main fuse or circuit breaker.
-  3. Start the Z-Wave device add mode on your Z-Wave gateway, according to the gateway‘s manual.
-  4. Press T1 3x within 1 second.
-  5. The red status LED is on while the device is added to the Z-Wave network.
-  6. The green LED is on for 5 seconds after successfully adding the device.
+<ol&gt<li&gtInstall the TechniSat Wall Switch.</li&gt <li&gtAfter checking the correct installation, re-enable electrical power at the main fuse or circuit breaker.</li&gt <li&gtStart the Z-Wave device add mode on your Z-Wave gateway, according to the gateway‘s manual.</li&gt <li&gtPress T1 3x within 1 second.</li&gt <li&gtThe red status LED is on while the device is added to the Z-Wave network.</li&gt <li&gtThe green LED is on for 5 seconds after successfully adding the device.</li&gt </ol&gt
 
 ### Exclusion Information
 
-Press and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.
+<p&gtPress and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.</p&gt
 
 ## Channels
 
@@ -183,9 +176,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Current wattage meter
 
 Interval of current wattage meter reports in 10 seconds
-**** - disable unsolicited reports
-
-**3 ... 8640** (30 seconds - 1 day)
+<p&gt<strong&gt0</strong&gt - disable unsolicited reports</p&gt <p&gt<strong&gt3 ... 8640</strong&gt (30 seconds - 1 day)</p&gt
 Values in the range 0 to 8640 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -196,9 +187,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Active energy meter
 
 Interval of active energy meter reports in minutes
-**** - disable unsolicited reports
-
-**10 ... 30240** (10 minutes - 3 weeks)
+<p&gt<strong&gt0</strong&gt - disable unsolicited reports</p&gt <p&gt<strong&gt10 ... 30240</strong&gt (10 minutes - 3 weeks)</p&gt
 Values in the range 0 to 30240 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -215,23 +204,19 @@ The Series switch 0300/9498 supports 3 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-  * Device Reset Locally Notification
-  * Central Scene notification
-  * Meter Report
-  * Switch Binary Report
-  * Notification Report
+<ul&gt<li&gtDevice Reset Locally Notification</li&gt <li&gtCentral Scene notification</li&gt <li&gtMeter Report</li&gt <li&gtSwitch Binary Report</li&gt <li&gtNotification Report</li&gt </ul&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Switch State 1
 
-  * Basic Set
+<ul&gt<li&gtBasic Set</li&gt </ul&gt
 
 Association group 2 supports 10 nodes.
 
 ### Group 3: Switch State 2
 
-  * Basic Set
+<ul&gt<li&gtBasic Set</li&gt </ul&gt
 
 Association group 3 supports 10 nodes.
 
@@ -288,9 +273,9 @@ Association group 3 supports 10 nodes.
 
 ### Documentation Links
 
-* [data sheet](https://www.cd-jackson.com/zwave_device_uploads/1273/Technical-Data-Sheet-Series-switch-flush-mount-BJ.pdf)
+* [data sheet](https://opensmarthouse.org/zwavedatabase/1273/Technical-Data-Sheet-Series-switch-flush-mount-BJ.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1273).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1273).

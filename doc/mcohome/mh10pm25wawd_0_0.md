@@ -10,54 +10,26 @@ This describes the Z-Wave device *MH10-PM2.5-WA/WD*, manufactured by *[McoHome T
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![MH10-PM2.5-WA/WD product image](https://www.cd-jackson.com/zwave_device_uploads/1056/1056_default.png)
+![MH10-PM2.5-WA/WD product image](https://opensmarthouse.org/zwavedatabase/1056/image/)
 
 
 The MH10-PM2.5-WA/WD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-MCOHome PM2.5 Monitor is an air quality detector which compatible with Z-Wave Plus technology, it is mainly used to monitor PM2.5 concentration in industrial, agricultural, and residence environment, while monitoring the indoor temperature and humidity. Device can be included into any Z-Wave network, and is compatible with any other Z-Wave certified devices.
+<p&gtMCOHome PM2.5 Monitor is an air quality detector which compatible with Z-Wave Plus technology, it is mainly used to monitor PM2.5 concentration in industrial, agricultural, and residence environment, while monitoring the indoor temperature and humidity. Device can be included into any Z-Wave network, and is compatible with any other Z-Wave certified devices.</p&gt
 
 ### Inclusion Information
 
-The unlabelled buttons on the left edge of the device are S1, S2 and S3, starting from the top.
-
-Activate Inclusion/Exclusion mode in your Z-Wave controller.
-
-With the device powered on, long press S1 & S3 simultaneously to enter Inclusion/Exclusion mode.
-
-  * If device is not included into a Z-Wave network before, “\- - -” will display on the screen.
-  * Then press S1 once, “\- - -” will flash and the device enters into learning mode to get a node ID.
-
-If inclusion is successful, a node ID will display on the screen. If not, “\- - -” will stop flashing after 20 seconds.
-
-Note: If display is flashing, you can abort the operation by long pressing S1+S3. If display is not flashing, press S2 once to return to normal operation.
+<p&gtThe unlabelled buttons on the left edge of the device are S1, S2 and S3, starting from the top.</p&gt <p&gtActivate Inclusion/Exclusion mode in your Z-Wave controller.</p&gt <p&gtWith the device powered on, long press S1 & S3 simultaneously to enter Inclusion/Exclusion mode.</p&gt <ul&gt<li&gtIf device is not included into a Z-Wave network before, “\- - -” will display on the screen.</li&gt <li&gtThen press S1 once, “\- - -” will flash and the device enters into learning mode to get a node ID.</li&gt </ul&gt<p&gtIf inclusion is successful, a node ID will display on the screen. If not, “\- - -” will stop flashing after 20 seconds.</p&gt <p&gtNote: If display is flashing, you can abort the operation by long pressing S1+S3. If display is not flashing, press S2 once to return to normal operation.</p&gt
 
 ### Exclusion Information
 
-The unlabelled buttons on the left edge of the device are S1, S2 and S3, starting from the top.
-
-Activate Inclusion/Exclusion mode in your Z-Wave controller.
-
-With the device powered on, long press S1 & S3 simultaneously to enter Inclusion/Exclusion mode.
-
-  * If a node ID is displayed, it means the device is already in a Z-Wave network.
-  * Press S1 once can remove it from the network. “\- - -” displays.
-  * Press S2 once can return to normal work
-
-Note: If display is flashing, you can abort the operation by long pressing S1+S3. If display is not flashing, press S2 once to return to normal operation.
+<p&gtThe unlabelled buttons on the left edge of the device are S1, S2 and S3, starting from the top.</p&gt <p&gtActivate Inclusion/Exclusion mode in your Z-Wave controller.</p&gt <p&gtWith the device powered on, long press S1 & S3 simultaneously to enter Inclusion/Exclusion mode.</p&gt <ul&gt<li&gtIf a node ID is displayed, it means the device is already in a Z-Wave network.</li&gt <li&gtPress S1 once can remove it from the network. “\- - -” displays.</li&gt <li&gtPress S2 once can return to normal work</li&gt </ul&gt<p&gtNote: If display is flashing, you can abort the operation by long pressing S1+S3. If display is not flashing, press S2 once to return to normal operation.</p&gt
 
 ### General Usage Information
 
-Installation & Wiring
-
-Location:  
-Device is suggested to be installed indoor, a place with around 1.5m height above the floor where represents the average PM2.5 concentration. It should be away from direct sunlight, any cover, or any heat source, to avoid false signal for detection.  
-  
-Notice!  
-Device must be wall-mounted vertically. Do not lay it flat or upside down while working.  
-Do not mounted it in a wind gap, or cover its bottom, which may affect the detected data.
+<p&gtInstallation & Wiring</p&gt <p&gtLocation:<br /&gtDevice is suggested to be installed indoor, a place with around 1.5m height above the floor where represents the average PM2.5 concentration. It should be away from direct sunlight, any cover, or any heat source, to avoid false signal for detection.<br /&gt<br /&gtNotice!<br /&gtDevice must be wall-mounted vertically. Do not lay it flat or upside down while working.<br /&gtDo not mounted it in a wind gap, or cover its bottom, which may affect the detected data.</p&gt
 
 ## Channels
 
@@ -144,7 +116,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 255: Factory Setting
 
 85 (0x55) to restore factory setting
-Parameters will be set back to default values, association groups deleted.
+<p&gtParameters will be set back to default values, association groups deleted.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -193,9 +165,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1056/MH10-PM2-5-UM-Zwave-Plus.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1056/MH10-PM2-5-UM-Zwave-Plus.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1056).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1056).

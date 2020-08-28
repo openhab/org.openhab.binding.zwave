@@ -10,28 +10,22 @@ This describes the Z-Wave device *MIMO2+*, manufactured by *FortrezZ LLC* with t
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![MIMO2+ product image](https://www.cd-jackson.com/zwave_device_uploads/700/700_default.png)
+![MIMO2+ product image](https://opensmarthouse.org/zwavedatabase/700/image/)
 
 
 The MIMO2+ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The MIMO2+ module provides two analog or digital input and two relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM.  The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications. 
-
-Input SIG1 and SIG2 is an analog input, internally pulled-up to the MIMO2+ supply voltage. The system allows trigger conditions to be set based on the input voltage being inside or outside a user-defined range (configured via Z-Wave).  This provides great flexibility for capturing events in a wide variety of applications. The trigger status of the input can be read via Z-WaveTM and/or can be automatically sent to a configured node, typically the Controller.  In addition, a count of the trigger events that have occurred for the input channel is internally recorded (and stored in the ‘pulse count’) and is available to be requested or automatically sent via Z-Wave.  The current triggered/un-triggered status can also be read via ZWave.  The SIG1 and SIG2 input can be associated with up to two other Z-WaveTM devices, such that an associated device will automatically turn on (or off) based on the occurrence of a trigger event.  Finally, the analog input channel can be configured so that the analog input level (not just binary trigger status) is periodically sent to up to two other associated nodes. 
-
-The output relay is typically commanded via Z-WaveTM commands. In addition, the user can configure the input SIG1 or SIG2 trigger condition to be mapped to the output relay.  For example, Relay 1 or 2 can be automatically turned on based on Input SIG1 being triggered.  The relay activation can be set via a jumper or via Z-WaveTM for either momentary or latched operation.
+<p&gtThe MIMO2+ module provides two analog or digital input and two relay output (isolated dry contacts, NO-COM-NC) and can be controlled by ZWaveTM.  The system includes a program switch for Z-WaveTM inclusion/exclusion and a status light (LED) for various indications. </p&gt <p&gtInput SIG1 and SIG2 is an analog input, internally pulled-up to the MIMO2+ supply voltage. The system allows trigger conditions to be set based on the input voltage being inside or outside a user-defined range (configured via Z-Wave).  This provides great flexibility for capturing events in a wide variety of applications. The trigger status of the input can be read via Z-WaveTM and/or can be automatically sent to a configured node, typically the Controller.  In addition, a count of the trigger events that have occurred for the input channel is internally recorded (and stored in the ‘pulse count’) and is available to be requested or automatically sent via Z-Wave.  The current triggered/un-triggered status can also be read via ZWave.  The SIG1 and SIG2 input can be associated with up to two other Z-WaveTM devices, such that an associated device will automatically turn on (or off) based on the occurrence of a trigger event.  Finally, the analog input channel can be configured so that the analog input level (not just binary trigger status) is periodically sent to up to two other associated nodes. </p&gt <p&gtThe output relay is typically commanded via Z-WaveTM commands. In addition, the user can configure the input SIG1 or SIG2 trigger condition to be mapped to the output relay.  For example, Relay 1 or 2 can be automatically turned on based on Input SIG1 being triggered.  The relay activation can be set via a jumper or via Z-WaveTM for either momentary or latched operation.</p&gt
 
 ### Inclusion Information
 
-  1. Set up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)
-  2. If the LED has a periodic single blink, the unit will be automatically included.  Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active.  In this case, briefly press the button once and the controller will indicate that the unit has been included in the network.  Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.  
+<ol&gt<li&gtSet up the inclusion mode at the controller (for detailed directions, please refer to your controller user manual)</li&gt <li&gtIf the LED has a periodic single blink, the unit will be automatically included.  Otherwise, the button has been previously pressed and automatic inclusion mode is no longer active.  In this case, briefly press the button once and the controller will indicate that the unit has been included in the network.  Also, the Status LED will blink when the inclusion completes. Inclusion and exclusion are always done at normal transmit power mode.  </li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Set up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)
-  2. Press the button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes. 
+<ol&gt<li&gtSet up the exclusion mode at the controller (for detailed directions, please refer to your controller user manual)</li&gt <li&gtPress the button and the controller will indicate the unit has been removed from the network. The Status LED will blink when the exclusion completes. </li&gt </ol&gt
 
 ## Channels
 
@@ -433,10 +427,10 @@ Association group 3 supports 2 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/700/User-Manual-MIMO2--8May2017-removed-MI-address.pdf)
-* [Technical Manual](https://www.cd-jackson.com/zwave_device_uploads/700/Tech-Appendix-MIMO2--8May2017-removed-MI-address.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/700/User-Manual-MIMO2--8May2017-removed-MI-address.pdf)
+* [Technical Manual](https://opensmarthouse.org/zwavedatabase/700/Tech-Appendix-MIMO2--8May2017-removed-MI-address.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/700).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/700).

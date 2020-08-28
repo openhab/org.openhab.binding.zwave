@@ -7,9 +7,7 @@
 
   <thing-type id="kwikset_914trlv3_00_000" listed="false">
     <label>914TRLv3 Touchpad Electronic Deadbolt</label>
-    <description><![CDATA[
-Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>One touch locking</li> <li>Dramatically reduced, all-metal interior </li> <li>30 user codes plus master code </li> <li>BHMA grade 2 certified </li> <li>20 minute fire rating - UL certified </li> <li>Full 128-bit encryption security </li> <li>SmartKey: Re-key the lock in seconds</li> </ul><br /><h2>Inclusion Information</h2><p>Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p>Press button “A” on the lock one time to exclude it from your system.</p> <br /><h2>Wakeup Information</h2><p>N/A</p>
-    ]]></description>
+    <description>Touchpad Electronic Deadbolt&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtOne touch locking&lt;/li&gt &lt;li&gtDramatically reduced, all-metal interior &lt;/li&gt &lt;li&gt30 user codes plus master code &lt;/li&gt &lt;li&gtBHMA grade 2 certified &lt;/li&gt &lt;li&gt20 minute fire rating - UL certified &lt;/li&gt &lt;li&gtFull 128-bit encryption security &lt;/li&gt &lt;li&gtSmartKey: Re-key the lock in seconds&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress button “A” on the lock one time to include it in your system.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress button “A” on the lock one time to exclude it from your system.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtN/A&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -59,7 +57,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>One touch locking</li
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Black &amp; Decker</property>
+      <property name="vendor">Black &amp;amp; Decker</property>
       <property name="modelId">914TRLv3</property>
       <property name="manufacturerId">0090</property>
       <property name="manufacturerRef">0003:0440</property>
@@ -86,9 +84,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><ul><li>One touch locking</li
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: User Code 1 Type</label>
-        <description><![CDATA[
-User Code 1 Type<br /><h1>Overview</h1><table><tr><td><strong>Parameter Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td><strong>0x00</strong></td> <td>Reserved </td> </tr><tr><td><strong>0x01</strong></td> <td>Owner (Default)</td> </tr><tr><td><strong>0x02</strong></td> <td>Reserved</td> </tr><tr><td><strong>0x03</strong></td> <td>Guest (required for Year/Day schedules)</td> </tr><tr><td><strong>0x04</strong></td> <td>Worker (required for week day schedules)</td> </tr><tr><td><strong>0x05 - 0xFE</strong></td> <td>Reserved </td> </tr><tr><td><strong>0xFF</strong></td> <td>No User Code assigned </td> </tr></table>
-        ]]></description>
+        <description>User Code 1 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtParameter Value&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0x00&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0x01&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOwner (Default)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0x02&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0x03&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtGuest (required for Year/Day schedules)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0x04&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtWorker (required for week day schedules)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0x05 - 0xFE&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gt0xFF&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNo User Code assigned &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -133,16 +129,12 @@ User Code 1 Type<br /><h1>Overview</h1><table><tr><td><strong>Parameter Value</s
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>The lock supports 2 association groups. Per Z-Wave Plus requirements, group 1 is assigned to the Lifeline group and can only support 1 node.</p> <p>The Lifeline group supports the following unsolicited messages:</p> <table><tr><td><strong>Command Class</strong></td> <td><strong>Command</strong></td> </tr><tr><td>Command Class Battery</td> <td>Battery Report</td> </tr><tr><td>Command Class Door Lock </td> <td>Door Lock Operation Report</td> </tr><tr><td>Command Class Notification</td> <td>Notification Report</td> </tr><tr><td>Command Class Device Reset Locally </td> <td> <p>Device Reset Locally Notification</p> </td> </tr></table>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe lock supports 2 association groups. Per Z-Wave Plus requirements, group 1 is assigned to the Lifeline group and can only support 1 node.&lt;/p&gt &lt;p&gtThe Lifeline group supports the following unsolicited messages:&lt;/p&gt &lt;table&gt&lt;tr&gt&lt;td&gt&lt;strong&gtCommand Class&lt;/strong&gt&lt;/td&gt &lt;td&gt&lt;strong&gtCommand&lt;/strong&gt&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Battery&lt;/td&gt &lt;td&gtBattery Report&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Door Lock &lt;/td&gt &lt;td&gtDoor Lock Operation Report&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Notification&lt;/td&gt &lt;td&gtNotification Report&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Device Reset Locally &lt;/td&gt &lt;td&gt &lt;p&gtDevice Reset Locally Notification&lt;/p&gt &lt;/td&gt &lt;/tr&gt&lt;/table&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Doorlock notify report</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Will provide all Notification Reports, via the Command Class Notification, generated by the lock.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWill provide all Notification Reports, via the Command Class Notification, generated by the lock.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

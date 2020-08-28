@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhja_00_000" listed="false">
     <label>ZMNHJA Flush Pilot</label>
-    <description><![CDATA[
-Flush Pilot<br /><h1>Overview</h1><p>This Z-Wave module is used to control electric Radiators with 6 different working modes by pilot wire control signal. The module can be controlled either through a Z-Wave network or through the wall switch. </p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds). </li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.</li> </ul>
-    ]]></description>
+    <description>Flush Pilot&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Z-Wave module is used to control electric Radiators with 6 different working modes by pilot wire control signal. The module can be controlled either through a Z-Wave network or through the wall switch. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 2 second or&lt;/li&gt &lt;li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds). &lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 6 second or&lt;/li&gt &lt;li&gtpress push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.&lt;/li&gt &lt;/ul&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -209,7 +207,7 @@ Flush Pilot<br /><h1>Overview</h1><p>This Z-Wave module is used to control elect
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Basic on/off - input I3</label>
+        <label>5: Basic on/off -  input I3</label>
         <description>Triggered at change of the input I3 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>

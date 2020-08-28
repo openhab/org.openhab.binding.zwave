@@ -10,36 +10,22 @@ This describes the Z-Wave device *KeyWe Smart lock *, manufactured by *Guardtec*
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![KeyWe Smart lock  product image](https://www.cd-jackson.com/zwave_device_uploads/1175/1175_default.png)
+![KeyWe Smart lock  product image](https://opensmarthouse.org/zwavedatabase/1175/image/)
 
 
 The KeyWe Smart lock  supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The GKW-2000D is a smart lock that can be conveniently used with Z-Wave and Bluetooth.  
-You can control the door lock directly from the phone via the Bluetooth function in close range.
-
-You can also check the status of the door lock on the outside by connecting to the Z-Wave hub.  
-You can also control door locks and check status via Google Home or Amazon Alexa.
+<p&gtThe GKW-2000D is a smart lock that can be conveniently used with Z-Wave and Bluetooth.<br /&gtYou can control the door lock directly from the phone via the Bluetooth function in close range.</p&gt <p&gtYou can also check the status of the door lock on the outside by connecting to the Z-Wave hub.<br /&gtYou can also control door locks and check status via Google Home or Amazon Alexa.</p&gt
 
 ### Inclusion Information
 
-To add or include the GKW-2000D into a Z-Wave network:
-
-  1. Set the controller in inclusion mode.
-  2. Open the battery cover of the indoor body and press the [S button.
-  3. Press the Master Pin \[1]\[2\]\[3\][4\] (Default value) button after press the [#] button.
-  4. Press the \[8\]\[8\] button after press the [*] button.
+<p&gtTo add or include the GKW-2000D into a Z-Wave network:</p&gt <ol&gt<li&gtSet the controller in inclusion mode.</li&gt <li&gtOpen the battery cover of the indoor body and press the \[S button.</li&gt <li&gtPress the Master Pin \[1\]\[2\]\[3\]\[4\\] (Default value) button after press the \[#] button.</li&gt <li&gtPress the [8\]\[8\] button after press the [*] button.</li&gt </ol&gt
 
 ### Exclusion Information
 
-To remove or exclude the GKW-2000D into a Z-Wave network
-
-  1. Set the controller in exclusion mode.
-  2. Open the battery cover of the indoor body and press the [S] button.
-  3. Press the Master Pin \[1]\[2\]\[3\][4\] (Default value) button after pressi the [#] button.
-  4. Press the \[9\]\[9\] button after press the [*] button.
+<p&gtTo remove or exclude the GKW-2000D into a Z-Wave network</p&gt <ol&gt<li&gtSet the controller in exclusion mode.</li&gt <li&gtOpen the battery cover of the indoor body and press the \[S] button.</li&gt <li&gtPress the Master Pin \[1\]\[2\]\[3\]\[4\\] (Default value) button after pressi the \[#] button.</li&gt <li&gtPress the [9\]\[9\] button after press the [*] button.</li&gt </ol&gt
 
 ## Channels
 
@@ -147,9 +133,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [GKW-2000D](https://www.cd-jackson.com/zwave_device_uploads/1175/GKW-2000D-Z-Wave-Manual-20180807.pdf)
+* [GKW-2000D](https://opensmarthouse.org/zwavedatabase/1175/GKW-2000D-Z-Wave-Manual-20180807.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1175).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1175).

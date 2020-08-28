@@ -10,7 +10,7 @@ This describes the Z-Wave device *DMWS1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![DMWS1 product image](https://www.cd-jackson.com/zwave_device_uploads/651/651_default.jpg)
+![DMWS1 product image](https://opensmarthouse.org/zwavedatabase/651/image/)
 
 
 The DMWS1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,19 +19,15 @@ The DMWS1 does not permanently listen for messages sent from the controller - it
 
 ## Overview
 
-The Dome Leak Sensor is a battery powered Z-Wave Plus device that can detect wetness and send a notification when it does so. The Leak Sensor consists of two parts—the “SENSOR ASSEMBLY,” and the optional “REMOTE SENSOR PROBE.” They both detect water similarly, using three visible “LEAD.” The moment water touches any of the LEAD, the device will beep and send a notification with its moisture status to its Z-Wave controller.
+<p&gtThe Dome Leak Sensor is a battery powered Z-Wave Plus device that can detect wetness and send a notification when it does so. The Leak Sensor consists of two parts—the “SENSOR ASSEMBLY,” and the optional “REMOTE SENSOR PROBE.” They both detect water similarly, using three visible “LEAD.” The moment water touches any of the LEAD, the device will beep and send a notification with its moisture status to its Z-Wave controller.</p&gt
 
 ### Inclusion Information
 
-Put controller in inclusion mode.
-
-Remove cover from device, remove tab from battery (if present), and press button 3 times rapidly.
+<p&gtPut controller in inclusion mode.</p&gt <p&gtRemove cover from device, remove tab from battery (if present), and press button 3 times rapidly.</p&gt
 
 ### Exclusion Information
 
-Put controller in exclusion mode.
-
-Remove cover from device and press button 3 times rapidly.
+<p&gtPut controller in exclusion mode.</p&gt <p&gtRemove cover from device and press button 3 times rapidly.</p&gt
 
 ### Wakeup Information
 
@@ -40,7 +36,7 @@ The DMWS1 does not permanently listen for messages sent from the controller - it
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Remove cover from device, then press and hold the button for two seconds. The LED INDICATOR will flash once indicating successful wake up. If this doesn't wake up the device, try triple-clicking the button. This causes the device to emit a NIF frame, which the binding treats as a wake up.
+<p&gtRemove cover from device, then press and hold the button for two seconds. The LED INDICATOR will flash once indicating successful wake up. If this doesn't wake up the device, try triple-clicking the button. This causes the device to emit a NIF frame, which the binding treats as a wake up.</p&gt
 
 ## Channels
 
@@ -54,10 +50,7 @@ The following table summarises the channels available for the DMWS1 -:
 | Battery Level | battery-level | system.battery_level | Battery | Number |
 
 ### Binary Sensor
-The Leak Sensor also sends a Binary Sensor Report when a leak is detected or removed.  See below for the SENSOR\_BINARY\_REPORT parameters sent:  
-Sensor Type: 06 (Water)  
-Leak Detected Value: 0xFF  
-Leak Removed Value: 0x00
+<p&gtThe Leak Sensor also sends a Binary Sensor Report when a leak is detected or removed.  See below for the SENSOR\_BINARY\_REPORT parameters sent:<br /&gtSensor Type: 06 (Water)<br /&gtLeak Detected Value: 0xFF<br /&gtLeak Removed Value: 0x00</p&gt
 
 Indicates if a sensor has triggered.
 
@@ -121,9 +114,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Total Alarm Duration
 
 Total time the Leak Sensor will beep and light its LED in the event of a leak
-0: Leak Sensor beeps until water is removed
-
-1-255: 1-255 minutes
+<p&gt0: Leak Sensor beeps until water is removed</p&gt <p&gt1-255: 1-255 minutes</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```120```.
@@ -199,7 +190,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Basic Set Level
 
 The value sent by the BASIC_SET command to Association Group 2
-Determines the value to be sent in the Basic Set command to Association Group 2 when a leak is detected
+<p&gtDetermines the value to be sent in the Basic Set command to Association Group 2 when a leak is detected</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -233,26 +224,26 @@ The DMWS1 supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Group 1 is the “Lifeline” group, which can hold five members, typically including the main Z-Wave controller.  The Leak Sensor sends this group a Notification Report and a Binary Sensor Report when water is detected or removed.  It also sends this group a Battery Report in reponse to Battery Get commands and a Locally Reset Notification upon local reset.
+<p&gtGroup 1 is the “Lifeline” group, which can hold five members, typically including the main Z-Wave controller.  The Leak Sensor sends this group a Notification Report and a Binary Sensor Report when water is detected or removed.  It also sends this group a Battery Report in reponse to Battery Get commands and a Locally Reset Notification upon local reset.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Control
 
 Group to receive BASIC_SET on leak change
-The Leak Sensor sends a Basic Set command to Association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) in response to a detected leak. Then, after the leak is no longer detected, a BASIC_SET(0x00) command is sent to reset the device (e.g. turn off the light.) The value of the Basic Set command (e.g. brightness of the lamp) is configured using configuration parameter 7. 
+<p&gtThe Leak Sensor sends a Basic Set command to Association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) in response to a detected leak. Then, after the leak is no longer detected, a BASIC_SET(0x00) command is sent to reset the device (e.g. turn off the light.) The value of the Basic Set command (e.g. brightness of the lamp) is configured using configuration parameter 7. </p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Notification
 
-Group 3 supports up to 5 members and the Leak Sensor sends it a NOTIFICATION_REPORT when water is detected or removed
+<p&gtGroup 3 supports up to 5 members and the Leak Sensor sends it a NOTIFICATION_REPORT when water is detected or removed</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Sensor Binary 
 
-Group 4 supports up to 5 members and the Leak Sensor sends it a SENSOR\_BINARY\_REPORT when water is detected or removed.
+<p&gtGroup 4 supports up to 5 members and the Leak Sensor sends it a SENSOR\_BINARY\_REPORT when water is detected or removed.</p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -281,9 +272,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Operating Guide and ZWave command reference](https://www.cd-jackson.com/zwave_device_uploads/651/DMWS1-dome-z-leak-detector-operating-guide.pdf)
+* [Operating Guide and ZWave command reference](https://opensmarthouse.org/zwavedatabase/651/DMWS1-dome-z-leak-detector-operating-guide.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/651).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/651).

@@ -10,32 +10,22 @@ This describes the Z-Wave device *ZV2400TAC-SL-A*, manufactured by *[Sunricher](
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZV2400TAC-SL-A product image](https://www.cd-jackson.com/zwave_device_uploads/1116/1116_default.jpg)
+![ZV2400TAC-SL-A product image](https://opensmarthouse.org/zwavedatabase/1116/image/)
 
 
 The ZV2400TAC-SL-A supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The knob smart dimmer is a Z-Wave device designed to work with various types of light sources. It may be connected to two-wire or three-wire configuration so it can operate with or without neutral lead. The dimmer can switch or dim connected light source either through Z-Wave devices or through the rotary knob directly. The smart dimmer is equipped with an algorithm of smart light source detection which makes configuration easier and ensures high compatibility of the device. It may be used as a switch with non-dimmable light sources (in 3- wire connection). The dimmer can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network. The encryption mode that the dimmer supports is S2 Unauthenticated. When the dimmer is being included into a Z-Wave network, you can use your primary controller/gateway to enable encryption mode or disable encryption. (The primary controller/gateway shall support encryption mode configuration). The dimmer supports OTA and can update firmware wirelessly.
+<p&gtThe knob smart dimmer is a Z-Wave device designed to work with various types of light sources. It may be connected to two-wire or three-wire configuration so it can operate with or without neutral lead. The dimmer can switch or dim connected light source either through Z-Wave devices or through the rotary knob directly. The smart dimmer is equipped with an algorithm of smart light source detection which makes configuration easier and ensures high compatibility of the device. It may be used as a switch with non-dimmable light sources (in 3- wire connection). The dimmer can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network. The encryption mode that the dimmer supports is S2 Unauthenticated. When the dimmer is being included into a Z-Wave network, you can use your primary controller/gateway to enable encryption mode or disable encryption. (The primary controller/gateway shall support encryption mode configuration). The dimmer supports OTA and can update firmware wirelessly.</p&gt
 
 ### Inclusion Information
 
-There are two methods to set the dimmer into inclusion mode:
-
-  1. Repower on the dimmer, it will be set into inclusion mode automatically, and waiting to be included.
-  2. Triple press reset button on the dimmer, it will set the dimmer into inclusion mode. The connected light will stay solid on for 3 seconds to indicate successful inclusion.
+<p&gtThere are two methods to set the dimmer into inclusion mode:</p&gt <ol&gt<li&gtRepower on the dimmer, it will be set into inclusion mode automatically, and waiting to be included.</li&gt <li&gtTriple press reset button on the dimmer, it will set the dimmer into inclusion mode. The connected light will stay solid on for 3 seconds to indicate successful inclusion.</li&gt </ol&gt
 
 ### Exclusion Information
 
-There are two exclusion methods:
-
-Method 1: Exclusion from the primary controller/gateway as follows:
-
-  1. Set the primary controller/gateway into exclusion mode (Please refer to your primary controllers manual on how to set your controller into exclusion).
-  2. Triple press reset button, the dimmer will be set to exclusion mode, and waiting to be excluded, then the dimmer will be excluded from the network.
-
-Method 2: Factory reset the dimmer will force it to be excluded from a network. (please refer to the part “Factory Reset” of this manual) Note: Factory reset is not recommended for exclusion, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.
+<p&gtThere are two exclusion methods:</p&gt <p&gtMethod 1: Exclusion from the primary controller/gateway as follows:</p&gt <ol&gt<li&gtSet the primary controller/gateway into exclusion mode (Please refer to your primary controllers manual on how to set your controller into exclusion).</li&gt <li&gtTriple press reset button, the dimmer will be set to exclusion mode, and waiting to be excluded, then the dimmer will be excluded from the network.</li&gt </ol&gt<p&gtMethod 2: Factory reset the dimmer will force it to be excluded from a network. (please refer to the part “Factory Reset” of this manual) Note: Factory reset is not recommended for exclusion, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.</p&gt
 
 ## Channels
 
@@ -137,13 +127,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 2: State before power failure
 
 Saving load state before power failure
-Info: Saving load state before power failure
-
-0 － shutoff load
-
-1 － turn on load
-
-2 － save load state before power failure
+<p&gtInfo: Saving load state before power failure</p&gt <p&gt0 － shutoff load</p&gt <p&gt1 － turn on load</p&gt <p&gt2 － save load state before power failure</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -160,7 +144,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3:  Send Basic report
 
 send the basic report to the Lifeline when the load state changed
-Info: Enable/disable to send the basic report to the Lifeline when the load state changed （When value set as 1, re-power on the dimmer, it will send Basic report automatically） 
+<p&gtInfo: Enable/disable to send the basic report to the Lifeline when the load state changed （When value set as 1, re-power on the dimmer, it will send Basic report automatically） </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -176,9 +160,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Default fade time 
 
 Default fade time
-Default fade time (unit is second, this value has the same function as Duration of Multilevel)
-
-Valid value: 0~0xFF 
+<p&gtDefault fade time (unit is second, this value has the same function as Duration of Multilevel)</p&gt <p&gtValid value: 0~0xFF </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -196,7 +178,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Minimum brightness value
 
 Setting minimum brightness value
-Valid value: 0~50, the bigger the value is, the higher the load’s minimum brightness is 
+<p&gtValid value: 0~50, the bigger the value is, the higher the load’s minimum brightness is </p&gt
 Values in the range 0 to 50 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -207,7 +189,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Maximum brightness value
 
 Setting maximum brightness value
-Setting maximum brightness value Valid value: 0~100
+<p&gtSetting maximum brightness value Valid value: 0~100</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -218,11 +200,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: MOSFET driving type
 
 Choose MOSFET driving type
-Choose MOSFET driving type 
-
-0 – trailing edge
-
-1 – leading edge
+<p&gtChoose MOSFET driving type </p&gt <p&gt0 – trailing edge</p&gt <p&gt1 – leading edge</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -238,11 +216,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 9: Added to and removed from a network
 
 Added to and removed from a network
-Added to and removed from a network through external switch (when enables this function, triple press the external switch within 1.5 seconds to be added to or removed from a network)
-
-0 - disable
-
-1 - enable
+<p&gtAdded to and removed from a network through external switch (when enables this function, triple press the external switch within 1.5 seconds to be added to or removed from a network)</p&gt <p&gt0 - disable</p&gt <p&gt1 - enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -258,13 +232,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Detect load
 
 Enable/disable to detect load
-Enable/disable to detect load after re-power on (detect load type, minimum brightness, maximum brightness)
-
-0 - disable
-
-1 - enable to detect every time after re-power on
-
-2 - enable to detect only after first re-power on Note: When the device does not belong to any network, load detection will be enabled every time after re-power on. When the device has already been added to a network, load detection will be disabled.
+<p&gtEnable/disable to detect load after re-power on (detect load type, minimum brightness, maximum brightness)</p&gt <p&gt0 - disable</p&gt <p&gt1 - enable to detect every time after re-power on</p&gt <p&gt2 - enable to detect only after first re-power on Note: When the device does not belong to any network, load detection will be enabled every time after re-power on. When the device has already been added to a network, load detection will be disabled.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -281,13 +249,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Wiring type
 
 Wiring type
-Wiring type
-
-0 - unknown
-
-1 - 2 Wire With No Neutral
-
-2 - 3 Wire With Neutral
+<p&gtWiring type</p&gt <p&gt0 - unknown</p&gt <p&gt1 - 2 Wire With No Neutral</p&gt <p&gt2 - 3 Wire With Neutral</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -299,15 +261,7 @@ This is a read only parameter.
 ### Parameter 12: Load type
 
 Load type
-Load type
-
-0 - unknown
-
-1 - resistive
-
-2 - inductive
-
-3 - capacitive
+<p&gtLoad type</p&gt <p&gt0 - unknown</p&gt <p&gt1 - resistive</p&gt <p&gt2 - inductive</p&gt <p&gt3 - capacitive</p&gt
 Values in the range 0 to 3 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -319,11 +273,7 @@ This is a read only parameter.
 ### Parameter 13: Over current protection
 
 Enable/disable over current protection
-Enable/disable over current protection (over 1.5A for 20 seconds continuously)
-
-0 – disable
-
-1 – enable
+<p&gtEnable/disable over current protection (over 1.5A for 20 seconds continuously)</p&gt <p&gt0 – disable</p&gt <p&gt1 – enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -339,7 +289,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14:  Threshold, unit is W
 
 Threshold, unit is W
-Power automatic report absolute threshold, unit is W When power changes above the absolute threshold, immediately report current power value
+<p&gtPower automatic report absolute threshold, unit is W When power changes above the absolute threshold, immediately report current power value</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -350,7 +300,7 @@ This parameter has the configuration ID ```config_14_2``` and is of type ```INTE
 ### Parameter 15: Threshold, unit is %
 
 Threshold, unit is %
-Power automatic report percentage threshold, unit is % When power changes above the percentage threshold, immediately report current power value
+<p&gtPower automatic report percentage threshold, unit is % When power changes above the percentage threshold, immediately report current power value</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```20```.
@@ -361,7 +311,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 21: Power metering time cycle
 
 Power metering time cycle
-Power metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled 
+<p&gtPower metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```600```.
@@ -372,7 +322,7 @@ This parameter has the configuration ID ```config_21_4``` and is of type ```INTE
 ### Parameter 22: Energy metering time cycle
 
 Energy metering time cycle
-Energy metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled 
+<p&gtEnergy metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```1800```.
@@ -383,7 +333,7 @@ This parameter has the configuration ID ```config_22_4``` and is of type ```INTE
 ### Parameter 23: Voltage metering time cycle
 
 Voltage metering time cycle
-Voltage metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled 
+<p&gtVoltage metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -394,7 +344,7 @@ This parameter has the configuration ID ```config_23_4``` and is of type ```INTE
 ### Parameter 24: Current metering time cycle
 
 Current metering time cycle
-Current metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled 
+<p&gtCurrent metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -411,15 +361,7 @@ The ZV2400TAC-SL-A supports 1 association group.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-1. When press and hold down “Reset” button for 10S to reset the dimmer, send "Device Reset Locally Notification CC" to associated devices of this group to report factory reset information.
-
-2. When load state changes, send "Basic Report CC" to associated devices of this group.
-
-3. When a load over current is detected, send "Over-current detected" to Lifeline.
-
-4. When a mains voltage drop is detected, send "Voltage drop/drift" to Lifeline.
-
-5. When over temperature is detected, send “Emergency shutoff status" to Lifeline.
+<p&gt1. When press and hold down “Reset” button for 10S to reset the dimmer, send "Device Reset Locally Notification CC" to associated devices of this group to report factory reset information.</p&gt <p&gt2. When load state changes, send "Basic Report CC" to associated devices of this group.</p&gt <p&gt3. When a load over current is detected, send "Over-current detected" to Lifeline.</p&gt <p&gt4. When a mains voltage drop is detected, send "Voltage drop/drift" to Lifeline.</p&gt <p&gt5. When over temperature is detected, send “Emergency shutoff status" to Lifeline.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -451,9 +393,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation and operation manual](https://www.cd-jackson.com/zwave_device_uploads/1116/sunricher-SR-ZV2400TAC-SL-A.pdf)
+* [Installation and operation manual](https://opensmarthouse.org/zwavedatabase/1116/sunricher-SR-ZV2400TAC-SL-A.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1116).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1116).

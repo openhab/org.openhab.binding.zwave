@@ -10,61 +10,22 @@ This describes the Z-Wave device *MH9-CO2-WA*, manufactured by *[McoHome Technol
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![MH9-CO2-WA product image](https://www.cd-jackson.com/zwave_device_uploads/1078/1078_default.png)
+![MH9-CO2-WA product image](https://opensmarthouse.org/zwavedatabase/1078/image/)
 
 
 The MH9-CO2-WA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-MCOHome CO2 Monitor is an air quality detector which compatible with Z-Wave technology.
-
-It is mainly used to monitor CO2 concentration in industrial, agricultural, and residence environment, while monitoring the indoor temperature, humidity and VOC (optional) air quality.
-
-Device can be included into any Z-Wave network, and is compatible with any other Z-Wave certified devices.
-
-**Specification**
-
-  * Power Supply：85~260VAC
-  * CO2 display range: 0-2000ppm
-  * Default threshold:1000ppm (adjustable)
-  * Temperature range：-9.0～50 ℃
-  * Humidity range: 0%～99%RH
-  * Installation: Wall-mounted (Vertical)
-  * Work environment:-10~+8℃ 0-90%RH (Non-condensation)
-  * Dimension：90\* 130\*28mm
-  * Hole Pitch：60mm or 82m
-  * Housing: Tempered glass+ PC Alloy
-
-**Command Class supported by the device**
-
-  * COMMAND\_CLASS\_BASIC
-  * COMMAND\_CLASS\_SENSOR\_MULTILEVEL\_V5
-  * COMMAND\_CLASS\_CONFIGURATION
-  * COMMAND\_CLASS\_NOTIFICATION
-  * COMMAND\_CLASS\_ASSOCIATION
-  * COMMAND\_CLASS\_MANUFACTURER_SPECIFIC
-  * COMMAND\_CLASS\_VERSION
+<p&gtMCOHome CO2 Monitor is an air quality detector which compatible with Z-Wave technology.</p&gt <p&gtIt is mainly used to monitor CO2 concentration in industrial, agricultural, and residence environment, while monitoring the indoor temperature, humidity and VOC (optional) air quality.</p&gt <p&gtDevice can be included into any Z-Wave network, and is compatible with any other Z-Wave certified devices.</p&gt <p&gt<strong&gtSpecification</strong&gt</p&gt <ul&gt<li&gtPower Supply：85~260VAC</li&gt <li&gtCO2 display range: 0-2000ppm</li&gt <li&gtDefault threshold:1000ppm (adjustable)</li&gt <li&gtTemperature range：-9.0～50 ℃</li&gt <li&gtHumidity range: 0%～99%RH</li&gt <li&gtInstallation: Wall-mounted (Vertical)</li&gt <li&gtWork environment:-10~+8℃ 0-90%RH (Non-condensation)</li&gt <li&gtDimension：90\* 130\*28mm</li&gt <li&gtHole Pitch：60mm or 82m</li&gt <li&gtHousing: Tempered glass+ PC Alloy</li&gt </ul&gt<p&gt<strong&gtCommand Class supported by the device</strong&gt</p&gt <ul&gt<li&gtCOMMAND\_CLASS\_BASIC</li&gt <li&gtCOMMAND\_CLASS\_SENSOR\_MULTILEVEL\_V5</li&gt <li&gtCOMMAND\_CLASS\_CONFIGURATION</li&gt <li&gtCOMMAND\_CLASS\_NOTIFICATION</li&gt <li&gtCOMMAND\_CLASS\_ASSOCIATION</li&gt <li&gtCOMMAND\_CLASS\_MANUFACTURER\_SPECIFIC</li&gt <li&gtCOMMAND\_CLASS_VERSION</li&gt </ul&gt
 
 ### Inclusion Information
 
-Activate Inclusion/Exclusion mode in the gateway.
-
-When device is powered on, long press K2 can enter interface for inclusion or exclusion of Z-Wave network.
-
-If device has not been included into any Z-Wave network before, “\- - -”will display on the screen.
-
-Then press K2 once, “\- - -” flashing and device enters into learning mode to get a node ID. If inclusion is success, a node ID will display on the screen. If not, “\- - -” will stop flashing in 20 sec.
+<p&gtActivate Inclusion/Exclusion mode in the gateway.</p&gt <p&gtWhen device is powered on, long press K2 can enter interface for inclusion or exclusion of Z-Wave network.</p&gt <p&gtIf device has not been included into any Z-Wave network before, “\- - -”will display on the screen.</p&gt <p&gtThen press K2 once, “\- - -” flashing and device enters into learning mode to get a node ID. If inclusion is success, a node ID will display on the screen. If not, “\- - -” will stop flashing in 20 sec.</p&gt
 
 ### Exclusion Information
 
-Activate Inclusion/Exclusion mode in the gateway.
-
-When device is powered on, long press K2 can enter interface for inclusion or exclusion of Z-Wave network.
-
-If a node ID displays, it means the device is already in a Z-Wave network.
-
-To press K2 once can remove it from the network. “\- - -” displays and press K1 once can return to normal work.
+<p&gtActivate Inclusion/Exclusion mode in the gateway.</p&gt <p&gtWhen device is powered on, long press K2 can enter interface for inclusion or exclusion of Z-Wave network.</p&gt <p&gtIf a node ID displays, it means the device is already in a Z-Wave network.</p&gt <p&gtTo press K2 once can remove it from the network. “\- - -” displays and press K1 once can return to normal work.</p&gt
 
 ## Channels
 
@@ -118,9 +79,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Notification Threshold
 
 CO2 Notification Threshold
-Sets the CO2 notification threshold for association group 1.
-
-When the detected CO2 value is higher than the setting value, the device will send a (CO2 Detected Event) report to the Group 1. And this report will keep sending every 30 sec until the detected value is lower than the setting value.
+<p&gtSets the CO2 notification threshold for association group 1.</p&gt <p&gtWhen the detected CO2 value is higher than the setting value, the device will send a (CO2 Detected Event) report to the Group 1. And this report will keep sending every 30 sec until the detected value is lower than the setting value.</p&gt
 Values in the range 1 to 2000 may be set.
 
 The manufacturer defined default value is ```1000```.
@@ -137,23 +96,14 @@ The MH9-CO2-WA supports 2 association groups.
 ### Group 1: Notification
 
 sends report ever 30s when CO2 value above threshold
-Group 1 is for “Notification” purpose, which can add up to 5 Node ID. Device works in “Push” mode in “Notification Command Class”.
-
-When the detected CO2 value is higher than the setting value, the device will send a (CO2 Detected Event) report to the Group 1. And this report will keep sending every 30 sec until the detected value is lower than the setting value.
-
-Use “Notification Set” can set this unsolicited report; this function is default as “OFF”.
+<p&gtGroup 1 is for “Notification” purpose, which can add up to 5 Node ID. Device works in “Push” mode in “Notification Command Class”.</p&gt <p&gtWhen the detected CO2 value is higher than the setting value, the device will send a (CO2 Detected Event) report to the Group 1. And this report will keep sending every 30 sec until the detected value is lower than the setting value.</p&gt <p&gtUse “Notification Set” can set this unsolicited report; this function is default as “OFF”.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Gateway report
 
 CO2, Temperature and Humidity is reported when changed
-A gateway is suggested to associate with Group 2, which can support only one Node ID. The  
-gateway can ask for detected data any time. And the device will report to this associated device  
-(gateway) when detected data changes:  
-CO2: report when any change ≥50ppm“Multilevel sensor Report (CO2=0x11)”  
-Temperature: report when any change≥ 0.5 “Multilevel ℃ sensor Report (Temp=0x01)”  
-Humidity: report when any change≥ 2%“Multilevel sensor Report (Humidity=0x05)’
+<p&gtA gateway is suggested to associate with Group 2, which can support only one Node ID. The<br /&gtgateway can ask for detected data any time. And the device will report to this associated device<br /&gt(gateway) when detected data changes:<br /&gtCO2: report when any change ≥50ppm“Multilevel sensor Report (CO2=0x11)”<br /&gtTemperature: report when any change≥ 0.5 “Multilevel ℃ sensor Report (Temp=0x01)”<br /&gtHumidity: report when any change≥ 2%“Multilevel sensor Report (Humidity=0x05)’</p&gt
 
 Association group 2 supports 1 node.
 
@@ -182,9 +132,9 @@ Association group 2 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1078/20180531151046.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1078/20180531151046.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1078).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1078).

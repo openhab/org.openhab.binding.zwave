@@ -10,68 +10,26 @@ This describes the Z-Wave device *VOC-SENSOR*, manufactured by *Eurotronics* wit
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![VOC-SENSOR product image](https://www.cd-jackson.com/zwave_device_uploads/1240/1240_default.jpg)
+![VOC-SENSOR product image](https://opensmarthouse.org/zwavedatabase/1240/image/)
 
 
 The VOC-SENSOR supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Z-Wave sensor in an ultra slim design housing provides comprehensive information on indoor air quality.
-
-Based on these information it is possible to always ensure a healthy living climate.
-
-• Ultra-flat design housing
-
-• Use of high-precision, Swiss sensor technology
-
-• Multicolor LED for signalling ventilation recommendations
-
-• Returns the following values:
-
-- VOC value (volatile organic compounds) in ppm
-
-- CO2 value (as CO2 equivalent) in ppm
-
-- Temperature (°C) and humidity (%)
-
-- Dew point (°C)
-
-• Supports Z-Wave Plus S2 security (encryption)
-
-• Z-Wave repeater function
-
-• Operation with plug-in power supply unit
+<p&gtZ-Wave sensor in an ultra slim design housing provides comprehensive information on indoor air quality.</p&gt <p&gtBased on these information it is possible to always ensure a healthy living climate.</p&gt <p&gt• Ultra-flat design housing</p&gt <p&gt• Use of high-precision, Swiss sensor technology</p&gt <p&gt• Multicolor LED for signalling ventilation recommendations</p&gt <p&gt• Returns the following values:</p&gt <p&gt- VOC value (volatile organic compounds) in ppm</p&gt <p&gt- CO2 value (as CO2 equivalent) in ppm</p&gt <p&gt- Temperature (°C) and humidity (%)</p&gt <p&gt- Dew point (°C)</p&gt <p&gt• Supports Z-Wave Plus S2 security (encryption)</p&gt <p&gt• Z-Wave repeater function</p&gt <p&gt• Operation with plug-in power supply unit</p&gt
 
 ### Inclusion Information
 
-Press the back button three times within 1 second.
-
-While the inclusion is active, the LED is blinking green. If the inclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.
+<p&gtPress the back button three times within 1 second.</p&gt <p&gtWhile the inclusion is active, the LED is blinking green. If the inclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.</p&gt
 
 ### Exclusion Information
 
-Press the back button three times within 1 second.
-
-While the exclusion is active, the LED is blinking green. If the exclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.
+<p&gtPress the back button three times within 1 second.</p&gt <p&gtWhile the exclusion is active, the LED is blinking green. If the exclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.</p&gt
 
 ### General Usage Information
 
-On factory default the device does not belong to any Z-Wave network Air Quality Sensor Z-Wave Plus needs to be added to an existing wireless network to communicate with the devices of this network.
-
-This process is called Inclusion.
-
-Air Quality Sensor Z-Wave Plus can also be removed from a network.
-
-This process is called Exclusion.
-
-Both processes are initiated by the primary controller of the Z-Wave network.
-
-This controller is turned into exclusion respective inclusion mode.
-
-Please consult the manual of your Z-Wave Controller how to activate Inclusion or Exclusion mode.
-
-If Air Quality Sensor Z-Wave Plus has been added to a network, it has to be removed prior to be added to another wireless network.
+<p&gtOn factory default the device does not belong to any Z-Wave network Air Quality Sensor Z-Wave Plus needs to be added to an existing wireless network to communicate with the devices of this network.</p&gt <p&gtThis process is called Inclusion.</p&gt <p&gtAir Quality Sensor Z-Wave Plus can also be removed from a network.</p&gt <p&gtThis process is called Exclusion.</p&gt <p&gtBoth processes are initiated by the primary controller of the Z-Wave network.</p&gt <p&gtThis controller is turned into exclusion respective inclusion mode.</p&gt <p&gtPlease consult the manual of your Z-Wave Controller how to activate Inclusion or Exclusion mode.</p&gt <p&gtIf Air Quality Sensor Z-Wave Plus has been added to a network, it has to be removed prior to be added to another wireless network.</p&gt
 
 ## Channels
 
@@ -92,14 +50,7 @@ Indicates the current relative humidity.
 The ```sensor_relhumidity``` channel is of type ```sensor_relhumidity``` and supports the ```Number``` item and is in the ```Humidity``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Sensor (VOLATILE_ORGANIC_COMPOUND)
-Air Quality Sensor Z-Wave Plus measures the VOC concentration and automatically reports sensor readings to associated devices.
-
-Per default the reporting threshold is ±500ppb.
-
-This parameter can be altered via configuration command class.  
-Sensor type: „Volatile Organic Compound level“  
-Scale: Parts/million (ppm)  
-Precision: 3
+<p&gtAir Quality Sensor Z-Wave Plus measures the VOC concentration and automatically reports sensor readings to associated devices.</p&gt <p&gtPer default the reporting threshold is ±500ppb.</p&gt <p&gtThis parameter can be altered via configuration command class.<br /&gtSensor type: „Volatile Organic Compound level“<br /&gtScale: Parts/million (ppm)<br /&gtPrecision: 3</p&gt
 
 Channel type information on this channel is not found.
 
@@ -119,13 +70,7 @@ Indicates the dewpoint.
 The ```sensor_dewpoint``` channel is of type ```sensor_dewpoint``` and supports the ```Number``` item and is in the ```Temperature``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Alarm (HOME_HEALTH)
-Home Health  
-Air pollution level has changed  
-Pollution level  
-0x01: Clean  
-0x02: Slightly polluted  
-0x03: Moderately polluted  
-0x04: Highly polluted
+<p&gtHome Health<br /&gtAir pollution level has changed<br /&gtPollution level<br /&gt0x01: Clean<br /&gt0x02: Slightly polluted<br /&gt0x03: Moderately polluted<br /&gt0x04: Highly polluted</p&gt
 
 Indicates if an alarm is triggered.
 
@@ -159,9 +104,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Temperature on-change reporting
 
 Temperature on-change reporting
-0x00 No on-change reporting (only time-based reports).
-
-0x01 - 0x32 report if temperature changed by delta = 0,1°C - 5,0°C
+<p&gt0x00 No on-change reporting (only time-based reports).</p&gt <p&gt0x01 - 0x32 report if temperature changed by delta = 0,1°C - 5,0°C</p&gt
 The following option values may be configured, in addition to values in the range 0 to 50 -:
 
 | Value  | Description |
@@ -176,9 +119,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Humidity on-change reporting
 
 Humidity on-change reporting
-0x00 No on-change reporting (only time-based reports)
-
-0x01 - 0x0A report if humidity changed by delta = 1% ...10%
+<p&gt0x00 No on-change reporting (only time-based reports)</p&gt <p&gt0x01 - 0x0A report if humidity changed by delta = 1% ...10%</p&gt
 The following option values may be configured, in addition to values in the range 0 to 10 -:
 
 | Value  | Description |
@@ -193,9 +134,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Unit Temperature
 
 Unit for Temperature (Celsius or Fahrenheit)
-0x00 Temperature reports in Celsius 
-
-0x01 Temperature reports in Fahrenheit
+<p&gt0x00 Temperature reports in Celsius </p&gt <p&gt0x01 Temperature reports in Fahrenheit</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -211,11 +150,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Resolution Temperature
 
 Resolution for Temperature
-0x00 No resolution (example 22°C)
-
-0x01 1/10 resolution (example 22.3°C)
-
-0x02 1/100 resolution (example 22.35°C)
+<p&gt0x00 No resolution (example 22°C)</p&gt <p&gt0x01 1/10 resolution (example 22.3°C)</p&gt <p&gt0x02 1/100 resolution (example 22.35°C)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -232,11 +167,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Resolution Humidity
 
 Resolution Humidity
-0x00 No resolution (example 33%)
-
-0x01 1/10 resolution (example 33.4%)
-
-0x02 1/100 resolution (example 33.45%)
+<p&gt0x00 No resolution (example 33%)</p&gt <p&gt0x01 1/10 resolution (example 33.4%)</p&gt <p&gt0x02 1/100 resolution (example 33.45%)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -253,9 +184,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: VOC on-change reporting
 
 VOC on-change reporting
-0x00 No on-change reporting (only time-based reports)
-
-0x01 - 0x0A report if VOC reading changed by 100ppb - 1000ppb
+<p&gt0x00 No on-change reporting (only time-based reports)</p&gt <p&gt0x01 - 0x0A report if VOC reading changed by 100ppb - 1000ppb</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -266,9 +195,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: CO2eq on-change reporting
 
 CO2eq on-change reporting
-0x00 No on-change reporting (only time-based reports)
-
-0x01 - 0x0A report if CO2eq reading changed by 100ppm - 1000ppm
+<p&gt0x00 No on-change reporting (only time-based reports)</p&gt <p&gt0x01 - 0x0A report if CO2eq reading changed by 100ppm - 1000ppm</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -279,9 +206,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Air quality indication via LED
 
 Air quality indication via LED
-0x00 No air quality indication via LEDs
-
-0x01 Indicate measured air quality via LEDs
+<p&gt0x00 No air quality indication via LEDs</p&gt <p&gt0x01 Indicate measured air quality via LEDs </p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -299,16 +224,14 @@ The VOC-SENSOR supports 2 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Air Quality Sensor Z-Wave Plus can be associated with other devices.
-Commands:
-
-DEVICE\_RESET\_LOCALLY\_NOTIFICATION,NOTIFICATION\_REPORT,SENSOR\_MULTILEVEL\_REPORT
+<p&gtCommands:</p&gt <p&gtDEVICE\_RESET\_LOCALLY\_NOTIFICATION,NOTIFICATION\_REPORT,SENSOR\_MULTILEVEL\_REPORT</p&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Temperature
 
 Air Quality Sensor Z-Wave Plus can be associated with other devices.
-Command: SENSOR\_MULTILEVEL\_REPORT
+<p&gtCommand: SENSOR\_MULTILEVEL\_REPORT</p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -337,9 +260,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation and Operation Guide](https://www.cd-jackson.com/zwave_device_uploads/1240/Eurotronic-LGS-Z-Wave-Plus-BDA-web-EN-1.pdf)
+* [Installation and Operation Guide](https://opensmarthouse.org/zwavedatabase/1240/Eurotronic-LGS-Z-Wave-Plus-BDA-web-EN-1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1240).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1240).

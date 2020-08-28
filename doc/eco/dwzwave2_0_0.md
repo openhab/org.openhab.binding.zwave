@@ -10,7 +10,7 @@ This describes the Z-Wave device *DWZWAVE2*, manufactured by *Ecolink* with the 
 
 The device is in the category of *Door*, defining Door sensors.
 
-![DWZWAVE2 product image](https://www.cd-jackson.com/zwave_device_uploads/138/138_default.jpg)
+![DWZWAVE2 product image](https://opensmarthouse.org/zwavedatabase/138/image/)
 
 
 The DWZWAVE2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,21 +19,15 @@ The DWZWAVE2 does not permanently listen for messages sent from the controller -
 
 ## Overview
 
-  * Z-Wave enabled device which provides open/closed status
-  * Transmits open/closed status
-  * Reports tamper condition when cover is open
+<ul&gt<li&gtZ-Wave enabled device which provides open/closed status</li&gt <li&gtTransmits open/closed status</li&gt <li&gtReports tamper condition when cover is open</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Remove the battery for at least 5 seconds,
-  2. Reinstall the battery
-  3. Replace the sensor cover
+<ol&gt<li&gtRemove the battery for at least 5 seconds,</li&gt <li&gtReinstall the battery</li&gt <li&gtReplace the sensor cover</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Remove the battery from the Sensor.
-  2. Leave the battery out for at least ten (10) seconds.
-  3. Reinstall the battery into the Sensor.
+<ol&gt<li&gtRemove the battery from the Sensor.</li&gt <li&gtLeave the battery out for at least ten (10) seconds.</li&gt <li&gtReinstall the battery into the Sensor.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -42,7 +36,7 @@ The DWZWAVE2 does not permanently listen for messages sent from the controller -
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press the "+" button once.
+<p&gtPress the "+" button once.</p&gt
 
 ## Channels
 
@@ -155,14 +149,14 @@ The DWZWAVE2 supports 2 association groups.
 ### Group 1: Group 1
 
 Association Group 1
-Association group one is intended for but not limited to controllers. All nodes whose Node ID that have been set in Association group one will receive all unsolicited Alarm Report frames, and Basic Report frames of 0x00 and 0xFF.  When a sensor such as a door or window sensor is opened/faulted, the sensor will send a Basic Report to nodes in Association group one and a Basic Set of 0xFF to Association group two. When the door or window is closed the sensor will send a Basic Report of 0x00 to only group one.
+<p&gtAssociation group one is intended for but not limited to controllers. All nodes whose Node ID that have been set in Association group one will receive all unsolicited Alarm Report frames, and Basic Report frames of 0x00 and 0xFF.  When a sensor such as a door or window sensor is opened/faulted, the sensor will send a Basic Report to nodes in Association group one and a Basic Set of 0xFF to Association group two. When the door or window is closed the sensor will send a Basic Report of 0x00 to only group one.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Group 2
 
 Association Group 2
-Association group two is intended for any device Ecolink Z-Wave Command Class Specification 2 that is controllable with a Basic Set of 0xFF such as lights, sirens, or chimes. When a sensor such as a door or window sensor is opened/faulted, the sensor will send a Basic Report to nodes in Association group one and a Basic Set of 0xFF to Association group two. When the door or window is closed the sensor will send a Basic Report of 0x00 to only group one. The Configuration command class can configure the sensor to send Basic Sets of 0x00 to nodes in group two (turning devices off).
+<p&gtAssociation group two is intended for any device Ecolink Z-Wave Command Class Specification 2 that is controllable with a Basic Set of 0xFF such as lights, sirens, or chimes. When a sensor such as a door or window sensor is opened/faulted, the sensor will send a Basic Report to nodes in Association group one and a Basic Set of 0xFF to Association group two. When the door or window is closed the sensor will send a Basic Report of 0x00 to only group one. The Configuration command class can configure the sensor to send Basic Sets of 0x00 to nodes in group two (turning devices off).</p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -187,10 +181,10 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/138/Ecolink-DWZWAVE2-ECO-manual-rev1.pdf)
-* [Technical Manual](https://www.cd-jackson.com/zwave_device_uploads/138/Advanced-Zwave-Configuration-v2.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/138/Ecolink-DWZWAVE2-ECO-manual-rev1.pdf)
+* [Technical Manual](https://opensmarthouse.org/zwavedatabase/138/Advanced-Zwave-Configuration-v2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/138).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/138).

@@ -7,9 +7,7 @@
 
   <thing-type id="danfoss_dthermz6_00_000" listed="false">
     <label>DTHERMZ6 Living Connect Z Thermostat</label>
-    <description><![CDATA[
-Living Connect Z Thermostat<br /><h1>Overview</h1><p>DTHERMZ6 is an electronic radiator thermostat, intended for using with water based room radiators</p> <br /><h2>Inclusion Information</h2><p>Quickly press ans release the "Down" button on DTHERMZ26</p> <br /><h2>Exclusion Information</h2><p>Quickly press ans release the "Down" button on DTHERMZ26</p> <br /><h2>Wakeup Information</h2><p>Not Provided</p>
-    ]]></description>
+    <description>Living Connect Z Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDTHERMZ6 is an electronic radiator thermostat, intended for using with water based room radiators&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtQuickly press ans release the &quot;Down&quot; button on DTHERMZ26&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtQuickly press ans release the &quot;Down&quot; button on DTHERMZ26&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtNot Provided&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->

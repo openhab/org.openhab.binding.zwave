@@ -7,9 +7,7 @@
 
   <thing-type id="fibaro_fgfs101_03_002" listed="false">
     <label>FGFS101 Flood Sensor</label>
-    <description><![CDATA[
-Flood Sensor<br /><h1>Overview</h1><p>FIBARO Flood Sensor is a universal, Z-Wave Plus compatible, ﬂood<br />and temperature sensor. The device has a built-in<br />visual LED indicator and an acoustic alarm.<br />In addition, the sensor is equipped with a tilt sensor reporting tilt or<br />movement to the main controller e.g. when someone has taken the<br />Sensor from its original location.<br />FIBARO Flood Sensor is sink-proof, which means it drifts on the water<br />surface and keeps on sending alarm signal in case of substantial<br />inundation of water.</p> <br /><h2>Inclusion Information</h2><p>1. Open the cover.<br />2. Place the Sensor within the direct range of your Z-Wave controller.<br />3. Set the main controller in (security/non-security) add mode (see the controller’s manual).<br />4. Quickly, three times press the TMP button.<br />5. Wait for the adding process to end.<br />6. Successful adding will be confrmed by the Z-Wave controller’s message</p> <br /><h2>Exclusion Information</h2><p>1. Open the cover.<br />2. Place the Sensor within the direct range of your Z-Wave controller.<br />3. Set the main controller into remove mode (see the controller’s manual).<br />4. Quickly, three times press the TMP button.<br />5. Wait for the removing process to end.<br />6. Successful removing will be confrmed by the Z-Wave controller’s message.</p> <br /><h2>Wakeup Information</h2><p>Single click TMP button </p>
-    ]]></description>
+    <description>Flood Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFIBARO Flood Sensor is a universal, Z-Wave Plus compatible, ﬂood&lt;br /&gtand temperature sensor. The device has a built-in&lt;br /&gtvisual LED indicator and an acoustic alarm.&lt;br /&gtIn addition, the sensor is equipped with a tilt sensor reporting tilt or&lt;br /&gtmovement to the main controller e.g. when someone has taken the&lt;br /&gtSensor from its original location.&lt;br /&gtFIBARO Flood Sensor is sink-proof, which means it drifts on the water&lt;br /&gtsurface and keeps on sending alarm signal in case of substantial&lt;br /&gtinundation of water.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt1. Open the cover.&lt;br /&gt2. Place the Sensor within the direct range of your Z-Wave controller.&lt;br /&gt3. Set the main controller in (security/non-security) add mode (see the controller’s manual).&lt;br /&gt4. Quickly, three times press the TMP button.&lt;br /&gt5. Wait for the adding process to end.&lt;br /&gt6. Successful adding will be confrmed by the Z-Wave controller’s message&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt1. Open the cover.&lt;br /&gt2. Place the Sensor within the direct range of your Z-Wave controller.&lt;br /&gt3. Set the main controller into remove mode (see the controller’s manual).&lt;br /&gt4. Quickly, three times press the TMP button.&lt;br /&gt5. Wait for the removing process to end.&lt;br /&gt6. Successful removing will be confrmed by the Z-Wave controller’s message.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtSingle click TMP button &lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -69,17 +67,13 @@ Flood Sensor<br /><h1>Overview</h1><p>FIBARO Flood Sensor is a universal, Z-Wave
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="3600">
         <label>1: Alarm cancellation delay</label>
-        <description><![CDATA[
-Time in seconds that the flood state is retained after flooding event<br /><h1>Overview</h1><p>Determines time period (in seconds) by which a Flood Sensor will retain the flood state after the flooding itself has ceased. The sensor will keep on reporting flooding to the main controller. This parameter setting does not affect acoustic and visual ala</p>
-        ]]></description>
+        <description>Time in seconds that the flood state is retained after flooding event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDetermines time period (in seconds) by which a Flood Sensor will retain the flood state after the flooding itself has ceased. The sensor will keep on reporting flooding to the main controller. This parameter setting does not affect acoustic and visual ala&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Select alarm type (visual/acoustic)</label>
-        <description><![CDATA[
-This parameter allows for deactivation visual and acoustic alarm.<br /><h1>Overview</h1><p>This parameter allows for deactivation visual and acoustic alarm.</p> <p>Available settings:</p> <p>0 – acoustic and visual alarms inactive</p> <p>1 – acoustic alarm inactive, visual alarm active</p> <p>2 – acoustic alarm active, visual alarm inactive</p> <p>3 – acoustic and visual alarms active</p> <p>Parameter allows for increasing a battery life. Setting changes will not affect the sensor’s communication with the main controller – commands to association groups, alarms and reports will still be sent.</p>
-        ]]></description>
+        <description>This parameter allows for deactivation visual and acoustic alarm.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows for deactivation visual and acoustic alarm.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – acoustic and visual alarms inactive&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – acoustic alarm inactive, visual alarm active&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – acoustic alarm active, visual alarm inactive&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 – acoustic and visual alarms active&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter allows for increasing a battery life. Setting changes will not affect the sensor’s communication with the main controller – commands to association groups, alarms and reports will still be sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">Acoustic and visual alarms inactive</option>
@@ -92,17 +86,13 @@ This parameter allows for deactivation visual and acoustic alarm.<br /><h1>Overv
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>7: Requested dimming level to 2nd assoc. group</label>
-        <description><![CDATA[
-“On” level to be sent to devices from 2nd association group on flood event<br /><h1>Overview</h1><p>Requested dimming level / roller blind opening level when sending turn on / open command to 2nd association group devices.</p> <p>Available settings:<br /><strong>1-99</strong> – requested level<br /><strong>255</strong> – turn a device on</p> <p>Determines the requested “on” level to be sent to devices from 2nd association group upon flood event. The value of 255 allows for turning a device on. In case of a Dimmer it means turning it on with the last memorized state, e.g. Dimmer set to 30% and turned off, turned on again using 255 command is turned on with last state i.e. 30%.</p>
-        ]]></description>
+        <description>“On” level to be sent to devices from 2nd association group on flood event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtRequested dimming level / roller blind opening level when sending turn on / open command to 2nd association group devices.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1-99&amp;lt;/strong&amp;amp;gt – requested level&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt255&amp;lt;/strong&amp;amp;gt – turn a device on&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDetermines the requested “on” level to be sent to devices from 2nd association group upon flood event. The value of 255 allows for turning a device on. In case of a Dimmer it means turning it on with the last memorized state, e.g. Dimmer set to 30% and turned off, turned on again using 255 command is turned on with last state i.e. 30%.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Device off and alarm cancellations</label>
-        <description><![CDATA[
-Enable/disable device off/alarm cancellation updates to 2nd/3rd assoc groups<br /><h1>Overview</h1><p>Deactivate turning off devices in 2nd association group &amp; alarm cancellation in 3rd group</p> <p>This setting decides whether device turn off commands and alarm cancellation notifications will be sent to devices in 2nd and 3rd association groups (respectively).</p> <p>Setting the parameter’s value to 0 disables sending these two commands to associated devices. This means that these devices WILL NOT be informed when the flooding has ceased. It is still possible to cancel alarms in 3rd association group by choosing second (green) menu position.</p> <p>Available settings:<br /><strong>0</strong> – alarm (flooding) cancellation inactive<br /><strong>1</strong> – alarm (flooding) cancellation active</p>
-        ]]></description>
+        <description>Enable/disable device off/alarm cancellation updates to 2nd/3rd assoc groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDeactivate turning off devices in 2nd association group &amp;amp;amp; alarm cancellation in 3rd group&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis setting decides whether device turn off commands and alarm cancellation notifications will be sent to devices in 2nd and 3rd association groups (respectively).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSetting the parameter’s value to 0 disables sending these two commands to associated devices. This means that these devices WILL NOT be informed when the flooding has ceased. It is still possible to cancel alarms in 3rd association group by choosing second (green) menu position.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – alarm (flooding) cancellation inactive&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1&amp;lt;/strong&amp;amp;gt – alarm (flooding) cancellation active&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Alarm (flooding) cancellation inactive</option>
@@ -113,62 +103,48 @@ Enable/disable device off/alarm cancellation updates to 2nd/3rd assoc groups<br 
       <parameter name="config_10_4" type="integer" groupName="configuration"
                  min="1" max="65535">
         <label>10: Temperature measurement interval</label>
-        <description><![CDATA[
-Seconds between consecutive measurements of battery level/temperature<br /><h1>Overview</h1><p>Time interval (in seconds) between consecutive measurements of battery level and temperature (done by built-in temperature sensor). If the temperature differs from previously reported by a value determined in parameter 12, it will be reported to the Z-Wave controller. In battery mode more significant battery level changes will be reported. Short time intervals mean more frequent communication, which results in shortened battery life. After consecutive FAILED and SUCCESSFUL communication attempts, the Sensor will go to standby mode.</p>
-        ]]></description>
+        <description>Seconds between consecutive measurements of battery level/temperature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime interval (in seconds) between consecutive measurements of battery level and temperature (done by built-in temperature sensor). If the temperature differs from previously reported by a value determined in parameter 12, it will be reported to the Z-Wave controller. In battery mode more significant battery level changes will be reported. Short time intervals mean more frequent communication, which results in shortened battery life. After consecutive FAILED and SUCCESSFUL communication attempts, the Sensor will go to standby mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="1" max="1000">
         <label>12: Temperature measurement hysteresis</label>
-        <description><![CDATA[
-Minimum change in temperature value for report to be sent to controller<br /><h1>Overview</h1><p>Determines a minimum temperature change value (insensitivity level), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings.</p> <p>Available settings: <strong>1 – 1 000</strong> (each 0.01°C)<br />Default setting: <strong>50</strong> (0.5°C)<br />Parameter size: <strong>2 [bytes]</strong></p>
-        ]]></description>
+        <description>Minimum change in temperature value for report to be sent to controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDetermines a minimum temperature change value (insensitivity level), resulting in a temperature report being sent to the main controller, according to the Parameter 10 settings.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: &amp;lt;strong&amp;amp;gt1 – 1 000&amp;lt;/strong&amp;amp;gt (each 0.01°C)&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt50&amp;lt;/strong&amp;amp;gt (0.5°C)&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt2 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_50_2" type="integer" groupName="configuration"
                  min="-10000" max="10000">
         <label>50: Low temperature alarm threshold</label>
-        <description><![CDATA[
-Temperature value below which visual indicator blinks<br /><h1>Overview</h1><p>The parameter stores a temperature value, below which visual indicator blinks with a colour determined by a parameter 61 settings. By default the visual indicator blinks blue.</p> <p>Available settings: <strong>-10 000 to +10 000</strong> (each 0.01°C)<br />Default setting: <strong>1 500</strong> (15.00°C)<br />Parameter size: <strong>2 [bytes]</strong></p> <p>The main controller does not interpret negative numbers as decimals. That’s why read value may be different than entered. Negative numbers are coded in U2 standard.</p>
-        ]]></description>
+        <description>Temperature value below which visual indicator blinks&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe parameter stores a temperature value, below which visual indicator blinks with a colour determined by a parameter 61 settings. By default the visual indicator blinks blue.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: &amp;lt;strong&amp;amp;gt-10 000 to +10 000&amp;lt;/strong&amp;amp;gt (each 0.01°C)&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt1 500&amp;lt;/strong&amp;amp;gt (15.00°C)&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt2 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe main controller does not interpret negative numbers as decimals. That’s why read value may be different than entered. Negative numbers are coded in U2 standard.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1500</default>
       </parameter>
 
       <parameter name="config_51_2" type="integer" groupName="configuration"
                  min="-10000" max="10000">
         <label>51: High temperature alarm threshold</label>
-        <description><![CDATA[
-Temperature value above which visual indicator blinks<br /><h1>Overview</h1><p>Available settings: <strong>-10 000 to +10 000</strong> (each 0.01°C)<br />Default setting: <strong>3 500</strong> (35°C)<br />Parameter size: <strong>2 [bytes]</strong></p> <p>The parameter stores a temperature value, above which visual indicator blinks with a colour determined by the parameter 62 settings. By default the visual indicator blinks red.</p> <p>The main controller does not interpret negative numbers as decimals. That’s why read value may be different than entered. Negative numbers are coded in U2 standard.</p>
-        ]]></description>
+        <description>Temperature value above which visual indicator blinks&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable settings: &amp;lt;strong&amp;amp;gt-10 000 to +10 000&amp;lt;/strong&amp;amp;gt (each 0.01°C)&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt3 500&amp;lt;/strong&amp;amp;gt (35°C)&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt2 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe parameter stores a temperature value, above which visual indicator blinks with a colour determined by the parameter 62 settings. By default the visual indicator blinks red.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe main controller does not interpret negative numbers as decimals. That’s why read value may be different than entered. Negative numbers are coded in U2 standard.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3500</default>
       </parameter>
 
       <parameter name="config_61_4" type="integer" groupName="configuration"
                  min="0" max="16777215">
         <label>61: Low temperature alarm indicator colour</label>
-        <description><![CDATA[
-Parameter stores RGB colour value.<br /><h1>Overview</h1><p>A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255.</p> <p>Example:</p> <p>Indicated colour = 65536 * RED value + 256 * GREEN value + BLUE value</p>
-        ]]></description>
+        <description>Parameter stores RGB colour value.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtA main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtExample:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIndicated colour = 65536 * RED value + 256 * GREEN value + BLUE value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_62_4" type="integer" groupName="configuration"
                  min="0" max="16777215">
         <label>62: High temperature alarm indicator colour</label>
-        <description><![CDATA[
-Parameter stores RGB colour value.<br /><h1>Overview</h1><p>Parameter stores RGB colour value.</p> <p>Available settings: <strong>0 – 16777215</strong><br />Default setting: <strong>16711680</strong> (red 0x00FF0000)<br />Parameter size: <strong>4 [bytes]</strong></p> <p>A main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255.</p> <p>Example:<br />Indicated colour = 65536 * RED value + 256 * GREEN value + BLUE value</p>
-        ]]></description>
+        <description>Parameter stores RGB colour value.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter stores RGB colour value.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: &amp;lt;strong&amp;amp;gt0 – 16777215&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt16711680&amp;lt;/strong&amp;amp;gt (red 0x00FF0000)&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt4 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtA main controller interprets colours as a sum of it component colours value. Each colours value is a number from 0 to 255.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtExample:&amp;lt;br /&amp;amp;gtIndicated colour = 65536 * RED value + 256 * GREEN value + BLUE value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>16711680</default>
       </parameter>
 
       <parameter name="config_63_1" type="integer" groupName="configuration">
         <label>63: Visual temperature indicator</label>
-        <description><![CDATA[
-Enable or disable visual temperature indicator via device's LED<br /><h1>Overview</h1><p>Parameter determines visual indicator’s operation. Setting to 0 turns the temperature LED indication off, saving battery life.</p> <p>Available settings:<br /><strong>0</strong> – visual indicator does not indicate the temperature<br /><strong>1</strong> – visual indicator indicates the temperature (blink) every Temperature Measurement Interval (parameter 10, constant current and battery) and Wake Up Interval (battery mode)<br /><strong>2</strong> – visual indicator indicates the temperature continuously, only in constant power mode<br />Default setting: <strong>2</strong><br />Parameter size: <strong>1 [byte]</strong></p>
-        ]]></description>
+        <description>Enable or disable visual temperature indicator via device's LED&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter determines visual indicator’s operation. Setting to 0 turns the temperature LED indication off, saving battery life.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – visual indicator does not indicate the temperature&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1&amp;lt;/strong&amp;amp;gt – visual indicator indicates the temperature (blink) every Temperature Measurement Interval (parameter 10, constant current and battery) and Wake Up Interval (battery mode)&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt2&amp;lt;/strong&amp;amp;gt – visual indicator indicates the temperature continuously, only in constant power mode&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt2&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt1 [byte]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">No temperature indication</option>
@@ -180,17 +156,13 @@ Enable or disable visual temperature indicator via device's LED<br /><h1>Overvie
       <parameter name="config_73_2" type="integer" groupName="configuration"
                  min="-10000" max="10000">
         <label>73: Temperature measurement compensation</label>
-        <description><![CDATA[
-Offset to current temperature to account temperature difference<br /><h1>Overview</h1><p>Available settings: <strong>-10 000 to +10 000</strong><br />Default setting: <strong>0</strong> (0.00°C)<br />Parameter size: <strong>2 [bytes]</strong></p> <p>Parameter stores a temperature value to be added to or deducted from the current temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature at the floor level.</p>
-        ]]></description>
+        <description>Offset to current temperature to account temperature difference&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable settings: &amp;lt;strong&amp;amp;gt-10 000 to +10 000&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt (0.00°C)&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt2 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter stores a temperature value to be added to or deducted from the current temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature at the floor level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_74_1" type="integer" groupName="configuration">
         <label>74: Alarm frame for movement/tamper</label>
-        <description><![CDATA[
-Movement/tamper alarm sent to 1st &amp; 4th assoc. group<br /><h1>Overview</h1><p>Available settings:</p> <p><strong>0</strong> – tamper alarms inactive<br /><strong>1</strong> – button tamper alarm active<br /><strong>2</strong> – movement tamper alarm active<br /><strong>3</strong> – button and movement tampers alarm active<br />Default setting: <strong>2</strong><br />Parameter size: <strong>1 [byte]</strong></p> <p>The device is able to report tamper alarms resulting from sensor’s tilt/movement or TMP button state change (e.g. taking off the top cover).</p>
-        ]]></description>
+        <description>Movement/tamper alarm sent to 1st &amp;amp;amp; 4th assoc. group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – tamper alarms inactive&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1&amp;lt;/strong&amp;amp;gt – button tamper alarm active&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt2&amp;lt;/strong&amp;amp;gt – movement tamper alarm active&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt3&amp;lt;/strong&amp;amp;gt – button and movement tampers alarm active&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt2&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt1 [byte]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe device is able to report tamper alarms resulting from sensor’s tilt/movement or TMP button state change (e.g. taking off the top cover).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Tamper alarm inactive</option>
@@ -203,26 +175,20 @@ Movement/tamper alarm sent to 1st &amp; 4th assoc. group<br /><h1>Overview</h1><
       <parameter name="config_75_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>75: Alarms signalization duration</label>
-        <description><![CDATA[
-Turn off alarm after given timeout<br /><h1>Overview</h1><p>The device is capable of automatically turning off alarm signalization after a certain amount of time. Long lasting alarm may reduce battery life, when constantly signalized.</p> <p>Available settings:<br /><strong>0</strong> – alarms active indefinitely<br /><strong>1-65535</strong> – time in seconds<br />Default setting: <strong>0</strong><br />Parameter size: <strong>4 [bytes]</strong></p> <p>The parameter determines time after which alarm will become “quiet” – still active but the device will go into battery saving mode. Visual or acoustic alarm will be reactivated after time specified in the parameter 76. When alarm status ceases, alarm will be turned off immediately.</p> <p>The value of 0 means visual and acoustic alarms are active indefinitely. In battery power mode the Sensor will never go to sleep which may shorten battery life significantly.</p> <p>The parameter is ignored when Parameter 2 is set to 0.</p>
-        ]]></description>
+        <description>Turn off alarm after given timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe device is capable of automatically turning off alarm signalization after a certain amount of time. Long lasting alarm may reduce battery life, when constantly signalized.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – alarms active indefinitely&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1-65535&amp;lt;/strong&amp;amp;gt – time in seconds&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt4 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe parameter determines time after which alarm will become “quiet” – still active but the device will go into battery saving mode. Visual or acoustic alarm will be reactivated after time specified in the parameter 76. When alarm status ceases, alarm will be turned off immediately.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe value of 0 means visual and acoustic alarms are active indefinitely. In battery power mode the Sensor will never go to sleep which may shorten battery life significantly.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe parameter is ignored when Parameter 2 is set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_76_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>76: Alarm signalization reactivation period</label>
-        <description><![CDATA[
-Time period after which an alarm will be turned back on<br /><h1>Overview</h1><p>Parameter determines a time period after which an alarm will be turned back on (in case it was turned off by parameter 75 setting). It will also resend commands to 2nd and 3rd association groups as if the alarm was detected again.</p> <p>Available settings:<br /><strong>0</strong> – alarm reactivation inactive<br /><strong>1-65535</strong> – time in seconds<br />Default setting: <strong>0</strong><br />Parameter size: <strong>4 [bytes]</strong></p> <p>In case a time period set in parameter 76 is shorter than the one specified in parameter 75, the device will not quiet the alarm, it will remain active.</p>
-        ]]></description>
+        <description>Time period after which an alarm will be turned back on&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter determines a time period after which an alarm will be turned back on (in case it was turned off by parameter 75 setting). It will also resend commands to 2nd and 3rd association groups as if the alarm was detected again.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – alarm reactivation inactive&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1-65535&amp;lt;/strong&amp;amp;gt – time in seconds&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt4 [bytes]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIn case a time period set in parameter 76 is shorter than the one specified in parameter 75, the device will not quiet the alarm, it will remain active.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_77_1" type="integer" groupName="configuration">
         <label>77: Flood sensor functionality turned off</label>
-        <description><![CDATA[
-Allows the internal flood sensor to be turned off.<br /><h1>Overview</h1><p>Allows to turn off the internal flood sensor. Tamper and built in temperature sensor will remain active.</p> <p>Available settings:<br /><strong>0</strong> – Default flood sensor operation (flood detection, reactions)<br /><strong>1</strong> – Built-in flood sensor TURNED OFF (does not change its state in the main controller, does not send alarm notifications nor turn on/off commands to 2nd/3rd association groups with flood state changes. Always visible in the main controller as turned off)<br />Default setting: <strong>0</strong><br />Parameter size: <strong>1 [byte]</strong></p>
-        ]]></description>
+        <description>Allows the internal flood sensor to be turned off.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAllows to turn off the internal flood sensor. Tamper and built in temperature sensor will remain active.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – Default flood sensor operation (flood detection, reactions)&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1&amp;lt;/strong&amp;amp;gt – Built-in flood sensor TURNED OFF (does not change its state in the main controller, does not send alarm notifications nor turn on/off commands to 2nd/3rd association groups with flood state changes. Always visible in the main controller as turned off)&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt1 [byte]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Flood sensor On (default)</option>
@@ -232,15 +198,13 @@ Allows the internal flood sensor to be turned off.<br /><h1>Overview</h1><p>Allo
 
       <parameter name="config_78_1" type="integer" groupName="configuration">
         <label>78: Associations in Z-Wave network security mode</label>
-        <description><![CDATA[
-Defines whether commands are sent as secure or non-secure<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline “group.</p> <p>Available settings:<br /><strong>0</strong> – none of the groups sent as secure<br /><strong>1</strong> – 2nd group ”Control” sent as secure<br /><strong>2</strong> – 3rd group ”Alarm” sent as secure<br /><strong>4</strong> – 4th group „Tamper” sent as secure<br />Default setting: <strong>7</strong><br />Parameter size: <strong>1 [byte]</strong></p>
-        ]]></description>
+        <description>Defines whether commands are sent as secure or non-secure&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline “group.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings:&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt0&amp;lt;/strong&amp;amp;gt – none of the groups sent as secure&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt1&amp;lt;/strong&amp;amp;gt – 2nd group ”Control” sent as secure&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt2&amp;lt;/strong&amp;amp;gt – 3rd group ”Alarm” sent as secure&amp;lt;br /&amp;amp;gt&amp;lt;strong&amp;amp;gt4&amp;lt;/strong&amp;amp;gt – 4th group „Tamper” sent as secure&amp;lt;br /&amp;amp;gtDefault setting: &amp;lt;strong&amp;amp;gt7&amp;lt;/strong&amp;amp;gt&amp;lt;br /&amp;amp;gtParameter size: &amp;lt;strong&amp;amp;gt1 [byte]&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>7</default>
         <options>
           <option value="0">None of the groups are sent as secure</option>
           <option value="1">2nd group ”Control” sent as secure</option>
           <option value="2">3rd group ”Alarm” sent as secure</option>
-          <option value="3">4th group "Tamper” sent as secure</option>
+          <option value="3">4th group &quot;Tamper” sent as secure</option>
         </options>
       </parameter>
 

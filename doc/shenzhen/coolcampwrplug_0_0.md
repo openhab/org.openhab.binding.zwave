@@ -10,31 +10,22 @@ This describes the Z-Wave device *NAS-WR01ZE*, manufactured by *[Shenzhen Neo El
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![NAS-WR01ZE product image](https://www.cd-jackson.com/zwave_device_uploads/1014/1014_default.jpg)
+![NAS-WR01ZE product image](https://opensmarthouse.org/zwavedatabase/1014/image/)
 
 
 The NAS-WR01ZE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Plug provides line voltage, current load, power consumption and energy consumption measuring. 
-
-  * Voltage – The Supply Power Voltage For Plug.
-  * Current – The Current for the Electric Device Connect to Plug Consumption.
-  * Power – Power Consumed by an Electric Device in an instant, unit: Watt (W).
-  * Energy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. 
+<p&gtThis Plug provides line voltage, current load, power consumption and energy consumption measuring. </p&gt <ul&gt<li&gtVoltage – The Supply Power Voltage For Plug.</li&gt <li&gtCurrent – The Current for the Electric Device Connect to Plug Consumption.</li&gt <li&gtPower – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li&gt <li&gtEnergy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. </li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Make sure the sensor is powered.
-  2. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)
-  3. Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.
+<ol&gt<li&gtMake sure the sensor is powered.</li&gt <li&gtSet Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li&gt <li&gtPress the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Make sure the sensor is powered.
-  2. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)
-  3. Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.
+<ol&gt<li&gtMake sure the sensor is powered.</li&gt <li&gtSet Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li&gt <li&gtPress the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li&gt </ol&gt
 
 ## Channels
 
@@ -219,7 +210,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Maximum output current setting
 
 Maximum output current setting
-The Value must be greather than the alarm value defined in Parameter 10
+<p&gtThe Value must be greather than the alarm value defined in Parameter 10</p&gt
 Values in the range 1 to 16 may be set.
 
 The manufacturer defined default value is ```16```.
@@ -241,7 +232,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 ### Parameter 10: Current Alarm Value
 
 Current Alarm Value
-The Value must be less than the max. output value defined in Parameter 8
+<p&gtThe Value must be less than the max. output value defined in Parameter 8</p&gt
 Values in the range 1 to 15 may be set.
 
 The manufacturer defined default value is ```13```.
@@ -252,11 +243,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Clear Accumulated Energy
 
 Clear accumulated energy
-If this parameter is set to '0' or default, the accumulated energy saved in the plug will be cleared by '0'.  
-Other values will not change current accumulated energy value.  
-This parameter value cannot be saved in NVR mounted in the plug. The accumulated energy consumed will not be changed when the plug is added or removed from the Z-Wave network, but this value will be cleared after resetting the plug to factory default settings.
-
-Note: Users can also send METER_RESET (Meter Command Class) command to clear accumulated energy.
+<p&gtIf this parameter is set to '0' or default, the accumulated energy saved in the plug will be cleared by '0'.<br /&gtOther values will not change current accumulated energy value.<br /&gtThis parameter value cannot be saved in NVR mounted in the plug. The accumulated energy consumed will not be changed when the plug is added or removed from the Z-Wave network, but this value will be cleared after resetting the plug to factory default settings.</p&gt <p&gtNote: Users can also send METER_RESET (Meter Command Class) command to clear accumulated energy.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -293,24 +280,21 @@ The NAS-WR01ZE supports 3 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.
-  * NOTIFICATION\_REPORT\_V4
-  * METER\_REPORT\_V4
-  * SWITCH\_BINARY\_REPORT
-  * DEVICE\_RESET\_LOCALLY_NOTIFICATION
+<ul&gt<li&gtNOTIFICATION\_REPORT\_V4</li&gt <li&gtMETER\_REPORT\_V4</li&gt <li&gtSWITCH\_BINARY\_REPORT</li&gt <li&gtDEVICE\_RESET\_LOCALLY_NOTIFICATION</li&gt </ul&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Group 2
 
 Sending control commands to associated devices. If current load is over the max current defined in parameter #3, the Plug will send a BASIC\_SET (0xFF) to associated devices. When current load is normal, plug will send a BASIC\_SET (0x00).
-BASIC_SET
+<p&gtBASIC_SET</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Group 3
 
 Send Notification to associated devices.
-NOTIFICATION\_REPORT\_V4
+<p&gtNOTIFICATION\_REPORT\_V4</p&gt
 
 Association group 3 supports 5 nodes.
 
@@ -341,9 +325,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1014/nas-wr01z-S2-SmartPlug-Manual.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1014/nas-wr01z-S2-SmartPlug-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1014).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1014).

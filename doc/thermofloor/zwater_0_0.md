@@ -10,37 +10,26 @@ This describes the Z-Wave device *Heatit Z Water*, manufactured by *ThermoFloor*
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![Heatit Z Water product image](https://www.cd-jackson.com/zwave_device_uploads/886/886_default.png)
+![Heatit Z Water product image](https://opensmarthouse.org/zwavedatabase/886/image/)
 
 
 The Heatit Z Water supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * The relay outputs may be used for controlling actuators/valves in a hydronic heating system
-  * May be used to control both 24V actuators and 230V actuators
-  * Can be used together with a Heatit Z-Temp sensor in each zone
-  * DIN rail mounting
-  * Works as a Z-Wave repeater
-  * Firmware updates (OTA)
-  * Available firmware versions (analog/digital inputs)
-  * Supports encryption mode: S0, S2 Access Control Class, S2 Authenticated Class, S2 Unauthenticated Class
+<ul&gt<li&gtThe relay outputs may be used for controlling actuators/valves in a hydronic heating system</li&gt <li&gtMay be used to control both 24V actuators and 230V actuators</li&gt <li&gtCan be used together with a Heatit Z-Temp sensor in each zone</li&gt <li&gtDIN rail mounting</li&gt <li&gtWorks as a Z-Wave repeater</li&gt <li&gtFirmware updates (OTA)</li&gt <li&gtAvailable firmware versions (analog/digital inputs)</li&gt <li&gtSupports encryption mode: S0, S2 Access Control Class, S2 Authenticated Class, S2 Unauthenticated Class</li&gt </ul&gt
 
 ### Inclusion Information
 
-Place your primary controller in Adding Mode by following the manufacturer’s instructions, then activate the add mode on the device by clicking the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. The Adding Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been added to the Z-Wave network.
+<p&gtPlace your primary controller in Adding Mode by following the manufacturer’s instructions, then activate the add mode on the device by clicking the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. The Adding Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been added to the Z-Wave network.</p&gt
 
 ### Exclusion Information
 
-Place your primary controller in Remov Mode by following the manufacturer’s instructions, then activate the remove mode on the device by clicking the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. The Remove Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been removed from the Z-Wave network.
+<p&gtPlace your primary controller in Remov Mode by following the manufacturer’s instructions, then activate the remove mode on the device by clicking the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. The Remove Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been removed from the Z-Wave network.</p&gt
 
 ### General Usage Information
 
-Heatit Z-Water is a DIN-rail regulator for controlling hydronic heating. Heatit Z-Water is a module that clips right onto a DIN rail to add a variety of functions to your wireless Z-Wave network.  
-Heatit Z-Water is equipped with 10 relay outputs and it has 4 analog/digital inputs. The module can be power supplied from a 230V AC mains connection, and is able to deliver an output supply of 24V DC or 230V. Heatit Z-Water relay outputs are able to be freely controlled from the Z-Wave network, and can be used for several purposes, e.g. on/off control of light, control of valve actuators for an underfloor heating system, or control of other home automation systems.
-
-Heatit Z-Water analog/digital inputs (different firmware versions) can be configured to work with different functionality and can be connected to potential free contacts, open-collector outputs, and will be able to control other Z-Wave devices; switches, dimmers, etc. Furthermore, the inputs can be used as a Scene Controller and send Central Scene notifications to the Z-Wave gateway.  
-It is possible to configure the level and the indication of the status indicator LED in the front of the Heatit Z-Water module.
+<p&gtHeatit Z-Water is a DIN-rail regulator for controlling hydronic heating. Heatit Z-Water is a module that clips right onto a DIN rail to add a variety of functions to your wireless Z-Wave network. <br /&gtHeatit Z-Water is equipped with 10 relay outputs and it has 4 analog/digital inputs. The module can be power supplied from a 230V AC mains connection, and is able to deliver an output supply of 24V DC or 230V. Heatit Z-Water relay outputs are able to be freely controlled from the Z-Wave network, and can be used for several purposes, e.g. on/off control of light, control of valve actuators for an underfloor heating system, or control of other home automation systems.</p&gt <p&gtHeatit Z-Water analog/digital inputs (different firmware versions) can be configured to work with different functionality and can be connected to potential free contacts, open-collector outputs, and will be able to control other Z-Wave devices; switches, dimmers, etc. Furthermore, the inputs can be used as a Scene Controller and send Central Scene notifications to the Z-Wave gateway.<br /&gtIt is possible to configure the level and the indication of the status indicator LED in the front of the Heatit Z-Water module.</p&gt
 
 ## Channels
 
@@ -186,13 +175,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Status LED
 
 Configuration of the status LED
-0 LED turned off.
-
-1 LED turned on. (Default)
-
-2 LED flashing at 1 second intervals (½ Hz).
-
-3 LED flashing at ½ second interval (1 Hz).
+<p&gt0 LED turned off.</p&gt <p&gt1 LED turned on. (Default)</p&gt <p&gt2 LED flashing at 1 second intervals (½ Hz).</p&gt <p&gt3 LED flashing at ½ second interval (1 Hz).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -210,7 +193,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: LED brightness
 
 Configure the percentage of light in the status LED, when the LED is turned on
-Specifies the brightness level of the LED when it is on. Default is 50.
+<p&gtSpecifies the brightness level of the LED when it is on. Default is 50.</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -221,9 +204,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Thermistor type input 1
 
 This parameter decides which kind of thermistor that is connected to the input..
-0 No thermistor, input is disabled. (Default)
-
-1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)
+<p&gt0 No thermistor, input is disabled. (Default)</p&gt <p&gt1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -239,9 +220,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Thermistor type input 2
 
 This parameter decides which kind of thermistor that is connected to the input.
-0 No thermistor, input is disabled. (Default)
-
-1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)
+<p&gt0 No thermistor, input is disabled. (Default)</p&gt <p&gt1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -257,9 +236,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Thermistor type input 3
 
 This parameter decides which kind of thermistor that is connected to the input.
-0 No thermistor, input is disabled. (Default)
-
-1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)
+<p&gt0 No thermistor, input is disabled. (Default)</p&gt <p&gt1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -275,9 +252,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Thermistor type input 4
 
 This parameter decides which kind of thermistor that is connected to the input.
-0 No thermistor, input is disabled. (Default)
-
-1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)
+<p&gt0 No thermistor, input is disabled. (Default)</p&gt <p&gt1 10K NTC. (PART NUMBER: TT02-10KC3-93D-3000R-TPH)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -293,7 +268,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Input 1 calibration
 
 Input 1 calibration
--4.0°C – 4.0°C. Default is 0 (0.0°C).
+<p&gt-4.0°C – 4.0°C. Default is 0 (0.0°C).</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -304,7 +279,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Input 2 calibration
 
 Input 1 calibratio2
--4.0°C – 4.0°C. Default is 0 (0.0°C).
+<p&gt-4.0°C – 4.0°C. Default is 0 (0.0°C).</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -315,7 +290,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Input 3 calibration
 
 Input 3 calibration
--4.0°C – 4.0°C. Default is 0 (0.0°C).
+<p&gt-4.0°C – 4.0°C. Default is 0 (0.0°C).</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -326,7 +301,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Input 4 calibration
 
 Input 4 calibration
--4.0°C – 4.0°C. Default is 0 (0.0°C).
+<p&gt-4.0°C – 4.0°C. Default is 0 (0.0°C).</p&gt
 Values in the range -40 to 40 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -337,9 +312,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Input 1 report interval
 
 Time interval between consecutive temperature reports.
-0 Reporting of temperatures disabled.
-
-1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds)
+<p&gt0 Reporting of temperatures disabled.</p&gt <p&gt1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -355,9 +328,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: Input 2 report interval
 
 Time interval between consecutive temperature reports.
-0 Reporting of temperatures disabled.
-
-1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).
+<p&gt0 Reporting of temperatures disabled.</p&gt <p&gt1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).</p&gt
 Values in the range 0 to 8640 may be set.
 
 The manufacturer defined default value is ```6```.
@@ -368,9 +339,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 ### Parameter 13: Input 3 report interval
 
 Time interval between consecutive temperature reports.
-0 Reporting of temperatures disabled.
-
-1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).
+<p&gt0 Reporting of temperatures disabled.</p&gt <p&gt1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).</p&gt
 Values in the range 0 to 8640 may be set.
 
 The manufacturer defined default value is ```6```.
@@ -381,9 +350,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: Input 4 report interval
 
 Time interval between consecutive temperature reports.
-0 Reporting of temperatures disabled.
-
-1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).
+<p&gt0 Reporting of temperatures disabled.</p&gt <p&gt1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).</p&gt
 Values in the range 0 to 8640 may be set.
 
 The manufacturer defined default value is ```6```.
@@ -400,79 +367,79 @@ The Heatit Z Water supports 13 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Sends Device Reset notifications, Central Scene notifications and Basic Report On / Off to the controller
+<p&gtSends Device Reset notifications, Central Scene notifications and Basic Report On / Off to the controller</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Input 1 Basic Set On / Off 
 
-Sends Basic Set On / Off when input 1 is activated.
+<p&gtSends Basic Set On / Off when input 1 is activated.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Input 1 Switch Binary Set On / Off
 
-Sends Switch Binary Set On / Off when input 1 is activated.
+<p&gtSends Switch Binary Set On / Off when input 1 is activated.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Input 1 Multilevel Switch Set 
 
-Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 1 is activated. Is typically used for controlling light dimmers, curtain controllers, etc
+<p&gtSends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 1 is activated. Is typically used for controlling light dimmers, curtain controllers, etc</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Input 2 Basic Set On / Off
 
-Sends Basic Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.
+<p&gtSends Basic Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p&gt
 
 Association group 5 supports 5 nodes.
 
 ### Group 6: Input 2 Switch Binary Set On / Off 
 
-Sends Switch Binary Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.
+<p&gtSends Switch Binary Set On / Off when input 2 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p&gt
 
 Association group 6 supports 5 nodes.
 
 ### Group 7: Input 2 Multilevel Switch Set 
 
-Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 2 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.
+<p&gtSends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 2 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p&gt
 
 Association group 7 supports 5 nodes.
 
 ### Group 8: Input 3 Basic Set On / Off
 
-Sends Basic Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.
+<p&gtSends Basic Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p&gt
 
 Association group 8 supports 5 nodes.
 
 ### Group 9: Input 3 Switch Binary Set On / Off 
 
-Sends Switch Binary Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.
+<p&gtSends Switch Binary Set On / Off when input 3 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p&gt
 
 Association group 9 supports 5 nodes.
 
 ### Group 10: Input 3 Multilevel Switch Set 
 
-Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 3 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.
+<p&gtSends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 3 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p&gt
 
 Association group 10 supports 5 nodes.
 
 ### Group 11: Input 4 Basic Set On / Off 
 
-Sends Basic Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.
+<p&gtSends Basic Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p&gt
 
 Association group 11 supports 5 nodes.
 
 ### Group 12: Input 4 Switch Binary Set On / Off
 
-Sends Switch Binary Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.
+<p&gtSends Switch Binary Set On / Off when input 4 is activated. Can be used for controlling other Z-Wave devices, e.g. relay modules.</p&gt
 
 Association group 12 supports 5 nodes.
 
 ### Group 13: Input 4 Multilevel Switch Set 
 
-Sends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 4 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.
+<p&gtSends Multilevel Switch Set / Multilevel Switch Start Level Change / Multilevel Switch Stop Level Change when input 4 is activated. Is typically used for controlling light dimmers, curtain controllers, etc.</p&gt
 
 Association group 13 supports 5 nodes.
 
@@ -490,10 +457,12 @@ Association group 13 supports 5 nodes.
 | COMMAND_CLASS_SWITCH_MULTILEVEL_V1| |
 | COMMAND_CLASS_SENSOR_BINARY_V1| |
 | COMMAND_CLASS_SENSOR_MULTILEVEL_V1| |
+| COMMAND_CLASS_TRANSPORT_SERVICE_V1| |
 | COMMAND_CLASS_ASSOCIATION_GRP_INFO_V1| |
 | COMMAND_CLASS_DEVICE_RESET_LOCALLY_V1| |
 | COMMAND_CLASS_ZWAVEPLUS_INFO_V1| |
 | COMMAND_CLASS_MULTI_CHANNEL_V2| |
+| COMMAND_CLASS_SUPERVISION_V1| |
 | COMMAND_CLASS_CONFIGURATION_V1| |
 | COMMAND_CLASS_MANUFACTURER_SPECIFIC_V1| |
 | COMMAND_CLASS_POWERLEVEL_V1| |
@@ -502,6 +471,7 @@ Association group 13 supports 5 nodes.
 | COMMAND_CLASS_VERSION_V2| |
 | COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION_V3| |
 | COMMAND_CLASS_SECURITY_V1| |
+| COMMAND_CLASS_SECURITY_2_V1| |
 #### Endpoint 1
 
 | Command Class | Comment |
@@ -645,10 +615,10 @@ Association group 13 supports 5 nodes.
 
 ### Documentation Links
 
-* [User manual](https://www.cd-jackson.com/zwave_device_uploads/886/Manual-Heatit-Z-Water-analog-inputs-FW-1-0.pdf)
-* [Manual 2.0](https://www.cd-jackson.com/zwave_device_uploads/886/Manual-Heatit-Z-Water-digital-inputs-FW-2-0.pdf)
+* [User manual](https://opensmarthouse.org/zwavedatabase/886/Manual-Heatit-Z-Water-analog-inputs-FW-1-0.pdf)
+* [Manual 2.0](https://opensmarthouse.org/zwavedatabase/886/Manual-Heatit-Z-Water-digital-inputs-FW-2-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/886).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/886).

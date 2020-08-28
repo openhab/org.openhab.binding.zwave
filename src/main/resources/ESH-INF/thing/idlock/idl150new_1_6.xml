@@ -7,9 +7,7 @@
 
   <thing-type id="idlock_idl150new_01_006" listed="false">
     <label>ID-150 Z wave module for ID Lock 150 and 101</label>
-    <description><![CDATA[
-Z wave module for ID Lock 150 and 101<br /><h1>Overview</h1><p>The ID Lock Z-wave module is a security enabled Z-wave Plus product that is able to use encrypted Z-wave Plus messages in order to communicate to other Z-wave Plus products enabled security.</p> <p>The module is proprietary for the ID Lock 150 and also backwards compatible with the ID Lock 101. The ID Lock Z-wave module must be used in conjunction with a Security Enabled Z-wave Controller in order to fully utilize their full capability.</p> <p>The ID Lock Z-wave module can be included and operated in any Z-wave network containing certified other Z-wave products regardless of manufacturer. The ID Lock Z-wave module does not support the Basic Set Command Class.</p> <br /><h2>Inclusion Information</h2><ol><li>Bring the controller as close as possible to the lock unit</li> <li>Set the controller to inclusion mode</li> <li>Push and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.</li> <li>Release the KEY button on the inside panel</li> <li>Enter your Master PIN and press * </li> <li>Click 2 and then *</li> <li>Click 5, don't press *</li> <li>The LED flashes blue when inclusion is in progress</li> <li>The inclusion may take some time as security is required</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Set the controller to Exclusion mode</li> <li>Push and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.</li> <li>Release the KEY button on the inside panel</li> <li>Enter your Master PIN and press * </li> <li>Click 2 and then *</li> <li>Click 5, don't press *</li> <li>The LED flashes blue when exclusion is in progress</li> </ol>
-    ]]></description>
+    <description>Z wave module for ID Lock 150 and 101&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe ID Lock Z-wave module is a security enabled Z-wave Plus product that is able to use encrypted Z-wave Plus messages in order to communicate to other Z-wave Plus products enabled security.&lt;/p&gt &lt;p&gtThe module is proprietary for the ID Lock 150 and also backwards compatible with the ID Lock 101. The ID Lock Z-wave module must be used in conjunction with a Security Enabled Z-wave Controller in order to fully utilize their full capability.&lt;/p&gt &lt;p&gtThe ID Lock Z-wave module can be included and operated in any Z-wave network containing certified other Z-wave products regardless of manufacturer. The ID Lock Z-wave module does not support the Basic Set Command Class.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtBring the controller as close as possible to the lock unit&lt;/li&gt &lt;li&gtSet the controller to inclusion mode&lt;/li&gt &lt;li&gtPush and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.&lt;/li&gt &lt;li&gtRelease the KEY button on the inside panel&lt;/li&gt &lt;li&gtEnter your Master PIN and press * &lt;/li&gt &lt;li&gtClick 2 and then *&lt;/li&gt &lt;li&gtClick 5, don't press *&lt;/li&gt &lt;li&gtThe LED flashes blue when inclusion is in progress&lt;/li&gt &lt;li&gtThe inclusion may take some time as security is required&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtSet the controller to Exclusion mode&lt;/li&gt &lt;li&gtPush and hold KEY button on the inside panel on the lock until all keys on the outside light up and a audible signal is given.&lt;/li&gt &lt;li&gtRelease the KEY button on the inside panel&lt;/li&gt &lt;li&gtEnter your Master PIN and press * &lt;/li&gt &lt;li&gtClick 2 and then *&lt;/li&gt &lt;li&gtClick 5, don't press *&lt;/li&gt &lt;li&gtThe LED flashes blue when exclusion is in progress&lt;/li&gt &lt;/ol&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -85,9 +83,7 @@ Z wave module for ID Lock 150 and 101<br /><h1>Overview</h1><p>The ID Lock Z-wav
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Door lock mode</label>
-        <description><![CDATA[
-Set if the lock is in away mode and if automatic locking should be enabled<br /><h1>Overview</h1><p>Auto lock Mode, Manual lock mode, Activate Away Mode, Deactivate Away Mode.</p> <p>If value is 0x02 (Enable Away, Manual lock) and the door is unlocked value will be set to 0x00.</p> <p>If value is 0x03 (Enable Away, Auto lock) and the door is unlocked value will be set to 0x01.</p> <p> Default Value: 1 (Disable Away/Auto Lock Mode)</p>
-        ]]></description>
+        <description>Set if the lock is in away mode and if automatic locking should be enabled&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAuto lock Mode, Manual lock mode, Activate Away Mode, Deactivate Away Mode.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf value is 0x02 (Enable Away, Manual lock) and the door is unlocked value will be set to 0x00.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf value is 0x03 (Enable Away, Auto lock) and the door is unlocked value will be set to 0x01.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt Default Value: 1 (Disable Away/Auto Lock Mode)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disable Away Manual Lock</option>
@@ -134,9 +130,7 @@ Set if the lock is in away mode and if automatic locking should be enabled<br />
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Door ReLock Mode</label>
-        <description><![CDATA[
-Sets if the door should relock or not<br /><h1>Overview</h1><p>With this configuration ID Lock can automatically relock the door if an already locked door gets unlocked, but remains unopened. This is avoided by deactivating relocking.</p>
-        ]]></description>
+        <description>Sets if the door should relock or not&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWith this configuration ID Lock can automatically relock the door if an already locked door gets unlocked, but remains unopened. This is avoided by deactivating relocking.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -146,9 +140,7 @@ Sets if the door should relock or not<br /><h1>Overview</h1><p>With this configu
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Service PIN Mode</label>
-        <description><![CDATA[
-Sets the validity of the service PIN<br /><h1>Overview</h1><p>A configuration get command on this parameter returns the latest set parameter value (set by Z-wave).</p> <p>This is a set only value, if changed locally on keypad these values are not changed on Z-wave module. Value 5 and 6 are for future use on door lock.</p>
-        ]]></description>
+        <description>Sets the validity of the service PIN&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtA configuration get command on this parameter returns the latest set parameter value (set by Z-wave).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis is a set only value, if changed locally on keypad these values are not changed on Z-wave module. Value 5 and 6 are for future use on door lock.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Deactivated</option>
@@ -166,18 +158,14 @@ Sets the validity of the service PIN<br /><h1>Overview</h1><p>A configuration ge
       <parameter name="config_7_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>7: Door Lock Model Type</label>
-        <description><![CDATA[
-Sends information if the model of the lock is 101 or 150<br /><h1>Overview</h1><p>This configuration is only accepted by configuration get command</p> <p>It is a read only parameter. Default value depends on the door lock model type.</p> <p>101 = ID Lock 101</p> <p>150 = ID Lock 150</p>
-        ]]></description>
+        <description>Sends information if the model of the lock is 101 or 150&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis configuration is only accepted by configuration get command&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIt is a read only parameter. Default value depends on the door lock model type.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt101 = ID Lock 101&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt150 = ID Lock 150&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Notification Reports are sent out unsolicated to device included in the association group.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtNotification Reports are sent out unsolicated to device included in the association group.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

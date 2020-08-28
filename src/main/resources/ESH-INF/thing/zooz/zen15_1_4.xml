@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zen15_01_004" listed="false">
     <label>ZEN15 Power Switch</label>
-    <description><![CDATA[
-Power Switch<br /><h1>Overview</h1><p>Z-Wave Power Switch</p> <br /><h2>Inclusion Information</h2><p><strong>Please include the Power Switch to your network BEFORE connecting it to the appliance you wish to control.</strong></p> <h2>Auto Z-Wave Inclusion</h2> <ol><li>Put your Z-Wave controller into inclusion mode</li> <li>Plug the Power Switch into a grounded receptacle located within direct range from your Z-Wave gateway controller</li> <li>The LED indicator will start flashing blue, then turn blue (on) or pink (off) once included</li> <li>A new on / off device will be recognized by your Z-Wave controller.</li> </ol><h2>Manual Z-Wave Inclusion</h2> <ol><li>Plug the Power Switch into a grounded receptacle located within direct range from your Z-Wave gateway controller</li> <li>Put your Z-Wave controller into inclusion mode</li> <li>Press and release the Z-Wave button 3 TIMES QUICKLY</li> <li>The LED indicator will start flashing blue, then turn blue (on) or pink (off) once included</li> <li>A new on / off device will be recognized by your Z-Wave controller.</li> </ol><h2>Secure Z-Wave Inclusion</h2> <ol><li>Plug the Power Switch into a grounded receptacle located within direct range from your Z-Wave gateway controller</li> <li>Put your Z-Wave controller in secure inclusion mode</li> <li>Press and HOLD the Z-Wave button for at least 3 seconds</li> <li>The LED indicator will start flashing green, then turn blue (on) or pink (off) once included 5. A new secure on / off device will be recognized by your Z-Wave controller.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Plug the Power Switch into a grounded receptacle located within direct range of your Z-Wave gateway controller.</li> <li>Put your Z-Wave controller into exclusion mode.</li> <li>Press and release the Z-Wave button 3 TIMES QUICKLY.</li> <li>The LED indicator will start flashing orange, then turn blue (on) or pink (off) once excluded.</li> <li>The Power Switch will disappear from your controller's device list. The LED indicator will remain solid orange for a few seconds to indicate exclusion.</li> </ol><p>If the first attempt is unsuccessful, please repeat the process following all steps carefully.</p>
-    ]]></description>
+    <description>Power Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-Wave Power Switch&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtPlease include the Power Switch to your network BEFORE connecting it to the appliance you wish to control.&lt;/strong&gt&lt;/p&gt &lt;h2&gtAuto Z-Wave Inclusion&lt;/h2&gt &lt;ol&gt&lt;li&gtPut your Z-Wave controller into inclusion mode&lt;/li&gt &lt;li&gtPlug the Power Switch into a grounded receptacle located within direct range from your Z-Wave gateway controller&lt;/li&gt &lt;li&gtThe LED indicator will start flashing blue, then turn blue (on) or pink (off) once included&lt;/li&gt &lt;li&gtA new on / off device will be recognized by your Z-Wave controller.&lt;/li&gt &lt;/ol&gt&lt;h2&gtManual Z-Wave Inclusion&lt;/h2&gt &lt;ol&gt&lt;li&gtPlug the Power Switch into a grounded receptacle located within direct range from your Z-Wave gateway controller&lt;/li&gt &lt;li&gtPut your Z-Wave controller into inclusion mode&lt;/li&gt &lt;li&gtPress and release the Z-Wave button 3 TIMES QUICKLY&lt;/li&gt &lt;li&gtThe LED indicator will start flashing blue, then turn blue (on) or pink (off) once included&lt;/li&gt &lt;li&gtA new on / off device will be recognized by your Z-Wave controller.&lt;/li&gt &lt;/ol&gt&lt;h2&gtSecure Z-Wave Inclusion&lt;/h2&gt &lt;ol&gt&lt;li&gtPlug the Power Switch into a grounded receptacle located within direct range from your Z-Wave gateway controller&lt;/li&gt &lt;li&gtPut your Z-Wave controller in secure inclusion mode&lt;/li&gt &lt;li&gtPress and HOLD the Z-Wave button for at least 3 seconds&lt;/li&gt &lt;li&gtThe LED indicator will start flashing green, then turn blue (on) or pink (off) once included 5. A new secure on / off device will be recognized by your Z-Wave controller.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug the Power Switch into a grounded receptacle located within direct range of your Z-Wave gateway controller.&lt;/li&gt &lt;li&gtPut your Z-Wave controller into exclusion mode.&lt;/li&gt &lt;li&gtPress and release the Z-Wave button 3 TIMES QUICKLY.&lt;/li&gt &lt;li&gtThe LED indicator will start flashing orange, then turn blue (on) or pink (off) once excluded.&lt;/li&gt &lt;li&gtThe Power Switch will disappear from your controller's device list. The LED indicator will remain solid orange for a few seconds to indicate exclusion.&lt;/li&gt &lt;/ol&gt&lt;p&gtIf the first attempt is unsuccessful, please repeat the process following all steps carefully.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -80,9 +78,7 @@ Power Switch<br /><h1>Overview</h1><p>Z-Wave Power Switch</p> <br /><h2>Inclusio
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Overload Protection</label>
-        <description><![CDATA[
-Overload protection.<br /><h1>Overview</h1><p>Overload protection will turn the Power Switch relay off once power exceeds 16.5A for over 5 seconds when this setting is enabled.</p> <p>We DO NOT recommend changing this parameter’s value as it may result in device damage and malfunction.</p>
-        ]]></description>
+        <description>Overload protection.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtOverload protection will turn the Power Switch relay off once power exceeds 16.5A for over 5 seconds when this setting is enabled.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtWe DO NOT recommend changing this parameter’s value as it may result in device damage and malfunction.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -103,9 +99,7 @@ Overload protection.<br /><h1>Overview</h1><p>Overload protection will turn the 
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: On/Off Status Change Notifications</label>
-        <description><![CDATA[
-Send On/Off Status Change Notifications<br /><h1>Overview</h1><p>Your Power Switch will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round. Choose when you want it to send the report.</p>
-        ]]></description>
+        <description>Send On/Off Status Change Notifications&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtYour Power Switch will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round. Choose when you want it to send the report.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -116,9 +110,7 @@ Send On/Off Status Change Notifications<br /><h1>Overview</h1><p>Your Power Swit
 
       <parameter name="config_27_1" type="integer" groupName="configuration">
         <label>27: LED Indicator</label>
-        <description><![CDATA[
-How the LED indicator displays power consumption.<br /><h1>Overview</h1><p>You can choose how the LED indicator displays power consumption on the Power Switch Values: 0 – LED indicator will display power consumption whenever the device is plugged in (LED stays on at all times – default setting); 1 – LED indicator will display the level of power consumption for 5 seconds only whenever the device is turned on or off (LED indicator will stay off for most of the time). Size: 1 byte dec.</p>
-        ]]></description>
+        <description>How the LED indicator displays power consumption.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtYou can choose how the LED indicator displays power consumption on the Power Switch Values: 0 – LED indicator will display power consumption whenever the device is plugged in (LED stays on at all times – default setting); 1 – LED indicator will display the level of power consumption for 5 seconds only whenever the device is turned on or off (LED indicator will stay off for most of the time). Size: 1 byte dec.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Always On</option>
@@ -128,9 +120,7 @@ How the LED indicator displays power consumption.<br /><h1>Overview</h1><p>You c
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
         <label>30: Manual Control</label>
-        <description><![CDATA[
-Local manual control<br /><h1>Overview</h1><p>Choose if you want to use the physical button on the Power Switch to turn the outlet on or off manually or if you want to disable this function.</p> <p>If this parameter is set to 0 (disabled), you will <strong>only</strong> be able to turn the outlet on or off remotely using your Z-Wave gateway controller.</p>
-        ]]></description>
+        <description>Local manual control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want to use the physical button on the Power Switch to turn the outlet on or off manually or if you want to disable this function.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf this parameter is set to 0 (disabled), you will &amp;lt;strong&amp;amp;gtonly&amp;lt;/strong&amp;amp;gt be able to turn the outlet on or off remotely using your Z-Wave gateway controller.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Manual control DISABLED</option>
@@ -141,9 +131,7 @@ Local manual control<br /><h1>Overview</h1><p>Choose if you want to use the phys
       <parameter name="config_151_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>151: Power Report Value Threshold</label>
-        <description><![CDATA[
-When to report power consumption to your controller<br /><h1>Overview</h1><p>Power Report Value Threshold Parameter 151: Choose how you want your Power Switch to report power consumption to your controller and associated devices. The number entered as value corresponds to the number of Watts the appliance needs to go over for the change to be reported. So if 50 Watts are entered by default, the Power Switch will report any change in power usage over 50 Watts (whether it’s at least 50 Watts more or 50 Watts less compared to previous report). Values: 0 – 65535; 0 – disabled (it will not report power consumption based on value change); 50 – default setting Size: 2 byte dec.</p>
-        ]]></description>
+        <description>When to report power consumption to your controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower Report Value Threshold Parameter 151: Choose how you want your Power Switch to report power consumption to your controller and associated devices. The number entered as value corresponds to the number of Watts the appliance needs to go over for the change to be reported. So if 50 Watts are entered by default, the Power Switch will report any change in power usage over 50 Watts (whether it’s at least 50 Watts more or 50 Watts less compared to previous report). Values: 0 – 65535; 0 – disabled (it will not report power consumption based on value change); 50 – default setting Size: 2 byte dec.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -151,9 +139,7 @@ When to report power consumption to your controller<br /><h1>Overview</h1><p>Pow
       <parameter name="config_152_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>152: Power Report Percentage Threshold</label>
-        <description><![CDATA[
-How to report power consumption to your controller by percentage rate<br /><h1>Overview</h1><p>Power Report Percentage Threshold Parameter 152: Choose how you want your Power Switch to report power consumption to your controller and associated devices by percentage rate. The number entered as value corresponds to the percentage in power usage change the appliance needs to go over for the event to be reported. So if 10% is entered by default, the Power Switch will report any change in power consumption over 10% (whether it’s at least 10% more or 10% less power consumption compared to previous report). Values: 0 – 255; 0 – disabled (it will not report power consumption based on percentage change); 10 – default setting Size: 1 byte dec.</p>
-        ]]></description>
+        <description>How to report power consumption to your controller by percentage rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower Report Percentage Threshold Parameter 152: Choose how you want your Power Switch to report power consumption to your controller and associated devices by percentage rate. The number entered as value corresponds to the percentage in power usage change the appliance needs to go over for the event to be reported. So if 10% is entered by default, the Power Switch will report any change in power consumption over 10% (whether it’s at least 10% more or 10% less power consumption compared to previous report). Values: 0 – 255; 0 – disabled (it will not report power consumption based on percentage change); 10 – default setting Size: 1 byte dec.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -161,9 +147,7 @@ How to report power consumption to your controller by percentage rate<br /><h1>O
       <parameter name="config_171_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>171: Power Report Frequency</label>
-        <description><![CDATA[
-How often to report power consumption (W) to your controller<br /><h1>Overview</h1><p>Power Report Frequency Parameter 171: Choose how often you want your Power Switch to report power consumption (W) to your controller and associated device. The number entered as value corresponds to the number of seconds. So if 30 is entered by default, the Power Switch will report power consumption every 30 seconds. Values: 5 – 2678400; 0 – disabled (it will not report power consumption); 30 – default setting Size: 4 byte dec</p>
-        ]]></description>
+        <description>How often to report power consumption (W) to your controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower Report Frequency Parameter 171: Choose how often you want your Power Switch to report power consumption (W) to your controller and associated device. The number entered as value corresponds to the number of seconds. So if 30 is entered by default, the Power Switch will report power consumption every 30 seconds. Values: 5 – 2678400; 0 – disabled (it will not report power consumption); 30 – default setting Size: 4 byte dec&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -171,9 +155,7 @@ How often to report power consumption (W) to your controller<br /><h1>Overview</
       <parameter name="config_172_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>172: Energy Report Frequency</label>
-        <description><![CDATA[
-How often to report energy usage (KWH) to your controller<br /><h1>Overview</h1><p>Energy Report Frequency Parameter 172: Choose how often you want your Power Switch to report energy usage (KWH) to your controller and associated device. The number entered as value corresponds to the number of seconds. So if 300 is entered by default, the Power Switch will report energy usage every 300 seconds (5 minutes). Values: 5 – 2678400; 0 – disabled (it will not report energy usage); 300 – default setting Size: 4 byte dec.</p>
-        ]]></description>
+        <description>How often to report energy usage (KWH) to your controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnergy Report Frequency Parameter 172: Choose how often you want your Power Switch to report energy usage (KWH) to your controller and associated device. The number entered as value corresponds to the number of seconds. So if 300 is entered by default, the Power Switch will report energy usage every 300 seconds (5 minutes). Values: 5 – 2678400; 0 – disabled (it will not report energy usage); 300 – default setting Size: 4 byte dec.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -181,9 +163,7 @@ How often to report energy usage (KWH) to your controller<br /><h1>Overview</h1>
       <parameter name="config_173_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>173: Voltage Report Frequency</label>
-        <description><![CDATA[
-How often to report voltage (V) to your controller<br /><h1>Overview</h1><p>Voltage Report Frequency Parameter 173: Choose how often you want your Power Switch to report voltage (V) to your controller and associated device. The number entered as value corresponds to the number of seconds. Values: 5 – 2678400; 0 – disabled (default – it will not report voltage levels) Size: 4 byte dec.</p>
-        ]]></description>
+        <description>How often to report voltage (V) to your controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtVoltage Report Frequency Parameter 173: Choose how often you want your Power Switch to report voltage (V) to your controller and associated device. The number entered as value corresponds to the number of seconds. Values: 5 – 2678400; 0 – disabled (default – it will not report voltage levels) Size: 4 byte dec.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -191,9 +171,7 @@ How often to report voltage (V) to your controller<br /><h1>Overview</h1><p>Volt
       <parameter name="config_174_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>174: Electricity Report Frequency</label>
-        <description><![CDATA[
-How often to report levels of electrical current (A) to your controller<br /><h1>Overview</h1><p>Electricity Report Frequency Parameter 174: Choose how often you want your Power Switch to report levels of electrical current (A) to your controller and associated device. The number entered as value corresponds to the number of seconds. Values: 5 – 2678400; 0 – disabled (default – it will not report electrical current levels) Size: 4 byte dec.</p>
-        ]]></description>
+        <description>How often to report levels of electrical current (A) to your controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtElectricity Report Frequency Parameter 174: Choose how often you want your Power Switch to report levels of electrical current (A) to your controller and associated device. The number entered as value corresponds to the number of seconds. Values: 5 – 2678400; 0 – disabled (default – it will not report electrical current levels) Size: 4 byte dec.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>

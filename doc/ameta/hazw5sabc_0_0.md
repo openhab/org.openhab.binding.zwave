@@ -10,7 +10,7 @@ This describes the Z-Wave device *HA-ZW-5SABC*, manufactured by *Ameta Internati
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![HA-ZW-5SABC product image](https://www.cd-jackson.com/zwave_device_uploads/1211/1211_default.png)
+![HA-ZW-5SABC product image](https://opensmarthouse.org/zwavedatabase/1211/image/)
 
 
 The HA-ZW-5SABC supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,19 +19,15 @@ The HA-ZW-5SABC does not permanently listen for messages sent from the controlle
 
 ## Overview
 
-The 4-in-1 motion sensor is designed for using with scenes in home automation systems, integrate motion, light, temperature and humidity sensors, powered by CR123A battery or MicroUSB cable. The Motion Sensor lets you know when movement is detected in a certain area and can trigger different actions in response to that movement (or lack of movement). It also lets you know the ambient temperature and humidity to trigger different actions to make you more comfort. 
+<p&gtThe 4-in-1 motion sensor is designed for using with scenes in home automation systems, integrate motion, light, temperature and humidity sensors, powered by CR123A battery or MicroUSB cable. The Motion Sensor lets you know when movement is detected in a certain area and can trigger different actions in response to that movement (or lack of movement). It also lets you know the ambient temperature and humidity to trigger different actions to make you more comfort. </p&gt
 
 ### Inclusion Information
 
-  * Put your primary controller in inclusion mode
-  * Short press the button at the back of the sensor once.
-  * The 4-in-1 Motion Sensor LED will blink, If the inclusion is successful, then LED will stay on for 2 seconds. Otherwise, the LED will blink until timeout, in which case you need to repeat the process from step b.
+<ul&gt<li&gtPut your primary controller in inclusion mode</li&gt <li&gtShort press the button at the back of the sensor once.</li&gt <li&gtThe 4-in-1 Motion Sensor LED will blink, If the inclusion is successful, then LED will stay on for 2 seconds. Otherwise, the LED will blink until timeout, in which case you need to repeat the process from step b.</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Put your primary controller in exclusion mode
-  * Short press the button at the back of the sensor once.
-  * The 4-in-1 Motion Sensor LED will blink, If the exclusion is successful, then LED will stay on for 2 seconds. Otherwise, the LED will blink until timeout, in which case you need to repeat the process from step b.
+<ul&gt<li&gtPut your primary controller in exclusion mode</li&gt <li&gtShort press the button at the back of the sensor once.</li&gt <li&gtThe 4-in-1 Motion Sensor LED will blink, If the exclusion is successful, then LED will stay on for 2 seconds. Otherwise, the LED will blink until timeout, in which case you need to repeat the process from step b.</li&gt </ul&gt
 
 ### Wakeup Information
 
@@ -40,7 +36,7 @@ The HA-ZW-5SABC does not permanently listen for messages sent from the controlle
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-To wake up the sensor so that your hub can send it configuration parameters quickly press on the button on the back 3 times.
+<p&gtTo wake up the sensor so that your hub can send it configuration parameters quickly press on the button on the back 3 times.</p&gt
 
 ## Channels
 
@@ -151,9 +147,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: PIR Trigger Time
 
 PIR Trigger Time (Time Between PIR Readings)
-The amount of seconds between motion detection (ie. interval)
-
-5 = 5 seconds
+<p&gtThe amount of seconds between motion detection (ie. interval)</p&gt <p&gt5 = 5 seconds</p&gt
 Values in the range 5 to 15300 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -164,9 +158,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: Basic Set Command Send after PIR Trigger
 
 Basic Set Command Send after PIR Trigger
-Should Basic Set Command be sent after PIR is triggered:
-
-0=No, 1 = Yes
+<p&gtShould Basic Set Command be sent after PIR is triggered:</p&gt <p&gt0=No, 1 = Yes</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -177,11 +169,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: PIR Trigger Correspondence Action
 
 PIR Trigger Correspondence Action
-Ability to reverse the Basic Set behavior for devices associated in group 2.
-
-0 = Turn the associated device ON when motion is tripped, and OFF when motion stops.
-
-1 = Turn the associated device OFF when motion is tripped, and ON when motion stops.
+<p&gtAbility to reverse the Basic Set behavior for devices associated in group 2.</p&gt <p&gt0 = Turn the associated device ON when motion is tripped, and OFF when motion stops.</p&gt <p&gt1 = Turn the associated device OFF when motion is tripped, and ON when motion stops.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -192,7 +180,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 100: Change Parameters 101-104 Back to Default Settings
 
 Change Parameters 101-104 Back to Default Settings
-If changes are made to parameters 101-104, you can set parameter 100 to 1 to reset 101-104 back to default.
+<p&gtIf changes are made to parameters 101-104, you can set parameter 100 to 1 to reset 101-104 back to default.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -203,11 +191,7 @@ This parameter has the configuration ID ```config_100_1``` and is of type ```INT
 ### Parameter 101: Temperature Reporting Interval
 
 Temperature Reporting Interval
-The interval between when temperature is reported to the gateway
-
-0=Off, 1 = 1 second
-
-(Note: the sensor reporting time will round to the nearest minute)
+<p&gtThe interval between when temperature is reported to the gateway</p&gt <p&gt0=Off, 1 = 1 second</p&gt <p&gt(Note: the sensor reporting time will round to the nearest minute)</p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```7200```.
@@ -218,11 +202,7 @@ This parameter has the configuration ID ```config_101_4``` and is of type ```INT
 ### Parameter 102: Humidity Reporting Interval
 
 Humidity Reporting Interval
-The interval between when humidity is reported to the gateway
-
-0 = Off, 1 = 1 second
-
-(Note: the sensor reporting time will round to the nearest minute)
+<p&gtThe interval between when humidity is reported to the gateway</p&gt <p&gt0 = Off, 1 = 1 second</p&gt <p&gt(Note: the sensor reporting time will round to the nearest minute)</p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```7200```.
@@ -233,11 +213,7 @@ This parameter has the configuration ID ```config_102_4``` and is of type ```INT
 ### Parameter 103: Luminance Reporting Interval
 
 Luminance Reporting Interval
-The interval between when luminance is reported to the gateway
-
-0 = Off, 1 = 1 second
-
-(Note: the sensor reporting time will round to the nearest minute)
+<p&gtThe interval between when luminance is reported to the gateway</p&gt <p&gt0 = Off, 1 = 1 second</p&gt <p&gt(Note: the sensor reporting time will round to the nearest minute)</p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```7200```.
@@ -248,11 +224,7 @@ This parameter has the configuration ID ```config_103_4``` and is of type ```INT
 ### Parameter 104: Battery Reporting Interval
 
 Battery Reporting Interval
-The interval between when battery is reported to the gateway
-
-0 = Off, 1 = 1 second
-
-(Note: the sensor reporting time will round to the nearest minute)
+<p&gtThe interval between when battery is reported to the gateway</p&gt <p&gt0 = Off, 1 = 1 second</p&gt <p&gt(Note: the sensor reporting time will round to the nearest minute)</p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```86400```.
@@ -263,7 +235,7 @@ This parameter has the configuration ID ```config_104_4``` and is of type ```INT
 ### Parameter 110: Change Parameters 111-114 Back to Default Settings
 
 Change Parameters 111-114 Back to Default Settings
-If changes are made to parameters 111-114, you can set parameter 110 to 1 to reset 111-114 back to default.
+<p&gtIf changes are made to parameters 111-114, you can set parameter 110 to 1 to reset 111-114 back to default.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -274,9 +246,7 @@ This parameter has the configuration ID ```config_110_1``` and is of type ```INT
 ### Parameter 111: Temperature Threshold
 
 Temperature Threshold
-Set the threshold of the temperature for your sensor
-
-1 = 0.1 degree Celsius, 500 = 50 degrees Celsius
+<p&gtSet the threshold of the temperature for your sensor</p&gt <p&gt1 = 0.1 degree Celsius, 500 = 50 degrees Celsius</p&gt
 Values in the range 1 to 500 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -287,9 +257,7 @@ This parameter has the configuration ID ```config_111_2``` and is of type ```INT
 ### Parameter 112: Humidity Threshold
 
 Humidity Threshold
-Set the threshold of the humidity for your sensor
-
-1 = 1%, 2 = 2%
+<p&gtSet the threshold of the humidity for your sensor</p&gt <p&gt1 = 1%, 2 = 2%</p&gt
 Values in the range 1 to 32 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -300,9 +268,7 @@ This parameter has the configuration ID ```config_112_1``` and is of type ```INT
 ### Parameter 113: Luminance Threshold
 
 Luminance Threshold
-Set the threshold of the luminance for your sensor
-
-1 = 1 unit lux, 2 = 2 unit lux
+<p&gtSet the threshold of the luminance for your sensor</p&gt <p&gt1 = 1 unit lux, 2 = 2 unit lux</p&gt
 Values in the range 1 to 65528 may be set.
 
 The manufacturer defined default value is ```150```.
@@ -313,9 +279,7 @@ This parameter has the configuration ID ```config_113_2``` and is of type ```INT
 ### Parameter 114: Battery Threshold
 
 Battery Threshold
-Set the threshold of the battery for your sensor
-
-1 = 1%, 2 = 2%
+<p&gtSet the threshold of the battery for your sensor</p&gt <p&gt1 = 1%, 2 = 2%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -349,13 +313,7 @@ The HA-ZW-5SABC supports 2 association groups.
 ### Group 1: Group 1
 
 Sensor will send updates
-  1. Notification Report  
-    Sensor will send notification report when motion detection unknown location and (event inactive)
-  2. Multilevel Sensor Report  
-    Sensor will send multilevel sensor report (temperature, humidity, luminance) interval of 2 hours
-  3. Battery Report  
-    Sensor will send battery report when the battery level is low and the battery report's value is 0xFF
-  4. Device Reset Locally
+<ol&gt<li&gtNotification Report<br /&gtSensor will send notification report when motion detection unknown location and (event inactive)</li&gt <li&gtMultilevel Sensor Report<br /&gtSensor will send multilevel sensor report (temperature, humidity, luminance) interval of 2 hours</li&gt <li&gtBattery Report<br /&gtSensor will send battery report when the battery level is low and the battery report's value is 0xFF</li&gt <li&gtDevice Reset Locally</li&gt </ol&gt
 
 Association group 1 supports 5 nodes.
 
@@ -392,9 +350,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Device Manual](https://www.cd-jackson.com/zwave_device_uploads/1211/AIBASE-Z-Wave-Multi-Sensor-UserGuide-20180606.pdf)
+* [Device Manual](https://opensmarthouse.org/zwavedatabase/1211/AIBASE-Z-Wave-Multi-Sensor-UserGuide-20180606.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1211).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1211).

@@ -7,9 +7,7 @@
 
   <thing-type id="fakro_amzsolar_00_000" listed="false">
     <label>AMZ Solar Solar Awning</label>
-    <description><![CDATA[
-Solar Awning<br /><h1>Overview</h1><p>The AMZ Z-Wave Solar Awning Blind is intended for installation in Fakro roof windows and is adapted to cooperation with elements of wireless remote control system offered by FAKRO and other manufacturers offering products with Z-Wave logo. The awning blind is equipped with a two-way radio communication module. For communication, Z-Wave utilizes radio wave frequency of 868,42 MHz.</p> <br /><h2>Inclusion Information</h2><p>Start the INCLUDE procedure by means of the controller of the existing network and then press the “Programming” button on the awning blind being added to the network.</p> <br /><h2>Exclusion Information</h2><p>Put your controller into exclusion mode, then press the programming button on the awning blind for longer than 1 sec.</p>
-    ]]></description>
+    <description>Solar Awning&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe AMZ Z-Wave Solar Awning Blind is intended for installation in Fakro roof windows and is adapted to cooperation with elements of wireless remote control system offered by FAKRO and other manufacturers offering products with Z-Wave logo. The awning blind is equipped with a two-way radio communication module. For communication, Z-Wave utilizes radio wave frequency of 868,42 MHz.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtStart the INCLUDE procedure by means of the controller of the existing network and then press the “Programming” button on the awning blind being added to the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut your controller into exclusion mode, then press the programming button on the awning blind for longer than 1 sec.&lt;/p&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -63,18 +61,14 @@ Solar Awning<br /><h1>Overview</h1><p>The AMZ Z-Wave Solar Awning Blind is inten
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="2">
         <label>1: Operation Mode</label>
-        <description><![CDATA[
-Operation Mode<br /><h1>Overview</h1><p>0 – manual<br />1 – semi<br />2 – auto</p>
-        ]]></description>
+        <description>Operation Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 – manual&amp;lt;br /&amp;amp;gt1 – semi&amp;lt;br /&amp;amp;gt2 – auto&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="1" max="2">
         <label>2: Season</label>
-        <description><![CDATA[
-Season<br /><h1>Overview</h1><p>1 – summer<br />2 – winter</p>
-        ]]></description>
+        <description>Season&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 – summer&amp;lt;br /&amp;amp;gt2 – winter&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -95,18 +89,14 @@ Season<br /><h1>Overview</h1><p>1 – summer<br />2 – winter</p>
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="2">
         <label>12: Calibration</label>
-        <description><![CDATA[
-Calibration<br /><h1>Overview</h1><p>Value 1 – calibrated<br />Value 2 – discalibrated – to enter the calibration mode must first time discalibrate and then calibrate.</p>
-        ]]></description>
+        <description>Calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue 1 – calibrated&amp;lt;br /&amp;amp;gtValue 2 – discalibrated – to enter the calibration mode must first time discalibrate and then calibrate.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="1" max="2">
         <label>13: Positioning</label>
-        <description><![CDATA[
-Positioning<br /><h1>Overview</h1><p>1 – FF go to Max<br />2 – FF go to previous position</p>
-        ]]></description>
+        <description>Positioning&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 – FF go to Max&amp;lt;br /&amp;amp;gt2 – FF go to previous position&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

@@ -10,22 +10,22 @@ This describes the Z-Wave device *Vitrum III EU Dimmer*, manufactured by *VDA* w
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Vitrum III EU Dimmer product image](https://www.cd-jackson.com/zwave_device_uploads/475/475_default.jpg)
+![Vitrum III EU Dimmer product image](https://opensmarthouse.org/zwavedatabase/475/image/)
 
 
 The Vitrum III EU Dimmer supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-When the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.
+<p&gtWhen the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.</p&gt
 
 ### Inclusion Information
 
-With the controller in the inclusion mode, press any of the touch keys on the device.
+<p&gtWith the controller in the inclusion mode, press any of the touch keys on the device.</p&gt
 
 ### Exclusion Information
 
-Press and hold the leftmost touch key for at least 8 seconds. The device will flash red three times and sound an acoustic signal to indicate that the original factory setting has been restored.
+<p&gtPress and hold the leftmost touch key for at least 8 seconds. The device will flash red three times and sound an acoustic signal to indicate that the original factory setting has been restored.</p&gt
 
 ## Channels
 
@@ -136,10 +136,10 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Datasheet](https://www.cd-jackson.com/zwave_device_uploads/475/Vitrum-III-EU-Dimmer-Wireless1-datasheet.pdf)
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/475/a28c244860f3d1fa1f8637c47351c45d85d3c9e4.pdf)
+* [Datasheet](https://opensmarthouse.org/zwavedatabase/475/Vitrum-III-EU-Dimmer-Wireless1-datasheet.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/475/a28c244860f3d1fa1f8637c47351c45d85d3c9e4.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/475).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/475).

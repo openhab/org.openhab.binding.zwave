@@ -10,24 +10,22 @@ This describes the Z-Wave device *Da Vinci v9*, manufactured by *Avadesign Techn
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Da Vinci v9 product image](https://www.cd-jackson.com/zwave_device_uploads/910/910_default.png)
+![Da Vinci v9 product image](https://opensmarthouse.org/zwavedatabase/910/image/)
 
 
 The Da Vinci v9 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH\_BINARY) , shutter (MULTILEVEL\_SWITCH) Z-Wave device.
-
-Double Press the following buttons in the following order 8,1,3. Use the reset procedure only when the primary controller is missing or inoperable.
+<p&gtThe Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH\_BINARY) , shutter (MULTILEVEL\_SWITCH) Z-Wave device.</p&gt <p&gtDouble Press the following buttons in the following order 8,1,3. Use the reset procedure only when the primary controller is missing or inoperable.</p&gt
 
 ### Inclusion Information
 
-Press the #1 button 3 times.
+<p&gtPress the #1 button 3 times.</p&gt
 
 ### Exclusion Information
 
-Press the #1 button 3 times.
+<p&gtPress the #1 button 3 times.</p&gt
 
 ## Channels
 
@@ -106,17 +104,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Button 1 Type
 
 button 1 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -137,9 +125,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Button 1 Partner-Id
 
 Button 1 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -183,7 +169,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Button 1 Output
 
 Button 1 Output
-Output = Relay
+<p&gtOutput = Relay</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -204,13 +190,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Button 1 attributes
 
 Button 1 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -227,17 +207,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Button 2 Type
 
 Button 2 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -257,9 +227,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Button 2 Partner-Id
 
 Button 2 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -283,9 +251,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Button 2 Blind Duration
 
 Button 2 Blind Duration
-Possible values
-
-3-127
+<p&gtPossible values</p&gt <p&gt3-127</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -326,13 +292,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Button 2 attributes
 
 Button 2 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -349,17 +309,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Button 3 Type
 
 Button 3 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -379,9 +329,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Button 3 Partner-Id
 
 Button 3 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -445,13 +393,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Button 3 attributes
 
 Button 3 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -468,17 +410,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: Button 4 Type
 
 Button 4 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -498,9 +430,7 @@ This parameter has the configuration ID ```config_16_1``` and is of type ```INTE
 ### Parameter 17: Button 4 Partner-Id
 
 Button 4 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -564,13 +494,7 @@ This parameter has the configuration ID ```config_19_1``` and is of type ```INTE
 ### Parameter 20: Button 4 attributes
 
 Button 4 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -587,17 +511,7 @@ This parameter has the configuration ID ```config_20_1``` and is of type ```INTE
 ### Parameter 21: Button 5 Type
 
 Button 5 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -617,9 +531,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 ### Parameter 22: Button 5 Partner-Id
 
 Button 5 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -683,13 +595,7 @@ This parameter has the configuration ID ```config_24_1``` and is of type ```INTE
 ### Parameter 25: Button 5 attributes
 
 Button 5 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -706,17 +612,7 @@ This parameter has the configuration ID ```config_25_1``` and is of type ```INTE
 ### Parameter 26: Button 6 Type
 
 Button 6 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -736,9 +632,7 @@ This parameter has the configuration ID ```config_26_1``` and is of type ```INTE
 ### Parameter 27: Button 6 Partner-Id
 
 Button 6 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -802,13 +696,7 @@ This parameter has the configuration ID ```config_29_1``` and is of type ```INTE
 ### Parameter 30: Button 6 attributes
 
 Button 6 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -825,17 +713,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 31: Button 7 Type
 
 Button 7 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -855,9 +733,7 @@ This parameter has the configuration ID ```config_31_1``` and is of type ```INTE
 ### Parameter 32: Button 7 Partner-Id
 
 Button 7 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -921,13 +797,7 @@ This parameter has the configuration ID ```config_34_1``` and is of type ```INTE
 ### Parameter 35: Button 7 attribute
 
 Button 7 attribute
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -944,17 +814,7 @@ This parameter has the configuration ID ```config_35_1``` and is of type ```INTE
 ### Parameter 36: Button 8 Type
 
 Button 8 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -974,9 +834,7 @@ This parameter has the configuration ID ```config_36_1``` and is of type ```INTE
 ### Parameter 37: Button 8 Partner-Id
 
 Button 8 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -1041,13 +899,7 @@ This parameter has the configuration ID ```config_39_1``` and is of type ```INTE
 ### Parameter 40: Button 8 attribute
 
 Button 8 attribute
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -1064,17 +916,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 41: Button 9 Type
 
 Button 9 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -1094,9 +936,7 @@ This parameter has the configuration ID ```config_41_1``` and is of type ```INTE
 ### Parameter 42: Button 9 Partner-Id
 
 Button 9 Partner-Id
-  * When setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).
-  * Blind must contain Partner Id which is different than 0 and it must be unique. 
-  * When setting blind to switch, Partner Id also change to switch
+<ul&gt<li&gtWhen setting Button (EP) to blind, Partner Id EP also change to blind (opposite direction).</li&gt <li&gtBlind must contain Partner Id which is different than 0 and it must be unique. </li&gt <li&gtWhen setting blind to switch, Partner Id also change to switch</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -1160,13 +1000,7 @@ This parameter has the configuration ID ```config_44_1``` and is of type ```INTE
 ### Parameter 45: Button 9 attributes
 
 Button 9 attributes
-Bit [0] = LED enable
-
-Bit [1] = Sound enable
-
-Bit [2] = Dry contact enable
-
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable</p&gt <p&gtBit [1] = Sound enable</p&gt <p&gtBit [2] = Dry contact enable</p&gt <p&gtBit [3] = Motor enable</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -1205,11 +1039,7 @@ This parameter has the configuration ID ```config_47_1``` and is of type ```INTE
 ### Parameter 48: Device Toggle or Pulse the output
 
 Device Toggle or Pulse the output
-**Device Toggle or Pulse the output:**
-
-0 = Toggle
-
-1 = Pulse
+<p&gt<strong&gtDevice Toggle or Pulse the output:</strong&gt</p&gt <p&gt0 = Toggle</p&gt <p&gt1 = Pulse</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -1220,13 +1050,7 @@ This parameter has the configuration ID ```config_48_1``` and is of type ```INTE
 ### Parameter 49: Device Background LEDs Timeout
 
 Device Background LEDs Timeout
-**Device Background LEDs Timeout:**
-
-0 = always Off
-
-10 - 40 = Timeout in seconds
-
-255 = always On!!!!!!!
+<p&gt<strong&gtDevice Background LEDs Timeout:</strong&gt</p&gt <p&gt0 = always Off</p&gt <p&gt10 - 40 = Timeout in seconds</p&gt <p&gt255 = always On!!!!!!!</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -1237,11 +1061,7 @@ This parameter has the configuration ID ```config_49_1``` and is of type ```INTE
 ### Parameter 50: Device touch sensitivity
 
 Device touch sensitivity
-**You can choose value between 0 – 7**
-
-0 = most sensitive
-
-7 = least sensitive
+<p&gt<strong&gtYou can choose value between 0 – 7</strong&gt</p&gt <p&gt0 = most sensitive</p&gt <p&gt7 = least sensitive</p&gt
 Values in the range 0 to 7 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -1252,7 +1072,7 @@ This parameter has the configuration ID ```config_50_1``` and is of type ```INTE
 ### Parameter 51: Save and Reset
 
 Save and Reset
-255 = save and reset
+<p&gt255 = save and reset</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -1279,225 +1099,217 @@ Association group 1 supports 5 nodes.
 
 ### Group 2: EP1_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
-
-EP1\_SWITCH\_BINARY_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt <p&gtEP1\_SWITCH\_BINARY_SET</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: EP1_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT 
-
-EP1\_SWITCH\_BINARY_REPORT
+<p&gtSWITCH\_BINARY\_REPORT </p&gt <p&gtEP1\_SWITCH\_BINARY_REPORT</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: EP1_SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
-
-EP1\_SWITCH\_MULTILEVEL_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt <p&gtEP1\_SWITCH\_MULTILEVEL_SET</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: EP1_SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
-
-EP1\_SWITCH\_MULTILEVEL_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt <p&gtEP1\_SWITCH\_MULTILEVEL_REPORT</p&gt
 
 Association group 5 supports 5 nodes.
 
 ### Group 6: EP2_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 6 supports 5 nodes.
 
 ### Group 7: EP2_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 7 supports 5 nodes.
 
 ### Group 8: EP2_SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 8 supports 5 nodes.
 
 ### Group 9: EP2_SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 9 supports 5 nodes.
 
 ### Group 10: EP3_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 10 supports 5 nodes.
 
 ### Group 11: EP3_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 11 supports 5 nodes.
 
 ### Group 12: EP3_SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 12 supports 5 nodes.
 
 ### Group 13: EP3_SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 13 supports 5 nodes.
 
 ### Group 14: EP4_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 14 supports 5 nodes.
 
 ### Group 15: EP4_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 15 supports 5 nodes.
 
 ### Group 16: EP4_SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 16 supports 5 nodes.
 
 ### Group 17: EP4_SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 17 supports 5 nodes.
 
 ### Group 18: EP5_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 18 supports 5 nodes.
 
 ### Group 19: EP5_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 19 supports 5 nodes.
 
 ### Group 20: EP5_SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 20 supports 5 nodes.
 
 ### Group 21: EP5_SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 21 supports 5 nodes.
 
 ### Group 22: EP6_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 22 supports 5 nodes.
 
 ### Group 23: EP6_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 23 supports 5 nodes.
 
 ### Group 24: EP6_SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 24 supports 5 nodes.
 
 ### Group 25: EP6_SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 25 supports 5 nodes.
 
 ### Group 26: EP7_ SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 26 supports 5 nodes.
 
 ### Group 27: EP7_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 27 supports 5 nodes.
 
 ### Group 28: EP7_ SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 28 supports 5 nodes.
 
 ### Group 29: EP7_ SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 29 supports 5 nodes.
 
 ### Group 30: EP8_SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 30 supports 5 nodes.
 
 ### Group 31: EP8_ SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 31 supports 5 nodes.
 
 ### Group 32: EP8_ SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 32 supports 5 nodes.
 
 ### Group 33: EP8_ SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 33 supports 5 nodes.
 
 ### Group 34: EP9_ SWITCH_BINARY_SET
 
-SWITCH\_BINARY\_SET
+<p&gtSWITCH\_BINARY\_SET</p&gt
 
 Association group 34 supports 5 nodes.
 
 ### Group 35: EP9_SWITCH_BINARY_REPORT
 
-SWITCH\_BINARY\_REPORT
+<p&gtSWITCH\_BINARY\_REPORT</p&gt
 
 Association group 35 supports 5 nodes.
 
 ### Group 36: EP9_ SWITCH_MULTILEVEL_SET
 
-SWITCH\_MULTILEVEL\_SET
+<p&gtSWITCH\_MULTILEVEL\_SET</p&gt
 
 Association group 36 supports 5 nodes.
 
 ### Group 37: EP9_ SWITCH_MULTILEVEL_REPORT
 
-SWITCH\_MULTILEVEL\_REPORT
+<p&gtSWITCH\_MULTILEVEL\_REPORT</p&gt
 
 Association group 37 supports 5 nodes.
 
@@ -1523,9 +1335,9 @@ Association group 37 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/910/DA-VINCI-ver-9.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/910/DA-VINCI-ver-9.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/910).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/910).

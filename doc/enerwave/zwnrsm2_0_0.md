@@ -10,22 +10,22 @@ This describes the Z-Wave device *ZWN-RSM2*, manufactured by *Wenzhou MTLC Elect
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZWN-RSM2 product image](https://www.cd-jackson.com/zwave_device_uploads/465/465_default.png)
+![ZWN-RSM2 product image](https://opensmarthouse.org/zwavedatabase/465/image/)
 
 
 The ZWN-RSM2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This smart relay can be used to convert a continuous load into a remotely switched load or used in conjunction with the existing manual switches to add remote operability. For the advanced users of Z-Wave, the functions can be customized with programming codes.
+<p&gtThis smart relay can be used to convert a continuous load into a remotely switched load or used in conjunction with the existing manual switches to add remote operability. For the advanced users of Z-Wave, the functions can be customized with programming codes. </p&gt
 
 ### Inclusion Information
 
-Put controller into inclusion mode, toggle ON and OFF 3 times
+<p&gtPut controller into inclusion mode, toggle ON and OFF 3 times </p&gt
 
 ### Exclusion Information
 
-Put controller into exclusion mode, toggle ON and OFF 3 times
+<p&gtPut controller into exclusion mode, toggle ON and OFF 3 times</p&gt
 
 ## Channels
 
@@ -67,7 +67,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 3: Unsolicited Report Configuration
 
 Send unsolicited status report to primary controller
-ZWN-RSM2 can send unsolicited status report to primary controller (Node ID 0X01) when switch toggled due to some controllers designed as gateway. If your controller is not a gateway or does not need the status or you think it could confuse your Z-Wave net
+<p&gtZWN-RSM2 can send unsolicited status report to primary controller (Node ID 0X01) when switch toggled due to some controllers designed as gateway. If your controller is not a gateway or does not need the status or you think it could confuse your Z-Wave net</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -144,9 +144,9 @@ Association group 3 supports 3 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/465/ZWN-RSM2-Plus-0208160044-01.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/465/ZWN-RSM2-Plus-0208160044-01.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/465).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/465).

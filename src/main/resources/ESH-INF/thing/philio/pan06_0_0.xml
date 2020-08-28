@@ -7,9 +7,7 @@
 
   <thing-type id="philio_pan06_00_000" listed="false">
     <label>PAN06 In Wall Dual Relay (1 Way) Switch Module 2 x 1.5kW</label>
-    <description><![CDATA[
-In Wall Dual Relay (1 Way) Switch Module 2 x 1.5kW<br /><h1>Overview</h1><p>The PAN06 allows controlling two independent loads both wirelessly via Z-Wave and locally utilizing a traditional wall switch. Thanks to its calibration technology the device cannot only be used to switch resistive devices but also works perfectly with many kind of reactive or resistive loads such as fluorescent lights or LEDs.<br />The device is placed in a wall box right behind the normal switch. The switch is not longer directly<br />connected to the load but acts as input device for the insert that is controlling the load. This device is<br />designed for a 3 wire system and needs a neutral wire in the wall box.</p> <br /><h2>Inclusion Information</h2><p>1. Have Z-Wave Controller entered inclusion mode<br />2. Pressing Include button of PAN06 three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>1. Have Z-Wave Controller entered exclusion mode<br />2. Pressing Include button of PAN06 three times within 1.5 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>In Wall Dual Relay (1 Way) Switch Module 2 x 1.5kW&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe PAN06 allows controlling two independent loads both wirelessly via Z-Wave and locally utilizing a traditional wall switch. Thanks to its calibration technology the device cannot only be used to switch resistive devices but also works perfectly with many kind of reactive or resistive loads such as fluorescent lights or LEDs.&lt;br /&gtThe device is placed in a wall box right behind the normal switch. The switch is not longer directly&lt;br /&gtconnected to the load but acts as input device for the insert that is controlling the load. This device is&lt;br /&gtdesigned for a 3 wire system and needs a neutral wire in the wall box.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt1. Have Z-Wave Controller entered inclusion mode&lt;br /&gt2. Pressing Include button of PAN06 three times within 1.5 seconds will enter inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt1. Have Z-Wave Controller entered exclusion mode&lt;br /&gt2. Pressing Include button of PAN06 three times within 1.5 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -74,9 +72,7 @@ In Wall Dual Relay (1 Way) Switch Module 2 x 1.5kW<br /><h1>Overview</h1><p>The 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Selected endpoint</label>
-        <description><![CDATA[
-Send Basic Command Class<br /><h1>Overview</h1><p>If Controller not using Multi_Channel command class to access the endpoint of PAN06, you may configure the endpoint value to react the Basic Command Class</p>
-        ]]></description>
+        <description>Send Basic Command Class&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf Controller not using Multi_Channel command class to access the endpoint of PAN06, you may configure the endpoint value to react the Basic Command Class&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">Relay 1 + 2</option>

@@ -7,9 +7,7 @@
 
   <thing-type id="linear_wa00z1_00_000" listed="false">
     <label>WA00Z-1 Wall Mounted Switch</label>
-    <description><![CDATA[
-Wall Mounted Switch<br /><h1>Overview</h1><p>The WA00Z-1 Wall Mounted Switch is simple to set up and can be installed anywhere to operate other load bearing Z-Wave devices. </p> <br /><h2>Inclusion Information</h2><p>Press either button on the WA00Z-1. The green LED should flash twice.</p> <br /><h2>Exclusion Information</h2><p>Remove the switch by pressing either button on the WA00Z-1. The LED will flash twice indicating that it has been removed.</p> <br /><h2>Wakeup Information</h2><p>Tap the top switch five times in rapid succession.</p>
-    ]]></description>
+    <description>Wall Mounted Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe WA00Z-1 Wall Mounted Switch is simple to set up and can be installed anywhere to operate other load bearing Z-Wave devices. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress either button on the WA00Z-1. The green LED should flash twice.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtRemove the switch by pressing either button on the WA00Z-1. The LED will flash twice indicating that it has been removed.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtTap the top switch five times in rapid succession.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -54,9 +52,7 @@ Wall Mounted Switch<br /><h1>Overview</h1><p>The WA00Z-1 Wall Mounted Switch is 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Activation of Central Scene</label>
-        <description><![CDATA[
-Set top and bottom button scene numbers.<br /><h1>Overview</h1><p>Z-Wave Plus introduces a new process for scene activation – “Central Scene <br />Control”. Press and release the button, it will send a certain command to the <br />central controller via the lifeline association group 1. This allows the controller <br />to react to both a button press and a button release. This mode implements <br />communication pattern 6, and requires a gateway supporting Z-Wave Plus.</p>
-        ]]></description>
+        <description>Set top and bottom button scene numbers.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtZ-Wave Plus introduces a new process for scene activation – “Central Scene &amp;lt;br /&amp;amp;gtControl”. Press and release the button, it will send a certain command to the &amp;lt;br /&amp;amp;gtcentral controller via the lifeline association group 1. This allows the controller &amp;lt;br /&amp;amp;gtto react to both a button press and a button release. This mode implements &amp;lt;br /&amp;amp;gtcommunication pattern 6, and requires a gateway supporting Z-Wave Plus.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Top 1, bottom 2</option>
@@ -70,9 +66,7 @@ Set top and bottom button scene numbers.<br /><h1>Overview</h1><p>Z-Wave Plus in
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Control Mode</label>
-        <description><![CDATA[
-Control other devices or issue scene commands<br /><h1>Overview</h1><p>You can set the WA00Z-1 to control other devices or issue various scene activation commands to a central controller.</p>
-        ]]></description>
+        <description>Control other devices or issue scene commands&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtYou can set the WA00Z-1 to control other devices or issue various scene activation commands to a central controller.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Scene control + association groups</option>
@@ -83,9 +77,7 @@ Control other devices or issue scene commands<br /><h1>Overview</h1><p>You can s
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
-        <description><![CDATA[
-Invert top of switch ON/OFF buttons<br /><h1>Overview</h1><p>To change the top of the switch to OFF and the bottom of the switch ON, set Parameter 4 to a value of 1.</p>
-        ]]></description>
+        <description>Invert top of switch ON/OFF buttons&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTo change the top of the switch to OFF and the bottom of the switch ON, set Parameter 4 to a value of 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Top ON, bottom OFF</option>

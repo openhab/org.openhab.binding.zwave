@@ -10,37 +10,22 @@ This describes the Z-Wave device *ZW39*, manufactured by *NIE Technology* with t
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![ZW39 product image](https://www.cd-jackson.com/zwave_device_uploads/1123/1123_default.jpg)
+![ZW39 product image](https://opensmarthouse.org/zwavedatabase/1123/image/)
 
 
 The ZW39 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-EVA LOGIK ZW39 Plug is a Z-Wave PLUS On/Off + Dimmer Smart Plug-In Module + Z-Wave Range Extender which has one dimming smart plug.
-
-  * Maximum load for the Z-Wave controlled outlet: 2.5A; 300W Incandescent or 100W Dimmable CFL/LED
-  * One Z-Wave controlled AC outlet for standard incandescent lighting or dimmable CFL/LEDs
-  * Remote ON/OFF and brightness control via the Z-Wave controller
-  * Manual ON/OFF and brightness control with the front panel push button
-  * Load-sensing turns the light ON if the switch on the connected light is used instead of the remote or push button on the Z-Wave smart switch (default setting is disabled)
-  * Space efficient design
-  * Does not block the lower outlet when plugged in to the upper outlet of a duplex wall receptacle. (This assumes that the duplex receptacle is mounted with the ground pin down).
-  * Plugs and cords for connected devices route to the side allowing close placement
+<p&gtEVA LOGIK ZW39 Plug is a Z-Wave PLUS On/Off + Dimmer Smart Plug-In Module + Z-Wave Range Extender which has one dimming smart plug.</p&gt <ul&gt<li&gtMaximum load for the Z-Wave controlled outlet: 2.5A; 300W Incandescent or 100W Dimmable CFL/LED</li&gt <li&gtOne Z-Wave controlled AC outlet for standard incandescent lighting or dimmable CFL/LEDs</li&gt <li&gtRemote ON/OFF and brightness control via the Z-Wave controller</li&gt <li&gtManual ON/OFF and brightness control with the front panel push button</li&gt <li&gtLoad-sensing turns the light ON if the switch on the connected light is used instead of the remote or push button on the Z-Wave smart switch (default setting is disabled)</li&gt <li&gtSpace efficient design</li&gt <li&gtDoes not block the lower outlet when plugged in to the upper outlet of a duplex wall receptacle. (This assumes that the duplex receptacle is mounted with the ground pin down).</li&gt <li&gtPlugs and cords for connected devices route to the side allowing close placement</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Follow the instructions for your Z-Wave certified controller to include a device to the Z-Wave network.
-  2. Once the controller is ready to include your device, quick triple press the button to include it in the network.
-  3. Once your controller has confirmed that the device has been included, refresh the Z-Wave network to optimize performance.
-  4. The device is associated in the same group when it included in setting process.
-
-Now you can control your Z-Wave device according to groups, scenes, schedules and automation programmed. If your controller features remote access, you can now control all devices in Z-Wave network from mobile devices
+<ol&gt<li&gtFollow the instructions for your Z-Wave certified controller to include a device to the Z-Wave network.</li&gt <li&gtOnce the controller is ready to include your device, quick triple press the button to include it in the network.</li&gt <li&gtOnce your controller has confirmed that the device has been included, refresh the Z-Wave network to optimize performance.</li&gt <li&gtThe device is associated in the same group when it included in setting process.</li&gt </ol&gt<p&gtNow you can control your Z-Wave device according to groups, scenes, schedules and automation programmed. If your controller features remote access, you can now control all devices in Z-Wave network from mobile devices</p&gt
 
 ### Exclusion Information
 
-  1. Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network.
-  2. Once the controller is ready to Exclude your device, quick triple press the button to exclude it from the network.
+<ol&gt<li&gtFollow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network.</li&gt <li&gtOnce the controller is ready to Exclude your device, quick triple press the button to exclude it from the network.</li&gt </ol&gt
 
 ## Channels
 
@@ -99,9 +84,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [ZW39 Manual](https://www.cd-jackson.com/zwave_device_uploads/1123/ZW39manual0527.pdf)
+* [ZW39 Manual](https://opensmarthouse.org/zwavedatabase/1123/ZW39manual0527.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1123).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1123).

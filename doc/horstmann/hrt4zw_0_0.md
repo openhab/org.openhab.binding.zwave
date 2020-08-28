@@ -10,29 +10,22 @@ This describes the Z-Wave device *HRT4-ZW*, manufactured by *Horstmann Controls 
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![HRT4-ZW product image](https://www.cd-jackson.com/zwave_device_uploads/20/20_default.jpg)
+![HRT4-ZW product image](https://opensmarthouse.org/zwavedatabase/20/image/)
 
 
 The HRT4-ZW does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. Refer to the *Wakeup Information* section below for further information.
 
 ## Overview
 
-Wireless Z–Wave Battery Operated Electronic Room Thermostat with TPI temperature control software and ASR-ZW receiver unit
+<p&gtWireless Z–Wave Battery Operated Electronic Room Thermostat with TPI temperature control software and ASR-ZW receiver unit</p&gt
 
 ### Inclusion Information
 
-  1. Set the number 1 DIL switch on the back of the HRT4-ZW thermostat to the On (Up) position and the display on the HRT4-ZW will change to show the letter ‘I’. If the letter ‘L’ appears, carry out stage 1A opposite.
-  2. Power up the ASR-ZW receiver unit
-  3. The network LED on the ASR-ZW receiver should be flashing.
-  4. Press the dial on the front of the HRT4-ZW thermostat once so that the ‘I’ in the display flashes.
-  5. Press and hold the network button on the ASR-ZW receiver until the On indicator flashes (green) before the Off indicator  
-    becomes solid red.
-  6. After a few seconds the radio mast symbol will appear in the display along with the letters IP.
-  7. Reset the number 1 DIL switch on the back of the HRT4-ZW to the Off position and the temperature should return in the display
+<ol&gt<li&gtSet the number 1 DIL switch on the back of the HRT4-ZW thermostat to the On (Up) position and the display on the HRT4-ZW will change to show the letter ‘I’. If the letter ‘L’ appears, carry out stage 1A opposite.</li&gt <li&gtPower up the ASR-ZW receiver unit</li&gt <li&gtThe network LED on the ASR-ZW receiver should be flashing.</li&gt <li&gtPress the dial on the front of the HRT4-ZW thermostat once so that the ‘I’ in the display flashes.</li&gt <li&gtPress and hold the network button on the ASR-ZW receiver until the On indicator flashes (green) before the Off indicator <br /&gtbecomes solid red.</li&gt <li&gtAfter a few seconds the radio mast symbol will appear in the display along with the letters IP.</li&gt <li&gtReset the number 1 DIL switch on the back of the HRT4-ZW to the Off position and the temperature should return in the display</li&gt </ol&gt
 
 ### Exclusion Information
 
-Not provided
+<p&gtNot provided</p&gt
 
 ### Wakeup Information
 
@@ -41,10 +34,7 @@ The HRT4-ZW does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  1. Turn the dial of the HRT4-ZW until the letter P appears in the display.
-  2. Press the dial twice.
-  3. A second P should appear in the display which now shows \`PP’.
-  4. Turn the dial until the letter ‘I’ appears in the display and return to the main instruction.
+<ol&gt<li&gtTurn the dial of the HRT4-ZW until the letter P appears in the display.</li&gt <li&gtPress the dial twice.</li&gt <li&gtA second P should appear in the display which now shows \`PP’.</li&gt <li&gtTurn the dial until the letter ‘I’ appears in the display and return to the main instruction.</li&gt </ol&gt
 
 ## Channels
 
@@ -230,9 +220,9 @@ Association group 5 supports 4 nodes.
 
 ### Documentation Links
 
-* [User Guide](https://www.cd-jackson.com/zwave_device_uploads/20/user-and-installer-guide-HRT4-ZWweb1.pdf)
+* [User Guide](https://opensmarthouse.org/zwavedatabase/20/user-and-installer-guide-HRT4-ZWweb1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/20).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/20).

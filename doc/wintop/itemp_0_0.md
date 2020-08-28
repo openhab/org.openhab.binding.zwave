@@ -10,7 +10,7 @@ This describes the Z-Wave device *ITEMP*, manufactured by *Wintop* with the thin
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![ITEMP product image](https://www.cd-jackson.com/zwave_device_uploads/216/216_default.png)
+![ITEMP product image](https://opensmarthouse.org/zwavedatabase/216/image/)
 
 
 The ITEMP supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The ITEMP does not permanently listen for messages sent from the controller - it
 
 ## Overview
 
-Binary & Temperature sensor
+<p&gtBinary & Temperature sensor</p&gt
 
 ### Inclusion Information
 
-Remove the cover and press the tamper switch for 3 seconds until the red LED blinks.
+<p&gtRemove the cover and press the tamper switch for 3 seconds until the red LED blinks.</p&gt
 
 ### Exclusion Information
 
-Remove the cover and press the tamper switch for 3 seconds until the red LED blinks.
+<p&gtRemove the cover and press the tamper switch for 3 seconds until the red LED blinks.</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The ITEMP does not permanently listen for messages sent from the controller - it
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Remove the cover and press the tamper switch for 3 seconds until the red LED blinks.
+<p&gtRemove the cover and press the tamper switch for 3 seconds until the red LED blinks.</p&gt
 
 ## Channels
 
@@ -134,7 +134,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 5: Operating Mode
 
 Operating Mode
-Defines if the sensor is in normal wakeup mode or always on (drains battery fast)
+<p&gtDefines if the sensor is in normal wakeup mode or always on (drains battery fast)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -150,7 +150,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Temperature Offset
 
 Temperature Offset
-Can be used to calibrate the temperature sensors function. Calibrated as factory default.
+<p&gtCan be used to calibrate the temperature sensors function. Calibrated as factory default.</p&gt
 Values in the range 0 to 15300 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -213,9 +213,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/216/Wintop-Itemp.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/216/Wintop-Itemp.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/216).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/216).

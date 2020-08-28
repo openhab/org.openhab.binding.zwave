@@ -7,9 +7,7 @@
 
   <thing-type id="danfoss_014g0210_00_000" listed="false">
     <label>014G0210 HC-Z Hydronic Floor Heating Controller</label>
-    <description><![CDATA[
-HC-Z Hydronic Floor Heating Controller<br /><h1>Overview</h1><p>Product information "Danfoss HC10 (Hydronic contoller for 10 outputs)"</p> <p>The Danfoss HC (Hydronic Controller) is part of the wireless Z-wave controlsystems for heating systems in residential homes.</p> <p>The Danfoss HC allows the control of warmwater floor heating systems. The system offers a big bandwidth of advanced functions for optimal comfort and energy savings and allows a single room temperature control.</p> <p>The Danfoss HC includes among other things: 10 short circiut safe outputs for 24V actuator drives NC or NO, Relays for pump and boilercontrol, self-testing program, regulation by ON/OFF- or PWM-principle (pulse width modulation) etc.</p> <p>The system can exist of multiple Danfoss HC for bigger systems with more than 10 actuators drives. The Danfoss HC has a direct connector to a power supply of 230V. Because of that you do not need an additional transformer but all actuator drives will be supplied with 24V power.</p> <p> <strong>Features:</strong></p> <ul><li>Controlling of warmwater floor heating systems</li> <li>10 short circuit protected outputs with LED notice</li> <li>Output for 24V actuator drive NC or NO</li> <li>Guarantee of valve function at alle outputs even when there is temperatur control, every 14 day valve movement for ca. 12 minutes</li> <li>Regulation by PWM-principle (pulse width modulation)</li> <li>Relays for pump regulation with automatic 1 minute pump start-up on every third day, to avoid damages during the Standby time periods</li> <li>Relays for boiler regulation, only active during warming needs</li> <li>Automatic self diagnostics to show lost connection to the device</li> <li>Wireless technologie: Z-Wave</li> </ul><br /><h2>Inclusion Information</h2><p>To include the Hydronic Controller in Z-Wave follow the procedure:</p> <ul><li>Verify Hydronic Controller indicates "not included" on the MMI.</li> <li>Activate "Inclusion" on the Z-Wave Controller</li> <li>Press the button on the Hydronic Controller</li> <li>Observe Hydronic Controller indicate included on the MMI</li> </ul><br /><h2>Exclusion Information</h2><p>Exclusion can be done in two ways:</p> <p><strong>1. Initiated from the Controller</strong></p> <ul><li>Verify Hydronic Controller indicate "Included" on the MMI. "Fault" indication also covers "Included".</li> <li>Activate "Exclusion" on the controller</li> <li>Press the button on the Hydronic Controller</li> <li>Observe Hydronic Controller indicate not included in a network on the MMI.</li> </ul><p><strong>2. Initiated from the Hydronic Controller by a factory reset to default</strong></p> <ul><li>Verify the Hydronic Controller indicate "Included" or "Fault" on the MMI</li> <li>Remove the mains power from the Hydronic Controller</li> <li>Wait for 15 seconds</li> <li>Press and hold the button while applying mains power. LED will light RED while leaving network.</li> <li>Observe the Hydronic Controller indicate not included in a network on the MMI</li> </ul>
-    ]]></description>
+    <description>HC-Z Hydronic Floor Heating Controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtProduct information &quot;Danfoss HC10 (Hydronic contoller for 10 outputs)&quot;&lt;/p&gt &lt;p&gtThe Danfoss HC (Hydronic Controller) is part of the wireless Z-wave controlsystems for heating systems in residential homes.&lt;/p&gt &lt;p&gtThe Danfoss HC allows the control of warmwater floor heating systems. The system offers a big bandwidth of advanced functions for optimal comfort and energy savings and allows a single room temperature control.&lt;/p&gt &lt;p&gtThe Danfoss HC includes among other things: 10 short circiut safe outputs for 24V actuator drives NC or NO, Relays for pump and boilercontrol, self-testing program, regulation by ON/OFF- or PWM-principle (pulse width modulation) etc.&lt;/p&gt &lt;p&gtThe system can exist of multiple Danfoss HC for bigger systems with more than 10 actuators drives. The Danfoss HC has a direct connector to a power supply of 230V. Because of that you do not need an additional transformer but all actuator drives will be supplied with 24V power.&lt;/p&gt &lt;p&gt &lt;strong&gtFeatures:&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtControlling of warmwater floor heating systems&lt;/li&gt &lt;li&gt10 short circuit protected outputs with LED notice&lt;/li&gt &lt;li&gtOutput for 24V actuator drive NC or NO&lt;/li&gt &lt;li&gtGuarantee of valve function at alle outputs even when there is temperatur control, every 14 day valve movement for ca. 12 minutes&lt;/li&gt &lt;li&gtRegulation by PWM-principle (pulse width modulation)&lt;/li&gt &lt;li&gtRelays for pump regulation with automatic 1 minute pump start-up on every third day, to avoid damages during the Standby time periods&lt;/li&gt &lt;li&gtRelays for boiler regulation, only active during warming needs&lt;/li&gt &lt;li&gtAutomatic self diagnostics to show lost connection to the device&lt;/li&gt &lt;li&gtWireless technologie: Z-Wave&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo include the Hydronic Controller in Z-Wave follow the procedure:&lt;/p&gt &lt;ul&gt&lt;li&gtVerify Hydronic Controller indicates &quot;not included&quot; on the MMI.&lt;/li&gt &lt;li&gtActivate &quot;Inclusion&quot; on the Z-Wave Controller&lt;/li&gt &lt;li&gtPress the button on the Hydronic Controller&lt;/li&gt &lt;li&gtObserve Hydronic Controller indicate included on the MMI&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtExclusion can be done in two ways:&lt;/p&gt &lt;p&gt&lt;strong&gt1. Initiated from the Controller&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtVerify Hydronic Controller indicate &quot;Included&quot; on the MMI. &quot;Fault&quot; indication also covers &quot;Included&quot;.&lt;/li&gt &lt;li&gtActivate &quot;Exclusion&quot; on the controller&lt;/li&gt &lt;li&gtPress the button on the Hydronic Controller&lt;/li&gt &lt;li&gtObserve Hydronic Controller indicate not included in a network on the MMI.&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gt2. Initiated from the Hydronic Controller by a factory reset to default&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtVerify the Hydronic Controller indicate &quot;Included&quot; or &quot;Fault&quot; on the MMI&lt;/li&gt &lt;li&gtRemove the mains power from the Hydronic Controller&lt;/li&gt &lt;li&gtWait for 15 seconds&lt;/li&gt &lt;li&gtPress and hold the button while applying mains power. LED will light RED while leaving network.&lt;/li&gt &lt;li&gtObserve the Hydronic Controller indicate not included in a network on the MMI&lt;/li&gt &lt;/ul&gt</description>
     <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -265,9 +263,7 @@ HC-Z Hydronic Floor Heating Controller<br /><h1>Overview</h1><p>Product informat
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Valve Type</label>
-        <description><![CDATA[
-Type of Valve being controlled<br /><h1>Overview</h1><p>Parameter 1: Valve type:</p> <ul><li>0 = Normal Closed (NC) default</li> <li>1 = Normal Open (NO)</li> </ul><p>Mix of NC and NO types of valves is not supported</p> <p>Most systems use NC valves</p>
-        ]]></description>
+        <description>Type of Valve being controlled&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter 1: Valve type:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Normal Closed (NC) default&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 = Normal Open (NO)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtMix of NC and NO types of valves is not supported&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtMost systems use NC valves&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">NC</option>
@@ -277,9 +273,7 @@ Type of Valve being controlled<br /><h1>Overview</h1><p>Parameter 1: Valve type:
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Heat Load Strategy</label>
-        <description><![CDATA[
-Set Head Load Strategy (0 = Stacking, 1 = Spreading)<br /><h1>Overview</h1><p>Heat load strategy:</p> <ul><li>0 = Stacking (default)</li> <li>1 = Spreading</li> </ul><p><strong>Stacking</strong>:</p> <ul><li>All endpoints where there are heat demand open at the same time at the start of each PWM period</li> <li>Stacking is the default strategy</li> </ul><p><strong>Spreading</strong>:</p> <ul><li>The opening of valves is spread over the PWM period and may stretch into the next PWM period</li> <li>Spreading is used in effort to: <ul><li>Spread the demand for hot water over the PWM period</li> <li>Spread the power demand for the valves (actuators) <ul><li>Valves from different producers require different amount of energy. The power supply in the HC has limited capacity, and may not be able to feed all the valves at the same time (more about that later in ”Current limitation”)</li> </ul></li> </ul></li> </ul>
-        ]]></description>
+        <description>Set Head Load Strategy (0 = Stacking, 1 = Spreading)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtHeat load strategy:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Stacking (default)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 = Spreading&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtStacking&amp;lt;/strong&amp;amp;gt:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtAll endpoints where there are heat demand open at the same time at the start of each PWM period&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtStacking is the default strategy&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtSpreading&amp;lt;/strong&amp;amp;gt:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtThe opening of valves is spread over the PWM period and may stretch into the next PWM period&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtSpreading is used in effort to: &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtSpread the demand for hot water over the PWM period&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtSpread the power demand for the valves (actuators) &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtValves from different producers require different amount of energy. The power supply in the HC has limited capacity, and may not be able to feed all the valves at the same time (more about that later in ”Current limitation”)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Stacking (Default)</option>
@@ -289,9 +283,7 @@ Set Head Load Strategy (0 = Stacking, 1 = Spreading)<br /><h1>Overview</h1><p>He
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: PWM period</label>
-        <description><![CDATA[
-Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set to 15, 30 or 60 seconds</p> <p>Set using the Configuration Command Class on each endpoint</p> <ul><li>60 minutes PWM period <ul><li>Is the default value</li> <li>Intended for heavy floors <ul><li>Thick concrete floors</li> <li>Floors where the hot water pipes lie deep</li> </ul></li> </ul></li> <li>15 minutes PWM period <ul><li>Intended for light floors <ul><li>Wood floors</li> <li>Floors where the hot water pipes lie close to the surface</li> </ul></li> </ul></li> </ul><p>Based on the setpoint (target temperature) and the current room temperature, the HC control algorithm calculates how long portion of each PWM period the valve should be open to get to and maintain the target temperature</p>
-        ]]></description>
+        <description>Pulse-width modulation period&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe PWM period can be set to 15, 30 or 60 seconds&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSet using the Configuration Command Class on each endpoint&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt60 minutes PWM period &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtIs the default value&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtIntended for heavy floors &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtThick concrete floors&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtFloors where the hot water pipes lie deep&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt15 minutes PWM period &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtIntended for light floors &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtWood floors&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtFloors where the hot water pipes lie close to the surface&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtBased on the setpoint (target temperature) and the current room temperature, the HC control algorithm calculates how long portion of each PWM period the valve should be open to get to and maintain the target temperature&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">15 minutes</option>
@@ -303,9 +295,7 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>One group supported: 1 with profile "General-Life-line"</p> <ul><li>Lifeline for endpoints</li> <li>Unsolicited reports: <ul><li>Device Reset Locally Notification</li> <li>Notification Report (Thermostat 1 only)</li> </ul></li> </ul>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOne group supported: 1 with profile &quot;General-Life-line&quot;&lt;/p&gt &lt;ul&gt&lt;li&gtLifeline for endpoints&lt;/li&gt &lt;li&gtUnsolicited reports: &lt;ul&gt&lt;li&gtDevice Reset Locally Notification&lt;/li&gt &lt;li&gtNotification Report (Thermostat 1 only)&lt;/li&gt &lt;/ul&gt&lt;/li&gt &lt;/ul&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
@@ -325,8 +315,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -338,8 +328,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -351,8 +341,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -364,8 +354,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -377,8 +367,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -390,8 +380,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -403,8 +393,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -416,8 +406,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -429,8 +419,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -442,8 +432,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -455,8 +445,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>

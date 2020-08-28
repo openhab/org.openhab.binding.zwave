@@ -11,24 +11,22 @@ This version of the device is limited to firmware versions above 5.18
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HS-FS100+ Flex product image](https://www.cd-jackson.com/zwave_device_uploads/1069/1069_default.jpg)
+![HS-FS100+ Flex product image](https://opensmarthouse.org/zwavedatabase/1069/image/)
 
 
 The HS-FS100+ Flex supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-HS-FS100+ (“Flex Sensor”) is a multi functional module that includes a temperature sensor, controllable buzzer, and a port to connect external light or water sensors.
+<p&gtHS-FS100+ (“Flex Sensor”) is a multi functional module that includes a temperature sensor, controllable buzzer, and a port to connect external light or water sensors.</p&gt
 
 ### Inclusion Information
 
-  1. Attach the included light or water sensor cable. Put your home automation controller into Z-Wave ‘inclusion’ mode.
-  2. Press the Z-Wave network button on the front of the unit one time. Wait for the inclusion process to finish. This may take some time.
+<ol&gt<li&gtAttach the included light or water sensor cable. Put your home automation controller into Z-Wave ‘inclusion’ mode.</li&gt <li&gtPress the Z-Wave network button on the front of the unit one time. Wait for the inclusion process to finish. This may take some time.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Put your home automation controller into Z-Wave ‘exclusion’ mode.
-  2. Press the Z-Wave network button on the front of the unit one time. Wait for the exclusion process to finish. This may take some time.
+<ol&gt<li&gtPut your home automation controller into Z-Wave ‘exclusion’ mode.</li&gt <li&gtPress the Z-Wave network button on the front of the unit one time. Wait for the exclusion process to finish. This may take some time.</li&gt </ol&gt
 
 ## Channels
 
@@ -93,9 +91,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Light Sensitvity
 
 Light Sensitvity
-0=high sensitvity  
-1=medium sensitvity  
-2=low sensitvity
+<p&gt0=high sensitvity<br /&gt1=medium sensitvity<br /&gt2=low sensitvity</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -106,9 +102,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Water Detecton beep frequency
 
 Water Detecton beep frequency
-0=every 10 minutes (approx batery life of 3 months in this mode)  
-1=every 5 minutes  
-2=every 30 minutes
+<p&gt0=every 10 minutes (approx batery life of 3 months in this mode)<br /&gt1=every 5 minutes<br /&gt2=every 30 minutes</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -119,7 +113,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Temperature reportng interval when on line power
 
 Temperature reportng interval when on line power
-30-255 seconds, default=60
+<p&gt30-255 seconds, default=60</p&gt
 Values in the range 30 to 255 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -130,8 +124,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Enable Notfcaton Buzzer
 
 Enable Notfcaton Buzzer
-0 = Disabled  
-1 = Enabled (Default)
+<p&gt0 = Disabled<br /&gt1 = Enabled (Default)</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -142,7 +135,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Flashing LED detection delay
 
 Flashing LED detection delay
-Set delay to avoid continuous notifications when detecting flashing LED’s. Flex Sensor will not send notification until flashing LED status changes.
+<p&gtSet delay to avoid continuous notifications when detecting flashing LED’s. Flex Sensor will not send notification until flashing LED status changes.</p&gt
 Values in the range 0 to 20 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -159,7 +152,7 @@ The HS-FS100+ Flex supports 2 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Flex Sensor supports Group 1 association. Group 1 reports the sensor’s status and battery if running on batteries.
+<p&gtFlex Sensor supports Group 1 association. Group 1 reports the sensor’s status and battery if running on batteries.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -194,9 +187,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1069/FS100Flex-Manual.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1069/FS100Flex-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1069).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1069).

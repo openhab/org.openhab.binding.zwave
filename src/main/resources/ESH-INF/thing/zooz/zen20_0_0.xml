@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zen20_00_000" listed="false">
     <label>ZEN20 Power Strip</label>
-    <description><![CDATA[
-Power Strip<br /><h1>Overview</h1><p><strong>FEATURES </strong></p> <ul><li>Wireless control of up to 5 electrical devices</li> <li>Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller</li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication\</li> <li>Signal repeater for a stronger, more reliable network</li> <li>2 USB charging ports for your smart phone or tablet (no Z-Wave functionality)</li> <li>Built-in overload protection</li> </ul><p><strong>SPECIFICATIONS</strong></p> <ul><li>Model Number: ZEN20</li> <li>Z-Wave Signal Frequency: 908.42 MHz</li> <li>Power: 110V</li> <li>Maximum Load: 15Amps TOTAL between 5 outlets</li> <li>USB Charging Port Power: 5V 1A each</li> <li>Cord Length: 9 feet</li> <li>Range: Up to 100 feet line of sight</li> <li>Installation and Use: Indoor only</li> </ul><p><strong>Z-WAVE COMMAND CLASSES</strong></p> <ul><li>This device requires the following command classes to be supported and recognized by your Z-Wave controller:</li> <li>COMMAND_CLASS_ASSOCIATION</li> <li>COMMAND_CLASS_ASSOCIATION_GROUP_INFORMATION</li> <li>COMMAND_CLASS_BASIC</li> <li>COMMAND_CLASS_DEVICE_RESET_LOCAL</li> <li>COMMAND_CLASS_MANUFACTURER_SPECIFIC</li> <li>COMMAND_CLASS_MULTI_CHANNEL</li> <li>COMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION</li> <li>COMMAND_CLASS_POWERLEVEL</li> <li>COMMAND_CLASS_SWITCH_BINARY</li> <li>COMMAND_CLASS_VERSION</li> <li>COMMAND_CLASS_ZWAVEPLUS_INFO</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Plug the power strip into a grounded receptacle located within direct range from your ZWave gateway controller</li> <li>Put your Z-Wave controller in inclusion mode</li> <li>Press and release the CH1 power button on the strip 3 times quickly</li> <li>A new on / off device should appear on your controller's device list</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Plug the power strip into a grounded receptacle located within direct range from your ZWave gateway controller</li> <li>Put your Z-Wave controller in exclusion mode</li> <li>Press and release the CH1 power button on the strip 3 times quickly</li> <li>The device should disappear from your controller's device list</li> </ol><p>Please repeat the process following all steps carefully if the first attempt is unsuccessful</p> <p><strong>FACTORY RESET</strong></p> <p>When your network’s primary controller is missing or otherwise inoperable, you may need to reset the device to factory settings manually. In order to complete the process, unplug the power strip, PRESS AND HOLD the CH5 power button, plug the strip back in while still holding the CH5 power button down for AT LEAST 5 SECONDS, then release the button. NOTE: All previously recorded activity and custom settings will be erased from the device’s memory.</p>
-    ]]></description>
+    <description>Power Strip&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtFEATURES &lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtWireless control of up to 5 electrical devices&lt;/li&gt &lt;li&gtScene inclusion for custom automation scenarios when included to a Z-Wave gateway controller&lt;/li&gt &lt;li&gtZ-Wave Plus with improved 500 chip for faster and safer wireless communication\&lt;/li&gt &lt;li&gtSignal repeater for a stronger, more reliable network&lt;/li&gt &lt;li&gt2 USB charging ports for your smart phone or tablet (no Z-Wave functionality)&lt;/li&gt &lt;li&gtBuilt-in overload protection&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtSPECIFICATIONS&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtModel Number: ZEN20&lt;/li&gt &lt;li&gtZ-Wave Signal Frequency: 908.42 MHz&lt;/li&gt &lt;li&gtPower: 110V&lt;/li&gt &lt;li&gtMaximum Load: 15Amps TOTAL between 5 outlets&lt;/li&gt &lt;li&gtUSB Charging Port Power: 5V 1A each&lt;/li&gt &lt;li&gtCord Length: 9 feet&lt;/li&gt &lt;li&gtRange: Up to 100 feet line of sight&lt;/li&gt &lt;li&gtInstallation and Use: Indoor only&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtZ-WAVE COMMAND CLASSES&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtThis device requires the following command classes to be supported and recognized by your Z-Wave controller:&lt;/li&gt &lt;li&gtCOMMAND_CLASS_ASSOCIATION&lt;/li&gt &lt;li&gtCOMMAND_CLASS_ASSOCIATION_GROUP_INFORMATION&lt;/li&gt &lt;li&gtCOMMAND_CLASS_BASIC&lt;/li&gt &lt;li&gtCOMMAND_CLASS_DEVICE_RESET_LOCAL&lt;/li&gt &lt;li&gtCOMMAND_CLASS_MANUFACTURER_SPECIFIC&lt;/li&gt &lt;li&gtCOMMAND_CLASS_MULTI_CHANNEL&lt;/li&gt &lt;li&gtCOMMAND_CLASS_MULTI_CHANNEL_ASSOCIATION&lt;/li&gt &lt;li&gtCOMMAND_CLASS_POWERLEVEL&lt;/li&gt &lt;li&gtCOMMAND_CLASS_SWITCH_BINARY&lt;/li&gt &lt;li&gtCOMMAND_CLASS_VERSION&lt;/li&gt &lt;li&gtCOMMAND_CLASS_ZWAVEPLUS_INFO&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug the power strip into a grounded receptacle located within direct range from your ZWave gateway controller&lt;/li&gt &lt;li&gtPut your Z-Wave controller in inclusion mode&lt;/li&gt &lt;li&gtPress and release the CH1 power button on the strip 3 times quickly&lt;/li&gt &lt;li&gtA new on / off device should appear on your controller's device list&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug the power strip into a grounded receptacle located within direct range from your ZWave gateway controller&lt;/li&gt &lt;li&gtPut your Z-Wave controller in exclusion mode&lt;/li&gt &lt;li&gtPress and release the CH1 power button on the strip 3 times quickly&lt;/li&gt &lt;li&gtThe device should disappear from your controller's device list&lt;/li&gt &lt;/ol&gt&lt;p&gtPlease repeat the process following all steps carefully if the first attempt is unsuccessful&lt;/p&gt &lt;p&gt&lt;strong&gtFACTORY RESET&lt;/strong&gt&lt;/p&gt &lt;p&gtWhen your network’s primary controller is missing or otherwise inoperable, you may need to reset the device to factory settings manually. In order to complete the process, unplug the power strip, PRESS AND HOLD the CH5 power button, plug the strip back in while still holding the CH5 power button down for AT LEAST 5 SECONDS, then release the button. NOTE: All previously recorded activity and custom settings will be erased from the device’s memory.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -216,9 +214,7 @@ Power Strip<br /><h1>Overview</h1><p><strong>FEATURES </strong></p> <ul><li>Wire
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: Power Wattage Report Value Threshold</label>
-        <description><![CDATA[
-Choose how you want your Power Strip to report power consumption to your hub<br /><h1>Overview</h1><p>Choose how you want your Power Strip to report power consumption to your hub. The number entered as value corresponds to the number of Watts the appliance needs to go over for the change to be reported. So if 5 Watts are entered by default, the smart plug will report any change in power usage over 5 Watts for each outlet (whether it’s at least 5 Watts more or 5 Watts less compared to previous report).</p>
-        ]]></description>
+        <description>Choose how you want your Power Strip to report power consumption to your hub&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how you want your Power Strip to report power consumption to your hub. The number entered as value corresponds to the number of Watts the appliance needs to go over for the change to be reported. So if 5 Watts are entered by default, the smart plug will report any change in power usage over 5 Watts for each outlet (whether it’s at least 5 Watts more or 5 Watts less compared to previous report).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -226,9 +222,7 @@ Choose how you want your Power Strip to report power consumption to your hub<br 
       <parameter name="config_3_4" type="integer" groupName="configuration"
                  min="5" max="2678400">
         <label>3: Power Wattage Report Frequency</label>
-        <description><![CDATA[
-The number entered as value corresponds to the number of seconds<br /><h1>Overview</h1><p>If 30 is entered, by default, the Strip will report power consumption (Wattage) every 30 seconds.  Default set to 30.</p>
-        ]]></description>
+        <description>The number entered as value corresponds to the number of seconds&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf 30 is entered, by default, the Strip will report power consumption (Wattage) every 30 seconds.  Default set to 30.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -236,9 +230,7 @@ The number entered as value corresponds to the number of seconds<br /><h1>Overvi
       <parameter name="config_4_4" type="integer" groupName="configuration"
                  min="5" max="2678400">
         <label>4: Energy (kWh) Report Frequency</label>
-        <description><![CDATA[
-Report interval of power consumption (W) to your controller (hub)<br /><h1>Overview</h1><p>The number entered as value corresponds to the number of seconds. So if 300 is entered by default, the power strip will report energy usage every 300 seconds (5 minutes).  Default set to 300.</p>
-        ]]></description>
+        <description>Report interval of power consumption (W) to your controller (hub)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe number entered as value corresponds to the number of seconds. So if 300 is entered by default, the power strip will report energy usage every 300 seconds (5 minutes).  Default set to 300.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -246,18 +238,14 @@ Report interval of power consumption (W) to your controller (hub)<br /><h1>Overv
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="1500">
         <label>5: Overload Protection</label>
-        <description><![CDATA[
-Set the Watt level for overload protection to kick in<br /><h1>Overview</h1><p>The number entered as the value corresponds to the total number of Watts the Strip needs to detect across all 5 outlets to turn off automatically and send a notification to the hub.  0 = overload protection disabled (we DON’T recommend changing to this setting). Default set to 1500 Watts. </p>
-        ]]></description>
+        <description>Set the Watt level for overload protection to kick in&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe number entered as the value corresponds to the total number of Watts the Strip needs to detect across all 5 outlets to turn off automatically and send a notification to the hub.  0 = overload protection disabled (we DON’T recommend changing to this setting). Default set to 1500 Watts. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1500</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: CH1 Auto Turn-Off Timer</label>
-        <description><![CDATA[
-Enable or disable the auto turn-off timer for CH1 outlet<br /><h1>Overview</h1><p>If this feature is enabled, the device connected to CH1 outlet will automatically turn off after a fixed period of time from being turned on (set in parameter 7).</p>
-        ]]></description>
+        <description>Enable or disable the auto turn-off timer for CH1 outlet&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf this feature is enabled, the device connected to CH1 outlet will automatically turn off after a fixed period of time from being turned on (set in parameter 7).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer Disabled (Default)</option>
@@ -437,9 +425,7 @@ Enable or disable the auto turn-off timer for CH1 outlet<br /><h1>Overview</h1><
 
       <parameter name="config_26_1" type="integer" groupName="configuration">
         <label>26: Manual Control</label>
-        <description><![CDATA[
-Enable / Disable Physical Button Functionality<br /><h1>Overview</h1><p>Choose if you want to use the physical buttons on Strip to turn the outlets on or off manually or if you want to disable this function. If this parameter is set to 0 (disabled), you will only be able to turn any of the outlets on or off remotely using your Z-Wave gateway controller.</p> <p>Value 0 – manual control disabled for all outlets;</p> <p>Value 1 – manual control enabled for all outlets (default)</p> <p>You can also disable/enable manual control from all outlets by performing the following sequence on any of the channel buttons: click-click-click-click’n-hold for at least 10 seconds. All LED indicators will flash to confirm the setting change.</p>
-        ]]></description>
+        <description>Enable / Disable Physical Button Functionality&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want to use the physical buttons on Strip to turn the outlets on or off manually or if you want to disable this function. If this parameter is set to 0 (disabled), you will only be able to turn any of the outlets on or off remotely using your Z-Wave gateway controller.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValue 0 – manual control disabled for all outlets;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValue 1 – manual control enabled for all outlets (default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtYou can also disable/enable manual control from all outlets by performing the following sequence on any of the channel buttons: click-click-click-click’n-hold for at least 10 seconds. All LED indicators will flash to confirm the setting change.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Manual control disabled for all outlets</option>
@@ -449,9 +435,7 @@ Enable / Disable Physical Button Functionality<br /><h1>Overview</h1><p>Choose i
 
       <parameter name="config_27_1" type="integer" groupName="configuration">
         <label>27: LED Indicator Mode</label>
-        <description><![CDATA[
-LED Outlet Indicator Behavior<br /><h1>Overview</h1><p>Choose if you want the LED indicators next to each outlet to come on when power is on or off, or if you want to disable the LED lights.</p> <p>Values:</p> <p>0 – LED indicator is on when power is of and off when power is on; </p> <p>1 – LED indicator is on when power is on and off when power is off (default);</p> <p>2 – LED indicator is always off, regardless of power status. </p> <p>You can also switch between the LED indicator modes by clicking the CH1 button 6 times quickly. All LED indicators will flash to confirm the setting change</p>
-        ]]></description>
+        <description>LED Outlet Indicator Behavior&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the LED indicators next to each outlet to come on when power is on or off, or if you want to disable the LED lights.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – LED indicator is on when power is of and off when power is on; &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – LED indicator is on when power is on and off when power is off (default);&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – LED indicator is always off, regardless of power status. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtYou can also switch between the LED indicator modes by clicking the CH1 button 6 times quickly. All LED indicators will flash to confirm the setting change&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED on when power is off and off when power is on</option>

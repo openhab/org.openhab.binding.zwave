@@ -10,30 +10,22 @@ This describes the Z-Wave device *RGBWE2*, manufactured by *[Zipato](http://www.
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-![RGBWE2 product image](https://www.cd-jackson.com/zwave_device_uploads/619/619_default.jpg)
+![RGBWE2 product image](https://opensmarthouse.org/zwavedatabase/619/image/)
 
 
 The RGBWE2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Zipato Bulb 2 has 5 color channels available for you to adjust: RED, GREEN, BLUE, WARM WHITE and COLD WHITE. Zipato Bulb 2 can be used to add color to your home or just to lighten it up in any white color tone you desire. By using Zipatile or Zipabox (or other Z-Wave) home controller, you can control the bulb from anywhere in the world, by using any smartphone (iOS or Android). Also, you can automatically set colors of your Zipato Bulb 2 to indicate events using the Zipato rule creator.
+<p&gtZipato Bulb 2 has 5 color channels available for you to adjust: RED, GREEN, BLUE, WARM WHITE and COLD WHITE. Zipato Bulb 2 can be used to add color to your home or just to lighten it up in any white color tone you desire. By using Zipatile or Zipabox (or other Z-Wave) home controller, you can control the bulb from anywhere in the world, by using any smartphone (iOS or Android). Also, you can automatically set colors of your Zipato Bulb 2 to indicate events using the Zipato rule creator.</p&gt
 
 ### Inclusion Information
 
-  1. Screw the Zipato Bulb 2 into the socket.
-  2. Turn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.
-  3. Activate inclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.
-  4. Toggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.
-  5. The bulb will flash once if it has been successfully included into your Z-Wave network.
+<ol&gt<li&gtScrew the Zipato Bulb 2 into the socket.</li&gt <li&gtTurn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.</li&gt <li&gtActivate inclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.</li&gt <li&gtToggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.</li&gt <li&gtThe bulb will flash once if it has been successfully included into your Z-Wave network.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Screw the Zipato Bulb 2 into the socket.
-  2. Turn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.
-  3. Activate exclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.
-  4. Toggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.
-  5. The bulb will flash once if it has been successfully excluded from your Z-Wave network.
+<ol&gt<li&gtScrew the Zipato Bulb 2 into the socket.</li&gt <li&gtTurn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.</li&gt <li&gtActivate exclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.</li&gt <li&gtToggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.</li&gt <li&gtThe bulb will flash once if it has been successfully excluded from your Z-Wave network.</li&gt </ol&gt
 
 ## Channels
 
@@ -94,7 +86,7 @@ This is a read only parameter.
 ### Parameter 2: Strobe light interval
 
 Strobe light interval
-Values range from 0 to 25 in intervals of 100 ms
+<p&gtValues range from 0 to 25 in intervals of 100 ms</p&gt
 Values in the range 0 to 25 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -105,9 +97,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Strobe light pulse count
 
 Strobe light pulse count
-Values range from 0 to 120 and 
-
-a special value 127 (0x7F) which sets infinite flashing
+<p&gtValues range from 0 to 120 and </p&gt <p&gta special value 127 (0x7F) which sets infinite flashing</p&gt
 The following option values may be configured, in addition to values in the range 0 to 127 -:
 
 | Value  | Description |
@@ -122,7 +112,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Random strobe pulse colors
 
 Random strobe pulse colors
-Values range are 0(turn off) or 1(turn on).
+<p&gtValues range are 0(turn off) or 1(turn on).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -195,10 +185,10 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/619/rgbw2-Zipato-RGBW-gen2-Bulb-User-Manual-Z-Wave-v1-2.pdf)
-* [Manual v1.3](https://www.cd-jackson.com/zwave_device_uploads/619/rgbw2-Zipato-RGBW-gen2-Bulb-User-Manual-Z-Wave-v1-3.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/619/rgbw2-Zipato-RGBW-gen2-Bulb-User-Manual-Z-Wave-v1-2.pdf)
+* [Manual v1.3](https://opensmarthouse.org/zwavedatabase/619/rgbw2-Zipato-RGBW-gen2-Bulb-User-Manual-Z-Wave-v1-3.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/619).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/619).

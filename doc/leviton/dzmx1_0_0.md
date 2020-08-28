@@ -10,29 +10,14 @@ This describes the Z-Wave device *DZMX1*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![DZMX1 product image](https://www.cd-jackson.com/zwave_device_uploads/196/196_default.jpg)
+![DZMX1 product image](https://opensmarthouse.org/zwavedatabase/196/image/)
 
 
 The DZMX1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Leviton DZMX1 is a Z-Wave enabled universal dimmer designed for use for most residential lighting applications. A large range of lighting loads are supported including dimmable LED and CFL, as well incandescent, halogen and magnetic low voltage. The DZMX1 is fully compatible with Z-Wave enabled controllers, gateways, hubs, and security systems.
-
-**FEATURES AND BENEFITS**
-
-  * Scene Capable Universal Dimmer
-  * Z-Wave compatible
-  * 450W Dimmable LED/CFL
-  * 1000W Incandescent, Halogen, MLV and Mark X
-  * 120V 60HZ, neutral required
-  * White, Light Almond and Ivory faces included
-  * Supports Z-Wave Beaming and Network Wide Inclusion
-  * Scene capable
-  * User pre-set minimum brightness before turning off
-  * 49 different fade rates
-  * Transient surge suppression built-in
-  * User pre-set ‘on level’
+<p&gtThe Leviton DZMX1 is a Z-Wave enabled universal dimmer designed for use for most residential lighting applications. A large range of lighting loads are supported including dimmable LED and CFL, as well incandescent, halogen and magnetic low voltage. The DZMX1 is fully compatible with Z-Wave enabled controllers, gateways, hubs, and security systems.</p&gt <p&gt<strong&gtFEATURES AND BENEFITS</strong&gt</p&gt <ul&gt<li&gtScene Capable Universal Dimmer</li&gt <li&gtZ-Wave compatible</li&gt <li&gt450W Dimmable LED/CFL</li&gt <li&gt1000W Incandescent, Halogen, MLV and Mark X</li&gt <li&gt120V 60HZ, neutral required</li&gt <li&gtWhite, Light Almond and Ivory faces included</li&gt <li&gtSupports Z-Wave Beaming and Network Wide Inclusion</li&gt <li&gtScene capable</li&gt <li&gtUser pre-set minimum brightness before turning off</li&gt <li&gt49 different fade rates</li&gt <li&gtTransient surge suppression built-in</li&gt <li&gtUser pre-set ‘on level’</li&gt </ul&gt
 
 ## Channels
 
@@ -89,10 +74,10 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Installation Instructions](https://www.cd-jackson.com/zwave_device_uploads/196/installation-instructions.pdf)
-* [Product Overview](https://www.cd-jackson.com/zwave_device_uploads/196/Leviton-DZMX1.pdf)
+* [Installation Instructions](https://opensmarthouse.org/zwavedatabase/196/installation-instructions.pdf)
+* [Product Overview](https://opensmarthouse.org/zwavedatabase/196/Leviton-DZMX1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/196).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/196).

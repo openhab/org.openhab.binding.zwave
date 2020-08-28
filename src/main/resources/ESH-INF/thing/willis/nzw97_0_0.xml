@@ -7,9 +7,7 @@
 
   <thing-type id="willis_nzw97_00_000" listed="false">
     <label>NZW97 Inovelli Outdoor Smart Plug (2 Channel)</label>
-    <description><![CDATA[
-Inovelli Outdoor Smart Plug (2 Channel)<br /><h1>Overview</h1><ul><li>2 Controllable Outlets</li> <li>Outdoor IP65</li> <li>20 cm Cord</li> <li>High Temp Protection (OFF at 105°C)</li> <li>Last Power State (Possible DEFAULT)</li> <li>120 VAC, 60 Hz</li> <li>908.42 MHz</li> <li>Max Load Outlet #1 1800W (15A) Resistive</li> <li>Max Load Outlet #2 1800W (15A) Resistive</li> <li>Max Simultaneous Load 15A</li> <li>Max Range LoS 100 m</li> <li>Operating Temperature Range -20°C to 50°C</li> <li>UL E464831</li> <li>FCC ID OXGZW97 </li> </ul><br /><h2>Inclusion Information</h2><ul><li>Auto-Inclusion 30 sec from power on</li> <li>Backup-Inclusion Press button 5 times within 1 sec</li> <li>(Tested to work with Network Wide Inclusion)</li> </ul><br /><h2>Exclusion Information</h2><p>Press the Middle Button on the front of your NZW97 five (5) times rapidly (within 1-2 seconds)</p>
-    ]]></description>
+    <description>Inovelli Outdoor Smart Plug (2 Channel)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gt2 Controllable Outlets&lt;/li&gt &lt;li&gtOutdoor IP65&lt;/li&gt &lt;li&gt20 cm Cord&lt;/li&gt &lt;li&gtHigh Temp Protection (OFF at 105°C)&lt;/li&gt &lt;li&gtLast Power State (Possible DEFAULT)&lt;/li&gt &lt;li&gt120 VAC, 60 Hz&lt;/li&gt &lt;li&gt908.42 MHz&lt;/li&gt &lt;li&gtMax Load Outlet #1 1800W (15A) Resistive&lt;/li&gt &lt;li&gtMax Load Outlet #2 1800W (15A) Resistive&lt;/li&gt &lt;li&gtMax Simultaneous Load 15A&lt;/li&gt &lt;li&gtMax Range LoS 100 m&lt;/li&gt &lt;li&gtOperating Temperature Range -20°C to 50°C&lt;/li&gt &lt;li&gtUL E464831&lt;/li&gt &lt;li&gtFCC ID OXGZW97 &lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtAuto-Inclusion 30 sec from power on&lt;/li&gt &lt;li&gtBackup-Inclusion Press button 5 times within 1 sec&lt;/li&gt &lt;li&gt(Tested to work with Network Wide Inclusion)&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the Middle Button on the front of your NZW97 five (5) times rapidly (within 1-2 seconds)&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -61,9 +59,7 @@ Inovelli Outdoor Smart Plug (2 Channel)<br /><h1>Overview</h1><ul><li>2 Controll
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1_wo" type="integer" groupName="configuration">
         <label>1: LED Indicator</label>
-        <description><![CDATA[
-LED Indicator ON/OFF/Disabled<br /><h1>Overview</h1><p>LED Indicator ON/OFF/Disabled<br />00==Plug On / LED On<br />01==Plug On / LED Off<br />02==LED Disabled</p>
-        ]]></description>
+        <description>LED Indicator ON/OFF/Disabled&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLED Indicator ON/OFF/Disabled&amp;lt;br /&amp;amp;gt00==Plug On / LED On&amp;lt;br /&amp;amp;gt01==Plug On / LED Off&amp;lt;br /&amp;amp;gt02==LED Disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

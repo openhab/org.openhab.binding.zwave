@@ -7,9 +7,7 @@
 
   <thing-type id="ge_45607_00_000" listed="false">
     <label>45607 2-Way Dimmer Switch</label>
-    <description><![CDATA[
-2-Way Dimmer Switch<br /><h1>Overview</h1><p>Transform any home into a smart home with the Jasco Z-Wave Wireless Lighting Control Dimmer Switch. The Jasco Z-Wave Wireless Lighting Control Dimmer Switch enables wireless control of on/off and dim functions of hard-wired incandescent lighting. The dimmer switch replaces your current light switch, uses your existing wiring, and provides Z-Wave wireless and in-wall control of overhead lighting. Use the dimmer feature to customize the lighting output and create the perfect ambiance for any room. Providing ultimate flexibility, the Jasco Z-Wave Wireless Lighting Control Dimmer Switch allows you to operate the switch by itself or easily integrate the switch with two-way, three-way or four-way wiring configurations by adding the Jasco Auxiliary switch for Z-Wave. Two-way wiring configuration turns the light or appliance on/off from one location. Three-way wiring configuration turns the light or appliance on/off from two separate locations. Four-way wiring configuration turns the light or appliance on/off from three separate locations. The Jasco Auxiliary Switch for Z-Wave is required for three-way or four-way installations. The dimmer switch includes an LED indicator light to easily locate the switch in a dark room. Take control of your home lighting with Jasco Z-Wave Wireless Lighting Controls! </p> <br /><h2>Inclusion Information</h2><p>Tap the top or bottom of the rocker.</p> <br /><h2>Exclusion Information</h2><p>Tap the top or bottom of the rocker.</p>
-    ]]></description>
+    <description>2-Way Dimmer Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtTransform any home into a smart home with the Jasco Z-Wave Wireless Lighting Control Dimmer Switch. The Jasco Z-Wave Wireless Lighting Control Dimmer Switch enables wireless control of on/off and dim functions of hard-wired incandescent lighting. The dimmer switch replaces your current light switch, uses your existing wiring, and provides Z-Wave wireless and in-wall control of overhead lighting. Use the dimmer feature to customize the lighting output and create the perfect ambiance for any room. Providing ultimate flexibility, the Jasco Z-Wave Wireless Lighting Control Dimmer Switch allows you to operate the switch by itself or easily integrate the switch with two-way, three-way or four-way wiring configurations by adding the Jasco Auxiliary switch for Z-Wave. Two-way wiring configuration turns the light or appliance on/off from one location. Three-way wiring configuration turns the light or appliance on/off from two separate locations. Four-way wiring configuration turns the light or appliance on/off from three separate locations. The Jasco Auxiliary Switch for Z-Wave is required for three-way or four-way installations. The dimmer switch includes an LED indicator light to easily locate the switch in a dark room. Take control of your home lighting with Jasco Z-Wave Wireless Lighting Controls! &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTap the top or bottom of the rocker.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTap the top or bottom of the rocker.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -44,9 +42,7 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Night Light<br /><h1>Overview</h1><p>Defines the behavior of the blue LED.</p> <p>Default is Night Light mode where LED is on when switch is off.</p>
-        ]]></description>
+        <description>Night Light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the behavior of the blue LED.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault is Night Light mode where LED is on when switch is off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">LED on when switch is OFF</option>
@@ -57,9 +53,7 @@ Night Light<br /><h1>Overview</h1><p>Defines the behavior of the blue LED.</p> <
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
-        <description><![CDATA[
-Invert Switch<br /><h1>Overview</h1><p>Change the top of the switch to OFF and the bottom  of the switch to ON. </p> <p>Note: If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch.</p>
-        ]]></description>
+        <description>Invert Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChange the top of the switch to OFF and the bottom  of the switch to ON. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote: If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No</option>
@@ -87,9 +81,7 @@ Invert Switch<br /><h1>Overview</h1><p>Change the top of the switch to OFF and t
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>8: On/Off Command Dim Rate</label>
-        <description><![CDATA[
-On/Off Command Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 millisecond resolution, how often the dim level will change. </p> <p>For example, if you set this parameter to 1,  then every 10ms the dim level will change. </p> <p>If you set it to 255, then every 2.55 seconds the dim level will change.</p>
-        ]]></description>
+        <description>On/Off Command Dim Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value indicates in 10 millisecond resolution, how often the dim level will change. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFor example, if you set this parameter to 1,  then every 10ms the dim level will change. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you set it to 255, then every 2.55 seconds the dim level will change.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
@@ -103,9 +95,7 @@ On/Off Command Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 mill
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Local Control Dim Rate</label>
-        <description><![CDATA[
-Local Control Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 millisecond resolution, how often the dim level will change. </p> <p>For example, if you set this parameter to 1, then every 10ms the dim level will change. </p> <p>If you set it to 255, then every 2.55 &lt;br&gt;seconds the dim level will change.</p>
-        ]]></description>
+        <description>Local Control Dim Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value indicates in 10 millisecond resolution, how often the dim level will change. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFor example, if you set this parameter to 1, then every 10ms the dim level will change. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you set it to 255, then every 2.55 &amp;amp;lt;br&amp;amp;gt;seconds the dim level will change.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
@@ -119,9 +109,7 @@ Local Control Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 milli
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>12: ALL ON/ALL OFF Dim Rate</label>
-        <description><![CDATA[
-ALL ON/ALL OFF Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 millisecond resolution, how often the dim level will change.</p> <p> For example, if you set this parameter to 1, then every 10ms the dim level will change. </p> <p>If you set it to 255, then every 2.55 seconds the dim level will change.</p>
-        ]]></description>
+        <description>ALL ON/ALL OFF Dim Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value indicates in 10 millisecond resolution, how often the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt For example, if you set this parameter to 1, then every 10ms the dim level will change. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you set it to 255, then every 2.55 seconds the dim level will change.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 

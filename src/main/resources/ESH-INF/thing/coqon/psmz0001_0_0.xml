@@ -7,9 +7,7 @@
 
   <thing-type id="coqon_psmz0001_00_000" listed="false">
     <label>PSMZ0001 Plug module</label>
-    <description><![CDATA[
-Plug module<br /><h1>Overview</h1><p>Power Plug with Energy Monitoring,</p> <br /><h2>Inclusion Information</h2><p>When a PSMZ0001 that is not associated to a Z-Wave Network, is inserted into the mains outlet, it will flash once red followed by 2 green flashes followed by steady red flashing. The PSMZ0001 can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:</p> <ol><li>start inclusion/exclusion on the primary controller</li> <li>hold the touch button until the led shows green light</li> <li>release the touch button. The PSMZ0001 will confirm successful addition to the network by 5 green flashes.</li> </ol><br /><h2>Exclusion Information</h2><p>When a PSMZ0001 that is not associated to a Z-Wave network is inserted into the mains outlet, it will flash once red followed by 2 green flashes followed by steady red flashing. The PSMZ0001 can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:</p> <ol><li>start inclusion/exclusion on the primary controller</li> <li>hold the touch button until the led shows green light</li> <li>release the touch button. The PSMZ0001will confirm successful removal/exclusion by steady red flashing. At the time of exclusion the device is factory reset.</li> </ol>
-    ]]></description>
+    <description>Plug module&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtPower Plug with Energy Monitoring,&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtWhen a PSMZ0001 that is not associated to a Z-Wave Network, is inserted into the mains outlet, it will flash once red followed by 2 green flashes followed by steady red flashing. The PSMZ0001 can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:&lt;/p&gt &lt;ol&gt&lt;li&gtstart inclusion/exclusion on the primary controller&lt;/li&gt &lt;li&gthold the touch button until the led shows green light&lt;/li&gt &lt;li&gtrelease the touch button. The PSMZ0001 will confirm successful addition to the network by 5 green flashes.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtWhen a PSMZ0001 that is not associated to a Z-Wave network is inserted into the mains outlet, it will flash once red followed by 2 green flashes followed by steady red flashing. The PSMZ0001 can now be added to (=inclusion) or removed from (=exclusion) a Z-Wave network:&lt;/p&gt &lt;ol&gt&lt;li&gtstart inclusion/exclusion on the primary controller&lt;/li&gt &lt;li&gthold the touch button until the led shows green light&lt;/li&gt &lt;li&gtrelease the touch button. The PSMZ0001will confirm successful removal/exclusion by steady red flashing. At the time of exclusion the device is factory reset.&lt;/li&gt &lt;/ol&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -61,9 +59,7 @@ Plug module<br /><h1>Overview</h1><p>Power Plug with Energy Monitoring,</p> <br 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_31_1" type="integer" groupName="configuration">
         <label>31: Local Control</label>
-        <description><![CDATA[
-Local Control ON/OFF<br /><h1>Overview</h1><p>f LocalControlOn is set (factory default state) the PMSZ001s output can be switched manually by the touch button. If LocalControlOff is set, the PMSZ0001s output can only be switched through Z-Wave telegrams. In both modes the operational state of the mechanical switch is reported to association group 2</p>
-        ]]></description>
+        <description>Local Control ON/OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtf LocalControlOn is set (factory default state) the PMSZ001s output can be switched manually by the touch button. If LocalControlOff is set, the PMSZ0001s output can only be switched through Z-Wave telegrams. In both modes the operational state of the mechanical switch is reported to association group 2&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Local Control On</option>

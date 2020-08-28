@@ -10,7 +10,7 @@ This describes the Z-Wave device *32563*, manufactured by *Jasco Products* with 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![32563 product image](https://www.cd-jackson.com/zwave_device_uploads/504/504_default.png)
+![32563 product image](https://opensmarthouse.org/zwavedatabase/504/image/)
 
 
 The 32563 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,30 +19,15 @@ The 32563 does not permanently listen for messages sent from the controller - it
 
 ## Overview
 
-#### Description
-
-Whether you’re coming or going, your home is ready when you are with the Z-Wave Smart Door Sensor. Not only does the Smart Door Sensor efficiently eliminate household tasks as you go about your day, but remote monitoring allows you to feel secure once you’ve left home. By simply opening or closing your door, the sensor uses Z-Wave technology to wirelessly trigger scenes throughout your home. From your mobile device, you’re able to schedule lights to turn on as soon as you walk in and be notified of activity while you’re away. Simple installation uses your door’s existing hinge and pin, making setup a breeze. The sensor is discreetly designed to blend subtly into the frame of the door, adding the convenience of the Smart Door Sensor to your home without distracting from your household decor. Color-matching kits are also available, with options including white, dark brown and a paintable finish.
-
-#### Features
-
-  * Works on all standard doors using your existing hinge
-  * Reversible for right and left door openings
-  * Adjusts to fit door trim
-  * Compatible with hinge pins up to 5/16" in diameter
-  * CR2 battery included (battery lasts up to 2 years)
-  * Color matching kits available
+<h4&gtDescription</h4&gt <p&gtWhether you’re coming or going, your home is ready when you are with the Z-Wave Smart Door Sensor. Not only does the Smart Door Sensor efficiently eliminate household tasks as you go about your day, but remote monitoring allows you to feel secure once you’ve left home. By simply opening or closing your door, the sensor uses Z-Wave technology to wirelessly trigger scenes throughout your home. From your mobile device, you’re able to schedule lights to turn on as soon as you walk in and be notified of activity while you’re away. Simple installation uses your door’s existing hinge and pin, making setup a breeze. The sensor is discreetly designed to blend subtly into the frame of the door, adding the convenience of the Smart Door Sensor to your home without distracting from your household decor. Color-matching kits are also available, with options including white, dark brown and a paintable finish.</p&gt <h4&gtFeatures</h4&gt <ul&gt<li&gtWorks on all standard doors using your existing hinge</li&gt <li&gtReversible for right and left door openings</li&gt <li&gtAdjusts to fit door trim</li&gt <li&gtCompatible with hinge pins up to 5/16" in diameter</li&gt <li&gtCR2 battery included (battery lasts up to 2 years)</li&gt <li&gtColor matching kits available</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Follow the instructions for your Z-Wave certified controller to include the device to the Z-Wave network.
-  2. Once the controller is ready to include your Hinge Pin Smart Door Sensor press and release the manual/program button on the smart switch to include it in the network.
+<ol&gt<li&gtFollow the instructions for your Z-Wave certified controller to include the device to the Z-Wave network.</li&gt <li&gtOnce the controller is ready to include your Hinge Pin Smart Door Sensor press and release the manual/program button on the smart switch to include it in the network.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network. 
-  2. Once the controller is ready to exclude your device, press and release the manual/program button on the Hinge Pin Smart Door Sensor to exclude it from the network.
-
-You may wish to reset all of your Hinge Pin Smart Door Sensor's settings to their factory defaults. To do this, press the program button 10 times within 6 seconds. If your Door Sensor has been successfully reset, its LED light will blink for 3 seconds. This should only be used in the event your network’s primary controller is missing or otherwise inoperable.
+<ol&gt<li&gtFollow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network. </li&gt <li&gtOnce the controller is ready to exclude your device, press and release the manual/program button on the Hinge Pin Smart Door Sensor to exclude it from the network.</li&gt </ol&gt<p&gtYou may wish to reset all of your Hinge Pin Smart Door Sensor's settings to their factory defaults. To do this, press the program button 10 times within 6 seconds. If your Door Sensor has been successfully reset, its LED light will blink for 3 seconds. This should only be used in the event your network’s primary controller is missing or otherwise inoperable.</p&gt
 
 ### Wakeup Information
 
@@ -51,8 +36,7 @@ The 32563 does not permanently listen for messages sent from the controller - it
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  1. Press and hold the Z-wave Button for 6 seconds. It will be wake up and send “Wake Up Notification CC “ to HUB. 
-  2. It will sleep after timeout for 10 seconds, or sleep right away when received the “Wake Up No More Information CC”. 
+<ol&gt<li&gtPress and hold the Z-wave Button for 6 seconds. It will be wake up and send “Wake Up Notification CC “ to HUB. </li&gt <li&gtIt will sleep after timeout for 10 seconds, or sleep right away when received the “Wake Up No More Information CC”. </li&gt </ol&gt
 
 ## Channels
 
@@ -109,9 +93,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 20: Report Method
 
 Change Open/Close Report Method
-  1. Notification (Default)
-  2. Basic Set
-  3. Basic Report
+<ol&gt<li&gtNotification (Default)</li&gt <li&gtBasic Set</li&gt <li&gtBasic Report</li&gt </ol&gt
 Values in the range 1 to 3 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -175,9 +157,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/504/03d7fa20-e284-4093-b78a-d2ec8d255816-1-.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/504/03d7fa20-e284-4093-b78a-d2ec8d255816-1-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/504).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/504).

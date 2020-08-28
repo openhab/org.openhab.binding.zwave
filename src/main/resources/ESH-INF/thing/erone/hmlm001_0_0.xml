@@ -7,9 +7,7 @@
 
   <thing-type id="erone_hmlm001_00_000" listed="false">
     <label>HM-LM001 Lighting Module</label>
-    <description><![CDATA[
-Lighting Module<br /><h1>Overview</h1><ul><li>Use with incandescent light bulbs up to 200W</li> <li>Control on/off for attached lamp</li> <li>Dim the attached lamp</li> <li>LED shows that module is working</li> <li>Manual override button</li> </ul><br /><h2>Inclusion Information</h2><ul><li>Start the inclusion process on the hub</li> <li>Single click the button on the device</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Start the exclusion process on the hub</li> <li>Triple click the button on the device</li> </ul>
-    ]]></description>
+    <description>Lighting Module&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtUse with incandescent light bulbs up to 200W&lt;/li&gt &lt;li&gtControl on/off for attached lamp&lt;/li&gt &lt;li&gtDim the attached lamp&lt;/li&gt &lt;li&gtLED shows that module is working&lt;/li&gt &lt;li&gtManual override button&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtStart the inclusion process on the hub&lt;/li&gt &lt;li&gtSingle click the button on the device&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtStart the exclusion process on the hub&lt;/li&gt &lt;li&gtTriple click the button on the device&lt;/li&gt &lt;/ul&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

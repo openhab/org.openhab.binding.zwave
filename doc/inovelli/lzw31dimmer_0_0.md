@@ -10,24 +10,22 @@ This describes the Z-Wave device *LZW31*, manufactured by *Inovelli* with the th
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![LZW31 product image](https://www.cd-jackson.com/zwave_device_uploads/1171/1171_default.png)
+![LZW31 product image](https://opensmarthouse.org/zwavedatabase/1171/image/)
 
 
 The LZW31 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-For starters, we’ve upgraded our Z-Wave module for better distance. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).
-
-Lastly, the LED bar can be changed to any default color you’d prefer and also allows for it to be dimmed, or disabled altogether.
+<p&gtFor starters, we’ve upgraded our Z-Wave module for better distance. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p&gt <p&gtLastly, the LED bar can be changed to any default color you’d prefer and also allows for it to be dimmed, or disabled altogether.</p&gt
 
 ### Inclusion Information
 
-Start the Inclusion process on your HUB/Gateway. Turn the power back on and auto-inclusion will activate.You will have 60 seconds before it times out. If it does timeout,the backup method to pair/include the device is to press the Config Button (A) 3 times.
+<p&gtStart the Inclusion process on your HUB/Gateway. Turn the power back on and auto-inclusion will activate.You will have 60 seconds before it times out. If it does timeout,the backup method to pair/include the device is to press the Config Button (A) 3 times.</p&gt
 
 ### Exclusion Information
 
-Put your HUB in Exclusion mode and press the Config Button (A) 3x until your HUB says the device is excluded.
+<p&gtPut your HUB in Exclusion mode and press the Config Button (A) 3x until your HUB says the device is excluded.</p&gt
 
 ## Channels
 
@@ -73,9 +71,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Dimming Speed
 
 How fast or slow the light turns on when you hold the switch
-How fast or slow the lights turns on when you hold the switch ( ie: dimming from 10-20%, 80-60%, etc)
-
-0 = instant on, 1=1 second, 100=100 seconds
+<p&gtHow fast or slow the lights turns on when you hold the switch ( ie: dimming from 10-20%, 80-60%, etc)</p&gt <p&gt0 = instant on, 1=1 second, 100=100 seconds</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -86,11 +82,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Dimming Speed ( Z-wave )
 
 How fast or slow the light turns dim when you adjust via network
-How fast or slow the light turns dim when you adjust the switch remotely.
-
-(ie: dimming from 10-20%, 80-60%, etc)
-
-0= instant on, 1=1 second, 100=100 seconds, 101=keep in sync with Parameter 1
+<p&gtHow fast or slow the light turns dim when you adjust the switch remotely.</p&gt <p&gt(ie: dimming from 10-20%, 80-60%, etc)</p&gt <p&gt0= instant on, 1=1 second, 100=100 seconds, 101=keep in sync with Parameter 1</p&gt
 Values in the range 0 to 101 may be set.
 
 The manufacturer defined default value is ```101```.
@@ -101,9 +93,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Ramp Rate
 
 How fast or slow the light turns on when you press the switch
-How fast or slow the light turns on when you press the switch 1x to bring from ON to OFF or OFF to ON
-
-0=instant on, 1=1 second, 100=100 seconds, 101=keep in sync with Parameter 1
+<p&gtHow fast or slow the light turns on when you press the switch 1x to bring from ON to OFF or OFF to ON</p&gt <p&gt0=instant on, 1=1 second, 100=100 seconds, 101=keep in sync with Parameter 1</p&gt
 Values in the range 0 to 101 may be set.
 
 The manufacturer defined default value is ```101```.
@@ -114,9 +104,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Ramp Rate ( Z-wave)
 
 How fast or slow the light turns on / off via the network
-How fast or slow the light turns on when you turn the switch ON to OFF or OFF to ON remotely.
-
-0=instant on, 1=1 second, 100=100 seconds, 101=keep in sync with Parameter 1
+<p&gtHow fast or slow the light turns on when you turn the switch ON to OFF or OFF to ON remotely.</p&gt <p&gt0=instant on, 1=1 second, 100=100 seconds, 101=keep in sync with Parameter 1</p&gt
 Values in the range 0 to 101 may be set.
 
 The manufacturer defined default value is ```101```.
@@ -127,9 +115,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Minimum Dim Level
 
 Minimum level the light switch will dim to
-Minimum level the light switch will dim to (great for fixing flickering bulbs).
-
-1=1%, 45=45%
+<p&gtMinimum level the light switch will dim to (great for fixing flickering bulbs).</p&gt <p&gt1=1%, 45=45%</p&gt
 Values in the range 1 to 45 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -140,9 +126,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Maximum Dim Level
 
 Maximum level the light switch will dim to
-Maximum level the light switch will dim to.
-
-55%=55%, 100=100%
+<p&gtMaximum level the light switch will dim to.</p&gt <p&gt55%=55%, 100=100%</p&gt
 Values in the range 55 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -153,9 +137,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Invert Switch
 
 Inverts the switch
-Inverts the switch ( tap down = ON, tap up = OFF)
-
-0 = disabled, 1 = enabled
+<p&gtInverts the switch ( tap down = ON, tap up = OFF)</p&gt <p&gt0 = disabled, 1 = enabled</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -166,9 +148,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Auto Off Timer
 
 Automatically tuns the switch off after X seconds
-Automatically turns the switch off after x amount of seconds
-
-0 = disabled, 1 = 1 second, 32767 = 32767 seconds.
+<p&gtAutomatically turns the switch off after x amount of seconds</p&gt <p&gt0 = disabled, 1 = 1 second, 32767 = 32767 seconds.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -179,9 +159,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: Default Level ( Local )
 
 Default dim level when pressed locally
-Default dim level for the switch when pressed locally
-
-0 = Switch will return to the level it was prior to being off, 1=1%, 100=100%
+<p&gtDefault dim level for the switch when pressed locally</p&gt <p&gt0 = Switch will return to the level it was prior to being off, 1=1%, 100=100%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -192,9 +170,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Default level ( Z-Wave )
 
 Default dim level when switch on via network
-Default dim level for the switch when powered on via a Z-Wave command
-
-0 = Switch will return to level it was prior to being off, 1=1%, 100=100%
+<p&gtDefault dim level for the switch when powered on via a Z-Wave command</p&gt <p&gt0 = Switch will return to level it was prior to being off, 1=1%, 100=100%</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -205,9 +181,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Power On State
 
 When power is restored switch reverts On/Off/Last
-When power is restored, the switch reverts to either On, Off, or Last Level
-
-0=Off, 1-100= specific % On, 101= returns to level before power outage
+<p&gtWhen power is restored, the switch reverts to either On, Off, or Last Level</p&gt <p&gt0=Off, 1-100= specific % On, 101= returns to level before power outage</p&gt
 Values in the range 0 to 101 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -218,13 +192,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Association Behavior
 
 When should the switch send commands to associated devices
-01=local, 02=3-way, 03=3-way & local, 04=Z-wave hub, 05=Z-wave Hub & local
-
-06=Z-wave hub & 3-way, 07=Z-wave hub & local & 3-way, 08=timer, 09= timer &local
-
-10=timer & 3-way, 11=timer & 3-way & local, 12= timer & z-wave hub
-
-13= timer & z-wave hub & local, 14=timer & z-wave hub & 3-way, 15= ALL
+<p&gt01=local, 02=3-way, 03=3-way & local, 04=Z-wave hub, 05=Z-wave Hub & local</p&gt <p&gt06=Z-wave hub & 3-way, 07=Z-wave hub & local & 3-way, 08=timer, 09= timer &local</p&gt <p&gt10=timer & 3-way, 11=timer & 3-way & local, 12= timer & z-wave hub</p&gt <p&gt13= timer & z-wave hub & local, 14=timer & z-wave hub & 3-way, 15= ALL</p&gt
 Values in the range 0 to 15 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -235,9 +203,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: LED Indicator Colo
 
 Sets the default color of the LED bar
-This will set the default color of the LED bar
-
-Calculated by using a hue color circle ( value / 255*360) see website for more detail
+<p&gtThis will set the default color of the LED bar</p&gt <p&gtCalculated by using a hue color circle ( value / 255*360) see website for more detail</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```170```.
@@ -248,9 +214,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: LED Indicator Intensity
 
 Sets the intensity of the LED bar (brightness)
-This will set the intensity of the LED bar
-
-0=Off, 1=low, 5=medium, 10=high
+<p&gtThis will set the intensity of the LED bar</p&gt <p&gt0=Off, 1=low, 5=medium, 10=high</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -261,9 +225,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: LED Indicator Intensity (when off)
 
 LED Indicator brightness when switch is off
-LED Indicator intensity when light is off
-
-0=off , 1 =low, 10=high
+<p&gtLED Indicator intensity when light is off</p&gt <p&gt0=off , 1 =low, 10=high</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -274,17 +236,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: LED Strip Effect
 
 Add sweet effects to the LED bar
-Sweet effects: pulse, chase, solid, etc
-
-Byte 1 = choose color
-
-Byte 2 = Choose Brightness Level
-
-Byte 3 = Choose Effect
-
-Byte 4 = Duration 
-
-See Website for details
+<p&gtSweet effects: pulse, chase, solid, etc</p&gt <p&gtByte 1 = choose color</p&gt <p&gtByte 2 = Choose Brightness Level</p&gt <p&gtByte 3 = Choose Effect</p&gt <p&gtByte 4 = Duration </p&gt <p&gtSee Website for details</p&gt
 Values in the range 0 to 2147483647 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -295,9 +247,7 @@ This parameter has the configuration ID ```config_16_4``` and is of type ```INTE
 ### Parameter 17: LED timeout
 
 Timeout for LED notifications
-Changes the amount of time the RGB bar shows the dim level if the LED bar has been disabled
-
-0=always off, 1=1 second after level is adjusted, 10=10 seconds after level is adjusted
+<p&gtChanges the amount of time the RGB bar shows the dim level if the LED bar has been disabled</p&gt <p&gt0=always off, 1=1 second after level is adjusted, 10=10 seconds after level is adjusted</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -358,9 +308,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [LZW31 Manual](https://www.cd-jackson.com/zwave_device_uploads/1171/LZW31-Manual.pdf)
+* [LZW31 Manual](https://opensmarthouse.org/zwavedatabase/1171/LZW31-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1171).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1171).

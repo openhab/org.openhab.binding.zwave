@@ -10,34 +10,22 @@ This describes the Z-Wave device *RXZ-2C*, manufactured by *Danfoss* with the th
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![RXZ-2C product image](https://www.cd-jackson.com/zwave_device_uploads/1189/1189_default.png)
+![RXZ-2C product image](https://opensmarthouse.org/zwavedatabase/1189/image/)
 
 
 The RXZ-2C supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-230VAC powered static controller with binary switch capability containing 2 power relays
+<p&gt230VAC powered static controller with binary switch capability containing 2 power relays</p&gt
 
 ### Inclusion Information
 
-After the device is Factory Reset it automatically enters Inclusion Mode.
-
-  1. Press PROG to place in Program mode (Red LED on stead)
-  2. Press and hold CH1 button for at least 15 seconds (PROG LED rapidly flashed red and green)
-  3. Press and hold down the PROG button for at least 15 seconds
-
-Channel LEDs will show red and PROG LED will slowly flash green
+<p&gtAfter the device is Factory Reset it automatically enters Inclusion Mode.</p&gt <ol&gt<li&gtPress PROG to place in Program mode (Red LED on stead)</li&gt <li&gtPress and hold CH1 button for at least 15 seconds (PROG LED rapidly flashed red and green)</li&gt <li&gtPress and hold down the PROG button for at least 15 seconds</li&gt </ol&gt<p&gtChannel LEDs will show red and PROG LED will slowly flash green</p&gt
 
 ### Exclusion Information
 
-Factory Reset the device th exclude it.
-
-  1. Press PROG to place in Program mode (Red LED on stead)
-  2. Press and hold CH1 button for at least 15 seconds (PROG LED rapidly flashed red and green)
-  3. Press and hold down the PROG button for at least 15 seconds
-
-Channel LEDs will show red and PROG LED will slowly flash green
+<p&gtFactory Reset the device th exclude it.</p&gt <ol&gt<li&gtPress PROG to place in Program mode (Red LED on stead)</li&gt <li&gtPress and hold CH1 button for at least 15 seconds (PROG LED rapidly flashed red and green)</li&gt <li&gtPress and hold down the PROG button for at least 15 seconds</li&gt </ol&gt<p&gtChannel LEDs will show red and PROG LED will slowly flash green</p&gt
 
 ## Channels
 
@@ -135,9 +123,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Scanned Manual](https://www.cd-jackson.com/zwave_device_uploads/1189/RXZ-2C-Manual.pdf)
+* [Scanned Manual](https://opensmarthouse.org/zwavedatabase/1189/RXZ-2C-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1189).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1189).

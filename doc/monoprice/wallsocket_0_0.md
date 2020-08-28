@@ -10,30 +10,22 @@ This describes the Z-Wave device *PID15654*, manufactured by *Monoprice* with th
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![PID15654 product image](https://www.cd-jackson.com/zwave_device_uploads/628/628_default.png)
+![PID15654 product image](https://opensmarthouse.org/zwavedatabase/628/image/)
 
 
 The PID15654 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Monitor and manage energy consumption to reduce costs with the Monoprice Z-Wave Plus® Wall Socket Smart Plug. This product is a Z-Wave® switched AC plug-in adapter. AC power can be remotely switched on or off manually with a button on the plug, remotely using Z-Wave manual control, or automatically with Z-Wave programming or triggered response.
-
-Using Z-Wave commands, you can query the plug-in to report the power consumption, either as direct wattage or the kilowatt hours (kWh). It also includes two USB ports, one capable of 1A of charging power and the other capable of 2.4A of charging power, so you can keep your mobile devices charged without using another AC power socket for a wall charger.
+<p&gtMonitor and manage energy consumption to reduce costs with the Monoprice Z-Wave Plus® Wall Socket Smart Plug. This product is a Z-Wave® switched AC plug-in adapter. AC power can be remotely switched on or off manually with a button on the plug, remotely using Z-Wave manual control, or automatically with Z-Wave programming or triggered response.</p&gt <p&gtUsing Z-Wave commands, you can query the plug-in to report the power consumption, either as direct wattage or the kilowatt hours (kWh). It also includes two USB ports, one capable of 1A of charging power and the other capable of 2.4A of charging power, so you can keep your mobile devices charged without using another AC power socket for a wall charger.</p&gt
 
 ### Inclusion Information
 
-# Non-Secure
-
-Triple-click the Z-Button on the plug-in.
-
-# Secure
-
-Press and hold the Z-Button for about 3 seconds. The LED indicator will begin blinking rapidly.
+<h1&gtNon-Secure</h1&gt <p&gtTriple-click the Z-Button on the plug-in.</p&gt <h1&gtSecure</h1&gt <p&gtPress and hold the Z-Button for about 3 seconds. The LED indicator will begin blinking rapidly.</p&gt
 
 ### Exclusion Information
 
-Triple-click the Z-Button on the plug-in.
+<p&gtTriple-click the Z-Button on the plug-in.</p&gt
 
 ## Channels
 
@@ -102,11 +94,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 20: Overload Protection
 
 If current exceeds 16.5A over 5 seconds, relay will turn off.
-If current exceeds 16.5A over 5 seconds, relay will turn off.
-
-0 - The function is disabled
-
-1 - The function is enabled.
+<p&gtIf current exceeds 16.5A over 5 seconds, relay will turn off.</p&gt <p&gt0 - The function is disabled</p&gt <p&gt1 - The function is enabled.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -117,17 +105,7 @@ This parameter has the configuration ID ```config_20_1``` and is of type ```INTE
 ### Parameter 21: Device Status after Power Failure
 
 Define how the plug reacts after power failure
-Define how the plug reacts after power failure:
-
-0 - Smart Plug returns to previous state after a power failure.
-
-1 - Smart Plug does not memorize its state after a powerfailure.
-
-Connected device will be on after the power supply is reconnected.
-
-2 - Smart Plug does not memorize its state after a power failure.
-
-Connected device will be off after the power supply is reconnected.
+<p&gtDefine how the plug reacts after power failure:</p&gt <p&gt0 - Smart Plug returns to previous state after a power failure.</p&gt <p&gt1 - Smart Plug does not memorize its state after a powerfailure.</p&gt <p&gtConnected device will be on after the power supply is reconnected.</p&gt <p&gt2 - Smart Plug does not memorize its state after a power failure.</p&gt <p&gtConnected device will be off after the power supply is reconnected.</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -138,13 +116,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 ### Parameter 24: Notifcation on Load Change
 
 Smart Plug can send notifications to association device load state changes.
-Smart Plug can send notifications to association device load state changes.
-
-0 -Disabled.
-
-1 - Basic report.
-
-2 - Basic report only when Load condition not changed by Z-WAVE Command.
+<p&gtSmart Plug can send notifications to association device load state changes.</p&gt <p&gt0 -Disabled.</p&gt <p&gt1 - Basic report.</p&gt <p&gt2 - Basic report only when Load condition not changed by Z-WAVE Command.</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -155,11 +127,7 @@ This parameter has the configuration ID ```config_24_1``` and is of type ```INTE
 ### Parameter 27: Indicator Modes
 
 LED in the device will indicate the state of load
-After smart plug is included into a Z-Wave network, the LED in the device will indicate the state of load.
-
-0 - The LED will follow the status (on/off) of its load.
-
-1 - When the state of Switch’s load changed, The LED will follow the status (on/off) of its load, but the red LED will turn off after 5 seconds if there is not any switch action.
+<p&gtAfter smart plug is included into a Z-Wave network, the LED in the device will indicate the state of load.</p&gt <p&gt0 - The LED will follow the status (on/off) of its load.</p&gt <p&gt1 - When the state of Switch’s load changed, The LED will follow the status (on/off) of its load, but the red LED will turn off after 5 seconds if there is not any switch action.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -170,13 +138,7 @@ This parameter has the configuration ID ```config_27_1``` and is of type ```INTE
 ### Parameter 151: Threshold of power report
 
 Power Threshold at which to send meter report
-Power threshold to be interpreted, when the change value of load power exceeds the setting threshold, the smart plug will send meter report to association device (Group Lifeline).
-
-Available settings: 0 - 65535 (0 - 65535W)
-
-0 - The function is disabled.
-
-Default setting: 50 (50W)
+<p&gtPower threshold to be interpreted, when the change value of load power exceeds the setting threshold, the smart plug will send meter report to association device (Group Lifeline).</p&gt <p&gtAvailable settings: 0 - 65535 (0 - 65535W)</p&gt <p&gt0 - The function is disabled.</p&gt <p&gtDefault setting: 50 (50W)</p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -187,13 +149,7 @@ This parameter has the configuration ID ```config_151_2``` and is of type ```INT
 ### Parameter 152: Percentage Threshold of Power Report
 
 Percentage Threshold at which to send meter report
-Power percentage threshold to be interpreted, when change value of the load power exceeds the setting threshold, the smart plug will send meter report to association device (Group Lifeline).
-
-Available settings: 0 - 255 (0 - 255%)
-
-0 - The function is disabled.
-
-Default setting: 10 (10%)
+<p&gtPower percentage threshold to be interpreted, when change value of the load power exceeds the setting threshold, the smart plug will send meter report to association device (Group Lifeline).</p&gt <p&gtAvailable settings: 0 - 255 (0 - 255%)</p&gt <p&gt0 - The function is disabled.</p&gt <p&gtDefault setting: 10 (10%)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -204,13 +160,7 @@ This parameter has the configuration ID ```config_152_1``` and is of type ```INT
 ### Parameter 171: Power Report Frequency
 
 The interval of sending power report to association device (Group Lifeline).
-The interval of sending power report to association device (Group Lifeline).
-
-Available settings: 5- 2678400 (5 - 2678400 seconds)
-
-0 -The function is disabled.
-
-Default setting: 30 (30 seconds).
+<p&gtThe interval of sending power report to association device (Group Lifeline).</p&gt <p&gtAvailable settings: 5- 2678400 (5 - 2678400 seconds)</p&gt <p&gt0 -The function is disabled.</p&gt <p&gtDefault setting: 30 (30 seconds).</p&gt
 Values in the range 5 to 2678400 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -221,13 +171,7 @@ This parameter has the configuration ID ```config_171_4``` and is of type ```INT
 ### Parameter 172: Energy Report Frequency
 
 The interval of sending energy report to association device (Group Lifeline).
-The interval of sending energy report to association device (Group Lifeline).
-
-Available settings: 5- 2678400 (5 - 2678400 seconds)
-
-0 -The function is disabled.
-
-Default setting: 300 (300 seconds).
+<p&gtThe interval of sending energy report to association device (Group Lifeline).</p&gt <p&gtAvailable settings: 5- 2678400 (5 - 2678400 seconds)</p&gt <p&gt0 -The function is disabled.</p&gt <p&gtDefault setting: 300 (300 seconds).</p&gt
 Values in the range 5 to 2678400 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -238,13 +182,7 @@ This parameter has the configuration ID ```config_172_4``` and is of type ```INT
 ### Parameter 173: Voltage Report Frequency
 
 The interval of sending voltage report to association device (Group Lifeline)
-The interval of sending voltage report to association device (Group Lifeline)
-
-Available settings: 5- 2678400 (5 - 2678400 seconds)
-
-0 -The function is disabled.
-
-Default setting: 0 (disabled).
+<p&gtThe interval of sending voltage report to association device (Group Lifeline)</p&gt <p&gtAvailable settings: 5- 2678400 (5 - 2678400 seconds)</p&gt <p&gt0 -The function is disabled.</p&gt <p&gtDefault setting: 0 (disabled).</p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -255,13 +193,7 @@ This parameter has the configuration ID ```config_173_4``` and is of type ```INT
 ### Parameter 174: Electricity Report Frequency
 
 Interval for sending electricity report.
-The interval of sending electricity report to association device (Group Lifeline).
-
-Available settings: 5- 2678400 (5 - 2678400 seconds)
-
-0 -The function is disabled.
-
-Default setting: 0 (disabled).
+<p&gtThe interval of sending electricity report to association device (Group Lifeline).</p&gt <p&gtAvailable settings: 5- 2678400 (5 - 2678400 seconds)</p&gt <p&gt0 -The function is disabled.</p&gt <p&gtDefault setting: 0 (disabled).</p&gt
 Values in the range 0 to 2678400 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -292,11 +224,7 @@ The PID15654 supports 1 association group.
 ### Group 1: Basic Report
 
 Sends Basic Report at On/Off event
-Association command class allows Smart Plug to communicate with other Z-Wave devices directly, such as sending BASIC REPORT whenever the smart plug is turn on or off.
-
-Smart Plug supports 1 association grouping.
-
-The max number of associated nodes is 5.
+<p&gtAssociation command class allows Smart Plug to communicate with other Z-Wave devices directly, such as sending BASIC REPORT whenever the smart plug is turn on or off.</p&gt <p&gtSmart Plug supports 1 association grouping.</p&gt <p&gtThe max number of associated nodes is 5.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -327,9 +255,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/628/15654-Manual-161024.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/628/15654-Manual-161024.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/628).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/628).

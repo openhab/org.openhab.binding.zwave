@@ -10,50 +10,22 @@ This describes the Z-Wave device *LGZW*, manufactured by *Leak Intelligence, LLC
 
 The device is in the category of *Valve*, defining Valves used to control water or gas. e.g. a flow stop valve..
 
-![LGZW product image](https://www.cd-jackson.com/zwave_device_uploads/1063/1063_default.jpg)
+![LGZW product image](https://opensmarthouse.org/zwavedatabase/1063/image/)
 
 
 The LGZW supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Leak Gopher Z-Wave Valve Controller is a professionall grade Z-Wave Device that allows the water to your home or business to be automatically turned off when water is detected by water sensors connected to any Z-Wave capable controller. The Leak Gopher Z-Wave Valve Controller is Z-Wave Plus compliant allowing you to use all of the functionality and programmability built into the new, Z-Wave Plus Controllers. It comes with a Stainless Steel Electronic Ball Valve.
-
-Design and Operation of 
-
-The Leak Gopher Valve Controller
-
-Simply install the stainless steel Electronic Ball Valve on the ½” or ¾” water line where water enters your home or business, attach it to the Leak Gopher by plugging in the RJ-11 telephone jack, and tell your Z-Wave controller about the Leak Gopher and your home or business is protected. 
-
-Standard telephone wires and connectors can be used to extend the Ball Valve’s wire so it is easy to locate the Electronic Ball Valve where you need it to be, and still have easy access to the Leak Gopher Z-Wave Valve Controller. 
-
-When any of your water sensors get wet, your Z-Wave Controller will tell the Leak Gopher to turn the water off and Voilà! No Flood!
-
-A fully capable Z-Wave device, you can also program scenes that allow your Leak Gopher to turn the water off when you leave home and arm your security system and back on when you get home. No more worries about your house flooding while you are away.
-
-Also, for your convenience and piece of mind, there are two buttons on the Leak Gopher that allow you to instantly turn your water off and on. No more looking for that water key and digging in the yard looking for your water meter!
+<p&gtThe Leak Gopher Z-Wave Valve Controller is a professionall grade Z-Wave Device that allows the water to your home or business to be automatically turned off when water is detected by water sensors connected to any Z-Wave capable controller. The Leak Gopher Z-Wave Valve Controller is Z-Wave Plus compliant allowing you to use all of the functionality and programmability built into the new, Z-Wave Plus Controllers. It comes with a Stainless Steel Electronic Ball Valve.</p&gt <p&gtDesign and Operation of </p&gt <p&gtThe Leak Gopher Valve Controller</p&gt <p&gtSimply install the stainless steel Electronic Ball Valve on the ½” or ¾” water line where water enters your home or business, attach it to the Leak Gopher by plugging in the RJ-11 telephone jack, and tell your Z-Wave controller about the Leak Gopher and your home or business is protected. </p&gt <p&gtStandard telephone wires and connectors can be used to extend the Ball Valve’s wire so it is easy to locate the Electronic Ball Valve where you need it to be, and still have easy access to the Leak Gopher Z-Wave Valve Controller. </p&gt <p&gtWhen any of your water sensors get wet, your Z-Wave Controller will tell the Leak Gopher to turn the water off and Voilà! No Flood!</p&gt <p&gtA fully capable Z-Wave device, you can also program scenes that allow your Leak Gopher to turn the water off when you leave home and arm your security system and back on when you get home. No more worries about your house flooding while you are away.</p&gt <p&gtAlso, for your convenience and piece of mind, there are two buttons on the Leak Gopher that allow you to instantly turn your water off and on. No more looking for that water key and digging in the yard looking for your water meter!</p&gt
 
 ### Inclusion Information
 
-How to Add the Leak Gopher Z-Wave Valve Control to your Z-Wave Controller
-
-  * Plug the wall cube power adapter (included) into the receptacle on the bottom of the Leak Gopher Z-Wave Valve Control marked “3.6 VDC”. Plug the wall cube into a 110 VAC outlet. This provides power to the Leak Gopher Z-Wave Valve Control.
-  * Configure the Z-Wave Controller to Add a device. 
-  * When the Z-Wave Controller is ready to add a device, it will display a message like “waiting to add device. Press Add button on the device”
-  * The Add/Remove button is located on the side of the Leak Gopher Z-Wave Valve Control. Press the Add/Remove button.
-  * The Z-Wave Controller will acknowledge that the Leak Gopher Z-Wave Valve Control had been added to the Z-Wave network.
-  * Your Leak Gopher Z-Wave Valve Control is ready to use.
+<p&gtHow to Add the Leak Gopher Z-Wave Valve Control to your Z-Wave Controller</p&gt <ul&gt<li&gtPlug the wall cube power adapter (included) into the receptacle on the bottom of the Leak Gopher Z-Wave Valve Control marked “3.6 VDC”. Plug the wall cube into a 110 VAC outlet. This provides power to the Leak Gopher Z-Wave Valve Control.</li&gt <li&gtConfigure the Z-Wave Controller to Add a device. </li&gt <li&gtWhen the Z-Wave Controller is ready to add a device, it will display a message like “waiting to add device. Press Add button on the device”</li&gt <li&gtThe Add/Remove button is located on the side of the Leak Gopher Z-Wave Valve Control. Press the Add/Remove button.</li&gt <li&gtThe Z-Wave Controller will acknowledge that the Leak Gopher Z-Wave Valve Control had been added to the Z-Wave network.</li&gt <li&gtYour Leak Gopher Z-Wave Valve Control is ready to use.</li&gt </ul&gt
 
 ### Exclusion Information
 
-How to Remove the Leak Gopher Z-Wave Valve Control to your Z-Wave Controller
-
-  * Plug the wall cube power adapter (included) into the receptacle on the bottom of the Leak Gopher Z-Wave Valve Control marked “3.6 VDC”. Plug the wall cube into a 110 VAC outlet. This provides power to the Leak Gopher Z-Wave Valve Control.
-  * Configure the Z-Wave Controller to Remove a device. 
-  * When the Z-Wave Controller is ready to Remove a device, it will display a message like “waiting to remove device. Press remove button on the device”
-  * The Add/Remove button is located on the side of the Leak Gopher Z-Wave Valve Control. Press the Add/Remove button. 
-  * The Z-Wave Controller will acknowledge that the Leak Gopher Z-Wave Valve Control had been removed from the Z-Wave network.
-  * Your Leak Gopher Z-Wave Valve Control is removed form this controller.
+<p&gtHow to Remove the Leak Gopher Z-Wave Valve Control to your Z-Wave Controller</p&gt <ul&gt<li&gtPlug the wall cube power adapter (included) into the receptacle on the bottom of the Leak Gopher Z-Wave Valve Control marked “3.6 VDC”. Plug the wall cube into a 110 VAC outlet. This provides power to the Leak Gopher Z-Wave Valve Control.</li&gt <li&gtConfigure the Z-Wave Controller to Remove a device. </li&gt <li&gtWhen the Z-Wave Controller is ready to Remove a device, it will display a message like “waiting to remove device. Press remove button on the device”</li&gt <li&gtThe Add/Remove button is located on the side of the Leak Gopher Z-Wave Valve Control. Press the Add/Remove button. </li&gt <li&gtThe Z-Wave Controller will acknowledge that the Leak Gopher Z-Wave Valve Control had been removed from the Z-Wave network.</li&gt <li&gtYour Leak Gopher Z-Wave Valve Control is removed form this controller.</li&gt </ul&gt
 
 ## Channels
 
@@ -122,9 +94,9 @@ Association group 1 supports 4 nodes.
 
 ### Documentation Links
 
-* [Water Valve](https://www.cd-jackson.com/zwave_device_uploads/1063/50020-LGZW-2-Leak-Gopher-Z-Wave-Plus-Instructions-5VDC.pdf)
+* [Water Valve](https://opensmarthouse.org/zwavedatabase/1063/50020-LGZW-2-Leak-Gopher-Z-Wave-Plus-Instructions-5VDC.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1063).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1063).

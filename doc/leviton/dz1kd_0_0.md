@@ -10,32 +10,22 @@ This describes the Z-Wave device *DZ1KD*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![DZ1KD product image](https://www.cd-jackson.com/zwave_device_uploads/664/664_default.jpg)
+![DZ1KD product image](https://opensmarthouse.org/zwavedatabase/664/image/)
 
 
 The DZ1KD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Universal Incandescent, LED, CFL, Magnetic Low Voltage or Fluorescent Dimmer
+<p&gtUniversal Incandescent, LED, CFL, Magnetic Low Voltage or Fluorescent Dimmer</p&gt
 
 ### Inclusion Information
 
-  * Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.
-  * Tap the top of the paddle one time.
-  * The Locator LED will quickly ﬂash green.
-  * The Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave network.
-  * Follow directions in the Z-Wave® controller to complete the adding process.
-  * Upon successful addition to network the LED will turn off and then blink green 3 times.
-  * If the adding process is not successful the LED will ﬂash red 3 times.
+<ul&gt<li&gtEnter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</li&gt <li&gtTap the top of the paddle one time.</li&gt <li&gtThe Locator LED will quickly ﬂash green.</li&gt <li&gtThe Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave network.</li&gt <li&gtFollow directions in the Z-Wave® controller to complete the adding process.</li&gt <li&gtUpon successful addition to network the LED will turn off and then blink green 3 times.</li&gt <li&gtIf the adding process is not successful the LED will ﬂash red 3 times.</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.
-  * Follow directions in the Z-Wave® controller to enter exclusion mode
-  * Tap the top of the paddle one time. The Locator LED will quickly ﬂash green.
-  * The Z-Wave® controller will exclude the Decora SmartTM device
-  * The Z-Wave® controller will confirm successful exclusion from the network.
+<ul&gt<li&gtEnter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</li&gt <li&gtFollow directions in the Z-Wave® controller to enter exclusion mode</li&gt <li&gtTap the top of the paddle one time. The Locator LED will quickly ﬂash green.</li&gt <li&gtThe Z-Wave® controller will exclude the Decora SmartTM device</li&gt <li&gtThe Z-Wave® controller will confirm successful exclusion from the network.</li&gt </ul&gt
 
 ## Channels
 
@@ -79,9 +69,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Fade On Time
 
 Fade on time
-  * 0: Instant on
-  * 1 to 127: 1-127 seconds
-  * 128 to 253: 1-126 minutes
+<ul&gt<li&gt0: Instant on</li&gt <li&gt1 to 127: 1-127 seconds</li&gt <li&gt128 to 253: 1-126 minutes</li&gt </ul&gt
 Values in the range 0 to 253 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -92,9 +80,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Fade Off Time
 
 Fade off time
-  * 0: Instant off
-  * 1 to 127: 1-127 seconds
-  * 128 to 253: 1-126 minutes
+<ul&gt<li&gt0: Instant off</li&gt <li&gt1 to 127: 1-127 seconds</li&gt <li&gt128 to 253: 1-126 minutes</li&gt </ul&gt
 Values in the range 0 to 253 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -127,8 +113,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Preset Light Level
 
 Preset light level
-  * 0: Last dim level
-  * 1 to 100: Level
+<ul&gt<li&gt0: Last dim level</li&gt <li&gt1 to 100: Level</li&gt </ul&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -139,9 +124,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: LED Dim Level Indicator Timeout
 
 LED dim level indicator timeout
-  * 0: LED indicators off
-  * 1 to 254: Timeout in seconds
-  * 255: Always on
+<ul&gt<li&gt0: LED indicators off</li&gt <li&gt1 to 254: Timeout in seconds</li&gt <li&gt255: Always on</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -152,9 +135,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Locator LED Status
 
 Locator LED status
-  * 0: LED off
-  * 254: Status mode
-  * 255: Locator mode
+<ul&gt<li&gt0: LED off</li&gt <li&gt254: Status mode</li&gt <li&gt255: Locator mode</li&gt </ul&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -165,9 +146,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Load Type
 
 Load type
-  * 0: Incandescent
-  * 1: LED
-  * 2: CFL
+<ul&gt<li&gt0: Incandescent</li&gt <li&gt1: LED</li&gt <li&gt2: CFL</li&gt </ul&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -198,7 +177,7 @@ The DZ1KD supports 1 association group.
 ### Group 1: Group 1
 
 Z-Wave Plus Lifeline
-A NOTIFICATION frame is sent to the nodes in this association group when a Lifeline event occurs.
+<p&gtA NOTIFICATION frame is sent to the nodes in this association group when a Lifeline event occurs.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -229,9 +208,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/664/Leviton-DZ1KD.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/664/Leviton-DZ1KD.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/664).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/664).

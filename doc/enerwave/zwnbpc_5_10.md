@@ -11,7 +11,7 @@ This version of the device is limited to firmware versions above 5.10
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![ZWN-BPC-PLUS product image](https://www.cd-jackson.com/zwave_device_uploads/795/795_default.jpg)
+![ZWN-BPC-PLUS product image](https://opensmarthouse.org/zwavedatabase/795/image/)
 
 
 The ZWN-BPC-PLUS supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -20,15 +20,15 @@ The ZWN-BPC-PLUS does not permanently listen for messages sent from the controll
 
 ## Overview
 
-This sensor acts as a security device by detecting changes in infrared radiation levels. when some body moves within or across the detection of coverage, one triggering signal will be transmitted to associated Z-Wave devices
+<p&gtThis sensor acts as a security device by detecting changes in infrared radiation levels. when some body moves within or across the detection of coverage, one triggering signal will be transmitted to associated Z-Wave devices</p&gt
 
 ### Inclusion Information
 
-press and hold the program button of ZWN-BPC for 2 second,
+<p&gtpress and hold the program button of ZWN-BPC for 2 second,</p&gt
 
 ### Exclusion Information
 
-press and hold the program button of ZWN-BPC for 2 second,
+<p&gtpress and hold the program button of ZWN-BPC for 2 second,</p&gt
 
 ### Wakeup Information
 
@@ -37,7 +37,7 @@ The ZWN-BPC-PLUS does not permanently listen for messages sent from the controll
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-press the program button
+<p&gtpress the program button</p&gt
 
 ## Channels
 
@@ -94,9 +94,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Motion timeout
 
 Multiplier to wakeup timer interval
-It is minimum time when the associated nodes keep turn on
-
-n:1-7 (n*WAKE\_UP\_INTERVAL)
+<p&gtIt is minimum time when the associated nodes keep turn on</p&gt <p&gtn:1-7 (n*WAKE\_UP\_INTERVAL)</p&gt
 Values in the range 1 to 7 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -130,11 +128,7 @@ The ZWN-BPC-PLUS supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-1. Battery Report
-
-2. Notification Report
-
-3. Device Reset Locally
+<p&gt1. Battery Report</p&gt <p&gt2. Notification Report</p&gt <p&gt3. Device Reset Locally</p&gt
 
 Association group 1 supports 1 node.
 
@@ -178,9 +172,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/795/20170111-ZWN-BPC.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/795/20170111-ZWN-BPC.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/795).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/795).

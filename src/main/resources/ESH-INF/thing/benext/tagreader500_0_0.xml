@@ -7,9 +7,7 @@
 
   <thing-type id="benext_tagreader500_00_000" listed="false">
     <label>Tag Reader 500 WTRFID Mini Keypad</label>
-    <description><![CDATA[
-WTRFID Mini Keypad<br /><h1>Overview</h1><p>A Z-Wave security enabled entry control device. You can arm/disarm your house to home or away with the Tag Reader 500. With the use of a RFID tag or a numerical code the device can send an entry control message which can be handled by a supported gateway. In addition the Tag Reader supports the activation of scenes.</p> <br /><h2>Inclusion Information</h2><ol><li>To include the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). </li> <li>Release the enter button now to start the inclusion (during the inclusion routine the indication LED willblink twice per second).</li> </ol><br /><h2>Exclusion Information</h2><ol><li>To exclude the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). </li> <li>Release the enter button now to start the exclusion (during the exclusion routine the indication LED willblink twice three times per 1,5 second).</li> </ol><br /><h2>Wakeup Information</h2><p>Press and hold the button for 7 seconds, the indication LED will go on for 1 full second.</p>
-    ]]></description>
+    <description>WTRFID Mini Keypad&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtA Z-Wave security enabled entry control device. You can arm/disarm your house to home or away with the Tag Reader 500. With the use of a RFID tag or a numerical code the device can send an entry control message which can be handled by a supported gateway. In addition the Tag Reader supports the activation of scenes.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtTo include the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). &lt;/li&gt &lt;li&gtRelease the enter button now to start the inclusion (during the inclusion routine the indication LED willblink twice per second).&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtTo exclude the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). &lt;/li&gt &lt;li&gtRelease the enter button now to start the exclusion (during the exclusion routine the indication LED willblink twice three times per 1,5 second).&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtPress and hold the button for 7 seconds, the indication LED will go on for 1 full second.&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -61,9 +59,7 @@ WTRFID Mini Keypad<br /><h1>Overview</h1><p>A Z-Wave security enabled entry cont
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Set to Default</label>
-        <description><![CDATA[
-Set all configuration values to default values (factory settings)<br /><h1>Overview</h1><p>If the Value is set to 0xFF (255) this device will return to factory settings.</p>
-        ]]></description>
+        <description>Set all configuration values to default values (factory settings)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf the Value is set to 0xFF (255) this device will return to factory settings.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="255">Reset to factory defaults</option>
@@ -74,35 +70,27 @@ Set all configuration values to default values (factory settings)<br /><h1>Overv
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: Feedback time</label>
-        <description><![CDATA[
-the time the beep goes to off<br /><h1>Overview</h1><p>0x00 = Off, 0xFF = endless</p>
-        ]]></description>
+        <description>the time the beep goes to off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 = Off, 0xFF = endless&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>15</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>3: Feedback time-out</label>
-        <description><![CDATA[
-waiting for the wake-up-no-more command<br /><h1>Overview</h1><p>Too configure the time-out, waiting on the wakeup_no_more_information command before the error sound starts automatically. The error sound is set to 8 short beeps.</p> <p>0x00 = off</p> <p>0x01 – 0xFF: Value in seconds</p>
-        ]]></description>
+        <description>waiting for the wake-up-no-more command&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtToo configure the time-out, waiting on the wakeup_no_more_information command before the error sound starts automatically. The error sound is set to 8 short beeps.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x00 = off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 – 0xFF: Value in seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="5">
         <label>4: feedback beeps per second</label>
-        <description><![CDATA[
-Amount of beeps a second<br /><h1>Overview</h1><p>To set the amount of beeps per second, every beep is around 10ms.</p>
-        ]]></description>
+        <description>Amount of beeps a second&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTo set the amount of beeps per second, every beep is around 10ms.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Always awake mode</label>
-        <description><![CDATA[
-Always awake mode<br /><h1>Overview</h1><p>Mode 1 =  normal working mode</p> <p>Mode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.</p> <p>Any other value will be reported after a GET, but will be seen as a mode 1.</p>
-        ]]></description>
+        <description>Always awake mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtMode 1 =  normal working mode&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtMode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAny other value will be reported after a GET, but will be seen as a mode 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">normal operating mode.</option>
@@ -112,9 +100,7 @@ Always awake mode<br /><h1>Overview</h1><p>Mode 1 =  normal working mode</p> <p
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Operation mode</label>
-        <description><![CDATA[
-Operation mode<br /><h1>Overview</h1><ul><li>0x00: the RFID and Numeric codes are reported in gateway mode</li> <li>0x01 – 0xFF: the RFID and Numeric codes are reported in local mode</li> </ul>
-        ]]></description>
+        <description>Operation mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0x00: the RFID and Numeric codes are reported in gateway mode&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt0x01 – 0xFF: the RFID and Numeric codes are reported in local mode&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Gateway mode</option>
@@ -124,9 +110,7 @@ Operation mode<br /><h1>Overview</h1><ul><li>0x00: the RFID and Numeric codes ar
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Gateway confirmation</label>
-        <description><![CDATA[
-Gateway confirmation<br /><h1>Overview</h1><ul><li>In gateway mode it is possible to let the gateway decide if the Tag Reader 500 can arm to home or away.</li> <li>If gateway indication is disabled the Tag Reader 500 automatically assumes that it can arm and will wait for a user input of RFID TAG or numeric code. </li> </ul>
-        ]]></description>
+        <description>Gateway confirmation&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtIn gateway mode it is possible to let the gateway decide if the Tag Reader 500 can arm to home or away.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtIf gateway indication is disabled the Tag Reader 500 automatically assumes that it can arm and will wait for a user input of RFID TAG or numeric code. &amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Confirmation Disabled</option>

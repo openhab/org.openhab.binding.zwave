@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zen06_00_000" listed="false">
     <label>ZEN06 Smart Plug with 2 USB ports</label>
-    <description><![CDATA[
-Smart Plug with 2 USB ports<br /><h1>Overview</h1><h2>Product features: </h2> <ul><li>Manual and remote on / off control </li> <li>Energy monitoring </li> <li>Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller </li> <li>LED indicator displaying Z-Wave signal strength and power usage </li> <li>Security enabled Z-Wave device with AES signal encryption (requires a security enabled gateway controller for full functionality) </li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication </li> <li>Built-in range extender for a stronger, more reliable network </li> <li>2 USB charging ports for your smart phone or tablet (no Z-Wave functionality) </li> <li>Built-in overload protection in Z-Wave outlet and USB ports </li> </ul><h2>How to read LED indicator colors?</h2> <ul><li>Burgundy = Smart Plug is off</li> <li>Blue = 0 – 300 W</li> <li>Cyan = 300 – 600 W</li> <li>Green = 600 – 900 W</li> <li>Yellow = 900 – 1200 W</li> <li>Red = 1200 – 1500 W</li> <li>Purple = 1500 – 1800 W</li> <li>Purple blink = over 1800 W</li> </ul><h2>How to test Z-Wave network range for my Smart Plug?</h2> <p>You can easily check if the Smart Plug is within your Z-Wave controller’s range.</p> <h3>Here is how:</h3> <p>Press and hold the Z-Wave button for 6 to 9 seconds until the LED indicator turns violet.</p> <p>The LED indicator will then report signal strength.</p> <ul><li>Flashing green = direct communication with the primary controller is established and still being diagnosed</li> <li>Solid green for 2 seconds = direct communication with the primary controller is stable</li> <li>Flashing orange = direct communication with the primary controller is intermittent and being diagnosed</li> <li>Solid orange = communication quality is fair</li> <li>Solid red = communication with the primary controller has failed</li> <li>Press and release the Z-Wave button to exit testing mode.</li> </ul><p>NOTE: This function may only be activated once the Smart Plug has been included to a ZWave network.</p> <br /><h2>Inclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES QUICKLY</p> <br /><h2>Exclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES QUICKLY</p>
-    ]]></description>
+    <description>Smart Plug with 2 USB ports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h2&gtProduct features: &lt;/h2&gt &lt;ul&gt&lt;li&gtManual and remote on / off control &lt;/li&gt &lt;li&gtEnergy monitoring &lt;/li&gt &lt;li&gtScene inclusion for custom automation scenarios when included to a Z-Wave gateway controller &lt;/li&gt &lt;li&gtLED indicator displaying Z-Wave signal strength and power usage &lt;/li&gt &lt;li&gtSecurity enabled Z-Wave device with AES signal encryption (requires a security enabled gateway controller for full functionality) &lt;/li&gt &lt;li&gtZ-Wave Plus with improved 500 chip for faster and safer wireless communication &lt;/li&gt &lt;li&gtBuilt-in range extender for a stronger, more reliable network &lt;/li&gt &lt;li&gt2 USB charging ports for your smart phone or tablet (no Z-Wave functionality) &lt;/li&gt &lt;li&gtBuilt-in overload protection in Z-Wave outlet and USB ports &lt;/li&gt &lt;/ul&gt&lt;h2&gtHow to read LED indicator colors?&lt;/h2&gt &lt;ul&gt&lt;li&gtBurgundy = Smart Plug is off&lt;/li&gt &lt;li&gtBlue = 0 – 300 W&lt;/li&gt &lt;li&gtCyan = 300 – 600 W&lt;/li&gt &lt;li&gtGreen = 600 – 900 W&lt;/li&gt &lt;li&gtYellow = 900 – 1200 W&lt;/li&gt &lt;li&gtRed = 1200 – 1500 W&lt;/li&gt &lt;li&gtPurple = 1500 – 1800 W&lt;/li&gt &lt;li&gtPurple blink = over 1800 W&lt;/li&gt &lt;/ul&gt&lt;h2&gtHow to test Z-Wave network range for my Smart Plug?&lt;/h2&gt &lt;p&gtYou can easily check if the Smart Plug is within your Z-Wave controller’s range.&lt;/p&gt &lt;h3&gtHere is how:&lt;/h3&gt &lt;p&gtPress and hold the Z-Wave button for 6 to 9 seconds until the LED indicator turns violet.&lt;/p&gt &lt;p&gtThe LED indicator will then report signal strength.&lt;/p&gt &lt;ul&gt&lt;li&gtFlashing green = direct communication with the primary controller is established and still being diagnosed&lt;/li&gt &lt;li&gtSolid green for 2 seconds = direct communication with the primary controller is stable&lt;/li&gt &lt;li&gtFlashing orange = direct communication with the primary controller is intermittent and being diagnosed&lt;/li&gt &lt;li&gtSolid orange = communication quality is fair&lt;/li&gt &lt;li&gtSolid red = communication with the primary controller has failed&lt;/li&gt &lt;li&gtPress and release the Z-Wave button to exit testing mode.&lt;/li&gt &lt;/ul&gt&lt;p&gtNOTE: This function may only be activated once the Smart Plug has been included to a ZWave network.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and release the Z-Wave button 3 TIMES QUICKLY&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the Z-Wave button 3 TIMES QUICKLY&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -85,9 +83,7 @@ Smart Plug with 2 USB ports<br /><h1>Overview</h1><h2>Product features: </h2> <
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Overload Protection</label>
-        <description><![CDATA[
-turns relay off once voltage exceeds 16.5A for over 5 secs if enabled<br /><h1>Overview</h1><p>We <strong>DO NOT</strong> recommend changing this parameter’s value as it may result in device damage and malfunction.</p>
-        ]]></description>
+        <description>turns relay off once voltage exceeds 16.5A for over 5 secs if enabled&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWe &amp;lt;strong&amp;amp;gtDO NOT&amp;lt;/strong&amp;amp;gt recommend changing this parameter’s value as it may result in device damage and malfunction.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -108,9 +104,7 @@ turns relay off once voltage exceeds 16.5A for over 5 secs if enabled<br /><h1>O
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: On/Off Status Change Notifications</label>
-        <description><![CDATA[
-Send notifications to associated devices<br /><h1>Overview</h1><p>Your Smart Plug will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round. Choose when you want it to send the report.</p>
-        ]]></description>
+        <description>Send notifications to associated devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtYour Smart Plug will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round. Choose when you want it to send the report.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -132,9 +126,7 @@ Send notifications to associated devices<br /><h1>Overview</h1><p>Your Smart Plu
       <parameter name="config_151_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>151: Power Report Value Threshold</label>
-        <description><![CDATA[
-Minimum change in watts to report<br /><h1>Overview</h1><p>Choose how you want your Smart Plug to report power consumption to your controller and associated devices.</p> <p>The number entered as value corresponds to the number of Watts the appliance needs to go over for the change to be reported.</p> <p>So if 50 Watts are entered by default, the smart plug will report any change in power usage over 50 Watts (whether it’s at least 50 Watts more or 50 Watts less compared to previous report).</p> <p>Values: 0 – 65535;</p> <p>0 – disabled (it will not report power consumption based on value change);</p>
-        ]]></description>
+        <description>Minimum change in watts to report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how you want your Smart Plug to report power consumption to your controller and associated devices.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe number entered as value corresponds to the number of Watts the appliance needs to go over for the change to be reported.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSo if 50 Watts are entered by default, the smart plug will report any change in power usage over 50 Watts (whether it’s at least 50 Watts more or 50 Watts less compared to previous report).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues: 0 – 65535;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disabled (it will not report power consumption based on value change);&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -142,9 +134,7 @@ Minimum change in watts to report<br /><h1>Overview</h1><p>Choose how you want y
       <parameter name="config_152_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>152: Power Report Percentage Threshold</label>
-        <description><![CDATA[
-Minimum percentage change to report<br /><h1>Overview</h1><p>Choose how you want your Smart Plug to report power consumption to your controller and associated devices by percentage rate.</p> <p>The number entered as value corresponds to the percentage in power usage change the appliance needs to go over for the event to be reported.</p> <p>So if 10% is entered by default, the Smart Plug will report any change in power consumption over 10% (whether it’s at least 10% more or 10% less power consumption compared to previous report).</p> <p>Values: 0 – 255;</p> <p>0 – disabled (it will not report power consumption based on percentage change);</p>
-        ]]></description>
+        <description>Minimum percentage change to report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how you want your Smart Plug to report power consumption to your controller and associated devices by percentage rate.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe number entered as value corresponds to the percentage in power usage change the appliance needs to go over for the event to be reported.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSo if 10% is entered by default, the Smart Plug will report any change in power consumption over 10% (whether it’s at least 10% more or 10% less power consumption compared to previous report).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues: 0 – 255;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disabled (it will not report power consumption based on percentage change);&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -152,9 +142,7 @@ Minimum percentage change to report<br /><h1>Overview</h1><p>Choose how you want
       <parameter name="config_171_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>171: Power Report Frequency</label>
-        <description><![CDATA[
-How often to report power consumption (W) in secs<br /><h1>Overview</h1><p>Choose how often you want your Smart Plug to report power consumption (W) to your controller and associated device.</p> <p>The number entered as value corresponds to the number of seconds.</p> <p>So if 30 is entered by default, the Smart Plug will report power consumption every 30 seconds.</p> <p>Values: 5 – 2678400;</p> <p>0 – disabled (it will not report power consumption);</p>
-        ]]></description>
+        <description>How often to report power consumption (W) in secs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how often you want your Smart Plug to report power consumption (W) to your controller and associated device.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe number entered as value corresponds to the number of seconds.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSo if 30 is entered by default, the Smart Plug will report power consumption every 30 seconds.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues: 5 – 2678400;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disabled (it will not report power consumption);&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -162,9 +150,7 @@ How often to report power consumption (W) in secs<br /><h1>Overview</h1><p>Choos
       <parameter name="config_172_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>172: Energy Report Frequency</label>
-        <description><![CDATA[
-How often to report energy usage (KWH) in secs<br /><h1>Overview</h1><p>Choose how often you want your Smart Plug to report energy usage (KWH) to your controller and associated device.</p> <p>The number entered as value corresponds to the number of seconds.</p> <p>So if 300 is entered by default, the smart plug will report energy usage every 300 seconds (5 minutes).</p> <p>Values: 5 – 2678400;</p> <p>0 – disabled (it will not report energy usage);</p>
-        ]]></description>
+        <description>How often to report energy usage (KWH) in secs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how often you want your Smart Plug to report energy usage (KWH) to your controller and associated device.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe number entered as value corresponds to the number of seconds.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSo if 300 is entered by default, the smart plug will report energy usage every 300 seconds (5 minutes).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues: 5 – 2678400;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disabled (it will not report energy usage);&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -172,9 +158,7 @@ How often to report energy usage (KWH) in secs<br /><h1>Overview</h1><p>Choose h
       <parameter name="config_173_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>173: Voltage Report Frequency</label>
-        <description><![CDATA[
-How often to report voltage (V) in secs<br /><h1>Overview</h1><p>Choose how often you want your Smart Plug to report voltage (V) to your controller and associated device.</p> <p>The number entered as value corresponds to the number of seconds.</p> <p>Values: 5 – 2678400;</p> <p>0 – disabled</p>
-        ]]></description>
+        <description>How often to report voltage (V) in secs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how often you want your Smart Plug to report voltage (V) to your controller and associated device.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe number entered as value corresponds to the number of seconds.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues: 5 – 2678400;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -182,9 +166,7 @@ How often to report voltage (V) in secs<br /><h1>Overview</h1><p>Choose how ofte
       <parameter name="config_174_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>174: Electricity Report Frequency</label>
-        <description><![CDATA[
-How often to report electrical current (A) in secs<br /><h1>Overview</h1><p>Choose how often you want your Smart Plug to report levels of electrical current (A) to your controller and associated device.</p> <p>The number entered as value corresponds to the number of seconds.</p> <p>Values: 5 – 2678400;</p> <p>0 – disabled</p>
-        ]]></description>
+        <description>How often to report electrical current (A) in secs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how often you want your Smart Plug to report levels of electrical current (A) to your controller and associated device.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe number entered as value corresponds to the number of seconds.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValues: 5 – 2678400;&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>

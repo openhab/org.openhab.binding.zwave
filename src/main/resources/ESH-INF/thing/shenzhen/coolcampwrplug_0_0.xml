@@ -7,9 +7,7 @@
 
   <thing-type id="shenzhen_coolcampwrplug_00_000" listed="false">
     <label>NAS-WR01ZE Wall Plug Switch</label>
-    <description><![CDATA[
-Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li>Voltage – The Supply Power Voltage For Plug.</li> <li>Current – The Current for the Electric Device Connect to Plug Consumption.</li> <li>Power – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li>Energy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. </li> </ul><br /><h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
-    ]]></description>
+    <description>Wall Plug Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Plug provides line voltage, current load, power consumption and energy consumption measuring. &lt;/p&gt &lt;ul&gt&lt;li&gtVoltage – The Supply Power Voltage For Plug.&lt;/li&gt &lt;li&gtCurrent – The Current for the Electric Device Connect to Plug Consumption.&lt;/li&gt &lt;li&gtPower – Power Consumed by an Electric Device in an instant, unit: Watt (W).&lt;/li&gt &lt;li&gtEnergy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh. &lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtMake sure the sensor is powered.&lt;/li&gt &lt;li&gtSet Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)&lt;/li&gt &lt;li&gtPress the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtMake sure the sensor is powered.&lt;/li&gt &lt;li&gtSet Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)&lt;/li&gt &lt;li&gtPress the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.&lt;/li&gt &lt;/ol&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -150,9 +148,7 @@ Wall Plug Switch<br /><h1>Overview</h1><p>This Plug provides line voltage, curre
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="16">
         <label>8: Maximum output current setting</label>
-        <description><![CDATA[
-Maximum output current setting<br /><h1>Overview</h1><p>The Value must be greather than the alarm value defined in Parameter 10</p>
-        ]]></description>
+        <description>Maximum output current setting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Value must be greather than the alarm value defined in Parameter 10&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>16</default>
       </parameter>
 
@@ -166,17 +162,13 @@ Maximum output current setting<br /><h1>Overview</h1><p>The Value must be greath
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="15">
         <label>10: Current Alarm Value</label>
-        <description><![CDATA[
-Current Alarm Value<br /><h1>Overview</h1><p>The Value must be less than the max. output value defined in Parameter 8</p>
-        ]]></description>
+        <description>Current Alarm Value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Value must be less than the max. output value defined in Parameter 8&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>13</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Clear Accumulated Energy</label>
-        <description><![CDATA[
-Clear accumulated energy<br /><h1>Overview</h1><p>If this parameter is set to '0' or default, the accumulated energy saved in the plug will be cleared by '0'.<br />Other values will not change current accumulated energy value.<br />This parameter value cannot be saved in NVR mounted in the plug. The accumulated energy consumed will not be changed when the plug is added or removed from the Z-Wave network, but this value will be cleared after resetting the plug to factory default settings.</p> <p>Note: Users can also send METER_RESET (Meter Command Class) command to clear accumulated energy.</p>
-        ]]></description>
+        <description>Clear accumulated energy&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf this parameter is set to '0' or default, the accumulated energy saved in the plug will be cleared by '0'.&amp;lt;br /&amp;amp;gtOther values will not change current accumulated energy value.&amp;lt;br /&amp;amp;gtThis parameter value cannot be saved in NVR mounted in the plug. The accumulated energy consumed will not be changed when the plug is added or removed from the Z-Wave network, but this value will be cleared after resetting the plug to factory default settings.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote: Users can also send METER_RESET (Meter Command Class) command to clear accumulated energy.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Save accumulated energy</option>
@@ -187,24 +179,18 @@ Clear accumulated energy<br /><h1>Overview</h1><p>If this parameter is set to '0
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.<br /><h1>Overview</h1><ul><li>NOTIFICATION_REPORT_V4</li> <li>METER_REPORT_V4</li> <li>SWITCH_BINARY_REPORT</li> <li>DEVICE_RESET_LOCALLY_NOTIFICATION</li> </ul>
-        ]]></description>
+        <description>Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtNOTIFICATION_REPORT_V4&lt;/li&gt &lt;li&gtMETER_REPORT_V4&lt;/li&gt &lt;li&gtSWITCH_BINARY_REPORT&lt;/li&gt &lt;li&gtDEVICE_RESET_LOCALLY_NOTIFICATION&lt;/li&gt &lt;/ul&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-Sending control commands to associated devices. If current load is over the max current defined in parameter #3, the Plug will send a BASIC_SET (0xFF) to associated devices. When current load is normal, plug will send a BASIC_SET (0x00).<br /><h1>Overview</h1><p>BASIC_SET</p>
-        ]]></description>
+        <description>Sending control commands to associated devices. If current load is over the max current defined in parameter #3, the Plug will send a BASIC_SET (0xFF) to associated devices. When current load is normal, plug will send a BASIC_SET (0x00).&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtBASIC_SET&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Group 3</label>
-        <description><![CDATA[
-Send Notification to associated devices.<br /><h1>Overview</h1><p>NOTIFICATION_REPORT_V4</p>
-        ]]></description>
+        <description>Send Notification to associated devices.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtNOTIFICATION_REPORT_V4&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

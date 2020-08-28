@@ -7,9 +7,7 @@
 
   <thing-type id="mcohome_mh8fcplus_03_000" listed="false">
     <label>MH8-FC Fan Coil Thermostat</label>
-    <description><![CDATA[
-Fan Coil Thermostat<br /><h1>Overview</h1><p>MCOHome Fan Coil Thermostat is a Z-Wave enabled device for indoor temperature control. It is mainly applied to a 4-pipe Fan coil system. It can read room temperature and local time, and automatically control fan speed based on the temperature difference. The device is of high reliability and practicability. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.</p> <p><strong>Features：</strong></p> <ul><li>Capacitive touch buttons</li> <li>Tempered glass panel, PC alloy enclosure</li> <li>Precise temperature calibration function</li> <li>Non-volatile Memory, working state saved even power failure</li> <li>Intelligent on/off control of 3-speed fan, electric (ball) valve or air-valve</li> <li>Easily steel frame back plate installatio</li> </ul><p><strong>Specification</strong></p> <ul><li>Power Supply：AC85V~260V, 50/60HZ</li> <li>Resistive Load: ≤3A</li> <li>Self Consumption：&lt; 1W</li> <li>Temperature Sensor: NTC 15K</li> <li>Display Accuracy: 0.1 ℃</li> <li>Working Environment：0～55℃; &lt;95% RH（Non-condensation)</li> <li>Temperature Setting：5～35 ℃（Adjustable）</li> <li>Dimension：86* 86*42mm</li> <li>Hole Pitch：60-65mm（86 Standard junction box）</li> <li>Z-Wave Frequency: 868.42MHz (EU)</li> </ul><p><strong>Safety Information</strong></p> <p>To protect yourself and others from danger and to protect the device from damage, please read the safety information before using it.</p> <br /><h2>Inclusion Information</h2><p><strong>Including of Z-Wave network</strong></p> <p>Under the shutdown state, press &amp; hold "Down Arrow" to enter interface for inclusion or exclusion of Z-Wave network.</p> <p>Before device included into network, “- - -” will display on the screen. Then press once "Down Arrow", device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.<br />A node ID can always inform us whether the device is in the network or not.</p> <br /><h2>Exclusion Information</h2><p><strong>Excluding of Z-Wave network</strong></p> <p>Under the shutdown state, press &amp; hold "Down Arrow" to enter interface for inclusion or exclusion of Z-Wave network.</p> <p>Before device included into network, “- - -” will display on the screen. Then press once "Down Arrow", device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.<br />A node ID can always inform us whether the device is in the network or not.</p>
-    ]]></description>
+    <description>Fan Coil Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMCOHome Fan Coil Thermostat is a Z-Wave enabled device for indoor temperature control. It is mainly applied to a 4-pipe Fan coil system. It can read room temperature and local time, and automatically control fan speed based on the temperature difference. The device is of high reliability and practicability. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.&lt;/p&gt &lt;p&gt&lt;strong&gtFeatures：&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtCapacitive touch buttons&lt;/li&gt &lt;li&gtTempered glass panel, PC alloy enclosure&lt;/li&gt &lt;li&gtPrecise temperature calibration function&lt;/li&gt &lt;li&gtNon-volatile Memory, working state saved even power failure&lt;/li&gt &lt;li&gtIntelligent on/off control of 3-speed fan, electric (ball) valve or air-valve&lt;/li&gt &lt;li&gtEasily steel frame back plate installatio&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtSpecification&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtPower Supply：AC85V~260V, 50/60HZ&lt;/li&gt &lt;li&gtResistive Load: ≤3A&lt;/li&gt &lt;li&gtSelf Consumption：&amp;lt; 1W&lt;/li&gt &lt;li&gtTemperature Sensor: NTC 15K&lt;/li&gt &lt;li&gtDisplay Accuracy: 0.1 ℃&lt;/li&gt &lt;li&gtWorking Environment：0～55℃; &amp;lt;95% RH（Non-condensation)&lt;/li&gt &lt;li&gtTemperature Setting：5～35 ℃（Adjustable）&lt;/li&gt &lt;li&gtDimension：86* 86*42mm&lt;/li&gt &lt;li&gtHole Pitch：60-65mm（86 Standard junction box）&lt;/li&gt &lt;li&gtZ-Wave Frequency: 868.42MHz (EU)&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtSafety Information&lt;/strong&gt&lt;/p&gt &lt;p&gtTo protect yourself and others from danger and to protect the device from damage, please read the safety information before using it.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtIncluding of Z-Wave network&lt;/strong&gt&lt;/p&gt &lt;p&gtUnder the shutdown state, press &amp;amp; hold &quot;Down Arrow&quot; to enter interface for inclusion or exclusion of Z-Wave network.&lt;/p&gt &lt;p&gtBefore device included into network, “- - -” will display on the screen. Then press once &quot;Down Arrow&quot;, device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.&lt;br /&gtA node ID can always inform us whether the device is in the network or not.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtExcluding of Z-Wave network&lt;/strong&gt&lt;/p&gt &lt;p&gtUnder the shutdown state, press &amp;amp; hold &quot;Down Arrow&quot; to enter interface for inclusion or exclusion of Z-Wave network.&lt;/p&gt &lt;p&gtBefore device included into network, “- - -” will display on the screen. Then press once &quot;Down Arrow&quot;, device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.&lt;br /&gtA node ID can always inform us whether the device is in the network or not.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -109,26 +107,20 @@ Fan Coil Thermostat<br /><h1>Overview</h1><p>MCOHome Fan Coil Thermostat is a Z-
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="3" max="1000">
         <label>3: Upload temperature difference</label>
-        <description><![CDATA[
-Upload temperature difference<br /><h1>Overview</h1><p>Base on 0.1C unit. 5 by default. 5 * 0.1C = 0.5C, 0x0003 to 0x03E8</p>
-        ]]></description>
+        <description>Upload temperature difference&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBase on 0.1C unit. 5 by default. 5 * 0.1C = 0.5C, 0x0003 to 0x03E8&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="10" max="65535">
         <label>4: Upload time interval</label>
-        <description><![CDATA[
-Upload time interval in seconds<br /><h1>Overview</h1><p>Base is 1s unit. It is suggested to be set above 30s, 0x000A to 0xFFFF</p>
-        ]]></description>
+        <description>Upload time interval in seconds&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBase is 1s unit. It is suggested to be set above 30s, 0x000A to 0xFFFF&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_255_1_wo" type="integer" groupName="configuration">
         <label>255: Factory Setting</label>
-        <description><![CDATA[
-Factory Setting<br /><h1>Overview</h1><p>0x55 Restore the factory setting (write only)</p> <p>Parameters setting back to default value, association groups deleted</p>
-        ]]></description>
+        <description>Factory Setting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x55 Restore the factory setting (write only)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameters setting back to default value, association groups deleted&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>85</default>
       </parameter>
 
@@ -156,9 +148,9 @@ Factory Setting<br /><h1>Overview</h1><p>0x55 Restore the factory setting (write
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="6">Fan Only</option>
-        <option value="2">Cool</option>
         <option value="1">Heat</option>
+        <option value="2">Cool</option>
+        <option value="6">Fan Only</option>
       </options>
     </state>
   </channel-type>
@@ -170,9 +162,9 @@ Factory Setting<br /><h1>Overview</h1><p>0x55 Restore the factory setting (write
     <category>Temperature</category>
     <state pattern="%s">
       <options>
+        <option value="">On (medium)</option>
         <option value="1">On (Low)</option>
         <option value="3">On (high)</option>
-        <option value="">On (medium)</option>
       </options>
     </state>
   </channel-type>

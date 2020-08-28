@@ -7,9 +7,7 @@
 
   <thing-type id="merten_509519_00_000" listed="false">
     <label>509519 Argus 220 Connect Movement Detector</label>
-    <description><![CDATA[
-Argus 220 Connect Movement Detector<br /><h1>Overview</h1><p>Movement/presence detectors switch on as soon as they detect a moving heat source. This can be a person, but also animals, trees, cars or differences in temperature in windows. In order to avoid false alarms, the chosen installation site should be such that undesired heat sources cannot be detected (see section „Selecting the installation site“). </p> <br /><h2>Inclusion Information</h2><p>Turn the controller A on the ARGUS to position B: The learning mode is activated. </p> <br /><h2>Exclusion Information</h2><p>Turn the controller A on the ARGUS to position B: The learning mode is activated. </p> <br /><h2>Wakeup Information</h2><p>Turn the controller A on the ARGUS to position B:</p>
-    ]]></description>
+    <description>Argus 220 Connect Movement Detector&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMovement/presence detectors switch on as soon as they detect a moving heat source. This can be a person, but also animals, trees, cars or differences in temperature in windows. In order to avoid false alarms, the chosen installation site should be such that undesired heat sources cannot be detected (see section „Selecting the installation site“). &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTurn the controller A on the ARGUS to position B: The learning mode is activated. &lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTurn the controller A on the ARGUS to position B: The learning mode is activated. &lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtTurn the controller A on the ARGUS to position B:&lt;/p&gt</description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->

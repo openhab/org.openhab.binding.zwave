@@ -7,9 +7,7 @@
 
   <thing-type id="ge_zw3101_00_000" listed="false">
     <label>ZW3101 Lamp Module</label>
-    <description><![CDATA[
-Lamp Module<br /><h1>Overview</h1><p>Plug in lamp module with on/off/dimming control on front of device.</p> <br /><h2>Inclusion Information</h2><ol><li>Plug in ZW3101</li> <li>Place controller in inclusion mode</li> <li>Press button on face of ZW3101</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Place controller in exclusion mode</li> <li>Press button on front of ZW3101</li> </ol>
-    ]]></description>
+    <description>Lamp Module&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtPlug in lamp module with on/off/dimming control on front of device.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug in ZW3101&lt;/li&gt &lt;li&gtPlace controller in inclusion mode&lt;/li&gt &lt;li&gtPress button on face of ZW3101&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlace controller in exclusion mode&lt;/li&gt &lt;li&gtPress button on front of ZW3101&lt;/li&gt &lt;/ol&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

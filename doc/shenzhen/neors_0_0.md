@@ -10,38 +10,22 @@ This describes the Z-Wave device *NEO Coolcam Roller Shutter*, manufactured by *
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![NEO Coolcam Roller Shutter product image](https://www.cd-jackson.com/zwave_device_uploads/1108/1108_default.jpg)
+![NEO Coolcam Roller Shutter product image](https://opensmarthouse.org/zwavedatabase/1108/image/)
 
 
 The NEO Coolcam Roller Shutter supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * Brand Name: Coolcam
-  * Model Number: ZWAVE Curtain Switch
-  * ZWAVE Plus frequency: 868.4MHZ
-  * Current output: 10A
-  * Power consumption: 1.2W
-  * operation mode: touch-sensitive
-  * power: 80-250V AC,50-60Hz
-  * hub: need hub to operate,such as Fibaro,Vera ect
-  * size: 86\*86\*34mm
+<ul&gt<li&gtBrand Name: Coolcam</li&gt <li&gtModel Number: ZWAVE Curtain Switch</li&gt <li&gtZWAVE Plus frequency: 868.4MHZ</li&gt <li&gtCurrent output: 10A</li&gt <li&gtPower consumption: 1.2W</li&gt <li&gtoperation mode: touch-sensitive</li&gt <li&gtpower: 80-250V AC,50-60Hz</li&gt <li&gthub: need hub to operate,such as Fibaro,Vera ect</li&gt <li&gtsize: 86\*86\*34mm</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Set Zwave controller intro inclusion mode
-  2. power on the device
-  3. touch the middle button 3 times within 1s
-  4.  the device will be entered into inclusion mode automatically
-
-(All Led lights will be bliked with 1s interval until inclusion successfull)
+<ol&gt<li&gtSet Zwave controller intro inclusion mode</li&gt <li&gtpower on the device</li&gt <li&gttouch the middle button 3 times within 1s</li&gt <li&gt the device will be entered into inclusion mode automatically</li&gt </ol&gt<p&gt(All Led lights will be bliked with 1s interval until inclusion successfull)</p&gt
 
 ### Exclusion Information
 
-  1. Set Z-WaveControll into exclusion mode
-  2. Pwer on the device
-  3. Touch the middle button 3 times within 1s
-  4. the device will be entered into exclusion mode
+<ol&gt<li&gtSet Z-WaveControll into exclusion mode</li&gt <li&gtPwer on the device</li&gt <li&gtTouch the middle button 3 times within 1s</li&gt <li&gtthe device will be entered into exclusion mode</li&gt </ol&gt
 
 ## Channels
 
@@ -193,9 +177,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1108/NeoRollerS.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1108/NeoRollerS.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1108).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1108).

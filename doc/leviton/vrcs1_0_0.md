@@ -10,24 +10,22 @@ This describes the Z-Wave device *VRCS1*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![VRCS1 product image](https://www.cd-jackson.com/zwave_device_uploads/1092/1092_default.jpg)
+![VRCS1 product image](https://opensmarthouse.org/zwavedatabase/1092/image/)
 
 
 The VRCS1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Leviton VRCS1 Vizia RF+ 1-Button Scene Controller Switch for Multi-Location Scene Control - no local load control
+<p&gtLeviton VRCS1 Vizia RF+ 1-Button Scene Controller Switch for Multi-Location Scene Control - no local load control</p&gt
 
 ### Inclusion Information
 
-  1. To access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard (refer to figure). Wait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber. Release the push pad and the LED should blink Amber. You are now in Programming mode. **NOTE:** If the LED on the 1-scene controller turns solid Red while including, there has been a communication error.
-  2. While standing close to the 1-scene controller (approximately 2-5 ft.), press the center button on the Programmer/Remote to device in the network. NOTE: Only one device may be included at any time
+<ol&gt<li&gtTo access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard (refer to figure). Wait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber. Release the push pad and the LED should blink Amber. You are now in Programming mode. <strong&gtNOTE:</strong&gt If the LED on the 1-scene controller turns solid Red while including, there has been a communication error.</li&gt <li&gtWhile standing close to the 1-scene controller (approximately 2-5 ft.), press the center button on the Programmer/Remote to device in the network. NOTE: Only one device may be included at any time</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. To access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard (refer to figure). Wait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber. Release the push pad and the LED should blink Amber. You are now in Programming mode. **NOTE:** If the LED on the 1-scene controller turns solid Red while excluding, there has been a communication error.
-  2. While standing close to the 1-scene controller (approximately 2-5 ft.), press the center button to device from the network.
+<ol&gt<li&gtTo access Program mode, engage the air-gap switch by gently pressing the top of the push pad until the bottom lifts completely out of the frame and a click is heard (refer to figure). Wait 5 seconds and then press the push pad back into the frame and hold push pad until the LED turns Amber. Release the push pad and the LED should blink Amber. You are now in Programming mode. <strong&gtNOTE:</strong&gt If the LED on the 1-scene controller turns solid Red while excluding, there has been a communication error.</li&gt <li&gtWhile standing close to the 1-scene controller (approximately 2-5 ft.), press the center button to device from the network.</li&gt </ol&gt
 
 ## Channels
 
@@ -74,10 +72,10 @@ Association group 1 supports 32 nodes.
 
 ### Documentation Links
 
-* [Product Specifications](https://www.cd-jackson.com/zwave_device_uploads/1092/Vizia-RF---Controllers-Spec-Sheet.pdf)
-* [Instruction Sheet VRCS1](https://www.cd-jackson.com/zwave_device_uploads/1092/Instruction-Sheet-VRCS1.pdf)
+* [Product Specifications](https://opensmarthouse.org/zwavedatabase/1092/Vizia-RF---Controllers-Spec-Sheet.pdf)
+* [Instruction Sheet VRCS1](https://opensmarthouse.org/zwavedatabase/1092/Instruction-Sheet-VRCS1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1092).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1092).

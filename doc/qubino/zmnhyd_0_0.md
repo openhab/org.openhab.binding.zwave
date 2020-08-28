@@ -10,39 +10,22 @@ This describes the Z-Wave device *ZMNHYD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![ZMNHYD product image](https://www.cd-jackson.com/zwave_device_uploads/822/822_default.png)
+![ZMNHYD product image](https://opensmarthouse.org/zwavedatabase/822/image/)
 
 
 The ZMNHYD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used for switching and energy measurements in single-phase electrical power networks and can be used in residential, industrial and utility applications.
-
-  * Power supply: 230V +/- 10%, 50 Hz
-  * Power load: 15A resistive max.
-  * Overload protection >16 A
-  * Power consumption <1W
+<p&gtThis Z-Wave module is used for switching and energy measurements in single-phase electrical power networks and can be used in residential, industrial and utility applications.</p&gt <ul&gt<li&gtPower supply: 230V +/- 10%, 50 Hz</li&gt <li&gtPower load: 15A resistive max.</li&gt <li&gtOverload protection >16 A</li&gt <li&gtPower consumption <1W</li&gt </ul&gt
 
 ### Inclusion Information
 
-Auto inclusion (first time usage)
-
-  * start inclusion mode of z-wave controller
-  * plug device into power outlet (5 seconds auto inclusion)
-
-Manual inclusion
-
-  * plug device into power outlet
-  * start inclusion mode of z-wave controller
-  * press the service button (S) 3 times within 3 seconds
+<p&gtAuto inclusion (first time usage)</p&gt <ul&gt<li&gtstart inclusion mode of z-wave controller</li&gt <li&gtplug device into power outlet (5 seconds auto inclusion)</li&gt </ul&gt<p&gtManual inclusion</p&gt <ul&gt<li&gtplug device into power outlet</li&gt <li&gtstart inclusion mode of z-wave controller</li&gt <li&gtpress the service button (S) 3 times within 3 seconds</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * plug device into power outlet
-  * ensure device is within maximum 1 meter (3 feet) of the main controller
-  * enable exclusion mode on main controller
-  * press service button (S) on module 3 times within 3 seconds (please note: configuration parameters will not be reset!)
+<ul&gt<li&gtplug device into power outlet</li&gt <li&gtensure device is within maximum 1 meter (3 feet) of the main controller</li&gt <li&gtenable exclusion mode on main controller</li&gt <li&gtpress service button (S) on module 3 times within 3 seconds (please note: configuration parameters will not be reset!)</li&gt </ul&gt
 
 ## Channels
 
@@ -137,10 +120,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Automatic turning OFF relay after set time
 
 When the relay is turned ON, it automatically turns OFF after the defined time
-The timer is reset each time, the module receives an ON command (from push button/main controller/association).
-
-  * 0 = Auto OFF disabled
-  * 1 - 32535 = 1 second to 32535 seconds delay. Auto OFF is enabled with defined time. Step is 1s.
+<p&gtThe timer is reset each time, the module receives an ON command (from push button/main controller/association).</p&gt <ul&gt<li&gt0 = Auto OFF disabled</li&gt <li&gt1 - 32535 = 1 second to 32535 seconds delay. Auto OFF is enabled with defined time. Step is 1s.</li&gt </ul&gt
 The following option values may be configured, in addition to values in the range 0 to 32535 -:
 
 | Value  | Description |
@@ -155,10 +135,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: On automatically with timer
 
 Turn Smart plug On Automatically with Timer
-If Smart plug 16A is OFF, you can schedule it to turn ON automatically after a period of time defined in this parameter. The timer is reset to zero each time the device receives an OFF command, either remotely (from the gateway (hub) or associated device) or locally from the switch.
-
-  * 0 - Auto ON Disabled
-  * 1 - 32535 = 1 - 32535 seconds (or milliseconds – see Parameter no. 15) Auto ON timer enabled- for a given amount of seconds (or milliseconds).
+<p&gtIf Smart plug 16A is OFF, you can schedule it to turn ON automatically after a period of time defined in this parameter. The timer is reset to zero each time the device receives an OFF command, either remotely (from the gateway (hub) or associated device) or locally from the switch.</p&gt <ul&gt<li&gt0 - Auto ON Disabled</li&gt <li&gt1 - 32535 = 1 - 32535 seconds (or milliseconds – see Parameter no. 15) Auto ON timer enabled- for a given amount of seconds (or milliseconds).</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -174,7 +151,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 ### Parameter 15: Timer Settings Unit
 
 Set Timer Units to Seconds or Milliseconds
-Choose if you want to set the timer in seconds or milliseconds in parameters 11 and 12. Please note that the value for this parameter applies to settings for Smart plug 16A in all of the above parameters (timer on / timer off).
+<p&gtChoose if you want to set the timer in seconds or milliseconds in parameters 11 and 12. Please note that the value for this parameter applies to settings for Smart plug 16A in all of the above parameters (timer on / timer off).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -206,14 +183,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 40: Treshold Change in Power  for reporting
 
 Change of power consumption [Watt] reporting threshold
-Choose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages, so if 20 is set (by default), the device will report any power consumption changes of 20% or more compared to the last reading.
-
-  * 0 - Power consumption reporting disabled
-  * 1 - 100 = 1% - 100% Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).
-
-NOTE: Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter.
-
-NOTE: When reporting Watts, module will automatically report also \[V\] (Voltage) and \[A\] (Amperes)
+<p&gtChoose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages, so if 20 is set (by default), the device will report any power consumption changes of 20% or more compared to the last reading.</p&gt <ul&gt<li&gt0 - Power consumption reporting disabled</li&gt <li&gt1 - 100 = 1% - 100% Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).</li&gt </ul&gt<p&gtNOTE: Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter.</p&gt <p&gtNOTE: When reporting Watts, module will automatically report also \[V\] (Voltage) and \[A\] (Amperes)</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```20```.
@@ -224,12 +194,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 41: Threshold time for power reporting
 
 Threshold time for power reporting [Seconds]
-Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds). If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).
-
-  * 0 - Power consumption reporting disabled
-  * 30 - 32535 = 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.
-
-The device is reporting the following values (if there was a change): Power [W], Voltage [V] and Current [A]
+<p&gtSet value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds). If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p&gt <ul&gt<li&gt0 - Power consumption reporting disabled</li&gt <li&gt30 - 32535 = 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.</li&gt </ul&gt<p&gtThe device is reporting the following values (if there was a change): Power [W], Voltage [V] and Current [A]</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -240,14 +205,7 @@ This parameter has the configuration ID ```config_41_2``` and is of type ```INTE
 ### Parameter 42: Power Consumption Reporting Time Threshold
 
 Power Consumption Reporting Time Threshold [Seconds]
-Set value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds).
-
-If 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).
-
-Values :
-
-  * 0 : Power consumption reporting disabled
-  * 30 - 32535 : 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.
+<p&gtSet value refers to the time interval with which power consumption in Watts is reported (0 – 32535 seconds).</p&gt <p&gtIf 300 is entered (by default), energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).</p&gt <p&gtValues :</p&gt <ul&gt<li&gt0 : Power consumption reporting disabled</li&gt <li&gt30 - 32535 : 30 - 32535 seconds. Power consumption reporting enabled. Report is sent according to time interval (value) set here.</li&gt </ul&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -258,22 +216,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 50: Down value
 
 Down value [watt]
-Lower power threshold used in parameter no. 52. 
-
-Values:
-
-  * default value 30 : 30 W  
-    
-  * 0 – 4000 : 0W – 4000 W  
-    
-
-Down value cannot be higher than a value specified in parameter no. 51  
-
-
-NOTE:
-
-  * if parameter no. 50 value is 100W and if measured power is lower than 100W, the association is send association is send again if measured power will rise above 105W
-  * Power threshold step is 1W
+<p&gtLower power threshold used in parameter no. 52. </p&gt <p&gtValues:</p&gt <ul&gt<li&gtdefault value 30 : 30 W <br /&gt</li&gt <li&gt0 – 4000 : 0W – 4000 W <br /&gt</li&gt </ul&gt<p&gtDown value cannot be higher than a value specified in parameter no. 51 <br /&gt</p&gt <p&gtNOTE:</p&gt <ul&gt<li&gtif parameter no. 50 value is 100W and if measured power is lower than 100W, the association is send association is send again if measured power will rise above 105W</li&gt <li&gtPower threshold step is 1W <br /&gt</li&gt </ul&gt
 Values in the range 0 to 4000 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -284,18 +227,7 @@ This parameter has the configuration ID ```config_50_2``` and is of type ```INTE
 ### Parameter 51: Up value
 
 Upper power threshold used in parameter no. 52
-Values
-
-  * default value 50 : 50 W
-  * 0 – 4000 : 0 W – 400 W 
-
-Up value cannot be lower than a value specified in the parameter no. 50.
-
-NOTE:
-
-  * If parameter no. 51 value is 200W and if measured power is higher than 200W the association is send
-  * Association is send again if measured power will fall below 190W
-  * Power threshold step is 1W
+<p&gtValues</p&gt <ul&gt<li&gtdefault value 50 : 50 W</li&gt <li&gt0 – 4000 : 0 W – 400 W </li&gt </ul&gt<p&gtUp value cannot be lower than a value specified in the parameter no. 50.</p&gt <p&gtNOTE:</p&gt <ul&gt<li&gtIf parameter no. 51 value is 200W and if measured power is higher than 200W the association is send</li&gt <li&gtAssociation is send again if measured power will fall below 190W</li&gt <li&gtPower threshold step is 1W </li&gt </ul&gt
 Values in the range 0 to 4000 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -354,28 +286,28 @@ Association group 1 supports 1 node.
 ### Group 2: Status on/off
 
 Send control command BASIC_SET 0x00/0xFF
-This group is assigned to the Smart Plug status On/Off. It allows sending the control command BASIC_SET 0x00/0xFF to associated devices whenevert the Smart Plug is turned On or Off.
+<p&gtThis group is assigned to the Smart Plug status On/Off. It allows sending the control command BASIC_SET 0x00/0xFF to associated devices whenevert the Smart Plug is turned On or Off.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Load dependent 
 
 sending control commands BASIC_SET 0x00/0xFF depending on current load
-This groups allows to send control commands BASIC_SET 0x00/0xFF to associated devices depending on the current load. This association group is configured through the parameters no. 50, 51 and 52.
+<p&gtThis groups allows to send control commands BASIC_SET 0x00/0xFF to associated devices depending on the current load. This association group is configured through the parameters no. 50, 51 and 52.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Secure Status On/Off
 
 Send control command BASIC_SET 0x00/0xFF
-This group is equivalent to association group 2, except commands are sent securily encapsulated.
+<p&gtThis group is equivalent to association group 2, except commands are sent securily encapsulated.</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Secure Load dependent 
 
 sending control commands BASIC_SET 0x00/0xFF depending on current load
-This group is equivalent to association group 3, except commands are sent securily encapsulated.
+<p&gtThis group is equivalent to association group 3, except commands are sent securily encapsulated.</p&gt
 
 Association group 5 supports 5 nodes.
 
@@ -406,9 +338,9 @@ Association group 5 supports 5 nodes.
 
 ### Documentation Links
 
-* [Qubino Smart Plug 16A extended manual](https://www.cd-jackson.com/zwave_device_uploads/822/Qubino-Smart-Plug-16A-PLUS-extended-manual-eng-2-2-2.pdf)
+* [Qubino Smart Plug 16A extended manual](https://opensmarthouse.org/zwavedatabase/822/Qubino-Smart-Plug-16A-PLUS-extended-manual-eng-2-2-2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/822).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/822).

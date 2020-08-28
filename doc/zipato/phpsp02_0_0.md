@@ -10,7 +10,7 @@ This describes the Z-Wave device *PSP02*, manufactured by *[Zipato](http://www.z
 
 The device is in the category of *Door*, defining Door sensors.
 
-![PSP02 product image](https://www.cd-jackson.com/zwave_device_uploads/857/857_default.jpg)
+![PSP02 product image](https://opensmarthouse.org/zwavedatabase/857/image/)
 
 
 The PSP02 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,30 +19,15 @@ The PSP02 does not permanently listen for messages sent from the controller - it
 
 ## Overview
 
-Door/Window, motion, temperature and illumination sensor in one device.
-
-Primarily used as Door/Window sensor, it consists of two parts: magnet and a sensor.
-
-  * Very low power consumption.
-  * Low battery battery indication.
-  * Door/Window status and battery status auto-report.
-  * LED indicator.
-  * Over-the-air firmware update.
-  * Tamper proof protection.
+<p&gtDoor/Window, motion, temperature and illumination sensor in one device.</p&gt <p&gtPrimarily used as Door/Window sensor, it consists of two parts: magnet and a sensor.</p&gt <ul&gt<li&gtVery low power consumption.</li&gt <li&gtLow battery battery indication.</li&gt <li&gtDoor/Window status and battery status auto-report.</li&gt <li&gtLED indicator.</li&gt <li&gtOver-the-air firmware update.</li&gt <li&gtTamper proof protection.</li&gt </ul&gt
 
 ### Inclusion Information
 
-Put the Z-Wave Controller in inclusion mode.
-
-Pressing tamper key three times within 1.5 seconds will enter inclusion mode.
-
-After successful inclusion, the device will wake to receive the setting command from the Z-Wave Controller in about 20 seconds.
+<p&gtPut the Z-Wave Controller in inclusion mode.</p&gt <p&gtPressing tamper key three times within 1.5 seconds will enter inclusion mode.</p&gt <p&gtAfter successful inclusion, the device will wake to receive the setting command from the Z-Wave Controller in about 20 seconds.<br /&gt<br /&gt</p&gt
 
 ### Exclusion Information
 
-Put the Z-Wave Controller in exclusion mode.
-
-Pressing tamper key three times within 1.5 seconds will enter exclusion mode. Node ID has been excluded.
+<p&gtPut the Z-Wave Controller in exclusion mode.</p&gt <p&gtPressing tamper key three times within 1.5 seconds will enter exclusion mode. Node ID has been excluded.</p&gt
 
 ### Wakeup Information
 
@@ -51,7 +36,7 @@ The PSP02 does not permanently listen for messages sent from the controller - it
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Any action.
+<p&gtAny action.</p&gt
 
 ## Channels
 
@@ -162,7 +147,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 2: Basic Set Level
 
 Basic command to turn on the light
-Setting the BASIC command value to turn on the light. The 0xFF(-1) means turn on the light. For dimmer equipment 1 to 100 means the light strength.
+<p&gtSetting the BASIC command value to turn on the light. The 0xFF(-1) means turn on the light. For dimmer equipment 1 to 100 means the light strength.</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -178,7 +163,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: PIR Sensitivity
 
 setting
-PIR sensitivity settings. 0 means disable the PIR motion. 1 means the lowest sensitivity, 99 means the highest sensitivity. High sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequently.
+<p&gtPIR sensitivity settings. 0 means disable the PIR motion. 1 means the lowest sensitivity, 99 means the highest sensitivity. High sensitivity means can detected long distance, but if there is more noise signal in the environment, it will re-trigger too frequently.</p&gt
 Values in the range 0 to 99 may be set.
 
 The manufacturer defined default value is ```80```.
@@ -189,13 +174,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Light Threshold
 
 setting
-Setting the illumination threshold to turn on the light. When the event is triggered and the environment illumination is lower than the threshold, the device will turn on the light. 0 means turn off illumination detection function, and never turn on the light.
-
-  * 1 means darkest.
-  * 99 means brightest.
-  * 100 means turn off illumination detection function, and always turn on the light.
-
-Notice: In test mode, only the value in 1 to 99 will enable the illumination detection function and update the illumination value.
+<p&gtSetting the illumination threshold to turn on the light. When the event is triggered and the environment illumination is lower than the threshold, the device will turn on the light. 0 means turn off illumination detection function, and never turn on the light.</p&gt <ul&gt<li&gt1 means darkest.</li&gt <li&gt99 means brightest.</li&gt <li&gt100 means turn off illumination detection function, and always turn on the light.</li&gt </ul&gt<p&gtNotice: In test mode, only the value in 1 to 99 will enable the illumination detection function and update the illumination value.</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```99```.
@@ -206,9 +185,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Operation mode
 
 set test mode if DIP switch in customer mode
-Bit1: 1 means test mode, 0 means normal mode.
-
-Notice: This bit only effect by the DIP Switch setting to “customer mode”, otherwise it is decided by DIP Switch setting to Test or Normal Mode.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit1: 1 means test mode, 0 means normal mode.</p&gt <p&gtNotice: This bit only effect by the DIP Switch setting to “customer mode”, otherwise it is decided by DIP Switch setting to Test or Normal Mode.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -224,7 +201,7 @@ This parameter has the configuration ID ```config_5_1_00000002``` and is of type
 ### Parameter 5: disable the door/window function
 
 Disable/Enable the function
-Bit2: Disable the door/window function. (1:Disable, 0:Enable).This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit2: Disable the door/window function. (1:Disable, 0:Enable).</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -240,7 +217,7 @@ This parameter has the configuration ID ```config_5_1_00000004``` and is of type
 ### Parameter 5: temperature unit
 
 set the temperature unit
-Bit3: temperature scale. 0: Fahrenheit, 1:CelsiusThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit3: temperature scale. 0: Fahrenheit, 1:Celsius</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -256,7 +233,7 @@ This parameter has the configuration ID ```config_5_1_00000008``` and is of type
 ### Parameter 5: Disable illumination reports
 
 toggle illumination reports
-Bit4: Disable the illumination report after event triggered. (1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit4: Disable the illumination report after event triggered. (1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -272,7 +249,7 @@ This parameter has the configuration ID ```config_5_1_00000010``` and is of type
 ### Parameter 5: Disable temperature reports
 
 Disable/enable temperature reports
-Bit5: Disable the temperature report after event triggered. (1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit5: Disable the temperature report after event triggered. (1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -288,7 +265,7 @@ This parameter has the configuration ID ```config_5_1_00000020``` and is of type
 ### Parameter 5: back key release action
 
 Disable/enable the back key release into test mode
-Bit7: Disable the back key release into test mode. (1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit7: Disable the back key release into test mode. (1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -304,9 +281,7 @@ This parameter has the configuration ID ```config_5_1_00000080``` and is of type
 ### Parameter 6: magnetic integration for lighting control
 
 switch control
-Bit0: Disable magnetic integrate illumination to turn ON the lighting nodes in the association group 2.
-
-(1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit0: Disable magnetic integrate illumination to turn ON the lighting nodes in the association group 2.</p&gt <p&gt(1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -322,8 +297,7 @@ This parameter has the configuration ID ```config_6_1_00000001``` and is of type
 ### Parameter 6: PIR integration to control lighting
 
 PIR integration
-Bit1: Disable PIR integrate Illumination to turn ON the lighting nodes in the association group 2.  
-(1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit1: Disable PIR integrate Illumination to turn ON the lighting nodes in the association group 2.<br /&gt(1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -339,7 +313,7 @@ This parameter has the configuration ID ```config_6_1_00000002``` and is of type
 ### Parameter 6: magetic/pir integration
 
 control lighting in association group 2
-Bit2: Disable magnetic integrate PIR to turn ON the lighting nodes in the association group 2. (1:Disable, 0:Enable, default is Disable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit2: Disable magnetic integrate PIR to turn ON the lighting nodes in the association group 2. (1:Disable, 0:Enable, default is Disable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -355,9 +329,7 @@ This parameter has the configuration ID ```config_6_1_00000004``` and is of type
 ### Parameter 6: device and lighting in same room
 
 device and lighting in same room
-Bit3: When Bit2 is 0 (Enable), Are the device and the lighting in the same room? 0: In the same room (Default), 1: In the different room.
-
-Notice: If this bit is 1, it is recommended also set the Bit1 to 1, cause the PIR triggered, doesn’t mean the people in that room.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit3: When Bit2 is 0 (Enable), Are the device and the lighting in the same room? 0: In the same room (Default), 1: In the different room.</p&gt <p&gtNotice: If this bit is 1, it is recommended also set the Bit1 to 1, cause the PIR triggered, doesn’t mean the people in that room.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -373,7 +345,7 @@ This parameter has the configuration ID ```config_6_1_00000008``` and is of type
 ### Parameter 6: disable delay to turn off the light
 
 disable/enable delay
-Bit4: Disable delay 5 seconds to turn off the light, when door/window closed. (1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit4: Disable delay 5 seconds to turn off the light, when door/window closed. (1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -389,9 +361,7 @@ This parameter has the configuration ID ```config_6_1_00000010``` and is of type
 ### Parameter 6: light off control
 
 disable/enable auto turn off the light
-Bit5: Disable auto turn off the light, after door/window opened to turn on the light. (1:Disable, 0:Enable)
-
-Notice: If bit2 is zero, this setting is useless. If the configuration No.9 is zero, this setting is useless.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit5: Disable auto turn off the light, after door/window opened to turn on the light. (1:Disable, 0:Enable)</p&gt <p&gtNotice: If bit2 is zero, this setting is useless. If the configuration No.9 is zero, this setting is useless.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -407,9 +377,7 @@ This parameter has the configuration ID ```config_6_1_00000020``` and is of type
 ### Parameter 7: motion off report
 
 enable motion OFF report
-Bit1: Enable sending motion OFF report. (0:Disable, 1:Enable)
-
-Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report, Type: 0x0C, Value: 0x00This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit1: Enable sending motion OFF report. (0:Disable, 1:Enable)</p&gt <p&gtNote: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report, Type: 0x0C, Value: 0x00</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -425,7 +393,7 @@ This parameter has the configuration ID ```config_7_1_00000002``` and is of type
 ### Parameter 7: PIR super-sensitivity
 
 enable PIR super-sensitivity
-Bit2: Enable PIR super sensitivity mode. (0:Disable, 1:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit2: Enable PIR super sensitivity mode. (0:Disable, 1:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -441,7 +409,7 @@ This parameter has the configuration ID ```config_7_1_00000004``` and is of type
 ### Parameter 7: BASIC OFF report
 
 Disable/enable report after door closed
-Bit3: Disable send out BASIC OFF after door closed. (1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit3: Disable send out BASIC OFF after door closed. (1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -457,7 +425,7 @@ This parameter has the configuration ID ```config_7_1_00000008``` and is of type
 ### Parameter 7: door closed report type
 
 notification or sensor binary report
-Bit4: Notification Type, 0: Using Notification Report. 1: Using Sensor Binary Report.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit4: Notification Type, 0: Using Notification Report. 1: Using Sensor Binary Report.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -473,7 +441,7 @@ This parameter has the configuration ID ```config_7_1_00000010``` and is of type
 ### Parameter 7: multi CC in auto report
 
 disable/enable multi CC in report
-Bit5: Disable Multi CC in auto report. (1:Disable, 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit5: Disable Multi CC in auto report. (1:Disable, 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -489,7 +457,7 @@ This parameter has the configuration ID ```config_7_1_00000020``` and is of type
 ### Parameter 7: Battery state reports
 
 disable/enable battery state reports
-Bit6: Disable to report battery state when the device triggered. (1:Disable 0:Enable)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtBit6: Disable to report battery state when the device triggered. (1:Disable 0:Enable)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -505,9 +473,7 @@ This parameter has the configuration ID ```config_7_1_00000040``` and is of type
 ### Parameter 8: PIR motion re-trigger min interval
 
 PIR motion re-trigger min interval
-In normal mode, after the PIR motion detection, setting the re-detect time. 8 seconds per tick, default tick is 3 (24 seconds). Setting the suitable value to prevent sending the trigger signal too frequently. Also can save the battery energy.
-
-Notice: If this value bigger than the configuration setting NO. 9. There is a period after the light turned off and the PIR  start detecting again.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtIn normal mode, after the PIR motion detection, setting the re-detect time. 8 seconds per tick, default tick is 3 (24 seconds). Setting the suitable value to prevent sending the trigger signal too frequently. Also can save the battery energy.</p&gt <p&gtNotice: If this value bigger than the configuration setting NO. 9. There is a period after the light turned off and the PIR  start detecting again.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -518,8 +484,7 @@ This parameter has the configuration ID ```config_8_1_0000007F``` and is of type
 ### Parameter 9: Light on time hysteresis
 
 time to keep the light on without motion
-After turn on the lighting, setting the delay time to turn off the lighting when the PIR motion is not  
-detected. 8 seconds per tick, default tick is 4 (32 seconds). 0 means never send turn off light command.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtAfter turn on the lighting, setting the delay time to turn off the lighting when the PIR motion is not<br /&gtdetected. 8 seconds per tick, default tick is 4 (32 seconds). 0 means never send turn off light command.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```4```.
@@ -530,7 +495,7 @@ This parameter has the configuration ID ```config_9_1_0000007F``` and is of type
 ### Parameter 10: battery level auto-report interval
 
 battery level auto-report interval
-The interval time for auto report the battery level. 0 means turn off auto report battery. The default value is 12. The tick time can be set by the configuration parameter No.20.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe interval time for auto report the battery level. 0 means turn off auto report battery. The default value is 12. The tick time can be set by the configuration parameter No.20.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -541,7 +506,7 @@ This parameter has the configuration ID ```config_10_1_0000007F``` and is of typ
 ### Parameter 11: door state report interval
 
 door state report interval
-The interval time for auto reporting the door/window state. 0 means turn off auto report door/window state. The default value is 12. The tick time can be set by the configuration parameter No.20.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe interval time for auto reporting the door/window state. 0 means turn off auto report door/window state. The default value is 12. The tick time can be set by the configuration parameter No.20.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -552,8 +517,7 @@ This parameter has the configuration ID ```config_11_1_0000007F``` and is of typ
 ### Parameter 12: illumination auto report interval
 
 illumination auto report interval
-The interval time for auto report the illumination. 0 means turn off auto report illumination. The  
-default value is 12. The tick time can be set by the configuration parameter No.20.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe interval time for auto report the illumination. 0 means turn off auto report illumination. The<br /&gtdefault value is 12. The tick time can be set by the configuration parameter No.20.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -564,7 +528,7 @@ This parameter has the configuration ID ```config_12_1_0000007F``` and is of typ
 ### Parameter 13: temperature report interval
 
 temperature report interval
-The interval time for a temperature auto report. default=12, 0=no auto-report. Tick duration set by parameter 20.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe interval time for a temperature auto report. default=12, 0=no auto-report. Tick duration set by parameter 20.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -575,8 +539,7 @@ This parameter has the configuration ID ```config_13_1_0000007F``` and is of typ
 ### Parameter 20: tick duration
 
 auto-reports tick duration
-The interval time for auto report each tick. Setting this configuration will effect configuration  
-No.10, No.11, No.12 and No.13.<br/> Caution: Setting to 0 means turn off all auto report function.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe interval time for auto report each tick. Setting this configuration will effect configuration<br /&gtNo.10, No.11, No.12 and No.13.<br/> Caution: Setting to 0 means turn off all auto report function.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -587,7 +550,7 @@ This parameter has the configuration ID ```config_20_1``` and is of type ```INTE
 ### Parameter 21: temperature differential to report
 
 temperature differential to report
-The temperature differential to report. 0 means turn off this function. The unit is in Fahrenheit. Enable this function the device will detect every minutes. And when the temperature is over 140 degree Fahrenheit, it will continue report. Enable this functionality will cause some issue please see the detail in the “Temperature Report” sectionThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe temperature differential to report. 0 means turn off this function. The unit is in Fahrenheit. Enable this function the device will detect every minutes. And when the temperature is over 140 degree Fahrenheit, it will continue report. Enable this functionality will cause some issue please see the detail in the “Temperature Report” section</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -598,7 +561,7 @@ This parameter has the configuration ID ```config_21_1_0000007F``` and is of typ
 ### Parameter 22: min illumination differential
 
 min illumination differential to report
-The illumination differential to report. 0 means turn off this function. The unit is percentage. Enable this function the device will detect every minutes. Enable this functionality will cause some issue please see the detail in the “Illumination Report” section.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe illumination differential to report. 0 means turn off this function. The unit is percentage. Enable this function the device will detect every minutes. Enable this functionality will cause some issue please see the detail in the “Illumination Report” section.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 63 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -674,9 +637,9 @@ Association group 2 supports 8 nodes.
 
 ### Documentation Links
 
-* [Documentation](https://www.cd-jackson.com/zwave_device_uploads/857/ph-psm02-Zipato-Multisensor-Quad-User-Manual-v1-4.pdf)
+* [Documentation](https://opensmarthouse.org/zwavedatabase/857/ph-psm02-Zipato-Multisensor-Quad-User-Manual-v1-4.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/857).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/857).

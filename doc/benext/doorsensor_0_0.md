@@ -10,7 +10,7 @@ This describes the Z-Wave device *doorSensor*, manufactured by *[BeNext](http://
 
 The device is in the category of *Door*, defining Door sensors.
 
-![doorSensor product image](https://www.cd-jackson.com/zwave_device_uploads/223/223_default.png)
+![doorSensor product image](https://opensmarthouse.org/zwavedatabase/223/image/)
 
 
 The doorSensor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,27 +19,15 @@ The doorSensor does not permanently listen for messages sent from the controller
 
 ## Overview
 
-Basic operations
-
-  * The Door Sensor can be placed on any door or window.
-  * The Door Sensor can report the status of the door (OPEN/CLOSED).
-  * The Door Sensor can measure the temperature.
-  * The Door Sensor also has a screw connector for an external (dry) contact.
-  * Indoor use only.
-
-How it operates
-
-After a successful inclusion the Door Sensor can be mounted on the wall or door/window. When opening the door the indicator light will blink shortly, this indicates that a z-wave message has been send successfully.
-
-With a controller you can request the temperature and battery level.
+<p&gtBasic operations</p&gt <ul&gt<li&gtThe Door Sensor can be placed on any door or window.</li&gt <li&gtThe Door Sensor can report the status of the door (OPEN/CLOSED).</li&gt <li&gtThe Door Sensor can measure the temperature.</li&gt <li&gtThe Door Sensor also has a screw connector for an external (dry) contact.</li&gt <li&gtIndoor use only.</li&gt </ul&gt<p&gtHow it operates</p&gt <p&gtAfter a successful inclusion the Door Sensor can be mounted on the wall or door/window. When opening the door the indicator light will blink shortly, this indicates that a z-wave message has been send successfully.</p&gt <p&gtWith a controller you can request the temperature and battery level.</p&gt
 
 ### Inclusion Information
 
-Press and hold the tamper switch for two seconds and release to start the inclusion or exclude process. 
+<p&gtPress and hold the tamper switch for two seconds and release to start the inclusion or exclude process. </p&gt
 
 ### Exclusion Information
 
-Press and hold the tamper switch for two seconds and release to start the inclusion or exclude process. 
+<p&gtPress and hold the tamper switch for two seconds and release to start the inclusion or exclude process. </p&gt
 
 ### Wakeup Information
 
@@ -48,7 +36,7 @@ The doorSensor does not permanently listen for messages sent from the controller
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-It is possible to send a wake up notification on user interaction. To do this press and hold the tamper switch for 4 seconds.
+<p&gtIt is possible to send a wake up notification on user interaction. To do this press and hold the tamper switch for 4 seconds.</p&gt
 
 ## Channels
 
@@ -191,13 +179,13 @@ The doorSensor supports 2 association groups.
 
 ### Group 1: Send frame to (internal contact) nodes
 
-Send frame to every node in this group (internal contact)
+<p&gtSend frame to every node in this group (internal contact)</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Send frame to external contact nodes
 
-Send frame to every node in this group (external contact)
+<p&gtSend frame to every node in this group (external contact)</p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -223,9 +211,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/223/doorsensor.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/223/doorsensor.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/223).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/223).

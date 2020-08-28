@@ -7,9 +7,7 @@
 
   <thing-type id="intermatic_ca8900_00_000" listed="false">
     <label>CA8900 Z-Wave Thermostat</label>
-    <description><![CDATA[
-Z-Wave Thermostat<br /><h1>Overview</h1><p>ThermostatEasy energy saving buttons (NORM / SAVE)</p> <ul><li>Easy Mode Switching Buttons (HEAT/OFF/COOL)</li> <li> Can be used with all 24VAC heating and cooling systems. It cannot be used with line voltage systems.</li> <li> Is Digital and your desired heat or cool temperatures can easily be set on the large screen with the TEMP UP (+) and TEMP DOWN (-) buttons on the front.</li> <li> A minimum 4-minute off time protects heating and cooling systems from damage.</li> <li> Uses a new technique called sequential staging for more comfort with faster reaction to requested temperature changes.</li> <li>Battery Backup with 2 x "AA" batteries (included)</li> </ul><br /><h2>Inclusion Information</h2><p>Press and release the BIND button.</p> <br /><h2>Exclusion Information</h2><p>Press and release the BIND button.</p>
-    ]]></description>
+    <description>Z-Wave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThermostatEasy energy saving buttons (NORM / SAVE)&lt;/p&gt &lt;ul&gt&lt;li&gtEasy Mode Switching Buttons (HEAT/OFF/COOL)&lt;/li&gt &lt;li&gt Can be used with all 24VAC heating and cooling systems. It cannot be used with line voltage systems.&lt;/li&gt &lt;li&gt Is Digital and your desired heat or cool temperatures can easily be set on the large screen with the TEMP UP (+) and TEMP DOWN (-) buttons on the front.&lt;/li&gt &lt;li&gt A minimum 4-minute off time protects heating and cooling systems from damage.&lt;/li&gt &lt;li&gt Uses a new technique called sequential staging for more comfort with faster reaction to requested temperature changes.&lt;/li&gt &lt;li&gtBattery Backup with 2 x &quot;AA&quot; batteries (included)&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and release the BIND button.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the BIND button.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -75,11 +73,11 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>ThermostatEasy energy saving buttons 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="11">Economy Heat</option>
-        <option value="2">Cool</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
         <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>

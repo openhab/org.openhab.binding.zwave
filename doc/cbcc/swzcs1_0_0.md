@@ -10,26 +10,22 @@ This describes the Z-Wave device *SW-ZCS-1*, manufactured by *CBCC Domotique SAS
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![SW-ZCS-1 product image](https://www.cd-jackson.com/zwave_device_uploads/236/236_default.jpg)
+![SW-ZCS-1 product image](https://opensmarthouse.org/zwavedatabase/236/image/)
 
 
 The SW-ZCS-1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The wall switch is in “Gateway” Mode as soon as it is added in a Z-Wave® network managed by a home automation gateway.
-
-The wall switch becomes then the gateway’s assistant, capable to launch up to 16 different scenes through it (SCENE Profile) or directly associated to your Z-Wave® compatible devices (MONO or DUO Profile).
+<p&gtThe wall switch is in “Gateway” Mode as soon as it is added in a Z-Wave® network managed by a home automation gateway.</p&gt <p&gtThe wall switch becomes then the gateway’s assistant, capable to launch up to 16 different scenes through it (SCENE Profile) or directly associated to your Z-Wave® compatible devices (MONO or DUO Profile).</p&gt
 
 ### Inclusion Information
 
-  1. Simultaneously push on 1 and 2, during 1sec. The LED glows in pink to confirm the selection
-  2. Push on 1, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure
+<ol&gt<li&gtSimultaneously push on 1 and 2, during 1sec. The LED glows in pink to confirm the selection</li&gt <li&gtPush on 1, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Simultaneously push on 1 and 2, during 1sec. The LED glows in pink to confirm the selection
-  2. Push on 1, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure
+<ol&gt<li&gtSimultaneously push on 1 and 2, during 1sec. The LED glows in pink to confirm the selection</li&gt <li&gtPush on 1, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure</li&gt </ol&gt
 
 ## Channels
 
@@ -123,9 +119,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [NodON Wall Switch User Guide](https://www.cd-jackson.com/zwave_device_uploads/236/NodOn-WallSwitch-ZWave-UserGuide-EN-2.pdf)
+* [NodON Wall Switch User Guide](https://opensmarthouse.org/zwavedatabase/236/NodOn-WallSwitch-ZWave-UserGuide-EN-2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/236).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/236).

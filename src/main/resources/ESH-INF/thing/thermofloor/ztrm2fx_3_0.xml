@@ -7,9 +7,7 @@
 
   <thing-type id="thermofloor_ztrm2fx_03_000" listed="false">
     <label>Z-TRM2fx Floor thermostat</label>
-    <description><![CDATA[
-Floor thermostat<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li> <li>External room sensor</li> <li>Temperature limiter</li> <li>Weekly program/setback via gateway or pilot wire</li> <li>Multilevel sensor command class</li> <li>Firmware updates (OTA)</li> <li>Power metering</li> <li>LED-diode</li> <li>May be used in connection with different NTC-sensors</li> <li>Lock mode/child lock</li> <li>Calibration</li> <li>5 associations</li> <li>Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li> </ul><br /><h2>Inclusion Information</h2><p>To add the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.The display will show OFF.</p> <p>Press Right (down) 4 times till you see Con in the display.</p> <p>Now start add device in your home automation software.</p> <p>Start adding mode by pressing Center (confirm) for approximately 2 seconds.</p> <p>Adding Mode is indicated in the display by some “circling” LED segments in the display until the timeout occurs after 20 seconds or the module has been added in the network.</p> <p>Confirmation will show Inc in the display. If adding fails, Err (error) will appear.</p> <p>Leave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings.</p> <br /><h2>Exclusion Information</h2><p>To remove the thermostat from your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF.</p> <p>Press Right (down) 4 times till you see Con in the display.</p> <p>Now start remove device in your home automation software.</p> <p>Start removing mode by pressing Center (confirm) for approximately 2 seconds.</p> <p>Removing Mode is indicated in the display by some “circling” LED segments in the display until the timeout occurs after 20 seconds or the module has been removed from the network.</p> <p>Confirmation will show Inc/EcL in the display. If removing fails, Err (error) will appear.</p> <p>Leave programming mode by choosing ESC in menu.</p>
-    ]]></description>
+    <description>Floor thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFEATURES&lt;/p&gt &lt;ul&gt&lt;li&gtFloor sensor&lt;/li&gt &lt;li&gtExternal room sensor&lt;/li&gt &lt;li&gtTemperature limiter&lt;/li&gt &lt;li&gtWeekly program/setback via gateway or pilot wire&lt;/li&gt &lt;li&gtMultilevel sensor command class&lt;/li&gt &lt;li&gtFirmware updates (OTA)&lt;/li&gt &lt;li&gtPower metering&lt;/li&gt &lt;li&gtLED-diode&lt;/li&gt &lt;li&gtMay be used in connection with different NTC-sensors&lt;/li&gt &lt;li&gtLock mode/child lock&lt;/li&gt &lt;li&gtCalibration&lt;/li&gt &lt;li&gt5 associations&lt;/li&gt &lt;li&gtSupports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo add the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.The display will show OFF.&lt;/p&gt &lt;p&gtPress Right (down) 4 times till you see Con in the display.&lt;/p&gt &lt;p&gtNow start add device in your home automation software.&lt;/p&gt &lt;p&gtStart adding mode by pressing Center (confirm) for approximately 2 seconds.&lt;/p&gt &lt;p&gtAdding Mode is indicated in the display by some “circling” LED segments in the display until the timeout occurs after 20 seconds or the module has been added in the network.&lt;/p&gt &lt;p&gtConfirmation will show Inc in the display. If adding fails, Err (error) will appear.&lt;/p&gt &lt;p&gtLeave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo remove the thermostat from your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF.&lt;/p&gt &lt;p&gtPress Right (down) 4 times till you see Con in the display.&lt;/p&gt &lt;p&gtNow start remove device in your home automation software.&lt;/p&gt &lt;p&gtStart removing mode by pressing Center (confirm) for approximately 2 seconds.&lt;/p&gt &lt;p&gtRemoving Mode is indicated in the display by some “circling” LED segments in the display until the timeout occurs after 20 seconds or the module has been removed from the network.&lt;/p&gt &lt;p&gtConfirmation will show Inc/EcL in the display. If removing fails, Err (error) will appear.&lt;/p&gt &lt;p&gtLeave programming mode by choosing ESC in menu.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -158,9 +156,7 @@ Floor thermostat<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li>
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Operation mode</label>
-        <description><![CDATA[
-Operation mode<br /><h1>Overview</h1><p>Value = 0, Off (default)<br />Value = 1, Heating mode<br />Value = 2, Cooling mode (not implemented)<br />Value = 11, Energy saving mode</p>
-        ]]></description>
+        <description>Operation mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue = 0, Off (default)&amp;lt;br /&amp;amp;gtValue = 1, Heating mode&amp;lt;br /&amp;amp;gtValue = 2, Cooling mode (not implemented)&amp;lt;br /&amp;amp;gtValue = 11, Energy saving mode&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off. (default)</option>
@@ -172,9 +168,7 @@ Operation mode<br /><h1>Overview</h1><p>Value = 0, Off (default)<br />Value = 1,
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Sensor mode</label>
-        <description><![CDATA[
-Sensor mode<br /><h1>Overview</h1><p>Value = 0, F-mode, floor sensor mode (default)<br />Value = 3, A2-mode, external room sensor mode<br />Value = 4, A2F-mode, external sensor with floor limitation</p>
-        ]]></description>
+        <description>Sensor mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue = 0, F-mode, floor sensor mode (default)&amp;lt;br /&amp;amp;gtValue = 3, A2-mode, external room sensor mode&amp;lt;br /&amp;amp;gtValue = 4, A2F-mode, external sensor with floor limitation&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">F-mode, floor sensor mode</option>
@@ -185,9 +179,7 @@ Sensor mode<br /><h1>Overview</h1><p>Value = 0, F-mode, floor sensor mode (defau
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Floor sensor type</label>
-        <description><![CDATA[
-Floor sensor type<br /><h1>Overview</h1><p>1. Value = 0, 10K-NTC (default)<br />2. Value = 1, 12K-NTC<br />3. Value = 2, 15K-NTC<br />4. Value = 3, 22K-NTC<br />5. Value = 4, 33K-NTC<br />6. Value = 5, 47K-NTC</p>
-        ]]></description>
+        <description>Floor sensor type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0, 10K-NTC (default)&amp;lt;br /&amp;amp;gt2. Value = 1, 12K-NTC&amp;lt;br /&amp;amp;gt3. Value = 2, 15K-NTC&amp;lt;br /&amp;amp;gt4. Value = 3, 22K-NTC&amp;lt;br /&amp;amp;gt5. Value = 4, 33K-NTC&amp;lt;br /&amp;amp;gt6. Value = 5, 47K-NTC&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">10K-NTC (default)</option>
@@ -202,9 +194,7 @@ Floor sensor type<br /><h1>Overview</h1><p>1. Value = 0, 10K-NTC (default)<br />
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="3" max="30">
         <label>4: Temperature control hysteresis (DIFF I)</label>
-        <description><![CDATA[
-Temperature control hysteresis (DIFF I)<br /><h1>Overview</h1><p>1. Value = 3 - 30, 0.3C - 3.0C (default is 0.5C)</p>
-        ]]></description>
+        <description>Temperature control hysteresis (DIFF I)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 3 - 30, 0.3C - 3.0C (default is 0.5C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -212,89 +202,69 @@ Temperature control hysteresis (DIFF I)<br /><h1>Overview</h1><p>1. Value = 3 - 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>5: Floor minimum temperature limit (FLo)</label>
-        <description><![CDATA[
-Floor minimum temperature limit (FLo)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C</p>
-        ]]></description>
+        <description>Floor minimum temperature limit (FLo)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>6: Floor maximum temperature (FHi)</label>
-        <description><![CDATA[
-Floor maximum temperature (FHi)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p>
-        ]]></description>
+        <description>Floor maximum temperature (FHi)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>400</default>
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>7: Air (A2) minimum temperature limit (ALo)</label>
-        <description><![CDATA[
-Air (A2) minimum temperature limit (ALo)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C</p>
-        ]]></description>
+        <description>Air (A2) minimum temperature limit (ALo)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>8: Air (A2) maximum temperature limit (AHi)</label>
-        <description><![CDATA[
-Air (A2) maximum temperature limit (AHi)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p>
-        ]]></description>
+        <description>Air (A2) maximum temperature limit (AHi)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>400</default>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>9: Heating mode setpoint (CO)</label>
-        <description><![CDATA[
-Heating mode setpoint (CO)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C</p>
-        ]]></description>
+        <description>Heating mode setpoint (CO)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>210</default>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>10: Energy saving mode setpoint (ECO)</label>
-        <description><![CDATA[
-Energy saving mode setpoint (ECO)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 18.0C</p>
-        ]]></description>
+        <description>Energy saving mode setpoint (ECO)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 18.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>11: Cooling setpoint (COOL)</label>
-        <description><![CDATA[
-Cooling setpoint (COOL)<br /><h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C</p>
-        ]]></description>
+        <description>Cooling setpoint (COOL)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>210</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="-40" max="40">
         <label>12: Floor sensor calibration</label>
-        <description><![CDATA[
-Floor sensor calibration<br /><h1>Overview</h1><p>1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C</p>
-        ]]></description>
+        <description>Floor sensor calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="-40" max="40">
         <label>13: External sensor calibration</label>
-        <description><![CDATA[
-External sensor calibration<br /><h1>Overview</h1><p>1. Value = -40 - 40, -4.0V - 4.0C, default = 0.0C</p>
-        ]]></description>
+        <description>External sensor calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = -40 - 40, -4.0V - 4.0C, default = 0.0C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Temperature display</label>
-        <description><![CDATA[
-Temperature display<br /><h1>Overview</h1><p>1. Value = 0, Display setpoint temperature (default)<br />2. Value = 1, Display measured temperature</p>
-        ]]></description>
+        <description>Temperature display&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0, Display setpoint temperature (default)&amp;lt;br /&amp;amp;gt2. Value = 1, Display measured temperature&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Display setpoint temperature (default)</option>
@@ -305,45 +275,35 @@ Temperature display<br /><h1>Overview</h1><p>1. Value = 0, Display setpoint temp
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>15: Button brightness - dimmed state</label>
-        <description><![CDATA[
-Button brightness - dimmed state<br /><h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 50%</p>
-        ]]></description>
+        <description>Button brightness - dimmed state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0 - 100, 0% - 100%, default = 50%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>16: Button brightness - active state</label>
-        <description><![CDATA[
-Button brightness - active state<br /><h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 100%</p>
-        ]]></description>
+        <description>Button brightness - active state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0 - 100, 0% - 100%, default = 100%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>17: Display brightness - dimmed state</label>
-        <description><![CDATA[
-Display brightness - dimmed state<br /><h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 50%</p>
-        ]]></description>
+        <description>Display brightness - dimmed state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0 - 100, 0% - 100%, default = 50%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>18: Display brightness - active state</label>
-        <description><![CDATA[
-Display brightness - active state<br /><h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 100%</p>
-        ]]></description>
+        <description>Display brightness - active state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0 - 100, 0% - 100%, default = 100%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_19_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>19: Temperature report interval</label>
-        <description><![CDATA[
-Temperature report interval<br /><h1>Overview</h1><p>1. Value = 0, Reporting of temperature disabled<br />2. Value = 30 - 32767, 30s - 32767s, default = 60s</p> <p>Time interval between consecutive temperature reports.<br />Temperature reports can also be sent as a result of polling.</p>
-        ]]></description>
+        <description>Temperature report interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0, Reporting of temperature disabled&amp;lt;br /&amp;amp;gt2. Value = 30 - 32767, 30s - 32767s, default = 60s&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTime interval between consecutive temperature reports.&amp;lt;br /&amp;amp;gtTemperature reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -351,18 +311,14 @@ Temperature report interval<br /><h1>Overview</h1><p>1. Value = 0, Reporting of 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>20: Temperature report hysteresis</label>
-        <description><![CDATA[
-Temperature report hysteresis<br /><h1>Overview</h1><p>1. Value = 1 - 100, 0.1C - 10.0C, default = 1.0C</p> <p>The temperature report will be sent if there is a difference in temperature from the previous value reported,<br />defined in this parameter (hysteresis).<br />Temperature reports can also be sent as a result of polling.</p>
-        ]]></description>
+        <description>Temperature report hysteresis&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 1 - 100, 0.1C - 10.0C, default = 1.0C&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe temperature report will be sent if there is a difference in temperature from the previous value reported,&amp;lt;br /&amp;amp;gtdefined in this parameter (hysteresis).&amp;lt;br /&amp;amp;gtTemperature reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_21_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>21: Meter report interval</label>
-        <description><![CDATA[
-Meter report interval<br /><h1>Overview</h1><p>1. Value = 0, Reporting of metering values is disabled<br />2. Value = 30 - 32767, 30s - 32767s, default = 60s</p> <p>Time interval between consecutive meter reports.<br />Meter reports can also be sent as a result of polling.</p>
-        ]]></description>
+        <description>Meter report interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0, Reporting of metering values is disabled&amp;lt;br /&amp;amp;gt2. Value = 30 - 32767, 30s - 32767s, default = 60s&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTime interval between consecutive meter reports.&amp;lt;br /&amp;amp;gtMeter reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -370,42 +326,32 @@ Meter report interval<br /><h1>Overview</h1><p>1. Value = 0, Reporting of meteri
       <parameter name="config_22_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>22: Meter report delta value</label>
-        <description><![CDATA[
-Meter report delta value<br /><h1>Overview</h1><p>1. Value = 0 - 127, 0kWh - 12.7kWh, default = 1.0kWh</p> <p>Delta value in kWh between consecutive meter reports.<br />Meter reports can also be sent as a result of polling.</p>
-        ]]></description>
+        <description>Meter report delta value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Value = 0 - 127, 0kWh - 12.7kWh, default = 1.0kWh&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDelta value in kWh between consecutive meter reports.&amp;lt;br /&amp;amp;gtMeter reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-The main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by the Z-Wave Controller) Sends:</p> <ul><li>Device Reset Notifications.</li> <li>Thermostat Setpoint Reports</li> <li>Thermostat Mode Reports</li> <li>Basic Reports</li> <li>Meter Reports</li> </ul>
-        ]]></description>
+        <description>The main thermostat device&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtLifeline. (Normally used by the Z-Wave Controller) Sends:&lt;/p&gt &lt;ul&gt&lt;li&gtDevice Reset Notifications.&lt;/li&gt &lt;li&gtThermostat Setpoint Reports&lt;/li&gt &lt;li&gtThermostat Mode Reports&lt;/li&gt &lt;li&gtBasic Reports&lt;/li&gt &lt;li&gtMeter Reports&lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: External temperature</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for external temperature sensor.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend Multilevel Sensor Reports for external temperature sensor.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Floor temperature</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Send Multilevel Sensor Reports for floor temperature sensor.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend Multilevel Sensor Reports for floor temperature sensor.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Internal relay status</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Send Binary Switch Set commands representing the status of the internal relay.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend Binary Switch Set commands representing the status of the internal relay.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -419,6 +365,38 @@ The main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by 
 
   </thing-type>
 
+  <channel-type id="thermofloor_ztrm2fx_03_000_config_decimal_param10">
+    <item-type>Number</item-type>
+    <label>Energy saving mode setpoint (ECO)</label>
+    <description>Energy saving mode setpoint (ECO)</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="thermofloor_ztrm2fx_03_000_config_decimal_param9">
+    <item-type>Number</item-type>
+    <label>Heating mode setpoint (CO)</label>
+    <description>Heating mode setpoint (CO)</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="thermofloor_ztrm2fx_03_000_config_decimal_param17">
+    <item-type>Number</item-type>
+    <label>Display brightness - dimmed state</label>
+    <description>Display brightness - dimmed state</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="thermofloor_ztrm2fx_03_000_config_decimal_param15">
+    <item-type>Number</item-type>
+    <label>Button brightness - dimmed state</label>
+    <description>Button brightness - dimmed state</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
   <channel-type id="thermofloor_ztrm2fx_03_000_thermostat_mode">
     <item-type>Number</item-type>
     <label>Thermostat Mode</label>
@@ -426,10 +404,10 @@ The main thermostat device<br /><h1>Overview</h1><p>Lifeline. (Normally used by 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
+        <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>

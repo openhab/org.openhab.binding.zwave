@@ -10,32 +10,20 @@ This describes the Z-Wave device *Tuxedo Touch*, manufactured by *Honeywell* wit
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![Tuxedo Touch product image](https://www.cd-jackson.com/zwave_device_uploads/941/941_default.jpg)
+![Tuxedo Touch product image](https://opensmarthouse.org/zwavedatabase/941/image/)
 
 
 ## Overview
 
-Honeywell Home Tuxedo Touch is a 7", high-resolution graphic touchscreen and controller that integrates security with home and business automation. It provides opportunities to capture new prospects and markets by seamlessly integrating security with voice commands, video viewing and recording, and the ability to control Z-Wave® enabled thermostats, lights, locks and shades.  It may be used as a secondary controller within a Z-Wave network.
+<p&gtHoneywell Home Tuxedo Touch is a 7", high-resolution graphic touchscreen and controller that integrates security with home and business automation. It provides opportunities to capture new prospects and markets by seamlessly integrating security with voice commands, video viewing and recording, and the ability to control Z-Wave® enabled thermostats, lights, locks and shades.  It may be used as a secondary controller within a Z-Wave network.</p&gt
 
 ### Inclusion Information
 
-**Note that any z-wave devices that may be on the Tuxedo Touch if it acts as a primary controller will be removed when it is added as a secondary controller! ** It is recommended that all devices that may be on the Tuxedo Touch if it acts as primary controller be manually removed and added to the new primary controller before changing the Tuxedo Touch to a secondary controller.
-
-Note that all devices on the primary controller will be added to the Tuxedo Touch when it becomes a secondary controller, but device names will not be moved over.  They must manually be changed on the Tuxedo Touch if this is desired.
-
-Access the Automation menu from the main page of the Tuxedo Touch.  Press the Z-Wave Setup button (third button from the left) and toggle the Z-Wave Primary Ctrl button to change the Tuxedo Touch to be a secondary controller.  It will prompt you to allow the change.
-
-Put the primary controller in inclusion mode.
-
-From the Z-Wave Setup screen on the Tuxedo Touch, press the Add Device button.  The primary controller should add the Tuxedo Touch as a secondary controller.  If successful, the Tuxedo Touch will display "Controller Add Success."
+<p&gt<strong&gtNote that any z-wave devices that may be on the Tuxedo Touch if it acts as a primary controller will be removed when it is added as a secondary controller!  </strong&gtIt is recommended that all devices that may be on the Tuxedo Touch if it acts as primary controller be manually removed and added to the new primary controller before changing the Tuxedo Touch to a secondary controller.</p&gt <p&gtNote that all devices on the primary controller will be added to the Tuxedo Touch when it becomes a secondary controller, but device names will not be moved over.  They must manually be changed on the Tuxedo Touch if this is desired.</p&gt <p&gtAccess the Automation menu from the main page of the Tuxedo Touch.  Press the Z-Wave Setup button (third button from the left) and toggle the Z-Wave Primary Ctrl button to change the Tuxedo Touch to be a secondary controller.  It will prompt you to allow the change.</p&gt <p&gtPut the primary controller in inclusion mode.</p&gt <p&gtFrom the Z-Wave Setup screen on the Tuxedo Touch, press the Add Device button.  The primary controller should add the Tuxedo Touch as a secondary controller.  If successful, the Tuxedo Touch will display "Controller Add Success."</p&gt
 
 ### Exclusion Information
 
-Put the primary controller in exclusion mode.
-
-On the Tuxedo Touch, press Automation and then Z-Wave Setup.  From the Z-Wave Setup screen, press Remove Device.
-
-From the Z-Wave Setup screen on the Tuxedo Touch, press the Add Device button.  The primary controller should exclude the Tuxedo Touch as a secondary controller.
+<p&gtPut the primary controller in exclusion mode.</p&gt <p&gtOn the Tuxedo Touch, press Automation and then Z-Wave Setup.  From the Z-Wave Setup screen, press Remove Device.</p&gt <p&gtFrom the Z-Wave Setup screen on the Tuxedo Touch, press the Add Device button.  The primary controller should exclude the Tuxedo Touch as a secondary controller.</p&gt
 
 ## Channels
 
@@ -71,4 +59,4 @@ The device does not support associations.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/941).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/941).

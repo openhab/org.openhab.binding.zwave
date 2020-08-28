@@ -7,9 +7,7 @@
 
   <thing-type id="hogar_lumilmsxzwcl_00_000" listed="false">
     <label>Lumi LM-SxZW (C-L) Z-Wave Switch with 4 on/off light switches</label>
-    <description><![CDATA[
-Z-Wave Switch with 4 on/off light switches<br /><h1>Overview</h1><p>With a stunning glass face and an advanced capacitive touch sensor, all you need to do is just use a finger for turning your lights on and off. Tap once on the backlit touch button to switch the device on and tap it again to turn it off, it’s that simple. This 4 Touch Switch ensures an accurate response to every command that is sent through it.<br /><br />The Hogar 4 Touch Switch can operate either independently or as a part of the Hogar smart home automation system, and even with any other certified Z-Wave home automation system. It is an extremely easy-to-use panel that can be installed in a standard BS 2 gang box. Its operating capabilities include a bi-stable mode, a relay mode or a touch pulse mode for scene control with a maximum load current of 3 amp. It communicates with the Hogar smart home automation system using the Z-Wave wireless communication protocol.</p> <br /><h2>Inclusion Information</h2><p>Touch and hold any key on the panel for more than 5 seconds. All indication lights will blink in blue. At this point release the key, the touch panel will start the inclusion process.</p> <br /><h2>Exclusion Information</h2><p>ouch and hold any key on the panel for more than 5 seconds. All indication lights will blink blue in color. At this point release the key, the touch panel will start the exclusion process. </p>
-    ]]></description>
+    <description>Z-Wave Switch with 4 on/off light switches&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWith a stunning glass face and an advanced capacitive touch sensor, all you need to do is just use a finger for turning your lights on and off. Tap once on the backlit touch button to switch the device on and tap it again to turn it off, it’s that simple. This 4 Touch Switch ensures an accurate response to every command that is sent through it.&lt;br /&gt&lt;br /&gtThe Hogar 4 Touch Switch can operate either independently or as a part of the Hogar smart home automation system, and even with any other certified Z-Wave home automation system. It is an extremely easy-to-use panel that can be installed in a standard BS 2 gang box. Its operating capabilities include a bi-stable mode, a relay mode or a touch pulse mode for scene control with a maximum load current of 3 amp. It communicates with the Hogar smart home automation system using the Z-Wave wireless communication protocol.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTouch and hold any key on the panel for more than 5 seconds. All indication lights will blink in blue. At this point release the key, the touch panel will start the inclusion process.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtouch and hold any key on the panel for more than 5 seconds. All indication lights will blink blue in color. At this point release the key, the touch panel will start the exclusion process. &lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -72,65 +70,49 @@ Z-Wave Switch with 4 on/off light switches<br /><h1>Overview</h1><p>With a stunn
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: HGT-01 Basic Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 1.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 1.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: HGT-01 Switch Binary Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 1.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 1.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: HGT-02 Basic Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 2.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 2.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: HGT-02 Switch Binary Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 2.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 2.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
         <label>6: HGT-03 Basic Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 3.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 3.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
         <label>7: HGT-03 Switch Binary Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 3.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 3.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
         <label>8: HGT-04 Basic Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Basic Set Send Basic Set command to the other node in this association group when active endpoint 4.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Basic Set Send Basic Set command to the other node in this association group when active endpoint 4.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
         <label>9: HGT-04 Switch Binary Set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Command: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 4.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommand: Switch Binary Set Send Switch Binary Set command to the other node in this association group when active endpoint 4.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

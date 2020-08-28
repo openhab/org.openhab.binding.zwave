@@ -7,9 +7,7 @@
 
   <thing-type id="honeywell_th8320zw_00_000" listed="false">
     <label>TH8320ZW Touchscreen Programmable Thermostat</label>
-    <description><![CDATA[
-Touchscreen Programmable Thermostat<br /><h1>Overview</h1><p>Touchscreen Thermostat, precise comfort control, easy to use touch screen display, extra large backlit display.</p> <br /><h2>Inclusion Information</h2><p>Press UP/DOWN arrows, select option 1 for inclusion.</p> <br /><h2>Exclusion Information</h2><p>Press UP/DOWN arrows, select option 0 for exclusion.</p>
-    ]]></description>
+    <description>Touchscreen Programmable Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtTouchscreen Thermostat, precise comfort control, easy to use touch screen display, extra large backlit display.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress UP/DOWN arrows, select option 1 for inclusion.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress UP/DOWN arrows, select option 0 for exclusion.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -100,12 +98,12 @@ Touchscreen Programmable Thermostat<br /><h1>Overview</h1><p>Touchscreen Thermos
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
-        <option value="11">Economy Heat</option>
-        <option value="2">Cool</option>
-        <option value="12">Economy Cool</option>
         <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
+        <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
         <option value="5">Resume</option>
       </options>
     </state>

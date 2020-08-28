@@ -7,9 +7,7 @@
 
   <thing-type id="ge_14296_00_000" listed="false">
     <label>ZW3011/14296 GE Enbrighten Z-Wave Wall Dimmer, Toggle, 14296, Light Almond</label>
-    <description><![CDATA[
-GE Enbrighten Z-Wave Wall Dimmer, Toggle, 14296, Light Almond<br /><h1>Overview</h1><p>In-Wall Smart Toggle Dimmer with QuickFit and SimpleWire enhancements. Revolutionary QuickFit design features a housing depth that is up to 20 percent smaller than the previous Z-Wave models. This reduced size coupled with the elimination of heat taps provides a better fit in older style boxes and multi-gang configurations. SimpleWire technology allows line and load to automatically be configured with auto-sensing line-load terminals. All of this is coupled with Z-Wave S2 and Smart Start allows for effortless installation while being safer than ever!</p> <br /><h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press up and release the toggle.</p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to remove your device, press up and release the toggle.</p> <p><strong>NOTE: If  Advanced configuration parameter 19 is changed, the above process is incorrect.</strong></p>
-    ]]></description>
+    <description>GE Enbrighten Z-Wave Wall Dimmer, Toggle, 14296, Light Almond&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIn-Wall Smart Toggle Dimmer with QuickFit and SimpleWire enhancements. Revolutionary QuickFit design features a housing depth that is up to 20 percent smaller than the previous Z-Wave models. This reduced size coupled with the elimination of heat taps provides a better fit in older style boxes and multi-gang configurations. SimpleWire technology allows line and load to automatically be configured with auto-sensing line-load terminals. All of this is coupled with Z-Wave S2 and Smart Start allows for effortless installation while being safer than ever!&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to add your device, press up and release the toggle.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to remove your device, press up and release the toggle.&lt;/p&gt &lt;p&gt&lt;strong&gtNOTE: If  Advanced configuration parameter 19 is changed, the above process is incorrect.&lt;/strong&gt&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -56,9 +54,7 @@ GE Enbrighten Z-Wave Wall Dimmer, Toggle, 14296, Light Almond<br /><h1>Overview<
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: LED Mode</label>
-        <description><![CDATA[
-LED Indication Configuration<br /><h1>Overview</h1><p>Adjust the LED status to default, invert, always OFF or always ON</p>
-        ]]></description>
+        <description>LED Indication Configuration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjust the LED status to default, invert, always OFF or always ON&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Device is ON, LED is OFF; device is OFF, LED is ON</option>
@@ -70,9 +66,7 @@ LED Indication Configuration<br /><h1>Overview</h1><p>Adjust the LED status to d
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Dim up/down rate</label>
-        <description><![CDATA[
-Adjust the speed at which the ramps to a specific value other than 0 and FF<br /><h1>Overview</h1><p>0 means "Dim up/down the light to the specified level quickly by command except value 0 and FF"<br />1 means "Dim up/down the light to the specified level slowly by command except value 0 and ff"</p>
-        ]]></description>
+        <description>Adjust the speed at which the ramps to a specific value other than 0 and FF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 means &quot;Dim up/down the light to the specified level quickly by command except value 0 and FF&quot;&amp;lt;br /&amp;amp;gt1 means &quot;Dim up/down the light to the specified level slowly by command except value 0 and ff&quot;&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Fast</option>
@@ -82,9 +76,7 @@ Adjust the speed at which the ramps to a specific value other than 0 and FF<br /
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: Switch Mode</label>
-        <description><![CDATA[
-Turn your dimmer into an On/Off switch with switch mode<br /><h1>Overview</h1><p>0 for normal dimmer operation, 1 enables switch mode</p>
-        ]]></description>
+        <description>Turn your dimmer into an On/Off switch with switch mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 for normal dimmer operation, 1 enables switch mode&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Dimmer Mode</option>
@@ -94,9 +86,7 @@ Turn your dimmer into an On/Off switch with switch mode<br /><h1>Overview</h1><p
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Alternate Exclusion</label>
-        <description><![CDATA[
-Never accidentally remove a device during with alternate exclusion<br /><h1>Overview</h1><p>0: Normal operation, press any button on the device</p> <p>1: Press two times ON button and two times OFF button, LED will flash 5 times if exclusion is successful</p>
-        ]]></description>
+        <description>Never accidentally remove a device during with alternate exclusion&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: Normal operation, press any button on the device&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1: Press two times ON button and two times OFF button, LED will flash 5 times if exclusion is successful&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal exclusion</option>
@@ -108,27 +98,21 @@ Never accidentally remove a device during with alternate exclusion<br /><h1>Over
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>30: Minimum Dim Threshold</label>
-        <description><![CDATA[
-Set the minimum dimmer threshold<br /><h1>Overview</h1><p>Set the minimum dimmer threshold when manually or remotely controlled</p>
-        ]]></description>
+        <description>Set the minimum dimmer threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the minimum dimmer threshold when manually or remotely controlled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>31: Maximum Brightness Threshold</label>
-        <description><![CDATA[
-Set the brightness threshold<br /><h1>Overview</h1><p>Set the maximum brightness threshold when manually or remotely controlled</p>
-        ]]></description>
+        <description>Set the brightness threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the maximum brightness threshold when manually or remotely controlled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>32: Default Brightness Level</label>
-        <description><![CDATA[
-Set the default brightness level for manual turn on<br /><h1>Overview</h1><p>Set the default brightness level that the dimmer will turn on when being controlled manually</p> <p>Ex. 1= 1% and 99 = 99%</p>
-        ]]></description>
+        <description>Set the default brightness level for manual turn on&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the default brightness level that the dimmer will turn on when being controlled manually&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtEx. 1= 1% and 99 = 99%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

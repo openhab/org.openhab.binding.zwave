@@ -11,58 +11,22 @@ This version of the device is limited to firmware versions above 3.0
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![MH8-FC product image](https://www.cd-jackson.com/zwave_device_uploads/1057/1057_default.jpg)
+![MH8-FC product image](https://opensmarthouse.org/zwavedatabase/1057/image/)
 
 
 The MH8-FC supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-MCOHome Fan Coil Thermostat is a Z-Wave enabled device for indoor temperature control. It is mainly applied to a 4-pipe Fan coil system. It can read room temperature and local time, and automatically control fan speed based on the temperature difference. The device is of high reliability and practicability. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.
-
-**Features：**
-
-  * Capacitive touch buttons
-  * Tempered glass panel, PC alloy enclosure
-  * Precise temperature calibration function
-  * Non-volatile Memory, working state saved even power failure
-  * Intelligent on/off control of 3-speed fan, electric (ball) valve or air-valve
-  * Easily steel frame back plate installatio
-
-**Specification**
-
-  * Power Supply：AC85V~260V, 50/60HZ
-  * Resistive Load: ≤3A
-  * Self Consumption：< 1W
-  * Temperature Sensor: NTC 15K
-  * Display Accuracy: 0.1 ℃
-  * Working Environment：0～55℃; <95% RH（Non-condensation)
-  * Temperature Setting：5～35 ℃（Adjustable）
-  * Dimension：86\* 86\*42mm
-  * Hole Pitch：60-65mm（86 Standard junction box）
-  * Z-Wave Frequency: 868.42MHz (EU)
-
-**Safety Information**
-
-To protect yourself and others from danger and to protect the device from damage, please read the safety information before using it.
+<p&gtMCOHome Fan Coil Thermostat is a Z-Wave enabled device for indoor temperature control. It is mainly applied to a 4-pipe Fan coil system. It can read room temperature and local time, and automatically control fan speed based on the temperature difference. The device is of high reliability and practicability. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.</p&gt <p&gt<strong&gtFeatures：</strong&gt</p&gt <ul&gt<li&gtCapacitive touch buttons</li&gt <li&gtTempered glass panel, PC alloy enclosure</li&gt <li&gtPrecise temperature calibration function</li&gt <li&gtNon-volatile Memory, working state saved even power failure</li&gt <li&gtIntelligent on/off control of 3-speed fan, electric (ball) valve or air-valve</li&gt <li&gtEasily steel frame back plate installatio</li&gt </ul&gt<p&gt<strong&gtSpecification</strong&gt</p&gt <ul&gt<li&gtPower Supply：AC85V~260V, 50/60HZ</li&gt <li&gtResistive Load: ≤3A</li&gt <li&gtSelf Consumption：< 1W</li&gt <li&gtTemperature Sensor: NTC 15K</li&gt <li&gtDisplay Accuracy: 0.1 ℃</li&gt <li&gtWorking Environment：0～55℃; <95% RH（Non-condensation)</li&gt <li&gtTemperature Setting：5～35 ℃（Adjustable）</li&gt <li&gtDimension：86\* 86\*42mm</li&gt <li&gtHole Pitch：60-65mm（86 Standard junction box）</li&gt <li&gtZ-Wave Frequency: 868.42MHz (EU)</li&gt </ul&gt<p&gt<strong&gtSafety Information</strong&gt</p&gt <p&gtTo protect yourself and others from danger and to protect the device from damage, please read the safety information before using it.</p&gt
 
 ### Inclusion Information
 
-**Including of Z-Wave network**
-
-Under the shutdown state, press & hold "Down Arrow" to enter interface for inclusion or exclusion of Z-Wave network.
-
-Before device included into network, “\- - -” will display on the screen. Then press once "Down Arrow", device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.  
-A node ID can always inform us whether the device is in the network or not.
+<p&gt<strong&gtIncluding of Z-Wave network</strong&gt</p&gt <p&gtUnder the shutdown state, press & hold "Down Arrow" to enter interface for inclusion or exclusion of Z-Wave network.</p&gt <p&gtBefore device included into network, “\- - -” will display on the screen. Then press once "Down Arrow", device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.<br /&gtA node ID can always inform us whether the device is in the network or not.</p&gt
 
 ### Exclusion Information
 
-**Excluding of Z-Wave network**
-
-Under the shutdown state, press & hold "Down Arrow" to enter interface for inclusion or exclusion of Z-Wave network.
-
-Before device included into network, “\- - -” will display on the screen. Then press once "Down Arrow", device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.  
-A node ID can always inform us whether the device is in the network or not.
+<p&gt<strong&gtExcluding of Z-Wave network</strong&gt</p&gt <p&gtUnder the shutdown state, press & hold "Down Arrow" to enter interface for inclusion or exclusion of Z-Wave network.</p&gt <p&gtBefore device included into network, “\- - -” will display on the screen. Then press once "Down Arrow", device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds.<br /&gtA node ID can always inform us whether the device is in the network or not.</p&gt
 
 ## Channels
 
@@ -190,7 +154,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Upload temperature difference
 
 Upload temperature difference
-Base on 0.1C unit. 5 by default. 5 * 0.1C = 0.5C, 0x0003 to 0x03E8
+<p&gtBase on 0.1C unit. 5 by default. 5 * 0.1C = 0.5C, 0x0003 to 0x03E8</p&gt
 Values in the range 3 to 1000 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -201,7 +165,7 @@ This parameter has the configuration ID ```config_3_2``` and is of type ```INTEG
 ### Parameter 4: Upload time interval
 
 Upload time interval in seconds
-Base is 1s unit. It is suggested to be set above 30s, 0x000A to 0xFFFF
+<p&gtBase is 1s unit. It is suggested to be set above 30s, 0x000A to 0xFFFF</p&gt
 Values in the range 10 to 65535 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -212,9 +176,7 @@ This parameter has the configuration ID ```config_4_2``` and is of type ```INTEG
 ### Parameter 255: Factory Setting
 
 Factory Setting
-0x55 Restore the factory setting (write only)
-
-Parameters setting back to default value, association groups deleted
+<p&gt0x55 Restore the factory setting (write only)</p&gt <p&gtParameters setting back to default value, association groups deleted</p&gt
 Values in the range 85 to 85 may be set.
 
 The manufacturer defined default value is ```85```.
@@ -259,9 +221,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1057/MH8-FC-Zwave-Plus.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1057/MH8-FC-Zwave-Plus.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1057).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1057).

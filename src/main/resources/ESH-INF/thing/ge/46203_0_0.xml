@@ -7,9 +7,7 @@
 
   <thing-type id="ge_46203_00_000" listed="false">
     <label>46203 GE Enbrighten Z-Wave Plus Smart Dimmer</label>
-    <description><![CDATA[
-GE Enbrighten Z-Wave Plus Smart Dimmer<br /><h1>Overview</h1><p>Set the scene with the GE Enbrighten Z-Wave In-Wall Smart Dimmer with QuickFit™ and SimpleWire™. When paired with a compatible hub, the hardwired smart dimmer operates wall, ceiling and accent lighting through individual commands and programmed settings. Wirelessly control and schedule indoor or outdoor fixtures for effortless management of your home. Your automation possibilities are seemingly infinite when connected to hubs from Ring, Wink, SmartThings, HomeSeer, Vera, Nexia and more.</p> <h4>Features</h4> <ul><li>ALEXA COMPATIBLE - REQUIRES AN ALEXA SUPPORTED HUB for voice control with Echo Products (Alexa device and hub sold separately). CANNOT connect directly with ECHO PLUS (Only ZigBee products can connect directly to Echo Plus).</li> <li>Wirelessly schedule, control and adjust the brightness of any dimmable wall or ceiling light - control from anywhere, at any time with any mobile device. Supported voltage - 120 VAC. Wireless Range: Up to 150 feet</li> <li>SPACE-SAVING HOUSING DESIGN –Improved components reduced the housing depth by up to 20 percent compared to previous Z-Wave models and eliminated the need for heat tabs.</li> <li>Quick Fit enhancements are the ideal smart solution for older-style switch boxes, multi-gang configurations or any other application with limited space.</li> <li>EASY INSTALLATION WITH SIMPLE WIRE – Auto line-load sensing terminals support fast and easy installation by detecting line and load wires and configuring the dimmer accordingly.</li> <li>Dual ground ports, which are offset to avoid switch box mounting screws, support daisy-chaining in multi-switch setups.</li> <li>REQUIRES A Z-WAVE CERTIFIED GATEWAY - Compatible with the following Z-Wave certified Hubs: SmartThings, Wink, ADT Pulse, Trane, Vivint, Nexia, Honeywell, HomeSeer, Harmony Home Hub Extender, Vera, Connect and Iris.</li> <li>INSTALLATION &amp; USAGE - Requires in-wall installation with hard-wired connections - Neutral wire REQUIRED. Includes white and light almond paddles (wall plate not included).</li> <li>For use with dimmable LED, CFL, incandescent and halogen bulbs. Supported wattage - 600W Incandescent, 150W CFL/LED. It must be connected to a supported hub in order to interact with the Amazon Alexa.</li> </ul><br /><h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p> <p><strong>NOTE: See Parameter 19 to set alternate exclusion mode.</strong></p>
-    ]]></description>
+    <description>GE Enbrighten Z-Wave Plus Smart Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSet the scene with the GE Enbrighten Z-Wave In-Wall Smart Dimmer with QuickFit™ and SimpleWire™. When paired with a compatible hub, the hardwired smart dimmer operates wall, ceiling and accent lighting through individual commands and programmed settings. Wirelessly control and schedule indoor or outdoor fixtures for effortless management of your home. Your automation possibilities are seemingly infinite when connected to hubs from Ring, Wink, SmartThings, HomeSeer, Vera, Nexia and more.&lt;/p&gt &lt;h4&gtFeatures&lt;/h4&gt &lt;ul&gt&lt;li&gtALEXA COMPATIBLE - REQUIRES AN ALEXA SUPPORTED HUB for voice control with Echo Products (Alexa device and hub sold separately). CANNOT connect directly with ECHO PLUS (Only ZigBee products can connect directly to Echo Plus).&lt;/li&gt &lt;li&gtWirelessly schedule, control and adjust the brightness of any dimmable wall or ceiling light - control from anywhere, at any time with any mobile device. Supported voltage - 120 VAC. Wireless Range: Up to 150 feet&lt;/li&gt &lt;li&gtSPACE-SAVING HOUSING DESIGN –Improved components reduced the housing depth by up to 20 percent compared to previous Z-Wave models and eliminated the need for heat tabs.&lt;/li&gt &lt;li&gtQuick Fit enhancements are the ideal smart solution for older-style switch boxes, multi-gang configurations or any other application with limited space.&lt;/li&gt &lt;li&gtEASY INSTALLATION WITH SIMPLE WIRE – Auto line-load sensing terminals support fast and easy installation by detecting line and load wires and configuring the dimmer accordingly.&lt;/li&gt &lt;li&gtDual ground ports, which are offset to avoid switch box mounting screws, support daisy-chaining in multi-switch setups.&lt;/li&gt &lt;li&gtREQUIRES A Z-WAVE CERTIFIED GATEWAY - Compatible with the following Z-Wave certified Hubs: SmartThings, Wink, ADT Pulse, Trane, Vivint, Nexia, Honeywell, HomeSeer, Harmony Home Hub Extender, Vera, Connect and Iris.&lt;/li&gt &lt;li&gtINSTALLATION &amp;amp; USAGE - Requires in-wall installation with hard-wired connections - Neutral wire REQUIRED. Includes white and light almond paddles (wall plate not included).&lt;/li&gt &lt;li&gtFor use with dimmable LED, CFL, incandescent and halogen bulbs. Supported wattage - 600W Incandescent, 150W CFL/LED. It must be connected to a supported hub in order to interact with the Amazon Alexa.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.&lt;/p&gt &lt;p&gt&lt;strong&gtNOTE: See Parameter 19 to set alternate exclusion mode.&lt;/strong&gt&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -74,9 +72,7 @@ GE Enbrighten Z-Wave Plus Smart Dimmer<br /><h1>Overview</h1><p>Set the scene wi
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Dim up/down rate</label>
-        <description><![CDATA[
-Dim up/down rate<br /><h1>Overview</h1><p>Adjust the speed at which the ramps to a specific value other than 0 and FF</p>
-        ]]></description>
+        <description>Dim up/down rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjust the speed at which the ramps to a specific value other than 0 and FF&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Quickly</option>
@@ -86,9 +82,7 @@ Dim up/down rate<br /><h1>Overview</h1><p>Adjust the speed at which the ramps to
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: Switch Mode</label>
-        <description><![CDATA[
-Switch Mode<br /><h1>Overview</h1><p>Turn your dimmer into an On/Off switch with switch mode</p>
-        ]]></description>
+        <description>Switch Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTurn your dimmer into an On/Off switch with switch mode&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Dimmer Mode</option>
@@ -98,9 +92,7 @@ Switch Mode<br /><h1>Overview</h1><p>Turn your dimmer into an On/Off switch with
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Alternate Exclusion</label>
-        <description><![CDATA[
-Alternate Exclusion<br /><h1>Overview</h1><p>Never accidentally remove a device with alternate exclusion.</p>
-        ]]></description>
+        <description>Alternate Exclusion&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNever accidentally remove a device with alternate exclusion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal, Press Any Button on the device</option>
@@ -112,27 +104,21 @@ Alternate Exclusion<br /><h1>Overview</h1><p>Never accidentally remove a device 
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>30: Minimum Dim Threshold</label>
-        <description><![CDATA[
-Minimum Dim Threshold<br /><h1>Overview</h1><p>Set the minimum dimmer threshold when manually or remotely controlled</p>
-        ]]></description>
+        <description>Minimum Dim Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the minimum dimmer threshold when manually or remotely controlled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>31: Maximum Brightness Threshold</label>
-        <description><![CDATA[
-Maximum Brightness Threshold<br /><h1>Overview</h1><p>Set the maximum brightness threshold when manually or remotely controlled</p>
-        ]]></description>
+        <description>Maximum Brightness Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the maximum brightness threshold when manually or remotely controlled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>32: Default Brightness Level</label>
-        <description><![CDATA[
-Default Brightness Level<br /><h1>Overview</h1><p>Set the default brightness level that the dimmer will turn on when being controlled manually</p> <ul><li>0 = Default</li> <li>1 - 99 = percentage</li> </ul>
-        ]]></description>
+        <description>Default Brightness Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the default brightness level that the dimmer will turn on when being controlled manually&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Default&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 - 99 = percentage&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -145,17 +131,13 @@ Default Brightness Level<br /><h1>Overview</h1><p>Set the default brightness lev
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Set Local Load</label>
-        <description><![CDATA[
-Support Basic Set and is controlled with the local load<br /><h1>Overview</h1><p>Supports Basic Set and is controlled with local load</p>
-        ]]></description>
+        <description>Support Basic Set and is controlled with the local load&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSupports Basic Set and is controlled with local load&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Basic Set Double Press</label>
-        <description><![CDATA[
-Supports Basic Set and is controlled by double pressing the On or Off button<br /><h1>Overview</h1><p>Basic Set and is controlled by double pressing the ON or OFF button</p>
-        ]]></description>
+        <description>Supports Basic Set and is controlled by double pressing the On or Off button&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtBasic Set and is controlled by double pressing the ON or OFF button&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

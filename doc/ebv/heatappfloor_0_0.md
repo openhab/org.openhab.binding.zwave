@@ -10,22 +10,22 @@ This describes the Z-Wave device *heatapp! floor*, manufactured by *EbV* with th
 
 The device is in the category of *Radiator Control*, defining Controls on radiators used to heat up rooms.
 
-![heatapp! floor product image](https://www.cd-jackson.com/zwave_device_uploads/811/811_default.jpg)
+![heatapp! floor product image](https://opensmarthouse.org/zwavedatabase/811/image/)
 
 
 The heatapp! floor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Information at the z-wave alliance product cataloge: https://products.z-wavealliance.org/products/1249
+<p&gtInformation at the z-wave alliance product cataloge: https://products.z-wavealliance.org/products/1249</p&gt
 
 ### Inclusion Information
 
-Press the learn key (10) for 2 seconds that will start the inclusion process on the device.
+<p&gtPress the learn key (10) for 2 seconds that will start the inclusion process on the device.</p&gt
 
 ### Exclusion Information
 
-Press the learn key (10) for 2 seconds that will start the exclusion process on the device.
+<p&gtPress the learn key (10) for 2 seconds that will start the exclusion process on the device.</p&gt
 
 ## Channels
 
@@ -104,9 +104,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1:  Missing Radio Link time
 
 Missing Radio Link time
-Maximum time device will wait for reconnection before it going ot emergency mode (All switches ON). 
-
-It is possible to set in the range of 10 min to 4 hours. Default value is 30 min, only 1 Byte
+<p&gtMaximum time device will wait for reconnection before it going ot emergency mode (All switches ON). </p&gt <p&gtIt is possible to set in the range of 10 min to 4 hours. Default value is 30 min, only 1 Byte</p&gt
 Values in the range 10 to 240 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -117,7 +115,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Relay type
 
 0 normal open, 1 normal close, 2 switching
-Configuaration parameter2 relay type. Default relay type is normal open, only 1 Byte. 0 normal open, 1 normal close, 2 switching
+<p&gtConfiguaration parameter2 relay type. Default relay type is normal open, only 1 Byte. 0 normal open, 1 normal close, 2 switching</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -217,9 +215,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Installationsanleitung heatapp! floor DE/EN ](https://www.cd-jackson.com/zwave_device_uploads/811/heatapp-floor-210x420-EbV-DE-EN-Druck.pdf)
+* [Installationsanleitung heatapp! floor DE/EN ](https://opensmarthouse.org/zwavedatabase/811/heatapp-floor-210x420-EbV-DE-EN-Druck.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/811).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/811).

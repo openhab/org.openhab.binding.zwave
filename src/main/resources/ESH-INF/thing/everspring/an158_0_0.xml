@@ -7,9 +7,7 @@
 
   <thing-type id="everspring_an158_00_000" listed="false">
     <label>AN158 Switch Meter Plugin</label>
-    <description><![CDATA[
-Switch Meter Plugin<br /><h1>Overview</h1><p>ON/OFF module with energy metering</p> <br /><h2>Inclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>Switch Meter Plugin&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtON/OFF module with energy metering&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPressing On/Off button three times within 1.5 seconds will enter inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPressing On/Off button three times within 1.5 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -74,17 +72,13 @@ Switch Meter Plugin<br /><h1>Overview</h1><p>ON/OFF module with energy metering<
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="254">
         <label>1: True Period</label>
-        <description><![CDATA[
-Time of switching status to send status message<br /><h1>Overview</h1><p>This is the time the switching status needs to remain unchanged after a change to cause the device to send out a status message</p>
-        ]]></description>
+        <description>Time of switching status to send status message&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the time the switching status needs to remain unchanged after a change to cause the device to send out a status message&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Send Out Basic Command</label>
-        <description><![CDATA[
-Enable or Disable the status message function<br /><h1>Overview</h1><p>Enable or Disable the status message function when the local button press changes the switching state.</p>
-        ]]></description>
+        <description>Enable or Disable the status message function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or Disable the status message function when the local button press changes the switching state.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -95,9 +89,7 @@ Enable or Disable the status message function<br /><h1>Overview</h1><p>Enable or
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="3240">
         <label>3: Meter Report Period</label>
-        <description><![CDATA[
-Autoreporting meter value interval<br /><h1>Overview</h1><p>The device will report its meter value within the interval set. Set to 0 will disable the autoreporting function.</p>
-        ]]></description>
+        <description>Autoreporting meter value interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe device will report its meter value within the interval set. Set to 0 will disable the autoreporting function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 

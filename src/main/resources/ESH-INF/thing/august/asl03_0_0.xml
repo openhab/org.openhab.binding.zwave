@@ -7,9 +7,7 @@
 
   <thing-type id="august_asl03_00_000" listed="false">
     <label>ASL-03 August Smart Lock Pro 3rd Gen</label>
-    <description><![CDATA[
-August Smart Lock Pro 3rd Gen<br /><h1>Overview</h1><p>Give your customer total control over their front door, from anywhere. The August Smart Lock Pro is the leading Z-Wave Plus retrofit smart lock. You can lock and unlock your door, create virtual keys for guests, and keep track of who comes and goes with a 24/7 activity log, all from your iOS or Android smartphone.</p> <p>The August Smart Lock Pro features Z-Wave Plus and BLE and it is the only lock to support the three leading voice-assistants, Siri, Google Assistant, and Amazon Alexa. The lock quickly installs on the inside of your door with just a screwdriver. Keep your exterior door hardware exactly as it is and use your traditional key any time.</p> <br /><h2>Inclusion Information</h2><p>In order to include the August Smart Lock on to a Z-Wave network the user will have to do the following:</p> <ol><li>Open the August app</li> <li>Go to the Lock Settings screen</li> <li>Select Z-Wave Settings</li> <li>Select Add To A Z-Wave Network</li> <li>Put the controller into inclusion mode and select My Hub is in Inclusion Mode on the August app</li> </ol><br /><h2>Exclusion Information</h2><p>In order to exclude the August Smart Lock from a Z-Wave network the user will have to do the following:</p> <ol><li>Open the August app</li> <li>Go to the Lock Settings screen</li> <li>Select Z-Wave Settings</li> <li>Select Remove Z-Wave Device</li> <li>Put the controller into exclusion mode and select My Hub is in Exlusion Mode on the August app</li> </ol><br /><h2>Wakeup Information</h2><p>Any operation (manual, RF, etc.) will wake up the lock.</p>
-    ]]></description>
+    <description>August Smart Lock Pro 3rd Gen&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtGive your customer total control over their front door, from anywhere. The August Smart Lock Pro is the leading Z-Wave Plus retrofit smart lock. You can lock and unlock your door, create virtual keys for guests, and keep track of who comes and goes with a 24/7 activity log, all from your iOS or Android smartphone.&lt;/p&gt &lt;p&gtThe August Smart Lock Pro features Z-Wave Plus and BLE and it is the only lock to support the three leading voice-assistants, Siri, Google Assistant, and Amazon Alexa. The lock quickly installs on the inside of your door with just a screwdriver. Keep your exterior door hardware exactly as it is and use your traditional key any time.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtIn order to include the August Smart Lock on to a Z-Wave network the user will have to do the following:&lt;/p&gt &lt;ol&gt&lt;li&gtOpen the August app&lt;/li&gt &lt;li&gtGo to the Lock Settings screen&lt;/li&gt &lt;li&gtSelect Z-Wave Settings&lt;/li&gt &lt;li&gtSelect Add To A Z-Wave Network&lt;/li&gt &lt;li&gtPut the controller into inclusion mode and select My Hub is in Inclusion Mode on the August app&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtIn order to exclude the August Smart Lock from a Z-Wave network the user will have to do the following:&lt;/p&gt &lt;ol&gt&lt;li&gtOpen the August app&lt;/li&gt &lt;li&gtGo to the Lock Settings screen&lt;/li&gt &lt;li&gtSelect Z-Wave Settings&lt;/li&gt &lt;li&gtSelect Remove Z-Wave Device&lt;/li&gt &lt;li&gtPut the controller into exclusion mode and select My Hub is in Exlusion Mode on the August app&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtAny operation (manual, RF, etc.) will wake up the lock.&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -61,17 +59,13 @@ August Smart Lock Pro 3rd Gen<br /><h1>Overview</h1><p>Give your customer total 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-battery status, door lock operation status, and device reset locally<br /><h1>Overview</h1><p>The Lifeline group on this lock is used to report battery status, door lock operation status, and device reset locally notifications to nodes on the group list.</p>
-        ]]></description>
+        <description>battery status, door lock operation status, and device reset locally&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Lifeline group on this lock is used to report battery status, door lock operation status, and device reset locally notifications to nodes on the group list.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Report 2</label>
-        <description><![CDATA[
-Door lock operation status<br /><h1>Overview</h1><p>The Doorlock Op group on this lock is used to report door lock operation status to nodes on the group list.</p>
-        ]]></description>
+        <description>Door lock operation status&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Doorlock Op group on this lock is used to report door lock operation status to nodes on the group list.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

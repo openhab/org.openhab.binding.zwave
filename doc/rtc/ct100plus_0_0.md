@@ -10,28 +10,22 @@ This describes the Z-Wave device *CT100 Plus*, manufactured by *Radio Thermostat
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![CT100 Plus product image](https://www.cd-jackson.com/zwave_device_uploads/641/641_default.png)
+![CT100 Plus product image](https://opensmarthouse.org/zwavedatabase/641/image/)
 
 
 The CT100 Plus supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The CT100 Plus is a sleek, modern thermostat design for home automation systems. It’s clean user interface compliments app-enabled systems. It features adjustable real-time alerts to enable cloud triggers, a robust data stream of HVAC information for cloud monitoring, and configurable comfort response settings to customize home control scenes. The CT100 Plus is compatible with all popular HVAC systems and is battery-operated without the need for a C-wire.
+<p&gtThe CT100 Plus is a sleek, modern thermostat design for home automation systems. It’s clean user interface compliments app-enabled systems. It features adjustable real-time alerts to enable cloud triggers, a robust data stream of HVAC information for cloud monitoring, and configurable comfort response settings to customize home control scenes. The CT100 Plus is compatible with all popular HVAC systems and is battery-operated without the need for a C-wire.</p&gt
 
 ### Inclusion Information
 
-  1.  From the CT100’s Menu screen, touch MATE under the radio icon. The Network Include screen displays a large r1.
-  2. Touch MATE again. This initiates the network connection (mating) process. The MATE icon and the status indicator LEDs will blink.
-
-When the CT100 has successfully joined a Z-Wave network, the MATE icon is replaced by the LINK icon under the radio tower. 
+<ol&gt<li&gt From the CT100’s Menu screen, touch MATE under the radio icon. The Network Include screen displays a large r1.</li&gt <li&gtTouch MATE again. This initiates the network connection (mating) process. The MATE icon and the status indicator LEDs will blink.</li&gt </ol&gt<p&gtWhen the CT100 has successfully joined a Z-Wave network, the MATE icon is replaced by the LINK icon under the radio tower. </p&gt
 
 ### Exclusion Information
 
-  1.  From the CT100’s Menu screen, touch MATE under the radio icon. The Network Include screen displays a large r1.
-  2. Touch MATE again. This initiates the network connection (mating) process. The MATE icon and the status indicator LEDs will blink.
-
-When you are trying to disconnect from (leave) a network, the LINK icon disappears when the node has successfully left the network.
+<ol&gt<li&gt From the CT100’s Menu screen, touch MATE under the radio icon. The Network Include screen displays a large r1.</li&gt <li&gtTouch MATE again. This initiates the network connection (mating) process. The MATE icon and the status indicator LEDs will blink.</li&gt </ol&gt<p&gtWhen you are trying to disconnect from (leave) a network, the LINK icon disappears when the node has successfully left the network.</p&gt
 
 ## Channels
 
@@ -51,7 +45,7 @@ The following table summarises the channels available for the CT100 Plus -:
 | Thermostat fan mode | thermostat_fanmode | thermostat_fanmode |  |  | 
 | Thermostat fan state | thermostat_fanstate | thermostat_fanstate |  |  | 
 | Battery Level | battery-level | system.battery_level | Battery | Number |
-| Clock Time Offset | time_offset | time_offset | Temperature | Number | 
+| Clock Time Offset | time_offset | time_offset | Time | Number | 
 | Sensor (relative humidity) 1 | sensor_relhumidity1 | sensor_relhumidity | Humidity | Number | 
 | Sensor (temperature) 1 | sensor_temperature1 | sensor_temperature | Temperature | Number:Temperature | 
 | Thermostat mode 1 | thermostat_mode1 | thermostat_mode | Temperature | Number | 
@@ -62,7 +56,7 @@ The following table summarises the channels available for the CT100 Plus -:
 | Setpoint (furnace) 1 | thermostat_setpoint1 | thermostat_setpoint | Heating | Number:Temperature | 
 | Thermostat fan mode 1 | thermostat_fanmode1 | thermostat_fanmode |  |  | 
 | Thermostat fan state 1 | thermostat_fanstate1 | thermostat_fanstate |  |  | 
-| Clock Time Offset 1 | time_offset1 | time_offset | Temperature | Number | 
+| Clock Time Offset 1 | time_offset1 | time_offset | Time | Number | 
 | Sensor (relative humidity) 2 | sensor_relhumidity2 | sensor_relhumidity | Humidity | Number | 
 | Sensor (temperature) 2 | sensor_temperature2 | sensor_temperature | Temperature | Number:Temperature | 
 
@@ -161,7 +155,7 @@ This channel provides the battery level as a percentage and also reflects the lo
 ### Clock Time Offset
 Provides the current time difference for the devices time.
 
-The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Temperature``` category.
+The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Time``` category.
 
 ### Sensor (relative humidity) 1
 Indicates the current relative humidity.
@@ -241,7 +235,7 @@ Channel type information on this channel is not found.
 ### Clock Time Offset 1
 Provides the current time difference for the devices time.
 
-The ```time_offset1``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Temperature``` category.
+The ```time_offset1``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Time``` category.
 
 ### Sensor (relative humidity) 2
 Indicates the current relative humidity.
@@ -278,7 +272,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Temperature Reporting Threshold
 
 Reporting threshold for changes in the ambient temperature
-This value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.
+<p&gtThis value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -297,10 +291,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: HVAC Settings
 
 Configured HVAC settings
-Byte 1 = HVAC Setup: Normal (0x01) or Heat Pump (0x02)  
-Byte 2 = Aux Setup (Gas (0x01) or Electric (0x02)) & Number of Auxiliary Stages (Heat Pump)/Number of Heat Stages (Normal)  
-Byte 3 = Number of Heat Pump Stages  
-Byte 4 = Number of Cool Stages
+<p&gtByte 1 = HVAC Setup: Normal (0x01) or Heat Pump (0x02)<br /&gtByte 2 = Aux Setup (Gas (0x01) or Electric (0x02)) & Number of Auxiliary Stages (Heat Pump)/Number of Heat Stages (Normal)<br /&gtByte 3 = Number of Heat Pump Stages<br /&gtByte 4 = Number of Cool Stages</p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -312,7 +303,7 @@ This is a read only parameter.
 ### Parameter 3: Utility Lock Enable/Disable
 
 Prevents setpoint changes at thermostat
-If set to 0, the utility lock is disabled, all other values, 1-255, will enable the utility lock. This will prevent changes to the setpoint at the thermostat screen.
+<p&gtIf set to 0, the utility lock is disabled, all other values, 1-255, will enable the utility lock. This will prevent changes to the setpoint at the thermostat screen.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -329,7 +320,7 @@ This is a write only parameter.
 ### Parameter 4: Power Status
 
 C-Wire / Battery Status
-If 0x01, the thermostat is powered by a C-wire. If 0x02, the thermostat is powered by batteries.
+<p&gtIf 0x01, the thermostat is powered by a C-wire. If 0x02, the thermostat is powered by batteries. </p&gt
 Values in the range 0 to 0 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -341,7 +332,7 @@ This is a read only parameter.
 ### Parameter 5: Humidity Reporting Threshold
 
 Reporting threshold for changes in the relative humidity
-This value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.
+<p&gtThis value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -359,7 +350,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Auxiliary/Emergency
 
 Enables or disables auxiliary / emergency heating
-If set to 0, auxiliary / emergency heat is disabled, all other values, 1-255, will enable the auxiliary / emergency heat. This can only be enabled when the thermostat is set to Heat Pump mode.
+<p&gtIf set to 0, auxiliary / emergency heat is disabled, all other values, 1-255, will enable the auxiliary / emergency heat. This can only be enabled when the thermostat is set to Heat Pump mode.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -375,7 +366,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Thermostat Swing Temperature
 
 Variance allowed from setpoint to engage HVAC
-The thermostat swing temperature is in units of 0.5 degrees Fahrenheit.
+<p&gtThe thermostat swing temperature is in units of 0.5 degrees Fahrenheit.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -397,7 +388,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Thermostat Diff Temperature
 
 Configures additional stages
-Sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. This command configures both the heat and cool differential temperatures.
+<p&gtSets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages. This command configures both the heat and cool differential temperatures.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -414,7 +405,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Thermostat Recovery Mode
 
 Fast or Economy recovery mode
-The Thermostat Recovery Mode can be either fast (1) or economy (2).
+<p&gtThe Thermostat Recovery Mode can be either fast (1) or economy (2).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -430,7 +421,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Temperature Reporting Filter
 
 Upper/Lower bounds for thermostat temperature reporting
-The thermostat will report ambient temperature changes for temperature values less than the lower bound. This field must be between 0F and 124F. By default, this value is 124F (report all temperature changes).
+<p&gtThe thermostat will report ambient temperature changes for temperature values less than the lower bound. This field must be between 0F and 124F. By default, this value is 124F (report all temperature changes).</p&gt
 Values in the range 0 to 124 may be set.
 
 The manufacturer defined default value is ```124```.
@@ -441,7 +432,7 @@ This parameter has the configuration ID ```config_10_4``` and is of type ```INTE
 ### Parameter 11: Simple UI Mode
 
 Simple mode enable/disable
-If the value is set to 0 then Normal Mode is enabled. If the value is set to 1 then Simple Mode is enabled.
+<p&gtIf the value is set to 0 then Normal Mode is enabled. If the value is set to 1 then Simple Mode is enabled.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -457,7 +448,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Multicast
 
 Enable or disables Multicast
-If set to 0, Multicast is disabled. If set to 1, Multicast is enabled.
+<p&gtIf set to 0, Multicast is disabled. If set to 1, Multicast is enabled. </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -501,6 +492,7 @@ Association group 1 supports 2 nodes.
 | COMMAND_CLASS_THERMOSTAT_FAN_STATE_V1| |
 | COMMAND_CLASS_ASSOCIATION_GRP_INFO_V1| |
 | COMMAND_CLASS_DEVICE_RESET_LOCALLY_V1| |
+| COMMAND_CLASS_ANTITHEFT_V1| |
 | COMMAND_CLASS_ZWAVEPLUS_INFO_V1| |
 | COMMAND_CLASS_MULTI_CHANNEL_V2| |
 | COMMAND_CLASS_CONFIGURATION_V1| |
@@ -543,9 +535,9 @@ Association group 1 supports 2 nodes.
 
 ### Documentation Links
 
-* [CT100 Plus User Guide](https://www.cd-jackson.com/zwave_device_uploads/641/CT100-Plus-UserGuide.pdf)
+* [CT100 Plus User Guide](https://opensmarthouse.org/zwavedatabase/641/CT100-Plus-UserGuide.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/641).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/641).

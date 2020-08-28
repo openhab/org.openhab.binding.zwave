@@ -10,34 +10,22 @@ This describes the Z-Wave device *KONOzw*, manufactured by *Johnson Controls* wi
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![KONOzw product image](https://www.cd-jackson.com/zwave_device_uploads/1154/1154_default.gif)
+![KONOzw product image](https://opensmarthouse.org/zwavedatabase/1154/image/)
 
 
 The KONOzw supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-KONOzw is the smart hub thermostat made with you in mind. It seamlessly connects to many smart hubs and blends in or stands out with its interchangeable Décorsnap covers™. KONOzw makes it easier than ever to personalize your comfort, décor, and savings.
+<p&gtKONOzw is the smart hub thermostat made with you in mind. It seamlessly connects to many smart hubs and blends in or stands out with its interchangeable Décorsnap covers™. KONOzw makes it easier than ever to personalize your comfort, décor, and savings.</p&gt
 
 ### Inclusion Information
 
-- In HOME screen, press the knob once to enter the menu settings 
-
-- Rotate the knob to select wireless symbol, then press the knob to enter the inclusion/exclusion menu
-
-- In the inclusion/exclusion menu, select ADD and press the knob to confirm
-
-- The device will begin the adding process
+<p&gt- In HOME screen, press the knob once to enter the menu settings </p&gt <p&gt- Rotate the knob to select wireless symbol, then press the knob to enter the inclusion/exclusion menu</p&gt <p&gt- In the inclusion/exclusion menu, select ADD and press the knob to confirm</p&gt <p&gt- The device will begin the adding process</p&gt
 
 ### Exclusion Information
 
-- In HOME screen, press the knob once to enter the menu settings 
-
-- Rotate the knob to select wireless symbol, then press the knob to enter the inclusion/exclusion menu
-
-- In the inclusion/exclusion menu, select RST and press the knob to confirm
-
-- The device will begin the removal process
+<p&gt- In HOME screen, press the knob once to enter the menu settings </p&gt <p&gt- Rotate the knob to select wireless symbol, then press the knob to enter the inclusion/exclusion menu</p&gt <p&gt- In the inclusion/exclusion menu, select RST and press the knob to confirm</p&gt <p&gt- The device will begin the removal process</p&gt
 
 ## Channels
 
@@ -177,7 +165,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: User Temperature Calibration
 
 Step-size = 10
-Adjusts room temperature display to match a calibrated value.
+<p&gtAdjusts room temperature display to match a calibrated value.</p&gt
 Values in the range -250 to 250 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -258,7 +246,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 8: Temperature Limit - Heat Max
 
 Increment by 1F
-60.00F-90.00F (16C-32C)
+<p&gt60.00F-90.00F (16C-32C)</p&gt
 Values in the range 60 to 90 may be set.
 
 The manufacturer defined default value is ```90```.
@@ -269,7 +257,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: Temperature Limit - Heat Min
 
 Increment by 1F
-45.00F-60.00F (7C-16C)
+<p&gt45.00F-60.00F (7C-16C)</p&gt
 Values in the range 45 to 60 may be set.
 
 The manufacturer defined default value is ```45```.
@@ -280,7 +268,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 ### Parameter 10: Temperature Limit - Cool Max
 
 Increment by 1F. Actual allowable range depends on the heat set point limit
-60F-95F (16C-35C)
+<p&gt60F-95F (16C-35C)</p&gt
 Values in the range 60 to 95 may be set.
 
 The manufacturer defined default value is ```95```.
@@ -291,7 +279,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 ### Parameter 11: Temperature Limit - Cool Min
 
 Increment by 1F. Actual allowable range depends on the heat set point limit
-50F-75F (10C-24C)
+<p&gt50F-75F (10C-24C)</p&gt
 Values in the range 50 to 75 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -302,7 +290,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12: Temperature Minimum Setpoint Deadband
 
 100 to 250, stepsize = 10
-The Dead Band is a temperature range in which neither COOL or HEAT turns on when in AUTO mode.
+<p&gtThe Dead Band is a temperature range in which neither COOL or HEAT turns on when in AUTO mode.</p&gt
 Values in the range 100 to 250 may be set.
 
 The manufacturer defined default value is ```200```.
@@ -412,9 +400,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1154/KONOzw-Operation-Guideline-V1-7-190711.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1154/KONOzw-Operation-Guideline-V1-7-190711.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1154).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1154).

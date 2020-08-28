@@ -10,24 +10,22 @@ This describes the Z-Wave device *ZMNHVD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHVD product image](https://www.cd-jackson.com/zwave_device_uploads/363/363_default.jpg)
+![ZMNHVD product image](https://opensmarthouse.org/zwavedatabase/363/image/)
 
 
 The ZMNHVD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Universal dimmer module with a standard 0-10V output and a multi-function input, which may be a push button / switch, a potentiometer or 0-10V signal 
+<p&gtUniversal dimmer module with a standard 0-10V output and a multi-function input, which may be a push button / switch, a potentiometer or 0-10V signal </p&gt
 
 ### Inclusion Information
 
-  * press service button S for more than 2 second or
-  * press push button I1 three times within 3s (3 times change switch state within 3 seconds)
+<ul&gt<li&gtpress service button S for more than 2 second or</li&gt <li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds)</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * press service button S for more than 6 second or
-  * press push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply
+<ul&gt<li&gtpress service button S for more than 6 second or</li&gt <li&gtpress push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li&gt </ul&gt
 
 ## Channels
 
@@ -99,7 +97,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Input 1 Switch Type
 
 Input 1 Switch Type
-By this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)
+<p&gtBy this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -457,9 +455,9 @@ Association group 6 supports 16 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/363/Qubino-Flush-Dimmer-0-10V-PLUS-user-manual-V1-1-eng-1.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/363/Qubino-Flush-Dimmer-0-10V-PLUS-user-manual-V1-1-eng-1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/363).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/363).

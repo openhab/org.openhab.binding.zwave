@@ -7,9 +7,7 @@
 
   <thing-type id="danfoss_010101_00_000" listed="false">
     <label>010101 Popp Wireless Thermostatic Valve TRV</label>
-    <description><![CDATA[
-Popp Wireless Thermostatic Valve TRV<br /><h1>Overview</h1><p>This device is a Z-Wave controlled electronic radiator thermostat. It is mounted on wall heating valves and controls them by a motor.</p> <br /><h2>Inclusion Information</h2><p>Short push middle button</p> <br /><h2>Exclusion Information</h2><p>Short push middle button</p> <br /><h2>Wakeup Information</h2><p>Short push middle button</p>
-    ]]></description>
+    <description>Popp Wireless Thermostatic Valve TRV&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis device is a Z-Wave controlled electronic radiator thermostat. It is mounted on wall heating valves and controls them by a motor.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtShort push middle button&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtShort push middle button&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtShort push middle button&lt;/p&gt</description>
     <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->

@@ -7,9 +7,7 @@
 
   <thing-type id="northq_nq9021_00_000" listed="false">
     <label>NQ-9021 Electrical Meter</label>
-    <description><![CDATA[
-Electrical Meter<br /><h1>Overview</h1><p>The Z-Wave Smart Meter Sensor is a compact sensor designed to read meter values from traditional electromechanical and electronic meters with optical port. The sensor is easy to install and ideal for precise meter reading down to 0,1kwh. Its compact size and external wireless transmitter makes it easy to install in any distribution board. The device is battery powered (will last about 1 year) and reports the meter value once in 15 minutes. If there won't be a Z-Wave network, the device will store values up to 3 month. This ensures, that the system can even be used in a minimal configuration with a simple Z-Wave USB Stick (Not part of delivery!) connected to a PC.</p> <br /><h2>Inclusion Information</h2><p>Press the sensor button 3 times</p> <br /><h2>Exclusion Information</h2><p>Press the sensor button 3 times</p> <br /><h2>Wakeup Information</h2><p>A single click on the Z-Wave button will wake up the device</p>
-    ]]></description>
+    <description>Electrical Meter&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Z-Wave Smart Meter Sensor is a compact sensor designed to read meter values from traditional electromechanical and electronic meters with optical port. The sensor is easy to install and ideal for precise meter reading down to 0,1kwh. Its compact size and external wireless transmitter makes it easy to install in any distribution board. The device is battery powered (will last about 1 year) and reports the meter value once in 15 minutes. If there won't be a Z-Wave network, the device will store values up to 3 month. This ensures, that the system can even be used in a minimal configuration with a simple Z-Wave USB Stick (Not part of delivery!) connected to a PC.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the sensor button 3 times&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the sensor button 3 times&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtA single click on the Z-Wave button will wake up the device&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -78,18 +76,14 @@ Electrical Meter<br /><h1>Overview</h1><p>The Z-Wave Smart Meter Sensor is a com
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: IR Pulse Width</label>
-        <description><![CDATA[
-IR Pulse Width<br /><h1>Overview</h1><p>Adjusts transmit signal so received signal will in average be equal to this values.</p>
-        ]]></description>
+        <description>IR Pulse Width&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjusts transmit signal so received signal will in average be equal to this values.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="1" max="50">
         <label>5: Poll / Wake up frequency</label>
-        <description><![CDATA[
-Poll / Wake up frequency<br /><h1>Overview</h1><p>Wake device up this many times per second. This value also controls number of measurements per second on mechanical meters</p>
-        ]]></description>
+        <description>Poll / Wake up frequency&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWake device up this many times per second. This value also controls number of measurements per second on mechanical meters&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
       </parameter>
 
@@ -131,9 +125,7 @@ Poll / Wake up frequency<br /><h1>Overview</h1><p>Wake device up this many times
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>11: Real-time mode</label>
-        <description><![CDATA[
-Real-time mode<br /><h1>Overview</h1><p>Set this to enter real-time mode from remote. Contains seconds * poll frequency before going back to sleep.</p> <p>If you press the button once this value will be set.</p>
-        ]]></description>
+        <description>Real-time mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet this to enter real-time mode from remote. Contains seconds * poll frequency before going back to sleep.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you press the button once this value will be set.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -156,9 +148,7 @@ Real-time mode<br /><h1>Overview</h1><p>Set this to enter real-time mode from re
       <parameter name="config_15_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>15: Calibration status</label>
-        <description><![CDATA[
-Calibration status<br /><h1>Overview</h1><p>The calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.</p> <p>The calibration is finished successfully when value[0]  =  2 and value[2] = value[3].</p> <p>The calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[</p>
-        ]]></description>
+        <description>Calibration status&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe calibration progress is calculated as (value[1] - 65 + value[2] / value[3]) * 25.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe calibration is finished successfully when value[0]  =  2 and value[2] = value[3].&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe calibration has failed if value[0] != 1 OR (value[0] = 2 AND value[2] != value[&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>

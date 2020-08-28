@@ -7,9 +7,7 @@
 
   <thing-type id="ge_45609_00_000" listed="false">
     <label>45609 On/Off Relay Switch</label>
-    <description><![CDATA[
-On/Off Relay Switch<br /><h1>Overview</h1><p>Wall mounted On/Off switch. Control the On/Off status of permanently installed lighting, fans and more!</p> <br /><h2>Inclusion Information</h2><p>When prompted by your primary controller, tap the top or bottom of the rocker</p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network</p>
-    ]]></description>
+    <description>On/Off Relay Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWall mounted On/Off switch. Control the On/Off status of permanently installed lighting, fans and more!&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtWhen prompted by your primary controller, tap the top or bottom of the rocker&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -43,9 +41,7 @@ On/Off Relay Switch<br /><h1>Overview</h1><p>Wall mounted On/Off switch. Control
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is Night Light mode where LED is on when switch is off.</p>
-        ]]></description>
+        <description>Defines the behavior of the blue LED.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault is Night Light mode where LED is on when switch is off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">LED on when switch is OFF</option>
@@ -56,9 +52,7 @@ Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is Night 
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
-        <description><![CDATA[
-Change the top of the switch to OFF and the bottom of the switch to ON.<br /><h1>Overview</h1><p>Note: If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch.</p>
-        ]]></description>
+        <description>Change the top of the switch to OFF and the bottom of the switch to ON.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNote: If you invert the switches and also install the product upside down, remember the load will now be controlled by the right, not the left switch.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No</option>

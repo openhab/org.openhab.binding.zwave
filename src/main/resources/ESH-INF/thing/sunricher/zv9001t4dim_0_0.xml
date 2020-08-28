@@ -7,9 +7,7 @@
 
   <thing-type id="sunricher_zv9001t4dim_00_000" listed="false">
     <label>ZV9001T4-DIM 4 group single colour touch panel secondary controller</label>
-    <description><![CDATA[
-4 group single colour touch panel secondary controller<br /><h1>Overview</h1><p>SR-ZV9001T4-DIM-EU is a touch control z-wave secondary controller (z wave dimmer switch) with z-wave Plus enabled for single color LED lighting.</p> <p>As a z-wave secondary controller, it is a z wave dimmer switch which can be added to z-wave network and removed from z-wave network by z-wave primary (master) controllers or gateway and control z-wave devices that are added to the network. It supports 5 groups for associations, a lifeline group association to primary (master) controller and 4 groups association to devices, the group association to devices supports maximum 12 Z-wave devices per group.</p> <p>It is a universal z-wave slave which can be compatible with universal z-wave primary controller or gateway. The wireless controller is compatible with single color z wave device SR-ZV9101FA-DIM and different frequencies are available for different countries or areas. The signal transmit distance can be up to 30m. The controller supports group and scene storage and recall functions. It is easy to install on the wall and available in standard EU size.</p> <p><strong>Key Features</strong></p> <ul><li>Single color touch Z-wave secondary controller</li> <li>Source-routed Mesh Network Architecture</li> <li>Each device works as a node</li> <li>All Nodes Are Transceivers</li> <li>Each Z-wave Network Allows Up to 243 Devices</li> <li>Actively route around and circumvent obstacles or radio dead spots</li> <li>Wireless Synchronization to Drastically Increase Control Distance</li> <li>Devices can communicate to one another by using intermediate nodes</li> <li>Added or removed by primary controllers or gateway</li> <li>Supports 1 lifeline group association to master controller</li> <li>Supports 4 groups association to z-wave devices, maximum 12 devices per group</li> <li>Compatible with universal z-wave primary controller or gateway</li> <li>Supports group, scene storage and recall functions</li> </ul><br /><h2>Inclusion Information</h2><p>Set z-wave master (primary) controller into network inclusion mode (please refer to their manual to learn how)   Click the “Inclusion/Exclusion” key on the back of the slave controller (or press and hold down the switch key ) -&gt; LED indicator on the salve controller turns on and flashes 6 times quickly to indicate successful adding -&gt; there shall be an indication on master controller or z-wave gateway</p> <br /><h2>Exclusion Information</h2><p>When the slave controller has already been added to z-wave network, set the z-wave master controller or z-wave gateway into network exclusion mode (please refer to their user manual to learn how)</p> <p>Click the “Inclusion/Exclusion” key on the back of the slave controller (or press and hold down the switch key )</p> <p>-&gt; LED indicator on the slave controller turns on and shows 3 short blinks and 1 long blink to indicate successful removing</p> <p>-&gt; there shall be an indication on the master controller</p>
-    ]]></description>
+    <description>4 group single colour touch panel secondary controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSR-ZV9001T4-DIM-EU is a touch control z-wave secondary controller (z wave dimmer switch) with z-wave Plus enabled for single color LED lighting.&lt;/p&gt &lt;p&gtAs a z-wave secondary controller, it is a z wave dimmer switch which can be added to z-wave network and removed from z-wave network by z-wave primary (master) controllers or gateway and control z-wave devices that are added to the network. It supports 5 groups for associations, a lifeline group association to primary (master) controller and 4 groups association to devices, the group association to devices supports maximum 12 Z-wave devices per group.&lt;/p&gt &lt;p&gtIt is a universal z-wave slave which can be compatible with universal z-wave primary controller or gateway. The wireless controller is compatible with single color z wave device SR-ZV9101FA-DIM and different frequencies are available for different countries or areas. The signal transmit distance can be up to 30m. The controller supports group and scene storage and recall functions. It is easy to install on the wall and available in standard EU size.&lt;/p&gt &lt;p&gt&lt;strong&gtKey Features&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtSingle color touch Z-wave secondary controller&lt;/li&gt &lt;li&gtSource-routed Mesh Network Architecture&lt;/li&gt &lt;li&gtEach device works as a node&lt;/li&gt &lt;li&gtAll Nodes Are Transceivers&lt;/li&gt &lt;li&gtEach Z-wave Network Allows Up to 243 Devices&lt;/li&gt &lt;li&gtActively route around and circumvent obstacles or radio dead spots&lt;/li&gt &lt;li&gtWireless Synchronization to Drastically Increase Control Distance&lt;/li&gt &lt;li&gtDevices can communicate to one another by using intermediate nodes&lt;/li&gt &lt;li&gtAdded or removed by primary controllers or gateway&lt;/li&gt &lt;li&gtSupports 1 lifeline group association to master controller&lt;/li&gt &lt;li&gtSupports 4 groups association to z-wave devices, maximum 12 devices per group&lt;/li&gt &lt;li&gtCompatible with universal z-wave primary controller or gateway&lt;/li&gt &lt;li&gtSupports group, scene storage and recall functions&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtSet z-wave master (primary) controller into network inclusion mode (please refer to their manual to learn how)   Click the “Inclusion/Exclusion” key on the back of the slave controller (or press and hold down the switch key ) -&amp;gt; LED indicator on the salve controller turns on and flashes 6 times quickly to indicate successful adding -&amp;gt; there shall be an indication on master controller or z-wave gateway&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtWhen the slave controller has already been added to z-wave network, set the z-wave master controller or z-wave gateway into network exclusion mode (please refer to their user manual to learn how)&lt;/p&gt &lt;p&gtClick the “Inclusion/Exclusion” key on the back of the slave controller (or press and hold down the switch key )&lt;/p&gt &lt;p&gt-&amp;gt; LED indicator on the slave controller turns on and shows 3 short blinks and 1 long blink to indicate successful removing&lt;/p&gt &lt;p&gt-&amp;gt; there shall be an indication on the master controller&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -78,18 +76,14 @@
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>3: Scene_type</label>
-        <description><![CDATA[
-Scene type<br /><h1>Overview</h1><p>Parameter 3 can be configured via “COMMAND_CLASS_CONFIGURATION” to decide which scene command to use “CENTRAL SCENE” or “SCENE ACTIVATION”, factory default is “CENTRAL SCENE”.</p>
-        ]]></description>
+        <description>Scene type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter 3 can be configured via “COMMAND_CLASS_CONFIGURATION” to decide which scene command to use “CENTRAL SCENE” or “SCENE ACTIVATION”, factory default is “CENTRAL SCENE”.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>4: Scene_send_to_where</label>
-        <description><![CDATA[
-Scene send to where<br /><h1>Overview</h1><p>Parameter 4 can be configured via “COMMAND_CLASS_CONFIGURATION” to decide which object shall the remote send scene packet to, the gateway or the association group. Factory default is the association group.   By factory default this remote uses “CENTRAL SCENE” to send packet to the association group devices, this method requires that the controlled devices support “CENTRAL SCENE”</p>
-        ]]></description>
+        <description>Scene send to where&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtParameter 4 can be configured via “COMMAND_CLASS_CONFIGURATION” to decide which object shall the remote send scene packet to, the gateway or the association group. Factory default is the association group.   By factory default this remote uses “CENTRAL SCENE” to send packet to the association group devices, this method requires that the controlled devices support “CENTRAL SCENE”&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -100,33 +94,25 @@ Scene send to where<br /><h1>Overview</h1><p>Parameter 4 can be configured via �
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-Launch 1<br /><h1>Overview</h1><p>Send mode:</p> <p>Singlecast/Multicast (The touch color wheel uses multicast to send packets)</p> <p>Send commands:</p> <p>The Basic Set, <br />Switch Multilevel Start Level Change, <br />Switch Multilevel Stop Level Change, <br />Switch Multilevel Set, <br />Scene Activation,<br />Scene Actuator Conf Set,<br />Central Scene Notification</p>
-        ]]></description>
+        <description>Launch 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend mode:&lt;/p&gt &lt;p&gtSinglecast/Multicast (The touch color wheel uses multicast to send packets)&lt;/p&gt &lt;p&gtSend commands:&lt;/p&gt &lt;p&gtThe Basic Set, &lt;br /&gtSwitch Multilevel Start Level Change, &lt;br /&gtSwitch Multilevel Stop Level Change, &lt;br /&gtSwitch Multilevel Set, &lt;br /&gtScene Activation,&lt;br /&gtScene Actuator Conf Set,&lt;br /&gtCentral Scene Notification&lt;/p&gt</description>
         <multipleLimit>12</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Group 3</label>
-        <description><![CDATA[
-Launch 2<br /><h1>Overview</h1><p>Send mode:<br /><br />Singlecast/Multicast (The touch color wheel uses multicast to send packets)<br /><br />Send commands:<br /><br />The Basic Set,<br />Switch Multilevel Start Level Change,<br />Switch Multilevel Stop Level Change,<br />Switch Multilevel Set,<br />Scene Activation,<br />Scene Actuator Conf Set,<br />Central Scene Notification</p>
-        ]]></description>
+        <description>Launch 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend mode:&lt;br /&gt&lt;br /&gtSinglecast/Multicast (The touch color wheel uses multicast to send packets)&lt;br /&gt&lt;br /&gtSend commands:&lt;br /&gt&lt;br /&gtThe Basic Set,&lt;br /&gtSwitch Multilevel Start Level Change,&lt;br /&gtSwitch Multilevel Stop Level Change,&lt;br /&gtSwitch Multilevel Set,&lt;br /&gtScene Activation,&lt;br /&gtScene Actuator Conf Set,&lt;br /&gtCentral Scene Notification&lt;/p&gt</description>
         <multipleLimit>12</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Group 4</label>
-        <description><![CDATA[
-Launch 3<br /><h1>Overview</h1><p>Send mode:<br /><br />Singlecast/Multicast (The touch color wheel uses multicast to send packets)<br /><br />Send commands:<br /><br />The Basic Set,<br />Switch Multilevel Start Level Change,<br />Switch Multilevel Stop Level Change,<br />Switch Multilevel Set,<br />Scene Activation,<br />Scene Actuator Conf Set,<br />Central Scene Notification</p>
-        ]]></description>
+        <description>Launch 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend mode:&lt;br /&gt&lt;br /&gtSinglecast/Multicast (The touch color wheel uses multicast to send packets)&lt;br /&gt&lt;br /&gtSend commands:&lt;br /&gt&lt;br /&gtThe Basic Set,&lt;br /&gtSwitch Multilevel Start Level Change,&lt;br /&gtSwitch Multilevel Stop Level Change,&lt;br /&gtSwitch Multilevel Set,&lt;br /&gtScene Activation,&lt;br /&gtScene Actuator Conf Set,&lt;br /&gtCentral Scene Notification&lt;/p&gt</description>
         <multipleLimit>12</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Group 5</label>
-        <description><![CDATA[
-Launch 4<br /><h1>Overview</h1><p>Send mode:<br /><br />Singlecast/Multicast (The touch color wheel uses multicast to send packets)<br /><br />Send commands:<br /><br />The Basic Set,<br />Switch Multilevel Start Level Change,<br />Switch Multilevel Stop Level Change,<br />Switch Multilevel Set,<br />Scene Activation,<br />Scene Actuator Conf Set,<br />Central Scene Notification</p>
-        ]]></description>
+        <description>Launch 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend mode:&lt;br /&gt&lt;br /&gtSinglecast/Multicast (The touch color wheel uses multicast to send packets)&lt;br /&gt&lt;br /&gtSend commands:&lt;br /&gt&lt;br /&gtThe Basic Set,&lt;br /&gtSwitch Multilevel Start Level Change,&lt;br /&gtSwitch Multilevel Stop Level Change,&lt;br /&gtSwitch Multilevel Set,&lt;br /&gtScene Activation,&lt;br /&gtScene Actuator Conf Set,&lt;br /&gtCentral Scene Notification&lt;/p&gt</description>
         <multipleLimit>12</multipleLimit>
       </parameter>
 

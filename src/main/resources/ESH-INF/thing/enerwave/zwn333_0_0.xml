@@ -7,9 +7,7 @@
 
   <thing-type id="enerwave_zwn333_00_000" listed="false">
     <label>ZWN-333 Plug-in Appliance Module</label>
-    <description><![CDATA[
-Plug-in Appliance Module<br /><h1>Overview</h1><p>Provides 120V/AC NEMA 5-15R grounding receptacle for use with a wide variety of lamps/load, such as incandescent, dimmable LED and CFL table or floor lamp, fluorescent light, small appliance, motor.</p> <br /><h2>Inclusion Information</h2><p>Once program button is pressed and hold for 3 second, the device will enter into learn mode to accomplish adding or removing by controller</p> <br /><h2>Exclusion Information</h2><p>Once program button is pressed and hold for 3 second, the device will enter into learn mode to accomplish adding or removing by controller</p>
-    ]]></description>
+    <description>Plug-in Appliance Module&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtProvides 120V/AC NEMA 5-15R grounding receptacle for use with a wide variety of lamps/load, such as incandescent, dimmable LED and CFL table or floor lamp, fluorescent light, small appliance, motor.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce program button is pressed and hold for 3 second, the device will enter into learn mode to accomplish adding or removing by controller&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnce program button is pressed and hold for 3 second, the device will enter into learn mode to accomplish adding or removing by controller&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

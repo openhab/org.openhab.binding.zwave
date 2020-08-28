@@ -10,22 +10,22 @@ This describes the Z-Wave device *Da Vinci Switch Default*, manufactured by *Ava
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Da Vinci Switch Default product image](https://www.cd-jackson.com/zwave_device_uploads/911/911_default.png)
+![Da Vinci Switch Default product image](https://opensmarthouse.org/zwavedatabase/911/image/)
 
 
 The Da Vinci Switch Default supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH\_BINARY)  , shutter (MULTILEVEL\_SWITCH) Z-Wave device.
+<p&gtThe Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH\_BINARY)  , shutter (MULTILEVEL\_SWITCH) Z-Wave device.</p&gt
 
 ### Inclusion Information
 
-Press the #1 button 3 times.
+<p&gtPress the #1 button 3 times.</p&gt
 
 ### Exclusion Information
 
-Press the #1 button 3 times.
+<p&gtPress the #1 button 3 times.</p&gt
 
 ## Channels
 
@@ -319,17 +319,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: EP 1 Type
 
 EP 1 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 1 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -362,8 +352,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: EP 1 Output
 
 EP 1 Output
-0 = not used  
-1 – 6 = Num. of output
+<p&gt0 = not used<br /&gt1 – 6 = Num. of output</p&gt
 Values in the range 1 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -374,10 +363,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: EP 1 Button attribute
 
 EP 1 Button attribute
-Bit [0] = LED enable  
-Bit [1] = Sound enable  
-Bit [2] = Dry contact enable  
-Bit [3] = Motor enable
+<p&gtBit [0] = LED enable<br /&gtBit [1] = Sound enable<br /&gtBit [2] = Dry contact enable<br /&gtBit [3] = Motor enable</p&gt
 Values in the range 0 to 7 may be set.
 
 The manufacturer defined default value is ```7```.
@@ -388,17 +374,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: EP 2 Type
 
 EP 2 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -431,17 +407,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 11: EP 3 Type
 
 EP 3 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -474,17 +440,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 16: EP 4 Type
 
 EP 4 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -517,17 +473,7 @@ This parameter has the configuration ID ```config_18_1``` and is of type ```INTE
 ### Parameter 21: EP 5 Type
 
 EP 5 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -560,17 +506,7 @@ This parameter has the configuration ID ```config_23_1``` and is of type ```INTE
 ### Parameter 26: EP 6 Type
 
 EP 6 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -603,17 +539,7 @@ This parameter has the configuration ID ```config_28_1``` and is of type ```INTE
 ### Parameter 31: EP 7 Type
 
 EP 7 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -646,17 +572,7 @@ This parameter has the configuration ID ```config_33_1``` and is of type ```INTE
 ### Parameter 36: EP 8 Type
 
 EP 8 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -689,17 +605,7 @@ This parameter has the configuration ID ```config_38_1``` and is of type ```INTE
 ### Parameter 41: EP 9 Type
 
 EP 9 Type
-1 = switch on/off
-
-2 = blind up
-
-3 = blind down
-
-4 = switch multiway
-
-5 = blind-up multiway
-
-6 = blind-down multiway
+<p&gt1 = switch on/off</p&gt <p&gt2 = blind up</p&gt <p&gt3 = blind down</p&gt <p&gt4 = switch multiway</p&gt <p&gt5 = blind-up multiway</p&gt <p&gt6 = blind-down multiway</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -866,9 +772,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/911/DA-VINCI-ver-9.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/911/DA-VINCI-ver-9.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/911).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/911).

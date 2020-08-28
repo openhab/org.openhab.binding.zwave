@@ -10,7 +10,7 @@ This describes the Z-Wave device *HKZW_MS01*, manufactured by *[Hank](http://www
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HKZW_MS01 product image](https://www.cd-jackson.com/zwave_device_uploads/675/675_default.png)
+![HKZW_MS01 product image](https://opensmarthouse.org/zwavedatabase/675/image/)
 
 
 The HKZW_MS01 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,17 +19,15 @@ The HKZW_MS01 does not permanently listen for messages sent from the controller 
 
 ## Overview
 
-Detects motion, temperature, humidity, and luminance
+<p&gtDetects motion, temperature, humidity, and luminance</p&gt
 
 ### Inclusion Information
 
-Triple click the Z-Button
-
-Hold Z-button for 3 seconds for secure inclusion
+<p&gtTriple click the Z-Button</p&gt <p&gtHold Z-button for 3 seconds for secure inclusion</p&gt
 
 ### Exclusion Information
 
-Triple click the Z-Button
+<p&gtTriple click the Z-Button</p&gt
 
 ### Wakeup Information
 
@@ -38,7 +36,7 @@ The HKZW_MS01 does not permanently listen for messages sent from the controller 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press the Z-Button
+<p&gtPress the Z-Button</p&gt
 
 ## Channels
 
@@ -216,9 +214,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/675/HKZW-MS01-MANUL.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/675/HKZW-MS01-MANUL.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/675).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/675).

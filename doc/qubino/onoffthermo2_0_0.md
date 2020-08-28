@@ -10,67 +10,22 @@ This describes the Z-Wave device *ZMNKID*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![ZMNKID product image](https://www.cd-jackson.com/zwave_device_uploads/1101/1101_default.png)
+![ZMNKID product image](https://opensmarthouse.org/zwavedatabase/1101/image/)
 
 
 The ZMNKID supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Qubino Flush On/Off Thermostat 2 is ideal for remotely controlling electric or water-based underfloor heating systems, electric water heaters, hot water pumps, electric radiators and similar.
+<p&gtThe Qubino Flush On/Off Thermostat 2 is ideal for remotely controlling electric or water-based underfloor heating systems, electric water heaters, hot water pumps, electric radiators and similar.</p&gt
 
 ### Inclusion Information
 
-Classic Inclusion
-
-AUTOMATICALLY ADDING THE DEVICE TO A Z-WAVE NETWORK (SMARTSTART INCLUSION)
-
-  1. Scan QR code on device label and add S2 DSK to Provisioning List in gateway (hub)
-  2. Connect the device to the power supply (with the temperature sensor already connected).
-  3. Inclusion will be initiated automatically within few seconds of connection to the power supply and the device will automatically enrol in your network (when the device is excluded and connected to the power supply it automatically enters the LEARN MODE state).
-
-**NOTE: LEARN MODE state allows the device to receive network information from the controller.**
-
-ⓘ SmartStart inclusion is a part of S2 security level, so if you want to use SmartStart, you need to include it as S2 Authenticated. 
-
-MANUALLY ADDING THE DEVICE TO A Z-WAVE NETWORK (MANUAL INCLUSION)
-
-  1. Enable add/remove mode on your Z-Wave gateway (hub) 
-  2. Connect the device to the power supply (with the temperature sensor already connected*) 
-  3. Toggle the switch connected to the I1 terminal 3 times within 3 seconds (The device has to get On/Off signal 3 times, meaning 3 times click on the push button or with the normal button 3 times On/Off.) (this procedure puts the device in LEARN MODE) in the first minute after power cycle.
-
-OR
-
-If the device is powered by 24 V SELV supply, press and hold the S (Service) button between 3 and 6 seconds (this procedure puts the device in LEARN MODE)
-
-  1. A new device will appear on your dashboard
-  2. Inclusion with the switch connected to I1 terminal is not limited by time
-
-*If connecting the temperature sensor, switch off the power supply.
-
-**NOTE1: LEARN MODE state allows the device to receive network information from the controller.**
+<p&gtClassic Inclusion</p&gt <p&gtAUTOMATICALLY ADDING THE DEVICE TO A Z-WAVE NETWORK (SMARTSTART INCLUSION)</p&gt <ol&gt<li&gtScan QR code on device label and add S2 DSK to Provisioning List in gateway (hub)</li&gt <li&gtConnect the device to the power supply (with the temperature sensor already connected).</li&gt <li&gtInclusion will be initiated automatically within few seconds of connection to the power supply and the device will automatically enrol in your network (when the device is excluded and connected to the power supply it automatically enters the LEARN MODE state).</li&gt </ol&gt<p&gt<strong&gtNOTE: LEARN MODE state allows the device to receive network information from the controller.</strong&gt</p&gt <p&gtⓘ SmartStart inclusion is a part of S2 security level, so if you want to use SmartStart, you need to include it as S2 Authenticated. </p&gt <p&gtMANUALLY ADDING THE DEVICE TO A Z-WAVE NETWORK (MANUAL INCLUSION)</p&gt <ol&gt<li&gtEnable add/remove mode on your Z-Wave gateway (hub) </li&gt <li&gtConnect the device to the power supply (with the temperature sensor already connected\*) </li&gt <li&gtToggle the switch connected to the I1 terminal 3 times within 3 seconds (The device has to get On/Off signal 3 times, meaning 3 times click on the push button or with the normal button 3 times On/Off.) (this procedure puts the device in LEARN MODE) in the first minute after power cycle.</li&gt </ol&gt<p&gtOR</p&gt <p&gtIf the device is powered by 24 V SELV supply, press and hold the S (Service) button between 3 and 6 seconds (this procedure puts the device in LEARN MODE)</p&gt <ol&gt<li&gtA new device will appear on your dashboard</li&gt <li&gtInclusion with the switch connected to I1 terminal is not limited by time</li&gt </ol&gt<p&gt\*If connecting the temperature sensor, switch off the power supply.</p&gt <p&gt<strong&gtNOTE1: LEARN MODE state allows the device to receive network information from the controller.</strong&gt</p&gt
 
 ### Exclusion Information
 
-Classic Exclusion
-
-REMOVAL FROM A ZWAVE NETWORK (Z-WAVE EXCLUSION)
-
-  1. Connect the device to the power supply
-  2. Make sure the device is within direct range of your Z-Wave gateway (hub) or use a hand-held Z-Wave remote to perform exclusion 
-  3. Enable add/remove mode on your Z-Wave gateway (hub)
-  4. Toggle the switch connected to the I1 terminal 3 times within 3 seconds in the first minute after power cycle (The device has to get On/Off signal 3 times, meaning 3 times click on the push button or with the normal button 3 times On/Off). 
-
-OR
-
-If the device is powered by 24 V SELV supply, press and hold the S (Service) button between 3 and 6 seconds
-
-  1. Exclusion with the switch connected to I1 terminal is not limited by time 
-  2. The device will be removed from your network, but any custom configuration parameters will not be erased
-
-**NOTE1: LEARN MODE state allows the device to receive network information from the controller.**
-
-**NOTE2: After device is excluded you should wait 30 seconds before performing re-inclusion.**
+<p&gtClassic Exclusion</p&gt <p&gtREMOVAL FROM A ZWAVE NETWORK (Z-WAVE EXCLUSION)</p&gt <ol&gt<li&gtConnect the device to the power supply</li&gt <li&gtMake sure the device is within direct range of your Z-Wave gateway (hub) or use a hand-held Z-Wave remote to perform exclusion </li&gt <li&gtEnable add/remove mode on your Z-Wave gateway (hub)</li&gt <li&gtToggle the switch connected to the I1 terminal 3 times within 3 seconds in the first minute after power cycle (The device has to get On/Off signal 3 times, meaning 3 times click on the push button or with the normal button 3 times On/Off). </li&gt </ol&gt<p&gtOR</p&gt <p&gtIf the device is powered by 24 V SELV supply, press and hold the S (Service) button between 3 and 6 seconds</p&gt <ol&gt<li&gtExclusion with the switch connected to I1 terminal is not limited by time </li&gt <li&gtThe device will be removed from your network, but any custom configuration parameters will not be erased</li&gt </ol&gt<p&gt<strong&gtNOTE1: LEARN MODE state allows the device to receive network information from the controller.</strong&gt</p&gt <p&gt<strong&gtNOTE2: After device is excluded you should wait 30 seconds before performing re-inclusion.</strong&gt</p&gt
 
 ## Channels
 
@@ -184,13 +139,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Input I1 switch type
 
 Input I1 switch type
-With this parameter, you can select between push-button (momentary) and on/off toggle switch types.
-
-  
-Values:  
-• default value 1  
-• 0 - push-button (momentary)  
-• 1 - on/off toggle switch
+<p&gtWith this parameter, you can select between push-button (momentary) and on/off toggle switch types.</p&gt <p&gt<br /&gtValues:<br /&gt• default value 1<br /&gt• 0 - push-button (momentary)<br /&gt• 1 - on/off toggle switch </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -206,13 +155,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 4: Input 1 contact type
 
 Input 1 contact type
-This parameter determines how the switch or push-button is connected.
-
-  
-Values:  
-• default value 0  
-• 0 - NO (normally open) input type  
-• 1 - NC (normally close) input type
+<p&gtThis parameter determines how the switch or push-button is connected.</p&gt <p&gt<br /&gtValues:<br /&gt• default value 0<br /&gt• 0 - NO (normally open) input type<br /&gt• 1 - NC (normally close) input type </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -228,19 +171,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 40: Power Consumption Reporting Threshold
 
 Power Consumption Reporting Threshold
-Choose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages so if 10 is set, for example, the device will report any power consumption changes of 10% or more compared to the last reading.
-
-  
-Values:  
-• default value 10  
-• 0 - Power consumption reporting  
-disabled  
-• 1 - 100 = 1% - 100% 
-
-Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).  
-
-
-**NOTE: Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter.**
+<p&gtChoose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages so if 10 is set, for example, the device will report any power consumption changes of 10% or more compared to the last reading.</p&gt <p&gt<br /&gtValues:<br /&gt• default value 10<br /&gt• 0 - Power consumption reporting<br /&gtdisabled<br /&gt• 1 - 100 = 1% - 100% </p&gt <p&gtPower consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).<br /&gt</p&gt <p&gt<strong&gtNOTE: Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter. </strong&gt </p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -251,16 +182,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 42: Power Consumption Reporting(Time)
 
 Power Consumption Reporting(Time)
-Set value refers to the time interval with which power consumption in Watts is reported (30 – 32767 seconds) starting from time of last Watts reported. If for example 300 is entered, energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).  
-
-
-Values:  
-• default value 600 (600 seconds = 10 minutes)  
-• 0 - Power consumption reporting disabled  
-• 30 - 32767 = 30 - 32767 seconds.
-
-Power consumption reporting enabled. Report is sent according to time interval (value) set here. EXAMPLE: If we set value to 30 seconds and the device reports Watts because of percent change of power (parameter 40 - Watt Power Consumption Reporting Threshold) at time = 5 seconds,  
-then the device will send next meter report at time = 35 seconds (assuming the device has not sent report within interval 5 to 35 seconds).
+<p&gtSet value refers to the time interval with which power consumption in Watts is reported (30 – 32767 seconds) starting from time of last Watts reported. If for example 300 is entered, energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).<br /&gt</p&gt <p&gtValues:<br /&gt• default value 600 (600 seconds = 10 minutes)<br /&gt• 0 - Power consumption reporting disabled<br /&gt• 30 - 32767 = 30 - 32767 seconds.</p&gt <p&gt Power consumption reporting enabled. Report is sent according to time interval (value) set here. EXAMPLE: If we set value to 30 seconds and the device reports Watts because of percent change of power (parameter 40 - Watt Power Consumption Reporting Threshold) at time = 5 seconds,<br /&gtthen the device will send next meter report at time = 35 seconds (assuming the device has not sent report within interval 5 to 35 seconds). </p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```600```.
@@ -271,20 +193,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 43: Hysteresis Upper temperature offset
 
 Hysteresis Upper temperature offset
-This parameter defines minimum temperature difference between real measured temperature and set-point temperature to turn device on in heat mode or turn device off in cool mode. 
-
-Values:  
-• default value 5 (0.5 °C)  
-• 0 – 450
-
-**  
-NOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 0 – 250 (0.0 °C – 25.0 °C, resolution 0.1 °C)  
-** 
-
-**NOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 0 – 450 (0.0 °F – 45.0 °F, resolution 0.1 °F)  
-** 
-
-**NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.**
+<p&gtThis parameter defines minimum temperature difference between real measured temperature and set-point temperature to turn device on in heat mode or turn device off in cool mode. </p&gt <p&gtValues:<br /&gt• default value 5 (0.5 °C)<br /&gt• 0 – 450</p&gt <p&gt<strong&gt<br /&gtNOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 0 – 250 (0.0 °C – 25.0 °C, resolution 0.1 °C)<br /&gt</strong&gt</p&gt <p&gt<strong&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 0 – 450 (0.0 °F – 45.0 °F, resolution 0.1 °F)<br /&gt</strong&gt</p&gt <p&gt<strong&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth. </strong&gt </p&gt
 Values in the range 0 to 450 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -295,16 +204,7 @@ This parameter has the configuration ID ```config_43_2``` and is of type ```INTE
 ### Parameter 44: Hysteresis Lower temperature offset
 
 Hysteresis Lower temperature offset
-This parameter defines minimum temperature difference between real measured temperature and set-point temperature to turn device off in heat mode or turn device on in cool mode. 
-
-Values:  
-• default value 5 (0.5 °C)  
-• 0 - 450
-
-**  
-NOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 0 – 250 (0.0 °C – 25.0 °C, resolution 0.1 °C)  
-NOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 0 – 450 (0.0 °F – 45.0 °F, resolution 0.1 °F)  
-NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.**
+<p&gtThis parameter defines minimum temperature difference between real measured temperature and set-point temperature to turn device off in heat mode or turn device on in cool mode. </p&gt <p&gtValues:<br /&gt• default value 5 (0.5 °C)<br /&gt• 0 - 450</p&gt <p&gt<strong&gt<br /&gtNOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 0 – 250 (0.0 °C – 25.0 °C, resolution 0.1 °C)<br /&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 0 – 450 (0.0 °F – 45.0 °F, resolution 0.1 °F)<br /&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth. </strong&gt </p&gt
 Values in the range 0 to 450 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -315,18 +215,7 @@ This parameter has the configuration ID ```config_44_2``` and is of type ```INTE
 ### Parameter 45:  Antifreeze
 
 Antifreeze
-Set value determines at which temperature the device will be turned on even (if the thermostat was manually set to off).  
-
-
-Values:  
-• default value 50 (5.0 °C)  
-• -125 - 545  
-• 1000 - Antifreeze functionality disabled
-
-**NOTE1: Antifreeze is activated only in heating mode and it uses hysteresis of ±0.5°C.  
-NOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -125 – 125 (-12.5 °C – 12.5 °C, resolution 0.1 °C)  
-NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 95 – 545 (9.5 °F – 54.5 °F, resolution 0.1 °F)  
-NOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.**
+<p&gtSet value determines at which temperature the device will be turned on even (if the thermostat was manually set to off).<br /&gt</p&gt <p&gtValues:<br /&gt• default value 50 (5.0 °C)<br /&gt• -125 - 545<br /&gt• 1000 - Antifreeze functionality disabled</p&gt <p&gt<strong&gtNOTE1: Antifreeze is activated only in heating mode and it uses hysteresis of ±0.5°C.<br /&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -125 – 125 (-12.5 °C – 12.5 °C, resolution 0.1 °C)<br /&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 95 – 545 (9.5 °F – 54.5 °F, resolution 0.1 °F)<br /&gtNOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth. </strong&gt </p&gt
 Values in the range -125 to 1000 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -337,16 +226,7 @@ This parameter has the configuration ID ```config_45_2``` and is of type ```INTE
 ### Parameter 59: Thermostat mode
 
 Thermostat mode
-This parameter determines how the device will operate if it will operate in the heating mode or in the cooling mode. The range of the hysteresis will remain the same, only operation will change from heating to cooling and vice versa  
-
-
-Values:  
-• default value 0  
-• 0 - Heat mode  
-• 1 - Cool mode
-
-  
-**NOTE1: After parameter change, first exclude device (without setting parameters to default value) and then re include the device!**
+<p&gtThis parameter determines how the device will operate if it will operate in the heating mode or in the cooling mode. The range of the hysteresis will remain the same, only operation will change from heating to cooling and vice versa<br /&gt</p&gt <p&gtValues:<br /&gt• default value 0<br /&gt• 0 - Heat mode<br /&gt• 1 - Cool mode</p&gt <p&gt<br /&gt<strong&gtNOTE1: After parameter change, first exclude device (without setting parameters to default value) and then re include the device!</strong&gt </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -362,17 +242,7 @@ This parameter has the configuration ID ```config_59_1``` and is of type ```INTE
 ### Parameter 60: Too low temperature limit
 
 Too low temperature limit
-This parameter determines the temperature at which the device sends a command to the associated device - to turn ON device or to turn OFF device.
-
-Values:  
-• Default value 50 (Too low temperature limit is 5.0 °C)  
-• -150 - 2120
-
-  
-**NOTE1: Too low temperature limit is used with Association Group 3.**  
-**NOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -150 – 1000 (-15.0 °C – 100.0 °C, resolution 0.1 °C)**  
-**NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 50 – 2120 (5.0 °F – 212.0 °F, resolution 0.1 °F)**  
-**NOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.**
+<p&gtThis parameter determines the temperature at which the device sends a command to the associated device - to turn ON device or to turn OFF device.</p&gt <p&gtValues:<br /&gt• Default value 50 (Too low temperature limit is 5.0 °C)<br /&gt• -150 - 2120</p&gt <p&gt<br /&gt<strong&gtNOTE1: Too low temperature limit is used with Association Group 3.</strong&gt<br /&gt<strong&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -150 – 1000 (-15.0 °C – 100.0 °C, resolution 0.1 °C)</strong&gt<br /&gt<strong&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 50 – 2120 (5.0 °F – 212.0 °F, resolution 0.1 °F)</strong&gt<br /&gt<strong&gtNOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.</strong&gt </p&gt
 Values in the range -150 to 2120 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -383,17 +253,7 @@ This parameter has the configuration ID ```config_60_2``` and is of type ```INTE
 ### Parameter 61: Too high temperature limit
 
 Too high temperature limit
-This parameter determines the temperature at which the device sends a command to the associated device, to turn ON device or to turn OFF device. 
-
-Values:  
-• default value 700 (too high temperature limit is 70.0 °C)  
-• 1 - 2120
-
-  
-**NOTE1: Too high temperature limit is used with Association Group 3.**  
-**NOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 1 – 1000 (0.1 °C – 100.0 °C, resolution 0.1 °C)**  
-**NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 322 – 2120 (32.2 °F – 212.0 °F, resolution 0.1 °F)**  
-**NOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.**
+<p&gtThis parameter determines the temperature at which the device sends a command to the associated device, to turn ON device or to turn OFF device. </p&gt <p&gtValues:<br /&gt• default value 700 (too high temperature limit is 70.0 °C)<br /&gt• 1 - 2120</p&gt <p&gt<br /&gt<strong&gtNOTE1: Too high temperature limit is used with Association Group 3.</strong&gt<br /&gt<strong&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 1 – 1000 (0.1 °C – 100.0 °C, resolution 0.1 °C)</strong&gt<br /&gt<strong&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 322 – 2120 (32.2 °F – 212.0 °F, resolution 0.1 °F)</strong&gt<br /&gt<strong&gtNOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth.</strong&gt </p&gt
 Values in the range 1 to 2120 may be set.
 
 The manufacturer defined default value is ```700```.
@@ -404,13 +264,7 @@ This parameter has the configuration ID ```config_61_2``` and is of type ```INTE
 ### Parameter 63: Output switch selection
 
 Output switch selection
-Set value determines the type of the device connected to the on/off output. The output type can be normally open (NO) or normally closed (NC).  
-
-
-Value:  
-• default value 0  
-• 0 - When switch/device is off the output is 0V (NC).  
-• 1 - When switch/device is off the output is 240V or 24V (NO)
+<p&gtSet value determines the type of the device connected to the on/off output. The output type can be normally open (NO) or normally closed (NC).<br /&gt</p&gt <p&gtValue:<br /&gt• default value 0<br /&gt• 0 - When switch/device is off the output is 0V (NC).<br /&gt• 1 - When switch/device is off the output is 240V or 24V (NO) </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -426,17 +280,7 @@ This parameter has the configuration ID ```config_63_1``` and is of type ```INTE
 ### Parameter 78: Scale Selection
 
 Scale Selection
-This parameter determines in which measurement unit the device will report temperature (Fahrenheit or Celsius) and determines the scale the configuration parameters (43, 44, 44, 45, 60, 61, 110, 120) are interpreted as.  
-
-
-Values:  
-• Default value 0 = degrees Celsius  
-• 0 = degrees Celsius  
-• 1 = degrees Fahrenheit
-
-  
-**NOTE1: This scale has influence on Temperature reporting. The device is capable of receiving a Setpoint in all supported scales.**  
-**NOTE2: This configuration parameter has impact on configuration parameters 43, 44, 44, 45, 60, 61, 110, 120. If scale is set to degrees Fahrenheit configuration values at parameters 43, 44, 44, 45, 60, 61, 110, 120 will be converted to degrees Celsius. Please note that converted values could drift when converting values back and forth.**
+<p&gtThis parameter determines in which measurement unit the device will report temperature (Fahrenheit or Celsius) and determines the scale the configuration parameters (43, 44, 44, 45, 60, 61, 110, 120) are interpreted as.<br /&gt</p&gt <p&gtValues:<br /&gt• Default value 0 = degrees Celsius<br /&gt• 0 = degrees Celsius<br /&gt• 1 = degrees Fahrenheit</p&gt <p&gt<br /&gt<strong&gtNOTE1: This scale has influence on Temperature reporting. The device is capable of receiving a Setpoint in all supported scales.</strong&gt<br /&gt<strong&gtNOTE2: This configuration parameter has impact on configuration parameters 43, 44, 44, 45, 60, 61, 110, 120. If scale is set to degrees Fahrenheit configuration values at parameters 43, 44, 44, 45, 60, 61, 110, 120 will be converted to degrees Celsius. Please note that converted values could drift when converting values back and forth.</strong&gt </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -452,18 +296,7 @@ This parameter has the configuration ID ```config_78_1``` and is of type ```INTE
 ### Parameter 110: Temperature Sensor Offset Settings
 
 Temperature Sensor Offset Settings
-Set value is added to or subtracted from the actually measured value to adjust the temperature report sent by an external sensor.  
-
-
-Values: 
-
-• default value 0  
-• -270 - 270
-
-  
-**NOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -150 – 150 (-15.0 °C – 15.0 °C, resolution 0.1 °C)**  
-**NOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is -270 - 270 (-27.0 °F – 27.0 °F, resolution 0.1 °F)**  
-**NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth**
+<p&gtSet value is added to or subtracted from the actually measured value to adjust the temperature report sent by an external sensor.<br /&gt</p&gt <p&gtValues: </p&gt <p&gt• default value 0<br /&gt• -270 - 270</p&gt <p&gt<br /&gt<strong&gtNOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -150 – 150 (-15.0 °C – 15.0 °C, resolution 0.1 °C)</strong&gt<br /&gt<strong&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is -270 - 270 (-27.0 °F – 27.0 °F, resolution 0.1 °F)</strong&gt<br /&gt<strong&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth</strong&gt </p&gt
 Values in the range -270 to 270 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -474,17 +307,7 @@ This parameter has the configuration ID ```config_110_2``` and is of type ```INT
 ### Parameter 120: Temperature Sensor Reporting Threshold
 
 Temperature Sensor Reporting Threshold
-This configuration parameters sets reporting threshold between reported temperature and actual temperature for reporting temperature at association group 4. 
-
-Values:  
-• Default value 5 = 0.5°C  
-• 0 – Reporting disabled  
-• 0 - 270
-
-**  
-NOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 0 – 150 (0 °C – 15.0 °C, resolution 0.1 °C)  
-NOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 0 - 270 (0 °F – 27.0 °F, resolution 0.1 °F)  
-NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth**
+<p&gtThis configuration parameters sets reporting threshold between reported temperature and actual temperature for reporting temperature at association group 4. </p&gt <p&gtValues:<br /&gt• Default value 5 = 0.5°C<br /&gt• 0 – Reporting disabled<br /&gt• 0 - 270</p&gt <p&gt<strong&gt<br /&gtNOTE1: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is 0 – 150 (0 °C – 15.0 °C, resolution 0.1 °C)<br /&gtNOTE2: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 0 - 270 (0 °F – 27.0 °F, resolution 0.1 °F)<br /&gtNOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth </strong&gt </p&gt
 Values in the range 0 to 270 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -501,51 +324,25 @@ The ZMNKID supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Supports the following commands:
-
-• Device Reset Locally: triggered upon request,
-
-• Sensor multilevel report: triggered upon temperature change,
-
-• Meter report: triggered upon energy consumption change according to configuration parameters 40, 42,
-
-• Notification report: triggered upon current overload detection,
-
-• Thermostat mode: triggered upon thermostat mode change
-
-• Thermostat operating state: triggered upon thermostat operating state (Idle, Heating, Cooling)
+<p&gtSupports the following commands:</p&gt <p&gt• Device Reset Locally: triggered upon request,</p&gt <p&gt• Sensor multilevel report: triggered upon temperature change,</p&gt <p&gt• Meter report: triggered upon energy consumption change according to configuration parameters 40, 42,</p&gt <p&gt• Notification report: triggered upon current overload detection,</p&gt <p&gt• Thermostat mode: triggered upon thermostat mode change</p&gt <p&gt• Thermostat operating state: triggered upon thermostat operating state (Idle, Heating, Cooling)</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Change of output Q
 
-Supports the following command:
-
-• Basic set: triggered by change of output Q
+<p&gtSupports the following command:</p&gt <p&gt• Basic set: triggered by change of output Q</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Basic on/off too high too low T
 
-Supports the following command:
-
-• Basic set: triggered when actual temperature reaches Too High or Too Low temperature limit;
-
-Heat mode: when temperature reaches Too High Temperature Limit reports OFF (0x00), when temperature reaches Too Low Temperature Limit reports ON (0xFF).
-
-Cool mode: when temperature reaches Too High Temperature Limit reports ON (0xFF), when temperature reaches Too Low Temperature Limit reports OFF (0x00).
-
-Thermostat off mode reports OFF (0x00) on both limits reached.
-
-Hysteresis is 1°C.
+<p&gtSupports the following command:</p&gt <p&gt• Basic set: triggered when actual temperature reaches Too High or Too Low temperature limit;</p&gt <p&gtHeat mode: when temperature reaches Too High Temperature Limit reports OFF (0x00), when temperature reaches Too Low Temperature Limit reports ON (0xFF).</p&gt <p&gtCool mode: when temperature reaches Too High Temperature Limit reports ON (0xFF), when temperature reaches Too Low Temperature Limit reports OFF (0x00).</p&gt <p&gtThermostat off mode reports OFF (0x00) on both limits reached.</p&gt <p&gtHysteresis is 1°C.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Sensor multilevel report
 
-Supports the following command:
-
-• Sensor multilevel report: triggered by change of temperature for threshold defined in configuration parameter 120
+<p&gtSupports the following command:</p&gt <p&gt• Sensor multilevel report: triggered by change of temperature for threshold defined in configuration parameter 120</p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -577,9 +374,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [official product manual](https://www.cd-jackson.com/zwave_device_uploads/1101/Qubino-Flush-On-Off-Thermostat-2-PLUS-extended-manual-eng-1-0-certification.pdf)
+* [official product manual](https://opensmarthouse.org/zwavedatabase/1101/Qubino-Flush-On-Off-Thermostat-2-PLUS-extended-manual-eng-1-0-certification.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1101).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1101).

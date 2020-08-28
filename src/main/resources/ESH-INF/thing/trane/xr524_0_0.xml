@@ -7,9 +7,7 @@
 
   <thing-type id="trane_xr524_00_000" listed="false">
     <label>Trane XR524 Touchscreen Comfort Control Thermostat</label>
-    <description><![CDATA[
-Touchscreen Comfort Control Thermostat<br /><h1>Overview</h1><p>The Trane 524 Touchscreen Comfort Control is compatible with single and multistage forced air systems, including:</p> <ul><li>Gas furnace systems</li> <li>Oil furnace systems</li> <li>Electric furnace systems</li> <li>Heat pump systems</li> <li>Air conditioning systems</li> </ul><br /><h2>Inclusion Information</h2><ol><li>Press MENU on the 524 Control.</li> <li>Press NEXT to advance to the Z-WAVE menu.</li> <li>Press SELECT</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Press MENU on the 524 Control.</li> <li>Press NEXT to scroll to Z-WAVE screen then press SELECT.</li> <li>Press YES to exclude the control</li> </ol>
-    ]]></description>
+    <description>Touchscreen Comfort Control Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Trane 524 Touchscreen Comfort Control is compatible with single and multistage forced air systems, including:&lt;/p&gt &lt;ul&gt&lt;li&gtGas furnace systems&lt;/li&gt &lt;li&gtOil furnace systems&lt;/li&gt &lt;li&gtElectric furnace systems&lt;/li&gt &lt;li&gtHeat pump systems&lt;/li&gt &lt;li&gtAir conditioning systems&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress MENU on the 524 Control.&lt;/li&gt &lt;li&gtPress NEXT to advance to the Z-WAVE menu.&lt;/li&gt &lt;li&gtPress SELECT&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress MENU on the 524 Control.&lt;/li&gt &lt;li&gtPress NEXT to scroll to Z-WAVE screen then press SELECT.&lt;/li&gt &lt;li&gtPress YES to exclude the control&lt;/li&gt &lt;/ol&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -133,9 +131,7 @@ Touchscreen Comfort Control Thermostat<br /><h1>Overview</h1><p>The Trane 524 To
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="5" max="9">
         <label>10: Minimum Off Time</label>
-        <description><![CDATA[
-Minimum Off Time<br /><h1>Overview</h1><p>Sets the minimum off time before another heating/cooling cycle can begin to provide compressor short cycle protection. The thermostat screen will display WAIT when minimum off time is being enforced.</p>
-        ]]></description>
+        <description>Minimum Off Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the minimum off time before another heating/cooling cycle can begin to provide compressor short cycle protection. The thermostat screen will display WAIT when minimum off time is being enforced.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <advanced>true</advanced>
       </parameter>
@@ -143,9 +139,7 @@ Minimum Off Time<br /><h1>Overview</h1><p>Sets the minimum off time before anoth
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="9">
         <label>11: Minimum Run Time</label>
-        <description><![CDATA[
-Minimum Run Time<br /><h1>Overview</h1><p>Sets the minimum run time before a heating/cooling cycle can turn off to prevent rapid cycling. Thermostat screen will display "Cool ON" or "Heat ON" while the minimum run time is being enforced.</p>
-        ]]></description>
+        <description>Minimum Run Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the minimum run time before a heating/cooling cycle can turn off to prevent rapid cycling. Thermostat screen will display &quot;Cool ON&quot; or &quot;Heat ON&quot; while the minimum run time is being enforced.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>6</default>
         <advanced>true</advanced>
       </parameter>
@@ -153,9 +147,7 @@ Minimum Run Time<br /><h1>Overview</h1><p>Sets the minimum run time before a hea
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="8">
         <label>12: Heating Delta Stage 1 ON</label>
-        <description><![CDATA[
-Heating Delta Stage 1 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 1 heating starts.</p>
-        ]]></description>
+        <description>Heating Delta Stage 1 ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the delta from setpoint that stage 1 heating starts.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <advanced>true</advanced>
       </parameter>
@@ -163,9 +155,7 @@ Heating Delta Stage 1 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint t
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="0" max="8">
         <label>13: Heating Delta Stage 1 OFF</label>
-        <description><![CDATA[
-Heating Delta Stage 1 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 1 heating stops. Stage 1 turns off at setpoint minus (-) Delta Stage 1.</p>
-        ]]></description>
+        <description>Heating Delta Stage 1 OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the delta from setpoint that stage 1 heating stops. Stage 1 turns off at setpoint minus (-) Delta Stage 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -173,9 +163,7 @@ Heating Delta Stage 1 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint 
       <parameter name="config_14_1" type="integer" groupName="configuration"
                  min="1" max="8">
         <label>14: Heating Delta Stage 2 ON</label>
-        <description><![CDATA[
-Heating Delta Stage 2 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 2 heating starts.</p>
-        ]]></description>
+        <description>Heating Delta Stage 2 ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the delta from setpoint that stage 2 heating starts.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <advanced>true</advanced>
       </parameter>
@@ -183,9 +171,7 @@ Heating Delta Stage 2 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint t
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="8">
         <label>15: Heating Delta Stage 2 OFF</label>
-        <description><![CDATA[
-Heating Delta Stage 2 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 2 heating stops. Stage 1 turns off at setpoint minus (-) Delta Stage 2.</p>
-        ]]></description>
+        <description>Heating Delta Stage 2 OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the delta from setpoint that stage 2 heating stops. Stage 1 turns off at setpoint minus (-) Delta Stage 2.&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -193,9 +179,7 @@ Heating Delta Stage 2 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint 
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="1" max="8">
         <label>16: Heating Delta Stage 3 ON</label>
-        <description><![CDATA[
-Heating Delta Stage 3 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 3 heating starts.</p>
-        ]]></description>
+        <description>Heating Delta Stage 3 ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the delta from setpoint that stage 3 heating starts.&lt;/p&gt</description>
         <default>3</default>
         <advanced>true</advanced>
       </parameter>
@@ -203,9 +187,7 @@ Heating Delta Stage 3 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint t
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="8">
         <label>17: Heating Delta Stage 3 OFF</label>
-        <description><![CDATA[
-Heating Delta Stage 3 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 3 heating stops. Stage 1 turns off at setpoint minus (-) Delta Stage 3</p>
-        ]]></description>
+        <description>Heating Delta Stage 3 OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the delta from setpoint that stage 3 heating stops. Stage 1 turns off at setpoint minus (-) Delta Stage 3&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -213,9 +195,7 @@ Heating Delta Stage 3 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint 
       <parameter name="config_18_1" type="integer" groupName="configuration"
                  min="1" max="8">
         <label>18: Cooling Delta Stage 1 ON</label>
-        <description><![CDATA[
-Cooling Delta Stage 1 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 1 cooling starts.</p>
-        ]]></description>
+        <description>Cooling Delta Stage 1 ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the delta from setpoint that stage 1 cooling starts.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <advanced>true</advanced>
       </parameter>
@@ -223,9 +203,7 @@ Cooling Delta Stage 1 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint t
       <parameter name="config_19_1" type="integer" groupName="configuration"
                  min="0" max="8">
         <label>19: Cooling Delta Stage 1 OFF</label>
-        <description><![CDATA[
-Cooling Delta Stage 1 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 1 cooling stops. Stage 1 turns off at setpoint minus (-) Delta Stage 1.</p>
-        ]]></description>
+        <description>Cooling Delta Stage 1 OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the delta from setpoint that stage 1 cooling stops. Stage 1 turns off at setpoint minus (-) Delta Stage 1.&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -233,9 +211,7 @@ Cooling Delta Stage 1 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="1" max="8">
         <label>20: Cooling Delta Stage 2 ON</label>
-        <description><![CDATA[
-Cooling Delta Stage 2 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 2 cooling starts.</p>
-        ]]></description>
+        <description>Cooling Delta Stage 2 ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the delta from setpoint that stage 2 cooling starts.&lt;/p&gt</description>
         <default>2</default>
         <advanced>true</advanced>
       </parameter>
@@ -243,26 +219,20 @@ Cooling Delta Stage 2 ON<br /><h1>Overview</h1><p>Sets the delta from setpoint t
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="0" max="8">
         <label>21: Cooling Delta Stage 2 OFF</label>
-        <description><![CDATA[
-Cooling Delta Stage 2 OFF<br /><h1>Overview</h1><p>Sets the delta from setpoint that stage 2 cooling stops. Stage 1 turns off at setpoint minus (-) Delta Stage 2.</p>
-        ]]></description>
+        <description>Cooling Delta Stage 2 OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the delta from setpoint that stage 2 cooling stops. Stage 1 turns off at setpoint minus (-) Delta Stage 2.&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration"
                  min="3" max="15">
         <label>24: H/C Delta</label>
-        <description><![CDATA[
-H/C Delta<br /><h1>Overview</h1><p>Sets the minimum separation between the heating and cooling setpoints. Attempts to lower the cooling below the heating setpoint by this amount will PUSH the heating setpoint down to maintain this separation. Same for setting the heating setpoint above the cooling setpoint, it will PUSH the cooling setpoint up to maintain this separation. <br />Settings in F.</p>
-        ]]></description>
+        <description>H/C Delta&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSets the minimum separation between the heating and cooling setpoints. Attempts to lower the cooling below the heating setpoint by this amount will PUSH the heating setpoint down to maintain this separation. Same for setting the heating setpoint above the cooling setpoint, it will PUSH the cooling setpoint up to maintain this separation. &amp;lt;br /&amp;amp;gtSettings in F.&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration">
         <label>25: SetBack Mode</label>
-        <description><![CDATA[
-SetBack Mode<br /><h1>Overview</h1><p>0 = No Setback, 1 = Setback, 2 if ESM</p>
-        ]]></description>
+        <description>SetBack Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt0 = No Setback, 1 = Setback, 2 if ESM&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No Setback</option>
@@ -274,36 +244,28 @@ SetBack Mode<br /><h1>Overview</h1><p>0 = No Setback, 1 = Setback, 2 if ESM</p>
       <parameter name="config_29_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>29: ESM Setpoint--Heating</label>
-        <description><![CDATA[
-ESM Setpoint--Heating<br /><h1>Overview</h1><p>Energy Saving Mode (ESM) Setpoints are the setpoints used when the Energy Saving Mode schedule is selected in the Schedule Mode screen (or via Z-Wave control). <br />Setting in F.</p>
-        ]]></description>
+        <description>ESM Setpoint--Heating&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtEnergy Saving Mode (ESM) Setpoints are the setpoints used when the Energy Saving Mode schedule is selected in the Schedule Mode screen (or via Z-Wave control). &amp;lt;br /&amp;amp;gtSetting in F.&lt;/p&gt</description>
         <default>65</default>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>30: ESM Setpoint--Cooling</label>
-        <description><![CDATA[
-ESM Setpoint--Cooling<br /><h1>Overview</h1><p>Energy Saving Mode (ESM) Setpoints are the setpoints used when the Energy Saving Mode schedule is selected in the Schedule Mode screen (or via Z-Wave control).</p>
-        ]]></description>
+        <description>ESM Setpoint--Cooling&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtEnergy Saving Mode (ESM) Setpoints are the setpoints used when the Energy Saving Mode schedule is selected in the Schedule Mode screen (or via Z-Wave control).&lt;/p&gt</description>
         <default>80</default>
       </parameter>
 
       <parameter name="config_75_1" type="integer" groupName="configuration"
                  min="0" max="120">
         <label>75: Fan ON Time</label>
-        <description><![CDATA[
-Fan ON Time<br /><h1>Overview</h1><p>The fan cycler function cycles the HVAC system fan for an ON period followed by an OFF period continuously. Used to provide minimum air ventilation requirements. </p> <p>When the Fan ON time is set to a value greater than 0, an additional Cycler Fan mode is present when pressing the FAN button on the thermostat.</p>
-        ]]></description>
+        <description>Fan ON Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe fan cycler function cycles the HVAC system fan for an ON period followed by an OFF period continuously. Used to provide minimum air ventilation requirements. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtWhen the Fan ON time is set to a value greater than 0, an additional Cycler Fan mode is present when pressing the FAN button on the thermostat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_76_1" type="integer" groupName="configuration"
                  min="10" max="120">
         <label>76: Fan OFF Time</label>
-        <description><![CDATA[
-Fan OFF Time<br /><h1>Overview</h1><p>The fan cycler function cycles the HVAC system fan for an ON period followed by an OFF period continuously. Used to provide minimum air ventilation requirements.</p> <p>When the Fan ON time is set to a value greater than 0, an additional Cycler Fan mode is present when pressing the FAN button on the thermostat.</p>
-        ]]></description>
+        <description>Fan OFF Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe fan cycler function cycles the HVAC system fan for an ON period followed by an OFF period continuously. Used to provide minimum air ventilation requirements.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtWhen the Fan ON time is set to a value greater than 0, an additional Cycler Fan mode is present when pressing the FAN button on the thermostat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
@@ -339,9 +301,7 @@ Fan OFF Time<br /><h1>Overview</h1><p>The fan cycler function cycles the HVAC sy
 
       <parameter name="config_132_1" type="integer" groupName="configuration">
         <label>132: Run Schedule</label>
-        <description><![CDATA[
-Run Schedule<br /><h1>Overview</h1><p>Set to 1 if running schedule (RUN is displayed on the thermostat screen).</p>
-        ]]></description>
+        <description>Run Schedule&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet to 1 if running schedule (RUN is displayed on the thermostat screen).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">not running schedule</option>
@@ -352,27 +312,21 @@ Run Schedule<br /><h1>Overview</h1><p>Set to 1 if running schedule (RUN is displ
       <parameter name="config_137_1" type="integer" groupName="configuration"
                  min="0" max="120">
         <label>137: Backlight Timeout</label>
-        <description><![CDATA[
-Backlight Timeout<br /><h1>Overview</h1><p>Backlight Timeout is the time (in seconds) from the last button press to the backlight going out.  </p> <p>The time-out can be set between 0 and 120 seconds.  </p> <p>When set to 0, the backlight will remain always on.</p>
-        ]]></description>
+        <description>Backlight Timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBacklight Timeout is the time (in seconds) from the last button press to the backlight going out.  &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe time-out can be set between 0 and 120 seconds.  &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtWhen set to 0, the backlight will remain always on.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_141_1" type="integer" groupName="configuration"
                  min="0" max="120">
         <label>141: Screen Timeout</label>
-        <description><![CDATA[
-Screen Timeout<br /><h1>Overview</h1><p>This is the time before any screen reverts to the Minimized Screen (temperature display only), after you stop pushing buttons.  </p> <p>Minimized Screen feature is disabled by setting this time to 0</p>
-        ]]></description>
+        <description>Screen Timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the time before any screen reverts to the Minimized Screen (temperature display only), after you stop pushing buttons.  &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtMinimized Screen feature is disabled by setting this time to 0&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_143_1" type="integer" groupName="configuration"
                  min="-7" max="7">
         <label>143: Sensor (Internal) Offset</label>
-        <description><![CDATA[
-Sensor (Internal) Offset<br /><h1>Overview</h1><p>The internal temperature sensor can be calibrated to report values different from its actual reading.  The offset can range from -7 degrees to +7 degrees.</p>
-        ]]></description>
+        <description>Sensor (Internal) Offset&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe internal temperature sensor can be calibrated to report values different from its actual reading.  The offset can range from -7 degrees to +7 degrees.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -380,18 +334,14 @@ Sensor (Internal) Offset<br /><h1>Overview</h1><p>The internal temperature senso
       <parameter name="config_148_1" type="integer" groupName="configuration"
                  min="0" max="20">
         <label>148: Screen Contrast</label>
-        <description><![CDATA[
-Screen Contrast<br /><h1>Overview</h1><p>The Screen Contrast sets the contrast level of the LCD display.</p> <p>The contrast can be set between 0 and 20.  If the display is too light, use a higher number.  If dark lines appear on the screen, use a lower number</p>
-        ]]></description>
+        <description>Screen Contrast&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Screen Contrast sets the contrast level of the LCD display.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe contrast can be set between 0 and 20.  If the display is too light, use a higher number.  If dark lines appear on the screen, use a lower number&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_185_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>185: Schedule Enable</label>
-        <description><![CDATA[
-Schedule Enable<br /><h1>Overview</h1><p>When enabled (set to 1), the local thermostat's scheduler function is enabled.</p>
-        ]]></description>
+        <description>Schedule Enable&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen enabled (set to 1), the local thermostat's scheduler function is enabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -399,9 +349,7 @@ Schedule Enable<br /><h1>Overview</h1><p>When enabled (set to 1), the local ther
       <parameter name="config_228_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>228: Schedule Sun-1</label>
-        <description><![CDATA[
-Schedule Sun-1<br /><h1>Overview</h1><p>This value holds information about the first schedule setpoints for Sundays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li> Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x06004643 06:00AM 70F / 67F</p> <p>      0x06001519 06:00AM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Sun-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the first schedule setpoints for Sundays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt Byte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x06004643 06:00AM 70F / 67F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt      0x06001519 06:00AM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -409,9 +357,7 @@ Schedule Sun-1<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_229_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>229: Schedule Sun-2</label>
-        <description><![CDATA[
-Schedule Sun-2<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Sundays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)<br /></li> </ul><p>Default:  0x08003e55 08:00AM 62F / 85F</p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Sun-2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Sundays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;br /&amp;amp;gt&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x08003e55 08:00AM 62F / 85F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -419,9 +365,7 @@ Schedule Sun-2<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_230_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>230: Schedule Sun-3</label>
-        <description><![CDATA[
-Schedule Sun-3<br /><h1>Overview</h1><p>This value holds information about the third schedule setpoints for Sundays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x1200464e 06:00PM 70F / 78F</p> <p>       0x12001519 06:00PM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Sun-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the third schedule setpoints for Sundays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x1200464e 06:00PM 70F / 78F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x12001519 06:00PM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -429,9 +373,7 @@ Schedule Sun-3<br /><h1>Overview</h1><p>This value holds information about the t
       <parameter name="config_231_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>231: Schedule Sun-4</label>
-        <description><![CDATA[
-Schedule Sun-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Sundays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>      0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Sun-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Sundays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt      0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -439,9 +381,7 @@ Schedule Sun-4<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_232_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>232: Schedule Mon-1</label>
-        <description><![CDATA[
-Schedule Mon-1<br /><h1>Overview</h1><p>This value holds information about the first schedule setpoints for Mondays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x06004643 06:00AM 70F / 67F</p> <p>       0x06001519 06:00AM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Mon-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the first schedule setpoints for Mondays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x06004643 06:00AM 70F / 67F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x06001519 06:00AM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -449,9 +389,7 @@ Schedule Mon-1<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_233_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>233: Schedule Mon-2</label>
-        <description><![CDATA[
-Schedule Mon-2<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Mondays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x08003e55 08:00AM 62F / 85F<br /></p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Mon-2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Mondays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x08003e55 08:00AM 62F / 85F&amp;lt;br /&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -459,9 +397,7 @@ Schedule Mon-2<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_234_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>234: Schedule Mon-3</label>
-        <description><![CDATA[
-Schedule Mon-3<br /><h1>Overview</h1><p>This value holds information about the third schedule setpoints for Mondays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x1200464e 06:00PM 70F / 78F</p> <p>       0x12001519 06:00PM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Mon-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the third schedule setpoints for Mondays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x1200464e 06:00PM 70F / 78F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x12001519 06:00PM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -469,9 +405,7 @@ Schedule Mon-3<br /><h1>Overview</h1><p>This value holds information about the t
       <parameter name="config_235_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>235: Schedule Mon-4</label>
-        <description><![CDATA[
-Schedule Mon-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Mondays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>      0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Mon-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Mondays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt      0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -479,9 +413,7 @@ Schedule Mon-4<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_236_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>236: Schedule Tue-1</label>
-        <description><![CDATA[
-Schedule Tue-1<br /><h1>Overview</h1><p>This value holds information about the first schedule  setpoints for Tuesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x06004643 06:00AM 70F / 67F</p> <p>       0x06001519 06:00AM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Tue-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the first schedule  setpoints for Tuesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x06004643 06:00AM 70F / 67F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x06001519 06:00AM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -489,9 +421,7 @@ Schedule Tue-1<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_237_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>237: Schedule Tue-2</label>
-        <description><![CDATA[
-Schedule Tue-2<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Tuesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p> Default:  0x08003e55 08:00AM 62F / 85F</p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Tue-2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Tuesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gt Default:  0x08003e55 08:00AM 62F / 85F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -499,9 +429,7 @@ Schedule Tue-2<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_238_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>238: Schedule Tue-3</label>
-        <description><![CDATA[
-Schedule Tue-3<br /><h1>Overview</h1><p>This value holds information about the third schedule setpoints for Tuesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x1200464e 06:00PM 70F / 78F</p> <p>       0x12001519 06:00PM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Tue-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the third schedule setpoints for Tuesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x1200464e 06:00PM 70F / 78F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x12001519 06:00PM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -509,9 +437,7 @@ Schedule Tue-3<br /><h1>Overview</h1><p>This value holds information about the t
       <parameter name="config_239_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>239: Schedule Tue-4</label>
-        <description><![CDATA[
-Schedule Tue-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Tuesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>       0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Tue-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Tuesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -519,9 +445,7 @@ Schedule Tue-4<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_240_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>240: Schedule Wed-1</label>
-        <description><![CDATA[
-Schedule Wed-1<br /><h1>Overview</h1><p>This value holds information about the first schedule setpoints for Wednesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x06004643 06:00AM 70F / 67F</p> <p>       0x06001519 06:00AM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Wed-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the first schedule setpoints for Wednesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x06004643 06:00AM 70F / 67F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x06001519 06:00AM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -529,9 +453,7 @@ Schedule Wed-1<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_241_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>241: Schedule Wed-2</label>
-        <description><![CDATA[
-Schedule Wed-2<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Wednesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x08003e55 08:00AM 62F / 85F</p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Wed-2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Wednesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x08003e55 08:00AM 62F / 85F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -539,9 +461,7 @@ Schedule Wed-2<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_242_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>242: Schedule Wed-3</label>
-        <description><![CDATA[
-Schedule Wed-3<br /><h1>Overview</h1><p>This value holds information about the third schedule setpoints for Wednesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x1200464e 06:00PM 70F / 78F</p> <p>       0x12001519 06:00PM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Wed-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the third schedule setpoints for Wednesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x1200464e 06:00PM 70F / 78F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x12001519 06:00PM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -549,9 +469,7 @@ Schedule Wed-3<br /><h1>Overview</h1><p>This value holds information about the t
       <parameter name="config_243_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>243: Schedule Wed-4</label>
-        <description><![CDATA[
-Schedule Wed-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Wednesdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>       0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Wed-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Wednesdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -559,9 +477,7 @@ Schedule Wed-4<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_244_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>244: Schedule Thu-1</label>
-        <description><![CDATA[
-Schedule Thu-1<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Thursdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x08003e55 08:00AM 62F / 85F</p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Thu-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Thursdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x08003e55 08:00AM 62F / 85F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -569,9 +485,7 @@ Schedule Thu-1<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_246_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>246: Schedule Thu-3</label>
-        <description><![CDATA[
-Schedule Thu-3<br /><h1>Overview</h1><p>This value holds information about the third schedule setpoints for Thursdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x1200464e 06:00PM 70F / 78F</p> <p>       0x12001519 06:00PM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Thu-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the third schedule setpoints for Thursdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x1200464e 06:00PM 70F / 78F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x12001519 06:00PM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -579,9 +493,7 @@ Schedule Thu-3<br /><h1>Overview</h1><p>This value holds information about the t
       <parameter name="config_247_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>247: Schedule Thu-4</label>
-        <description><![CDATA[
-Schedule Thu-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Thursdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>       0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Thu-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Thursdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -589,9 +501,7 @@ Schedule Thu-4<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_248_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>248: Schedule Fri-1</label>
-        <description><![CDATA[
-Schedule Fri-1<br /><h1>Overview</h1><p>This value holds information about the first schedule setpoints for Fridays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x06004643 06:00AM 70F / 67F</p> <p>       0x06001519 06:00AM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Fri-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the first schedule setpoints for Fridays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x06004643 06:00AM 70F / 67F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x06001519 06:00AM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -599,9 +509,7 @@ Schedule Fri-1<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_249_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>249: Schedule Fri-2</label>
-        <description><![CDATA[
-Schedule Fri-2<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Fridays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x08003e55 08:00AM 62F / 85F</p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Fri-2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Fridays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x08003e55 08:00AM 62F / 85F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -609,9 +517,7 @@ Schedule Fri-2<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_250_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>250: Schedule Fri-3</label>
-        <description><![CDATA[
-Schedule Fri-3<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Fridays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>       0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Fri-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Fridays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -619,9 +525,7 @@ Schedule Fri-3<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_251_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>251: Schedule Fri-4</label>
-        <description><![CDATA[
-Schedule Fri-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Fridays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>       0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Fri-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Fridays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -629,9 +533,7 @@ Schedule Fri-4<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_252_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>252: Schedule Sat-1</label>
-        <description><![CDATA[
-Schedule Sat-1<br /><h1>Overview</h1><p>This value holds information about the first schedule setpoints for Saturdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x06004643 06:00AM 70F / 67F</p> <p>       0x06001519 06:00AM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Sat-1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the first schedule setpoints for Saturdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x06004643 06:00AM 70F / 67F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x06001519 06:00AM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -639,9 +541,7 @@ Schedule Sat-1<br /><h1>Overview</h1><p>This value holds information about the f
       <parameter name="config_253_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>253: Schedule Sat-2</label>
-        <description><![CDATA[
-Schedule Sat-2<br /><h1>Overview</h1><p>This value holds information about the second schedule setpoints for Saturdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x08003e55 08:00AM 62F / 85F</p> <p>       0x0800101d 08:00AM 16C / 29C</p>
-        ]]></description>
+        <description>Schedule Sat-2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the second schedule setpoints for Saturdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x08003e55 08:00AM 62F / 85F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x0800101d 08:00AM 16C / 29C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -649,9 +549,7 @@ Schedule Sat-2<br /><h1>Overview</h1><p>This value holds information about the s
       <parameter name="config_254_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>254: Schedule Sat-3</label>
-        <description><![CDATA[
-Schedule Sat-3<br /><h1>Overview</h1><p>This value holds information about the third schedule setpoints for Saturdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x1200464e 06:00PM 70F / 78F</p> <p>       0x12001519 06:00PM 21C / 25C</p>
-        ]]></description>
+        <description>Schedule Sat-3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the third schedule setpoints for Saturdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x1200464e 06:00PM 70F / 78F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x12001519 06:00PM 21C / 25C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -659,9 +557,7 @@ Schedule Sat-3<br /><h1>Overview</h1><p>This value holds information about the t
       <parameter name="config_255_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>255: Schedule Sat-4</label>
-        <description><![CDATA[
-Schedule Sat-4<br /><h1>Overview</h1><p>This value holds information about the fourth schedule setpoints for Saturdays.</p> <ul><li>Byte 1: Hour   (0-23)</li> <li>Byte 2: Minute (0-59)</li> <li>Byte 3: Heat Setpoint (degrees)</li> <li>Byte 4: Cool Setpoint (degrees)</li> </ul><p>Default:  0x16003e52 10:00PM 62F / 82F</p> <p>       0x1600101b 10:00PM 16C / 27C</p>
-        ]]></description>
+        <description>Schedule Sat-4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value holds information about the fourth schedule setpoints for Saturdays.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtByte 1: Hour   (0-23)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 2: Minute (0-59)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 3: Heat Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtByte 4: Cool Setpoint (degrees)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtDefault:  0x16003e52 10:00PM 62F / 82F&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt       0x1600101b 10:00PM 16C / 27C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -683,11 +579,11 @@ Schedule Sat-4<br /><h1>Overview</h1><p>This value holds information about the f
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="4">Aux Heat</option>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="2">Cool</option>
+        <option value="3">Auto</option>
+        <option value="4">Aux Heat</option>
       </options>
     </state>
   </channel-type>
@@ -700,8 +596,8 @@ Schedule Sat-4<br /><h1>Overview</h1><p>This value holds information about the f
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
-        <option value="6">Circulate</option>
         <option value="1">On (Low)</option>
+        <option value="6">Circulate</option>
       </options>
     </state>
   </channel-type>

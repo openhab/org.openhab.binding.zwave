@@ -7,9 +7,7 @@
 
   <thing-type id="intermatic_ca3750_00_000" listed="false">
     <label>CA3750 Contactor/Switch</label>
-    <description><![CDATA[
-Contactor/Switch<br /><h1>Overview</h1><p>Contractor/switch; 30A (heavy duty wall box)</p> <br /><h2>Inclusion Information</h2><p>Press the Program button.</p> <br /><h2>Exclusion Information</h2><p>Press the Program button.</p>
-    ]]></description>
+    <description>Contactor/Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtContractor/switch; 30A (heavy duty wall box)&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the Program button.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the Program button.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

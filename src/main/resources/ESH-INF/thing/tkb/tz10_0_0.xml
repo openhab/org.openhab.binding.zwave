@@ -7,9 +7,7 @@
 
   <thing-type id="tkb_tz10_00_000" listed="false">
     <label>TZ10 Thermostat with LCD Screen</label>
-    <description><![CDATA[
-Thermostat with LCD Screen<br /><h1>Overview</h1><p>Heating thermostat with LCD Screen, adopt z-wave technology to realize remote and manual control. The thermostat is recommended for the control of electric heating device or on/off valve actuator used in hydronic heating.</p> <br /><h2>Inclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p> <br /><h2>Exclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p>
-    ]]></description>
+    <description>Thermostat with LCD Screen&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtHeating thermostat with LCD Screen, adopt z-wave technology to realize remote and manual control. The thermostat is recommended for the control of electric heating device or on/off valve actuator used in hydronic heating.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress &quot;Manual&quot; button three times in two seconds, &quot;wireless&quot; icon will start to blink&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress &quot;Manual&quot; button three times in two seconds, &quot;wireless&quot; icon will start to blink&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -104,8 +102,8 @@ Thermostat with LCD Screen<br /><h1>Overview</h1><p>Heating thermostat with LCD 
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="5">Resume</option>
         <option value="1">Heat</option>
+        <option value="5">Resume</option>
       </options>
     </state>
   </channel-type>

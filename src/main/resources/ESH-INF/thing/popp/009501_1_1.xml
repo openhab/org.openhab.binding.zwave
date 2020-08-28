@@ -7,9 +7,7 @@
 
   <thing-type id="popp_009501_01_001" listed="false">
     <label>009501 Popp 09501 Flow Stop</label>
-    <description><![CDATA[
-Popp 09501 Flow Stop<br /><h1>Overview</h1><p>The Flow Stop moves the operating handle of a ball valve allowing to stopping the flow of gas or water. It can be mounted non-intrusive on any pipe size between 0.5 and 1.5 inch. This means the original water or gas pipe will not be opened or manipulated and it is possible to remove the Flow stop again without any damage to the water or gas pipe. Installing the Flow stop will not tamper or change any security measure applied or your gas or water installation.</p> <p>The device is equipped with a powerful 12 V motor providing sufficient torque to open or close any ball valve within 10 seconds. A complete manual operation of the valve remains possible due to the clutch release bearing.</p> <br /><h2>Inclusion Information</h2><p>For inclusion press the red button on the top of the enclosure 3 times</p> <br /><h2>Exclusion Information</h2><p>For exclusion press the red button on the top of the enclosure 3 times</p>
-    ]]></description>
+    <description>Popp 09501 Flow Stop&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Flow Stop moves the operating handle of a ball valve allowing to stopping the flow of gas or water. It can be mounted non-intrusive on any pipe size between 0.5 and 1.5 inch. This means the original water or gas pipe will not be opened or manipulated and it is possible to remove the Flow stop again without any damage to the water or gas pipe. Installing the Flow stop will not tamper or change any security measure applied or your gas or water installation.&lt;/p&gt &lt;p&gtThe device is equipped with a powerful 12 V motor providing sufficient torque to open or close any ball valve within 10 seconds. A complete manual operation of the valve remains possible due to the clutch release bearing.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtFor inclusion press the red button on the top of the enclosure 3 times&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtFor exclusion press the red button on the top of the enclosure 3 times&lt;/p&gt</description>
     <category>Valve</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -31,7 +29,7 @@ Popp 09501 Flow Stop<br /><h1>Overview</h1><p>The Flow Stop moves the operating 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp &amp; Co</property>
+      <property name="vendor">Popp &amp;amp; Co</property>
       <property name="modelId">009501</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0005:0001,0005:0003</property>
@@ -59,18 +57,14 @@ Popp 09501 Flow Stop<br /><h1>Overview</h1><p>The Flow Stop moves the operating 
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>0: LED Status</label>
-        <description><![CDATA[
-No help available, self explanatory....<br /><h1>Overview</h1><p>0: LED always ON (Only on operation OFF)<br />1: LED always OFF (Only on operation ON)</p>
-        ]]></description>
+        <description>No help available, self explanatory....&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: LED always ON (Only on operation OFF)&amp;lt;br /&amp;amp;gt1: LED always OFF (Only on operation ON)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="4">
         <label>1: Shut-off controller behavior</label>
-        <description><![CDATA[
-The parameter defines how to control the shut-off controller.<br /><h1>Overview</h1><p>0: Remote and manually open/close<br />1: Remote open/close only<br />2: Only remote open; only manually closing<br />3: Only manually open; only remote closing<br />4: Manually open/close only</p>
-        ]]></description>
+        <description>The parameter defines how to control the shut-off controller.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: Remote and manually open/close&amp;lt;br /&amp;amp;gt1: Remote open/close only&amp;lt;br /&amp;amp;gt2: Only remote open; only manually closing&amp;lt;br /&amp;amp;gt3: Only manually open; only remote closing&amp;lt;br /&amp;amp;gt4: Manually open/close only&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

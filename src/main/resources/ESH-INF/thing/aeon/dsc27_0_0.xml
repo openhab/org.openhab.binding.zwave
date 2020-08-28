@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc27_00_000" listed="false">
     <label>DSC27 Micro Illuminator G2</label>
-    <description><![CDATA[
-Micro Illuminator G2<br /><h1>Overview</h1><p>It has long been thought that a house becomes a home when we make it reflect who we are, when we personalise it, when we fill it with objects we treasure. And all of that remains true, but it no longer needs to be just the objects we put in our home that personalises it. Like the music that gently fills the background of your favourite restaurant, Aeotec’s Micro Switches create the perfect ambiance for your home, and then some. They also give you the perfect control and the perfect, intelligent automation.</p> <br /><h2>Inclusion Information</h2><p>press the "Action" button once</p> <br /><h2>Exclusion Information</h2><p>press the "Action" button once</p>
-    ]]></description>
+    <description>Micro Illuminator G2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIt has long been thought that a house becomes a home when we make it reflect who we are, when we personalise it, when we fill it with objects we treasure. And all of that remains true, but it no longer needs to be just the objects we put in our home that personalises it. Like the music that gently fills the background of your favourite restaurant, Aeotec’s Micro Switches create the perfect ambiance for your home, and then some. They also give you the perfect control and the perfect, intelligent automation.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtpress the &quot;Action&quot; button once&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtpress the &quot;Action&quot; button once&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -50,9 +48,7 @@ Micro Illuminator G2<br /><h1>Overview</h1><p>It has long been thought that a ho
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Notification on Status Change</label>
-        <description><![CDATA[
-Send notification to Group 1 when the load has changed<br /><h1>Overview</h1><p>Parameter to Enable to send notification to associated devices (Group 1) when the state of Micro Dimmer's load changed</p>
-        ]]></description>
+        <description>Send notification to Group 1 when the load has changed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter to Enable to send notification to associated devices (Group 1) when the state of Micro Dimmer's load changed&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Deactivate</option>

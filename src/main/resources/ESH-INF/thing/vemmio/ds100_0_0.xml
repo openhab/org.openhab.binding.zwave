@@ -7,9 +7,7 @@
 
   <thing-type id="vemmio_ds100_00_000" listed="false">
     <label>DS100 Double Switch in a dual relay in-wall module.</label>
-    <description><![CDATA[
-Double Switch in a dual relay in-wall module.<br /><h1>Overview</h1><p>Vemmio Double Switch is a dual relay in-wall module. The product works as a transceiver and is a Z-Wave Plus enabled device. Mini size design lets the module be easily hidden into the wall box to do not interfere with house decoration. One of many uses of the Double Switch is to turn on or off the connected fittings and monitor power consumption in real time. The new smart relay calibration technology can work perfectly with many kinds of lights like: incandescent, fluorescent and LED lights.</p> <br /><h2>Inclusion Information</h2><p>Pressing Z-Wave button three times within 2 seconds will enter inclusion mode.</p> <br /><h2>Exclusion Information</h2><p> Pressing Z-Wave button three times within 2 seconds will enter exclusion mode.</p>
-    ]]></description>
+    <description>Double Switch in a dual relay in-wall module.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtVemmio Double Switch is a dual relay in-wall module. The product works as a transceiver and is a Z-Wave Plus enabled device. Mini size design lets the module be easily hidden into the wall box to do not interfere with house decoration. One of many uses of the Double Switch is to turn on or off the connected fittings and monitor power consumption in real time. The new smart relay calibration technology can work perfectly with many kinds of lights like: incandescent, fluorescent and LED lights.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPressing Z-Wave button three times within 2 seconds will enter inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Pressing Z-Wave button three times within 2 seconds will enter exclusion mode.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -214,7 +212,7 @@ Double Switch in a dual relay in-wall module.<br /><h1>Overview</h1><p>Vemmio Do
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="3">
         <label>3: Selected Relay</label>
-        <description>1: Relay 1, 2: Relay 2, 3: Relay 1 &amp; Relay 2</description>
+        <description>1: Relay 1, 2: Relay 2, 3: Relay 1 &amp;amp;amp; Relay 2</description>
         <default>1</default>
       </parameter>
 
@@ -273,16 +271,12 @@ Double Switch in a dual relay in-wall module.<br /><h1>Overview</h1><p>Vemmio Do
 
       <parameter name="group_2" type="text" groupName="association">
         <label>2: Group 2</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>For group 2, the Switch will report</p> <ol><li>ON/OFF status of Relay1 </li> <li>Instant Power Consumption (Watt) of Relay1</li> <li>Accumulated Power Consumption (KWh) of Relay1 to Z-Wave Controller.</li> </ol>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFor group 2, the Switch will report&lt;/p&gt &lt;ol&gt&lt;li&gtON/OFF status of Relay1 &lt;/li&gt &lt;li&gtInstant Power Consumption (Watt) of Relay1&lt;/li&gt &lt;li&gtAccumulated Power Consumption (KWh) of Relay1 to Z-Wave Controller.&lt;/li&gt &lt;/ol&gt</description>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association">
         <label>3: Group 3</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>For group 3, the Switch will report</p> <ol><li>ON/OFF status of Relay2</li> <li>Instant Power Consumption (Watt) of Relay2</li> <li>Accumulated Power Consumption (KWh) of Relay2 to Z-Wave Controller.</li> </ol>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFor group 3, the Switch will report&lt;/p&gt &lt;ol&gt&lt;li&gtON/OFF status of Relay2&lt;/li&gt &lt;li&gtInstant Power Consumption (Watt) of Relay2&lt;/li&gt &lt;li&gtAccumulated Power Consumption (KWh) of Relay2 to Z-Wave Controller.&lt;/li&gt &lt;/ol&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

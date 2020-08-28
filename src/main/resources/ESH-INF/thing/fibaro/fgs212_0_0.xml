@@ -7,9 +7,7 @@
 
   <thing-type id="fibaro_fgs212_00_000" listed="false">
     <label>FGS212 Relay Switch 1x2.5kW</label>
-    <description><![CDATA[
-Relay Switch 1x2.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device is needed.</p> <br /><h2>Inclusion Information</h2><p>Fibaro Switch must be placed within the range of Home Center<br />controller, as adding mode requires direct communication with the<br />controller.<br /><br />Find key no. 1 which allows to switch circuit 1 on, in accordance<br />with the diagram<br />During the installation it is recommended to use a<br />momentary key connected to S1.<br /><br />Add Fibaro Switch to the network by pushing three times key no. 1<br />or push-button B located inside the housing of the device. For<br />toggle switch perform 3 position changes.<br /><br />The controller indicates when the device is correctly added to the<br />network.<br /><br /><strong>CAUTION</strong><br />Fibaro Switch cancels the "learning" mode after<br />key no. 1 is pressed once. Therefore, pressing key<br />no. 1 four times will not add the devices to the<br />network. The same applies to push-button B.</p> <br /><h2>Exclusion Information</h2><p>Find key no. 1 which allows to switch circuit 1 on, in accordance<br />with the diagram<br />During removing it is recommended to use a<br />momentary key connected to S1.<br /><br />Remove Fibaro Switch from the network by pushing three times key no. 1<br />or push-button B located inside the housing of the device. For<br />toggle switch perform 3 position changes.<br /><br />The controller indicates when the device is correctly removed from the<br />network.</p> <br /><h2>Wakeup Information</h2><p>Mains powered device.</p>
-    ]]></description>
+    <description>Relay Switch 1x2.5kW&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRemotely Controlled Relay Switch of Fibaro System is designed to operate in a wall switch box or in locations where the control of an electric device is needed.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtFibaro Switch must be placed within the range of Home Center&lt;br /&gtcontroller, as adding mode requires direct communication with the&lt;br /&gtcontroller.&lt;br /&gt&lt;br /&gtFind key no. 1 which allows to switch circuit 1 on, in accordance&lt;br /&gtwith the diagram&lt;br /&gtDuring the installation it is recommended to use a&lt;br /&gtmomentary key connected to S1.&lt;br /&gt&lt;br /&gtAdd Fibaro Switch to the network by pushing three times key no. 1&lt;br /&gtor push-button B located inside the housing of the device. For&lt;br /&gttoggle switch perform 3 position changes.&lt;br /&gt&lt;br /&gtThe controller indicates when the device is correctly added to the&lt;br /&gtnetwork.&lt;br /&gt&lt;br /&gt&lt;strong&gtCAUTION&lt;/strong&gt&lt;br /&gtFibaro Switch cancels the &quot;learning&quot; mode after&lt;br /&gtkey no. 1 is pressed once. Therefore, pressing key&lt;br /&gtno. 1 four times will not add the devices to the&lt;br /&gtnetwork. The same applies to push-button B.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtFind key no. 1 which allows to switch circuit 1 on, in accordance&lt;br /&gtwith the diagram&lt;br /&gtDuring removing it is recommended to use a&lt;br /&gtmomentary key connected to S1.&lt;br /&gt&lt;br /&gtRemove Fibaro Switch from the network by pushing three times key no. 1&lt;br /&gtor push-button B located inside the housing of the device. For&lt;br /&gttoggle switch perform 3 position changes.&lt;br /&gt&lt;br /&gtThe controller indicates when the device is correctly removed from the&lt;br /&gtnetwork.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtMains powered device.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -73,9 +71,7 @@ Relay Switch 1x2.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay Switch o
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Override OFF-delay</label>
-        <description><![CDATA[
-Forced auto off period<br /><h1>Overview</h1><p>If Parameter 4 states an auto off period, this parameter enable the possibility to turn off the relay with a button push. Default value 0 disallow turn off with a button push during the auto off interval.</p>
-        ]]></description>
+        <description>Forced auto off period&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf Parameter 4 states an auto off period, this parameter enable the possibility to turn off the relay with a button push. Default value 0 disallow turn off with a button push during the auto off interval.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Turn off with push button disabled</option>
@@ -86,17 +82,13 @@ Forced auto off period<br /><h1>Overview</h1><p>If Parameter 4 states an auto of
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>4: Relay 1: OFF-delay time (100ms steps)</label>
-        <description><![CDATA[
-Automatic turning off relay 1 after set time ...<br /><h1>Overview</h1><p>Default: 0 (Auto off disabled). In 100ms increments.</p>
-        ]]></description>
+        <description>Automatic turning off relay 1 after set time ...&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault: 0 (Auto off disabled). In 100ms increments.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Separation of association sending (key 1)</label>
-        <description><![CDATA[
-Sending commands to control devices assigned ...<br /><h1>Overview</h1><p>to 1-st association group (key no. 1)</p> <p>- Also see param #15</p>
-        ]]></description>
+        <description>Sending commands to control devices assigned ...&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtto 1-st association group (key no. 1)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt- Also see param #15&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Map status to all devices in group 1</option>
@@ -107,9 +99,7 @@ Sending commands to control devices assigned ...<br /><h1>Overview</h1><p>to 1-s
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Inputs behaviour</label>
-        <description><![CDATA[
-Assigns bistable key status to the device status.<br /><h1>Overview</h1><p>Available configuration parameters:<br />0 - [On / Off] device changes status on key status change.<br />1 - Device status depends on key status: ON when the key is ON, OFF when the key is OFF </p>
-        ]]></description>
+        <description>Assigns bistable key status to the device status.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable configuration parameters:&amp;lt;br /&amp;amp;gt0 - [On / Off] device changes status on key status change.&amp;lt;br /&amp;amp;gt1 - Device status depends on key status: ON when the key is ON, OFF when the key is OFF &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Toggle</option>
@@ -129,9 +119,7 @@ Assigns bistable key status to the device status.<br /><h1>Overview</h1><p>Avail
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
         <label>15: Dimmer/Roller shutter control</label>
-        <description><![CDATA[
-Enable/Disable operation of dimmer or roller shutter devices ...<br /><h1>Overview</h1><p>enabling this option allows the user to dim lighting/shut roller by associating Dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch). </p>
-        ]]></description>
+        <description>Enable/Disable operation of dimmer or roller shutter devices ...&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtenabling this option allows the user to dim lighting/shut roller by associating Dimmer/Roller Shutter Controller and holding or double press of double switch (only mono-stable switch). &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disable Dimmer/Roller shutter control</option>

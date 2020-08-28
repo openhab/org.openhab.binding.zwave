@@ -10,31 +10,22 @@ This describes the Z-Wave device *NAS-WR01ZE*, manufactured by *[Shenzhen Neo El
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![NAS-WR01ZE product image](https://www.cd-jackson.com/zwave_device_uploads/397/397_default.jpg)
+![NAS-WR01ZE product image](https://opensmarthouse.org/zwavedatabase/397/image/)
 
 
 The NAS-WR01ZE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Plug provides line voltage, current load, power consumption and energy consumption measuring. 
-
-  * **Voltage** – The Supply Power Voltage For Plug.
-  * **Current** – The Current for the Electric Device Connect to Plug Consumption.
-  * **Power** – Power Consumed by an Electric Device in an instant, unit: Watt (W).
-  * **Energy** – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.
+<p&gtThis Plug provides line voltage, current load, power consumption and energy consumption measuring. </p&gt <ul&gt<li&gt<strong&gtVoltage</strong&gt – The Supply Power Voltage For Plug.</li&gt <li&gt<strong&gtCurrent</strong&gt – The Current for the Electric Device Connect to Plug Consumption.</li&gt <li&gt<strong&gtPower</strong&gt – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li&gt <li&gt<strong&gtEnergy</strong&gt – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Make sure the sensor is powered.
-  2. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)
-  3. Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.
+<ol&gt<li&gtMake sure the sensor is powered.</li&gt <li&gtSet Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li&gt <li&gtPress the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Make sure the sensor is powered.
-  2. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)
-  3. Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.
+<ol&gt<li&gtMake sure the sensor is powered.</li&gt <li&gtSet Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li&gt <li&gtPress the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li&gt </ol&gt
 
 ## Channels
 
@@ -132,7 +123,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Meter Report Interval
 
 Interval time reporting data to controller
-This parameter defines interval time (in seconds) that Meter report data to main controller.
+<p&gtThis parameter defines interval time (in seconds) that Meter report data to main controller.</p&gt
 Values in the range 1 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -143,8 +134,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Maxium over-load current
 
 maximum current the plug can provide to load
-This parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power and send alarm.  
-Send Alarm NOTIFICATION\_EVENT\_POWER\_MANAGEMENT\_OVER\_LOAD\_DETECTED to associated devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter #3). You must remove the loader and turn on the Plug (press the button once) to enable current monitor and clear NOTIFICATION ALARM. This parameter value must be great than #4. If user set this parameter to default by Configure CC, the parameter #4 will be set to default value.
+<p&gtThis parameter defines maximum current the plug can provide to load that be connected to plug. If the current consumed by load greater than maximum current, the plug will cut off power and send alarm.<br /&gtSend Alarm NOTIFICATION\_EVENT\_POWER\_MANAGEMENT\_OVER\_LOAD\_DETECTED to associated devices in lifeline. Red Led will blink every seconds until current is normal (less than Parameter #3). You must remove the loader and turn on the Plug (press the button once) to enable current monitor and clear NOTIFICATION ALARM. This parameter value must be great than #4. If user set this parameter to default by Configure CC, the parameter #4 will be set to default value.</p&gt
 Values in the range 1 to 16 may be set.
 
 The manufacturer defined default value is ```13```.
@@ -155,7 +145,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Maximum alarm current
 
 Max current for over-current notification
-Defines maximum current, if the current plug provide to load great than this parameter, the plug will send over-current notification to main controller and the LED will be turn RED, but plug cannot cut-off power. Value must be less than parameter 3#.
+<p&gtDefines maximum current, if the current plug provide to load great than this parameter, the plug will send over-current notification to main controller and the LED will be turn RED, but plug cannot cut-off power. Value must be less than parameter 3#.</p&gt
 Values in the range 1 to 15 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -182,7 +172,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Power Report Threshold
 
 Power consumed change to be reported
-How much the power consumed must change to be reported. If the rate of power consumed change ratio is greater than this parameter, the plug will report the results, voltage, current, power and energy.
+<p&gtHow much the power consumed must change to be reported. If the rate of power consumed change ratio is greater than this parameter, the plug will report the results, voltage, current, power and energy.</p&gt
 Values in the range 1 to 100 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -193,7 +183,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Remember Relay ON/OFF status after power failure.
 
 Plug state after power-on
-Define how will the Plug react after the power supply is back on.  0 = will be off after the power supply is reconnected.  Others = remember relay status
+<p&gtDefine how will the Plug react after the power supply is back on.  0 = will be off after the power supply is reconnected.  Others = remember relay status</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -209,7 +199,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Plug Time switch Function
 
 Timer plug OFF after time period
-Defines if the timer function is enabled/disabled to switch the Plug OFF after the time period, which is defined in parameter 9#.
+<p&gtDefines if the timer function is enabled/disabled to switch the Plug OFF after the time period, which is defined in parameter 9#.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -225,7 +215,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Time switch Period
 
 Delay time after the plug is switched off (in minutes)
-This parameter defines the time after the plug is switched off. If Parameter 8# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.
+<p&gtThis parameter defines the time after the plug is switched off. If Parameter 8# is set to ‘1’, and relay is turn ON, the relay will be turn OFF after delay this parameter.</p&gt
 Values in the range 1 to 65535 may be set.
 
 The manufacturer defined default value is ```150```.
@@ -236,7 +226,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 ### Parameter 10: Button On/Off Enable
 
 Enable/Disable top button function
-If this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug. If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.
+<p&gtIf this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug. If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -273,24 +263,21 @@ The NAS-WR01ZE supports 3 association groups.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Assigned to Plugs status - On/Off. Allows for receiving control command from trigger devices whenever the Plug is turned On or Off.
-  * NOTIFICATION\_REPORT\_V4
-  * METER\_REPORT\_V4
-  * SWITCH\_BINARY\_REPORT
-  * DEVICE\_RESET\_LOCALLY_NOTIFICATION
+<ul&gt<li&gtNOTIFICATION\_REPORT\_V4</li&gt <li&gtMETER\_REPORT\_V4</li&gt <li&gtSWITCH\_BINARY\_REPORT</li&gt <li&gtDEVICE\_RESET\_LOCALLY_NOTIFICATION</li&gt </ul&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Group 2
 
 Sending control commands to associated devices. If current load is over the max current defined in parameter #3, the Plug will send a BASIC\_SET (0xFF) to associated devices. When current load is normal, plug will send a BASIC\_SET (0x00).
-BASIC_SET
+<p&gtBASIC_SET</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Group 3
 
 Send Notification to associated devices.
-NOTIFICATION\_REPORT\_V4
+<p&gtNOTIFICATION\_REPORT\_V4</p&gt
 
 Association group 3 supports 5 nodes.
 
@@ -319,11 +306,11 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Instruction Manual Power Plug](https://www.cd-jackson.com/zwave_device_uploads/397/Manual-for-Power-plug-Z-wave-Neo.pdf)
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/397/Smart-Plug-User-Guide--EU-.pdf)
-* [User Manual 23.09.2016](https://www.cd-jackson.com/zwave_device_uploads/397/Smart-Plug-User-Guide--EU-.pdf)
+* [Instruction Manual Power Plug](https://opensmarthouse.org/zwavedatabase/397/Manual-for-Power-plug-Z-wave-Neo.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/397/Smart-Plug-User-Guide--EU-.pdf)
+* [User Manual 23.09.2016](https://opensmarthouse.org/zwavedatabase/397/Smart-Plug-User-Guide--EU-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/397).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/397).

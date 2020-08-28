@@ -7,9 +7,7 @@
 
   <thing-type id="nietech_smartplugswitch_00_000" listed="false">
     <label>ZW36 1-channel smart plug, ZWave Plus</label>
-    <description><![CDATA[
-1-channel smart plug, ZWave Plus<br /><h1>Overview</h1><p>The EVA LOGIK ZW36 is a Z-Wave enabled 15A receptacle designed for most residential lighting and motor applications. It's compatible with LED, halogen, incandescent, xenon, fluorescent and compact fluorescent bulbs.The ZW36 fully works with the Fibaro, Smartthings, Wink hub as well as all other certified Z-Wave controllers.</p> <br /><h2>Inclusion Information</h2><p>Put the Z-wave interface controller into “Add” mode, triple press the Program button (A).<br /> It will be included to network.</p> <p>(Once your controller confirmed, refresh the Z-Wave network to optimize performance. )</p> <br /><h2>Exclusion Information</h2><p>Put the Z-Wave interface controller into "Remove" mode, triple press the Program button (A). It will be excluded to network.</p>
-    ]]></description>
+    <description>1-channel smart plug, ZWave Plus&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe EVA LOGIK ZW36 is a Z-Wave enabled 15A receptacle designed for most residential lighting and motor applications. It's compatible with LED, halogen, incandescent, xenon, fluorescent and compact fluorescent bulbs.The ZW36 fully works with the Fibaro, Smartthings, Wink hub as well as all other certified Z-Wave controllers.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut the Z-wave interface controller into “Add” mode, triple press the Program button (A).&lt;br /&gt It will be included to network.&lt;/p&gt &lt;p&gt(Once your controller confirmed, refresh the Z-Wave network to optimize performance. )&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut the Z-Wave interface controller into &quot;Remove&quot; mode, triple press the Program button (A). It will be excluded to network.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

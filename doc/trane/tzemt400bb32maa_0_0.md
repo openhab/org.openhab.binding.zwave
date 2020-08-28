@@ -10,26 +10,22 @@ This describes the Z-Wave device *TZEMT400BB32MAA*, manufactured by *Trane Corpo
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![TZEMT400BB32MAA product image](https://www.cd-jackson.com/zwave_device_uploads/245/245_default.jpg)
+![TZEMT400BB32MAA product image](https://opensmarthouse.org/zwavedatabase/245/image/)
 
 
 The TZEMT400BB32MAA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Thermostat for Heating and Cooling HVAC System control
+<p&gtThermostat for Heating and Cooling HVAC System control</p&gt
 
 ### Inclusion Information
 
-  * Press the MENU button on the thermostat.
-  * Scroll down to Z Wave Install, and press the Select button.
-  * Press the Yes button to enroll the thermostat.
+<ul&gt<li&gtPress the MENU button on the thermostat.</li&gt <li&gtScroll down to Z Wave Install, and press the Select button.</li&gt <li&gtPress the Yes button to enroll the thermostat.</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Press the MENU button on the thermostat.
-  * Scroll down to Z Wave Install, and press the Select button.
-  * Press the Yes button to enroll the thermostat.
+<ul&gt<li&gtPress the MENU button on the thermostat.</li&gt <li&gtScroll down to Z Wave Install, and press the Select button.</li&gt <li&gtPress the Yes button to enroll the thermostat.</li&gt </ul&gt
 
 ## Channels
 
@@ -45,7 +41,7 @@ The following table summarises the channels available for the TZEMT400BB32MAA -:
 | Thermostat fan mode | thermostat_fanmode | thermostat_fanmode |  |  | 
 | Thermostat fan state | thermostat_fanstate | thermostat_fanstate |  |  | 
 | Schedule Mode | config_decimal | config_decimal |  | Number | 
-| Clock Time Offset | time_offset | time_offset | Temperature | Number | 
+| Clock Time Offset | time_offset | time_offset | Time | Number | 
 
 ### Sensor (temperature)
 Indicates the current temperature.
@@ -108,7 +104,7 @@ Channel type information on this channel is not found.
 Channel type information on this channel is not found.
 
 ### Schedule Mode
-Send 0 to Hold and 1 to Run Schedule.
+<p&gtSend 0 to Hold and 1 to Run Schedule.</p&gt
 
 Generic class for configuration parameter.
 
@@ -117,7 +113,7 @@ The ```config_decimal``` channel is of type ```config_decimal``` and supports th
 ### Clock Time Offset
 Provides the current time difference for the devices time.
 
-The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Temperature``` category.
+The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Time``` category.
 
 
 
@@ -182,9 +178,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/245/d3f32301-3cd0-496f-925a-a0d76971e67c.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/245/d3f32301-3cd0-496f-925a-a0d76971e67c.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/245).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/245).

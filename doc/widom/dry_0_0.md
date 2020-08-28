@@ -10,30 +10,22 @@ This describes the Z-Wave device *DRY*, manufactured by *wiDom* with the thing t
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![DRY product image](https://www.cd-jackson.com/zwave_device_uploads/996/996_default.jpg)
+![DRY product image](https://opensmarthouse.org/zwavedatabase/996/image/)
 
 
 The DRY supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-WiDom Smart Dry Contact Switch can turn ON and OFF equipments with an independent power supply, such as solenoid valves (e.g. gas, water and irrigation), power operated valves etc. 
-
-WiDom Smart Dry Contact Switch is very easy to install and works with both momentary and toggle switches. 
-
-The device is equipped with contact protection technology (Zero Crossing) which reduces the electrical stress on the relay contacts and ensures a longer life. The open / closed switching of the device always occur when the instantaneous value of voltage is 0. 
-
-It operates in any Z-Wave network with other Z-Wave/Z-Wave Plus certified devices and controllers from any other manufacturer. As a constantly powered node, WiDom Smart Double Switch will act as repeater regardless of the vendor in order to increase the reliability of the network.
+<p&gtWiDom Smart Dry Contact Switch can turn ON and OFF equipments with an independent power supply, such as solenoid valves (e.g. gas, water and irrigation), power operated valves etc. </p&gt <p&gtWiDom Smart Dry Contact Switch is very easy to install and works with both momentary and toggle switches. </p&gt <p&gtThe device is equipped with contact protection technology (Zero Crossing) which reduces the electrical stress on the relay contacts and ensures a longer life. The open / closed switching of the device always occur when the instantaneous value of voltage is 0. </p&gt <p&gtIt operates in any Z-Wave network with other Z-Wave/Z-Wave Plus certified devices and controllers from any other manufacturer. As a constantly powered node, WiDom Smart Double Switch will act as repeater regardless of the vendor in order to increase the reliability of the network.</p&gt
 
 ### Inclusion Information
 
-WiDom Smart Dry Contact Switch is compatible with all Z-Wave/Z-Wave Plus certified controllers. The device supports both the Network Wide Inclusion mechanism (which offers the ability to be included in a network, even if the device is not directly connected to the controller) and Normal Inclusion. By default, the inclusion procedure starts in Normal Inclusion mode and after a short time out the procedure continues in Network Wide Inclusion mode that lasts for about 20 Seconds.
-
-Before including the device the LED status indicator is solid RED. The procedure of inclusion is activated by clicking Add in the inclusion interface and by pressing any sequence of click on the integrated button. As soon as the inclusion procedure initiates the LED indicator starts a sequence of GREEN-BLUE blinks. The device is included in the network when the LED status is OFF and the interview is completed. 
+<p&gtWiDom Smart Dry Contact Switch is compatible with all Z-Wave/Z-Wave Plus certified controllers. The device supports both the Network Wide Inclusion mechanism (which offers the ability to be included in a network, even if the device is not directly connected to the controller) and Normal Inclusion. By default, the inclusion procedure starts in Normal Inclusion mode and after a short time out the procedure continues in Network Wide Inclusion mode that lasts for about 20 Seconds.</p&gt <p&gtBefore including the device the LED status indicator is solid RED. The procedure of inclusion is activated by clicking Add in the inclusion interface and by pressing any sequence of click on the integrated button. As soon as the inclusion procedure initiates the LED indicator starts a sequence of GREEN-BLUE blinks. The device is included in the network when the LED status is OFF and the interview is completed. </p&gt
 
 ### Exclusion Information
 
-Only a controller can remove the device from the network. After activating the exclusion function by the controller, the device can be removed by setting it in Learning Mode. As soon as the exclusion initiates, the LED indicator starts a sequence of RED-BLUE blinks. The device is excluded from the network when the LED status indicator is solid RED and the App_status in the interface is OK. 
+<p&gtOnly a controller can remove the device from the network. After activating the exclusion function by the controller, the device can be removed by setting it in Learning Mode. As soon as the exclusion initiates, the LED indicator starts a sequence of RED-BLUE blinks. The device is excluded from the network when the LED status indicator is solid RED and the App_status in the interface is OK. </p&gt
 
 ## Channels
 
@@ -95,7 +87,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5:  Value used for devices belonging to Group 3
 
 Value sent wen the external switch receives 2 Clicks
- Value used for devices belonging to Group 3 when the external switch receives 2 Clicks
+<p&gt Value used for devices belonging to Group 3 when the external switch receives 2 Clicks</p&gt
 Values in the range -1 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -106,7 +98,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6:  Value used for devices belonging to Group 4
 
 Value sent when external switch receives 3 Clicks
- Value used for devices belonging to Group 4 when external switch receives 3 Clicks
+<p&gt Value used for devices belonging to Group 4 when external switch receives 3 Clicks</p&gt
 Values in the range -1 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -151,7 +143,7 @@ This is a write only parameter.
 ### Parameter 20: One Click Scene Activation Set
 
 Defines the Scene Activation Set value sent to the Lifeline group with 1 Click
-Defines the Scene Activation Set value sent to the Lifeline group with 1 Click on the external switch
+<p&gtDefines the Scene Activation Set value sent to the Lifeline group with 1 Click on the external switch</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -162,7 +154,7 @@ This parameter has the configuration ID ```config_20_2``` and is of type ```INTE
 ### Parameter 21: Two Clicks Scene Activation Set 
 
 Defines the Scene Activation Set value sent to the Lifeline group with 2 Clicks
-Defines the Scene Activation Set value sent to the Lifeline group with 2 Clicks on the external switch
+<p&gtDefines the Scene Activation Set value sent to the Lifeline group with 2 Clicks on the external switch</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -173,7 +165,7 @@ This parameter has the configuration ID ```config_21_2``` and is of type ```INTE
 ### Parameter 22: Three Clicks Scene Activation Set
 
 Defines the Scene Activation Set value sent to the Lifeline group with 3 Clicks
-Defines the Scene Activation Set value sent to the Lifeline group with 3 Clicks on the external switch
+<p&gtDefines the Scene Activation Set value sent to the Lifeline group with 3 Clicks on the external switch</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -265,9 +257,9 @@ Association group 4 supports 8 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/996/Widom-Dry-Contact-EN.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/996/Widom-Dry-Contact-EN.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/996).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/996).

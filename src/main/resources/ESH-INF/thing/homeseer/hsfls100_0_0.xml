@@ -7,9 +7,7 @@
 
   <thing-type id="homeseer_hsfls100_00_000" listed="false">
     <label>HS-FLS100+ Floodlight Sensor</label>
-    <description><![CDATA[
-Floodlight Sensor<br /><h1>Overview</h1><p>The HS-FLS100+ is a PIR module that’s designed to retrofit onto existing outdoor floodlights. It features a PIR sensor to detect motion through movement of heat sources and a LUX sensor for determining brightness of its surroundings. It is equipped with Z-Wave Plus wireless communication capability that will convert an ordinary motion-activated floodlight into a smart home device.</p> <p><strong>Conventional Floodlight Mode</strong> HS-FLS100+ can be used as a conventional motion-activated floodlight sensor to power floodlights when motion is sensed during dark hours. Controls are provided for manual adjustment of LUX sensitivity and floodlight ON times.</p> <p><strong>Smart Floodlight Mode</strong> When added to a smart home system, HS-FLS100+ will send Z-Wave commands to the smart hub or home controller when motion is sensed and when the LUX level changes. Likewise, the smart hub or home controller can send Z-Wave commands back to the HS-FLS100+ to turn floodlights ON and OFF. This added functionality provides a very high level of flexibility not typically available in conventional motion-activated floodlights.</p> <p><strong>Smart Sensor Mode</strong> HS-FLS100+ can be installed and used simply as an outdoor motion and LUX sensor. Floodlight functionality is not required. This provides some interesting security and smart home possibilities!</p> <br /><h2>Inclusion Information</h2><p>Press the Link button 3 times within 1.5 seconds to put the unit into inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>Press the Link button 3 times within 1.5 seconds to put the unit into exclusion mode.</p>
-    ]]></description>
+    <description>Floodlight Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe HS-FLS100+ is a PIR module that’s designed to retrofit onto existing outdoor floodlights. It features a PIR sensor to detect motion through movement of heat sources and a LUX sensor for determining brightness of its surroundings. It is equipped with Z-Wave Plus wireless communication capability that will convert an ordinary motion-activated floodlight into a smart home device.&lt;/p&gt &lt;p&gt&lt;strong&gtConventional Floodlight Mode&lt;/strong&gt HS-FLS100+ can be used as a conventional motion-activated floodlight sensor to power floodlights when motion is sensed during dark hours. Controls are provided for manual adjustment of LUX sensitivity and floodlight ON times.&lt;/p&gt &lt;p&gt&lt;strong&gtSmart Floodlight Mode&lt;/strong&gt When added to a smart home system, HS-FLS100+ will send Z-Wave commands to the smart hub or home controller when motion is sensed and when the LUX level changes. Likewise, the smart hub or home controller can send Z-Wave commands back to the HS-FLS100+ to turn floodlights ON and OFF. This added functionality provides a very high level of flexibility not typically available in conventional motion-activated floodlights.&lt;/p&gt &lt;p&gt&lt;strong&gtSmart Sensor Mode&lt;/strong&gt HS-FLS100+ can be installed and used simply as an outdoor motion and LUX sensor. Floodlight functionality is not required. This provides some interesting security and smart home possibilities!&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the Link button 3 times within 1.5 seconds to put the unit into inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the Link button 3 times within 1.5 seconds to put the unit into exclusion mode.&lt;/p&gt</description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -92,9 +90,7 @@ Floodlight Sensor<br /><h1>Overview</h1><p>The HS-FLS100+ is a PIR module that�
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="8" max="720">
         <label>1: PIR Trigger Off Period</label>
-        <description><![CDATA[
-Period to send Trigger Off command after PIR is triggered.<br /><h1>Overview</h1><p>Period to send Trigger Off command after PIR is triggered. Before this period expires, the PIR will not be able to detect any subsequent motion.</p>
-        ]]></description>
+        <description>Period to send Trigger Off command after PIR is triggered.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPeriod to send Trigger Off command after PIR is triggered. Before this period expires, the PIR will not be able to detect any subsequent motion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>15</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -102,9 +98,7 @@ Period to send Trigger Off command after PIR is triggered.<br /><h1>Overview</h1
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: Lux sensor threshold</label>
-        <description><![CDATA[
-Lux level to activate the PIR<br /><h1>Overview</h1><p>When the lux level falls below this threshold and the PIR gets triggered, the unit emits a Basic Set Command (Value=0xFF) and turns on its floodlight. This overwrites the Lux level set by the Lux knob.</p> <p>Setting = 0: always don’t turn ON light</p> <p>Setting = 30~200: lighting activation by setting</p> <p>Setting = 255: turn ON light upon PIR triggered</p> <p>If the level is set to 0, the unit will not turn on its floodlight. The PIR will still send a notification report to the controller; if the level is set to 255, when motion is sensed, the sensor ignore the ambient brightness but just turn on the light.</p>
-        ]]></description>
+        <description>Lux level to activate the PIR&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen the lux level falls below this threshold and the PIR gets triggered, the unit emits a Basic Set Command (Value=0xFF) and turns on its floodlight. This overwrites the Lux level set by the Lux knob.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSetting = 0: always don’t turn ON light&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSetting = 30~200: lighting activation by setting&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSetting = 255: turn ON light upon PIR triggered&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf the level is set to 0, the unit will not turn on its floodlight. The PIR will still send a notification report to the controller; if the level is set to 255, when motion is sensed, the sensor ignore the ambient brightness but just turn on the light.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -129,16 +123,12 @@ Lux level to activate the PIR<br /><h1>Overview</h1><p>When the lux level falls 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Device Reset Locally Notification</p> <p>Notification Report </p> <p>Binary Report </p> <p>Sensor Multilevel Report </p> <p>Basic Report</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDevice Reset Locally Notification&lt;/p&gt &lt;p&gtNotification Report &lt;/p&gt &lt;p&gtBinary Report &lt;/p&gt &lt;p&gtSensor Multilevel Report &lt;/p&gt &lt;p&gtBasic Report&lt;/p&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: PIR Control</label>
-        <description><![CDATA[
-Devices in the group are controlled by the PIR sensor<br /><h1>Overview</h1><p>Basic Set</p>
-        ]]></description>
+        <description>Devices in the group are controlled by the PIR sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtBasic Set&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 
@@ -151,5 +141,29 @@ Devices in the group are controlled by the PIR sensor<br /><h1>Overview</h1><p>B
     </config-description>
 
   </thing-type>
+
+  <channel-type id="homeseer_hsfls100_00_000_config_decimal_param1">
+    <item-type>Number</item-type>
+    <label>PIR Trigger Off Period</label>
+    <description>Period to send Trigger Off command after PIR is triggered.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="homeseer_hsfls100_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>Lux sensor threshold</label>
+    <description>Lux level to activate the PIR</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="homeseer_hsfls100_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Auto Report luminance interval</label>
+    <description>sets the interval of periodic lux level report to the controller</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

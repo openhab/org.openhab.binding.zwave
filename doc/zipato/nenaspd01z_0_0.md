@@ -10,7 +10,7 @@ This describes the Z-Wave device *NE-NAS-PD01Z*, manufactured by *[Zipato](http:
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![NE-NAS-PD01Z product image](https://www.cd-jackson.com/zwave_device_uploads/735/735_default.jpg)
+![NE-NAS-PD01Z product image](https://opensmarthouse.org/zwavedatabase/735/image/)
 
 
 The NE-NAS-PD01Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The NE-NAS-PD01Z does not permanently listen for messages sent from the controll
 
 ## Overview
 
-Zipato PIR Motion Sensor is a passive infrared detector or physical sensor, the sensor doesn’t emit any energy, but only passively receive and detect infrared radiation. Sensor sends messages via Z-Wave network to the Z-Wave main controller. In the communication between the PIR and Z-Wave main controller, PIR sensor can only send messages and not receive them. When sensor is triggered, it will send message to the main controller and associate devices to work through the Z-Wave main controller. Sensor is battery powered, small and can be installed easily
+<p&gtZipato PIR Motion Sensor is a passive infrared detector or physical sensor, the sensor doesn’t emit any energy, but only passively receive and detect infrared radiation. Sensor sends messages via Z-Wave network to the Z-Wave main controller. In the communication between the PIR and Z-Wave main controller, PIR sensor can only send messages and not receive them. When sensor is triggered, it will send message to the main controller and associate devices to work through the Z-Wave main controller. Sensor is battery powered, small and can be installed easily</p&gt
 
 ### Inclusion Information
 
- Press the button 3 times within 1.5 seconds and the device will enter inclusion mode. LED will flash on and off 5 times.
+<p&gt Press the button 3 times within 1.5 seconds and the device will enter inclusion mode. LED will flash on and off 5 times.</p&gt
 
 ### Exclusion Information
 
- Press the button 3 times within 1.5 seconds and the device will enter exclusion mode.
+<p&gt Press the button 3 times within 1.5 seconds and the device will enter exclusion mode.</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The NE-NAS-PD01Z does not permanently listen for messages sent from the controll
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
- Press the button 3 times within 1.5 seconds to wake the device. LED will blink once.
+<p&gt Press the button 3 times within 1.5 seconds to wake the device. LED will blink once.</p&gt
 
 ## Channels
 
@@ -107,17 +107,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Sensitivity level
 
 8 = Highest sensitivity, 255 = lowest sesitivity
-1. SENSITIVITY LEVEL SETTING
-
-This parameter defines the sensitivity of PIR sensor. It’s recommended to test the sensor with moevements from a farthest end of the coverage area at the first time of use. If movements cannot be detected sensitively, simply adjust the sensitivity level with this parameter. This parameter can be configured with the value of 8 through 255, where 8 means high sensitivity and 255 means low sensitivity. Function: Sensivity Level Setting
-
-Parameter size: 1 byte
-
-Parameter number: 1
-
-Available settings: 8 ~ 255
-
-Default settings: 12
+<p&gt1. SENSITIVITY LEVEL SETTING</p&gt <p&gtThis parameter defines the sensitivity of PIR sensor. It’s recommended to test the sensor with moevements from a farthest end of the coverage area at the first time of use. If movements cannot be detected sensitively, simply adjust the sensitivity level with this parameter. This parameter can be configured with the value of 8 through 255, where 8 means high sensitivity and 255 means low sensitivity. Function: Sensivity Level Setting</p&gt <p&gtParameter size: 1 byte</p&gt <p&gtParameter number: 1</p&gt <p&gtAvailable settings: 8 ~ 255</p&gt <p&gtDefault settings: 12</p&gt
 Values in the range 8 to 255 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -128,19 +118,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: ON / OFF Duration
 
 How long should the associated devices have ON status.
-2. ON / OFF DURATION
-
-This parameter determines how long the associated devices should have ON status. For instace, if this parameter is set to 30 (sec), the PIR sensor will send a BASIC\_SET command to associated device with valu BASIC\_SET level if PIR sensor is triggered and associated device will be turned on 30 seconds begore it’s turned off. This parameter value must be large as Parameter #. If user set this parameter to default by Configure CC, the parameter # will be set to default value.
-
-Function: ON / OFF duration setting
-
-Parameter size: 2 byte
-
-Parameter number: 2
-
-Available settings: 5~600 (seconds)
-
-Default setting: 30
+<p&gt2. ON / OFF DURATION</p&gt <p&gtThis parameter determines how long the associated devices should have ON status. For instace, if this parameter is set to 30 (sec), the PIR sensor will send a BASIC\_SET command to associated device with valu BASIC\_SET level if PIR sensor is triggered and associated device will be turned on 30 seconds begore it’s turned off. This parameter value must be large as Parameter #. If user set this parameter to default by Configure CC, the parameter # will be set to default value.</p&gt <p&gtFunction: ON / OFF duration setting</p&gt <p&gtParameter size: 2 byte</p&gt <p&gtParameter number: 2</p&gt <p&gtAvailable settings: 5~600 (seconds)</p&gt <p&gtDefault setting: 30</p&gt
 Values in the range 5 to 600 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -151,21 +129,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: BASIC SET Level
 
 BASIC SET LEVEL
-3. BASIC SET LEVEL BASIC\_SET command will be sent when PIR sensor is triggered. The receiver will take it into consideration; for instance, if a lamp module is receiving the BASIC\_SET command of which value is decisive as to how bright of dim level of lamp module shall be.
-
-Function: Basic Set Level
-
-Parameter size: 1 byte
-
-Parameter number: 2
-
-Available settings: 0,1 ~ 99 or 255 0 - OFF, Alarm cancelling or turning device off
-
-1 ~ 99 or 255 - ON (Binary Switch Device)
-
-Dim level (Multilevel Switch Device)
-
-Default setting: 255This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gt3. BASIC SET LEVEL BASIC\_SET command will be sent when PIR sensor is triggered. The receiver will take it into consideration; for instance, if a lamp module is receiving the BASIC\_SET command of which value is decisive as to how bright of dim level of lamp module shall be.</p&gt <p&gtFunction: Basic Set Level</p&gt <p&gtParameter size: 1 byte</p&gt <p&gtParameter number: 2</p&gt <p&gtAvailable settings: 0,1 ~ 99 or 255 0 - OFF, Alarm cancelling or turning device off</p&gt <p&gt1 ~ 99 or 255 - ON (Binary Switch Device)</p&gt <p&gtDim level (Multilevel Switch Device)</p&gt <p&gtDefault setting: 255</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -176,15 +140,7 @@ This parameter has the configuration ID ```config_3_2``` and is of type ```INTEG
 ### Parameter 4:  PIR detection ENABLED / DISABLED
 
 Enable og disable the PIR sensor
-4. PIR DETECTION FUNCTION ENABLED / DISABLED This parameter can enable or disable the PIR sensor detecting function. Function: Enabled / Disabled PIR function
-
-Parameter size: 1 byte
-
-Parameter number: 4
-
-Available settings: 0 (disable) or 255 (enable)
-
-Default setting: 255 
+<p&gt4. PIR DETECTION FUNCTION ENABLED / DISABLED This parameter can enable or disable the PIR sensor detecting function. Function: Enabled / Disabled PIR function</p&gt <p&gtParameter size: 1 byte</p&gt <p&gtParameter number: 4</p&gt <p&gtAvailable settings: 0 (disable) or 255 (enable)</p&gt <p&gtDefault setting: 255 </p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -195,17 +151,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Ambent illumination LUX level
 
 Lux value which determines when the light sensor is activated
-5. AMBIENT ILLUMINATION LUX LEVEL This parameter can set Lux value which determines when the light sensor is activated. If the ambient illumination level falls bellow this value and a person moves across or within the detection area, PIR sensor will send Z-Wave ON command (i.e. BASIC_set (value = parameter 3) to an associated device and activate it.
-
-Function: Lux Level Set
-
-Parameter size: 2 byte
-
-Parameter number: 5
-
-Available settings: 0~1000 (Lux)
-
-Default setting: 100 (Lux)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gt5. AMBIENT ILLUMINATION LUX LEVEL This parameter can set Lux value which determines when the light sensor is activated. If the ambient illumination level falls bellow this value and a person moves across or within the detection area, PIR sensor will send Z-Wave ON command (i.e. BASIC_set (value = parameter 3) to an associated device and activate it.</p&gt <p&gtFunction: Lux Level Set</p&gt <p&gtParameter size: 2 byte</p&gt <p&gtParameter number: 5</p&gt <p&gtAvailable settings: 0~1000 (Lux)</p&gt <p&gtDefault setting: 100 (Lux)</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 1000 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -216,17 +162,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: Re-Trigger Interval
 
 Adjust the interval of being re-triggered
-6. RE-TRIGGER INTERVAL SETTING This parameter can be used to adjust the interval of being re-triggered after the PIR sensor has been triggered. This parameter value must be less than Paramater #2. If user sets this parameter to default by Configure CC, the parameter #2 will be set to default value.
-
-Function: Re-trigger interval setting
-
-Parameter size: 1 byte
-
-Parameter number: 6
-
-Available settings: 1~8 (s)
-
-Default setting: 8
+<p&gt6. RE-TRIGGER INTERVAL SETTING This parameter can be used to adjust the interval of being re-triggered after the PIR sensor has been triggered. This parameter value must be less than Paramater #2. If user sets this parameter to default by Configure CC, the parameter #2 will be set to default value.</p&gt <p&gtFunction: Re-trigger interval setting</p&gt <p&gtParameter size: 1 byte</p&gt <p&gtParameter number: 6</p&gt <p&gtAvailable settings: 1~8 (s)</p&gt <p&gtDefault setting: 8</p&gt
 Values in the range 1 to 8 may be set.
 
 The manufacturer defined default value is ```8```.
@@ -237,17 +173,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Light sensor polling interval
 
 How often should ambient illumination be evaluated
-7. LIGHT SENSOR POLLING INTERVAL This parameter can set the light sensor to measure ambient illumination level interval time. NOTE: This value must be less than Wakeup Interval Time!
-
-Function: Light Sensor Polling Interval
-
-Parameter size: 2 byte
-
-Parameter number: 7
-
-Available settings: 60~3600 (seconds)
-
-Default setting: 180 (s)
+<p&gt7. LIGHT SENSOR POLLING INTERVAL This parameter can set the light sensor to measure ambient illumination level interval time. NOTE: This value must be less than Wakeup Interval Time!</p&gt <p&gtFunction: Light Sensor Polling Interval</p&gt <p&gtParameter size: 2 byte</p&gt <p&gtParameter number: 7</p&gt <p&gtAvailable settings: 60~3600 (seconds)</p&gt <p&gtDefault setting: 180 (s)</p&gt
 Values in the range 60 to 3600 may be set.
 
 The manufacturer defined default value is ```180```.
@@ -258,17 +184,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: LUX level function enable
 
 See overview
-8. LUX LEVEL FUNCTION ENABLE If this parameter is set to “1” and when Lux level is less than the value defined by parameter #5, PIR sensor will send a BASIC\_SET command frame (i.e. BASIC\_SET (value = parameter 3) to an associated device and activate it. If Lux level is greater than the value defined by parameter #5, PIR sensor will not send BASIC_SET command frame.
-
-Function: Lux Level Enable
-
-Parameter size: 1 byte
-
-Parameter number: 8
-
-Available sttings: 0, 1
-
-Default setting: 0
+<p&gt8. LUX LEVEL FUNCTION ENABLE If this parameter is set to “1” and when Lux level is less than the value defined by parameter #5, PIR sensor will send a BASIC\_SET command frame (i.e. BASIC\_SET (value = parameter 3) to an associated device and activate it. If Lux level is greater than the value defined by parameter #5, PIR sensor will not send BASIC_SET command frame.</p&gt <p&gtFunction: Lux Level Enable</p&gt <p&gtParameter size: 1 byte</p&gt <p&gtParameter number: 8</p&gt <p&gtAvailable sttings: 0, 1</p&gt <p&gtDefault setting: 0</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -279,17 +195,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Ambient illumination report
 
 when lux changes by the number in this setting it is reported
-9. AMBIENT ILLUMINATION LUX LEVEL REPORT This parameter defines by how much Lux level must change in Lux to be reported to the main controller.
-
-Function: Lux Level Report
-
-Parameter size: 2 byte
-
-Parameter number: 9
-
-Available settings: 0~1000 (Lux)
-
-Default setting: 1
+<p&gt9. AMBIENT ILLUMINATION LUX LEVEL REPORT This parameter defines by how much Lux level must change in Lux to be reported to the main controller.</p&gt <p&gtFunction: Lux Level Report</p&gt <p&gtParameter size: 2 byte</p&gt <p&gtParameter number: 9</p&gt <p&gtAvailable settings: 0~1000 (Lux)</p&gt <p&gtDefault setting: 1</p&gt
 Values in the range 0 to 1000 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -323,28 +229,28 @@ The NE-NAS-PD01Z supports 4 association groups.
 ### Group 1: Group 1
 
 lifeline service
-**GROUP 1** is lifeline service that is assigned to sensor status - Open/Close. It enables the sensor to send reports and readings to Z-Wave controller or Z-Wave Gateway whenever the sensor is triggered. This group supports: NOTIFICATION\_REPORT\_V4 SENSOR\_BINARY\_REPORT\_V2 SENSOR\_MULTILEVEL\_REPORT\_V7 BATTERY\_REPORT\_DEVICE\_RESET\_LOCALLY_NOTIFICATION
+<p&gt<strong&gtGROUP 1</strong&gt is lifeline service that is assigned to sensor status - Open/Close. It enables the sensor to send reports and readings to Z-Wave controller or Z-Wave Gateway whenever the sensor is triggered. This group supports: NOTIFICATION\_REPORT\_V4 SENSOR\_BINARY\_REPORT\_V2 SENSOR\_MULTILEVEL\_REPORT\_V7 BATTERY\_REPORT\_DEVICE\_RESET\_LOCALLY_NOTIFICATION</p&gt
 
 Association group 1 supports 4 nodes.
 
 ### Group 2: Group 2
 
 BASIC_SET control command group
-**GROUP 2** allows sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 2, 3, 5 and 8. This griup supports: BASIC_SET
+<p&gt<strong&gtGROUP 2</strong&gt allows sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 2, 3, 5 and 8. This griup supports: BASIC_SET</p&gt
 
 Association group 2 supports 4 nodes.
 
 ### Group 3: Group 3
 
 NOTIFICATION\_REPORT\_V4
-**GROUP 3** allows sending notifications to associated devices int his group. This group supports: NOTIFICATION\_REPORT\_V4
+<p&gt<strong&gtGROUP 3</strong&gt allows sending notifications to associated devices int his group. This group supports: NOTIFICATION\_REPORT\_V4</p&gt
 
 Association group 3 supports 4 nodes.
 
 ### Group 4: Group 4
 
 Sensor Binary Report
-**GROUP 4** allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR\_BINARY\_REPORT_V2
+<p&gt<strong&gtGROUP 4</strong&gt allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR\_BINARY\_REPORT_V2</p&gt
 
 Association group 4 supports 4 nodes.
 
@@ -374,9 +280,9 @@ Association group 4 supports 4 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/735/ne-nas-pd01z-Zipato-PIR-Motion-Sensor-User-Manual-1-0.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/735/ne-nas-pd01z-Zipato-PIR-Motion-Sensor-User-Manual-1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/735).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/735).

@@ -7,9 +7,7 @@
 
   <thing-type id="nietech_mp22z_00_000" listed="false">
     <label>MP22Z Z-Wave Outdoor Smart Plug</label>
-    <description><![CDATA[
-Z-Wave Outdoor Smart Plug<br /><h1>Overview</h1><p>Outdoor AC Plug</p> <p>Key Features:</p> <ul><li>Remote ON/OFF control via the Z-Wave controller</li> <li>Manual ON/OFF control with the front panel push button</li> <li>Support Association Group and Auto Report switch status</li> <li>Over temperature protection</li> <li>Support firmware upgrades via Over-the-air (need Gateways support)</li> </ul><br /><h2>Inclusion Information</h2><p>Put the Z-wave interface controller into “Add” mode, triple press the Program button (A). It will be included to network.</p> <br /><h2>Exclusion Information</h2><p>Put the Z-Wave interface controller into "Remove" mode, triple press the Program button (A). It will be excluded to network</p>
-    ]]></description>
+    <description>Z-Wave Outdoor Smart Plug&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOutdoor AC Plug&lt;/p&gt &lt;p&gtKey Features:&lt;/p&gt &lt;ul&gt&lt;li&gtRemote ON/OFF control via the Z-Wave controller&lt;/li&gt &lt;li&gtManual ON/OFF control with the front panel push button&lt;/li&gt &lt;li&gtSupport Association Group and Auto Report switch status&lt;/li&gt &lt;li&gtOver temperature protection&lt;/li&gt &lt;li&gtSupport firmware upgrades via Over-the-air (need Gateways support)&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut the Z-wave interface controller into “Add” mode, triple press the Program button (A). It will be included to network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut the Z-Wave interface controller into &quot;Remove&quot; mode, triple press the Program button (A). It will be excluded to network&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -49,9 +47,7 @@ Z-Wave Outdoor Smart Plug<br /><h1>Overview</h1><p>Outdoor AC Plug</p> <p>Key Fe
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: LED Indicator</label>
-        <description><![CDATA[
-Status LED Configuration<br /><h1>Overview</h1><p>Value: 00(default) outlet on,led on.</p> <p>Value: 01 outlet on,led off.</p> <p>Value: 02 led off, led no work.</p>
-        ]]></description>
+        <description>Status LED Configuration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue: 00(default) outlet on,led on.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValue: 01 outlet on,led off.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValue: 02 led off, led no work.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">outlet on,led on</option>
@@ -63,9 +59,7 @@ Status LED Configuration<br /><h1>Overview</h1><p>Value: 00(default) outlet on,l
       <parameter name="config_2_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: Auto Turn-Off Timer</label>
-        <description><![CDATA[
-The countdown time, the socket closed<br /><h1>Overview</h1><p>Countdown time can be set.</p> <p>LED flashes two times when the configuration parameter is changed</p>
-        ]]></description>
+        <description>The countdown time, the socket closed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCountdown time can be set.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtLED flashes two times when the configuration parameter is changed&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -79,9 +73,7 @@ The countdown time, the socket closed<br /><h1>Overview</h1><p>Countdown time ca
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Restores state after power failure</label>
-        <description><![CDATA[
-Restores state after power failure<br /><h1>Overview</h1><p>Parameter=6，Size=1，Value=0 output off Value=1 output on Value=2 (default) out put the state after power</p>
-        ]]></description>
+        <description>Restores state after power failure&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter=6，Size=1，Value=0 output off Value=1 output on Value=2 (default) out put the state after power&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">output off</option>
@@ -93,9 +85,7 @@ Restores state after power failure<br /><h1>Overview</h1><p>Parameter=6，Size=1
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-Association group 1<br /><h1>Overview</h1><p>This Device supports Lifeline (association group 1) supporting 1 node for lifeline communication. Group 1 must be assigned the Node ID of the primary controller where unsolicited notifications will be sent. The Z-Wave controller should set this association automatically after inclusion. Lifeline association only supports the “Device Reset Locally” function. Refer to the instructions of your controller for any available details on how this can be set.</p>
-        ]]></description>
+        <description>Association group 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Device supports Lifeline (association group 1) supporting 1 node for lifeline communication. Group 1 must be assigned the Node ID of the primary controller where unsolicited notifications will be sent. The Z-Wave controller should set this association automatically after inclusion. Lifeline association only supports the “Device Reset Locally” function. Refer to the instructions of your controller for any available details on how this can be set.&lt;/p&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

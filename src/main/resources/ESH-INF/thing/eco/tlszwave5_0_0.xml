@@ -7,9 +7,7 @@
 
   <thing-type id="eco_tlszwave5_00_000" listed="false">
     <label>TLS-ZWAVE5 Automated Light Switch</label>
-    <description><![CDATA[
-Automated Light Switch<br /><h1>Overview</h1><p>Automates wall switch without replacing existing switches.  Battery-powered</p> <br /><h2>Inclusion Information</h2><p>Network Inclusion</p> <p>The Z-Wave Plus Toggle Light Switch must be added to a Z-Wave Plus network prior to use. To include the device in a network both the device and the network controller must be in inclusion mode at the same time. Refer to the instructions provided by the manufacturer of your specific controller for details on initiating the controller’s inclusion mode.</p> <ol><li>Verify that the Z-Wave Plus controller you are using is compatible with the Z-Wave Plus Toggle Light Switch.</li> <li>Locate the light switch desired to be used with the Z-Wave Plus Toggle Light Switch.</li> <li>Put your Z-Wave Plus Controller into add (inclusion) mode.</li> <li>Press the inclusion / exclusion button on the Z-Wave Plus Toggle Light Switch. (Figure 1)</li> <li>The LED on the front of the unit will turn off if successful included into a network.</li> </ol><br /><h2>Exclusion Information</h2><p>Network Exclusion</p> <ol><li>Any Z-Wave Plus Device can be removed from any Z-Wave Plus controller. Follow the directions to put your Z-Wave Plus Controller into exclusion mode.</li> <li>Press the inclusion / exclusion button on the Z-Wave Plus Toggle Light Switch.</li> </ol>
-    ]]></description>
+    <description>Automated Light Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAutomates wall switch without replacing existing switches.  Battery-powered&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtNetwork Inclusion&lt;/p&gt &lt;p&gtThe Z-Wave Plus Toggle Light Switch must be added to a Z-Wave Plus network prior to use. To include the device in a network both the device and the network controller must be in inclusion mode at the same time. Refer to the instructions provided by the manufacturer of your specific controller for details on initiating the controller’s inclusion mode.&lt;/p&gt &lt;ol&gt&lt;li&gtVerify that the Z-Wave Plus controller you are using is compatible with the Z-Wave Plus Toggle Light Switch.&lt;/li&gt &lt;li&gtLocate the light switch desired to be used with the Z-Wave Plus Toggle Light Switch.&lt;/li&gt &lt;li&gtPut your Z-Wave Plus Controller into add (inclusion) mode.&lt;/li&gt &lt;li&gtPress the inclusion / exclusion button on the Z-Wave Plus Toggle Light Switch. (Figure 1)&lt;/li&gt &lt;li&gtThe LED on the front of the unit will turn off if successful included into a network.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtNetwork Exclusion&lt;/p&gt &lt;ol&gt&lt;li&gtAny Z-Wave Plus Device can be removed from any Z-Wave Plus controller. Follow the directions to put your Z-Wave Plus Controller into exclusion mode.&lt;/li&gt &lt;li&gtPress the inclusion / exclusion button on the Z-Wave Plus Toggle Light Switch.&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -54,9 +52,7 @@ Automated Light Switch<br /><h1>Overview</h1><p>Automates wall switch without re
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Reports</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>The light switch will send basic reports with a value of 0x00 if the light is turned off and 0xFF if the light is turned on to all nodes in group 2. </p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe light switch will send basic reports with a value of 0x00 if the light is turned off and 0xFF if the light is turned on to all nodes in group 2. &lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

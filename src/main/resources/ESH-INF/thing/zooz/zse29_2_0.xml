@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zse29_02_000" listed="false">
     <label>ZSE29 Outdoor Motion Sensor v2</label>
-    <description><![CDATA[
-Outdoor Motion Sensor v2<br /><h1>Overview</h1><p>OUTDOOR SENSOR: Introducing the first Z-Wave motion detector created for outdoor use. Monitor activity remotely through your Z-Wave hub and automate outdoor lighting based on motion. Battery or 5V USB powered.</p> <br /><h2>Inclusion Information</h2><p>Click the tamper switch 3 times quickly</p> <br /><h2>Exclusion Information</h2><ol><li>Bring the sensor within direct range of your Z-Wave gateway (hub).</li> <li>Put the Z-Wave hub into exclusion mode.</li> <li>Press and release the tamper switch 3 times quickly.</li> <li>Your hub will confirm exclusion and the sensor will disappear from your controller's device list.</li> </ol><br /><h2>Wakeup Information</h2><p>To manually wake up the device, press and release the tamper switch 3 times quickly. (The manual says one press but appears to be incorrect.)</p> <p>The sensor’s wake-up interval is set to 4 hours by default to save battery life. Use the Wake Up Command Class to adjust the interval (in seconds, working in 600s intervals, with 600 as min and 86400 as max values). During wake-up, the sensor turns the Z-Wave radio on for 10 seconds to receive communication from the hub. Long wake-up interval will not affect how often the sensor reports motion to your hub.</p>
-    ]]></description>
+    <description>Outdoor Motion Sensor v2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOUTDOOR SENSOR: Introducing the first Z-Wave motion detector created for outdoor use. Monitor activity remotely through your Z-Wave hub and automate outdoor lighting based on motion. Battery or 5V USB powered.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtClick the tamper switch 3 times quickly&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtBring the sensor within direct range of your Z-Wave gateway (hub).&lt;/li&gt &lt;li&gtPut the Z-Wave hub into exclusion mode.&lt;/li&gt &lt;li&gtPress and release the tamper switch 3 times quickly.&lt;/li&gt &lt;li&gtYour hub will confirm exclusion and the sensor will disappear from your controller's device list.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtTo manually wake up the device, press and release the tamper switch 3 times quickly. (The manual says one press but appears to be incorrect.)&lt;/p&gt &lt;p&gtThe sensor’s wake-up interval is set to 4 hours by default to save battery life. Use the Wake Up Command Class to adjust the interval (in seconds, working in 600s intervals, with 600 as min and 86400 as max values). During wake-up, the sensor turns the Z-Wave radio on for 10 seconds to receive communication from the hub. Long wake-up interval will not affect how often the sensor reports motion to your hub.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -74,18 +72,14 @@ Outdoor Motion Sensor v2<br /><h1>Overview</h1><p>OUTDOOR SENSOR: Introducing th
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>1: Basic Set Report Value Sent to Associated Devices</label>
-        <description><![CDATA[
-Basic Set Report Value Sent to Associated Devices<br /><h1>Overview</h1><p>Set the value of basic set report sent to the light associated with the sensor in Group 2 (so the light turns on to the selected brightness level). 99 is the equivalent of full brightness in Z-Wave terms.</p>
-        ]]></description>
+        <description>Basic Set Report Value Sent to Associated Devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the value of basic set report sent to the light associated with the sensor in Group 2 (so the light turns on to the selected brightness level). 99 is the equivalent of full brightness in Z-Wave terms.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Enable / Disable Motion Reports</label>
-        <description><![CDATA[
-Enable / Disable Motion Reports<br /><h1>Overview</h1><p>Enable or disable motion reports completely. If motion sensor is disabled, the device will not report motion at all to your hub.</p>
-        ]]></description>
+        <description>Enable / Disable Motion Reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or disable motion reports completely. If motion sensor is disabled, the device will not report motion at all to your hub.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Motion reports disabled</option>
@@ -96,9 +90,7 @@ Enable / Disable Motion Reports<br /><h1>Overview</h1><p>Enable or disable motio
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="10">
         <label>3: Motion sensitivity</label>
-        <description><![CDATA[
-Motion sensitivity<br /><h1>Overview</h1><p>Adjust motion sensitivity where 10 is the most sensitive setting. The default sensitivity is 1.</p>
-        ]]></description>
+        <description>Motion sensitivity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjust motion sensitivity where 10 is the most sensitive setting. The default sensitivity is 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -106,9 +98,7 @@ Motion sensitivity<br /><h1>Overview</h1><p>Adjust motion sensitivity where 10 i
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="10" max="900">
         <label>4: Lux level trigger</label>
-        <description><![CDATA[
-Lux level trigger<br /><h1>Overview</h1><p>Set lux level trigger with 10 being the lowest reported value and 900 being the highest reported value. The sensor will report motion to the hub and associated devices only if the brightness (lux) level is below the set trigger value.</p> <p>0 - set manually by lux knob (default)</p> <p>1 - ignore lux readings and always report motion</p> <p>10-900 - set custom trigger</p>
-        ]]></description>
+        <description>Lux level trigger&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet lux level trigger with 10 being the lowest reported value and 900 being the highest reported value. The sensor will report motion to the hub and associated devices only if the brightness (lux) level is below the set trigger value.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - set manually by lux knob (default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - ignore lux readings and always report motion&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt10-900 - set custom trigger&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Set manually by lux knob</option>
@@ -120,9 +110,7 @@ Lux level trigger<br /><h1>Overview</h1><p>Set lux level trigger with 10 being t
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="720">
         <label>5: Motion re-trigger time</label>
-        <description><![CDATA[
-Motion re-trigger time<br /><h1>Overview</h1><p>Set motion re-trigger time for the delay before the sensor reports no motion to the hub and associated devices after detecting the last motion activity.</p> <p>0 - set manually by timer knob (default)</p> <p>5-720 (seconds) - set custom re-trigger time</p>
-        ]]></description>
+        <description>Motion re-trigger time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet motion re-trigger time for the delay before the sensor reports no motion to the hub and associated devices after detecting the last motion activity.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - set manually by timer knob (default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5-720 (seconds) - set custom re-trigger time&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Set manually by timer knob</option>
@@ -133,9 +121,7 @@ Motion re-trigger time<br /><h1>Overview</h1><p>Set motion re-trigger time for t
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="1" max="1440">
         <label>6: Lux reporting frequency</label>
-        <description><![CDATA[
-Lux reporting frequency<br /><h1>Overview</h1><p>Set lux reporting frequency to decide how often in minutes the sensor will measure and send brightness level data to the hub and associated devices. The default is 30 minutes and the range is 1-1440. Note: Frequent reports will affect battery life.</p>
-        ]]></description>
+        <description>Lux reporting frequency&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet lux reporting frequency to decide how often in minutes the sensor will measure and send brightness level data to the hub and associated devices. The default is 30 minutes and the range is 1-1440. Note: Frequent reports will affect battery life.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -143,18 +129,14 @@ Lux reporting frequency<br /><h1>Overview</h1><p>Set lux reporting frequency to 
       <parameter name="config_7_2" type="integer" groupName="configuration" readOnly="true"
                  min="5" max="720">
         <label>7: Reading from physical motion clear knob</label>
-        <description><![CDATA[
-Reading from physical motion clear knob<br /><h1>Overview</h1><p><strong>READ ONLY. </strong>Read the values for the timer (motion clear) knob set physically at the sensor.</p> <p><strong>Values: </strong>5 (at T position / test mode); 30; 60; 300; 600; 720 (seconds).</p>
-        ]]></description>
+        <description>Reading from physical motion clear knob&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtREAD ONLY. &amp;lt;/strong&amp;amp;gtRead the values for the timer (motion clear) knob set physically at the sensor.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtValues: &amp;lt;/strong&amp;amp;gt5 (at T position / test mode); 30; 60; 300; 600; 720 (seconds).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration" readOnly="true"
                  min="10" max="900">
         <label>8: Reading from physical low lux trigger knob</label>
-        <description><![CDATA[
-Reading from physical low lux trigger knob<br /><h1>Overview</h1><p><strong>READ ONLY. </strong>Read the values for the lux trigger knob set physically at the sensor.</p> <p><strong>Values: </strong>10; 50; 100; 200; 300; 900 lux (at T position / test mode).</p>
-        ]]></description>
+        <description>Reading from physical low lux trigger knob&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtREAD ONLY. &amp;lt;/strong&amp;amp;gtRead the values for the lux trigger knob set physically at the sensor.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtValues: &amp;lt;/strong&amp;amp;gt10; 50; 100; 200; 300; 900 lux (at T position / test mode).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>900</default>
       </parameter>
 
@@ -166,9 +148,7 @@ Reading from physical low lux trigger knob<br /><h1>Overview</h1><p><strong>READ
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-Basic Set commands PIR Control<br /><h1>Overview</h1><p>The Outdoor Motion Sensor supports Group 1 with 1 Controller node for lifeline communication and Group 2 with up to 4 devices for PIR Control. This device will send a Notification Report to Group 1 and BASIC_SET command to Group 2 whenever it detects motion.</p>
-        ]]></description>
+        <description>Basic Set commands PIR Control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Outdoor Motion Sensor supports Group 1 with 1 Controller node for lifeline communication and Group 2 with up to 4 devices for PIR Control. This device will send a Notification Report to Group 1 and BASIC_SET command to Group 2 whenever it detects motion.&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 

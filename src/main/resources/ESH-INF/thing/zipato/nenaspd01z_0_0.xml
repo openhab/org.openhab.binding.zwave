@@ -7,9 +7,7 @@
 
   <thing-type id="zipato_nenaspd01z_00_000" listed="false">
     <label>NE-NAS-PD01Z PIR motion sensor and light measurement</label>
-    <description><![CDATA[
-PIR motion sensor and light measurement<br /><h1>Overview</h1><p>Zipato PIR Motion Sensor is a passive infrared detector or physical sensor, the sensor doesn’t emit any energy, but only passively receive and detect infrared radiation. Sensor sends messages via Z-Wave network to the Z-Wave main controller. In the communication between the PIR and Z-Wave main controller, PIR sensor can only send messages and not receive them. When sensor is triggered, it will send message to the main controller and associate devices to work through the Z-Wave main controller. Sensor is battery powered, small and can be installed easily</p> <br /><h2>Inclusion Information</h2><p> Press the button 3 times within 1.5 seconds and the device will enter inclusion mode. LED will flash on and off 5 times.</p> <br /><h2>Exclusion Information</h2><p> Press the button 3 times within 1.5 seconds and the device will enter exclusion mode.</p> <br /><h2>Wakeup Information</h2><p> Press the button 3 times within 1.5 seconds to wake the device. LED will blink once.</p>
-    ]]></description>
+    <description>PIR motion sensor and light measurement&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZipato PIR Motion Sensor is a passive infrared detector or physical sensor, the sensor doesn’t emit any energy, but only passively receive and detect infrared radiation. Sensor sends messages via Z-Wave network to the Z-Wave main controller. In the communication between the PIR and Z-Wave main controller, PIR sensor can only send messages and not receive them. When sensor is triggered, it will send message to the main controller and associate devices to work through the Z-Wave main controller. Sensor is battery powered, small and can be installed easily&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt Press the button 3 times within 1.5 seconds and the device will enter inclusion mode. LED will flash on and off 5 times.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Press the button 3 times within 1.5 seconds and the device will enter exclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt Press the button 3 times within 1.5 seconds to wake the device. LED will blink once.&lt;/p&gt</description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -67,9 +65,7 @@ PIR motion sensor and light measurement<br /><h1>Overview</h1><p>Zipato PIR Moti
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="8" max="255">
         <label>1: Sensitivity level</label>
-        <description><![CDATA[
-8 = Highest sensitivity, 255 = lowest sesitivity<br /><h1>Overview</h1><p>1. SENSITIVITY LEVEL SETTING</p> <p>This parameter defines the sensitivity of PIR sensor. It’s recommended to test the sensor with moevements from a farthest end of the coverage area at the first time of use. If movements cannot be detected sensitively, simply adjust the sensitivity level with this parameter. This parameter can be configured with the value of 8 through 255, where 8 means high sensitivity and 255 means low sensitivity. Function: Sensivity Level Setting</p> <p>Parameter size: 1 byte</p> <p>Parameter number: 1</p> <p>Available settings: 8 ~ 255</p> <p>Default settings: 12</p>
-        ]]></description>
+        <description>8 = Highest sensitivity, 255 = lowest sesitivity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. SENSITIVITY LEVEL SETTING&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines the sensitivity of PIR sensor. It’s recommended to test the sensor with moevements from a farthest end of the coverage area at the first time of use. If movements cannot be detected sensitively, simply adjust the sensitivity level with this parameter. This parameter can be configured with the value of 8 through 255, where 8 means high sensitivity and 255 means low sensitivity. Function: Sensivity Level Setting&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 1 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 1&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 8 ~ 255&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault settings: 12&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>12</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -77,9 +73,7 @@ PIR motion sensor and light measurement<br /><h1>Overview</h1><p>Zipato PIR Moti
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="5" max="600">
         <label>2: ON / OFF Duration</label>
-        <description><![CDATA[
-How long should the associated devices have ON status.<br /><h1>Overview</h1><p>2. ON / OFF DURATION</p> <p>This parameter determines how long the associated devices should have ON status. For instace, if this parameter is set to 30 (sec), the PIR sensor will send a BASIC_SET command to associated device with valu BASIC_SET level if PIR sensor is triggered and associated device will be turned on 30 seconds begore it’s turned off. This parameter value must be large as Parameter #. If user set this parameter to default by Configure CC, the parameter # will be set to default value.</p> <p>Function: ON / OFF duration setting</p> <p>Parameter size: 2 byte</p> <p>Parameter number: 2</p> <p>Available settings: 5~600 (seconds)</p> <p>Default setting: 30</p>
-        ]]></description>
+        <description>How long should the associated devices have ON status.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt2. ON / OFF DURATION&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter determines how long the associated devices should have ON status. For instace, if this parameter is set to 30 (sec), the PIR sensor will send a BASIC_SET command to associated device with valu BASIC_SET level if PIR sensor is triggered and associated device will be turned on 30 seconds begore it’s turned off. This parameter value must be large as Parameter #. If user set this parameter to default by Configure CC, the parameter # will be set to default value.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: ON / OFF duration setting&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 2 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 2&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 5~600 (seconds)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 30&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -87,9 +81,7 @@ How long should the associated devices have ON status.<br /><h1>Overview</h1><p>
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>3: BASIC SET Level</label>
-        <description><![CDATA[
-BASIC SET LEVEL<br /><h1>Overview</h1><p>3. BASIC SET LEVEL BASIC_SET command will be sent when PIR sensor is triggered. The receiver will take it into consideration; for instance, if a lamp module is receiving the BASIC_SET command of which value is decisive as to how bright of dim level of lamp module shall be.</p> <p>Function: Basic Set Level</p> <p>Parameter size: 1 byte</p> <p>Parameter number: 2</p> <p>Available settings: 0,1 ~ 99 or 255 0 - OFF, Alarm cancelling or turning device off</p> <p>1 ~ 99 or 255 - ON (Binary Switch Device)</p> <p>Dim level (Multilevel Switch Device)</p> <p>Default setting: 255</p>
-        ]]></description>
+        <description>BASIC SET LEVEL&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt3. BASIC SET LEVEL BASIC_SET command will be sent when PIR sensor is triggered. The receiver will take it into consideration; for instance, if a lamp module is receiving the BASIC_SET command of which value is decisive as to how bright of dim level of lamp module shall be.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: Basic Set Level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 1 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 2&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 0,1 ~ 99 or 255 0 - OFF, Alarm cancelling or turning device off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 ~ 99 or 255 - ON (Binary Switch Device)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDim level (Multilevel Switch Device)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 255&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
@@ -98,18 +90,14 @@ BASIC SET LEVEL<br /><h1>Overview</h1><p>3. BASIC SET LEVEL BASIC_SET command wi
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: PIR detection ENABLED / DISABLED</label>
-        <description><![CDATA[
-Enable og disable the PIR sensor<br /><h1>Overview</h1><p>4. PIR DETECTION FUNCTION ENABLED / DISABLED This parameter can enable or disable the PIR sensor detecting function. Function: Enabled / Disabled PIR function</p> <p>Parameter size: 1 byte</p> <p>Parameter number: 4</p> <p>Available settings: 0 (disable) or 255 (enable)</p> <p>Default setting: 255 </p>
-        ]]></description>
+        <description>Enable og disable the PIR sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt4. PIR DETECTION FUNCTION ENABLED / DISABLED This parameter can enable or disable the PIR sensor detecting function. Function: Enabled / Disabled PIR function&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 1 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 4&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 0 (disable) or 255 (enable)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 255 &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="1000">
         <label>5: Ambent illumination LUX level</label>
-        <description><![CDATA[
-Lux value which determines when the light sensor is activated<br /><h1>Overview</h1><p>5. AMBIENT ILLUMINATION LUX LEVEL This parameter can set Lux value which determines when the light sensor is activated. If the ambient illumination level falls bellow this value and a person moves across or within the detection area, PIR sensor will send Z-Wave ON command (i.e. BASIC_set (value = parameter 3) to an associated device and activate it.</p> <p>Function: Lux Level Set</p> <p>Parameter size: 2 byte</p> <p>Parameter number: 5</p> <p>Available settings: 0~1000 (Lux)</p> <p>Default setting: 100 (Lux)</p>
-        ]]></description>
+        <description>Lux value which determines when the light sensor is activated&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt5. AMBIENT ILLUMINATION LUX LEVEL This parameter can set Lux value which determines when the light sensor is activated. If the ambient illumination level falls bellow this value and a person moves across or within the detection area, PIR sensor will send Z-Wave ON command (i.e. BASIC_set (value = parameter 3) to an associated device and activate it.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: Lux Level Set&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 2 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 5&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 0~1000 (Lux)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 100 (Lux)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
@@ -118,9 +106,7 @@ Lux value which determines when the light sensor is activated<br /><h1>Overview<
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="1" max="8">
         <label>6: Re-Trigger Interval</label>
-        <description><![CDATA[
-Adjust the interval of being re-triggered<br /><h1>Overview</h1><p>6. RE-TRIGGER INTERVAL SETTING This parameter can be used to adjust the interval of being re-triggered after the PIR sensor has been triggered. This parameter value must be less than Paramater #2. If user sets this parameter to default by Configure CC, the parameter #2 will be set to default value.</p> <p>Function: Re-trigger interval setting</p> <p>Parameter size: 1 byte</p> <p>Parameter number: 6</p> <p>Available settings: 1~8 (s)</p> <p>Default setting: 8</p>
-        ]]></description>
+        <description>Adjust the interval of being re-triggered&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt6. RE-TRIGGER INTERVAL SETTING This parameter can be used to adjust the interval of being re-triggered after the PIR sensor has been triggered. This parameter value must be less than Paramater #2. If user sets this parameter to default by Configure CC, the parameter #2 will be set to default value.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: Re-trigger interval setting&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 1 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 6&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 1~8 (s)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 8&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>8</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -128,9 +114,7 @@ Adjust the interval of being re-triggered<br /><h1>Overview</h1><p>6. RE-TRIGGER
       <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="60" max="3600">
         <label>7: Light sensor polling interval</label>
-        <description><![CDATA[
-How often should ambient illumination be evaluated<br /><h1>Overview</h1><p>7. LIGHT SENSOR POLLING INTERVAL This parameter can set the light sensor to measure ambient illumination level interval time. NOTE: This value must be less than Wakeup Interval Time!</p> <p>Function: Light Sensor Polling Interval</p> <p>Parameter size: 2 byte</p> <p>Parameter number: 7</p> <p>Available settings: 60~3600 (seconds)</p> <p>Default setting: 180 (s)</p>
-        ]]></description>
+        <description>How often should ambient illumination be evaluated&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt7. LIGHT SENSOR POLLING INTERVAL This parameter can set the light sensor to measure ambient illumination level interval time. NOTE: This value must be less than Wakeup Interval Time!&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: Light Sensor Polling Interval&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 2 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 7&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 60~3600 (seconds)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 180 (s)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -138,51 +122,39 @@ How often should ambient illumination be evaluated<br /><h1>Overview</h1><p>7. L
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>8: LUX level function enable</label>
-        <description><![CDATA[
-See overview<br /><h1>Overview</h1><p>8. LUX LEVEL FUNCTION ENABLE If this parameter is set to “1” and when Lux level is less than the value defined by parameter #5, PIR sensor will send a BASIC_SET command frame (i.e. BASIC_SET (value = parameter 3) to an associated device and activate it. If Lux level is greater than the value defined by parameter #5, PIR sensor will not send BASIC_SET command frame.</p> <p>Function: Lux Level Enable</p> <p>Parameter size: 1 byte</p> <p>Parameter number: 8</p> <p>Available sttings: 0, 1</p> <p>Default setting: 0</p>
-        ]]></description>
+        <description>See overview&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt8. LUX LEVEL FUNCTION ENABLE If this parameter is set to “1” and when Lux level is less than the value defined by parameter #5, PIR sensor will send a BASIC_SET command frame (i.e. BASIC_SET (value = parameter 3) to an associated device and activate it. If Lux level is greater than the value defined by parameter #5, PIR sensor will not send BASIC_SET command frame.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: Lux Level Enable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 1 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 8&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable sttings: 0, 1&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 0&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="0" max="1000">
         <label>9: Ambient illumination report</label>
-        <description><![CDATA[
-when lux changes by the number in this setting it is reported<br /><h1>Overview</h1><p>9. AMBIENT ILLUMINATION LUX LEVEL REPORT This parameter defines by how much Lux level must change in Lux to be reported to the main controller.</p> <p>Function: Lux Level Report</p> <p>Parameter size: 2 byte</p> <p>Parameter number: 9</p> <p>Available settings: 0~1000 (Lux)</p> <p>Default setting: 1</p>
-        ]]></description>
+        <description>when lux changes by the number in this setting it is reported&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt9. AMBIENT ILLUMINATION LUX LEVEL REPORT This parameter defines by how much Lux level must change in Lux to be reported to the main controller.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFunction: Lux Level Report&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size: 2 byte&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter number: 9&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 0~1000 (Lux)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 1&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
-        <description><![CDATA[
-lifeline service<br /><h1>Overview</h1><p><strong>GROUP 1</strong> is lifeline service that is assigned to sensor status - Open/Close. It enables the sensor to send reports and readings to Z-Wave controller or Z-Wave Gateway whenever the sensor is triggered. This group supports: NOTIFICATION_REPORT_V4 SENSOR_BINARY_REPORT_V2 SENSOR_MULTILEVEL_REPORT_V7 BATTERY_REPORT_DEVICE_RESET_LOCALLY_NOTIFICATION</p>
-        ]]></description>
+        <description>lifeline service&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtGROUP 1&lt;/strong&gt is lifeline service that is assigned to sensor status - Open/Close. It enables the sensor to send reports and readings to Z-Wave controller or Z-Wave Gateway whenever the sensor is triggered. This group supports: NOTIFICATION_REPORT_V4 SENSOR_BINARY_REPORT_V2 SENSOR_MULTILEVEL_REPORT_V7 BATTERY_REPORT_DEVICE_RESET_LOCALLY_NOTIFICATION&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-BASIC_SET control command group<br /><h1>Overview</h1><p><strong>GROUP 2</strong> allows sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 2, 3, 5 and 8. This griup supports: BASIC_SET</p>
-        ]]></description>
+        <description>BASIC_SET control command group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtGROUP 2&lt;/strong&gt allows sending control commands to associated devices such as relay module, lighting, etc. This association group is configured through the advanced parameters no. 2, 3, 5 and 8. This griup supports: BASIC_SET&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Group 3</label>
-        <description><![CDATA[
-NOTIFICATION_REPORT_V4<br /><h1>Overview</h1><p><strong>GROUP 3</strong> allows sending notifications to associated devices int his group. This group supports: NOTIFICATION_REPORT_V4</p>
-        ]]></description>
+        <description>NOTIFICATION_REPORT_V4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtGROUP 3&lt;/strong&gt allows sending notifications to associated devices int his group. This group supports: NOTIFICATION_REPORT_V4&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Group 4</label>
-        <description><![CDATA[
-Sensor Binary Report<br /><h1>Overview</h1><p><strong>GROUP 4</strong> allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR_BINARY_REPORT_V2</p>
-        ]]></description>
+        <description>Sensor Binary Report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtGROUP 4&lt;/strong&gt allows sending sending Sensor Binary Report to associated devices in this group. This group supports: SENSOR_BINARY_REPORT_V2&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 

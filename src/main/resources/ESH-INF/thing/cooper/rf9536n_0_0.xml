@@ -7,9 +7,7 @@
 
   <thing-type id="cooper_rf9536n_00_000" listed="false">
     <label>RF9536-N 1000W Dimmer Light Switch</label>
-    <description><![CDATA[
-1000W Dimmer Light Switch<br /><h1>Overview</h1><ul><li>ASPIRE RF Dimmers replace regular switches to provide local and remote ON/OFF/DIM/BRIGHT control and are compatible with Incandescent, Magnetic Low-Voltage lighting loads.</li> <li>ASPIRE RF Dimmers provide other programmable functions (scenes, events, association, child lockout, etc.) when used with ASPIRE RF or other Z-Wave compliant controllers*. Each dimmer can be manually and remotely controlled by commands sent from an ASPIRE RF controller (RFTDCSG, RFHDCSG, RFBER) or other Z-Wave compatible controllers or programs.</li> <li>ASPIRE RF Dimmers utilize existing 120V/AC, 60Hz standard house wiring and fit into standard wallboxes. No new wiring needed.</li> </ul><p>(*Note: some specific ASPIRE RF features may not be programmable)</p> <br /><h2>Inclusion Information</h2><p>Press the device switch one time to include it in the network. The LED will stop blinking.</p> <br /><h2>Exclusion Information</h2><p>Press the device switch one time to exclude it in the network. The LED will start blinking.</p>
-    ]]></description>
+    <description>1000W Dimmer Light Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtASPIRE RF Dimmers replace regular switches to provide local and remote ON/OFF/DIM/BRIGHT control and are compatible with Incandescent, Magnetic Low-Voltage lighting loads.&lt;/li&gt &lt;li&gtASPIRE RF Dimmers provide other programmable functions (scenes, events, association, child lockout, etc.) when used with ASPIRE RF or other Z-Wave compliant controllers*. Each dimmer can be manually and remotely controlled by commands sent from an ASPIRE RF controller (RFTDCSG, RFHDCSG, RFBER) or other Z-Wave compatible controllers or programs.&lt;/li&gt &lt;li&gtASPIRE RF Dimmers utilize existing 120V/AC, 60Hz standard house wiring and fit into standard wallboxes. No new wiring needed.&lt;/li&gt &lt;/ul&gt&lt;p&gt(*Note: some specific ASPIRE RF features may not be programmable)&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the device switch one time to include it in the network. The LED will stop blinking.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the device switch one time to exclude it in the network. The LED will start blinking.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -48,7 +46,8 @@
       <channel id="indicator_level" typeId="indicator_level">
         <label>Indicator Light Control</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_INDICATOR</property>
         </properties>
       </channel>
     </channels>
@@ -81,36 +80,28 @@
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Delayed OFF time</label>
-        <description><![CDATA[
-time in seconds to delay OFF<br /><h1>Overview</h1><p>The amount of time in seconds the switch will delay when trigger the delayed off feature</p>
-        ]]></description>
+        <description>time in seconds to delay OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will delay when trigger the delayed off feature&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: Panic ON time</label>
-        <description><![CDATA[
-Time in seconds for panic mode ON<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn on for when panic mode is triggered</p>
-        ]]></description>
+        <description>Time in seconds for panic mode ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will turn on for when panic mode is triggered&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>3: Panic OFF time</label>
-        <description><![CDATA[
-time in seconds for OFF in panic mode<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn off for when panic mode is triggered</p>
-        ]]></description>
+        <description>time in seconds for OFF in panic mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will turn off for when panic mode is triggered&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Basic Set Value</label>
-        <description><![CDATA[
-Send value to association group on trigger<br /><h1>Overview</h1><p>Setting this to anything other than 0 will cause the value to be transmitted to devices in the association group when the switch is triggered. A setting other than 0 will likely result in undesired operation</p>
-        ]]></description>
+        <description>Send value to association group on trigger&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSetting this to anything other than 0 will cause the value to be transmitted to devices in the association group when the switch is triggered. A setting other than 0 will likely result in undesired operation&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -138,17 +129,13 @@ Send value to association group on trigger<br /><h1>Overview</h1><p>Setting this
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>7: Dimmer Ramp Time</label>
-        <description><![CDATA[
-Time in seconds to reach desired level<br /><h1>Overview</h1><p>The amount of time in seconds the switch will take to reach the desired dim level</p>
-        ]]></description>
+        <description>Time in seconds to reach desired level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will take to reach the desired dim level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Kickstart / Rapid Start</label>
-        <description><![CDATA[
-Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / CFL bulbs turn on when the preset dim level is low.  Enabling this feature may cause the lights brightness to momentarily be bright when the switch is turned on before reducing in brightness to desired level</p>
-        ]]></description>
+        <description>Turn on or off rapid start feature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnsures that LED / CFL bulbs turn on when the preset dim level is low.  Enabling this feature may cause the lights brightness to momentarily be bright when the switch is turned on before reducing in brightness to desired level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">Off</option>
@@ -178,9 +165,7 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
 
       <parameter name="group_255" type="text" groupName="association">
         <label>255: Group 255</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Life line to the controller</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtLife line to the controller&lt;/p&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
@@ -192,5 +177,13 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
     </config-description>
 
   </thing-type>
+
+  <channel-type id="cooper_rf9536n_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Dimmer Ramp Time</label>
+    <description>Time in seconds to reach desired level</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

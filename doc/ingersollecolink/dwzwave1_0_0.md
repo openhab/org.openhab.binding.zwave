@@ -10,7 +10,7 @@ This describes the Z-Wave device *DWZWAVE1*, manufactured by *Ingersoll Rand (wa
 
 The device is in the category of *Door*, defining Door sensors.
 
-![DWZWAVE1 product image](https://www.cd-jackson.com/zwave_device_uploads/135/135_default.png)
+![DWZWAVE1 product image](https://opensmarthouse.org/zwavedatabase/135/image/)
 
 
 The DWZWAVE1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,17 +19,15 @@ The DWZWAVE1 does not permanently listen for messages sent from the controller -
 
 ## Overview
 
-Monitor activities at your home with this Z-Wave Door and Window Sensor.  Choose to receive mobile or email alerts when a door or window is opened.  Use the Door/Window sensor to trigger video recording or turn on the lights.  View the status of the sensor from your smartphone, tablet, or computer.
+<p&gtMonitor activities at your home with this Z-Wave Door and Window Sensor.  Choose to receive mobile or email alerts when a door or window is opened.  Use the Door/Window sensor to trigger video recording or turn on the lights.  View the status of the sensor from your smartphone, tablet, or computer.</p&gt
 
 ### Inclusion Information
 
-Remove the battery for 10 seconds and replace the battery to restart enrollment mode.
+<p&gtRemove the battery for 10 seconds and replace the battery to restart enrollment mode.</p&gt
 
 ### Exclusion Information
 
-  1. Remove the battery from the Sensor.
-  2. Leave the battery out for at least ten (10) seconds.
-  3. Reinstall the battery into the Sensor.
+<ol&gt<li&gtRemove the battery from the Sensor.</li&gt <li&gtLeave the battery out for at least ten (10) seconds.</li&gt <li&gtReinstall the battery into the Sensor.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -38,7 +36,7 @@ The DWZWAVE1 does not permanently listen for messages sent from the controller -
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press the "+" button once.
+<p&gtPress the "+" button once.</p&gt
 
 ## Channels
 
@@ -95,7 +93,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 99: Fault Restore Report
 
 Fault Restore Report
-Enable or disable Basic Sets of 0x00 on a fault restore to nodes in Group 2. Default = Enabled.
+<p&gtEnable or disable Basic Sets of 0x00 on a fault restore to nodes in Group 2. Default = Enabled.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -162,9 +160,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation Instructions](https://www.cd-jackson.com/zwave_device_uploads/135/D-W-Sensor-Installation-Instructions.pdf)
+* [Installation Instructions](https://opensmarthouse.org/zwavedatabase/135/D-W-Sensor-Installation-Instructions.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/135).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/135).

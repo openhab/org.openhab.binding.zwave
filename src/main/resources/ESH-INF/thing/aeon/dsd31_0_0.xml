@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsd31_00_000" listed="false">
     <label>DSD31 Outlet Plugable Siren</label>
-    <description><![CDATA[
-Outlet Plugable Siren<br /><h1>Overview</h1><p>Aeon Labs Siren is a switch binary device based on Z-wave enhanced 232 slave library of V6.51.01. </p> <br /><h2>Inclusion Information</h2><ol><li>Press and release the Action button. LED will blink for 3 seconds.</li> <li>If successfully included, LED will no longer blink after the Action button is quickly pressed.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Press and release the Action button. </li> <li>If successfully removed, LED will blink for 3 seconds after the Action button is quickly pressed.</li> </ol>
-    ]]></description>
+    <description>Outlet Plugable Siren&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAeon Labs Siren is a switch binary device based on Z-wave enhanced 232 slave library of V6.51.01. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress and release the Action button. LED will blink for 3 seconds.&lt;/li&gt &lt;li&gtIf successfully included, LED will no longer blink after the Action button is quickly pressed.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress and release the Action button. &lt;/li&gt &lt;li&gtIf successfully removed, LED will blink for 3 seconds after the Action button is quickly pressed.&lt;/li&gt &lt;/ol&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -56,9 +54,7 @@ Outlet Plugable Siren<br /><h1>Overview</h1><p>Aeon Labs Siren is a switch binar
       <parameter name="config_37_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>37: Sirensound and Volume</label>
-        <description><![CDATA[
-Sets the sound type and volume<br /><h1>Overview</h1><p>The Value1(low byte) is used to select the Siren sound. The Value2(high byte) is used to adjust the volume. Other values will be ignored. 0 1  -&gt;   do not change the current sound.1 1  -&gt;   Siren sound 1 is selected.2 1  -&gt;   Siren sound 2 i</p>
-        ]]></description>
+        <description>Sets the sound type and volume&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Value1(low byte) is used to select the Siren sound. The Value2(high byte) is used to adjust the volume. Other values will be ignored. 0 1  -&amp;amp;gt;   do not change the current sound.1 1  -&amp;amp;gt;   Siren sound 1 is selected.2 1  -&amp;amp;gt;   Siren sound 2 i&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>13</default>
         <advanced>true</advanced>
       </parameter>
@@ -87,9 +83,7 @@ Sets the sound type and volume<br /><h1>Overview</h1><p>The Value1(low byte) is 
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Send Notifications</label>
-        <description><![CDATA[
-send notifications to associated devices<br /><h1>Overview</h1><p>Enable to send notifications to associated devices when the state of Siren changed.</p>
-        ]]></description>
+        <description>send notifications to associated devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable to send notifications to associated devices when the state of Siren changed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Nothing</option>

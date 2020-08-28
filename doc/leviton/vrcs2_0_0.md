@@ -10,24 +10,20 @@ This describes the Z-Wave device *VRCS2*, manufactured by *Leviton* with the thi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![VRCS2 product image](https://www.cd-jackson.com/zwave_device_uploads/418/418_default.png)
+![VRCS2 product image](https://opensmarthouse.org/zwavedatabase/418/image/)
 
 
 ## Overview
 
-Leviton VRCS2 Vizia RF + 2-Button Scene Controller with Switches for Multi-Location Scene Control
+<p&gtLeviton VRCS2 Vizia RF + 2-Button Scene Controller with Switches for Multi-Location Scene Control</p&gt
 
 ### Inclusion Information
 
-There are three different inclusions to be completed with this device.
-
-  1. Include the complete switch on the network (Press both buttons simultaneously until both sets of leds start blinking)
-  2. Include the top button (Press the top button until led starts flashing)
-  3. Include the bottom (Press the bottom button until the led starts flashing)
+<p&gtThere are three different inclusions to be completed with this device.</p&gt <ol&gt<li&gtInclude the complete switch on the network (Press both buttons simultaneously until both sets of leds start blinking)</li&gt <li&gtInclude the top button (Press the top button until led starts flashing)</li&gt <li&gtInclude the bottom (Press the bottom button until the led starts flashing)</li&gt </ol&gt
 
 ### Exclusion Information
 
-Press both buttons simultaneously until both sets of leds start blinking. Exclude device
+<p&gtPress both buttons simultaneously until both sets of leds start blinking. Exclude device</p&gt
 
 ## Channels
 
@@ -82,10 +78,10 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Z-Wave Protocol Implementation Conformance Statement:](https://www.cd-jackson.com/zwave_device_uploads/418/ZC08-09060016.pdf)
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/418/VRCS2.pdf)
+* [Z-Wave Protocol Implementation Conformance Statement:](https://opensmarthouse.org/zwavedatabase/418/ZC08-09060016.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/418/VRCS2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/418).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/418).

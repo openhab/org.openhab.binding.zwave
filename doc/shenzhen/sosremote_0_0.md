@@ -10,7 +10,7 @@ This describes the Z-Wave device *SOS/Remote Control*, manufactured by *[Shenzhe
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![SOS/Remote Control product image](https://www.cd-jackson.com/zwave_device_uploads/799/799_default.jpg)
+![SOS/Remote Control product image](https://opensmarthouse.org/zwavedatabase/799/image/)
 
 
 The SOS/Remote Control supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,23 +19,15 @@ The SOS/Remote Control does not permanently listen for messages sent from the co
 
 ## Overview
 
-Remote control/SOS is a smart security device that can communication with other devices via z-wave. It is compatible with z-wave plus devices, battery powered , compact to carry .SOS is used for emergency.  
-With 4 buttons, you can use Remote control for emergency call and set 6 different scenes.
+<p&gtRemote control/SOS is a smart security device that can communication with other devices via z-wave. It is compatible with z-wave plus devices, battery powered , compact to carry .SOS is used for emergency.<br /&gtWith 4 buttons, you can use Remote control for emergency call and set 6 different scenes.</p&gt
 
 ### Inclusion Information
 
-  1. Ensure remote control is in z-wave range.
-  2. Set the controller in learning mode.(refer to the controller user manual)
-  3. Quickly pressing the red button three times,Led will blink.
-  4. The controller will recognize remote control and add it into z-wave network.
-  5. Wait for the controller to configure.
+<ol&gt<li&gtEnsure remote control is in z-wave range.</li&gt <li&gtSet the controller in learning mode.(refer to the controller user manual)</li&gt <li&gtQuickly pressing the red button three times,Led will blink.</li&gt <li&gtThe controller will recognize remote control and add it into z-wave network.</li&gt <li&gtWait for the controller to configure.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Ensure the device is connected to power supply. 
-  2. Set the controller in remove mode(refer to controller’s user manual)
-  3. Quick pressing the red button for three times.
-  4. Wait for removing SOS from the controller .
+<ol&gt<li&gtEnsure the device is connected to power supply. </li&gt <li&gtSet the controller in remove mode(refer to controller’s user manual)</li&gt <li&gtQuick pressing the red button for three times.</li&gt <li&gtWait for removing SOS from the controller .</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -44,7 +36,7 @@ The SOS/Remote Control does not permanently listen for messages sent from the co
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press the red button once.
+<p&gtPress the red button once.</p&gt
 
 ## Channels
 
@@ -120,9 +112,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Basic Set Level
 
 Basic Set Level
-Basic Set Command will be sent where contains a value when SOS is triggered if group 2 have associated a device such as siren, the receiver will take it for consideration; for instance, if associated siren is received the Basic Set Command (0xFF), the siren will take alarm on.
-
-0~99 are mapping to Basic Set value (0 ~ 99). 100 is mapping to Basic Set Value 0xFF.
+<p&gtBasic Set Command will be sent where contains a value when SOS is triggered if group 2 have associated a device such as siren, the receiver will take it for consideration; for instance, if associated siren is received the Basic Set Command (0xFF), the siren will take alarm on.</p&gt <p&gt0~99 are mapping to Basic Set value (0 ~ 99). 100 is mapping to Basic Set Value 0xFF.</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -133,11 +123,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: SOS Event Clear Time
 
 SOS Event Clear Time
-This parameter defines the time to clear emergency event after emergency event is triggered when parameter #3 is set to ‘2’.
-
-This parameter is set to ‘0’, the clearing emergency event will not occurred always.
-
-The default value of this parameter is set to ‘60’, means that the emergency event will be cleared after 60 seconds when emergency event is triggered.
+<p&gtThis parameter defines the time to clear emergency event after emergency event is triggered when parameter #3 is set to ‘2’.</p&gt <p&gtThis parameter is set to ‘0’, the clearing emergency event will not occurred always.</p&gt <p&gtThe default value of this parameter is set to ‘60’, means that the emergency event will be cleared after 60 seconds when emergency event is triggered.</p&gt
 Values in the range 30 to 32767 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -148,13 +134,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: SOS Configuration
 
 SOS Configuration
-This parameter defines the SOS key function, the SOS key can be configured as emergency event key or central scene notification key.
-
-If this parameter is set to ‘1’, the SOS key will be configured as central scene notification key.
-
-If this parameter is set to ‘2’, the SOS key will be configured as emergency event notification key. The default settings is ‘2’, the SOS key is 
-
-configured as emergency event notification key.
+<p&gtThis parameter defines the SOS key function, the SOS key can be configured as emergency event key or central scene notification key.</p&gt <p&gtIf this parameter is set to ‘1’, the SOS key will be configured as central scene notification key.</p&gt <p&gtIf this parameter is set to ‘2’, the SOS key will be configured as emergency event notification key. The default settings is ‘2’, the SOS key is </p&gt <p&gtconfigured as emergency event notification key.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -193,36 +173,14 @@ The SOS/Remote Control supports 2 association groups.
 ### Group 1: Group 1
 
 Able to control z-wave main controller setting or alarm host status.
-* COMMAND\_CLASS\_ZWAVEPLUS_INFO (V2)
-
-* COMMAND\_CLASS\_VERSION (V2)
-
-* COMMAND\_CLASS\_MANUFACTURER_SPECIFIC (V2)
-
-* COMMAND\_CLASS\_DEVICE\_RESET\_LOCALLY (V1)
-
-* COMMAND\_CLASS\_POWERLEVEL (V1)
-
-* COMMAND\_CLASS\_BATTERY (V1)
-
-* COMMAND\_CLASS\_ASSOCIATION (V2)
-
-* COMMAND\_CLASS\_ASSOCIATION\_GRP\_INFO (V1)
-
-* COMMAND\_CLASS\_WAKE_UP (V2)
-
-* COMMAND\_CLASS\_NOTIFICATION (V8)
-
-* COMMAND\_CLASS\_SENSOR_BINARY (V2)
-
-* COMMAND\_CLASS\_CONFIGURATION (V1)
+<p&gt\* COMMAND\_CLASS\_ZWAVEPLUS\_INFO (V2)</p&gt <p&gt\* COMMAND\_CLASS\_VERSION (V2)</p&gt <p&gt\* COMMAND\_CLASS\_MANUFACTURER\_SPECIFIC (V2)</p&gt <p&gt\* COMMAND\_CLASS\_DEVICE\_RESET\_LOCALLY (V1)</p&gt <p&gt\* COMMAND\_CLASS\_POWERLEVEL (V1)</p&gt <p&gt\* COMMAND\_CLASS\_BATTERY (V1)</p&gt <p&gt\* COMMAND\_CLASS\_ASSOCIATION (V2)</p&gt <p&gt\* COMMAND\_CLASS\_ASSOCIATION\_GRP\_INFO (V1)</p&gt <p&gt\* COMMAND\_CLASS\_WAKE\_UP (V2)</p&gt <p&gt\* COMMAND\_CLASS\_NOTIFICATION (V8)</p&gt <p&gt\* COMMAND\_CLASS\_SENSOR\_BINARY (V2)</p&gt <p&gt\* COMMAND\_CLASS\_CONFIGURATION (V1)</p&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Group 2
 
 Switch or active the scene existing in the z-wave controller,thus to control other devices in the scene .
-Note:Remote control is communicating with other devices via z-wave network directly, z-wave controller is not involved in.
+<p&gtNote:Remote control is communicating with other devices via z-wave network directly, z-wave controller is not involved in.</p&gt
 
 Association group 2 supports 1 node.
 
@@ -252,9 +210,9 @@ Association group 2 supports 1 node.
 
 ### Documentation Links
 
-* [SOS PDF from NEO](https://www.cd-jackson.com/zwave_device_uploads/799/SOS.pdf)
+* [SOS PDF from NEO](https://opensmarthouse.org/zwavedatabase/799/SOS.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/799).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/799).

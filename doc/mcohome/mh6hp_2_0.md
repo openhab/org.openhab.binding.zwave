@@ -11,22 +11,22 @@ This version of the device is limited to firmware versions above 2.0
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![MH6-HP product image](https://www.cd-jackson.com/zwave_device_uploads/1235/1235_default.jpg)
+![MH6-HP product image](https://opensmarthouse.org/zwavedatabase/1235/image/)
 
 
 The MH6-HP supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-MH6-HP programmable thermostat is a Z-Wave Plus enabled device for indoor temperature control. It is mainly applied to heat pump system for heating/cooling, with 3 modes easily switchable: Schedule, Hold and Holiday. The device is of high reliability and practicability, and it can support up to 3H/2C system. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.
+<p&gtMH6-HP programmable thermostat is a Z-Wave Plus enabled device for indoor temperature control. It is mainly applied to heat pump system for heating/cooling, with 3 modes easily switchable: Schedule, Hold and Holiday. The device is of high reliability and practicability, and it can support up to 3H/2C system. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.</p&gt
 
 ### Inclusion Information
 
-In normal display, press and hold ^ button to enter interface for adding Z-Wave network. Before device added into network, “\- - -” will display on the screen. Then press ^ once, device will enter learning mode to get a node ID. If adding is successful, a Node ID will display on the screen in a few seconds.
+<p&gtIn normal display, press and hold ^ button to enter interface for adding Z-Wave network. Before device added into network, “\- - -” will display on the screen. Then press ^ once, device will enter learning mode to get a node ID. If adding is successful, a Node ID will display on the screen in a few seconds.</p&gt
 
 ### Exclusion Information
 
-In normal display, press and hold ^ button to enter interface for removing of Z-Wave network. A Node ID will display on the screen. Then press ^ button once, “\- - -” will display on the screen to show removal was successful.
+<p&gtIn normal display, press and hold ^ button to enter interface for removing of Z-Wave network. A Node ID will display on the screen. Then press ^ button once, “\- - -” will display on the screen to show removal was successful.</p&gt
 
 ## Channels
 
@@ -149,7 +149,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Upload temperature difference
 
 Upload temperature difference
-Base on 0.1℃unit, 0x0005 by default, 5*0.1℃=0.5℃, 0x0003~0x03E8 (3-1000)
+<p&gtBase on 0.1℃unit, 0x0005 by default, 5*0.1℃=0.5℃, 0x0003~0x03E8 (3-1000)<br /&gt</p&gt <p&gt<br /&gt<br /&gt</p&gt
 Values in the range 3 to 1000 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -182,7 +182,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 255: Factory reset
 
 Factory reset
-0x55 (85) Restore the factory setting(write only)This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gt0x55 (85) Restore the factory setting(write only)</p&gt <p&gt<br /&gt<br /&gt</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 85 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -233,9 +233,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [MH6-HP](https://www.cd-jackson.com/zwave_device_uploads/1235/User-manual-3830222.pdf)
+* [MH6-HP](https://opensmarthouse.org/zwavedatabase/1235/User-manual-3830222.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1235).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1235).

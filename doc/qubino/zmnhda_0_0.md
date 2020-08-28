@@ -10,39 +10,22 @@ This describes the Z-Wave device *ZMNHDA*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHDA product image](https://www.cd-jackson.com/zwave_device_uploads/209/209_default.png)
+![ZMNHDA product image](https://opensmarthouse.org/zwavedatabase/209/image/)
 
 
 The ZMNHDA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch.   
-   
-The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch.  
-   
-Module measures power consumption of bulb or fan and supports connection of digital temperature sensor.
+<p&gtThis Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch.  <br /&gt <br /&gtThe module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. <br /&gt <br /&gtModule measures power consumption of bulb or fan and supports connection of digital temperature sensor.</p&gt
 
 ### Inclusion Information
 
-  * Connect module to power supply,
-  * bring module within maximum 1 meter (3 feet) of the main controller,
-  * enable add/remove mode on main controller,
-  * auto-inclusion (30 minutes after connected to power supply) or
-  * press service button S for more than 2 seconds or
-  * press push button I1 three times within 3s (3 times change switch state within 3 seconds).
+<ul&gt<li&gtConnect module to power supply,</li&gt <li&gtbring module within maximum 1 meter (3 feet) of the main controller,</li&gt <li&gtenable add/remove mode on main controller,</li&gt <li&gtauto-inclusion (30 minutes after connected to power supply) or</li&gt <li&gtpress service button S for more than 2 seconds or</li&gt <li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds).</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Connect module to power supply,
-  * bring module within maximum 1 meter (3 feet) of the main controller,
-  * enable add/remove mode on main controller,
-  * press service button S for more than 6 seconds or 
-  * press push button I1 five times within 3s (5 times change switch state within 3 seconds)
-
-By this function all parameters of the module are set to default values and own ID is deleted.
-
-If service button S is pressed more than 2 and less than 6 second module is excluded, but configuration parameters are not set to default values. 
+<ul&gt<li&gtConnect module to power supply,</li&gt <li&gtbring module within maximum 1 meter (3 feet) of the main controller,</li&gt <li&gtenable add/remove mode on main controller,</li&gt <li&gtpress service button S for more than 6 seconds or </li&gt <li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds)</li&gt </ul&gt<p&gtBy this function all parameters of the module are set to default values and own ID is deleted.</p&gt <p&gtIf service button S is pressed more than 2 and less than 6 second module is excluded, but configuration parameters are not set to default values. </p&gt
 
 ## Channels
 
@@ -183,7 +166,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 10: Activate / deactivate functions ALL ON/ALL OFF
 
 Activate / deactivate functions ALL ON/ALL OFF
-Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
+<p&gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -217,10 +200,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 40: Power reporting in Watts on power change
 
 Set value means percentage
-  * 0 – Reporting Disabled
-  * 1 – 100 = 1% - 100% Reporting enabled.
-
-Power report is send (push) only when actual power in Watts in real time change for more than set percentage comparing to previous actual power in Watts, step is 1%. 
+<ul&gt<li&gt0 – Reporting Disabled</li&gt <li&gt1 – 100 = 1% - 100% Reporting enabled.</li&gt </ul&gt<p&gtPower report is send (push) only when actual power in Watts in real time change for more than set percentage comparing to previous actual power in Watts, step is 1%. </p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -231,13 +211,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 42: Power reporting in Watts by time interval
 
 Power reporting in Watts by time interval
-Set value means time interval (0 – 65535) in seconds, when power report is send.
-
-  * default value 300 (power report in Watts is send each 300s)
-  * 0 – Reporting Disabled
-  * 1 – 65535 = 1 second – 65535 seconds. Reporting enabled.
-
-Power report is send with time interval set by entered value. 
+<p&gtSet value means time interval (0 – 65535) in seconds, when power report is send.</p&gt <ul&gt<li&gtdefault value 300 (power report in Watts is send each 300s)</li&gt <li&gt0 – Reporting Disabled</li&gt <li&gt1 – 65535 = 1 second – 65535 seconds. Reporting enabled.</li&gt </ul&gt<p&gtPower report is send with time interval set by entered value. </p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -248,10 +222,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 60: Minimum dimming value
 
 Minimum dimming value
-  *  Default value 1 (Minimum dimming value is 1%)
-  * 1- 98 = 1% – 98%, step is 1%. Minimum dimming values is set by entered value.
-
-**NOTE**: The maximum level may not be lower than the minimum level! 1% min. dimming value is defined by Z-Wave multilevel device class
+<ul&gt<li&gt Default value 1 (Minimum dimming value is 1%)</li&gt <li&gt1- 98 = 1% – 98%, step is 1%. Minimum dimming values is set by entered value.</li&gt </ul&gt<p&gt<strong&gtNOTE</strong&gt: The maximum level may not be lower than the minimum level! 1% min. dimming value is defined by Z-Wave multilevel device class</p&gt
 Values in the range 0 to 98 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -262,10 +233,7 @@ This parameter has the configuration ID ```config_60_1``` and is of type ```INTE
 ### Parameter 61: Maximum dimming value
 
 Maximum dimming value
-  * Default value 99 (Maximum dimming value is 99 %)
-  * 2- 99 = 2% – 99%, step is 1%. Maximum dimming values is set by entered value.
-
-**NOTE:** The maximum level may not be lower than the minimum level! 99% max. dimming value is defined by Z-Wave multilevel device class
+<ul&gt<li&gtDefault value 99 (Maximum dimming value is 99 %)</li&gt <li&gt2- 99 = 2% – 99%, step is 1%. Maximum dimming values is set by entered value.</li&gt </ul&gt<p&gt<strong&gtNOTE:</strong&gt The maximum level may not be lower than the minimum level! 99% max. dimming value is defined by Z-Wave multilevel device class</p&gt
 Values in the range 2 to 99 may be set.
 
 The manufacturer defined default value is ```99```.
@@ -276,10 +244,7 @@ This parameter has the configuration ID ```config_61_1``` and is of type ```INTE
 ### Parameter 65: Dimming time (soft on/off)
 
 Dimming time (soft on/off)
-Set value means time of moving the Dimmer between min. and max. dimming values by short press of push button I1 or controlled through UI.
-
-  * Default value 100 (Dimming time between min. and max. dimming values is 1s)
-  * 1- 255 = 10mseconds – 2550mseconds (2,55s), step is 10mseconds 
+<p&gtSet value means time of moving the Dimmer between min. and max. dimming values by short press of push button I1 or controlled through UI.</p&gt <ul&gt<li&gtDefault value 100 (Dimming time between min. and max. dimming values is 1s)</li&gt <li&gt1- 255 = 10mseconds – 2550mseconds (2,55s), step is 10mseconds </li&gt </ul&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -290,11 +255,7 @@ This parameter has the configuration ID ```config_65_1``` and is of type ```INTE
 ### Parameter 66: Dimming time when key pressed
 
 Dimming time when key pressed
-Time of moving the Dimmer between min. and max dimming values by continues hold of push button I1.
-
-Default value 3 (Dimming time between min. and max. dimming values is 3s)
-
- 1- 255 = 1 second – 255 seconds
+<p&gtTime of moving the Dimmer between min. and max dimming values by continues hold of push button I1.</p&gt <p&gtDefault value 3 (Dimming time between min. and max. dimming values is 3s)</p&gt <p&gt 1- 255 = 1 second – 255 seconds</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -324,7 +285,7 @@ The ZMNHDA supports 4 association groups.
 
 ### Group 1: multilevel
 
- (triggered at changes of state/value of the Flush dimmer)
+<p&gt (triggered at changes of state/value of the Flush dimmer)</p&gt
 
 Association group 1 supports 4 nodes.
 
@@ -379,9 +340,9 @@ Association group 4 supports 4 nodes.
 
 ### Documentation Links
 
-* [User manual v6](https://www.cd-jackson.com/zwave_device_uploads/209/Qubino-Flush-dimmer-user-manual-V6-eng.pdf)
+* [User manual v6](https://opensmarthouse.org/zwavedatabase/209/Qubino-Flush-dimmer-user-manual-V6-eng.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/209).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/209).

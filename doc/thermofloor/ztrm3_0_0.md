@@ -10,38 +10,22 @@ This describes the Z-Wave device *HEATIT Z-TRM3*, manufactured by *ThermoFloor* 
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![HEATIT Z-TRM3 product image](https://www.cd-jackson.com/zwave_device_uploads/1238/1238_default.png)
+![HEATIT Z-TRM3 product image](https://opensmarthouse.org/zwavedatabase/1238/image/)
 
 
 The HEATIT Z-TRM3 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-### FEATURES
-
-  * Floor sensor
-  * Internal room sensor
-  * External room sensor (connected by cable)
-  * Temperature limiter
-  * SmartStart
-  * Weekly program/setback via gateway
-  * Temperature read out in gateway
-  * Firmware update (OTA)
-  * Power metering
-  * Relay status LED
-  * Single pole switch
-  * Lock mode/child lock
-  * Calibration
-  * 5 associations
-  * Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class
+<h3&gtFEATURES</h3&gt <ul&gt<li&gtFloor sensor</li&gt <li&gtInternal room sensor</li&gt <li&gtExternal room sensor (connected by cable)</li&gt <li&gtTemperature limiter</li&gt <li&gtSmartStart</li&gt <li&gtWeekly program/setback via gateway</li&gt <li&gtTemperature read out in gateway</li&gt <li&gtFirmware update (OTA)</li&gt <li&gtPower metering</li&gt <li&gtRelay status LED</li&gt <li&gtSingle pole switch</li&gt <li&gtLock mode/child lock</li&gt <li&gtCalibration</li&gt <li&gt5 associations</li&gt <li&gtSupports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li&gt </ul&gt
 
 ### Inclusion Information
 
-1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings
+<p&gt1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings</p&gt
 
 ### Exclusion Information
 
-1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings.NB! When the thermostat is removed from the gateway, the parameters are not reset. To reset the parameters, see Chapter 7: ”Factory reset”. If adding/removing fails, Err (error) will appear. Please perform a ”remove device” process and try again. If Err displays again, please see Chapter 7: “Factory reset”.
+<p&gt1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings.NB! When the thermostat is removed from the gateway, the parameters are not reset. To reset the parameters, see Chapter 7: ”Factory reset”. If adding/removing fails, Err (error) will appear. Please perform a ”remove device” process and try again. If Err displays again, please see Chapter 7: “Factory reset”.</p&gt
 
 ## Channels
 
@@ -232,8 +216,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Operation mode
 
 Operation mode
-Value = 0, Off   
-Value = 1, Heating mode, (default)
+<p&gtValue = 0, Off <br /&gtValue = 1, Heating mode, (default)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -288,7 +271,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Temperature Control Hysteresis
 
 Temperature Control Hysteresis
-0.3°C to 3.0°C. Default is 5 (0.5°C)
+<p&gt0.3°C to 3.0°C. Default is 5 (0.5°C)</p&gt
 Values in the range 3 to 30 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -299,7 +282,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Floor Minimum Temperature Limit
 
 Floor Minimum Temperature Limit
-5.0°C to 40.0°C. Default is 50 (5.0°C)
+<p&gt5.0°C to 40.0°C. Default is 50 (5.0°C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -310,7 +293,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: Floor MaximumTemperature Limit
 
 Floor MaximumTemperature Limit
-5.0°C to 40.0°C. Default is 400 (40.0°C)
+<p&gt5.0°C to 40.0°C. Default is 400 (40.0°C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```400```.
@@ -321,7 +304,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 7: Air Minimum Temp Limit (ALo)
 
 Air Minimum Temp Limit (ALo)
-5.0°C to 40.0°C. Default is 50 (5.0°C)
+<p&gt5.0°C to 40.0°C. Default is 50 (5.0°C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -332,7 +315,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Air Maximum Temp Limit (AHi)
 
 Air Maximum Temp Limit (AHi)
-5.0°C to 40.0°C. Default is 400 (40.0°C)
+<p&gt5.0°C to 40.0°C. Default is 400 (40.0°C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```400```.
@@ -343,7 +326,7 @@ This parameter has the configuration ID ```config_8_2``` and is of type ```INTEG
 ### Parameter 9: Heating Mode Setpoint
 
 Heating Mode Setpoint
-5.0°C to 40.0°C. Default is 210 (21.0°C)
+<p&gt5.0°C to 40.0°C. Default is 210 (21.0°C)</p&gt
 Values in the range 50 to 400 may be set.
 
 The manufacturer defined default value is ```210```.
@@ -354,7 +337,7 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 ### Parameter 10: Room Sensor Calibration
 
 Room Sensor Calibration
--6.0°C to 6.0°C. Default is 0 (0.0°C)
+<p&gt-6.0°C to 6.0°C. Default is 0 (0.0°C)</p&gt
 Values in the range -60 to 60 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -365,7 +348,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Floor Sensor Calibration
 
 Floor Sensor Calibration
--6.0°C to 6.0°C. Default is 0 (0.0°C)
+<p&gt-6.0°C to 6.0°C. Default is 0 (0.0°C)</p&gt
 Values in the range -60 to 60 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -376,7 +359,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: External Sensor Calibration
 
 External Sensor Calibration
--6.0°C to 6.0°C. Default is 0 (0.0°C)
+<p&gt-6.0°C to 6.0°C. Default is 0 (0.0°C)</p&gt
 Values in the range -60 to 60 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -387,7 +370,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Temperature Display
 
 Temperature Display
-Selects which temperature is shown on the display. Refer to Chapter 11 ”Standby and main screen”.
+<p&gtSelects which temperature is shown on the display. Refer to Chapter 11 ”Standby and main screen”.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -403,9 +386,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Button brighness dimmed state
 
 Button brighness dimmed state
-Configure the brightness of the buttons in dimmed state.
-
-0 to 100% (Default 50%)
+<p&gtConfigure the brightness of the buttons in dimmed state.</p&gt <p&gt0 to 100% (Default 50%)</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -416,9 +397,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Button brighness active state
 
 Button brighness active state
-Configure the brightness of the buttons in active state.
-
-0 to 100% (Default 100%)
+<p&gtConfigure the brightness of the buttons in active state.</p&gt <p&gt0 to 100% (Default 100%)</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -429,9 +408,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: Display brighness dimmed state
 
 Display brighness dimmed state
-Configure the brightness of the display in dimmed state.
-
-0 to 100% (Default 100%)  
+<p&gtConfigure the brightness of the display in dimmed state.</p&gt <p&gt0 to 100% (Default 100%)</p&gt  
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -442,9 +419,7 @@ This parameter has the configuration ID ```config_16_1``` and is of type ```INTE
 ### Parameter 17: Display brighness active state
 
 Display brighness active state
-Configure the brightness of the display, in active state.
-
-0 to 100% (Default 100%)  
+<p&gtConfigure the brightness of the display, in active state.</p&gt <p&gt0 to 100% (Default 100%)</p&gt  
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -455,11 +430,7 @@ This parameter has the configuration ID ```config_17_1``` and is of type ```INTE
 ### Parameter 18: Temperature report interval
 
 Temperature report interval
-Time interval between consecutive temperature reports.
-
-Temperature reports can also be sent as a result of polling.
-
-30 seconds to 32767 seconds. Default is 60 seconds  
+<p&gtTime interval between consecutive temperature reports.</p&gt <p&gtTemperature reports can also be sent as a result of polling.</p&gt <p&gt30 seconds to 32767 seconds. Default is 60 seconds</p&gt  
 Values in the range 30 to 32767 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -470,9 +441,7 @@ This parameter has the configuration ID ```config_18_2``` and is of type ```INTE
 ### Parameter 19: Temperature report hysteresis
 
 Temperature report hysteresis
-The temperature report will be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can also be sent as a result of polling.
-
-0.1°C to 10.0°C. Default is 10 (1.0°C)  
+<p&gtThe temperature report will be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can also be sent as a result of polling.</p&gt <p&gt0.1°C to 10.0°C. Default is 10 (1.0°C)</p&gt  
 Values in the range 1 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -483,11 +452,7 @@ This parameter has the configuration ID ```config_19_1``` and is of type ```INTE
 ### Parameter 20: Meter report interval
 
 Meter report interval
-Time interval between consecutive meter reports.
-
-Meter reports can also be sent as a result of polling.
-
-30 seconds to 32767 seconds. Default is 90 seconds  
+<p&gtTime interval between consecutive meter reports.</p&gt <p&gtMeter reports can also be sent as a result of polling.</p&gt <p&gt30 seconds to 32767 seconds. Default is 90 seconds</p&gt  
 Values in the range 30 to 32767 may be set.
 
 The manufacturer defined default value is ```90```.
@@ -498,7 +463,7 @@ This parameter has the configuration ID ```config_20_2``` and is of type ```INTE
 ### Parameter 21: Meter report delta value
 
 Meter report delta value
-Delta value in kWh between consecutive meter reports. Meter reports can also be sent as a result of polling.
+<p&gtDelta value in kWh between consecutive meter reports. Meter reports can also be sent as a result of polling.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -615,9 +580,9 @@ Association group 5 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1238/manual-heatit-z-trm3-fw-4-0-ver2020-b-eng.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1238/manual-heatit-z-trm3-fw-4-0-ver2020-b-eng.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1238).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1238).

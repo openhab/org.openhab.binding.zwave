@@ -10,26 +10,22 @@ This describes the Z-Wave device *SW-ZAP-1*, manufactured by *CBCC Domotique SAS
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![SW-ZAP-1 product image](https://www.cd-jackson.com/zwave_device_uploads/1003/1003_default.jpg)
+![SW-ZAP-1 product image](https://opensmarthouse.org/zwavedatabase/1003/image/)
 
 
 The SW-ZAP-1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The SwiidPlug™ is designed to switch on and off remotely appliances (mainly lights) which are plugged into its female socket, The SwiidPlug™ is suitable for the wireless switching of incandescent light bulbs as well as halogen and LED lights (all transformer types). The SwiidPlug™ can be operated manually by pressing on its FUNCTION button which then acts as an on/off toggle switch and can be operated remotely and wirelessly by Z -Wave®. The SwiidPlug™ can also handle associations with other devices, both ways to and from it. Thus, your SwiidPlug™ can respond directly to a signal from another Z-Wave® device in your network, such as the triggering of a presence detector. As soon as it has been plugged into a mains socket, the SwiidPlug™ can be included into a Z-Wave® network so as to interoperate with controllers and other Z-Wave® devices. 
-
-http://www.swiid.com/medias/documents/ZAP-User-s-manual-vBAT-30.11.2014.pdf
-
-http://www.swiid.com/medias/documents/advanced-swiidplug.pdf
+<p&gtThe SwiidPlug™ is designed to switch on and off remotely appliances (mainly lights) which are plugged into its female socket, The SwiidPlug™ is suitable for the wireless switching of incandescent light bulbs as well as halogen and LED lights (all transformer types). The SwiidPlug™ can be operated manually by pressing on its FUNCTION button which then acts as an on/off toggle switch and can be operated remotely and wirelessly by Z -Wave®. The SwiidPlug™ can also handle associations with other devices, both ways to and from it. Thus, your SwiidPlug™ can respond directly to a signal from another Z-Wave® device in your network, such as the triggering of a presence detector. As soon as it has been plugged into a mains socket, the SwiidPlug™ can be included into a Z-Wave® network so as to interoperate with controllers and other Z-Wave® devices. </p&gt <p&gthttp://www.swiid.com/medias/documents/ZAP-User-s-manual-vBAT-30.11.2014.pdf</p&gt <p&gthttp://www.swiid.com/medias/documents/advanced-swiidplug.pdf</p&gt
 
 ### Inclusion Information
 
-Put your Controller into inclusion mode, with the LED flashing alternatively blue and yellow, press the FUNCTION button of your SwiidPlug 3 times (3x) within 2 seconds.
+<p&gtPut your Controller into inclusion mode, with the LED flashing alternatively blue and yellow, press the FUNCTION button of your SwiidPlug 3 times (3x) within 2 seconds.</p&gt
 
 ### Exclusion Information
 
-Put your Controller into exclusion mode, press the FUNCTION button of your SwiidPlug 3 times (3x) within 2 seconds.
+<p&gtPut your Controller into exclusion mode, press the FUNCTION button of your SwiidPlug 3 times (3x) within 2 seconds.</p&gt
 
 ## Channels
 
@@ -127,10 +123,10 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [ZAP User Manual](https://www.cd-jackson.com/zwave_device_uploads/1003/ZAP-User-s-manual-vBAT-30-11-2014.pdf)
-* [Advanced swiidplug](https://www.cd-jackson.com/zwave_device_uploads/1003/Advanced-swiidplug.pdf)
+* [ZAP User Manual](https://opensmarthouse.org/zwavedatabase/1003/ZAP-User-s-manual-vBAT-30-11-2014.pdf)
+* [Advanced swiidplug](https://opensmarthouse.org/zwavedatabase/1003/Advanced-swiidplug.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1003).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1003).

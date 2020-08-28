@@ -10,26 +10,22 @@ This describes the Z-Wave device *HM-HS1CG-Z*, manufactured by *[Zipato](http://
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HM-HS1CG-Z product image](https://www.cd-jackson.com/zwave_device_uploads/963/963_default.jpg)
+![HM-HS1CG-Z product image](https://opensmarthouse.org/zwavedatabase/963/image/)
 
 
 The HM-HS1CG-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Smart Combustible Gas Sensor adopts super low power consumption Z-Wave Wireless module. Used for detecting combusting gas leakage and preventing danger caused by gas leakage it also can be used as Z-Wave repealer to extend wireless transmission distance. It adopts high stability semi-conductor gas sensor. Sensor alarms if gas density in air exceeds set alarm level. It is applicable for kitchen or possible gas leakage in in-door area.
+<p&gtThis Smart Combustible Gas Sensor adopts super low power consumption Z-Wave Wireless module. Used for detecting combusting gas leakage and preventing danger caused by gas leakage it also can be used as Z-Wave repealer to extend wireless transmission distance. It adopts high stability semi-conductor gas sensor. Sensor alarms if gas density in air exceeds set alarm level. It is applicable for kitchen or possible gas leakage in in-door area.</p&gt
 
 ### Inclusion Information
 
-  * Click [Add] icon in Z-Wave Controller.
-  * Press the Net_Button 3 times within 1.5s, Green LED is Blinking 3 times within 1 second.
-  * If add Process is successful, Green LED will turn on
+<ul&gt<li&gtClick [Add] icon in Z-Wave Controller.</li&gt <li&gtPress the Net_Button 3 times within 1.5s, Green LED is Blinking 3 times within 1 second.</li&gt <li&gtIf add Process is successful, Green LED will turn on</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Click [Remove] icon in Z-Wave Controller.
-  * Press the Net_Button 3 times within 1.5s
-  * If remove Process is successful, Green LED is Blinking 6 times, then turn on
+<ul&gt<li&gtClick [Remove] icon in Z-Wave Controller.</li&gt <li&gtPress the Net_Button 3 times within 1.5s</li&gt <li&gtIf remove Process is successful, Green LED is Blinking 6 times, then turn on</li&gt </ul&gt
 
 ## Channels
 
@@ -66,24 +62,13 @@ The HM-HS1CG-Z supports 2 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-  * Lifeline between controller and the device.
-  * Supported command classes: Notification report, and Device Reset Locally notification.
-  * Association Group description: Association group 1: Lifeline association group
-  * Maximum supported node is 1.
-
-Include command classes: Notification Report and Device Reset Locally notification.
+<ul&gt<li&gtLifeline between controller and the device.</li&gt <li&gtSupported command classes: Notification report, and Device Reset Locally notification.</li&gt <li&gtAssociation Group description: Association group 1: Lifeline association group</li&gt <li&gtMaximum supported node is 1.</li&gt </ul&gt<p&gtInclude command classes: Notification Report and Device Reset Locally notification.</p&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Root Device group(Notification)
 
-Maximum supported nodes are 5.  
-  
-1-Notification reports status of gas detected or no gas  
-  
-    Association group 1: Lifeline association group  
-  
-2-When the sensor detects status change of gas detected and no gas detected, the device will be triggered.
+<p&gtMaximum supported nodes are 5.<br /&gt<br /&gt1-Notification reports status of gas detected or no gas <br /&gt<br /&gt    Association group 1: Lifeline association group<br /&gt<br /&gt2-When the sensor detects status change of gas detected and no gas detected, the device will be triggered.</p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -107,9 +92,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/963/hm-hs1cg-z-USER-MANUAL.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/963/hm-hs1cg-z-USER-MANUAL.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/963).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/963).

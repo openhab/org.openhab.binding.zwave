@@ -7,9 +7,7 @@
 
   <thing-type id="merten_506004_00_000" listed="false">
     <label>506004 Transmitter Flush-Mounted 4-Gang Switch</label>
-    <description><![CDATA[
-Transmitter Flush-Mounted 4-Gang Switch<br /><h1>Overview</h1><p>The flush-mounted transmitter is a battery-powered radio transmitter to which you can connect up to four make contacts (e.g. push-buttons)</p> <p>Line pairs are:</p> <ul><li>red/white-red: Input E1</li> <li>green/white-green: Input E2</li> <li>brown/white-brown: Input E3</li> <li>blue/white-blue: Input E4</li> </ul><p><strong>Attention:</strong> The flush-mounted transmitter can be damaged. Never connect the flush mounted transmitter to 230 V</p> <br /><h2>Inclusion Information</h2><p>Triple click on operating surface of a connected switch</p> <br /><h2>Exclusion Information</h2><p>Triple click on operating surface of a connected switch</p> <br /><h2>Wakeup Information</h2><p>Triple click on operating surface of a connected switch. Wait until the LED goes out.</p>
-    ]]></description>
+    <description>Transmitter Flush-Mounted 4-Gang Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe flush-mounted transmitter is a battery-powered radio transmitter to which you can connect up to four make contacts (e.g. push-buttons)&lt;/p&gt &lt;p&gtLine pairs are:&lt;/p&gt &lt;ul&gt&lt;li&gtred/white-red: Input E1&lt;/li&gt &lt;li&gtgreen/white-green: Input E2&lt;/li&gt &lt;li&gtbrown/white-brown: Input E3&lt;/li&gt &lt;li&gtblue/white-blue: Input E4&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtAttention:&lt;/strong&gt The flush-mounted transmitter can be damaged. Never connect the flush mounted transmitter to 230 V&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click on operating surface of a connected switch&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTriple click on operating surface of a connected switch&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtTriple click on operating surface of a connected switch. Wait until the LED goes out.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

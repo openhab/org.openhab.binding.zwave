@@ -10,75 +10,22 @@ This describes the Z-Wave device *ph-pse02*, manufactured by *Devolo* with the t
 
 The device is in the category of *Siren*, defining Siren used by Alarm systems.
 
-![ph-pse02 product image](https://www.cd-jackson.com/zwave_device_uploads/453/453_default.jpg)
+![ph-pse02 product image](https://opensmarthouse.org/zwavedatabase/453/image/)
 
 
 The ph-pse02 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-**\### NOTE ###**
-
-The XML used for adding this device to the database comes from the Devolo Home Control Alarmsiren (http://www.devolo.de/article/devolo-home-control-alarmsirene/). But it seems to be made by Zipato (https://www.zipato.com/product/multisound-indoor-siren).  
-  
-**\### FEATURES ###**  
-  
-- Indoor multichannel siren that works with a a variety of Z-Wave networks/controllers, regardless of the manufacturer  
-- The new Z-Wave 500 series chip supports multichannel operationand higher data rates (9.6/40/100kbps)  
-- 110db sound level  
-- 6 sounds: Door Chime, Bi Bi Arm/Disarm, Intruder alarm, Ambulance, Police car  
-- Higher output power enhances communication range(+6dBm output power as compared to -2.5dBm 300 series)  
-- DC or Li-ion battery power (over 24 hours of battery life)  
-- Battery overcharge protection  
-- Very low power consumption  
-- Over-the-air firmware update  
-- Easy to install in EU/China/Taiwan wall sockets  
-- Tamperproof protection  
-  
-  
-**\### TECHNICAL SPECIFICATIONS ###**  
-  
-PROTOCOL: Z-Wave Plus  
-  
-POWER  
-- DC 5V, Li-Ion battery (optional)  
-- BATTERY CAPACITY 1150mAh  
-  
-OPERATING CONDITIONS:  
-- OPERATING VOLTAGE 3.7V  
-- OPERATING CURRENT 150 mA  
-- OPERATION TEMPERATURE -10°C ~ 40°C  
-  
-RANGE  
-- Minimum 30 meters indoor  
-- 70 meters outdoor (meant for indoor use only)  
-  
-DIMENSIONS  
-- DEVICE  DIMENSIONS 110 x 110 x 22 mm  
-- DEVICE WEIGHT 113g  
-- PACKAGE DIMENSIONS 117 x 50 x 117 mm  
-- PACKAGE WEIGHT 217g  
-  
-FREQUENCY  
-  
-    ph-pse02.au 921.42 MHz (AU)  
-    ph-pse02.eu 868.42 MHz (EU)  
-    ph-pse02.in 865.20 MHz (IN)  
-    ph-pse02.is 916.02 MHz (IS)  
-    ph-pse02.ru 869.02 MHz (RU)  
-    ph-pse02.us 908.42 MHz (US)  
-  
-Source: https://www.zipato.com/product/multisound-indoor-siren
+<p&gt<strong&gt### NOTE ###</strong&gt</p&gt <p&gtThe XML used for adding this device to the database comes from the Devolo Home Control Alarmsiren (http://www.devolo.de/article/devolo-home-control-alarmsirene/). But it seems to be made by Zipato (https://www.zipato.com/product/multisound-indoor-siren).<br /&gt<br /&gt<strong&gt### FEATURES ###</strong&gt<br /&gt<br /&gt- Indoor multichannel siren that works with a a variety of Z-Wave networks/controllers, regardless of the manufacturer<br /&gt- The new Z-Wave 500 series chip supports multichannel operationand higher data rates (9.6/40/100kbps)<br /&gt- 110db sound level<br /&gt- 6 sounds: Door Chime, Bi Bi Arm/Disarm, Intruder alarm, Ambulance, Police car<br /&gt- Higher output power enhances communication range(+6dBm output power as compared to -2.5dBm 300 series)<br /&gt- DC or Li-ion battery power (over 24 hours of battery life)<br /&gt- Battery overcharge protection<br /&gt- Very low power consumption<br /&gt- Over-the-air firmware update<br /&gt- Easy to install in EU/China/Taiwan wall sockets<br /&gt- Tamperproof protection<br /&gt<br /&gt<br /&gt<strong&gt### TECHNICAL SPECIFICATIONS ###</strong&gt<br /&gt<br /&gtPROTOCOL: Z-Wave Plus<br /&gt<br /&gtPOWER<br /&gt- DC 5V, Li-Ion battery (optional)<br /&gt- BATTERY CAPACITY 1150mAh<br /&gt<br /&gtOPERATING CONDITIONS:<br /&gt- OPERATING VOLTAGE 3.7V<br /&gt- OPERATING CURRENT 150 mA<br /&gt- OPERATION TEMPERATURE -10°C ~ 40°C<br /&gt<br /&gtRANGE<br /&gt- Minimum 30 meters indoor<br /&gt- 70 meters outdoor (meant for indoor use only)<br /&gt<br /&gtDIMENSIONS<br /&gt- DEVICE  DIMENSIONS 110 x 110 x 22 mm<br /&gt- DEVICE WEIGHT 113g<br /&gt- PACKAGE DIMENSIONS 117 x 50 x 117 mm<br /&gt- PACKAGE WEIGHT 217g<br /&gt<br /&gtFREQUENCY<br /&gt<br /&gt    ph-pse02.au 921.42 MHz (AU)<br /&gt    ph-pse02.eu 868.42 MHz (EU)<br /&gt    ph-pse02.in 865.20 MHz (IN)<br /&gt    ph-pse02.is 916.02 MHz (IS)<br /&gt    ph-pse02.ru 869.02 MHz (RU)<br /&gt    ph-pse02.us 908.42 MHz (US)<br /&gt<br /&gtSource: https://www.zipato.com/product/multisound-indoor-siren</p&gt
 
 ### Inclusion Information
 
-Press the tamper key three times within 1.5 seconds to enter the inclusion mode.
-
-After successful inclusion, the LED will light up for 1 second.
+<p&gtPress the tamper key three times within 1.5 seconds to enter the inclusion mode.</p&gt <p&gtAfter successful inclusion, the LED will light up for 1 second.</p&gt
 
 ### Exclusion Information
 
-Press the tamper key three times within 1.5 seconds to enter the exclusion mode.
+<p&gtPress the tamper key three times within 1.5 seconds to enter the exclusion mode.</p&gt
 
 ## Channels
 
@@ -134,253 +81,7 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Start Sound
-<table>
-  <tr>
-    <td>
-       
-    </td>
-    
-    <td>
-      <p>
-        Notification
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Event
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Sound
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event1
-    </td>
-    
-    <td>
-      <p>
-        Smokealarm (0x01)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        0x01 ~ 0xFF
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        fire alert
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event2
-    </td>
-    
-    <td>
-      <p>
-        Accesscontrol (0x06)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Window/Door open (0x16)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        door chime
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event7
-    </td>
-    
-    <td>
-      <p>
-        Accesscontrol (0x06)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Activate alarm system (0x03)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        2x beep
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event8
-    </td>
-    
-    <td>
-      <p>
-        Accesscontrol (0x06)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Deactivate alarm system (0x04)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        1x beep
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event3
-    </td>
-    
-    <td>
-      <p>
-        Homesecurity (0x07)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        0x01 ~ 0xFF
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        emergency
-      </p> sound
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event4
-    </td>
-    
-    <td>
-      <p>
-        Emergency (0x0A)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Contact police (0x01)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        policecar
-      </p>
-      
-      <p>
-        sound
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event5
-    </td>
-    
-    <td>
-      <p>
-        Emergency (0x0A)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Contact fire department (0x02)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        fire engine sound
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event6
-    </td>
-    
-    <td>
-      <p>
-        Emergency (0x0A)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        Contact ambulance (0x03)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        ambulance
-      </p>
-      
-      <p>
-        sound 
-      </p>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      event9
-    </td>
-    
-    <td>
-      Emergency (0x0A)
-    </td>
-    
-    <td>
-      <p>
-        Notification (0xFE)
-      </p>
-    </td>
-    
-    <td>
-      <p>
-        silent alarm (no sound,  flashing LED)
-      </p>
-    </td>
-  </tr>
-</table>
+<table&gt<tr&gt<td&gt </td&gt <td&gt <p&gtNotification </p&gt </td&gt <td&gt <p&gtEvent </p&gt </td&gt <td&gt <p&gtSound </p&gt </td&gt </tr&gt<tr&gt<td&gtevent1</td&gt <td&gt <p&gtSmokealarm (0x01) </p&gt </td&gt <td&gt <p&gt0x01 ~ 0xFF </p&gt </td&gt <td&gt <p&gtfire alert</p&gt </td&gt </tr&gt<tr&gt<td&gtevent2</td&gt <td&gt <p&gtAccesscontrol (0x06) </p&gt </td&gt <td&gt <p&gtWindow/Door open (0x16) </p&gt </td&gt <td&gt <p&gtdoor chime</p&gt </td&gt </tr&gt<tr&gt<td&gtevent7</td&gt <td&gt <p&gtAccesscontrol (0x06) </p&gt </td&gt <td&gt <p&gtActivate alarm system (0x03) </p&gt </td&gt <td&gt <p&gt2x beep </p&gt </td&gt </tr&gt<tr&gt<td&gtevent8</td&gt <td&gt <p&gtAccesscontrol (0x06) </p&gt </td&gt <td&gt <p&gtDeactivate alarm system (0x04) </p&gt </td&gt <td&gt <p&gt1x beep </p&gt </td&gt </tr&gt<tr&gt<td&gtevent3</td&gt <td&gt <p&gtHomesecurity (0x07) </p&gt </td&gt <td&gt <p&gt0x01 ~ 0xFF </p&gt </td&gt <td&gt <p&gtemergency</p&gt sound</td&gt </tr&gt<tr&gt<td&gtevent4</td&gt <td&gt <p&gtEmergency (0x0A) </p&gt </td&gt <td&gt <p&gtContact police (0x01) </p&gt </td&gt <td&gt <p&gtpolicecar</p&gt <p&gtsound</p&gt </td&gt </tr&gt<tr&gt<td&gtevent5</td&gt <td&gt <p&gtEmergency (0x0A) </p&gt </td&gt <td&gt <p&gtContact fire department (0x02) </p&gt </td&gt <td&gt <p&gtfire engine sound</p&gt </td&gt </tr&gt<tr&gt<td&gtevent6</td&gt <td&gt <p&gtEmergency (0x0A) </p&gt </td&gt <td&gt <p&gtContact ambulance (0x03) </p&gt </td&gt <td&gt <p&gtambulance</p&gt <p&gtsound </p&gt </td&gt </tr&gt<tr&gt<td&gtevent9</td&gt <td&gtEmergency (0x0A)</td&gt <td&gt <p&gtNotification (0xFE) </p&gt </td&gt <td&gt <p&gtsilent alarm (no sound,  flashing LED) </p&gt </td&gt </tr&gt</table&gt
 
 Sends a notification.
 
@@ -402,11 +103,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 7: Costumer  Function
 
 NotificationReport/BinaryReport
-Notification Type,
-
-0: Using Notification Report.
-
-1: Using Sensor Binary Report.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtNotification Type,</p&gt <p&gt0: Using Notification Report.</p&gt <p&gt1: Using Sensor Binary Report.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```4```.
@@ -417,13 +114,7 @@ This parameter has the configuration ID ```config_7_4``` and is of type ```INTEG
 ### Parameter 29: Disable Alarm
 
 Disable the alarm function.
-Disable the alarm function.
-
-1: Disable Alarm,
-
-0: Enable Alarm.
-
-Caution: After the power up, this configuration is always 0.
+<p&gtDisable the alarm function.</p&gt <p&gt1: Disable Alarm,</p&gt <p&gt0: Enable Alarm.</p&gt <p&gtCaution: After the power up, this configuration is always 0.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -434,11 +125,7 @@ This parameter has the configuration ID ```config_29_4``` and is of type ```INTE
 ### Parameter 31: Alarm Duration
 
 Play alarm sound duration.
-Play alarm sound duration, 1 tick is 30 seconds.
-
-Default is 3 minutes, maximum is 63.5 minutes.
-
-0 means never auto stop.
+<p&gtPlay alarm sound duration, 1 tick is 30 seconds.</p&gt <p&gtDefault is 3 minutes, maximum is 63.5 minutes.</p&gt <p&gt0 means never auto stop.</p&gt
 Values in the range 0 to 127 may be set.
 
 The manufacturer defined default value is ```6```.
@@ -455,9 +142,7 @@ The ph-pse02 supports 1 association group.
 ### Group 1: Report Message
 
 Report Message, e.g. tamper alarm
-Notice: The device supports 1 group.
-
-The group 1 is for receiving the report message, like tamper event. And the group 8 nodes maximum
+<p&gtNotice: The device supports 1 group.</p&gt <p&gtThe group 1 is for receiving the report message, like tamper event. And the group 8 nodes maximum</p&gt
 
 Association group 1 supports 8 nodes.
 
@@ -487,9 +172,9 @@ Association group 1 supports 8 nodes.
 
 ### Documentation Links
 
-* [Quick Installation Guide V1.2](https://www.cd-jackson.com/zwave_device_uploads/453/ph-pse02-Zipato-Siren-User-Manual-v1-2.pdf)
+* [Quick Installation Guide V1.2](https://opensmarthouse.org/zwavedatabase/453/ph-pse02-Zipato-Siren-User-Manual-v1-2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/453).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/453).

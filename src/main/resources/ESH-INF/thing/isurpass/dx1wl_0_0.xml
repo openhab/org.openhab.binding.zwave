@@ -7,9 +7,7 @@
 
   <thing-type id="isurpass_dx1wl_00_000" listed="false">
     <label>DX1WL-Z Domux Water Leakage Sensor</label>
-    <description><![CDATA[
-Domux Water Leakage Sensor<br /><h1>Overview</h1><p>Smart Water Leakage sensor adopts Z-Wave wireless module. Super low power consumption circuit design ensures the long battery lifespan. Separate design of body and sensor efficiently prevents the influence resulted from high humidity. High precision and sensitivity applicable for basement, machine room, hotel, water tower, pool, swimming pool, solar, kitchen, bathroom and other places may have water leakage or water overflow.</p> <p><strong>SPECIFICATION</strong></p> <ul><li>Working voltage: DC3V (2 x AAA battery)</li> <li>Static current: 5uA</li> <li>Alarm current: 35mA</li> <li>Networking: Z-Wave</li> <li>Wireless networking distance: 70 (open area)</li> <li>Working temperature: -10°C~+50°C</li> <li>Working humidity: max 95%RH</li> <li>Body dimensions: 76 x 36.6 x 16.5 mm</li> <li>Sensor dimensions: 28.3 x 26.5 x 12.2 mm</li> </ul><p>WARNINGS</p> <ol><li>Install water leakage sensor at areas where it may leak.</li> <li>Don't install water leakage sensor at position of rainwater, lampblack, water vapor, etc.</li> <li>Don't install water leakage sensor at water immersed position.</li> </ol><br /><h2>Inclusion Information</h2><p>INSTALLATION<br />Remove battery insulation film to power it on</p> <p>DEVICE INCLUSION</p> <ol><li>Click [Add] icon in Z-Wave PC Controller Program.</li> <li>Press the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.</li> <li>If Inclusion Process is successful, Green led will turn off.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Click [Remove] icon in Z-Wave PC Controller Program</li> <li>Press the networking button 3 times within 1.5s</li> <li>If Exclusion Process is successful, Green led is Blinking 6 times, then turn off.</li> </ol><p><strong>FACTORY RESET </strong></p> <p>Long press the networking button, then power on (put into the battery), ID code is clear and reset to factory settings.</p> <br /><h2>Wakeup Information</h2><p>The manual doesn't say, but I've found that tapping the tamper sensor once makes the device blink and that seems to wake it up.</p>
-    ]]></description>
+    <description>Domux Water Leakage Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSmart Water Leakage sensor adopts Z-Wave wireless module. Super low power consumption circuit design ensures the long battery lifespan. Separate design of body and sensor efficiently prevents the influence resulted from high humidity. High precision and sensitivity applicable for basement, machine room, hotel, water tower, pool, swimming pool, solar, kitchen, bathroom and other places may have water leakage or water overflow.&lt;/p&gt &lt;p&gt&lt;strong&gtSPECIFICATION&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtWorking voltage: DC3V (2 x AAA battery)&lt;/li&gt &lt;li&gtStatic current: 5uA&lt;/li&gt &lt;li&gtAlarm current: 35mA&lt;/li&gt &lt;li&gtNetworking: Z-Wave&lt;/li&gt &lt;li&gtWireless networking distance: 70 (open area)&lt;/li&gt &lt;li&gtWorking temperature: -10°C~+50°C&lt;/li&gt &lt;li&gtWorking humidity: max 95%RH&lt;/li&gt &lt;li&gtBody dimensions: 76 x 36.6 x 16.5 mm&lt;/li&gt &lt;li&gtSensor dimensions: 28.3 x 26.5 x 12.2 mm&lt;/li&gt &lt;/ul&gt&lt;p&gtWARNINGS&lt;/p&gt &lt;ol&gt&lt;li&gtInstall water leakage sensor at areas where it may leak.&lt;/li&gt &lt;li&gtDon't install water leakage sensor at position of rainwater, lampblack, water vapor, etc.&lt;/li&gt &lt;li&gtDon't install water leakage sensor at water immersed position.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtINSTALLATION&lt;br /&gtRemove battery insulation film to power it on&lt;/p&gt &lt;p&gtDEVICE INCLUSION&lt;/p&gt &lt;ol&gt&lt;li&gtClick [Add] icon in Z-Wave PC Controller Program.&lt;/li&gt &lt;li&gtPress the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.&lt;/li&gt &lt;li&gtIf Inclusion Process is successful, Green led will turn off.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtClick [Remove] icon in Z-Wave PC Controller Program&lt;/li&gt &lt;li&gtPress the networking button 3 times within 1.5s&lt;/li&gt &lt;li&gtIf Exclusion Process is successful, Green led is Blinking 6 times, then turn off.&lt;/li&gt &lt;/ol&gt&lt;p&gt&lt;strong&gtFACTORY RESET &lt;/strong&gt&lt;/p&gt &lt;p&gtLong press the networking button, then power on (put into the battery), ID code is clear and reset to factory settings.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtThe manual doesn't say, but I've found that tapping the tamper sensor once makes the device blink and that seems to wake it up.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -61,41 +59,31 @@ Domux Water Leakage Sensor<br /><h1>Overview</h1><p>Smart Water Leakage sensor a
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-Lifeline association group<br /><h1>Overview</h1><p>1. Include command classes: </p> <p>Battery report, <br />Notification report, <br />Device Reset Locally notification, <br />Binary report. </p>
-        ]]></description>
+        <description>Lifeline association group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1. Include command classes: &lt;/p&gt &lt;p&gtBattery report, &lt;br /&gtNotification report, &lt;br /&gtDevice Reset Locally notification, &lt;br /&gtBinary report. &lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Root Device group (Binary Sensor)</label>
-        <description><![CDATA[
-Root Device group (Binary Sensor)<br /><h1>Overview</h1><p>1-Binary Sensor Command Class: Compatible with 300 series <br />2-Binary Sensor reports status of water or no water via Lifeline. <br />3-When the sensor detects status change between water and no water, the device will be triggered.</p>
-        ]]></description>
+        <description>Root Device group (Binary Sensor)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1-Binary Sensor Command Class: Compatible with 300 series &lt;br /&gt2-Binary Sensor reports status of water or no water via Lifeline. &lt;br /&gt3-When the sensor detects status change between water and no water, the device will be triggered.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Root Device group (Binary Sensor)</label>
-        <description><![CDATA[
-Root Device group (Binary Sensor)<br /><h1>Overview</h1><p>- Binary Sensor Command Class:Compatible with 300 series <br />1-Binary Sensor reports the removed status of water sensor. <br />2-When the sensor detects status change of tamper, the device will be triggered. </p>
-        ]]></description>
+        <description>Root Device group (Binary Sensor)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt- Binary Sensor Command Class:Compatible with 300 series &lt;br /&gt1-Binary Sensor reports the removed status of water sensor. &lt;br /&gt2-When the sensor detects status change of tamper, the device will be triggered. &lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Root Device group (Water Notification)</label>
-        <description><![CDATA[
-Root Device group (Notification)<br /><h1>Overview</h1><p>1-Notification reports reports status of detect water or no water via Lifeline. <br />2-When the sensor detects status change between water and no water, the device will be triggered. </p>
-        ]]></description>
+        <description>Root Device group (Notification)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1-Notification reports reports status of detect water or no water via Lifeline. &lt;br /&gt2-When the sensor detects status change between water and no water, the device will be triggered. &lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Root Device group (Water &amp; Tamper Notification)</label>
-        <description><![CDATA[
-Root Device group (Notification)<br /><h1>Overview</h1><p>1-Binary Sensor reports the removed status of water sensor <br />1-When the sensor detects status change of tamper, the device will be triggered.</p> <p>4-Association &amp; Association Group Information <br />- Lifeline between controller and the product <br />- Supported command classes: Battery report, multilevel sensor, and Device Reset Locally notification.</p>
-        ]]></description>
+        <label>5: Root Device group (Water & Tamper Notification)</label>
+        <description>Root Device group (Notification)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1-Binary Sensor reports the removed status of water sensor &lt;br /&gt1-When the sensor detects status change of tamper, the device will be triggered.&lt;/p&gt &lt;p&gt4-Association &amp;amp; Association Group Information &lt;br /&gt- Lifeline between controller and the product &lt;br /&gt- Supported command classes: Battery report, multilevel sensor, and Device Reset Locally notification.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

@@ -7,9 +7,7 @@
 
   <thing-type id="abus_shlm10010_00_000" listed="false">
     <label>SHLM10010 ABUS Security Center Bulb</label>
-    <description><![CDATA[
-ABUS Security Center Bulb<br /><h1>Overview</h1><p>The ABUS Z-Wave LED lamp can be an optical helper in many situations in your connected home. E.g. in case of danger, the escape routes can be perfectly illuminated by scene control. And if you are not at home, you can credibly simulate your presence by configuring scenarios. When it comes to comfort, you make no compromises compared to a 60W light bulb, with significantly lower power consumption. The LED lamp produces warm white light (2700k), is dimmable and fits into any conventional E27 socket.</p> <br /><h2>Inclusion Information</h2><p>Screw the LED bulbinto a standard E27 socket. Click the + (Add) button in your Z-Wave App and follow the further instructions. <br />Turn the light switch on.</p> <br /><h2>Exclusion Information</h2><p>Switch the Power supply of the LED bulb ON and OFF 6 times in a row (interval of 0.5 to 2 seconds)<br />When switched on for the 7th time, the LED bulb flashes twice indicating successful reset to factory settings.</p>
-    ]]></description>
+    <description>ABUS Security Center Bulb&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe ABUS Z-Wave LED lamp can be an optical helper in many situations in your connected home. E.g. in case of danger, the escape routes can be perfectly illuminated by scene control. And if you are not at home, you can credibly simulate your presence by configuring scenarios. When it comes to comfort, you make no compromises compared to a 60W light bulb, with significantly lower power consumption. The LED lamp produces warm white light (2700k), is dimmable and fits into any conventional E27 socket.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtScrew the LED bulbinto a standard E27 socket. Click the + (Add) button in your Z-Wave App and follow the further instructions. &lt;br /&gtTurn the light switch on.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtSwitch the Power supply of the LED bulb ON and OFF 6 times in a row (interval of 0.5 to 2 seconds)&lt;br /&gtWhen switched on for the 7th time, the LED bulb flashes twice indicating successful reset to factory settings.&lt;/p&gt</description>
     <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -25,7 +23,7 @@ ABUS Security Center Bulb<br /><h1>Overview</h1><p>The ABUS Z-Wave LED lamp can 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ABUS Security-Center GmbH &amp; Co. KG</property>
+      <property name="vendor">ABUS Security-Center GmbH &amp;amp; Co. KG</property>
       <property name="modelId">SHLM10010</property>
       <property name="manufacturerId">0403</property>
       <property name="manufacturerRef">0003:0002</property>

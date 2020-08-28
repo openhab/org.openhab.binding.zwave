@@ -10,24 +10,22 @@ This describes the Z-Wave device *ZMNHAA*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZMNHAA product image](https://www.cd-jackson.com/zwave_device_uploads/205/205_default.jpg)
+![ZMNHAA product image](https://opensmarthouse.org/zwavedatabase/205/image/)
 
 
 The ZMNHAA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used for switching on or off the electrical device (e.g. light, fan, etc ...). The module can be controlled either through Z-wave network or through the wall switch.
+<p&gtThis Z-Wave module is used for switching on or off the electrical device (e.g. light, fan, etc ...). The module can be controlled either through Z-wave network or through the wall switch.</p&gt
 
 ### Inclusion Information
 
-  * press service button S for more than 2 second or
-  * press push button I1 three times within 3s (3 times change switch state within 3 seconds).
+<ul&gt<li&gtpress service button S for more than 2 second or</li&gt <li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds).</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * press service button S for more than 6 second or
-  * press push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.
+<ul&gt<li&gtpress service button S for more than 6 second or</li&gt <li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.</li&gt </ul&gt
 
 ## Channels
 
@@ -155,7 +153,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 10: Activate / deactivate functions ALL ON/ALL OFF
 
 ctivate / deactivate functions ALL ON/ALL OFF
-Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.
+<p&gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -173,10 +171,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Automatic turning off relay after set time
 
 Automatic turning off relay after set time
-Default value 0
-
-  *  0 - Auto OFF disabled
-  *  1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds.
+<p&gtDefault value 0</p&gt <ul&gt<li&gt 0 - Auto OFF disabled</li&gt <li&gt 1 – 65535 = 0,01second – 655,35 seconds Auto OFF enabled with define time, step is 10mseconds.</li&gt </ul&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -203,10 +198,7 @@ This parameter has the configuration ID ```config_30_1``` and is of type ```INTE
 ### Parameter 40: Power reporting in Watts on percentage change
 
 Power reporting in Watts on percentage change
-  * 0 – Reporting Disabled
-  * 1 – 100 = 1% - 100% Reporting enabled
-
-Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%
+<ul&gt<li&gt0 – Reporting Disabled</li&gt <li&gt1 – 100 = 1% - 100% Reporting enabled</li&gt </ul&gt<p&gtPower report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -217,11 +209,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 42: Power reporting in Watts on power change
 
 Power reporting in Watts on power change
-  * default value 300 (power report in Watts is send each 300s)
-  * 0 – Reporting Disabled
-  * 1 – 65535 = 1second – 65535 seconds.
-
-Reporting enabled. Power report is send with time interval set by entered value. 
+<ul&gt<li&gtdefault value 300 (power report in Watts is send each 300s)</li&gt <li&gt0 – Reporting Disabled</li&gt <li&gt1 – 65535 = 1second – 65535 seconds.</li&gt </ul&gt<p&gtReporting enabled. Power report is send with time interval set by entered value. </p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -238,7 +226,7 @@ The ZMNHAA supports 4 association groups.
 ### Group 1: basic on/off 
 
 triggered at change of the output Q state and reflecting its state
-e
+<p&gte</p&gt
 
 Association group 1 supports 16 nodes.
 
@@ -292,9 +280,9 @@ Association group 4 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/205/flush-1-relay-ZMNHAA2.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/205/flush-1-relay-ZMNHAA2.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/205).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/205).

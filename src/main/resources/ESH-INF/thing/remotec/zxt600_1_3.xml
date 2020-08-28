@@ -7,9 +7,7 @@
 
   <thing-type id="remotec_zxt600_01_003" listed="false">
     <label>ZXT-600 AC Master</label>
-    <description><![CDATA[
-AC Master<br /><h1>Overview</h1><p>ZXT-600 AC Master is a Z-Wave plus certified IR Bridge for split air conditioner control by receiving Z-Wave command and translating to Infrared command and flawlessly work with any Z-Wave compliant gateway.</p> <p>With its over 250 brands built-in code library and ever-green up to date cloud IR database supporting advanced code learning search, ZXT-600 can easily set up and smart control most of AC brands and models actively worldwide by Z-Wave gateway.</p> <p>The battery powered device will allow you to mount it anywhere you want such as wall, ceiling or put it on table and never compromise on the form factor. By supporting OTA function, gateway can enable ZXT-600 to update firmware if newest available. </p> <br /><h2>Inclusion Information</h2><p>Please consult your Gateway supplier for more detail. Normally, User can ignore this step during the setup. ZXT-600 supports 1 association group Association Group #1 Association Group #1 (max. 1 node) is default to associate with the primary controller (Gateway/Hub/Controller) for AC Master Status change report, refer to below for report details:</p> <ul><li>Current Room Temperature (report in precision of 0.5°C or 1°F) (It will be according to Configuration Parameter 39 setting to decide the trigger level)</li> <li>Current Battery Level (Only apply in Low Battery Warning happened)</li> <li>Device Reset Locally Notification (Only report when the AC Master has been triggered the RESET TO DEFAULT)</li> </ul><p><strong>Step 1</strong> Apply Power to ZXT-600</p> <ul><li>2x AA batteries or micro USB</li> <li>ZXT-600 will detect the first applied power source to decide what Z-Wave device role it will be in after included into the Z-Wave gateway: battery= sleeping device (FLiRS mode). USB power = always awake device (Always Listening mode), refer to Z-Wave Glossary for more information.</li> <li>Once the ZXT-600 is included into a Z-Wave network, the working mode (sleeping or awake) cannot be changed, unless it is excluded and re-apply the power.</li> <li>ZXT-600 can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of Vendor to increase reliability of the network.</li> </ul><p><strong>Step 2</strong> Include ZXT-600 to a Z-Wave Gateway</p> <p>Step Procedure / Description Status Indicator 1 Refer to your primary controller to enter into the Inclusion Mode or Exclusion Mode 2 When it is prompted to enter it, please triple click the “PROG” button within 1 second. Green Indicator flashes TWICE then stay off.</p> <br /><h2>Exclusion Information</h2><p>Red Indicator flashes TWICE then stay off to represent the Add / Remove process failed, please repeat the above step again. If the Add (Include) process fails, try Remove (Exclude) and /or resetting the AC Master to Factory Default and repeat the above step</p>
-    ]]></description>
+    <description>AC Master&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZXT-600 AC Master is a Z-Wave plus certified IR Bridge for split air conditioner control by receiving Z-Wave command and translating to Infrared command and flawlessly work with any Z-Wave compliant gateway.&lt;/p&gt &lt;p&gtWith its over 250 brands built-in code library and ever-green up to date cloud IR database supporting advanced code learning search, ZXT-600 can easily set up and smart control most of AC brands and models actively worldwide by Z-Wave gateway.&lt;/p&gt &lt;p&gtThe battery powered device will allow you to mount it anywhere you want such as wall, ceiling or put it on table and never compromise on the form factor. By supporting OTA function, gateway can enable ZXT-600 to update firmware if newest available. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPlease consult your Gateway supplier for more detail. Normally, User can ignore this step during the setup. ZXT-600 supports 1 association group Association Group #1 Association Group #1 (max. 1 node) is default to associate with the primary controller (Gateway/Hub/Controller) for AC Master Status change report, refer to below for report details:&lt;/p&gt &lt;ul&gt&lt;li&gtCurrent Room Temperature (report in precision of 0.5°C or 1°F) (It will be according to Configuration Parameter 39 setting to decide the trigger level)&lt;/li&gt &lt;li&gtCurrent Battery Level (Only apply in Low Battery Warning happened)&lt;/li&gt &lt;li&gtDevice Reset Locally Notification (Only report when the AC Master has been triggered the RESET TO DEFAULT)&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtStep 1&lt;/strong&gt Apply Power to ZXT-600&lt;/p&gt &lt;ul&gt&lt;li&gt2x AA batteries or micro USB&lt;/li&gt &lt;li&gtZXT-600 will detect the first applied power source to decide what Z-Wave device role it will be in after included into the Z-Wave gateway: battery= sleeping device (FLiRS mode). USB power = always awake device (Always Listening mode), refer to Z-Wave Glossary for more information.&lt;/li&gt &lt;li&gtOnce the ZXT-600 is included into a Z-Wave network, the working mode (sleeping or awake) cannot be changed, unless it is excluded and re-apply the power.&lt;/li&gt &lt;li&gtZXT-600 can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of Vendor to increase reliability of the network.&lt;/li&gt &lt;/ul&gt&lt;p&gt&lt;strong&gtStep 2&lt;/strong&gt Include ZXT-600 to a Z-Wave Gateway&lt;/p&gt &lt;p&gtStep Procedure / Description Status Indicator 1 Refer to your primary controller to enter into the Inclusion Mode or Exclusion Mode 2 When it is prompted to enter it, please triple click the “PROG” button within 1 second. Green Indicator flashes TWICE then stay off.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtRed Indicator flashes TWICE then stay off to represent the Add / Remove process failed, please repeat the above step again. If the Add (Include) process fails, try Remove (Exclude) and /or resetting the AC Master to Factory Default and repeat the above step&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -105,9 +103,7 @@ AC Master<br /><h1>Overview</h1><p>ZXT-600 AC Master is a Z-Wave plus certified 
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>32: Set built-in IR Emitter Control</label>
-        <description><![CDATA[
-Set built-in IR Emitter Control<br /><h1>Overview</h1><p>0 - disable</p> <p>255 enable (default)</p>
-        ]]></description>
+        <description>Set built-in IR Emitter Control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 enable (default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <advanced>true</advanced>
       </parameter>
@@ -115,9 +111,7 @@ Set built-in IR Emitter Control<br /><h1>Overview</h1><p>0 - disable</p> <p>255 
       <parameter name="config_33_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>33: Control AC SWING function</label>
-        <description><![CDATA[
-Control AC &amp;amp;quot;SWING&amp;amp;quot; function<br /><h1>Overview</h1><p>0 - swing off</p> <p>1 - swing on (default)</p>
-        ]]></description>
+        <description>Control AC &amp;amp;amp;amp;quot;SWING&amp;amp;amp;amp;quot; function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - swing off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - swing on (default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -131,9 +125,7 @@ Control AC &amp;amp;quot;SWING&amp;amp;quot; function<br /><h1>Overview</h1><p>0
       <parameter name="config_37_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>37: Calibrate Temperature reading</label>
-        <description><![CDATA[
-Calibrate Temperature reading<br /><h1>Overview</h1><p>0 to 5 - positive value</p> <p>251 to 255 - negatice value</p>
-        ]]></description>
+        <description>Calibrate Temperature reading&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 to 5 - positive value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt251 to 255 - negatice value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
@@ -161,12 +153,12 @@ Calibrate Temperature reading<br /><h1>Overview</h1><p>0 to 5 - positive value</
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
+        <option value="5">Resume</option>
         <option value="6">Fan Only</option>
         <option value="8">Dry Air</option>
-        <option value="3">Auto</option>
-        <option value="2">Cool</option>
-        <option value="5">Resume</option>
-        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -178,10 +170,10 @@ Calibrate Temperature reading<br /><h1>Overview</h1><p>0 to 5 - positive value</
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">On (Low)</option>
-        <option value="3">On (high)</option>
         <option value="">UNKNOWN_5</option>
         <option value="0">Auto (Low)</option>
+        <option value="1">On (Low)</option>
+        <option value="3">On (high)</option>
       </options>
     </state>
   </channel-type>

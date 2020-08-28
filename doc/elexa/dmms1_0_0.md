@@ -10,7 +10,7 @@ This describes the Z-Wave device *DMMS1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![DMMS1 product image](https://www.cd-jackson.com/zwave_device_uploads/797/797_default.jpg)
+![DMMS1 product image](https://opensmarthouse.org/zwavedatabase/797/image/)
 
 
 The DMMS1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,29 +19,15 @@ The DMMS1 does not permanently listen for messages sent from the controller - it
 
 ## Overview
 
-Z-Wave Plus Motion Detector with Light Sensor
+<p&gtZ-Wave Plus Motion Detector with Light Sensor</p&gt
 
 ### Inclusion Information
 
-  1. Bring Motion Detector to within 10 feet (3 meters) of the controller
-  2. Remove the cover of the Motion Detector by twisting it apart
-  3. Put the controller into inclusion mode
-  4. Press the Connect Button quickly 3 times in a row
-
-The LED Indicator will flash five times indicating inclusion.
+<ol&gt<li&gtBring Motion Detector to within 10 feet (3 meters) of the controller</li&gt <li&gtRemove the cover of the Motion Detector by twisting it apart</li&gt <li&gtPut the controller into inclusion mode</li&gt <li&gtPress the Connect Button quickly 3 times in a row</li&gt </ol&gt<p&gtThe LED Indicator will flash five times indicating inclusion.</p&gt
 
 ### Exclusion Information
 
-  1. Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered
-  2. Put the controller into exclusion mode
-  3. Press the Connect Button quickly three times in a row
-
-The LED Indicator will flash five times indicating exclusion/disconnection
-
-Factory Reset:
-
-  1. Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered
-  2. Hold the Connect Button for 10 seconds until the LED Indicator blinks once, then release the button.
+<ol&gt<li&gtRemove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li&gt <li&gtPut the controller into exclusion mode</li&gt <li&gtPress the Connect Button quickly three times in a row</li&gt </ol&gt<p&gtThe LED Indicator will flash five times indicating exclusion/disconnection</p&gt <p&gtFactory Reset:</p&gt <ol&gt<li&gtRemove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li&gt <li&gtHold the Connect Button for 10 seconds until the LED Indicator blinks once, then release the button.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -50,8 +36,7 @@ The DMMS1 does not permanently listen for messages sent from the controller - it
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  1. Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered
-  2. Press the Connect Button quickly three times in a row
+<ol&gt<li&gtRemove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li&gt <li&gtPress the Connect Button quickly three times in a row</li&gt </ol&gt
 
 ## Channels
 
@@ -136,7 +121,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Motion Sensitivity
 
 8 = high; 255 = low
-Adjust detection by choosing a value from 8 to 255, where 8 stands for high sensitivity level (detection of the smallest movement) and 255 stands for very low sensitivity level
+<p&gtAdjust detection by choosing a value from 8 to 255, where 8 stands for high sensitivity level (detection of the smallest movement) and 255 stands for very low sensitivity level</p&gt
 Values in the range 8 to 255 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -147,7 +132,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Trigger ON Duration
 
 delay after motion before turning OFF
-Set the duration (in seconds) you want the associated device to stay ON for after being triggered by the sensor before it automatically turns OFF. Must be greater than value set in parameter 6.
+<p&gtSet the duration (in seconds) you want the associated device to stay ON for after being triggered by the sensor before it automatically turns OFF. Must be greater than value set in parameter 6.</p&gt
 Values in the range 5 to 600 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -158,7 +143,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Trigger Action
 
 Brightness to turn on the associated device 1-99, 255=ON
-You can choose if your Mini Sensor turns an associated device on or off when sending the BASIC SET command. Use value 0 to turn the associated device OFF and value 255 to turn it ON. Adjust brightness level for a Z-Wave dimmer (Multilevel switch) by putting in any value between 1 and 99. 
+<p&gtYou can choose if your Mini Sensor turns an associated device on or off when sending the BASIC SET command. Use value 0 to turn the associated device OFF and value 255 to turn it ON. Adjust brightness level for a Z-Wave dimmer (Multilevel switch) by putting in any value between 1 and 99. </p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -180,7 +165,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Light Trigger Level
 
 Max Light level which enables motion trigger
-Set your light sensor as a secondary trigger for associated devices. If light level in a room falls beyond the set point and motion is detected, the Mini Sensor will send BASIC_SET command to associated devices to turn ON. The number entered as the value corresponds to the number of LUX. By default, if motion has been detected by your Mini Sensor, the associated device will turn ON if light level last reported by the sensor is under 100 LUX. 
+<p&gtSet your light sensor as a secondary trigger for associated devices. If light level in a room falls beyond the set point and motion is detected, the Mini Sensor will send BASIC_SET command to associated devices to turn ON. The number entered as the value corresponds to the number of LUX. By default, if motion has been detected by your Mini Sensor, the associated device will turn ON if light level last reported by the sensor is under 100 LUX. </p&gt
 Values in the range 0 to 1000 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -191,7 +176,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: Motion Trigger Interval
 
 Minimum time between motion triggers.
-Adjust the time (in seconds) when motion is reported again after initial trigger. By default, with continued motion, the Mini Sensor will report motion again 8 seconds after it's last detection. The value set for this parameter can NOT be greater than value set in parameter 2. NOTE: Small interval will increase activity and decrease battery life.
+<p&gtAdjust the time (in seconds) when motion is reported again after initial trigger. By default, with continued motion, the Mini Sensor will report motion again 8 seconds after it's last detection. The value set for this parameter can NOT be greater than value set in parameter 2. NOTE: Small interval will increase activity and decrease battery life.</p&gt
 Values in the range 1 to 8 may be set.
 
 The manufacturer defined default value is ```8```.
@@ -202,7 +187,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Light Polling Interval
 
 Interval between light level reporting
-Decide how often (in seconds) you want the Mini Sensor to report light level to the controller and associated devices. By default, the Mini Sensor will report light level values every 3 minutes. The value set for this parameter can NOT be greater than the wake-up interval. NOTE: Small interval will increase activity and decrease battery life.
+<p&gtDecide how often (in seconds) you want the Mini Sensor to report light level to the controller and associated devices. By default, the Mini Sensor will report light level values every 3 minutes. The value set for this parameter can NOT be greater than the wake-up interval. NOTE: Small interval will increase activity and decrease battery life.</p&gt
 Values in the range 60 to 36000 may be set.
 
 The manufacturer defined default value is ```180```.
@@ -213,7 +198,7 @@ This parameter has the configuration ID ```config_7_2``` and is of type ```INTEG
 ### Parameter 8: Light Trigger
 
 255=enable Light sensor
-Use this parameter to enable and disable the light sensor as secondary trigger. If this feature is enabled, the Mini Sensor will activate associated devices based on motion AND light level set in parameter 5
+<p&gtUse this parameter to enable and disable the light sensor as secondary trigger. If this feature is enabled, the Mini Sensor will activate associated devices based on motion AND light level set in parameter 5</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -224,7 +209,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Light Report
 
 Light level change to be reported.
-Choose light level (in LUX) change to be reported by the Mini Sensor to the controller. By default, the sensor will report any change of 100 LUX or more.
+<p&gtChoose light level (in LUX) change to be reported by the Mini Sensor to the controller. By default, the sensor will report any change of 100 LUX or more.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -235,7 +220,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: LED Notifications
 
 0=disable, 1=enable
-Use this parameter to turn LED notifications on or off for motion detection.
+<p&gtUse this parameter to turn LED notifications on or off for motion detection.</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -269,28 +254,28 @@ The DMMS1 supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Lifeline communication of motion / no motion and light level status to Z-Wave controller. Supported command classes: NOTIFICATION\_REPORT\_V4 SENSOR\_BINARY\_REPORT\_V2 SENSOR\_MULTILEVEL\_REPORT\_V7 BATTERY\_REPORT DEVICE\_RESET\_LOCALLY\_NOTIFICATION
+<p&gtLifeline communication of motion / no motion and light level status to Z-Wave controller. Supported command classes: NOTIFICATION\_REPORT\_V4 SENSOR\_BINARY\_REPORT\_V2 SENSOR\_MULTILEVEL\_REPORT\_V7 BATTERY\_REPORT DEVICE\_RESET\_LOCALLY\_NOTIFICATION</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: BASIC
 
 BASIC_SET Trigger associated devices
-control command communication to associated Z-Wave devices in the network. Use parameters 2, 3, 5, and 8 to configure this group’s settings. Supported command classes: BASIC_SET 
+<p&gtcontrol command communication to associated Z-Wave devices in the network. Use parameters 2, 3, 5, and 8 to configure this group’s settings. Supported command classes: BASIC_SET </p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Notification Reports
 
 NOTIFICATION\_REPORT\_V4
-notifications to Z-Wave devices associated in this group. Supported command classes: NOTIFICATION\_REPORT\_V4
+<p&gtnotifications to Z-Wave devices associated in this group. Supported command classes: NOTIFICATION\_REPORT\_V4</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: SENSOR BINARY
 
 SENSOR\_BINARY\_REPORT_V2
-notifications to Z-Wave devices associated in this group. Supported command classes: SENSOR\_BINARY\_REPORT_V2
+<p&gtnotifications to Z-Wave devices associated in this group. Supported command classes: SENSOR\_BINARY\_REPORT_V2</p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -320,9 +305,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Dome Motion Detector API Manual](https://www.cd-jackson.com/zwave_device_uploads/797/DomeMotionDetectorAPIManual.pdf)
+* [Dome Motion Detector API Manual](https://opensmarthouse.org/zwavedatabase/797/DomeMotionDetectorAPIManual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/797).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/797).

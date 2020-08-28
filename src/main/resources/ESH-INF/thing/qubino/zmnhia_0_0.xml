@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhia_00_000" listed="false">
     <label>ZMNHIA Flush on/off thermostat</label>
-    <description><![CDATA[
-Flush on/off thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regulate temperature. The module can be controlled either through Z-wave network or through the wall switch</p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds).</li> </ul>
-    ]]></description>
+    <description>Flush on/off thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Z-Wave module is used to regulate temperature. The module can be controlled either through Z-wave network or through the wall switch&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 2 second or&lt;/li&gt &lt;li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 6 second or&lt;/li&gt &lt;li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds).&lt;/li&gt &lt;/ul&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -133,9 +131,7 @@ Flush on/off thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to r
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
-        <description><![CDATA[
-Module responds to commands ALL ON / ALL OFF<br /><h1>Overview</h1><p>Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
-        ]]></description>
+        <description>Module responds to commands ALL ON / ALL OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtModule responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">ALL ON is not active ALL OFF is not active</option>
@@ -148,18 +144,14 @@ Module responds to commands ALL ON / ALL OFF<br /><h1>Overview</h1><p>Module res
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>11: Set point set by I2</label>
-        <description><![CDATA[
-Set point set by I2<br /><h1>Overview</h1><p>When I2 is pressed set point will be set according to the value of this parameter. Available config. parameters:</p> <p>default value 65535</p> <p>65535 – input I2 does not influence on the set point</p> <p>From 0 to 990 – set point from 0.0 °C to 99.0 °C</p> <p>From 1001 to 1150 – set point from -0.1 °C to -15.0 °C</p>
-        ]]></description>
+        <description>Set point set by I2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen I2 is pressed set point will be set according to the value of this parameter. Available config. parameters:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 65535&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt65535 – input I2 does not influence on the set point&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 0 to 990 – set point from 0.0 °C to 99.0 °C&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 1001 to 1150 – set point from -0.1 °C to -15.0 °C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>12: Set point set by I3</label>
-        <description><![CDATA[
-Set point set by I3<br /><h1>Overview</h1><p>When I3 is pressed set point will be set according to the value of this parameter. Available config. parameters</p> <p>default value 65535</p> <p>65535 – input I3 does not influence on the set point</p> <p>From 0 to 990 – set point from 0.0 °C to 99.0 °C</p> <p>From 1001 to 1150 – set point from -0.1 °C to -15.0 °C</p>
-        ]]></description>
+        <description>Set point set by I3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen I3 is pressed set point will be set according to the value of this parameter. Available config. parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 65535&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt65535 – input I3 does not influence on the set point&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 0 to 990 – set point from 0.0 °C to 99.0 °C&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFrom 1001 to 1150 – set point from -0.1 °C to -15.0 °C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -176,72 +168,56 @@ Set point set by I3<br /><h1>Overview</h1><p>When I3 is pressed set point will b
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>40: Power reporting in Watts on power change for Q1</label>
-        <description><![CDATA[
-Power reporting in Watts on power change<br /><h1>Overview</h1><p>Set value means percentage, set value from 0 - 100=0% - 100%. Available configuration parameters</p> <p>default value 3</p> <p>0 – Reporting Disabled</p> <p>1–100 = 1%-100% Reporting enabled. Power report is sent (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.</p> <p>NOTE: If power changed is less than 1W, the report is not sent (pushed), independent of percentage set.</p>
-        ]]></description>
+        <description>Power reporting in Watts on power change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means percentage, set value from 0 - 100=0% - 100%. Available configuration parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 3&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – Reporting Disabled&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1–100 = 1%-100% Reporting enabled. Power report is sent (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNOTE: If power changed is less than 1W, the report is not sent (pushed), independent of percentage set.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>42: Power reporting in Watts by time interval for Q1</label>
-        <description><![CDATA[
-Power reporting in Watts by time interval<br /><h1>Overview</h1><p>Set value means time interval (0 – 65535) in seconds, when power report is send. Available config. parameters</p> <p>default value 300 (power report in Watts is send each 300s)</p> <p>0 – Reporting Disabled</p> <p>1 – 65535 = 1second – 65535 seconds. Reporting enabled. Power report is send with time interval set by entered value.</p>
-        ]]></description>
+        <description>Power reporting in Watts by time interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means time interval (0 – 65535) in seconds, when power report is send. Available config. parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 300 (power report in Watts is send each 300s)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – Reporting Disabled&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – 65535 = 1second – 65535 seconds. Reporting enabled. Power report is send with time interval set by entered value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
       </parameter>
 
       <parameter name="config_43_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>43: Hysteresis On</label>
-        <description><![CDATA[
-Hysteresis On<br /><h1>Overview</h1><p>This parameter defines temperature min difference between real measured temperature and set-point temperature to turn device on. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.</p> <p>Available configuration parameters</p> <p>default value 132 (-0.5 °C)</p>
-        ]]></description>
+        <description>Hysteresis On&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines temperature min difference between real measured temperature and set-point temperature to turn device on. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable configuration parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 132 (-0.5 °C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>132</default>
       </parameter>
 
       <parameter name="config_44_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>44: Hysteresis Off</label>
-        <description><![CDATA[
-Hysteresis Off<br /><h1>Overview</h1><p>This parameter defines temperature min difference between real measured temperature and set-point temperature to turn device off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.</p> <p>Available configuration parameters</p> <p>default value 5 (+0.5 °C)</p>
-        ]]></description>
+        <description>Hysteresis Off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines temperature min difference between real measured temperature and set-point temperature to turn device off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 255 means from - 0.1 °C to -12.7 °C.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable configuration parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 5 (+0.5 °C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_45_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>45: Antifreeze</label>
-        <description><![CDATA[
-Antifreeze function Temperature<br /><h1>Overview</h1><p>Set value means at which temperature the device will be turned on even if the thermostat was manually set to off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 254 means from - 0.1 °C to -12.6 °C.</p> <p>Available configuration parameters</p> <p>default value 50 (5,0 °C)</p> <p>255 – Antifreeze functionality disabled</p>
-        ]]></description>
+        <description>Antifreeze function Temperature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means at which temperature the device will be turned on even if the thermostat was manually set to off. Parameter can be set from 0 to 255 where 0 to 127 means from 0.0 °C to 12.7 °C and from 128 to 254 means from - 0.1 °C to -12.6 °C.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable configuration parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 50 (5,0 °C)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – Antifreeze functionality disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_60_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>60: Too low temperature limit</label>
-        <description><![CDATA[
-Too low temperature limit<br /><h1>Overview</h1><p>Available configuration parameters</p> <p>Default value 50 (Too low temperature limit is 5.0°C)</p> <p>1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.</p>
-        ]]></description>
+        <description>Too low temperature limit&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable configuration parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 50 (Too low temperature limit is 5.0°C)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_61_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>61: Too high temperature limit</label>
-        <description><![CDATA[
-Too high temperature limit<br /><h1>Overview</h1><p>Available configuration parameters:</p> <p>Default value 50 (Too low temperature limit is 5.0°C)</p> <p>1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.</p>
-        ]]></description>
+        <description>Too high temperature limit&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAvailable configuration parameters:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 50 (Too low temperature limit is 5.0°C)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - 1000 = 0.1°C – 100.0°C, step is 0.1°C. Too low temperature limit is set by entered value. In case is set value out of this range, module is changing set value automatically to default value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>700</default>
       </parameter>
 
       <parameter name="config_63_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>63: Switch selection</label>
-        <description><![CDATA[
-Connected device type can be (NO) or (NC)<br /><h1>Overview</h1><p>Set value means the type of the device that is connected to the relay output. The device type can be normally open (NO) or normally close (NC). Available configuration parameters</p> <p>default value 0</p> <p>0 - When system is turned off the output is 0 V.</p> <p>1 - When system is turned off the output is 230 V.</p>
-        ]]></description>
+        <description>Connected device type can be (NO) or (NC)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means the type of the device that is connected to the relay output. The device type can be normally open (NO) or normally close (NC). Available configuration parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault value 0&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - When system is turned off the output is 0 V.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - When system is turned off the output is 230 V.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

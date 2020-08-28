@@ -7,9 +7,7 @@
 
   <thing-type id="fibaro_fgs213_00_000" listed="false">
     <label>FGS213 Single Switch 2</label>
-    <description><![CDATA[
-Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be installed in standard wall switch boxes or anywhere else where it is necessary to control electric devices. It allows to control connected devices either via the Z-Wave+ network or via a switch connected directly to it and is equipped with active power and energy consumption metering functionality.</p> <p>Main features of FIBARO Switch 2:</p> <ul><li>Compatible with any Z-Wave or Z-Wave+ Controller,</li> <li>Supports protected mode (Z-Wave network security mode) with</li> <li>AES-128 encryption,</li> <li>Advanced microprocessor control,</li> <li>Active power and energy metering functionality,</li> <li>Works with various types of switches – momentary, toggle, three-way, etc,</li> <li>To be installed in wall switch boxes of dimensions allowing for installation, conforming to provisions of applicable regulations,</li> <li>FIBARO Switch 2 is an extension unit</li> </ul><br /><h2>Inclusion Information</h2><p>Put controller into inclusion mode and triple click S1 switch</p> <br /><h2>Exclusion Information</h2><p>Put controller into exclusion mode and triple click S1 switch</p>
-    ]]></description>
+    <description>Single Switch 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFIBARO Switch 2 is designed to be installed in standard wall switch boxes or anywhere else where it is necessary to control electric devices. It allows to control connected devices either via the Z-Wave+ network or via a switch connected directly to it and is equipped with active power and energy consumption metering functionality.&lt;/p&gt &lt;p&gtMain features of FIBARO Switch 2:&lt;/p&gt &lt;ul&gt&lt;li&gtCompatible with any Z-Wave or Z-Wave+ Controller,&lt;/li&gt &lt;li&gtSupports protected mode (Z-Wave network security mode) with&lt;/li&gt &lt;li&gtAES-128 encryption,&lt;/li&gt &lt;li&gtAdvanced microprocessor control,&lt;/li&gt &lt;li&gtActive power and energy metering functionality,&lt;/li&gt &lt;li&gtWorks with various types of switches – momentary, toggle, three-way, etc,&lt;/li&gt &lt;li&gtTo be installed in wall switch boxes of dimensions allowing for installation, conforming to provisions of applicable regulations,&lt;/li&gt &lt;li&gtFIBARO Switch 2 is an extension unit&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut controller into inclusion mode and triple click S1 switch&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut controller into exclusion mode and triple click S1 switch&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -115,9 +113,7 @@ Single Switch 2<br /><h1>Overview</h1><p>FIBARO Switch 2 is designed to be insta
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Restore state after power failure</label>
-        <description><![CDATA[
-Restore state after power failure<br /><h1>Overview</h1><p>This parameter determines if the device will return to state prior to the power failure after power is restored.</p>
-        ]]></description>
+        <description>Restore state after power failure&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines if the device will return to state prior to the power failure after power is restored.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">off after power loss</option>
@@ -127,9 +123,7 @@ Restore state after power failure<br /><h1>Overview</h1><p>This parameter determ
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: First channel operating mode</label>
-        <description><![CDATA[
-First channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to choose operating for the 1st channel controlled by the S1 switch.</p>
-        ]]></description>
+        <description>First channel - operating mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows to choose operating for the 1st channel controlled by the S1 switch.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">standard operation</option>
@@ -143,9 +137,7 @@ First channel - operating mode<br /><h1>Overview</h1><p>This parameter allows to
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: 1st ch. reaction to switch</label>
-        <description><![CDATA[
-First channel - reaction to switch for delay/auto ON/OFF modes<br /><h1>Overview</h1><p>This parameter determines how the device in timed mode reacts to pushing the switch connected to the S1 terminal.</p>
-        ]]></description>
+        <description>First channel - reaction to switch for delay/auto ON/OFF modes&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines how the device in timed mode reacts to pushing the switch connected to the S1 terminal.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">cancel mode and set target state</option>
@@ -157,26 +149,20 @@ First channel - reaction to switch for delay/auto ON/OFF modes<br /><h1>Overview
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>12: time parameter for delay/auto ON/OFF modes</label>
-        <description><![CDATA[
-First channel - time parameter for delay/auto ON/OFF modes<br /><h1>Overview</h1><p>This parameter allows to set time parameter used in timed modes.</p> <p>Available settings: 0 (0.1s), 1-32000 (1-32000s, 1s step) - time parameter</p> <p>Default setting: 50 (50s)</p>
-        ]]></description>
+        <description>First channel - time parameter for delay/auto ON/OFF modes&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows to set time parameter used in timed modes.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 0 (0.1s), 1-32000 (1-32000s, 1s step) - time parameter&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 50 (50s)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="1" max="32000">
         <label>13: 1st ch. pulse time for flashing mode</label>
-        <description><![CDATA[
-First channel - pulse time for flashing mode<br /><h1>Overview</h1><p>This parameter allows to set time of switching to opposite state in flashing mode</p> <p>Available settings: 1-32000 (0.1-3200.0s, 0.1s step) - time parameter</p> <p>Default setting: 5 (0.5s)</p>
-        ]]></description>
+        <description>First channel - pulse time for flashing mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows to set time of switching to opposite state in flashing mode&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable settings: 1-32000 (0.1-3200.0s, 0.1s step) - time parameter&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault setting: 5 (0.5s)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Switch type</label>
-        <description><![CDATA[
-Switch type<br /><h1>Overview</h1><p>This parameter defines as what type the device should treat the switch connected to the S1 and S2 terminals</p>
-        ]]></description>
+        <description>Switch type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines as what type the device should treat the switch connected to the S1 and S2 terminals&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">momentary switch</option>
@@ -197,9 +183,7 @@ Switch type<br /><h1>Overview</h1><p>This parameter defines as what type the dev
 
       <parameter name="config_27_1" type="integer" groupName="configuration">
         <label>27: Associations in Z-Wave network security mode</label>
-        <description><![CDATA[
-Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st „Lifeline” group.</p>
-        ]]></description>
+        <description>Associations in Z-Wave network security mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. This parameter does not apply to 1st „Lifeline” group.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>15</default>
         <options>
           <option value="0">no group sent as secure</option>
@@ -214,9 +198,7 @@ Associations in Z-Wave network security mode<br /><h1>Overview</h1><p>This param
       <parameter name="config_28_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>28: S1 switch - scenes sent</label>
-        <description><![CDATA[
-S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
-        ]]></description>
+        <description>S1 switch - scenes sent&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines which actions result in sending scene IDs assigned to them&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no scenes sent</option>
@@ -231,9 +213,7 @@ S1 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
       <parameter name="config_29_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>29: S2 switch - scenes sent</label>
-        <description><![CDATA[
-S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them</p>
-        ]]></description>
+        <description>S2 switch - scenes sent&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines which actions result in sending scene IDs assigned to them&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no scenes sent</option>
@@ -248,9 +228,7 @@ S2 switch - scenes sent<br /><h1>Overview</h1><p>This parameter determines which
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>30: S1 assocs. sent to 2nd and 3rd group</label>
-        <description><![CDATA[
-S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.</p>
-        ]]></description>
+        <description>S1 switch - associations sent to 2nd and 3rd association groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines which actions are ignored when sending commands to devices associated in 2nd and 3rd association group. All actions are active by default.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">All actions are active by default</option>
@@ -272,9 +250,7 @@ S1 switch - associations sent to 2nd and 3rd association groups<br /><h1>Overvie
       <parameter name="config_32_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>32: S1 OFF val sent to 2nd and 3rd groups</label>
-        <description><![CDATA[
-S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch OFF command to devices associated in 2nd and 3rd association group.</p>
-        ]]></description>
+        <description>S1 switch - Switch ON value sent to 2nd and 3rd association groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch OFF command to devices associated in 2nd and 3rd association group.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -288,9 +264,7 @@ S1 switch - Switch ON value sent to 2nd and 3rd association groups<br /><h1>Over
       <parameter name="config_35_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>35: S2 assocs. sent to 4th and 5th group</label>
-        <description><![CDATA[
-S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.</p>
-        ]]></description>
+        <description>S2 switch - associations sent to 4th and 5th association groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines which actions result in sending commands to devices associated in 4th and 5th association group. All actions are active by default.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">All actions are active by default</option>
@@ -305,35 +279,27 @@ S2 switch - associations sent to 4th and 5th association groups<br /><h1>Overvie
       <parameter name="config_36_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>36: S2 switch ON value sent to 4th and 5th ass. groups</label>
-        <description><![CDATA[
-S2 switch - Switch ON value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch On command to devices associated in 4th and 5th association group. </p>
-        ]]></description>
+        <description>S2 switch - Switch ON value sent to 4th and 5th association groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch On command to devices associated in 4th and 5th association group. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_37_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>37: S2 switch OFF sent to 4th and 5th groups</label>
-        <description><![CDATA[
-S2 switch - Switch OFF value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Switch OFF command to devices associated in 4th and 5th association group. </p>
-        ]]></description>
+        <description>S2 switch - Switch OFF value sent to 4th and 5th association groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch OFF command to devices associated in 4th and 5th association group. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_38_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>38: S2 double click sent to 4th and 5th ass. grps.</label>
-        <description><![CDATA[
-S2 switch - Double Click value sent to 4th and 5th association groups<br /><h1>Overview</h1><p>This parameter defines value sent with Double Click command to devices associated in 4th and 5th association group. </p>
-        ]]></description>
+        <description>S2 switch - Double Click value sent to 4th and 5th association groups&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines value sent with Double Click command to devices associated in 4th and 5th association group. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_40_1" type="integer" groupName="configuration">
         <label>40: Reaction to General Alarm</label>
-        <description><![CDATA[
-Reaction to General Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to General Alarm frame. </p>
-        ]]></description>
+        <description>Reaction to General Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines how the device will react to General Alarm frame. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">Ignore</option>
@@ -345,9 +311,7 @@ Reaction to General Alarm<br /><h1>Overview</h1><p>This parameter determines how
 
       <parameter name="config_41_1" type="integer" groupName="configuration">
         <label>41: Reaction to Flood Alarm</label>
-        <description><![CDATA[
-Reaction to Flood Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to Flood Alarm frame. </p>
-        ]]></description>
+        <description>Reaction to Flood Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines how the device will react to Flood Alarm frame. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Ignore</option>
@@ -359,9 +323,7 @@ Reaction to Flood Alarm<br /><h1>Overview</h1><p>This parameter determines how t
 
       <parameter name="config_42_1" type="integer" groupName="configuration">
         <label>42: CO/CO2/Smoke Alarm</label>
-        <description><![CDATA[
-Reaction to CO/CO2/Smoke Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to CO, CO2 or Smoke frame. </p>
-        ]]></description>
+        <description>Reaction to CO/CO2/Smoke Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines how the device will react to CO, CO2 or Smoke frame. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">Ignore</option>
@@ -373,9 +335,7 @@ Reaction to CO/CO2/Smoke Alarm<br /><h1>Overview</h1><p>This parameter determine
 
       <parameter name="config_43_1" type="integer" groupName="configuration">
         <label>43: Reaction to Heat Alarm</label>
-        <description><![CDATA[
-Reaction to Heat Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to Heat Alarm frame. </p>
-        ]]></description>
+        <description>Reaction to Heat Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines how the device will react to Heat Alarm frame. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Ignore</option>
@@ -388,62 +348,48 @@ Reaction to Heat Alarm<br /><h1>Overview</h1><p>This parameter determines how th
       <parameter name="config_44_2" type="integer" groupName="configuration"
                  min="1" max="32000">
         <label>44: Flashing alarm duration</label>
-        <description><![CDATA[
-Flashing alarm duration<br /><h1>Overview</h1><p>This parameter allows to set duration of flashing alarm mode.  (1-32000s duration, 1s step). The default value (600) represents 10 minutes.</p>
-        ]]></description>
+        <description>Flashing alarm duration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows to set duration of flashing alarm mode.  (1-32000s duration, 1s step). The default value (600) represents 10 minutes.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_50_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>50: Active power reports</label>
-        <description><![CDATA[
-Power level reporting threshold.<br /><h1>Overview</h1><p>The parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.</p>
-        ]]></description>
+        <description>Power level reporting threshold.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe parameter defines the power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 disables the function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
       </parameter>
 
       <parameter name="config_51_1" type="integer" groupName="configuration"
                  min="0" max="120">
         <label>51: Minimal time between power report</label>
-        <description><![CDATA[
-Determines minimal time between power reports<br /><h1>Overview</h1><p>This  parameter determines minimum time that has to elapse before sending new power report to the main controller. 0 disables the function. 1-120s - report interval in seconds</p>
-        ]]></description>
+        <description>Determines minimal time between power reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis  parameter determines minimum time that has to elapse before sending new power report to the main controller. 0 disables the function. 1-120s - report interval in seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_53_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>53: Energy reports</label>
-        <description><![CDATA[
-Energy level change resulting in sending a new energy report.<br /><h1>Overview</h1><p>Energy level change which will result in sending a new energy report. Available settings: 1-32000 (0.01 - 320 kWh). 0 disables the function.</p>
-        ]]></description>
+        <description>Energy level change resulting in sending a new energy report.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnergy level change which will result in sending a new energy report. Available settings: 1-32000 (0.01 - 320 kWh). 0 disables the function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_58_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>58: Periodic power reports</label>
-        <description><![CDATA[
-Determines time interval for periodic power reports<br /><h1>Overview</h1><p>This  parameter  determines  in  what  time  interval  the  periodic  power   reports are sent to the main controller. 0  - periodic reports are disabled, 1-32000  (1-32000s) - report interval</p>
-        ]]></description>
+        <description>Determines time interval for periodic power reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis  parameter  determines  in  what  time  interval  the  periodic  power   reports are sent to the main controller. 0  - periodic reports are disabled, 1-32000  (1-32000s) - report interval&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_59_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>59: Periodic energy reports</label>
-        <description><![CDATA[
-Determines time interval for periodic energy reports<br /><h1>Overview</h1><p>This parameter determines in what time interval the periodic energy reports are sent to the main controller. 0  - periodic reports are disabled 1-32000  (1-32000s) - report interval</p>
-        ]]></description>
+        <description>Determines time interval for periodic energy reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines in what time interval the periodic energy reports are sent to the main controller. 0  - periodic reports are disabled 1-32000  (1-32000s) - report interval&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_60_1" type="integer" groupName="configuration">
         <label>60: Measuring energy consumed by the device itself</label>
-        <description><![CDATA[
-Determines if energy consumed by device should be included<br /><h1>Overview</h1><p>This parameter determines whether energy metering should include  the amount of energy consumed by the device itself. Results are be - ing added to energy reports for first endpoint. 0: Function deactivated 1: Function activated</p>
-        ]]></description>
+        <description>Determines if energy consumed by device should be included&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines whether energy metering should include  the amount of energy consumed by the device itself. Results are be - ing added to energy reports for first endpoint. 0: Function deactivated 1: Function activated&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Self-measurement inactive</option>
@@ -454,17 +400,13 @@ Determines if energy consumed by device should be included<br /><h1>Overview</h1
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-Status<br /><h1>Overview</h1><p>Reports the device status and allows</p>
-        ]]></description>
+        <description>Status&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtReports the device status and allows&lt;/p&gt</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Switch 1</label>
-        <description><![CDATA[
-Switch 1 On/Off<br /><h1>Overview</h1><p>This is assigned to the switch connected to the S1 terminal (uses Basic command class).</p>
-        ]]></description>
+        <description>Switch 1 On/Off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis is assigned to the switch connected to the S1 terminal (uses Basic command class).&lt;/p&gt</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
@@ -476,17 +418,13 @@ Switch 1 On/Off<br /><h1>Overview</h1><p>This is assigned to the switch connecte
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Switch 2</label>
-        <description><![CDATA[
-Switch 2 On/Off<br /><h1>Overview</h1><p>This is assigned to the switch connected to the S2 terminal (uses Basic command class).</p>
-        ]]></description>
+        <description>Switch 2 On/Off&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis is assigned to the switch connected to the S2 terminal (uses Basic command class).&lt;/p&gt</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Dimmer 2</label>
-        <description><![CDATA[
-Dimmer for Switch 2<br /><h1>Overview</h1><p>This is assigned to the switch connected to the S2 terminal (uses Switch Multilevel command class).</p>
-        ]]></description>
+        <description>Dimmer for Switch 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis is assigned to the switch connected to the S2 terminal (uses Switch Multilevel command class).&lt;/p&gt</description>
         <multipleLimit>10</multipleLimit>
       </parameter>
 

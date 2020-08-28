@@ -10,7 +10,7 @@ This describes the Z-Wave device *Tag Reader*, manufactured by *[BeNext](http://
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![Tag Reader product image](https://www.cd-jackson.com/zwave_device_uploads/444/444_default.png)
+![Tag Reader product image](https://opensmarthouse.org/zwavedatabase/444/image/)
 
 
 The Tag Reader supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,24 +19,15 @@ The Tag Reader does not permanently listen for messages sent from the controller
 
 ## Overview
 
-Basic operations
-
-  * The Tag Reader 500 is a security enabled Z-Wave Plus product.
-  * The Tag Reader 500 can arm/disarm a security system.
-  * The Tag Reader 500 can read RFID-tags.
-  * The Tag Reader 500 has the possibility for the user to manually insert codes.
-  * The Tag Reader 500’s indicator light will react differently on each action.
-  * The Tag Reader 500 has a buzzer, which can be used as walk-in/walk-out notification (alarm is being disabled/activated).
+<p&gtBasic operations</p&gt <ul&gt<li&gtThe Tag Reader 500 is a security enabled Z-Wave Plus product.</li&gt <li&gtThe Tag Reader 500 can arm/disarm a security system.</li&gt <li&gtThe Tag Reader 500 can read RFID-tags.</li&gt <li&gtThe Tag Reader 500 has the possibility for the user to manually insert codes.</li&gt <li&gtThe Tag Reader 500’s indicator light will react differently on each action.</li&gt <li&gtThe Tag Reader 500 has a buzzer, which can be used as walk-in/walk-out notification (alarm is being disabled/activated).</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Press and hold the enter button for two seconds (indication LED blinks shortly) and release to start the add routine.
-  2. The indication LED will start blinking twice when the Tag Reader 500 starts the add routine.
+<ol&gt<li&gtPress and hold the enter button for two seconds (indication LED blinks shortly) and release to start the add routine.</li&gt <li&gtThe indication LED will start blinking twice when the Tag Reader 500 starts the add routine.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Press and hold the enter button for two seconds (indication LED blinks shortly) and release to start the remove routine.
-  2. The indication LED will blink 3 times when the Tag Reader 500 starts the remove routine
+<ol&gt<li&gtPress and hold the enter button for two seconds (indication LED blinks shortly) and release to start the remove routine.</li&gt <li&gtThe indication LED will blink 3 times when the Tag Reader 500 starts the remove routine</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -45,7 +36,7 @@ The Tag Reader does not permanently listen for messages sent from the controller
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The enter button is pressed for 4 seconds. (led will go on for 1 second to confirm).
+<p&gtThe enter button is pressed for 4 seconds. (led will go on for 1 second to confirm).</p&gt
 
 ## Channels
 
@@ -76,9 +67,7 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Alarm (access)
-Event ID 5 = Away
-
-Event ID 6 = Home
+<p&gtEvent ID 5 = Away</p&gt <p&gtEvent ID 6 = Home</p&gt
 
 Access Control.
 
@@ -152,7 +141,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Set to Default
 
 Set all configuration values to default values (factory settings)
-If the Value is set to 0xFF (255) this device will return to factory settings.
+<p&gtIf the Value is set to 0xFF (255) this device will return to factory settings.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -163,7 +152,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Feedback time
 
 the time the beep goes to off
-0x00 = Off, 0xFF = endless
+<p&gt0x00 = Off, 0xFF = endless</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -174,9 +163,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Feedback time-out
 
 waiting for the wake-up-no-more command
-Too configure the time-out, waiting on the wakeup\_no\_more_information command before the error sound starts automatically. The error sound is set to 8 short beeps.
-
-0x00 = off
+<p&gtToo configure the time-out, waiting on the wakeup\_no\_more_information command before the error sound starts automatically. The error sound is set to 8 short beeps.</p&gt <p&gt0x00 = off</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -187,7 +174,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: feedback beeps per second
 
 Amount of beeps a second
-To set the amount of beeps per second, every beep is around 10ms.
+<p&gtTo set the amount of beeps per second, every beep is around 10ms.</p&gt
 Values in the range 0 to 5 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -198,11 +185,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Mode 
 
 To configure mode
-Mode 1 =  normal working mode
-
-Mode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.
-
-Any other value will be reported after a GET, but will be seen as a mode 1.
+<p&gtMode 1 =  normal working mode</p&gt <p&gtMode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.</p&gt <p&gtAny other value will be reported after a GET, but will be seen as a mode 1.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -213,11 +196,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: RFID circuit start-up time
 
 The time the RFID will be started after pressing "home" or "away"
-0x64 (100 * 10 ms = 1 s)
-
-The time (*10 ms) the RFID circuit waits to start after "home" or "away" has been pressed.
-
-the time *10 miliseconds, minimum = 0 seconds, max = 2,55 seconds. If the value is not in the allowed size the frame will be ignored.
+<p&gt0x64 (100 \* 10 ms = 1 s)</p&gt <p&gtThe time (\*10 ms) the RFID circuit waits to start after "home" or "away" has been pressed.</p&gt <p&gtthe time *10 miliseconds, minimum = 0 seconds, max = 2,55 seconds. If the value is not in the allowed size the frame will be ignored.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -251,7 +230,7 @@ The Tag Reader supports 1 association group.
 ### Group 1: Association group 1
 
 Link devices to the tag reader
-This class can be used to link other devices to the tag reader. These devices also get the burglar frame send to them.
+<p&gtThis class can be used to link other devices to the tag reader. These devices also get the burglar frame send to them.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -278,9 +257,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Tag reader manual NL](https://www.cd-jackson.com/zwave_device_uploads/444/tagreader-nl.pdf)
+* [Tag reader manual NL](https://opensmarthouse.org/zwavedatabase/444/tagreader-nl.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/444).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/444).

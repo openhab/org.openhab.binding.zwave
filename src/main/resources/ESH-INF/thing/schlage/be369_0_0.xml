@@ -7,9 +7,7 @@
 
   <thing-type id="schlage_be369_00_000" listed="false">
     <label>BE369 Keypad Deadbolt</label>
-    <description><![CDATA[
-Keypad Deadbolt<br /><h1>Overview</h1><p>Schlage BE369 Keypad Door Lock - </p> <p>Shares same hardware as FE599 lock (lever version).</p> <br /><h2>Inclusion Information</h2><p>When prompted, follow the lock’s enrollment process:</p> <ol><li>Enter your 6-digit programming code</li> <li>Wait for the device to beep three times</li> <li>Press the Schlage button</li> <li>Press 0</li> <li>The Schlage button will blink three times to confirm</li> </ol><br /><h2>Exclusion Information</h2><p>When prompted, follow the lock’s removal process:</p> <ol><li>Enter your 6-digit programming code</li> <li>Wait for the device to beep three times</li> <li>Press the Schlage button</li> <li>Press 0</li> <li>The Schlage button will blink three times to confirm</li> </ol>
-    ]]></description>
+    <description>Keypad Deadbolt&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSchlage BE369 Keypad Door Lock - &lt;/p&gt &lt;p&gtShares same hardware as FE599 lock (lever version).&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtWhen prompted, follow the lock’s enrollment process:&lt;/p&gt &lt;ol&gt&lt;li&gtEnter your 6-digit programming code&lt;/li&gt &lt;li&gtWait for the device to beep three times&lt;/li&gt &lt;li&gtPress the Schlage button&lt;/li&gt &lt;li&gtPress 0&lt;/li&gt &lt;li&gtThe Schlage button will blink three times to confirm&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtWhen prompted, follow the lock’s removal process:&lt;/p&gt &lt;ol&gt&lt;li&gtEnter your 6-digit programming code&lt;/li&gt &lt;li&gtWait for the device to beep three times&lt;/li&gt &lt;li&gtPress the Schlage button&lt;/li&gt &lt;li&gtPress 0&lt;/li&gt &lt;li&gtThe Schlage button will blink three times to confirm&lt;/li&gt &lt;/ol&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -79,8 +77,8 @@ Keypad Deadbolt<br /><h1>Overview</h1><p>Schlage BE369 Keypad Door Lock - </p> 
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Lock &amp; Leave</label>
-        <description>Enable/Disable Lock &amp; Leave</description>
+        <label>5: Lock &amp;amp; Leave</label>
+        <description>Enable/Disable Lock &amp;amp;amp; Leave</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>

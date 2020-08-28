@@ -7,9 +7,7 @@
 
   <thing-type id="fibaro_fgs224_05_000" listed="false">
     <label>FGS224 Fibaro Double Smart Module</label>
-    <description><![CDATA[
-Fibaro Double Smart Module<br /><h1>Overview</h1><h1>Description</h1> <p>The remotely operated FIBARO Smart Module and Double Smart Module are designed to turn electrical devices or circuits on and off. Smart Module allows to control one device or circuit and the Double Smart Module allows to control two devices or circuits. The compact size of the device allows for the product to be installed in the housings of other devices. The devices can be controlled either via the Z-Wave™ network or with buttons connected directly to them.</p> <h1>Main features</h1> <ul><li>Works with various types of switches and buttons.</li> <li>Supports Z-Wave network Security Modes: S0 with AES-128 encryption and S2 Authenticated with PRNG-based encryption.</li> <li>Works as a Z-Wave signal repeater</li> <li>May be used with all devices certified with the Z-Wave Plus™ certificate and should be compatible with such devices produced by other manufacturers.</li> </ul><br /><h2>Inclusion Information</h2><p>To add the device to the Z-Wave network manually:</p> <ol><li>Quickly, three times click button connected to S1/S2 or the maintenance button.</li> <li>LED will start blinking yellow, wait for the adding process to end.</li> <li>Adding result will be confirmed by the Z-Wave controller’s message and the LED: <ul><li>Green – successful (non-secure, S0, S2 non-authenticated),</li> <li>Magenta – successful (Security S2 Authenticated),</li> <li>Red – not successful. </li> </ul></li> </ol><br /><h2>Exclusion Information</h2><p><strong>Note:</strong> Removing also results in resetting the device to factory defaults. Make sure that restoring the parameters to factory defaults will not result in damaging the connected device, we recommend disconnecting it first.</p> <ol><li>Quickly, three times click the maintenance button.</li> <li>LED will start blinking yellow, wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message and red LED colour.</li> </ol><br /><h2>Wakeup Information</h2><p>Quickly, three times click the maintenance button.</p>
-    ]]></description>
+    <description>Fibaro Double Smart Module&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h1&gtDescription&lt;/h1&gt &lt;p&gtThe remotely operated FIBARO Smart Module and Double Smart Module are designed to turn electrical devices or circuits on and off. Smart Module allows to control one device or circuit and the Double Smart Module allows to control two devices or circuits. The compact size of the device allows for the product to be installed in the housings of other devices. The devices can be controlled either via the Z-Wave™ network or with buttons connected directly to them.&lt;/p&gt &lt;h1&gtMain features&lt;/h1&gt &lt;ul&gt&lt;li&gtWorks with various types of switches and buttons.&lt;/li&gt &lt;li&gtSupports Z-Wave network Security Modes: S0 with AES-128 encryption and S2 Authenticated with PRNG-based encryption.&lt;/li&gt &lt;li&gtWorks as a Z-Wave signal repeater&lt;/li&gt &lt;li&gtMay be used with all devices certified with the Z-Wave Plus™ certificate and should be compatible with such devices produced by other manufacturers.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo add the device to the Z-Wave network manually:&lt;/p&gt &lt;ol&gt&lt;li&gtQuickly, three times click button connected to S1/S2 or the maintenance button.&lt;/li&gt &lt;li&gtLED will start blinking yellow, wait for the adding process to end.&lt;/li&gt &lt;li&gtAdding result will be confirmed by the Z-Wave controller’s message and the LED: &lt;ul&gt&lt;li&gtGreen – successful (non-secure, S0, S2 non-authenticated),&lt;/li&gt &lt;li&gtMagenta – successful (Security S2 Authenticated),&lt;/li&gt &lt;li&gtRed – not successful. &lt;/li&gt &lt;/ul&gt&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtNote:&lt;/strong&gt Removing also results in resetting the device to factory defaults. Make sure that restoring the parameters to factory defaults will not result in damaging the connected device, we recommend disconnecting it first.&lt;/p&gt &lt;ol&gt&lt;li&gtQuickly, three times click the maintenance button.&lt;/li&gt &lt;li&gtLED will start blinking yellow, wait for the removing process to end.&lt;/li&gt &lt;li&gtSuccessful removing will be confirmed by the Z-Wave controller’s message and red LED colour.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtQuickly, three times click the maintenance button.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -81,9 +79,7 @@ Fibaro Double Smart Module<br /><h1>Overview</h1><h1>Description</h1> <p>The rem
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Remember relays state</label>
-        <description><![CDATA[
-This parameter determines the state of relays after power supply failure.<br /><h1>Overview</h1><p>This parameter determines the state of relays after power supply failure (e.g. power outage).</p> <p>For auto OFF and flashing modes the parameter is not relevant and the relay will always remain switched off.</p>
-        ]]></description>
+        <description>This parameter determines the state of relays after power supply failure.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines the state of relays after power supply failure (e.g. power outage).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFor auto OFF and flashing modes the parameter is not relevant and the relay will always remain switched off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">off after restoring power</option>
@@ -94,9 +90,7 @@ This parameter determines the state of relays after power supply failure.<br /><
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: S1 input – switch type</label>
-        <description><![CDATA[
-type of switch connected to the S1<br /><h1>Overview</h1><p>This parameter defines as what type the device should treat the switch connected to the S1 terminal. </p>
-        ]]></description>
+        <description>type of switch connected to the S1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines as what type the device should treat the switch connected to the S1 terminal. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">momentary switch</option>
@@ -107,9 +101,7 @@ type of switch connected to the S1<br /><h1>Overview</h1><p>This parameter defin
 
       <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: S2 input – switch type</label>
-        <description><![CDATA[
-type of switch connected to the S2<br /><h1>Overview</h1><p>This parameter defines as what type the device should treat the switch connected to the S2 terminal. </p>
-        ]]></description>
+        <description>type of switch connected to the S2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines as what type the device should treat the switch connected to the S2 terminal. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">momentary switch</option>
@@ -120,9 +112,7 @@ type of switch connected to the S2<br /><h1>Overview</h1><p>This parameter defin
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Inputs orientation</label>
-        <description><![CDATA[
-reversing operation of S1 and S2 inputs<br /><h1>Overview</h1><p>This parameter allows reversing operation of S1 and S2 inputs without changing the wiring. Use in case of incorrect wiring</p>
-        ]]></description>
+        <description>reversing operation of S1 and S2 inputs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows reversing operation of S1 and S2 inputs without changing the wiring. Use in case of incorrect wiring&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">default</option>
@@ -132,9 +122,7 @@ reversing operation of S1 and S2 inputs<br /><h1>Overview</h1><p>This parameter 
 
       <parameter name="config_25_1" type="integer" groupName="configuration">
         <label>25: Outputs orientation</label>
-        <description><![CDATA[
-reversing operation of Q1 and Q2 outputs<br /><h1>Overview</h1><p>This parameter allows reversing operation of Q1 and Q2 outputs without changing the wiring. Use in case of incorrect wiring. </p>
-        ]]></description>
+        <description>reversing operation of Q1 and Q2 outputs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows reversing operation of Q1 and Q2 outputs without changing the wiring. Use in case of incorrect wiring. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">default</option>
@@ -144,9 +132,7 @@ reversing operation of Q1 and Q2 outputs<br /><h1>Overview</h1><p>This parameter
 
       <parameter name="config_30_4_000000FF" type="integer" groupName="configuration">
         <label>30: Alarm configuration 1 Action Type</label>
-        <description><![CDATA[
-which alarm frames and how the device should react<br /><h1>Overview</h1><table><tr><td> <p>This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.</p> <p>Default Value [0x05, 0xFF, 0x00, 0x00] (Water Alarm, any notification, no action)</p> <p>1B [MSB] – Notification Type</p> <p>2B – Notification Status</p> <p>3B – Event/State Parameters</p> <p>4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously</p> </td> </tr></table>
-        ]]></description>
+        <description>which alarm frames and how the device should react&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault Value [0x05, 0xFF, 0x00, 0x00] (Water Alarm, any notification, no action)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1B [MSB] – Notification Type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2B – Notification Status&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3B – Event/State Parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously&amp;lt;/p&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no action</option>
@@ -182,9 +168,7 @@ which alarm frames and how the device should react<br /><h1>Overview</h1><table>
 
       <parameter name="config_31_4_000000FF" type="integer" groupName="configuration">
         <label>31: Alarm configuration - 2nd slot</label>
-        <description><![CDATA[
-Water Alarm<br /><h1>Overview</h1><p>This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.</p> <p>Default Value [0x05, 0xFF, 0x00, 0x00] (Water Alarm, any notification, no action)</p> <p>1B [MSB] – Notification Type</p> <p>2B – Notification Status</p> <p>3B – Event/State Parameters</p> <p>4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously</p>
-        ]]></description>
+        <description>Water Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault Value [0x05, 0xFF, 0x00, 0x00] (Water Alarm, any notification, no action)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1B [MSB] – Notification Type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2B – Notification Status&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3B – Event/State Parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no action</option>
@@ -220,9 +204,7 @@ Water Alarm<br /><h1>Overview</h1><p>This parameter determines to which alarm fr
 
       <parameter name="config_32_4_000000FF" type="integer" groupName="configuration">
         <label>32: Alarm configuration - 3rd slot - Smoke Alarm</label>
-        <description><![CDATA[
-Action<br /><h1>Overview</h1><p>This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.</p> <p>1B [MSB] – Notification Type</p> <p>2B – Notification Status</p> <p>3B – Event/State Parameters</p> <p>4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously</p>
-        ]]></description>
+        <description>Action&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1B [MSB] – Notification Type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2B – Notification Status&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3B – Event/State Parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no action</option>
@@ -258,9 +240,7 @@ Action<br /><h1>Overview</h1><p>This parameter determines to which alarm frames 
 
       <parameter name="config_33_4_000000FF" type="integer" groupName="configuration">
         <label>33: Alarm configuration - 4th slot - CO Alarm</label>
-        <description><![CDATA[
-Action<br /><h1>Overview</h1><p>This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.</p> <p>1B [MSB] – Notification Type</p> <p>2B – Notification Status</p> <p>3B – Event/State Parameters</p> <p>4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously</p>
-        ]]></description>
+        <description>Action&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1B [MSB] – Notification Type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2B – Notification Status&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3B – Event/State Parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no action</option>
@@ -296,9 +276,7 @@ Action<br /><h1>Overview</h1><p>This parameter determines to which alarm frames 
 
       <parameter name="config_34_4_000000FF" type="integer" groupName="configuration">
         <label>34: Alarm configuration - 5th slot</label>
-        <description><![CDATA[
-Heat Alarm<br /><h1>Overview</h1><p>This parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.</p> <p>1B [MSB] – Notification Type</p> <p>2B – Notification Status</p> <p>3B – Event/State Parameters</p> <p>4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously</p>
-        ]]></description>
+        <description>Heat Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines to which alarm frames and how the device should react. The parameters consist of 4 bytes, three most significant bytes are set according to the official Z-Wave protocol specification.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1B [MSB] – Notification Type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2B – Notification Status&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3B – Event/State Parameters&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4B [LSB] – action: 0x00 – no action, 0x01 – turn ON, 0x02 – turn OFF, 0x03 – turn ON/OFF continuously&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">no action</option>
@@ -335,18 +313,14 @@ Heat Alarm<br /><h1>Overview</h1><p>This parameter determines to which alarm fra
       <parameter name="config_35_2" type="integer" groupName="configuration"
                  min="0" max="32400">
         <label>35: Alarm configuration – duration</label>
-        <description><![CDATA[
-duration of alarm sequence<br /><h1>Overview</h1><p>This parameter defines duration of alarm sequence. When time set in this parameter elapses, alarm is cancelled and relays restore normal operation, but do not recover state from before the alarm. </p> <p>0 – infinite 1-32400 (1s-9h, 1s step) – duration</p> <p>Default value 600 (10min)</p>
-        ]]></description>
+        <description>duration of alarm sequence&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter defines duration of alarm sequence. When time set in this parameter elapses, alarm is cancelled and relays restore normal operation, but do not recover state from before the alarm. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – infinite 1-32400 (1s-9h, 1s step) – duration&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 600 (10min)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>40: S1 input – scenes sent</label>
-        <description><![CDATA[
-actions result in sending scene IDs<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent). Enabling scenes for triple click disables entering the device in learning mode by triple clicking.</p> <p>15 (all active) Available values</p> <p>0 – no scenes sent</p> <p>1 – Key pressed 1 time</p> <p>2 – Key pressed 2 times</p> <p>4 – Key pressed 3 times</p> <p>8 – Key hold down and key released</p>
-        ]]></description>
+        <description>actions result in sending scene IDs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent). Enabling scenes for triple click disables entering the device in learning mode by triple clicking.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt15 (all active) Available values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – no scenes sent&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – Key pressed 1 time&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – Key pressed 2 times&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 – Key pressed 3 times&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt8 – Key hold down and key released&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>15</default>
         <options>
           <option value="0">no scenes sent</option>
@@ -362,9 +336,7 @@ actions result in sending scene IDs<br /><h1>Overview</h1><p>This parameter dete
       <parameter name="config_41_1" type="integer" groupName="configuration"
                  min="0" max="15">
         <label>41: S2 input – scenes sent</label>
-        <description><![CDATA[
-actions result in sending scene IDs<br /><h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent). Enabling scenes for triple click disables entering the device in learning mode by triple clicking.</p> <p>0 – no scenes sent</p> <p>1 – Key pressed 1 time</p> <p>2 – Key pressed 2 times</p> <p>4 – Key pressed 3 times</p> <p>8 – Key hold down and key released</p> <p>15 - all active</p>
-        ]]></description>
+        <description>actions result in sending scene IDs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent). Enabling scenes for triple click disables entering the device in learning mode by triple clicking.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – no scenes sent&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – Key pressed 1 time&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – Key pressed 2 times&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 – Key pressed 3 times&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt8 – Key hold down and key released&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt15 - all active&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>15</default>
         <options>
           <option value="0">no scenes sent</option>
@@ -379,9 +351,7 @@ actions result in sending scene IDs<br /><h1>Overview</h1><p>This parameter dete
 
       <parameter name="config_150_1" type="integer" groupName="configuration">
         <label>150: First channel – operating mode</label>
-        <description><![CDATA[
-choose operating mode for channel Q/Q1 output<br /><h1>Overview</h1><p>This parameter allows to choose operating mode for channel controlled with Q/Q1 output. For timed modes (value 1, 2 or 3), time is set with parameter 154 and reaction to input change is set with parameter 152. </p> <p>0 – standard operation</p> <p>1 – delayed OFF</p> <p>2 – auto OFF</p> <p>3 – flashing</p>
-        ]]></description>
+        <description>choose operating mode for channel Q/Q1 output&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows to choose operating mode for channel controlled with Q/Q1 output. For timed modes (value 1, 2 or 3), time is set with parameter 154 and reaction to input change is set with parameter 152. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – standard operation&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – delayed OFF&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – auto OFF&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 – flashing&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">standard operation</option>
@@ -393,9 +363,7 @@ choose operating mode for channel Q/Q1 output<br /><h1>Overview</h1><p>This para
 
       <parameter name="config_151_1" type="integer" groupName="configuration">
         <label>151: Second channel – operating mode</label>
-        <description><![CDATA[
-operating mode for channel Q2 output<br /><h1>Overview</h1><p>This parameter allows to choose operating mode for channel controlled with Q2 output. For timed modes (value 1, 2 or 3), time is set with parameter 155 and reaction to input change is set with parameter 153.</p> <p>Default value 0 (standard operation)</p> <p>Available values</p> <p>0 – standard operation</p> <p>1 – delayed OFF</p> <p>2 – auto OFF</p> <p>3 – flashing</p>
-        ]]></description>
+        <description>operating mode for channel Q2 output&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter allows to choose operating mode for channel controlled with Q2 output. For timed modes (value 1, 2 or 3), time is set with parameter 155 and reaction to input change is set with parameter 153.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0 (standard operation)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – standard operation&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – delayed OFF&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – auto OFF&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 – flashing&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">standard operation</option>
@@ -407,9 +375,7 @@ operating mode for channel Q2 output<br /><h1>Overview</h1><p>This parameter all
 
       <parameter name="config_152_1" type="integer" groupName="configuration">
         <label>152: 1.Ch. reaction in delayed/auto OFF modes</label>
-        <description><![CDATA[
-S1 input in timed modes<br /><h1>Overview</h1><p><strong>First channel – reaction to input change in delayed/ auto OFF modes</strong></p> <p>This parameter determines how the device reacts when changing state of S1 input in timed modes for first channel.</p> <p>Default value 0 (cancel mode)</p> <p>Available values</p> <p>0 – cancel mode and set default state</p> <p>1 – no reaction, mode runs until it ends</p> <p>2 – reset timer, start counting time from the beginning</p>
-        ]]></description>
+        <description>S1 input in timed modes&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtFirst channel – reaction to input change in delayed/ auto OFF modes&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter determines how the device reacts when changing state of S1 input in timed modes for first channel.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0 (cancel mode)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – cancel mode and set default state&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – no reaction, mode runs until it ends&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – reset timer, start counting time from the beginning&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">cancel mode and set default state</option>
@@ -420,9 +386,7 @@ S1 input in timed modes<br /><h1>Overview</h1><p><strong>First channel – react
 
       <parameter name="config_153_1" type="integer" groupName="configuration">
         <label>153: 2.Ch. reaction in delayed/auto OFF modes</label>
-        <description><![CDATA[
-S2 input in timed modes<br /><h1>Overview</h1><p><strong>Second channel – reaction to input change in delayed/ auto OFF modes</strong></p> <p>This parameter determines how the device reacts when changing state of S1 input in timed modes for first channel.</p> <p>Default value 0 (cancel mode)</p> <p>Available values</p> <p>0 – cancel mode and set default state</p> <p>1 – no reaction, mode runs until it ends</p> <p>2 – reset timer, start counting time from the beginning</p>
-        ]]></description>
+        <description>S2 input in timed modes&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtSecond channel – reaction to input change in delayed/ auto OFF modes&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter determines how the device reacts when changing state of S1 input in timed modes for first channel.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0 (cancel mode)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – cancel mode and set default state&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – no reaction, mode runs until it ends&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 – reset timer, start counting time from the beginning&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">cancel mode and set default state</option>
@@ -434,9 +398,7 @@ S2 input in timed modes<br /><h1>Overview</h1><p><strong>Second channel – reac
       <parameter name="config_154_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>154: 1.Ch. time parameter</label>
-        <description><![CDATA[
-timer for first channel.<br /><h1>Overview</h1><p><strong>First channel – time parameter for delayed/auto OFF and flashing modes</strong></p> <p>This parameter allows to set time parameter used in timed modes for first channel. For delayed/auto OFF modes it determines duration, for flashing mode it determines cycle period.</p> <p>Default value 5 (0.5s)</p> <p>Available values</p> <p>0 – 0.1 seconds 1-32000 – 0.1-3200 seconds, 0.1s step</p>
-        ]]></description>
+        <description>timer for first channel.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtFirst channel – time parameter for delayed/auto OFF and flashing modes&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter allows to set time parameter used in timed modes for first channel. For delayed/auto OFF modes it determines duration, for flashing mode it determines cycle period.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 5 (0.5s)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 0.1 seconds 1-32000 – 0.1-3200 seconds, 0.1s step&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -444,9 +406,7 @@ timer for first channel.<br /><h1>Overview</h1><p><strong>First channel – time
       <parameter name="config_155_2" type="integer" groupName="configuration"
                  min="0" max="32000">
         <label>155: 2.Ch. time parameter</label>
-        <description><![CDATA[
-timer for second channel<br /><h1>Overview</h1><p><strong>Second channel – time parameter for delayed/auto OFF and flashing modes</strong></p> <p>his parameter allows to set time parameter used in timed modes for first channel. For delayed/auto OFF modes it determines duration, for flashing mode it determines cycle period.</p> <p>Default value 5 (0.5s)</p> <p>Available values</p> <p>0 – 0.1 seconds 1-32000 – 0.1-3200 seconds, 0.1s step</p>
-        ]]></description>
+        <description>timer for second channel&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtSecond channel – time parameter for delayed/auto OFF and flashing modes&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gthis parameter allows to set time parameter used in timed modes for first channel. For delayed/auto OFF modes it determines duration, for flashing mode it determines cycle period.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 5 (0.5s)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 0.1 seconds 1-32000 – 0.1-3200 seconds, 0.1s step&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -454,9 +414,7 @@ timer for second channel<br /><h1>Overview</h1><p><strong>Second channel – tim
       <parameter name="config_156_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>156: S1– Switch ON value to 2. association group</label>
-        <description><![CDATA[
-command to devices in 2nd association group<br /><h1>Overview</h1><p><strong>S1 input – Switch ON value sent to 2nd association group</strong></p> <p>This parameter defines value sent with Switch ON command to devices in 2nd association group when using S1 input.</p> <p>Default value 255</p> <p>Available values</p> <p>0 – turn off</p> <p>1-99 – turn on and set level</p> <p>255 – turn on with last level</p>
-        ]]></description>
+        <description>command to devices in 2nd association group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtS1 input – Switch ON value sent to 2nd association group&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch ON command to devices in 2nd association group when using S1 input.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 255&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – turn off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-99 – turn on and set level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – turn on with last level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -464,9 +422,7 @@ command to devices in 2nd association group<br /><h1>Overview</h1><p><strong>S1 
       <parameter name="config_157_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>157: S1– Switch OFF value to 2. association group</label>
-        <description><![CDATA[
-command to devices in 2nd association group<br /><h1>Overview</h1><p><strong>S1 input – Switch OFF value sent to 2nd association group </strong></p> <p>This parameter defines value sent with Switch OFF command to devices in 2nd association group when using S1 input.</p> <p>Parameter size 2B</p> <p>Default value 0</p> <p>Available values</p> <p>0 – turn off</p> <p>1-99 – turn on and set level</p> <p>255 – turn on with last level</p>
-        ]]></description>
+        <description>command to devices in 2nd association group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtS1 input – Switch OFF value sent to 2nd association group &amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch OFF command to devices in 2nd association group when using S1 input.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 2B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – turn off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-99 – turn on and set level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – turn on with last level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -474,9 +430,7 @@ command to devices in 2nd association group<br /><h1>Overview</h1><p><strong>S1 
       <parameter name="config_158_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>158: S1 - Double click to 21nd association group</label>
-        <description><![CDATA[
-Value send to 2nd ass.group<br /><h1>Overview</h1><p>S1 input – Double Click value sent to 2nd association group</p> <p> This parameter defines value sent with Double Click command to devices in 2nd association group when using S1 input.</p> <p>Parameter size 2B</p> <p>Default value 99</p> <p>Available values</p> <p>0 – turn off</p> <p>1-99 – turn on and set level</p> <p>255 – turn on with last level</p>
-        ]]></description>
+        <description>Value send to 2nd ass.group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtS1 input – Double Click value sent to 2nd association group&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt This parameter defines value sent with Double Click command to devices in 2nd association group when using S1 input.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 2B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 99&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – turn off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-99 – turn on and set level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – turn on with last level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -484,9 +438,7 @@ Value send to 2nd ass.group<br /><h1>Overview</h1><p>S1 input – Double Click v
       <parameter name="config_159_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>159: S2–Switch ON value to 3rd association group</label>
-        <description><![CDATA[
-value to 3rd association group<br /><h1>Overview</h1><p>S2 input – Switch ON value sent to 3rd association group</p> <p>Only in Double Smart Module</p> <p>This parameter defines value sent with Switch ON command to devices in 3rd association group when using S2 input.</p> <p>Parameter size 2B</p> <p>Default value 255</p> <p>Available values</p> <p>0 – turn off</p> <p>1-99 – turn on and set level</p> <p>255 – turn on with last level</p>
-        ]]></description>
+        <description>value to 3rd association group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtS2 input – Switch ON value sent to 3rd association group&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtOnly in Double Smart Module&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch ON command to devices in 3rd association group when using S2 input.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 2B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 255&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – turn off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-99 – turn on and set level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – turn on with last level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -494,9 +446,7 @@ value to 3rd association group<br /><h1>Overview</h1><p>S2 input – Switch ON v
       <parameter name="config_160_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>160: S2-Switch ON value to 3rd association group</label>
-        <description><![CDATA[
-value to 3rd association group<br /><h1>Overview</h1><p>S2 input – Switch ON value sent to 3rd association group</p> <p>Only in Double Smart Module</p> <p>This parameter defines value sent with Switch ON command to devices in 3rd association group when using S2 input.</p> <p>Parameter size 2B</p> <p>Default value 255</p> <p>Available values</p> <p>0 – turn off</p> <p>1-99 – turn on and set level</p> <p>255 – turn on with last level</p>
-        ]]></description>
+        <description>value to 3rd association group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtS2 input – Switch ON value sent to 3rd association group&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtOnly in Double Smart Module&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines value sent with Switch ON command to devices in 3rd association group when using S2 input.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 2B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 255&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – turn off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-99 – turn on and set level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – turn on with last level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -504,18 +454,14 @@ value to 3rd association group<br /><h1>Overview</h1><p>S2 input – Switch ON v
       <parameter name="config_161_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>161: S2–Double Click value to 3rd association group</label>
-        <description><![CDATA[
-value to 3rd association group<br /><h1>Overview</h1><p><strong>S2 input – Double Click value sent to 3rd association group</strong></p> <p>Only in Double Smart Module</p> <p>This parameter defines value sent with Double Click command to devices in 3rd association group when using S2 input.</p> <p>Parameter size 2B</p> <p>Default value 255</p> <p>Available values</p> <p>0 – turn off</p> <p>1-99 – turn on and set level</p> <p>255 – turn on with last level</p>
-        ]]></description>
+        <description>value to 3rd association group&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtS2 input – Double Click value sent to 3rd association group&amp;lt;/strong&amp;amp;gt&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtOnly in Double Smart Module&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter defines value sent with Double Click command to devices in 3rd association group when using S2 input.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 2B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 255&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – turn off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-99 – turn on and set level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 – turn on with last level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_162_1" type="integer" groupName="configuration">
         <label>162: Q/Q1 output type</label>
-        <description><![CDATA[
-This parameter determines type of Q1 output.<br /><h1>Overview</h1><p>Q/Q1 output type Description</p> <p>This parameter determines type of Q/Q1 output. Parameter size 1B</p> <p>Default value 0 (Normally Open)</p> <p>Available values</p> <p>0 – Normally Open (relay contacts opened turned off, closed when turned on)</p> <p>1 – Normally Closed (relay contacts closed turned off, opened when turned on)</p>
-        ]]></description>
+        <description>This parameter determines type of Q1 output.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtQ/Q1 output type Description&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter determines type of Q/Q1 output. Parameter size 1B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0 (Normally Open)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – Normally Open (relay contacts opened turned off, closed when turned on)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – Normally Closed (relay contacts closed turned off, opened when turned on)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normally Open</option>
@@ -525,9 +471,7 @@ This parameter determines type of Q1 output.<br /><h1>Overview</h1><p>Q/Q1 outpu
 
       <parameter name="config_163_1" type="integer" groupName="configuration">
         <label>163: Q2 output type</label>
-        <description><![CDATA[
-parameter determines type of Q2 output<br /><h1>Overview</h1><p>Q2 output type</p> <p>Only in Double Smart Module</p> <p>This parameter determines type of Q2 output.</p> <p>Parameter size 1B</p> <p>Default value 0 (Normally Open)</p> <p>Available values</p> <p>0 – Normally Open (relay contacts opened turned off, closed when turned on)</p> <p>1 – Normally Closed (relay contacts closed turned off, opened when turned on)</p>
-        ]]></description>
+        <description>parameter determines type of Q2 output&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtQ2 output type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtOnly in Double Smart Module&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter determines type of Q2 output.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 1B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0 (Normally Open)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – Normally Open (relay contacts opened turned off, closed when turned on)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – Normally Closed (relay contacts closed turned off, opened when turned on)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normally Open</option>
@@ -537,9 +481,7 @@ parameter determines type of Q2 output<br /><h1>Overview</h1><p>Q2 output type</
 
       <parameter name="config_164_1" type="integer" groupName="configuration">
         <label>164: Lock Q1 and Q2 outputs</label>
-        <description><![CDATA[
-Lock Q1 and Q2 outputs<br /><h1>Overview</h1><p>Lock simultaneous switching of Q1 and Q2 outputs</p> <p>Only in Double Smart Module</p> <p>When the lock is enabled, both outputs cannot be turned on at the same time.</p> <p>Parameter size 1B</p> <p>Default value 0 (lock disabled)</p> <p>Available values</p> <p>0 – lock disabled</p> <p>1 – lock enabled</p>
-        ]]></description>
+        <description>Lock Q1 and Q2 outputs&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLock simultaneous switching of Q1 and Q2 outputs&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtOnly in Double Smart Module&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtWhen the lock is enabled, both outputs cannot be turned on at the same time.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtParameter size 1B&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 0 (lock disabled)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtAvailable values&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – lock disabled&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 – lock enabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">lock disabled</option>
@@ -550,24 +492,18 @@ Lock Q1 and Q2 outputs<br /><h1>Overview</h1><p>Lock simultaneous switching of Q
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_0" type="text" groupName="association">
         <label>0: Lifeline</label>
-        <description><![CDATA[
-reports the device status and allows for assigning single device only (main controller by default).<br /><h1>Overview</h1><p>1st association group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).</p>
-        ]]></description>
+        <description>reports the device status and allows for assigning single device only (main controller by default).&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1st association group – “Lifeline” reports the device status and allows for assigning single device only (main controller by default).&lt;/p&gt</description>
       </parameter>
 
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: On/Off (1)</label>
-        <description><![CDATA[
-is used to turn the associated devices on/off reflecting input operation for 1st channel (uses Basic command class).<br /><h1>Overview</h1><p>2nd association group – “On/Off (1)” is used to turn the associated devices on/off reflecting input operation for 1st channel (uses Basic command class).</p>
-        ]]></description>
+        <description>is used to turn the associated devices on/off reflecting input operation for 1st channel (uses Basic command class).&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt2nd association group – “On/Off (1)” is used to turn the associated devices on/off reflecting input operation for 1st channel (uses Basic command class).&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: On/Off (2)</label>
-        <description><![CDATA[
-is used to turn the associated devices on/off reflecting input operation for 2nd channel (uses Basic command class).<br /><h1>Overview</h1><p>3rd association group – “On/Off (2)” is used to turn the associated devices on/off reflecting input operation for 2nd channel (uses Basic command class).</p>
-        ]]></description>
+        <description>is used to turn the associated devices on/off reflecting input operation for 2nd channel (uses Basic command class).&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt3rd association group – “On/Off (2)” is used to turn the associated devices on/off reflecting input operation for 2nd channel (uses Basic command class).&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

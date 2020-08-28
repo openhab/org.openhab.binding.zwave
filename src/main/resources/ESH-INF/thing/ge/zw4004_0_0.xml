@@ -7,9 +7,7 @@
 
   <thing-type id="ge_zw4004_00_000" listed="false">
     <label>GE ZW4004 GE Z-Wave Wireless Smart Lighting and Appliance Control - 40 Amp</label>
-    <description><![CDATA[
-GE Z-Wave Wireless Smart Lighting and Appliance Control - 40 Amp<br /><h1>Overview</h1><p>Outdoor 40amp Direct Wire Box Control with Energy Monitoring</p> <br /><h2>Inclusion Information</h2><p>Once the controller is ready to include your device, press and release the exterior-mounted push button to include it in the network.</p> <br /><h2>Exclusion Information</h2><p>Press and release the exterior-mounted push button to exclude it from the network.</p>
-    ]]></description>
+    <description>GE Z-Wave Wireless Smart Lighting and Appliance Control - 40 Amp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOutdoor 40amp Direct Wire Box Control with Energy Monitoring&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to include your device, press and release the exterior-mounted push button to include it in the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the exterior-mounted push button to exclude it from the network.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

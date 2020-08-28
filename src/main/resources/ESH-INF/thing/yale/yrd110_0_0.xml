@@ -7,9 +7,7 @@
 
   <thing-type id="yale_yrd110_00_000" listed="false">
     <label>YRD110 Yale button deadbolt without keyway</label>
-    <description><![CDATA[
-Yale button deadbolt without keyway<br /><h1>Overview</h1><p>Security Keyless Push Button Stand Alone Deadbolt.</p> <br /><h2>Inclusion Information</h2><p>To enroll using the Z-Wave button:</p> <ol><li>Remove the battery cover</li> <li>Press the Z-Wave button and hold until the lock beeps two times</li> <li>Release the button to start network joining</li> <li>Replace the battery conver</li> </ol><br /><h2>Exclusion Information</h2><p>To remove the lock using the Z-Wave button:</p> <ol><li>Remove the battery cover</li> <li>Press the Z-Wave button and hold until the lock beeps five times</li> <li>Release the button to start network removal</li> <li>Replace the battery cover</li> </ol>
-    ]]></description>
+    <description>Yale button deadbolt without keyway&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSecurity Keyless Push Button Stand Alone Deadbolt.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo enroll using the Z-Wave button:&lt;/p&gt &lt;ol&gt&lt;li&gtRemove the battery cover&lt;/li&gt &lt;li&gtPress the Z-Wave button and hold until the lock beeps two times&lt;/li&gt &lt;li&gtRelease the button to start network joining&lt;/li&gt &lt;li&gtReplace the battery conver&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo remove the lock using the Z-Wave button:&lt;/p&gt &lt;ol&gt&lt;li&gtRemove the battery cover&lt;/li&gt &lt;li&gtPress the Z-Wave button and hold until the lock beeps five times&lt;/li&gt &lt;li&gtRelease the button to start network removal&lt;/li&gt &lt;li&gtReplace the battery cover&lt;/li&gt &lt;/ol&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -99,18 +97,14 @@ Yale button deadbolt without keyway<br /><h1>Overview</h1><p>Security Keyless Pu
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="5" max="255">
         <label>3: Auto relock time</label>
-        <description><![CDATA[
-Time for auto relock<br /><h1>Overview</h1><p>Amount of seconds between the door is unlocked and when it automatically attempts to re-lock itself, when auto-relocking is enabled.</p>
-        ]]></description>
+        <description>Time for auto relock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAmount of seconds between the door is unlocked and when it automatically attempts to re-lock itself, when auto-relocking is enabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="7">
         <label>4: Wrong code limit</label>
-        <description><![CDATA[
-Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incorrect PINs that can be keyed in before lock goes into temporary keypad lockout mode.</p>
-        ]]></description>
+        <description>Number of incorrect PINs before lockout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNumber of incorrect PINs that can be keyed in before lock goes into temporary keypad lockout mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -118,9 +112,7 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
       <parameter name="config_7_1" type="integer" groupName="configuration" readOnly="true"
                  min="1" max="255">
         <label>7: Shutdown time</label>
-        <description><![CDATA[
-Incorrect attempts shutdown time<br /><h1>Overview</h1><p>Amount of time lock should ignore the keypad, if the number of incorrect PINs is exceeded.  (Can still be locked and unlocked by zwave while in shutdown.)</p>
-        ]]></description>
+        <description>Incorrect attempts shutdown time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAmount of time lock should ignore the keypad, if the number of incorrect PINs is exceeded.  (Can still be locked and unlocked by zwave while in shutdown.)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
@@ -141,9 +133,7 @@ Incorrect attempts shutdown time<br /><h1>Overview</h1><p>Amount of time lock sh
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Receive Alarms</label>
-        <description><![CDATA[
-Group that will receive alarm notices from the lock<br /><h1>Overview</h1><p>The lock supports 1 association group with 5 devices. Alarm Reports are sent out unsolicited to devices included in the association group.</p>
-        ]]></description>
+        <description>Group that will receive alarm notices from the lock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe lock supports 1 association group with 5 devices. Alarm Reports are sent out unsolicited to devices included in the association group.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

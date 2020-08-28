@@ -7,9 +7,7 @@
 
   <thing-type id="devolo_phpse02_00_000" listed="false">
     <label>ph-pse02 Multisound indoor siren</label>
-    <description><![CDATA[
-Multisound indoor siren<br /><h1>Overview</h1><p><strong>### NOTE ###</strong></p> <p>The XML used for adding this device to the database comes from the Devolo Home Control Alarmsiren (http://www.devolo.de/article/devolo-home-control-alarmsirene/). But it seems to be made by Zipato (https://www.zipato.com/product/multisound-indoor-siren).<br /><br /><strong>### FEATURES ###</strong><br /><br />- Indoor multichannel siren that works with a a variety of Z-Wave networks/controllers, regardless of the manufacturer<br />- The new Z-Wave 500 series chip supports multichannel operationand higher data rates (9.6/40/100kbps)<br />- 110db sound level<br />- 6 sounds: Door Chime, Bi Bi Arm/Disarm, Intruder alarm, Ambulance, Police car<br />- Higher output power enhances communication range(+6dBm output power as compared to -2.5dBm 300 series)<br />- DC or Li-ion battery power (over 24 hours of battery life)<br />- Battery overcharge protection<br />- Very low power consumption<br />- Over-the-air firmware update<br />- Easy to install in EU/China/Taiwan wall sockets<br />- Tamperproof protection<br /><br /><br /><strong>### TECHNICAL SPECIFICATIONS ###</strong><br /><br />PROTOCOL: Z-Wave Plus<br /><br />POWER<br />- DC 5V, Li-Ion battery (optional)<br />- BATTERY CAPACITY 1150mAh<br /><br />OPERATING CONDITIONS:<br />- OPERATING VOLTAGE 3.7V<br />- OPERATING CURRENT 150 mA<br />- OPERATION TEMPERATURE -10°C ~ 40°C<br /><br />RANGE<br />- Minimum 30 meters indoor<br />- 70 meters outdoor (meant for indoor use only)<br /><br />DIMENSIONS<br />- DEVICE  DIMENSIONS 110 x 110 x 22 mm<br />- DEVICE WEIGHT 113g<br />- PACKAGE DIMENSIONS 117 x 50 x 117 mm<br />- PACKAGE WEIGHT 217g<br /><br />FREQUENCY<br /><br />    ph-pse02.au 921.42 MHz (AU)<br />    ph-pse02.eu 868.42 MHz (EU)<br />    ph-pse02.in 865.20 MHz (IN)<br />    ph-pse02.is 916.02 MHz (IS)<br />    ph-pse02.ru 869.02 MHz (RU)<br />    ph-pse02.us 908.42 MHz (US)<br /><br />Source: https://www.zipato.com/product/multisound-indoor-siren</p> <br /><h2>Inclusion Information</h2><p>Press the tamper key three times within 1.5 seconds to enter the inclusion mode.</p> <p>After successful inclusion, the LED will light up for 1 second.</p> <br /><h2>Exclusion Information</h2><p>Press the tamper key three times within 1.5 seconds to enter the exclusion mode.</p>
-    ]]></description>
+    <description>Multisound indoor siren&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gt### NOTE ###&lt;/strong&gt&lt;/p&gt &lt;p&gtThe XML used for adding this device to the database comes from the Devolo Home Control Alarmsiren (http://www.devolo.de/article/devolo-home-control-alarmsirene/). But it seems to be made by Zipato (https://www.zipato.com/product/multisound-indoor-siren).&lt;br /&gt&lt;br /&gt&lt;strong&gt### FEATURES ###&lt;/strong&gt&lt;br /&gt&lt;br /&gt- Indoor multichannel siren that works with a a variety of Z-Wave networks/controllers, regardless of the manufacturer&lt;br /&gt- The new Z-Wave 500 series chip supports multichannel operationand higher data rates (9.6/40/100kbps)&lt;br /&gt- 110db sound level&lt;br /&gt- 6 sounds: Door Chime, Bi Bi Arm/Disarm, Intruder alarm, Ambulance, Police car&lt;br /&gt- Higher output power enhances communication range(+6dBm output power as compared to -2.5dBm 300 series)&lt;br /&gt- DC or Li-ion battery power (over 24 hours of battery life)&lt;br /&gt- Battery overcharge protection&lt;br /&gt- Very low power consumption&lt;br /&gt- Over-the-air firmware update&lt;br /&gt- Easy to install in EU/China/Taiwan wall sockets&lt;br /&gt- Tamperproof protection&lt;br /&gt&lt;br /&gt&lt;br /&gt&lt;strong&gt### TECHNICAL SPECIFICATIONS ###&lt;/strong&gt&lt;br /&gt&lt;br /&gtPROTOCOL: Z-Wave Plus&lt;br /&gt&lt;br /&gtPOWER&lt;br /&gt- DC 5V, Li-Ion battery (optional)&lt;br /&gt- BATTERY CAPACITY 1150mAh&lt;br /&gt&lt;br /&gtOPERATING CONDITIONS:&lt;br /&gt- OPERATING VOLTAGE 3.7V&lt;br /&gt- OPERATING CURRENT 150 mA&lt;br /&gt- OPERATION TEMPERATURE -10°C ~ 40°C&lt;br /&gt&lt;br /&gtRANGE&lt;br /&gt- Minimum 30 meters indoor&lt;br /&gt- 70 meters outdoor (meant for indoor use only)&lt;br /&gt&lt;br /&gtDIMENSIONS&lt;br /&gt- DEVICE  DIMENSIONS 110 x 110 x 22 mm&lt;br /&gt- DEVICE WEIGHT 113g&lt;br /&gt- PACKAGE DIMENSIONS 117 x 50 x 117 mm&lt;br /&gt- PACKAGE WEIGHT 217g&lt;br /&gt&lt;br /&gtFREQUENCY&lt;br /&gt&lt;br /&gt    ph-pse02.au 921.42 MHz (AU)&lt;br /&gt    ph-pse02.eu 868.42 MHz (EU)&lt;br /&gt    ph-pse02.in 865.20 MHz (IN)&lt;br /&gt    ph-pse02.is 916.02 MHz (IS)&lt;br /&gt    ph-pse02.ru 869.02 MHz (RU)&lt;br /&gt    ph-pse02.us 908.42 MHz (US)&lt;br /&gt&lt;br /&gtSource: https://www.zipato.com/product/multisound-indoor-siren&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the tamper key three times within 1.5 seconds to enter the inclusion mode.&lt;/p&gt &lt;p&gtAfter successful inclusion, the LED will light up for 1 second.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the tamper key three times within 1.5 seconds to enter the exclusion mode.&lt;/p&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -74,9 +72,7 @@ Multisound indoor siren<br /><h1>Overview</h1><p><strong>### NOTE ###</strong></
       <parameter name="config_7_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>7: Costumer Function</label>
-        <description><![CDATA[
-NotificationReport/BinaryReport<br /><h1>Overview</h1><p>Notification Type,</p> <p>0: Using Notification Report.</p> <p>1: Using Sensor Binary Report.</p>
-        ]]></description>
+        <description>NotificationReport/BinaryReport&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNotification Type,&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0: Using Notification Report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1: Using Sensor Binary Report.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
         <advanced>true</advanced>
       </parameter>
@@ -84,27 +80,21 @@ NotificationReport/BinaryReport<br /><h1>Overview</h1><p>Notification Type,</p> 
       <parameter name="config_29_4" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>29: Disable Alarm</label>
-        <description><![CDATA[
-Disable the alarm function.<br /><h1>Overview</h1><p>Disable the alarm function.</p> <p>1: Disable Alarm,</p> <p>0: Enable Alarm.</p> <p>Caution: After the power up, this configuration is always 0.</p>
-        ]]></description>
+        <description>Disable the alarm function.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDisable the alarm function.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1: Disable Alarm,&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0: Enable Alarm.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCaution: After the power up, this configuration is always 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_31_4_0000000C" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>31: Alarm Duration</label>
-        <description><![CDATA[
-Play alarm sound duration.<br /><h1>Overview</h1><p>Play alarm sound duration, 1 tick is 30 seconds.</p> <p>Default is 3 minutes, maximum is 63.5 minutes.</p> <p>0 means never auto stop.</p>
-        ]]></description>
+        <description>Play alarm sound duration.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPlay alarm sound duration, 1 tick is 30 seconds.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault is 3 minutes, maximum is 63.5 minutes.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 means never auto stop.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>6</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Report Message</label>
-        <description><![CDATA[
-Report Message, e.g. tamper alarm<br /><h1>Overview</h1><p>Notice: The device supports 1 group.</p> <p>The group 1 is for receiving the report message, like tamper event. And the group 8 nodes maximum</p>
-        ]]></description>
+        <description>Report Message, e.g. tamper alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtNotice: The device supports 1 group.&lt;/p&gt &lt;p&gtThe group 1 is for receiving the report message, like tamper event. And the group 8 nodes maximum&lt;/p&gt</description>
         <multipleLimit>8</multipleLimit>
       </parameter>
 

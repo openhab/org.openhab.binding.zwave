@@ -7,9 +7,7 @@
 
   <thing-type id="building36_adct2000_00_000" listed="false">
     <label>ADC-T 2000 Alarm.com Smart Thermostat</label>
-    <description><![CDATA[
-Alarm.com Smart Thermostat<br /><h1>Overview</h1><ul><li> Intelligently Connected with Alarm.com (Alarm.com account required) </li> <li> Remote Access and Control </li> <li> Custom Schedules </li> <li> Critical Temperature Alerts and Geo-Services Automation </li> <li> Can be paired with Alarm.com Temperature Sensor ADC-S2000-T-RA for enhanced climate control and improved energy savings (sold separately) </li> </ul><br /><h2>Inclusion Information</h2><p>Put thermostat in OFF mode (no mode icons are lit)</p> <p>Press and hold the DOWN button to begin inclusion mode. Release when the RADIO icon lights up.</p> <p>When the RADIO icon becomes solid, the thermostat has been included.</p> <br /><h2>Exclusion Information</h2><p>Put thermostat in OFF mode (no mode icons are lit)</p> <p>Press and hold the DOWN button to begin exclusion mode. Release when the RADIO icon lights up.</p> <p>When the RADIO icon flashes red, the thermostat has been excluded.</p>
-    ]]></description>
+    <description>Alarm.com Smart Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gt Intelligently Connected with Alarm.com (Alarm.com account required) &lt;/li&gt &lt;li&gt Remote Access and Control &lt;/li&gt &lt;li&gt Custom Schedules &lt;/li&gt &lt;li&gt Critical Temperature Alerts and Geo-Services Automation &lt;/li&gt &lt;li&gt Can be paired with Alarm.com Temperature Sensor ADC-S2000-T-RA for enhanced climate control and improved energy savings (sold separately) &lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut thermostat in OFF mode (no mode icons are lit)&lt;/p&gt &lt;p&gtPress and hold the DOWN button to begin inclusion mode. Release when the RADIO icon lights up.&lt;/p&gt &lt;p&gtWhen the RADIO icon becomes solid, the thermostat has been included.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut thermostat in OFF mode (no mode icons are lit)&lt;/p&gt &lt;p&gtPress and hold the DOWN button to begin exclusion mode. Release when the RADIO icon lights up.&lt;/p&gt &lt;p&gtWhen the RADIO icon flashes red, the thermostat has been excluded.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -102,9 +100,7 @@ Alarm.com Smart Thermostat<br /><h1>Overview</h1><ul><li> Intelligently Connecte
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: HVAC System Type</label>
-        <description><![CDATA[
-Configures the type of heating system used.<br /><h1>Overview</h1><p>0 - Normal (Default)</p> <p>1 - Heat Pump</p>
-        ]]></description>
+        <description>Configures the type of heating system used.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Normal (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Heat Pump&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal</option>
@@ -130,9 +126,7 @@ Configures the type of heating system used.<br /><h1>Overview</h1><p>0 - Normal 
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Heat Fuel Type</label>
-        <description><![CDATA[
-Choose type of fuel. Reality - whether unit is boiler vs forced air.<br /><h1>Overview</h1><p>0 - Fossil Fuel</p> <p>1 - Electric (Default)</p>
-        ]]></description>
+        <description>Choose type of fuel. Reality - whether unit is boiler vs forced air.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Fossil Fuel&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Electric (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Fossil Fuel</option>
@@ -189,9 +183,7 @@ Choose type of fuel. Reality - whether unit is boiler vs forced air.<br /><h1>Ov
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Recovery Settings</label>
-        <description><![CDATA[
-Whether thermostat uses intelligence to try and make the best of energy usage.<br /><h1>Overview</h1><p>0 - Comfort</p> <p>1 - Efficient (Default)</p>
-        ]]></description>
+        <description>Whether thermostat uses intelligence to try and make the best of energy usage.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Comfort&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Efficient (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Comfort</option>
@@ -253,9 +245,7 @@ Whether thermostat uses intelligence to try and make the best of energy usage.<b
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Thermostat Lock</label>
-        <description><![CDATA[
-Lock out physical thermostat controls.<br /><h1>Overview</h1><p>0 - Disabled (Default)</p> <p>1 - Enabled</p>
-        ]]></description>
+        <description>Lock out physical thermostat controls.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Disabled (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Enabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -289,9 +279,7 @@ Lock out physical thermostat controls.<br /><h1>Overview</h1><p>0 - Disabled (De
 
       <parameter name="config_23_1" type="integer" groupName="configuration">
         <label>23: Temperature Display Units</label>
-        <description><![CDATA[
-Celsius or Farenheit for temperature display.<br /><h1>Overview</h1><p>0 - Celsius</p> <p>1 - Farenheit (Default)</p>
-        ]]></description>
+        <description>Celsius or Farenheit for temperature display.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Celsius&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Farenheit (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Celsius</option>
@@ -301,9 +289,7 @@ Celsius or Farenheit for temperature display.<br /><h1>Overview</h1><p>0 - Celsi
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: HVAC Modes Enabled</label>
-        <description><![CDATA[
-Which heating/cooling modes are available.<br /><h1>Overview</h1><p>3 - Off, Heat<br />5 - Off, Cool<br />7 - Off, Heat, Cool<br />15 - Off, Heat, Cool, Auto (Default)<br />19 - Off, Heat, Emergency Heat<br />23 - Off, Heat, Cool, Emergency Heat<br />31 - Off, Heat, Cool, Auto, Emergency Heat</p>
-        ]]></description>
+        <description>Which heating/cooling modes are available.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt3 - Off, Heat&amp;lt;br /&amp;amp;gt5 - Off, Cool&amp;lt;br /&amp;amp;gt7 - Off, Heat, Cool&amp;lt;br /&amp;amp;gt15 - Off, Heat, Cool, Auto (Default)&amp;lt;br /&amp;amp;gt19 - Off, Heat, Emergency Heat&amp;lt;br /&amp;amp;gt23 - Off, Heat, Cool, Emergency Heat&amp;lt;br /&amp;amp;gt31 - Off, Heat, Cool, Auto, Emergency Heat&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>15</default>
         <options>
           <option value="3">Off, Heat</option>
@@ -318,9 +304,7 @@ Which heating/cooling modes are available.<br /><h1>Overview</h1><p>3 - Off, Hea
 
       <parameter name="config_25_1" type="integer" groupName="configuration">
         <label>25: Configurable Terminal Setting</label>
-        <description><![CDATA[
-Changes control of configurable terminal<br /><h1>Overview</h1><p>0 - Disabled (Default)<br />1 - W3 - Third Stage HEAT or 2nd Stage of 2-Stage Auxiliary / Backup heat<br />2 - H - External Dehumidifier Control<br />3 - DH - External Dehumidifier Operation</p>
-        ]]></description>
+        <description>Changes control of configurable terminal&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Disabled (Default)&amp;lt;br /&amp;amp;gt1 - W3 - Third Stage HEAT or 2nd Stage of 2-Stage Auxiliary / Backup heat&amp;lt;br /&amp;amp;gt2 - H - External Dehumidifier Control&amp;lt;br /&amp;amp;gt3 - DH - External Dehumidifier Operation&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -332,9 +316,7 @@ Changes control of configurable terminal<br /><h1>Overview</h1><p>0 - Disabled (
 
       <parameter name="config_26_1" type="integer" groupName="configuration">
         <label>26: Power Source</label>
-        <description><![CDATA[
-Which source of power is utilized.<br /><h1>Overview</h1><p>0 - Battery (Default)</p> <p>1 - C-Wire</p>
-        ]]></description>
+        <description>Which source of power is utilized.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Battery (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - C-Wire&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Battery</option>
@@ -360,9 +342,7 @@ Which source of power is utilized.<br /><h1>Overview</h1><p>0 - Battery (Default
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
         <label>30: Remote Temperature Enable</label>
-        <description><![CDATA[
-Enables remote temperature sensor instead of built-in.<br /><h1>Overview</h1><p>0 - Disabled (Default)</p> <p>1 - Enabled</p>
-        ]]></description>
+        <description>Enables remote temperature sensor instead of built-in.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Disabled (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Enabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -397,9 +377,7 @@ Enables remote temperature sensor instead of built-in.<br /><h1>Overview</h1><p>
 
       <parameter name="config_34_1" type="integer" groupName="configuration">
         <label>34: O/B Select</label>
-        <description><![CDATA[
-Configuration of O/B terminal.<br /><h1>Overview</h1><p>0 - O/B Terminal acts as B terminal, closed when cooling<br />1 - O/B Terminal acts as O terminal, closed when heating (Default)</p>
-        ]]></description>
+        <description>Configuration of O/B terminal.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - O/B Terminal acts as B terminal, closed when cooling&amp;lt;br /&amp;amp;gt1 - O/B Terminal acts as O terminal, closed when heating (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">O/B as B</option>
@@ -410,9 +388,7 @@ Configuration of O/B terminal.<br /><h1>Overview</h1><p>0 - O/B Terminal acts as
 
       <parameter name="config_35_1" type="integer" groupName="configuration">
         <label>35: Z-Wave Echo Association Reports</label>
-        <description><![CDATA[
-Enable/Disabled Echo Assoc. Reports.<br /><h1>Overview</h1><p>0 - Disabled (Default)</p> <p>1 - Enabled</p>
-        ]]></description>
+        <description>Enable/Disabled Echo Assoc. Reports.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 - Disabled (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - Enabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -445,10 +421,10 @@ Enable/Disabled Echo Assoc. Reports.<br /><h1>Overview</h1><p>0 - Disabled (Defa
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
         <option value="2">Cool</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>
@@ -460,9 +436,9 @@ Enable/Disabled Echo Assoc. Reports.<br /><h1>Overview</h1><p>0 - Disabled (Defa
     <category>Temperature</category>
     <state pattern="%s">
       <options>
+        <option value="0">Auto (Low)</option>
         <option value="1">On (Low)</option>
         <option value="6">Circulate</option>
-        <option value="0">Auto (Low)</option>
       </options>
     </state>
   </channel-type>

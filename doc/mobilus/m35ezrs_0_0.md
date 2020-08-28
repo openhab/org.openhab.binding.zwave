@@ -10,50 +10,22 @@ This describes the Z-Wave device *EZRS*, manufactured by *MOBILUS MOTOR Spólka 
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![EZRS product image](https://www.cd-jackson.com/zwave_device_uploads/1029/1029_default.jpg)
+![EZRS product image](https://opensmarthouse.org/zwavedatabase/1029/image/)
 
 
 The EZRS supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Tubular motor mob.iq EZRS M35 10/14 by Mobilus Motor Company is a modern radio controllable drive, designed to drive rolling shields. This device has a number of innovative solutions, including:
-
-## SENSO technology
-
-  * programming of endpoints automatically or using the remote control, 
-  * operation regardless of the used hangers type, 
-  * bidirectional obstacles detection which eliminates failures due to obstacles (each failure will be reported to controller as an alarm)
-  * saving your time due to lack of supervision of your shutters - obstacle detection system, insensitive to minor disruption during work.
-
-## Communication standard
-
-But the most important feature of our motor is the usage of Z-Wave technology as the communication standard. It provides inter alia
-
-  * easy procedure of connection the device to the network,
-  * bidirectional communication between the motor operator and control device - therefore the user has the opportunity to receive a variety of information about the motor operator (location, work errors, obstacles encountered in the blinds way of work), 
-  * automatic creation of network of devices, so there is no need for additional radio signal repeaters, 
-  * compatibility with third party control devices - Z-Wave is a mature standard for radio communication, chosen by over two hundred manufacturers of devices intended to create an intelligent home control systems.
-
-## Technical parameters
-
-  * fi roller tube diameter of 35 mm,
-  * torque: 10 Nm, 
-  * revolutions per minute: 14 rpm, 
-  * supply voltage 230 V.
+<p&gtTubular motor mob.iq EZRS M35 10/14 by Mobilus Motor Company is a modern radio controllable drive, designed to drive rolling shields. This device has a number of innovative solutions, including:</p&gt <h2&gtSENSO technology</h2&gt <ul&gt<li&gtprogramming of endpoints automatically or using the remote control, </li&gt <li&gtoperation regardless of the used hangers type, </li&gt <li&gtbidirectional obstacles detection which eliminates failures due to obstacles (each failure will be reported to controller as an alarm)</li&gt <li&gtsaving your time due to lack of supervision of your shutters - obstacle detection system, insensitive to minor disruption during work.</li&gt </ul&gt<h2&gtCommunication standard</h2&gt <p&gtBut the most important feature of our motor is the usage of Z-Wave technology as the communication standard. It provides inter alia</p&gt <ul&gt<li&gteasy procedure of connection the device to the network,</li&gt <li&gtbidirectional communication between the motor operator and control device - therefore the user has the opportunity to receive a variety of information about the motor operator (location, work errors, obstacles encountered in the blinds way of work), </li&gt <li&gtautomatic creation of network of devices, so there is no need for additional radio signal repeaters, </li&gt <li&gtcompatibility with third party control devices - Z-Wave is a mature standard for radio communication, chosen by over two hundred manufacturers of devices intended to create an intelligent home control systems.</li&gt </ul&gt<h2&gtTechnical parameters</h2&gt <ul&gt<li&gtfi roller tube diameter of 35 mm,</li&gt <li&gttorque: 10 Nm, </li&gt <li&gtrevolutions per minute: 14 rpm, </li&gt <li&gtsupply voltage 230 V.</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Plug mob.iq [ M35 EZRS ] motor to the power supply according to schema at the end of instruction. Green diode in PROGRAMMING BUTTON is on. In the other case you need to exclude motor from Z-Wave network according to point 4 of this instruction.
-  2. Turn your controller into INCLUDE mode (see instruction of your controller).
-  3. Press the PROGRAMMING BUTTON on mob.iq [ M35 EZRS ] motor.
-  4. Motor is detected by controller and included into Z-Wave network - the led diode is off.
+<ol&gt<li&gtPlug mob.iq [ M35 EZRS ] motor to the power supply according to schema at the end of instruction. Green diode in PROGRAMMING BUTTON is on. In the other case you need to exclude motor from Z-Wave network according to point 4 of this instruction.</li&gt <li&gtTurn your controller into INCLUDE mode (see instruction of your controller).</li&gt <li&gtPress the PROGRAMMING BUTTON on mob.iq [ M35 EZRS ] motor.</li&gt <li&gtMotor is detected by controller and included into Z-Wave network - the led diode is off.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Turn your controller into exclude mode (see instruction of your controller).
-  2. Press the PROGRAMMING BUTTON on mob.iq [ M35 EZRS ] motor.
-  3. Motor is detected by controller and excluded from Z-Wave network - the led diode is on.
+<ol&gt<li&gtTurn your controller into exclude mode (see instruction of your controller).</li&gt <li&gtPress the PROGRAMMING BUTTON on mob.iq [ M35 EZRS ] motor.</li&gt <li&gtMotor is detected by controller and excluded from Z-Wave network - the led diode is on.</li&gt </ol&gt
 
 ## Channels
 
@@ -191,9 +163,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1029/mob-iq-ezrs-eng.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1029/mob-iq-ezrs-eng.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1029).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1029).

@@ -10,7 +10,7 @@ This describes the Z-Wave device *HA-ZW-5SE*, manufactured by *Ameta Internation
 
 The device is in the category of *Door*, defining Door sensors.
 
-![HA-ZW-5SE product image](https://www.cd-jackson.com/zwave_device_uploads/1216/1216_default.png)
+![HA-ZW-5SE product image](https://opensmarthouse.org/zwavedatabase/1216/image/)
 
 
 The HA-ZW-5SE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,33 +19,15 @@ The HA-ZW-5SE does not permanently listen for messages sent from the controller 
 
 ## Overview
 
-  * The AIBASE Door/Window Sensor contains a sensor body and a magnet.
-  * The AIBASE Door/Window Sensor detects through the separation and combination of the main body and the magnet.
-  * Recommend installation distance between the sensor body and the magnet is 10mm.
-  * The Sensor also anti‐tamper functionality. Once the sensor is moved, it will notify the gateway.
-  * The AIBASE Door/Window Sensor is powered by CR2 battery with 2 years battery life.
-  * The AIBASE Door/Window Sensor is designed to be mounted on the door or windows.
-  * The AIBASE Door/Window Sensor supports low battery alarm function.
-  * The AIBASE Door/Window Sensor supports firmware OTA.
+<ul&gt<li&gtThe AIBASE Door/Window Sensor contains a sensor body and a magnet.</li&gt <li&gtThe AIBASE Door/Window Sensor detects through the separation and combination of the main body and the magnet.</li&gt <li&gtRecommend installation distance between the sensor body and the magnet is 10mm.</li&gt <li&gtThe Sensor also anti‐tamper functionality. Once the sensor is moved, it will notify the gateway.</li&gt <li&gtThe AIBASE Door/Window Sensor is powered by CR2 battery with 2 years battery life.</li&gt <li&gtThe AIBASE Door/Window Sensor is designed to be mounted on the door or windows.</li&gt <li&gtThe AIBASE Door/Window Sensor supports low battery alarm function.</li&gt <li&gtThe AIBASE Door/Window Sensor supports firmware OTA.</li&gt </ul&gt
 
 ### Inclusion Information
 
-Add for inclusion: 
-
-  1. Insert the battery.
-  2. Set the Z-Wave network main controller into learning mode.
-  3. Short press the action button one time.
-  4. If the add for inclusion is successful, the LED will blink fast and then keep on 3 seconds. Otherwise, the LED will blink 25 seconds and then turn off, in which case you need to repeat the process from step 
+<p&gtAdd for inclusion: </p&gt <ol&gt<li&gtInsert the battery.</li&gt <li&gtSet the Z-Wave network main controller into learning mode.</li&gt <li&gtShort press the action button one time.</li&gt <li&gtIf the add for inclusion is successful, the LED will blink fast and then keep on 3 seconds. Otherwise, the LED will blink 25 seconds and then turn off, in which case you need to repeat the process from step </li&gt </ol&gt
 
 ### Exclusion Information
 
-Remove for exclusion;
-
-  1. Insert the CR battery.
-  2. Set the Z-Wave network main controller into exclusion mode.
-  3. Short press the action button one time.
-
-If the remove for exclusion is successful, the LED will blink fast and turn off. Otherwise, the LED will keep solid for 2 seconds and then turn off, in which case you need to repeat the process from step 2.
+<p&gtRemove for exclusion;</p&gt <ol&gt<li&gtInsert the CR battery.</li&gt <li&gtSet the Z-Wave network main controller into exclusion mode.</li&gt <li&gtShort press the action button one time.</li&gt </ol&gt<p&gtIf the remove for exclusion is successful, the LED will blink fast and turn off. Otherwise, the LED will keep solid for 2 seconds and then turn off, in which case you need to repeat the process from step 2.</p&gt
 
 ### Wakeup Information
 
@@ -54,18 +36,11 @@ The HA-ZW-5SE does not permanently listen for messages sent from the controller 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  1. Short press 3 time.
-  2. LED will blink one time; sending wake up notification cc
+<ol&gt<li&gtShort press 3 time.</li&gt <li&gtLED will blink one time; sending wake up notification cc</li&gt </ol&gt
 
 ### General Usage Information
 
-FACTORY RESET
-
-Press and hold for 5 seconds.
-
-LED will blink fast for 5 seconds and then keep solid for 3 seconds, after that Door/Window Sensor will send “Device\_Reset\_Locally” to the main controller and exclude from the Z-Wave network.
-
-Please use this procedure only when the network primary controller is missing or otherwise inoperable.
+<p&gtFACTORY RESET</p&gt <p&gtPress and hold for 5 seconds.</p&gt <p&gtLED will blink fast for 5 seconds and then keep solid for 3 seconds, after that Door/Window Sensor will send “Device\_Reset\_Locally” to the main controller and exclude from the Z-Wave network.</p&gt <p&gtPlease use this procedure only when the network primary controller is missing or otherwise inoperable.</p&gt
 
 ## Channels
 
@@ -138,9 +113,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 10: Level of low battery
 
 This parameter defines a battery level as the “low battery”
-Available settings: 0‐50 (0% ‐ 50%) 
-
-Default setting: 10 (10%)
+<p&gtAvailable settings: 0‐50 (0% ‐ 50%) </p&gt <p&gtDefault setting: 10 (10%)</p&gt
 Values in the range 0 to 50 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -151,8 +124,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 14: Enable/Disable BASIC SET command
 
 Door/Window Sensor can send BASIC SET command to nodes associated with group 2.
-0 – Disable.  
-1 – Enable.
+<p&gt0 – Disable.<br /&gt1 – Enable.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -168,9 +140,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: Value of the BASIC SET
 
 Reverse value of BASIC SET when the magnet is triggered.
-0 –Send BASIC SET VALUE = 255 to nodes associated with group 2 when door/window is opened. Send BASIC SET VALUE = 0 to nodes associated with group 2 when door/window is closed.
-
-1 –Send BASIC SET VALUE = 0 to nodes associated with group 2 when door/window is opened. Send BASIC SET VALUE = 255 to nodes associated with group 2 when door/window is closed.
+<p&gt0 –Send BASIC SET VALUE = 255 to nodes associated with group 2 when door/window is opened. Send BASIC SET VALUE = 0 to nodes associated with group 2 when door/window is closed.</p&gt <p&gt1 –Send BASIC SET VALUE = 0 to nodes associated with group 2 when door/window is opened. Send BASIC SET VALUE = 255 to nodes associated with group 2 when door/window is closed.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -186,9 +156,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 254: Enable/disable the configuration command
 
 Lock/unlock all configuration parameters.
-0 – Unlock.  
-1 – Lock.  
-Default setting: 0
+<p&gt0 – Unlock.<br /&gt1 – Lock.<br /&gtDefault setting: 0</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -226,17 +194,13 @@ The HA-ZW-5SE supports 2 association groups.
 
 ### Group 1: Group 1
 
-  1. Notification Report.  
-    Sensor will send Notification Report when the supported event is triggered.
-  2. Battery Report.  
-    Sensor will send Battery Report when the battery level is low and the battery report’s value is 0xFF.
-  3. Device Reset Locally.
+<ol&gt<li&gtNotification Report.<br /&gtSensor will send Notification Report when the supported event is triggered.</li&gt <li&gtBattery Report.<br /&gtSensor will send Battery Report when the battery level is low and the battery report’s value is 0xFF.</li&gt <li&gtDevice Reset Locally.</li&gt </ol&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Group 2
 
-Basic Set, Sensor will send Basic Set when the sensor body and magnet removed or combined.
+<p&gtBasic Set, Sensor will send Basic Set when the sensor body and magnet removed or combined.</p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -266,9 +230,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manufacturer Provided Product Manual](https://www.cd-jackson.com/zwave_device_uploads/1216/Z-Wave-Door-Window-Sensor---User-Guide---Aibase.pdf)
+* [Manufacturer Provided Product Manual](https://opensmarthouse.org/zwavedatabase/1216/Z-Wave-Door-Window-Sensor---User-Guide---Aibase.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1216).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1216).

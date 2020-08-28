@@ -7,9 +7,7 @@
 
   <thing-type id="evolve_lfm20_00_000" listed="false">
     <label>LFM-20</label>
-    <description><![CDATA[
-<br /><h1>Overview</h1><p>Radio Frequency (RF) Controlled, 120 VAC, Scene Capable, Isolated Contact Fixture Module</p> <br /><h2>Inclusion Information</h2><p> Tap the button.</p> <br /><h2>Exclusion Information</h2><p>Tap the button 3 times, then press and hold (Ex. tap, tap, tap, hold)</p>
-    ]]></description>
+    <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRadio Frequency (RF) Controlled, 120 VAC, Scene Capable, Isolated Contact Fixture Module&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt Tap the button.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTap the button 3 times, then press and hold (Ex. tap, tap, tap, hold)&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -49,9 +47,7 @@
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Night Light<br /><h1>Overview</h1><p>In night-light mode the LED on the switch will turn ON when the switch is turned OFF.</p>
-        ]]></description>
+        <description>Night Light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIn night-light mode the LED on the switch will turn ON when the switch is turned OFF.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No</option>

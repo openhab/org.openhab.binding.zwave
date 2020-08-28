@@ -10,28 +10,22 @@ This describes the Z-Wave device *WTE*, manufactured by *wiDom* with the thing t
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![WTE product image](https://www.cd-jackson.com/zwave_device_uploads/995/995_default.png)
+![WTE product image](https://opensmarthouse.org/zwavedatabase/995/image/)
 
 
 The WTE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-WiDom Smart TE Dimmer is an "in-wall device" that controls the luminosity level and/or fan speed. A universal device that controls the light intensity of all types of dimmable lights, including LED lamps and energy-saving lamps. The Smart TE Dimmer includes the ON / OFF control option of non-dimmable loads. 
-
-WiDom Smart TE Dimmer is very easy to install and works with both momentary and toggle switches.  
-
-It operates in any Z-Wave network with other Z-Wave/Z-Wave Plus certified devices and controllers from any other manufacturer. As a constantly powered node, WiDom Smart TE Dimmer will act as repeater regardless of the vendor in order to increase the reliability of the network.
+<p&gtWiDom Smart TE Dimmer is an "in-wall device" that controls the luminosity level and/or fan speed. A universal device that controls the light intensity of all types of dimmable lights, including LED lamps and energy-saving lamps. The Smart TE Dimmer includes the ON / OFF control option of non-dimmable loads. </p&gt <p&gtWiDom Smart TE Dimmer is very easy to install and works with both momentary and toggle switches.  </p&gt <p&gtIt operates in any Z-Wave network with other Z-Wave/Z-Wave Plus certified devices and controllers from any other manufacturer. As a constantly powered node, WiDom Smart TE Dimmer will act as repeater regardless of the vendor in order to increase the reliability of the network.</p&gt
 
 ### Inclusion Information
 
-WiDom Smart TE Dimmer is compatible with all Z-Wave/Z-Wave Plus certified controllers. The device supports both the Network Wide Inclusion mechanism (which offers the ability to be included in a network, even if the device is not directly connected to the controller) and Normal Inclusion. By default, the inclusion procedure starts in Normal Inclusion mode and after a short timeout the procedure continues in Network Wide Inclusion mode that lasts for about 20 Seconds.
-
-Before including the device the LED status indicator is solid RED. The procedure of inclusion is activated by clicking Add in the inclusion interface and by pressing any sequence of click on the integrated button. As soon as the inclusion procedure initiates the LED indicator starts a sequence of GREEN-BLUE blinks. The device is included in the network when the LED status is OFF and the interview is completed.
+<p&gtWiDom Smart TE Dimmer is compatible with all Z-Wave/Z-Wave Plus certified controllers. The device supports both the Network Wide Inclusion mechanism (which offers the ability to be included in a network, even if the device is not directly connected to the controller) and Normal Inclusion. By default, the inclusion procedure starts in Normal Inclusion mode and after a short timeout the procedure continues in Network Wide Inclusion mode that lasts for about 20 Seconds.</p&gt <p&gtBefore including the device the LED status indicator is solid RED. The procedure of inclusion is activated by clicking Add in the inclusion interface and by pressing any sequence of click on the integrated button. As soon as the inclusion procedure initiates the LED indicator starts a sequence of GREEN-BLUE blinks. The device is included in the network when the LED status is OFF and the interview is completed.</p&gt
 
 ### Exclusion Information
 
-Only a controller can remove the device from the network. After activating the exclusion function by the controller, the device can be removed by setting it in Learning Mode. If you are using the WiDom Multi Sensor Room Controller, the procedure of exclusion can be activated by Removing a node from the Z-Wave network and any click sequence on the integrated button; as soon as the exclusion initiates, the LED indicator starts a sequence of RED-BLUE blinks. The device is excluded from the network when the LED status indicator is solid RED and the App_status in the interface is OK. 
+<p&gtOnly a controller can remove the device from the network. After activating the exclusion function by the controller, the device can be removed by setting it in Learning Mode. If you are using the WiDom Multi Sensor Room Controller, the procedure of exclusion can be activated by Removing a node from the Z-Wave network and any click sequence on the integrated button; as soon as the exclusion initiates, the LED indicator starts a sequence of RED-BLUE blinks. The device is excluded from the network when the LED status indicator is solid RED and the App_status in the interface is OK. </p&gt
 
 ## Channels
 
@@ -119,7 +113,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Local Dimming Time
 
 Defines the time spent to switch the controlled load
-Defines the time spent to switch the controlled load when the external switch is hold down
+<p&gtDefines the time spent to switch the controlled load when the external switch is hold down</p&gt
 Values in the range 0 to 60 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -196,7 +190,7 @@ Association group 1 supports 8 nodes.
 
 ### Group 2: Dimming
 
-The 2nd association group allows to propagate the status of the controller device to its associated devices. The devices of the 2nd association group will receive a “Start level change” command by pressing the external switch of the dimmer (controller device), and a “Stop level change” command when the switch is released.  The “Start level change” also sets the dimming duration and start level for the controlled devices by propagating its local diming time and its current value. 
+<p&gtThe 2nd association group allows to propagate the status of the controller device to its associated devices. The devices of the 2nd association group will receive a “Start level change” command by pressing the external switch of the dimmer (controller device), and a “Stop level change” command when the switch is released.  The “Start level change” also sets the dimming duration and start level for the controlled devices by propagating its local diming time and its current value. </p&gt
 
 Association group 2 supports 8 nodes.
 
@@ -223,9 +217,9 @@ Association group 2 supports 8 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/995/Widom-Smart-Dimmer-EN.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/995/Widom-Smart-Dimmer-EN.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/995).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/995).

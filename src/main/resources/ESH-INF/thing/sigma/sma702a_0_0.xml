@@ -7,9 +7,7 @@
 
   <thing-type id="sigma_sma702a_00_000" listed="false">
     <label>SM-A702A Window/Door Sensor</label>
-    <description><![CDATA[
-Window/Door Sensor<br /><h1>Overview</h1><p>Door/Window sensor with LED indicator, battery powered.</p> <br /><h2>Inclusion Information</h2><p>Press Z-Wave button once to wake up the device then once to connect to Z-Wave network</p> <br /><h2>Exclusion Information</h2><p>Press Z-Wave button once to wake up the device then once to disconect from Z-Wave network</p> <br /><h2>Wakeup Information</h2><p>Press Z-Wave button once to wake up the device</p>
-    ]]></description>
+    <description>Window/Door Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDoor/Window sensor with LED indicator, battery powered.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress Z-Wave button once to wake up the device then once to connect to Z-Wave network&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress Z-Wave button once to wake up the device then once to disconect from Z-Wave network&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtPress Z-Wave button once to wake up the device&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->

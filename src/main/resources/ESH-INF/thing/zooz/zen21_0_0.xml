@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zen21_00_000" listed="false">
     <label>ZEN21 Paddle Switch</label>
-    <description><![CDATA[
-Paddle Switch<br /><h1>Overview</h1><p>Z-WAVE ON/OFF SWITCH</p> <br /><h2>Inclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into inclusion mode</li> <li>Tap the upper paddle of the switch 3 times very quickly to finalize the inclusion process</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into exclusion mode</li> <li>Tap the lower paddle of the switch 3 times very quickly to finalize the exclusion process</li> </ol>
-    ]]></description>
+    <description>Paddle Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-WAVE ON/OFF SWITCH&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtBring your Z-Wave gateway hub or controller as close to the switch as possible&lt;/li&gt &lt;li&gtPut your Z-Wave controller into inclusion mode&lt;/li&gt &lt;li&gtTap the upper paddle of the switch 3 times very quickly to finalize the inclusion process&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtBring your Z-Wave gateway hub or controller as close to the switch as possible&lt;/li&gt &lt;li&gtPut your Z-Wave controller into exclusion mode&lt;/li&gt &lt;li&gtTap the lower paddle of the switch 3 times very quickly to finalize the exclusion process&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -56,9 +54,7 @@ Paddle Switch<br /><h1>Overview</h1><p>Z-WAVE ON/OFF SWITCH</p> <br /><h2>Inclus
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Paddle Control</label>
-        <description><![CDATA[
-Reverse switch direction<br /><h1>Overview</h1><p>Choose if you want the upper paddle to turn the light on or turn the light off when tapped</p>
-        ]]></description>
+        <description>Reverse switch direction&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the upper paddle to turn the light on or turn the light off when tapped&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Top-ON, Bottom-OFF</option>
@@ -68,9 +64,7 @@ Reverse switch direction<br /><h1>Overview</h1><p>Choose if you want the upper p
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: LED Indicator Control</label>
-        <description><![CDATA[
-LED Indicator Control<br /><h1>Overview</h1><p>Choose if you want the LED indicator to turn on when the switch (light) is on or off</p>
-        ]]></description>
+        <description>LED Indicator Control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the LED indicator to turn on when the switch (light) is on or off&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">LED ON - Switch OFF</option>
@@ -80,9 +74,7 @@ LED Indicator Control<br /><h1>Overview</h1><p>Choose if you want the LED indica
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: LED Indicator</label>
-        <description><![CDATA[
-Enable / Disable LED Indicator<br /><h1>Overview</h1><p>Enable / Disable LED Indicator</p>
-        ]]></description>
+        <description>Enable / Disable LED Indicator&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable / Disable LED Indicator&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">LED Enabled</option>
@@ -93,9 +85,7 @@ Enable / Disable LED Indicator<br /><h1>Overview</h1><p>Enable / Disable LED Ind
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Status</label>
-        <description><![CDATA[
-This device will send SWITCH BINARY REPORT to Group 1 when operated manually.<br /><h1>Overview</h1><p>Depending on your Z-Wave gateway's home automation software capabilities, you may be able to associate your Z-Wave switch in groups with other Z-Wave devices to schedule scenes and create events. This on off switch supports Group 1 with up to five devices for lifeline communication. This device will send SWITCH BINARY REPORT to Group 1 when operated manually. Please refer to your controller's user guide for advanced programming instructions as they are a little different for every software.</p>
-        ]]></description>
+        <description>This device will send SWITCH BINARY REPORT to Group 1 when operated manually.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDepending on your Z-Wave gateway's home automation software capabilities, you may be able to associate your Z-Wave switch in groups with other Z-Wave devices to schedule scenes and create events. This on off switch supports Group 1 with up to five devices for lifeline communication. This device will send SWITCH BINARY REPORT to Group 1 when operated manually. Please refer to your controller's user guide for advanced programming instructions as they are a little different for every software.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

@@ -7,9 +7,7 @@
 
   <thing-type id="thermofloor_ztrm3_00_000" listed="false">
     <label>HEATIT Z-TRM3 Floor thermostat</label>
-    <description><![CDATA[
-Floor thermostat<br /><h1>Overview</h1><h3>FEATURES</h3> <ul><li>Floor sensor</li> <li>Internal room sensor</li> <li>External room sensor (connected by cable)</li> <li>Temperature limiter</li> <li>SmartStart</li> <li>Weekly program/setback via gateway</li> <li>Temperature read out in gateway</li> <li>Firmware update (OTA)</li> <li>Power metering</li> <li>Relay status LED</li> <li>Single pole switch</li> <li>Lock mode/child lock</li> <li>Calibration</li> <li>5 associations</li> <li>Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li> </ul><br /><h2>Inclusion Information</h2><p>1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings</p> <br /><h2>Exclusion Information</h2><p>1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings.NB! When the thermostat is removed from the gateway, the parameters are not reset. To reset the parameters, see Chapter 7: ”Factory reset”. If adding/removing fails, Err (error) will appear. Please perform a ”remove device” process and try again. If Err displays again, please see Chapter 7: “Factory reset”.</p>
-    ]]></description>
+    <description>Floor thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h3&gtFEATURES&lt;/h3&gt &lt;ul&gt&lt;li&gtFloor sensor&lt;/li&gt &lt;li&gtInternal room sensor&lt;/li&gt &lt;li&gtExternal room sensor (connected by cable)&lt;/li&gt &lt;li&gtTemperature limiter&lt;/li&gt &lt;li&gtSmartStart&lt;/li&gt &lt;li&gtWeekly program/setback via gateway&lt;/li&gt &lt;li&gtTemperature read out in gateway&lt;/li&gt &lt;li&gtFirmware update (OTA)&lt;/li&gt &lt;li&gtPower metering&lt;/li&gt &lt;li&gtRelay status LED&lt;/li&gt &lt;li&gtSingle pole switch&lt;/li&gt &lt;li&gtLock mode/child lock&lt;/li&gt &lt;li&gtCalibration&lt;/li&gt &lt;li&gt5 associations&lt;/li&gt &lt;li&gtSupports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings.NB! When the thermostat is removed from the gateway, the parameters are not reset. To reset the parameters, see Chapter 7: ”Factory reset”. If adding/removing fails, Err (error) will appear. Please perform a ”remove device” process and try again. If Err displays again, please see Chapter 7: “Factory reset”.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -133,9 +131,7 @@ Floor thermostat<br /><h1>Overview</h1><h3>FEATURES</h3> <ul><li>Floor sensor</l
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Operation mode</label>
-        <description><![CDATA[
-Operation mode<br /><h1>Overview</h1><p>Value = 0, Off <br />Value = 1, Heating mode, (default)</p>
-        ]]></description>
+        <description>Operation mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue = 0, Off &amp;lt;br /&amp;amp;gtValue = 1, Heating mode, (default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Off</option>
@@ -173,89 +169,69 @@ Operation mode<br /><h1>Overview</h1><p>Value = 0, Off <br />Value = 1, Heating
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="3" max="30">
         <label>4: Temperature Control Hysteresis</label>
-        <description><![CDATA[
-Temperature Control Hysteresis<br /><h1>Overview</h1><p>0.3°C to 3.0°C. Default is 5 (0.5°C)</p>
-        ]]></description>
+        <description>Temperature Control Hysteresis&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0.3°C to 3.0°C. Default is 5 (0.5°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>5: Floor Minimum Temperature Limit</label>
-        <description><![CDATA[
-Floor Minimum Temperature Limit<br /><h1>Overview</h1><p>5.0°C to 40.0°C. Default is 50 (5.0°C)</p>
-        ]]></description>
+        <description>Floor Minimum Temperature Limit&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt5.0°C to 40.0°C. Default is 50 (5.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>6: Floor MaximumTemperature Limit</label>
-        <description><![CDATA[
-Floor MaximumTemperature Limit<br /><h1>Overview</h1><p>5.0°C to 40.0°C. Default is 400 (40.0°C)</p>
-        ]]></description>
+        <description>Floor MaximumTemperature Limit&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt5.0°C to 40.0°C. Default is 400 (40.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>400</default>
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>7: Air Minimum Temp Limit (ALo)</label>
-        <description><![CDATA[
-Air Minimum Temp Limit (ALo)<br /><h1>Overview</h1><p>5.0°C to 40.0°C. Default is 50 (5.0°C)</p>
-        ]]></description>
+        <description>Air Minimum Temp Limit (ALo)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt5.0°C to 40.0°C. Default is 50 (5.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>8: Air Maximum Temp Limit (AHi)</label>
-        <description><![CDATA[
-Air Maximum Temp Limit (AHi)<br /><h1>Overview</h1><p>5.0°C to 40.0°C. Default is 400 (40.0°C)</p>
-        ]]></description>
+        <description>Air Maximum Temp Limit (AHi)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt5.0°C to 40.0°C. Default is 400 (40.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>400</default>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
                  min="50" max="400">
         <label>9: Heating Mode Setpoint</label>
-        <description><![CDATA[
-Heating Mode Setpoint<br /><h1>Overview</h1><p>5.0°C to 40.0°C. Default is 210 (21.0°C)</p>
-        ]]></description>
+        <description>Heating Mode Setpoint&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt5.0°C to 40.0°C. Default is 210 (21.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>210</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="-60" max="60">
         <label>10: Room Sensor Calibration</label>
-        <description><![CDATA[
-Room Sensor Calibration<br /><h1>Overview</h1><p>-6.0°C to 6.0°C. Default is 0 (0.0°C)</p>
-        ]]></description>
+        <description>Room Sensor Calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt-6.0°C to 6.0°C. Default is 0 (0.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="-60" max="60">
         <label>11: Floor Sensor Calibration</label>
-        <description><![CDATA[
-Floor Sensor Calibration<br /><h1>Overview</h1><p>-6.0°C to 6.0°C. Default is 0 (0.0°C)</p>
-        ]]></description>
+        <description>Floor Sensor Calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt-6.0°C to 6.0°C. Default is 0 (0.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="-60" max="60">
         <label>12: External Sensor Calibration</label>
-        <description><![CDATA[
-External Sensor Calibration<br /><h1>Overview</h1><p>-6.0°C to 6.0°C. Default is 0 (0.0°C)</p>
-        ]]></description>
+        <description>External Sensor Calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt-6.0°C to 6.0°C. Default is 0 (0.0°C)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Temperature Display</label>
-        <description><![CDATA[
-Temperature Display<br /><h1>Overview</h1><p>Selects which temperature is shown on the display. Refer to Chapter 11 ”Standby and main screen”.</p>
-        ]]></description>
+        <description>Temperature Display&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSelects which temperature is shown on the display. Refer to Chapter 11 ”Standby and main screen”.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Display setpoint temperature (Default)</option>
@@ -266,71 +242,55 @@ Temperature Display<br /><h1>Overview</h1><p>Selects which temperature is shown 
       <parameter name="config_14_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>14: Button brighness dimmed state</label>
-        <description><![CDATA[
-Button brighness dimmed state<br /><h1>Overview</h1><p>Configure the brightness of the buttons in dimmed state.</p> <p>0 to 100% (Default 50%)</p>
-        ]]></description>
+        <description>Button brighness dimmed state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtConfigure the brightness of the buttons in dimmed state.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 to 100% (Default 50%)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>15: Button brighness active state</label>
-        <description><![CDATA[
-Button brighness active state<br /><h1>Overview</h1><p>Configure the brightness of the buttons in active state.</p> <p>0 to 100% (Default 100%)</p>
-        ]]></description>
+        <description>Button brighness active state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtConfigure the brightness of the buttons in active state.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 to 100% (Default 100%)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>16: Display brighness dimmed state</label>
-        <description><![CDATA[
-Display brighness dimmed state<br /><h1>Overview</h1><p>Configure the brightness of the display in dimmed state.</p> <p>0 to 100% (Default 100%)</p>  
-        ]]></description>
+        <description>Display brighness dimmed state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtConfigure the brightness of the display in dimmed state.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 to 100% (Default 100%)&amp;lt;/p&amp;amp;gt  &lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>17: Display brighness active state</label>
-        <description><![CDATA[
-Display brighness active state<br /><h1>Overview</h1><p>Configure the brightness of the display, in active state.</p> <p>0 to 100% (Default 100%)</p>  
-        ]]></description>
+        <description>Display brighness active state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtConfigure the brightness of the display, in active state.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 to 100% (Default 100%)&amp;lt;/p&amp;amp;gt  &lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_18_2" type="integer" groupName="configuration"
                  min="30" max="32767">
         <label>18: Temperature report interval</label>
-        <description><![CDATA[
-Temperature report interval<br /><h1>Overview</h1><p>Time interval between consecutive temperature reports.</p> <p>Temperature reports can also be sent as a result of polling.</p> <p>30 seconds to 32767 seconds. Default is 60 seconds</p>  
-        ]]></description>
+        <description>Temperature report interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime interval between consecutive temperature reports.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTemperature reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt30 seconds to 32767 seconds. Default is 60 seconds&amp;lt;/p&amp;amp;gt  &lt;/p&gt</description>
         <default>60</default>
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>19: Temperature report hysteresis</label>
-        <description><![CDATA[
-Temperature report hysteresis<br /><h1>Overview</h1><p>The temperature report will be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can also be sent as a result of polling.</p> <p>0.1°C to 10.0°C. Default is 10 (1.0°C)</p>  
-        ]]></description>
+        <description>Temperature report hysteresis&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe temperature report will be sent if there is a difference in temperature value from the previous value reported, defined in this parameter (hysteresis). Temperature reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0.1°C to 10.0°C. Default is 10 (1.0°C)&amp;lt;/p&amp;amp;gt  &lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="30" max="32767">
         <label>20: Meter report interval</label>
-        <description><![CDATA[
-Meter report interval<br /><h1>Overview</h1><p>Time interval between consecutive meter reports.</p> <p>Meter reports can also be sent as a result of polling.</p> <p>30 seconds to 32767 seconds. Default is 90 seconds</p>  
-        ]]></description>
+        <description>Meter report interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime interval between consecutive meter reports.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtMeter reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt30 seconds to 32767 seconds. Default is 90 seconds&amp;lt;/p&amp;amp;gt  &lt;/p&gt</description>
         <default>90</default>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: Meter report delta value</label>
-        <description><![CDATA[
-Meter report delta value<br /><h1>Overview</h1><p>Delta value in kWh between consecutive meter reports. Meter reports can also be sent as a result of polling.</p>
-        ]]></description>
+        <description>Meter report delta value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDelta value in kWh between consecutive meter reports. Meter reports can also be sent as a result of polling.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
         <options>
           <option value="0">Reporting meter based on change is disabled</option>

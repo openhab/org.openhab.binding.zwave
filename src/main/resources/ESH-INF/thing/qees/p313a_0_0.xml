@@ -7,9 +7,7 @@
 
   <thing-type id="qees_p313a_00_000" listed="false">
     <label>P313A Plug-in Socket Dimmer</label>
-    <description><![CDATA[
-Plug-in Socket Dimmer<br /><h1>Overview</h1><p>QEES RETO Plug-in Dimmer Plus brings along comfort and elegance with an extremely easy setup and a unique design. With its help you can now wirelessly control all the dimmable loads you have inside your home.<br /><br />QEES RETO Plug-in Dimmer Plus is a Z-Wave-controlled 400W universal dimmer (US frequency) with schuko plug-in socket outlet, built-in power meter, multi-color LED feedback and one programmable group for retrofit installation.</p> <br /><h2>Inclusion Information</h2><p>To manually put your slave device in Network Wide Inclusion mode press three times on its shell</p> <br /><h2>Exclusion Information</h2><p>You can reset the device by</p> <ol><li>pressing 4 times quickly (the LED flashes blue).</li> <li>Then press 3 times quickly</li> </ol><p>(the LED flashes yellow, red, green for 5 seconds).</p>
-    ]]></description>
+    <description>Plug-in Socket Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtQEES RETO Plug-in Dimmer Plus brings along comfort and elegance with an extremely easy setup and a unique design. With its help you can now wirelessly control all the dimmable loads you have inside your home.&lt;br /&gt&lt;br /&gtQEES RETO Plug-in Dimmer Plus is a Z-Wave-controlled 400W universal dimmer (US frequency) with schuko plug-in socket outlet, built-in power meter, multi-color LED feedback and one programmable group for retrofit installation.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo manually put your slave device in Network Wide Inclusion mode press three times on its shell&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtYou can reset the device by&lt;/p&gt &lt;ol&gt&lt;li&gtpressing 4 times quickly (the LED flashes blue).&lt;/li&gt &lt;li&gtThen press 3 times quickly&lt;/li&gt &lt;/ol&gt&lt;p&gt(the LED flashes yellow, red, green for 5 seconds).&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

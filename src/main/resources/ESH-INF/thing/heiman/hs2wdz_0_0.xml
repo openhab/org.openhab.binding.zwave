@@ -7,9 +7,7 @@
 
   <thing-type id="heiman_hs2wdz_00_000" listed="false">
     <label>HS2WD-Z Smart Siren</label>
-    <description><![CDATA[
-Smart Siren<br /><h1>Overview</h1><p>Product support sound and light alarm.</p> <br /><h2>Inclusion Information</h2><ul><li>Press the pin-hole 3 times within 1.5s, Green LED is Blinking 3 times within 1.5 second.</li> <li>If add Process is successful, Green LED will turn off.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Press the pin-hole 3 times within 1.5 second.</li> <li>If remove Process is successful, Green LED is Blinking 6 times, then turn off.</li> </ul>
-    ]]></description>
+    <description>Smart Siren&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtProduct support sound and light alarm.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtPress the pin-hole 3 times within 1.5s, Green LED is Blinking 3 times within 1.5 second.&lt;/li&gt &lt;li&gtIf add Process is successful, Green LED will turn off.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtPress the pin-hole 3 times within 1.5 second.&lt;/li&gt &lt;li&gtIf remove Process is successful, Green LED is Blinking 6 times, then turn off.&lt;/li&gt &lt;/ul&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->

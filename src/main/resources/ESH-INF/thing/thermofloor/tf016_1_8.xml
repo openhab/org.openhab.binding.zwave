@@ -7,9 +7,7 @@
 
   <thing-type id="thermofloor_tf016_01_008" listed="false">
     <label>TF016 ZWave Thermostat</label>
-    <description><![CDATA[
-ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for controlling electrical heating cables and electrical radiators/convectors. The thermostat has 2 internal temperature sensors and has 3 algorithms for temperature compensation. After you have set the temperature, the thermostat will use a hysteresis to regulate the temperature. The hysteresis is adjustable.</p> <p>The temperature shown in the display is the actual temperature for floor sensor and the external room sensor. You are able to calibrate the sensor values. When using the internal room sensor, the temperature shown is the set point. When using the internal sensor, the thermostat can seem somewhat inaccurate. This is due to heat generation inside the thermostat, draft and other external influences.</p> <p>If the thermostat is to be used with waterbased heating systems, you have to use an external sensor.</p> <br /><h2>Inclusion Information</h2><ol><li>To include the thermostat to your home automation gateway, press the Center (confirm) button for 10 seconds. The display will show OFF.</li> <li>Press Right (down) button 4 times till you see Con in the display. </li> <li>Now start adding device in your home automation software. </li> <li>Start inclusion mode by pressing Center (confirm) button for approximately 2 seconds. The inclusion/exclusion icon will appear in the display.</li> <li>Confirmation will show Inc/EcL in the display. </li> <li>If inclusion fails, Err (error) will appear.</li> </ol><br /><h2>Exclusion Information</h2><h1>Inclusion/exclusion mode</h1> <ol><li>To include the thermostat to your home automation gateway, press the Center (confirm) button for 10 seconds. The display will show OFF.</li> <li>Press Right (down) button 4 times till you see Con in the display. </li> <li>Now start adding device in your home automation software. </li> <li>Start inclusion mode by pressing Center (confirm) button for approximately 2 seconds. The inclusion/exclusion icon will appear in the display.</li> <li>Confirmation will show Inc/EcL in the display. </li> <li>If inclusion fails, Err (error) will appear.</li> </ol><br /><h2>Wakeup Information</h2><p>If Er2 appears in the display, touch any button to restart the display.</p>
-    ]]></description>
+    <description>ZWave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Heatit Z-Wave is designed for controlling electrical heating cables and electrical radiators/convectors. The thermostat has 2 internal temperature sensors and has 3 algorithms for temperature compensation. After you have set the temperature, the thermostat will use a hysteresis to regulate the temperature. The hysteresis is adjustable.&lt;/p&gt &lt;p&gtThe temperature shown in the display is the actual temperature for floor sensor and the external room sensor. You are able to calibrate the sensor values. When using the internal room sensor, the temperature shown is the set point. When using the internal sensor, the thermostat can seem somewhat inaccurate. This is due to heat generation inside the thermostat, draft and other external influences.&lt;/p&gt &lt;p&gtIf the thermostat is to be used with waterbased heating systems, you have to use an external sensor.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtTo include the thermostat to your home automation gateway, press the Center (confirm) button for 10 seconds. The display will show OFF.&lt;/li&gt &lt;li&gtPress Right (down) button 4 times till you see Con in the display. &lt;/li&gt &lt;li&gtNow start adding device in your home automation software. &lt;/li&gt &lt;li&gtStart inclusion mode by pressing Center (confirm) button for approximately 2 seconds. The inclusion/exclusion icon will appear in the display.&lt;/li&gt &lt;li&gtConfirmation will show Inc/EcL in the display. &lt;/li&gt &lt;li&gtIf inclusion fails, Err (error) will appear.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;h1&gtInclusion/exclusion mode&lt;/h1&gt &lt;ol&gt&lt;li&gtTo include the thermostat to your home automation gateway, press the Center (confirm) button for 10 seconds. The display will show OFF.&lt;/li&gt &lt;li&gtPress Right (down) button 4 times till you see Con in the display. &lt;/li&gt &lt;li&gtNow start adding device in your home automation software. &lt;/li&gt &lt;li&gtStart inclusion mode by pressing Center (confirm) button for approximately 2 seconds. The inclusion/exclusion icon will appear in the display.&lt;/li&gt &lt;li&gtConfirmation will show Inc/EcL in the display. &lt;/li&gt &lt;li&gtIf inclusion fails, Err (error) will appear.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtIf Er2 appears in the display, touch any button to restart the display.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -131,9 +129,7 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is designed for cont
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="3" max="30">
         <label>4: DIFF l. Temperature control Hysteresis</label>
-        <description><![CDATA[
-Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to make changes to the hysteresis in the thermostat. This means that you can changes the hysteresis from 0.2°C up to max 3.0°C. Default setting is 0.5°C. When using a waterbased heating, the recommended hysteresis is a minimum of 1.0°C.</p>
-        ]]></description>
+        <description>Range 3-30 (0.3°C 3.0°C)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIn this mode you are able to make changes to the hysteresis in the thermostat. This means that you can changes the hysteresis from 0.2°C up to max 3.0°C. Default setting is 0.5°C. When using a waterbased heating, the recommended hysteresis is a minimum of 1.0°C.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
@@ -226,10 +222,10 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
-        <option value="11">Economy Heat</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>
@@ -246,6 +242,14 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
         <option value="4">P-mode</option>
         <option value="5">FP-mode</option>
       </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="thermofloor_tf016_01_008_config_decimal_param11">
+    <item-type>Number</item-type>
+    <label>ECO mode setpoint</label>
+    <description>Range 50-400 (5.0°C 40.0°C)</description>
+    <state pattern="%s">
     </state>
   </channel-type>
 

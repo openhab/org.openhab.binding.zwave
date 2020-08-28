@@ -10,24 +10,22 @@ This describes the Z-Wave device *ARF*, manufactured by *Fakro* with the thing t
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![ARF product image](https://www.cd-jackson.com/zwave_device_uploads/848/848_default.png)
+![ARF product image](https://opensmarthouse.org/zwavedatabase/848/image/)
 
 
 The ARF supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The ARF blackout blind is a stylish, decorative blind with runners at the sides to allow the blind to be posi tioned anywhere on the window. It also prevents daylight entering at the sides, thus providing a complete blackout. 
-
-The ARF Z-Wave blackout blind has a built in 12V electric drive which enables operation at 12V blinds by remote control or wall switch. The standard version of the action blinds ARF Z-Wave is only possible with the window closed. 
+<p&gtThe ARF blackout blind is a stylish, decorative blind with runners at the sides to allow the blind to be posi tioned anywhere on the window. It also prevents daylight entering at the sides, thus providing a complete blackout. </p&gt <p&gtThe ARF Z-Wave blackout blind has a built in 12V electric drive which enables operation at 12V blinds by remote control or wall switch. The standard version of the action blinds ARF Z-Wave is only possible with the window closed. </p&gt
 
 ### Inclusion Information
 
-Start INCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.
+<p&gtStart INCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.</p&gt
 
 ### Exclusion Information
 
-Start EXCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.
+<p&gtStart EXCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.</p&gt
 
 ## Channels
 
@@ -98,9 +96,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual (EN)](https://www.cd-jackson.com/zwave_device_uploads/848/ARF-ARP-Z-WAVE-EN.pdf)
+* [User Manual (EN)](https://opensmarthouse.org/zwavedatabase/848/ARF-ARP-Z-WAVE-EN.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/848).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/848).

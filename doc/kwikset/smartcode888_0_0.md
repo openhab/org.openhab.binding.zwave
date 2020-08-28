@@ -10,29 +10,22 @@ This describes the Z-Wave device *SmartCode 888*, manufactured by *[Black & Deck
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![SmartCode 888 product image](https://www.cd-jackson.com/zwave_device_uploads/864/864_default.jpg)
+![SmartCode 888 product image](https://opensmarthouse.org/zwavedatabase/864/image/)
 
 
 The SmartCode 888 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-Kwikset®, the leader in residential security, introduces the SmartCode™ 888 Touchpad Electronic Deadbolt with Z-Wave.
-
-  * Backlit keypad with One touch locking 
-  * 30 user codes 
-  * BHMA grade 3 certified 
-  * Full 128-bit encryption security 
-  * Drill and pick resistant backup keyway 
-  * SmartKey: Re-key the lock in seconds
+<p&gtKwikset®, the leader in residential security, introduces the SmartCode™ 888 Touchpad Electronic Deadbolt with Z-Wave.</p&gt <ul&gt<li&gtBacklit keypad with One touch locking </li&gt <li&gt30 user codes </li&gt <li&gtBHMA grade 3 certified </li&gt <li&gtFull 128-bit encryption security </li&gt <li&gtDrill and pick resistant backup keyway </li&gt <li&gtSmartKey: Re-key the lock in seconds</li&gt </ul&gt
 
 ### Inclusion Information
 
- Press button “A” on the lock one time to include it in your system.
+<p&gt Press button “A” on the lock one time to include it in your system.</p&gt
 
 ### Exclusion Information
 
- Press button “A” on the lock one time to include it in your system.
+<p&gt Press button “A” on the lock one time to include it in your system.</p&gt
 
 ## Channels
 
@@ -113,7 +106,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 33: SKU
 
 Set the first four most significant bytes of the SKU
-The configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU. This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU. </p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 4 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -124,7 +117,7 @@ This parameter has the configuration ID ```config_33_4``` and is of type ```INTE
 ### Parameter 34: SKU (Last 4)
 
 The four least significant bytes of the SKU
-The configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU.This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtThe configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU.</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 4 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -135,7 +128,7 @@ This parameter has the configuration ID ```config_34_4``` and is of type ```INTE
 ### Parameter 35: Interior Status LED
 
 Allows user to get/set the value for the Interior Status LED control
-The configuration parameter 35 is a one byte field that will allow the user to get / set the value for the Interior Status LED control. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default setting.
+<p&gtThe configuration parameter 35 is a one byte field that will allow the user to get / set the value for the Interior Status LED control. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default setting.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -151,7 +144,7 @@ This parameter has the configuration ID ```config_35_1``` and is of type ```INTE
 ### Parameter 36: Auto-Lock Feature Control
 
 Enables or disables automatically re-locking of door
-The configuration parameter 36 uses 2 bytes that will allow the user to get / set the value for the Auto Lock feature and timing for that feature. The first byte will be the enable/disable byte. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. The second byte will be the timing for the Auto Lock feature and should contain the number of seconds before the Auto Lock will occur. The valid values are: 0 (default – 30 seconds), 30, 60, 90, 120, 180. For example, setting the auto lock feature for 60 seconds, the two timing bytes should be: 0x003C. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default settings. 
+<p&gtThe configuration parameter 36 uses 2 bytes that will allow the user to get / set the value for the Auto Lock feature and timing for that feature. The first byte will be the enable/disable byte. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. The second byte will be the timing for the Auto Lock feature and should contain the number of seconds before the Auto Lock will occur. The valid values are: 0 (default – 30 seconds), 30, 60, 90, 120, 180. For example, setting the auto lock feature for 60 seconds, the two timing bytes should be: 0x003C. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default settings. </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -167,7 +160,7 @@ This parameter has the configuration ID ```config_36_2_00000001``` and is of typ
 ### Parameter 36: Auto-Lock Feature Control Timing
 
 The number of seconds before the Auto-Lock will occur
-The number of seconds before the Auto-Lock will occur in increments of 30 starting and going to a max value of 180 seconds.  Only allows certain values.
+<p&gtThe number of seconds before the Auto-Lock will occur in increments of 30 starting and going to a max value of 180 seconds.  Only allows certain values.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -186,7 +179,7 @@ This parameter has the configuration ID ```config_36_2_0000FF00``` and is of typ
 ### Parameter 37: Audio Feature Control
 
 Allows the user to get/set the audio feed back command
-Enables or disables the audible notifications on the device
+<p&gtEnables or disables the audible notifications on the device</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -202,7 +195,7 @@ This parameter has the configuration ID ```config_37_1``` and is of type ```INTE
 ### Parameter 40: Factory Default
 
 Reset to factory default settings
-Reset factory default settings, except for the anti-theft setting.
+<p&gtReset factory default settings, except for the anti-theft setting.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -218,7 +211,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 47: Motor Load Control
 
 Allows the device to send motor load alarms
-The configuration parameter 47 uses 1 byte that will allow the user to get / set the value to enable or disable the motor load alarm. Setting this byte to 0 will disable the alarm, whereas setting this byte to 1 will enable the alarm. If a motor load alarm has been activated and the alarm has been enabled, the alarm will be sent via the Power Management group in the Notification Command Class as a Load Error (0x09). 
+<p&gtThe configuration parameter 47 uses 1 byte that will allow the user to get / set the value to enable or disable the motor load alarm. Setting this byte to 0 will disable the alarm, whereas setting this byte to 1 will enable the alarm. If a motor load alarm has been activated and the alarm has been enabled, the alarm will be sent via the Power Management group in the Notification Command Class as a Load Error (0x09). </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -246,66 +239,14 @@ The SmartCode 888 supports 2 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Group 1 is assigned to the Lifeline group and can only support 1 node. The Lifeline group supports the following unsolicited messages:                                
-
-<table>
-  <tr>
-    <td>
-      <strong>Command Class</strong>
-    </td>
-    
-    <td>
-      <strong>Command</strong>
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Command Class Battery
-    </td>
-    
-    <td>
-      Battery Report
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Command Class Door Lock   
-    </td>
-    
-    <td>
-      Door Lock Operation Report
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Command Class Notification
-    </td>
-    
-    <td>
-      Notification Report
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Command Class Device Reset Locally 
-    </td>
-    
-    <td>
-      Device Reset Locally Notification
-    </td>
-  </tr>
-</table>
+<p&gtGroup 1 is assigned to the Lifeline group and can only support 1 node. The Lifeline group supports the following unsolicited messages:                                </p&gt <table&gt<tr&gt<td&gt<strong&gtCommand Class</strong&gt</td&gt <td&gt<strong&gtCommand</strong&gt</td&gt </tr&gt<tr&gt<td&gtCommand Class Battery</td&gt <td&gtBattery Report</td&gt </tr&gt<tr&gt<td&gtCommand Class Door Lock   </td&gt <td&gtDoor Lock Operation Report</td&gt </tr&gt<tr&gt<td&gtCommand Class Notification</td&gt <td&gtNotification Report</td&gt </tr&gt<tr&gt<td&gtCommand Class Device Reset Locally </td&gt <td&gtDevice Reset Locally Notification</td&gt </tr&gt</table&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Doorlock notify report
 
 Provides all Notificaton Reports
-Association group 2 is identified as the “Doorlock notify report” group. It allows at most 5 other nodes to be associated with the lock and will provide all Notification Reports, via the Command Class Notification, generated by the lock. 
+<p&gtAssociation group 2 is identified as the “Doorlock notify report” group. It allows at most 5 other nodes to be associated with the lock and will provide all Notification Reports, via the Command Class Notification, generated by the lock. </p&gt
 
 Association group 2 supports 5 nodes.
 
@@ -341,9 +282,9 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation Guide and Manual](https://www.cd-jackson.com/zwave_device_uploads/864/Install-Guide-and-Manual-888-ENG.pdf)
+* [Installation Guide and Manual](https://opensmarthouse.org/zwavedatabase/864/Install-Guide-and-Manual-888-ENG.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/864).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/864).

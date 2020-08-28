@@ -7,9 +7,7 @@
 
   <thing-type id="heltun_hezwthermfl2_00_000" listed="false">
     <label>HE-ZW-THERM-FL2 Wall Heating Thermostat</label>
-    <description><![CDATA[
-Wall Heating Thermostat<br /><h1>Overview</h1><p>The Heltun Heating Thermostat is built control the heating and mesures not only the room temperature with the build in sensor, but also humidity and the floor temperature if a sensor is attached.</p> <br /><h2>Inclusion Information</h2><p><strong>To include the thermostat in the Z-Wave network</strong></p> <ol><li>Go to the “SETTINGS” mode by pressing and holding the settings button for 3 seconds</li> <li>Go to “Parameter 29 – nEt” of the menu by using the heating button for scrolling up and the “MODE” key for scrolling down in parameters.</li> <li>In the value position will be seen the current state of the network. It should be ECL. If Inc is indicated, anexclusion must be first performed.</li> <li>Start the inclusion mode from the gateway</li> <li>Press “+” key to start inclusion process. Lines will be moving in value position.</li> <li>The “Inc” should appear in the value position if the inclusion has been successful. The “Err” will appear if the inclusion was not completed.</li> </ol><p><strong>Note:</strong> In case the device has been part of the Z-Wave network before and not excluded since, inclusion is not possible. In this case, exclusion must be performed before inclusion. If the thermostat is included in the network, in the bottom right corner of the main screen the<br />antenna icon will be displayed with connection lines. If not on the network then it will be displayed without lines.</p> <p><strong>Security:</strong> S0, S2 unauthorized and S2 authorized inclusion modes are supported. If you use S2 authorized inclusion mode the security key should be used in inclusion process.</p> <p><strong>NOTE:</strong> Be sure to save this key. Without the key it is impossible to perform an inclusion in S2 authorized mode.</p> <br /><h2>Exclusion Information</h2><p><strong>To exclude the thermostat from the Z-Wave network</strong></p> <ol><li>Go to “SETTINGS” mode by pressing and holding the settings button for 3 seconds</li> <li>Go to “Parameter 29 – nEt” of the menu</li> <li>In the value position the current state of network state will be displayed. It should be “Inc”. if the “ECL” is indicated the device is already excluded.</li> <li>Start the exclusion from the gateway.</li> <li>Press the “–” key to start the exclusion process. Lines will be moving in the value position.</li> <li>The “Ecl” should appear with successful deletion. If the “Err” appear then start the exclusion process again.</li> </ol>
-    ]]></description>
+    <description>Wall Heating Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Heltun Heating Thermostat is built control the heating and mesures not only the room temperature with the build in sensor, but also humidity and the floor temperature if a sensor is attached.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtTo include the thermostat in the Z-Wave network&lt;/strong&gt&lt;/p&gt &lt;ol&gt&lt;li&gtGo to the “SETTINGS” mode by pressing and holding the settings button for 3 seconds&lt;/li&gt &lt;li&gtGo to “Parameter 29 – nEt” of the menu by using the heating button for scrolling up and the “MODE” key for scrolling down in parameters.&lt;/li&gt &lt;li&gtIn the value position will be seen the current state of the network. It should be ECL. If Inc is indicated, anexclusion must be first performed.&lt;/li&gt &lt;li&gtStart the inclusion mode from the gateway&lt;/li&gt &lt;li&gtPress “+” key to start inclusion process. Lines will be moving in value position.&lt;/li&gt &lt;li&gtThe “Inc” should appear in the value position if the inclusion has been successful. The “Err” will appear if the inclusion was not completed.&lt;/li&gt &lt;/ol&gt&lt;p&gt&lt;strong&gtNote:&lt;/strong&gt In case the device has been part of the Z-Wave network before and not excluded since, inclusion is not possible. In this case, exclusion must be performed before inclusion. If the thermostat is included in the network, in the bottom right corner of the main screen the&lt;br /&gtantenna icon will be displayed with connection lines. If not on the network then it will be displayed without lines.&lt;/p&gt &lt;p&gt&lt;strong&gtSecurity:&lt;/strong&gt S0, S2 unauthorized and S2 authorized inclusion modes are supported. If you use S2 authorized inclusion mode the security key should be used in inclusion process.&lt;/p&gt &lt;p&gt&lt;strong&gtNOTE:&lt;/strong&gt Be sure to save this key. Without the key it is impossible to perform an inclusion in S2 authorized mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtTo exclude the thermostat from the Z-Wave network&lt;/strong&gt&lt;/p&gt &lt;ol&gt&lt;li&gtGo to “SETTINGS” mode by pressing and holding the settings button for 3 seconds&lt;/li&gt &lt;li&gtGo to “Parameter 29 – nEt” of the menu&lt;/li&gt &lt;li&gtIn the value position the current state of network state will be displayed. It should be “Inc”. if the “ECL” is indicated the device is already excluded.&lt;/li&gt &lt;li&gtStart the exclusion from the gateway.&lt;/li&gt &lt;li&gtPress the “–” key to start the exclusion process. Lines will be moving in the value position.&lt;/li&gt &lt;li&gtThe “Ecl” should appear with successful deletion. If the “Err” appear then start the exclusion process again.&lt;/li&gt &lt;/ol&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -124,9 +122,7 @@ Wall Heating Thermostat<br /><h1>Overview</h1><p>The Heltun Heating Thermostat i
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Mode number</label>
-        <description><![CDATA[
-Mode number<br /><h1>Overview</h1><p>Mode number for EXT input action. This parameter allows selecting which operating mode the thermostat should go to if the external input is short-circuited.</p> <p>1=COM, 2=TIME, 3=DRY, 4=ECO, 5=VAC, 6=MAN.</p> <p><strong>Note:</strong> When thermostat goes to MAN mode it will be in IDLE state till HEATING key is not pressed manually.</p>
-        ]]></description>
+        <description>Mode number&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtMode number for EXT input action. This parameter allows selecting which operating mode the thermostat should go to if the external input is short-circuited.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1=COM, 2=TIME, 3=DRY, 4=ECO, 5=VAC, 6=MAN.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNote:&amp;lt;/strong&amp;amp;gt When thermostat goes to MAN mode it will be in IDLE state till HEATING key is not pressed manually.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="1">COM</option>
@@ -140,9 +136,7 @@ Mode number<br /><h1>Overview</h1><p>Mode number for EXT input action. This para
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Source sensor</label>
-        <description><![CDATA[
-Source sensor<br /><h1>Overview</h1><p>Source Sensor: <br />1=A, 2=AF, 3=F, 4=FA, 5=P, 6=PA, 7=PF. <br />A=Air sensor, AF - Air sensor + Floor sensor, F - Floor sensor, FA - Floor sensor +Air sensor, P - Power regulator, PA - Power regulator + Air sensor, PF - Power regulator + Floor sensor</p>
-        ]]></description>
+        <description>Source sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSource Sensor: &amp;lt;br /&amp;amp;gt1=A, 2=AF, 3=F, 4=FA, 5=P, 6=PA, 7=PF. &amp;lt;br /&amp;amp;gtA=Air sensor, AF - Air sensor + Floor sensor, F - Floor sensor, FA - Floor sensor +Air sensor, P - Power regulator, PA - Power regulator + Air sensor, PF - Power regulator + Floor sensor&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="1">Air sensor</option>
@@ -220,36 +214,28 @@ Source sensor<br /><h1>Overview</h1><p>Source Sensor: <br />1=A, 2=AF, 3=F, 4=FA
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="40" max="360">
         <label>13: Air temp min</label>
-        <description><![CDATA[
-Air Temperature Minimum in degree, value * 10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Air Temperature Minimum in degree, value * 10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>210</default>
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
                  min="50" max="370">
         <label>14: Air temp max</label>
-        <description><![CDATA[
-Air Temperature Maximum in degree, x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Air Temperature Maximum in degree, x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>270</default>
       </parameter>
 
       <parameter name="config_15_2" type="integer" groupName="configuration"
                  min="40" max="360">
         <label>15: Floor temp min</label>
-        <description><![CDATA[
-Floor Temperature Minimum in degree, x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Floor Temperature Minimum in degree, x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_16_2" type="integer" groupName="configuration"
                  min="50" max="370">
         <label>16: Floor temp max</label>
-        <description><![CDATA[
-Floor Temperature Maximum in degree, x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Floor Temperature Maximum in degree, x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>320</default>
       </parameter>
 
@@ -263,54 +249,42 @@ Floor Temperature Maximum in degree, x10<br /><h1>Overview</h1><p>Centigrade val
       <parameter name="config_18_1" type="integer" groupName="configuration"
                  min="-95" max="95">
         <label>18: Air temp calibration</label>
-        <description><![CDATA[
-Air Temperature Calibration in degree x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Air Temperature Calibration in degree x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
                  min="-95" max="95">
         <label>19: Floor temp calibration</label>
-        <description><![CDATA[
-Floor Temperature Calibration in degree x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Floor Temperature Calibration in degree x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="1" max="95">
         <label>20: Temp hysteresis</label>
-        <description><![CDATA[
-Temperature Hysteresis in degree, x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Temperature Hysteresis in degree, x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="1" max="10">
         <label>21: Temp diff to send values</label>
-        <description><![CDATA[
-Temperature difference to send to controller, value x10<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Temperature difference to send to controller, value x10&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
       </parameter>
 
       <parameter name="config_22_1" type="integer" groupName="configuration"
                  min="1" max="4">
         <label>22: Active display brightness</label>
-        <description><![CDATA[
-Active display brightness level.<br /><h1>Overview</h1><p>Active display brightness level. Must be greater than or equal param 23</p>
-        ]]></description>
+        <description>Active display brightness level.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtActive display brightness level. Must be greater than or equal param 23&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
                  min="1" max="4">
         <label>23: Inactive display brightness</label>
-        <description><![CDATA[
-Inactive display brightness level.<br /><h1>Overview</h1><p>Inactive display brightness level. Must be less than or equal param 22</p>
-        ]]></description>
+        <description>Inactive display brightness level.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtInactive display brightness level. Must be less than or equal param 22&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
@@ -324,27 +298,21 @@ Inactive display brightness level.<br /><h1>Overview</h1><p>Inactive display bri
       <parameter name="config_25_2" type="integer" groupName="configuration"
                  min="0" max="5000">
         <label>25: Auto bright level 1</label>
-        <description><![CDATA[
-Auto bright level 1<br /><h1>Overview</h1><p>Auto brightness level 1 max lumens</p>
-        ]]></description>
+        <description>Auto bright level 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAuto brightness level 1 max lumens&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_26_2" type="integer" groupName="configuration"
                  min="0" max="5000">
         <label>26: Auto bright level 2</label>
-        <description><![CDATA[
-Auto bright level 2<br /><h1>Overview</h1><p>Auto brightness level 2 max lumens</p>
-        ]]></description>
+        <description>Auto bright level 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAuto brightness level 2 max lumens&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_27_2" type="integer" groupName="configuration"
                  min="0" max="5000">
         <label>27: Auto bright level 3</label>
-        <description><![CDATA[
-Auto bright level 3<br /><h1>Overview</h1><p>Auto brightness level 3 max lumens</p>
-        ]]></description>
+        <description>Auto bright level 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAuto brightness level 3 max lumens&lt;/p&gt</description>
         <default>3000</default>
       </parameter>
 
@@ -365,297 +333,231 @@ Auto bright level 3<br /><h1>Overview</h1><p>Auto brightness level 3 max lumens<
       <parameter name="config_51_1" type="integer" groupName="configuration"
                  min="20" max="70">
         <label>51: Touch sensitivity</label>
-        <description><![CDATA[
-Touch buttons sensitivity.<br /><h1>Overview</h1><p>Touch buttons sensitivity.</p> <ul><li>20=Super sensitive.</li> <li>70=lowest sensitivity.</li> </ul>
-        ]]></description>
+        <description>Touch buttons sensitivity.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTouch buttons sensitivity.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt20=Super sensitive.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt70=lowest sensitivity.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_52_2" type="integer" groupName="configuration"
                  min="0" max="2359">
         <label>52: Morning start time</label>
-        <description><![CDATA[
-Morning start time<br /><h1>Overview</h1><p>Morning start time. <br />Format: HHMM. e.g.08:00 should be sent as 0800</p>
-        ]]></description>
+        <description>Morning start time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtMorning start time. &amp;lt;br /&amp;amp;gtFormat: HHMM. e.g.08:00 should be sent as 0800&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_53_2" type="integer" groupName="configuration"
                  min="0" max="2359">
         <label>53: Day start time</label>
-        <description><![CDATA[
-Day start time<br /><h1>Overview</h1><p>Day start time. Format: HHMM.</p>
-        ]]></description>
+        <description>Day start time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDay start time. Format: HHMM.&lt;/p&gt</description>
         <default>900</default>
       </parameter>
 
       <parameter name="config_54_2" type="integer" groupName="configuration"
                  min="0" max="2359">
         <label>54: Evening start time</label>
-        <description><![CDATA[
-Evening start time<br /><h1>Overview</h1><p>Evening start time. Format: HHMM.</p>
-        ]]></description>
+        <description>Evening start time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtEvening start time. Format: HHMM.&lt;/p&gt</description>
         <default>1800</default>
       </parameter>
 
       <parameter name="config_55_2" type="integer" groupName="configuration"
                  min="0" max="2359">
         <label>55: Night Start time</label>
-        <description><![CDATA[
-Night Start time<br /><h1>Overview</h1><p>Night start time. Format: HHMM.</p>
-        ]]></description>
+        <description>Night Start time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtNight start time. Format: HHMM.&lt;/p&gt</description>
         <default>2300</default>
       </parameter>
 
       <parameter name="config_56_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>56: Monday morning temp</label>
-        <description><![CDATA[
-Monday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Monday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_57_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>57: Monday day temp</label>
-        <description><![CDATA[
-Monday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Monday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_58_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>58: Monday evening temp</label>
-        <description><![CDATA[
-Monday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Monday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_59_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>59: Monday night temp</label>
-        <description><![CDATA[
-Monday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Monday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_60_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>60: Tuesday morning temp</label>
-        <description><![CDATA[
-Tuesday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Tuesday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_61_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>61: Tuesday day temp</label>
-        <description><![CDATA[
-Tuesday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Tuesday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_62_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>62: Tuesday evening temp</label>
-        <description><![CDATA[
-Tuesday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Tuesday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_63_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>63: Tuesday night temp</label>
-        <description><![CDATA[
-Tuesday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Tuesday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_64_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>64: Wednesday morning temp</label>
-        <description><![CDATA[
-Wednesday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Wednesday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_65_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>65: Wednesday day temp</label>
-        <description><![CDATA[
-Wednesday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Wednesday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_66_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>66: Wednesday evening temp</label>
-        <description><![CDATA[
-Wednesday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Wednesday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_67_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>67: Wednesday night temp</label>
-        <description><![CDATA[
-Wednesday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Wednesday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_68_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>68: Thursday morning temp</label>
-        <description><![CDATA[
-Thursday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Thursday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_69_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>69: Thursday day temp</label>
-        <description><![CDATA[
-Thursday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Thursday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_70_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>70: Thursday evening temp</label>
-        <description><![CDATA[
-Thursday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Thursday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_71_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>71: Thursday night temp</label>
-        <description><![CDATA[
-Thursday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Thursday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_72_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>72: Friday morning temp</label>
-        <description><![CDATA[
-Friday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Friday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_73_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>73: Friday day temp</label>
-        <description><![CDATA[
-Friday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Friday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_74_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>74: Friday evening temp</label>
-        <description><![CDATA[
-Friday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Friday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_75_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>75: Friday night temp</label>
-        <description><![CDATA[
-Friday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Friday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_76_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>76: Saturday morning temp</label>
-        <description><![CDATA[
-Saturday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Saturday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_77_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>77: Saturday day temp</label>
-        <description><![CDATA[
-Saturday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Saturday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_78_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>78: Saturday evening temp</label>
-        <description><![CDATA[
-Saturday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Saturday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_79_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>79: Saturday night temp</label>
-        <description><![CDATA[
-Saturday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Saturday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
       <parameter name="config_80_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>80: Sunday morning temp</label>
-        <description><![CDATA[
-Sunday morning temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Sunday morning temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>240</default>
       </parameter>
 
       <parameter name="config_81_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>81: Sunday day temp</label>
-        <description><![CDATA[
-Sunday day temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Sunday day temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_82_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>82: Sunday evening temp</label>
-        <description><![CDATA[
-Sunday evening temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Sunday evening temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>230</default>
       </parameter>
 
       <parameter name="config_83_2" type="integer" groupName="configuration"
                  min="40" max="370">
         <label>83: Sunday night temp</label>
-        <description><![CDATA[
-Sunday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
-        ]]></description>
+        <description>Sunday night temp&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCentigrade value * 10&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gte.g. 22.5 = 225&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>180</default>
       </parameter>
 
@@ -690,11 +592,11 @@ Sunday night temp<br /><h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.
     <state pattern="%s">
       <options>
         <option value="">FULL_POWER</option>
-        <option value="8">Dry Air</option>
-        <option value="13">Away</option>
+        <option value="0">Off</option>
         <option value="10">Auto Changeover</option>
         <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
+        <option value="13">Away</option>
+        <option value="8">Dry Air</option>
       </options>
     </state>
   </channel-type>

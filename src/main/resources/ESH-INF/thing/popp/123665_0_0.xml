@@ -7,9 +7,7 @@
 
   <thing-type id="popp_123665_00_000" listed="false">
     <label>123665 Wall Plug Meter Switch</label>
-    <description><![CDATA[
-Wall Plug Meter Switch<br /><h1>Overview</h1><p>Z-Wave UK Plug-in Switch plus Power Meter </p> <br /><h2>Inclusion Information</h2><ul><li>Turn the controller into inclusion mode. </li> <li>Press the button on the wall plug 3 times within a period of around 2 seconds.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Turn the controller into exclusion mode. </li> <li>Press the button on the wall plug 3 times within a period of around 2 seconds.</li> </ul>
-    ]]></description>
+    <description>Wall Plug Meter Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-Wave UK Plug-in Switch plus Power Meter &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtTurn the controller into inclusion mode. &lt;/li&gt &lt;li&gtPress the button on the wall plug 3 times within a period of around 2 seconds.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtTurn the controller into exclusion mode. &lt;/li&gt &lt;li&gtPress the button on the wall plug 3 times within a period of around 2 seconds.&lt;/li&gt &lt;/ul&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -54,7 +52,7 @@ Wall Plug Meter Switch<br /><h1>Overview</h1><p>Z-Wave UK Plug-in Switch plus Po
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp &amp; Co</property>
+      <property name="vendor">Popp &amp;amp; Co</property>
       <property name="modelId">123665</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -80,9 +78,7 @@ Wall Plug Meter Switch<br /><h1>Overview</h1><p>Z-Wave UK Plug-in Switch plus Po
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>1: Watt Meter Report Period</label>
-        <description><![CDATA[
-Time frame for reporting instant power consumption<br /><h1>Overview</h1><p>If the setting is configured for 1 hour (set value = 720), the device will report its instant power consumption every 1 hour to Z-Wave Controller. (one unit = 5 seconds)</p>
-        ]]></description>
+        <description>Time frame for reporting instant power consumption&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf the setting is configured for 1 hour (set value = 720), the device will report its instant power consumption every 1 hour to Z-Wave Controller. (one unit = 5 seconds)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -90,27 +86,21 @@ Time frame for reporting instant power consumption<br /><h1>Overview</h1><p>If t
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: KWH Meter Report Period</label>
-        <description><![CDATA[
-Time frame for reporting Accumulated Power Consumption<br /><h1>Overview</h1><p>if the setting is configured for 1hour (set value = 6), the device will report its Accumulated Power Consumption (KW/h) every hour (one unit = 10 min)</p>
-        ]]></description>
+        <description>Time frame for reporting Accumulated Power Consumption&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtif the setting is configured for 1hour (set value = 6), the device will report its Accumulated Power Consumption (KW/h) every hour (one unit = 10 min)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>6</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>3: Threshold of Watt for Load caution</label>
-        <description><![CDATA[
-Warn when wattage of load over the preset threshold value<br /><h1>Overview</h1><p>This is a warning when the wattage of load over the preset threshold value, if the load wattage exceeds the setting value the device will send a warning alarm command to the controller. </p>
-        ]]></description>
+        <description>Warn when wattage of load over the preset threshold value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is a warning when the wattage of load over the preset threshold value, if the load wattage exceeds the setting value the device will send a warning alarm command to the controller. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3000</default>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>4: Threshold of KWh for Load caution</label>
-        <description><![CDATA[
-Warn if Acc. Power Consumption exceeds the set value<br /><h1>Overview</h1><p>This is a warning when the KWh of load over the preset threshold value, if the Accumulated Power Consumption exceeds the setting value the device will send a warning alarm command to the controller.</p>
-        ]]></description>
+        <description>Warn if Acc. Power Consumption exceeds the set value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is a warning when the KWh of load over the preset threshold value, if the Accumulated Power Consumption exceeds the setting value the device will send a warning alarm command to the controller.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10000</default>
       </parameter>
 

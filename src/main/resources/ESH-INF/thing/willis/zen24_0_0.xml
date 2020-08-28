@@ -7,9 +7,7 @@
 
   <thing-type id="willis_zen24_00_000" listed="false">
     <label>ZEN24 Toggle Dimmer</label>
-    <description><![CDATA[
-Toggle Dimmer<br /><h1>Overview</h1><p> Replace a classic dimmer switch with this smart Z-Wave Plus ZEN24 equivalent and control lighting, adjust brightness, or recreate settings remotely.</p> <br /><h2>Inclusion Information</h2><p>. Toggle the switch up and down quickly 3 times to finalize the inclusion process</p> <br /><h2>Exclusion Information</h2><p> Toggle the switch up and down quickly 3 times to complete the exclusion process</p>
-    ]]></description>
+    <description>Toggle Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt Replace a classic dimmer switch with this smart Z-Wave Plus ZEN24 equivalent and control lighting, adjust brightness, or recreate settings remotely.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt. Toggle the switch up and down quickly 3 times to finalize the inclusion process&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Toggle the switch up and down quickly 3 times to complete the exclusion process&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -50,9 +48,7 @@ Toggle Dimmer<br /><h1>Overview</h1><p> Replace a classic dimmer switch with th
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Control Mode</label>
-        <description><![CDATA[
-Control Mode<br /><h1>Overview</h1><p>firmware 20.15 only (released in 12/2016)</p>
-        ]]></description>
+        <description>Control Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtfirmware 20.15 only (released in 12/2016)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Mode 1</option>

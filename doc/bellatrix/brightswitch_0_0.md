@@ -10,34 +10,22 @@ This describes the Z-Wave device *BrightSwitch*, manufactured by *Bellatrix Syst
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![BrightSwitch product image](https://www.cd-jackson.com/zwave_device_uploads/953/953_default.png)
+![BrightSwitch product image](https://opensmarthouse.org/zwavedatabase/953/image/)
 
 
 The BrightSwitch supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Brightswitch replaces your light switches with smart networked touch-screen displays providing Z-Wave, intercom, security, and popular smart home and music apps.
+<p&gtBrightswitch replaces your light switches with smart networked touch-screen displays providing Z-Wave, intercom, security, and popular smart home and music apps.</p&gt
 
 ### Inclusion Information
 
-  1. From the main screen select Gear, then Connections, then Z-Wave. Then  select the "Edit Network" button, then "Add a Device".(See Z-Wave chapter) (This will add it to the list but not a slot)
-  2. From the main screen select Gear, then Switches, then select an empty slot, then Tap here for list, then "Add New Z-Wave Device"
-  3. From the main screen select an empty slot, (using gray "+" or "Tap Here to Setup"), then "Tap here for list", then "Add New Z-Wave Device"
-
-Alternatively, to add a Brightswitch on the same Z-wave network, from the Z-Wave page press the "+" shortcut next to the Brightswitch.
-
-After starting this process on Brightswitch, go to the device to be added and follow its instructions for adding it to a new network. This may be pressing a button, installing a battery or following the instructions in the device manual. Once Brightswitch finds the device it will return to the Z-Wave screen and display the device.
+<ol&gt<li&gtFrom the main screen select Gear, then Connections, then Z-Wave. Then  select the "Edit Network" button, then "Add a Device".(See Z-Wave chapter) (This will add it to the list but not a slot)</li&gt <li&gtFrom the main screen select Gear, then Switches, then select an empty slot, then Tap here for list, then "Add New Z-Wave Device"</li&gt <li&gtFrom the main screen select an empty slot, (using gray "+" or "Tap Here to Setup"), then "Tap here for list", then "Add New Z-Wave Device"</li&gt </ol&gt<p&gtAlternatively, to add a Brightswitch on the same Z-wave network, from the Z-Wave page press the "+" shortcut next to the Brightswitch.</p&gt <p&gtAfter starting this process on Brightswitch, go to the device to be added and follow its instructions for adding it to a new network. This may be pressing a button, installing a battery or following the instructions in the device manual. Once Brightswitch finds the device it will return to the Z-Wave screen and display the device.</p&gt
 
 ### Exclusion Information
 
-  1. From the main screen select Gear, then Connections, then Z-Wave. (See Z-Wave chapter). Then select the "Edit Network" button, then "Remove a Device".
-  2. From the main screen select Gear, then Switches, then select an empty slot, then Tap here for list, select the device, then "Clear this Bright" or "Delete Switch"
-  3. From the main screen select an empty slot (using gray "+" or "Tap Here to Setup"), then "Tap here for list", select a device, then "Clear this Bright" or "Delete Switch"
-
-Alternatively, to remove a Brightswitch or device on the same Z-Wave network, from the Z-Wave page press, the "-" shortcut next to the Brightswitch or device.
-
-After starting this process on Brightswitch, go to the device to be removed and follow its instructions for removing it from a network. This may be pressing a button, installing a battery or following the instructions in the device manual. Once Brightswitch removes the device it will return to the Z-Wave screen.
+<ol&gt<li&gtFrom the main screen select Gear, then Connections, then Z-Wave. (See Z-Wave chapter). Then select the "Edit Network" button, then "Remove a Device".</li&gt <li&gtFrom the main screen select Gear, then Switches, then select an empty slot, then Tap here for list, select the device, then "Clear this Bright" or "Delete Switch"</li&gt <li&gtFrom the main screen select an empty slot (using gray "+" or "Tap Here to Setup"), then "Tap here for list", select a device, then "Clear this Bright" or "Delete Switch"</li&gt </ol&gt<p&gtAlternatively, to remove a Brightswitch or device on the same Z-Wave network, from the Z-Wave page press, the "-" shortcut next to the Brightswitch or device.</p&gt <p&gtAfter starting this process on Brightswitch, go to the device to be removed and follow its instructions for removing it from a network. This may be pressing a button, installing a battery or following the instructions in the device manual. Once Brightswitch removes the device it will return to the Z-Wave screen.</p&gt
 
 ## Channels
 
@@ -114,10 +102,10 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [BrightSwitch User Guide](https://www.cd-jackson.com/zwave_device_uploads/953/User-Manual-3586475.pdf)
-* [Z-Wave Protocol Implementation Conformance Statement](https://www.cd-jackson.com/zwave_device_uploads/953/ZC10-17065668.pdf)
+* [BrightSwitch User Guide](https://opensmarthouse.org/zwavedatabase/953/User-Manual-3586475.pdf)
+* [Z-Wave Protocol Implementation Conformance Statement](https://opensmarthouse.org/zwavedatabase/953/ZC10-17065668.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/953).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/953).

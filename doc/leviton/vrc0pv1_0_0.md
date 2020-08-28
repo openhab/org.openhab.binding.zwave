@@ -10,25 +10,22 @@ This describes the Z-Wave device *VRC0P (v1)*, manufactured by *Leviton* with th
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![VRC0P (v1) product image](https://www.cd-jackson.com/zwave_device_uploads/883/883_default.png)
+![VRC0P (v1) product image](https://opensmarthouse.org/zwavedatabase/883/image/)
 
 
 The VRC0P (v1) supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Serial interface to z-wave over RS-232. Frequently used for integration with older automation systems and alarm panels.
+<p&gtSerial interface to z-wave over RS-232. Frequently used for integration with older automation systems and alarm panels.</p&gt
 
 ### Inclusion Information
 
-  1. Plug in VRC0P
-  2. Press and hold the button on the front of the VRC0P until it flashes amber
-  3. Place your controller in inclusion mode
+<ol&gt<li&gtPlug in VRC0P</li&gt <li&gtPress and hold the button on the front of the VRC0P until it flashes amber</li&gt <li&gtPlace your controller in inclusion mode</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Press and hold the button on the front of the VRC0P until it flashes amber
-  2. Place your controller in exclusion mode
+<ol&gt<li&gtPress and hold the button on the front of the VRC0P until it flashes amber</li&gt <li&gtPlace your controller in exclusion mode</li&gt </ol&gt
 
 ## Channels
 
@@ -86,10 +83,10 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Leviton VRC0P ASCII programming API](https://www.cd-jackson.com/zwave_device_uploads/883/VRC0P-ASCII-Programming-Application-Note.pdf)
-* [Leviton VRC0P Instruction Sheet](https://www.cd-jackson.com/zwave_device_uploads/883/Instruction-Sheet-VRC0P.pdf)
+* [Leviton VRC0P ASCII programming API](https://opensmarthouse.org/zwavedatabase/883/VRC0P-ASCII-Programming-Application-Note.pdf)
+* [Leviton VRC0P Instruction Sheet](https://opensmarthouse.org/zwavedatabase/883/Instruction-Sheet-VRC0P.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/883).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/883).

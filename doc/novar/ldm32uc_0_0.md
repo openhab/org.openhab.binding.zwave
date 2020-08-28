@@ -10,102 +10,22 @@ This describes the Z-Wave device *LDM32*, manufactured by *Novar Electrical Devi
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![LDM32 product image](https://www.cd-jackson.com/zwave_device_uploads/998/998_default.png)
+![LDM32 product image](https://opensmarthouse.org/zwavedatabase/998/image/)
 
 
 The LDM32 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-# LDM32UC
-
-**2 GANG 300W DIMMER MODULE**
-
-RF Range up to 75m (open field)  
-Can control up to 5 devices  
-Can control either a group or a scene  
-Pre programmed with HOLIDAY MODE function  
-Mains powered  
-  
-STANDARD CARTON QUANTITY: 1
-
-Suitable for use with the following load types and maximum load ratings only.
-
-<table>
-  <tr>
-    <td>
-      Load Type     
-    </td>
-    
-    <td>
-      2G 300W Dimmer
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      GLS       
-    </td>
-    
-    <td>
-      25-300W per channel
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Tungsten filament    
-    </td>
-    
-    <td>
-      25-300W per channel
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Tungsten halogen     
-    </td>
-    
-    <td>
-      25-300W per channel
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      12V ELV Tungsten halogen with wirewound or electronic transformers
-    </td>
-    
-    <td>
-      35-300W per channel
-    </td>
-  </tr>
-</table>
-
-   
-Not suitable with any other load type.  Do not use different types of lamps on the same load current.  
-  
-BS EN 60669-2-1  
-BS EN 61000-6-1 / 3  
-ETSI EN 301489-1 / 2  
-ETSI EN 300220-1/ 2
-
-Mounting Boxes:  Flush 35mm  
-  
-Operating Frequency  868.4 MHz  
-  
-Select the appropriate 2 Gang  Dimmer Fascia for your Dimmer Module
-
-Full Data Sheet is available from here: View Full Data Sheet
+<h1&gtLDM32UC</h1&gt <p&gt<strong&gt2 GANG 300W DIMMER MODULE</strong&gt</p&gt <p&gtRF Range up to 75m (open field)<br /&gtCan control up to 5 devices<br /&gtCan control either a group or a scene<br /&gtPre programmed with HOLIDAY MODE function<br /&gtMains powered<br /&gt<br /&gtSTANDARD CARTON QUANTITY: 1</p&gt <p&gtSuitable for use with the following load types and maximum load ratings only.</p&gt <table&gt<tr&gt<td&gtLoad Type     </td&gt <td&gt2G 300W Dimmer</td&gt </tr&gt<tr&gt<td&gtGLS       </td&gt <td&gt25-300W per channel</td&gt </tr&gt<tr&gt<td&gtTungsten filament    </td&gt <td&gt25-300W per channel</td&gt </tr&gt<tr&gt<td&gtTungsten halogen     </td&gt <td&gt25-300W per channel</td&gt </tr&gt<tr&gt<td&gt12V ELV Tungsten halogen with wirewound or electronic transformers</td&gt <td&gt35-300W per channel</td&gt </tr&gt</table&gt<p&gt <br /&gtNot suitable with any other load type.  Do not use different types of lamps on the same load current.<br /&gt<br /&gtBS EN 60669-2-1<br /&gtBS EN 61000-6-1 / 3<br /&gtETSI EN 301489-1 / 2<br /&gtETSI EN 300220-1/ 2</p&gt <p&gtMounting Boxes:  Flush 35mm<br /&gt<br /&gtOperating Frequency  868.4 MHz<br /&gt<br /&gtSelect the appropriate 2 Gang  Dimmer Fascia for your Dimmer Module</p&gt <p&gtFull Data Sheet is available from here: View Full Data Sheet</p&gt
 
 ### Inclusion Information
 
-To include device into another system press any operation button 
+<p&gtTo include device into another system press any operation button </p&gt
 
 ### Exclusion Information
 
-To exclude device from a system quickly press Dis/Exc button twice in 1s 
+<p&gtTo exclude device from a system quickly press Dis/Exc button twice in 1s </p&gt
 
 ## Channels
 
@@ -188,9 +108,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [Full Data Sheet](https://www.cd-jackson.com/zwave_device_uploads/998/Data-Sheet---Dimmer--50042518-D-.pdf)
+* [Full Data Sheet](https://opensmarthouse.org/zwavedatabase/998/Data-Sheet---Dimmer--50042518-D-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/998).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/998).

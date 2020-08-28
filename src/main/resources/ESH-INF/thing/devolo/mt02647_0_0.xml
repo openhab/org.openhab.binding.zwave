@@ -7,9 +7,7 @@
 
   <thing-type id="devolo_mt02647_00_000" listed="false">
     <label>MT02647 Motion Sensor</label>
-    <description><![CDATA[
-Motion Sensor<br /><h1>Overview</h1><p>Door/Window Contact and Motion Detector with temperature and illumination measurement.</p> <br /><h2>Inclusion Information</h2><ul><li>Have Z-Wave Controller enter inclusion mode.</li> <li>Press tamper key three times within 1.5 seconds to enter the inclusion mode.</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Have Z-Wave Controller enter exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</li> </ul><p>RESET:</p> <p>Notice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.</p> <ul><li>Pressing tamper key four times within 1.5 seconds and do not release the tamper key in the 4th pressed, and the LED will light ON.</li> <li>After 3 seconds the LED will turn OFF, after that within 2 seconds, release the tamper key. If successful, the LED will light ON one second. Otherwise, the LED will flash once.</li> <li>IDs are excluded and all settings will reset to factory default.</li> </ul><br /><h2>Wakeup Information</h2><ul><li>After the device is added to the network, it will wake-up once per day in default. When it wakes up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds for receiving the setting commands.</li> <li>The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. And the interval step is 30 minutes.</li> <li>If the user want to wake-up the device immediately, please remove the front cover, and press the tamper key once. The device will wake-up for 10 seconds.</li> </ul>
-    ]]></description>
+    <description>Motion Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDoor/Window Contact and Motion Detector with temperature and illumination measurement.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtHave Z-Wave Controller enter inclusion mode.&lt;/li&gt &lt;li&gtPress tamper key three times within 1.5 seconds to enter the inclusion mode.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtHave Z-Wave Controller enter exclusion mode.&lt;/li&gt &lt;li&gtPressing tamper key three times within 1.5 seconds to enter the exclusion mode.&lt;/li&gt &lt;/ul&gt&lt;p&gtRESET:&lt;/p&gt &lt;p&gtNotice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.&lt;/p&gt &lt;ul&gt&lt;li&gtPressing tamper key four times within 1.5 seconds and do not release the tamper key in the 4th pressed, and the LED will light ON.&lt;/li&gt &lt;li&gtAfter 3 seconds the LED will turn OFF, after that within 2 seconds, release the tamper key. If successful, the LED will light ON one second. Otherwise, the LED will flash once.&lt;/li&gt &lt;li&gtIDs are excluded and all settings will reset to factory default.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;ul&gt&lt;li&gtAfter the device is added to the network, it will wake-up once per day in default. When it wakes up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds for receiving the setting commands.&lt;/li&gt &lt;li&gtThe wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. And the interval step is 30 minutes.&lt;/li&gt &lt;li&gtIf the user want to wake-up the device immediately, please remove the front cover, and press the tamper key once. The device will wake-up for 10 seconds.&lt;/li&gt &lt;/ul&gt</description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -73,9 +71,7 @@ Motion Sensor<br /><h1>Overview</h1><p>Door/Window Contact and Motion Detector w
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>2: Basic Set Level</label>
-        <description><![CDATA[
-Setting the BASIC command value to turn on the light.<br /><h1>Overview</h1><ul><li>0: Turn off the light.</li> <li>1 - 100: For dimmers 1 to 100 means the light level.</li> <li>255: Turns on the light. (Default) </li> </ul>
-        ]]></description>
+        <description>Setting the BASIC command value to turn on the light.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0: Turn off the light.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 - 100: For dimmers 1 to 100 means the light level.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt255: Turns on the light. (Default) &amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">Off</option>
@@ -87,9 +83,7 @@ Setting the BASIC command value to turn on the light.<br /><h1>Overview</h1><ul>
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>3: PIR Sensitivity</label>
-        <description><![CDATA[
-Set the sensitivity for the PIR (Passive Infrared Sensor).<br /><h1>Overview</h1><ul><li>0 = Disable the PIR motion detection.</li> <li>1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity</li> </ul>
-        ]]></description>
+        <description>Set the sensitivity for the PIR (Passive Infrared Sensor).&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Disable the PIR motion detection.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>70</default>
         <options>
           <option value="0">Disable</option>
@@ -100,9 +94,7 @@ Set the sensitivity for the PIR (Passive Infrared Sensor).<br /><h1>Overview</h1
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>4: Light Threshold</label>
-        <description><![CDATA[
-Set the illumination threshold to turn on the light.<br /><h1>Overview</h1><p>When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.</p> <ul><li>0 = Turn off illumination detected function and never turn</li> </ul>
-        ]]></description>
+        <description>Set the illumination threshold to turn on the light.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Turn off illumination detected function and never turn&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
         <options>
           <option value="0">Disable</option>
@@ -113,63 +105,49 @@ Set the illumination threshold to turn on the light.<br /><h1>Overview</h1><p>Wh
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>5: Operation Mode</label>
-        <description><![CDATA[
-Parameter to set the Operation Mode<br /><h1>Overview</h1><p>Parameter to set the Operation Mode. </p> <p>Bit 0: Reserved. </p> <p>Bit 1: 1 means enable test mode; 0 means normal mode.</p> <p>Notice: Ignored if DIP Switch is not set to Customer Mode. </p> <p>Bit 2: Disable the door/window function.</p>
-        ]]></description>
+        <description>Parameter to set the Operation Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter to set the Operation Mode. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBit 0: Reserved. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBit 1: 1 means enable test mode; 0 means normal mode.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNotice: Ignored if DIP Switch is not set to Customer Mode. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBit 2: Disable the door/window function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>6: Multi-Sensor Function Switch</label>
-        <description><![CDATA[
-Parameter to set the sensor functions.<br /><h1>Overview</h1><p>Parameter to set the sensor functions.  </p> <p>Bit 0: Disable magnetic integrate illumination to turn on the lighting nodes in the association group 2. 1: Disable, 0: Enable </p> <p>Bit 1: Disable PIR integrate Illumination to turn on the light</p>
-        ]]></description>
+        <description>Parameter to set the sensor functions.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter to set the sensor functions.  &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBit 0: Disable magnetic integrate illumination to turn on the lighting nodes in the association group 2. 1: Disable, 0: Enable &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtBit 1: Disable PIR integrate Illumination to turn on the light&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>7: Customer Function</label>
-        <description><![CDATA[
-Parameter to set the Customer Function.<br /><h1>Overview</h1><p>Parameter 7 Customer Function:</p> <table><tr><td>Bits</td> <td>Default</td> <td>Recommended</td> </tr><tr><td>0</td> <td>unused</td> <td> </td> </tr><tr><td>1</td> <td>unused</td> <td> </td> </tr><tr><td>2</td> <td>unused</td> <td> </td> </tr><tr><td>3</td> <td>Disable send out BASIC OFF after door closed. (1:Disable, 0:Enable)</td> <td>0</td> </tr><tr><td>4</td> <td>Notification Type, 0: Using Notification Report. 1: Using Sensor Binary Report</td> <td>1</td> </tr><tr><td>5</td> <td>Disable Multi CC in auto report. (1:Disable, 0:Enable)</td> <td>0</td> </tr><tr><td>6</td> <td>Disable to report battery state when the device triggered. (1:Disable, 10 0:Enable)</td> <td>0</td> </tr><tr><td>7</td> <td>unused</td> <td> </td> </tr></table><p>Comments / Tips for this device from the community:</p> <ul><li>Setting this Parameter to 20 is from user side wanted as this enables Binary Sensor to report OPEN / CLOSE status by changing Bit 4</li> <li>The calculation from the recommended column is:  Bit7 to Bit0 = 000100100 Binary which is euqal to 20 decimal</li> </ul>
-        ]]></description>
+        <description>Parameter to set the Customer Function.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParameter 7 Customer Function:&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtBits&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtDefault&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtRecommended&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtunused&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtunused&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtunused&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtDisable send out BASIC OFF after door closed. (1:Disable, 0:Enable)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNotification Type, 0: Using Notification Report. 1: Using Sensor Binary Report&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtDisable Multi CC in auto report. (1:Disable, 0:Enable)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtDisable to report battery state when the device triggered. (1:Disable, 10 0:Enable)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtunused&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&amp;lt;p&amp;amp;gtComments / Tips for this device from the community:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtSetting this Parameter to 20 is from user side wanted as this enables Binary Sensor to report OPEN / CLOSE status by changing Bit 4&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtThe calculation from the recommended column is:  Bit7 to Bit0 = 000100100 Binary which is euqal to 20 decimal&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="127">
         <label>8: PIR Re-Detect Interval Time</label>
-        <description><![CDATA[
-Setting the re-detect time after motion detected<br /><h1>Overview</h1><p>In the normal mode, after the PIR motion detected, setting the re-detect time. 8 seconds per tick, default is 3 (24 seconds). </p> <p>1 - 127 = Number of ticks. 8 seconds per tick, default value is 3 (24 seconds)</p>
-        ]]></description>
+        <description>Setting the re-detect time after motion detected&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIn the normal mode, after the PIR motion detected, setting the re-detect time. 8 seconds per tick, default is 3 (24 seconds). &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - 127 = Number of ticks. 8 seconds per tick, default value is 3 (24 seconds)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>9: Turn Off Light Time</label>
-        <description><![CDATA[
-Setting delay time to turn off the light when no motion<br /><h1>Overview</h1><p>After turn on the light, setting the delay time to turn off the light when the PIR motion is not detected. </p> <p>0 = Never send turn off light command.   </p> <p>1 - 127 = Number of ticks. 8 seconds per tick, default value is 4 (32 seconds</p>
-        ]]></description>
+        <description>Setting delay time to turn off the light when no motion&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAfter turn on the light, setting the delay time to turn off the light when the PIR motion is not detected. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = Never send turn off light command.   &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - 127 = Number of ticks. 8 seconds per tick, default value is 4 (32 seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>10: Auto Report Battery Time</label>
-        <description><![CDATA[
-The interval time for auto reporting the battery level.<br /><h1>Overview</h1><p>The interval time for auto reporting the battery level.  </p> <p>0 = Turn off auto report battery.  </p> <p>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20</p>
-        ]]></description>
+        <description>The interval time for auto reporting the battery level.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time for auto reporting the battery level.  &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = Turn off auto report battery.  &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>12</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>11: Auto Report Door/Window State Time</label>
-        <description><![CDATA[
-Interval time for auto reporting the door/window state.<br /><h1>Overview</h1><p>The interval time for auto reporting the door/window state.   </p> <p>0 = Turn off auto report door/window state. </p> <p>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</p>
-        ]]></description>
+        <description>Interval time for auto reporting the door/window state.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time for auto reporting the door/window state.   &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = Turn off auto report door/window state. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>12</default>
       </parameter>
 
@@ -183,36 +161,28 @@ Interval time for auto reporting the door/window state.<br /><h1>Overview</h1><p
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="1" max="127">
         <label>13: Auto Report Temperature Time</label>
-        <description><![CDATA[
-The interval time for auto reporting the temperature state.<br /><h1>Overview</h1><p>The interval time for auto reporting the temperature state.       </p> <p>0 = Turn off auto report temperature.       </p> <p>1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.</p>
-        ]]></description>
+        <description>The interval time for auto reporting the temperature state.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time for auto reporting the temperature state.       &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = Turn off auto report temperature.       &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-127 = Number of ticks. The default value is 12. The tick time can be set by configuration No. 20.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>12</default>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>20: Auto Report Tick Interval</label>
-        <description><![CDATA[
-The interval time for each auto report tick.<br /><h1>Overview</h1><p>The interval time for each auto report tick. Setting this configuration will effect configuration No.10, No.11, No.12 and No.13. </p> <p>0 = Turn off all auto report functions. </p> <p>1-255 = Interval time for each tick. Default is 30. Unit is in minutes</p>
-        ]]></description>
+        <description>The interval time for each auto report tick.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time for each auto report tick. Setting this configuration will effect configuration No.10, No.11, No.12 and No.13. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = Turn off all auto report functions. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-255 = Interval time for each tick. Default is 30. Unit is in minutes&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>21: Temperature Differential Report</label>
-        <description><![CDATA[
-The temperature differential to report.<br /><h1>Overview</h1><p>The temperature differential to report. The unit is Fahrenheit. When enabled, the device will measure the temperature every minute and when the temperature is over 140 degree Fahrenheit, it will continuesly report.</p>
-        ]]></description>
+        <description>The temperature differential to report.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe temperature differential to report. The unit is Fahrenheit. When enabled, the device will measure the temperature every minute and when the temperature is over 140 degree Fahrenheit, it will continuesly report.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_22_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>22: Illumination Differential Report</label>
-        <description><![CDATA[
-The illumination differential to report.<br /><h1>Overview</h1><p>The illumination differential to report. The unit is percentage. When enabled, the device will measure every minute. Enabling this functionality will cause some issue. Please check the “Illumination Report” section of the Multisensor manual.</p>
-        ]]></description>
+        <description>The illumination differential to report.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe illumination differential to report. The unit is percentage. When enabled, the device will measure every minute. Enabling this functionality will cause some issue. Please check the “Illumination Report” section of the Multisensor manual.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

@@ -7,9 +7,7 @@
 
   <thing-type id="sunricher_zv2835rac_00_000" listed="false">
     <label>ZV2835RAC Knob Smart Dimmer</label>
-    <description><![CDATA[
-Knob Smart Dimmer<br /><h1>Overview</h1><p>The knob smart dimmer is a Z-Wave device designed to work with various types of light sources. It may be connected to two-wire or three-wire configuration so it can operate with or without neutral lead. The dimmer can switch or dim connected light source either through Z-Wave devices or through the rotary knob directly. The smart dimmer is equipped with an algorithm of smart light source detection which makes configuration easier and ensures high compatibility of the device. It may be used as a switch with non-dimmable light sources (in 3-wire connection).</p> <p>Main Features:</p> <ul><li>Advanced microprocessor control,</li> <li>Implemented algorithm of smart light source detection,</li> <li>Auto-adjustment of the appropriate control mode to connected load,</li> <li>Active power and energy metering functionality,</li> <li>Soft start function,</li> <li>Memory of the last lighting level settings</li> </ul><p>It operates under the following loads:</p> <ul><li>Conventional incandescent and HV halogen light sources</li> <li>ELV halogen lamps and dimmable LED bulbs (with electronic transformers)</li> <li>MLV halogen lamps (with ferromagnetic transformers)</li> <li>Dimmable LED bulbs</li> <li>Dimmable compact fluorescent CFL tube lamps</li> </ul><p>It can be configured to use “Trailing edge” or “Leading edge” to control following load types:</p> <ul><li>"Trailing edge" for resistive loads</li> <li>"Trailing edge" for capacitive loads</li> <li>"Leading edge" for inductive loa</li> </ul><br /><h2>Inclusion Information</h2><p>There are two methods to set the dimmer into inclusion mode:</p> <ol><li>Repower on the dimmer, it will be set into inclusion mode automatically, and waiting to be included.</li> <li>Triple press reset button on the dimmer, it will set the dimmer into inclusion mode.</li> </ol><br /><h2>Exclusion Information</h2><p>There are two exclusion methods:</p> <p>Method 1: Exclusion from the primary controller/gateway as follows:</p> <ol><li>Set the primary controller/gateway into exclusion mode (Please refer to your primary controllers manual on how to set your controller into exclusion).</li> <li>Triple press reset button, the dimmer will be set to exclusion mode, and waiting to be excluded, then the dimmer will be excluded from the network.</li> </ol><p>Method 2: Factory reset the dimmer will force it to be excluded from a network. Note: Factory reset is not recommended for exclusion, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.<br />Factory Reset: Press and hold down the reset button for over 10 seconds, the dimmer will be reset to factory defaults, the load brightness will be restored to 50% and will flash slowly.</p>
-    ]]></description>
+    <description>Knob Smart Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe knob smart dimmer is a Z-Wave device designed to work with various types of light sources. It may be connected to two-wire or three-wire configuration so it can operate with or without neutral lead. The dimmer can switch or dim connected light source either through Z-Wave devices or through the rotary knob directly. The smart dimmer is equipped with an algorithm of smart light source detection which makes configuration easier and ensures high compatibility of the device. It may be used as a switch with non-dimmable light sources (in 3-wire connection).&lt;/p&gt &lt;p&gtMain Features:&lt;/p&gt &lt;ul&gt&lt;li&gtAdvanced microprocessor control,&lt;/li&gt &lt;li&gtImplemented algorithm of smart light source detection,&lt;/li&gt &lt;li&gtAuto-adjustment of the appropriate control mode to connected load,&lt;/li&gt &lt;li&gtActive power and energy metering functionality,&lt;/li&gt &lt;li&gtSoft start function,&lt;/li&gt &lt;li&gtMemory of the last lighting level settings&lt;/li&gt &lt;/ul&gt&lt;p&gtIt operates under the following loads:&lt;/p&gt &lt;ul&gt&lt;li&gtConventional incandescent and HV halogen light sources&lt;/li&gt &lt;li&gtELV halogen lamps and dimmable LED bulbs (with electronic transformers)&lt;/li&gt &lt;li&gtMLV halogen lamps (with ferromagnetic transformers)&lt;/li&gt &lt;li&gtDimmable LED bulbs&lt;/li&gt &lt;li&gtDimmable compact fluorescent CFL tube lamps&lt;/li&gt &lt;/ul&gt&lt;p&gtIt can be configured to use “Trailing edge” or “Leading edge” to control following load types:&lt;/p&gt &lt;ul&gt&lt;li&gt&quot;Trailing edge&quot; for resistive loads&lt;/li&gt &lt;li&gt&quot;Trailing edge&quot; for capacitive loads&lt;/li&gt &lt;li&gt&quot;Leading edge&quot; for inductive loa&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtThere are two methods to set the dimmer into inclusion mode:&lt;/p&gt &lt;ol&gt&lt;li&gtRepower on the dimmer, it will be set into inclusion mode automatically, and waiting to be included.&lt;/li&gt &lt;li&gtTriple press reset button on the dimmer, it will set the dimmer into inclusion mode.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtThere are two exclusion methods:&lt;/p&gt &lt;p&gtMethod 1: Exclusion from the primary controller/gateway as follows:&lt;/p&gt &lt;ol&gt&lt;li&gtSet the primary controller/gateway into exclusion mode (Please refer to your primary controllers manual on how to set your controller into exclusion).&lt;/li&gt &lt;li&gtTriple press reset button, the dimmer will be set to exclusion mode, and waiting to be excluded, then the dimmer will be excluded from the network.&lt;/li&gt &lt;/ol&gt&lt;p&gtMethod 2: Factory reset the dimmer will force it to be excluded from a network. Note: Factory reset is not recommended for exclusion, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.&lt;br /&gtFactory Reset: Press and hold down the reset button for over 10 seconds, the dimmer will be reset to factory defaults, the load brightness will be restored to 50% and will flash slowly.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -92,9 +90,7 @@ Knob Smart Dimmer<br /><h1>Overview</h1><p>The knob smart dimmer is a Z-Wave dev
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Saving load state</label>
-        <description><![CDATA[
-Saving load state before power failure<br /><h1>Overview</h1><p>Info: Saving load state before power failure 0 － shutoff load 1 － turn on load 2 － save load state before power failure</p>
-        ]]></description>
+        <description>Saving load state before power failure&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtInfo: Saving load state before power failure 0 － shutoff load 1 － turn on load 2 － save load state before power failure&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Shutoff load</option>
@@ -105,9 +101,7 @@ Saving load state before power failure<br /><h1>Overview</h1><p>Info: Saving loa
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Basic report</label>
-        <description><![CDATA[
-Send the basic report to the Lifeline when the load state changed<br /><h1>Overview</h1><p>Info: Enable/disable to send the basic report to the Lifeline when the load state changed（When value set as 1, re-power on the dimmer, it will send Basic report automatically） 0 － Disable to send Basic report 1 － Enable to send Basic report</p>
-        ]]></description>
+        <description>Send the basic report to the Lifeline when the load state changed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtInfo: Enable/disable to send the basic report to the Lifeline when the load state changed（When value set as 1, re-power on the dimmer, it will send Basic report automatically） 0 － Disable to send Basic report 1 － Enable to send Basic report&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disable Basic report</option>
@@ -118,9 +112,7 @@ Send the basic report to the Lifeline when the load state changed<br /><h1>Overv
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>4: Default fade time</label>
-        <description><![CDATA[
-Default fade time<br /><h1>Overview</h1><p>Default fade time (unit is second, this value has the same function as Duration of Multilevel) 0: Instantly 1-127: 1 to 127 seconds in 1 second resolution</p>
-        ]]></description>
+        <description>Default fade time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault fade time (unit is second, this value has the same function as Duration of Multilevel) 0: Instantly 1-127: 1 to 127 seconds in 1 second resolution&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -140,9 +132,7 @@ Default fade time<br /><h1>Overview</h1><p>Default fade time (unit is second, th
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: MOSFET driving type</label>
-        <description><![CDATA[
-MOSFET driving type<br /><h1>Overview</h1><p>MOSFET driving type:</p> <p>0 - trailing edge<br />1 - leading edge</p>
-        ]]></description>
+        <description>MOSFET driving type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtMOSFET driving type:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - trailing edge&amp;lt;br /&amp;amp;gt1 - leading edge&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Trailing edge</option>
@@ -153,17 +143,13 @@ MOSFET driving type<br /><h1>Overview</h1><p>MOSFET driving type:</p> <p>0 - tra
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="50">
         <label>8: Step setting</label>
-        <description><![CDATA[
-Step setting of the knob<br /><h1>Overview</h1><p>Setting step of the knob</p> <p>Corresponding dimming stepping level for each rotation of the knob (a full dimming stepping level is 99) Valid value: 1-50</p>
-        ]]></description>
+        <description>Step setting of the knob&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSetting step of the knob&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCorresponding dimming stepping level for each rotation of the knob (a full dimming stepping level is 99) Valid value: 1-50&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Add and remove through switch</label>
-        <description><![CDATA[
-Add and remove through switch<br /><h1>Overview</h1><p>Added to and removed from a network through external switch (when enables this function, triple press the external switch within 1.5 seconds to be added to or removed from a network)</p> <p>0 - disable <br />1 - enable</p>
-        ]]></description>
+        <description>Add and remove through switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdded to and removed from a network through external switch (when enables this function, triple press the external switch within 1.5 seconds to be added to or removed from a network)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - disable &amp;lt;br /&amp;amp;gt1 - enable&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -173,9 +159,7 @@ Add and remove through switch<br /><h1>Overview</h1><p>Added to and removed from
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Load detection</label>
-        <description><![CDATA[
-Load detection<br /><h1>Overview</h1><p>Enable/disable to detect load after re-power on (detect load type, minimum brightness, maximum brightness)<br />0 - disable<br />1 - enable to detect every time after re-power on<br />2 - enable to detect only after first re-power on<br /><br />Note: When the device does not belong to any network, load detection will be enabled every time after re-power on. When the device has already been added to a network, load detection will be disabled.</p>
-        ]]></description>
+        <description>Load detection&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable to detect load after re-power on (detect load type, minimum brightness, maximum brightness)&amp;lt;br /&amp;amp;gt0 - disable&amp;lt;br /&amp;amp;gt1 - enable to detect every time after re-power on&amp;lt;br /&amp;amp;gt2 - enable to detect only after first re-power on&amp;lt;br /&amp;amp;gt&amp;lt;br /&amp;amp;gtNote: When the device does not belong to any network, load detection will be enabled every time after re-power on. When the device has already been added to a network, load detection will be disabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disable</option>
@@ -186,9 +170,7 @@ Load detection<br /><h1>Overview</h1><p>Enable/disable to detect load after re-p
 
       <parameter name="config_11_1" type="integer" groupName="configuration" readOnly="true">
         <label>11: Wiring type</label>
-        <description><![CDATA[
-Wiring type<br /><h1>Overview</h1><p>Wiring type</p> <p>0 - unknown<br />1 - 2 Wire With No Neutral<br />2 - 3 Wire With Neutral</p>
-        ]]></description>
+        <description>Wiring type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWiring type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - unknown&amp;lt;br /&amp;amp;gt1 - 2 Wire With No Neutral&amp;lt;br /&amp;amp;gt2 - 3 Wire With Neutral&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Unknown</option>
@@ -199,9 +181,7 @@ Wiring type<br /><h1>Overview</h1><p>Wiring type</p> <p>0 - unknown<br />1 - 2 W
 
       <parameter name="config_12_1" type="integer" groupName="configuration" readOnly="true">
         <label>12: Load type</label>
-        <description><![CDATA[
-Load type<br /><h1>Overview</h1><p>Load type</p> <p>0 - unknown<br />1 - resistive<br />2 - inductive<br />3 - capacitive</p>
-        ]]></description>
+        <description>Load type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLoad type&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - unknown&amp;lt;br /&amp;amp;gt1 - resistive&amp;lt;br /&amp;amp;gt2 - inductive&amp;lt;br /&amp;amp;gt3 - capacitive&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Unknown</option>
@@ -213,9 +193,7 @@ Load type<br /><h1>Overview</h1><p>Load type</p> <p>0 - unknown<br />1 - resisti
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Overcurrect Protection</label>
-        <description><![CDATA[
-Overcurrect Protection<br /><h1>Overview</h1><p>Enable/disable over current protection (over 3.2A for 20 seconds continuously)</p> <p>0 – disable<br />1 – enable</p>
-        ]]></description>
+        <description>Overcurrect Protection&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable over current protection (over 3.2A for 20 seconds continuously)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – disable&amp;lt;br /&amp;amp;gt1 – enable&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>
@@ -226,54 +204,42 @@ Overcurrect Protection<br /><h1>Overview</h1><p>Enable/disable over current prot
       <parameter name="config_14_2" type="integer" groupName="configuration"
                  min="0" max="600">
         <label>14: Power absolute threshold</label>
-        <description><![CDATA[
-Power automatic report absolute threshold<br /><h1>Overview</h1><p>Power automatic report absolute threshold, unit is W<br />When power changes above the absolute threshold, immediately report current power value</p>
-        ]]></description>
+        <description>Power automatic report absolute threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower automatic report absolute threshold, unit is W&amp;lt;br /&amp;amp;gtWhen power changes above the absolute threshold, immediately report current power value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>15: Power percentage threshold</label>
-        <description><![CDATA[
-Power automatic report percentage threshold<br /><h1>Overview</h1><p>Power automatic report percentage threshold, unit is %<br />When power changes above the percentage threshold, immediately report current power value</p>
-        ]]></description>
+        <description>Power automatic report percentage threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower automatic report percentage threshold, unit is %&amp;lt;br /&amp;amp;gtWhen power changes above the percentage threshold, immediately report current power value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
       </parameter>
 
       <parameter name="config_21_4" type="integer" groupName="configuration"
                  min="5" max="2678400">
         <label>21: Power report cycle</label>
-        <description><![CDATA[
-Power metering automatic report time cycle<br /><h1>Overview</h1><p>Power metering automatic report time cycle, unit is second<br />Valid time cycle value: 5~2678400<br />Default is 600 seconds (10 minutes)</p>
-        ]]></description>
+        <description>Power metering automatic report time cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower metering automatic report time cycle, unit is second&amp;lt;br /&amp;amp;gtValid time cycle value: 5~2678400&amp;lt;br /&amp;amp;gtDefault is 600 seconds (10 minutes)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>600</default>
       </parameter>
 
       <parameter name="config_22_4" type="integer" groupName="configuration"
                  min="5" max="2678400">
         <label>22: Energy report cycle</label>
-        <description><![CDATA[
-Energy metering automatic report time cycle<br /><h1>Overview</h1><p>Energy metering automatic report time cycle, unit is second</p> <p>Valid time cycle value: 5~2678400</p> <p>Default is 1800 seconds (30 minutes)</p>
-        ]]></description>
+        <description>Energy metering automatic report time cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnergy metering automatic report time cycle, unit is second&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValid time cycle value: 5~2678400&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault is 1800 seconds (30 minutes)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1800</default>
       </parameter>
 
       <parameter name="config_23_4" type="integer" groupName="configuration"
                  min="5" max="2678400">
         <label>23: Voltage report cycle</label>
-        <description><![CDATA[
-Voltage metering automatic report time cycle<br /><h1>Overview</h1><p>Voltage metering automatic report time cycle, unit is second</p> <p>Valid time cycle value: 5~267840</p>
-        ]]></description>
+        <description>Voltage metering automatic report time cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtVoltage metering automatic report time cycle, unit is second&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValid time cycle value: 5~267840&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_24_4" type="integer" groupName="configuration"
                  min="5" max="2678400">
         <label>24: Current report cycle</label>
-        <description><![CDATA[
-Current metering automatic report time cycle<br /><h1>Overview</h1><p>Current metering automatic report time cycle, unit is second</p> <p>Valid time cycle value: 5~2678400</p>
-        ]]></description>
+        <description>Current metering automatic report time cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtCurrent metering automatic report time cycle, unit is second&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValid time cycle value: 5~2678400&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3600</default>
       </parameter>
 
@@ -290,9 +256,7 @@ Current metering automatic report time cycle<br /><h1>Overview</h1><p>Current me
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>32: Startup brightness</label>
-        <description><![CDATA[
-Startup brightness<br /><h1>Overview</h1><p>Setting startup brightness of the load</p> <p>Valid value: 0~99</p> <p>Note: every time when turn on the load from OFF status, if the target brightness is lower than the startup brightness, the brightness will first go to the startup brightness value then fall down to the target brightness</p>
-        ]]></description>
+        <description>Startup brightness&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSetting startup brightness of the load&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValid value: 0~99&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote: every time when turn on the load from OFF status, if the target brightness is lower than the startup brightness, the brightness will first go to the startup brightness value then fall down to the target brightness&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

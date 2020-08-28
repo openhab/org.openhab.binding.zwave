@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_zw056_00_000" listed="false">
     <label>ZW056 Doorbell</label>
-    <description><![CDATA[
-Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device based on Z-wave enhanced slave library V6.51.06.</p> <p>The Doorbell supports playing MP3 music files with a press of this doorbell. It has a 16MB flash memory that can store up to 100 ringtones. The volume can be adjusted manually via short press on the Volume Button, also you can switch the doorbell sound to the next via long press on the Volume Button. You may change/update your doorbell ringtone at any point in time you want by connecting your Doorbell to your PC to update the sound track on your Doorbell’s flash memory. </p> <br /><h2>Inclusion Information</h2><ol><li>Install Doorbell, and plug it into the socket of AC Power.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).</li> <li>Press the Action Button.</li> <li>If the inclusion is failed, please repeat the process from step 2. </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Install Doorbell, and plug it into the socket of AC Power.</li> <li>Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action Button.</li> <li>If the remove is failed, please repeat the process from step 2.</li> </ol><p>Note: If Doorbell is removed from Z-wave network, it will be reset to factory default. </p>
-    ]]></description>
+    <description>Doorbell&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAeon Labs Doorbell is a switch binary device based on Z-wave enhanced slave library V6.51.06.&lt;/p&gt &lt;p&gtThe Doorbell supports playing MP3 music files with a press of this doorbell. It has a 16MB flash memory that can store up to 100 ringtones. The volume can be adjusted manually via short press on the Volume Button, also you can switch the doorbell sound to the next via long press on the Volume Button. You may change/update your doorbell ringtone at any point in time you want by connecting your Doorbell to your PC to update the sound track on your Doorbell’s flash memory. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtInstall Doorbell, and plug it into the socket of AC Power.&lt;/li&gt &lt;li&gtLet the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).&lt;/li&gt &lt;li&gtPress the Action Button.&lt;/li&gt &lt;li&gtIf the inclusion is failed, please repeat the process from step 2. &lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtInstall Doorbell, and plug it into the socket of AC Power.&lt;/li&gt &lt;li&gtLet the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).&lt;/li&gt &lt;li&gtPress the Action Button.&lt;/li&gt &lt;li&gtIf the remove is failed, please repeat the process from step 2.&lt;/li&gt &lt;/ol&gt&lt;p&gtNote: If Doorbell is removed from Z-wave network, it will be reset to factory default. &lt;/p&gt</description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -80,9 +78,7 @@ Doorbell<br /><h1>Overview</h1><p>Aeon Labs Doorbell is a switch binary device b
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>2: Repetitions of ringtone</label>
-        <description><![CDATA[
-Set the repetitions for playing doorbell ringtone. <br /><h1>Overview</h1><p>Value=1 to 255, the range of repetition is 1 to 100.   Value =0, ignore. Note: If the time of playing doorbell ringtone is more than 20s, the volume of ringtone will reduce to silence no matter how many repetitions of doorbell ringtone are set. </p>
-        ]]></description>
+        <description>Set the repetitions for playing doorbell ringtone. &lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue=1 to 255, the range of repetition is 1 to 100.   Value =0, ignore. Note: If the time of playing doorbell ringtone is more than 20s, the volume of ringtone will reduce to silence no matter how many repetitions of doorbell ringtone are set. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
       </parameter>
 
@@ -96,9 +92,7 @@ Set the repetitions for playing doorbell ringtone. <br /><h1>Overview</h1><p>Va
       <parameter name="config_6_1_wo" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>6: Ringtone to play</label>
-        <description><![CDATA[
-Set a ringtone to play. Default=0<br /><h1>Overview</h1><p>Set this to any ringtone (1-100) to have it play that ringtone.</p>
-        ]]></description>
+        <description>Set a ringtone to play. Default=0&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet this to any ringtone (1-100) to have it play that ringtone.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Stop</option>
@@ -109,9 +103,7 @@ Set a ringtone to play. Default=0<br /><h1>Overview</h1><p>Set this to any ringt
 
       <parameter name="config_7_1_wo" type="integer" groupName="configuration">
         <label>7: Control items</label>
-        <description><![CDATA[
-Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Value=2, stop Value=3, pause Value=4, Next Value=5, Previous Other, ignore</p>
-        ]]></description>
+        <description>Control current output&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtControl items: Value=1, play Value=2, stop Value=3, pause Value=4, Next Value=5, Previous Other, ignore&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Ignore</option>
@@ -132,21 +124,17 @@ Control current output<br /><h1>Overview</h1><p>Control items: Value=1, play Val
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Define button- and button+ action</label>
-        <description><![CDATA[
-Define functions of “Button ‐”  and “Button+”.<br /><h1>Overview</h1><p>0:  button- is previous, button+ is next</p> <p>1:  button- is next, button+ is previous</p>
-        ]]></description>
+        <description>Define functions of “Button ‐”  and “Button+”.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0:  button- is previous, button+ is next&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1:  button- is next, button+ is previous&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">“‐” is previous, “+” is next</option>
-          <option value="1">"‐” is next, “+” is previous</option>
+          <option value="1">&quot;‐” is next, “+” is previous</option>
         </options>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Define long press button- and button+</label>
-        <description><![CDATA[
-Define short/long button presses<br /><h1>Overview</h1><p>0: short pressing changes volume, long pressing changes<br />default ringtone.<br />1: long pressing changes volume, short pressing changes<br />default ringtone.</p>
-        ]]></description>
+        <description>Define short/long button presses&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: short pressing changes volume, long pressing changes&amp;lt;br /&amp;amp;gtdefault ringtone.&amp;lt;br /&amp;amp;gt1: long pressing changes volume, short pressing changes&amp;lt;br /&amp;amp;gtdefault ringtone.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">short changes vol, long changes ringtone</option>
@@ -156,9 +144,7 @@ Define short/long button presses<br /><h1>Overview</h1><p>0: short pressing chan
 
       <parameter name="config_42_1" type="integer" groupName="configuration">
         <label>42: Get wireless button battery status</label>
-        <description><![CDATA[
-Alert for low battery<br /><h1>Overview</h1><p>0x00:  normal battery level</p> <p>0xff:  low battery level</p> <p>set 0x00:  cancel low battery alert</p>
-        ]]></description>
+        <description>Alert for low battery&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00:  normal battery level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0xff:  low battery level&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtset 0x00:  cancel low battery alert&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Battery Level Good</option>
@@ -168,9 +154,7 @@ Alert for low battery<br /><h1>Overview</h1><p>0x00:  normal battery level</p> 
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Enable Notifications</label>
-        <description><![CDATA[
-Enable to send notifications to associated devices (Group1)<br /><h1>Overview</h1><p>Enable/disable to send notifications to associated devices (Group 1) when the state of Doorbell is changed (0=nothing, 1=hail CC, 2=basic CC report)</p>
-        ]]></description>
+        <description>Enable to send notifications to associated devices (Group1)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable to send notifications to associated devices (Group 1) when the state of Doorbell is changed (0=nothing, 1=hail CC, 2=basic CC report)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">nothing</option>
@@ -181,9 +165,7 @@ Enable to send notifications to associated devices (Group1)<br /><h1>Overview</h
 
       <parameter name="config_81_1" type="integer" groupName="configuration">
         <label>81: Enable/disable battery group notification</label>
-        <description><![CDATA[
-Notifies Group 1 when battery state is low<br /><h1>Overview</h1><p>Enable/disable to send notifications to associated devices (Group<br />1) when the Wireless Button’s battery is in low battery state<br />(0=nothing, 1=Configuration report 0x2A)</p>
-        ]]></description>
+        <description>Notifies Group 1 when battery state is low&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable to send notifications to associated devices (Group&amp;lt;br /&amp;amp;gt1) when the Wireless Button’s battery is in low battery state&amp;lt;br /&amp;amp;gt(0=nothing, 1=Configuration report 0x2A)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">nothing</option>
@@ -194,9 +176,7 @@ Notifies Group 1 when battery state is low<br /><h1>Overview</h1><p>Enable/disab
       <parameter name="config_241_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>241: Pair doorbell with button</label>
-        <description><![CDATA[
-Starts wireless button pairing mode<br /><h1>Overview</h1><p>Pair the Wireless Button with Doorbell.<br />Value=0x55555555, Start the Wireless Button pairing mode and<br />the blue Led will blink slowly, short press the Wireless Button<br />once, if the blue Led change to be solid, which means the pairing<br />is successful. Otherwise, repeat the steps.<br />It will automatically exit the pairing mode after 8s if there is no<br />pressing action of the Wireless Button.<br />Note:<br />You can send this configuration Get CC to ask the pairing result:<br />If configuration report value=0x00000000, which means the<br />pairing is failed.<br />If configuration report value =0xFFFFFFFF, which means the<br />pairing is successful.<br /></p>
-        ]]></description>
+        <description>Starts wireless button pairing mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPair the Wireless Button with Doorbell.&amp;lt;br /&amp;amp;gtValue=0x55555555, Start the Wireless Button pairing mode and&amp;lt;br /&amp;amp;gtthe blue Led will blink slowly, short press the Wireless Button&amp;lt;br /&amp;amp;gtonce, if the blue Led change to be solid, which means the pairing&amp;lt;br /&amp;amp;gtis successful. Otherwise, repeat the steps.&amp;lt;br /&amp;amp;gtIt will automatically exit the pairing mode after 8s if there is no&amp;lt;br /&amp;amp;gtpressing action of the Wireless Button.&amp;lt;br /&amp;amp;gtNote:&amp;lt;br /&amp;amp;gtYou can send this configuration Get CC to ask the pairing result:&amp;lt;br /&amp;amp;gtIf configuration report value=0x00000000, which means the&amp;lt;br /&amp;amp;gtpairing is failed.&amp;lt;br /&amp;amp;gtIf configuration report value =0xFFFFFFFF, which means the&amp;lt;br /&amp;amp;gtpairing is successful.&amp;lt;br /&amp;amp;gt&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -204,35 +184,27 @@ Starts wireless button pairing mode<br /><h1>Overview</h1><p>Pair the Wireless B
       <parameter name="config_252_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>252: Lock configuration</label>
-        <description><![CDATA[
-Lock configuration<br /><h1>Overview</h1><p>0:  config not locked</p> <p>1:  config locked</p>
-        ]]></description>
+        <description>Lock configuration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0:  config not locked&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1:  config locked&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_255_4" type="integer" groupName="configuration"
                  min="0" max="4294967295">
         <label>255: Reset</label>
-        <description><![CDATA[
-Reset to factory settings<br /><h1>Overview</h1><p>1. Size=0x01， Configuration Value=0x00:<br />Reset configuration setting.<br />2. Size=0x04， Configuration Value=0x55555555:<br />Reset Factory setting.</p>
-        ]]></description>
+        <description>Reset to factory settings&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1. Size=0x01， Configuration Value=0x00:&amp;lt;br /&amp;amp;gtReset configuration setting.&amp;lt;br /&amp;amp;gt2. Size=0x04， Configuration Value=0x55555555:&amp;lt;br /&amp;amp;gtReset Factory setting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>When the state of Doorbell (trigger to turn on/off the rington<br />e ) is changed:<br />1, Set Configuration parameter 80 to 0： Reserved (Default).<br />2, Set Configuration parameter 80 to 1： Send Hail CC.<br />3. Set Configuration parameter 80 to 2: Send the Basic<br />Report.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWhen the state of Doorbell (trigger to turn on/off the rington&lt;br /&gte ) is changed:&lt;br /&gt1, Set Configuration parameter 80 to 0： Reserved (Default).&lt;br /&gt2, Set Configuration parameter 80 to 1： Send Hail CC.&lt;br /&gt3. Set Configuration parameter 80 to 2: Send the Basic&lt;br /&gtReport.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Forward basic set</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Forward the Basic Set, Switch Binary Set, Switch Multilevel<br />Start Level Change, Switch Multilevel Stop Level Change,<br />Switch Multilevel Set, Scene Activation Set to associated<br />nodes in Group 2 when the Doorbell receives the Basic Set,<br />Switch Binary Set, Switch Multilevel Start Level Change,<br />Switch Multilevel Stop Level Change, Switch Multilevel Set,<br />Scene Activation Set commands from main controller.<br /></p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtForward the Basic Set, Switch Binary Set, Switch Multilevel&lt;br /&gtStart Level Change, Switch Multilevel Stop Level Change,&lt;br /&gtSwitch Multilevel Set, Scene Activation Set to associated&lt;br /&gtnodes in Group 2 when the Doorbell receives the Basic Set,&lt;br /&gtSwitch Binary Set, Switch Multilevel Start Level Change,&lt;br /&gtSwitch Multilevel Stop Level Change, Switch Multilevel Set,&lt;br /&gtScene Activation Set commands from main controller.&lt;br /&gt&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -245,6 +217,22 @@ Reset to factory settings<br /><h1>Overview</h1><p>1. Size=0x01， Configuration
     </config-description>
 
   </thing-type>
+
+  <channel-type id="aeon_zw056_00_000_config_decimal_param8">
+    <item-type>Number</item-type>
+    <label>Ringtone volume</label>
+    <description>Default=10</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="aeon_zw056_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>Repetitions of ringtone</label>
+    <description>Set the repetitions for playing doorbell ringtone. </description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
   <channel-type id="aeon_zw056_00_000_config_decimal_param6">
     <item-type>Number</item-type>

@@ -7,9 +7,7 @@
 
   <thing-type id="rtc_ct100_00_000" listed="false">
     <label>CT100 Z-Wave Thermostat</label>
-    <description><![CDATA[
-Z-Wave Thermostat<br /><h1>Overview</h1><p>The CT100 communicating Z-Wave thermostat operates via a high-quality, easy-to-use touch screen. To set or adjust your CT100, simply touch your finger firmly to the screen. </p> <br /><h2>Inclusion Information</h2><ol><li>Press and release the MENU button on the thermostat.</li> <li>Press the MATE button - This will bring you to the network screen and a large r1 will be displayed.</li> <li>Press the MATE button, this will initiate the mating process. When a device has joined a network the word LINK will appear under the radio tower. </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Press and release the MENU button on the thermostat.</li> <li>Press the MATE button - This will bring you to the network screen and a large r1 will be displayed.</li> <li>Press the MATE button, this will initiate the mating process. When a device been removed from a network the word LINK below the radio tower will disappear. </li> </ol><br /><h2>Wakeup Information</h2><p>The CT100 Z-Wave radio module supports Z-Wave beaming, which allows other devices in the network to wake up the Z-Wave module and accept commands, and then go back to sleep. </p>
-    ]]></description>
+    <description>Z-Wave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe CT100 communicating Z-Wave thermostat operates via a high-quality, easy-to-use touch screen. To set or adjust your CT100, simply touch your finger firmly to the screen. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress and release the MENU button on the thermostat.&lt;/li&gt &lt;li&gtPress the MATE button - This will bring you to the network screen and a large r1 will be displayed.&lt;/li&gt &lt;li&gtPress the MATE button, this will initiate the mating process. When a device has joined a network the word LINK will appear under the radio tower. &lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPress and release the MENU button on the thermostat.&lt;/li&gt &lt;li&gtPress the MATE button - This will bring you to the network screen and a large r1 will be displayed.&lt;/li&gt &lt;li&gtPress the MATE button, this will initiate the mating process. When a device been removed from a network the word LINK below the radio tower will disappear. &lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtThe CT100 Z-Wave radio module supports Z-Wave beaming, which allows other devices in the network to wake up the Z-Wave module and accept commands, and then go back to sleep. &lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -124,10 +122,10 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>The CT100 communicating Z-Wave thermo
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
         <option value="2">Cool</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>
@@ -139,8 +137,8 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>The CT100 communicating Z-Wave thermo
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">On (Low)</option>
         <option value="0">Auto (Low)</option>
+        <option value="1">On (Low)</option>
       </options>
     </state>
   </channel-type>

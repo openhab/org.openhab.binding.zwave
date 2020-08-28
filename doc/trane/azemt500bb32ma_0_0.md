@@ -10,26 +10,22 @@ This describes the Z-Wave device *AZEMT500BB32MA*, manufactured by *Trane Corpor
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![AZEMT500BB32MA product image](https://www.cd-jackson.com/zwave_device_uploads/572/572_default.png)
+![AZEMT500BB32MA product image](https://opensmarthouse.org/zwavedatabase/572/image/)
 
 
 The AZEMT500BB32MA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-T500B Z-Wave Thermostat. The ComfortLink™ control is an innovative product that is compatible with Trane products as well as any other brand of standard central heating and air conditioning systems. It works through the Nexia™ Home Intelligence system
+<p&gtT500B Z-Wave Thermostat. The ComfortLink™ control is an innovative product that is compatible with Trane products as well as any other brand of standard central heating and air conditioning systems. It works through the Nexia™ Home Intelligence system</p&gt
 
 ### Inclusion Information
 
-Press the MENU button on the thermostat.  
-Scroll down to Z Wave Install, and press the Select button.  
-Press the Yes button to enroll the thermostat.
+<p&gtPress the MENU button on the thermostat.<br /&gtScroll down to Z Wave Install, and press the Select button.<br /&gtPress the Yes button to enroll the thermostat.</p&gt
 
 ### Exclusion Information
 
-Press the MENU button on the thermostat.  
-Scroll down to Z-Wave Install and press the Select button.  
-Press the Yes button to exclude the thermostat.
+<p&gtPress the MENU button on the thermostat.<br /&gtScroll down to Z-Wave Install and press the Select button.<br /&gtPress the Yes button to exclude the thermostat.</p&gt
 
 ## Channels
 
@@ -188,9 +184,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/572/TZEMT500AB32MAA-.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/572/TZEMT500AB32MAA-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/572).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/572).

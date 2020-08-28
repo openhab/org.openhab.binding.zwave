@@ -7,9 +7,7 @@
 
   <thing-type id="cooper_rf9540n_00_000" listed="false">
     <label>RF9540-N All Load Dimmer Light Switch</label>
-    <description><![CDATA[
-All Load Dimmer Light Switch<br /><h1>Overview</h1><p><strong>OPERATION INSTRUCTIONS</strong></p> <ul><li>Press once to turn lights ON at previously selected level.</li> <li>Press again to turn lights OFF. </li> <li>When lights are OFF, press and hold for 2 seconds for full brightness.</li> <li>When lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).</li> <li>Amber ON/OFF LED indicates that dimmer is turned on.</li> </ul><br /><h2>Inclusion Information</h2><ol><li>This product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.</li> <li>To include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.</li> </ol><br /><h2>Exclusion Information</h2><p>To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.</p>
-    ]]></description>
+    <description>All Load Dimmer Light Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtOPERATION INSTRUCTIONS&lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtPress once to turn lights ON at previously selected level.&lt;/li&gt &lt;li&gtPress again to turn lights OFF. &lt;/li&gt &lt;li&gtWhen lights are OFF, press and hold for 2 seconds for full brightness.&lt;/li&gt &lt;li&gtWhen lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).&lt;/li&gt &lt;li&gtAmber ON/OFF LED indicates that dimmer is turned on.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtThis product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.&lt;/li&gt &lt;li&gtTo include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -82,36 +80,28 @@ All Load Dimmer Light Switch<br /><h1>Overview</h1><p><strong>OPERATION INSTRUCT
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Delayed OFF time</label>
-        <description><![CDATA[
-time in seconds to delay OFF<br /><h1>Overview</h1><p>The amount of time in seconds the switch will delay when trigger the delayed off feature</p>
-        ]]></description>
+        <description>time in seconds to delay OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will delay when trigger the delayed off feature&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: Panic ON time</label>
-        <description><![CDATA[
-Time in seconds for panic mode ON<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn on for when panic mode is triggered</p>
-        ]]></description>
+        <description>Time in seconds for panic mode ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will turn on for when panic mode is triggered&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>3: Panic OFF time</label>
-        <description><![CDATA[
-time in seconds for OFF in panic mode<br /><h1>Overview</h1><p>The amount of time in seconds the switch will turn off for when panic mode is triggered</p>
-        ]]></description>
+        <description>time in seconds for OFF in panic mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will turn off for when panic mode is triggered&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Basic Set Value</label>
-        <description><![CDATA[
-Send value to association group on trigger<br /><h1>Overview</h1><p>Setting this to anything other than 0 will cause the value to be transmitted to devices in the association group when the switch is triggered. A setting other than 0 will likely result in undesired operation</p>
-        ]]></description>
+        <description>Send value to association group on trigger&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSetting this to anything other than 0 will cause the value to be transmitted to devices in the association group when the switch is triggered. A setting other than 0 will likely result in undesired operation&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -139,17 +129,13 @@ Send value to association group on trigger<br /><h1>Overview</h1><p>Setting this
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>7: Dimmer Ramp Time</label>
-        <description><![CDATA[
-Time in seconds to reach desired level<br /><h1>Overview</h1><p>The amount of time in seconds the switch will take to reach the desired dim level</p>
-        ]]></description>
+        <description>Time in seconds to reach desired level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe amount of time in seconds the switch will take to reach the desired dim level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Kickstart / Rapid Start</label>
-        <description><![CDATA[
-Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / CFL bulbs turn on when the preset dim level is low.  Enabling this feature may cause the lights brightness to momentarily be bright when the switch is turned on before reducing in brightness to desired level</p>
-        ]]></description>
+        <description>Turn on or off rapid start feature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnsures that LED / CFL bulbs turn on when the preset dim level is low.  Enabling this feature may cause the lights brightness to momentarily be bright when the switch is turned on before reducing in brightness to desired level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">Off</option>
@@ -179,9 +165,7 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
 
       <parameter name="group_255" type="text" groupName="association">
         <label>255: Group 255</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Life line to the controller</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtLife line to the controller&lt;/p&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
@@ -193,5 +177,13 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
     </config-description>
 
   </thing-type>
+
+  <channel-type id="cooper_rf9540n_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Dimmer Ramp Time</label>
+    <description>Time in seconds to reach desired level</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

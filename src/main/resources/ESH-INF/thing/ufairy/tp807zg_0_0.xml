@@ -7,9 +7,7 @@
 
   <thing-type id="ufairy_tp807zg_00_000" listed="false">
     <label>TP-807ZG Smoke + Carbon Monoxide + Natural Liquefied Gas Leak Detector</label>
-    <description><![CDATA[
-Smoke + Carbon Monoxide + Natural Liquefied Gas Leak Detector<br /><h1>Overview</h1><p>Smoke / Carbon Monoxide / Natural Liquefied Gas Leak Detector</p> <br /><h2>Inclusion Information</h2><p>press the button 3 times quickly</p> <br /><h2>Exclusion Information</h2><p>press the button 3 times quickly</p>
-    ]]></description>
+    <description>Smoke + Carbon Monoxide + Natural Liquefied Gas Leak Detector&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSmoke / Carbon Monoxide / Natural Liquefied Gas Leak Detector&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtpress the button 3 times quickly&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtpress the button 3 times quickly&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->

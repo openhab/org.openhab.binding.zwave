@@ -7,9 +7,7 @@
 
   <thing-type id="simontech_10000322039_00_000" listed="false">
     <label>10002034-13X Switch IO: On/Off Power Switch</label>
-    <description><![CDATA[
-Switch IO: On/Off Power Switch<br /><h1>Overview</h1><p>Simon Electronic Switch IO integrated by Electronic Switch that provides power Switch and Rocker that provides Z-Wave communication attributes.</p> <br /><h2>Inclusion Information</h2><ol><li>Put controller into inclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller into exclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to exclude the device from the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol>
-    ]]></description>
+    <description>Switch IO: On/Off Power Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSimon Electronic Switch IO integrated by Electronic Switch that provides power Switch and Rocker that provides Z-Wave communication attributes.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPut controller into inclusion mode.&lt;/li&gt &lt;li&gtWhen the pushbutton is released after a press of (2sec&amp;lt;T&amp;lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPut controller into exclusion mode.&lt;/li&gt &lt;li&gtWhen the pushbutton is released after a press of (2sec&amp;lt;T&amp;lt;20sec) the device will send a NIF to exclude the device from the Z-Wave network. Main LED will blink with 0,3 sec period.&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -66,18 +64,14 @@ Switch IO: On/Off Power Switch<br /><h1>Overview</h1><p>Simon Electronic Switch 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="254">
         <label>10: Delay ON</label>
-        <description><![CDATA[
-Delay from activation request until load activation<br /><h1>Overview</h1><p>0-127 Delay in seconds, 128-254 Delay in minutes</p>
-        ]]></description>
+        <description>Delay from activation request until load activation&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0-127 Delay in seconds, 128-254 Delay in minutes&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="254">
         <label>11: Activation Time</label>
-        <description><![CDATA[
-Time that load performs activated after complete an activation process.<br /><h1>Overview</h1><p>0-127 Delay in seconds, 128-254 Delay in minutes</p>
-        ]]></description>
+        <description>Time that load performs activated after complete an activation process.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0-127 Delay in seconds, 128-254 Delay in minutes&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -114,9 +108,7 @@ Time that load performs activated after complete an activation process.<br /><h1
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="254">
         <label>16: Delay OFF</label>
-        <description><![CDATA[
-Delay from deactivation request until load deactivation.<br /><h1>Overview</h1><p>0-127 Delay in seconds, 128-254 Delay in minutes</p>
-        ]]></description>
+        <description>Delay from deactivation request until load deactivation.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0-127 Delay in seconds, 128-254 Delay in minutes&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>

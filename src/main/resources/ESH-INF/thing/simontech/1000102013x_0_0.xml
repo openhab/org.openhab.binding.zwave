@@ -7,9 +7,7 @@
 
   <thing-type id="simontech_1000102013x_00_000" listed="false">
     <label>10001020-13X Dimmer IO: Phase cut dimmer</label>
-    <description><![CDATA[
-Dimmer IO: Phase cut dimmer<br /><h1>Overview</h1><p>The electronic dimmer switch 230V ~ with 2/3 wire phase cut is a switch from Simon 100 serie. These types of dimmer switches have a power of 50W to 240W for traditional loads and 9W to 100W for LED loads. This is highly recommended for all types of uses (domestic, hotels, hospitals ...). The dimmer switch is only compatible with Simon 100 frames.</p> <br /><h2>Inclusion Information</h2><ol><li>Put controller into inclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Put controller into exclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol>
-    ]]></description>
+    <description>Dimmer IO: Phase cut dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe electronic dimmer switch 230V ~ with 2/3 wire phase cut is a switch from Simon 100 serie. These types of dimmer switches have a power of 50W to 240W for traditional loads and 9W to 100W for LED loads. This is highly recommended for all types of uses (domestic, hotels, hospitals ...). The dimmer switch is only compatible with Simon 100 frames.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPut controller into inclusion mode.&lt;/li&gt &lt;li&gtWhen the pushbutton is released after a press of (2sec&amp;lt;T&amp;lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPut controller into exclusion mode.&lt;/li&gt &lt;li&gtWhen the pushbutton is released after a press of (2sec&amp;lt;T&amp;lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -67,45 +65,35 @@ Dimmer IO: Phase cut dimmer<br /><h1>Overview</h1><p>The electronic dimmer switc
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Set time</label>
-        <description><![CDATA[
-Set time<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (default value) Disable timming</td> </tr><tr><td>0x01-0x7F</td> <td>1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</td> </tr><tr><td>0x80-0xFE</td> <td>1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution</td> </tr></table>
-        ]]></description>
+        <description>Set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtInstantly (default value) Disable timming&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x01-0x7F&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x01) to 127 seconds (0x7F) in 1 second resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x80-0xFE&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>5: Fade time</label>
-        <description><![CDATA[
-Fade time<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (default value) Disable timming</td> </tr><tr><td>0x01-0x7F</td> <td>1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</td> </tr><tr><td>0x80-0xFE</td> <td>1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution</td> </tr></table>
-        ]]></description>
+        <description>Fade time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtInstantly (default value) Disable timming&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x01-0x7F&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x01) to 127 seconds (0x7F) in 1 second resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x80-0xFE&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>6: Minimum dimming value</label>
-        <description><![CDATA[
-Minimum dimming value<br /><h1>Overview</h1><p>Stablishes the Max and Min percentages that can be reached. Once the devices gets a value through Z-Wave it Scales the value read according this Min and Max margins.</p>
-        ]]></description>
+        <description>Minimum dimming value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtStablishes the Max and Min percentages that can be reached. Once the devices gets a value through Z-Wave it Scales the value read according this Min and Max margins.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>7: Maximum dimming value</label>
-        <description><![CDATA[
-Maximum dimming value<br /><h1>Overview</h1><p>Stablishes the Max and Min percentages that can be reached. Once the devices gets a value through Z-Wave it Scales the value read according this Min and Max margins.</p>
-        ]]></description>
+        <description>Maximum dimming value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtStablishes the Max and Min percentages that can be reached. Once the devices gets a value through Z-Wave it Scales the value read according this Min and Max margins.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>8: Last on value</label>
-        <description><![CDATA[
-Last on value<br /><h1>Overview</h1><p>Returns or sets the last non zero dimming value. In case of Set the device turns ON the load.</p>
-        ]]></description>
+        <description>Last on value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReturns or sets the last non zero dimming value. In case of Set the device turns ON the load.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -123,18 +111,14 @@ Last on value<br /><h1>Overview</h1><p>Returns or sets the last non zero dimming
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>10: Delay ON</label>
-        <description><![CDATA[
-Delay ON<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (default value) Disable timming</td> </tr><tr><td>0x01-0x7F</td> <td>1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</td> </tr><tr><td>0x80-0xFE</td> <td>1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution</td> </tr></table>
-        ]]></description>
+        <description>Delay ON&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtInstantly (default value) Disable timming&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x01-0x7F&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x01) to 127 seconds (0x7F) in 1 second resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x80-0xFE&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>11: Activation time</label>
-        <description><![CDATA[
-Activation time<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (default value) Disable timming</td> </tr><tr><td>0x01-0x7F</td> <td>1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</td> </tr><tr><td>0x80-0xFE</td> <td>1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution</td> </tr></table>
-        ]]></description>
+        <description>Activation time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtInstantly (default value) Disable timming&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x01-0x7F&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x01) to 127 seconds (0x7F) in 1 second resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x80-0xFE&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -171,9 +155,7 @@ Activation time<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (de
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>16: Delay OFF</label>
-        <description><![CDATA[
-Delay OFF<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (default value) Disable timming</td> </tr><tr><td>0x01-0x7F</td> <td>1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</td> </tr><tr><td>0x80-0xFE</td> <td>1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution</td> </tr></table>
-        ]]></description>
+        <description>Delay OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtInstantly (default value) Disable timming&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x01-0x7F&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x01) to 127 seconds (0x7F) in 1 second resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x80-0xFE&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1 second (0x80) to 127 minutes (0xFE) in 1 minute resolution&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -192,9 +174,7 @@ Delay OFF<br /><h1>Overview</h1><table><tr><td>0x00</td> <td>Instantly (default 
 
       <parameter name="config_20_1_wo" type="integer" groupName="configuration">
         <label>20: Identify</label>
-        <description><![CDATA[
-Identify<br /><h1>Overview</h1><p>The central LED blinks for 5 seconds in order to identify the device.</p>
-        ]]></description>
+        <description>Identify&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe central LED blinks for 5 seconds in order to identify the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">The dimmer blinks</option>
@@ -204,9 +184,7 @@ Identify<br /><h1>Overview</h1><p>The central LED blinks for 5 seconds in order 
       <parameter name="config_21_2" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="65379">
         <label>21: State of charge</label>
-        <description><![CDATA[
-State of charge<br /><h1>Overview</h1><table><tr><td>First byte</td> <td> <p>0x00 Load is OFF</p> <p>0x01 Load is ON</p> </td> </tr><tr><td>Second byte</td> <td>0x00 - 0x063 Last active dimming value</td> </tr></table>
-        ]]></description>
+        <description>State of charge&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtFirst byte&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;p&amp;amp;gt0x00 Load is OFF&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 Load is ON&amp;lt;/p&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtSecond byte&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0x00 - 0x063 Last active dimming value&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -233,17 +211,13 @@ State of charge<br /><h1>Overview</h1><table><tr><td>First byte</td> <td> <p>0x0
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>On/Off Report when load state is changed:</p> <ul><li>On -&gt; CC Basic, Basic Report, Value 0x01 - 0x63 Report the dimming level</li> <li>Off -&gt; CC Basic, Basic Report, Value 0x00</li> </ul><p>Instant Power Consumption vary over 10% and is stable almost 2sec:</p> <ul><li>CC Meter, Meter Report, “Electric meter”, “Consumed”, “Watts”, Size 4, Precision 1, Value (W)</li> </ul><p>Calibration requirement change. (If device needs to be calibrated and is Added into a Z-Wave network, it will report after receive an Association Set of life line).</p> <ul><li>Calibration required -&gt; CC Configuration, Configuration Report, Param 23, Value 0xFF</li> <li>Calibration not required -&gt; CC Configuration, Configuration Report, Param 23, Value 0x00</li> </ul><p>After reset the Z-Wave module, a DEVICE-RESET-LOCALLY-NOTIFICATION is sent.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOn/Off Report when load state is changed:&lt;/p&gt &lt;ul&gt&lt;li&gtOn -&amp;gt; CC Basic, Basic Report, Value 0x01 - 0x63 Report the dimming level&lt;/li&gt &lt;li&gtOff -&amp;gt; CC Basic, Basic Report, Value 0x00&lt;/li&gt &lt;/ul&gt&lt;p&gtInstant Power Consumption vary over 10% and is stable almost 2sec:&lt;/p&gt &lt;ul&gt&lt;li&gtCC Meter, Meter Report, “Electric meter”, “Consumed”, “Watts”, Size 4, Precision 1, Value (W)&lt;/li&gt &lt;/ul&gt&lt;p&gtCalibration requirement change. (If device needs to be calibrated and is Added into a Z-Wave network, it will report after receive an Association Set of life line).&lt;/p&gt &lt;ul&gt&lt;li&gtCalibration required -&amp;gt; CC Configuration, Configuration Report, Param 23, Value 0xFF&lt;/li&gt &lt;li&gtCalibration not required -&amp;gt; CC Configuration, Configuration Report, Param 23, Value 0x00&lt;/li&gt &lt;/ul&gt&lt;p&gtAfter reset the Z-Wave module, a DEVICE-RESET-LOCALLY-NOTIFICATION is sent.&lt;/p&gt</description>
         <multipleLimit>3</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: CTRL</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>On/Off Report when load state is changed:</p> <ul><li>On -&gt; CC Basic, Basic Report, Value 0x01 - 0x63 Report the dimming level</li> <li>Off -&gt; CC Basic, Basic Report, Value 0x00</li> </ul>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtOn/Off Report when load state is changed:&lt;/p&gt &lt;ul&gt&lt;li&gtOn -&amp;gt; CC Basic, Basic Report, Value 0x01 - 0x63 Report the dimming level&lt;/li&gt &lt;li&gtOff -&amp;gt; CC Basic, Basic Report, Value 0x00&lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>20</multipleLimit>
       </parameter>
 

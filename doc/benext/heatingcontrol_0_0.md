@@ -10,26 +10,22 @@ This describes the Z-Wave device *Heating Control*, manufactured by *[BeNext](ht
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![Heating Control product image](https://www.cd-jackson.com/zwave_device_uploads/473/473_default.png)
+![Heating Control product image](https://opensmarthouse.org/zwavedatabase/473/image/)
 
 
 The Heating Control supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Heating Control is the central point of your climate environment. You can overwrite the temperature setpoint of your thermostat, and this product also reports information about your thermostat or boiler. For example the room temperature, boiler pressure, modulation level or water temperature.
-
-This product can be simply placed between your thermostat and boiler. The current setup is not changed and therefore you can still use the device as you normally would do. You don’t have to replace your current thermostat.
-
-Note: This product only works if the current communication between your thermostat and boiler uses the standardized modulating protocol Open Therm. If you are not sure whether your thermostat/boiler uses Open Therm, you may find that in the manual of your thermostat/boiler. You can also find it on the internet. You can search for example on ‘Honeywell round clock open therm’.
+<p&gtThe Heating Control is the central point of your climate environment. You can overwrite the temperature setpoint of your thermostat, and this product also reports information about your thermostat or boiler. For example the room temperature, boiler pressure, modulation level or water temperature.</p&gt <p&gtThis product can be simply placed between your thermostat and boiler. The current setup is not changed and therefore you can still use the device as you normally would do. You don’t have to replace your current thermostat.</p&gt <p&gtNote: This product only works if the current communication between your thermostat and boiler uses the standardized modulating protocol Open Therm. If you are not sure whether your thermostat/boiler uses Open Therm, you may find that in the manual of your thermostat/boiler. You can also find it on the internet. You can search for example on ‘Honeywell round clock open therm’.</p&gt
 
 ### Inclusion Information
 
-Press and hold the push button for 2 seconds and release to start the inclusion or exclude process.
+<p&gtPress and hold the push button for 2 seconds and release to start the inclusion or exclude process.</p&gt
 
 ### Exclusion Information
 
-Press and hold the push button for 2 seconds and release to start the inclusion or exclude process.
+<p&gtPress and hold the push button for 2 seconds and release to start the inclusion or exclude process.</p&gt
 
 ## Channels
 
@@ -44,21 +40,21 @@ The following table summarises the channels available for the Heating Control -:
 | Energy save setpoint | thermostat_setpoint | thermostat_setpoint | Heating | Number:Temperature | 
 
 ### Room temperature
-Room temperature of the room thermostat
+<p&gtRoom temperature of the room thermostat</p&gt
 
 Indicates the current temperature.
 
 The ```room_temperature``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### Outside temperature
-The temperature outside, if reported by the boiler
+<p&gtThe temperature outside, if reported by the boiler</p&gt
 
 Indicates the current temperature.
 
 The ```outside_temperature``` channel is of type ```sensor_temperature``` and supports the ```Number:Temperature``` item and is in the ```Temperature``` category.
 
 ### Thermostat mode
-Determines the mode of the thermostat, either ON ("Heat", 1), or OFF ("Off", 0). The heating setpoint will be applied if the mode Heat is applied and the Energy saving setpoint if the mode Off is applied
+<p&gtDetermines the mode of the thermostat, either ON ("Heat", 1), or OFF ("Off", 0). The heating setpoint will be applied if the mode Heat is applied and the Energy saving setpoint if the mode Off is applied</p&gt
 
 Sets the thermostat.
 
@@ -83,14 +79,14 @@ The following state translation is provided for this channel to the ```Number```
 | 13 | Away |
 
 ### Heating setpoint
-The setpoint used for the heating schedule
+<p&gtThe setpoint used for the heating schedule</p&gt
 
 Sets the thermostat setpoint.
 
 The ```thermostat_setpoint``` channel is of type ```thermostat_setpoint``` and supports the ```Number:Temperature``` item and is in the ```Heating``` category.
 
 ### Energy save setpoint
-The setpoint used for the energy save heating program
+<p&gtThe setpoint used for the energy save heating program</p&gt
 
 Sets the thermostat setpoint.
 
@@ -118,7 +114,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Set to default
 
 Set all configuration values to default values (factory settings)
-If 0xFF (255) then set to default
+<p&gtIf 0xFF (255) then set to default</p&gt
 The following option values may be configured, in addition to values in the range 0 to 255 -:
 
 | Value  | Description |
@@ -133,7 +129,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Data request interval
 
 Interval of updating data from thermostat and boiler
-The interval in seconds that data is requested (and therefore updated) from the thermostat and boiler. 
+<p&gtThe interval in seconds that data is requested (and therefore updated) from the thermostat and boiler. </p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```14```.
@@ -144,7 +140,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: T room update difference
 
 Difference of temperature before new update
-The value that the room temperature must differ (compared to his previous send value) before an unsolicited room temperature report is send to the associated node. 
+<p&gtThe value that the room temperature must differ (compared to his previous send value) before an unsolicited room temperature report is send to the associated node. </p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -155,7 +151,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: T setpoint update difference
 
 Difference in setpoint before new update
-The value that the temperature setpoint must differ (compared to his previous send value) before an unsolicited temperature setpoint report is send to the associated node. 
+<p&gtThe value that the temperature setpoint must differ (compared to his previous send value) before an unsolicited temperature setpoint report is send to the associated node. </p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -166,7 +162,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Unsolicited CRC
 
 CRC-16 encapulation
-Configure if the unsolicited reports are send with the CRC-16 encapsulation. Not that the receiving node should support this encapsulation to parse the Z-Wave frame! This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtConfigure if the unsolicited reports are send with the CRC-16 encapsulation. Not that the receiving node should support this encapsulation to parse the Z-Wave frame! </p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -182,7 +178,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Type of 'special' thermostat
 
 Type of 'special' thermostat if applicable
-Type of 'special' thermostat. NOTE: when remeha Celcia 20 support is set than any other thermostat cannot be set (!) NOTE2: when Remeha Celcia 20 gives 'Fout 203' send cfg value again 
+<p&gtType of 'special' thermostat. NOTE: when remeha Celcia 20 support is set than any other thermostat cannot be set (!) NOTE2: when Remeha Celcia 20 gives 'Fout 203' send cfg value again </p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -199,7 +195,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Status auto report
 
 Status auto report boiler/thermostat report.
-Status auto report boiler/thermostat report.
+<p&gtStatus auto report boiler/thermostat report.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -215,7 +211,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 9: Enable/Disable thermostat schedule
 
 Enable/Disable thermostat schedule inside the controller
-Enable/Disable thermostat schedule inside the heatingcontroller
+<p&gtEnable/Disable thermostat schedule inside the heatingcontroller</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -231,9 +227,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 11: Readout manual setpoint thermostat
 
 Readout manual setpoint thermostat
-This parameter is used to set the possible manual readout of the setpoint on the thermostat. If the thermostat is manually set to a different mode it is then possible to readout this value if enabled.
-
-(NB. This setting is not in the manual but verified through contacting the service department of BeNext).
+<p&gtThis parameter is used to set the possible manual readout of the setpoint on the thermostat. If the thermostat is manually set to a different mode it is then possible to readout this value if enabled.</p&gt <p&gt(NB. This setting is not in the manual but verified through contacting the service department of BeNext).</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -255,7 +249,7 @@ The Heating Control supports 1 association group.
 ### Group 1: Group 1
 
 Unsolicited reports
-Every unsolicited report will be sent to the nodes in this group. 
+<p&gtEvery unsolicited report will be sent to the nodes in this group. </p&gt
 
 Association group 1 supports 1 node.
 
@@ -280,9 +274,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Heating Control Manual EN](https://www.cd-jackson.com/zwave_device_uploads/473/heatingcontrol.pdf)
+* [Heating Control Manual EN](https://opensmarthouse.org/zwavedatabase/473/heatingcontrol.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/473).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/473).

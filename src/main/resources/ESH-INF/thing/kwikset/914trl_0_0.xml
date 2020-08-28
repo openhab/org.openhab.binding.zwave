@@ -7,9 +7,7 @@
 
   <thing-type id="kwikset_914trl_00_000" listed="false">
     <label>914TRL Touchpad Electronic Deadbolt</label>
-    <description><![CDATA[
-Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provides a reference of the Alarm_Number related messages.</p> <p>Alarm Type    Alarm Level            Notification Event  </p> <p>021              001                      Lock Secured using Keyed cylinder or inside thumb-turn  </p> <p>022              001                      Lock Un-Secured using Keyed cylinder or inside thumb-turn  </p> <p>026              001                      Lock Auto Secured – Bolt Jammed (Not fully extended)</p> <p>027              001                      Lock Auto Secured – Successful (Fully extended)  </p> <p>017              001                      Lock Secured at Keypad – Bolt Jammed (Not fully extended)   </p> <p>018              000 or User-ID#*   Lock Secured at Keypad – Successful (Fully extended)   </p> <p>019              User-ID#*              Lock Un-Secured by User (User-ID) at Keypad  </p> <p>023              001                      Lock Secured by Controller – Bolt Jammed (Not fully extended)   </p> <p>024              001                      Lock Secured by Controller – Successful (Fully extended)   </p> <p>025              001                      Lock Un-Secured by Controller – Successful (Fully retracted)  </p> <p>112              User-ID#*              New User Code (User-ID#) added to the lock  </p> <p>032              001                      All User Codes deleted from lock   </p> <p>161              001                      Failed User Code attempt at Keypad  </p> <p>162              User-ID#*             Attempted access by user (User-ID#) outside of scheduled   </p> <p>167              001                      Low battery level   </p> <p>168              001                      Critical battery level   </p> <p>169              001                      Battery level too low to operate lock  </p> <p>* User-ID# values: 001 to 030</p> <br /><h2>Inclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p> Press button “A” on the lock one time to exclude it in your system.</p>
-    ]]></description>
+    <description>Touchpad Electronic Deadbolt&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe following table provides a reference of the Alarm_Number related messages.&lt;/p&gt &lt;p&gtAlarm Type    Alarm Level            Notification Event  &lt;/p&gt &lt;p&gt021              001                      Lock Secured using Keyed cylinder or inside thumb-turn  &lt;/p&gt &lt;p&gt022              001                      Lock Un-Secured using Keyed cylinder or inside thumb-turn  &lt;/p&gt &lt;p&gt026              001                      Lock Auto Secured – Bolt Jammed (Not fully extended)&lt;/p&gt &lt;p&gt027              001                      Lock Auto Secured – Successful (Fully extended)  &lt;/p&gt &lt;p&gt017              001                      Lock Secured at Keypad – Bolt Jammed (Not fully extended)   &lt;/p&gt &lt;p&gt018              000 or User-ID#*   Lock Secured at Keypad – Successful (Fully extended)   &lt;/p&gt &lt;p&gt019              User-ID#*              Lock Un-Secured by User (User-ID) at Keypad  &lt;/p&gt &lt;p&gt023              001                      Lock Secured by Controller – Bolt Jammed (Not fully extended)   &lt;/p&gt &lt;p&gt024              001                      Lock Secured by Controller – Successful (Fully extended)   &lt;/p&gt &lt;p&gt025              001                      Lock Un-Secured by Controller – Successful (Fully retracted)  &lt;/p&gt &lt;p&gt112              User-ID#*              New User Code (User-ID#) added to the lock  &lt;/p&gt &lt;p&gt032              001                      All User Codes deleted from lock   &lt;/p&gt &lt;p&gt161              001                      Failed User Code attempt at Keypad  &lt;/p&gt &lt;p&gt162              User-ID#*             Attempted access by user (User-ID#) outside of scheduled   &lt;/p&gt &lt;p&gt167              001                      Low battery level   &lt;/p&gt &lt;p&gt168              001                      Critical battery level   &lt;/p&gt &lt;p&gt169              001                      Battery level too low to operate lock  &lt;/p&gt &lt;p&gt* User-ID# values: 001 to 030&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt Press button “A” on the lock one time to include it in your system.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Press button “A” on the lock one time to exclude it in your system.&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -41,7 +39,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Black &amp; Decker</property>
+      <property name="vendor">Black &amp;amp; Decker</property>
       <property name="modelId">914TRL</property>
       <property name="manufacturerId">0090</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -66,9 +64,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>The following table provid
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_31_1_00100000" type="integer" groupName="configuration" readOnly="true">
         <label>31: Auto Buzzer</label>
-        <description><![CDATA[
-Beeping sound enabled.<br /><h1>Overview</h1><p>Beeping sound enabled. When disabled, keypad buttons light red or amber when pressed.</p> <p>ON position is factory default.</p> <p>Note: It is recommended that the beeping sound is enabled during programming.</p>
-        ]]></description>
+        <description>Beeping sound enabled.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBeeping sound enabled. When disabled, keypad buttons light red or amber when pressed.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtON position is factory default.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote: It is recommended that the beeping sound is enabled during programming.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Off</option>
@@ -78,9 +74,7 @@ Beeping sound enabled.<br /><h1>Overview</h1><p>Beeping sound enabled. When disa
 
       <parameter name="config_31_1_01000000" type="integer" groupName="configuration" readOnly="true">
         <label>31: Auto Lock</label>
-        <description><![CDATA[
-Automatically re-locks door 30 seconds after unlocking.<br /><h1>Overview</h1><p>Lock automatically re-locks door 30 seconds after unlocking. OFF position is factory default. If this switch is turned on, it will be disabled if all codes are deleted from the lock.</p>
-        ]]></description>
+        <description>Automatically re-locks door 30 seconds after unlocking.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLock automatically re-locks door 30 seconds after unlocking. OFF position is factory default. If this switch is turned on, it will be disabled if all codes are deleted from the lock.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -90,9 +84,7 @@ Automatically re-locks door 30 seconds after unlocking.<br /><h1>Overview</h1><p
 
       <parameter name="config_31_1_10000000" type="integer" groupName="configuration" readOnly="true">
         <label>31: Lock LED Status</label>
-        <description><![CDATA[
-Door lock status LED blinks every 6 seconds.<br /><h1>Overview</h1><p>Door lock status LED blinks every 6 seconds. ON position is factory default.</p>
-        ]]></description>
+        <description>Door lock status LED blinks every 6 seconds.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDoor lock status LED blinks every 6 seconds. ON position is factory default.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Off</option>
@@ -103,9 +95,7 @@ Door lock status LED blinks every 6 seconds.<br /><h1>Overview</h1><p>Door lock 
       <parameter name="config_40_1_wo" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>40: Factory Default</label>
-        <description><![CDATA[
-Reset to factory default settings.<br /><h1>Overview</h1><p>Reset factory default settings, except for the anti-theft setting.</p>
-        ]]></description>
+        <description>Reset to factory default settings.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReset factory default settings, except for the anti-theft setting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="1">Factory Default</option>

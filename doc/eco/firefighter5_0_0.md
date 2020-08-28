@@ -10,7 +10,7 @@ This describes the Z-Wave device *FF-ZWAVE5-ECO*, manufactured by *Ecolink* with
 
 The device is in the category of *Smoke Detector*, defining Smoke detectors.
 
-![FF-ZWAVE5-ECO product image](https://www.cd-jackson.com/zwave_device_uploads/1221/1221_default.jpg)
+![FF-ZWAVE5-ECO product image](https://opensmarthouse.org/zwavedatabase/1221/image/)
 
 
 The FF-ZWAVE5-ECO supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,111 +19,15 @@ The FF-ZWAVE5-ECO does not permanently listen for messages sent from the control
 
 ## Overview
 
-**Overview:**
-
-The Ecolink Audio detector sensor listens to existing smoke or CO detectors in the home and sends signal to your Z-Wave network. In most homes, with hardwired interconnected smoke detectors, only one sensor is needed for whole home coverage.
-
-  * provides fire and CO (carbon monoxide) status
-  * Transmits Fire and CO alarm status
-  * Reports tamper condition when cover is open
-
-This device implements Z-Wave Plus functionality, Network Wide Inclusion, and Explorer frames.  This device is asleep most of the time but can respond to queries on a Wake Up Notification; however for test purposes, the device will stay awake while tampered for testing Z-Wave Plus command class functionality.
-
-**LED Status:**
-
-The FireFighter sensor is equipped with a multi-color LED.  The state of the LED will change based on the state of the device.
-
-<table>
-  <tr>
-    <td>
-      Insert Battery
-    </td>
-    
-    <td>
-      One (or two, if in CO mode) RED blink, then one GREEN blink
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Device not included 
-    </td>
-    
-    <td>
-      Green light breathing (slow blink)
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Learn button pressed
-    </td>
-    
-    <td>
-      Solid Yellow (red+green) while in learn mode
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Sound detected
-    </td>
-    
-    <td>
-      Flash YELLOW for the duration of the sound
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Fire Alarm Detected
-    </td>
-    
-    <td>
-      Solid RED for 3 seconds, then blink red while tone detected
-    </td>
-  </tr>
-  
-  <tr>
-    <td>
-      Case Opened
-    </td>
-    
-    <td>
-      Red/Green breathing until case closed (while added to a network)
-    </td>
-  </tr>
-</table>
-
-  
-**CO Alarm Detection:**
-
-In addition to smoke alarm detection, the FireFighter sensor can detect the presence of a carbon monoxide alarm. By default, the sensor is not guaranteed to detect a CO alarm.  The device can be configured to more reliably detect a CO alarm in exchange for a reduced battery life. This mode can be changed by holding down the tamper switch and the learn button for 10 seconds. The device should then be reset (remove battery and replace) in order to determine the current device setting.
-
-RED + GREEN           = Device will not reliably detect CO, but standard battery life
-
-RED + RED + GREEN = Device will more reliably detect CO, but with reduced battery life
-
-**Factory Default:**
-
-The FireFighter sensor can be restored back to factory default settings which will remove its Z-Wave Plus node ID from the sensor (but not the controller) with the following steps.  Please use this procedure only when the network primary controller is missing or otherwise inoperable.
-
-  1. Put the battery into the sensor
-  2. Do no press the tamper switch
-  3. Hold the learn button down for 10 seconds until the LED turns RED
-  4. Release the learn button and wait for the sensor's green LED to "breath" on and off continuously. The sensor is now ready to be added to a Z-Wave Plus network, and all settings have been restored.
-
-**Testing:**
-
-To test the RF transmission from the mounted position you can generate a tamper by removing the cover. This will send a signal to the controller. To test the audio detection, press and hold the smoke detector's test button. Ensure the FireFighter cover is on and that you wear hearing protection.
+<p&gt<strong&gtOverview:</strong&gt</p&gt <p&gtThe Ecolink Audio detector sensor listens to existing smoke or CO detectors in the home and sends signal to your Z-Wave network. In most homes, with hardwired interconnected smoke detectors, only one sensor is needed for whole home coverage.</p&gt <ul&gt<li&gtprovides fire and CO (carbon monoxide) status</li&gt <li&gtTransmits Fire and CO alarm status</li&gt <li&gtReports tamper condition when cover is open</li&gt </ul&gt<p&gtThis device implements Z-Wave Plus functionality, Network Wide Inclusion, and Explorer frames.  This device is asleep most of the time but can respond to queries on a Wake Up Notification; however for test purposes, the device will stay awake while tampered for testing Z-Wave Plus command class functionality.</p&gt <p&gt<strong&gtLED Status:</strong&gt</p&gt <p&gtThe FireFighter sensor is equipped with a multi-color LED.  The state of the LED will change based on the state of the device.</p&gt <table&gt<tr&gt<td&gtInsert Battery</td&gt <td&gtOne (or two, if in CO mode) RED blink, then one GREEN blink</td&gt </tr&gt<tr&gt<td&gtDevice not included </td&gt <td&gtGreen light breathing (slow blink)</td&gt </tr&gt<tr&gt<td&gtLearn button pressed</td&gt <td&gtSolid Yellow (red+green) while in learn mode</td&gt </tr&gt<tr&gt<td&gtSound detected</td&gt <td&gtFlash YELLOW for the duration of the sound</td&gt </tr&gt<tr&gt<td&gtFire Alarm Detected</td&gt <td&gtSolid RED for 3 seconds, then blink red while tone detected</td&gt </tr&gt<tr&gt<td&gtCase Opened</td&gt <td&gtRed/Green breathing until case closed (while added to a network)</td&gt </tr&gt</table&gt<p&gt<br /&gt<strong&gtCO Alarm Detection:</strong&gt</p&gt <p&gtIn addition to smoke alarm detection, the FireFighter sensor can detect the presence of a carbon monoxide alarm. By default, the sensor is not guaranteed to detect a CO alarm.  The device can be configured to more reliably detect a CO alarm in exchange for a reduced battery life. This mode can be changed by holding down the tamper switch and the learn button for 10 seconds. The device should then be reset (remove battery and replace) in order to determine the current device setting.</p&gt <p&gtRED + GREEN           = Device will not reliably detect CO, but standard battery life</p&gt <p&gtRED + RED + GREEN = Device will more reliably detect CO, but with reduced battery life</p&gt <p&gt<strong&gtFactory Default:</strong&gt</p&gt <p&gtThe FireFighter sensor can be restored back to factory default settings which will remove its Z-Wave Plus node ID from the sensor (but not the controller) with the following steps.  Please use this procedure only when the network primary controller is missing or otherwise inoperable.</p&gt <ol&gt<li&gtPut the battery into the sensor</li&gt <li&gtDo no press the tamper switch</li&gt <li&gtHold the learn button down for 10 seconds until the LED turns RED</li&gt <li&gtRelease the learn button and wait for the sensor's green LED to "breath" on and off continuously. The sensor is now ready to be added to a Z-Wave Plus network, and all settings have been restored.</li&gt </ol&gt<p&gt<strong&gtTesting:</strong&gt</p&gt <p&gtTo test the RF transmission from the mounted position you can generate a tamper by removing the cover. This will send a signal to the controller. To test the audio detection, press and hold the smoke detector's test button. Ensure the FireFighter cover is on and that you wear hearing protection.</p&gt
 
 ### Inclusion Information
 
-Open the FireFighter case and press the learn button on the device for one second.  If the LED starts blinking continually, the sensor has not been added and you need to repeat the process after putting the controller into inclusion mode again.
+<p&gtOpen the FireFighter case and press the learn button on the device for one second.  If the LED starts blinking continually, the sensor has not been added and you need to repeat the process after putting the controller into inclusion mode again.</p&gt
 
 ### Exclusion Information
 
-Open the FireFighter case and press the learn button on the device for one second.  If successfully removed from the Z-Wave Plus network, the device's Green LED should blink slowly and continuously.
+<p&gtOpen the FireFighter case and press the learn button on the device for one second.  If successfully removed from the Z-Wave Plus network, the device's Green LED should blink slowly and continuously.</p&gt
 
 ### Wakeup Information
 
@@ -132,7 +36,7 @@ The FF-ZWAVE5-ECO does not permanently listen for messages sent from the control
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The sensor will wake up every so often to send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor.  The time between Wake-Up Notifications can be configured with the Wake-Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.  The sensor will also send a wakeup notification whenever the case is closed.
+<p&gtThe sensor will wake up every so often to send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor.  The time between Wake-Up Notifications can be configured with the Wake-Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.  The sensor will also send a wakeup notification whenever the case is closed.</p&gt
 
 ## Channels
 
@@ -165,7 +69,7 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | Untriggered |
 
 ### Temperature
-The FireFighter sensor has a temperature sensor built into the device and can be queried on a Wake Up Notification with a Multi-Level Sensor Get command. The sensor supports reporting both in Celsius and Fahrenheit.
+<p&gtThe FireFighter sensor has a temperature sensor built into the device and can be queried on a Wake Up Notification with a Multi-Level Sensor Get command. The sensor supports reporting both in Celsius and Fahrenheit.</p&gt
 
 Indicates the current temperature.
 
@@ -267,11 +171,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Mode: Smoke Alarm/Combo Smoke CO alarm
 
 Sensor Mode
-Enables the sensor to detect smoke alarm signals from a smoke detector or alarm signals from a smoke alarm and carbon monoxide alarm combo device. Allowed parameter values:
-
-0xA5  = Smoke alarm detection only
-
-0xFF   = Smoke and carbon monoxide alarm detection
+<p&gtEnables the sensor to detect smoke alarm signals from a smoke detector or alarm signals from a smoke alarm and carbon monoxide alarm combo device. Allowed parameter values:</p&gt <p&gt0xA5  = Smoke alarm detection only</p&gt <p&gt0xFF   = Smoke and carbon monoxide alarm detection</p&gt
 The following option values may be configured, in addition to values in the range 165 to 255 -:
 
 | Value  | Description |
@@ -310,7 +210,7 @@ The FF-ZWAVE5-ECO supports 1 association group.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Will receive unsolicited messages relating to Fire notifications, CO notifications, case tampering notifications, low-battery notifications, and temperature notifications.
+<p&gtWill receive unsolicited messages relating to Fire notifications, CO notifications, case tampering notifications, low-battery notifications, and temperature notifications.</p&gt
 
 Association group 1 supports 5 nodes.
 
@@ -343,9 +243,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1221/ecolink-z-wave-plus-fire-fighter-smoke-fire-carbon-monoxide-audio-alarm-detector.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1221/ecolink-z-wave-plus-fire-fighter-smoke-fire-carbon-monoxide-audio-alarm-detector.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1221).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1221).

@@ -10,30 +10,22 @@ This describes the Z-Wave device *LZW31-SN*, manufactured by *Inovelli* with the
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![LZW31-SN product image](https://www.cd-jackson.com/zwave_device_uploads/1146/1146_default.jpg)
+![LZW31-SN product image](https://opensmarthouse.org/zwavedatabase/1146/image/)
 
 
 The LZW31-SN supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Inovelli’s new dimmer switch is packed with features and designed with your house in mind.
-
-From a hardware side we’ve upgraded our Z-Wave module for better distance and there is no longer a need for a neutral wire. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).
-
-From a firmware side, this switch has it all (literally). Scene control, notifications (flashes if your garage door is left open) and can be configured on any HUB.
-
-==
-
-Important:  If you have a neutral wire, set parameter 21 correctly.  If setting the switch up in a 3-way configuration, set parameter 22 (you may need to enable advanced settings to see this).
+<p&gtInovelli’s new dimmer switch is packed with features and designed with your house in mind.</p&gt <p&gtFrom a hardware side we’ve upgraded our Z-Wave module for better distance and there is no longer a need for a neutral wire. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p&gt <p&gtFrom a firmware side, this switch has it all (literally). Scene control, notifications (flashes if your garage door is left open) and can be configured on any HUB.</p&gt <p&gt==</p&gt <p&gtImportant:  If you have a neutral wire, set parameter 21 correctly.  If setting the switch up in a 3-way configuration, set parameter 22 (you may need to enable advanced settings to see this).</p&gt
 
 ### Inclusion Information
 
-Once the inclusion process has started press the config button 3X and the LED bar will flash blue.  If the switch was included successfully the bar will turn GREEN, however if the switch was not included successfully it will turn RED.
+<p&gtOnce the inclusion process has started press the config button 3X and the LED bar will flash blue.  If the switch was included successfully the bar will turn GREEN, however if the switch was not included successfully it will turn RED.</p&gt
 
 ### Exclusion Information
 
-Put your HUB in Exclusion mode and press the Config Button 3X until your HUB says the device is excluded.
+<p&gtPut your HUB in Exclusion mode and press the Config Button 3X until your HUB says the device is excluded.</p&gt
 
 ## Channels
 
@@ -224,7 +216,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Invert Switch
 
 Invert Switch
-Inverts the switch (Tap Down = On, Tap Up = Off)
+<p&gtInverts the switch (Tap Down = On, Tap Up = Off)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -240,7 +232,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Auto Off Timer
 
 Auto Off Timer
-Automatically turns the switch off after x amount of seconds.
+<p&gtAutomatically turns the switch off after x amount of seconds.</p&gt
 Values in the range 0 to 32767 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -273,9 +265,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: Power On State
 
 Power On State
-When power is restored, the switch reverts to either On, Off or Last Level.
-
-0=Off, 1-99=Specific % On, 101=Returns to level before Power Outage.
+<p&gtWhen power is restored, the switch reverts to either On, Off or Last Level.</p&gt <p&gt0=Off, 1-99=Specific % On, 101=Returns to level before Power Outage.</p&gt
 Values in the range 0 to 101 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -286,9 +276,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Association Behavior
 
 Association Behavior
-When should the switch send commands to the associated devices:
-
-01 = Local, 02 = 3-Way, 03 = 3-Way & Local, 04 = Z-Wave Hub, 05 = Z-Wave Hub & Local, 06 = Z-Wave Hub & 3-Way, 07 = Z-Wave Hub & Local & 3-Way, 08 = Timer, 09 = Timer & Local, 10 = Timer & 3-Way, 11 =Timer & 3-Way & Local, 12 = Timer & Z-Wave Hub, 13 = Timer & Z-Wave Hub & Local, 14 = Timer & Z-Wave Hub & 3-Way, 15 = All
+<p&gtWhen should the switch send commands to the associated devices:</p&gt <p&gt01 = Local, 02 = 3-Way, 03 = 3-Way & Local, 04 = Z-Wave Hub, 05 = Z-Wave Hub & Local, 06 = Z-Wave Hub & 3-Way, 07 = Z-Wave Hub & Local & 3-Way, 08 = Timer, 09 = Timer & Local, 10 = Timer & 3-Way, 11 =Timer & 3-Way & Local, 12 = Timer & Z-Wave Hub, 13 = Timer & Z-Wave Hub & Local, 14 = Timer & Z-Wave Hub & 3-Way, 15 = All</p&gt
 Values in the range 0 to 15 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -310,7 +298,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: LED Indicator Intensity
 
 LED Indicator Intensity
-This will set the intensity of the LED bar (ie: how bright it is) in 10% increments.
+<p&gtThis will set the intensity of the LED bar (ie: how bright it is) in 10% increments.</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -321,7 +309,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: LED Indicator Intensity (When Off)
 
 LED Indicator Intensity (When Off)
-This is the intensity of the LED bar when the switch is off in 10% increments.
+<p&gtThis is the intensity of the LED bar when the switch is off in 10% increments.</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -332,7 +320,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: LED Strip Effect
 
 LED Strip Effect
-Addition:  To get the final code for the desired color/effect/duration, use this calculator:  https://nathanfiscus.github.io/inovelli-notification-calc/This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtAddition:  To get the final code for the desired color/effect/duration, use this calculator:  https://nathanfiscus.github.io/inovelli-notification-calc/</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 100600575 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -343,7 +331,7 @@ This parameter has the configuration ID ```config_16_4``` and is of type ```INTE
 ### Parameter 17: LED Indicator Timeout
 
 LED Indicator Timeout
-Changes the amount of time the RGB Bar shows the Dim level if the LED Bar has been disabled.
+<p&gtChanges the amount of time the RGB Bar shows the Dim level if the LED Bar has been disabled.</p&gt
 Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -420,7 +408,7 @@ This parameter has the configuration ID ```config_22_1``` and is of type ```INTE
 ### Parameter 51: Instant On
 
 Instant On
-Enable instant on (ie: disable 700ms delay at the switch). If delay is disabled, scene control will be limited to button 1 (ie: tap up 1x or tap down 1x) and button 7 (config button). All other buttons (2-6) will be disabled.
+<p&gtEnable instant on (ie: disable 700ms delay at the switch). If delay is disabled, scene control will be limited to button 1 (ie: tap up 1x or tap down 1x) and button 7 (config button). All other buttons (2-6) will be disabled.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -436,7 +424,7 @@ This parameter has the configuration ID ```config_51_1``` and is of type ```INTE
 ### Parameter 52: Enable "smart bulb" mode
 
 Enable "smart bulb" mode
-Smart bulb mode: If set to 1, power will output maximum % when dimmer is on to optimize performance with smart bulbs.
+<p&gtSmart bulb mode: If set to 1, power will output maximum % when dimmer is on to optimize performance with smart bulbs.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -458,25 +446,25 @@ The LZW31-SN supports 4 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Members of this group will receive unsolicited messages related to the status of the switch.
+<p&gtMembers of this group will receive unsolicited messages related to the status of the switch.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Basic Set
 
-Single press UP button sends BasicSet (0xFF) and single press Down sends BasicSet (0x00)
+<p&gtSingle press UP button sends BasicSet (0xFF) and single press Down sends BasicSet (0x00)</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Switch Multilevel Set
 
-Sends dim/brighten commands to associated device when switch is pressed.
+<p&gtSends dim/brighten commands to associated device when switch is pressed.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Switch Multilevel Start/Stop
 
-Sends start and stop level changes to associated devices.
+<p&gtSends start and stop level changes to associated devices.</p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -508,9 +496,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Product manual](https://www.cd-jackson.com/zwave_device_uploads/1146/LZW31-SN-Manual.pdf)
+* [Product manual](https://opensmarthouse.org/zwavedatabase/1146/LZW31-SN-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1146).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1146).

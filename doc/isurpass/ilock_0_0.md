@@ -10,50 +10,22 @@ This describes the Z-Wave device *iLock*, manufactured by *Shenzhen iSurpass Tec
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![iLock product image](https://www.cd-jackson.com/zwave_device_uploads/964/964_default.png)
+![iLock product image](https://opensmarthouse.org/zwavedatabase/964/image/)
 
 
 The iLock supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The door lock can work independently as a electronic lock, without any controller. And also work with mobile APP and other home automation devices through a Z-wave gateway.
-
-With the gateway, users can always know who is visiting, track all the open log, check device status,make association, authorization, issue temporary password to visitors/cleaners,etc.
-
-The door lock is standard Z-wave device, it is compatible with all Z-wave gateway, please refer to each gateway manual for details.
-
-**Notes:**
-
-  1. In default station, any password can unlock the doorlock, please register admin password immediately after installation, do not close the door before everything check ok.
-  2. Unlock with 4 ways: Password, Mechanical key, App, Card(option).
-  3. Power supply by 2 ways: 4*AA Battery for normal use & External 9V Battery for emergency.
-  4. Available for door thickness 38-90mm.
-  5. Take care of the password, suggest to change it for a certain period for safe.
-  6. Do not operate it with wet hand, keep doorlock away from liquid.
-  7. Lock the door when leaving home.
-  8. Please replace all new battery at the same time when low-voltage battery alarm, do not mix the battery with new and old.
-  9. Please keep a mechanical key in a suitable place for emergency situation.
+<p&gtThe door lock can work independently as a electronic lock, without any controller. And also work with mobile APP and other home automation devices through a Z-wave gateway.</p&gt <p&gtWith the gateway, users can always know who is visiting, track all the open log, check device status,make association, authorization, issue temporary password to visitors/cleaners,etc.</p&gt <p&gtThe door lock is standard Z-wave device, it is compatible with all Z-wave gateway, please refer to each gateway manual for details.</p&gt <p&gt<strong&gtNotes:</strong&gt</p&gt <ol&gt<li&gtIn default station, any password can unlock the doorlock, please register admin password immediately after installation, do not close the door before everything check ok.</li&gt <li&gtUnlock with 4 ways: Password, Mechanical key, App, Card(option).</li&gt <li&gtPower supply by 2 ways: 4*AA Battery for normal use & External 9V Battery for emergency.</li&gt <li&gtAvailable for door thickness 38-90mm.</li&gt <li&gtTake care of the password, suggest to change it for a certain period for safe.</li&gt <li&gtDo not operate it with wet hand, keep doorlock away from liquid.</li&gt <li&gtLock the door when leaving home.</li&gt <li&gtPlease replace all new battery at the same time when low-voltage battery alarm, do not mix the battery with new and old.</li&gt <li&gtPlease keep a mechanical key in a suitable place for emergency situation.</li&gt </ol&gt
 
 ### Inclusion Information
 
-Inclusion： add a device into a zwave network.
-
-1）Set gateway in Inclusion mode or add mode【 pleae refer to gateway guide】
-
-2）Set door lock in learn mode 【see page 7 ,about 10 Inclusion/Exclusion】
-
-3）Wait until success【 pleae refer to gateway guide】
+<p&gtInclusion： add a device into a zwave network.</p&gt <p&gt1）Set gateway in Inclusion mode or add mode【 pleae refer to gateway guide】</p&gt <p&gt2）Set door lock in learn mode 【see page 7 ,about 10 Inclusion/Exclusion】</p&gt <p&gt3）Wait until success【 pleae refer to gateway guide】</p&gt
 
 ### Exclusion Information
 
-Exclusion：Delet a device for zwave network.
-
-1）Set gateway in Exclusion mode or delete mode【 pleae refer to gateway guide】
-
-2）Set door lock in learn mode 【see page 7 ,about 10 Inclusion/Exclusion】
-
-3）Wait until success【 pleae refer to gateway guide】
+<p&gtExclusion：Delet a device for zwave network.</p&gt <p&gt1）Set gateway in Exclusion mode or delete mode【 pleae refer to gateway guide】</p&gt <p&gt2）Set door lock in learn mode 【see page 7 ,about 10 Inclusion/Exclusion】</p&gt <p&gt3）Wait until success【 pleae refer to gateway guide】</p&gt
 
 ## Channels
 
@@ -121,13 +93,13 @@ The iLock supports 2 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Our product supports an association group, and this group only support one node(one device) to receive unlock/lock message, battery report, alarm report. Please refer to your gateway guide to know how to set an association.
+<p&gtOur product supports an association group, and this group only support one node(one device) to receive unlock/lock message, battery report, alarm report. Please refer to your gateway guide to know how to set an association.</p&gt
 
 Association group 1 supports 1 node.
 
 ### Group 2: Notify
 
-COMMAND\_CLASS\_ALARM
+<p&gtCOMMAND\_CLASS\_ALARM</p&gt
 
 Association group 2 supports 1 node.
 
@@ -159,9 +131,9 @@ Association group 2 supports 1 node.
 
 ### Documentation Links
 
-* [iLock 15 User Manual](https://www.cd-jackson.com/zwave_device_uploads/964/iLock-15-User-Manual.pdf)
+* [iLock 15 User Manual](https://opensmarthouse.org/zwavedatabase/964/iLock-15-User-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/964).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/964).

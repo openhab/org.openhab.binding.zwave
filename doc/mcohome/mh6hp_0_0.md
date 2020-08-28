@@ -11,22 +11,22 @@ This version of the device is limited to firmware versions below 1.255
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![MH6-HP product image](https://www.cd-jackson.com/zwave_device_uploads/1044/1044_default.jpg)
+![MH6-HP product image](https://opensmarthouse.org/zwavedatabase/1044/image/)
 
 
 The MH6-HP supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-MH6-HP programmable thermostat is a Z-Wave Plus enabled device for indoor temperature control. It is mainly applied to heat pump system for heating/cooling, with 3 modes easily switchable: Schedule, Hold and Holiday. The device is of high reliability and practicability, and it can support up to 3H/2C system. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.
+<p&gtMH6-HP programmable thermostat is a Z-Wave Plus enabled device for indoor temperature control. It is mainly applied to heat pump system for heating/cooling, with 3 modes easily switchable: Schedule, Hold and Holiday. The device is of high reliability and practicability, and it can support up to 3H/2C system. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers.</p&gt
 
 ### Inclusion Information
 
-In normal display, press and hold ^ button to enter interface for adding Z-Wave network. Before device added into network, “\- - -” will display on the screen. Then press ^ once, device will enter learning mode to get a node ID. If adding is successful, a Node ID will display on the screen in a few seconds.
+<p&gtIn normal display, press and hold ^ button to enter interface for adding Z-Wave network. Before device added into network, “\- - -” will display on the screen. Then press ^ once, device will enter learning mode to get a node ID. If adding is successful, a Node ID will display on the screen in a few seconds.</p&gt
 
 ### Exclusion Information
 
-In normal display, press and hold ^ button to enter interface for removing of Z-Wave network. A Node ID will display on the screen. Then press ^ button once, “\- - -” will display on the screen to show removal was successful.
+<p&gtIn normal display, press and hold ^ button to enter interface for removing of Z-Wave network. A Node ID will display on the screen. Then press ^ button once, “\- - -” will display on the screen to show removal was successful.</p&gt
 
 ## Channels
 
@@ -150,9 +150,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [MH6-HP programmable thermostat.](https://www.cd-jackson.com/zwave_device_uploads/1044/MH6-HP-User-Manual.pdf)
+* [MH6-HP programmable thermostat.](https://opensmarthouse.org/zwavedatabase/1044/MH6-HP-User-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1044).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1044).

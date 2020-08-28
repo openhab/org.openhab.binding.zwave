@@ -7,9 +7,7 @@
 
   <thing-type id="trane_azemt500bb32ma_00_000" listed="false">
     <label>AZEMT500BB32MA American Standard Z-Wave Programmable Thermostat</label>
-    <description><![CDATA[
-American Standard Z-Wave Programmable Thermostat<br /><h1>Overview</h1><p>T500B Z-Wave Thermostat. The ComfortLink™ control is an innovative product that is compatible with Trane products as well as any other brand of standard central heating and air conditioning systems. It works through the Nexia™ Home Intelligence system</p> <br /><h2>Inclusion Information</h2><p>Press the MENU button on the thermostat.<br />Scroll down to Z Wave Install, and press the Select button.<br />Press the Yes button to enroll the thermostat.</p> <br /><h2>Exclusion Information</h2><p>Press the MENU button on the thermostat.<br />Scroll down to Z-Wave Install and press the Select button.<br />Press the Yes button to exclude the thermostat.</p>
-    ]]></description>
+    <description>American Standard Z-Wave Programmable Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtT500B Z-Wave Thermostat. The ComfortLink™ control is an innovative product that is compatible with Trane products as well as any other brand of standard central heating and air conditioning systems. It works through the Nexia™ Home Intelligence system&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the MENU button on the thermostat.&lt;br /&gtScroll down to Z Wave Install, and press the Select button.&lt;br /&gtPress the Yes button to enroll the thermostat.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the MENU button on the thermostat.&lt;br /&gtScroll down to Z-Wave Install and press the Select button.&lt;br /&gtPress the Yes button to exclude the thermostat.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -134,8 +132,8 @@ American Standard Z-Wave Programmable Thermostat<br /><h1>Overview</h1><p>T500B 
       <options>
         <option value="0">Off</option>
         <option value="1">Heat</option>
-        <option value="3">Auto</option>
         <option value="2">Cool</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>

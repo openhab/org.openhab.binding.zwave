@@ -7,9 +7,7 @@
 
   <thing-type id="yale_yrl210_00_000" listed="false">
     <label>YRL210 Yale Push Button Lever Lock</label>
-    <description><![CDATA[
-Yale Push Button Lever Lock<br /><h1>Overview</h1><p>Secure your home with this Yale Real Living electronic lever lock and enjoy the convenience of unlocking and locking your door using the back lit push button keypad; you'll never have to carry around your keys again. Create unique pin codes for friends and family and remove codes whenever you need to.</p> <p>The lock is Grade 2 certified and backed Yale, one of the world's best known brands in the lock industry that's been securing homes since 1846, ensuring that your home and family is always safe.</p> <br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual):</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual):</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
-    ]]></description>
+    <description>Yale Push Button Lever Lock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSecure your home with this Yale Real Living electronic lever lock and enjoy the convenience of unlocking and locking your door using the back lit push button keypad; you'll never have to carry around your keys again. Create unique pin codes for friends and family and remove codes whenever you need to.&lt;/p&gt &lt;p&gtThe lock is Grade 2 certified and backed Yale, one of the world's best known brands in the lock industry that's been securing homes since 1846, ensuring that your home and family is always safe.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo include the lock in a Z-Wave Network (taken from the installation manual):&lt;/p&gt &lt;ol&gt&lt;li&gtTouch the lock screen to activate&lt;/li&gt &lt;li&gtEnter the master pin and press #&lt;/li&gt &lt;li&gtPress 7, then #&lt;/li&gt &lt;li&gtPress 1, then #&lt;/li&gt &lt;/ol&gt&lt;p&gtThe lock will now be in inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude the lock from a Z-Wave Network (taken from the installation manual):&lt;/p&gt &lt;ol&gt&lt;li&gtTouch the lock screen to activate&lt;/li&gt &lt;li&gtEnter the master pin and press #&lt;/li&gt &lt;li&gtPress 7, then #&lt;/li&gt &lt;li&gtPress 3, then #&lt;/li&gt &lt;/ol&gt&lt;p&gtThe lock will now be in exclusion mode.&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -116,9 +114,7 @@ Yale Push Button Lever Lock<br /><h1>Overview</h1><p>Secure your home with this 
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Operating Mode</label>
-        <description><![CDATA[
-Operating mode (normal/vacation/privacy)<br /><h1>Overview</h1><p>0 = Normal</p> <p>1 = Vacation Mode (User Codes Disabled)</p> <p>2 = Privacy Mode (User Codes and Z-Wave Disabled)</p>
-        ]]></description>
+        <description>Operating mode (normal/vacation/privacy)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = Normal&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 = Vacation Mode (User Codes Disabled)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = Privacy Mode (User Codes and Z-Wave Disabled)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal</option>

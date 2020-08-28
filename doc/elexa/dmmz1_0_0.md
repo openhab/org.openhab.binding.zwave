@@ -10,7 +10,7 @@ This describes the Z-Wave device *DMMZ1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![DMMZ1 product image](https://www.cd-jackson.com/zwave_device_uploads/684/684_default.png)
+![DMMZ1 product image](https://opensmarthouse.org/zwavedatabase/684/image/)
 
 
 The DMMZ1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The DMMZ1 does not permanently listen for messages sent from the controller - it
 
 ## Overview
 
-The Dome Mouser is a battery powered Z-Wave Plus enabled mousetrap that works by electrocution and is designed to be humane and painless to the rodent. After a mouse is caught, the Mouser will send a Z-Wave signal to its controller to notify the user, and will not retrigger until the trap is reset. 
+<p&gtThe Dome Mouser is a battery powered Z-Wave Plus enabled mousetrap that works by electrocution and is designed to be humane and painless to the rodent. After a mouse is caught, the Mouser will send a Z-Wave signal to its controller to notify the user, and will not retrigger until the trap is reset. </p&gt
 
 ### Inclusion Information
 
-Press the CONNECT BUTTON quickly 3 times in a row. The LED INDICATOR will flash five times indicating inclusion
+<p&gtPress the CONNECT BUTTON quickly 3 times in a row. The LED INDICATOR will flash five times indicating inclusion</p&gt
 
 ### Exclusion Information
 
-Press the CONNECT BUTTON quickly 3 times in a row. The LED INDICATOR will flash five times indicating exclusion/disconnection. 
+<p&gtPress the CONNECT BUTTON quickly 3 times in a row. The LED INDICATOR will flash five times indicating exclusion/disconnection. </p&gt
 
 ### Wakeup Information
 
@@ -36,23 +36,11 @@ The DMMZ1 does not permanently listen for messages sent from the controller - it
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The device can be forced to wake up to submit reports or accept new settings immediately by simply pressing and holding the BUTTON for two seconds. The LED INDICATOR will flash once indicating successful wake up
+<p&gtThe device can be forced to wake up to submit reports or accept new settings immediately by simply pressing and holding the BUTTON for two seconds. The LED INDICATOR will flash once indicating successful wake up</p&gt
 
 ### General Usage Information
 
-# How to Use—Baiting the Trap
-
-  1. Lift the BAIT HOLDER from the Mouser.
-  2. Add bait - dry foods (like peanuts) leave less mess.
-  3. Replace the BAIT HOLDER.
-
-How to Use—Setting the Trap
-
-  1. Bait the Mouser.
-  2. Place the Mouser in the desired location - rodents usually scurry around walls and other corners.
-  3. Flip On/Off Button to the On position - the LED will stay lit for two seconds indicating the Mouser is armed. A flashing LED indicates low battery.
-  4. When the Mouser is tripped. the LED will blink every five seconds, and an alert will be sent to your Z-Wave Controller.
-  5. Flip the On/Off Button to the Off position to empty the Mouser, andit is ready to use again immediately
+<h1&gtHow to Use—Baiting the Trap</h1&gt <ol&gt<li&gtLift the BAIT HOLDER from the Mouser.</li&gt <li&gtAdd bait - dry foods (like peanuts) leave less mess.</li&gt <li&gtReplace the BAIT HOLDER.</li&gt </ol&gt<p&gtHow to Use—Setting the Trap</p&gt <ol&gt<li&gtBait the Mouser.</li&gt <li&gtPlace the Mouser in the desired location - rodents usually scurry around walls and other corners.</li&gt <li&gtFlip On/Off Button to the On position - the LED will stay lit for two seconds indicating the Mouser is armed. A flashing LED indicates low battery.</li&gt <li&gtWhen the Mouser is tripped. the LED will blink every five seconds, and an alert will be sent to your Z-Wave Controller.</li&gt <li&gtFlip the On/Off Button to the Off position to empty the Mouser, andit is ready to use again immediately</li&gt </ol&gt
 
 ## Channels
 
@@ -113,13 +101,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: BASIC_SET Level
 
 Sets the value sent by the BASIC_SET command to Association Group 2
-This parameter sets the value sent by the BASIC_SET command to Association Group 2 (for more information, see “Assocation Groups”.)
-
-00 (0/Turn Off Device)
-
-01 ~ 63 (0-99)
-
-FF (255/Turn On Device)
+<p&gtThis parameter sets the value sent by the BASIC_SET command to Association Group 2 (for more information, see “Assocation Groups”.)</p&gt <p&gt00 (0/Turn Off Device)</p&gt <p&gt01 ~ 63 (0-99)</p&gt <p&gtFF (255/Turn On Device)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -130,11 +112,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Set Firing Mode
 
 This parameter sets the “firing mode” of the Mouser.
-This parameter sets “firing mode” of the Mouser. Two firing modes are available: in the first (Continuous Fire,) electricity is passed continuously for the entire duration, and in the second (Burst Fire,) electricity is passed continuously only for the first minute and it is pulsed at approximately 400 beats per minute for the remainder of the time.
-
-01 (Continuous Fire)
-
-02 (Burst Fire)
+<p&gtThis parameter sets “firing mode” of the Mouser. Two firing modes are available: in the first (Continuous Fire,) electricity is passed continuously for the entire duration, and in the second (Burst Fire,) electricity is passed continuously only for the first minute and it is pulsed at approximately 400 beats per minute for the remainder of the time.</p&gt <p&gt01 (Continuous Fire)</p&gt <p&gt02 (Burst Fire)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -150,9 +128,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: High Voltage Duration Time 
 
 How long the Mouser will fire continuously before it starts to burst-fire
-This parameter defines how long the Mouser will fire continuously before it starts to burst-fire (see parameter 2.)
-
-00 64 ~ 01 68 (100~360 in Seconds)
+<p&gtThis parameter defines how long the Mouser will fire continuously before it starts to burst-fire (see parameter 2.)</p&gt <p&gt00 64 ~ 01 68 (100~360 in Seconds)</p&gt
 Values in the range 64 to 168 may be set.
 
 The manufacturer defined default value is ```64```.
@@ -163,11 +139,7 @@ This parameter has the configuration ID ```config_3_2``` and is of type ```INTEG
 ### Parameter 4: Enable/Disable LED Alarm
 
 Enables or disables the indicator LED alarm when the trap is tripped
-This parameter enables or disables the indicator LED alarm when the trap is tripped.
-
-00 (LED Alarm Disabled)
-
-01 (LED Alarm Enabled)
+<p&gtThis parameter enables or disables the indicator LED alarm when the trap is tripped.</p&gt <p&gt00 (LED Alarm Disabled)</p&gt <p&gt01 (LED Alarm Enabled)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -183,11 +155,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: LED Alarm Duration
 
 Sets the amount of time the LED Indicator blinks after the trap is tripped
-This parameter sets the amount of time the LED Indicator blinks after the trap is tripped.
-
-00 (LED Alarm Blinks Until Trap is Cleared)
-
-01~FF (1~255 in Hours)
+<p&gtThis parameter sets the amount of time the LED Indicator blinks after the trap is tripped.</p&gt <p&gt00 (LED Alarm Blinks Until Trap is Cleared)</p&gt <p&gt01~FF (1~255 in Hours)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -220,25 +188,25 @@ The DMMZ1 supports 4 association groups.
 
 ### Group 1: Group 1
 
-Group 1 is the “Lifeline” group, which can hold five members, typically including the main Z-Wave controller. The Door/Window Sensor sends this group a Notification Report and a Binary Sensor Report when it is tripped, reset, armed, and disarmed. It also sends this group a Battery Report in response to Battery Get commands.
+<p&gtGroup 1 is the “Lifeline” group, which can hold five members, typically including the main Z-Wave controller. The Door/Window Sensor sends this group a Notification Report and a Binary Sensor Report when it is tripped, reset, armed, and disarmed. It also sends this group a Battery Report in response to Battery Get commands.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Group 2
 
-The Mouser sends a Basic Set command to Association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) when it is tripped. After the trap is reset, a BASIC_SET(00) command is sent to reset the device (e.g. turn off the light.) The value of the Basic Set command (e.g. brightness of the lamp) is configured using configuration parameter 1.
+<p&gtThe Mouser sends a Basic Set command to Association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) when it is tripped. After the trap is reset, a BASIC_SET(00) command is sent to reset the device (e.g. turn off the light.) The value of the Basic Set command (e.g. brightness of the lamp) is configured using configuration parameter 1.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Group 3
 
-Group 3 supports up to 5 members and the Mouser sends it a NOTIFICATION_REPORT when tripped, reset, armed, and disarmed.
+<p&gtGroup 3 supports up to 5 members and the Mouser sends it a NOTIFICATION_REPORT when tripped, reset, armed, and disarmed.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Group 4
 
-Group 4 supports up to 5 members and the Mouser sends it a SENSOR\_BINARY\_REPORT when tripped, reset, armed, and disarmed.
+<p&gtGroup 4 supports up to 5 members and the Mouser sends it a SENSOR\_BINARY\_REPORT when tripped, reset, armed, and disarmed.</p&gt
 
 Association group 4 supports 5 nodes.
 
@@ -267,9 +235,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Dome Mouser Advanced Manual](https://www.cd-jackson.com/zwave_device_uploads/684/Dome-Mouser-Advanced-Manual.pdf)
+* [Dome Mouser Advanced Manual](https://opensmarthouse.org/zwavedatabase/684/Dome-Mouser-Advanced-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/684).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/684).

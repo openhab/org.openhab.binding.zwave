@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc08_00_000" listed="false">
     <label>DSC08 Smart Energy Illuminator</label>
-    <description><![CDATA[
-Smart Energy Illuminator<br /><h1>Overview</h1><p>The Aeon Labs Inline Smart Energy Illuminator is a Z-Wave light dimmer specifically used to enable Z-Wave commands and control (on/off/dim) a device that is connected to a standard Schuko Wall Outlet.</p> <p>It can also report immediate power consumption or kWh energy usage over a period of time. The wireless module is powered from the mains supply and is a three-wire design which requires a neutral connection. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.</p> <p>The Aeon Labs Inline Smart Energy Illuminator can be plugged between every Standard-Schuko wall outlet and the electrical appliance with maximum load of 625W. To switch the plugged device on or off simply push the local button once or use a Z-Wave Controller. The status is shown by the status LED at the device</p> <br /><h2>Inclusion Information</h2><p>To include the Aeon Labs Inline Smart Energy Illuminator with your Z-Wave controller simple bring it in the inclusion mode and click the Inclusion/Exclusion button at the Aeon Labs Inline Smart Energy Illuminator once. If the Aeon Labs Micro Inline Smart Energy Illuminator was successfully included to a Z-Wave network, the Status Indication LED will either be solid on or off (depending on if the switch is on or off) after the button was last pressed.</p> <br /><h2>Exclusion Information</h2><p>To exclude the Aeon Labs Inline Smart Energy Illuminator with your Z-Wave controller simple bring it in the exclusion mode and click the Inclusion/Exclusion button at the Aeon Labs Inline Smart Energy Illuminator once. </p>
-    ]]></description>
+    <description>Smart Energy Illuminator&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Aeon Labs Inline Smart Energy Illuminator is a Z-Wave light dimmer specifically used to enable Z-Wave commands and control (on/off/dim) a device that is connected to a standard Schuko Wall Outlet.&lt;/p&gt &lt;p&gtIt can also report immediate power consumption or kWh energy usage over a period of time. The wireless module is powered from the mains supply and is a three-wire design which requires a neutral connection. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.&lt;/p&gt &lt;p&gtThe Aeon Labs Inline Smart Energy Illuminator can be plugged between every Standard-Schuko wall outlet and the electrical appliance with maximum load of 625W. To switch the plugged device on or off simply push the local button once or use a Z-Wave Controller. The status is shown by the status LED at the device&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo include the Aeon Labs Inline Smart Energy Illuminator with your Z-Wave controller simple bring it in the inclusion mode and click the Inclusion/Exclusion button at the Aeon Labs Inline Smart Energy Illuminator once. If the Aeon Labs Micro Inline Smart Energy Illuminator was successfully included to a Z-Wave network, the Status Indication LED will either be solid on or off (depending on if the switch is on or off) after the button was last pressed.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude the Aeon Labs Inline Smart Energy Illuminator with your Z-Wave controller simple bring it in the exclusion mode and click the Inclusion/Exclusion button at the Aeon Labs Inline Smart Energy Illuminator once. &lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -83,9 +81,7 @@ Smart Energy Illuminator<br /><h1>Overview</h1><p>The Aeon Labs Inline Smart Ene
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Automatic Notifications</label>
-        <description><![CDATA[
-Enables automatic notifications to associated devices<br /><h1>Overview</h1><p>Enables automatic notifications to associated devices whenever there is a state change</p>
-        ]]></description>
+        <description>Enables automatic notifications to associated devices&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnables automatic notifications to associated devices whenever there is a state change&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Nothing</option>
@@ -107,18 +103,14 @@ Enables automatic notifications to associated devices<br /><h1>Overview</h1><p>E
       <parameter name="config_91_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>91: Minimum change in wattage</label>
-        <description><![CDATA[
-Minimum change in wattage for a REPORT to be sent.<br /><h1>Overview</h1><p>The value here represents minimum change in wattage (in terms of wattage) for a REPORT to be sent.</p>
-        ]]></description>
+        <description>Minimum change in wattage for a REPORT to be sent.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value here represents minimum change in wattage (in terms of wattage) for a REPORT to be sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>92: Minimum change in wattage %</label>
-        <description><![CDATA[
-Minimum percent change in wattage for a REPORT to be sent.<br /><h1>Overview</h1><p>The value here represents minimum change in wattage percent (in terms of percentage) for a REPORT to be sent.</p>
-        ]]></description>
+        <description>Minimum percent change in wattage for a REPORT to be sent.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value here represents minimum change in wattage percent (in terms of percentage) for a REPORT to be sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 

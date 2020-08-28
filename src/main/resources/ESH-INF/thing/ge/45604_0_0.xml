@@ -7,9 +7,7 @@
 
   <thing-type id="ge_45604_00_000" listed="false">
     <label>45604 Outdoor Lighting Control Module</label>
-    <description><![CDATA[
-Outdoor Lighting Control Module<br /><h1>Overview</h1><p>The GE Z-Wave Smart Lighting Control Outdoor Module</p> <br /><h2>Inclusion Information</h2><p>Plug In Module</p> <p>Place controller in inclusion mode</p> <p>Press button on module</p> <br /><h2>Exclusion Information</h2><p>Plug In Module</p> <p>Place controller in exclusion mode</p> <p>Press button on module</p>
-    ]]></description>
+    <description>Outdoor Lighting Control Module&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe GE Z-Wave Smart Lighting Control Outdoor Module&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPlug In Module&lt;/p&gt &lt;p&gtPlace controller in inclusion mode&lt;/p&gt &lt;p&gtPress button on module&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPlug In Module&lt;/p&gt &lt;p&gtPlace controller in exclusion mode&lt;/p&gt &lt;p&gtPress button on module&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

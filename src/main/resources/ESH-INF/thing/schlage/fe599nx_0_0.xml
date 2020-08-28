@@ -7,9 +7,7 @@
 
   <thing-type id="schlage_fe599nx_00_000" listed="false">
     <label>FE599NX Connected Keypad with Lever</label>
-    <description><![CDATA[
-Connected Keypad with Lever<br /><h1>Overview</h1><p>Camelot style residential keypad deadbolt door lock and lever.</p> <br /><h2>Inclusion Information</h2><ol><li>Enter 6 digit Programming Code</li> <li>Wait for Schlage button to blink 3 times and 3 beeps</li> <li>Press the Schlage button and then 0</li> </ol><p>On Success the Schlage button will blink with no beeps.</p> <br /><h2>Exclusion Information</h2><ol><li>Enter 6 digit Programming Code</li> <li>Wait for Schlage button to blink 3 times and 3 beeps</li> <li>Press the Schlage button and then 0</li> </ol>
-    ]]></description>
+    <description>Connected Keypad with Lever&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCamelot style residential keypad deadbolt door lock and lever.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtEnter 6 digit Programming Code&lt;/li&gt &lt;li&gtWait for Schlage button to blink 3 times and 3 beeps&lt;/li&gt &lt;li&gtPress the Schlage button and then 0&lt;/li&gt &lt;/ol&gt&lt;p&gtOn Success the Schlage button will blink with no beeps.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtEnter 6 digit Programming Code&lt;/li&gt &lt;li&gtWait for Schlage button to blink 3 times and 3 beeps&lt;/li&gt &lt;li&gtPress the Schlage button and then 0&lt;/li&gt &lt;/ol&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -79,8 +77,8 @@ Connected Keypad with Lever<br /><h1>Overview</h1><p>Camelot style residential k
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Lock &amp; Leave</label>
-        <description>Enable/Disable Lock &amp; Leave</description>
+        <label>5: Lock &amp;amp; Leave</label>
+        <description>Enable/Disable Lock &amp;amp;amp; Leave</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>

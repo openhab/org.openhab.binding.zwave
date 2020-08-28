@@ -7,9 +7,7 @@
 
   <thing-type id="zwaveme_zme05431_00_000" listed="false">
     <label>ZME_05431 Flush mountable switch</label>
-    <description><![CDATA[
-Flush mountable switch<br /><h1>Overview</h1><p>The switch Flush Mountable is a wireless actuator able to switch loads up to 2300 W. The device is delivered as complete set with flush mountable insert, paddle and mounting frame compatible to the design of the switching series Everlux in color white from REV / Duewi. The paddle of the device is used to control the device itself but can also be configured to activate scenes in a central IP gateway or controller. The status of the switch is indicated on a dual color LED for test purposes and every status change is - if configured - reported to a central IP gateway or controller. The function of the local paddle can be configured as detached from the local operation. In this local control, different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave. This device is designed for a 3 wire system and needs a neutral wire in the wall box. </p> <br /><h2>Inclusion Information</h2><p>Triple click one of the buttons on the device will include the device</p> <br /><h2>Exclusion Information</h2><p> The device is excluded by triple click to one of the buttons.</p>
-    ]]></description>
+    <description>Flush mountable switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe switch Flush Mountable is a wireless actuator able to switch loads up to 2300 W. The device is delivered as complete set with flush mountable insert, paddle and mounting frame compatible to the design of the switching series Everlux in color white from REV / Duewi. The paddle of the device is used to control the device itself but can also be configured to activate scenes in a central IP gateway or controller. The status of the switch is indicated on a dual color LED for test purposes and every status change is - if configured - reported to a central IP gateway or controller. The function of the local paddle can be configured as detached from the local operation. In this local control, different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave. This device is designed for a 3 wire system and needs a neutral wire in the wall box. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click one of the buttons on the device will include the device&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt The device is excluded by triple click to one of the buttons.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -72,9 +70,7 @@ Flush mountable switch<br /><h1>Overview</h1><p>The switch Flush Mountable is a 
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Function of RF off command</label>
-        <description><![CDATA[
-Function of RF off command<br /><h1>Overview</h1><p> Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).</p>
-        ]]></description>
+        <description>Function of RF off command&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Defines how to interpret RF Off command. Can be used in conjunction with Auto Off function: Ignore - to switch on the light by motion detectors and switch it off after some amount of time: in case of multiple motion detectors each would try to switch the light off that would break logics; Switch on - to switch on the light on both On and Off paddle press on the remote and switch it off after some amount of time. Button off click will still work (if button operations are not disabled).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Switch OFF</option>
@@ -86,9 +82,7 @@ Function of RF off command<br /><h1>Overview</h1><p> Defines how to interpret R
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Switch on dimming by buttons</label>
-        <description><![CDATA[
-Switch on dimming by buttons<br /><h1>Overview</h1><p>Defines if the switch should change it state to on/off if it is dimmed by buttons</p>
-        ]]></description>
+        <description>Switch on dimming by buttons&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines if the switch should change it state to on/off if it is dimmed by buttons&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No</option>
@@ -98,9 +92,7 @@ Switch on dimming by buttons<br /><h1>Overview</h1><p>Defines if the switch shou
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Restore switch state after power cycle</label>
-        <description><![CDATA[
-Restore switch state after power cycle<br /><h1>Overview</h1><p>Defines if the switch should restore switch state to the last state prior to device power off (power cycle).</p>
-        ]]></description>
+        <description>Restore switch state after power cycle&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines if the switch should restore switch state to the last state prior to device power off (power cycle).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No, turn off</option>
@@ -111,9 +103,7 @@ Restore switch state after power cycle<br /><h1>Overview</h1><p>Defines if the s
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>10: Typical click timeout</label>
-        <description><![CDATA[
-Typical click timeout<br /><h1>Overview</h1><p>Typical time used to differentiate click, hold, double and triple clicks&lt;BR/&gt;Defined in 10ms ticks.</p>
-        ]]></description>
+        <description>Typical click timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTypical time used to differentiate click, hold, double and triple clicks&amp;amp;lt;BR/&amp;amp;gt;Defined in 10ms ticks.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
@@ -128,9 +118,7 @@ Typical click timeout<br /><h1>Overview</h1><p>Typical time used to differentiat
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Switch by buttons</label>
-        <description><![CDATA[
-Switch by buttons<br /><h1>Overview</h1><p> If disabled, the local operations by buttons will not switch the load, but only send commands to On/Off association group. In this mode buttons are not linked with the switch</p>
-        ]]></description>
+        <description>Switch by buttons&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt If disabled, the local operations by buttons will not switch the load, but only send commands to On/Off association group. In this mode buttons are not linked with the switch&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">No</option>
@@ -141,9 +129,7 @@ Switch by buttons<br /><h1>Overview</h1><p> If disabled, the local operations b
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Action on button single press or hold</label>
-        <description><![CDATA[
-Action on button single press or hold<br /><h1>Overview</h1><p> Defines which command should be sent on button single press or hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast. </p>
-        ]]></description>
+        <description>Action on button single press or hold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Defines which command should be sent on button single press or hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
         <options>
           <option value="0">Disabled</option>
@@ -157,9 +143,7 @@ Action on button single press or hold<br /><h1>Overview</h1><p> Defines which c
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Action on button double press or hold</label>
-        <description><![CDATA[
-Action on button double press or hold<br /><h1>Overview</h1><p> Defines which command should be sent on button double press or press-hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast. If not disabled, the device will wait for a click timeout to see if the second click would be pressed. This will introduce a small delay for single click commands</p>
-        ]]></description>
+        <description>Action on button double press or hold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Defines which command should be sent on button double press or press-hold. Basic and Scene Activation commands are sent to Association group. Use Scene Controller Conf to set up Scene ID for Scene Activation. Switch All commands are sent broadcast. If not disabled, the device will wait for a click timeout to see if the second click would be pressed. This will introduce a small delay for single click commands&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled (Default)</option>

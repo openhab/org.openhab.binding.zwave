@@ -7,9 +7,7 @@
 
   <thing-type id="devolo_mt02646_00_000" listed="false">
     <label>MT02646 Home Control Metering Plug</label>
-    <description><![CDATA[
-Home Control Metering Plug<br /><h1>Overview</h1><p>The Home Control Smart Metering Plug can be plugged into any wall outlet in the home. It enhances every<br />connected device with useful functions, such as time-controlled enabling and disabling or power monitoring </p> <br /><h2>Inclusion Information</h2><p>Push the front button three times rapidly within 2 seconds.</p> <br /><h2>Exclusion Information</h2><p>Push the front button three times rapidly within 2 seconds.</p>
-    ]]></description>
+    <description>Home Control Metering Plug&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Home Control Smart Metering Plug can be plugged into any wall outlet in the home. It enhances every&lt;br /&gtconnected device with useful functions, such as time-controlled enabling and disabling or power monitoring &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPush the front button three times rapidly within 2 seconds.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPush the front button three times rapidly within 2 seconds.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -93,9 +91,7 @@ Home Control Metering Plug<br /><h1>Overview</h1><p>The Home Control Smart Meter
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>1: Watt Meter Report Period</label>
-        <description><![CDATA[
-multiples of 5s<br /><h1>Overview</h1><p>Enable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.</p>
-        ]]></description>
+        <description>multiples of 5s&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable automatic interval in seconds reporting with an interval of 5s * the value. Set to 0 will disable the autoreporting function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>720</default>
         <options>
           <option value="0">Disable</option>
@@ -106,9 +102,7 @@ multiples of 5s<br /><h1>Overview</h1><p>Enable automatic interval in seconds re
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>2: KWH Meter Report Period</label>
-        <description><![CDATA[
-number of 10 minute intervals<br /><h1>Overview</h1><p>Enable automatic interval in minutes reporting with an interval of 10min * the value. Set to 0 will disable the autoreporting function.</p>
-        ]]></description>
+        <description>number of 10 minute intervals&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable automatic interval in minutes reporting with an interval of 10min * the value. Set to 0 will disable the autoreporting function.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>6</default>
         <options>
           <option value="0">Disable</option>
@@ -126,9 +120,7 @@ number of 10 minute intervals<br /><h1>Overview</h1><p>Enable automatic interval
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="1" max="10000">
         <label>4: Threshold of KWh for Load Caution</label>
-        <description><![CDATA[
-load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when the accumulated kWh power consumption exceeds the setting value from 1KWh ~ 10000KWh.. Set to 0 will disable kWh load caution reporting.</p>
-        ]]></description>
+        <description>load caution threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable automatic warning when the accumulated kWh power consumption exceeds the setting value from 1KWh ~ 10000KWh.. Set to 0 will disable kWh load caution reporting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10000</default>
       </parameter>
 

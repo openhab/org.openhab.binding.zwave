@@ -10,22 +10,22 @@ This describes the Z-Wave device *DMOF1*, manufactured by *Elexa Consumer Produc
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![DMOF1 product image](https://www.cd-jackson.com/zwave_device_uploads/645/645_default.jpg)
+![DMOF1 product image](https://opensmarthouse.org/zwavedatabase/645/image/)
 
 
 The DMOF1 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Dome On/Off Plug-In Switch is a Z-Wave Plus device that plugs into a standard 3-prong power outlet and lets you turn on or off any connected electronic device. The On/Off Plug-In Switch also monitors how much energy the attached device uses, and reports the data to your Z-Wave Hub.
+<p&gtThe Dome On/Off Plug-In Switch is a Z-Wave Plus device that plugs into a standard 3-prong power outlet and lets you turn on or off any connected electronic device. The On/Off Plug-In Switch also monitors how much energy the attached device uses, and reports the data to your Z-Wave Hub.</p&gt
 
 ### Inclusion Information
 
-Quickly press the BUTTON 3 times. A yellow LED will flash five times indicating inclusion.
+<p&gtQuickly press the BUTTON 3 times. A yellow LED will flash five times indicating inclusion.</p&gt
 
 ### Exclusion Information
 
-Press the BUTTON quickly 3 times in a row. A yellow LED will flash five times indicating exclusion/disconnection.
+<p&gtPress the BUTTON quickly 3 times in a row. A yellow LED will flash five times indicating exclusion/disconnection.</p&gt
 
 ## Channels
 
@@ -107,7 +107,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Disable Meter Functionality
 
 Enable/Disable the meter report.
-This parameter enables/disables the METER_REPORT function, which sends periodic reports to Group1 members with information on line voltage, current load, and power & energy consumption. Also see Param 2 & 6.
+<p&gtThis parameter enables/disables the METER_REPORT function, which sends periodic reports to Group1 members with information on line voltage, current load, and power & energy consumption. Also see Param 2 & 6.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -123,7 +123,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: METER_REPORT
 
 The time between meter reports.
-This parameter sets the amount of time between each successive METER_REPORT signal sent to Group 1 (also see Param 1 & 6.)
+<p&gtThis parameter sets the amount of time between each successive METER_REPORT signal sent to Group 1 (also see Param 1 & 6.)</p&gt
 Values in the range 1 to 65535 may be set.
 
 The manufacturer defined default value is ```300```.
@@ -134,7 +134,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: Set "Overload" Current level
 
 Maximum current the plug will pass
-Sets the maximum current the plug will pass before it cuts off power and sends a NOTIFICATION\_EVENT\_POWER_ MANAGEMENT\_OVER\_LOAD\_DETECTED signal to Group 1 and a BASIC\_SET(FF) to Group 2. The LED will then blink red once per second until the current returns to normal. To clear the NOTIFICATION and start monitoring again, the BUTTON must be pushed once (only after the current is back to normal.) **NOTE: this value must be higher than Param 4**
+<p&gtSets the maximum current the plug will pass before it cuts off power and sends a NOTIFICATION\_EVENT\_POWER_ MANAGEMENT\_OVER\_LOAD\_DETECTED signal to Group 1 and a BASIC\_SET(FF) to Group 2. The LED will then blink red once per second until the current returns to normal. To clear the NOTIFICATION and start monitoring again, the BUTTON must be pushed once (only after the current is back to normal.) <strong&gtNOTE: this value must be higher than Param 4</strong&gt</p&gt
 Values in the range 1 to 16 may be set.
 
 The manufacturer defined default value is ```13```.
@@ -145,7 +145,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Set "Alert" Current Level
 
 Current level warning threshold
-Sets the current level at which the On/Off Plug-In Switch will flash its LED yellow, until the current returns to below this level. It will NOT cut off current to the device; this functions as a visible warning to the user. **NOTE: this value must be lower than Param 3**
+<p&gtSets the current level at which the On/Off Plug-In Switch will flash its LED yellow, until the current returns to below this level. It will NOT cut off current to the device; this functions as a visible warning to the user. <strong&gtNOTE: this value must be lower than Param 3</strong&gt</p&gt
 Values in the range 1 to 16 may be set.
 
 The manufacturer defined default value is ```12```.
@@ -172,7 +172,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Current change METER_REPORT level
 
 Report of relative change in current flow
-In addition to sending a METER\_REPORT to Group 1 in the time interval set by Param 2, the On/Off Plug-In Switch also sends a METER\_REPORT when it detects a relative change in current flow. This parameter sets this minimum current change amount, in percent, at which point the On/Off Plug-In Switch will send a METER_REPORT to Group 1. Also see Param 1 & 2.
+<p&gtIn addition to sending a METER\_REPORT to Group 1 in the time interval set by Param 2, the On/Off Plug-In Switch also sends a METER\_REPORT when it detects a relative change in current flow. This parameter sets this minimum current change amount, in percent, at which point the On/Off Plug-In Switch will send a METER_REPORT to Group 1. Also see Param 1 & 2.</p&gt
 Values in the range 1 to 64 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -199,7 +199,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Enable/Disable Timer Function
 
 Timer once plugged in before it turn off the device.
-If this parameter is enabled, whenever the On/Off Plug-In Switch is turned on, it will automatically turn off after a set amount of time (set in Param 9.)
+<p&gtIf this parameter is enabled, whenever the On/Off Plug-In Switch is turned on, it will automatically turn off after a set amount of time (set in Param 9.)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -215,7 +215,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Set Timer Time Interval
 
 Time before auto shut off if on.
-Sets the time interval before the On/Off Plug-In Switch automatically shuts off. See Param 8.
+<p&gtSets the time interval before the On/Off Plug-In Switch automatically shuts off. See Param 8.</p&gt
 Values in the range 1 to 65535 may be set.
 
 The manufacturer defined default value is ```96```.
@@ -226,7 +226,7 @@ This parameter has the configuration ID ```config_9_4``` and is of type ```INTEG
 ### Parameter 10: Enable/Disable BUTTON
 
 Turn off the button
-If this parameter is enabled, the user can turn the device on or off using the BUTTON.
+<p&gtIf this parameter is enabled, the user can turn the device on or off using the BUTTON.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -262,19 +262,19 @@ The DMOF1 supports 3 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Group 1 is the “Lifeline” group, which can hold five devices. The On/Off Plug-In Switch sends this group a Notification Report and Binary Switch Report whenever it is turned on or off. It also sends a Meter Report incrementally based on time (see Param 2,) or when a relative change in power usage is detected (see Param 6.) Finally, the On/Off Plug-In Switch sends this group a Device Reset Locally notification to remove itself from the Z-Wave network. 
+<p&gtGroup 1 is the “Lifeline” group, which can hold five devices. The On/Off Plug-In Switch sends this group a Notification Report and Binary Switch Report whenever it is turned on or off. It also sends a Meter Report incrementally based on time (see Param 2,) or when a relative change in power usage is detected (see Param 6.) Finally, the On/Off Plug-In Switch sends this group a Device Reset Locally notification to remove itself from the Z-Wave network. </p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Group 2
 
-The On/Off Plug-In Switch sends a BASIC\_SET(FF) command to Association Group 2 to directly trigger devices (like a siren, chime, etc.) when the current passes above the level set in Parameter 3. When the current drops below the level again, a BASIC\_SET(00) command is sent to reset the device (e.g. turn off the siren.) This Group can hold five devices.
+<p&gtThe On/Off Plug-In Switch sends a BASIC\_SET(FF) command to Association Group 2 to directly trigger devices (like a siren, chime, etc.) when the current passes above the level set in Parameter 3. When the current drops below the level again, a BASIC\_SET(00) command is sent to reset the device (e.g. turn off the siren.) This Group can hold five devices.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Group 3
 
-The On/Off Plug-In Switch sends Notification Reports to Group 3, and it can hold five devices.
+<p&gtThe On/Off Plug-In Switch sends Notification Reports to Group 3, and it can hold five devices.</p&gt
 
 Association group 3 supports 5 nodes.
 
@@ -303,9 +303,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/645/DMOF1-dome-z-wave-plug-operating-guide.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/645/DMOF1-dome-z-wave-plug-operating-guide.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/645).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/645).

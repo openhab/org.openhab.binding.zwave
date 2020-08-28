@@ -11,7 +11,7 @@ This version of the device is limited to firmware versions below 5.9
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![ZWN-BPC product image](https://www.cd-jackson.com/zwave_device_uploads/186/186_default.jpg)
+![ZWN-BPC product image](https://opensmarthouse.org/zwavedatabase/186/image/)
 
 
 The ZWN-BPC supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -20,15 +20,15 @@ The ZWN-BPC does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-This sensor acts as a security device by detecting changes in infrared  radiation levels. when some body moves within or across the detection of coverage, one triggering signal will be transmitted to associated Z-Wave devices
+<p&gtThis sensor acts as a security device by detecting changes in infrared  radiation levels. when some body moves within or across the detection of coverage, one triggering signal will be transmitted to associated Z-Wave devices</p&gt
 
 ### Inclusion Information
 
-Press and release the program button
+<p&gtPress and release the program button</p&gt
 
 ### Exclusion Information
 
-Press and release the program button
+<p&gtPress and release the program button</p&gt
 
 ### Wakeup Information
 
@@ -37,7 +37,7 @@ The ZWN-BPC does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-press and hold the program switch for one second,
+<p&gtpress and hold the program switch for one second,</p&gt
 
 ## Channels
 
@@ -137,9 +137,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/186/zwn-bpc-3-28.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/186/zwn-bpc-3-28.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/186).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/186).

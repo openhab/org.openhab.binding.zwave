@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZME_KFOB-S*, manufactured by *Z-Wave.Me* with 
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![ZME_KFOB-S product image](https://www.cd-jackson.com/zwave_device_uploads/548/548_default.png)
+![ZME_KFOB-S product image](https://opensmarthouse.org/zwavedatabase/548/image/)
 
 
 The ZME_KFOB-S supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,24 +19,15 @@ The ZME_KFOB-S does not permanently listen for messages sent from the controller
 
 ## Overview
 
-The Z-Wave.Me Key Fob is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices the fob can?t act as Z-Wave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network. The Key Fob can be used in five different modes that are picked by configuration commands:
-
-  1. Direct Control of associated Devices with On/Off/Dim commands
-  2. Direct Control of associated Devices with On/Off commands
-  3. Switch All On/Off
-  4. Scene Activation in IP Gateway
-  5. Direct Activation of preconfigured Scenes
-  6. Direct Control of Devices in proximity
+<p&gtThe Z-Wave.Me Key Fob is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices the fob can?t act as Z-Wave network controller (primary or secondary) and will always need a Z-Wave network controller to be included into a Z-Wave network. The Key Fob can be used in five different modes that are picked by configuration commands:</p&gt <ol&gt<li&gtDirect Control of associated Devices with On/Off/Dim commands</li&gt <li&gtDirect Control of associated Devices with On/Off commands</li&gt <li&gtSwitch All On/Off</li&gt <li&gtScene Activation in IP Gateway</li&gt <li&gtDirect Activation of preconfigured Scenes</li&gt <li&gtDirect Control of Devices in proximity</li&gt </ol&gt
 
 ### Inclusion Information
 
-  1. Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec
-  2.  Button 3 confirms standard inclusion/exclusion by a primary controller,
+<ol&gt<li&gtPushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec</li&gt <li&gt Button 3 confirms standard inclusion/exclusion by a primary controller,</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec
-  2.  Button 3 confirms standard inclusion/exclusion by a primary controller,
+<ol&gt<li&gtPushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec</li&gt <li&gt Button 3 confirms standard inclusion/exclusion by a primary controller,</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -45,8 +36,7 @@ The ZME_KFOB-S does not permanently listen for messages sent from the controller
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  1. Pushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec
-  2. Button 2 issues a node information frame or wakeup notification
+<ol&gt<li&gtPushing all four buttons for 5 sec. will turn the fob into management mode. Management mode will time out after 10 sec</li&gt <li&gtButton 2 issues a node information frame or wakeup notification</li&gt </ol&gt
 
 ## Channels
 
@@ -103,7 +93,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Button 1 and 3 pair mode 
 
 Set Button 1 and 3 pair mode
-In separate mode button 1 works with group A, button 3 with groups C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group A, double click with group C. Default Value: 01
+<p&gtIn separate mode button 1 works with group A, button 3 with groups C. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button 1/3 are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group A, double click with group C. Default Value: 01</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -120,7 +110,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Button 2 and 4 pair mode 
 
 Set Button 2 and 4 pair mode
-In separate mode button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B, double click with group D. Default Value: 01
+<p&gtIn separate mode button 2 works with control group B, button 4 with control group D. Click is On, Hold is dimming Up, Double click is Off, Click-Hold is dimming Down. In pair button B/D are Up/Down correspondingly. Click is On/Off, Hold is dimming Up/Down. Single clicks works with group B, double click with group D. Default Value: 01</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -137,7 +127,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 11: Command to Control Group A
 
 Set Command to Control Group A
-This parameter defines the command to be sent to devices of control group A when the related button is pressed. Default Value: 08
+<p&gtThis parameter defines the command to be sent to devices of control group A when the related button is pressed. Default Value: 08</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -160,7 +150,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: Command to Control Group B
 
 Set Command to Control Group B
-This parameter defines the command to be sent to devices of control group B when the related button is pressed. Default Value: 08
+<p&gtThis parameter defines the command to be sent to devices of control group B when the related button is pressed. Default Value: 08</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -183,7 +173,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: Command to Control Group C
 
 Set Command to Control Group C
-This parameter defines the command to be sent to devices of control group C when the related button is pressed. Default Value: 08
+<p&gtThis parameter defines the command to be sent to devices of control group C when the related button is pressed. Default Value: 08</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -206,7 +196,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: Command to Control Group D
 
 Set Command to Control Group D
-This parameter defines the command to be sent to devices of control group D when the related button is pressed. Default Value: 08
+<p&gtThis parameter defines the command to be sent to devices of control group D when the related button is pressed. Default Value: 08</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -229,7 +219,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 21: Send the following Switch All commands
 
 Set Send the following Switch All commands
-Send the following Switch All commands
+<p&gtSend the following Switch All commands</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -246,7 +236,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 ### Parameter 22: Invert buttons
 
 Invert buttons
-Invert buttons
+<p&gtInvert buttons</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -262,8 +252,7 @@ This parameter has the configuration ID ```config_22_1``` and is of type ```INTE
 ### Parameter 25: Blocks wakeup even when wakeup interval is set 
 
 Set Blocks wakeup even when wakeup interval is set
-If the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery  
-Size: 1 Byte, Default Value: 00
+<p&gtIf the KFOB wakes up and there is no controller nearby, several unsuccessful communication attempts will drain battery <br /&gt Size: 1 Byte, Default Value: 00</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -279,7 +268,7 @@ This parameter has the configuration ID ```config_25_1``` and is of type ```INTE
 ### Parameter 30: Send unsolicited Battery Report on Wake Up
 
 Set Send unsolicited Battery Report on Wake Up
-Set Send unsolicited Battery Report on Wake Up
+<p&gtSet Send unsolicited Battery Report on Wake Up</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -324,25 +313,25 @@ Association group 1 supports 10 nodes.
 
 ### Group 2: Control Group A
 
-Control Group A, controlled by button 1 or single clicks of buttons
+<p&gtControl Group A, controlled by button 1 or single clicks of buttons</p&gt
 
 Association group 2 supports 10 nodes.
 
 ### Group 3: Control Group B
 
-Control Group B, controlled by button 2 or single clicks of buttons 2
+<p&gtControl Group B, controlled by button 2 or single clicks of buttons 2</p&gt
 
 Association group 3 supports 10 nodes.
 
 ### Group 4: Control Group C
 
-Control Group C, controlled by button 3 or double clicks of buttons 1
+<p&gtControl Group C, controlled by button 3 or double clicks of buttons 1</p&gt
 
 Association group 4 supports 10 nodes.
 
 ### Group 5: Control Group D
 
-Control Group D, controlled by button 4 or double clicks of buttons 2
+<p&gtControl Group D, controlled by button 4 or double clicks of buttons 2</p&gt
 
 Association group 5 supports 10 nodes.
 
@@ -372,9 +361,9 @@ Association group 5 supports 10 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/548/ZME-KFOB-S.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/548/ZME-KFOB-S.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/548).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/548).

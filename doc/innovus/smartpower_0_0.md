@@ -10,22 +10,22 @@ This describes the Z-Wave device *SmartPower*, manufactured by *INNOVUS* with th
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![SmartPower product image](https://www.cd-jackson.com/zwave_device_uploads/61/61_default.png)
+![SmartPower product image](https://opensmarthouse.org/zwavedatabase/61/image/)
 
 
 The SmartPower supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-For the further reduction of energy consumption INNOVUS offers "RAone SmartPower". This module is an on / off module, which is used in particular to reduce the energy consumption of devices that unnecessarily consume power in "stand-by mode". This module also has a fingertip panel and is also equipped with an internal power meter. 
+<p&gtFor the further reduction of energy consumption INNOVUS offers "RAone SmartPower". This module is an on / off module, which is used in particular to reduce the energy consumption of devices that unnecessarily consume power in "stand-by mode". This module also has a fingertip panel and is also equipped with an internal power meter. </p&gt
 
 ### Inclusion Information
 
-The device is put into learn mode by touching the touchplate.
+<p&gtThe device is put into learn mode by touching the touchplate.</p&gt
 
 ### Exclusion Information
 
-The device is put into learn mode by touching the touchplate.
+<p&gtThe device is put into learn mode by touching the touchplate.</p&gt
 
 ## Channels
 
@@ -68,9 +68,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Report node
 
 Report changes in level to this node id
-Report Node, reports changes in level to this node id.
-
-Disabled if 0. -> Copied from SmartDimmer, as there's no config information available.
+<p&gtReport Node, reports changes in level to this node id.</p&gt <p&gtDisabled if 0. -> Copied from SmartDimmer, as there's no config information available.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -81,7 +79,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: BO IR support
 
 Enable/Disable BO IR Support
-BO IR support is disabled if 0 otherwise enabled. -> Copied from SmartDimmer, as there's no config information available.
+<p&gtBO IR support is disabled if 0 otherwise enabled. -> Copied from SmartDimmer, as there's no config information available.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -144,9 +142,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Technical documentation](https://www.cd-jackson.com/zwave_device_uploads/61/smartpower-zw-tech-doc.pdf)
+* [Technical documentation](https://opensmarthouse.org/zwavedatabase/61/smartpower-zw-tech-doc.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/61).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/61).

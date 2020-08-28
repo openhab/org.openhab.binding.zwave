@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zen22_03_000" listed="false">
     <label>ZEN22 Paddle Dimmer</label>
-    <description><![CDATA[
-Paddle Dimmer<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brightness control </li> <li>Direct 3-Way: works with regular on/off switches in a 3-way (neutral wire required)</li> <li>Fully adjustable ramp rate for just the right on/off speed</li> <li>Double tap to full brightness feature</li> <li>Remembers and restores on/off status aer power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Works with LED and incandescent bulbs (don’t use with fans)</li> <li>Accepts OTA firmware updates</li> <li>Customizable LED indicator and air-gap switch for added safety</li> </ul><br /><h2>Inclusion Information</h2><p>Tap the upper paddle 4-5 times quickly</p> <br /><h2>Exclusion Information</h2><p>Tap the lower paddle 3 times quickly</p>
-    ]]></description>
+    <description>Paddle Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtManual or Z-Wave on/off and brightness control &lt;/li&gt &lt;li&gtDirect 3-Way: works with regular on/off switches in a 3-way (neutral wire required)&lt;/li&gt &lt;li&gtFully adjustable ramp rate for just the right on/off speed&lt;/li&gt &lt;li&gtDouble tap to full brightness feature&lt;/li&gt &lt;li&gtRemembers and restores on/off status aer power failure&lt;/li&gt &lt;li&gtBuilt-in Z-Wave Plus signal repeater to extend network range&lt;/li&gt &lt;li&gtWorks with LED and incandescent bulbs (don’t use with fans)&lt;/li&gt &lt;li&gtAccepts OTA firmware updates&lt;/li&gt &lt;li&gtCustomizable LED indicator and air-gap switch for added safety&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTap the upper paddle 4-5 times quickly&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTap the lower paddle 3 times quickly&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -81,9 +79,7 @@ Paddle Dimmer<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brightne
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Auto Turn-off enable/disable</label>
-        <description><![CDATA[
-Auto Turn-off enable/disable<br /><h1>Overview</h1><p>Default disabled</p>
-        ]]></description>
+        <description>Auto Turn-off enable/disable&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer disabled</option>
@@ -94,17 +90,13 @@ Auto Turn-off enable/disable<br /><h1>Overview</h1><p>Default disabled</p>
       <parameter name="config_4_4" type="integer" groupName="configuration"
                  min="1" max="65535">
         <label>4: Auto Turn-off time</label>
-        <description><![CDATA[
-Auto Turn-off time<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the switch to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p> <p>Default: 60 minutes</p>
-        ]]></description>
+        <description>Auto Turn-off time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUse this parameter to set the time after which you want the switch to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault: 60 minutes&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Auto Turn-on enable/disable</label>
-        <description><![CDATA[
-Auto Turn-on enable/disable<br /><h1>Overview</h1><p>Default disabled</p>
-        ]]></description>
+        <description>Auto Turn-on enable/disable&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer disabled</option>
@@ -115,9 +107,7 @@ Auto Turn-on enable/disable<br /><h1>Overview</h1><p>Default disabled</p>
       <parameter name="config_6_4" type="integer" groupName="configuration"
                  min="1" max="65535">
         <label>6: Auto Turn-on time</label>
-        <description><![CDATA[
-Auto Turn-on time<br /><h1>Overview</h1><p>Use this parameter to set the time aer which you want the switch to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes</p> <p>Default 60 minutes</p>
-        ]]></description>
+        <description>Auto Turn-on time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUse this parameter to set the time aer which you want the switch to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault 60 minutes&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
       </parameter>
 
@@ -135,35 +125,27 @@ Auto Turn-on time<br /><h1>Overview</h1><p>Use this parameter to set the time ae
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>9: Dimmer Ramp Rate</label>
-        <description><![CDATA[
-Dimmer Ramp Rate<br /><h1>Overview</h1><p>Adjust the ramp rate for your dimmer (fade-in / fade-out effect for on / off operation). Values correspond to the number of seconds it take for the dimmer to reach full brightness or turn off when operated manually.</p> <p>Default 1 second</p>
-        ]]></description>
+        <description>Dimmer Ramp Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjust the ramp rate for your dimmer (fade-in / fade-out effect for on / off operation). Values correspond to the number of seconds it take for the dimmer to reach full brightness or turn off when operated manually.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault 1 second&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>10: Minimum brightness level</label>
-        <description><![CDATA[
-Minimum brightness level<br /><h1>Overview</h1><p>Set the minimum brightness level (in %) for your dimmer. You won’t be able to dim the light below the set value</p> <p>Default 1 percent</p>
-        ]]></description>
+        <description>Minimum brightness level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the minimum brightness level (in %) for your dimmer. You won’t be able to dim the light below the set value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault 1 percent&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>11: Maximum brightness level</label>
-        <description><![CDATA[
-Maximum brightness level<br /><h1>Overview</h1><p>Set the maximum brightness level (in %) for your dimmer. You won’t be able to add brightness to the light beyond the set value.</p> <p><strong>Note</strong>: if Parameter 12 is set to value 0, Parameter 11 is automatically disabled</p> <p>Default: 99 percent</p>
-        ]]></description>
+        <description>Maximum brightness level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the maximum brightness level (in %) for your dimmer. You won’t be able to add brightness to the light beyond the set value.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNote&amp;lt;/strong&amp;amp;gt: if Parameter 12 is set to value 0, Parameter 11 is automatically disabled&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault: 99 percent&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Double Tap function</label>
-        <description><![CDATA[
-Double Tap function<br /><h1>Overview</h1><p>Choose if you want the dimmer to turn on to full brightness or custom brightness level after you double-tap the upper paddle</p>
-        ]]></description>
+        <description>Double Tap function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the dimmer to turn on to full brightness or custom brightness level after you double-tap the upper paddle&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Full brightness (default)</option>
@@ -178,9 +160,7 @@ Double Tap function<br /><h1>Overview</h1><p>Choose if you want the dimmer to tu
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: BASIC SET</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p> This device will send BASIC SET to group 2 when operated manually.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt This device will send BASIC SET to group 2 when operated manually.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

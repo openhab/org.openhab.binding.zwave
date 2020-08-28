@@ -10,37 +10,22 @@ This describes the Z-Wave device *GoControl GC-TBZ48*, manufactured by *Linear C
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![GoControl GC-TBZ48 product image](https://www.cd-jackson.com/zwave_device_uploads/622/622_default.jpg)
+![GoControl GC-TBZ48 product image](https://opensmarthouse.org/zwavedatabase/622/image/)
 
 
 The GoControl GC-TBZ48 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The Z-Wave Thermostat (GC-TBZ48) is a programmable, Z-Wave communications thermostat. It can be powered using 24VAC (if both “R”&”C”wires are available at the thermostat), or using four (4) AA batteries. Using Z-Wave technology, end users have the ability to use the 2GIG Go!Control panel to control the thermostat, configure programming settings, as well as to display current conditions in the home or office.
+<p&gtThe Z-Wave Thermostat (GC-TBZ48) is a programmable, Z-Wave communications thermostat. It can be powered using 24VAC (if both “R”&”C”wires are available at the thermostat), or using four (4) AA batteries. Using Z-Wave technology, end users have the ability to use the 2GIG Go!Control panel to control the thermostat, configure programming settings, as well as to display current conditions in the home or office.</p&gt
 
 ### Inclusion Information
 
-  1. Set your primary controller to Include, add or Install mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions).
-  2. Press any button to take thermostat out of sleep mode.
-  3. Press and hold FAN button for 5 seconds. SETUP will be displayed in the status display line.
-  4. Scroll to “Z-Wave” using up/down buttons. Press SELECT.
-  5. When prompted by your Z-Wave controller, Press the YES button in the Z-Wave Install screen.
-  6. Press SELECT (mode button) to add thermostat to network.
-  7. Display line should flash WAIT then SUCCESS if Z-Wave connection is made.
-  8. If Z-Wave does not connect to controller, WAIT, then FAIL will flash in status display line.
-  9. If thermostat fails to connect, repeat Steps three (3) through (7) to re-try connecting.
+<ol&gt<li&gtSet your primary controller to Include, add or Install mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions).</li&gt <li&gtPress any button to take thermostat out of sleep mode.</li&gt <li&gtPress and hold FAN button for 5 seconds. SETUP will be displayed in the status display line.</li&gt <li&gtScroll to “Z-Wave” using up/down buttons. Press SELECT.</li&gt <li&gtWhen prompted by your Z-Wave controller, Press the YES button in the Z-Wave Install screen.</li&gt <li&gtPress SELECT (mode button) to add thermostat to network.</li&gt <li&gtDisplay line should flash WAIT then SUCCESS if Z-Wave connection is made.</li&gt <li&gtIf Z-Wave does not connect to controller, WAIT, then FAIL will flash in status display line.</li&gt <li&gtIf thermostat fails to connect, repeat Steps three (3) through (7) to re-try connecting.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Set your primary controller to Include, add or Install mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions).
-  2. Press any button to take thermostat out of sleep mode.
-  3. Press and hold FAN button for 5 seconds. SETUP will be displayed in the status display line.
-  4. Scroll to “Z-Wave” using up/down buttons. Press SELECT.
-  5. When prompted by your Z-Wave controller, Press the YES button in the Z-Wave Install screen.
-  6. Press SELECT (mode button) to add thermostat to network.
-  7. Display line should fl ash WAIT then SUCCESS if Z-Wave connection is made.
-  8. If Z-Wave does not connect to controller, WAIT, then FAIL will flash in status display line. 
+<ol&gt<li&gtSet your primary controller to Include, add or Install mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions).</li&gt <li&gtPress any button to take thermostat out of sleep mode.</li&gt <li&gtPress and hold FAN button for 5 seconds. SETUP will be displayed in the status display line.</li&gt <li&gtScroll to “Z-Wave” using up/down buttons. Press SELECT.</li&gt <li&gtWhen prompted by your Z-Wave controller, Press the YES button in the Z-Wave Install screen.</li&gt <li&gtPress SELECT (mode button) to add thermostat to network.</li&gt <li&gtDisplay line should fl ash WAIT then SUCCESS if Z-Wave connection is made.</li&gt <li&gtIf Z-Wave does not connect to controller, WAIT, then FAIL will flash in status display line. </li&gt </ol&gt
 
 ## Channels
 
@@ -57,7 +42,7 @@ The following table summarises the channels available for the GoControl GC-TBZ48
 | Thermostat fan mode | thermostat_fanmode | thermostat_fanmode |  |  | 
 | Thermostat fan state | thermostat_fanstate | thermostat_fanstate |  |  | 
 | Battery Level | battery-level | system.battery_level | Battery | Number |
-| Clock Time Offset | time_offset | time_offset | Temperature | Number | 
+| Clock Time Offset | time_offset | time_offset | Time | Number | 
 
 ### Scene Number
 Triggers when a scene button is pressed.
@@ -132,7 +117,7 @@ This channel provides the battery level as a percentage and also reflects the lo
 ### Clock Time Offset
 Provides the current time difference for the devices time.
 
-The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Temperature``` category.
+The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Time``` category.
 
 
 
@@ -201,8 +186,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Fan Type
 
 Fan Type
-  * 0 = Gas (no fan w/Heat)
-  * 1 = Electric (Fan w/Heat)
+<ul&gt<li&gt0 = Gas (no fan w/Heat)</li&gt <li&gt1 = Electric (Fan w/Heat)</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -298,7 +282,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Minimum Off Time
 
 Minimum Off Time
-Sets the Minimum Off Time (MOT) delay before another heating/cooling cycle can begin
+<p&gtSets the Minimum Off Time (MOT) delay before another heating/cooling cycle can begin</p&gt
 Values in the range 5 to 9 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -309,7 +293,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Minimum Run Time
 
 Minimum Run Time
-Sets the Minimum Run Time (MRT) delay before a heating/cooling cycle can turn off
+<p&gtSets the Minimum Run Time (MRT) delay before a heating/cooling cycle can turn off</p&gt
 Values in the range 3 to 9 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -320,7 +304,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: Setpoint H/C Delta
 
 Setpoint H/C Delta
-Sets the minimum separation between heating and cooling setpoints
+<p&gtSets the minimum separation between heating and cooling setpoints</p&gt
 Values in the range 3 to 15 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -331,7 +315,7 @@ This parameter has the configuration ID ```config_10_1``` and is of type ```INTE
 ### Parameter 11: H Delta Stage 1 ON
 
 H Delta Stage 1 ON
-Sets the delta from setpoint that stage 1 heating starts
+<p&gtSets the delta from setpoint that stage 1 heating starts</p&gt
 Values in the range 1 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -342,7 +326,7 @@ This parameter has the configuration ID ```config_11_1``` and is of type ```INTE
 ### Parameter 12: H Delta Stage 1 OFF
 
 H Delta Stage 1 OFF
-Sets the delta from setpoint that stage 1 heating stops
+<p&gtSets the delta from setpoint that stage 1 heating stops</p&gt
 Values in the range 0 to 5 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -353,7 +337,7 @@ This parameter has the configuration ID ```config_12_1``` and is of type ```INTE
 ### Parameter 13: H Delta Stage 2 ON
 
 H Delta Stage 2 ON
-Sets the delta from setpoint that stage 2 heating starts
+<p&gtSets the delta from setpoint that stage 2 heating starts</p&gt
 Values in the range 2 to 7 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -364,7 +348,7 @@ This parameter has the configuration ID ```config_13_1``` and is of type ```INTE
 ### Parameter 14: H Delta Stage 2 OFF
 
 H Delta Stage 2 OFF
-Sets the delta from setpoint that stage 2 heating stops
+<p&gtSets the delta from setpoint that stage 2 heating stops</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -375,7 +359,7 @@ This parameter has the configuration ID ```config_14_1``` and is of type ```INTE
 ### Parameter 15: H Delta Aux ON
 
 H Delta Aux ON
-Sets the delta from setpoint that stage 3 heating starts
+<p&gtSets the delta from setpoint that stage 3 heating starts</p&gt
 Values in the range 3 to 8 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -386,7 +370,7 @@ This parameter has the configuration ID ```config_15_1``` and is of type ```INTE
 ### Parameter 16: H Delta Stage 3 OFF
 
 H Delta Stage 3 OFF
-Sets the delta from setpoint that stage 3 heating stops
+<p&gtSets the delta from setpoint that stage 3 heating stops</p&gt
 Values in the range 0 to 7 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -397,7 +381,7 @@ This parameter has the configuration ID ```config_16_1``` and is of type ```INTE
 ### Parameter 17: C Delta Stage 1 ON
 
 C Delta Stage 1 ON
-Sets the delta from setpoint that stage 1 cooling starts
+<p&gtSets the delta from setpoint that stage 1 cooling starts</p&gt
 Values in the range 1 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -408,7 +392,7 @@ This parameter has the configuration ID ```config_17_1``` and is of type ```INTE
 ### Parameter 18: C Delta Stage 1 OFF
 
 C Delta Stage 1 OFF
-Sets the delta from setpoint that stage 1 cooling stops
+<p&gtSets the delta from setpoint that stage 1 cooling stops</p&gt
 Values in the range 0 to 5 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -419,7 +403,7 @@ This parameter has the configuration ID ```config_18_1``` and is of type ```INTE
 ### Parameter 19: C Delta Stage 2 ON
 
 C Delta Stage 2 ON
-Sets the delta from setpoint that stage 2 cooling starts
+<p&gtSets the delta from setpoint that stage 2 cooling starts</p&gt
 Values in the range 2 to 7 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -430,7 +414,7 @@ This parameter has the configuration ID ```config_19_1``` and is of type ```INTE
 ### Parameter 20: C Delta Stage 2 OFF
 
 C Delta Stage 2 OFF
-Sets the delta from setpoint that stage 2 cooling stops
+<p&gtSets the delta from setpoint that stage 2 cooling stops</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -441,24 +425,7 @@ This parameter has the configuration ID ```config_20_1``` and is of type ```INTE
 ### Parameter 23: Lifeline Association Group Report To Send
 
 Lifeline Association Group Report To Send
-Report to send to the Lifeline Association Group upon change in thermostat state. 
-
-Bitmask values:
-
-  * 1 = Temperature
-  * 2 = Heat Setpoint
-  * 4 = Cool Setpoint
-  * 8 = Thermostat Heat/Cooling Mode
-  * 16 = Fan Mode
-  * 32 = Fan State
-  * 64 = Operating State
-  * 128 = Schedule (send CC parameter 38)
-  * 256 = Setback (send CC parameter 40)
-  * 512 = Run Hold (send CC parameter 39)
-  * 1024 = Display Lock (send CC parameter 24)
-  * 8192 = Battery Level
-  * 16834 = Mechanical Relay State (send CC parameter 21)
-  * 32768 = Thermostat State Config (send CC parameter 22)    This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtReport to send to the Lifeline Association Group upon change in thermostat state. </p&gt <p&gtBitmask values:</p&gt <ul&gt<li&gt1 = Temperature</li&gt <li&gt2 = Heat Setpoint</li&gt <li&gt4 = Cool Setpoint</li&gt <li&gt8 = Thermostat Heat/Cooling Mode</li&gt <li&gt16 = Fan Mode</li&gt <li&gt32 = Fan State</li&gt <li&gt64 = Operating State</li&gt <li&gt128 = Schedule (send CC parameter 38)</li&gt <li&gt256 = Setback (send CC parameter 40)</li&gt <li&gt512 = Run Hold (send CC parameter 39)</li&gt <li&gt1024 = Display Lock (send CC parameter 24)</li&gt <li&gt8192 = Battery Level</li&gt <li&gt16834 = Mechanical Relay State (send CC parameter 21)</li&gt <li&gt32768 = Thermostat State Config (send CC parameter 22)    </li&gt </ul&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```8319```.
@@ -485,7 +452,7 @@ This parameter has the configuration ID ```config_24_1``` and is of type ```INTE
 ### Parameter 26: Backlight Timer
 
 Backlight Timer
-Sets the time from last button press that the backlight will turn OFF
+<p&gtSets the time from last button press that the backlight will turn OFF</p&gt
 Values in the range 10 to 30 may be set.
 
 The manufacturer defined default value is ```20```.
@@ -496,7 +463,7 @@ This parameter has the configuration ID ```config_26_1``` and is of type ```INTE
 ### Parameter 33: Max Heat Setpoint
 
 Max Heat Setpoint
-Sets the maximum heating setpoint value
+<p&gtSets the maximum heating setpoint value</p&gt
 Values in the range 30 to 109 may be set.
 
 The manufacturer defined default value is ```90```.
@@ -507,7 +474,7 @@ This parameter has the configuration ID ```config_33_1``` and is of type ```INTE
 ### Parameter 34: Min Cool Setpoint
 
 Min Cool Setpoint
-Sets the minimum cooling setpoint value
+<p&gtSets the minimum cooling setpoint value</p&gt
 Values in the range 33 to 112 may be set.
 
 The manufacturer defined default value is ```61```.
@@ -518,7 +485,7 @@ This parameter has the configuration ID ```config_34_1``` and is of type ```INTE
 ### Parameter 38: Schedule Enable
 
 Schedule Enable
-Enable or disable thermostat's local scheduler
+<p&gtEnable or disable thermostat's local scheduler</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -534,7 +501,7 @@ This parameter has the configuration ID ```config_38_1``` and is of type ```INTE
 ### Parameter 39: Run/Hold Mode
 
 Run/Hold Mode
-0 = Hold, 1 = Run
+<p&gt0 = Hold, 1 = Run</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -566,7 +533,7 @@ This parameter has the configuration ID ```config_40_1``` and is of type ```INTE
 ### Parameter 41: Un-Occupied HSP
 
 Un-Occupied HSP
-Heat Setpoint for Unoccupied mode
+<p&gtHeat Setpoint for Unoccupied mode</p&gt
 Values in the range 30 to 109 may be set.
 
 The manufacturer defined default value is ```62```.
@@ -577,7 +544,7 @@ This parameter has the configuration ID ```config_41_1``` and is of type ```INTE
 ### Parameter 42: Un-Occupied CSP
 
 Un-Occupied CSP
-Cool Setpoint for Unoccupied mode
+<p&gtCool Setpoint for Unoccupied mode</p&gt
 Values in the range 33 to 112 may be set.
 
 The manufacturer defined default value is ```80```.
@@ -588,7 +555,7 @@ This parameter has the configuration ID ```config_42_1``` and is of type ```INTE
 ### Parameter 43: Remote Sensor 1 Node Number
 
 Remote Sensor 1 Node Number
-Node number for Remote Sensor 1
+<p&gtNode number for Remote Sensor 1</p&gt
 Values in the range 0 to 252 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -599,7 +566,7 @@ This parameter has the configuration ID ```config_43_1``` and is of type ```INTE
 ### Parameter 46: Remote Sensor 1 Temperature
 
 Remote Sensor 1 Temperature
-Temperature of Remote Sensor 1
+<p&gtTemperature of Remote Sensor 1</p&gt
 Values in the range 0 to 112 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -610,7 +577,7 @@ This parameter has the configuration ID ```config_46_1``` and is of type ```INTE
 ### Parameter 48: Internal Sensor Temp Offset
 
 Internal Sensor Temp Offset
-Internal Sensor Temperature Offset
+<p&gtInternal Sensor Temperature Offset</p&gt
 Values in the range -7 to 7 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -621,7 +588,7 @@ This parameter has the configuration ID ```config_48_1``` and is of type ```INTE
 ### Parameter 49: R1 Sensor Temp Offset
 
 R1 Sensor Temp Offset
-R1 Sensor Temperature Offset
+<p&gtR1 Sensor Temperature Offset</p&gt
 Values in the range -7 to 7 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -632,7 +599,7 @@ This parameter has the configuration ID ```config_49_1``` and is of type ```INTE
 ### Parameter 54: Heat Timer
 
 Heat Timer
-Heat Timer in hours
+<p&gtHeat Timer in hours</p&gt
 Values in the range 0 to 4000 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -643,7 +610,7 @@ This parameter has the configuration ID ```config_54_2``` and is of type ```INTE
 ### Parameter 55: Cool Timer
 
 Cool Timer
-Cool Timer in hours
+<p&gtCool Timer in hours</p&gt
 Values in the range 0 to 4000 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -654,7 +621,7 @@ This parameter has the configuration ID ```config_55_2``` and is of type ```INTE
 ### Parameter 61: Fan Purge Heat
 
 Fan Purge Heat
-Fan purge period for Heat modeThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtFan purge period for Heat mode</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 90 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -665,7 +632,7 @@ This parameter has the configuration ID ```config_61_1``` and is of type ```INTE
 ### Parameter 62: Fan Purge Cool
 
 Fan Purge Cool
-Fan purge period for Cool modeThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtFan purge period for Cool mode</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 Values in the range 0 to 90 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -728,9 +695,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Product Manual](https://www.cd-jackson.com/zwave_device_uploads/622/GC-TBZ48-Install.pdf)
+* [Product Manual](https://opensmarthouse.org/zwavedatabase/622/GC-TBZ48-Install.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/622).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/622).

@@ -10,28 +10,22 @@ This describes the Z-Wave device *GWPN6*, manufactured by *GreenWave Reality Inc
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![GWPN6 product image](https://www.cd-jackson.com/zwave_device_uploads/100/100_default.jpg)
+![GWPN6 product image](https://opensmarthouse.org/zwavedatabase/100/image/)
 
 
 The GWPN6 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Configuration is for the 6 plug version of the PowerNode.
-
-It should work for both NP210 and NP310 devices (except _NP210_-G-EN which is 5-port UK version).
+<p&gtThis Configuration is for the 6 plug version of the PowerNode.</p&gt <p&gtIt should work for both NP210 and NP310 devices (except <em&gtNP210</em&gt-G-EN which is 5-port UK version).</p&gt
 
 ### Inclusion Information
 
-On the PowerNode, press and hold the **Sync** button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.
-
-After a few seconds, the rotating pattern on both the PowerNode and the Gateway stops. All bars turn green forming a circle for several seconds. This indicates a successful inclusion.
-
-If all bars on the activity indicator start flashing instead of forming a solid circle, then the PowerNode inclusion process has failed, and you must start the sync process again. If syncing continually fails even though the PowerNode is close to the Gateway, then it may be an indication of a hardware fault, and the PowerNode might need replacing.
+<p&gtOn the PowerNode, press and hold the <strong&gtSync</strong&gt button for approximately one second until the activity indicator displays a clockwise rotating pattern. This indicates the PowerNode is attempting inclusion. During this process, verify that the Gateway activity indicator still displays a clockwise rotating pattern.</p&gt <p&gtAfter a few seconds, the rotating pattern on both the PowerNode and the Gateway stops. All bars turn green forming a circle for several seconds. This indicates a successful inclusion.</p&gt <p&gtIf all bars on the activity indicator start flashing instead of forming a solid circle, then the PowerNode inclusion process has failed, and you must start the sync process again. If syncing continually fails even though the PowerNode is close to the Gateway, then it may be an indication of a hardware fault, and the PowerNode might need replacing.</p&gt
 
 ### Exclusion Information
 
-On the PowerNode, press and hold the **Sync** button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.
+<p&gtOn the PowerNode, press and hold the <strong&gtSync</strong&gt button for approximately one second until the PowerNode activity indicator begins to display a counter-clockwise rotating pattern. The PowerNode is attempting exclusion.</p&gt
 
 ## Channels
 
@@ -198,7 +192,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 0: Min. variation of load current
 
 Minimum variation in load current before a message is sent.
-Minimum variation in load current before a message is sent. Value in percent (30 => 30%)
+<p&gtMinimum variation in load current before a message is sent. Value in percent (30 => 30%)</p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -209,7 +203,7 @@ This parameter has the configuration ID ```config_0_1``` and is of type ```INTEG
 ### Parameter 1: No communication light
 
 Duration (min) the device flashes after a communication error.
-After how many minutes the GreenWave device should start flashing if the controller didn't communicate with this device.
+<p&gtAfter how many minutes the GreenWave device should start flashing if the controller didn't communicate with this device.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -307,7 +301,7 @@ Association group 2 supports 1 node.
 
 ### Group 3: Power level change
 
-The new power reading is sent if the delta of the change is greater than the defined minimum variation.
+<p&gtThe new power reading is sent if the delta of the change is greater than the defined minimum variation.</p&gt
 
 Association group 3 supports 1 node.
 
@@ -381,10 +375,10 @@ Association group 4 supports 1 node.
 
 ### Documentation Links
 
-* [English User Manual](https://www.cd-jackson.com/zwave_device_uploads/100/z-wave-greenwave-powernode-manual.pdf)
-* [Technical Notes for Smart Plugs](https://www.cd-jackson.com/zwave_device_uploads/100/Technical-Doc-for-the-powernodes.pdf)
+* [English User Manual](https://opensmarthouse.org/zwavedatabase/100/z-wave-greenwave-powernode-manual.pdf)
+* [Technical Notes for Smart Plugs](https://opensmarthouse.org/zwavedatabase/100/Technical-Doc-for-the-powernodes.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/100).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/100).

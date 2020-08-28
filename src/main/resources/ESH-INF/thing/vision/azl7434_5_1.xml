@@ -7,9 +7,7 @@
 
   <thing-type id="vision_azl7434_05_001" listed="false">
     <label>AZL7434 In-wall Switch</label>
-    <description><![CDATA[
-In-wall Switch<br /><h1>Overview</h1><p>In-wall switch 1-relay</p> <br /><h2>Inclusion Information</h2><p>Press 3 times on Program button within 2 seconds or turn on the wall switch 3 times within 2 seconds.</p> <br /><h2>Exclusion Information</h2><p>Press 3 times on Program button within 2 seconds or turn on the wall switch within 2 seconds</p>
-    ]]></description>
+    <description>In-wall Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIn-wall switch 1-relay&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress 3 times on Program button within 2 seconds or turn on the wall switch 3 times within 2 seconds.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress 3 times on Program button within 2 seconds or turn on the wall switch within 2 seconds&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -53,18 +51,14 @@ In-wall Switch<br /><h1>Overview</h1><p>In-wall switch 1-relay</p> <br /><h2>Inc
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="1" max="2">
         <label>1: Mode</label>
-        <description><![CDATA[
-Mode<br /><h1>Overview</h1><p>Configuration Value:</p> <p>"1" -To Control Light with 1 Wall Switch &amp; to Control Light With 2 WallSwitches.</p> <p>"2"-To Control Light with 1 Wall Switch That Has Light Indicator (factory default).</p>
-        ]]></description>
+        <description>Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtConfiguration Value:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&quot;1&quot; -To Control Light with 1 Wall Switch &amp;amp;amp; to Control Light With 2 WallSwitches.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&quot;2&quot;-To Control Light with 1 Wall Switch That Has Light Indicator (factory default).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="1" max="2">
         <label>2: Switch Type</label>
-        <description><![CDATA[
-Switch Type<br /><h1>Overview</h1><p>Configuration Value:</p> <p>"1" –With common on/off type switch button used(factory default).</p> <p>"2"–With momentary type switch button used.</p>
-        ]]></description>
+        <description>Switch Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtConfiguration Value:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&quot;1&quot; –With common on/off type switch button used(factory default).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&quot;2&quot;–With momentary type switch button used.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

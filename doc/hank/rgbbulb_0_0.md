@@ -10,22 +10,22 @@ This describes the Z-Wave device *RGB bulb*, manufactured by *[Hank](http://www.
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-![RGB bulb product image](https://www.cd-jackson.com/zwave_device_uploads/598/598_default.png)
+![RGB bulb product image](https://opensmarthouse.org/zwavedatabase/598/image/)
 
 
 The RGB bulb supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-A smart bulb with over 16 million colors
+<p&gtA smart bulb with over 16 million colors</p&gt
 
 ### Inclusion Information
 
-Toggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On
+<p&gtToggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On</p&gt
 
 ### Exclusion Information
 
-Toggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On
+<p&gtToggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On</p&gt
 
 ## Channels
 
@@ -97,7 +97,7 @@ This parameter has the configuration ID ```config_21_1``` and is of type ```INTE
 ### Parameter 24: Notification when Load status change
 
 RGB BULB can send notifications to associated device
-RGB BULB can send notifications to associated device (Group Lifeline) when the status of the RGB BULB is changed.
+<p&gtRGB BULB can send notifications to associated device (Group Lifeline) when the status of the RGB BULB is changed.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -130,7 +130,7 @@ This parameter has the configuration ID ```config_51_1``` and is of type ```INTE
 ### Parameter 61: Advance mode
 
 RGB BULB can blink or cyclic/random change color automatically at set intervals.
-RGB BULB can blink or cyclic/random change color automatically at set intervals. It will stop blink or change color when receiving any control command like Basic SetThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtRGB BULB can blink or cyclic/random change color automatically at set intervals. It will stop blink or change color when receiving any control command like Basic Set</p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -217,9 +217,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/598/HKZW-RGB01-Manual.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/598/HKZW-RGB01-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/598).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/598).

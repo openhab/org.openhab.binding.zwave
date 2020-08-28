@@ -10,7 +10,7 @@ This describes the Z-Wave device *Heatit Z-Push Button 8*, manufactured by *[Sun
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Heatit Z-Push Button 8 product image](https://www.cd-jackson.com/zwave_device_uploads/1077/1077_default.png)
+![Heatit Z-Push Button 8 product image](https://opensmarthouse.org/zwavedatabase/1077/image/)
 
 
 The Heatit Z-Push Button 8 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,42 +19,15 @@ The Heatit Z-Push Button 8 does not permanently listen for messages sent from th
 
 ## Overview
 
-Heatit Z-Push Button 8 is a battery operated wall switch with 8 push buttons. The switch enables you to control the Z-Wave- products in your smart home system. Managing your Z-Wave products becomes easy and practical. The switch can be set up to control scenarios or work in associations with other Z-Wave products.
-
-Heatit Z-Push Button 8 can control up to 4 seperate association groups with up to 20 products or up to 16 scenarios through your gateway.
-
-**Functions:**
-
-  * Battery operated wall switch
-  * Fits Gira System 55, Elko RS-16 and Schneider Exxact
-  * Controls 4 separate groups and up to 20 units
-  * Controls up to 16 scenarios via your gateway
-  * LED-diode
-  * Easy to install with screws or double-sided tape
-  * Supports encryption modes S0, S2 Authenticated Class, S2 Unauthenticated Class
+<p&gtHeatit Z-Push Button 8 is a battery operated wall switch with 8 push buttons. The switch enables you to control the Z-Wave- products in your smart home system. Managing your Z-Wave products becomes easy and practical. The switch can be set up to control scenarios or work in associations with other Z-Wave products.</p&gt <p&gtHeatit Z-Push Button 8 can control up to 4 seperate association groups with up to 20 products or up to 16 scenarios through your gateway.</p&gt <p&gt<strong&gtFunctions:</strong&gt</p&gt <ul&gt<li&gtBattery operated wall switch</li&gt <li&gtFits Gira System 55, Elko RS-16 and Schneider Exxact</li&gt <li&gtControls 4 separate groups and up to 20 units</li&gt <li&gtControls up to 16 scenarios via your gateway</li&gt <li&gtLED-diode</li&gt <li&gtEasy to install with screws or double-sided tape</li&gt <li&gtSupports encryption modes S0, S2 Authenticated Class, S2 Unauthenticated Class</li&gt </ul&gt
 
 ### Inclusion Information
 
-**Step 1.** Make sure the remote control does not belong to any Z-Wave network, short press on any button, if LED indicator does not turn on, the remote control does not belong to any network, then continue to step 2, if LED indicator turns on, it means the remote control has already been added to a network, please first set the remote control to removing mode (see exclusion information), then continue to step 2.
-
-**Step 2.** Set primary controller/gateway into adding mode.
-
-**Step 3.** Press and hold down both buttons **I** and **O** of Group 2 our 3 seconds, LED indicator, the remote control will be set to adding mode, and waiting to be added, after 10s LED indicator blinks 6 times quickly to indicate successful adding.
+<p&gt<strong&gtStep 1.</strong&gt Make sure the remote control does not belong to any Z-Wave network, short press on any button, if LED indicator does not turn on, the remote control does not belong to any network, then continue to step 2, if LED indicator turns on, it means the remote control has already been added to a network, please first set the remote control to removing mode (see exclusion information), then continue to step 2.</p&gt <p&gt<strong&gtStep 2.</strong&gt Set primary controller/gateway into adding mode.</p&gt <p&gt<strong&gtStep 3.</strong&gt Press and hold down both buttons <strong&gtI</strong&gt and <strong&gtO</strong&gt of Group 2 our 3 seconds, LED indicator, the remote control will be set to adding mode, and waiting to be added, after 10s LED indicator blinks 6 times quickly to indicate successful adding.</p&gt
 
 ### Exclusion Information
 
-There are two removing methods.
-
-**Method 1:** Removing from the primary controller/gateway as follows:
-
-  1. Set the primary controller/gateway into removing mode.
-  2. Press and hold down both buttons **I** and **O** of Group 2 over 3 seconds, LED indicator turns on, the remote control will be set to removing mode, and waiting to be removed, after 7s LED indicator blinks 4 times quickly to indicate successful removing.
-
-**Method 2:** Factory reset the remote control will force the remote control to be removed from a network.
-
-A factory reset is done by press and holding down buttons **I** and **O** of Group 2 together for over 10 seconds, LED indicator turns on and then blinks 4 times quickly to indicate successful factory reset.
-
-_Note:_ Factory reset is not recommended for removing, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.
+<p&gtThere are two removing methods.</p&gt <p&gt<strong&gtMethod 1:</strong&gt Removing from the primary controller/gateway as follows:</p&gt <ol&gt<li&gtSet the primary controller/gateway into removing mode.</li&gt <li&gtPress and hold down both buttons <strong&gtI</strong&gt and <strong&gtO</strong&gt of Group 2 over 3 seconds, LED indicator turns on, the remote control will be set to removing mode, and waiting to be removed, after 7s LED indicator blinks 4 times quickly to indicate successful removing.</li&gt </ol&gt<p&gt<strong&gtMethod 2:</strong&gt Factory reset the remote control will force the remote control to be removed from a network.</p&gt <p&gtA factory reset is done by press and holding down buttons <strong&gtI</strong&gt and <strong&gtO</strong&gt of Group 2 together for over 10 seconds, LED indicator turns on and then blinks 4 times quickly to indicate successful factory reset.</p&gt <p&gt<em&gtNote:</em&gt Factory reset is not recommended for removing, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.</p&gt
 
 ### Wakeup Information
 
@@ -63,7 +36,7 @@ The Heatit Z-Push Button 8 does not permanently listen for messages sent from th
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The remote control is under sleepy mode for most of the time to save battery power. It can not receive wireless commands under sleepy mode. Before the gateway interacts data with the remote, the remote control shall be activated manually first. Short press any button to activate the remote control for 3s, and press and hold down **I** and **O** buttons of the Group 2 together over 1 second to activate the remote control for 7s.
+<p&gtThe remote control is under sleepy mode for most of the time to save battery power. It can not receive wireless commands under sleepy mode. Before the gateway interacts data with the remote, the remote control shall be activated manually first. Short press any button to activate the remote control for 3s, and press and hold down <strong&gtI</strong&gt and <strong&gtO</strong&gt buttons of the Group 2 together over 1 second to activate the remote control for 7s.</p&gt
 
 ## Channels
 
@@ -150,41 +123,31 @@ The Heatit Z-Push Button 8 supports 5 association groups.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-  1. Send Command Class "Device Reset Locally Notification V1" to associated devices of the group to report factory reset information when factory reset the remote control.
-  2. When remote control battery power value changes, send Command Class "Battery Report V1" to associated devices of this group to report power value information.
-  3. Short press or press and hold any button to send scene activation command to the associated devices of this group using Command Class "Central Scene Notification V3".
+<ol&gt<li&gtSend Command Class "Device Reset Locally Notification V1" to associated devices of the group to report factory reset information when factory reset the remote control.</li&gt <li&gtWhen remote control battery power value changes, send Command Class "Battery Report V1" to associated devices of this group to report power value information.</li&gt <li&gtShort press or press and hold any button to send scene activation command to the associated devices of this group using Command Class "Central Scene Notification V3".</li&gt </ol&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Launch 1
 
-Short press **I/O** button of Group 2 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".
-
-Press and hold down **I/O** button Group 2 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"
+<p&gtShort press <strong&gtI/O</strong&gt button of Group 2 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".</p&gt <p&gtPress and hold down <strong&gtI/O</strong&gt button Group 2 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Launch 2
 
-Short press **I/O** button of Group 3 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".
-
-Press and hold down **I/O** button Group 3 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"
+<p&gtShort press <strong&gtI/O</strong&gt button of Group 3 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".</p&gt <p&gtPress and hold down <strong&gtI/O</strong&gt button Group 3 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Launch 3
 
-Short press **I/O** button of Group 4 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".
-
-Press and hold down **I/O** button Group 4 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"
+<p&gtShort press <strong&gtI/O</strong&gt button of Group 4 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".</p&gt <p&gtPress and hold down <strong&gtI/O</strong&gt button Group 4 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Launch 4
 
-Short press **I/O** button of Group 4 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".
-
-Press and hold down **I/O** button Group 4 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"
+<p&gtShort press <strong&gtI/O</strong&gt button of Group 4 to send ON/OFF command to associated devices of the group using Command Class "Basic Set V2".</p&gt <p&gtPress and hold down <strong&gtI/O</strong&gt button Group 4 to send light intensity increase/decrease command to associated devices of this group using Command Class "Multilevel V4"</p&gt
 
 Association group 5 supports 5 nodes.
 
@@ -213,11 +176,11 @@ Association group 5 supports 5 nodes.
 
 ### Documentation Links
 
-* [Product sheet](https://www.cd-jackson.com/zwave_device_uploads/1077/Heatit-Z-Push-Button-8.pdf)
-* [Norweian Installers Manual - Z-Push Button 8](https://www.cd-jackson.com/zwave_device_uploads/1077/anual-heatit-z-push-button-8-fw-1-25-ver2018-a.pdf)
-* [English Installers Manual - Z-Push Button 8](https://www.cd-jackson.com/zwave_device_uploads/1077/a4-manual-heatit-z-push-button-8-fw-1-25-ver2018-b.pdf)
+* [Product sheet](https://opensmarthouse.org/zwavedatabase/1077/Heatit-Z-Push-Button-8.pdf)
+* [Norweian Installers Manual - Z-Push Button 8](https://opensmarthouse.org/zwavedatabase/1077/anual-heatit-z-push-button-8-fw-1-25-ver2018-a.pdf)
+* [English Installers Manual - Z-Push Button 8](https://opensmarthouse.org/zwavedatabase/1077/a4-manual-heatit-z-push-button-8-fw-1-25-ver2018-b.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1077).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1077).

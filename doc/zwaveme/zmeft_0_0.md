@@ -10,28 +10,22 @@ This describes the Z-Wave device *ZME_FT*, manufactured by *Z-Wave.Me* with the 
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![ZME_FT product image](https://www.cd-jackson.com/zwave_device_uploads/151/151_default.png)
+![ZME_FT product image](https://opensmarthouse.org/zwavedatabase/151/image/)
 
 
 The ZME_FT supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Underfloor heating thermostat allows you to control the heating mat or other load in the on / off mode to maintain the set temperature. The device can operate in two control circuits:
-
-  * autonomous maintenance of the set floor temperature  
-    
-  * controlled by Z-Wave to maintain the set room temperature (requires an external Z-Wave thermostat,installed indoors)
-
-The kit includes a temperature sensor. In all modes, the thermostat protects the floor structure from overheating, turning off load when the temperature threshold is reached
+<p&gtUnderfloor heating thermostat allows you to control the heating mat or other load in the on / off mode to maintain the set temperature. The device can operate in two control circuits:</p&gt <ul&gt<li&gtautonomous maintenance of the set floor temperature<br /&gt</li&gt <li&gtcontrolled by Z-Wave to maintain the set room temperature (requires an external Z-Wave thermostat,installed indoors)</li&gt </ul&gt<p&gtThe kit includes a temperature sensor. In all modes, the thermostat protects the floor structure from overheating, turning off load when the temperature threshold is reached</p&gt
 
 ### Inclusion Information
 
-press and hold the central round mode change button for 5 seconds
+<p&gtpress and hold the central round mode change button for 5 seconds</p&gt
 
 ### Exclusion Information
 
-press and hold the central round mode change button for 5 seconds
+<p&gtpress and hold the central round mode change button for 5 seconds</p&gt
 
 ## Channels
 
@@ -171,7 +165,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Maximal allowed temperature
 
 Maximal allowed temperature
-In all modes the thermostat will switch off heating until temperature drops below this limit. For wooden and laminate floor maximal allowed temperature is 27 degree. For tile and concrete floor maximal allowed temperature value is 45 degree.
+<p&gtIn all modes the thermostat will switch off heating until temperature drops below this limit. For wooden and laminate floor maximal allowed temperature is 27 degree. For tile and concrete floor maximal allowed temperature value is 45 degree.</p&gt
 Values in the range 20 to 55 may be set.
 
 The manufacturer defined default value is ```27```.
@@ -224,9 +218,9 @@ Association group 1 supports 10 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/151/ZMR-FT-1-4.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/151/ZMR-FT-1-4.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/151).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/151).

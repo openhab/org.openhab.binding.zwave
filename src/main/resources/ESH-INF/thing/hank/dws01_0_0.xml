@@ -7,9 +7,7 @@
 
   <thing-type id="hank_dws01_00_000" listed="false">
     <label>DWS01 Door and Window Sensor</label>
-    <description><![CDATA[
-Door and Window Sensor<br /><h1>Overview</h1><p>Sensor detects when a door is open or closed, also has a tamper switch.</p> <br /><h2>Inclusion Information</h2><p>Non-secure: press the Z-button three times rapidly.</p> <p>Secure: hold the Z-button for three seconds.</p> <br /><h2>Exclusion Information</h2><p>Press the Z-button three times rapidly.</p> <br /><h2>Wakeup Information</h2><p>Separate the magnet from the sensor body or pull the cover back and press the little button near the tamper switch until the little blue LED illuminates.</p>
-    ]]></description>
+    <description>Door and Window Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSensor detects when a door is open or closed, also has a tamper switch.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtNon-secure: press the Z-button three times rapidly.&lt;/p&gt &lt;p&gtSecure: hold the Z-button for three seconds.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the Z-button three times rapidly.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtSeparate the magnet from the sensor body or pull the cover back and press the little button near the tamper switch until the little blue LED illuminates.&lt;/p&gt</description>
     <category>Door</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -94,17 +92,13 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Sensor detects when a door is op
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
-        <description><![CDATA[
-Association Group 1<br /><h1>Overview</h1> <ul><li> <p>Group 1 reports the status of the Door/Window Sensor, the battery level, and the tamper button status. </p> </li> </ul>
-        ]]></description>
+        <description>Association Group 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt &lt;ul&gt&lt;li&gt &lt;p&gtGroup 1 reports the status of the Door/Window Sensor, the battery level, and the tamper button status. &lt;/p&gt &lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-Association Group 2<br /><h1>Overview</h1> <ul><li> <p>Group 2 is assigned to the Door/Window Sensor BASIC SET command. </p> </li> </ul>
-        ]]></description>
+        <description>Association Group 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt &lt;ul&gt&lt;li&gt &lt;p&gtGroup 2 is assigned to the Door/Window Sensor BASIC SET command. &lt;/p&gt &lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

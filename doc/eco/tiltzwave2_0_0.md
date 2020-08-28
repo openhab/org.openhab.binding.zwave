@@ -10,7 +10,7 @@ This describes the Z-Wave device *TILTZWAVE2*, manufactured by *Ecolink* with th
 
 The device is in the category of *Garage Door*, defining Garage Door.
 
-![TILTZWAVE2 product image](https://www.cd-jackson.com/zwave_device_uploads/139/139_default.jpg)
+![TILTZWAVE2 product image](https://opensmarthouse.org/zwavedatabase/139/image/)
 
 
 The TILTZWAVE2 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The TILTZWAVE2 does not permanently listen for messages sent from the controller
 
 ## Overview
 
-Sensor which transmits when  a garage door is open or closed. Uses a tilt sensor to detect the angle of a door and transmits open/closed status. Reports tamper condition if cover is removed.
+<p&gtSensor which transmits when  a garage door is open or closed. Uses a tilt sensor to detect the angle of a door and transmits open/closed status. Reports tamper condition if cover is removed.</p&gt
 
 ### Inclusion Information
 
-Put controller into inclusion mode, remove the cover, remove the battery for 5 seconds, reinsert the battery, close the cover.
+<p&gtPut controller into inclusion mode, remove the cover, remove the battery for 5 seconds, reinsert the battery, close the cover.</p&gt
 
 ### Exclusion Information
 
-Put controller into exclusion mode, remove the cover, remove the battery for 5 seconds, reinsert the battery, close the cover.
+<p&gtPut controller into exclusion mode, remove the cover, remove the battery for 5 seconds, reinsert the battery, close the cover.</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The TILTZWAVE2 does not permanently listen for messages sent from the controller
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Remove the cover, close the cover.
+<p&gtRemove the cover, close the cover.</p&gt
 
 ## Channels
 
@@ -180,10 +180,10 @@ Association group 2 supports 5 nodes.
 
 ### Documentation Links
 
-* [English User Manual](https://www.cd-jackson.com/zwave_device_uploads/139/Ecolink-TILTZWAVE2-ECO-manual-rev1.pdf)
-* [Updated Manual](https://www.cd-jackson.com/zwave_device_uploads/139/Tilt-ZWave-Plus-Manual-R1-04-021816kgs.pdf)
+* [English User Manual](https://opensmarthouse.org/zwavedatabase/139/Ecolink-TILTZWAVE2-ECO-manual-rev1.pdf)
+* [Updated Manual](https://opensmarthouse.org/zwavedatabase/139/Tilt-ZWave-Plus-Manual-R1-04-021816kgs.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/139).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/139).

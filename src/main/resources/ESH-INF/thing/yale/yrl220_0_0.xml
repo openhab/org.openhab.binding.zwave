@@ -7,9 +7,7 @@
 
   <thing-type id="yale_yrl220_00_000" listed="false">
     <label>YRL220 Yale Real Living Touchscreen Lever Lock</label>
-    <description><![CDATA[
-Yale Real Living Touchscreen Lever Lock<br /><h1>Overview</h1><p>The Yale Real Living™ Stand-alone Touchscreen Lever Lock combines a robust lockset with a contemporary electronic aesthetic.</p> <p>Users benefit from an interactive touchscreen that makes day-to-day access effortless, as well as offering voice-guided programming for simple updates to user information in the event of staffing changes or security breaches. Yale Real Living™ is engineered for quick and easy installation and fits in place of a standard deadbolt lock door prep</p> <br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /><h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
-    ]]></description>
+    <description>Yale Real Living Touchscreen Lever Lock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Yale Real Living™ Stand-alone Touchscreen Lever Lock combines a robust lockset with a contemporary electronic aesthetic.&lt;/p&gt &lt;p&gtUsers benefit from an interactive touchscreen that makes day-to-day access effortless, as well as offering voice-guided programming for simple updates to user information in the event of staffing changes or security breaches. Yale Real Living™ is engineered for quick and easy installation and fits in place of a standard deadbolt lock door prep&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo include the lock in a Z-Wave Network (taken from the installation manual:&lt;/p&gt &lt;ol&gt&lt;li&gtTouch the lock screen to activate&lt;/li&gt &lt;li&gtEnter the master pin and press #&lt;/li&gt &lt;li&gtPress 7, then #&lt;/li&gt &lt;li&gtPress 1, then #&lt;/li&gt &lt;/ol&gt&lt;p&gtThe lock will now be in inclusion mode.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude the lock from a Z-Wave Network (taken from the installation manual:&lt;/p&gt &lt;ol&gt&lt;li&gtTouch the lock screen to activate&lt;/li&gt &lt;li&gtEnter the master pin and press #&lt;/li&gt &lt;li&gtPress 7, then #&lt;/li&gt &lt;li&gtPress 3, then #&lt;/li&gt &lt;/ol&gt&lt;p&gtThe lock will now be in exclusion mode.&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -66,9 +64,7 @@ Yale Real Living Touchscreen Lever Lock<br /><h1>Overview</h1><p>The Yale Real L
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Audio Volume</label>
-        <description><![CDATA[
-Sets the volume level of the beeps and voice prompts<br /><h1>Overview</h1><p>1 = Silent</p> <p>2 = Low</p> <p>3 = High</p>
-        ]]></description>
+        <description>Sets the volume level of the beeps and voice prompts&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = Silent&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = Low&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = High&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="1">Silent</option>
@@ -79,9 +75,7 @@ Sets the volume level of the beeps and voice prompts<br /><h1>Overview</h1><p>1 
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Auto Re-lock</label>
-        <description><![CDATA[
-When enabled, the unit will automatically re-lock<br /><h1>Overview</h1><p>0 = Off</p> <p>255 = On</p>
-        ]]></description>
+        <description>When enabled, the unit will automatically re-lock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = Off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 = On&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -105,9 +99,7 @@ When enabled, the unit will automatically re-lock<br /><h1>Overview</h1><p>0 = O
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Language</label>
-        <description><![CDATA[
-Language used by the voice prompts<br /><h1>Overview</h1><p>1 = English</p> <p>2 = Spanish</p> <p>3 = French</p>
-        ]]></description>
+        <description>Language used by the voice prompts&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = English&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = Spanish&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = French&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="1">English</option>
@@ -125,9 +117,7 @@ Language used by the voice prompts<br /><h1>Overview</h1><p>1 = English</p> <p>2
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Operating Mode</label>
-        <description><![CDATA[
-Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock<br /><h1>Overview</h1><p>0 = Normal</p> <p>1 = Vacation Mode (User Codes Disabled)</p> <p>2 = Privacy Mode (User Codes and ZWave Codes Disabled</p>
-        ]]></description>
+        <description>Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = Normal&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 = Vacation Mode (User Codes Disabled)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = Privacy Mode (User Codes and ZWave Codes Disabled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal</option>

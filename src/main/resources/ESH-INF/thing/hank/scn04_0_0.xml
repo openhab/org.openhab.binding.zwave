@@ -7,9 +7,7 @@
 
   <thing-type id="hank_scn04_00_000" listed="false">
     <label>SCN04 Four-key Scene Controller</label>
-    <description><![CDATA[
-Four-key Scene Controller<br /><h1>Overview</h1><p>Hank Z-Wave Scene Controller with 4 buttons. Supports security functions.</p> <p>The Scene controller offers three button action types: short press, held down and release.<br /><br />- If a button is pressed quickly (for less than a second), the scene controller sends a central scene notification command to association group 1. This message contains a scene number from 1-4 depending on which button is pressed. It also sends a basic set command to the items in the association group for the button (even groups numbered 2 to 8) and a multilevel set command to the nodes in the association group for the button with an uneven number (3 for button 1, 5 for button 2 etc.).<br />- If a button is pressed and held down for more than a second, the scene controller sends a central scene notification command to association group 1 as above. It also sends a multilevel start level change (i.e. dim up) command to the nodes in the association group for the button.<br />- If a button is released after it has been held down, the scene controller sends a similar central scene notification command as well as a multilevel stop command the buttons association group.</p> <br /><h2>Inclusion Information</h2><p>Included as <strong>non-secure</strong> device:<br />1. Insert the LIR2450 battery.<br />2. Set the Z-Wave network main controller into learning mode( see Z-Waave network controller operating manul).<br />3. Triple click a button.<br />4. If the inclusion is successful, the LED will blink in blue less than 5 seconds and then keep on for 15 seconds.</p> <p>Included as a <strong>secure</strong> device:<br />1. Insert the LIR2450 battery.<br />2. Set the Z-Wave network main controller into learning mode( see Z-Wave network controller operating manual).<br />3. Pressing and holding a button for 3 seconds.<br />4. If the inclusion is successful, the LED will blink in green less than for 5 seconds and then keep on for 15 seconds.</p> <br /><h2>Exclusion Information</h2><p>1. Insert the LIR2450 battery.<br />2. Set the Z-Wave network main controller into remove mode (see Z-Wave controller operating manual).<br />3. Triple click the a button, if the exclusion is successful, LED will blink in orange for less than 5 seconds and then keep on for 3 seconds.</p> <br /><h2>Wakeup Information</h2><p>Press and hold any button for three seconds.</p>
-    ]]></description>
+    <description>Four-key Scene Controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtHank Z-Wave Scene Controller with 4 buttons. Supports security functions.&lt;/p&gt &lt;p&gtThe Scene controller offers three button action types: short press, held down and release.&lt;br /&gt&lt;br /&gt- If a button is pressed quickly (for less than a second), the scene controller sends a central scene notification command to association group 1. This message contains a scene number from 1-4 depending on which button is pressed. It also sends a basic set command to the items in the association group for the button (even groups numbered 2 to 8) and a multilevel set command to the nodes in the association group for the button with an uneven number (3 for button 1, 5 for button 2 etc.).&lt;br /&gt- If a button is pressed and held down for more than a second, the scene controller sends a central scene notification command to association group 1 as above. It also sends a multilevel start level change (i.e. dim up) command to the nodes in the association group for the button.&lt;br /&gt- If a button is released after it has been held down, the scene controller sends a similar central scene notification command as well as a multilevel stop command the buttons association group.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtIncluded as &lt;strong&gtnon-secure&lt;/strong&gt device:&lt;br /&gt1. Insert the LIR2450 battery.&lt;br /&gt2. Set the Z-Wave network main controller into learning mode( see Z-Waave network controller operating manul).&lt;br /&gt3. Triple click a button.&lt;br /&gt4. If the inclusion is successful, the LED will blink in blue less than 5 seconds and then keep on for 15 seconds.&lt;/p&gt &lt;p&gtIncluded as a &lt;strong&gtsecure&lt;/strong&gt device:&lt;br /&gt1. Insert the LIR2450 battery.&lt;br /&gt2. Set the Z-Wave network main controller into learning mode( see Z-Wave network controller operating manual).&lt;br /&gt3. Pressing and holding a button for 3 seconds.&lt;br /&gt4. If the inclusion is successful, the LED will blink in green less than for 5 seconds and then keep on for 15 seconds.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt1. Insert the LIR2450 battery.&lt;br /&gt2. Set the Z-Wave network main controller into remove mode (see Z-Wave controller operating manual).&lt;br /&gt3. Triple click the a button, if the exclusion is successful, LED will blink in orange for less than 5 seconds and then keep on for 3 seconds.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtPress and hold any button for three seconds.&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -54,9 +52,7 @@ Four-key Scene Controller<br /><h1>Overview</h1><p>Hank Z-Wave Scene Controller 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_254_1" type="integer" groupName="configuration">
         <label>254: Enable configuration</label>
-        <description><![CDATA[
-Lock/unlock all configuration parameters.<br /><h1>Overview</h1><p>Lock/unlock configuration of unit.</p> <p>0 = Unlock (default)<br />1 = Lock</p>
-        ]]></description>
+        <description>Lock/unlock all configuration parameters.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLock/unlock configuration of unit.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = Unlock (default)&amp;lt;br /&amp;amp;gt1 = Lock&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Unlock</option>
@@ -67,73 +63,55 @@ Lock/unlock all configuration parameters.<br /><h1>Overview</h1><p>Lock/unlock c
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Central notification</label>
-        <description><![CDATA[
-Scene commands and battery reports<br /><h1>Overview</h1><p>Scene Controller will send the central scene notification command and battery report command to the associated nodes if any button is triggered.</p> <p>Button 1-4 sends scene commands 1-4. I.e. button 1 sends scene 1, button 2 scene 2 etc. More info about all association group commands can be seen from the table below.</p> <table><tr><td><strong>Button ID</strong></td> <td><strong>Group ID</strong></td> <td><strong>Action &amp; Notification</strong></td> </tr><tr><td>Any button</td> <td>1</td> <td>Press: Central scene notification ( Key Attributes=0 )<br />Hold: Central scene notification ( Key Attributes=2 )<br />Release: Central scene notification ( Key attributes=1 )</td> </tr><tr><td>Button 1</td> <td>2</td> <td>Press: Basic Set<br />Hold: Reserve<br />Release: Reserve</td> </tr><tr><td>3</td> <td>Press: Switch multilevel set<br />Hold: Multilevel start level change<br />Release: Multilevel stop level change</td> </tr><tr><td>Button 2</td> <td>4</td> <td>Press: Basic Set<br />Hold: Reserve<br />Release: Reserve</td> </tr><tr><td>5</td> <td>Press: Switch multilevel set<br />Hold: Multilevel start level change<br />Release: Multilevel stop level change</td> </tr><tr><td>Button 3</td> <td>6</td> <td>Press: Basic Set<br />Hold: Reserve<br />Release: Reserve</td> </tr><tr><td>7</td> <td>Press: Switch multilevel set<br />Hold: Multilevel start level change<br />Release: Multilevel stop level change</td> </tr><tr><td>Button 4</td> <td>8</td> <td>Press: Basic Set<br />Hold: Reserve<br />Release: Reserve</td> </tr><tr><td>9</td> <td>Press: Switch multilevel set<br />Hold: Multilevel start level change<br />Release: Multilevel stop level change</td> </tr></table>
-        ]]></description>
+        <description>Scene commands and battery reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send the central scene notification command and battery report command to the associated nodes if any button is triggered.&lt;/p&gt &lt;p&gtButton 1-4 sends scene commands 1-4. I.e. button 1 sends scene 1, button 2 scene 2 etc. More info about all association group commands can be seen from the table below.&lt;/p&gt &lt;table&gt&lt;tr&gt&lt;td&gt&lt;strong&gtButton ID&lt;/strong&gt&lt;/td&gt &lt;td&gt&lt;strong&gtGroup ID&lt;/strong&gt&lt;/td&gt &lt;td&gt&lt;strong&gtAction &amp;amp; Notification&lt;/strong&gt&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtAny button&lt;/td&gt &lt;td&gt1&lt;/td&gt &lt;td&gtPress: Central scene notification ( Key Attributes=0 )&lt;br /&gtHold: Central scene notification ( Key Attributes=2 )&lt;br /&gtRelease: Central scene notification ( Key attributes=1 )&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtButton 1&lt;/td&gt &lt;td&gt2&lt;/td&gt &lt;td&gtPress: Basic Set&lt;br /&gtHold: Reserve&lt;br /&gtRelease: Reserve&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gt3&lt;/td&gt &lt;td&gtPress: Switch multilevel set&lt;br /&gtHold: Multilevel start level change&lt;br /&gtRelease: Multilevel stop level change&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtButton 2&lt;/td&gt &lt;td&gt4&lt;/td&gt &lt;td&gtPress: Basic Set&lt;br /&gtHold: Reserve&lt;br /&gtRelease: Reserve&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gt5&lt;/td&gt &lt;td&gtPress: Switch multilevel set&lt;br /&gtHold: Multilevel start level change&lt;br /&gtRelease: Multilevel stop level change&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtButton 3&lt;/td&gt &lt;td&gt6&lt;/td&gt &lt;td&gtPress: Basic Set&lt;br /&gtHold: Reserve&lt;br /&gtRelease: Reserve&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gt7&lt;/td&gt &lt;td&gtPress: Switch multilevel set&lt;br /&gtHold: Multilevel start level change&lt;br /&gtRelease: Multilevel stop level change&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtButton 4&lt;/td&gt &lt;td&gt8&lt;/td&gt &lt;td&gtPress: Basic Set&lt;br /&gtHold: Reserve&lt;br /&gtRelease: Reserve&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gt9&lt;/td&gt &lt;td&gtPress: Switch multilevel set&lt;br /&gtHold: Multilevel start level change&lt;br /&gtRelease: Multilevel stop level change&lt;/td&gt &lt;/tr&gt&lt;/table&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic commands button 1</label>
-        <description><![CDATA[
-Send basic commands for button 1<br /><h1>Overview</h1><p>Scene Controller will send Basic Set command to the associated nodes if button 1 is pressed.</p>
-        ]]></description>
+        <description>Send basic commands for button 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send Basic Set command to the associated nodes if button 1 is pressed.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Multilevel button 1</label>
-        <description><![CDATA[
-Send multilevel commands for button 1<br /><h1>Overview</h1><p>Scene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 1 is pressed, hold and released, respectively.</p>
-        ]]></description>
+        <description>Send multilevel commands for button 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 1 is pressed, hold and released, respectively.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Basic commands button 2</label>
-        <description><![CDATA[
-Send basic commands for button 2<br /><h1>Overview</h1><p>Scene Controller will send Basic Set command to the associated nodes if button 2 is pressed.</p>
-        ]]></description>
+        <description>Send basic commands for button 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send Basic Set command to the associated nodes if button 2 is pressed.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Multilevel button 2</label>
-        <description><![CDATA[
-Send multilevel commands for button 2<br /><h1>Overview</h1><p>Scene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 2 is pressed, hold and released, respectively.</p>
-        ]]></description>
+        <description>Send multilevel commands for button 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 2 is pressed, hold and released, respectively.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
         <label>6: Basic commands button 3</label>
-        <description><![CDATA[
-Send basic commands for button 3<br /><h1>Overview</h1><p>Scene Controller will send Basic Set command to the associated nodes if button 3 is pressed.</p>
-        ]]></description>
+        <description>Send basic commands for button 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send Basic Set command to the associated nodes if button 3 is pressed.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
         <label>7: Multilevel button 3</label>
-        <description><![CDATA[
-Send multilevel commands for button 3<br /><h1>Overview</h1><p>Scene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 3 is pressed, hold and released, respectively.</p>
-        ]]></description>
+        <description>Send multilevel commands for button 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 3 is pressed, hold and released, respectively.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
         <label>8: Basic commands button 4</label>
-        <description><![CDATA[
-Send basic commands for button 4<br /><h1>Overview</h1><p>Scene Controller will send Basic Set command to the associated nodes if button 4 is pressed.</p>
-        ]]></description>
+        <description>Send basic commands for button 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send Basic Set command to the associated nodes if button 4 is pressed.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_9" type="text" groupName="association" multiple="true">
         <label>9: Multilevel button 4</label>
-        <description><![CDATA[
-Send multilevel commands for button 4<br /><h1>Overview</h1><p>Scene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 4 is pressed, hold and released, respectively.</p>
-        ]]></description>
+        <description>Send multilevel commands for button 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtScene Controller will send switch multilevel set, the multilevel start level change and multilevel stop level change command to the associated nodes if button 4 is pressed, hold and released, respectively.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

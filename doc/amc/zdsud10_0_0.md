@@ -10,22 +10,22 @@ This describes the Z-Wave device *ZDS-UD10*, manufactured by *Airline Mechanical
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![ZDS-UD10 product image](https://www.cd-jackson.com/zwave_device_uploads/184/184_default.png)
+![ZDS-UD10 product image](https://opensmarthouse.org/zwavedatabase/184/image/)
 
 
 The ZDS-UD10 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Thank you for choosing ZDS-100 Z-Wave control product. Our Z-Wave enabled product allows user to remotely control lighting, home appliance, and make home control easy at low installation / maintenance cost. 
+<p&gtThank you for choosing ZDS-100 Z-Wave control product. Our Z-Wave enabled product allows user to remotely control lighting, home appliance, and make home control easy at low installation / maintenance cost. </p&gt
 
 ### Inclusion Information
 
-Tap the button
+<p&gtTap the button</p&gt
 
 ### Exclusion Information
 
-Tap the button
+<p&gtTap the button</p&gt
 
 ## Channels
 
@@ -70,9 +70,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/184/ZDS-manual.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/184/ZDS-manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/184).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/184).

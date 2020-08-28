@@ -7,9 +7,7 @@
 
   <thing-type id="zwaveme_zmeft_00_000" listed="false">
     <label>ZME_FT Floor Thermostat</label>
-    <description><![CDATA[
-Floor Thermostat<br /><h1>Overview</h1><p>Underfloor heating thermostat allows you to control the heating mat or other load in the on / off mode to maintain the set temperature. The device can operate in two control circuits:</p> <ul><li>autonomous maintenance of the set floor temperature<br /></li> <li>controlled by Z-Wave to maintain the set room temperature (requires an external Z-Wave thermostat,installed indoors)</li> </ul><p>The kit includes a temperature sensor. In all modes, the thermostat protects the floor structure from overheating, turning off load when the temperature threshold is reached</p> <br /><h2>Inclusion Information</h2><p>press and hold the central round mode change button for 5 seconds</p> <br /><h2>Exclusion Information</h2><p>press and hold the central round mode change button for 5 seconds</p>
-    ]]></description>
+    <description>Floor Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtUnderfloor heating thermostat allows you to control the heating mat or other load in the on / off mode to maintain the set temperature. The device can operate in two control circuits:&lt;/p&gt &lt;ul&gt&lt;li&gtautonomous maintenance of the set floor temperature&lt;br /&gt&lt;/li&gt &lt;li&gtcontrolled by Z-Wave to maintain the set room temperature (requires an external Z-Wave thermostat,installed indoors)&lt;/li&gt &lt;/ul&gt&lt;p&gtThe kit includes a temperature sensor. In all modes, the thermostat protects the floor structure from overheating, turning off load when the temperature threshold is reached&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtpress and hold the central round mode change button for 5 seconds&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtpress and hold the central round mode change button for 5 seconds&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -107,9 +105,7 @@ Floor Thermostat<br /><h1>Overview</h1><p>Underfloor heating thermostat allows y
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="20" max="55">
         <label>6: Maximal allowed temperature</label>
-        <description><![CDATA[
-Maximal allowed temperature<br /><h1>Overview</h1><p>In all modes the thermostat will switch off heating until temperature drops below this limit. For wooden and laminate floor maximal allowed temperature is 27 degree. For tile and concrete floor maximal allowed temperature value is 45 degree.</p>
-        ]]></description>
+        <description>Maximal allowed temperature&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIn all modes the thermostat will switch off heating until temperature drops below this limit. For wooden and laminate floor maximal allowed temperature is 27 degree. For tile and concrete floor maximal allowed temperature value is 45 degree.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>27</default>
       </parameter>
 
@@ -144,9 +140,9 @@ Maximal allowed temperature<br /><h1>Overview</h1><p>In all modes the thermostat
     <category>Temperature</category>
     <state pattern="%s">
       <options>
+        <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
         <option value="7">Furnace</option>
       </options>
     </state>

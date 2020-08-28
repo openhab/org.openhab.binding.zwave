@@ -10,26 +10,22 @@ This describes the Z-Wave device *ZV9102FA-CCT*, manufactured by *[Sunricher](ww
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-![ZV9102FA-CCT product image](https://www.cd-jackson.com/zwave_device_uploads/793/793_default.png)
+![ZV9102FA-CCT product image](https://opensmarthouse.org/zwavedatabase/793/image/)
 
 
 The ZV9102FA-CCT supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The SR-ZV9102FA-CCT is a dual color zwave lighting device and z wave slave that adopts z-wave RF Plus and z-wave mesh network technology with 4 channel, 5A per channel output for dual color LED lights. As a z-wave slave, the device can be added to z-wave network or removed from z-wave network by z-wave primary (master) controllers or gateway. The z wave devices are transceivers that enable to receive and transmit RF signal from the z wave remote while both of them are added to the network. The transceiver is a universal z wave slave which is compatible with universal z wave primary (master) controllers/gateway.
+<p&gtThe SR-ZV9102FA-CCT is a dual color zwave lighting device and z wave slave that adopts z-wave RF Plus and z-wave mesh network technology with 4 channel, 5A per channel output for dual color LED lights. As a z-wave slave, the device can be added to z-wave network or removed from z-wave network by z-wave primary (master) controllers or gateway. The z wave devices are transceivers that enable to receive and transmit RF signal from the z wave remote while both of them are added to the network. The transceiver is a universal z wave slave which is compatible with universal z wave primary (master) controllers/gateway.</p&gt
 
 ### Inclusion Information
 
-Power on the receiver. By factory default setting, the connected LED lights will be under a slow rhythm breath status which means the receiver is waiting to be searched by the master (primary) controller or z-wave gateway -> set the z-wave master (primary) controller or gateway into network inclusion mode (please refer to the user manual to learn how)
-
-There shall be an indication on the master (primary) controller or gateway -> LED light connected with the receiver flashes 5 times quickly to indicate successful and automatic adding to z-wave network
+<p&gtPower on the receiver. By factory default setting, the connected LED lights will be under a slow rhythm breath status which means the receiver is waiting to be searched by the master (primary) controller or z-wave gateway -> set the z-wave master (primary) controller or gateway into network inclusion mode (please refer to the user manual to learn how)</p&gt <p&gtThere shall be an indication on the master (primary) controller or gateway -> LED light connected with the receiver flashes 5 times quickly to indicate successful and automatic adding to z-wave network</p&gt
 
 ### Exclusion Information
 
-When the receiver has already been added to z-wave network and connected LED light is switched on, set the z-wave master (primary) controller or gateway into network exclusion mode (please refer to the user manual to learn how).
-
-Click the “prog” key on the receiver -> there shall be an indication on the master (primary) controller -> the connected LED light with the receiver flashes twice to indicate successful removal from z-wave network
+<p&gtWhen the receiver has already been added to z-wave network and connected LED light is switched on, set the z-wave master (primary) controller or gateway into network exclusion mode (please refer to the user manual to learn how).</p&gt <p&gtClick the “prog” key on the receiver -> there shall be an indication on the master (primary) controller -> the connected LED light with the receiver flashes twice to indicate successful removal from z-wave network</p&gt
 
 ## Channels
 
@@ -99,13 +95,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 2: Save state on power failure
 
 Shut off load (default), turn on load or restore saved state after power failure
-Load state after power failure
-
-0 - (default) shut off load
-
-1 - turn on load
-
-2 - restore saved state after power failure
+<p&gtLoad state after power failure</p&gt <p&gt0 - (default) shut off load</p&gt <p&gt1 - turn on load</p&gt <p&gt2 - restore saved state after power failure</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -116,11 +106,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Enable/disable BASIC report
 
 Enable/disable sending of BASIC reports
-Enable or disable sending of BASIC reports
-
-0 - Disable sending of BASIC reports
-
-1 - (default) Enable sending of BASIC reports
+<p&gtEnable or disable sending of BASIC reports</p&gt <p&gt0 - Disable sending of BASIC reports</p&gt <p&gt1 - (default) Enable sending of BASIC reports</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -131,13 +117,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Colour channels
 
 Set number of channels of LED load - single colour, CCT or RGBW
-Set number of channels of LED load
-
-0 - single colour - 4 channel PWM output to drive 4 channels of single colour LEDs
-
-1 - CCT - 2 channel PWM output to drive CCT LEDs R/B control warm white, G/W control cool white
-
-2 - (default) RGBW - single channel PWM output to control RGBW LEDs
+<p&gtSet number of channels of LED load</p&gt <p&gt0 - single colour - 4 channel PWM output to drive 4 channels of single colour LEDs</p&gt <p&gt1 - CCT - 2 channel PWM output to drive CCT LEDs R/B control warm white, G/W control cool white</p&gt <p&gt2 - (default) RGBW - single channel PWM output to control RGBW LEDs</p&gt
 Values in the range 0 to 2 may be set.
 
 The manufacturer defined default value is ```2```.
@@ -148,21 +128,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Stage mode
 
 Set stage mode for lighting changes
-Set lighting stage mode
-
-0 - (Default) - no stage mode
-
-1 - flash mode, colors set by parameter 8
-
-2 - rainbow mode, system fixed changing effect
-
-4 - fade in and fade out mode, color changes randomly
-
-5 - flash mode, color changes randomly
-
-6 - rainbow mode, color changes randomly
-
-7 - random mode, the colors switch randomly
+<p&gtSet lighting stage mode</p&gt <p&gt0 - (Default) - no stage mode</p&gt <p&gt1 - flash mode, colors set by parameter 8</p&gt <p&gt2 - rainbow mode, system fixed changing effect</p&gt <p&gt4 - fade in and fade out mode, color changes randomly</p&gt <p&gt5 - flash mode, color changes randomly</p&gt <p&gt6 - rainbow mode, color changes randomly</p&gt <p&gt7 - random mode, the colors switch randomly</p&gt
 Values in the range 0 to 7 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -173,9 +139,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Stage mode speed
 
 Set speed of changes in stage mode
-Set speed of stage mode 0-255
-
-0 is slowest 255 is fastest
+<p&gtSet speed of stage mode 0-255</p&gt <p&gt0 is slowest 255 is fastest</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -186,11 +150,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Stage mode execution time
 
 Set execution time for stage mode
-Set execution time for stage mode
-
-0 (default) - unlimited time
-
-1 - 255 set execution time
+<p&gtSet execution time for stage mode</p&gt <p&gt0 (default) - unlimited time</p&gt <p&gt1 - 255 set execution time</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -201,11 +161,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Stage mode hue
 
 Set stage mode hue 0-255
-Set hue for stage mode
-
-0 - 255 (default)
-
-Only valid for fade in, fade out and flash mode.
+<p&gtSet hue for stage mode</p&gt <p&gt0 - 255 (default)</p&gt <p&gtOnly valid for fade in, fade out and flash mode.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -216,11 +172,7 @@ This parameter has the configuration ID ```config_8_1``` and is of type ```INTEG
 ### Parameter 9: Set external switch function
 
 Enable / disable external switch for inclusion / exclusion
-Enable / disable external switch for inclusion / excluison of the device to / from the network
-
-0 - (default) disable switch
-
-1 - enable switch
+<p&gtEnable / disable external switch for inclusion / excluison of the device to / from the network</p&gt <p&gt0 - (default) disable switch</p&gt <p&gt1 - enable switch</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -237,7 +189,7 @@ The ZV9102FA-CCT supports 1 association group.
 ### Group 1: Lifeline
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
-Single Cast DEVICE\_RESET\_LOCALLY_NOTIFICATION (sent when factory reset the device)
+<p&gtSingle Cast DEVICE\_RESET\_LOCALLY_NOTIFICATION (sent when factory reset the device)</p&gt
 
 Association group 1 supports 1 node.
 
@@ -266,9 +218,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [User manual](https://www.cd-jackson.com/zwave_device_uploads/793/sr-zv9102fa-cct-user-manual.pdf)
+* [User manual](https://opensmarthouse.org/zwavedatabase/793/sr-zv9102fa-cct-user-manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/793).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/793).

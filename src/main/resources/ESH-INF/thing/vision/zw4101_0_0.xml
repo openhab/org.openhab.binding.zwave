@@ -7,9 +7,7 @@
 
   <thing-type id="vision_zw4101_00_000" listed="false">
     <label>ZW4101 Drapery controller (up/stop/down)</label>
-    <description><![CDATA[
-Drapery controller (up/stop/down)<br /><h1>Overview</h1><p>Drapery controller, supports up/stop/down commands.</p> <p>Devices is OEMed as Monoprice 11993.</p> <br /><h2>Inclusion Information</h2><p>Press the program switch on the module once to be included.</p> <br /><h2>Exclusion Information</h2><p> Press the program switch on the module once to be excluded.</p>
-    ]]></description>
+    <description>Drapery controller (up/stop/down)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDrapery controller, supports up/stop/down commands.&lt;/p&gt &lt;p&gtDevices is OEMed as Monoprice 11993.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the program switch on the module once to be included.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Press the program switch on the module once to be excluded.&lt;/p&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -51,27 +49,21 @@ Drapery controller (up/stop/down)<br /><h1>Overview</h1><p>Drapery controller, s
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>1: Up output time</label>
-        <description><![CDATA[
-Up output time<br /><h1>Overview</h1><p>Time to hold the "up" output button closed (shorted) when unit receives an "up" z-wave command.</p>
-        ]]></description>
+        <description>Up output time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime to hold the &quot;up&quot; output button closed (shorted) when unit receives an &quot;up&quot; z-wave command.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>2: Stop output time</label>
-        <description><![CDATA[
-Stop output time<br /><h1>Overview</h1><p>Time to hold the "stop" output button closed (shorted) when unit receives a "stop" z-wave command.</p> <p>Note that the unit will automatically execute STOP, UP or STOP, DOWN when receiving an up or down command.</p>
-        ]]></description>
+        <description>Stop output time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime to hold the &quot;stop&quot; output button closed (shorted) when unit receives a &quot;stop&quot; z-wave command.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote that the unit will automatically execute STOP, UP or STOP, DOWN when receiving an up or down command.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>3: Down output time</label>
-        <description><![CDATA[
-Down output time<br /><h1>Overview</h1><p>Time to hold the "down" output button closed (shorted) when unit receives a "down" z-wave command.</p>
-        ]]></description>
+        <description>Down output time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime to hold the &quot;down&quot; output button closed (shorted) when unit receives a &quot;down&quot; z-wave command.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

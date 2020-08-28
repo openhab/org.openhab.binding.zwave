@@ -7,9 +7,7 @@
 
   <thing-type id="popp_700793_00_000" listed="false">
     <label>700793 Power Plug</label>
-    <description><![CDATA[
-Power Plug<br /><h1>Overview</h1><p>Controllable plug for wall outlets including energy and power meter.This device is VDE and CE certified </p> <br /><h2>Inclusion Information</h2><p>Press the button on the wall plug 3 times within a period of around 2 seconds. </p> <br /><h2>Exclusion Information</h2><p>Press the button on the wall plug 3 times within a period of around 2 seconds. </p>
-    ]]></description>
+    <description>Power Plug&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtControllable plug for wall outlets including energy and power meter.This device is VDE and CE certified &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the button on the wall plug 3 times within a period of around 2 seconds. &lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the button on the wall plug 3 times within a period of around 2 seconds. &lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -54,7 +52,7 @@ Power Plug<br /><h1>Overview</h1><p>Controllable plug for wall outlets including
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp &amp; Co</property>
+      <property name="vendor">Popp &amp;amp; Co</property>
       <property name="modelId">700793</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0003:1002</property>

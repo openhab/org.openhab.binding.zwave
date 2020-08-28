@@ -7,9 +7,7 @@
 
   <thing-type id="fibaro_fgbs001_00_000" listed="false">
     <label>FGBS001 Universal Binary Sensor</label>
-    <description><![CDATA[
-Universal Binary Sensor<br /><h1>Overview</h1><p>The Universal Binary Sensor is a wireless module that makes it possible to improve the functionality of any sensor with a binary output by allowing it to communicate with Z-WAVE.<br />The module allows for wireless communication between the system and the DS18B20 temperature sensors. The device can service up to two binary sensors and up to four DS18B20 temperature sensors.</p> <br /><h2>Inclusion Information</h2><p>The Fibaro Sensor is added to the network by quickly pressing the B button three times (the button is located in the center of the device).</p> <p><strong>Note:</strong> Every time when any changes are made to the configuration of TP and TD lines (1-wire), e.g. when DS18B20 sensor(s) is (are) included/excluded, it is necessary to execute the procedure of exclusion and repeated inclusion of the sensor module to the central hub. It should be remembered that the system shall enter into the programming mode only once all the connected sensors have been detected (about 10 s).</p> <br /><h2>Exclusion Information</h2><p>The Fibaro Sensor is removed from the network by quickly pressing the B button three times (the button is located in the center of the device).</p>
-    ]]></description>
+    <description>Universal Binary Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Universal Binary Sensor is a wireless module that makes it possible to improve the functionality of any sensor with a binary output by allowing it to communicate with Z-WAVE.&lt;br /&gtThe module allows for wireless communication between the system and the DS18B20 temperature sensors. The device can service up to two binary sensors and up to four DS18B20 temperature sensors.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtThe Fibaro Sensor is added to the network by quickly pressing the B button three times (the button is located in the center of the device).&lt;/p&gt &lt;p&gt&lt;strong&gtNote:&lt;/strong&gt Every time when any changes are made to the configuration of TP and TD lines (1-wire), e.g. when DS18B20 sensor(s) is (are) included/excluded, it is necessary to execute the procedure of exclusion and repeated inclusion of the sensor module to the central hub. It should be remembered that the system shall enter into the programming mode only once all the connected sensors have been detected (about 10 s).&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtThe Fibaro Sensor is removed from the network by quickly pressing the B button three times (the button is located in the center of the device).&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -101,18 +99,14 @@ Universal Binary Sensor<br /><h1>Overview</h1><p>The Universal Binary Sensor is 
       <parameter name="config_1_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>1: IN1 Alarm Cancellation Delay</label>
-        <description><![CDATA[
-Input I alarm cancellation delay.<br /><h1>Overview</h1><p>Additional delay after an alarm from input IN1 has ceased. The parameter allows you to specify additional time, after which the input no. 1 alarm is cancelled once its violation has ceased.</p>
-        ]]></description>
+        <description>Input I alarm cancellation delay.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdditional delay after an alarm from input IN1 has ceased. The parameter allows you to specify additional time, after which the input no. 1 alarm is cancelled once its violation has ceased.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>2: IN2 Alarm Cancellation Delay</label>
-        <description><![CDATA[
-Input 2 alarm cancellation delay.<br /><h1>Overview</h1><p>Additional delay after an alarm from input IN2 has ceased. The parameter allows you to specify additional time, after which the input no. 2 alarm is cancelled once its violation has ceased.</p>
-        ]]></description>
+        <description>Input 2 alarm cancellation delay.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdditional delay after an alarm from input IN2 has ceased. The parameter allows you to specify additional time, after which the input no. 2 alarm is cancelled once its violation has ceased.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -142,9 +136,7 @@ Input 2 alarm cancellation delay.<br /><h1>Overview</h1><p>Additional delay afte
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Type of control frame for association group 1</label>
-        <description><![CDATA[
-Type of transmitted control frame for association group 1.<br /><h1>Overview</h1><p>Activated via input IN1. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC_SET)</p>
-        ]]></description>
+        <description>Type of transmitted control frame for association group 1.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtActivated via input IN1. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC_SET)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">ALARM GENERIC</option>
@@ -159,9 +151,7 @@ Type of transmitted control frame for association group 1.<br /><h1>Overview</h1
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Type of control frame for association group 2</label>
-        <description><![CDATA[
-Type of transmitted control frame for association group 2<br /><h1>Overview</h1><p>Activated via input IN2. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC_SET)</p>
-        ]]></description>
+        <description>Type of transmitted control frame for association group 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtActivated via input IN2. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC_SET)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">ALARM GENERIC</option>
@@ -177,26 +167,20 @@ Type of transmitted control frame for association group 2<br /><h1>Overview</h1>
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>7: Forced Level of Dimming group 1</label>
-        <description><![CDATA[
-Value of the parameter specifying the forced levels.<br /><h1>Overview</h1><p>Value of the parameter specifying the forced levels of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1.&lt;BR/&gt;In the case of alarm frames the alarm priority is specified.</p> <p>Possible parameter settings: (1 – 99) and 255<br />Value of 255 makes it possible to activate the device when using<br />the Dimmer module it means activating the device and setting it to<br />the previous stored condition, e.g. when Dimmer is set to 30%, then<br />deactivated, and then reactivated using command 255, it will<br />automatically be set to the previous condition, i.e. 30%. </p>
-        ]]></description>
+        <description>Value of the parameter specifying the forced levels.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue of the parameter specifying the forced levels of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1.&amp;amp;lt;BR/&amp;amp;gt;In the case of alarm frames the alarm priority is specified.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtPossible parameter settings: (1 – 99) and 255&amp;lt;br /&amp;amp;gtValue of 255 makes it possible to activate the device when using&amp;lt;br /&amp;amp;gtthe Dimmer module it means activating the device and setting it to&amp;lt;br /&amp;amp;gtthe previous stored condition, e.g. when Dimmer is set to 30%, then&amp;lt;br /&amp;amp;gtdeactivated, and then reactivated using command 255, it will&amp;lt;br /&amp;amp;gtautomatically be set to the previous condition, i.e. 30%. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>8: Forced Level of Dimming group 2</label>
-        <description><![CDATA[
-Value of the parameter specifying forced levels.<br /><h1>Overview</h1><p>Value of the parameter specifying the forced level of dimming /<br />opening sun blinds when comes “switch on” / ”open” command to<br />devices from association group no. 2.<br />In the case of alarm frames the alarm priority is specified.<br />Default value: 255<br />Possible parameter settings:<br />(1 – 99) and 255<br />Value of 255 makes it possible to activate the device; when using of<br />the Dimmer module it means activating the device and setting it to<br />the previous stored condition, e.g. when Dimmer is set to 30%, then<br />deactivated, and then reactivated using command 255, it will<br />automatically be set to the previous condition, i.e. 30%. </p>
-        ]]></description>
+        <description>Value of the parameter specifying forced levels.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue of the parameter specifying the forced level of dimming /&amp;lt;br /&amp;amp;gtopening sun blinds when comes “switch on” / ”open” command to&amp;lt;br /&amp;amp;gtdevices from association group no. 2.&amp;lt;br /&amp;amp;gtIn the case of alarm frames the alarm priority is specified.&amp;lt;br /&amp;amp;gtDefault value: 255&amp;lt;br /&amp;amp;gtPossible parameter settings:&amp;lt;br /&amp;amp;gt(1 – 99) and 255&amp;lt;br /&amp;amp;gtValue of 255 makes it possible to activate the device; when using of&amp;lt;br /&amp;amp;gtthe Dimmer module it means activating the device and setting it to&amp;lt;br /&amp;amp;gtthe previous stored condition, e.g. when Dimmer is set to 30%, then&amp;lt;br /&amp;amp;gtdeactivated, and then reactivated using command 255, it will&amp;lt;br /&amp;amp;gtautomatically be set to the previous condition, i.e. 30%. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Deactivate transmission of frame canceling alarm</label>
-        <description><![CDATA[
-Deactivating transmission of the frame cancelling the alarm<br /><h1>Overview</h1><p>or the<br />control frame deactivating the device (Basic). It allows for disabling<br />the deactivation function or the alarm cancellation function for<br />devices associated with the appropriate input of the Fibaro Sensor.<br />Default value: 0, in the case of association group no. 1 and 2 the<br />information is sent<br />Possible parameter settings:<br />0 – in the case of association group no. 1 and 2 the information is<br />sent<br />1 – in the case of association group no. 1 the information is sent. In<br />the case of association group no. 2 the information is not sent.<br />2 – in the case of association group no. 1 the information is not<br />sent. In the case of association group no. 2 the information is sent.<br />NOTE: Information concerning alarm violation or activation<br />commands for devices from association groups are always<br />sent. </p>
-        ]]></description>
+        <description>Deactivating transmission of the frame cancelling the alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtor the&amp;lt;br /&amp;amp;gtcontrol frame deactivating the device (Basic). It allows for disabling&amp;lt;br /&amp;amp;gtthe deactivation function or the alarm cancellation function for&amp;lt;br /&amp;amp;gtdevices associated with the appropriate input of the Fibaro Sensor.&amp;lt;br /&amp;amp;gtDefault value: 0, in the case of association group no. 1 and 2 the&amp;lt;br /&amp;amp;gtinformation is sent&amp;lt;br /&amp;amp;gtPossible parameter settings:&amp;lt;br /&amp;amp;gt0 – in the case of association group no. 1 and 2 the information is&amp;lt;br /&amp;amp;gtsent&amp;lt;br /&amp;amp;gt1 – in the case of association group no. 1 the information is sent. In&amp;lt;br /&amp;amp;gtthe case of association group no. 2 the information is not sent.&amp;lt;br /&amp;amp;gt2 – in the case of association group no. 1 the information is not&amp;lt;br /&amp;amp;gtsent. In the case of association group no. 2 the information is sent.&amp;lt;br /&amp;amp;gtNOTE: Information concerning alarm violation or activation&amp;lt;br /&amp;amp;gtcommands for devices from association groups are always&amp;lt;br /&amp;amp;gtsent. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Groups 1 and 2 sent</option>
@@ -208,35 +192,27 @@ Deactivating transmission of the frame cancelling the alarm<br /><h1>Overview</h
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Interval between readings of temperature sensors</label>
-        <description><![CDATA[
-Interval between successive readings of temperature sensors<br /><h1>Overview</h1><p> from all sensors connected to the device in seconds. Note: taking temperature readings from the sensor does not result in sending a temperature condition report to the central hub.</p>
-        ]]></description>
+        <description>Interval between successive readings of temperature sensors&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt from all sensors connected to the device in seconds. Note: taking temperature readings from the sensor does not result in sending a temperature condition report to the central hub.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>11: Interval betw. forcing to send report for temp.</label>
-        <description><![CDATA[
-The forced report is sent immediately after ...<br /><h1>Overview</h1><p>... the next reading of temperature from the sensor, irrespective of the settings<br />of parameter no. 12.<br />Default value: 200 s<br />Possible parameter settings:<br />0 – 255 s<br />0 – deactivating the function<br />Note: Frequent sending of temperature condition reports is<br />reasonable when the sensor is located somewhere where can<br />occure rapid changes of ambient temperature. In other cases<br />it is recommended to leave the parameter set to the default<br />value.</p>
-        ]]></description>
+        <description>The forced report is sent immediately after ...&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt... the next reading of temperature from the sensor, irrespective of the settings&amp;lt;br /&amp;amp;gtof parameter no. 12.&amp;lt;br /&amp;amp;gtDefault value: 200 s&amp;lt;br /&amp;amp;gtPossible parameter settings:&amp;lt;br /&amp;amp;gt0 – 255 s&amp;lt;br /&amp;amp;gt0 – deactivating the function&amp;lt;br /&amp;amp;gtNote: Frequent sending of temperature condition reports is&amp;lt;br /&amp;amp;gtreasonable when the sensor is located somewhere where can&amp;lt;br /&amp;amp;gtoccure rapid changes of ambient temperature. In other cases&amp;lt;br /&amp;amp;gtit is recommended to leave the parameter set to the default&amp;lt;br /&amp;amp;gtvalue.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>12: Insensitiveness to temperature changes.</label>
-        <description><![CDATA[
-This is the maximum acceptable difference between<br /><h1>Overview</h1><p> the last reported temperature and the current temperature taken from the sensor. If the temperatures differ by the set value or more, then a report with the current temperature value is sent to the device</p>
-        ]]></description>
+        <description>This is the maximum acceptable difference between&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt the last reported temperature and the current temperature taken from the sensor. If the temperatures differ by the set value or more, then a report with the current temperature value is sent to the device&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Transmitting alarm/control frame broadcast mode</label>
-        <description><![CDATA[
-Transmitting the alarm or control frame in 'broadcast' mode<br /><h1>Overview</h1><p> (i.e. to all devices within range), information sent in this mode is not repeated by the mesh network.&lt;BR/&gt;&lt;B&gt;NOTE:&lt;/B&gt; If the broadcast mode of information transmission is activated for a given channel, then transmission of<br />information in “singlecast” mode to devices assigned to the<br />association group of this channel is deactivated.</p>
-        ]]></description>
+        <description>Transmitting the alarm or control frame in 'broadcast' mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt (i.e. to all devices within range), information sent in this mode is not repeated by the mesh network.&amp;amp;lt;BR/&amp;amp;gt;&amp;amp;lt;B&amp;amp;gt;NOTE:&amp;amp;lt;/B&amp;amp;gt; If the broadcast mode of information transmission is activated for a given channel, then transmission of&amp;lt;br /&amp;amp;gtinformation in “singlecast” mode to devices assigned to the&amp;lt;br /&amp;amp;gtassociation group of this channel is deactivated.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">IN1 and IN2 Broadcast inactive</option>
@@ -248,9 +224,7 @@ Transmitting the alarm or control frame in 'broadcast' mode<br /><h1>Overview</h
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Scene activation</label>
-        <description><![CDATA[
-Enable/Disable scene functionality.<br /><h1>Overview</h1><p>The device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.</p>
-        ]]></description>
+        <description>Enable/Disable scene functionality.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe device offers the possibility of sending commands compatible with Command class scene activation. Information is sent to devices assigned to association group no. 3.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Scenes disabled</option>

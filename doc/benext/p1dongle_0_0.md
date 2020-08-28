@@ -10,39 +10,22 @@ This describes the Z-Wave device *P1-dongle*, manufactured by *[BeNext](http://w
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![P1-dongle product image](https://www.cd-jackson.com/zwave_device_uploads/340/340_default.png)
+![P1-dongle product image](https://opensmarthouse.org/zwavedatabase/340/image/)
 
 
 The P1-dongle supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The P1-dongle sends smart meter data wirelessly to your controller, helping you get insight of your consumption and things like the overall yield of your solar panels. The P1-dongle can connect to smart meters that support DSMR (Dutch Smart Meter Reader Protocol) eg. all smart meters with a P1-connector.
-
-LED Status Information
-
-  * Ready to install: LED pulse once per second
-  * Including: LED pulse twice per second
-  * Excluding: LED pulse three times per 1.5 second
-  * Include Successful: LED on for one second
-  * Ready and operating in a Z-Wave network: LED continuously on
-  * No ready and not included in a Z-Wave network: LED pulse once per second
+<p&gtThe P1-dongle sends smart meter data wirelessly to your controller, helping you get insight of your consumption and things like the overall yield of your solar panels. The P1-dongle can connect to smart meters that support DSMR (Dutch Smart Meter Reader Protocol) eg. all smart meters with a P1-connector.</p&gt <p&gtLED Status Information</p&gt <ul&gt<li&gtReady to install: LED pulse once per second</li&gt <li&gtIncluding: LED pulse twice per second</li&gt <li&gtExcluding: LED pulse three times per 1.5 second</li&gt <li&gtInclude Successful: LED on for one second</li&gt <li&gtReady and operating in a Z-Wave network: LED continuously on</li&gt <li&gtNo ready and not included in a Z-Wave network: LED pulse once per second</li&gt </ul&gt
 
 ### Inclusion Information
 
-  * Put you controller in inclusion mode
-  * Connect the P1 Dongle to your Smart Meter (use a power source when needed)
-  * The P1 Dongle will switch to Network Wide Inclusion automatically
-
-Use the button to switch the P1 Dongle to Inclusion (LED pulse twice per second) or Exclusion / Reset (LED pulse three times per 1.5 second) mode
+<ul&gt<li&gtPut you controller in inclusion mode</li&gt <li&gtConnect the P1 Dongle to your Smart Meter (use a power source when needed)</li&gt <li&gtThe P1 Dongle will switch to Network Wide Inclusion automatically</li&gt </ul&gt<p&gtUse the button to switch the P1 Dongle to Inclusion (LED pulse twice per second) or Exclusion / Reset (LED pulse three times per 1.5 second) mode</p&gt
 
 ### Exclusion Information
 
-  * Put your controller and the P1 Dongle in exclusion mode (LED pulse three times per 1.5 second)
-  * The dongle will exclude from it's former network and reset to node ID zero 
-  * If the P1 Dongle wasn't included in a network before, this procedure will act as a node reset
-
-Use the button to switch the P1 Dongle to Inclusion (LED pulse twice per second) or Exclusion / Reset (LED pulse three times per 1.5 second) mode
+<ul&gt<li&gtPut your controller and the P1 Dongle in exclusion mode (LED pulse three times per 1.5 second)</li&gt <li&gtThe dongle will exclude from it's former network and reset to node ID zero </li&gt <li&gtIf the P1 Dongle wasn't included in a network before, this procedure will act as a node reset</li&gt </ul&gt<p&gtUse the button to switch the P1 Dongle to Inclusion (LED pulse twice per second) or Exclusion / Reset (LED pulse three times per 1.5 second) mode</p&gt
 
 ## Channels
 
@@ -107,7 +90,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 4: Baud Rate
 
 Baud rate: the rate the device sends data between the smart meter and z-wave
-Set BAUD rate value * 100.
+<p&gtSet BAUD rate value * 100.</p&gt
 Values in the range 0 to 40000 may be set.
 
 The manufacturer defined default value is ```1152```.
@@ -165,9 +148,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual (NL)](https://www.cd-jackson.com/zwave_device_uploads/340/P1-dongle-nl.pdf)
+* [Manual (NL)](https://opensmarthouse.org/zwavedatabase/340/P1-dongle-nl.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/340).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/340).

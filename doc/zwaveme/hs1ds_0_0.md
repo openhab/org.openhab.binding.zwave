@@ -10,20 +10,20 @@ This describes the Z-Wave device *HS1DS*, manufactured by *Z-Wave.Me* with the t
 
 The device is in the category of *Window*, defining Window.
 
-![HS1DS product image](https://www.cd-jackson.com/zwave_device_uploads/783/783_default.png)
+![HS1DS product image](https://opensmarthouse.org/zwavedatabase/783/image/)
 
 
 ## Overview
 
-This is a intelligent door sensor , adopts super low power Z-Wave wireless networking technology, makes a longer battery life-span, Feel open or close state of the door or window through the near and separation between sensor and magnetic. Dual sensor design, makes the installation more flexible and adaptable. Products are suitable for home, villas, factories, shops, warehouses, office buildings, banks, room and other places of safety prevention
+<p&gtThis is a intelligent door sensor , adopts super low power Z-Wave wireless networking technology, makes a longer battery life-span, Feel open or close state of the door or window through the near and separation between sensor and magnetic. Dual sensor design, makes the installation more flexible and adaptable. Products are suitable for home, villas, factories, shops, warehouses, office buildings, banks, room and other places of safety prevention</p&gt
 
 ### Inclusion Information
 
- press the device networking hole for 3 times in 1.5 seconds, then the green LED flashes quickly
+<p&gt press the device networking hole for 3 times in 1.5 seconds, then the green LED flashes quickly</p&gt
 
 ### Exclusion Information
 
-Not provided
+<p&gtNot provided</p&gt
 
 ## Channels
 
@@ -103,9 +103,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/783/HSIDS-Z.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/783/HSIDS-Z.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/783).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/783).

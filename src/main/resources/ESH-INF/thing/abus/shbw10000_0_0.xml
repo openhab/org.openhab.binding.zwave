@@ -7,9 +7,7 @@
 
   <thing-type id="abus_shbw10000_00_000" listed="false">
     <label>SHBW10000 PIR Multisensor</label>
-    <description><![CDATA[
-PIR Multisensor<br /><h1>Overview</h1><p>The SHBW10000 was developed for use in home automation systems that use the Z-Wave wireless standard.</p> <p>The multisensor has the following sensors:</p> <ul><li>PIR</li> <li>temperature</li> <li>atmospheric humidity</li> <li>lights</li> </ul><p>The motion sensor lets you know when something moves within a certain range and can then trigger various scenes/actions.</p> <p>The device also reports the current room temperature, humidity and illuminance.</p> <p>In conjunction with configurable scenes, smart functions can also be initiated in addition to monitoring, e.g. if temperature &lt;20 degrees, heating on.</p> <br /><h2>Inclusion Information</h2><p>Click the + (Add) button in your Z-Wave App and follow the further instructions.</p> <p>Press the Button on the device once.</p> <p>The App will show if the Add device process was successful. The Status LED will light up for 2 seconds.</p> <p>Repeat the inclusion process if it was not successful.</p> <br /><h2>Exclusion Information</h2><p>Click the - (Remove) button in your Z-Wave App and follow the further instructions.</p> <p>Press the Button on the device once.</p> <p>The App will show if the Remove device process was successful.</p> <p>Repeat the exclusion process if it was not successful.</p> <br /><h2>Wakeup Information</h2><p>If included:</p> <p>The device sends a wake up notification command to the node devices which are connected by a wake up command.</p> <p>The LED will light up when information is received, and will go out when there is no exchange for 10 seconds.</p> <p>If not included: nothing</p>
-    ]]></description>
+    <description>PIR Multisensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe SHBW10000 was developed for use in home automation systems that use the Z-Wave wireless standard.&lt;/p&gt &lt;p&gtThe multisensor has the following sensors:&lt;/p&gt &lt;ul&gt&lt;li&gtPIR&lt;/li&gt &lt;li&gttemperature&lt;/li&gt &lt;li&gtatmospheric humidity&lt;/li&gt &lt;li&gtlights&lt;/li&gt &lt;/ul&gt&lt;p&gtThe motion sensor lets you know when something moves within a certain range and can then trigger various scenes/actions.&lt;/p&gt &lt;p&gtThe device also reports the current room temperature, humidity and illuminance.&lt;/p&gt &lt;p&gtIn conjunction with configurable scenes, smart functions can also be initiated in addition to monitoring, e.g. if temperature &amp;lt;20 degrees, heating on.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtClick the + (Add) button in your Z-Wave App and follow the further instructions.&lt;/p&gt &lt;p&gtPress the Button on the device once.&lt;/p&gt &lt;p&gtThe App will show if the Add device process was successful. The Status LED will light up for 2 seconds.&lt;/p&gt &lt;p&gtRepeat the inclusion process if it was not successful.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtClick the - (Remove) button in your Z-Wave App and follow the further instructions.&lt;/p&gt &lt;p&gtPress the Button on the device once.&lt;/p&gt &lt;p&gtThe App will show if the Remove device process was successful.&lt;/p&gt &lt;p&gtRepeat the exclusion process if it was not successful.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtIf included:&lt;/p&gt &lt;p&gtThe device sends a wake up notification command to the node devices which are connected by a wake up command.&lt;/p&gt &lt;p&gtThe LED will light up when information is received, and will go out when there is no exchange for 10 seconds.&lt;/p&gt &lt;p&gtIf not included: nothing&lt;/p&gt</description>
     <category>MotionDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -53,7 +51,7 @@ PIR Multisensor<br /><h1>Overview</h1><p>The SHBW10000 was developed for use in 
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">ABUS Security-Center GmbH &amp; Co. KG</property>
+      <property name="vendor">ABUS Security-Center GmbH &amp;amp; Co. KG</property>
       <property name="modelId">SHBW10000</property>
       <property name="manufacturerId">0403</property>
       <property name="manufacturerRef">0002:0001</property>
@@ -79,18 +77,14 @@ PIR Multisensor<br /><h1>Overview</h1><p>The SHBW10000 was developed for use in 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="10" max="50">
         <label>10: Low Battery Alarm Level</label>
-        <description><![CDATA[
-Low Battery Alarm Level<br /><h1>Overview</h1><p>Low Battery Power Level Alarm Level</p>
-        ]]></description>
+        <description>Low Battery Alarm Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLow Battery Power Level Alarm Level&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>12: PIR sensitivity</label>
-        <description><![CDATA[
-PIR sensitivity<br /><h1>Overview</h1><ul><li>The value 10 is the highest sensitivity.</li> <li>The value 0 disables the PIR sensor. </li> </ul>
-        ]]></description>
+        <description>PIR sensitivity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtThe value 10 is the highest sensitivity.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtThe value 0 disables the PIR sensor. &amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
         <options>
           <option value="0">Disabled</option>
@@ -101,17 +95,13 @@ PIR sensitivity<br /><h1>Overview</h1><ul><li>The value 10 is the highest sensit
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="5" max="15300">
         <label>13: Waiting time between two PIR triggers</label>
-        <description><![CDATA[
-Waiting time between two PIR triggers<br /><h1>Overview</h1><p>Waiting time from one PIR trigger to the next trigger.</p> <ul><li>Adjustable from 5 - 15300 in seconds</li> </ul>
-        ]]></description>
+        <description>Waiting time between two PIR triggers&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWaiting time from one PIR trigger to the next trigger.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtAdjustable from 5 - 15300 in seconds&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: BASIC SET Command after PIR triggering</label>
-        <description><![CDATA[
-BASIC SET Command after PIR triggering<br /><h1>Overview</h1><p>BASIC SET should be sent after triggering the PIR</p>
-        ]]></description>
+        <description>BASIC SET Command after PIR triggering&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBASIC SET should be sent after triggering the PIR&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Disabled</option>
@@ -132,9 +122,7 @@ BASIC SET Command after PIR triggering<br /><h1>Overview</h1><p>BASIC SET should
       <parameter name="config_100_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>100: Reset parameters 101-104 to factory defaults</label>
-        <description><![CDATA[
-Reset parameters 101-104 to factory defaults<br /><h1>Overview</h1><p>Resets parameter 101 - 104 to factory setting.</p>
-        ]]></description>
+        <description>Reset parameters 101-104 to factory defaults&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtResets parameter 101 - 104 to factory setting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="1">Reset parametera 101 - 104</option>
@@ -146,9 +134,7 @@ Reset parameters 101-104 to factory defaults<br /><h1>Overview</h1><p>Resets par
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>101: Temperature report Time</label>
-        <description><![CDATA[
-Temperature report Time<br /><h1>Overview</h1><p>The interval time of the temperature report.</p> <p>The value 0 disables the report.</p> <p><strong>NOTE:</strong> The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
-        ]]></description>
+        <description>Temperature report Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time of the temperature report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe value 0 disables the report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNOTE:&amp;lt;/strong&amp;amp;gt The value is always rounded up to the full minute. (e.g. 62 seconds -&amp;amp;gt; value is rounded up to 120 seconds)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>7200</default>
         <options>
           <option value="0">Disabled</option>
@@ -159,9 +145,7 @@ Temperature report Time<br /><h1>Overview</h1><p>The interval time of the temper
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>102: Humidity report Time</label>
-        <description><![CDATA[
-Humidity report Time<br /><h1>Overview</h1><p>The interval time of the humidity report.</p> <p>The value 0 disables the report. </p> <p><strong>NOTE: </strong>The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
-        ]]></description>
+        <description>Humidity report Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time of the humidity report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe value 0 disables the report. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNOTE: &amp;lt;/strong&amp;amp;gtThe value is always rounded up to the full minute. (e.g. 62 seconds -&amp;amp;gt; value is rounded up to 120 seconds)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>7200</default>
         <options>
           <option value="0">Disabled</option>
@@ -172,9 +156,7 @@ Humidity report Time<br /><h1>Overview</h1><p>The interval time of the humidity 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>103: Brightness report Time</label>
-        <description><![CDATA[
-Brightness report Time<br /><h1>Overview</h1><p>The interval time of the brightness report.</p> <p>The value 0 disables the report. </p> <p><strong>NOTE:</strong> The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
-        ]]></description>
+        <description>Brightness report Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time of the brightness report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe value 0 disables the report. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNOTE:&amp;lt;/strong&amp;amp;gt The value is always rounded up to the full minute. (e.g. 62 seconds -&amp;amp;gt; value is rounded up to 120 seconds)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>7200</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -182,9 +164,7 @@ Brightness report Time<br /><h1>Overview</h1><p>The interval time of the brightn
       <parameter name="config_104_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
         <label>104: Battery report Time</label>
-        <description><![CDATA[
-Battery report Time<br /><h1>Overview</h1><p>The interval time of the battery report.</p> <p>The value 0 disables the report. </p> <p><strong>NOTE:</strong> The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
-        ]]></description>
+        <description>Battery report Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe interval time of the battery report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe value 0 disables the report. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNOTE:&amp;lt;/strong&amp;amp;gt The value is always rounded up to the full minute. (e.g. 62 seconds -&amp;amp;gt; value is rounded up to 120 seconds)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>7200</default>
         <options>
           <option value="0">Disabled</option>
@@ -194,9 +174,7 @@ Battery report Time<br /><h1>Overview</h1><p>The interval time of the battery re
 
       <parameter name="config_110_1" type="integer" groupName="configuration">
         <label>110: Enable/Disable Report 111-114</label>
-        <description><![CDATA[
-Enable/Disable Report 111-114<br /><h1>Overview</h1><p>Enable or disable reports 111-114</p>
-        ]]></description>
+        <description>Enable/Disable Report 111-114&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or disable reports 111-114&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Reports are disabled</option>
@@ -207,53 +185,41 @@ Enable/Disable Report 111-114<br /><h1>Overview</h1><p>Enable or disable reports
       <parameter name="config_111_2" type="integer" groupName="configuration"
                  min="1" max="500">
         <label>111: Temperature report Threshold</label>
-        <description><![CDATA[
-Temperature report Threshold<br /><h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p> <ul><li>Adjustable from 1 - 500 in 0,1°. (e.g. 25 = 2.5°)</li> </ul>
-        ]]></description>
+        <description>Temperature report Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe threshold value serves as an additional condition for the time-based report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf the threshold value was not exceeded, the time-based report is not sent.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtAdjustable from 1 - 500 in 0,1°. (e.g. 25 = 2.5°)&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_112_1" type="integer" groupName="configuration"
                  min="1" max="32">
         <label>112: Humidity report Threshold</label>
-        <description><![CDATA[
-Humidity report Threshold<br /><h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p>
-        ]]></description>
+        <description>Humidity report Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe threshold value serves as an additional condition for the time-based report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf the threshold value was not exceeded, the time-based report is not sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_113_2" type="integer" groupName="configuration"
                  min="1" max="65528">
         <label>113: Brightness report Threshold</label>
-        <description><![CDATA[
-Brightness report Threshold<br /><h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p>
-        ]]></description>
+        <description>Brightness report Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe threshold value serves as an additional condition for the time-based report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf the threshold value was not exceeded, the time-based report is not sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>150</default>
       </parameter>
 
       <parameter name="config_114_1" type="integer" groupName="configuration"
                  min="1" max="100">
         <label>114: Battery report Threshold</label>
-        <description><![CDATA[
-Battery report Threshold<br /><h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p>
-        ]]></description>
+        <description>Battery report Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe threshold value serves as an additional condition for the time-based report.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf the threshold value was not exceeded, the time-based report is not sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ul><li>Z-Wave Plus Lifeline Notification Report: Sensor will send Notification Report when Motion Detection Unknown Location and (Event inactive). </li> <li>Multilevel Sensor Report: Sensor will send Multilevel Sensor Report (Temperature, humidity, luminance) interval of 2 hours.</li> <li>Battery Report. Sensor will send Battery Report when the battery level is low and the battery report’s value is 255 (0xFF). </li> <li>Device Reset Locally.</li> </ul>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtZ-Wave Plus Lifeline Notification Report: Sensor will send Notification Report when Motion Detection Unknown Location and (Event inactive). &lt;/li&gt &lt;li&gtMultilevel Sensor Report: Sensor will send Multilevel Sensor Report (Temperature, humidity, luminance) interval of 2 hours.&lt;/li&gt &lt;li&gtBattery Report. Sensor will send Battery Report when the battery level is low and the battery report’s value is 255 (0xFF). &lt;/li&gt &lt;li&gtDevice Reset Locally.&lt;/li&gt &lt;/ul&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Send Basic Set when PIR trigger</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Send Basic Set when PIR trigger</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSend Basic Set when PIR trigger&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

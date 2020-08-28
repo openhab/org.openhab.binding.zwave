@@ -7,9 +7,7 @@
 
   <thing-type id="remotec_adt8021_00_000" listed="false">
     <label>ZDM-80 Wall plug dimmer switch</label>
-    <description><![CDATA[
-Wall plug dimmer switch<br /><h1>Overview</h1><p>Dimming Module</p> <br /><h2>Inclusion Information</h2><p>Triple click the PROG button within 1 second.</p>
-    ]]></description>
+    <description>Wall plug dimmer switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtDimming Module&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click the PROG button within 1 second.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -88,43 +86,33 @@ Wall plug dimmer switch<br /><h1>Overview</h1><p>Dimming Module</p> <br /><h2>In
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="5">
         <label>17: Dimming time frame</label>
-        <description><![CDATA[
-Dimming time frame<br /><h1>Overview</h1><p>Sets the time of moving the Dimmer from 0% to max. dimming values.</p> <p>(The ZDM-80 will implement the dimming duration if received this parameter value from controller/gateway. Otherwise, the ZDM-80 will implement the local parameter value)</p>
-        ]]></description>
+        <description>Dimming time frame&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSets the time of moving the Dimmer from 0% to max. dimming values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt(The ZDM-80 will implement the dimming duration if received this parameter value from controller/gateway. Otherwise, the ZDM-80 will implement the local parameter value)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration"
                  min="2" max="99">
         <label>18: Maximum Dimmer level control</label>
-        <description><![CDATA[
-Maximum Dimmer level control<br /><h1>Overview</h1><p>Define the upper dimming level. Higher percentages lead to higher brightness level.</p>
-        ]]></description>
+        <description>Maximum Dimmer level control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefine the upper dimming level. Higher percentages lead to higher brightness level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
                  min="1" max="98">
         <label>19: Minimum Dimmer level control</label>
-        <description><![CDATA[
-Minimum Dimmer level control<br /><h1>Overview</h1><p>Define the lower dimming level. Lower percentages lead to lower brightness level.</p>
-        ]]></description>
+        <description>Minimum Dimmer level control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefine the lower dimming level. Lower percentages lead to lower brightness level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>13</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Group 1</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Association group_1 is used to report status change such as AUTO report to gateway.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAssociation group_1 is used to report status change such as AUTO report to gateway.&lt;/p&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><h1>Dimmer mode: </h1> <p>ZDM-80 will send out related dimming level e.g. 50% by basic set command to its association group automatically when ZDM-80 received the dimming command by local switch or wireless command e.g. 50%. </p> <h1>Switch mode: </h1> <p>ZDM-80 will send out related basic set command On (0xFF) or Off (0x00) to its association group automatically when ZDM-80 received On (0xFF) or Off (0x00) command by local switch or wireless command respectively. (Max. 4 nodes ID can be assigned to this association group)</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h1&gtDimmer mode: &lt;/h1&gt &lt;p&gtZDM-80 will send out related dimming level e.g. 50% by basic set command to its association group automatically when ZDM-80 received the dimming command by local switch or wireless command e.g. 50%. &lt;/p&gt &lt;h1&gtSwitch mode: &lt;/h1&gt &lt;p&gtZDM-80 will send out related basic set command On (0xFF) or Off (0x00) to its association group automatically when ZDM-80 received On (0xFF) or Off (0x00) command by local switch or wireless command respectively. (Max. 4 nodes ID can be assigned to this association group)&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 

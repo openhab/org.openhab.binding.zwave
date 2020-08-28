@@ -7,9 +7,7 @@
 
   <thing-type id="aeotec_zw141_03_000" listed="false">
     <label>ZW141 Nano Shutter</label>
-    <description><![CDATA[
-Nano Shutter<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor controller specifically used to enable Z-Wave command and control (up/down/stop) for existing window covering motors. It can connect to 2 external manual switches/buttons to control the motor up/down/stop independently.</p> <p>Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Shutter.</p> <p>The wireless module is powered from the mains supply. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.  Nano Shutter is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <p>It can be a repeater in the Z-Wave network. Acting as a bridge for communication, it will forward Z-Wave command messages to their destinations if the originating controller is out of range from the destination node. </p> <br /><h2>Inclusion Information</h2><ol><li>Set your Z-Wave controller into pairing mode.</li> <li>Press the Action Button on the Nano Dimmer or toggle the external manual switch once, the green LED (non-secure indication) will blink to indicate the Nano Dimmer is entering into pairing mode.</li> <li>If the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button 6 times on the Nano Dimmer or toggle the external manual switch 2 times in fast succession.</li> <li>If the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
-    ]]></description>
+    <description>Nano Shutter&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAeotec Nano Shutter is a Z-Wave motor controller specifically used to enable Z-Wave command and control (up/down/stop) for existing window covering motors. It can connect to 2 external manual switches/buttons to control the motor up/down/stop independently.&lt;/p&gt &lt;p&gtIts surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Shutter.&lt;/p&gt &lt;p&gtThe wireless module is powered from the mains supply. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.  Nano Shutter is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.&lt;/p&gt &lt;p&gtIt can be a repeater in the Z-Wave network. Acting as a bridge for communication, it will forward Z-Wave command messages to their destinations if the originating controller is out of range from the destination node. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtSet your Z-Wave controller into pairing mode.&lt;/li&gt &lt;li&gtPress the Action Button on the Nano Dimmer or toggle the external manual switch once, the green LED (non-secure indication) will blink to indicate the Nano Dimmer is entering into pairing mode.&lt;/li&gt &lt;li&gtIf the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtSet your Z-Wave controller into removal mode.&lt;/li&gt &lt;li&gtPress the Action Button 6 times on the Nano Dimmer or toggle the external manual switch 2 times in fast succession.&lt;/li&gt &lt;li&gtIf the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.&lt;/li&gt &lt;/ol&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -69,9 +67,7 @@ Nano Shutter<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor cont
 
       <parameter name="config_22_1" type="integer" groupName="configuration">
         <label>22: Motor Direction</label>
-        <description><![CDATA[
-Determine motor run direction for Shutter Mode and Venetian Mode<br /><h1>Overview</h1><p>Determine motor run direction for Shutter mode and Venetian Mode:</p> <table><tr><td>Mode / Value</td> <td>Function</td> </tr><tr><td>0</td> <td>Shutter mode / Venetian mode :Out 1= Up moving/ Multilevel<br />switch = 99%, Out 2= Down moving/ Multilevel switch = 0%</td> </tr><tr><td>1</td> <td>Shutter mode : Out 1= Down moving/ Multilevel switch = 0%,<br />Out 2= Up moving/ Multilevel switch = 99%.<br />Venetian mode :Out 1= Up moving/ Multilevel switch = 99%, Out<br />2= Down moving/ Multilevel switch = 0%</td> </tr><tr><td>2</td> <td>Shutter mode : Out 1= Up moving/ Multilevel switch = 99%, Out<br />2= Down moving/ Multilevel switch = 0%<br />Venetian mode: Out 1= Down moving/ Multilevel switch = 0%,<br />Out 2= Up moving/ Multilevel switch = 99%.</td> </tr><tr><td>3</td> <td>Shutter mode / Venetian mode : Out 1= Down moving/<br />Multilevel switch = 0%, Out 2= Up moving/ Multilevel switch =<br />99%.</td> </tr></table><p>Note:<br />1.Motor will stop when receiving this command in moving;<br />2.This configuration will not change after network exclusion.</p>
-        ]]></description>
+        <description>Determine motor run direction for Shutter Mode and Venetian Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDetermine motor run direction for Shutter mode and Venetian Mode:&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtMode / Value&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtFunction&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtShutter mode / Venetian mode :Out 1= Up moving/ Multilevel&amp;lt;br /&amp;amp;gtswitch = 99%, Out 2= Down moving/ Multilevel switch = 0%&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtShutter mode : Out 1= Down moving/ Multilevel switch = 0%,&amp;lt;br /&amp;amp;gtOut 2= Up moving/ Multilevel switch = 99%.&amp;lt;br /&amp;amp;gtVenetian mode :Out 1= Up moving/ Multilevel switch = 99%, Out&amp;lt;br /&amp;amp;gt2= Down moving/ Multilevel switch = 0%&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtShutter mode : Out 1= Up moving/ Multilevel switch = 99%, Out&amp;lt;br /&amp;amp;gt2= Down moving/ Multilevel switch = 0%&amp;lt;br /&amp;amp;gtVenetian mode: Out 1= Down moving/ Multilevel switch = 0%,&amp;lt;br /&amp;amp;gtOut 2= Up moving/ Multilevel switch = 99%.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtShutter mode / Venetian mode : Out 1= Down moving/&amp;lt;br /&amp;amp;gtMultilevel switch = 0%, Out 2= Up moving/ Multilevel switch =&amp;lt;br /&amp;amp;gt99%.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&amp;lt;p&amp;amp;gtNote:&amp;lt;br /&amp;amp;gt1.Motor will stop when receiving this command in moving;&amp;lt;br /&amp;amp;gt2.This configuration will not change after network exclusion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Mode 0 (Default)</option>
@@ -84,26 +80,20 @@ Determine motor run direction for Shutter Mode and Venetian Mode<br /><h1>Overvi
       <parameter name="config_34_2" type="integer" groupName="configuration"
                  min="10" max="32767">
         <label>34: Blade Turn Time</label>
-        <description><![CDATA[
-Blade Turn Time (Unit = 0.01 seconds)<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for blade turning, curtain may move upwards or downwards.</li> <li>Calibration need to work correctly.Or this setting will force the curtain to move up or down.</li> <li>This configuration will not change after network exclusion</li> </ul>
-        ]]></description>
+        <description>Blade Turn Time (Unit = 0.01 seconds)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNote:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtFor Venetian, if this value is set too large for blade turning, curtain may move upwards or downwards.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtCalibration need to work correctly.Or this setting will force the curtain to move up or down.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtThis configuration will not change after network exclusion&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>150</default>
       </parameter>
 
       <parameter name="config_35_2" type="integer" groupName="configuration"
                  min="500" max="32767">
         <label>35: Curtain Trip Time (Unit = 0.01 seconds)</label>
-        <description><![CDATA[
-Curtain Trip Time<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for curtain trip, blade turn positioning may cause errors.</li> <li>This configuration will not change after network exclusion</li> </ul>
-        ]]></description>
+        <description>Curtain Trip Time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNote:&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtFor Venetian, if this value is set too large for curtain trip, blade turn positioning may cause errors.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtThis configuration will not change after network exclusion&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>15000</default>
       </parameter>
 
       <parameter name="config_36_1" type="integer" groupName="configuration">
         <label>36: Enter/Exit Calibration</label>
-        <description><![CDATA[
-Enter/Exit Calibration<br /><h1>Overview</h1><p>Note:</p> <p>Product will enter the right Curtain Mode after calibration, see configuration parameter 39.</p>
-        ]]></description>
+        <description>Enter/Exit Calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNote:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtProduct will enter the right Curtain Mode after calibration, see configuration parameter 39.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Exit Calibration (Default)</option>
@@ -128,19 +118,17 @@ Enter/Exit Calibration<br /><h1>Overview</h1><p>Note:</p> <p>Product will enter 
         <default>0</default>
         <options>
           <option value="0">Complete (Default)</option>
-          <option value="1">-&gt; Reference Point A</option>
-          <option value="2">-&gt; Reference Point B</option>
+          <option value="1">-&amp;gt; Reference Point A</option>
+          <option value="2">-&amp;gt; Reference Point B</option>
           <option value="3">Wait</option>
-          <option value="4">-&gt; Reference Point C</option>
+          <option value="4">-&amp;gt; Reference Point C</option>
           <option value="5">Terminated</option>
         </options>
       </parameter>
 
       <parameter name="config_39_1" type="integer" groupName="configuration">
         <label>39: Curtain Mode</label>
-        <description><![CDATA[
-Set curtain mode<br /><h1>Overview</h1><p>Note:<br />1. This Operation will enter repositioning automatically;<br />2. This configuration will not change after network exclusion</p>
-        ]]></description>
+        <description>Set curtain mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNote:&amp;lt;br /&amp;amp;gt1. This Operation will enter repositioning automatically;&amp;lt;br /&amp;amp;gt2. This configuration will not change after network exclusion&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Shutter Mode (Default)</option>
@@ -191,9 +179,7 @@ Set curtain mode<br /><h1>Overview</h1><p>Note:<br />1. This Operation will ente
 
       <parameter name="config_85_1" type="integer" groupName="configuration">
         <label>85: External Switch Mode</label>
-        <description><![CDATA[
-Set External Button Operation Mode<br /><h1>Overview</h1><p>Set Extern Button Operation Mode</p> <table><tr><td>Value</td> <td>Function</td> </tr><tr><td>0</td> <td>S1/S2 map to Z-Wave Button</td> </tr><tr><td>1</td> <td> <p>S1 = Open or Stop<br />S2 = Close or Stop</p> <p>Note:Operation will not change the curtain mode, including<br />press and hold ,short press.</p> </td> </tr><tr><td>2</td> <td> <ol><li>When configuration 0x78/79 = 03:<br />Press and hold S1 :blade folds to 180°<br />Press and hold S2：Blade folds to 0°<br />Short press S1：Blinds go downwards<br />Short press S2：Blinds go upwards<br />Note: The device will change its curtain mode if it does not<br />match the current mode.</li> <li>When Configuration 0x78/79 = others:<br />S1 = Open or Stop<br />S2 = Close or Stop ,operation will not<br />change the curtain mode.</li> </ol></td> </tr></table><p>Note: when setting value to 2, we advice not to set only one external switch<br />to push button, do remember to change the controller channel before<br />operating push button, or the curtain level will be wrong.</p>
-        ]]></description>
+        <description>Set External Button Operation Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet Extern Button Operation Mode&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtValue&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtFunction&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtS1/S2 map to Z-Wave Button&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;p&amp;amp;gtS1 = Open or Stop&amp;lt;br /&amp;amp;gtS2 = Close or Stop&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote:Operation will not change the curtain mode, including&amp;lt;br /&amp;amp;gtpress and hold ,short press.&amp;lt;/p&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt &amp;lt;ol&amp;amp;gt&amp;lt;li&amp;amp;gtWhen configuration 0x78/79 = 03:&amp;lt;br /&amp;amp;gtPress and hold S1 :blade folds to 180°&amp;lt;br /&amp;amp;gtPress and hold S2：Blade folds to 0°&amp;lt;br /&amp;amp;gtShort press S1：Blinds go downwards&amp;lt;br /&amp;amp;gtShort press S2：Blinds go upwards&amp;lt;br /&amp;amp;gtNote: The device will change its curtain mode if it does not&amp;lt;br /&amp;amp;gtmatch the current mode.&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtWhen Configuration 0x78/79 = others:&amp;lt;br /&amp;amp;gtS1 = Open or Stop&amp;lt;br /&amp;amp;gtS2 = Close or Stop ,operation will not&amp;lt;br /&amp;amp;gtchange the curtain mode.&amp;lt;/li&amp;amp;gt &amp;lt;/ol&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&amp;lt;p&amp;amp;gtNote: when setting value to 2, we advice not to set only one external switch&amp;lt;br /&amp;amp;gtto push button, do remember to change the controller channel before&amp;lt;br /&amp;amp;gtoperating push button, or the curtain level will be wrong.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Mode 0 (Default)</option>
@@ -204,9 +190,7 @@ Set External Button Operation Mode<br /><h1>Overview</h1><p>Set Extern Button Op
 
       <parameter name="config_120_1" type="integer" groupName="configuration">
         <label>120: Type External Switch 1</label>
-        <description><![CDATA[
-Set Switch Type of External Switch 1<br /><h1>Overview</h1><p>Report automatically during identification</p> <table><tr><td>0x55</td> <td>In Indentification</td> </tr><tr><td>2/3/4</td> <td>Identification succeeded; returns switch type</td> </tr><tr><td>0x00</td> <td>Identification failed</td> </tr></table>
-        ]]></description>
+        <description>Set Switch Type of External Switch 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReport automatically during identification&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x55&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtIn Indentification&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt2/3/4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtIdentification succeeded; returns switch type&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtIdentification failed&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Unidentified Mode (Default)</option>
@@ -219,9 +203,7 @@ Set Switch Type of External Switch 1<br /><h1>Overview</h1><p>Report automatical
 
       <parameter name="config_121_1" type="integer" groupName="configuration">
         <label>121: Type External Switch 2</label>
-        <description><![CDATA[
-Set Switch Type of External Switch 2<br /><h1>Overview</h1><p>Report automatically during identification</p> <table><tr><td>0x55</td> <td>In Indentification</td> </tr><tr><td>2/3/4</td> <td>Identification succeeded; returns switch type</td> </tr><tr><td>0x00</td> <td>Identification failed</td> </tr></table>
-        ]]></description>
+        <description>Set Switch Type of External Switch 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReport automatically during identification&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x55&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtIn Indentification&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt2/3/4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtIdentification succeeded; returns switch type&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0x00&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtIdentification failed&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Unidentified Mode (Default)</option>
@@ -241,7 +223,7 @@ Set Switch Type of External Switch 2<br /><h1>Overview</h1><p>Report automatical
 
       <parameter name="config_248_1" type="integer" groupName="configuration">
         <label>248: Enable/Disable External Switches</label>
-        <description>Enable/disable function of external switches S1 &amp; S2</description>
+        <description>Enable/disable function of external switches S1 &amp;amp;amp; S2</description>
         <default>1</default>
         <options>
           <option value="1">Enable Network Function (Default)</option>
@@ -252,9 +234,7 @@ Set Switch Type of External Switch 2<br /><h1>Overview</h1><p>Report automatical
 
       <parameter name="config_251_1" type="integer" groupName="configuration">
         <label>251: Reset to Factory / Exclusion Function</label>
-        <description><![CDATA[
-Reset to Factory / Exclusion Function<br /><h1>Overview</h1><p>Enable/disable reset to factory default and exclusion function by long press on touch panel and press 6 times on wall swipe</p>
-        ]]></description>
+        <description>Reset to Factory / Exclusion Function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable reset to factory default and exclusion function by long press on touch panel and press 6 times on wall swipe&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disable</option>
@@ -264,9 +244,7 @@ Reset to Factory / Exclusion Function<br /><h1>Overview</h1><p>Enable/disable re
 
       <parameter name="config_255_4_wo" type="integer" groupName="configuration">
         <label>255: Reset function</label>
-        <description><![CDATA[
-Reset function<br /><h1>Overview</h1><p>When the command be valid：<br />1.The Re-Calibration task and Calibration task will be abort if they are<br />running.<br />2.The motor will stop if it's working</p>
-        ]]></description>
+        <description>Reset function&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen the command be valid：&amp;lt;br /&amp;amp;gt1.The Re-Calibration task and Calibration task will be abort if they are&amp;lt;br /&amp;amp;gtrunning.&amp;lt;br /&amp;amp;gt2.The motor will stop if it's working&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Reset all configuration</option>
@@ -278,17 +256,13 @@ Reset function<br /><h1>Overview</h1><p>When the command be valid：<br />1.The 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><ol><li>Device Reset Local ly Notification(0x5A01):<br />Send after device reset.</li> <li>Switch Multi level Report (0x2603):<br />Send after shutter stop moving.</li> <li>Basic Report(0x2003):<br />Send after shutter stop moving. (need to set<br />configuration CC)</li> <li>Central Scene Notification(0x5B03) :<br />Send when press S1/S2</li> <li>Configuration Report(0x7006):<br />Send shutter calibration and repositioning status</li> </ol>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ol&gt&lt;li&gtDevice Reset Local ly Notification(0x5A01):&lt;br /&gtSend after device reset.&lt;/li&gt &lt;li&gtSwitch Multi level Report (0x2603):&lt;br /&gtSend after shutter stop moving.&lt;/li&gt &lt;li&gtBasic Report(0x2003):&lt;br /&gtSend after shutter stop moving. (need to set&lt;br /&gtconfiguration CC)&lt;/li&gt &lt;li&gtCentral Scene Notification(0x5B03) :&lt;br /&gtSend when press S1/S2&lt;/li&gt &lt;li&gtConfiguration Report(0x7006):&lt;br /&gtSend shutter calibration and repositioning status&lt;/li&gt &lt;/ol&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Retransmit</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Retransmit when receiving the follow commands:<br />BASIC_SET<br />SWITCH_MULTILEVEL_SET<br />SWITCH_MULTILEVEL_START_LEVEL_CHANGE<br />SWITCH_MULTILEVEL_STOP_LEVEL_CHANGE<br />SCENE_ACTIVATION_SET</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRetransmit when receiving the follow commands:&lt;br /&gtBASIC_SET&lt;br /&gtSWITCH_MULTILEVEL_SET&lt;br /&gtSWITCH_MULTILEVEL_START_LEVEL_CHANGE&lt;br /&gtSWITCH_MULTILEVEL_STOP_LEVEL_CHANGE&lt;br /&gtSCENE_ACTIVATION_SET&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

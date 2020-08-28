@@ -10,7 +10,7 @@ This describes the Z-Wave device *MINI KEYPAD RFID*, manufactured by *[Zipato](h
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![MINI KEYPAD RFID product image](https://www.cd-jackson.com/zwave_device_uploads/410/410_default.png)
+![MINI KEYPAD RFID product image](https://opensmarthouse.org/zwavedatabase/410/image/)
 
 
 The MINI KEYPAD RFID supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,21 +19,15 @@ The MINI KEYPAD RFID does not permanently listen for messages sent from the cont
 
 ## Overview
 
-Place the Tag Reader close to the main exit of your office or home to enjoy it’s full potential.
-
-With the Tag Reader you can activate or de-activate your security by simply passing the RFID Tag in front of the reader. It is called a Tag Reader because it uses RFID Tags to identify people and their personal preferences around leaving the house or coming home.
-
-Separately from working with RFID Tags, the Tag Reader also has a numerical keypad. Within the free of charge online manager you can configure a numerical code. This way you prevent being locked out of the system in case you may have lost the RFID Tag.
-
-By using the Tag Reader intelligently you can secure your house and save money on your energy bill at the same time. You can actually let your house ‘fall asleep’ when enabling the ‘Away Scene’. This is especially noted when u are using energy saving products of BeNext such as Radiator Control and of course a Energy Switch.
+<p&gtPlace the Tag Reader close to the main exit of your office or home to enjoy it’s full potential.</p&gt <p&gtWith the Tag Reader you can activate or de-activate your security by simply passing the RFID Tag in front of the reader. It is called a Tag Reader because it uses RFID Tags to identify people and their personal preferences around leaving the house or coming home.</p&gt <p&gtSeparately from working with RFID Tags, the Tag Reader also has a numerical keypad. Within the free of charge online manager you can configure a numerical code. This way you prevent being locked out of the system in case you may have lost the RFID Tag.</p&gt <p&gtBy using the Tag Reader intelligently you can secure your house and save money on your energy bill at the same time. You can actually let your house ‘fall asleep’ when enabling the ‘Away Scene’. This is especially noted when u are using energy saving products of BeNext such as Radiator Control and of course a Energy Switch.</p&gt
 
 ### Inclusion Information
 
-Press and hold the tamper for 1 seconds and release to start the inclusion/exclusion process.
+<p&gtPress and hold the tamper for 1 seconds and release to start the inclusion/exclusion process.</p&gt
 
 ### Exclusion Information
 
-Press and hold the tamper for 1 seconds and release to start the inclusion/exclusion process.
+<p&gtPress and hold the tamper for 1 seconds and release to start the inclusion/exclusion process.</p&gt
 
 ### Wakeup Information
 
@@ -42,17 +36,11 @@ The MINI KEYPAD RFID does not permanently listen for messages sent from the cont
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Tap a button. The always awake mode can be activated by: CONFIGURATION_SET / Parameter: 0x05 / Size: 0x01 (can’t be different from 1) / Value: 0x03 (mode 3)
+<p&gtTap a button. The always awake mode can be activated by: CONFIGURATION_SET / Parameter: 0x05 / Size: 0x01 (can’t be different from 1) / Value: 0x03 (mode 3)</p&gt
 
 ### General Usage Information
 
-Some link
-
-http://www.openzwave.com/device-database/0097%3A4501%3A6131
-
-http://www.fhemwiki.de/wiki/Z-Wave-ZIP\_WT-RFID\_Keypad
-
-HASH DEVICE 0097:4501:6131
+<p&gtSome link</p&gt <p&gthttp://www.openzwave.com/device-database/0097%3A4501%3A6131</p&gt <p&gthttp://www.fhemwiki.de/wiki/Z-Wave-ZIP\_WT-RFID\_Keypad</p&gt <p&gtHASH DEVICE 0097:4501:6131</p&gt
 
 ## Channels
 
@@ -150,7 +138,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Feedback timeout
 
 Timeout beep
-To configure the timeout to wait for a WAKEUP\_NO\_MORE_INFORMATION before the error beep is automatically sound. The error beep are fixed 8 beeps shortly after each other.
+<p&gtTo configure the timeout to wait for a WAKEUP\_NO\_MORE_INFORMATION before the error beep is automatically sound. The error beep are fixed 8 beeps shortly after each other.</p&gt
 Values in the range -128 to 127 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -172,7 +160,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: The mode
 
 Operating mode
-1   ->   Normal operating mode 3   ->   Z‐Wave chip is always on to request e.g. version or manufacturer id. 2   ->   If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1. 4 - 127   ->   If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.
+<p&gt1   ->   Normal operating mode 3   ->   Z‐Wave chip is always on to request e.g. version or manufacturer id. 2   ->   If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1. 4 - 127   ->   If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -237,9 +225,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/410/wt-rfid-Zipato-Mini-Keypad-RFiD-Z-Wave-User-Manual-v1-4.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/410/wt-rfid-Zipato-Mini-Keypad-RFiD-Z-Wave-User-Manual-v1-4.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/410).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/410).

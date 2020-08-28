@@ -7,9 +7,7 @@
 
   <thing-type id="kwikset_smartcode888_00_000" listed="false">
     <label>SmartCode 888 Touchpad Electronic Deadbolt</label>
-    <description><![CDATA[
-Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>Kwikset®, the leader in residential security, introduces the SmartCode™ 888 Touchpad Electronic Deadbolt with Z-Wave.</p> <ul><li>Backlit keypad with One touch locking </li> <li>30 user codes </li> <li>BHMA grade 3 certified </li> <li>Full 128-bit encryption security </li> <li>Drill and pick resistant backup keyway </li> <li>SmartKey: Re-key the lock in seconds</li> </ul><br /><h2>Inclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p> <br /><h2>Exclusion Information</h2><p> Press button “A” on the lock one time to include it in your system.</p>
-    ]]></description>
+    <description>Touchpad Electronic Deadbolt&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtKwikset®, the leader in residential security, introduces the SmartCode™ 888 Touchpad Electronic Deadbolt with Z-Wave.&lt;/p&gt &lt;ul&gt&lt;li&gtBacklit keypad with One touch locking &lt;/li&gt &lt;li&gt30 user codes &lt;/li&gt &lt;li&gtBHMA grade 3 certified &lt;/li&gt &lt;li&gtFull 128-bit encryption security &lt;/li&gt &lt;li&gtDrill and pick resistant backup keyway &lt;/li&gt &lt;li&gtSmartKey: Re-key the lock in seconds&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt Press button “A” on the lock one time to include it in your system.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt Press button “A” on the lock one time to include it in your system.&lt;/p&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -47,7 +45,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>Kwikset®, the leader in r
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Black &amp; Decker</property>
+      <property name="vendor">Black &amp;amp; Decker</property>
       <property name="modelId">SmartCode 888</property>
       <property name="manufacturerId">0090</property>
       <property name="manufacturerRef">0003:0541</property>
@@ -73,9 +71,7 @@ Touchpad Electronic Deadbolt<br /><h1>Overview</h1><p>Kwikset®, the leader in r
       <parameter name="config_33_4" type="integer" groupName="configuration"
                  min="0" max="4">
         <label>33: SKU</label>
-        <description><![CDATA[
-Set the first four most significant bytes of the SKU<br /><h1>Overview</h1><p>The configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU. </p>
-        ]]></description>
+        <description>Set the first four most significant bytes of the SKU&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
@@ -84,9 +80,7 @@ Set the first four most significant bytes of the SKU<br /><h1>Overview</h1><p>Th
       <parameter name="config_34_4" type="integer" groupName="configuration"
                  min="0" max="4">
         <label>34: SKU (Last 4)</label>
-        <description><![CDATA[
-The four least significant bytes of the SKU<br /><h1>Overview</h1><p>The configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU.</p>
-        ]]></description>
+        <description>The four least significant bytes of the SKU&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe configuration parameters 33 and 34 are used to set and get the SKU part numbers. The SKU is made up of 8 bytes. Each parameter consists of four bytes of data. Parameter 33 contains the first four most significant bytes of the SKU, while parameter 34 contains the four least significant bytes of the SKU. When setting the SKU, it must be done in two set commands, one for each parameter. The order of programming the SKU does not matter. Setting parameter 33 will program the first four bytes of the SKU. Setting parameter 34 will program the last 4 bytes of the SKU. Most printable values are accepted for the set command. When getting the SKU, it must be done in two get commands, one for each parameter. The order of getting the SKU does not matter. Getting parameter 33 will retrieve the first four bytes of the SKU. Getting parameter 34 will retrieve the last 4 bytes of the SKU.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
@@ -94,9 +88,7 @@ The four least significant bytes of the SKU<br /><h1>Overview</h1><p>The configu
 
       <parameter name="config_35_1" type="integer" groupName="configuration">
         <label>35: Interior Status LED</label>
-        <description><![CDATA[
-Allows user to get/set the value for the Interior Status LED control<br /><h1>Overview</h1><p>The configuration parameter 35 is a one byte field that will allow the user to get / set the value for the Interior Status LED control. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default setting.</p>
-        ]]></description>
+        <description>Allows user to get/set the value for the Interior Status LED control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe configuration parameter 35 is a one byte field that will allow the user to get / set the value for the Interior Status LED control. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default setting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -106,9 +98,7 @@ Allows user to get/set the value for the Interior Status LED control<br /><h1>Ov
 
       <parameter name="config_36_2_00000001" type="integer" groupName="configuration">
         <label>36: Auto-Lock Feature Control</label>
-        <description><![CDATA[
-Enables or disables automatically re-locking of door<br /><h1>Overview</h1><p>The configuration parameter 36 uses 2 bytes that will allow the user to get / set the value for the Auto Lock feature and timing for that feature. The first byte will be the enable/disable byte. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. The second byte will be the timing for the Auto Lock feature and should contain the number of seconds before the Auto Lock will occur. The valid values are: 0 (default – 30 seconds), 30, 60, 90, 120, 180. For example, setting the auto lock feature for 60 seconds, the two timing bytes should be: 0x003C. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default settings. </p>
-        ]]></description>
+        <description>Enables or disables automatically re-locking of door&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe configuration parameter 36 uses 2 bytes that will allow the user to get / set the value for the Auto Lock feature and timing for that feature. The first byte will be the enable/disable byte. The value of 0 means that the setting is disabled; whereas the value of 1 means that the setting is enabled. The second byte will be the timing for the Auto Lock feature and should contain the number of seconds before the Auto Lock will occur. The valid values are: 0 (default – 30 seconds), 30, 60, 90, 120, 180. For example, setting the auto lock feature for 60 seconds, the two timing bytes should be: 0x003C. Sending a set command with the default field set to 1 will cause the control to revert back to its factory default settings. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -118,9 +108,7 @@ Enables or disables automatically re-locking of door<br /><h1>Overview</h1><p>Th
 
       <parameter name="config_36_2_0000FF00" type="integer" groupName="configuration">
         <label>36: Auto-Lock Feature Control Timing</label>
-        <description><![CDATA[
-The number of seconds before the Auto-Lock will occur<br /><h1>Overview</h1><p>The number of seconds before the Auto-Lock will occur in increments of 30 starting and going to a max value of 180 seconds.  Only allows certain values.</p>
-        ]]></description>
+        <description>The number of seconds before the Auto-Lock will occur&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe number of seconds before the Auto-Lock will occur in increments of 30 starting and going to a max value of 180 seconds.  Only allows certain values.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <options>
           <option value="30">Thirty seconds</option>
@@ -133,9 +121,7 @@ The number of seconds before the Auto-Lock will occur<br /><h1>Overview</h1><p>T
 
       <parameter name="config_37_1" type="integer" groupName="configuration">
         <label>37: Audio Feature Control</label>
-        <description><![CDATA[
-Allows the user to get/set the audio feed back command<br /><h1>Overview</h1><p>Enables or disables the audible notifications on the device</p>
-        ]]></description>
+        <description>Allows the user to get/set the audio feed back command&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnables or disables the audible notifications on the device&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Off</option>
@@ -145,9 +131,7 @@ Allows the user to get/set the audio feed back command<br /><h1>Overview</h1><p>
 
       <parameter name="config_40_1" type="integer" groupName="configuration">
         <label>40: Factory Default</label>
-        <description><![CDATA[
-Reset to factory default settings<br /><h1>Overview</h1><p>Reset factory default settings, except for the anti-theft setting.</p>
-        ]]></description>
+        <description>Reset to factory default settings&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReset factory default settings, except for the anti-theft setting.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal</option>
@@ -157,9 +141,7 @@ Reset to factory default settings<br /><h1>Overview</h1><p>Reset factory default
 
       <parameter name="config_47_1" type="integer" groupName="configuration">
         <label>47: Motor Load Control</label>
-        <description><![CDATA[
-Allows the device to send motor load alarms<br /><h1>Overview</h1><p>The configuration parameter 47 uses 1 byte that will allow the user to get / set the value to enable or disable the motor load alarm. Setting this byte to 0 will disable the alarm, whereas setting this byte to 1 will enable the alarm. If a motor load alarm has been activated and the alarm has been enabled, the alarm will be sent via the Power Management group in the Notification Command Class as a Load Error (0x09). </p>
-        ]]></description>
+        <description>Allows the device to send motor load alarms&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe configuration parameter 47 uses 1 byte that will allow the user to get / set the value to enable or disable the motor load alarm. Setting this byte to 0 will disable the alarm, whereas setting this byte to 1 will enable the alarm. If a motor load alarm has been activated and the alarm has been enabled, the alarm will be sent via the Power Management group in the Notification Command Class as a Load Error (0x09). &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -170,16 +152,12 @@ Allows the device to send motor load alarms<br /><h1>Overview</h1><p>The configu
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Group 1 is assigned to the Lifeline group and can only support 1 node. The Lifeline group supports the following unsolicited messages:                                </p> <table><tr><td><strong>Command Class</strong></td> <td><strong>Command</strong></td> </tr><tr><td>Command Class Battery</td> <td>Battery Report</td> </tr><tr><td>Command Class Door Lock   </td> <td>Door Lock Operation Report</td> </tr><tr><td>Command Class Notification</td> <td>Notification Report</td> </tr><tr><td>Command Class Device Reset Locally </td> <td>Device Reset Locally Notification</td> </tr></table>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtGroup 1 is assigned to the Lifeline group and can only support 1 node. The Lifeline group supports the following unsolicited messages:                                &lt;/p&gt &lt;table&gt&lt;tr&gt&lt;td&gt&lt;strong&gtCommand Class&lt;/strong&gt&lt;/td&gt &lt;td&gt&lt;strong&gtCommand&lt;/strong&gt&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Battery&lt;/td&gt &lt;td&gtBattery Report&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Door Lock   &lt;/td&gt &lt;td&gtDoor Lock Operation Report&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Notification&lt;/td&gt &lt;td&gtNotification Report&lt;/td&gt &lt;/tr&gt&lt;tr&gt&lt;td&gtCommand Class Device Reset Locally &lt;/td&gt &lt;td&gtDevice Reset Locally Notification&lt;/td&gt &lt;/tr&gt&lt;/table&gt</description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Doorlock notify report</label>
-        <description><![CDATA[
-Provides all Notificaton Reports<br /><h1>Overview</h1><p>Association group 2 is identified as the “Doorlock notify report” group. It allows at most 5 other nodes to be associated with the lock and will provide all Notification Reports, via the Command Class Notification, generated by the lock. </p>
-        ]]></description>
+        <description>Provides all Notificaton Reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAssociation group 2 is identified as the “Doorlock notify report” group. It allows at most 5 other nodes to be associated with the lock and will provide all Notification Reports, via the Command Class Notification, generated by the lock. &lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

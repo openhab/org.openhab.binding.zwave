@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZSMOKE*, manufactured by *BRK Brands, Inc.* wi
 
 The device is in the category of *Smoke Detector*, defining Smoke detectors.
 
-![ZSMOKE product image](https://www.cd-jackson.com/zwave_device_uploads/239/239_default.png)
+![ZSMOKE product image](https://opensmarthouse.org/zwavedatabase/239/image/)
 
 
 The ZSMOKE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,19 +19,15 @@ The ZSMOKE does not permanently listen for messages sent from the controller - i
 
 ## Overview
 
-A smart home can also be a safe home. With the First Alert Smoke Detector (ZSMOKE)  you will be immediately notified at the first sign of smoke. The First Alert Smoke Detector is a Z-Wave device that emits a loud alarm when smoke is detected.
+<p&gtA smart home can also be a safe home. With the First Alert Smoke Detector (ZSMOKE)  you will be immediately notified at the first sign of smoke. The First Alert Smoke Detector is a Z-Wave device that emits a loud alarm when smoke is detected.</p&gt
 
 ### Inclusion Information
 
-  1. Open the battery tray
-  2. Hold the Test button while re-inserting the battery tray
-  3. When the device beeps, release the button
+<ol&gt<li&gtOpen the battery tray</li&gt <li&gtHold the Test button while re-inserting the battery tray</li&gt <li&gtWhen the device beeps, release the button</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Open the battery tray
-  2. Hold the Test button while re-inserting the battery tray
-  3. When the device beeps, release the button
+<ol&gt<li&gtOpen the battery tray</li&gt <li&gtHold the Test button while re-inserting the battery tray</li&gt <li&gtWhen the device beeps, release the button</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -41,10 +37,7 @@ The wakeup period does not impact the devices ability to report events or sensor
 
 ### General Usage Information
 
-Factory Reset:
-
-  1. Make sure the device is powered
-  2. Press and hold the test button for 10+ seconds
+<p&gtFactory Reset:</p&gt <ol&gt<li&gtMake sure the device is powered</li&gt <li&gtPress and hold the test button for 10+ seconds</li&gt </ol&gt
 
 ## Channels
 
@@ -129,9 +122,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/239/FirstAlertSmoke-Manual.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/239/FirstAlertSmoke-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/239).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/239).

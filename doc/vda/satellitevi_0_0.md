@@ -12,27 +12,15 @@ The Vitrum Satellite VI supports routing. This allows the device to communicate 
 
 ## Overview
 
-When the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.
-
-Each button can be configured in 4 different modes. Press the 2 service buttons (left and right each) for at least 8 seconds. Buttons will start to flash and the color of the flashing ring will indicate the channel setting:
-
-- Yellow: for association with On-Off Modules, toggle-button function (BASIC)
-
-- Red: for association with On-Off Modules, push-button function (BASIC)
-
-- Magenta: for association with Roller Blinds, 2 buttons will start flashing together for up and down movement (SWITCH_MULTILEVEL)
-
-- Green: for association with Dimmer Modules (SWITCH_MULTILEVEL)
-
-After mode selection, please proceed with inclusion process.
+<p&gtWhen the device is in the stand-alone mode and is not included in a Z-Wave network the illuminated ring around the touch keys will light red for a moment when passing from one mode to another.</p&gt <p&gtEach button can be configured in 4 different modes. Press the 2 service buttons (left and right each) for at least 8 seconds. Buttons will start to flash and the color of the flashing ring will indicate the channel setting:</p&gt <p&gt- Yellow: for association with On-Off Modules, toggle-button function (BASIC)</p&gt <p&gt- Red: for association with On-Off Modules, push-button function (BASIC)</p&gt <p&gt- Magenta: for association with Roller Blinds, 2 buttons will start flashing together for up and down movement (SWITCH\_MULTILEVEL)</p&gt <p&gt- Green: for association with Dimmer Modules (SWITCH\_MULTILEVEL)</p&gt <p&gtAfter mode selection, please proceed with inclusion process.</p&gt
 
 ### Inclusion Information
 
-With the controller in the inclusion mode, press any of the touch keys on the device. Vitrum indicates that it has been included to the network by flashing the yellow LEDs three times and switching on all the lights connected to the unit.
+<p&gtWith the controller in the inclusion mode, press any of the touch keys on the device. Vitrum indicates that it has been included to the network by flashing the yellow LEDs three times and switching on all the lights connected to the unit.</p&gt
 
 ### Exclusion Information
 
-Press and hold the leftmost touch key for at least 8 seconds. The device will flash red three times and sound an acoustic signal to indicate that the original factory setting has been restored.
+<p&gtPress and hold the leftmost touch key for at least 8 seconds. The device will flash red three times and sound an acoustic signal to indicate that the original factory setting has been restored.</p&gt
 
 ## Channels
 
@@ -110,37 +98,37 @@ The Vitrum Satellite VI supports 6 association groups.
 
 ### Group 1: Button channel 1
 
-Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
+<p&gtControl up to 5 devices with this button. The kind of device controlled depends on the Button configuration.</p&gt
 
 Association group 1 supports 5 nodes.
 
 ### Group 2: Button channel 2
 
-Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
+<p&gtControl up to 5 devices with this button. The kind of device controlled depends on the Button configuration.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Button channel 3
 
-Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
+<p&gtControl up to 5 devices with this button. The kind of device controlled depends on the Button configuration.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Button channel 4
 
-Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
+<p&gtControl up to 5 devices with this button. The kind of device controlled depends on the Button configuration.</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Button channel 5
 
-Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
+<p&gtControl up to 5 devices with this button. The kind of device controlled depends on the Button configuration.</p&gt
 
 Association group 5 supports 5 nodes.
 
 ### Group 6: Button channel 6
 
-Control up to 5 devices with this button. The kind of device controlled depends on the Button configuration.
+<p&gtControl up to 5 devices with this button. The kind of device controlled depends on the Button configuration.</p&gt
 
 Association group 6 supports 5 nodes.
 
@@ -222,4 +210,4 @@ Association group 6 supports 5 nodes.
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/626).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/626).

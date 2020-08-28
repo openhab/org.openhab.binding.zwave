@@ -10,51 +10,26 @@ This describes the Z-Wave device *Danalock V3-BTZE*, manufactured by *[Poly-cont
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![Danalock V3-BTZE product image](https://www.cd-jackson.com/zwave_device_uploads/708/708_default.png)
+![Danalock V3-BTZE product image](https://opensmarthouse.org/zwavedatabase/708/image/)
 
 
 The Danalock V3-BTZE supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-Danalock supports:
-
-  * S0/S2 Z-Wave Security
-  * Bluetooth Smart
-  * Twist Assist
-  * Auto Lock
-  * Hold And Release
-  * Back To Back 
+<p&gtDanalock supports:</p&gt <ul&gt<li&gtS0/S2 Z-Wave Security</li&gt <li&gtBluetooth Smart</li&gt <li&gtTwist Assist</li&gt <li&gtAuto Lock</li&gt <li&gtHold And Release</li&gt <li&gtBack To Back </li&gt </ul&gt
 
 ### Inclusion Information
 
-To add or include the Danalock into a Z-Wave network
-
-  1. Pair the lock with bluetooth first
-  2. Set the controller in inclusion mode
-
-  3. Push the switch once.
-
-  4. Wait 5 seconds. 
+<p&gtTo add or include the Danalock into a Z-Wave network</p&gt <ol&gt<li&gtPair the lock with bluetooth first</li&gt <li&gt <p&gtSet the controller in inclusion mode</p&gt </li&gt <li&gt <p&gtPush the switch once.</p&gt </li&gt <li&gt <p&gtWait 5 seconds. </p&gt </li&gt </ol&gt
 
 ### Exclusion Information
 
-To remove or exclude the Danalock into a Z-Wave network
-
-  1. Delete the lock within the app (bluetooth)
-  2. Set the controller in exclusion mode
-
-  3. Push the switch once.
-
-  4. Wait 5 seconds. 
+<p&gtTo remove or exclude the Danalock into a Z-Wave network</p&gt <ol&gt<li&gtDelete the lock within the app (bluetooth)</li&gt <li&gt <p&gtSet the controller in exclusion mode</p&gt </li&gt <li&gt <p&gtPush the switch once.</p&gt </li&gt <li&gt <p&gtWait 5 seconds. </p&gt </li&gt </ol&gt
 
 ### General Usage Information
 
-Additional hints:
-
-**Inclusion**: Do **not** include the lock to a Z-Wave network before it has been paired through bluetooth. Otherwise the lock is blocked and you are not able to pair through bluetooth. If you are not able to pair through the app then there is still z-wave information that has not been erased. A factory reset does not delete this Z-Wave information. You must exclude.
-
-**Exclusion**: Delete the lock from the app before you exclude. Otherwise it won’t work. Exclusion is successful when the green light stops lightning immediately. If you use the Aeotec Z-Stick Gen5 it is easier to exclude with the USB stick detached. Inclusion of course with the stick attached to the PC. You can use any kind of controller to exclude - no matter with which controller it has been paired before.
+<p&gtAdditional hints:</p&gt <p&gt<strong&gtInclusion</strong&gt: Do <strong&gtnot</strong&gt include the lock to a Z-Wave network before it has been paired through bluetooth. Otherwise the lock is blocked and you are not able to pair through bluetooth. If you are not able to pair through the app then there is still z-wave information that has not been erased. A factory reset does not delete this Z-Wave information. You must exclude.</p&gt <p&gt<strong&gtExclusion</strong&gt: Delete the lock from the app before you exclude. Otherwise it won’t work. Exclusion is successful when the green light stops lightning immediately. If you use the Aeotec Z-Stick Gen5 it is easier to exclude with the USB stick detached. Inclusion of course with the stick attached to the PC. You can use any kind of controller to exclude - no matter with which controller it has been paired before.</p&gt
 
 ## Channels
 
@@ -114,9 +89,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Twin Assist
 
 Helps you to lock and unlock your door lock.
-0 -> disabled
-
-1 -> enabled
+<p&gt0 -> disabled</p&gt <p&gt1 -> enabled</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -132,9 +105,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Hold and Release
 
 After a unlock operation the lock holds the lock, so the door can be opened
-0 -> disabled
-
-1 to 2147483647 -> enabled no. of seconds
+<p&gt0 -> disabled</p&gt <p&gt1 to 2147483647 -> enabled no. of seconds</p&gt
 The following option values may be configured, in addition to values in the range 0 to 2147483647 -:
 
 | Value  | Description |
@@ -165,9 +136,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: BLE Temporary Allowed
 
 The BLE is enabled for a number of seconds.
-0 -> Disabled
-
-1 to 2147483647 -> enabled no. of seconds
+<p&gt0 -> Disabled</p&gt <p&gt1 to 2147483647 -> enabled no. of seconds</p&gt
 Values in the range 0 to 2147483647 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -178,9 +147,7 @@ This parameter has the configuration ID ```config_4_4``` and is of type ```INTEG
 ### Parameter 5: BLE Always Allowed
 
 BLE Always Allowed
-0 -> BLE Always disabled
-
-1 -> BLE Always enabled
+<p&gt0 -> BLE Always disabled</p&gt <p&gt1 -> BLE Always enabled</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -196,9 +163,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Autolock
 
 Lock after an unlock.Value is delay in sec before lock is locked again.
-0 -> disabled
-
-1 to 2147483647 -> enabled no. of seconds
+<p&gt0 -> disabled</p&gt <p&gt1 to 2147483647 -> enabled no. of seconds</p&gt
 Values in the range 0 to 2147483647 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -222,12 +187,7 @@ The Danalock V3-BTZE supports 1 association group.
 
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Z-Wave Plus Lifeline
-Z-Wave Plus Lifeline
-
-  * Device Reset Locally: triggered upon reset.
-  * Battery/notification: triggered upon low battery.
-  * Door Lock operation report: triggered upon a change in door lock
-  * Notification: triggered upon a change in door lock
+<p&gtZ-Wave Plus Lifeline</p&gt <ul&gt<li&gtDevice Reset Locally: triggered upon reset.</li&gt <li&gtBattery/notification: triggered upon low battery.</li&gt <li&gtDoor Lock operation report: triggered upon a change in door lock</li&gt <li&gtNotification: triggered upon a change in door lock</li&gt </ul&gt
 
 Association group 1 supports 1 node.
 
@@ -255,9 +215,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Product manual](https://www.cd-jackson.com/zwave_device_uploads/708/Danalock-V3-Product-manual-Z-Wave-V-0-9-1.pdf)
+* [Product manual](https://opensmarthouse.org/zwavedatabase/708/Danalock-V3-Product-manual-Z-Wave-V-0-9-1.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/708).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/708).

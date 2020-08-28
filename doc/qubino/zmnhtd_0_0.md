@@ -10,40 +10,22 @@ This describes the Z-Wave device *ZMNHTD*, manufactured by *[Goap](http://www.qu
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![ZMNHTD product image](https://www.cd-jackson.com/zwave_device_uploads/414/414_default.jpg)
+![ZMNHTD product image](https://opensmarthouse.org/zwavedatabase/414/image/)
 
 
 The ZMNHTD supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-This Z-Wave module is used for energy measurements in single-phase electrical power network and can be used in residential, industrial and utility applications. Meters measure energy directly in 2-wire networks according to the principle of fast sampling of voltage and current signals. A built-in microprocessor calculates energy, power and power factor from the measured signals. The module can be controlled through Z-wave network and it acts as repeater in order to improve range and stability of Z-wave network. It is designed to be mounted on DIN rail. 
-
-Measurements: Voltage V Current I Power – Active W Power – Active total Import kWh Power – Active total Export kWh Power – Reactive var Power – Reactive total kvarh Power – Apparent total kVAh Power Factor PF 
-
-It is possible to connect two external relay to Smart Meter module. One controlled by built-in optical (IR) communication port on the side, second controlled by output on terminal 5. 
+<p&gtThis Z-Wave module is used for energy measurements in single-phase electrical power network and can be used in residential, industrial and utility applications. Meters measure energy directly in 2-wire networks according to the principle of fast sampling of voltage and current signals. A built-in microprocessor calculates energy, power and power factor from the measured signals. The module can be controlled through Z-wave network and it acts as repeater in order to improve range and stability of Z-wave network. It is designed to be mounted on DIN rail. </p&gt <p&gtMeasurements: Voltage V Current I Power – Active W Power – Active total Import kWh Power – Active total Export kWh Power – Reactive var Power – Reactive total kvarh Power – Apparent total kVAh Power Factor PF </p&gt <p&gtIt is possible to connect two external relay to Smart Meter module. One controlled by built-in optical (IR) communication port on the side, second controlled by output on terminal 5. </p&gt
 
 ### Inclusion Information
 
-Module Inclusion (Adding to Z-wave network)
-
-  * Connect module to power supply
-  * enable add/remove mode on main controller
-  * auto-inclusion (works for about 5 seconds after connected to power supply) or
-  * press service button S for more than 2 second
-
-NOTE: For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.
+<p&gtModule Inclusion (Adding to Z-wave network)</p&gt <ul&gt<li&gtConnect module to power supply</li&gt <li&gtenable add/remove mode on main controller</li&gt <li&gtauto-inclusion (works for about 5 seconds after connected to power supply) or</li&gt <li&gtpress service button S for more than 2 second</li&gt </ul&gt<p&gtNOTE: For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p&gt
 
 ### Exclusion Information
 
-Module Exclusion/Reset (Removing from Z-Wave network):
-
-  * Connect module to power supply
-  * bring module within maximum 1 Meter (3 feet) of the main controller,
-  * enable add/remove mode on main controller
-  * press service button S for more than 6 seconds.
-
-By this function all parameters of the module are set to default values and own ID is deleted. If service button S is pressed more than 2 and less than 6 seconds module is excluded, but configuration parameters are not set to default values.
+<p&gtModule Exclusion/Reset (Removing from Z-Wave network):</p&gt <ul&gt<li&gtConnect module to power supply</li&gt <li&gtbring module within maximum 1 Meter (3 feet) of the main controller,</li&gt <li&gtenable add/remove mode on main controller</li&gt <li&gtpress service button S for more than 6 seconds.</li&gt </ul&gt<p&gtBy this function all parameters of the module are set to default values and own ID is deleted. If service button S is pressed more than 2 and less than 6 seconds module is excluded, but configuration parameters are not set to default values.</p&gt
 
 ## Channels
 
@@ -110,9 +92,7 @@ The ```meter_powerfactor1``` channel is of type ```meter_powerfactor``` and supp
 **Note:** This channel is marked as deprecated so should not be used.
 
 ### Switch Relay
-External relay ON
-
-External relay OFF
+<p&gtExternal relay ON</p&gt <p&gtExternal relay OFF</p&gt
 
 Switch the power on and off.
 
@@ -156,7 +136,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 7: Input 1 switch function selection
 
 IR external relay or External Relay control mode
-Available config. parameters (data type is 1 Byte DEC
+<p&gtAvailable config. parameters (data type is 1 Byte DEC</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -175,11 +155,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 11: Timer turning off IR external relay
 
 Automatic turning off IR external relay output after set time
-When External IR relay is ON it goes automatically OFF after time defined in this parameter. Timer is reset to zero each time the device receives ON command.  
-Values (size is 2 byte dec):  
-• Default value 0  
-• 0-59 = Auto OFF disabled  
-• 60-32535 = 60 seconds – 32535 seconds
+<p&gtWhen External IR relay is ON it goes automatically OFF after time defined in this parameter. Timer is reset to zero each time the device receives ON command.<br /&gtValues (size is 2 byte dec):<br /&gt• Default value 0<br /&gt• 0-59 = Auto OFF disabled<br /&gt• 60-32535 = 60 seconds – 32535 seconds</p&gt
 The following option values may be configured, in addition to values in the range 0 to 32535 -:
 
 | Value  | Description |
@@ -194,7 +170,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 ### Parameter 12:  Timer turning on IR external relay output 
 
 Automatic turning on IR external relay output after set time
-When IR external relay is OFF it goes automatically ON after time defined by this Parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)
+<p&gtWhen IR external relay is OFF it goes automatically ON after time defined by this Parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -205,7 +181,7 @@ This parameter has the configuration ID ```config_12_2``` and is of type ```INTE
 ### Parameter 13: Timer turning off External relay output
 
 Automatic turning off External relay output after set time
-When External relay is ON it goes automatically OFF after time defined by this parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)
+<p&gtWhen External relay is ON it goes automatically OFF after time defined by this parameter. Timer is reset to zero each time the module receive ON command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -216,7 +192,7 @@ This parameter has the configuration ID ```config_13_2``` and is of type ```INTE
 ### Parameter 14: Timer turning on External relay after output
 
 Automatic turning on External relay after output set time
-When External relay is OFF it goes automatically ON after time defined by this parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)
+<p&gtWhen External relay is OFF it goes automatically ON after time defined by this parameter. Timer is reset to zero each time the module receive OFF command regardless from where it comes (push button, associated module, controller,..). Available configuration parameters (data type is 2 Byte DEC)</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -227,11 +203,7 @@ This parameter has the configuration ID ```config_14_2``` and is of type ```INTE
 ### Parameter 40: Power reporting (Watts) on power change 
 
 Power reporting in Watts on power change
-Set value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC)
-
-Power report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%
-
-NOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power). 
+<p&gtSet value means percentage, set value from 0 – 100 = 0% - 100%. Available configuration parameters (data type is 1 Byte DEC)</p&gt <p&gtPower report is send (push) only when actual power in Watts in real time changes for more than set percentage comparing to previous actual power in Watts, step is 1%</p&gt <p&gtNOTE: if power changed is less than 1W, the report is not send (pushed), independent of percentage set. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power). </p&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -242,9 +214,7 @@ This parameter has the configuration ID ```config_40_2``` and is of type ```INTE
 ### Parameter 42: Power reporting (Watts) by time interval
 
 Power reporting in Watts by time interval
-Set value means time interval (0 – 32535) in seconds, when power report is send. Available config. parameters (data type is 2 Byte DEC).
-
-Power report is send with time interval set by entered value. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power)
+<p&gtSet value means time interval (0 – 32535) in seconds, when power report is send. Available config. parameters (data type is 2 Byte DEC).</p&gt <p&gtPower report is send with time interval set by entered value. When reporting Watts, module will automatically reports also V (Voltage), A (Amperes), Power factor, kVar (Reactive Power)</p&gt
 Values in the range 0 to 32535 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -255,7 +225,7 @@ This parameter has the configuration ID ```config_42_2``` and is of type ```INTE
 ### Parameter 45: Reset Power counters
 
 Reset Power counters
-Available config. parameters (data type is 1 Byte DEC
+<p&gtAvailable config. parameters (data type is 1 Byte DEC</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -274,9 +244,7 @@ This parameter has the configuration ID ```config_45_1``` and is of type ```INTE
 ### Parameter 100: Enable / Disable endpoints relays
 
 Enable / Disable endpoints IR external relay and External relay
-Enabling IR external relay and External relay or both of them, means that endpoint (IR external relay) and endpoint (External relay) or both will be present on UI. Disabling them will result in hiding endpoints according to Parameter set value. Note that hiding endpoint has no impact on its functionality. Available configuration parameters (data type is 1 Byte DEC)
-
-NOTE1: After parameter change, first exclude module (without setting parameters to default value) and then re include the module. NOTE 2: If you don't have IR BiComm relay module mounted and you enable IR communication (parameter 100 is 2 or 3) there will be no valid IR relay state reported. It will be reported IR COMMUNICATION ERROR and LED2 will BLINK
+<p&gtEnabling IR external relay and External relay or both of them, means that endpoint (IR external relay) and endpoint (External relay) or both will be present on UI. Disabling them will result in hiding endpoints according to Parameter set value. Note that hiding endpoint has no impact on its functionality. Available configuration parameters (data type is 1 Byte DEC)</p&gt <p&gtNOTE1: After parameter change, first exclude module (without setting parameters to default value) and then re include the module. NOTE 2: If you don't have IR BiComm relay module mounted and you enable IR communication (parameter 100 is 2 or 3) there will be no valid IR relay state reported. It will be reported IR COMMUNICATION ERROR and LED2 will BLINK</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -294,7 +262,7 @@ This parameter has the configuration ID ```config_100_1``` and is of type ```INT
 ### Parameter 110: Maximum Power auto off
 
 Maximum Power auto off
-Set value means Maximum Power Consumption (0 - 15000) in watts (W), when relays are turned off according to parameters no. 111 and 112. Available configuration parameters (data type is 2 Bytes DEC
+<p&gtSet value means Maximum Power Consumption (0 - 15000) in watts (W), when relays are turned off according to parameters no. 111 and 112. Available configuration parameters (data type is 2 Bytes DEC</p&gt
 The following option values may be configured, in addition to values in the range 0 to 15000 -:
 
 | Value  | Description |
@@ -310,7 +278,7 @@ This parameter has the configuration ID ```config_110_2``` and is of type ```INT
 ### Parameter 111: Delay overpower off
 
 Delay overpower off
-Set value means number of second to power off relay (defined by parameters no. 110 and 112) before restart (30 - 32535) in seconds (s). Available configuration parameters (data type is 2 Bytes DEC): 
+<p&gtSet value means number of second to power off relay (defined by parameters no. 110 and 112) before restart (30 - 32535) in seconds (s). Available configuration parameters (data type is 2 Bytes DEC): </p&gt
 Values in the range 0 to 32525 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -321,7 +289,7 @@ This parameter has the configuration ID ```config_111_2``` and is of type ```INT
 ### Parameter 112: Relay to power off
 
 Relay to power off
-Set value selects relay to be powered off when threshold is reached (defined by parameters no. 110 and 111). Available config. parameters (data type is 1 Byte DEC)
+<p&gtSet value selects relay to be powered off when threshold is reached (defined by parameters no. 110 and 111). Available config. parameters (data type is 1 Byte DEC)</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -558,11 +526,11 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual Goap Smart Meter ZMNHTD](https://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-7-1.pdf)
-* [Qubino_Smart-Meter-PLUS-user-manual_V1.9_eng-1](https://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-user-manual-V1-9-eng-1--1-.pdf)
-* [Qubino_Smart-Meter-PLUS-extended-manual_eng_2.3](https://www.cd-jackson.com/zwave_device_uploads/414/Qubino-Smart-Meter-PLUS-extended-manual-eng-2-3.pdf)
+* [Manual Goap Smart Meter ZMNHTD](https://opensmarthouse.org/zwavedatabase/414/Qubino-Smart-Meter-PLUS-user-manual-V1-7-1.pdf)
+* [Qubino_Smart-Meter-PLUS-user-manual_V1.9_eng-1](https://opensmarthouse.org/zwavedatabase/414/Qubino-Smart-Meter-PLUS-user-manual-V1-9-eng-1--1-.pdf)
+* [Qubino_Smart-Meter-PLUS-extended-manual_eng_2.3](https://opensmarthouse.org/zwavedatabase/414/Qubino-Smart-Meter-PLUS-extended-manual-eng-2-3.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/414).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/414).

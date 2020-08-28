@@ -10,7 +10,7 @@ This describes the Z-Wave device *HS1DS-Z*, manufactured by *[Heiman Technology 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![HS1DS-Z product image](https://www.cd-jackson.com/zwave_device_uploads/551/551_default.png)
+![HS1DS-Z product image](https://opensmarthouse.org/zwavedatabase/551/image/)
 
 
 The HS1DS-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,19 +19,15 @@ The HS1DS-Z does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-Door/Window Contact.
-
-Same hardware as DOMUX DX1DS-Z.
+<p&gtDoor/Window Contact.</p&gt <p&gtSame hardware as DOMUX DX1DS-Z.</p&gt
 
 ### Inclusion Information
 
-  * Press a Func_Button 3 time in HS1DS-Z (Door Sensor), Green LED is Blinking 3 times within 1 second.
-  * If Inclusion Process is successful, Green led will turn off. 
+<ul&gt<li&gtPress a Func_Button 3 time in HS1DS-Z (Door Sensor), Green LED is Blinking 3 times within 1 second.</li&gt <li&gtIf Inclusion Process is successful, Green led will turn off. </li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Press a Func_Button 3 times quickly on HS1DS-Z.
-  * If Exclusion Process is successful, Green led is Blinking 6 times, then turn off the HS1DS-Z.
+<ul&gt<li&gtPress a Func_Button 3 times quickly on HS1DS-Z.</li&gt <li&gtIf Exclusion Process is successful, Green led is Blinking 6 times, then turn off the HS1DS-Z.</li&gt </ul&gt
 
 ### Wakeup Information
 
@@ -40,8 +36,7 @@ The HS1DS-Z does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  * Wake up Notification is transmitted every 24 hours by default.
-  * Wake up Notification is transmitted after Notification Report is Transmitted.
+<ul&gt<li&gtWake up Notification is transmitted every 24 hours by default.</li&gt <li&gtWake up Notification is transmitted after Notification Report is Transmitted.</li&gt </ul&gt
 
 ## Channels
 
@@ -117,31 +112,25 @@ Association group 1 supports 5 nodes.
 
 ### Group 2: Binary Door status change
 
-Description: Binary Sensor Command Classes:Compatible with 300 series  
-1-Binary Sensor reports status of open or close door via Lifeline.  
-2-When the sensor detects status change between close door and open door, the device will be triggered.
+<p&gtDescription: Binary Sensor Command Classes:Compatible with 300 series<br /&gt1-Binary Sensor reports status of open or close door via Lifeline.<br /&gt2-When the sensor detects status change between close door and open door, the device will be triggered.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Binary Tamper
 
-Description: Binary Sensor Command Classes:Compatible with 300 series  
-1-Binary Sensor reports the removed status of door sensor.  
-2-When the sensor detects status change of tamper, the device will be triggered.
+<p&gtDescription: Binary Sensor Command Classes:Compatible with 300 series<br /&gt1-Binary Sensor reports the removed status of door sensor.<br /&gt2-When the sensor detects status change of tamper, the device will be triggered.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Notification Door status change
 
-1-Notification report open door or close status via Lifeline.  
-2- When the sensor detects status change between close door and open door, the device will be triggered
+<p&gt1-Notification report open door or close status via Lifeline.<br /&gt2- When the sensor detects status change between close door and open door, the device will be triggered</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: Notification Tamper
 
-1-Binary Sensor reports the removed status of door sensor.  
-2- When the sensor detects status change of tamper, the device will be triggered
+<p&gt1-Binary Sensor reports the removed status of door sensor.<br /&gt2- When the sensor detects status change of tamper, the device will be triggered</p&gt
 
 Association group 5 supports 5 nodes.
 
@@ -169,9 +158,9 @@ Association group 5 supports 5 nodes.
 
 ### Documentation Links
 
-* [Device manual](https://www.cd-jackson.com/zwave_device_uploads/551/HSIDS-Z.pdf)
+* [Device manual](https://opensmarthouse.org/zwavedatabase/551/HSIDS-Z.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/551).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/551).

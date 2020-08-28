@@ -7,9 +7,7 @@
 
   <thing-type id="brk_zsmoke_00_000" listed="false">
     <label>ZSMOKE Smoke Alarm</label>
-    <description><![CDATA[
-Smoke Alarm<br /><h1>Overview</h1><p>A smart home can also be a safe home. With the First Alert Smoke Detector (ZSMOKE)  you will be immediately notified at the first sign of smoke. The First Alert Smoke Detector is a Z-Wave device that emits a loud alarm when smoke is detected.</p> <br /><h2>Inclusion Information</h2><ol><li>Open the battery tray</li> <li>Hold the Test button while re-inserting the battery tray</li> <li>When the device beeps, release the button</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Open the battery tray</li> <li>Hold the Test button while re-inserting the battery tray</li> <li>When the device beeps, release the button</li> </ol>
-    ]]></description>
+    <description>Smoke Alarm&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtA smart home can also be a safe home. With the First Alert Smoke Detector (ZSMOKE)  you will be immediately notified at the first sign of smoke. The First Alert Smoke Detector is a Z-Wave device that emits a loud alarm when smoke is detected.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtOpen the battery tray&lt;/li&gt &lt;li&gtHold the Test button while re-inserting the battery tray&lt;/li&gt &lt;li&gtWhen the device beeps, release the button&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtOpen the battery tray&lt;/li&gt &lt;li&gtHold the Test button while re-inserting the battery tray&lt;/li&gt &lt;li&gtWhen the device beeps, release the button&lt;/li&gt &lt;/ol&gt</description>
     <category>SmokeDetector</category>
 
     <!-- CHANNEL DEFINITIONS -->

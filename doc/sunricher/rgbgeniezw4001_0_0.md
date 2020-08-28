@@ -10,43 +10,26 @@ This describes the Z-Wave device *ZW4001*, manufactured by *[Sunricher](www.sunr
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![ZW4001 product image](https://www.cd-jackson.com/zwave_device_uploads/1152/1152_default.png)
+![ZW4001 product image](https://opensmarthouse.org/zwavedatabase/1152/image/)
 
 
 The ZW4001 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-In Wall Dimmer switch module.  Requires momentary switch input to change states.
+<p&gtIn Wall Dimmer switch module.  Requires momentary switch input to change states.</p&gt
 
 ### Inclusion Information
 
-  1. Set primary controller/gateway into inclusion mode
-  2. Power on the in-wall dimmer, and set it into inclusion mode. 
-
-There are two methods to set inclusion mode:
-
-  1. Repower the dimmer, it will be set into nclusion mode automatically, and waiting to be included
-  2. Triple press theaction button on the dimmer, it will set the dimmer into inclusion mode
-
-The connected light will stay solid on for 3 seconds to indicate successful inclusion
+<ol&gt<li&gtSet primary controller/gateway into inclusion mode</li&gt <li&gtPower on the in-wall dimmer, and set it into inclusion mode. </li&gt </ol&gt<p&gtThere are two methods to set inclusion mode:</p&gt <ol&gt<li&gtRepower the dimmer, it will be set into nclusion mode automatically, and waiting to be included</li&gt <li&gtTriple press theaction button on the dimmer, it will set the dimmer into inclusion mode</li&gt </ol&gt<p&gtThe connected light will stay solid on for 3 seconds to indicate successful inclusion</p&gt
 
 ### Exclusion Information
 
-  1. Triple press the action button, the dimmer will be set to inclusion/exclusion mode, then send out Node Information Frame
-  2. When the dimmer is under inclusion mode.
-
-there are 2 kinds of operation:
-
-  1. Triple press inclusion/exclusion button, the dimmer will be set to inclusion mode again, and send out Node Information Frame
-  2. Power off and power on the dimmer, it will be set to inclusion mode automatically, and send out Node Information Frame
+<ol&gt<li&gtTriple press the action button, the dimmer will be set to inclusion/exclusion mode, then send out Node Information Frame</li&gt <li&gtWhen the dimmer is under inclusion mode.</li&gt </ol&gt<p&gtthere are 2 kinds of operation:</p&gt <ol&gt<li&gtTriple press inclusion/exclusion button, the dimmer will be set to inclusion mode again, and send out Node Information Frame</li&gt <li&gtPower off and power on the dimmer, it will be set to inclusion mode automatically, and send out Node Information Frame</li&gt </ol&gt
 
 ### General Usage Information
 
-Minimum Brightness Setting Button:
-
-  1. Press and hold down the button for at least 3 second:  current brightness will be set as minimum brightness if it is lower than 50%.  Min brightness will be reset to 1% if current brightness is higher than 50%
-  2. Short press the button twice:  load's brightness will be set to 99%
+<p&gtMinimum Brightness Setting Button:</p&gt <ol&gt<li&gtPress and hold down the button for at least 3 second:  current brightness will be set as minimum brightness if it is lower than 50%.  Min brightness will be reset to 1% if current brightness is higher than 50%</li&gt <li&gtShort press the button twice:  load's brightness will be set to 99%</li&gt </ol&gt
 
 ## Channels
 
@@ -111,9 +94,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: EnableDisableBasicReport
 
 Enable/Disable Send basic report on load change
-0 -- Disable to send Basic report
-
-1 -- Enable to sent Basic report
+<p&gt0 -- Disable to send Basic report</p&gt <p&gt1 -- Enable to sent Basic report</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -124,13 +105,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: DefaultFadeTime
 
 Time to fade to new value (Units depend on value)
-0x00 -- Instantaneous Change
-
-0x01 .. 0x7F -- 1 second (0x01) to 127 seconds (0x7F) in 1 second resolution
-
-0x80 .. 0xFE -- 1 minute (0x80) to 127 minutes (0xFE) in 1 minute resolution
-
-0xFF -- Factory Default duration (1 second)
+<p&gt0x00 -- Instantaneous Change</p&gt <p&gt0x01 .. 0x7F -- 1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</p&gt <p&gt0x80 .. 0xFE -- 1 minute (0x80) to 127 minutes (0xFE) in 1 minute resolution</p&gt <p&gt0xFF -- Factory Default duration (1 second)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -142,9 +117,7 @@ This is a read only parameter.
 ### Parameter 5: MinBrightness
 
 Minimum Brightness Value
-Valid Value: 0-50, the bigger the value is, the higher the load's minimum brightness is
-
-Note: when configuring this value, the value of Multilevel will be configured as 1 automatically so that users can preview the corresponding effect of minimum brightness value.
+<p&gtValid Value: 0-50, the bigger the value is, the higher the load's minimum brightness is</p&gt <p&gtNote: when configuring this value, the value of Multilevel will be configured as 1 automatically so that users can preview the corresponding effect of minimum brightness value.</p&gt
 Values in the range 0 to 50 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -155,9 +128,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: MOSFETDriveType
 
 Choose MOSFET driving type
-0 -- trailing edge
-
-1 -- leading edge
+<p&gt0 -- trailing edge</p&gt <p&gt1 -- leading edge</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -168,9 +139,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: EnableInclExcl
 
 Enable Inclusion and Exclusion
-0 -- disable
-
-1 -- enable
+<p&gt0 -- disable</p&gt <p&gt1 -- enable</p&gt
 Values in the range 0 to 1 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -217,9 +186,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [RGBGenie ZW-4001 Manual All Pages](https://www.cd-jackson.com/zwave_device_uploads/1152/RGBGenie-ZW-4001-Manual-All-Pages.pdf)
+* [RGBGenie ZW-4001 Manual All Pages](https://opensmarthouse.org/zwavedatabase/1152/RGBGenie-ZW-4001-Manual-All-Pages.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1152).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1152).

@@ -7,9 +7,7 @@
 
   <thing-type id="avadesign_davincivsw9_00_000" listed="false">
     <label>Da Vinci Switch Default</label>
-    <description><![CDATA[
-<br /><h1>Overview</h1><p>The Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH_BINARY)  , shutter (MULTILEVEL_SWITCH) Z-Wave device.</p> <br /><h2>Inclusion Information</h2><p>Press the #1 button 3 times.</p> <br /><h2>Exclusion Information</h2><p>Press the #1 button 3 times.</p>
-    ]]></description>
+    <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH_BINARY)  , shutter (MULTILEVEL_SWITCH) Z-Wave device.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the #1 button 3 times.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the #1 button 3 times.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -179,9 +177,7 @@
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="1" max="6">
         <label>1: EP 1 Type</label>
-        <description><![CDATA[
-EP 1 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 1 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -202,27 +198,21 @@ EP 1 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="6">
         <label>4: EP 1 Output</label>
-        <description><![CDATA[
-EP 1 Output<br /><h1>Overview</h1><p>0 = not used<br />1 – 6 = Num. of output</p>
-        ]]></description>
+        <description>EP 1 Output&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = not used&amp;lt;br /&amp;amp;gt1 – 6 = Num. of output&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>5: EP 1 Button attribute</label>
-        <description><![CDATA[
-EP 1 Button attribute<br /><h1>Overview</h1><p>Bit [0] = LED enable<br />Bit [1] = Sound enable<br />Bit [2] = Dry contact enable<br />Bit [3] = Motor enable</p>
-        ]]></description>
+        <description>EP 1 Button attribute&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBit [0] = LED enable&amp;lt;br /&amp;amp;gtBit [1] = Sound enable&amp;lt;br /&amp;amp;gtBit [2] = Dry contact enable&amp;lt;br /&amp;amp;gtBit [3] = Motor enable&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>7</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>6: EP 2 Type</label>
-        <description><![CDATA[
-EP 2 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 2 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -243,9 +233,7 @@ EP 2 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>11: EP 3 Type</label>
-        <description><![CDATA[
-EP 3 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 3 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -266,9 +254,7 @@ EP 3 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>16: EP 4 Type</label>
-        <description><![CDATA[
-EP 4 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 4 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -289,9 +275,7 @@ EP 4 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>21: EP 5 Type</label>
-        <description><![CDATA[
-EP 5 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 5 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -312,9 +296,7 @@ EP 5 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_26_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>26: EP 6 Type</label>
-        <description><![CDATA[
-EP 6 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 6 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -335,9 +317,7 @@ EP 6 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_31_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>31: EP 7 Type</label>
-        <description><![CDATA[
-EP 7 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 7 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -358,9 +338,7 @@ EP 7 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_36_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>36: EP 8 Type</label>
-        <description><![CDATA[
-EP 8 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 8 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
@@ -381,9 +359,7 @@ EP 8 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>
       <parameter name="config_41_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>41: EP 9 Type</label>
-        <description><![CDATA[
-EP 9 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p> <p>3 = blind down</p> <p>4 = switch multiway</p> <p>5 = blind-up multiway</p> <p>6 = blind-down multiway</p>
-        ]]></description>
+        <description>EP 9 Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = switch on/off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = blind up&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = blind down&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 = switch multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 = blind-up multiway&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 = blind-down multiway&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

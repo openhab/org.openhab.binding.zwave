@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhda_00_000" listed="false">
     <label>ZMNHDA Flush dimmer</label>
-    <description><![CDATA[
-Flush dimmer<br /><h1>Overview</h1><p>This Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch.  <br /> <br />The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. <br /> <br />Module measures power consumption of bulb or fan and supports connection of digital temperature sensor.</p> <br /><h2>Inclusion Information</h2><ul><li>Connect module to power supply,</li> <li>bring module within maximum 1 meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller,</li> <li>auto-inclusion (30 minutes after connected to power supply) or</li> <li>press service button S for more than 2 seconds or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds).</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Connect module to power supply,</li> <li>bring module within maximum 1 meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller,</li> <li>press service button S for more than 6 seconds or </li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds)</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted.</p> <p>If service button S is pressed more than 2 and less than 6 second module is excluded, but configuration parameters are not set to default values. </p>
-    ]]></description>
+    <description>Flush dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch.  &lt;br /&gt &lt;br /&gtThe module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. &lt;br /&gt &lt;br /&gtModule measures power consumption of bulb or fan and supports connection of digital temperature sensor.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtConnect module to power supply,&lt;/li&gt &lt;li&gtbring module within maximum 1 meter (3 feet) of the main controller,&lt;/li&gt &lt;li&gtenable add/remove mode on main controller,&lt;/li&gt &lt;li&gtauto-inclusion (30 minutes after connected to power supply) or&lt;/li&gt &lt;li&gtpress service button S for more than 2 seconds or&lt;/li&gt &lt;li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds).&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtConnect module to power supply,&lt;/li&gt &lt;li&gtbring module within maximum 1 meter (3 feet) of the main controller,&lt;/li&gt &lt;li&gtenable add/remove mode on main controller,&lt;/li&gt &lt;li&gtpress service button S for more than 6 seconds or &lt;/li&gt &lt;li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds)&lt;/li&gt &lt;/ul&gt&lt;p&gtBy this function all parameters of the module are set to default values and own ID is deleted.&lt;/p&gt &lt;p&gtIf service button S is pressed more than 2 and less than 6 second module is excluded, but configuration parameters are not set to default values. &lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -119,9 +117,7 @@ Flush dimmer<br /><h1>Overview</h1><p>This Z-Wave module is used for dimming the
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
-        <description><![CDATA[
-Activate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
-        ]]></description>
+        <description>Activate / deactivate functions ALL ON/ALL OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">ALL ON is not active ALL OFF is not active</option>
@@ -144,63 +140,49 @@ Activate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>40: Power reporting in Watts on power change</label>
-        <description><![CDATA[
-Set value means percentage<br /><h1>Overview</h1><ul><li>0 – Reporting Disabled</li> <li>1 – 100 = 1% - 100% Reporting enabled.</li> </ul><p>Power report is send (push) only when actual power in Watts in real time change for more than set percentage comparing to previous actual power in Watts, step is 1%. </p>
-        ]]></description>
+        <description>Set value means percentage&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 – Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 – 100 = 1% - 100% Reporting enabled.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtPower report is send (push) only when actual power in Watts in real time change for more than set percentage comparing to previous actual power in Watts, step is 1%. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>42: Power reporting in Watts by time interval</label>
-        <description><![CDATA[
-Power reporting in Watts by time interval<br /><h1>Overview</h1><p>Set value means time interval (0 – 65535) in seconds, when power report is send.</p> <ul><li>default value 300 (power report in Watts is send each 300s)</li> <li>0 – Reporting Disabled</li> <li>1 – 65535 = 1 second – 65535 seconds. Reporting enabled.</li> </ul><p>Power report is send with time interval set by entered value. </p>
-        ]]></description>
+        <description>Power reporting in Watts by time interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means time interval (0 – 65535) in seconds, when power report is send.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtdefault value 300 (power report in Watts is send each 300s)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt0 – Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 – 65535 = 1 second – 65535 seconds. Reporting enabled.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtPower report is send with time interval set by entered value. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
       </parameter>
 
       <parameter name="config_60_1" type="integer" groupName="configuration"
                  min="0" max="98">
         <label>60: Minimum dimming value</label>
-        <description><![CDATA[
-Minimum dimming value<br /><h1>Overview</h1><ul><li> Default value 1 (Minimum dimming value is 1%)</li> <li>1- 98 = 1% – 98%, step is 1%. Minimum dimming values is set by entered value.</li> </ul><p><strong>NOTE</strong>: The maximum level may not be lower than the minimum level! 1% min. dimming value is defined by Z-Wave multilevel device class</p>
-        ]]></description>
+        <description>Minimum dimming value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt Default value 1 (Minimum dimming value is 1%)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1- 98 = 1% – 98%, step is 1%. Minimum dimming values is set by entered value.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNOTE&amp;lt;/strong&amp;amp;gt: The maximum level may not be lower than the minimum level! 1% min. dimming value is defined by Z-Wave multilevel device class&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_61_1" type="integer" groupName="configuration"
                  min="2" max="99">
         <label>61: Maximum dimming value</label>
-        <description><![CDATA[
-Maximum dimming value<br /><h1>Overview</h1><ul><li>Default value 99 (Maximum dimming value is 99 %)</li> <li>2- 99 = 2% – 99%, step is 1%. Maximum dimming values is set by entered value.</li> </ul><p><strong>NOTE:</strong> The maximum level may not be lower than the minimum level! 99% max. dimming value is defined by Z-Wave multilevel device class</p>
-        ]]></description>
+        <description>Maximum dimming value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtDefault value 99 (Maximum dimming value is 99 %)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt2- 99 = 2% – 99%, step is 1%. Maximum dimming values is set by entered value.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gt&amp;lt;strong&amp;amp;gtNOTE:&amp;lt;/strong&amp;amp;gt The maximum level may not be lower than the minimum level! 99% max. dimming value is defined by Z-Wave multilevel device class&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_65_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>65: Dimming time (soft on/off)</label>
-        <description><![CDATA[
-Dimming time (soft on/off)<br /><h1>Overview</h1><p>Set value means time of moving the Dimmer between min. and max. dimming values by short press of push button I1 or controlled through UI.</p> <ul><li>Default value 100 (Dimming time between min. and max. dimming values is 1s)</li> <li>1- 255 = 10mseconds – 2550mseconds (2,55s), step is 10mseconds </li> </ul>
-        ]]></description>
+        <description>Dimming time (soft on/off)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet value means time of moving the Dimmer between min. and max. dimming values by short press of push button I1 or controlled through UI.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtDefault value 100 (Dimming time between min. and max. dimming values is 1s)&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1- 255 = 10mseconds – 2550mseconds (2,55s), step is 10mseconds &amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_66_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>66: Dimming time when key pressed</label>
-        <description><![CDATA[
-Dimming time when key pressed<br /><h1>Overview</h1><p>Time of moving the Dimmer between min. and max dimming values by continues hold of push button I1.</p> <p>Default value 3 (Dimming time between min. and max. dimming values is 3s)</p> <p> 1- 255 = 1 second – 255 seconds</p>
-        ]]></description>
+        <description>Dimming time when key pressed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime of moving the Dimmer between min. and max dimming values by continues hold of push button I1.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 3 (Dimming time between min. and max. dimming values is 3s)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt 1- 255 = 1 second – 255 seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: multilevel</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p> (triggered at changes of state/value of the Flush dimmer)</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt (triggered at changes of state/value of the Flush dimmer)&lt;/p&gt</description>
         <multipleLimit>4</multipleLimit>
       </parameter>
 

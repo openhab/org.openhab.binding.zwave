@@ -7,9 +7,7 @@
 
   <thing-type id="sunricher_rgbgeniezw4001_00_000" listed="false">
     <label>ZW4001 In-Wall Dimmer</label>
-    <description><![CDATA[
-In-Wall Dimmer<br /><h1>Overview</h1><p>In Wall Dimmer switch module.  Requires momentary switch input to change states.</p> <br /><h2>Inclusion Information</h2><ol><li>Set primary controller/gateway into inclusion mode</li> <li>Power on the in-wall dimmer, and set it into inclusion mode. </li> </ol><p>There are two methods to set inclusion mode:</p> <ol><li>Repower the dimmer, it will be set into nclusion mode automatically, and waiting to be included</li> <li>Triple press theaction button on the dimmer, it will set the dimmer into inclusion mode</li> </ol><p>The connected light will stay solid on for 3 seconds to indicate successful inclusion</p> <br /><h2>Exclusion Information</h2><ol><li>Triple press the action button, the dimmer will be set to inclusion/exclusion mode, then send out Node Information Frame</li> <li>When the dimmer is under inclusion mode.</li> </ol><p>there are 2 kinds of operation:</p> <ol><li>Triple press inclusion/exclusion button, the dimmer will be set to inclusion mode again, and send out Node Information Frame</li> <li>Power off and power on the dimmer, it will be set to inclusion mode automatically, and send out Node Information Frame</li> </ol>
-    ]]></description>
+    <description>In-Wall Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtIn Wall Dimmer switch module.  Requires momentary switch input to change states.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtSet primary controller/gateway into inclusion mode&lt;/li&gt &lt;li&gtPower on the in-wall dimmer, and set it into inclusion mode. &lt;/li&gt &lt;/ol&gt&lt;p&gtThere are two methods to set inclusion mode:&lt;/p&gt &lt;ol&gt&lt;li&gtRepower the dimmer, it will be set into nclusion mode automatically, and waiting to be included&lt;/li&gt &lt;li&gtTriple press theaction button on the dimmer, it will set the dimmer into inclusion mode&lt;/li&gt &lt;/ol&gt&lt;p&gtThe connected light will stay solid on for 3 seconds to indicate successful inclusion&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtTriple press the action button, the dimmer will be set to inclusion/exclusion mode, then send out Node Information Frame&lt;/li&gt &lt;li&gtWhen the dimmer is under inclusion mode.&lt;/li&gt &lt;/ol&gt&lt;p&gtthere are 2 kinds of operation:&lt;/p&gt &lt;ol&gt&lt;li&gtTriple press inclusion/exclusion button, the dimmer will be set to inclusion mode again, and send out Node Information Frame&lt;/li&gt &lt;li&gtPower off and power on the dimmer, it will be set to inclusion mode automatically, and send out Node Information Frame&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -70,45 +68,35 @@ In-Wall Dimmer<br /><h1>Overview</h1><p>In Wall Dimmer switch module.  Requires
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>3: EnableDisableBasicReport</label>
-        <description><![CDATA[
-Enable/Disable Send basic report on load change<br /><h1>Overview</h1><p>0 -- Disable to send Basic report</p> <p>1 -- Enable to sent Basic report</p>
-        ]]></description>
+        <description>Enable/Disable Send basic report on load change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 -- Disable to send Basic report&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 -- Enable to sent Basic report&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="255">
         <label>4: DefaultFadeTime</label>
-        <description><![CDATA[
-Time to fade to new value (Units depend on value)<br /><h1>Overview</h1><p>0x00 -- Instantaneous Change</p> <p>0x01 .. 0x7F -- 1 second (0x01) to 127 seconds (0x7F) in 1 second resolution</p> <p>0x80 .. 0xFE -- 1 minute (0x80) to 127 minutes (0xFE) in 1 minute resolution</p> <p>0xFF -- Factory Default duration (1 second)</p>
-        ]]></description>
+        <description>Time to fade to new value (Units depend on value)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0x00 -- Instantaneous Change&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x01 .. 0x7F -- 1 second (0x01) to 127 seconds (0x7F) in 1 second resolution&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0x80 .. 0xFE -- 1 minute (0x80) to 127 minutes (0xFE) in 1 minute resolution&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0xFF -- Factory Default duration (1 second)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="50">
         <label>5: MinBrightness</label>
-        <description><![CDATA[
-Minimum Brightness Value<br /><h1>Overview</h1><p>Valid Value: 0-50, the bigger the value is, the higher the load's minimum brightness is</p> <p>Note: when configuring this value, the value of Multilevel will be configured as 1 automatically so that users can preview the corresponding effect of minimum brightness value.</p>
-        ]]></description>
+        <description>Minimum Brightness Value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValid Value: 0-50, the bigger the value is, the higher the load's minimum brightness is&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote: when configuring this value, the value of Multilevel will be configured as 1 automatically so that users can preview the corresponding effect of minimum brightness value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>6: MOSFETDriveType</label>
-        <description><![CDATA[
-Choose MOSFET driving type<br /><h1>Overview</h1><p>0 -- trailing edge</p> <p>1 -- leading edge</p>
-        ]]></description>
+        <description>Choose MOSFET driving type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 -- trailing edge&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 -- leading edge&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>7: EnableInclExcl</label>
-        <description><![CDATA[
-Enable Inclusion and Exclusion<br /><h1>Overview</h1><p>0 -- disable</p> <p>1 -- enable</p>
-        ]]></description>
+        <description>Enable Inclusion and Exclusion&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 -- disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 -- enable&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 

@@ -7,9 +7,7 @@
 
   <thing-type id="yale_yrd256_00_000" listed="false">
     <label>YRD256 Touchscreen deadbolt without keyway</label>
-    <description><![CDATA[
-Touchscreen deadbolt without keyway<br /><h1>Overview</h1><ul><li>Installs On Standard Doors In Minutes</li> <li>Replaces existing deadbolt with just a screwdriver</li> <li>Fits on doors 1 3/8" to 2 1/4" thick</li> <li>Backset 2 3/4" or 2 3/4"</li> <li>Face Bore Hole: 2 1/8"</li> <li>Edge Bore Hole: 1"</li> <li>Create up to 250 entry codes for access by keypad (when used with Network Module - 25 without)</li> </ul><br /><h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual:</p> <ul><li>Touch the lock screen to activate</li> <li>Enter the master pin and press # Press 7, then # Press 1, then #</li> <li>The lock will now be in inclusion mode.</li> </ul><br /><h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual:</p> <ul><li>Touch the lock screen to activate</li> <li>Enter the master pin and press # Press 7, then # Press 3, then #</li> <li>The lock will now be in exclusion mode.</li> </ul>
-    ]]></description>
+    <description>Touchscreen deadbolt without keyway&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtInstalls On Standard Doors In Minutes&lt;/li&gt &lt;li&gtReplaces existing deadbolt with just a screwdriver&lt;/li&gt &lt;li&gtFits on doors 1 3/8&quot; to 2 1/4&quot; thick&lt;/li&gt &lt;li&gtBackset 2 3/4&quot; or 2 3/4&quot;&lt;/li&gt &lt;li&gtFace Bore Hole: 2 1/8&quot;&lt;/li&gt &lt;li&gtEdge Bore Hole: 1&quot;&lt;/li&gt &lt;li&gtCreate up to 250 entry codes for access by keypad (when used with Network Module - 25 without)&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo include the lock in a Z-Wave Network (taken from the installation manual:&lt;/p&gt &lt;ul&gt&lt;li&gtTouch the lock screen to activate&lt;/li&gt &lt;li&gtEnter the master pin and press # Press 7, then # Press 1, then #&lt;/li&gt &lt;li&gtThe lock will now be in inclusion mode.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude the lock from a Z-Wave Network (taken from the installation manual:&lt;/p&gt &lt;ul&gt&lt;li&gtTouch the lock screen to activate&lt;/li&gt &lt;li&gtEnter the master pin and press # Press 7, then # Press 3, then #&lt;/li&gt &lt;li&gtThe lock will now be in exclusion mode.&lt;/li&gt &lt;/ul&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -100,9 +98,7 @@ Touchscreen deadbolt without keyway<br /><h1>Overview</h1><ul><li>Installs On St
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="5" max="255">
         <label>3: Auto relock time</label>
-        <description><![CDATA[
-Time for auto relock<br /><h1>Overview</h1><p>Number of seconds after the door is unlocked that it will attempt to automatically re-lock itself, if enabled.</p>
-        ]]></description>
+        <description>Time for auto relock&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNumber of seconds after the door is unlocked that it will attempt to automatically re-lock itself, if enabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -110,9 +106,7 @@ Time for auto relock<br /><h1>Overview</h1><p>Number of seconds after the door i
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="7">
         <label>4: Incorrect PIN limit</label>
-        <description><![CDATA[
-Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incorrect PINs that can be attempted before lock goes into temporary keypad lockout.</p>
-        ]]></description>
+        <description>Number of incorrect PINs before lockout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNumber of incorrect PINs that can be attempted before lock goes into temporary keypad lockout.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
@@ -129,9 +123,7 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>7: Keypad lockout time</label>
-        <description><![CDATA[
-Incorrect PINs lockout time<br /><h1>Overview</h1><p>Amount of time to lock-out the keypad once the number of incorrect PINs has been reached on the keypad.  (Zwave is still active during lockout.)</p>
-        ]]></description>
+        <description>Incorrect PINs lockout time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAmount of time to lock-out the keypad once the number of incorrect PINs has been reached on the keypad.  (Zwave is still active during lockout.)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>60</default>
         <advanced>true</advanced>
       </parameter>

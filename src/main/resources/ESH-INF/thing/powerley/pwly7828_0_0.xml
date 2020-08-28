@@ -7,9 +7,7 @@
 
   <thing-type id="powerley_pwly7828_00_000" listed="false">
     <label>PWLY-7828-A1 Thermostat - HVAC</label>
-    <description><![CDATA[
-Thermostat - HVAC<br /><h1>Overview</h1><p>Residential energy usage is driven by the home's heating and cooling system, and Powerley provides the connectivity to understand usage of the home's HVAC and control remotely or automatically with the Powerley Thermostat. The Powerley Thermostat uses the Z-Wave protocol and can be seamlessly integrated into the connected home via the Powerley Energy Bridge to facilitate communication and control between the devices. The thermostat provides the user with the ability to remotely control home temperature and also allows Powerley to optimize the HVAC system's use balancing energy usage and comfort. The device also provides for the ability to facilitate Demand Response events, including allowing the consumer to choose whether or not to participate in the event via push notifications.</p> <br /><h2>Inclusion Information</h2><p>To put your thermostat into inclusion mode, press and hold Mode for 5 seconds. Hold for 5 seconds:   • CONNECT will scroll across the thermostat display once in inclusion mode. • SUCCESS will scroll across the thermostat display once included. • FAIL will scroll across the thermostat display if inclusion is unsuccessful, or if process takes longer than 1 minute.</p> <br /><h2>Exclusion Information</h2><p>To exclude your Thermostat, press and hold Mode for 5 seconds to initiate Z-Wave exclusion process:   • DELETE will scroll across the thermostat display once in exclusion mode. • To cancel the exclusion process, press Mode. • To complete exclusion press either of the up/down arrows. • SUCCESS will scroll across the thermostat display once excluded. NOTE: Excluding the thermostat will restore it to the default state for Z-Wave and temperature set points.</p>
-    ]]></description>
+    <description>Thermostat - HVAC&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtResidential energy usage is driven by the home's heating and cooling system, and Powerley provides the connectivity to understand usage of the home's HVAC and control remotely or automatically with the Powerley Thermostat. The Powerley Thermostat uses the Z-Wave protocol and can be seamlessly integrated into the connected home via the Powerley Energy Bridge to facilitate communication and control between the devices. The thermostat provides the user with the ability to remotely control home temperature and also allows Powerley to optimize the HVAC system's use balancing energy usage and comfort. The device also provides for the ability to facilitate Demand Response events, including allowing the consumer to choose whether or not to participate in the event via push notifications.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo put your thermostat into inclusion mode, press and hold Mode for 5 seconds. Hold for 5 seconds:   • CONNECT will scroll across the thermostat display once in inclusion mode. • SUCCESS will scroll across the thermostat display once included. • FAIL will scroll across the thermostat display if inclusion is unsuccessful, or if process takes longer than 1 minute.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtTo exclude your Thermostat, press and hold Mode for 5 seconds to initiate Z-Wave exclusion process:   • DELETE will scroll across the thermostat display once in exclusion mode. • To cancel the exclusion process, press Mode. • To complete exclusion press either of the up/down arrows. • SUCCESS will scroll across the thermostat display once excluded. NOTE: Excluding the thermostat will restore it to the default state for Z-Wave and temperature set points.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -113,8 +111,8 @@ Thermostat - HVAC<br /><h1>Overview</h1><p>Residential energy usage is driven by
           <option value="1">2 Stage Conventional</option>
           <option value="2">Heat Pump w/ O-Wire</option>
           <option value="3">Heat Pump w/ B-Wire</option>
-          <option value="4">Heat Pump w/ O-Wire &amp; aux heating</option>
-          <option value="5">Heat Pump w/ B-Wire &amp; aux heating</option>
+          <option value="4">Heat Pump w/ O-Wire &amp;amp; aux heating</option>
+          <option value="5">Heat Pump w/ B-Wire &amp;amp; aux heating</option>
         </options>
       </parameter>
 
@@ -140,9 +138,7 @@ Thermostat - HVAC<br /><h1>Overview</h1><p>Residential energy usage is driven by
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Temperature Calibration</label>
-        <description><![CDATA[
-Temperature Calibration<br /><h1>Overview</h1><p>251 - 255 (-5) - (-1) F; (-1) - (-2.8) C</p>
-        ]]></description>
+        <description>Temperature Calibration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt251 - 255 (-5) - (-1) F; (-1) - (-2.8) C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">+0F</option>
@@ -183,9 +179,7 @@ Temperature Calibration<br /><h1>Overview</h1><p>251 - 255 (-5) - (-1) F; (-1) -
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Swing Setting</label>
-        <description><![CDATA[
-Swing Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
-        ]]></description>
+        <description>Swing Setting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0-10: 0-10 F; 0-5.6 C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">0F</option>
@@ -204,9 +198,7 @@ Swing Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Differential Setting</label>
-        <description><![CDATA[
-Differential Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
-        ]]></description>
+        <description>Differential Setting&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0-10: 0-10 F; 0-5.6 C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">0F</option>
@@ -255,9 +247,7 @@ Differential Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>This thermostat supports a single Z-Wave Association Group (Group 1) called the "lifeline.” All thermostat related commands are sent to the NodeID programmed in Group 1. Z-Wave commands that are sent to Group 1 include: Battery Level Thermostat heat set point Thermostat cool set point Device local reset notification Temperature Humidity Fan mode Fan mode current state of operation Thermostat mode Thermostat current state of operation.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis thermostat supports a single Z-Wave Association Group (Group 1) called the &quot;lifeline.” All thermostat related commands are sent to the NodeID programmed in Group 1. Z-Wave commands that are sent to Group 1 include: Battery Level Thermostat heat set point Thermostat cool set point Device local reset notification Temperature Humidity Fan mode Fan mode current state of operation Thermostat mode Thermostat current state of operation.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -278,8 +268,8 @@ Differential Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
         <option value="2">Cool</option>
       </options>
     </state>
@@ -292,8 +282,8 @@ Differential Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">On (Low)</option>
         <option value="0">Auto (Low)</option>
+        <option value="1">On (Low)</option>
       </options>
     </state>
   </channel-type>
@@ -305,8 +295,8 @@ Differential Setting<br /><h1>Overview</h1><p>0-10: 0-10 F; 0-5.6 C</p>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Running</option>
         <option value="0">Idle</option>
+        <option value="1">Running</option>
       </options>
     </state>
   </channel-type>

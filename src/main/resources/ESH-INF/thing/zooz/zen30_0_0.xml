@@ -6,10 +6,8 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen30_00_000" listed="false">
-    <label>ZEN30 Dimmer &amp; Dry Contact Relay</label>
-    <description><![CDATA[
-Dimmer &amp; Dry Contact Relay<br /><h1>Overview</h1><p>Features</p> <ul><li>Manual or Z-Wave control of 2 separate loads (dimmer + relay)</li> <li>Perfect replacement for a fan / light combo (neutral wire required)</li> <li>Scene control for multi-tap scenarios on select hubs</li> <li>Quick and easy pigtail wire installation (single pole only)</li> <li>4-color LED indicator and air-gap switch for added safety</li> <li>Packed with advanced dimming features including ramp rate control, custom on brightness level, and double tap to full brightness</li> <li>Remembers and restores on/off status after power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>S2 security protocol and 500 Z-Wave chip</li> </ul><p>Specifications</p> <ul><li>Model Number: ZEN30</li> <li>Z-Wave Signal Frequency: 908.42 MHz</li> <li>Power: 120 VAC, 60 Hz</li> <li>Dimmer Max Load: 75 W LED, 250 W incandescent; DON’T use with tube lights, DC powered fixtures, or chandeliers</li> <li>Relay Max Load: 15 A (1/2 HP)</li> <li>Operating Temperature: 32-104° F (0-40° C)</li> <li>Installation and Use: Indoor only</li> </ul><p>Scene Control</p> <p>You can trigger up to 18 scenes or control up to 18 independent Z-Wave devices in your network using the Double Switch. You can assign scenes to 1-tap, 2-tap, 3-tap, 4-tap, 5-tap, or press-and-hold for any of the paddles and the relay button. Your hub needs to support central scene implementation for this feature to be available.</p> <br /><h2>Inclusion Information</h2><ol><li>Enable Inclusion for the Z-Wave binding</li> <li>Quickly tap the upper paddle on the dimmer 3 times</li> <li>The LED indicators will blink to signal communication and remain on for 2 seconds to confirm inclusion</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Enable Exclusion for the Z-Wave binding</li> <li>Bring your Z-Wave gateway (hub) close to the switch, if possible</li> <li>Quickly tap the lower paddle on the dimmer 3 times</li> </ol>
-    ]]></description>
+    <label>ZEN30 Dimmer &amp;amp; Dry Contact Relay</label>
+    <description>Dimmer &amp;amp;amp; Dry Contact Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFeatures&lt;/p&gt &lt;ul&gt&lt;li&gtManual or Z-Wave control of 2 separate loads (dimmer + relay)&lt;/li&gt &lt;li&gtPerfect replacement for a fan / light combo (neutral wire required)&lt;/li&gt &lt;li&gtScene control for multi-tap scenarios on select hubs&lt;/li&gt &lt;li&gtQuick and easy pigtail wire installation (single pole only)&lt;/li&gt &lt;li&gt4-color LED indicator and air-gap switch for added safety&lt;/li&gt &lt;li&gtPacked with advanced dimming features including ramp rate control, custom on brightness level, and double tap to full brightness&lt;/li&gt &lt;li&gtRemembers and restores on/off status after power failure&lt;/li&gt &lt;li&gtBuilt-in Z-Wave Plus signal repeater to extend network range&lt;/li&gt &lt;li&gtS2 security protocol and 500 Z-Wave chip&lt;/li&gt &lt;/ul&gt&lt;p&gtSpecifications&lt;/p&gt &lt;ul&gt&lt;li&gtModel Number: ZEN30&lt;/li&gt &lt;li&gtZ-Wave Signal Frequency: 908.42 MHz&lt;/li&gt &lt;li&gtPower: 120 VAC, 60 Hz&lt;/li&gt &lt;li&gtDimmer Max Load: 75 W LED, 250 W incandescent; DON’T use with tube lights, DC powered fixtures, or chandeliers&lt;/li&gt &lt;li&gtRelay Max Load: 15 A (1/2 HP)&lt;/li&gt &lt;li&gtOperating Temperature: 32-104° F (0-40° C)&lt;/li&gt &lt;li&gtInstallation and Use: Indoor only&lt;/li&gt &lt;/ul&gt&lt;p&gtScene Control&lt;/p&gt &lt;p&gtYou can trigger up to 18 scenes or control up to 18 independent Z-Wave devices in your network using the Double Switch. You can assign scenes to 1-tap, 2-tap, 3-tap, 4-tap, 5-tap, or press-and-hold for any of the paddles and the relay button. Your hub needs to support central scene implementation for this feature to be available.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtEnable Inclusion for the Z-Wave binding&lt;/li&gt &lt;li&gtQuickly tap the upper paddle on the dimmer 3 times&lt;/li&gt &lt;li&gtThe LED indicators will blink to signal communication and remain on for 2 seconds to confirm inclusion&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtEnable Exclusion for the Z-Wave binding&lt;/li&gt &lt;li&gtBring your Z-Wave gateway (hub) close to the switch, if possible&lt;/li&gt &lt;li&gtQuickly tap the lower paddle on the dimmer 3 times&lt;/li&gt &lt;/ol&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -62,9 +60,7 @@ Dimmer &amp; Dry Contact Relay<br /><h1>Overview</h1><p>Features</p> <ul><li>Man
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: LED Indicator Mode for Dimmer</label>
-        <description><![CDATA[
-LED Indicator Mode for Dimmer<br /><h1>Overview</h1><p>Choose if you want the LED indicator to turn on when the switch (light) is on or off, or if you want it to remain on or off at all times. This setting is for the top status indicator only.</p> <p>6 x TAP UPPER PADDLE to change the LED mode.</p>
-        ]]></description>
+        <description>LED Indicator Mode for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the LED indicator to turn on when the switch (light) is on or off, or if you want it to remain on or off at all times. This setting is for the top status indicator only.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 x TAP UPPER PADDLE to change the LED mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">ON when switch is OFF and OFF when switch is ON</option>
@@ -76,9 +72,7 @@ LED Indicator Mode for Dimmer<br /><h1>Overview</h1><p>Choose if you want the LE
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: LED Indicator Control for Relay</label>
-        <description><![CDATA[
-LED Indicator Control for Relay<br /><h1>Overview</h1><p>Choose if you want the LED indicator to turn on when the relay is on or off, or if you want it to remain on or off at all times.</p> <p>6 x TAP RELAY BUTTONto change the LED mode.</p>
-        ]]></description>
+        <description>LED Indicator Control for Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the LED indicator to turn on when the relay is on or off, or if you want it to remain on or off at all times.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 x TAP RELAY BUTTONto change the LED mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">ON when relay is OFF and OFF when relay is ON</option>
@@ -102,9 +96,7 @@ LED Indicator Control for Relay<br /><h1>Overview</h1><p>Choose if you want the 
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: LED Indicator Color for Relay</label>
-        <description><![CDATA[
-LED Indicator Color for Relay<br /><h1>Overview</h1><p>Choose the color of the LED indicator for the relay</p>
-        ]]></description>
+        <description>LED Indicator Color for Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose the color of the LED indicator for the relay&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">White (default)</option>
@@ -116,9 +108,7 @@ LED Indicator Color for Relay<br /><h1>Overview</h1><p>Choose the color of the L
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: LED Indicator Brightness for Dimmer</label>
-        <description><![CDATA[
-LED Indicator Brightness for Dimmer<br /><h1>Overview</h1><p>Choose the LED indicators’ brightness level for the dimmer</p>
-        ]]></description>
+        <description>LED Indicator Brightness for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose the LED indicators’ brightness level for the dimmer&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Bright (100%)</option>
@@ -129,9 +119,7 @@ LED Indicator Brightness for Dimmer<br /><h1>Overview</h1><p>Choose the LED indi
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: LED Indicator Brightness for Relay</label>
-        <description><![CDATA[
-LED Indicator Brightness for Relay<br /><h1>Overview</h1><p>Choose the LED indicators’ brightness level for the relay</p>
-        ]]></description>
+        <description>LED Indicator Brightness for Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose the LED indicators’ brightness level for the relay&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Bright (100%)</option>
@@ -142,9 +130,7 @@ LED Indicator Brightness for Relay<br /><h1>Overview</h1><p>Choose the LED indic
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: LED Indicator Mode for Scene Control</label>
-        <description><![CDATA[
-LED Indicator Mode for Scene Control<br /><h1>Overview</h1><p>Choose if you want the LED indicators next to the dimmer to light up when a scene is selected. You’ll see 1 to 5 LEDs light up for 1 – 5 tap triggers and 6 LEDs light up for the press-and-hold trigger of any paddle / button used.</p>
-        ]]></description>
+        <description>LED Indicator Mode for Scene Control&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the LED indicators next to the dimmer to light up when a scene is selected. You’ll see 1 to 5 LEDs light up for 1 – 5 tap triggers and 6 LEDs light up for the press-and-hold trigger of any paddle / button used.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Enabled to indicate scene triggers</option>
@@ -155,9 +141,7 @@ LED Indicator Mode for Scene Control<br /><h1>Overview</h1><p>Choose if you want
       <parameter name="config_8_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>8: Auto Turn-Off Timer for Dimmer</label>
-        <description><![CDATA[
-Auto Turn-Off Timer for Dimmer<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the dimmer to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p>
-        ]]></description>
+        <description>Auto Turn-Off Timer for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUse this parameter to set the time after which you want the dimmer to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer disabled (default)</option>
@@ -168,9 +152,7 @@ Auto Turn-Off Timer for Dimmer<br /><h1>Overview</h1><p>Use this parameter to se
       <parameter name="config_9_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>9: Auto Turn-On Timer for Dimmer</label>
-        <description><![CDATA[
-Auto Turn-On Timer for Dimmer<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the dimmer to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p>
-        ]]></description>
+        <description>Auto Turn-On Timer for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUse this parameter to set the time after which you want the dimmer to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer disabled (default)</option>
@@ -181,9 +163,7 @@ Auto Turn-On Timer for Dimmer<br /><h1>Overview</h1><p>Use this parameter to set
       <parameter name="config_10_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>10: Auto Turn-Off Timer for Relay</label>
-        <description><![CDATA[
-Auto Turn-Off Timer for Relay<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the relay to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p>
-        ]]></description>
+        <description>Auto Turn-Off Timer for Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUse this parameter to set the time after which you want the relay to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer disabled (default)</option>
@@ -194,9 +174,7 @@ Auto Turn-Off Timer for Relay<br /><h1>Overview</h1><p>Use this parameter to set
       <parameter name="config_11_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>11: Auto Turn-On Timer for Relay</label>
-        <description><![CDATA[
-Auto Turn-On Timer for Relay<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the relay to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p>
-        ]]></description>
+        <description>Auto Turn-On Timer for Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtUse this parameter to set the time after which you want the relay to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Timer disabled (default)</option>
@@ -206,9 +184,7 @@ Auto Turn-On Timer for Relay<br /><h1>Overview</h1><p>Use this parameter to set 
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: On Off Status After Power Failure</label>
-        <description><![CDATA[
-On Off Status After Power Failure<br /><h1>Overview</h1><p>Set the on/off status of the device after power failure.</p>
-        ]]></description>
+        <description>On Off Status After Power Failure&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the on/off status of the device after power failure.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">Dimmer and relay forced to OFF</option>
@@ -226,9 +202,7 @@ On Off Status After Power Failure<br /><h1>Overview</h1><p>Set the on/off status
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>13: Ramp Rate Control for Dimmer</label>
-        <description><![CDATA[
-Ramp Rate Control for Dimmer<br /><h1>Overview</h1><p>Adjust the ramp rate for the dimmer (fade-in / fade-out effect for ON/OFF operation). Values correspond to the number of seconds it takes for the dimmer to reach full brightness or turn OFF when operated manually.</p>
-        ]]></description>
+        <description>Ramp Rate Control for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjust the ramp rate for the dimmer (fade-in / fade-out effect for ON/OFF operation). Values correspond to the number of seconds it takes for the dimmer to reach full brightness or turn OFF when operated manually.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Instant ON/OFF</option>
@@ -239,9 +213,7 @@ Ramp Rate Control for Dimmer<br /><h1>Overview</h1><p>Adjust the ramp rate for t
       <parameter name="config_14_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>14: Minimum Brightness</label>
-        <description><![CDATA[
-Minimum Brightness<br /><h1>Overview</h1><p>Set the minimum brightness level (in %) for the dimmer. You won’t be able to dim the light below the set value.</p>
-        ]]></description>
+        <description>Minimum Brightness&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the minimum brightness level (in %) for the dimmer. You won’t be able to dim the light below the set value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -249,18 +221,14 @@ Minimum Brightness<br /><h1>Overview</h1><p>Set the minimum brightness level (in
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>15: Maximum Brightness</label>
-        <description><![CDATA[
-Maximum Brightness<br /><h1>Overview</h1><p>Set the maximum brightness level (in %) for the dimmer. You won’t be able to add brightness to the light beyond the set value.</p>
-        ]]></description>
+        <description>Maximum Brightness&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the maximum brightness level (in %) for the dimmer. You won’t be able to add brightness to the light beyond the set value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration">
         <label>17: Double Tap Function for Dimmer</label>
-        <description><![CDATA[
-Double Tap Function for Dimmer<br /><h1>Overview</h1><p>Choose if you want the dimmer to turn ON to full brightness or custom brightness level after you double-tap the upper paddle.</p>
-        ]]></description>
+        <description>Double Tap Function for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you want the dimmer to turn ON to full brightness or custom brightness level after you double-tap the upper paddle.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">ON to full brightness with double tap (default)</option>
@@ -270,9 +238,7 @@ Double Tap Function for Dimmer<br /><h1>Overview</h1><p>Choose if you want the d
 
       <parameter name="config_18_1" type="integer" groupName="configuration">
         <label>18: Disable Double Tap</label>
-        <description><![CDATA[
-Disable Double Tap<br /><h1>Overview</h1><p>Enable or disable the double-tap function and assign brightness level to single tap</p>
-        ]]></description>
+        <description>Disable Double Tap&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or disable the double-tap function and assign brightness level to single tap&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Full/max brightness level enabled (default)</option>
@@ -283,9 +249,7 @@ Disable Double Tap<br /><h1>Overview</h1><p>Enable or disable the double-tap fun
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Smart Bulb Setting</label>
-        <description><![CDATA[
-Enable/Disable Load Control for Dimmer<br /><h1>Overview</h1><p> Enable or disable direct manual and Z-Wave control of the connected light. Works great for smart bulb control. If disabled, the dimmer will no longer control the connected bulb directly but will still send on/off and brightness reports to the hub so you can use them to create automations for your smart bulbs or other switches. Scenes and other functionality will still be available through paddles.</p> <p>4 TAP’N’HOLD LOWER PADDLE to change the mode.</p>
-        ]]></description>
+        <description>Enable/Disable Load Control for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Enable or disable direct manual and Z-Wave control of the connected light. Works great for smart bulb control. If disabled, the dimmer will no longer control the connected bulb directly but will still send on/off and brightness reports to the hub so you can use them to create automations for your smart bulbs or other switches. Scenes and other functionality will still be available through paddles.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 TAP’N’HOLD LOWER PADDLE to change the mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Manual control disabled</option>
@@ -296,9 +260,7 @@ Enable/Disable Load Control for Dimmer<br /><h1>Overview</h1><p> Enable or disab
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Remote Control Setting</label>
-        <description><![CDATA[
-Enable/Disable Load Control for Relay<br /><h1>Overview</h1><p>Enable or disable direct manual and Z-Wave control of the connected load. Works great for smart bulbs or any type of remote / scene control. If disabled, the relay will no longer control the connected load directly but will still send on/off reports to the hub so you can use them to create automations for your smart bulbs or other devices. Scenes and other functionality will still be available through the button.</p> <p>4 TAP’N’HOLD THE BUTTON to change the mode.</p>
-        ]]></description>
+        <description>Enable/Disable Load Control for Relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or disable direct manual and Z-Wave control of the connected load. Works great for smart bulbs or any type of remote / scene control. If disabled, the relay will no longer control the connected load directly but will still send on/off reports to the hub so you can use them to create automations for your smart bulbs or other devices. Scenes and other functionality will still be available through the button.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 TAP’N’HOLD THE BUTTON to change the mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Manual control disabled</option>
@@ -310,18 +272,14 @@ Enable/Disable Load Control for Relay<br /><h1>Overview</h1><p>Enable or disable
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>21: Manual Dimming Speed</label>
-        <description><![CDATA[
-Manual Dimming Speed<br /><h1>Overview</h1><p>Choose how many seconds it takes for the dimmer to go from 0% to 100% brightness when pressing and holding the paddle. Increase the value to decrease the dimming speed.</p>
-        ]]></description>
+        <description>Manual Dimming Speed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose how many seconds it takes for the dimmer to go from 0% to 100% brightness when pressing and holding the paddle. Increase the value to decrease the dimming speed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_22_1" type="integer" groupName="configuration">
         <label>22: Z-Wave Ramp Rate for Dimmer</label>
-        <description><![CDATA[
-Z-Wave Ramp Rate for Dimmer<br /><h1>Overview</h1><p>Choose if you would like to match the Z-Wave ON/OFF ramp rate with the manual ramp rate or set it separately in your hub.</p>
-        ]]></description>
+        <description>Z-Wave Ramp Rate for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtChoose if you would like to match the Z-Wave ON/OFF ramp rate with the manual ramp rate or set it separately in your hub.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Match #13</option>
@@ -332,9 +290,7 @@ Z-Wave Ramp Rate for Dimmer<br /><h1>Overview</h1><p>Choose if you would like to
       <parameter name="config_23_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>23: Default Brightness Level ON for Dimmer</label>
-        <description><![CDATA[
-Default Brightness Level ON for Dimmer<br /><h1>Overview</h1><p>Set custom brightness level (in %) for the dimmer to come on to at single tap</p>
-        ]]></description>
+        <description>Default Brightness Level ON for Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet custom brightness level (in %) for the dimmer to come on to at single tap&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Last brightness level (default)</option>
@@ -349,17 +305,13 @@ Default Brightness Level ON for Dimmer<br /><h1>Overview</h1><p>Set custom brigh
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: BASIC_SET (dimmer)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>The dimmer supports Group 2 with up to 5 devices and will send BASIC_SET report to other devices in Group 2 to communicate status changes.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe dimmer supports Group 2 with up to 5 devices and will send BASIC_SET report to other devices in Group 2 to communicate status changes.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: BASIC_SET (relay)</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>The relay supports Group 3 with up to 5 devices BASIC_SET report to other devices in Group 3 if its status changes.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe relay supports Group 3 with up to 5 devices BASIC_SET report to other devices in Group 3 if its status changes.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

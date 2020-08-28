@@ -6,10 +6,8 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="inovelli_lzw36_00_000" listed="false">
-    <label>LZW36 Fan &amp; Light Switch</label>
-    <description><![CDATA[
-Fan &amp; Light Switch<br /><h1>Overview</h1><p>There are two different wireless protocols that are used to make this fan &amp; light switch - Z-Wave and RF.</p> <p>Z-Wave is what gives the switch remote (smart) control, whereas RF is what connects the switch to the module. In other words, your hub/gateway connects to your switch, where you can tell it to change the speed of the fan or the brightness of the lights. From there the switch sends an RF command to the module to physically make those commands happen at the fan itself.</p> <br /><h2>Inclusion Information</h2><p>Enable the inclusion process on your Hub or Gateway. Hold down button A and press button B 3x quickly and your LED Bars will pulse blue signifying the switch is in inclusion mode. If successful, the switch LED Bars will flash Green and if unsuccessful, the LED Bars will flash Red.</p> <br /><h2>Exclusion Information</h2><p>Place your hub or gateway into exclusion mode. Then: Hold button A + Press Button B 3x. If it is successful the LED will blink green.</p>
-    ]]></description>
+    <label>LZW36 Fan &amp;amp; Light Switch</label>
+    <description>Fan &amp;amp;amp; Light Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThere are two different wireless protocols that are used to make this fan &amp;amp; light switch - Z-Wave and RF.&lt;/p&gt &lt;p&gtZ-Wave is what gives the switch remote (smart) control, whereas RF is what connects the switch to the module. In other words, your hub/gateway connects to your switch, where you can tell it to change the speed of the fan or the brightness of the lights. From there the switch sends an RF command to the module to physically make those commands happen at the fan itself.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtEnable the inclusion process on your Hub or Gateway. Hold down button A and press button B 3x quickly and your LED Bars will pulse blue signifying the switch is in inclusion mode. If successful, the switch LED Bars will flash Green and if unsuccessful, the LED Bars will flash Red.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPlace your hub or gateway into exclusion mode. Then: Hold button A + Press Button B 3x. If it is successful the LED will blink green.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -107,116 +105,90 @@ Fan &amp; Light Switch<br /><h1>Overview</h1><p>There are two different wireless
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="98">
         <label>1: Light Dimming Speed</label>
-        <description><![CDATA[
-Light Dimming Speed<br /><h1>Overview</h1><p>This changes the speed in which the attached light dims up or down. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed.</p>
-        ]]></description>
+        <description>Light Dimming Speed&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis changes the speed in which the attached light dims up or down. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>2: Light Dimming Speed (From Switch)</label>
-        <description><![CDATA[
-Light Dimming Speed (From Switch)<br /><h1>Overview</h1><p>This changes the speed in which the attached light dims up or down when controlled from the physical switch. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed. A setting of 99 should keep this in sync with parameter 1.</p>
-        ]]></description>
+        <description>Light Dimming Speed (From Switch)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis changes the speed in which the attached light dims up or down when controlled from the physical switch. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed. A setting of 99 should keep this in sync with parameter 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>3: Light Ramp Rate</label>
-        <description><![CDATA[
-Light Ramp Rate<br /><h1>Overview</h1><p>This changes the speed in which the attached light turns on or off. For example, when a user sends the switch a basicSet(value: 0xFF) or basicSet(value: 0x00), this is the speed in which those actions take place. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed. A setting of 99 should keep this in sync with parameter 1.</p>
-        ]]></description>
+        <description>Light Ramp Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis changes the speed in which the attached light turns on or off. For example, when a user sends the switch a basicSet(value: 0xFF) or basicSet(value: 0x00), this is the speed in which those actions take place. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed. A setting of 99 should keep this in sync with parameter 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>4: Light Ramp Rate (From Switch)</label>
-        <description><![CDATA[
-Light Ramp Rate (From Switch)<br /><h1>Overview</h1><p>This changes the speed in which the attached light turns on or off from the physical switch. For example, when a user presses the up or down button, this is the speed in which those actions take place. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed. A setting of 99 should keep this in sync with parameter 1.</p>
-        ]]></description>
+        <description>Light Ramp Rate (From Switch)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis changes the speed in which the attached light turns on or off from the physical switch. For example, when a user presses the up or down button, this is the speed in which those actions take place. A setting of 0 should turn the light immediately on or off (almost like an on/off switch). Increasing the value should slow down the transition speed. A setting of 99 should keep this in sync with parameter 1.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="1" max="45">
         <label>5: Minimum Light Level</label>
-        <description><![CDATA[
-Minimum Light Level<br /><h1>Overview</h1><p>The minimum level that the dimmer allows the bulb to be dimmed to. Useful when the user has an LED bulb that does not turn on or flickers at a lower level.</p>
-        ]]></description>
+        <description>Minimum Light Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe minimum level that the dimmer allows the bulb to be dimmed to. Useful when the user has an LED bulb that does not turn on or flickers at a lower level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="55" max="99">
         <label>6: Maximum Light Level</label>
-        <description><![CDATA[
-Maximum Light Level<br /><h1>Overview</h1><p>The maximum level that the dimmer allows the bulb to be dimmed to. Useful when the user has an LED bulb that reaches its maximum level before the dimmer value of 99.</p>
-        ]]></description>
+        <description>Maximum Light Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe maximum level that the dimmer allows the bulb to be dimmed to. Useful when the user has an LED bulb that reaches its maximum level before the dimmer value of 99.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="45">
         <label>7: Minimum Fan Level</label>
-        <description><![CDATA[
-Minimum Fan Level<br /><h1>Overview</h1><p>The minimum level that the dimmer allows the fan to be dimmed to. Useful when the user has a fan that does not turn at a lower level.</p>
-        ]]></description>
+        <description>Minimum Fan Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe minimum level that the dimmer allows the fan to be dimmed to. Useful when the user has a fan that does not turn at a lower level.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="55" max="99">
         <label>8: Maximum Fan Level</label>
-        <description><![CDATA[
-Maximum Fan Level<br /><h1>Overview</h1><p>The maximum level that the dimmer allows the fan to be dimmed to.</p>
-        ]]></description>
+        <description>Maximum Fan Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe maximum level that the dimmer allows the fan to be dimmed to.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>99</default>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>10: Auto Off Light Timer</label>
-        <description><![CDATA[
-Auto Off Light Timer<br /><h1>Overview</h1><p>Automatically turns the light switch off after this many seconds. When the switch is turned on a timer is started that is the duration of this setting. When the timer expires, the switch is turned off.</p>
-        ]]></description>
+        <description>Auto Off Light Timer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAutomatically turns the light switch off after this many seconds. When the switch is turned on a timer is started that is the duration of this setting. When the timer expires, the switch is turned off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="32767">
         <label>11: Auto Off Fan Timer</label>
-        <description><![CDATA[
-Auto Off Fan Timer<br /><h1>Overview</h1><p>Automatically turns the fan switch off after this many seconds. When the switch is turned on a timer is started that is the duration of this setting. When the timer expires, the switch is turned off.</p>
-        ]]></description>
+        <description>Auto Off Fan Timer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAutomatically turns the fan switch off after this many seconds. When the switch is turned on a timer is started that is the duration of this setting. When the timer expires, the switch is turned off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>12: Default Light Level (Local)</label>
-        <description><![CDATA[
-Default Light Level (Local)<br /><h1>Overview</h1><p>Default level for the dimmer when it is powered on from the local switch. A setting of 0 means that the switch will return to the level that it was on before it was turned off.</p>
-        ]]></description>
+        <description>Default Light Level (Local)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault level for the dimmer when it is powered on from the local switch. A setting of 0 means that the switch will return to the level that it was on before it was turned off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>13: Default Light Level (Z-Wave)</label>
-        <description><![CDATA[
-Default Light Level (Z-Wave)<br /><h1>Overview</h1><p>Default level for the dimmer when it is powered on from a Z-Wave command. A setting of 0 means that the switch will return to the level that it was on before it was turned off.</p>
-        ]]></description>
+        <description>Default Light Level (Z-Wave)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault level for the dimmer when it is powered on from a Z-Wave command. A setting of 0 means that the switch will return to the level that it was on before it was turned off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Default Fan Level (Local)</label>
-        <description><![CDATA[
-Default Fan Level (Local)<br /><h1>Overview</h1><p>Default level for the fan dimmer when it is powered on from the local switch.</p>
-        ]]></description>
+        <description>Default Fan Level (Local)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault level for the fan dimmer when it is powered on from the local switch.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Last State</option>
@@ -241,17 +213,13 @@ Default Fan Level (Local)<br /><h1>Overview</h1><p>Default level for the fan dim
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>16: Light State After Power Restored</label>
-        <description><![CDATA[
-Light State After Power Restored<br /><h1>Overview</h1><p>The state the switch should return to once power is restored after power failure. 0 = off, 1-99 = level, 100=previous.</p>
-        ]]></description>
+        <description>Light State After Power Restored&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe state the switch should return to once power is restored after power failure. 0 = off, 1-99 = level, 100=previous.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration">
         <label>17: Fan State After Power Restored</label>
-        <description><![CDATA[
-Fan State After Power Restored<br /><h1>Overview</h1><p>The state the switch should return to once power is restored after power failure.</p>
-        ]]></description>
+        <description>Fan State After Power Restored&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe state the switch should return to once power is restored after power failure.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -265,63 +233,49 @@ Fan State After Power Restored<br /><h1>Overview</h1><p>The state the switch sho
       <parameter name="config_18_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>18: Light LED Indicator Color</label>
-        <description><![CDATA[
-Light LED Indicator Color<br /><h1>Overview</h1><p>This is the color of the Light LED strip represented as part of the HUE color wheel. Since the wheel has 360 values and this parameter only has 255, the following equation can be used to determine the color: value/255 * 360 = Hue color wheel value</p>
-        ]]></description>
+        <description>Light LED Indicator Color&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the color of the Light LED strip represented as part of the HUE color wheel. Since the wheel has 360 values and this parameter only has 255, the following equation can be used to determine the color: value/255 * 360 = Hue color wheel value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>170</default>
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>19: Light LED Strip Intensity</label>
-        <description><![CDATA[
-Light LED Strip Intensity<br /><h1>Overview</h1><p>This is the intensity of the Light LED strip.</p>
-        ]]></description>
+        <description>Light LED Strip Intensity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the intensity of the Light LED strip.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>20: Fan LED Indicator Color</label>
-        <description><![CDATA[
-Fan LED Indicator Color<br /><h1>Overview</h1><p>This is the color of the Fan LED strip represented as part of the HUE color wheel. Since the wheel has 360 values and this parameter only has 255, the following equation can be used to determine the color: value/255 * 360 = Hue color wheel value</p>
-        ]]></description>
+        <description>Fan LED Indicator Color&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the color of the Fan LED strip represented as part of the HUE color wheel. Since the wheel has 360 values and this parameter only has 255, the following equation can be used to determine the color: value/255 * 360 = Hue color wheel value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>170</default>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>21: Fan LED Strip Intensity</label>
-        <description><![CDATA[
-Fan LED Strip Intensity<br /><h1>Overview</h1><p>This is the intensity of the Fan LED strip.</p>
-        ]]></description>
+        <description>Fan LED Strip Intensity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the intensity of the Fan LED strip.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_22_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>22: Light LED Strip Intensity (When OFF)</label>
-        <description><![CDATA[
-Light LED Strip Intensity (When OFF)<br /><h1>Overview</h1><p>This is the intensity of the Light LED strip when the switch is off. This is useful for users to see the light switch location when the lights are off.</p>
-        ]]></description>
+        <description>Light LED Strip Intensity (When OFF)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the intensity of the Light LED strip when the switch is off. This is useful for users to see the light switch location when the lights are off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
                  min="0" max="10">
         <label>23: Fan LED Strip Intensity (When OFF)</label>
-        <description><![CDATA[
-Fan LED Strip Intensity (When OFF)<br /><h1>Overview</h1><p>This is the intensity of the Light LED strip when the switch is off. This is useful for users to see the light switch location when the lights are off.</p>
-        ]]></description>
+        <description>Fan LED Strip Intensity (When OFF)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis is the intensity of the Light LED strip when the switch is off. This is useful for users to see the light switch location when the lights are off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_24_4" type="integer" groupName="configuration"
                  min="0" max="100600319">
         <label>24: Light LED Strip Effect</label>
-        <description><![CDATA[
-Light LED Strip Effect<br /><h1>Overview</h1><p>Byte 4: Effect - 0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse</p> <p>Byte 3: Duration</p> <ul><li>1 to 60 = 1 to 60 seconds</li> <li>61 to 120 = 1 to 60 minutes</li> <li>121 - 254 = 1 - 134 hours</li> <li>255 = Indefinitely</li> </ul><p>Byte 2: Intensity - 0 to 9. 0 = dim, 9 = bright</p> <p>Byte 1: Color - 0 - 255. Hue color wheel. value/255 * 360 = Hue color wheel value</p> <p>Calculator available at: http://calculator.inovelli.com/</p>
-        ]]></description>
+        <description>Light LED Strip Effect&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Effect - 0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtByte 3: Duration&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt1 to 60 = 1 to 60 seconds&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt61 to 120 = 1 to 60 minutes&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt121 - 254 = 1 - 134 hours&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt255 = Indefinitely&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtByte 2: Intensity - 0 to 9. 0 = dim, 9 = bright&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtByte 1: Color - 0 - 255. Hue color wheel. value/255 * 360 = Hue color wheel value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCalculator available at: http://calculator.inovelli.com/&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -329,35 +283,27 @@ Light LED Strip Effect<br /><h1>Overview</h1><p>Byte 4: Effect - 0 = Off, 1 = So
       <parameter name="config_24_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>24: Light LED Strip Effect Color</label>
-        <description><![CDATA[
-Light LED Strip Effect Color<br /><h1>Overview</h1><p>Hue color wheel. value/255 * 360 = Hue color wheel value</p>
-        ]]></description>
+        <description>Light LED Strip Effect Color&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtHue color wheel. value/255 * 360 = Hue color wheel value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_24_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="9">
         <label>24: Light LED Strip Effect Intensity</label>
-        <description><![CDATA[
-Light LED Strip Effect Intensity<br /><h1>Overview</h1><p>0 = dim, 9 = bright</p>
-        ]]></description>
+        <description>Light LED Strip Effect Intensity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = dim, 9 = bright&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_24_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>24: Light LED Strip Effect Duration</label>
-        <description><![CDATA[
-Light LED Strip Effect Duration<br /><h1>Overview</h1><ul><li>1 to 60 = 1 to 60 seconds</li> <li>61 to 120 = 1 to 60 minutes</li> <li>121 to 254 = 1 to 134 hours</li> <li>255 = Indefinitely</li> </ul>
-        ]]></description>
+        <description>Light LED Strip Effect Duration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt1 to 60 = 1 to 60 seconds&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt61 to 120 = 1 to 60 minutes&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt121 to 254 = 1 to 134 hours&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt255 = Indefinitely&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_24_4_07000000" type="integer" groupName="configuration">
         <label>24: Light LED Strip Effect Type</label>
-        <description><![CDATA[
-Light LED Strip Effect Type<br /><h1>Overview</h1><p>0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse</p>
-        ]]></description>
+        <description>Light LED Strip Effect Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -372,9 +318,7 @@ Light LED Strip Effect Type<br /><h1>Overview</h1><p>0 = Off, 1 = Solid, 2 = Slo
       <parameter name="config_25_4" type="integer" groupName="configuration"
                  min="0" max="100600319">
         <label>25: Fan LED Strip Effect</label>
-        <description><![CDATA[
-Fan LED Strip Effect<br /><h1>Overview</h1><p>Byte 4: Effect - 0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse</p> <p>Byte 3: Duration</p> <ul><li>1 to 60 = 1 to 60 seconds</li> <li>61 to 120 = 1 to 60 minutes</li> <li>121 - 254 = 1 - 134 hours</li> <li>255 = Indefinitely</li> </ul><p>Byte 2: Intensity - 0 to 9. 0 = dim, 9 = bright</p> <p>Byte 1: Color - 0 - 255. Hue color wheel. value/255 * 360 = Hue color wheel value</p> <p>Calculator available at: http://calculator.inovelli.com/</p>
-        ]]></description>
+        <description>Fan LED Strip Effect&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Effect - 0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtByte 3: Duration&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt1 to 60 = 1 to 60 seconds&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt61 to 120 = 1 to 60 minutes&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt121 - 254 = 1 - 134 hours&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt255 = Indefinitely&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtByte 2: Intensity - 0 to 9. 0 = dim, 9 = bright&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtByte 1: Color - 0 - 255. Hue color wheel. value/255 * 360 = Hue color wheel value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtCalculator available at: http://calculator.inovelli.com/&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -382,35 +326,27 @@ Fan LED Strip Effect<br /><h1>Overview</h1><p>Byte 4: Effect - 0 = Off, 1 = Soli
       <parameter name="config_25_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>25: Fan LED Strip Effect Color</label>
-        <description><![CDATA[
-Fan LED Strip Effect Color<br /><h1>Overview</h1><p>Hue color wheel. value/255 * 360 = Hue color wheel value</p>
-        ]]></description>
+        <description>Fan LED Strip Effect Color&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtHue color wheel. value/255 * 360 = Hue color wheel value&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_25_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="9">
         <label>25: Fan LED Strip Effect Intesity</label>
-        <description><![CDATA[
-Fan LED Strip Effect Intesity<br /><h1>Overview</h1><p>0 = dim, 9 = bright</p>
-        ]]></description>
+        <description>Fan LED Strip Effect Intesity&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = dim, 9 = bright&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_25_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>25: Fan LED Strip Effect Duration</label>
-        <description><![CDATA[
-Fan LED Strip Effect Duration<br /><h1>Overview</h1><ul><li>1 to 60 = 1 to 60 seconds</li> <li>61 to 120 = 1 to 60 minutes</li> <li>121 to 254 = 1 to 134 hours</li> <li>255 = Indefinitely</li> </ul>
-        ]]></description>
+        <description>Fan LED Strip Effect Duration&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt1 to 60 = 1 to 60 seconds&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt61 to 120 = 1 to 60 minutes&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt121 to 254 = 1 to 134 hours&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt255 = Indefinitely&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_25_4_07000000" type="integer" groupName="configuration">
         <label>25: Fan LED Strip Effect Type</label>
-        <description><![CDATA[
-Fan LED Strip Effect Type<br /><h1>Overview</h1><p>0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse</p>
-        ]]></description>
+        <description>Fan LED Strip Effect Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = Off, 1 = Solid, 2 = Slow Blink, 3 = Fast Blink, 4 = Chase, 5 = Pulse&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -424,9 +360,7 @@ Fan LED Strip Effect Type<br /><h1>Overview</h1><p>0 = Off, 1 = Solid, 2 = Slow 
 
       <parameter name="config_26_1" type="integer" groupName="configuration">
         <label>26: Light LED Strip Timeout</label>
-        <description><![CDATA[
-Light LED Strip Timeout<br /><h1>Overview</h1><p>When the LED strip is disabled (Light LED Strip Intensity is set to 0), this setting allows the LED strip to turn on temporarily while being adjusted.</p>
-        ]]></description>
+        <description>Light LED Strip Timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen the LED strip is disabled (Light LED Strip Intensity is set to 0), this setting allows the LED strip to turn on temporarily while being adjusted.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">Stay Off</option>
@@ -445,9 +379,7 @@ Light LED Strip Timeout<br /><h1>Overview</h1><p>When the LED strip is disabled 
 
       <parameter name="config_27_1" type="integer" groupName="configuration">
         <label>27: Fan LED Strip Timeout</label>
-        <description><![CDATA[
-Fan LED Strip Timeout<br /><h1>Overview</h1><p>When the LED strip is disabled (Fan LED Strip Intensity is set to 0), this setting allows the LED strip to turn on temporarily while being adjusted.</p>
-        ]]></description>
+        <description>Fan LED Strip Timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhen the LED strip is disabled (Fan LED Strip Intensity is set to 0), this setting allows the LED strip to turn on temporarily while being adjusted.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="0">Stay Off</option>
@@ -467,35 +399,27 @@ Fan LED Strip Timeout<br /><h1>Overview</h1><p>When the LED strip is disabled (F
       <parameter name="config_28_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>28: Active Power Reports</label>
-        <description><![CDATA[
-Active Power Reports<br /><h1>Overview</h1><p>The power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 = disabled.</p>
-        ]]></description>
+        <description>Active Power Reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe power level change that will result in a new power report being sent. The value is a percentage of the previous report. 0 = disabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_29_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>29: Periodic Power &amp; Energy Reports</label>
-        <description><![CDATA[
-Periodic Power &amp; Energy Reports<br /><h1>Overview</h1><p>Time period between consecutive power and energy reports being sent (in seconds). The timer is reset after each report is sent.</p>
-        ]]></description>
+        <label>29: Periodic Power &amp;amp; Energy Reports</label>
+        <description>Periodic Power &amp;amp;amp; Energy Reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTime period between consecutive power and energy reports being sent (in seconds). The timer is reset after each report is sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3600</default>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>30: Energy Reports</label>
-        <description><![CDATA[
-Energy Reports<br /><h1>Overview</h1><p>The energy level change that will result in a new energy report being sent. The value is a percentage of the previous report.</p>
-        ]]></description>
+        <description>Energy Reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe energy level change that will result in a new energy report being sent. The value is a percentage of the previous report.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration">
         <label>31: Local Protection Settings</label>
-        <description><![CDATA[
-Local Protection Settings<br /><h1>Overview</h1><p>Enable local protection on these buttons.</p> <p>0 = None, 1 = Light, 2 = Fan, 3 = Both</p>
-        ]]></description>
+        <description>Local Protection Settings&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable local protection on these buttons.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 = None, 1 = Light, 2 = Fan, 3 = Both&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">None</option>
@@ -508,57 +432,43 @@ Local Protection Settings<br /><h1>Overview</h1><p>Enable local protection on th
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Members of this group will receive unsolicited messages related to the status of the switch.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMembers of this group will receive unsolicited messages related to the status of the switch.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Set Light</label>
-        <description><![CDATA[
-Basic Set Light<br /><h1>Overview</h1><p>Sends On &amp; Off commands to associated devices. (1. Single press UP button sends BasicSet (0xFF) and 2. Single press Down sends BasicSet (0x00)</p>
-        ]]></description>
+        <description>Basic Set Light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSends On &amp;amp; Off commands to associated devices. (1. Single press UP button sends BasicSet (0xFF) and 2. Single press Down sends BasicSet (0x00)&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Switch MultiLevel Set Light</label>
-        <description><![CDATA[
-Switch MultiLevel Set Light<br /><h1>Overview</h1><p> Sends set level commands to associated devices when switch is pressed. (1. Hold &amp; Release Up or Down button sends SwitchMultiLevelSet which keeps associated devices in sync with this device. 2. Single press Up button sends SwitchMultiLevelSet(0xFF) and 3. Single press Down button sends SwitchMultiLevelSet(0x00</p>
-        ]]></description>
+        <description>Switch MultiLevel Set Light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt Sends set level commands to associated devices when switch is pressed. (1. Hold &amp;amp; Release Up or Down button sends SwitchMultiLevelSet which keeps associated devices in sync with this device. 2. Single press Up button sends SwitchMultiLevelSet(0xFF) and 3. Single press Down button sends SwitchMultiLevelSet(0x00&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Switch MultiLevel Start/Stop Light</label>
-        <description><![CDATA[
-Switch_MultiLevel_Start/Stop_Light<br /><h1>Overview</h1><p>Sends start / stop level change to associated devices.(1. Hold Up button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Up) 2: Hold Down button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Down) 3. Release Either button sends SW_MULTILEVEL_STOP_LEVEL_CHANGE</p>
-        ]]></description>
+        <description>Switch_MultiLevel_Start/Stop_Light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSends start / stop level change to associated devices.(1. Hold Up button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Up) 2: Hold Down button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Down) 3. Release Either button sends SW_MULTILEVEL_STOP_LEVEL_CHANGE&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Basic Set Fan</label>
-        <description><![CDATA[
-Basic Set Fan<br /><h1>Overview</h1><p>Sends On &amp; Off commands to associated devices. (1. Single press UP button sends BasicSet (0xFF) and 2. Single press Down sends BasicSet (0x00)</p>
-        ]]></description>
+        <description>Basic Set Fan&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSends On &amp;amp; Off commands to associated devices. (1. Single press UP button sends BasicSet (0xFF) and 2. Single press Down sends BasicSet (0x00)&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_6" type="text" groupName="association" multiple="true">
         <label>6: Switch MultiLevel Set Fan</label>
-        <description><![CDATA[
-Switch MultiLevel Set Fan<br /><h1>Overview</h1><p>Sends set level commands to associated devices when switch is pressed. (1. Hold &amp; Release Up or Down button sends SwitchMultiLevelSet which keeps associated devices in sync with this device. 2. Single press Up button sends SwitchMultiLevelSet(0xFF) and 4. Single press Down button sends SwitchMultiLevelSet(0x00)</p>
-        ]]></description>
+        <description>Switch MultiLevel Set Fan&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSends set level commands to associated devices when switch is pressed. (1. Hold &amp;amp; Release Up or Down button sends SwitchMultiLevelSet which keeps associated devices in sync with this device. 2. Single press Up button sends SwitchMultiLevelSet(0xFF) and 4. Single press Down button sends SwitchMultiLevelSet(0x00)&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
         <label>7: Switch MultiLevel Start/Stop Fan</label>
-        <description><![CDATA[
-Switch MultiLevel Start/Stop Fan<br /><h1>Overview</h1><p> Sends start / stop level change to associated devices.(1. Hold Up button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Up) 2: Hold Down button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Down) 3. Release Either button sends SW_MULTILEVEL_STOP_LEVEL_CHANGE</p>
-        ]]></description>
+        <description>Switch MultiLevel Start/Stop Fan&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt Sends start / stop level change to associated devices.(1. Hold Up button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Up) 2: Hold Down button sends SW_MULTILEVEL_START_LEVEL_CHANGE (Down) 3. Release Either button sends SW_MULTILEVEL_STOP_LEVEL_CHANGE&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
@@ -571,6 +481,22 @@ Switch MultiLevel Start/Stop Fan<br /><h1>Overview</h1><p> Sends start / stop le
     </config-description>
 
   </thing-type>
+
+  <channel-type id="inovelli_lzw36_00_000_config_decimal_param18">
+    <item-type>Number</item-type>
+    <label>Light LED Indicator Color</label>
+    <description>Light LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw36_00_000_config_decimal_param20">
+    <item-type>Number</item-type>
+    <label>Fan LED Indicator Color</label>
+    <description>Fan LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
   <channel-type id="inovelli_lzw36_00_000_config_decimal_param24">
     <item-type>Number</item-type>

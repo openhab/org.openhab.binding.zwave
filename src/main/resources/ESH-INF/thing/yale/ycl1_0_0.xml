@@ -7,9 +7,7 @@
 
   <thing-type id="yale_ycl1_00_000" listed="false">
     <label>SD-L1000-CH Yale Conexis L1</label>
-    <description><![CDATA[
-Yale Conexis L1<br /><h1>Overview</h1><h1>The future of Door Locks is here</h1> <p>Open the door to your world with the Conexis(R) L1 Smart Door Lock. The Smart Door Lock that puts you fully in control giving you the freedom to secure your home without the need for a key.</p> <h2>Send &amp; Receive Virtual Keys</h2> <p>Control access from your smartphone</p> <h2>Keyless</h2> <p>Say goodbye to your keys</p> <h2>In-App Control</h2> <p>Control access from your smartphone</p> <br /><h2>Inclusion Information</h2><ol><li>Ensure the Z-Wave controller is close to the lock, around 1.5m.</li> <li>Remove the upper plastic cover from the lock, on the interior side.</li> <li>Set the controller into inclusion mode.</li> <li>Press the reset 'R' button 3 times in 1.5s (3 quick presses), the lock will beep twice.</li> <li>Upon connection, the lock will play 3 notes.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Remove the upper plastic cover from the lock, on the interior side.</li> <li>Set the controller into exclusion mode.</li> <li>Press the reset 'R' button 3 times in 1.5s (3 quick presses), the lock will beep twice.</li> <li>Upon successful exclusion, the lock will play 3 notes.</li> </ol>
-    ]]></description>
+    <description>Yale Conexis L1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h1&gtThe future of Door Locks is here&lt;/h1&gt &lt;p&gtOpen the door to your world with the Conexis(R) L1 Smart Door Lock. The Smart Door Lock that puts you fully in control giving you the freedom to secure your home without the need for a key.&lt;/p&gt &lt;h2&gtSend &amp;amp; Receive Virtual Keys&lt;/h2&gt &lt;p&gtControl access from your smartphone&lt;/p&gt &lt;h2&gtKeyless&lt;/h2&gt &lt;p&gtSay goodbye to your keys&lt;/p&gt &lt;h2&gtIn-App Control&lt;/h2&gt &lt;p&gtControl access from your smartphone&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtEnsure the Z-Wave controller is close to the lock, around 1.5m.&lt;/li&gt &lt;li&gtRemove the upper plastic cover from the lock, on the interior side.&lt;/li&gt &lt;li&gtSet the controller into inclusion mode.&lt;/li&gt &lt;li&gtPress the reset 'R' button 3 times in 1.5s (3 quick presses), the lock will beep twice.&lt;/li&gt &lt;li&gtUpon connection, the lock will play 3 notes.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtRemove the upper plastic cover from the lock, on the interior side.&lt;/li&gt &lt;li&gtSet the controller into exclusion mode.&lt;/li&gt &lt;li&gtPress the reset 'R' button 3 times in 1.5s (3 quick presses), the lock will beep twice.&lt;/li&gt &lt;li&gtUpon successful exclusion, the lock will play 3 notes.&lt;/li&gt &lt;/ol&gt</description>
     <category>Lock</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -66,9 +64,7 @@ Yale Conexis L1<br /><h1>Overview</h1><h1>The future of Door Locks is here</h1> 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Volume</label>
-        <description><![CDATA[
-Beep volume<br /><h1>Overview</h1><p>1 = Silent mode</p> <p>2 = Low volume</p> <p>3 = High volume (default)</p>
-        ]]></description>
+        <description>Beep volume&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt1 = Silent mode&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = Low volume&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 = High volume (default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
         <options>
           <option value="1">Silent</option>
@@ -79,9 +75,7 @@ Beep volume<br /><h1>Overview</h1><p>1 = Silent mode</p> <p>2 = Low volume</p> <
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Auto Re-lock</label>
-        <description><![CDATA[
-The lock will re-lock automatically if untouched for the timeout<br /><h1>Overview</h1><p>0 = No auto re-lock (default)</p> <p>255 = auto re-lock</p>
-        ]]></description>
+        <description>The lock will re-lock automatically if untouched for the timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = No auto re-lock (default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt255 = auto re-lock&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -92,27 +86,21 @@ The lock will re-lock automatically if untouched for the timeout<br /><h1>Overvi
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="7" max="60">
         <label>3: Re-lock time</label>
-        <description><![CDATA[
-The amount of time which the lock will wait before re-locking<br /><h1>Overview</h1><p>Re-lock time in seconds</p>
-        ]]></description>
+        <description>The amount of time which the lock will wait before re-locking&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtRe-lock time in seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>30</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="20">
         <label>4: Wrong tag limit</label>
-        <description><![CDATA[
-Number of wrong tags that can be tried before stand-down<br /><h1>Overview</h1><p>Number of wrong tags that can be tried before stand-down</p>
-        ]]></description>
+        <description>Number of wrong tags that can be tried before stand-down&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNumber of wrong tags that can be tried before stand-down&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="250">
         <label>7: Wrong tag timeout</label>
-        <description><![CDATA[
-Time after the wrong tag limit being exceeded before re-trying<br /><h1>Overview</h1><p>Amount of time after the wrong tag limit being exceeded that the lock will stand-down for</p>
-        ]]></description>
+        <description>Time after the wrong tag limit being exceeded before re-trying&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAmount of time after the wrong tag limit being exceeded that the lock will stand-down for&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>250</default>
       </parameter>
 

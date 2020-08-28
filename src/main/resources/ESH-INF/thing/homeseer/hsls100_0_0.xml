@@ -7,9 +7,7 @@
 
   <thing-type id="homeseer_hsls100_00_000" listed="false">
     <label>HS-LS100+ HomeSeer Z-Wave Plus Leak Sensor</label>
-    <description><![CDATA[
-HomeSeer Z-Wave Plus Leak Sensor<br /><h1>Overview</h1><p>Homeseer HS-LS100+ is a compact, easy to install leak sensor. It designed control other ZLS100+ is a compact, easy to install leak sensor. It designed control other Z-Wave devices directly or it may be used with a variety of Z-Wave certified home controllers to launch automation events or scenes.</p> <br /><h2>Inclusion Information</h2><p>Inclusion (recommended if your home controller supports “S0” or “S2” Z-Wave encryption)<br />1. Put your home controller into Z-Wave ‘inclusion’ mode.<br />2. Quickly triple-press the Z-Wave network button, then release it. Wait for the inclusion process to finish.</p> <br /><h2>Exclusion Information</h2><p>Exclusion<br />1. Put your home automation controller into Z-Wave ‘exclusion’ mode.<br />2. Quickly triple-press the Z-Wave network button. Wait for the exclusion process to finish.</p> <br /><h2>Wakeup Information</h2><p>Press and hold the Z button for more that 5 seconds and release</p>
-    ]]></description>
+    <description>HomeSeer Z-Wave Plus Leak Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtHomeseer HS-LS100+ is a compact, easy to install leak sensor. It designed control other ZLS100+ is a compact, easy to install leak sensor. It designed control other Z-Wave devices directly or it may be used with a variety of Z-Wave certified home controllers to launch automation events or scenes.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtInclusion (recommended if your home controller supports “S0” or “S2” Z-Wave encryption)&lt;br /&gt1. Put your home controller into Z-Wave ‘inclusion’ mode.&lt;br /&gt2. Quickly triple-press the Z-Wave network button, then release it. Wait for the inclusion process to finish.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtExclusion&lt;br /&gt1. Put your home automation controller into Z-Wave ‘exclusion’ mode.&lt;br /&gt2. Quickly triple-press the Z-Wave network button. Wait for the exclusion process to finish.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtPress and hold the Z button for more that 5 seconds and release&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -99,9 +97,7 @@ HomeSeer Z-Wave Plus Leak Sensor<br /><h1>Overview</h1><p>Homeseer HS-LS100+ is 
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>17: Set flooding alarm interval (Minute)</label>
-        <description><![CDATA[
-Set flooding alarm interval (Minute)<br /><h1>Overview</h1><p>The higher the value, the long the report periodically - in hexadecimal values from 0x01 to 0xFF, or 1 to 255 if your controller allows unsigned decimal values.</p> <p>0 - Disable flooding alarm</p>
-        ]]></description>
+        <description>Set flooding alarm interval (Minute)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe higher the value, the long the report periodically - in hexadecimal values from 0x01 to 0xFF, or 1 to 255 if your controller allows unsigned decimal values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - Disable flooding alarm&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -119,9 +115,7 @@ Set flooding alarm interval (Minute)<br /><h1>Overview</h1><p>The higher the val
       <parameter name="config_19_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>19: Temperature report time (minute)</label>
-        <description><![CDATA[
-Temperature report time (minute)<br /><h1>Overview</h1><p>The higher the value ,the long the report time</p> <p>0 - Disable report</p>
-        ]]></description>
+        <description>Temperature report time (minute)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe higher the value ,the long the report time&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - Disable report&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -129,9 +123,7 @@ Temperature report time (minute)<br /><h1>Overview</h1><p>The higher the value ,
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="-670" max="2570">
         <label>20: Set the high temperature alarm trigger value</label>
-        <description><![CDATA[
-Set the high temperature alarm trigger value<br /><h1>Overview</h1><p>The larger the value , the higher the high temperature in Fahrenheits (US)</p>
-        ]]></description>
+        <description>Set the high temperature alarm trigger value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe larger the value , the higher the high temperature in Fahrenheits (US)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1040</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -139,9 +131,7 @@ Set the high temperature alarm trigger value<br /><h1>Overview</h1><p>The larger
       <parameter name="config_22_2" type="integer" groupName="configuration"
                  min="-670" max="2570">
         <label>22: Set the low temperature alarm trigger value</label>
-        <description><![CDATA[
-Set the low temperature alarm trigger value<br /><h1>Overview</h1><p>The smaller the value , the lower the low temperature in Fahrenheits (US)</p>
-        ]]></description>
+        <description>Set the low temperature alarm trigger value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe smaller the value , the lower the low temperature in Fahrenheits (US)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>320</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -159,9 +149,7 @@ Set the low temperature alarm trigger value<br /><h1>Overview</h1><p>The smaller
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="10" max="50">
         <label>32: Level of low battery</label>
-        <description><![CDATA[
-Level of low battery<br /><h1>Overview</h1><p>Set the trigger value for the low battery alarm</p>
-        ]]></description>
+        <description>Level of low battery&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the trigger value for the low battery alarm&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -169,17 +157,13 @@ Level of low battery<br /><h1>Overview</h1><p>Set the trigger value for the low 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>1. Notification Report. Sensor will send Notification Report to the associated nodes</p> <p>2. Battery Report. Sensor will send Battery Report when the battery level is low and the battery report’s value is 0xFF.</p> <p>3. Device Reset Locally Notification. Sensor will send Device Reset Locally Notification when reset</p> <p>4.Sensor multilevel report When associated to Group 1, you can adjust the temperature reporting cycle according to the configuration settings.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1. Notification Report. Sensor will send Notification Report to the associated nodes&lt;/p&gt &lt;p&gt2. Battery Report. Sensor will send Battery Report when the battery level is low and the battery report’s value is 0xFF.&lt;/p&gt &lt;p&gt3. Device Reset Locally Notification. Sensor will send Device Reset Locally Notification when reset&lt;/p&gt &lt;p&gt4.Sensor multilevel report When associated to Group 1, you can adjust the temperature reporting cycle according to the configuration settings.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Control</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>1. Basic Set. Flood Sensor will send Basic Set to associated nodes when Water leak detected.</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt1. Basic Set. Flood Sensor will send Basic Set to associated nodes when Water leak detected.&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

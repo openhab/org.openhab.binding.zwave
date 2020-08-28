@@ -7,9 +7,7 @@
 
   <thing-type id="ge_12725_00_000" listed="false">
     <label>GE 12725 In-Wall Dimmer</label>
-    <description><![CDATA[
-In-Wall Dimmer<br /><h1>Overview</h1><p>RF controlled, in-wall 1000w dimmer, interchangeable paddle</p> <br /><h2>Inclusion Information</h2><p>Press and release the top or bottom of the dimmer smart switch (rocker) to add it in the network.</p> <br /><h2>Exclusion Information</h2><p>Press and release the top or bottom of the dimmer smart switch (rocker) to remove it from the network.</p>
-    ]]></description>
+    <description>In-Wall Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRF controlled, in-wall 1000w dimmer, interchangeable paddle&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and release the top or bottom of the dimmer smart switch (rocker) to add it in the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the top or bottom of the dimmer smart switch (rocker) to remove it from the network.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -44,9 +42,7 @@ In-Wall Dimmer<br /><h1>Overview</h1><p>RF controlled, in-wall 1000w dimmer, int
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Night Light<br /><h1>Overview</h1><p>Defines the behavior of the blue LED. Default is Night Light mode where LED is on when switch is off.</p>
-        ]]></description>
+        <description>Night Light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefines the behavior of the blue LED. Default is Night Light mode where LED is on when switch is off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">LED on when switch is OFF</option>
@@ -57,9 +53,7 @@ Night Light<br /><h1>Overview</h1><p>Defines the behavior of the blue LED. Defau
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Invert Switch</label>
-        <description><![CDATA[
-Invert Switch<br /><h1>Overview</h1><p>Invert the ON/OFF Switch State.</p> <p>Setting this parameter to Yes will change the top of the switch to OFF and the bottom to ON. </p> <p>Note: If you invert the switches and also install the product upside down, the load will now be control</p>
-        ]]></description>
+        <description>Invert Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtInvert the ON/OFF Switch State.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtSetting this parameter to Yes will change the top of the switch to OFF and the bottom to ON. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNote: If you invert the switches and also install the product upside down, the load will now be control&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No</option>
@@ -80,54 +74,42 @@ Invert Switch<br /><h1>Overview</h1><p>Invert the ON/OFF Switch State.</p> <p>Se
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>7: On/Off Command Dim Step</label>
-        <description><![CDATA[
-On/Off Command Dim Step<br /><h1>Overview</h1><p>Indicates how many levels the dimmer will change for each dimming step.</p>
-        ]]></description>
+        <description>On/Off Command Dim Step&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIndicates how many levels the dimmer will change for each dimming step.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>8: On/Off Command Dim Rate</label>
-        <description><![CDATA[
-On/Off Command Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 millisecond resolution This sets how often the dim level will change.</p> <p>For example, if you set this parameter to 1, then every 10ms the dim level will change.</p> <p>If you set it to 255, then every 2.55 seconds the dim level will change.</p>
-        ]]></description>
+        <description>On/Off Command Dim Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value indicates in 10 millisecond resolution This sets how often the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFor example, if you set this parameter to 1, then every 10ms the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you set it to 255, then every 2.55 seconds the dim level will change.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>9: Local Control Dim Step</label>
-        <description><![CDATA[
-Local Control Dim Step<br /><h1>Overview</h1><p>Indicates how many levels the dimmer will change for each dimming step.</p>
-        ]]></description>
+        <description>Local Control Dim Step&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIndicates how many levels the dimmer will change for each dimming step.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>10: Local Control Dim Rate</label>
-        <description><![CDATA[
-Local Control Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 millisecond resolution. This sets how often the dim level will change.</p> <p>For example, if you set this parameter to 1, then every 10ms the dim level will change.</p> <p>If you set it to 255, then every 2.55 seconds the dim level will change.</p>
-        ]]></description>
+        <description>Local Control Dim Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value indicates in 10 millisecond resolution. This sets how often the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFor example, if you set this parameter to 1, then every 10ms the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you set it to 255, then every 2.55 seconds the dim level will change.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>11: ALL ON/ALL OFF Dim Step</label>
-        <description><![CDATA[
-ALL ON/ALL OFF Dim Step<br /><h1>Overview</h1><p>Indicates how many levels the dimmer will change for each dimming step.</p>
-        ]]></description>
+        <description>ALL ON/ALL OFF Dim Step&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIndicates how many levels the dimmer will change for each dimming step.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="255">
         <label>12: ALL ON/ALL OFF Dim Rate</label>
-        <description><![CDATA[
-ALL ON/ALL OFF Dim Rate<br /><h1>Overview</h1><p>This value indicates in 10 millisecond resolution. This sets how often the dim level will change.</p> <p>For example, if you set this parameter to 1, then every 10ms the dim level will change.</p> <p>If you set it to 255, then every 2.55 seconds the dim level will change. </p>
-        ]]></description>
+        <description>ALL ON/ALL OFF Dim Rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value indicates in 10 millisecond resolution. This sets how often the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtFor example, if you set this parameter to 1, then every 10ms the dim level will change.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtIf you set it to 255, then every 2.55 seconds the dim level will change. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 

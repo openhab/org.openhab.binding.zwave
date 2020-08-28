@@ -7,9 +7,7 @@
 
   <thing-type id="dlink_dchz510_00_000" listed="false">
     <label>DCH-Z510 Siren</label>
-    <description><![CDATA[
-Siren<br /><h1>Overview</h1><p>The DCH-Z510 mydlink Z-Wave Siren is a wireless siren.</p> <br /><h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller enter inclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.</li> <li>After add successful, the LED will light ON 1 second </li> </ol><br /><h2>Exclusion Information</h2><ol><li>Have Z-Wave Controller enter exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</li> <li>Node ID has been excluded. </li> </ol>
-    ]]></description>
+    <description>Siren&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe DCH-Z510 mydlink Z-Wave Siren is a wireless siren.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtHave Z-Wave Controller enter inclusion mode.&lt;/li&gt &lt;li&gtPressing tamper key three times within 1.5 seconds to enter the inclusion mode.&lt;/li&gt &lt;li&gtAfter add successful, the LED will light ON 1 second &lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtHave Z-Wave Controller enter exclusion mode.&lt;/li&gt &lt;li&gtPressing tamper key three times within 1.5 seconds to enter the exclusion mode.&lt;/li&gt &lt;li&gtNode ID has been excluded. &lt;/li&gt &lt;/ol&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->

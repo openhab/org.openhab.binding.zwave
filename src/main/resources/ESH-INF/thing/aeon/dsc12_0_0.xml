@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc12_00_000" listed="false">
     <label>DSC12 Micro Smart Energy Switch</label>
-    <description><![CDATA[
-Micro Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro SES is a binary power switch device based on Zwave enhanced slave library V5.02P3.</p> <br /><h2>Inclusion Information</h2><p>Click the button once.</p> <br /><h2>Exclusion Information</h2><p>Click the button once.</p>
-    ]]></description>
+    <description>Micro Smart Energy Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Aeon Labs Micro SES is a binary power switch device based on Zwave enhanced slave library V5.02P3.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtClick the button once.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtClick the button once.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -92,9 +90,7 @@ Micro Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro SES is a 
 
       <parameter name="config_90_1" type="integer" groupName="configuration">
         <label>90: Enable Automated sending of a Report</label>
-        <description><![CDATA[
-Automated sending of a Report triggered by minimal change of value.<br /><h1>Overview</h1><p>Automated sending of a Report triggered by minimal change of value.</p>
-        ]]></description>
+        <description>Automated sending of a Report triggered by minimal change of value.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAutomated sending of a Report triggered by minimal change of value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Deactivate</option>
@@ -117,27 +113,21 @@ Automated sending of a Report triggered by minimal change of value.<br /><h1>Ove
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>101: Automatic reports for group 1</label>
-        <description><![CDATA[
-Which reports need to send automatically in timing intervals for group 1<br /><h1>Overview</h1><p>Which reports need to send automatically in timing intervals for group 1</p>
-        ]]></description>
+        <description>Which reports need to send automatically in timing intervals for group 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhich reports need to send automatically in timing intervals for group 1&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>102: Automatic reports for group 2</label>
-        <description><![CDATA[
-Which reports need to send automatically in timing intervals for group 2<br /><h1>Overview</h1><p>Which reports need to send automatically in timing intervals for group 2</p>
-        ]]></description>
+        <description>Which reports need to send automatically in timing intervals for group 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhich reports need to send automatically in timing intervals for group 2&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>8</default>
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>103: Automatic reports for group 3</label>
-        <description><![CDATA[
-Which reports need to send automatically in timing intervals for group 3<br /><h1>Overview</h1><p>Which reports need to send automatically in timing intervals for group 3</p>
-        ]]></description>
+        <description>Which reports need to send automatically in timing intervals for group 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtWhich reports need to send automatically in timing intervals for group 3&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

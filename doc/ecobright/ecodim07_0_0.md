@@ -10,42 +10,26 @@ This describes the Z-Wave device *EcoDim07*, manufactured by *EcoBright* with th
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![EcoDim07 product image](https://www.cd-jackson.com/zwave_device_uploads/1114/1114_default.jpg)
+![EcoDim07 product image](https://opensmarthouse.org/zwavedatabase/1114/image/)
 
 
 The EcoDim07 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Remotely controlled multi level push / turn dimmer that can be controlled through Z-Wave and Zigbee (by setting a hardware switch). The dimmer is suitable for 0-200W LED lights where the MIN and MAX values can be set with hardware dials. The dimmer can be installed in a 2 wire setup (no N-wire required) and has a soft start system.
+<p&gtRemotely controlled multi level push / turn dimmer that can be controlled through Z-Wave and Zigbee (by setting a hardware switch). The dimmer is suitable for 0-200W LED lights where the MIN and MAX values can be set with hardware dials. The dimmer can be installed in a 2 wire setup (no N-wire required) and has a soft start system.</p&gt
 
 ### Inclusion Information
 
-Make sure the right switch is set to Z-Wave. Power on the dimmer, press and hold the reset button for over 4 seconds.
+<p&gtMake sure the right switch is set to Z-Wave. Power on the dimmer, press and hold the reset button for over 4 seconds.</p&gt
 
 ### Exclusion Information
 
-There are two exclusion methods:
-
-1. Exclusion from the primary controller / gateway:
-
-Twice press the reset button, the dimmer will be set to exclusion mode, waiting to be excluded.
-
-2. Factory reset the dimmer (forcing it to be excluded from a network):
-
-Press and hold down the reset button for over 4 seconds, the dimmer will be reset to factory defaults after the BLUE LED indicator blinks.
+<p&gtThere are two exclusion methods:</p&gt <p&gt1. Exclusion from the primary controller / gateway:</p&gt <p&gtTwice press the reset button, the dimmer will be set to exclusion mode, waiting to be excluded.</p&gt <p&gt2. Factory reset the dimmer (forcing it to be excluded from a network):</p&gt <p&gtPress and hold down the reset button for over 4 seconds, the dimmer will be reset to factory defaults after the BLUE LED indicator blinks.</p&gt
 
 ### General Usage Information
 
-To make the dimmer work optimally you can adjust the lamps optimally to the dimmer with the MIN MAX adjustment.
-
-**Set MIN**
-
-Switch on the lights with the push / turn button. When the lights are on, put a screwdriver in the MIN and turn to the left. When the light becomes unstable turn a little further to the right so that the light remains stable.
-
-**Set MAX**
-
-Switch on the lights with the push / turn button. When the lights are on put a screwdriver in the MAX and turn to the right. When the light becomes unstable turn a little further to the left so that the light remains stable.
+<p&gtTo make the dimmer work optimally you can adjust the lamps optimally to the dimmer with the MIN MAX adjustment.</p&gt <p&gt<strong&gtSet MIN</strong&gt</p&gt <p&gtSwitch on the lights with the push / turn button. When the lights are on, put a screwdriver in the MIN and turn to the left. When the light becomes unstable turn a little further to the right so that the light remains stable.</p&gt <p&gt<strong&gtSet MAX</strong&gt</p&gt <p&gtSwitch on the lights with the push / turn button. When the lights are on put a screwdriver in the MAX and turn to the right. When the light becomes unstable turn a little further to the left so that the light remains stable.</p&gt
 
 ## Channels
 
@@ -76,7 +60,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: State after power restored
 
 Switch state after power failure
-State after power restored. The state the switch should return to once power is restored after power failure.
+<p&gtState after power restored. The state the switch should return to once power is restored after power failure.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -93,7 +77,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Notify load status change
 
 Send notification to associated device when status is changed.
-Notification when load status changes. The dimmer will send notification to associated device (group lifeline) when the status of the dimmer load is changed.
+<p&gtNotification when load status changes. The dimmer will send notification to associated device (group lifeline) when the status of the dimmer load is changed.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -143,9 +127,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Smart Dimmer Switch 200W LED Manual](https://www.cd-jackson.com/zwave_device_uploads/1114/EcoDim.pdf)
+* [Smart Dimmer Switch 200W LED Manual](https://opensmarthouse.org/zwavedatabase/1114/EcoDim.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1114).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1114).

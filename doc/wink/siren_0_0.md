@@ -10,55 +10,26 @@ This describes the Z-Wave device *Siren*, manufactured by *Wink Inc.* with the t
 
 The device is in the category of *Siren*, defining Siren used by Alarm systems.
 
-![Siren product image](https://www.cd-jackson.com/zwave_device_uploads/917/917_default.png)
+![Siren product image](https://opensmarthouse.org/zwavedatabase/917/image/)
 
 
 The Siren supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The Wink Siren is a Z-Wave Plus battery-powered device that will sound an alarm, chime, and flash a built-in light to let you know when doors and windows open or when motion is detected in your home. The siren’s multi-purpose functionality of an alarm siren, doorbell, or chime notification can be turned on and off manually or automatically from your smartphone using a Wink Hub or other Z-Wave Plus certified hub.  
-  
-The Wink Siren offers ten user selectable sounds for alarm and chime, with three volume levels (up to 105dB) and adjustable siren duration timeout. Additional visual notification is provided by built-in flashing blue LEDs when triggered.  
-  
-The Wink Siren offers an extra-long z-wave wireless range of up to 150 feet, so you can place it in your home where it’s needed, and requires a Wink Hub or other Z-Wave Plus certified hub for operation. The siren comes with two CR123A 3.0V batteries and has a three-year battery life, and will send an alert to your smartphone when the device has low battery.
-
-  * Z-Wave Plus Certified
-  * Requires a Z-Wave Plus Certified Hub to operate
-  * Works with all Z-Wave Plus compatible networks
-  * 110° Extra-Wide Coverage Area
-  * Up to 150 feet range
-  * Three-Year Battery Life (Two CR123 Batteries included)
-  * Low Battery Indication
+<p&gtThe Wink Siren is a Z-Wave Plus battery-powered device that will sound an alarm, chime, and flash a built-in light to let you know when doors and windows open or when motion is detected in your home. The siren’s multi-purpose functionality of an alarm siren, doorbell, or chime notification can be turned on and off manually or automatically from your smartphone using a Wink Hub or other Z-Wave Plus certified hub. <br /&gt<br /&gtThe Wink Siren offers ten user selectable sounds for alarm and chime, with three volume levels (up to 105dB) and adjustable siren duration timeout. Additional visual notification is provided by built-in flashing blue LEDs when triggered. <br /&gt<br /&gtThe Wink Siren offers an extra-long z-wave wireless range of up to 150 feet, so you can place it in your home where it’s needed, and requires a Wink Hub or other Z-Wave Plus certified hub for operation. The siren comes with two CR123A 3.0V batteries and has a three-year battery life, and will send an alert to your smartphone when the device has low battery.</p&gt <ul&gt<li&gtZ-Wave Plus Certified</li&gt <li&gtRequires a Z-Wave Plus Certified Hub to operate</li&gt <li&gtWorks with all Z-Wave Plus compatible networks</li&gt <li&gt110° Extra-Wide Coverage Area</li&gt <li&gtUp to 150 feet range</li&gt <li&gtThree-Year Battery Life (Two CR123 Batteries included)</li&gt <li&gtLow Battery Indication</li&gt </ul&gt
 
 ### Inclusion Information
 
-Follow the instructions for your Z-Wave certified Controller to enter inclusion mode. When prompted by the Controller:
-
-  1. For proper inclusion, bring the Siren within range of your Controller.
-  2. Pull the tab on the side of the siren to power on, or remove then re-install the batteries.
-
-The LED Ring will flash five times indicating inclusion
+<p&gtFollow the instructions for your Z-Wave certified Controller to enter inclusion mode. When prompted by the Controller:</p&gt <ol&gt<li&gtFor proper inclusion, bring the Siren within range of your Controller.</li&gt <li&gtPull the tab on the side of the siren to power on, or remove then re-install the batteries.</li&gt </ol&gt<p&gtThe LED Ring will flash five times indicating inclusion</p&gt
 
 ### Exclusion Information
 
-Follow the instructions for your Z-Wave certified Controller to enter exclusion mode. When prompted by the Controller:
-
-  1. Press the sensor cover release button to remove the top cover, and be sure the sensor is powered on.
-  2. Press the Connect Button next to the battery quickly 3 times in a row.
-
-The LED indicator will flash five times indicating exclusion/disconnection
+<p&gtFollow the instructions for your Z-Wave certified Controller to enter exclusion mode. When prompted by the Controller:</p&gt <ol&gt<li&gtPress the sensor cover release button to remove the top cover, and be sure the sensor is powered on.</li&gt <li&gtPress the Connect Button next to the battery quickly 3 times in a row.</li&gt </ol&gt<p&gtThe LED indicator will flash five times indicating exclusion/disconnection</p&gt
 
 ### General Usage Information
 
-Use the Binary Switch command class to trigger the main siren, or the  Indicator. Set command to trigger one of ten different secondary chime notifications (indicator.set accepts values from 01~0A.)
-
-To disconnect from the Z-Wave Network and restore factory default settings:
-
-  1. Remove the Back Plate and make sure the Siren is powered.
-  2. Hold the Connect Button for 10 seconds until the LED Ring blinks once, then release the button.
-
-Only do this if the controller is missing or otherwise unreachable!
+<p&gtUse the Binary Switch command class to trigger the main siren, or the  Indicator. Set command to trigger one of ten different secondary chime notifications (indicator.set accepts values from 01~0A.)</p&gt <p&gtTo disconnect from the Z-Wave Network and restore factory default settings:</p&gt <ol&gt<li&gtRemove the Back Plate and make sure the Siren is powered.</li&gt <li&gtHold the Connect Button for 10 seconds until the LED Ring blinks once, then release the button.</li&gt </ol&gt<p&gtOnly do this if the controller is missing or otherwise unreachable!</p&gt
 
 ## Channels
 
@@ -113,7 +84,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Primary Notification Volume Level
 
 Set the volume level
-This parameter sets the volume of the Siren (primary) sound. There are three possible volume levels available
+<p&gtThis parameter sets the volume of the Siren (primary) sound. There are three possible volume levels available</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -130,7 +101,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Primary Notification Length
 
 Set the Notification Length
-This parameter defines the length of the Alarm/primary notification.
+<p&gtThis parameter defines the length of the Alarm/primary notification.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -148,7 +119,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Secondary Notification Length
 
 Secondary Notification Length
-This parameter defines the length of the Chime/secondary notification
+<p&gtThis parameter defines the length of the Chime/secondary notification</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -184,7 +155,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Primary Notification Sound
 
 Primary Notification Sound
-The Siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound
+<p&gtThe Siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -208,7 +179,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Secondary Notification Sound
 
 Secondary Notification Sound
-If Parameter 7 is set to 02, the Siren will play a secondary chime sound instead of the main alarm. The Siren offers ten different sounds to use as the Chime (secondary) notification. This parameter sets the Chime (secondary) notification sound.
+<p&gtIf Parameter 7 is set to 02, the Siren will play a secondary chime sound instead of the main alarm. The Siren offers ten different sounds to use as the Chime (secondary) notification. This parameter sets the Chime (secondary) notification sound.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -232,7 +203,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Toggle Secondary Chime
 
 Toggle Secondary Chime
-This Parameter toggles between the Primary and Secondary notification sound to be played when the Siren receives a BINARY\_SWITCH\_SET(FF) command
+<p&gtThis Parameter toggles between the Primary and Secondary notification sound to be played when the Siren receives a BINARY\_SWITCH\_SET(FF) command</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -306,9 +277,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Siren](https://www.cd-jackson.com/zwave_device_uploads/917/Wink-Siren-Manual.pdf)
+* [Siren](https://opensmarthouse.org/zwavedatabase/917/Wink-Siren-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/917).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/917).

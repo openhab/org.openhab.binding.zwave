@@ -7,9 +7,7 @@
 
   <thing-type id="honeywell_zw3010_00_000" listed="false">
     <label>ZW3010 In-Wall Smart Dimmer ZW3010 / 39351</label>
-    <description><![CDATA[
-In-Wall Smart Dimmer ZW3010 / 39351<br /><h1>Overview</h1><ul><li>WIRELESSLY CONTROL &amp; SCHEDULE LIGHTS AND OTHER DEVICES– Wirelessly control switch from anywhere through your smartphone, tablet, PC or Z-Wave remote. Schedule timed events for connected devices and customize scenes for day or night, home or away - Switch can also be operated manually</li> <li>REQUIRES A Z-WAVE CERTIFIED HUB - Compatible with the following Z-Wave Hubs: Honeywell, Ring, SmartThings, Wink, HomeSeer, Fibaro, Trane, Nexia, ADT, Vera, and more.</li> <li>ALEXA COMPATIBLE (HUB REQUIRED) - Requires an Alexa supported hub for voice control with Amazon Echo Products (Alexa device and hub are sold separately). CANNOT connect directly with ECHO PLUS or other Alexa products (Only ZigBee products can connect directly to Echo Plus).</li> <li>IN-WALL INSTALLATION WITH HARD WIRED CONNECTIONS (NEUTRAL WIRE REQUIRED) – Replace your existing switch in as little as 15 minutes. Works with all LED, CFL, halogen and incandescent bulbs, and other devices.</li> <li>INCLUDES CHANGEABLE PADDLE COLORS – Includes white and light almond paddles to match any home décor. Features a blue LED indicator light to locate the switch in a dark room. Wall plate is NOT included.</li> </ul><br /><h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p> <br /><h2>Exclusion Information</h2><p><strong>NOTE: See Parameter 19 to set alternate exclusion mode</strong></p> <p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p>
-    ]]></description>
+    <description>In-Wall Smart Dimmer ZW3010 / 39351&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtWIRELESSLY CONTROL &amp;amp; SCHEDULE LIGHTS AND OTHER DEVICES– Wirelessly control switch from anywhere through your smartphone, tablet, PC or Z-Wave remote. Schedule timed events for connected devices and customize scenes for day or night, home or away - Switch can also be operated manually&lt;/li&gt &lt;li&gtREQUIRES A Z-WAVE CERTIFIED HUB - Compatible with the following Z-Wave Hubs: Honeywell, Ring, SmartThings, Wink, HomeSeer, Fibaro, Trane, Nexia, ADT, Vera, and more.&lt;/li&gt &lt;li&gtALEXA COMPATIBLE (HUB REQUIRED) - Requires an Alexa supported hub for voice control with Amazon Echo Products (Alexa device and hub are sold separately). CANNOT connect directly with ECHO PLUS or other Alexa products (Only ZigBee products can connect directly to Echo Plus).&lt;/li&gt &lt;li&gtIN-WALL INSTALLATION WITH HARD WIRED CONNECTIONS (NEUTRAL WIRE REQUIRED) – Replace your existing switch in as little as 15 minutes. Works with all LED, CFL, halogen and incandescent bulbs, and other devices.&lt;/li&gt &lt;li&gtINCLUDES CHANGEABLE PADDLE COLORS – Includes white and light almond paddles to match any home décor. Features a blue LED indicator light to locate the switch in a dark room. Wall plate is NOT included.&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtNOTE: See Parameter 19 to set alternate exclusion mode&lt;/strong&gt&lt;/p&gt &lt;p&gtOnce the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -68,9 +66,7 @@ In-Wall Smart Dimmer ZW3010 / 39351<br /><h1>Overview</h1><ul><li>WIRELESSLY CON
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Dim up/down rate</label>
-        <description><![CDATA[
-Dim up/down rate<br /><h1>Overview</h1><p>Adjust the speed at which the ramps to a specific value other than 0 and FF</p>
-        ]]></description>
+        <description>Dim up/down rate&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAdjust the speed at which the ramps to a specific value other than 0 and FF&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Quickly</option>
@@ -80,9 +76,7 @@ Dim up/down rate<br /><h1>Overview</h1><p>Adjust the speed at which the ramps to
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
         <label>16: Switch Mode</label>
-        <description><![CDATA[
-Switch Mode<br /><h1>Overview</h1><p>Turn your dimmer into an On/Off switch with switch mode</p>
-        ]]></description>
+        <description>Switch Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTurn your dimmer into an On/Off switch with switch mode&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Dimmer Mode</option>
@@ -92,9 +86,7 @@ Switch Mode<br /><h1>Overview</h1><p>Turn your dimmer into an On/Off switch with
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Alternate Exclusion</label>
-        <description><![CDATA[
-Alternate Exclusion<br /><h1>Overview</h1><p>Never accidentally remove a device with alternate exclusion.</p>
-        ]]></description>
+        <description>Alternate Exclusion&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNever accidentally remove a device with alternate exclusion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Normal, Press Any Button on the device</option>
@@ -106,27 +98,21 @@ Alternate Exclusion<br /><h1>Overview</h1><p>Never accidentally remove a device 
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>30: Minimum Dim Threshold</label>
-        <description><![CDATA[
-Minimum Dim Threshold<br /><h1>Overview</h1><p>Set the minimum dimmer threshold when manually or remotely controlled</p>
-        ]]></description>
+        <description>Minimum Dim Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the minimum dimmer threshold when manually or remotely controlled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration"
                  min="1" max="99">
         <label>31: Maximum Brightness Threshold</label>
-        <description><![CDATA[
-Maximum Brightness Threshold<br /><h1>Overview</h1><p>Set the maximum brightness threshold when manually or remotely controlled</p>
-        ]]></description>
+        <description>Maximum Brightness Threshold&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the maximum brightness threshold when manually or remotely controlled&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>32: Default Brightness Level</label>
-        <description><![CDATA[
-Default Brightness Level<br /><h1>Overview</h1><p>Set the default brightness level that the dimmer will turn on when being controlled manually</p> <ul><li>0 = Default</li> <li>1 - 99 = percentage</li> </ul>
-        ]]></description>
+        <description>Default Brightness Level&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the default brightness level that the dimmer will turn on when being controlled manually&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Default&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1 - 99 = percentage&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -139,17 +125,13 @@ Default Brightness Level<br /><h1>Overview</h1><p>Set the default brightness lev
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Set Local Load</label>
-        <description><![CDATA[
-Support Basic Set and is controlled with the local load<br /><h1>Overview</h1><p>Supports Basic Set and is controlled with local load</p>
-        ]]></description>
+        <description>Support Basic Set and is controlled with the local load&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSupports Basic Set and is controlled with local load&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Basic Set Double Press</label>
-        <description><![CDATA[
-Supports Basic Set and is controlled by double pressing the On or Off button<br /><h1>Overview</h1><p>Basic Set and is controlled by double pressing the ON or OFF button</p>
-        ]]></description>
+        <description>Supports Basic Set and is controlled by double pressing the On or Off button&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtBasic Set and is controlled by double pressing the ON or OFF button&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

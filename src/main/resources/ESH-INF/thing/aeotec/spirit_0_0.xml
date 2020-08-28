@@ -7,9 +7,7 @@
 
   <thing-type id="aeotec_spirit_00_000" listed="false">
     <label>Spirit Thermostatic Valve</label>
-    <description><![CDATA[
-Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio standard compatible energy-saving radiator thermostat.</p> <p>FLiRS (Frequently Listening Receiver Slave): Spirit Z-Wave uses FLiRS to provide short latency and short responding times.</p> <br /><h2>Inclusion Information</h2><p>Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.</p> <br /><h2>Exclusion Information</h2><p>Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.</p>
-    ]]></description>
+    <description>Thermostatic Valve&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtSpirit Z-Wave Plus is a Z-Wave radio standard compatible energy-saving radiator thermostat.&lt;/p&gt &lt;p&gtFLiRS (Frequently Listening Receiver Slave): Spirit Z-Wave uses FLiRS to provide short latency and short responding times.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtStart Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtStart Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.&lt;/p&gt</description>
     <category>RadiatorControl</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -126,9 +124,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="5" max="30">
         <label>2: LCD Timeout</label>
-        <description><![CDATA[
-LCD Timeout<br /><h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: LCD will turn off after 5 to 30 seconds</p>
-        ]]></description>
+        <description>LCD Timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: No Timeout LCD always on&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5-30: LCD will turn off after 5 to 30 seconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">No Timeout LCD always on</option>
@@ -159,18 +155,14 @@ LCD Timeout<br /><h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: LC
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="50">
         <label>5: Measured Temperature report</label>
-        <description><![CDATA[
-Measured Temperature report<br /><h1>Overview</h1><p>0: Unsolicited Temperature reporting disabled</p> <p>1-50: report if temperature changed by delta = 0,1°C ... 5,0 °C</p> <p>default 5: report on delta T = 0,5°C</p>
-        ]]></description>
+        <description>Measured Temperature report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: Unsolicited Temperature reporting disabled&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-50: report if temperature changed by delta = 0,1°C ... 5,0 °C&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtdefault 5: report on delta T = 0,5°C&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>6: Valve opening percentage report</label>
-        <description><![CDATA[
-Valve opening percentage report<br /><h1>Overview</h1><p>0: Unsolicited valve opening percentage reporting disabled.</p> <p>1-100: report if valve opening changed by delta = 1% ... 100%</p>
-        ]]></description>
+        <description>Valve opening percentage report&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: Unsolicited valve opening percentage reporting disabled.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-100: report if valve opening changed by delta = 1% ... 100%&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -189,9 +181,7 @@ Valve opening percentage report<br /><h1>Overview</h1><p>0: Unsolicited valve op
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="-50" max="50">
         <label>8: Temperature Offset</label>
-        <description><![CDATA[
-Measured temperature offset<br /><h1>Overview</h1><p>-50 ... +50: Offsets the measured temp by -5,0°C ... +5,0°C</p> <p>128: External temp sensor will be used for regulation.</p>
-        ]]></description>
+        <description>Measured temperature offset&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt-50 ... +50: Offsets the measured temp by -5,0°C ... +5,0°C&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt128: External temp sensor will be used for regulation.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="128">Use ext. temp. sensor</option>
@@ -202,9 +192,7 @@ Measured temperature offset<br /><h1>Overview</h1><p>-50 ... +50: Offsets the me
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /><h1>Overview</h1><p>Commands:</p> <p>BATTERY_REPORT, DEVICE_RESET_LOCALLY_NOTIFICATION, THERMOSTAT_MODE_REPORT, THERMOSTAT_SETPOINT_REPORT, NOTIFICATION_REPORT, PROTECTION_REPORT, SENSOR_MULTILEVEL_REPORT, SWITCH_MULTILEVEL_REPORT</p>
-        ]]></description>
+        <description>Spirit Z-Wave Plus can only be associated with the Z-Wave controller.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtCommands:&lt;/p&gt &lt;p&gtBATTERY_REPORT, DEVICE_RESET_LOCALLY_NOTIFICATION, THERMOSTAT_MODE_REPORT, THERMOSTAT_SETPOINT_REPORT, NOTIFICATION_REPORT, PROTECTION_REPORT, SENSOR_MULTILEVEL_REPORT, SWITCH_MULTILEVEL_REPORT&lt;/p&gt</description>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
@@ -225,8 +213,8 @@ Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /><h1>O
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="11">Economy Heat</option>
         <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
         <option value="15">Full Power</option>
         <option value="31">Manual</option>
       </options>

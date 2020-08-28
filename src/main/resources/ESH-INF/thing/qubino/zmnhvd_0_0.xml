@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhvd_00_000" listed="false">
     <label>ZMNHVD Flush Dimmer 0-10V</label>
-    <description><![CDATA[
-Flush Dimmer 0-10V<br /><h1>Overview</h1><p>Universal dimmer module with a standard 0-10V output and a multi-function input, which may be a push button / switch, a potentiometer or 0-10V signal </p> <br /><h2>Inclusion Information</h2><ul><li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds)</li> </ul><br /><h2>Exclusion Information</h2><ul><li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li> </ul>
-    ]]></description>
+    <description>Flush Dimmer 0-10V&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtUniversal dimmer module with a standard 0-10V output and a multi-function input, which may be a push button / switch, a potentiometer or 0-10V signal &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 2 second or&lt;/li&gt &lt;li&gtpress push button I1 three times within 3s (3 times change switch state within 3 seconds)&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtpress service button S for more than 6 second or&lt;/li&gt &lt;li&gtpress push button I1 five times within 3s ( 5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply&lt;/li&gt &lt;/ul&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -68,9 +66,7 @@ Flush Dimmer 0-10V<br /><h1>Overview</h1><p>Universal dimmer module with a stand
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Input 1 Switch Type</label>
-        <description><![CDATA[
-Input 1 Switch Type<br /><h1>Overview</h1><p>By this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)</p>
-        ]]></description>
+        <description>Input 1 Switch Type&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBy this parameter the user can set input based on device type (switch, potentiometer, 0-10V sensor,...)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">mono-stable switch type (push button)</option>
@@ -249,7 +245,7 @@ Input 1 Switch Type<br /><h1>Overview</h1><p>By this parameter the user can set 
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: multilevel sensor report - analogue sensor</label>
+        <label>5: multilevel sensor report -  analogue sensor</label>
         <description>triggered at change of analogue sensor</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

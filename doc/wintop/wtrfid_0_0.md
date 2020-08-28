@@ -10,7 +10,7 @@ This describes the Z-Wave device *WTRFID*, manufactured by *Wintop* with the thi
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![WTRFID product image](https://www.cd-jackson.com/zwave_device_uploads/217/217_default.jpg)
+![WTRFID product image](https://opensmarthouse.org/zwavedatabase/217/image/)
 
 
 The WTRFID supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,23 +19,15 @@ The WTRFID does not permanently listen for messages sent from the controller - i
 
 ## Overview
 
-Zipato Mini RFID Keypad combines RFID and Z-Wave protocol for access control purposes. The user can identify themselves either by using manual code buttons on the numeric keypad, or by using a RFID key fob. The keypad fully supports Zipato automated security systems but also works with other Z-Wave enabled networks. “Home” and “Away” buttons allow the arming and disarming of security system or running any automation scenario.
+<p&gtZipato Mini RFID Keypad combines RFID and Z-Wave protocol for access control purposes. The user can identify themselves either by using manual code buttons on the numeric keypad, or by using a RFID key fob. The keypad fully supports Zipato automated security systems but also works with other Z-Wave enabled networks. “Home” and “Away” buttons allow the arming and disarming of security system or running any automation scenario.</p&gt
 
 ### Inclusion Information
 
- INCLUDE IN Z-WAVE NETWORK
-
-  1. Make sure your Z-Wave controller is in the right operation mode (include or exclude)
-  2. Press and hold the tamper for 1 seconds and release to start the inclusion/exclusion process (indication mode: Ready for learn mode).
-  3. The product will start NWI automatically after unsuccessful normal inclusion
+<p&gt INCLUDE IN Z-WAVE NETWORK</p&gt <ol&gt<li&gtMake sure your Z-Wave controller is in the right operation mode (include or exclude)</li&gt <li&gtPress and hold the tamper for 1 seconds and release to start the inclusion/exclusion process (indication mode: Ready for learn mode).</li&gt <li&gtThe product will start NWI automatically after unsuccessful normal inclusion</li&gt </ol&gt
 
 ### Exclusion Information
 
- EXCLUDE from Z-WAVE NETWORK
-
-  1. Make sure your Z-Wave controller is in the right operation mode (include or exclude)
-  2. Press and hold the tamper for 1 seconds and release to start the inclusion/exclusion process (indication mode: Ready for learn mode).
-  3. The product will start NWI automatically after unsuccessful normal inclusion
+<p&gt EXCLUDE from Z-WAVE NETWORK</p&gt <ol&gt<li&gtMake sure your Z-Wave controller is in the right operation mode (include or exclude)</li&gt <li&gtPress and hold the tamper for 1 seconds and release to start the inclusion/exclusion process (indication mode: Ready for learn mode).</li&gt <li&gtThe product will start NWI automatically after unsuccessful normal inclusion</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -44,17 +36,7 @@ The WTRFID does not permanently listen for messages sent from the controller - i
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-The default value is 0x1C20 = 7200 sec = 2 hour
-
-The default node is 0xFF = 255 (broadcast)
-
-It is possible to send a wake up notification on user interaction. Besides sending a Wake Up Notification automatically every 2 hours (or any other time that is configured using the Wake Up Interval Set command), the Mini Keypad RFiD/Z-Wave also sends a Wake Up Notification when:
-
-  * The tamper alarm state changes (Mini Keypad RFiD/Z-Wave is mounted or removed from the wall)
-  * A tag read
-  * A code is entered using the keypad
-
-When the wake up time is set to 0 a wake up notification is never send periodically, only on user interaction
+<p&gtThe default value is 0x1C20 = 7200 sec = 2 hour</p&gt <p&gtThe default node is 0xFF = 255 (broadcast)</p&gt <p&gtIt is possible to send a wake up notification on user interaction. Besides sending a Wake Up Notification automatically every 2 hours (or any other time that is configured using the Wake Up Interval Set command), the Mini Keypad RFiD/Z-Wave also sends a Wake Up Notification when:</p&gt <ul&gt<li&gtThe tamper alarm state changes (Mini Keypad RFiD/Z-Wave is mounted or removed from the wall)</li&gt <li&gtA tag read</li&gt <li&gtA code is entered using the keypad</li&gt </ul&gt<p&gtWhen the wake up time is set to 0 a wake up notification is never send periodically, only on user interaction</p&gt
 
 ## Channels
 
@@ -86,9 +68,7 @@ The following state translation is provided for this channel to the ```Switch```
 | ON | Alarm |
 
 ### Alarm (access) [Deprecated]
-Event ID 5 = Away
-
-Event ID 6 = Home
+<p&gtEvent ID 5 = Away</p&gt <p&gtEvent ID 6 = Home</p&gt
 
 Access Control.
 
@@ -179,10 +159,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Audible feedback config
 
 To configure the time the beep is automatically turned off in seconds.
-The Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configurations:
-
-  1. Notification sound disabled (configuration parameter 2 set to zero)
-  2. Notification sound enabled (default, configuration parameter 2 set to auto-stop time).
+<p&gtThe Mini Keypad RFiD/Z-Wave supports 3 types of notification sound configurations:</p&gt <ol&gt<li&gtNotification sound disabled (configuration parameter 2 set to zero)</li&gt <li&gtNotification sound enabled (default, configuration parameter 2 set to auto-stop time).</li&gt </ol&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```15```.
@@ -193,7 +170,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Feedback timeout
 
 Feedback timeout
-To configure the timeout to wait for a WAKEUP\_NO\_MORE_INFORMATION before the error beep is automatically sound. The error beeps are fixed 8 beeps shortly after each other (0 -> disabled)
+<p&gtTo configure the timeout to wait for a WAKEUP\_NO\_MORE_INFORMATION before the error beep is automatically sound. The error beeps are fixed 8 beeps shortly after each other (0 -> disabled)</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -215,10 +192,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Mode
 
 Configure the operating mode
-If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.
-
-  * MODE 1: Normal operating mode.
-  * MODE 3: Z-Wave chip is always on to request e.g. version or manufacturer id. If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.
+<p&gtIf any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.</p&gt <ul&gt<li&gtMODE 1: Normal operating mode.</li&gt <li&gtMODE 3: Z-Wave chip is always on to request e.g. version or manufacturer id. If any mode other then 3, that value will be reported after a get but will be handled in SW as mode 1.</li&gt </ul&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -277,9 +251,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Installation Instructions](https://www.cd-jackson.com/zwave_device_uploads/217/Zipato-Zwave-RFID-Tag-Reader-Installation.pdf)
+* [Installation Instructions](https://opensmarthouse.org/zwavedatabase/217/Zipato-Zwave-RFID-Tag-Reader-Installation.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/217).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/217).

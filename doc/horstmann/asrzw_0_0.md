@@ -10,51 +10,22 @@ This describes the Z-Wave device *ASR-ZW*, manufactured by *Horstmann Controls L
 
 The device is in the category of *HVAC*, defining Air condition devices, Fans.
 
-![ASR-ZW product image](https://www.cd-jackson.com/zwave_device_uploads/310/310_default.png)
+![ASR-ZW product image](https://opensmarthouse.org/zwavedatabase/310/image/)
 
 
 The ASR-ZW supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The ASR–ZW receiver unit receives the Z-Wave radio signals from the HRT4–ZW room thermostat. In the unlikely event of a communication failure it is possible to override the system and switch On and Off using the On/Off buttons on the ASR-ZW receiver as a local override.
-
-If the override is used to override the HRT4-ZW thermostat when it is functioning correctly then the override will be cancelled by the next switching operation of the thermostat and normal operation will be resumed. In any case, with no further intervention, normal operation will be restored within one hour of the override being operated.
+<p&gtThe ASR–ZW receiver unit receives the Z-Wave radio signals from the HRT4–ZW room thermostat. In the unlikely event of a communication failure it is possible to override the system and switch On and Off using the On/Off buttons on the ASR-ZW receiver as a local override.</p&gt <p&gtIf the override is used to override the HRT4-ZW thermostat when it is functioning correctly then the override will be cancelled by the next switching operation of the thermostat and normal operation will be resumed. In any case, with no further intervention, normal operation will be restored within one hour of the override being operated.</p&gt
 
 ### Inclusion Information
 
-# Stage 1
-
-  1. Set the number 1 DIL switch on the back of the HRT4-ZW thermostat to the On (Up) position and the display on the HRT4-ZW will change to show the letter ‘I’. If the letter ‘L’ appears, carry out stage 1A opposite.
-  2. Power up the ASR-ZW receiver unit
-  3. The network LED on the ASR-ZW receiver should be flashing.
-  4. Press the dial on the front of the HRT4-ZW thermostat once so that the ‘I’ in the display flashes.
-  5. Press and hold the network button on the ASR-ZW receiver until the On indicator flashes (green) before the Off indicator becomes solid red.
-
-  6. After a few seconds the radio mast symbol will appear in the display along with the letters IP.
-  7. Reset the number 1 DIL switch on the back of the HRT4-ZW to the Off position and the temperature should return in the display.
-  8. Now check the receiver responds to the thermostat on and off commands by increasing and decreasing the temperature settings until it switches accordingly. **N.B.** There is a half second delay in switching On and Off on receipt of the command.
-  9. The Z-Wave communication link is now successfully established
-
-# Stage 1A – Only used if ‘L’ is displayed instead of ‘I’
-
-  1.  Turn the dial of the HRT4-ZW until the letter P appears in the display.
-  2.  Press the dial twice.
-  3.  A second P should appear in the display which now shows \`PP’.
-  4.  Turn the dial until the letter ‘I’ appears in the display and return to Stage 1 instruction.
-
-# Stage 2 – Only used if the above procedure does not establish a successful communication link
-
-  1. Turn the dial until the letter P appears in the display.
-  2. Press the dial twice and PP should appear in the display.
-  3. Now turn the dial until letter E appears in the display.
-  4. Press the dial once and the display should flash.
-  5. Press and hold the network button on the ASR-ZW receiver until it starts to flash. 6
-  6. Turn the dial until the letter \`I’ appears in the display and return to the main instruction.
+<h1&gtStage 1</h1&gt <ol&gt<li&gtSet the number 1 DIL switch on the back of the HRT4-ZW thermostat to the On (Up) position and the display on the HRT4-ZW will change to show the letter ‘I’. If the letter ‘L’ appears, carry out stage 1A opposite.</li&gt <li&gtPower up the ASR-ZW receiver unit</li&gt <li&gtThe network LED on the ASR-ZW receiver should be flashing.</li&gt <li&gtPress the dial on the front of the HRT4-ZW thermostat once so that the ‘I’ in the display flashes.</li&gt <li&gt <p&gtPress and hold the network button on the ASR-ZW receiver until the On indicator flashes (green) before the Off indicator becomes solid red.</p&gt </li&gt <li&gtAfter a few seconds the radio mast symbol will appear in the display along with the letters IP.</li&gt <li&gtReset the number 1 DIL switch on the back of the HRT4-ZW to the Off position and the temperature should return in the display.</li&gt <li&gtNow check the receiver responds to the thermostat on and off commands by increasing and decreasing the temperature settings until it switches accordingly.<strong&gt N.B.</strong&gt There is a half second delay in switching On and Off on receipt of the command.</li&gt <li&gtThe Z-Wave communication link is now successfully established</li&gt </ol&gt<h1&gtStage 1A – Only used if ‘L’ is displayed instead of ‘I’</h1&gt <ol&gt<li&gt Turn the dial of the HRT4-ZW until the letter P appears in the display.</li&gt <li&gt Press the dial twice.</li&gt <li&gt A second P should appear in the display which now shows \`PP’.</li&gt <li&gt Turn the dial until the letter ‘I’ appears in the display and return to Stage 1 instruction.</li&gt </ol&gt<h1&gtStage 2 – Only used if the above procedure does not establish a successful communication link</h1&gt <ol&gt<li&gtTurn the dial until the letter P appears in the display.</li&gt <li&gtPress the dial twice and PP should appear in the display.</li&gt <li&gtNow turn the dial until letter E appears in the display.</li&gt <li&gtPress the dial once and the display should flash.</li&gt <li&gtPress and hold the network button on the ASR-ZW receiver until it starts to flash. 6</li&gt <li&gtTurn the dial until the letter \`I’ appears in the display and return to the main instruction.</li&gt </ol&gt
 
 ### Exclusion Information
 
-Not Provided
+<p&gtNot Provided</p&gt
 
 ## Channels
 
@@ -121,9 +92,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/310/user-and-installer-guide-HRT4-ZWweb1--1-.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/310/user-and-installer-guide-HRT4-ZWweb1--1-.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/310).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/310).

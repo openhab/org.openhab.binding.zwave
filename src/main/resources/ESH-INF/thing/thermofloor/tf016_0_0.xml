@@ -7,9 +7,7 @@
 
   <thing-type id="thermofloor_tf016_00_000" listed="false">
     <label>TF016 ZWave Thermostat</label>
-    <description><![CDATA[
-ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is an electronic thermostat for floor heating in a standard wall box. The thermostat has a built-in Z-Wave chip that can be connected with Home Automation systems.</p> <p>Heatit Z-Wave is equipped with a single pole switch and fits into most System 55 frames (Elko RS16, Schneider Exxact, Gira, Jung etc.) The thermostat can withstand a load of max 16A / 3600W at 230V. At higher loads the thermostat must control a contactor. The thermostat may be connected to two wired external sensors.</p> <p>The thermostat has the capacity of up to 8 associations (relays, wall plugs etc.)</p> <p>The thermostat is designed for electrical heating.</p> <br /><h2>Inclusion Information</h2><p>To include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF. Press Right (down) 4 times till you see Con in the display. Now start add device in your home automation software. Start inclusion mode by pressing Center (confirm) for approximately 2 seconds. The inclusion/exclusion icon will appear in the display. Confirmation will show Inc/EcL in the display. If inclusion fails, Err (error) will appear. Leave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings</p> <br /><h2>Exclusion Information</h2><p>See information for inclusion.</p>
-    ]]></description>
+    <description>ZWave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Heatit Z-Wave is an electronic thermostat for floor heating in a standard wall box. The thermostat has a built-in Z-Wave chip that can be connected with Home Automation systems.&lt;/p&gt &lt;p&gtHeatit Z-Wave is equipped with a single pole switch and fits into most System 55 frames (Elko RS16, Schneider Exxact, Gira, Jung etc.) The thermostat can withstand a load of max 16A / 3600W at 230V. At higher loads the thermostat must control a contactor. The thermostat may be connected to two wired external sensors.&lt;/p&gt &lt;p&gtThe thermostat has the capacity of up to 8 associations (relays, wall plugs etc.)&lt;/p&gt &lt;p&gtThe thermostat is designed for electrical heating.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTo include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF. Press Right (down) 4 times till you see Con in the display. Now start add device in your home automation software. Start inclusion mode by pressing Center (confirm) for approximately 2 seconds. The inclusion/exclusion icon will appear in the display. Confirmation will show Inc/EcL in the display. If inclusion fails, Err (error) will appear. Leave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtSee information for inclusion.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -86,9 +84,7 @@ ZWave Thermostat<br /><h1>Overview</h1><p>The Heatit Z-Wave is an electronic the
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration">
         <label>1: Operation mode</label>
-        <description><![CDATA[
-Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p> <p>1.....HEAT (0x01)</p> <p>2.....COOL (0x02)</p> <p>11....ENERGY SAVE HEAT (0x0B)</p> <p>Default value 1</p>
-        ]]></description>
+        <description>Defines Operation Mode of thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0....OFF(0x00)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1.....HEAT (0x01)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2.....COOL (0x02)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt11....ENERGY SAVE HEAT (0x0B)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDefault value 1&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Off</option>
@@ -126,10 +122,10 @@ Defines Operation Mode of thermostat<br /><h1>Overview</h1><p>0....OFF(0x00)</p>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="11">Economy Heat</option>
-        <option value="1">Heat</option>
-        <option value="2">Cool</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>

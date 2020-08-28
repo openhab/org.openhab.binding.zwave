@@ -10,36 +10,22 @@ This describes the Z-Wave device *Forest Shuttle*, manufactured by *[BeNext](htt
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![Forest Shuttle product image](https://www.cd-jackson.com/zwave_device_uploads/1215/1215_default.png)
+![Forest Shuttle product image](https://opensmarthouse.org/zwavedatabase/1215/image/)
 
 
 The Forest Shuttle supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-  * Touch lmpulse Technology, gently pulling the curtain by hand will activate the motor (standard feature);
-  * Integrated Emergency Control with automatic de­clutch in case of power failure, to ensure a manual operation of the curtains (standard feature);
-  * Modular motor, different modules can be attached for various control options: Radio Frequency, Wall Switch, lnfrared, Domotics, Building/Hotel Automa­tion, Serial Communication, Z-wave, etc.;
-  * Ultra Silent motor;
-  * Slow start and slow stop;
-  * Full automatic setting of the limits;
-  * Programming of intermediate positions possible;
-  * Touch lmpulse Sensitivity adjustable; high sensitivity, low sensitivity, and off;
-  * Stack-back position programmable to every desired setting;
-  * FMS tracks and components available in white and black;
-  * Clickable off-set carriers for a straight heading of the curtain; rolling carriers and FES Easyfold carriers also available;
-  * Kevlar based drive belt;
-  * All KS brackets applicable;
-  * Motors can also be used on MRS Motorized Rod System;
-  * Tandem motor application possible as well.
+<ul&gt<li&gtTouch lmpulse Technology, gently pulling the curtain by hand will activate the motor (standard feature);</li&gt <li&gtIntegrated Emergency Control with automatic de­clutch in case of power failure, to ensure a manual operation of the curtains (standard feature);</li&gt <li&gtModular motor, different modules can be attached for various control options: Radio Frequency, Wall Switch, lnfrared, Domotics, Building/Hotel Automa­tion, Serial Communication, Z-wave, etc.;</li&gt <li&gtUltra Silent motor;</li&gt <li&gtSlow start and slow stop;</li&gt <li&gtFull automatic setting of the limits;</li&gt <li&gtProgramming of intermediate positions possible;</li&gt <li&gtTouch lmpulse Sensitivity adjustable; high sensitivity, low sensitivity, and off;</li&gt <li&gtStack-back position programmable to every desired setting;</li&gt <li&gtFMS tracks and components available in white and black;</li&gt <li&gtClickable off-set carriers for a straight heading of the curtain; rolling carriers and FES Easyfold carriers also available;</li&gt <li&gtKevlar based drive belt;</li&gt <li&gtAll KS brackets applicable;</li&gt <li&gtMotors can also be used on MRS Motorized Rod System;</li&gt <li&gtTandem motor application possible as well.</li&gt </ul&gt
 
 ### Inclusion Information
 
-Set your main Z-Wave controller (see manual controller) into inclusion mode. Press configuration button 3 times. LED3 is ON. Press and hold once more for 4 seconds, LED will start blinking for 10 seconds. The Shuttle S/L Z-Wave motor will be detected and included into the Z-Wave network of your main Z-Wave controller.
+<p&gtSet your main Z-Wave controller (see manual controller) into inclusion mode. Press configuration button 3 times. LED3 is ON. Press and hold once more for 4 seconds, LED will start blinking for 10 seconds. The Shuttle S/L Z-Wave motor will be detected and included into the Z-Wave network of your main Z-Wave controller.</p&gt
 
 ### Exclusion Information
 
-Press the configuration button 25 times and confirm by pressing the button once more for 4 seconds until the led blinks 3 times and goes OFF. This way of excluding is less preferred. Please use this procedure only when the network primary controller is missing or otherwise inoperable. 
+<p&gtPress the configuration button 25 times and confirm by pressing the button once more for 4 seconds until the led blinks 3 times and goes OFF. This way of excluding is less preferred. Please use this procedure only when the network primary controller is missing or otherwise inoperable. </p&gt
 
 ## Channels
 
@@ -51,19 +37,14 @@ The following table summarises the channels available for the Forest Shuttle -:
 | Blinds Control | blinds_control | blinds_control | Blinds | Rollershutter | 
 
 ### Switch Binary
-The Switch Binary command class can be used to turn the Shuttle LZ fully open or fully closed.  
-Value:
-
-- 0x00: Close  
-- 0xFF: Open
+<p&gtThe Switch Binary command class can be used to turn the Shuttle LZ fully open or fully closed.<br /&gtValue:</p&gt <p&gt- 0x00: Close<br /&gt- 0xFF: Open</p&gt
 
 Switch the power on and off.
 
 The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Blinds Control
-The switch multilevel set command class is used to set the light to a preferred position.  
-- Values 0 – 99 (%) are used to set the position 
+<p&gtThe switch multilevel set command class is used to set the light to a preferred position.<br /&gt- Values 0 – 99 (%) are used to set the position </p&gt
 
 Provides start / stop control of blinds.
 
@@ -109,9 +90,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual from Forest curtain rails including Z-wave details](https://www.cd-jackson.com/zwave_device_uploads/1215/download-287-Installing-the-FOREST-SHUTTLE-S-M-L--Z-wave-V1-6EN.pdf)
+* [Manual from Forest curtain rails including Z-wave details](https://opensmarthouse.org/zwavedatabase/1215/download-287-Installing-the-FOREST-SHUTTLE-S-M-L--Z-wave-V1-6EN.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1215).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1215).

@@ -7,9 +7,7 @@
 
   <thing-type id="qubino_zmnhba_00_000" listed="false">
     <label>ZMNHBA Flush 2 relays</label>
-    <description><![CDATA[
-Flush 2 relays<br /><h1>Overview</h1><p>This Z-Wave module is used for switching on or off two electrical devices (e.g. lights, fans, etc ...).<br />The module can be controlled either through Z-Wave network or through the wall switches.<br />The module is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch.<br />Module measures power consumption of two electrical devices and supports connection of digital temperature sensor.</p> <br /><h2>Inclusion Information</h2><ul><li>Connect module to power supply,</li> <li>bring module within maximum 1 meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller,</li> <li>auto-inclusion (30 minutes after connected to power supply) or</li> <li>press service button S for more than 2 second or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3<br />seconds).</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Connect module to power supply</li> <li>bring module within maximum 1 meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller,</li> <li>press service button S for more than 6 second or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds).</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted.<br />If service button S is pressed more than 2 and less than 6second module is excluded, but configuration parameters are not set to default values</p>
-    ]]></description>
+    <description>Flush 2 relays&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThis Z-Wave module is used for switching on or off two electrical devices (e.g. lights, fans, etc ...).&lt;br /&gtThe module can be controlled either through Z-Wave network or through the wall switches.&lt;br /&gtThe module is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch.&lt;br /&gtModule measures power consumption of two electrical devices and supports connection of digital temperature sensor.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtConnect module to power supply,&lt;/li&gt &lt;li&gtbring module within maximum 1 meter (3 feet) of the main controller,&lt;/li&gt &lt;li&gtenable add/remove mode on main controller,&lt;/li&gt &lt;li&gtauto-inclusion (30 minutes after connected to power supply) or&lt;/li&gt &lt;li&gtpress service button S for more than 2 second or&lt;/li&gt &lt;li&gtpress push button I1 three times within 3s (3 times change switch state within 3&lt;br /&gtseconds).&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtConnect module to power supply&lt;/li&gt &lt;li&gtbring module within maximum 1 meter (3 feet) of the main controller,&lt;/li&gt &lt;li&gtenable add/remove mode on main controller,&lt;/li&gt &lt;li&gtpress service button S for more than 6 second or&lt;/li&gt &lt;li&gtpress push button I1 five times within 3s (5 times change switch state within 3 seconds).&lt;/li&gt &lt;/ul&gt&lt;p&gtBy this function all parameters of the module are set to default values and own ID is deleted.&lt;br /&gtIf service button S is pressed more than 2 and less than 6second module is excluded, but configuration parameters are not set to default values&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -129,9 +127,7 @@ Flush 2 relays<br /><h1>Overview</h1><p>This Z-Wave module is used for switching
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
-        <description><![CDATA[
-Activate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
-        ]]></description>
+        <description>Activate / deactivate functions ALL ON/ALL OFF&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtFlush 1 relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">ALL ON is not active ALL OFF is not active</option>
@@ -144,18 +140,14 @@ Activate / deactivate functions ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush 1 
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>11: Automatic turning off relay Q1 after set time</label>
-        <description><![CDATA[
-Automatic turning off relay Q1 after set time<br /><h1>Overview</h1><p>Auto OFF enabled with define time, step is 10 mseconds</p> <ul><li>0 = Auto OFF disabled</li> <li>1–65535 = 0,01 second – 655,35 seconds</li> </ul>
-        ]]></description>
+        <description>Automatic turning off relay Q1 after set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAuto OFF enabled with define time, step is 10 mseconds&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Auto OFF disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1–65535 = 0,01 second – 655,35 seconds&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>12: Automatic turning off relay Q2 after set time</label>
-        <description><![CDATA[
-Automatic turning off relay Q2 after set time<br /><h1>Overview</h1><p>Auto OFF enabled with define time, step is 10 mseconds</p> <ul><li>0 = Auto OFF disabled</li> <li>1–65535 = 0,01 second – 655,35 seconds</li> </ul>
-        ]]></description>
+        <description>Automatic turning off relay Q2 after set time&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtAuto OFF enabled with define time, step is 10 mseconds&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Auto OFF disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1–65535 = 0,01 second – 655,35 seconds&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -172,36 +164,28 @@ Automatic turning off relay Q2 after set time<br /><h1>Overview</h1><p>Auto OFF 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>40: Power reporting in Watts on power change for Q1</label>
-        <description><![CDATA[
-Power reporting in Watts on power change for Q1<br /><h1>Overview</h1><p>Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.</p> <ul><li>0 = Reporting Disabled</li> <li>1–100 = 1% - 100% Reporting enabled</li> </ul>
-        ]]></description>
+        <description>Power reporting in Watts on power change for Q1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1–100 = 1% - 100% Reporting enabled&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>41: Power reporting in Watts on power change for Q2</label>
-        <description><![CDATA[
-Power reporting in Watts on power change for Q2<br /><h1>Overview</h1><p>Power report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.</p> <ul><li>0 = Reporting Disabled</li> <li>1–100 = 1% - 100% Reporti</li> </ul>
-        ]]></description>
+        <description>Power reporting in Watts on power change for Q2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtPower report is sent (pushed) only when actual power in Watts in real time changed for more than set percentage comparing to previous actual power in Watts, step is 1%.&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1–100 = 1% - 100% Reporti&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>42: Power reporting in Watts by time interval for Q1</label>
-        <description><![CDATA[
-Power reporting in Watts by time interval for Q1<br /><h1>Overview</h1><p>Default value is 300 (power report in Watts is sent each 300s)</p> <ul><li>0 = Reporting Disabled</li> <li>1–65535 = 1 second – 65535 seconds. Reporting enabled.</li> </ul><p>Power report is sent with time interval set by entered value.</p>
-        ]]></description>
+        <description>Power reporting in Watts by time interval for Q1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault value is 300 (power report in Watts is sent each 300s)&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1–65535 = 1 second – 65535 seconds. Reporting enabled.&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtPower report is sent with time interval set by entered value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
       </parameter>
 
       <parameter name="config_43_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>43: Power reporting in Watts by time interval for Q2</label>
-        <description><![CDATA[
-Power reporting in Watts by time interval for Q2<br /><h1>Overview</h1><p>Default value is 300 (power report in Watts is sent each 300s)</p> <ul><li>0 = Reporting Disabled</li> <li>1–65535 = 1 second – 65535 seconds. Reporting enabled.  </li> </ul><p>Power report is sent with time interval set by entered value.</p>
-        ]]></description>
+        <description>Power reporting in Watts by time interval for Q2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault value is 300 (power report in Watts is sent each 300s)&amp;lt;/p&amp;amp;gt &amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gt0 = Reporting Disabled&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gt1–65535 = 1 second – 65535 seconds. Reporting enabled.  &amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&amp;lt;p&amp;amp;gtPower report is sent with time interval set by entered value.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>300</default>
       </parameter>
 

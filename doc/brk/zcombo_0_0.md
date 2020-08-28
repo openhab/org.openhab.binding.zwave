@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZCOMBO*, manufactured by *BRK Brands, Inc.* wi
 
 The device is in the category of *Smoke Detector*, defining Smoke detectors.
 
-![ZCOMBO product image](https://www.cd-jackson.com/zwave_device_uploads/238/238_default.jpg)
+![ZCOMBO product image](https://opensmarthouse.org/zwavedatabase/238/image/)
 
 
 The ZCOMBO supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,33 +19,15 @@ The ZCOMBO does not permanently listen for messages sent from the controller - i
 
 ## Overview
 
-Z-wave compatible smoke and carbon monoxide alarm. First Alert Z-Wave Detector - NOT WINK compatible.
-
-Integrated wireless alarm system is Iris compatible to send you mobile alerts and emails. The alarm is also compatible with 3rd party certified Z-Wave devices with the First Alert protocol. Note- this alarm is not compatible with Onelink.
-
-  * Wireless connection to z-wave hub
-  * Reliable electrochemical co and photoelectric smoke sensors
-  * Features single button test/Silence and side-access battery drawer
-  * Meets UL standards and backed by 7 year limited warranty
-  * Certified for use with Nexia Home Intelligence or other Z-Wave systems
-  * Combination Smoke and Carbon Monoxide protection that alerts you whether you are home or away
-  * Photoelectric smoke sensor helps reduce false alarms such as from cooking or shower steam
+<p&gtZ-wave compatible smoke and carbon monoxide alarm. First Alert Z-Wave Detector - NOT WINK compatible.</p&gt <p&gtIntegrated wireless alarm system is Iris compatible to send you mobile alerts and emails. The alarm is also compatible with 3rd party certified Z-Wave devices with the First Alert protocol. Note- this alarm is not compatible with Onelink.</p&gt <ul&gt<li&gtWireless connection to z-wave hub</li&gt <li&gtReliable electrochemical co and photoelectric smoke sensors</li&gt <li&gtFeatures single button test/Silence and side-access battery drawer</li&gt <li&gtMeets UL standards and backed by 7 year limited warranty</li&gt <li&gtCertified for use with Nexia Home Intelligence or other Z-Wave systems</li&gt <li&gtCombination Smoke and Carbon Monoxide protection that alerts you whether you are home or away</li&gt <li&gtPhotoelectric smoke sensor helps reduce false alarms such as from cooking or shower steam</li&gt </ul&gt
 
 ### Inclusion Information
 
-  1. Slide battery door open.
-  2. Insert batteries checking the correct orientation.
-  3. Press and hold the test button. Keep it held down as you slide the battery drawer closed. You may then release the button.
-
-  * The alarm will remain awake for 30 seconds on inclusion.
-  * The alarm supports one association group with up to 1 node, and sends its alarms to that group.
-  * The alarm supports configuration parameter #1, which has a size of 1, a default value of 0, and when set to 1 causes the device to send double alarm messages.
+<ol&gt<li&gtSlide battery door open.</li&gt <li&gtInsert batteries checking the correct orientation.</li&gt <li&gtPress and hold the test button. Keep it held down as you slide the battery drawer closed. You may then release the button.</li&gt </ol&gt<ul&gt<li&gtThe alarm will remain awake for 30 seconds on inclusion.</li&gt <li&gtThe alarm supports one association group with up to 1 node, and sends its alarms to that group.</li&gt <li&gtThe alarm supports configuration parameter #1, which has a size of 1, a default value of 0, and when set to 1 causes the device to send double alarm messages.</li&gt </ul&gt
 
 ### Exclusion Information
 
-  1. Slide battery door open.
-  2. Remove and re-insert batteries checking the correct orientation.
-  3. Press and hold the test button. Keep it held down as you slide the battery drawer closed. You may then release the button.
+<ol&gt<li&gtSlide battery door open.</li&gt <li&gtRemove and re-insert batteries checking the correct orientation.</li&gt <li&gtPress and hold the test button. Keep it held down as you slide the battery drawer closed. You may then release the button.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -54,7 +36,7 @@ The ZCOMBO does not permanently listen for messages sent from the controller - i
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Slide the battery out then back in while holding the button to wake it up.
+<p&gtSlide the battery out then back in while holding the button to wake it up.</p&gt
 
 ## Channels
 
@@ -178,10 +160,10 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/238/NXZCOMBO-Specifications.pdf)
-* [Instructions sheet](https://www.cd-jackson.com/zwave_device_uploads/238/first-alert-NXZCOMBO-instructions.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/238/NXZCOMBO-Specifications.pdf)
+* [Instructions sheet](https://opensmarthouse.org/zwavedatabase/238/first-alert-NXZCOMBO-instructions.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/238).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/238).

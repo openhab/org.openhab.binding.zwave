@@ -7,9 +7,7 @@
 
   <thing-type id="zipato_pan08_00_000" listed="false">
     <label>PAN08 Roller shutter controller</label>
-    <description><![CDATA[
-Roller shutter controller<br /><h1>Overview</h1><p>Roller shutter micromodule</p> <br /><h2>Inclusion Information</h2><p>Put your Z-Wave controller into inclusion mode by following the instructions provided by the controller manufacturer.</p> <p>Pressing Include button three times within 2 seconds will enter inclusion mode. </p> <br /><h2>Exclusion Information</h2><p>Put the Z-Wave Controller in exclusion mode.</p> <p>Pressing Include button three times within 2 seconds will enter exclusion mode.</p> <p>Node ID has been excluded.</p>
-    ]]></description>
+    <description>Roller shutter controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRoller shutter micromodule&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPut your Z-Wave controller into inclusion mode by following the instructions provided by the controller manufacturer.&lt;/p&gt &lt;p&gtPressing Include button three times within 2 seconds will enter inclusion mode. &lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPut the Z-Wave Controller in exclusion mode.&lt;/p&gt &lt;p&gtPressing Include button three times within 2 seconds will enter exclusion mode.&lt;/p&gt &lt;p&gtNode ID has been excluded.&lt;/p&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->

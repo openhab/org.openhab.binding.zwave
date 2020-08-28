@@ -10,7 +10,7 @@ This describes the Z-Wave device *K8*, manufactured by *Sigma Designs (Former Ze
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![K8 product image](https://www.cd-jackson.com/zwave_device_uploads/431/431_default.jpg)
+![K8 product image](https://opensmarthouse.org/zwavedatabase/431/image/)
 
 
 The K8 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,17 +19,15 @@ The K8 does not permanently listen for messages sent from the controller - it wi
 
 ## Overview
 
-Note that this device incorrectly reports the manufacturer ID. This may be due to the device being uncertified and therefore this device may be removed from the database at some stage.
+<p&gtNote that this device incorrectly reports the manufacturer ID. This may be due to the device being uncertified and therefore this device may be removed from the database at some stage.</p&gt
 
 ### Inclusion Information
 
-  1. Set the Master (Primary) controller into network Inclusion Mode.
-  2. Press and hold ca. 2 sec. both I and O keys of Group 2 (the top row of keys) on the Wall Controller unit at the same time. The LED light will stay solid. Release the keys.
+<ol&gt<li&gtSet the Master (Primary) controller into network Inclusion Mode.</li&gt <li&gtPress and hold ca. 2 sec. both I and O keys of Group 2 (the top row of keys) on the Wall Controller unit at the same time. The LED light will stay solid. Release the keys.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Set the Master (Primary) controller into network Exclusion Mode.
-  2. Press and hold ca. 2 sec. both I and O keys of Group 2 (the top row of keys) on the Wall Controller unit at the same time. The LED light will stay solid. Release the keys.
+<ol&gt<li&gtSet the Master (Primary) controller into network Exclusion Mode.</li&gt <li&gtPress and hold ca. 2 sec. both I and O keys of Group 2 (the top row of keys) on the Wall Controller unit at the same time. The LED light will stay solid. Release the keys.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -38,7 +36,7 @@ The K8 does not permanently listen for messages sent from the controller - it wi
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press and hold ca. 2 sec. both I and O keys on the top row (Group 2 keys). The LED indicator should turn ON if the battery has enough power and the Wall Controller works well.
+<p&gtPress and hold ca. 2 sec. both I and O keys on the top row (Group 2 keys). The LED indicator should turn ON if the battery has enough power and the Wall Controller works well.</p&gt
 
 ## Channels
 
@@ -129,9 +127,9 @@ Association group 5 supports 20 nodes.
 
 ### Documentation Links
 
-* [User manual](https://www.cd-jackson.com/zwave_device_uploads/431/ZWC-K8.pdf)
+* [User manual](https://opensmarthouse.org/zwavedatabase/431/ZWC-K8.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/431).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/431).

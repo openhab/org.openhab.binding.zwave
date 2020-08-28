@@ -6,10 +6,8 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse18_00_000" listed="false">
-    <label>ZSE18 Motion &amp; Vibration Sensor</label>
-    <description><![CDATA[
-Motion &amp; Vibration Sensor<br /><h1>Overview</h1><p>Motion detection, built-in vibration sensor, S2 security protocol and AES-128 signal encryption, 2 alternative power sources: 1 CR123A battery or micro USB, auto-inclusion for instant set-up, visual range test tool, magnetic mount, adjustable LED indicator, low battery alerts, Z-Wave Plus </p> <br /><h2>Inclusion Information</h2><ul><li>For USB power, in stay awake mode, press and hold the button. <strong>NOTE</strong>: The device will continue in stay awake mode even if later moved to battery power.</li> <li>Press and release the Z-Wave button 3 times quickly for battery mode. </li> </ul><br /><h2>Exclusion Information</h2><p>Press and release the Z-Wave button on the sensor 3 times as quickly as possible.</p> <br /><h2>Wakeup Information</h2><p>Press and release the Z-Wave button on the sensor 3 times as quickly as possible.</p>
-    ]]></description>
+    <label>ZSE18 Motion &amp;amp; Vibration Sensor</label>
+    <description>Motion &amp;amp;amp; Vibration Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMotion detection, built-in vibration sensor, S2 security protocol and AES-128 signal encryption, 2 alternative power sources: 1 CR123A battery or micro USB, auto-inclusion for instant set-up, visual range test tool, magnetic mount, adjustable LED indicator, low battery alerts, Z-Wave Plus &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtFor USB power, in stay awake mode, press and hold the button. &lt;strong&gtNOTE&lt;/strong&gt: The device will continue in stay awake mode even if later moved to battery power.&lt;/li&gt &lt;li&gtPress and release the Z-Wave button 3 times quickly for battery mode. &lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the Z-Wave button on the sensor 3 times as quickly as possible.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtPress and release the Z-Wave button on the sensor 3 times as quickly as possible.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -68,54 +66,42 @@ Motion &amp; Vibration Sensor<br /><h1>Overview</h1><p>Motion detection, built-i
       <parameter name="config_14_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>14: BASIC SET reports</label>
-        <description><![CDATA[
-0 - disabled, 1 - enabled<br /><h1>Overview</h1><p>to enable or disable BASIC SET reports when motion is triggered for Group 2 of associated devices. </p>
-        ]]></description>
+        <description>0 - disabled, 1 - enabled&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtto enable or disable BASIC SET reports when motion is triggered for Group 2 of associated devices. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>15: reverse BASIC SET</label>
-        <description><![CDATA[
-0: 255 motion, 0 timeout. 1: 0 motion, 255 timeout<br /><h1>Overview</h1><p> Use it to reverse values sent in BASIC SET reports when motion is triggered for Group 2 of associated devices. </p> <p>0 - BASIC SET sends 255 when motion is triggered, BASIC SET sends 0 when motion times out </p> <p>1 - BASIC SET sends 0 when motion is triggered, BASIC SET sends 255 when motion times out. </p>
-        ]]></description>
+        <description>0: 255 motion, 0 timeout. 1: 0 motion, 255 timeout&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt Use it to reverse values sent in BASIC SET reports when motion is triggered for Group 2 of associated devices. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - BASIC SET sends 255 when motion is triggered, BASIC SET sends 0 when motion times out &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 - BASIC SET sends 0 when motion is triggered, BASIC SET sends 255 when motion times out. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>17: vibration sensor</label>
-        <description><![CDATA[
-0=disabled, 1=enabled<br /><h1>Overview</h1><p> disable the vibration sensor</p>
-        ]]></description>
+        <description>0=disabled, 1=enabled&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt disable the vibration sensor&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_18_2" type="integer" groupName="configuration"
                  min="3" max="65535">
         <label>18: trigger interval</label>
-        <description><![CDATA[
-3=6 seconds, 65535=65538 seconds (add 3 seconds to value set)<br /><h1>Overview</h1><p>set trigger interval - the time when motion is reported again after initial trigger. </p> <p>NOTE: Small interval will increase activity and decrease battery life.</p>
-        ]]></description>
+        <description>3=6 seconds, 65535=65538 seconds (add 3 seconds to value set)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtset trigger interval - the time when motion is reported again after initial trigger. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtNOTE: Small interval will increase activity and decrease battery life.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>27</default>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>20: LED Indicator</label>
-        <description><![CDATA[
-0=disabled, 1=enabled (default)<br /><h1>Overview</h1><p>to disable the LED indicator</p> <p>OR CLICK internal button 6 TIMES TO DISABLE / ENABLE LED</p>
-        ]]></description>
+        <description>0=disabled, 1=enabled (default)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtto disable the LED indicator&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtOR CLICK internal button 6 TIMES TO DISABLE / ENABLE LED&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
                  min="10" max="50">
         <label>32: Low Battery Alert</label>
-        <description><![CDATA[
-percent battery left<br /><h1>Overview</h1><p>battery level for low battery reports</p>
-        ]]></description>
+        <description>percent battery left&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtbattery level for low battery reports&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 

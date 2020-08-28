@@ -7,9 +7,7 @@
 
   <thing-type id="remotec_adt8020_00_000" listed="false">
     <label>ZRM-80 Wall plug switch</label>
-    <description><![CDATA[
-Wall plug switch<br /><h1>Overview</h1><p>ZRW-80US Z-Wave Wall Switch</p> <br /><h2>Inclusion Information</h2><p>Triple click the PROG button within 1 second.</p>
-    ]]></description>
+    <description>Wall plug switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZRW-80US Z-Wave Wall Switch&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtTriple click the PROG button within 1 second.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

@@ -7,9 +7,7 @@
 
   <thing-type id="linear_ngd00z4_00_000" listed="false">
     <label>NGD00Z-4 Garage Door Controller</label>
-    <description><![CDATA[
-Garage Door Controller<br /><h1>Overview</h1><p><strong>GARAGE DOOR OPENER REMOTE COMMAND TRANSCEIVER with TILT SENSOR</strong></p> <br /><h2>Inclusion Information</h2><p><strong>TO INCLUDE THE GD00Z-4 INTO YOUR CONTROLLER</strong></p> <ol><li>Place your Z-Wave Controller into Discovery or Include mode.</li> <li>Press and release the link button on the GD00Z-4.</li> <li>Confirm that the GD00Z-4 was recognized by your Z-Wave Controller.</li> </ol><br /><h2>Exclusion Information</h2><p><strong>TO EXCLUDE THE GD00Z-4 FROM YOUR CONTROLLER</strong></p> <ol><li>Place your Z-Wave Controller into Exclude mode.</li> <li>Press and release the link button on the GD00Z-4.</li> <li>Confirm that the GD00Z-4 was excluded by your Z-Wave Controller.</li> </ol>
-    ]]></description>
+    <description>Garage Door Controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtGARAGE DOOR OPENER REMOTE COMMAND TRANSCEIVER with TILT SENSOR&lt;/strong&gt&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtTO INCLUDE THE GD00Z-4 INTO YOUR CONTROLLER&lt;/strong&gt&lt;/p&gt &lt;ol&gt&lt;li&gtPlace your Z-Wave Controller into Discovery or Include mode.&lt;/li&gt &lt;li&gtPress and release the link button on the GD00Z-4.&lt;/li&gt &lt;li&gtConfirm that the GD00Z-4 was recognized by your Z-Wave Controller.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gt&lt;strong&gtTO EXCLUDE THE GD00Z-4 FROM YOUR CONTROLLER&lt;/strong&gt&lt;/p&gt &lt;ol&gt&lt;li&gtPlace your Z-Wave Controller into Exclude mode.&lt;/li&gt &lt;li&gtPress and release the link button on the GD00Z-4.&lt;/li&gt &lt;li&gtConfirm that the GD00Z-4 was excluded by your Z-Wave Controller.&lt;/li&gt &lt;/ol&gt</description>
     <category>GarageDoor</category>
 
     <!-- CHANNEL DEFINITIONS -->

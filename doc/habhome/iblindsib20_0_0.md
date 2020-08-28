@@ -10,32 +10,26 @@ This describes the Z-Wave device *IB2.0*, manufactured by *HAB Home Intelligence
 
 The device is in the category of *Blinds*, defining Roller shutters, window blinds, etc..
 
-![IB2.0 product image](https://www.cd-jackson.com/zwave_device_uploads/1073/1073_default.png)
+![IB2.0 product image](https://opensmarthouse.org/zwavedatabase/1073/image/)
 
 
 The IB2.0 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-An intelligent Z-Wave blind motor that installs out of sight in existing Horizontal (2" and 2 1/2" slatted-style) blind headrails. Use iBlinds to tilt the slats open, closed or use the value slider for precise positioning of the slat tilt angle.
+<p&gtAn intelligent Z-Wave blind motor that installs out of sight in existing Horizontal (2" and 2 1/2" slatted-style) blind headrails. Use iBlinds to tilt the slats open, closed or use the value slider for precise positioning of the slat tilt angle.</p&gt
 
 ### Inclusion Information
 
-  1. Follow the directions for your Z-Wave hub/controller to place it in the add for inclusion mode.
-  2. Press the inclusion button (IN/EX) once and wait for the device to be discovered and joined to the Z-Wave network.  Follow the directions of your Z-Wave controller to uniquely identify your iblinds device.   (Ex: Bedroom iblinds).
-
-**_Note: If the device is not joined to the network.  Press the CLBR button, wait 1 second and repeat steps 1 and 2 again.  If you continue to have trouble joining the iblinds motor to the Z-Wave network, follow the Z-Wave network exclusion process._**
+<ol&gt<li&gtFollow the directions for your Z-Wave hub/controller to place it in the add for inclusion mode.</li&gt <li&gtPress the inclusion button (IN/EX) once and wait for the device to be discovered and joined to the Z-Wave network.  Follow the directions of your Z-Wave controller to uniquely identify your iblinds device.   (Ex: Bedroom iblinds).</li&gt </ol&gt<p&gt<strong&gt<em&gtNote: If the device is not joined to the network.  Press the CLBR button, wait 1 second and repeat steps 1 and 2 again.  If you continue to have trouble joining the iblinds motor to the Z-Wave network, follow the Z-Wave network exclusion process. </em&gt</strong&gt</p&gt
 
 ### Exclusion Information
 
-  1. Follow the directions for your Z-Wave hub/controller to place it in the exclusion mode.
-  2. Press the exclude button (IN/EX) once and wait for the iblinds device to be removed from the Z-Wave network.
-
-If you are having issues with exclusion, please check our troubleshooting page here.
+<ol&gt<li&gtFollow the directions for your Z-Wave hub/controller to place it in the exclusion mode.</li&gt <li&gtPress the exclude button (IN/EX) once and wait for the iblinds device to be removed from the Z-Wave network.</li&gt </ol&gt<p&gtIf you are having issues with exclusion, please check our troubleshooting page here.</p&gt
 
 ### General Usage Information
 
-NOTE:  **The command polling period should be set to 'disabled' **
+<p&gtNOTE:  <strong&gtThe command polling period should be set to 'disabled' </strong&gt</p&gt
 
 ## Channels
 
@@ -76,11 +70,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Auto Calibration Torque
 
 Adjust Torque Value for Auto Calibration
-Changing the Auto Calibration torque will allow you to change the initial calibration torque.  Reducing the torque helps improve calibration for small blinds and increasing the torque helps improve calibration for large blinds. 
-
-Calibration will automatically begin when the parameter value is received by iblinds.  After calibration is completed the parameter value will be set back to the default value of 1. 
-
-**\*\\*\* INCREASE TORQUE AT YOUR OWN RISK \*\****  Increasing torque can cause damage to lightweight and/or small blinds.  Only increase torque if the endpoints need adjusting. This is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
+<p&gtChanging the Auto Calibration torque will allow you to change the initial calibration torque.  Reducing the torque helps improve calibration for small blinds and increasing the torque helps improve calibration for large blinds. </p&gt <p&gtCalibration will automatically begin when the parameter value is received by iblinds.  After calibration is completed the parameter value will be set back to the default value of 1. </p&gt <p&gt<strong&gt\*\\*\* INCREASE TORQUE AT YOUR OWN RISK \*\**</strong&gt  Increasing torque can cause damage to lightweight and/or small blinds.  Only increase torque if the endpoints need adjusting. </p&gtThis is an advanced parameter and will therefore not show in the user interface without entering advanced mode.
 The following option values may be configured -:
 
 | Value  | Description |
@@ -133,9 +123,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [User Guide v1.0](https://www.cd-jackson.com/zwave_device_uploads/1073/User-Guide-v1-0.pdf)
+* [User Guide v1.0](https://opensmarthouse.org/zwavedatabase/1073/User-Guide-v1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1073).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1073).

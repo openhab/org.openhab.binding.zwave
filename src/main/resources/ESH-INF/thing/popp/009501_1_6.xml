@@ -22,7 +22,7 @@
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Popp &amp; Co</property>
+      <property name="vendor">Popp &amp;amp; Co</property>
       <property name="modelId">009501</property>
       <property name="manufacturerId">0154</property>
       <property name="manufacturerRef">0005:0003</property>
@@ -49,18 +49,14 @@
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>0: LED Status</label>
-        <description><![CDATA[
-No help available, self explanatory....<br /><h1>Overview</h1><p>0: LED always ON (Only on operation OFF)<br />1: LED always OFF (Only on operation ON)</p>
-        ]]></description>
+        <description>No help available, self explanatory....&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: LED always ON (Only on operation OFF)&amp;lt;br /&amp;amp;gt1: LED always OFF (Only on operation ON)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="4">
         <label>1: Shut-off controller behavior</label>
-        <description><![CDATA[
-The parameter defines how to control the shut-off controller.<br /><h1>Overview</h1><p>0: Remote and manually open/close<br />1: Remote open/close only<br />2: Only remote open; only manually closing<br />3: Only manually open; only remote closing<br />4: Manually open/close only</p>
-        ]]></description>
+        <description>The parameter defines how to control the shut-off controller.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0: Remote and manually open/close&amp;lt;br /&amp;amp;gt1: Remote open/close only&amp;lt;br /&amp;amp;gt2: Only remote open; only manually closing&amp;lt;br /&amp;amp;gt3: Only manually open; only remote closing&amp;lt;br /&amp;amp;gt4: Manually open/close only&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

@@ -7,9 +7,7 @@
 
   <thing-type id="logic_scenecontroller_00_000" listed="false">
     <label>Heatit Z-Scene Controller Push button 6-gang</label>
-    <description><![CDATA[
-Push button 6-gang<br /><h1>Overview</h1><p>The Heatit Z-Wave Scene Controller is a Z-Wave module specifically adapted to Gira KNX touch sensors. The Heatit Z-Wave Scene Controller is a device with built-in wireless Z-Wave communication that may be used to control other Z-Wave devices such as dimmers, relay modules, etc.</p> <p>The scene controller has a built-in relay that can be used to turn on and off a local load, e.g. a lamp, thus replacing a standard 1-pole switch.</p> <br /><h2>Inclusion Information</h2><p>Pushing the upper left button 3 times (triple click) will activate Inclusion Mode on the device. It is also possible to activate Inclusion Mode by triple clicking the switch inside the module (through a little hole in the front of the module).</p> <br /><h2>Exclusion Information</h2><p>The inclusion and exclusion of the device is confirmed by sending out a Node Information Frame. Beside this, it may be necessary for certain network operations to send out a Node Information Frame. Triple clicking the button inside the module through a little hole (normally covered by GIRA module) or the upper left button will issue a Node Information Frame.</p>
-    ]]></description>
+    <description>Push button 6-gang&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Heatit Z-Wave Scene Controller is a Z-Wave module specifically adapted to Gira KNX touch sensors. The Heatit Z-Wave Scene Controller is a device with built-in wireless Z-Wave communication that may be used to control other Z-Wave devices such as dimmers, relay modules, etc.&lt;/p&gt &lt;p&gtThe scene controller has a built-in relay that can be used to turn on and off a local load, e.g. a lamp, thus replacing a standard 1-pole switch.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPushing the upper left button 3 times (triple click) will activate Inclusion Mode on the device. It is also possible to activate Inclusion Mode by triple clicking the switch inside the module (through a little hole in the front of the module).&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtThe inclusion and exclusion of the device is confirmed by sending out a Node Information Frame. Beside this, it may be necessary for certain network operations to send out a Node Information Frame. Triple clicking the button inside the module through a little hole (normally covered by GIRA module) or the upper left button will issue a Node Information Frame.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -273,9 +271,7 @@ Push button 6-gang<br /><h1>Overview</h1><p>The Heatit Z-Wave Scene Controller i
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Upper paddle buttons mode</label>
-        <description><![CDATA[
-Configuration of Pair Mode for the upper two buttons (button #1 and #2)<br /><h1>Overview</h1><p>0 Separate mode (toggle mode). (Default)</p> <p>1 In pair mode, left side sends on/up commands, right side sends off/down commands.</p>
-        ]]></description>
+        <description>Configuration of Pair Mode for the upper two buttons (button #1 and #2)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 Separate mode (toggle mode). (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 In pair mode, left side sends on/up commands, right side sends off/down commands.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Separate mode (toggle mode). (Default)</option>
@@ -285,9 +281,7 @@ Configuration of Pair Mode for the upper two buttons (button #1 and #2)<br /><h1
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Middle paddle buttons mode</label>
-        <description><![CDATA[
-Configuration of Pair Mode for the middle two buttons (button #3 and #4)<br /><h1>Overview</h1><p>0 Separate mode (toggle mode). (Default)</p> <p>1 In pair mode, left side sends on/up commands, right side sends off/down commands.</p>
-        ]]></description>
+        <description>Configuration of Pair Mode for the middle two buttons (button #3 and #4)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 Separate mode (toggle mode). (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 In pair mode, left side sends on/up commands, right side sends off/down commands.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Separate mode (toggle mode). (Default)</option>
@@ -297,9 +291,7 @@ Configuration of Pair Mode for the middle two buttons (button #3 and #4)<br /><h
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Lower paddle buttons mode</label>
-        <description><![CDATA[
-Configuration of Pair Mode for the lower two buttons (button #5 and #6)<br /><h1>Overview</h1><p>0 Separate mode (toggle mode). (Default)</p> <p>1 In pair mode, left side sends on/up commands, right side sends off/down commands.</p>
-        ]]></description>
+        <description>Configuration of Pair Mode for the lower two buttons (button #5 and #6)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 Separate mode (toggle mode). (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 In pair mode, left side sends on/up commands, right side sends off/down commands.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Separate mode (toggle mode). (Default)</option>
@@ -309,9 +301,7 @@ Configuration of Pair Mode for the lower two buttons (button #5 and #6)<br /><h1
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: LED #1 mode.</label>
-        <description><![CDATA[
-Configuration of the internal operation of LED #1<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
-        ]]></description>
+        <description>Configuration of the internal operation of LED #1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 LED indicates the status of the corresponding button. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 LED indicates the status of the corresponding button, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 LED indicates the status of corresponding paddle (in pair mode).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 LED indicates the status of the built-in relay.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 LED indicates the status of the built-in relay, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 LED show a 5 seconds indication when the corresponding button is pressed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED indication is disabled</option>
@@ -327,9 +317,7 @@ Configuration of the internal operation of LED #1<br /><h1>Overview</h1><p>0 LED
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: LED #2 mode</label>
-        <description><![CDATA[
-Configuration of the internal operation of LED #2<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
-        ]]></description>
+        <description>Configuration of the internal operation of LED #2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 LED indicates the status of the corresponding button. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 LED indicates the status of the corresponding button, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 LED indicates the status of corresponding paddle (in pair mode).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 LED indicates the status of the built-in relay.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 LED indicates the status of the built-in relay, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 LED show a 5 seconds indication when the corresponding button is pressed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED indication is disabled</option>
@@ -345,9 +333,7 @@ Configuration of the internal operation of LED #2<br /><h1>Overview</h1><p>0 LED
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: LED #3 mode</label>
-        <description><![CDATA[
-Configuration of the internal operation of LED #3<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
-        ]]></description>
+        <description>Configuration of the internal operation of LED #3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 LED indicates the status of the corresponding button. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 LED indicates the status of the corresponding button, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 LED indicates the status of corresponding paddle (in pair mode).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 LED indicates the status of the built-in relay.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 LED indicates the status of the built-in relay, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 LED show a 5 seconds indication when the corresponding button is pressed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED indication is disabled</option>
@@ -363,9 +349,7 @@ Configuration of the internal operation of LED #3<br /><h1>Overview</h1><p>0 LED
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: LED #4 mode</label>
-        <description><![CDATA[
-Configuration of the internal operation of LED #4<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
-        ]]></description>
+        <description>Configuration of the internal operation of LED #4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 LED indicates the status of the corresponding button. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 LED indicates the status of the corresponding button, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 LED indicates the status of corresponding paddle (in pair mode).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 LED indicates the status of the built-in relay.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 LED indicates the status of the built-in relay, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 LED show a 5 seconds indication when the corresponding button is pressed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED indication is disabled</option>
@@ -381,9 +365,7 @@ Configuration of the internal operation of LED #4<br /><h1>Overview</h1><p>0 LED
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: LED #5 mode</label>
-        <description><![CDATA[
-Configuration of the internal operation of LED #5<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
-        ]]></description>
+        <description>Configuration of the internal operation of LED #5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 LED indicates the status of the corresponding button. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 LED indicates the status of the corresponding button, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 LED indicates the status of corresponding paddle (in pair mode).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 LED indicates the status of the built-in relay.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 LED indicates the status of the built-in relay, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 LED show a 5 seconds indication when the corresponding button is pressed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED indication is disabled</option>
@@ -399,9 +381,7 @@ Configuration of the internal operation of LED #5<br /><h1>Overview</h1><p>0 LED
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: LED #6 mode</label>
-        <description><![CDATA[
-Configuration of the internal operation of LED #6<br /><h1>Overview</h1><p>0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).</p> <p>1 LED indicates the status of the corresponding button. (Default)</p> <p>2 LED indicates the status of the corresponding button, with inverted indication.</p> <p>3 LED indicates the status of corresponding paddle (in pair mode).</p> <p>4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.</p> <p>5 LED indicates the status of the built-in relay.</p> <p>6 LED indicates the status of the built-in relay, with inverted indication.</p> <p>7 LED show a 5 seconds indication when the corresponding button is pressed.</p>
-        ]]></description>
+        <description>Configuration of the internal operation of LED #6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 LED indication is disabled (LED can be controlled by Indicator Command Class Set commands).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 LED indicates the status of the corresponding button. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 LED indicates the status of the corresponding button, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 LED indicates the status of corresponding paddle (in pair mode).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 LED indicates the status of the corresponding paddle (in pair mode), with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 LED indicates the status of the built-in relay.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 LED indicates the status of the built-in relay, with inverted indication.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 LED show a 5 seconds indication when the corresponding button is pressed.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">LED indication is disabled</option>
@@ -417,9 +397,7 @@ Configuration of the internal operation of LED #6<br /><h1>Overview</h1><p>0 LED
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
         <label>10: Relay mode</label>
-        <description><![CDATA[
-This parameter configures the built-in relay<br /><h1>Overview</h1><p>0 Relay is disabled.</p> <p>1 Relay is controlled by button #1 or by upper paddle when pair mode is active. (Default)</p> <p>2 Relay is controlled by button #2 or by upper paddle when pair mode is active.</p> <p>3 Relay is controlled by button #3 or by middle paddle when pair mode is active.</p> <p>4 Relay is controlled by button #4 or by middle paddle when pair mode is active.</p> <p>5 Relay is controlled by button #5 or by lower paddle when pair mode is active.</p> <p>6 Relay is controlled by button #6 or by lower paddle when pair mode is active.</p> <p>7 Relay is activated for one second and is controlled by button #1 or by upper paddle when pair mode is active.</p>
-        ]]></description>
+        <description>This parameter configures the built-in relay&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 Relay is disabled.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Relay is controlled by button #1 or by upper paddle when pair mode is active. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 Relay is controlled by button #2 or by upper paddle when pair mode is active.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt3 Relay is controlled by button #3 or by middle paddle when pair mode is active.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt4 Relay is controlled by button #4 or by middle paddle when pair mode is active.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 Relay is controlled by button #5 or by lower paddle when pair mode is active.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt6 Relay is controlled by button #6 or by lower paddle when pair mode is active.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt7 Relay is activated for one second and is controlled by button #1 or by upper paddle when pair mode is active.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Relay is disabled</option>
@@ -435,9 +413,7 @@ This parameter configures the built-in relay<br /><h1>Overview</h1><p>0 Relay is
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Disable Central Scene notification</label>
-        <description><![CDATA[
-Disables or enables the sending of Central Scene notifications<br /><h1>Overview</h1><p>0 Central Scene notifications are enabled. (Default)</p> <p>1 Central Scene notifications are disabled.</p>
-        ]]></description>
+        <description>Disables or enables the sending of Central Scene notifications&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 Central Scene notifications are enabled. (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Central Scene notifications are disabled.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Enabled</option>
@@ -447,9 +423,7 @@ Disables or enables the sending of Central Scene notifications<br /><h1>Overview
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Disable House Cleaning Mode</label>
-        <description><![CDATA[
-Disable House Cleaning Mode, double press = 100% light<br /><h1>Overview</h1><p>0 House Cleaning Mode is enabled (Default)</p> <p>1 House Cleaning Mode is disabled; double-press button scene notifications will be disabled too.</p>
-        ]]></description>
+        <description>Disable House Cleaning Mode, double press = 100% light&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 House Cleaning Mode is enabled (Default)&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 House Cleaning Mode is disabled; double-press button scene notifications will be disabled too.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">House Cleaning Mode is enabled (Default)</option>
@@ -459,9 +433,7 @@ Disable House Cleaning Mode, double press = 100% light<br /><h1>Overview</h1><p>
 
       <parameter name="config_13_4_00000001" type="integer" groupName="configuration">
         <label>13: Multilevel Switch for button #1</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 1: Enable / Disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -472,9 +444,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable /
       <parameter name="config_13_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>13: Multilevel Switch for button #1</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 2: Upper switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">On</option>
@@ -485,9 +455,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper sw
       <parameter name="config_13_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>13: Lower switch value</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 3: Lower switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -498,17 +466,13 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower sw
       <parameter name="config_13_4_01000000" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>13: Multilevel Switch for button #1</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Not used – must be set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_14_4_00000001" type="integer" groupName="configuration">
         <label>14: Multilevel Switch for button #2</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 1: Enable / Disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -519,9 +483,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable /
       <parameter name="config_14_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>14: Multilevel Switch for button #2</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 2: Upper switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">On</option>
@@ -532,9 +494,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper sw
       <parameter name="config_14_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>14: Multilevel Switch for button #2</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 3: Lower switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -545,17 +505,13 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower sw
       <parameter name="config_14_4_01000000" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>14: Multilevel Switch for button #2</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Not used – must be set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_15_4_00000001" type="integer" groupName="configuration">
         <label>15: Multilevel Switch for button #3</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 1: Enable / Disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -566,9 +522,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable /
       <parameter name="config_15_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>15: Multilevel Switch for button #3</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 2: Upper switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">On</option>
@@ -579,9 +533,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper sw
       <parameter name="config_15_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>15: Multilevel Switch for button #3</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 3: Lower switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -592,17 +544,13 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower sw
       <parameter name="config_15_4_01000000" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>15: Multilevel Switch for button #3</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Not used – must be set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_16_4" type="integer" groupName="configuration">
         <label>16: Multilevel Switch for button #4</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 1: Enable / Disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -613,9 +561,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable /
       <parameter name="config_16_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>16: Multilevel Switch for button #4</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 2: Upper switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">On</option>
@@ -626,9 +572,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper sw
       <parameter name="config_16_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>16: Multilevel Switch for button #4</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 3: Lower switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -639,17 +583,13 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower sw
       <parameter name="config_16_4_01000000" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>16: Multilevel Switch for button #4</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Not used – must be set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_17_4_00000001" type="integer" groupName="configuration">
         <label>17: Multilevel Switch for button #5</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 1: Enable / Disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -660,9 +600,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable /
       <parameter name="config_17_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>17: Multilevel Switch for button #5</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 2: Upper switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">On</option>
@@ -673,9 +611,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper sw
       <parameter name="config_17_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>17: Multilevel Switch for button #5</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 3: Lower switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -686,17 +622,13 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower sw
       <parameter name="config_17_4_01000000" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>17: Multilevel Switch for button #5</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Not used – must be set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_18_4_00000001" type="integer" groupName="configuration">
         <label>18: Multilevel Switch for button #6</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes  associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 1: Enable / Disable&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Disabled – When single pressing the button, nodes  associated to group 6 won’t be switched.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>
@@ -707,9 +639,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable /
       <parameter name="config_18_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>18: Multilevel Switch for button #6</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 2: Upper switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="255">On</option>
@@ -720,9 +650,7 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 2: Upper sw
       <parameter name="config_18_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>18: Multilevel Switch for button #6</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 3: Lower switch value&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Off</option>
@@ -733,17 +661,13 @@ Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 3: Lower sw
       <parameter name="config_18_4_01000000" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="4294967295">
         <label>18: Multilevel Switch for button #6</label>
-        <description><![CDATA[
-Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
-        ]]></description>
+        <description>Configuration of the Multilevel Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtByte 4: Not used – must be set to 0.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Association groups for button 1</label>
-        <description><![CDATA[
-Association groups for button 1<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
-        ]]></description>
+        <description>Association groups for button 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 When commands are received by device 1, nodes in the association groups will be switched. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Not switched</option>
@@ -753,9 +677,7 @@ Association groups for button 1<br /><h1>Overview</h1><p>0 When commands are rec
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Association groups for button 2</label>
-        <description><![CDATA[
-Association groups for button 2<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
-        ]]></description>
+        <description>Association groups for button 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 When commands are received by device 1, nodes in the association groups will be switched. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Not switched</option>
@@ -765,9 +687,7 @@ Association groups for button 2<br /><h1>Overview</h1><p>0 When commands are rec
 
       <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: Association groups for button 3</label>
-        <description><![CDATA[
-Association groups for button 3<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
-        ]]></description>
+        <description>Association groups for button 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 When commands are received by device 1, nodes in the association groups will be switched. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Not switched</option>
@@ -777,9 +697,7 @@ Association groups for button 3<br /><h1>Overview</h1><p>0 When commands are rec
 
       <parameter name="config_22_1" type="integer" groupName="configuration">
         <label>22: Association groups for button 4</label>
-        <description><![CDATA[
-Association groups for button 4<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
-        ]]></description>
+        <description>Association groups for button 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 When commands are received by device 1, nodes in the association groups will be switched. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Not switched</option>
@@ -789,9 +707,7 @@ Association groups for button 4<br /><h1>Overview</h1><p>0 When commands are rec
 
       <parameter name="config_23_1" type="integer" groupName="configuration">
         <label>23: Association groups for button 5</label>
-        <description><![CDATA[
-Association groups for button 5<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
-        ]]></description>
+        <description>Association groups for button 5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 When commands are received by device 1, nodes in the association groups will be switched. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Not switched</option>
@@ -801,9 +717,7 @@ Association groups for button 5<br /><h1>Overview</h1><p>0 When commands are rec
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Association groups for button 6</label>
-        <description><![CDATA[
-Association groups for button 6<br /><h1>Overview</h1><p>0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.</p> <p>1 When commands are received by device 1, nodes in the association groups will be switched. (Default)</p>
-        ]]></description>
+        <description>Association groups for button 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 When commands are received by device 1, nodes in the association groups will not be switched, button activations will still send switch values.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 When commands are received by device 1, nodes in the association groups will be switched. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Not switched</option>
@@ -813,9 +727,7 @@ Association groups for button 6<br /><h1>Overview</h1><p>0 When commands are rec
 
       <parameter name="config_25_1" type="integer" groupName="configuration">
         <label>25: Backlight control</label>
-        <description><![CDATA[
-Configuration of backlight control.<br /><h1>Overview</h1><p>0 Backlight is only controlled by Indicator Command Class – commands send to endpoint 0.</p> <p>1 Backlight is turned on for 5 seconds when a button is pressed. (Default)</p>
-        ]]></description>
+        <description>Configuration of backlight control.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 Backlight is only controlled by Indicator Command Class – commands send to endpoint 0.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Backlight is turned on for 5 seconds when a button is pressed. (Default)&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">By indicator command class</option>
@@ -825,9 +737,7 @@ Configuration of backlight control.<br /><h1>Overview</h1><p>0 Backlight is only
 
       <parameter name="config_26_1" type="integer" groupName="configuration">
         <label>26: Basic Set for endpoint 0</label>
-        <description><![CDATA[
-Enable or disable that Basic Set commands to the root device<br /><h1>Overview</h1><p>Enable or disable that Basic Set commands to the root device will be able to control the backlight.</p> <p>Value Description</p> <p>0 Basic Set commands to endpoint 0 is forwarded to endpoint 1 (Default).</p> <p>1 Basic Set commands to endpoint 0 controls backlight (on/off).</p>
-        ]]></description>
+        <description>Enable or disable that Basic Set commands to the root device&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable or disable that Basic Set commands to the root device will be able to control the backlight.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtValue Description&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt0 Basic Set commands to endpoint 0 is forwarded to endpoint 1 (Default).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 Basic Set commands to endpoint 0 controls backlight (on/off).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Forwarded to endpoint 1</option>

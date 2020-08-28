@@ -7,9 +7,7 @@
 
   <thing-type id="innovus_smartpower_00_000" listed="false">
     <label>SmartPower RAone SmartPower</label>
-    <description><![CDATA[
-RAone SmartPower<br /><h1>Overview</h1><p>For the further reduction of energy consumption INNOVUS offers "RAone SmartPower". This module is an on / off module, which is used in particular to reduce the energy consumption of devices that unnecessarily consume power in "stand-by mode". This module also has a fingertip panel and is also equipped with an internal power meter. </p> <br /><h2>Inclusion Information</h2><p>The device is put into learn mode by touching the touchplate.</p> <br /><h2>Exclusion Information</h2><p>The device is put into learn mode by touching the touchplate.</p>
-    ]]></description>
+    <description>RAone SmartPower&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtFor the further reduction of energy consumption INNOVUS offers &quot;RAone SmartPower&quot;. This module is an on / off module, which is used in particular to reduce the energy consumption of devices that unnecessarily consume power in &quot;stand-by mode&quot;. This module also has a fingertip panel and is also equipped with an internal power meter. &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtThe device is put into learn mode by touching the touchplate.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtThe device is put into learn mode by touching the touchplate.&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -62,17 +60,13 @@ RAone SmartPower<br /><h1>Overview</h1><p>For the further reduction of energy co
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Report node</label>
-        <description><![CDATA[
-Report changes in level to this node id<br /><h1>Overview</h1><p>Report Node, reports changes in level to this node id.</p> <p>Disabled if 0. -&gt; Copied from SmartDimmer, as there's no config information available.</p>
-        ]]></description>
+        <description>Report changes in level to this node id&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtReport Node, reports changes in level to this node id.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtDisabled if 0. -&amp;amp;gt; Copied from SmartDimmer, as there's no config information available.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: BO IR support</label>
-        <description><![CDATA[
-Enable/Disable BO IR Support<br /><h1>Overview</h1><p>BO IR support is disabled if 0 otherwise enabled. -&gt; Copied from SmartDimmer, as there's no config information available.</p>
-        ]]></description>
+        <description>Enable/Disable BO IR Support&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtBO IR support is disabled if 0 otherwise enabled. -&amp;amp;gt; Copied from SmartDimmer, as there's no config information available.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Disabled</option>

@@ -7,9 +7,7 @@
 
   <thing-type id="wintop_multisensor_00_000" listed="false">
     <label>Multisensor Multi-sensor</label>
-    <description><![CDATA[
-Multi-sensor<br /><h1>Overview</h1><p>motion sensor</p> <br /><h2>Inclusion Information</h2><p>Please press the tamper switch at the back of the device for 3-8 seconds.</p> <p>After 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.</p> <br /><h2>Exclusion Information</h2><p>Please press the tamper switch at the back of the device for 3-8 seconds.</p> <p>After 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.</p> <br /><h2>Wakeup Information</h2><p> Press the temper button on the device and keep it for 3-7 seconds, then release.</p>
-    ]]></description>
+    <description>Multi-sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtmotion sensor&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPlease press the tamper switch at the back of the device for 3-8 seconds.&lt;/p&gt &lt;p&gtAfter 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPlease press the tamper switch at the back of the device for 3-8 seconds.&lt;/p&gt &lt;p&gtAfter 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt Press the temper button on the device and keep it for 3-7 seconds, then release.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -86,18 +84,14 @@ Multi-sensor<br /><h1>Overview</h1><p>motion sensor</p> <br /><h2>Inclusion Info
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="0" max="3600">
         <label>2: Mode Timeout</label>
-        <description><![CDATA[
-The time used in mode 2 to turn the sensor off .<br /><h1>Overview</h1><p>The time used in mode 2 to turn the sensor off . </p> <p>This Time will start running as soon as detection is seen.</p>
-        ]]></description>
+        <description>The time used in mode 2 to turn the sensor off .&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe time used in mode 2 to turn the sensor off . &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis Time will start running as soon as detection is seen.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>900</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="7200">
         <label>3: Switch off time</label>
-        <description><![CDATA[
-Switch off time starts after timeout.<br /><h1>Overview</h1><p>The switch off time will start running as soon as mode timeout is done. Motion sensor is turned on and when movement is de tected again the mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message is s</p>
-        ]]></description>
+        <description>Switch off time starts after timeout.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe switch off time will start running as soon as mode timeout is done. Motion sensor is turned on and when movement is de tected again the mode timeout (cfg param 1) will start running all over again. When switch off time is done a basic off message is s&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2700</default>
       </parameter>
 
@@ -111,18 +105,14 @@ Switch off time starts after timeout.<br /><h1>Overview</h1><p>The switch off ti
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="1" max="3">
         <label>5: Mode</label>
-        <description><![CDATA[
-The mode that is entered after detection<br /><h1>Overview</h1><p>Normal operation mode is default.</p>
-        ]]></description>
+        <description>The mode that is entered after detection&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtNormal operation mode is default.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="-10" max="10">
         <label>6: The temperature offset</label>
-        <description><![CDATA[
-An offset for the temperature.<br /><h1>Overview</h1><p>Param1,2: A signed integer to determine the offset off the temperature.</p>
-        ]]></description>
+        <description>An offset for the temperature.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtParam1,2: A signed integer to determine the offset off the temperature.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

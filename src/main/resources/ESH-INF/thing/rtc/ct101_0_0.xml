@@ -7,9 +7,7 @@
 
   <thing-type id="rtc_ct101_00_000" listed="false">
     <label>CT101 Z-Wave Thermostat</label>
-    <description><![CDATA[
-Z-Wave Thermostat<br /><h1>Overview</h1><p>Z-wave enabled thermostat</p> <br /><h2>Inclusion Information</h2><p>Click "Manage" button alongside this device, click "Add Device" device</p> <br /><h2>Exclusion Information</h2><p>Click "Manage" button alongside this device, click "Remove" device </p>
-    ]]></description>
+    <description>Z-Wave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZ-wave enabled thermostat&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtClick &quot;Manage&quot; button alongside this device, click &quot;Add Device&quot; device&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtClick &quot;Manage&quot; button alongside this device, click &quot;Remove&quot; device &lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -156,9 +154,7 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>Z-wave enabled thermostat</p> <br /><
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Temperature Reporting Threshold</label>
-        <description><![CDATA[
-Reporting threshold for changes in the ambient temperature.<br /><h1>Overview</h1><p>This value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.</p>
-        ]]></description>
+        <description>Reporting threshold for changes in the ambient temperature.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis value determines the reporting threshold when association reporting is enabled. Unsupported values will be ignored.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Disabled</option>
@@ -171,9 +167,7 @@ Reporting threshold for changes in the ambient temperature.<br /><h1>Overview</h
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Utility Lock Enable/Disable</label>
-        <description><![CDATA[
-Prevents setpoint changes at thermostat.<br /><h1>Overview</h1><p>If set to 0, the utility lock is disabled, all other values, 1-255, will enable the utility lock.  This will prevent changes to the setpoint at the thermostat screen.</p>
-        ]]></description>
+        <description>Prevents setpoint changes at thermostat.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf set to 0, the utility lock is disabled, all other values, 1-255, will enable the utility lock.  This will prevent changes to the setpoint at the thermostat screen.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Utility lock disabled</option>
@@ -183,9 +177,7 @@ Prevents setpoint changes at thermostat.<br /><h1>Overview</h1><p>If set to 0, t
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Thermostat Swing Temperature</label>
-        <description><![CDATA[
-Variance allowed from setpoint<br /><h1>Overview</h1><p>The thermostat swing temperature is in units of 0.5 degrees Fahrenheit. A value of 0x01 is 0.05F and 0x02 is 1.0F. The supported values may vary from thermostat to thermostat but typically the allowed values are 0.5F (0x01) to 4.0F (0x08).</p> <p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat setpoint.</p>
-        ]]></description>
+        <description>Variance allowed from setpoint&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe thermostat swing temperature is in units of 0.5 degrees Fahrenheit. A value of 0x01 is 0.05F and 0x02 is 1.0F. The supported values may vary from thermostat to thermostat but typically the allowed values are 0.5F (0x01) to 4.0F (0x08).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe Thermostat Swing Temperature configuration command sets swing temperature on the thermostat setpoint.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="1">0.5°</option>
@@ -201,9 +193,7 @@ Variance allowed from setpoint<br /><h1>Overview</h1><p>The thermostat swing tem
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Thermostat Recovery Mode</label>
-        <description><![CDATA[
-Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery Mode can be either fast (0x01) or economy (0x02).</p>
-        ]]></description>
+        <description>Fast or Economy recovery mode.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Thermostat Recovery Mode can be either fast (0x01) or economy (0x02).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="1">Fast recovery Mode</option>
@@ -235,10 +225,10 @@ Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery 
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="11">Economy Heat</option>
         <option value="1">Heat</option>
-        <option value="2">Cool</option>
+        <option value="11">Economy Heat</option>
         <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
         <option value="3">Auto</option>
       </options>
     </state>
@@ -251,10 +241,10 @@ Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">On (high)</option>
         <option value="0">Auto (Low)</option>
-        <option value="2">Auto (High)</option>
         <option value="1">On (Low)</option>
+        <option value="2">Auto (High)</option>
+        <option value="3">On (high)</option>
       </options>
     </state>
   </channel-type>
@@ -279,10 +269,10 @@ Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery 
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="11">Economy Heat</option>
         <option value="1">Heat</option>
-        <option value="2">Cool</option>
+        <option value="11">Economy Heat</option>
         <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
         <option value="3">Auto</option>
       </options>
     </state>
@@ -295,10 +285,10 @@ Fast or Economy recovery mode.<br /><h1>Overview</h1><p>The Thermostat Recovery 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">On (high)</option>
         <option value="0">Auto (Low)</option>
-        <option value="2">Auto (High)</option>
         <option value="1">On (Low)</option>
+        <option value="2">Auto (High)</option>
+        <option value="3">On (high)</option>
       </options>
     </state>
   </channel-type>

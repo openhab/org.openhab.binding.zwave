@@ -7,9 +7,7 @@
 
   <thing-type id="willis_nzw37_00_000" listed="false">
     <label>NZW37 Inovelli Smart Plug (2 Channel with Scene Control)</label>
-    <description><![CDATA[
-Inovelli Smart Plug (2 Channel with Scene Control)<br /><h1>Overview</h1><ul><li>2 Controllable Outlets</li> <li>Indoor</li> <li>Wall Plug</li> <li>120 VAC, 60 Hz</li> <li>908.42 MHz</li> <li>Max Load Outlet #1 1200W (10A) Resistive</li> <li>Max Load Outlet #2 1200W (10A) Resistive</li> <li>Max Simultaneous Load 16A</li> <li>Max Range LoS 30 m</li> <li>Operating Temperature Range 0°C to 40°C</li> <li>UL E464831</li> <li>FCC ID OXGZW36</li> </ul><br /><h2>Inclusion Information</h2><p>Auto-Inclusion 30 sec from power on, backup-Inclusion press center button 3-5 times within 3 sec (Tested to work with Network Wide Inclusion)</p> <br /><h2>Exclusion Information</h2><p>Press the center button 3-5 times within 3 seconds to exclude it from the network.</p>
-    ]]></description>
+    <description>Inovelli Smart Plug (2 Channel with Scene Control)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gt2 Controllable Outlets&lt;/li&gt &lt;li&gtIndoor&lt;/li&gt &lt;li&gtWall Plug&lt;/li&gt &lt;li&gt120 VAC, 60 Hz&lt;/li&gt &lt;li&gt908.42 MHz&lt;/li&gt &lt;li&gtMax Load Outlet #1 1200W (10A) Resistive&lt;/li&gt &lt;li&gtMax Load Outlet #2 1200W (10A) Resistive&lt;/li&gt &lt;li&gtMax Simultaneous Load 16A&lt;/li&gt &lt;li&gtMax Range LoS 30 m&lt;/li&gt &lt;li&gtOperating Temperature Range 0°C to 40°C&lt;/li&gt &lt;li&gtUL E464831&lt;/li&gt &lt;li&gtFCC ID OXGZW36&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtAuto-Inclusion 30 sec from power on, backup-Inclusion press center button 3-5 times within 3 sec (Tested to work with Network Wide Inclusion)&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the center button 3-5 times within 3 seconds to exclude it from the network.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->

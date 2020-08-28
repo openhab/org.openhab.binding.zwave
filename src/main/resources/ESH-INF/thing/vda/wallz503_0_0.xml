@@ -7,9 +7,7 @@
 
   <thing-type id="vda_wallz503_00_000" listed="false">
     <label>WallZ-503 Vitrum Thermostat</label>
-    <description><![CDATA[
-Vitrum Thermostat<br /><h1>Overview</h1><h1>Vitrum Wireless Thermostat</h1> <h2>Features:</h2> <p>Touch operated button with RGB back-light. Based on Z-Wave ® 500 module for wider coverage and higher data rate. Very low power consumption in standby. Easy installation. Acoustic feedback at button press. Over-the-air firmware update.</p> <br /><h2>Inclusion Information</h2><p>The device supports both Normal Inclusion and Network Wide Inclusion.</p> <p>Follow the steps below to include the device into the network:</p> <ol><li>Check the device is not already included in a Z-Wave network by pressing any button on the front panel: the LED button should blink with red colour shortly. Should the device be already included, follow the instructions below to excluded it from the network.</li> <li>Set the controller into “Inclusion Mode”. Refer to the controller documentation to set the controller into Inclusion mode.</li> <li>Set the device into Learn Mode by pressing and holding button No.1 (on the top left of the device) for longer than 4 seconds. The device will enter into inclusion mode by blinking magenta LED button No.1. Upon successful completion, the device LEDs will blink green three times.</li> <li>Should for any reasons the device fail the normal inclusion, the device turns to enter into the Network Wide Inclusion Mode up to 4 times. Any time the device enters into Wide Inclusion Mode, LED Button No.1 blinks Magenta.</li> </ol><br /><h2>Exclusion Information</h2><p>Before starting to exclude the device from the network set the controller into “Exclusion Mode”.</p> <p>Please refer to the controller documentation to set the controller into Exclusion mode.</p> <p>The device can be excluded from a network only if previously included. Check that by pressing a button on the front panel: the LED button should not blink with red colour shortly. Follow the steps below to exclude the device from the network:</p> <ol><li>Press and hold button No.1 (on the top left of the front panel device) for around 6 seconds and after that press 3 times the same button shortly within 3 seconds.</li> <li>LED Button No.1 blinks red upon completely the device exclusion successfully.</li> <li>Check the device is removed from the network by pressing button No.1: the LED button blinks red shortly.</li> </ol><br /><h2>Wakeup Information</h2><p>To send a Node info frame press and release shortly the hidden button (see picture on Installation paragraph) on the front end top-back of the device; a short audio signal (beep), will confirm the Node Info transmission. If parameter 217 is set at 1 or 2 (see parameter table below), each button send a “Multichannel Capability Report”. As default, parameter 217 is Off</p>
-    ]]></description>
+    <description>Vitrum Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;h1&gtVitrum Wireless Thermostat&lt;/h1&gt &lt;h2&gtFeatures:&lt;/h2&gt &lt;p&gtTouch operated button with RGB back-light. Based on Z-Wave ® 500 module for wider coverage and higher data rate. Very low power consumption in standby. Easy installation. Acoustic feedback at button press. Over-the-air firmware update.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtThe device supports both Normal Inclusion and Network Wide Inclusion.&lt;/p&gt &lt;p&gtFollow the steps below to include the device into the network:&lt;/p&gt &lt;ol&gt&lt;li&gtCheck the device is not already included in a Z-Wave network by pressing any button on the front panel: the LED button should blink with red colour shortly. Should the device be already included, follow the instructions below to excluded it from the network.&lt;/li&gt &lt;li&gtSet the controller into “Inclusion Mode”. Refer to the controller documentation to set the controller into Inclusion mode.&lt;/li&gt &lt;li&gtSet the device into Learn Mode by pressing and holding button No.1 (on the top left of the device) for longer than 4 seconds. The device will enter into inclusion mode by blinking magenta LED button No.1. Upon successful completion, the device LEDs will blink green three times.&lt;/li&gt &lt;li&gtShould for any reasons the device fail the normal inclusion, the device turns to enter into the Network Wide Inclusion Mode up to 4 times. Any time the device enters into Wide Inclusion Mode, LED Button No.1 blinks Magenta.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtBefore starting to exclude the device from the network set the controller into “Exclusion Mode”.&lt;/p&gt &lt;p&gtPlease refer to the controller documentation to set the controller into Exclusion mode.&lt;/p&gt &lt;p&gtThe device can be excluded from a network only if previously included. Check that by pressing a button on the front panel: the LED button should not blink with red colour shortly. Follow the steps below to exclude the device from the network:&lt;/p&gt &lt;ol&gt&lt;li&gtPress and hold button No.1 (on the top left of the front panel device) for around 6 seconds and after that press 3 times the same button shortly within 3 seconds.&lt;/li&gt &lt;li&gtLED Button No.1 blinks red upon completely the device exclusion successfully.&lt;/li&gt &lt;li&gtCheck the device is removed from the network by pressing button No.1: the LED button blinks red shortly.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtTo send a Node info frame press and release shortly the hidden button (see picture on Installation paragraph) on the front end top-back of the device; a short audio signal (beep), will confirm the Node Info transmission. If parameter 217 is set at 1 or 2 (see parameter table below), each button send a “Multichannel Capability Report”. As default, parameter 217 is Off&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -173,11 +171,11 @@ Vitrum Thermostat<br /><h1>Overview</h1><h1>Vitrum Wireless Thermostat</h1> <h2>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
-        <option value="2">Cool</option>
-        <option value="5">Resume</option>
         <option value="1">Heat</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
+        <option value="5">Resume</option>
       </options>
     </state>
   </channel-type>
@@ -189,12 +187,12 @@ Vitrum Thermostat<br /><h1>Overview</h1><h1>Vitrum Wireless Thermostat</h1> <h2>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="0">Auto (Low)</option>
         <option value="">UNKNOWN_4</option>
-        <option value="3">On (high)</option>
         <option value="">UNKNOWN_5</option>
+        <option value="0">Auto (Low)</option>
         <option value="1">On (Low)</option>
         <option value="2">Auto (High)</option>
+        <option value="3">On (high)</option>
       </options>
     </state>
   </channel-type>
@@ -218,11 +216,11 @@ Vitrum Thermostat<br /><h1>Overview</h1><h1>Vitrum Wireless Thermostat</h1> <h2>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
-        <option value="2">Cool</option>
-        <option value="5">Resume</option>
         <option value="1">Heat</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
+        <option value="5">Resume</option>
       </options>
     </state>
   </channel-type>
@@ -234,12 +232,12 @@ Vitrum Thermostat<br /><h1>Overview</h1><h1>Vitrum Wireless Thermostat</h1> <h2>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="0">Auto (Low)</option>
         <option value="">UNKNOWN_4</option>
-        <option value="3">On (high)</option>
         <option value="">UNKNOWN_5</option>
+        <option value="0">Auto (Low)</option>
         <option value="1">On (Low)</option>
         <option value="2">Auto (High)</option>
+        <option value="3">On (high)</option>
       </options>
     </state>
   </channel-type>

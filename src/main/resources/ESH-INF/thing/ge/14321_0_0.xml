@@ -7,9 +7,7 @@
 
   <thing-type id="ge_14321_00_000" listed="false">
     <label>GE/Jasco 14321 In-Wall Dimmer</label>
-    <description><![CDATA[
-In-Wall Dimmer<br /><h1>Overview</h1><p><strong>Basic operation </strong></p> <p>Note: Before starting, fan must be set to ‘HIGH’ position using pull chain. The connected fan can then be turned ON/OFF and adjust speed levels in two ways:</p> <p>1. Manually from the front panel rocker of the In-Wall Fan Control.</p> <p>2. Remotely with a Z-Wave controller.</p> <p><strong>Manual control</strong></p> <p>1. To turn the connected fan ON: Press and release the top of the rocker. NOTE: Fan will return to last speed setting of Fan Control. Default setting – HIGH.</p> <p>2. To turn the fan OFF: Press and release the bottom of the rocker.</p> <p><strong>Adjust fan speed </strong></p> <p>The LED indicator confirms fan speed settings by flashing patterns LOW – LED will blink every 2 seconds for 10 seconds MEDIUM – LED will blink every second for 10 seconds HIGH – LED will blink every half second for 10 seconds</p> <p>1. To decrease fan speed: Press and hold lower rocker.</p> <p>2. To increase fan speed: Press and hold upper rocker. </p> <p><strong>This device supports Association Command Class (3 Groups) </strong></p> <p>• Association Group 1 supports Lifeline, Switch Multilevel Report</p> <p>• Association Group 2 supports Basic Set and is controlled by pressing the On or Off button with the local load</p> <p>• Association Group 3 supports Basic Set and is controlled by double pressing the On or Off button</p> <p>• Each Association Group supports 5 total nodes</p> <br /><h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p> <br /><h2>Exclusion Information</h2><p>Once the controller is ready to remove your device, press and release the top or bottom of the wireless smart switch (rocker) to remove it from the network.</p>
-    ]]></description>
+    <description>In-Wall Dimmer&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&lt;strong&gtBasic operation &lt;/strong&gt&lt;/p&gt &lt;p&gtNote: Before starting, fan must be set to ‘HIGH’ position using pull chain. The connected fan can then be turned ON/OFF and adjust speed levels in two ways:&lt;/p&gt &lt;ol&gt&lt;li&gtManually from the front panel rocker of the In-Wall Fan Control.&lt;/li&gt &lt;li&gtRemotely with a Z-Wave controller.&lt;/li&gt &lt;/ol&gt&lt;p&gt&lt;strong&gtManual control&lt;/strong&gt&lt;/p&gt &lt;ol&gt&lt;li&gtTo turn the connected fan ON: Press and release the top of the rocker. NOTE: Fan will return to last speed setting of Fan Control. Default setting – HIGH.&lt;/li&gt &lt;li&gtTo turn the fan OFF: Press and release the bottom of the rocker.&lt;/li&gt &lt;/ol&gt&lt;p&gt&lt;strong&gtAdjust fan speed &lt;/strong&gt&lt;/p&gt &lt;p&gtThe LED indicator confirms fan speed settings by flashing patterns LOW – LED will blink every 2 seconds for 10 seconds MEDIUM – LED will blink every second for 10 seconds HIGH – LED will blink every half second for 10 seconds&lt;/p&gt &lt;ol&gt&lt;li&gtTo decrease fan speed: Press and hold lower rocker.&lt;/li&gt &lt;li&gtTo increase fan speed: Press and hold upper rocker. &lt;/li&gt &lt;/ol&gt&lt;p&gt&lt;strong&gtThis device supports Association Command Class (3 Groups) &lt;/strong&gt&lt;/p&gt &lt;ul&gt&lt;li&gtAssociation Group 1 supports Lifeline, Switch Multilevel Report&lt;/li&gt &lt;li&gtAssociation Group 2 supports Basic Set and is controlled by pressing the On or Off button with the local load&lt;/li&gt &lt;li&gtAssociation Group 3 supports Basic Set and is controlled by double pressing the On or Off button&lt;/li&gt &lt;li&gtEach Association Group supports 5 total nodes&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtOnce the controller is ready to remove your device, press and release the top or bottom of the wireless smart switch (rocker) to remove it from the network.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -56,9 +54,7 @@ In-Wall Dimmer<br /><h1>Overview</h1><p><strong>Basic operation </strong></p> <p
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is Night Light mode where LED is on when switch is off.</p>
-        ]]></description>
+        <description>Defines the behavior of the blue LED.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDefault is Night Light mode where LED is on when switch is off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">LED on when switch is OFF</option>
@@ -70,9 +66,7 @@ Defines the behavior of the blue LED.<br /><h1>Overview</h1><p>Default is Night 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>3: Night Light</label>
-        <description><![CDATA[
-Defines the behavior of the blue LED<br /><h1>Overview</h1><p>This configuration parameter defines the behavior of the blue LED "night light".</p> <p>The default behavior is "ON_WHEN_OFF" - the LED is on when the switch is set to off.</p> <p>The other two options are "ON_WHEN_ON" - the LED is on when the switch is set to on, and</p> <p>"ALWAYS_OFF" - the LED is always off.</p>
-        ]]></description>
+        <description>Defines the behavior of the blue LED&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis configuration parameter defines the behavior of the blue LED &quot;night light&quot;.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe default behavior is &quot;ON_WHEN_OFF&quot; - the LED is on when the switch is set to off.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThe other two options are &quot;ON_WHEN_ON&quot; - the LED is on when the switch is set to on, and&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt&quot;ALWAYS_OFF&quot; - the LED is always off.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

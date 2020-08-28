@@ -10,24 +10,22 @@ This describes the Z-Wave device *Soft Remote *, manufactured by *[ID-RF](http:/
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![Soft Remote  product image](https://www.cd-jackson.com/zwave_device_uploads/250/250_default.png)
+![Soft Remote  product image](https://opensmarthouse.org/zwavedatabase/250/image/)
 
 
 The Soft Remote  does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. Refer to the *Wakeup Information* section below for further information.
 
 ## Overview
 
-The NodOn® Soft Remote controls any compatible receivers Z-Wave® or Z-Wave Plus®, such as the Smart Plug NodOn®. It can address, directly, up to 4 groups of 8 devices and sent up to 16 different scenes to a Home Automation Gateway. This controller can operate on its own (“Standalone” Mode) or as gateway’s assistant (“Gateway” Mode). The product integrates a LED, which give an intuitive feedback for each operation you perform.
+<p&gtThe NodOn® Soft Remote controls any compatible receivers Z-Wave® or Z-Wave Plus®, such as the Smart Plug NodOn®. It can address, directly, up to 4 groups of 8 devices and sent up to 16 different scenes to a Home Automation Gateway. This controller can operate on its own (“Standalone” Mode) or as gateway’s assistant (“Gateway” Mode). The product integrates a LED, which give an intuitive feedback for each operation you perform.</p&gt
 
 ### Inclusion Information
 
-  1. Simultaneously push on I and P, during 1sec. The LED glows in pink to confirm the selection
-  2. Push on I, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure
+<ol&gt<li&gtSimultaneously push on I and P, during 1sec. The LED glows in pink to confirm the selection</li&gt <li&gtPush on I, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Simultaneously push on I and P, during 1sec. The LED glows in pink to confirm the selection
-  2. Push on I, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure
+<ol&gt<li&gtSimultaneously push on I and P, during 1sec. The LED glows in pink to confirm the selection</li&gt <li&gtPush on I, within 10 seconds. The LED blinks in pink to confirm your choice The LED blinks in green to confirm the procedure</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -36,7 +34,7 @@ The Soft Remote  does not permanently listen for messages sent from the controll
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Press on any button of the Soft Remote.
+<p&gtPress on any button of the Soft Remote.</p&gt
 
 ## Channels
 
@@ -307,9 +305,9 @@ Association group 7 supports 8 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/250/nodon-crc-3-6-xx-userguide-150707-en-interactive.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/250/nodon-crc-3-6-xx-userguide-150707-en-interactive.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/250).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/250).

@@ -10,7 +10,7 @@ This describes the Z-Wave device *ThermIQ Temperature Sensor*, manufactured by *
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![ThermIQ Temperature Sensor product image](https://www.cd-jackson.com/zwave_device_uploads/1172/1172_default.png)
+![ThermIQ Temperature Sensor product image](https://opensmarthouse.org/zwavedatabase/1172/image/)
 
 
 The ThermIQ Temperature Sensor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,23 +19,15 @@ The ThermIQ Temperature Sensor does not permanently listen for messages sent fro
 
 ## Overview
 
-Simple ambient temperature sensor that comes with ThermIQ infrared panels
+<p&gtSimple ambient temperature sensor that comes with ThermIQ infrared panels</p&gt
 
 ### Inclusion Information
 
-  * Remove the back cover
-  * Mount 2 AAA batteries
-  * Enable inclusion mode on the controller
-  * Press and hold tamper switch till the red led starts blinking
-  * Release tamper switch
+<ul&gt<li&gtRemove the back cover</li&gt <li&gtMount 2 AAA batteries</li&gt <li&gtEnable inclusion mode on the controller</li&gt <li&gtPress and hold tamper switch till the red led starts blinking</li&gt <li&gtRelease tamper switch</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Remove the back cover
-  * Mount 2 AAA batteries
-  * Enable exclusion mode on the controller
-  * Press and hold tamper switch till the red led starts blinking
-  * Release tamper switch
+<ul&gt<li&gtRemove the back cover</li&gt <li&gtMount 2 AAA batteries</li&gt <li&gtEnable exclusion mode on the controller</li&gt <li&gtPress and hold tamper switch till the red led starts blinking</li&gt <li&gtRelease tamper switch</li&gt </ul&gt
 
 ### Wakeup Information
 
@@ -44,11 +36,11 @@ The ThermIQ Temperature Sensor does not permanently listen for messages sent fro
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Device can be set to wake up on a set time interval
+<p&gtDevice can be set to wake up on a set time interval</p&gt
 
 ### General Usage Information
 
-Typically used in combination with the Resistive High Power Dimmer for an IR Panel that is also delivered by ThermIQ. Set the temperature setpoint with THERMOSTAT\_SETPOINT\_SET and the Thermostat then controls the IR PANEL with BASIC\_ON and BASIC\_OFF. Still searching for specific documentation, adding BeNext config (Dutch) and Resistive High Power Dimmer doc.
+<p&gtTypically used in combination with the Resistive High Power Dimmer for an IR Panel that is also delivered by ThermIQ. Set the temperature setpoint with THERMOSTAT\_SETPOINT\_SET and the Thermostat then controls the IR PANEL with BASIC\_ON and BASIC\_OFF. Still searching for specific documentation, adding BeNext config (Dutch) and Resistive High Power Dimmer doc.</p&gt
 
 ## Channels
 
@@ -128,10 +120,10 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [BeNext environment configuration (NL)](https://www.cd-jackson.com/zwave_device_uploads/1172/Hoe-meld-ik-thermostaten-aan---ThermIQ.pdf)
-* [Resistive High Power Dimmer EU Quick Start](https://www.cd-jackson.com/zwave_device_uploads/1172/ir-paneel-dimmer.pdf)
+* [BeNext environment configuration (NL)](https://opensmarthouse.org/zwavedatabase/1172/Hoe-meld-ik-thermostaten-aan---ThermIQ.pdf)
+* [Resistive High Power Dimmer EU Quick Start](https://opensmarthouse.org/zwavedatabase/1172/ir-paneel-dimmer.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1172).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1172).

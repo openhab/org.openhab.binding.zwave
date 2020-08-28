@@ -10,24 +10,22 @@ This describes the Z-Wave device *SmoothRemote*, manufactured by *INNOVUS* with 
 
 The device is in the category of *Remote Control*, defining Any portable or hand-held device that controls the status of something, e.g. remote control, keyfob etc..
 
-![SmoothRemote product image](https://www.cd-jackson.com/zwave_device_uploads/440/440_default.png)
+![SmoothRemote product image](https://opensmarthouse.org/zwavedatabase/440/image/)
 
 
 The SmoothRemote does not permanently listen for messages sent from the controller - it will periodically wake up automatically to check if the controller has messages to send, but will sleep most of the time to conserve battery life. Refer to the *Wakeup Information* section below for further information.
 
 ## Overview
 
-The company's Z-Wave product portfolio is rounded off with the "SmoothRemote" remote control. This allows all INNOVUS devices as well as other third-party Z-Wave devices to be conveniently controlled from the sofa. 
-
-The application fields are virtually unlimited. For example, the lights in the entire house can be switched on or off from the living room, unnecessary consumers switched off, or the room temperature in other rooms lowered or increased. All processes can be conveniently and easily set up via the House Control System
+<p&gtThe company's Z-Wave product portfolio is rounded off with the "SmoothRemote" remote control. This allows all INNOVUS devices as well as other third-party Z-Wave devices to be conveniently controlled from the sofa. </p&gt <p&gtThe application fields are virtually unlimited. For example, the lights in the entire house can be switched on or off from the living room, unnecessary consumers switched off, or the room temperature in other rooms lowered or increased. All processes can be conveniently and easily set up via the House Control System</p&gt
 
 ### Inclusion Information
 
-The remote can be added to or removed from a Z-Wave network by triple clicking the Shift button
+<p&gtThe remote can be added to or removed from a Z-Wave network by triple clicking the Shift button</p&gt
 
 ### Exclusion Information
 
-The remote can be added to or removed from a Z-Wave network by triple clicking the Shift button
+<p&gtThe remote can be added to or removed from a Z-Wave network by triple clicking the Shift button</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +34,7 @@ The SmoothRemote does not permanently listen for messages sent from the controll
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-It is possible to make the device send a Wake Up Notification clicking VIII button 4 times
+<p&gtIt is possible to make the device send a Wake Up Notification clicking VIII button 4 times</p&gt
 
 ## Channels
 
@@ -70,11 +68,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 0: Button Press Time
 
 Button Press Time
- Time for presses on a single button to register as seperate and not part of a sequence, measured in 0.01s.
-
-0 is interpreted as a 1.
-
-**Warning**: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.
+<p&gt Time for presses on a single button to register as seperate and not part of a sequence, measured in 0.01s.</p&gt <p&gt0 is interpreted as a 1.</p&gt <p&gt<strong&gtWarning</strong&gt: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -85,11 +79,7 @@ This parameter has the configuration ID ```config_0_1``` and is of type ```INTEG
 ### Parameter 1: Button Multiple Press Time
 
 Button Multiple Press Time
-Time for presses on multiple buttons to register as seperate and not part of a sequence, measured in 0.01 s.
-
-0 is interpreted as a 1.
-
-**Warning**: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.
+<p&gtTime for presses on multiple buttons to register as seperate and not part of a sequence, measured in 0.01 s.</p&gt <p&gt0 is interpreted as a 1.</p&gt <p&gt<strong&gtWarning</strong&gt: All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```100```.
@@ -100,11 +90,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Button Hold Time
 
 Button Hold Time
-Time for presses to register as being held down in 0.01s.
-
-0 is interpreted as a 1.
-
-**Warning:** All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences. 
+<p&gtTime for presses to register as being held down in 0.01s.</p&gt <p&gt0 is interpreted as a 1.</p&gt <p&gt<strong&gtWarning:</strong&gt All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences. </p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```40```.
@@ -115,9 +101,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: Network Update Interval
 
 Network Update Interval
-Time between network updates in 256 seconds. Disabled if 0.
-
-**Warning:** All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences. 
+<p&gtTime between network updates in 256 seconds. Disabled if 0.</p&gt <p&gt<strong&gtWarning:</strong&gt All Configuration values have serious effects on the functioning of the device and as such shouldn't be changed unless one is certain of the consequences. </p&gt
 Values in the range 0 to 65535 may be set.
 
 The manufacturer defined default value is ```168```.
@@ -575,9 +559,9 @@ Association group 68 supports 30 nodes.
 
 ### Documentation Links
 
-* [Technical manual](https://www.cd-jackson.com/zwave_device_uploads/440/smoothremote-00120001-tech.pdf)
+* [Technical manual](https://opensmarthouse.org/zwavedatabase/440/smoothremote-00120001-tech.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/440).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/440).

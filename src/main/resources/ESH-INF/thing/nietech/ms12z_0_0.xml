@@ -6,10 +6,8 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nietech_ms12z_00_000" listed="false">
-    <label>MS12Z</label>
-    <description><![CDATA[
-<br /><h1>Overview</h1><p>Minoston MS12Z - a simple on/off switch with timer capabilities</p> <br /><h2>Inclusion Information</h2><p>Press the up or down button three times quickly to ADD and REMOVE</p> <br /><h2>Exclusion Information</h2><p>Press the up or down button three times quickly to ADD and REMOVE</p>
-    ]]></description>
+    <label>MS12Z Wall Switch</label>
+    <description>Wall Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtMinoston MS12Z - a simple on/off switch with timer capabilities&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress the up or down button three times quickly to ADD and REMOVE&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress the up or down button three times quickly to ADD and REMOVE&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt&lt;br /&gt&lt;/p&gt</description>
     <category>WallSwitch</category>
 
     <!-- CHANNEL DEFINITIONS -->

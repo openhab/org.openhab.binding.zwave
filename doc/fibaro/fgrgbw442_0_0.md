@@ -10,24 +10,22 @@ This describes the Z-Wave device *FGRGBW-442*, manufactured by *[Fibargroup](htt
 
 The device is in the category of *Light Bulb*, defining Devices that illuminate something, such as bulbs, etc..
 
-![FGRGBW-442 product image](https://www.cd-jackson.com/zwave_device_uploads/1127/1127_default.png)
+![FGRGBW-442 product image](https://opensmarthouse.org/zwavedatabase/1127/image/)
 
 
 The FGRGBW-442 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-FIBARO RGBW Controller 2 uses PWM output signal, allowing it to control LED, RGB, RGBW strips, halogen lights and other resistive loads. It can also measure active power and energy consumed by the load. Controlled devices may be powered by 12 or 24V DC.
-
-Inputs support momentary/toggle switches and 0-10V analog sensors, like temperature sensors, humidity sensors, light sensors etc
+<p&gtFIBARO RGBW Controller 2 uses PWM output signal, allowing it to control LED, RGB, RGBW strips, halogen lights and other resistive loads. It can also measure active power and energy consumed by the load. Controlled devices may be powered by 12 or 24V DC.</p&gt <p&gtInputs support momentary/toggle switches and 0-10V analog sensors, like temperature sensors, humidity sensors, light sensors etc</p&gt
 
 ### Inclusion Information
 
-Quickly, three times click the service button.
+<p&gtQuickly, three times click the service button.</p&gt
 
 ### Exclusion Information
 
-Quickly, three times click the service button.
+<p&gtQuickly, three times click the service button.</p&gt
 
 ## Channels
 
@@ -493,11 +491,7 @@ This parameter has the configuration ID ```config_43_1``` and is of type ```INTE
 ### Parameter 62: Power reports - periodic
 
 Power reports - periodic
-This parameter determines in what time intervals the periodic power reports are sent to the main controller. Periodic reports do not depend of power change (parameter 61).
-
-  * 0 - periodic reports are disabled
-  * 30-32400 (30-32400s) - report interval
-  * Default - 3600 (1h)
+<p&gtThis parameter determines in what time intervals the periodic power reports are sent to the main controller. Periodic reports do not depend of power change (parameter 61).</p&gt <ul&gt<li&gt0 - periodic reports are disabled</li&gt <li&gt30-32400 (30-32400s) - report interval</li&gt <li&gtDefault - 3600 (1h)</li&gt </ul&gt
 Values in the range 0 to 32400 may be set.
 
 The manufacturer defined default value is ```3600```.
@@ -508,13 +502,7 @@ This parameter has the configuration ID ```config_62_2``` and is of type ```INTE
 ### Parameter 63: Analog inputs output change on input change
 
 Analog inputs output change on input change
-# Analog inputs reports and output change on input change
-
-This parameter defines minimal change (from the last reported) of analog input voltage that results in sending new report and change in the output value. Parameter is relevant only for analog inpu ts (parameter 20, 21, 22 or 23 set to 0 or 1).
-
-  * 0 - reporting on change disabled
-  * 1-100 (0.1-10V, 0.1V step)
-  * Default - 5 (0.5V)
+<h1&gtAnalog inputs reports and output change on input change</h1&gt <p&gtThis parameter defines minimal change (from the last reported) of analog input voltage that results in sending new report and change in the output value. Parameter is relevant only for analog inpu ts (parameter 20, 21, 22 or 23 set to 0 or 1).</p&gt <ul&gt<li&gt0 - reporting on change disabled</li&gt <li&gt1-100 (0.1-10V, 0.1V step)</li&gt <li&gtDefault - 5 (0.5V)</li&gt </ul&gt
 Values in the range 0 to 100 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -525,14 +513,7 @@ This parameter has the configuration ID ```config_63_2``` and is of type ```INTE
 ### Parameter 64: Analog inputs reports - periodic
 
 Analog inputs reports - periodic
-This parameter defines reporting period of analog inputs value.
-
-Periodical reports are independent from changes in value (parameter 63).
-
-Parameter is relevant only for analog inputs (parameter 20, 21, 22 or 23 set to 0 or 1)
-
-  * 0 – periodical reports disabled
-  * 30-32400 (30-32400s, 1s step)
+<p&gtThis parameter defines reporting period of analog inputs value.</p&gt <p&gtPeriodical reports are independent from changes in value (parameter 63).</p&gt <p&gtParameter is relevant only for analog inputs (parameter 20, 21, 22 or 23 set to 0 or 1)</p&gt <ul&gt<li&gt0 – periodical reports disabled</li&gt <li&gt30-32400 (30-32400s, 1s step)</li&gt </ul&gt
 Values in the range 0 to 32400 may be set.
 
 The manufacturer defined default value is ```0```.
@@ -543,10 +524,7 @@ This parameter has the configuration ID ```config_64_2``` and is of type ```INTE
 ### Parameter 65: Energy reports - on change
 
 Energy reports - on change
-This parameter determines the minimum change in consumed energy that will result in sending new energy report to the main controller. Energy reports are sent no often than every 30 seconds.
-
-  * 0 - reports are disabled
-  * 1-500 (0.01 - 5 kWh) - change in energy
+<p&gtThis parameter determines the minimum change in consumed energy that will result in sending new energy report to the main controller. Energy reports are sent no often than every 30 seconds.</p&gt <ul&gt<li&gt0 - reports are disabled</li&gt <li&gt1-500 (0.01 - 5 kWh) - change in energy</li&gt </ul&gt
 Values in the range 0 to 500 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -557,10 +535,7 @@ This parameter has the configuration ID ```config_65_2``` and is of type ```INTE
 ### Parameter 66: Energy reports - periodic
 
 Energy reports - periodic
-This parameter determines in what time intervals the periodic energy reports are sent to the main controller. Periodic reports do not depend of energy change (parameter 65)
-
-  * 0 - periodic reports are disabled
-  * 30-32400 (30-32400s) - report interval
+<p&gtThis parameter determines in what time intervals the periodic energy reports are sent to the main controller. Periodic reports do not depend of energy change (parameter 65)</p&gt <ul&gt<li&gt0 - periodic reports are disabled</li&gt <li&gt30-32400 (30-32400s) - report interval</li&gt </ul&gt
 Values in the range 0 to 32400 may be set.
 
 The manufacturer defined default value is ```3600```.
@@ -587,11 +562,7 @@ This parameter has the configuration ID ```config_150_1``` and is of type ```INT
 ### Parameter 151: Local control - transition time
 
 Local control - transition time
-This parameter determines time of smooth transition between 0% and 100% when controlling with connected switches.
-
-  * 0 – instantly
-  * 1-127 (1s-127s, 1s step)
-  * 128-254 (1min-127min, 1min step)
+<p&gtThis parameter determines time of smooth transition between 0% and 100% when controlling with connected switches.</p&gt <ul&gt<li&gt0 – instantly</li&gt <li&gt1-127 (1s-127s, 1s step)</li&gt <li&gt128-254 (1min-127min, 1min step)</li&gt </ul&gt
 Values in the range 0 to 254 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -602,11 +573,7 @@ This parameter has the configuration ID ```config_151_2``` and is of type ```INT
 ### Parameter 152: Remote control - transition time
 
 Remote control - transition time
-This parameter determines time needed to change the state between current and target values when controlling via Z-Wave network.
-
-  * 0 – instantly
-  * 1-127 (1s-127s, 1s step)
-  * 128-254 (1min-127min, 1min step)
+<p&gtThis parameter determines time needed to change the state between current and target values when controlling via Z-Wave network.</p&gt <ul&gt<li&gt0 – instantly</li&gt <li&gt1-127 (1s-127s, 1s step)</li&gt <li&gt128-254 (1min-127min, 1min step)</li&gt </ul&gt
 Values in the range 0 to 254 may be set.
 
 The manufacturer defined default value is ```3```.
@@ -782,7 +749,7 @@ This parameter has the configuration ID ```config_156_4_7F000000``` and is of ty
 ### Parameter 157: Start programmed sequence
 
 Start programmed sequence
-Setting this parameter will start programmed sequence with selected number. User can define own sequences via controller. While the sequence is active, the menu is unavailable.
+<p&gtSetting this parameter will start programmed sequence with selected number. User can define own sequences via controller. While the sequence is active, the menu is unavailable.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -818,57 +785,55 @@ Association group 1 supports 1 node.
 
 ### Group 2: RGBW Sync
 
-allows to synchronize state of other FIBARO RGBW Controller devices (FGRGBW-442 and FGRGBWM- 441)
-
-- do not use with other devices.
+<p&gtallows to synchronize state of other FIBARO RGBW Controller devices (FGRGBW-442 and FGRGBWM- 441)</p&gt <p&gt- do not use with other devices.</p&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: On/Off (IN1)
 
-used to turn the associated devices on/off reflecting IN1 operation.
+<p&gtused to turn the associated devices on/off reflecting IN1 operation.</p&gt
 
 Association group 3 supports 5 nodes.
 
 ### Group 4: Dimmer (IN1)
 
-used to change level of associated devices reflecting IN1 operation.
+<p&gtused to change level of associated devices reflecting IN1 operation.</p&gt
 
 Association group 4 supports 5 nodes.
 
 ### Group 5: On/Off (IN2)
 
-used to turn the associated devices on/off reflecting IN2 operation.
+<p&gtused to turn the associated devices on/off reflecting IN2 operation.</p&gt
 
 Association group 5 supports 5 nodes.
 
 ### Group 6: Dimmer (IN2)
 
-used to change level of associated devices reflecting IN2 operation.
+<p&gtused to change level of associated devices reflecting IN2 operation.</p&gt
 
 Association group 6 supports 5 nodes.
 
 ### Group 7: On/Off (IN3)
 
-used to turn the associated devices on/off reflecting IN3 operation.
+<p&gtused to turn the associated devices on/off reflecting IN3 operation.</p&gt
 
 Association group 7 supports 5 nodes.
 
 ### Group 8: Dimmer (IN3)
 
-used to change level of associated devices reflecting IN3 operation.
+<p&gtused to change level of associated devices reflecting IN3 operation.</p&gt
 
 Association group 8 supports 5 nodes.
 
 ### Group 9: On/Off (IN4)
 
-used to turn the associated devices on/off reflecting IN4 operation.
+<p&gtused to turn the associated devices on/off reflecting IN4 operation.</p&gt
 
 Association group 9 supports 5 nodes.
 
 ### Group 10: Dimmer (IN4)
 
-used to change level of associated devices reflecting IN4 operation.
+<p&gtused to change level of associated devices reflecting IN4 operation.</p&gt
 
 Association group 10 supports 5 nodes.
 
@@ -1018,9 +983,9 @@ Association group 10 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/1127/FGRGBW-442-EN-T-v1-0.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/1127/FGRGBW-442-EN-T-v1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1127).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1127).

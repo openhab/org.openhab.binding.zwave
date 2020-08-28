@@ -10,7 +10,7 @@ This describes the Z-Wave device *HS1MS-Z*, manufactured by *[Heiman Technology 
 
 The device is in the category of *Motion Detector*, defining Motion sensors/detectors.
 
-![HS1MS-Z product image](https://www.cd-jackson.com/zwave_device_uploads/736/736_default.jpg)
+![HS1MS-Z product image](https://opensmarthouse.org/zwavedatabase/736/image/)
 
 
 The HS1MS-Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,17 +19,15 @@ The HS1MS-Z does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-The smart motion sensor is designed to detect motion indoors. When the smart motion sensor detects people or animals moving, it will report the information thru Z-Wave protocol.
+<p&gtThe smart motion sensor is designed to detect motion indoors. When the smart motion sensor detects people or animals moving, it will report the information thru Z-Wave protocol.</p&gt
 
 ### Inclusion Information
 
-  * Press button on the back 3 times, Green LED is Blinking 3 times within 1 second.
-  * If Inclusion Process is successful, Green LED will turn off.
+<ul&gt<li&gtPress button on the back 3 times, Green LED is Blinking 3 times within 1 second.</li&gt <li&gtIf Inclusion Process is successful, Green LED will turn off.</li&gt </ul&gt
 
 ### Exclusion Information
 
-  * Press back button 3 times quickly.
-  * If Exclusion Process is successful, Green LED is Blinking 6 times, then remove battery from HS1MS-Z.
+<ul&gt<li&gtPress back button 3 times quickly.</li&gt <li&gtIf Exclusion Process is successful, Green LED is Blinking 6 times, then remove battery from HS1MS-Z.</li&gt </ul&gt
 
 ### Wakeup Information
 
@@ -38,15 +36,11 @@ The HS1MS-Z does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  * Wake up Notification is transmitted every 24 hours by default.
-  * Wake up Notification is transmitted after Notification Report is Transmitted.
+<ul&gt<li&gtWake up Notification is transmitted every 24 hours by default.</li&gt <li&gtWake up Notification is transmitted after Notification Report is Transmitted.</li&gt </ul&gt
 
 ### General Usage Information
 
-Use the following reset procedure to factory reset only when the primary controller is missing or inoperable:
-
-  * Long press button while installing batteries in HS1MS-Z.
-  * Device Reset Locally notification is Transmitted.
+<p&gtUse the following reset procedure to factory reset only when the primary controller is missing or inoperable:</p&gt <ul&gt<li&gtLong press button while installing batteries in HS1MS-Z.</li&gt <li&gtDevice Reset Locally notification is Transmitted.</li&gt </ul&gt
 
 ## Channels
 
@@ -129,9 +123,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Heiman HS1MS Smart Motion Sensor Manual](https://www.cd-jackson.com/zwave_device_uploads/736/Heiman-Smart-Motion-Sensor-HSIMS-Z.pdf)
+* [Heiman HS1MS Smart Motion Sensor Manual](https://opensmarthouse.org/zwavedatabase/736/Heiman-Smart-Motion-Sensor-HSIMS-Z.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/736).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/736).

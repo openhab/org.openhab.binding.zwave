@@ -6,8 +6,8 @@
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="sigma_m4179e_00_000" listed="false">
-    <label>M417_9E Smart Temperature &amp; Humidity Sensor</label>
-    <description>Smart Temperature &amp; Humidity Sensor</description>
+    <label>M417_9E Smart Temperature &amp;amp; Humidity Sensor</label>
+    <description>Smart Temperature &amp;amp;amp; Humidity Sensor</description>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

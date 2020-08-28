@@ -10,30 +10,22 @@ This describes the Z-Wave device *Zwave Clamp*, manufactured by *[Seco](http://w
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![Zwave Clamp product image](https://www.cd-jackson.com/zwave_device_uploads/569/569_default.png)
+![Zwave Clamp product image](https://opensmarthouse.org/zwavedatabase/569/image/)
 
 
 The Zwave Clamp supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-The Wireless Energy Meter performs real-time measurement of power, energy, voltage, and current, and transmits them wirelessly to a central controller.
+<p&gtThe Wireless Energy Meter performs real-time measurement of power, energy, voltage, and current, and transmits them wirelessly to a central controller.</p&gt
 
 ### Inclusion Information
 
-Press the WEM button for about 1 second.
-
-WEM enters the “Learning” state and the LED changes blinking pattern.
-
-When the learning phase ends successfully, WEM enters the “Synchronizing” state, and then the “Joined, Comm. Ok” state.
+<p&gtPress the WEM button for about 1 second.</p&gt <p&gtWEM enters the “Learning” state and the LED changes blinking pattern.</p&gt <p&gtWhen the learning phase ends successfully, WEM enters the “Synchronizing” state, and then the “Joined, Comm. Ok” state.</p&gt
 
 ### Exclusion Information
 
-Press the WEM button for about 3 seconds.
-
-WEM enters the “Leaving” state, and waits for the controller to acknowledge its exclusion.
-
-When the exclusion process is complete, WEM goes into the “Idle” state.
+<p&gtPress the WEM button for about 3 seconds.</p&gt <p&gtWEM enters the “Leaving” state, and waits for the controller to acknowledge its exclusion.</p&gt <p&gtWhen the exclusion process is complete, WEM goes into the “Idle” state.</p&gt
 
 ## Channels
 
@@ -45,7 +37,7 @@ The following table summarises the channels available for the Zwave Clamp -:
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number | 
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number | 
 | Electric meter (volts) | meter_voltage | meter_voltage | Energy | Number | 
-| Clock Time Offset | time_offset | time_offset | Temperature | Number | 
+| Clock Time Offset | time_offset | time_offset | Time | Number | 
 
 ### Electric meter (amps)
 Indicates the instantaneous current consumption.
@@ -70,7 +62,7 @@ The ```meter_voltage``` channel is of type ```meter_voltage``` and supports the 
 ### Clock Time Offset
 Provides the current time difference for the devices time.
 
-The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Temperature``` category.
+The ```time_offset``` channel is of type ```time_offset``` and supports the ```Number``` item and is in the ```Time``` category.
 
 
 
@@ -93,7 +85,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 2: MEAS_PERIOD
 
 MEAS_PERIOD
-MEAS\_PERIOD represents the minimum reporting interval, i.e. 1/MEAS\_PERIOD is the maximum reporting frequency. WEM checks for changes in the line measures every MEAS_PERIOD. If there are meaningful changes, a report is sent to the controller.
+<p&gtMEAS\_PERIOD represents the minimum reporting interval, i.e. 1/MEAS\_PERIOD is the maximum reporting frequency. WEM checks for changes in the line measures every MEAS_PERIOD. If there are meaningful changes, a report is sent to the controller.</p&gt
 Values in the range 30 to 120 may be set.
 
 The manufacturer defined default value is ```30```.
@@ -104,9 +96,7 @@ This parameter has the configuration ID ```config_2_1``` and is of type ```INTEG
 ### Parameter 3: MAX_REP_INTERVAL
 
 MAX\_REP\_INTERVAL
-**Units of 10 sec**
-
-MAX\_REP\_INTERVAL is the maximum time that can elapse without sending a report. If no meaningful events occur, WEM sends one measurement every MAX\_REP\_INTERVAL seconds. Notice that, since the check is performed every MEAS\_PERIOD, the reporting interval is rounded to the smallest multiple integer of MEAS\_PERIOD (e.g. MEAS\_PERIOD = 45, MAX\_REP_INTERVAL = 12, reports are sent every 135 s).
+<p&gt<strong&gtUnits of 10 sec</strong&gt</p&gt <p&gtMAX\_REP\_INTERVAL is the maximum time that can elapse without sending a report. If no meaningful events occur, WEM sends one measurement every MAX\_REP\_INTERVAL seconds. Notice that, since the check is performed every MEAS\_PERIOD, the reporting interval is rounded to the smallest multiple integer of MEAS\_PERIOD (e.g. MEAS\_PERIOD = 45, MAX\_REP_INTERVAL = 12, reports are sent every 135 s).</p&gt
 Values in the range 3 to 60 may be set.
 
 The manufacturer defined default value is ```6```.
@@ -117,7 +107,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: RES_ACTIVE_POWER
 
 RES\_ACTIVE\_POWER
-The minimum quantity (resolution) that triggers a report
+<p&gtThe minimum quantity (resolution) that triggers a report</p&gt
 Values in the range 1 to 100 may be set.
 
 The manufacturer defined default value is ```4```.
@@ -128,9 +118,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: RES_RMS_VOLTAGE
 
 RES\_RMS\_VOLTAGE
-**Units of 100 mV**
-
-The minimum quantity (resolution) that triggers a report
+<p&gt<strong&gtUnits of 100 mV</strong&gt</p&gt <p&gtThe minimum quantity (resolution) that triggers a report</p&gt
 Values in the range 1 to 1000 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -141,9 +129,7 @@ This parameter has the configuration ID ```config_5_2``` and is of type ```INTEG
 ### Parameter 6: RES_RMS_CURRENT
 
 RES\_RMS\_CURRENT
-**Units of 10 mA**
-
-The minimum quantity (resolution) that triggers a report
+<p&gt<strong&gtUnits of 10 mA</strong&gt</p&gt <p&gtThe minimum quantity (resolution) that triggers a report</p&gt
 Values in the range 1 to 1000 may be set.
 
 The manufacturer defined default value is ```10```.
@@ -154,7 +140,7 @@ This parameter has the configuration ID ```config_6_2``` and is of type ```INTEG
 ### Parameter 8: CLAMP_REVERSED
 
 CLAMP_REVERSED
-CLAMP\_REVERSED is a read-only parameter that the controller can query to learn about the current placement of the clamp. During the measurement phase, WEM checks whether the clamp has been placed correctly or reversed (with regard to phase rotation). In the latter case, WEM notifies the user with a different blink pattern and stores this information into the CLAMP\_REVERSED parameter.
+<p&gtCLAMP\_REVERSED is a read-only parameter that the controller can query to learn about the current placement of the clamp. During the measurement phase, WEM checks whether the clamp has been placed correctly or reversed (with regard to phase rotation). In the latter case, WEM notifies the user with a different blink pattern and stores this information into the CLAMP\_REVERSED parameter.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -172,7 +158,7 @@ This is a read only parameter.
 ### Parameter 9: ENABLE_CRC16
 
 ENABLE_CRC16
-ENABLE\_CRC16 parameter provides for an extra layer of redundancy in order to protect low bit rate transmissions against radio channel errors. This applies to the reports and frames sent spontaneous by WEM. Requests from the controller are always answered as asked. WEM will send CRC16 encapsulated frames to the associated node if this has proved to support it and the ENABLE\_CRC16 parameter is set to 1. Otherwise, reports will be sent with no extra CRC16 encapsulation.
+<p&gtENABLE\_CRC16 parameter provides for an extra layer of redundancy in order to protect low bit rate transmissions against radio channel errors. This applies to the reports and frames sent spontaneous by WEM. Requests from the controller are always answered as asked. WEM will send CRC16 encapsulated frames to the associated node if this has proved to support it and the ENABLE\_CRC16 parameter is set to 1. Otherwise, reports will be sent with no extra CRC16 encapsulation.</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -188,9 +174,7 @@ This parameter has the configuration ID ```config_9_1``` and is of type ```INTEG
 ### Parameter 10: AVG_PERIOD
 
 AVG_PERIOD
-**Units of 5 seconds**
-
-AVG\_PERIOD determines the time window used to compute an average over the line readings. Each unit of AVG\_PERIOD is worth 5 seconds. If AVG\_PERIOD = 0 no average is computed and the last sample is returned. Note that the maximum average window coincides with the minimum value of MAX\_REP_INTERVAL. Also note that a delay of up to the average window can be introduced in returning the measurements (each measurement is returned only when ready).
+<p&gt<strong&gtUnits of 5 seconds</strong&gt</p&gt <p&gtAVG\_PERIOD determines the time window used to compute an average over the line readings. Each unit of AVG\_PERIOD is worth 5 seconds. If AVG\_PERIOD = 0 no average is computed and the last sample is returned. Note that the maximum average window coincides with the minimum value of MAX\_REP_INTERVAL. Also note that a delay of up to the average window can be introduced in returning the measurements (each measurement is returned only when ready).</p&gt
 Values in the range 0 to 6 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -236,9 +220,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/569/72027101-UM-01-meter-user-manual-v1-0.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/569/72027101-UM-01-meter-user-manual-v1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/569).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/569).

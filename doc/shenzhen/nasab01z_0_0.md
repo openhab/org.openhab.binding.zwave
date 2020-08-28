@@ -10,31 +10,22 @@ This describes the Z-Wave device *NAS-AB01Z*, manufactured by *[Shenzhen Neo Ele
 
 The device is in the category of *Siren*, defining Siren used by Alarm systems.
 
-![NAS-AB01Z product image](https://www.cd-jackson.com/zwave_device_uploads/522/522_default.jpg)
+![NAS-AB01Z product image](https://opensmarthouse.org/zwavedatabase/522/image/)
 
 
 The NAS-AB01Z supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-Siren Alarm with ten different sounds.
+<p&gtSiren Alarm with ten different sounds.</p&gt
 
 ### Inclusion Information
 
-The siren alarm can be included to the Z-wave network by pressing on the code button.
-
-  1. Disassemble the siren alarm and insert the battery into the siren alarm. Make sure the device is located within the direct range of the controller.
-  2. Set the controller into the learning mode (see main controller’s operating manual).
-  3. Quickly, triple click the code button, LED light will flash red.
-  4. Siren alarm will be detected and included in the Z-Wave network.
-  5. Wait for the main controller to configure the siren alarm.
+<p&gtThe siren alarm can be included to the Z-wave network by pressing on the code button.</p&gt <ol&gt<li&gtDisassemble the siren alarm and insert the battery into the siren alarm. Make sure the device is located within the direct range of the controller.</li&gt <li&gtSet the controller into the learning mode (see main controller’s operating manual).</li&gt <li&gtQuickly, triple click the code button, LED light will flash red.</li&gt <li&gtSiren alarm will be detected and included in the Z-Wave network.</li&gt <li&gtWait for the main controller to configure the siren alarm.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Make sure the sensor is connected to power source.
-  2. Set the main controller into the learning mode (see main controller’s operating manual).
-  3. Quickly, triple click the code button, LED light will flash red for 5 times.
-  4. Wait for the main controller to delete the sensor.
+<ol&gt<li&gtMake sure the sensor is connected to power source.</li&gt <li&gtSet the main controller into the learning mode (see main controller’s operating manual).</li&gt <li&gtQuickly, triple click the code button, LED light will flash red for 5 times.</li&gt <li&gtWait for the main controller to delete the sensor.</li&gt </ol&gt
 
 ## Channels
 
@@ -53,11 +44,7 @@ Switch the power on and off.
 The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Siren ON Mode
-Configure default siren ON mode:
-
-1 = Alarm Music Mode
-
-2 = Door Bell Music
+<p&gtConfigure default siren ON mode:</p&gt <p&gt1 = Alarm Music Mode</p&gt <p&gt2 = Door Bell Music</p&gt
 
 Generic class for configuration parameter.
 
@@ -166,13 +153,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Default Siren on mode
 
 Default Siren on mode
-This parameter defines the default music index, volume and duration time for siren on.
-
-This parameter can be selected between ALARM MUSIC and DOOR BELL music.
-
-The settings for ALARM MUSIC defines by Param #1, #2, #5.
-
-The settings for DOOR BELL defines by Param #3, #4, #6.
+<p&gtThis parameter defines the default music index, volume and duration time for siren on.</p&gt <p&gtThis parameter can be selected between ALARM MUSIC and DOOR BELL music.</p&gt <p&gtThe settings for ALARM MUSIC defines by Param #1, #2, #5.</p&gt <p&gtThe settings for DOOR BELL defines by Param #3, #4, #6.</p&gt
 Values in the range 1 to 2 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -221,10 +202,10 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [NASAB01Z Manual (1)](https://www.cd-jackson.com/zwave_device_uploads/522/15-NAS-AB01Z-UserMan-pdf-3069596.pdf)
-* [NASAB01Z Manual (2)](https://www.cd-jackson.com/zwave_device_uploads/522/NAS-AB01Z.pdf)
+* [NASAB01Z Manual (1)](https://opensmarthouse.org/zwavedatabase/522/15-NAS-AB01Z-UserMan-pdf-3069596.pdf)
+* [NASAB01Z Manual (2)](https://opensmarthouse.org/zwavedatabase/522/NAS-AB01Z.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/522).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/522).

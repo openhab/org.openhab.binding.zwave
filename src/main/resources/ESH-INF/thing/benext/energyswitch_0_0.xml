@@ -7,9 +7,7 @@
 
   <thing-type id="benext_energyswitch_00_000" listed="false">
     <label>Energy Switch + Energy Switch +</label>
-    <description><![CDATA[
-Energy Switch +<br /><h1>Overview</h1><p>Control and monitor your lightning or any other appliance.</p> <p>During operation mode it will measure the instance and accumulated energy consumption of the applied appliance.</p> <p>Easy plug and play.</p> <br /><h2>Inclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button</p> <br /><h2>Exclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button</p>
-    ]]></description>
+    <description>Energy Switch +&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtControl and monitor your lightning or any other appliance.&lt;/p&gt &lt;p&gtDuring operation mode it will measure the instance and accumulated energy consumption of the applied appliance.&lt;/p&gt &lt;p&gtEasy plug and play.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and hold the push button until the indicator light is blinking than release the button&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and hold the push button until the indicator light is blinking than release the button&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -69,27 +67,21 @@ Energy Switch +<br /><h1>Overview</h1><p>Control and monitor your lightning or a
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="3">
         <label>2: Amount of decimals</label>
-        <description><![CDATA[
-If value is set to 1 the info shall be presented with 1 decimal<br /><h1>Overview</h1><p>0,1,2,3 amount of decimals. Every Amount higher then 3 shall be printed as 3 decimals.</p>
-        ]]></description>
+        <description>If value is set to 1 the info shall be presented with 1 decimal&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0,1,2,3 amount of decimals. Every Amount higher then 3 shall be printed as 3 decimals.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="4500">
         <label>3: Power Limit</label>
-        <description><![CDATA[
-The device will shut down when it reaches an amount higher then defined (W)<br /><h1>Overview</h1><p>0 = no power limit.</p> <p>1-4500 are acceptable values and can be used, everything above the 4500 shall be changed to 4500.</p>
-        ]]></description>
+        <description>The device will shut down when it reaches an amount higher then defined (W)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = no power limit.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1-4500 are acceptable values and can be used, everything above the 4500 shall be changed to 4500.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4500</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Start up with last known socket status</label>
-        <description><![CDATA[
-Start up with last known socket status<br /><h1>Overview</h1><ul><li>If 0 then the device will always be off, when</li> <li>If 1-255 hen the device will remain the last known state</li> </ul>
-        ]]></description>
+        <description>Start up with last known socket status&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;ul&amp;amp;gt&amp;lt;li&amp;amp;gtIf 0 then the device will always be off, when&amp;lt;/li&amp;amp;gt &amp;lt;li&amp;amp;gtIf 1-255 hen the device will remain the last known state&amp;lt;/li&amp;amp;gt &amp;lt;/ul&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
@@ -117,18 +109,14 @@ Start up with last known socket status<br /><h1>Overview</h1><ul><li>If 0 then t
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>9: Relais delay time</label>
-        <description><![CDATA[
-The time that needs to pass before the next state change<br /><h1>Overview</h1><p>Value * 10 miliseconds</p>
-        ]]></description>
+        <description>The time that needs to pass before the next state change&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValue * 10 miliseconds&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="2">
         <label>10: Led indicator</label>
-        <description><![CDATA[
-The state of the Led compared to the relais state<br /><h1>Overview</h1><p>0 = Indication Led never off</p> <p>1 = led ON when relais ON</p> <p>2 = led On when relais OFF</p>
-        ]]></description>
+        <description>The state of the Led compared to the relais state&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gt0 = Indication Led never off&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt1 = led ON when relais ON&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt2 = led On when relais OFF&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 

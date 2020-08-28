@@ -10,7 +10,7 @@ This describes the Z-Wave device *DW-SS *, manufactured by *Ring* with the thing
 
 The device is in the category of *Door*, defining Door sensors.
 
-![DW-SS  product image](https://www.cd-jackson.com/zwave_device_uploads/893/893_default.jpg)
+![DW-SS  product image](https://opensmarthouse.org/zwavedatabase/893/image/)
 
 
 The DW-SS  supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,25 +19,15 @@ The DW-SS  does not permanently listen for messages sent from the controller - i
 
 ## Overview
 
-Ring Alarm Contact Sensor: Expand your Ring Alarm system to secure each door and window in your home, and get alerts as soon as they open.
+<p&gtRing Alarm Contact Sensor: Expand your Ring Alarm system to secure each door and window in your home, and get alerts as soon as they open.</p&gt
 
 ### Inclusion Information
 
-  1. Activate inclusion mode on controller
-  2. Pull tab/quickly disconnect and reconnect battery
-  3. Device should appear in Inbox
+<ol&gt<li&gtActivate inclusion mode on controller</li&gt <li&gtPull tab/quickly disconnect and reconnect battery</li&gt <li&gtDevice should appear in Inbox</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Initiate exclusion mode on controller
-  2. Open contact sensor’s cover Remove and replace battery quickly
-
-Reset:
-
-  1. Open contact sensor’s cover
-  2. Press and hold the reset button on sensor circuitry
-  3. Remove and replace battery quickly – Blue LED will start to blink rapidly
-  4. Wait for the blue LED to stop blinking
+<ol&gt<li&gtInitiate exclusion mode on controller</li&gt <li&gtOpen contact sensor’s cover Remove and replace battery quickly</li&gt </ol&gt<p&gtReset:</p&gt <ol&gt<li&gtOpen contact sensor’s cover</li&gt <li&gtPress and hold the reset button on sensor circuitry</li&gt <li&gtRemove and replace battery quickly – Blue LED will start to blink rapidly</li&gt <li&gtWait for the blue LED to stop blinking</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -46,7 +36,7 @@ The DW-SS  does not permanently listen for messages sent from the controller - i
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-By opening the top cover, the sensor will get to tamper state and stay awake.
+<p&gtBy opening the top cover, the sensor will get to tamper state and stay awake.</p&gt
 
 ## Channels
 
@@ -103,8 +93,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Wait time
 
 Time between sending unsolicited battery reports
-255 to 4200 seconds **in 255 second increments** that the sensor should wait between sending unsolicited battery reports.   
-The default configuration value for parameter 1 is defaulted to 4200 seconds on exclusion.
+<p&gt255 to 4200 seconds <strong&gtin 255 second increments</strong&gt that the sensor should wait between sending unsolicited battery reports.  <br /&gtThe default configuration value for parameter 1 is defaulted to 4200 seconds on exclusion.</p&gt
 Values in the range 255 to 4200 may be set.
 
 The manufacturer defined default value is ```4200```.
@@ -145,7 +134,7 @@ Association group 1 supports 1 node.
 ### Group 2: Basic Report
 
 Basic report of either 0x00 for CLOSED or 0xFF for OPEN
-When a node is associated with Group 2, the sensor will send a basic report of either 0x00 for “Closed” or 0xFF for “Open.”
+<p&gtWhen a node is associated with Group 2, the sensor will send a basic report of either 0x00 for “Closed” or 0xFF for “Open.” </p&gt
 
 Association group 2 supports 1 node.
 
@@ -160,9 +149,11 @@ Association group 2 supports 1 node.
 | COMMAND_CLASS_NO_OPERATION_V1| |
 | COMMAND_CLASS_BASIC_V1| |
 | COMMAND_CLASS_SENSOR_BINARY_V1| Linked to BASIC|
+| COMMAND_CLASS_TRANSPORT_SERVICE_V1| |
 | COMMAND_CLASS_ASSOCIATION_GRP_INFO_V1| |
 | COMMAND_CLASS_DEVICE_RESET_LOCALLY_V1| |
 | COMMAND_CLASS_ZWAVEPLUS_INFO_V1| |
+| COMMAND_CLASS_SUPERVISION_V1| |
 | COMMAND_CLASS_CONFIGURATION_V1| |
 | COMMAND_CLASS_ALARM_V8| |
 | COMMAND_CLASS_MANUFACTURER_SPECIFIC_V1| |
@@ -172,12 +163,13 @@ Association group 2 supports 1 node.
 | COMMAND_CLASS_WAKE_UP_V2| |
 | COMMAND_CLASS_ASSOCIATION_V2| |
 | COMMAND_CLASS_VERSION_V2| |
+| COMMAND_CLASS_SECURITY_2_V1| |
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/893/Ring-Contact-Sensor---Manual.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/893/Ring-Contact-Sensor---Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/893).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/893).

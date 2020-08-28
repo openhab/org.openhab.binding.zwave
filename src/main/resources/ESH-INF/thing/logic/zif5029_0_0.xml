@@ -7,9 +7,7 @@
 
   <thing-type id="logic_zif5029_00_000" listed="false">
     <label>ZIF5029 Interface for Utility Meters (12-24V)</label>
-    <description><![CDATA[
-Interface for Utility Meters (12-24V)<br /><h1>Overview</h1><p>The ZIF5029 DIN-rail module is a device with a wireless Z-Wave communication protocol. It has 6 relay driven outputs and 6 pulse inputs (S0). The unit is a multi-purpose Z-Wave I/O module, which can be used for many applications. E.g. the module provides the possibility to control other systems via the Z-Wave network, by utilizing the 6 outputs as a kind of hand-over function to another automation system.</p> <br /><h2>Inclusion Information</h2><p>Upon delivery, the ZIF5029 module has not been enrolled into any Z-Wave network. To communicate with other devices in the Z-Wave network, ZIF5029 must be enrolled in the network. This process is called to include the device in the Z-Wave network. Devices can also be removed from the Z-Wave network if they are to be used in another installation. This is called to exclude the device from the Z-Wave network.</p> <p>Both processes are initiated by setting the central network controls in either inclusion or exclusion mode. Please refer to the network controller's manual how to set the central controls in either inclusion or exclusion mode.</p> <p>The inclusion / exclusion mode on the ZIF5029 device is activated by pressing the small button through the hole in the front of the module, marked "INCLUSION", after which the status LED will start flashing.</p> <p>If the device already belongs to a network, the device must be excluded before it can be included in the current network, otherwise the inclusion process will fail.</p> <p>Furthermore, see section 3 above about maintaining configuration parameters during exclusion / inclusion.</p> <br /><h2>Exclusion Information</h2><p>See inclusion section.</p>
-    ]]></description>
+    <description>Interface for Utility Meters (12-24V)&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe ZIF5029 DIN-rail module is a device with a wireless Z-Wave communication protocol. It has 6 relay driven outputs and 6 pulse inputs (S0). The unit is a multi-purpose Z-Wave I/O module, which can be used for many applications. E.g. the module provides the possibility to control other systems via the Z-Wave network, by utilizing the 6 outputs as a kind of hand-over function to another automation system.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtUpon delivery, the ZIF5029 module has not been enrolled into any Z-Wave network. To communicate with other devices in the Z-Wave network, ZIF5029 must be enrolled in the network. This process is called to include the device in the Z-Wave network. Devices can also be removed from the Z-Wave network if they are to be used in another installation. This is called to exclude the device from the Z-Wave network.&lt;/p&gt &lt;p&gtBoth processes are initiated by setting the central network controls in either inclusion or exclusion mode. Please refer to the network controller's manual how to set the central controls in either inclusion or exclusion mode.&lt;/p&gt &lt;p&gtThe inclusion / exclusion mode on the ZIF5029 device is activated by pressing the small button through the hole in the front of the module, marked &quot;INCLUSION&quot;, after which the status LED will start flashing.&lt;/p&gt &lt;p&gtIf the device already belongs to a network, the device must be excluded before it can be included in the current network, otherwise the inclusion process will fail.&lt;/p&gt &lt;p&gtFurthermore, see section 3 above about maintaining configuration parameters during exclusion / inclusion.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtSee inclusion section.&lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -127,9 +125,7 @@ Interface for Utility Meters (12-24V)<br /><h1>Overview</h1><p>The ZIF5029 DIN-r
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Status of LED</label>
-        <description><![CDATA[
-Status of LED<br /><h1>Overview</h1><p>This parameter can be used to change the mode of the front-mounted status LED.</p>
-        ]]></description>
+        <description>Status of LED&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThis parameter can be used to change the mode of the front-mounted status LED.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">The LED is Off</option>
@@ -142,71 +138,55 @@ Status of LED<br /><h1>Overview</h1><p>This parameter can be used to change the 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="99">
         <label>2: Brightness of status LED</label>
-        <description><![CDATA[
-Brightness of status LED<br /><h1>Overview</h1><p>Determines the brightness of the status LED.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Switch off LED</td> </tr><tr><td>1-99</td> <td>Brightness level (%). (Standard 50%)</td> </tr></table>
-        ]]></description>
+        <description>Brightness of status LED&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtDetermines the brightness of the status LED.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtSwitch off LED&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1-99&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtBrightness level (%). (Standard 50%)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>3: Output Function, Output 1</label>
-        <description><![CDATA[
-Output Function, Output 1<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Output is controlled via Z-Wave messages. (Standard)</td> </tr><tr><td>1</td> <td>(Not applicable)</td> </tr></table>
-        ]]></description>
+        <description>Output Function, Output 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOutput is controlled via Z-Wave messages. (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt(Not applicable)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>4: Output Function, Output 2</label>
-        <description><![CDATA[
-Output Function, Output 2<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Output is controlled via Z-Wave messages. (Standard)</td> </tr><tr><td>1</td> <td>(Not applicable)</td> </tr></table>
-        ]]></description>
+        <description>Output Function, Output 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOutput is controlled via Z-Wave messages. (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt(Not applicable)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>5: Output Function, Output 3</label>
-        <description><![CDATA[
-Output Function, Output 3<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Output is controlled via Z-Wave messages. (Standard)</td> </tr><tr><td>1</td> <td>(Not applicable)</td> </tr></table>
-        ]]></description>
+        <description>Output Function, Output 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOutput is controlled via Z-Wave messages. (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt(Not applicable)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>6: Output Function, Output 4</label>
-        <description><![CDATA[
-Output Function, Output 4<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Output is controlled via Z-Wave messages. (Standard)</td> </tr><tr><td>1</td> <td>(Not applicable)</td> </tr></table>
-        ]]></description>
+        <description>Output Function, Output 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOutput is controlled via Z-Wave messages. (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt(Not applicable)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>7: Output Function, Output 5</label>
-        <description><![CDATA[
-Output Function, Output 5<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Output is controlled via Z-Wave messages. (Standard)</td> </tr><tr><td>1</td> <td>(Not applicable)</td> </tr></table>
-        ]]></description>
+        <description>Output Function, Output 5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOutput is controlled via Z-Wave messages. (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt(Not applicable)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>8: Output Function, Output 6</label>
-        <description><![CDATA[
-Output Function, Output 6<br /><h1>Overview</h1><table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0</td> <td>Output is controlled via Z-Wave messages. (Standard)</td> </tr><tr><td>1</td> <td>(Not applicable)</td> </tr></table>
-        ]]></description>
+        <description>Output Function, Output 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtOutput is controlled via Z-Wave messages. (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt(Not applicable)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
         <label>9: Meter Type of input 1</label>
-        <description><![CDATA[
-Meter Type of input 1<br /><h1>Overview</h1><p>Specifies the type of meter connected to input 1.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Meter Type of input 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the type of meter connected to input 1.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Input not in use</option>
@@ -221,35 +201,27 @@ Meter Type of input 1<br /><h1>Overview</h1><p>Specifies the type of meter conne
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>10: Scale Type of input 1</label>
-        <description><![CDATA[
-Scale Type of input 1<br /><h1>Overview</h1><p>Specifies unit type for the chosen meter type connected to input 1.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Chosen Meter Type</strong></td> <td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Electricity meter (1)</td> <td>0</td> <td>kWh</td> </tr><tr><td> </td> <td>1</td> <td>kVAh</td> </tr><tr><td> </td> <td>2</td> <td>W</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter (Standard)</td> </tr><tr><td> </td> <td>4</td> <td>V</td> </tr><tr><td> </td> <td>5</td> <td>A</td> </tr><tr><td> </td> <td>6</td> <td>Power Factor</td> </tr><tr><td>Gas meter (2)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>Reserved</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Water meter (3)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>US gallons</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Heat meter (4)</td> <td>0</td> <td>kWh</td> </tr><tr><td>Cooling meter (5)</td> <td>0</td> <td>kWh</td> </tr></table>
-        ]]></description>
+        <description>Scale Type of input 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies unit type for the chosen meter type connected to input 1.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtChosen Meter Type&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtElectricity meter (1)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkVAh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtW&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtV&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtA&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPower Factor&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtGas meter (2)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtWater meter (3)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtUS gallons&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtHeat meter (4)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtCooling meter (5)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>11: Precision of input 1</label>
-        <description><![CDATA[
-Precision of input 1<br /><h1>Overview</h1><p>Specifies the number of decimals in the measurement format for entry 1. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-7</td> <td>Number of decimals. Standard is 0.</td> </tr></table>
-        ]]></description>
+        <description>Precision of input 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of decimals in the measurement format for entry 1. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of decimals. Standard is 0.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="65000">
         <label>12: Pulses per Unit of input 1</label>
-        <description><![CDATA[
-Pulses per Unit of input 1<br /><h1>Overview</h1><p>Specifies the number of pulses to count before one unit is reached at input 1. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0 – 65000</td> <td>Number of pulses needed to equal one scale value. Standard is 1</td> </tr></table>
-        ]]></description>
+        <description>Pulses per Unit of input 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of pulses to count before one unit is reached at input 1. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0 – 65000&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of pulses needed to equal one scale value. Standard is 1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
         <label>13: Rate Type of input 1</label>
-        <description><![CDATA[
-Rate Type of input 1<br /><h1>Overview</h1><p>Specifies if the meter at input 1 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Rate Type of input 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies if the meter at input 1 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Unspecified</option>
@@ -261,9 +233,7 @@ Rate Type of input 1<br /><h1>Overview</h1><p>Specifies if the meter at input 1 
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
         <label>14: Meter Type of input 2</label>
-        <description><![CDATA[
-Meter Type of input 2<br /><h1>Overview</h1><p>Specifies the type of meter connected to input 2.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Meter Type of input 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the type of meter connected to input 2.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Input not in use.</option>
@@ -278,35 +248,27 @@ Meter Type of input 2<br /><h1>Overview</h1><p>Specifies the type of meter conne
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>15: Scale Type of input 2</label>
-        <description><![CDATA[
-Scale Type of input 2<br /><h1>Overview</h1><p>Specifies unit type for the chosen meter type connected to input 2.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Chosen Meter Type</strong></td> <td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Electricity meter (1)</td> <td>0</td> <td>kWh</td> </tr><tr><td> </td> <td>1</td> <td>kVAh</td> </tr><tr><td> </td> <td>2</td> <td>W</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter (Standard)</td> </tr><tr><td> </td> <td>4</td> <td>V</td> </tr><tr><td> </td> <td>5</td> <td>A</td> </tr><tr><td> </td> <td>6</td> <td>Power Factor</td> </tr><tr><td>Gas meter (2)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>Reserved</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Water meter (3)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>US gallons</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Heat meter (4)</td> <td>0</td> <td>kWh</td> </tr><tr><td>Cooling meter (5)</td> <td>0</td> <td>kWh</td> </tr></table>
-        ]]></description>
+        <description>Scale Type of input 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies unit type for the chosen meter type connected to input 2.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtChosen Meter Type&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtElectricity meter (1)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkVAh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtW&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtV&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtA&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPower Factor&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtGas meter (2)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtWater meter (3)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtUS gallons&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtHeat meter (4)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtCooling meter (5)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>16: Precision of input 2.</label>
-        <description><![CDATA[
-Precision of input 2.<br /><h1>Overview</h1><p>Specifies the number of decimals in the measurement format for input 2. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td>Value</td> <td>Description</td> </tr><tr><td>0-7</td> <td>Number of decimals. Standard is 0.</td> </tr></table>
-        ]]></description>
+        <description>Precision of input 2.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of decimals in the measurement format for input 2. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtValue&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtDescription&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of decimals. Standard is 0.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_17_2" type="integer" groupName="configuration"
                  min="0" max="65000">
         <label>17: Pulses per Unit of input 2</label>
-        <description><![CDATA[
-Pulses per Unit of input 2<br /><h1>Overview</h1><p>Specifies the number of pulses to count before one unit is reached at input 2. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0 – 65000</td> <td>Number of pulses needed to equal one scale value. Standard is 1</td> </tr></table>
-        ]]></description>
+        <description>Pulses per Unit of input 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of pulses to count before one unit is reached at input 2. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0 – 65000&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of pulses needed to equal one scale value. Standard is 1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration">
         <label>18: Rate Type of input 2</label>
-        <description><![CDATA[
-Rate Type of input 2<br /><h1>Overview</h1><p>Specifies if the meter at input 2 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Rate Type of input 2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies if the meter at input 2 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Unspecified</option>
@@ -318,9 +280,7 @@ Rate Type of input 2<br /><h1>Overview</h1><p>Specifies if the meter at input 2 
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
         <label>19: Meter Type of input 3</label>
-        <description><![CDATA[
-Meter Type of input 3<br /><h1>Overview</h1><p>Specifies the type of meter connected to input 3.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Meter Type of input 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the type of meter connected to input 3.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>5</default>
         <options>
           <option value="0">Input not in use</option>
@@ -335,35 +295,27 @@ Meter Type of input 3<br /><h1>Overview</h1><p>Specifies the type of meter conne
       <parameter name="config_20_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>20: Scale Type of input 3</label>
-        <description><![CDATA[
-Scale Type of input 3<br /><h1>Overview</h1><p>Specifies unit type for the chosen meter type connected to input 3.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Chosen Meter Type</strong></td> <td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Electricity meter (1)</td> <td>0</td> <td>kWh</td> </tr><tr><td> </td> <td>1</td> <td>kVAh</td> </tr><tr><td> </td> <td>2</td> <td>W</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter (Standard)</td> </tr><tr><td> </td> <td>4</td> <td>V</td> </tr><tr><td> </td> <td>5</td> <td>A</td> </tr><tr><td> </td> <td>6</td> <td>Power Factor</td> </tr><tr><td>Gas meter (2)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>Reserved</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Water meter (3)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>US gallons</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Heat meter (4)</td> <td>0</td> <td>kWh</td> </tr><tr><td>Cooling meter (5)</td> <td>0</td> <td>kWh</td> </tr></table>
-        ]]></description>
+        <description>Scale Type of input 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies unit type for the chosen meter type connected to input 3.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtChosen Meter Type&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtElectricity meter (1)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkVAh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtW&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtV&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtA&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPower Factor&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtGas meter (2)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtWater meter (3)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtUS gallons&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtHeat meter (4)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtCooling meter (5)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>21: Precision of input 3</label>
-        <description><![CDATA[
-Precision of input 3<br /><h1>Overview</h1><p>Specifies the number of decimals in the measurement format for input 3. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td>Value</td> <td>Description</td> </tr><tr><td>0-7</td> <td>Number of decimals. Standard is 0.</td> </tr></table>
-        ]]></description>
+        <description>Precision of input 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of decimals in the measurement format for input 3. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtValue&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtDescription&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of decimals. Standard is 0.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
                  min="0" max="65000">
         <label>22: Pulses per Unit of input 3</label>
-        <description><![CDATA[
-Pulses per Unit of input 3<br /><h1>Overview</h1><p>Specifies the number of pulses to count before one unit is reached at input 3. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0 – 65000</td> <td>Number of pulses needed to equal one scale value. Standard is 1</td> </tr></table>
-        ]]></description>
+        <description>Pulses per Unit of input 3&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of pulses to count before one unit is reached at input 3. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0 – 65000&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of pulses needed to equal one scale value. Standard is 1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration">
         <label>23: Rate Type of input 3.</label>
-        <description><![CDATA[
-Rate Type of input 3.<br /><h1>Overview</h1><p>Specifies if the meter at input 3 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Rate Type of input 3.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies if the meter at input 3 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Unspecified</option>
@@ -375,9 +327,7 @@ Rate Type of input 3.<br /><h1>Overview</h1><p>Specifies if the meter at input 3
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
         <label>24: Meter Type of input 4.</label>
-        <description><![CDATA[
-Meter Type of input 4.<br /><h1>Overview</h1><p>Specifies the type of meter connected to input 4.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Meter Type of input 4.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the type of meter connected to input 4.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Input not in use</option>
@@ -392,35 +342,27 @@ Meter Type of input 4.<br /><h1>Overview</h1><p>Specifies the type of meter conn
       <parameter name="config_25_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>25: Scale Type of input 4</label>
-        <description><![CDATA[
-Scale Type of input 4.<br /><h1>Overview</h1><p>Specifies unit type for the chosen meter type connected to input 4.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Chosen Meter Type</strong></td> <td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Electricity meter (1)</td> <td>0</td> <td>kWh</td> </tr><tr><td> </td> <td>1</td> <td>kVAh</td> </tr><tr><td> </td> <td>2</td> <td>W</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter (Standard)</td> </tr><tr><td> </td> <td>4</td> <td>V</td> </tr><tr><td> </td> <td>5</td> <td>A</td> </tr><tr><td> </td> <td>6</td> <td>Power Factor</td> </tr><tr><td>Gas meter (2)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>Reserved</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Water meter (3)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>US gallons</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Heat meter (4)</td> <td>0</td> <td>kWh</td> </tr><tr><td>Cooling meter (5)</td> <td>0</td> <td>kWh</td> </tr></table>
-        ]]></description>
+        <description>Scale Type of input 4.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies unit type for the chosen meter type connected to input 4.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtChosen Meter Type&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtElectricity meter (1)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkVAh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtW&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtV&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtA&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPower Factor&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtGas meter (2)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtWater meter (3)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtUS gallons&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtHeat meter (4)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtCooling meter (5)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_26_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>26: Precision of input 4</label>
-        <description><![CDATA[
-Precision of input 4<br /><h1>Overview</h1><p>Specifies the number of decimals in the measurement format for input 4. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-7</td> <td>Number of decimals. Standard is 0.</td> </tr></table>
-        ]]></description>
+        <description>Precision of input 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of decimals in the measurement format for input 4. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of decimals. Standard is 0.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_27_2" type="integer" groupName="configuration"
                  min="0" max="65000">
         <label>27: Pulses per Unit of input 4</label>
-        <description><![CDATA[
-Pulses per Unit of input 4<br /><h1>Overview</h1><p>Specifies the number of pulses to count before one unit is reached at input 4. For example, if this parameter isset to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-65000</td> <td>Number of pulses needed to equal one scale value. Standard is 1</td> </tr></table>
-        ]]></description>
+        <description>Pulses per Unit of input 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of pulses to count before one unit is reached at input 4. For example, if this parameter isset to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-65000&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of pulses needed to equal one scale value. Standard is 1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_28_1" type="integer" groupName="configuration">
         <label>28: Rate Type of input 4</label>
-        <description><![CDATA[
-Rate Type of input 4<br /><h1>Overview</h1><p>Specifies if the meter at input 4 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Rate Type of input 4&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies if the meter at input 4 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Unspecified</option>
@@ -432,9 +374,7 @@ Rate Type of input 4<br /><h1>Overview</h1><p>Specifies if the meter at input 4 
 
       <parameter name="config_29_1" type="integer" groupName="configuration">
         <label>29: Meter Type of input 5</label>
-        <description><![CDATA[
-Meter Type of input 5<br /><h1>Overview</h1><p>Specifies the type of meter connected to input 5.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Meter Type of input 5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the type of meter connected to input 5.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Input not in use</option>
@@ -449,35 +389,27 @@ Meter Type of input 5<br /><h1>Overview</h1><p>Specifies the type of meter conne
       <parameter name="config_30_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>30: Scale Type of input 5</label>
-        <description><![CDATA[
-Scale Type of input 5<br /><h1>Overview</h1><p>Specifies unit type for the chosen meter type connected to input 5.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Chosen Meter Type</strong></td> <td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Electricity meter (1)</td> <td>0</td> <td>kWh</td> </tr><tr><td> </td> <td>1</td> <td>kVAh</td> </tr><tr><td> </td> <td>2</td> <td>W</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter (Standard)</td> </tr><tr><td> </td> <td>4</td> <td>V</td> </tr><tr><td> </td> <td>5</td> <td>A</td> </tr><tr><td> </td> <td>6</td> <td>Power Factor</td> </tr><tr><td>Gas meter (2)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>Reserved</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Water meter (3)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>US gallons</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Heat meter (4)</td> <td>0</td> <td>kWh</td> </tr><tr><td>Cooling meter (5)</td> <td>0</td> <td>kWh<br /><br /></td> </tr></table>
-        ]]></description>
+        <description>Scale Type of input 5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies unit type for the chosen meter type connected to input 5.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtChosen Meter Type&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtElectricity meter (1)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkVAh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtW&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtV&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtA&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPower Factor&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtGas meter (2)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtWater meter (3)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtUS gallons&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtHeat meter (4)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtCooling meter (5)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;br /&amp;amp;gt&amp;lt;br /&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>31: Precision of input 5</label>
-        <description><![CDATA[
-Precision of input 5<br /><h1>Overview</h1><p>Specifies the number of decimals in the measurement format for input 5. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-7</td> <td>Number of decimals. Standard is 0.</td> </tr></table>
-        ]]></description>
+        <description>Precision of input 5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of decimals in the measurement format for input 5. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of decimals. Standard is 0.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_32_2" type="integer" groupName="configuration"
                  min="0" max="65000">
         <label>32: Pulses per Unit of input 5</label>
-        <description><![CDATA[
-Pulses per Unit of input 5<br /><h1>Overview</h1><p>Specifies the number of pulses to count before one unit is reached at input 5. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-65000</td> <td>Number of pulses needed to equal one scale value. Standard is 1</td> </tr></table>
-        ]]></description>
+        <description>Pulses per Unit of input 5&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of pulses to count before one unit is reached at input 5. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-65000&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of pulses needed to equal one scale value. Standard is 1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_33_1" type="integer" groupName="configuration">
         <label>33: Rate Type of input 5.</label>
-        <description><![CDATA[
-Rate Type of input 5.<br /><h1>Overview</h1><p>Specifies if the meter at input 5 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Rate Type of input 5.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies if the meter at input 5 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Unspecified</option>
@@ -489,9 +421,7 @@ Rate Type of input 5.<br /><h1>Overview</h1><p>Specifies if the meter at input 5
 
       <parameter name="config_34_1" type="integer" groupName="configuration">
         <label>34: Meter Type of input 6</label>
-        <description><![CDATA[
-Meter Type of input 6<br /><h1>Overview</h1><p>Specifies the type of meter connected to input 6.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Meter Type of input 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the type of meter connected to input 6.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Input not in use</option>
@@ -506,35 +436,27 @@ Meter Type of input 6<br /><h1>Overview</h1><p>Specifies the type of meter conne
       <parameter name="config_35_1" type="integer" groupName="configuration"
                  min="0" max="6">
         <label>35: Scale Type of input 6</label>
-        <description><![CDATA[
-Scale Type of input 6<br /><h1>Overview</h1><p>Specifies unit type for the chosen meter type connected to input 6.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Chosen Meter Type</strong></td> <td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Electricity meter (1)</td> <td>0</td> <td>kWh</td> </tr><tr><td> </td> <td>1</td> <td>kVAh</td> </tr><tr><td> </td> <td>2</td> <td>W</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter (Standard)</td> </tr><tr><td> </td> <td>4</td> <td>V</td> </tr><tr><td> </td> <td>5</td> <td>A</td> </tr><tr><td> </td> <td>6</td> <td>Power Factor</td> </tr><tr><td>Gas meter (2)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>Reserved</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Water meter (3)</td> <td>0</td> <td>Cubic meter</td> </tr><tr><td> </td> <td>1</td> <td>Cubic foot</td> </tr><tr><td> </td> <td>2</td> <td>US gallons</td> </tr><tr><td> </td> <td>3</td> <td>Pulse counter</td> </tr><tr><td>Heat meter (4)</td> <td>0</td> <td>kWh</td> </tr><tr><td>Cooling meter (5)</td> <td>0</td> <td>kWh<br /><br /></td> </tr></table>
-        ]]></description>
+        <description>Scale Type of input 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies unit type for the chosen meter type connected to input 6.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtChosen Meter Type&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtElectricity meter (1)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkVAh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtW&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter (Standard)&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt4&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtV&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt5&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtA&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt6&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPower Factor&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtGas meter (2)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtReserved&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtWater meter (3)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic meter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt1&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtCubic foot&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt2&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtUS gallons&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt &amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt3&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtPulse counter&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtHeat meter (4)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gtCooling meter (5)&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtkWh&amp;lt;br /&amp;amp;gt&amp;lt;br /&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_36_1" type="integer" groupName="configuration"
                  min="0" max="7">
         <label>36: Precision of input 6</label>
-        <description><![CDATA[
-Precision of input 6<br /><h1>Overview</h1><p>Specifies the number of decimals in the measurement format for input 6. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-7</td> <td>Number of decimals. Standard is 0</td> </tr></table>
-        ]]></description>
+        <description>Precision of input 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of decimals in the measurement format for input 6. For example, if this field is set to 1, the value will be sent with 1 decimal (e.g. 102.5).&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-7&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of decimals. Standard is 0&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_37_2" type="integer" groupName="configuration"
                  min="0" max="65000">
         <label>37: Pulses per Unit of input 6</label>
-        <description><![CDATA[
-Pulses per Unit of input 6<br /><h1>Overview</h1><p>Specifies the number of pulses to count before one unit is reached at input 6. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .</p> <p>This parameter is retained during exclusion / inclusion of the device.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0-65000</td> <td>Number of pulses needed to equal one scale value. Standard is 1</td> </tr></table>
-        ]]></description>
+        <description>Pulses per Unit of input 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the number of pulses to count before one unit is reached at input 6. For example, if this parameter is set to 1,000 and Scale Type is set to Cubic meters, 1,000 pulses is counted to equal 1m 3 .&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0-65000&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gtNumber of pulses needed to equal one scale value. Standard is 1&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_38_1" type="integer" groupName="configuration">
         <label>38: Rate Type of input 6</label>
-        <description><![CDATA[
-Rate Type of input 6<br /><h1>Overview</h1><p>Specifies if the meter at input 6 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.</p> <p>This parameter is retained during exclusion / inclusion of the device.</p>
-        ]]></description>
+        <description>Rate Type of input 6&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies if the meter at input 6 register consumption or production. This is only used in Metering Reports sent on the Z-Wave network.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtThis parameter is retained during exclusion / inclusion of the device.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Unspecified</option>
@@ -547,9 +469,7 @@ Rate Type of input 6<br /><h1>Overview</h1><p>Specifies if the meter at input 6 
       <parameter name="config_39_2" type="integer" groupName="configuration"
                  min="0" max="8640">
         <label>39: Time interval between meter reports</label>
-        <description><![CDATA[
-Time interval between meter reports<br /><h1>Overview</h1><p>Specifies the time interval between the automatic Meter Reports for each input.</p> <table><tr><td><strong>Value</strong></td> <td><strong>Description</strong></td> </tr><tr><td>0 – 8640</td> <td>0 – 864 seconds. Standard value is 90 (equal to 900 seconds) which will send a report every 15 minute.</td> </tr></table>
-        ]]></description>
+        <description>Time interval between meter reports&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSpecifies the time interval between the automatic Meter Reports for each input.&amp;lt;/p&amp;amp;gt &amp;lt;table&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtValue&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt&amp;lt;strong&amp;amp;gtDescription&amp;lt;/strong&amp;amp;gt&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;tr&amp;amp;gt&amp;lt;td&amp;amp;gt0 – 8640&amp;lt;/td&amp;amp;gt &amp;lt;td&amp;amp;gt0 – 864 seconds. Standard value is 90 (equal to 900 seconds) which will send a report every 15 minute.&amp;lt;/td&amp;amp;gt &amp;lt;/tr&amp;amp;gt&amp;lt;/table&amp;amp;gt&lt;/p&gt</description>
         <default>90</default>
       </parameter>
 

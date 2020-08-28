@@ -10,7 +10,7 @@ This describes the Z-Wave device *Flood sensor*, manufactured by *[Shenzhen Neo 
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![Flood sensor product image](https://www.cd-jackson.com/zwave_device_uploads/493/493_default.jpg)
+![Flood sensor product image](https://opensmarthouse.org/zwavedatabase/493/image/)
 
 
 The Flood sensor supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,21 +19,15 @@ The Flood sensor does not permanently listen for messages sent from the controll
 
 ## Overview
 
-Flood/Water detection
+<p&gtFlood/Water detection</p&gt
 
 ### Inclusion Information
 
-  1. Remove the sensor cover.
-  2. Make sure the sensor is powered.
-  3. Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)
-  4. Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..
+<ol&gt<li&gtRemove the sensor cover.</li&gt <li&gtMake sure the sensor is powered.</li&gt <li&gtSet Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li&gt <li&gtPress the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Remove the device cover.
-  2. Make sure the sensor is powered.
-  3. Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)
-  4. Press the button three times within 1.5 second, the device will enter exclusion mode.
+<ol&gt<li&gtRemove the device cover.</li&gt <li&gtMake sure the sensor is powered.</li&gt <li&gtSet Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li&gt <li&gtPress the button three times within 1.5 second, the device will enter exclusion mode.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -42,12 +36,7 @@ The Flood sensor does not permanently listen for messages sent from the controll
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-  * You can press the button once to wake up the device and send wakeup notification to controller.
-  * If press successfully, the LED will blink one time.
-  * The minimum wakeup interval is 300s
-  * The maximum wakeup interval is 16,777,200s (about 194 days)
-  * Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…
-  * Note: The default value is 12 hours. This value is longer, the battery life is greater.
+<ul&gt<li&gtYou can press the button once to wake up the device and send wakeup notification to controller.</li&gt <li&gtIf press successfully, the LED will blink one time.</li&gt <li&gtThe minimum wakeup interval is 300s</li&gt <li&gtThe maximum wakeup interval is 16,777,200s (about 194 days)</li&gt <li&gtAllowable interval among each wakeup interval is 60 second, such as 360, 420, 480…</li&gt <li&gtNote: The default value is 12 hours. This value is longer, the battery life is greater.</li&gt </ul&gt
 
 ## Channels
 
@@ -97,9 +86,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Alarm Duration Time
 
 Alarm Duration Time
-This configuration parameter that can be used to adjust the time for beep and LED turned on when water leakage is detected.
-
-If this parameter is set to ‘0’, the beep and LED will be turn on always until water leakage is not detected
+<p&gtThis configuration parameter that can be used to adjust the time for beep and LED turned on when water leakage is detected.</p&gt <p&gtIf this parameter is set to ‘0’, the beep and LED will be turn on always until water leakage is not detected</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```120```.
@@ -110,7 +97,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Alarm Interval
 
 Alarm Interval
-This Parameter defines beep on /off interval time when water leakage is detected.
+<p&gtThis Parameter defines beep on /off interval time when water leakage is detected.</p&gt
 Values in the range 1 to 255 may be set.
 
 The manufacturer defined default value is ```1```.
@@ -121,7 +108,7 @@ This parameter has the configuration ID ```config_2_2``` and is of type ```INTEG
 ### Parameter 3: First Alarm On Time Duration
 
 First Alarm On Time Duration
-This parameter defines beep on duration first time when water leakage is detected.
+<p&gtThis parameter defines beep on duration first time when water leakage is detected.</p&gt
 Values in the range 10 to 255 may be set.
 
 The manufacturer defined default value is ```60```.
@@ -132,7 +119,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 ### Parameter 4: Alarm on Time Duration
 
 Alarm on Time Duration
-This parameter defines beep on duration after first beep on when water leakage is detected.
+<p&gtThis parameter defines beep on duration after first beep on when water leakage is detected.</p&gt
 Values in the range 5 to 255 may be set.
 
 The manufacturer defined default value is ```5```.
@@ -143,10 +130,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Alarm Enable/Disable
 
 Alarm Enable/Disable
-This parameter defines beep on is enabled or disabled when water leakage is detected.
-
-  * ‘0’ indicate beep on is disable, but LED will be turned on when water leakage detected.
-  * ‘1’ indicate beep on is enabled, the BEEP and LED will be turned on when water leakage detected.
+<p&gtThis parameter defines beep on is enabled or disabled when water leakage is detected.</p&gt <ul&gt<li&gt‘0’ indicate beep on is disable, but LED will be turned on when water leakage detected.</li&gt <li&gt‘1’ indicate beep on is enabled, the BEEP and LED will be turned on when water leakage detected.</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -162,10 +146,7 @@ This parameter has the configuration ID ```config_5_1``` and is of type ```INTEG
 ### Parameter 6: Water Leakage Detection
 
 Water Leakage Detection
-This parameter defines the function than water leakage detect is enabled or disabled.
-
-  * ‘0’ indicate disable water leakage detect,
-  * ‘1’ indicate enable water  leakage detect.
+<p&gtThis parameter defines the function than water leakage detect is enabled or disabled.</p&gt <ul&gt<li&gt‘0’ indicate disable water leakage detect,</li&gt <li&gt‘1’ indicate enable water  leakage detect.</li&gt </ul&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -181,7 +162,7 @@ This parameter has the configuration ID ```config_6_1``` and is of type ```INTEG
 ### Parameter 7: Basic Set Level
 
 Basic Set Level
-Basic Set Command will be sent where contains a value when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module is received the Basic Set Command of which value is decisive as to how bright of dim level of lamp module shall be.
+<p&gtBasic Set Command will be sent where contains a value when the door/window is opened or closed, the receiver will take it for consideration; for instance, if a lamp module is received the Basic Set Command of which value is decisive as to how bright of dim level of lamp module shall be.</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```255```.
@@ -258,9 +239,9 @@ Association group 4 supports 5 nodes.
 
 ### Documentation Links
 
-* [Shenzhen Watersensor Manual](https://www.cd-jackson.com/zwave_device_uploads/493/Shenzhen-NEO-watersensor-Z-wave.pdf)
+* [Shenzhen Watersensor Manual](https://opensmarthouse.org/zwavedatabase/493/Shenzhen-NEO-watersensor-Z-wave.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/493).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/493).

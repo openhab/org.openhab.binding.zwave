@@ -7,9 +7,7 @@
 
   <thing-type id="zipato_bulb2rgbw_00_000" listed="false">
     <label>RGBWE2 RGBW Bulb V2</label>
-    <description><![CDATA[
-RGBW Bulb V2<br /><h1>Overview</h1><p>Zipato Bulb 2 has 5 color channels available for you to adjust: RED, GREEN, BLUE, WARM WHITE and COLD WHITE. Zipato Bulb 2 can be used to add color to your home or just to lighten it up in any white color tone you desire. By using Zipatile or Zipabox (or other Z-Wave) home controller, you can control the bulb from anywhere in the world, by using any smartphone (iOS or Android). Also, you can automatically set colors of your Zipato Bulb 2 to indicate events using the Zipato rule creator.</p> <br /><h2>Inclusion Information</h2><ol><li>Screw the Zipato Bulb 2 into the socket.</li> <li>Turn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.</li> <li>Activate inclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.</li> <li>Toggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.</li> <li>The bulb will flash once if it has been successfully included into your Z-Wave network.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Screw the Zipato Bulb 2 into the socket.</li> <li>Turn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.</li> <li>Activate exclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.</li> <li>Toggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.</li> <li>The bulb will flash once if it has been successfully excluded from your Z-Wave network.</li> </ol>
-    ]]></description>
+    <description>RGBW Bulb V2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtZipato Bulb 2 has 5 color channels available for you to adjust: RED, GREEN, BLUE, WARM WHITE and COLD WHITE. Zipato Bulb 2 can be used to add color to your home or just to lighten it up in any white color tone you desire. By using Zipatile or Zipabox (or other Z-Wave) home controller, you can control the bulb from anywhere in the world, by using any smartphone (iOS or Android). Also, you can automatically set colors of your Zipato Bulb 2 to indicate events using the Zipato rule creator.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtScrew the Zipato Bulb 2 into the socket.&lt;/li&gt &lt;li&gtTurn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.&lt;/li&gt &lt;li&gtActivate inclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.&lt;/li&gt &lt;li&gtToggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.&lt;/li&gt &lt;li&gtThe bulb will flash once if it has been successfully included into your Z-Wave network.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtScrew the Zipato Bulb 2 into the socket.&lt;/li&gt &lt;li&gtTurn on the bulb with your wall switch to apply power to the bulb.- If you’re not using a wall switch, then use your alternate method to apply power to the bulb.&lt;/li&gt &lt;li&gtActivate exclusion mode on your Z-wave controller- This may also be done through your associated application,if your ecosystem has that capability.&lt;/li&gt &lt;li&gtToggle the wall-switch, from OFF, then to ON.- Or use your alternate method to toggle power to the bulb from OFF, then to ON.&lt;/li&gt &lt;li&gtThe bulb will flash once if it has been successfully excluded from your Z-Wave network.&lt;/li&gt &lt;/ol&gt</description>
     <category>LightBulb</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -66,18 +64,14 @@ RGBW Bulb V2<br /><h1>Overview</h1><p>Zipato Bulb 2 has 5 color channels availab
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="25">
         <label>2: Strobe light interval</label>
-        <description><![CDATA[
-Strobe light interval<br /><h1>Overview</h1><p>Values range from 0 to 25 in intervals of 100 ms</p>
-        ]]></description>
+        <description>Strobe light interval&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValues range from 0 to 25 in intervals of 100 ms&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="127">
         <label>3: Strobe light pulse count</label>
-        <description><![CDATA[
-Strobe light pulse count<br /><h1>Overview</h1><p>Values range from 0 to 120 and </p> <p>a special value 127 (0x7F) which sets infinite flashing</p>
-        ]]></description>
+        <description>Strobe light pulse count&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValues range from 0 to 120 and &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gta special value 127 (0x7F) which sets infinite flashing&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="127">Infinite flashing</option>
@@ -87,9 +81,7 @@ Strobe light pulse count<br /><h1>Overview</h1><p>Values range from 0 to 120 and
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Random strobe pulse colors</label>
-        <description><![CDATA[
-Random strobe pulse colors<br /><h1>Overview</h1><p>Values range are 0(turn off) or 1(turn on).</p>
-        ]]></description>
+        <description>Random strobe pulse colors&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtValues range are 0(turn off) or 1(turn on).&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Random strobe pulse colors OFF</option>

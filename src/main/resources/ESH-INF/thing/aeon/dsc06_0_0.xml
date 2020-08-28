@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_dsc06_00_000" listed="false">
     <label>DSC06 Smart Energy Switch</label>
-    <description><![CDATA[
-Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Smart Energy Switch is a Z-Wave appliance switch which can report wattage energy usage or kWh energy usage to a Z-Wave gateway. It can also be controlled by other Z-Wave devices to turn on/off to save electricity when appropriate.</p> <br /><h2>Inclusion Information</h2><ol><li>Plug the Smart Energy Switch into an outlet</li> <li>Put the controller in inclusion mode</li> <li>Press the button located between the LED</li> </ol><p>If the Aeon Labs Smart Energy Switch was not successfully included into any Z-Wave network, the LED will be blinking. If the Aeon Labs Smart Energy Switch was successfully included to a Z-Wave network, the LED will either be on or off (depending on if the switch is on or off). </p> <br /><h2>Exclusion Information</h2><ol><li>Put the controller in exclusion mode</li> <li>Press the button located between the LED</li> </ol><p>If the Aeon Labs Smart Energy Switch was removed from the Z-Wave network, the LED will be blinking. If the Aeon Labs Smart Energy Switch was not successfully removed from the Z-Wave network, the LED will either be on or off (depending on if the switch is on or off). </p>
-    ]]></description>
+    <description>Smart Energy Switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Aeon Labs Smart Energy Switch is a Z-Wave appliance switch which can report wattage energy usage or kWh energy usage to a Z-Wave gateway. It can also be controlled by other Z-Wave devices to turn on/off to save electricity when appropriate.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPlug the Smart Energy Switch into an outlet&lt;/li&gt &lt;li&gtPut the controller in inclusion mode&lt;/li&gt &lt;li&gtPress the button located between the LED&lt;/li&gt &lt;/ol&gt&lt;p&gtIf the Aeon Labs Smart Energy Switch was not successfully included into any Z-Wave network, the LED will be blinking. If the Aeon Labs Smart Energy Switch was successfully included to a Z-Wave network, the LED will either be on or off (depending on if the switch is on or off). &lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtPut the controller in exclusion mode&lt;/li&gt &lt;li&gtPress the button located between the LED&lt;/li&gt &lt;/ol&gt&lt;p&gtIf the Aeon Labs Smart Energy Switch was removed from the Z-Wave network, the LED will be blinking. If the Aeon Labs Smart Energy Switch was not successfully removed from the Z-Wave network, the LED will either be on or off (depending on if the switch is on or off). &lt;/p&gt</description>
     <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -77,9 +75,7 @@ Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Smart Energy Switch i
 
       <parameter name="config_80_1" type="integer" groupName="configuration">
         <label>80: Automatic Notifications</label>
-        <description><![CDATA[
-Enable or disable automatic notifications<br /><h1>Overview</h1><p>Enables automatic notifications to associated devices whenever there is a state change</p> (0=nothing, 1=hail CC, 2=basic CC report)
-        ]]></description>
+        <description>Enable or disable automatic notifications&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnables automatic notifications to associated devices whenever there is a state change&amp;lt;/p&amp;amp;gt (0=nothing, 1=hail CC, 2=basic CC report)&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Nothing</option>
@@ -101,18 +97,14 @@ Enable or disable automatic notifications<br /><h1>Overview</h1><p>Enables autom
       <parameter name="config_91_2" type="integer" groupName="configuration"
                  min="0" max="65535">
         <label>91: Minimum change in wattage</label>
-        <description><![CDATA[
-Minimum change in wattage to trigger event<br /><h1>Overview</h1><p>The value here represents minimum change in wattage (in terms of wattage) for a REPORT to be sent.</p>
-        ]]></description>
+        <description>Minimum change in wattage to trigger event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value here represents minimum change in wattage (in terms of wattage) for a REPORT to be sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>50</default>
       </parameter>
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
                  min="0" max="100">
         <label>92: Minimum change in wattage %</label>
-        <description><![CDATA[
-Minimum change in wattage % to trigger event<br /><h1>Overview</h1><p>The value here represents minimum change in wattage percent (in terms of percentage) for a REPORT to be sent.</p>
-        ]]></description>
+        <description>Minimum change in wattage % to trigger event&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe value here represents minimum change in wattage percent (in terms of percentage) for a REPORT to be sent.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>10</default>
       </parameter>
 

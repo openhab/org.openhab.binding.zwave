@@ -7,9 +7,7 @@
 
   <thing-type id="fakro_arzsolar_00_000" listed="false">
     <label>ARZ Solar Roller Shutter</label>
-    <description><![CDATA[
-Roller Shutter<br /><h1>Overview</h1><p>Roller shutter controlled by a remote control. Solar roller shutter is equipped with a control unit and accumulator. The accumulator is powered by a solar cell placed on the roller shutter. Recommended for places with no access to 230V supply.</p> <br /><h2>Inclusion Information</h2><p>Start INCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.</p> <br /><h2>Exclusion Information</h2><p>Start EXCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.</p>
-    ]]></description>
+    <description>Roller Shutter&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtRoller shutter controlled by a remote control. Solar roller shutter is equipped with a control unit and accumulator. The accumulator is powered by a solar cell placed on the roller shutter. Recommended for places with no access to 230V supply.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtStart INCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtStart EXCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.&lt;/p&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->

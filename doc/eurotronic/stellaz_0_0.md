@@ -10,7 +10,7 @@ This describes the Z-Wave device *StellaZ*, manufactured by *Eurotronics* with t
 
 The device is in the category of *Radiator Control*, defining Controls on radiators used to heat up rooms.
 
-![StellaZ product image](https://www.cd-jackson.com/zwave_device_uploads/183/183_default.jpg)
+![StellaZ product image](https://opensmarthouse.org/zwavedatabase/183/image/)
 
 
 The StellaZ supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,17 +19,15 @@ The StellaZ does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-StellaZ is a wireless Thermostat Valve Control capable controlling heating, air ventilation and climate control units. Sensors, control and actuator are combined in one single device allowing stand alone energy efficient room control.
-
-The device can run in four different operation modes (Off, Energy Saving, Comfort, Direct Control) to control the temperature. The room temperature can also be reported by the device. Open windows will be recognized and lead to a lower control temperature for 20 minutes to prevent waste of energy.
+<p&gtStellaZ is a wireless Thermostat Valve Control capable controlling heating, air ventilation and climate control units. Sensors, control and actuator are combined in one single device allowing stand alone energy efficient room control.</p&gt <p&gtThe device can run in four different operation modes (Off, Energy Saving, Comfort, Direct Control) to control the temperature. The room temperature can also be reported by the device. Open windows will be recognized and lead to a lower control temperature for 20 minutes to prevent waste of energy.</p&gt
 
 ### Inclusion Information
 
-Pushing the button behind the round hole in the enclosure for 5 seconds will confirm inclusion of the device.
+<p&gtPushing the button behind the round hole in the enclosure for 5 seconds will confirm inclusion of the device.</p&gt
 
 ### Exclusion Information
 
-Pushing the button behind the round hole in the enclosure for 5 seconds will confirm exclusion of the device.
+<p&gtPushing the button behind the round hole in the enclosure for 5 seconds will confirm exclusion of the device.</p&gt
 
 ### Wakeup Information
 
@@ -38,7 +36,7 @@ The StellaZ does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-A single click on button behind the round hole in the enclosure wakes up the device when sleeping.
+<p&gtA single click on button behind the round hole in the enclosure wakes up the device when sleeping.</p&gt
 
 ## Channels
 
@@ -148,9 +146,9 @@ The device does not support associations.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/183/productattachments-files-e-u-eur-stellaz.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/183/productattachments-files-e-u-eur-stellaz.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/183).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/183).

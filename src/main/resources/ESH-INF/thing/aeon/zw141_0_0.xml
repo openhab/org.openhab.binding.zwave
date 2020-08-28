@@ -7,9 +7,7 @@
 
   <thing-type id="aeon_zw141_00_000" listed="false">
     <label>ZW141 Nano Shutter Controller</label>
-    <description><![CDATA[
-Nano Shutter Controller<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave motor controller specifically used to enable Z-Wave command and control (up/down/stop) for existing window covering motors.</p> <p>It can connect to 2 external manual switches/buttons to control the motor up/down/stop independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Shutter.</p> <p>The wireless module is powered from the mains supply. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.</p> <p>Nano Shutter is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <p>It can be a repeater in the Z-Wave network. Acting as a bridge for communication, it will forward Z-Wave command messages to their destinations if the originating controller is out of range from the destination node. <br /><br /></p> <br /><h2>Inclusion Information</h2><ol><li>Set your Z-Wave controller into pairing mode.</li> <li>Press the Action Button on the Nano Dimmer or toggle the external manual switch once, the green LED (non-secure indication) will blink to indicate the Nano Dimmer is entering into pairing mode.</li> <li>If the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Set your Z-Wave controller into removal mode.</li> <li>Press the Action Button 6 times on the Nano Dimmer or toggle the external manual switch 2 times in fast succession.</li> <li>If the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.</li> </ol>
-    ]]></description>
+    <description>Nano Shutter Controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAeotec Nano Shutter is a Z-Wave motor controller specifically used to enable Z-Wave command and control (up/down/stop) for existing window covering motors.&lt;/p&gt &lt;p&gtIt can connect to 2 external manual switches/buttons to control the motor up/down/stop independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Shutter.&lt;/p&gt &lt;p&gtThe wireless module is powered from the mains supply. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.&lt;/p&gt &lt;p&gtNano Shutter is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.&lt;/p&gt &lt;p&gtIt can be a repeater in the Z-Wave network. Acting as a bridge for communication, it will forward Z-Wave command messages to their destinations if the originating controller is out of range from the destination node. &lt;br /&gt&lt;br /&gt&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtSet your Z-Wave controller into pairing mode.&lt;/li&gt &lt;li&gtPress the Action Button on the Nano Dimmer or toggle the external manual switch once, the green LED (non-secure indication) will blink to indicate the Nano Dimmer is entering into pairing mode.&lt;/li&gt &lt;li&gtIf the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above from step 1.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ol&gt&lt;li&gtSet your Z-Wave controller into removal mode.&lt;/li&gt &lt;li&gtPress the Action Button 6 times on the Nano Dimmer or toggle the external manual switch 2 times in fast succession.&lt;/li&gt &lt;li&gtIf the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above from step 1.&lt;/li&gt &lt;/ol&gt</description>
     <category>Blinds</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -78,62 +76,48 @@ Nano Shutter Controller<br /><h1>Overview</h1><p>Aeotec Nano Shutter is a Z-Wave
       <parameter name="config_80_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>80: Report sent to nodes in association group 1</label>
-        <description><![CDATA[
-Report sent to associated nodes in association group 1<br /><h1>Overview</h1><p>To set which report would be sent to the associated nodes in association group 1 when the state of output load is changed.<br />0 = Nothing<br />1 = Basic Report CC<br />Note: When just only one channel load state is changed, the report message Basic Report CC would be Multi Channel encapsulated.</p>
-        ]]></description>
+        <description>Report sent to associated nodes in association group 1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtTo set which report would be sent to the associated nodes in association group 1 when the state of output load is changed.&amp;lt;br /&amp;amp;gt0 = Nothing&amp;lt;br /&amp;amp;gt1 = Basic Report CC&amp;lt;br /&amp;amp;gtNote: When just only one channel load state is changed, the report message Basic Report CC would be Multi Channel encapsulated.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_85_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>85: Operation mode of external switch</label>
-        <description><![CDATA[
-Operation mode of external switch<br /><h1>Overview</h1><p>Set the operation mode of external switch.<br />0 = Operation Mode 1.<br />1 = Operation Mode 2.<br />For detailed instructions for Operation Mode 1 and 2, see end of this table.</p>
-        ]]></description>
+        <description>Operation mode of external switch&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the operation mode of external switch.&amp;lt;br /&amp;amp;gt0 = Operation Mode 1.&amp;lt;br /&amp;amp;gt1 = Operation Mode 2.&amp;lt;br /&amp;amp;gtFor detailed instructions for Operation Mode 1 and 2, see end of this table.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_120_1" type="integer" groupName="configuration"
                  min="0" max="4">
         <label>120: External switch mode of S1</label>
-        <description><![CDATA[
-External switch mode of S1<br /><h1>Overview</h1><p>Set the external switch mode of S1<br />0 = Unidentified mode.<br />1 = Reserved.<br />2 = 3 way switch mode<br />3 = Push button mode<br />4 = Enter automatic identification mode (The blue Led will fast blink).<br />Note: When the switch mode of S1 is determined or identified or configured, this mode value will not be reset after exclusion.</p>
-        ]]></description>
+        <description>External switch mode of S1&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the external switch mode of S1&amp;lt;br /&amp;amp;gt0 = Unidentified mode.&amp;lt;br /&amp;amp;gt1 = Reserved.&amp;lt;br /&amp;amp;gt2 = 3 way switch mode&amp;lt;br /&amp;amp;gt3 = Push button mode&amp;lt;br /&amp;amp;gt4 = Enter automatic identification mode (The blue Led will fast blink).&amp;lt;br /&amp;amp;gtNote: When the switch mode of S1 is determined or identified or configured, this mode value will not be reset after exclusion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_121_1" type="integer" groupName="configuration"
                  min="0" max="4">
         <label>121: External switch mode of S2</label>
-        <description><![CDATA[
-External switch mode of S2<br /><h1>Overview</h1><p>Set the external switch mode of S2<br />0 = Unidentified mode.<br />1 = Reserved<br />2 = 3 way switch mode<br />3 = push button mode<br />4 = enter automatic identification mode (The green Led will fast blink).<br />Note: When the switch mode of S2 is determined or identified or configured, this mode value will not be reset after exclusion.</p>
-        ]]></description>
+        <description>External switch mode of S2&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSet the external switch mode of S2&amp;lt;br /&amp;amp;gt0 = Unidentified mode.&amp;lt;br /&amp;amp;gt1 = Reserved&amp;lt;br /&amp;amp;gt2 = 3 way switch mode&amp;lt;br /&amp;amp;gt3 = push button mode&amp;lt;br /&amp;amp;gt4 = enter automatic identification mode (The green Led will fast blink).&amp;lt;br /&amp;amp;gtNote: When the switch mode of S2 is determined or identified or configured, this mode value will not be reset after exclusion.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_252_1" type="integer" groupName="configuration"
                  min="0" max="1">
         <label>252: Enable/disable config parameters to be locked</label>
-        <description><![CDATA[
-Enable/disable the configuration parameters to be locked<br /><h1>Overview</h1><p>Enable/disable the configuration parameters to be locked.<br />0 = disable.<br />1 = enable.</p>
-        ]]></description>
+        <description>Enable/disable the configuration parameters to be locked&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtEnable/disable the configuration parameters to be locked.&amp;lt;br /&amp;amp;gt0 = disable.&amp;lt;br /&amp;amp;gt1 = enable.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>When the state of Nano Shutter (turn on/off the load ) is changed:</p> <ol><li>Set Configuration parameter 80 to 0: Send nothing (default). </li> <li>Set Configuration parameter 80 to 1: Send the Basic Report.</li> </ol>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtWhen the state of Nano Shutter (turn on/off the load ) is changed:&lt;/p&gt &lt;ol&gt&lt;li&gtSet Configuration parameter 80 to 0: Send nothing (default). &lt;/li&gt &lt;li&gtSet Configuration parameter 80 to 1: Send the Basic Report.&lt;/li&gt &lt;/ol&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
-        <description><![CDATA[
-<br /><h1>Overview</h1><p>Forward the Basic Set, Binary set, Scene Activation Set to associated nodes in Group 2 when the Nano Shutter receives the Basic Set, Binary set, Scene Activation Set commands from main controller. (E.g. Send/forward Basic Set to control the other nodes in association Group 2)</p>
-        ]]></description>
+        <description>&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtForward the Basic Set, Binary set, Scene Activation Set to associated nodes in Group 2 when the Nano Shutter receives the Basic Set, Binary set, Scene Activation Set commands from main controller. (E.g. Send/forward Basic Set to control the other nodes in association Group 2)&lt;/p&gt</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

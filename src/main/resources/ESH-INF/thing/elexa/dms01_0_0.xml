@@ -7,9 +7,7 @@
 
   <thing-type id="elexa_dms01_00_000" listed="false">
     <label>DMS01 Dome Wireless Siren</label>
-    <description><![CDATA[
-Dome Wireless Siren<br /><h1>Overview</h1><p>Alert you with sounds and built-in LED’s to security threats and problems such as leaks and fires. It can also sound a mild chime when doors or windows open to let you know when people come and go.</p> <br /><h2>Inclusion Information</h2><p>Follow the instructions for your Z-Wave certified Controller to enter inclusion mode. When prompted by the Controller:</p> <ol><li>For proper inclusion, bring the Siren to within 10 feet of your Controller. After inclusion, the device can be moved to any desired location.</li> <li>Remove the Back Plate of the Siren.</li> <li>Remove the Battery Tabs.</li> <li>Press the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating inclusion.</li> </ol><br /><h2>Exclusion Information</h2><p>Follow the instructions for your Z-Wave certified Controller to enter exclusion mode. When prompted by the Controller:</p> <ol><li>Remove the Back Plate of the Siren.</li> <li>Press the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating exclusion/disconnection.</li> </ol><br /><h2>Wakeup Information</h2><p>The device can be forced to wake up to submit these reports or accept new settings immediately by simply pressing and holding the CONNECT BUTTON for two seconds. The LED RING will flash once indicating successful wake up.</p>
-    ]]></description>
+    <description>Dome Wireless Siren&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtAlert you with sounds and built-in LED’s to security threats and problems such as leaks and fires. It can also sound a mild chime when doors or windows open to let you know when people come and go.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtFollow the instructions for your Z-Wave certified Controller to enter inclusion mode. When prompted by the Controller:&lt;/p&gt &lt;ol&gt&lt;li&gtFor proper inclusion, bring the Siren to within 10 feet of your Controller. After inclusion, the device can be moved to any desired location.&lt;/li&gt &lt;li&gtRemove the Back Plate of the Siren.&lt;/li&gt &lt;li&gtRemove the Battery Tabs.&lt;/li&gt &lt;li&gtPress the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating inclusion.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtFollow the instructions for your Z-Wave certified Controller to enter exclusion mode. When prompted by the Controller:&lt;/p&gt &lt;ol&gt&lt;li&gtRemove the Back Plate of the Siren.&lt;/li&gt &lt;li&gtPress the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating exclusion/disconnection.&lt;/li&gt &lt;/ol&gt&lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtThe device can be forced to wake up to submit these reports or accept new settings immediately by simply pressing and holding the CONNECT BUTTON for two seconds. The LED RING will flash once indicating successful wake up.&lt;/p&gt</description>
     <category>Siren</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -144,9 +142,7 @@ Dome Wireless Siren<br /><h1>Overview</h1><p>Alert you with sounds and built-in 
 
       <parameter name="config_5_2" type="integer" groupName="configuration">
         <label>5: Primary Notification Sound</label>
-        <description><![CDATA[
-Set the siren primary notification sound.<br /><h1>Overview</h1><p>The siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.</p>
-        ]]></description>
+        <description>Set the siren primary notification sound.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe siren offers ten different sounds to use as the Siren (primary) notification. This parameter sets the Siren (primary) notification sound.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>9</default>
         <options>
           <option value="1">Ding dong</option>

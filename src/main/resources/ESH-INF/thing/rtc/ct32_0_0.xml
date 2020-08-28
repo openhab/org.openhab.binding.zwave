@@ -7,9 +7,7 @@
 
   <thing-type id="rtc_ct32_00_000" listed="false">
     <label>CT32 Z-Wave Thermostat</label>
-    <description><![CDATA[
-Z-Wave Thermostat<br /><h1>Overview</h1><p>The Z-Wave enabled CT32 thermostat is a compact, easy-to-use thermostat that is packed with functionality. The CT32 has a responsive touchscreen interface, easy-to-read backlight display, and 7-day programmability. It features a system lock to avoid unintentional changes for maximum efficiency, a filter change indicator to keep your HVAC system running efficiently, wide temperature operation range, and room temperature calibration for precise control.</p> <br /><h2>Inclusion Information</h2><p>Go to Menu screen, and press INCLUDE icon.</p> <br /><h2>Exclusion Information</h2><p>Go to Menu screen, and press EXCLUDE icon.</p> <br /><h2>Wakeup Information</h2><p>When included into a Z-Wave network on battery power, this device is a FLiRS device. The Thermostat will wake up for communication when it receives a valid Z-Wave beam.</p>
-    ]]></description>
+    <description>Z-Wave Thermostat&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtThe Z-Wave enabled CT32 thermostat is a compact, easy-to-use thermostat that is packed with functionality. The CT32 has a responsive touchscreen interface, easy-to-read backlight display, and 7-day programmability. It features a system lock to avoid unintentional changes for maximum efficiency, a filter change indicator to keep your HVAC system running efficiently, wide temperature operation range, and room temperature calibration for precise control.&lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtGo to Menu screen, and press INCLUDE icon.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtGo to Menu screen, and press EXCLUDE icon.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gtWhen included into a Z-Wave network on battery power, this device is a FLiRS device. The Thermostat will wake up for communication when it receives a valid Z-Wave beam.&lt;/p&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -198,9 +196,7 @@ Z-Wave Thermostat<br /><h1>Overview</h1><p>The Z-Wave enabled CT32 thermostat is
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Temperature Reporting Threshold</label>
-        <description><![CDATA[
-Sets the reporting threshold for changes in ambient temperature.<br /><h1>Overview</h1><p>The Temperature Reporting Threshold Configuration Set Command sets the reporting threshold for changes in the ambient temperature as detected by the thermostat.</p>
-        ]]></description>
+        <description>Sets the reporting threshold for changes in ambient temperature.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Temperature Reporting Threshold Configuration Set Command sets the reporting threshold for changes in the ambient temperature as detected by the thermostat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Disabled</option>
@@ -213,9 +209,7 @@ Sets the reporting threshold for changes in ambient temperature.<br /><h1>Overvi
 
       <parameter name="config_3_1_wo" type="integer" groupName="configuration">
         <label>3: Utility Lock Enable/Disable</label>
-        <description><![CDATA[
-Enables or Disables the Utility Lock.<br /><h1>Overview</h1><p>The Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.</p>
-        ]]></description>
+        <description>Enables or Disables the Utility Lock.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Utility Lock Configuration Set command enables or disables the utility lock. If the utility lock is enabled, the setpoint cannot be modified directly via the thermostat screen.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Utility lock disable</option>
@@ -225,9 +219,7 @@ Enables or Disables the Utility Lock.<br /><h1>Overview</h1><p>The Utility Lock 
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Humidity Reporting Threshold</label>
-        <description><![CDATA[
-Sets the reporting threshold for changes in humidity.<br /><h1>Overview</h1><p>The Humidity Threshold Configuration Set Command sets the reporting threshold for changes in the relative humidity as detected by the thermostat.</p>
-        ]]></description>
+        <description>Sets the reporting threshold for changes in humidity.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Humidity Threshold Configuration Set Command sets the reporting threshold for changes in the relative humidity as detected by the thermostat.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="0">Disabled</option>
@@ -239,9 +231,7 @@ Sets the reporting threshold for changes in humidity.<br /><h1>Overview</h1><p>T
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Auxiliary/Emergency</label>
-        <description><![CDATA[
-Enables or Disables the Aux / Emergency Heat.<br /><h1>Overview</h1><p>The Auxiliary/Emergency configuration command enables or disables auxiliary / emergency heating in the thermostat. Auxiliary / emergency heating is only available if the thermostat is configured in heat pump mode and with at least one stage of auxiliary h</p>
-        ]]></description>
+        <description>Enables or Disables the Aux / Emergency Heat.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Auxiliary/Emergency configuration command enables or disables auxiliary / emergency heating in the thermostat. Auxiliary / emergency heating is only available if the thermostat is configured in heat pump mode and with at least one stage of auxiliary h&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
         <options>
           <option value="0">Auxiliary/Emergency heat disable</option>
@@ -251,9 +241,7 @@ Enables or Disables the Aux / Emergency Heat.<br /><h1>Overview</h1><p>The Auxil
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Swing Temperature</label>
-        <description><![CDATA[
-Sets the swing threshold before turning on / off HVAC.<br /><h1>Overview</h1><p>The Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system.</p>
-        ]]></description>
+        <description>Sets the swing threshold before turning on / off HVAC.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Thermostat Swing Temperature configuration command sets swing temperature on the thermostat. The swing temperature is applied to the setpoint to determine when the thermostat will turn on the HVAC system.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>2</default>
         <options>
           <option value="1">0.0F</option>
@@ -270,9 +258,7 @@ Sets the swing threshold before turning on / off HVAC.<br /><h1>Overview</h1><p>
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="4" max="3084">
         <label>8: Thermostat Diff Temperature</label>
-        <description><![CDATA[
-Set's the differential temperature for multi-stage HVAC systems.<br /><h1>Overview</h1><p>The Thermostat Differential Temperature configuration command sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages.</p>
-        ]]></description>
+        <description>Set's the differential temperature for multi-stage HVAC systems.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe Thermostat Differential Temperature configuration command sets the differential temperature for multi-stage HVAC systems. The differential temperature delta defines when the thermostat will turn on additional stages.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>4</default>
       </parameter>
 
@@ -288,9 +274,7 @@ Set's the differential temperature for multi-stage HVAC systems.<br /><h1>Overvi
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
         <label>11: Simple UI Mode Enable/Disable</label>
-        <description><![CDATA[
-Enables or Disables Simple UI Mode<br /><h1>Overview</h1><p>If set to 0, Simple UI Mode is disabled, if set to 1, will enable the Simple UI Mode.</p>
-        ]]></description>
+        <description>Enables or Disables Simple UI Mode&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtIf set to 0, Simple UI Mode is disabled, if set to 1, will enable the Simple UI Mode.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Simple UI Mode Disabled</option>
@@ -331,12 +315,12 @@ Enables or Disables Simple UI Mode<br /><h1>Overview</h1><p>If set to 0, Simple 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
-        <option value="3">Auto</option>
-        <option value="12">Economy Cool</option>
+        <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
+        <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>
@@ -373,12 +357,12 @@ Enables or Disables Simple UI Mode<br /><h1>Overview</h1><p>If set to 0, Simple 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
-        <option value="3">Auto</option>
-        <option value="12">Economy Cool</option>
+        <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
+        <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>

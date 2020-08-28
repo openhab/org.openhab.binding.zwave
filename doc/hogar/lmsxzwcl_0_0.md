@@ -10,27 +10,22 @@ This describes the Z-Wave device *Lumi LM-S4ZW (C-L)*, manufactured by *[Hogar C
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![Lumi LM-S4ZW (C-L) product image](https://www.cd-jackson.com/zwave_device_uploads/1111/1111_default.png)
+![Lumi LM-S4ZW (C-L) product image](https://opensmarthouse.org/zwavedatabase/1111/image/)
 
 
 The Lumi LM-S4ZW (C-L) supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-4 Button Z-Wave Switch: 2 lights and 2 buttons for up/down blinds control.
-
-  * Operating Voltage: 100 - 240V/50Hz
-  * Operating Temperature: 0 - 50ºC
-  * Power: 700w/button
-  * Dimension: 125 x 95 x 34,1 mm (rectangular)
+<p&gt4 Button Z-Wave Switch: 2 lights and 2 buttons for up/down blinds control.</p&gt <ul&gt<li&gtOperating Voltage: 100 - 240V/50Hz</li&gt <li&gtOperating Temperature: 0 - 50ºC</li&gt <li&gtPower: 700w/button</li&gt <li&gtDimension: 125 x 95 x 34,1 mm (rectangular)</li&gt </ul&gt
 
 ### Inclusion Information
 
-Touch and hold any key on the panel for more than 5 seconds. All indication lights will blinks in blue. At this point release the key, the touch panel will start inclusion process.
+<p&gtTouch and hold any key on the panel for more than 5 seconds. All indication lights will blinks in blue. At this point release the key, the touch panel will start inclusion process.</p&gt
 
 ### Exclusion Information
 
-Touch and hold any key on the panel for more than 5 seconds. All indication lights will blinks blue in color. At this point release the key, the touch panel will start exclusion process.
+<p&gtTouch and hold any key on the panel for more than 5 seconds. All indication lights will blinks blue in color. At this point release the key, the touch panel will start exclusion process.</p&gt
 
 ## Channels
 
@@ -212,10 +207,10 @@ Association group 9 supports 5 nodes.
 
 ### Documentation Links
 
-* [Lumi LM-SxZW Manual](https://www.cd-jackson.com/zwave_device_uploads/1111/Lumi-LM-SxZW-Manual.pdf)
-* [[Official] Lumi Switch Manual in English](https://www.cd-jackson.com/zwave_device_uploads/1111/User-Manual-Switch4-V1-0.pdf)
+* [Lumi LM-SxZW Manual](https://opensmarthouse.org/zwavedatabase/1111/Lumi-LM-SxZW-Manual.pdf)
+* [[Official] Lumi Switch Manual in English](https://opensmarthouse.org/zwavedatabase/1111/User-Manual-Switch4-V1-0.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/1111).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/1111).

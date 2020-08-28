@@ -7,9 +7,7 @@
 
   <thing-type id="homeseer_ezmotionexpress_00_000" listed="false">
     <label>EZMotion Express Wireless 3-in-1 Sensor</label>
-    <description><![CDATA[
-Wireless 3-in-1 Sensor<br /><h1>Overview</h1><p>EZMotion™ enables fully automated lighting that turns on the lights when you enter a room and turns them off shortly after you leave. Sophisticated lighting, Audio, Video and heating/cooling are enabled with the EZMotion™ three-sensors-in-one Z-Wave® device.  </p> <br /><h2>Inclusion Information</h2><p>Press and release the Join Button.</p> <br /><h2>Exclusion Information</h2><p>Press and release the Join Button.</p> <br /><h2>Wakeup Information</h2><p> If you need additional time to complete the configuration, just press the join button again to wake EZ-Motion up for another 10 minutes.</p>
-    ]]></description>
+    <description>Wireless 3-in-1 Sensor&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtEZMotion™ enables fully automated lighting that turns on the lights when you enter a room and turns them off shortly after you leave. Sophisticated lighting, Audio, Video and heating/cooling are enabled with the EZMotion™ three-sensors-in-one Z-Wave® device.  &lt;/p&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtPress and release the Join Button.&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtPress and release the Join Button.&lt;/p&gt &lt;br /&gt&lt;h2&gtWakeup Information&lt;/h2&gt&lt;p&gt If you need additional time to complete the configuration, just press the join button again to wake EZ-Motion up for another 10 minutes.&lt;/p&gt</description>
     <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -91,26 +89,20 @@ Wireless 3-in-1 Sensor<br /><h1>Overview</h1><p>EZMotion™ enables fully automa
       <parameter name="config_1_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>1: Sensitivity</label>
-        <description><![CDATA[
-Sensitivity sets the amount of motion required for EZMotion to detect motion.<br /><h1>Overview</h1><p>Sensitivity sets the amount of motion required for EZMotion to detect motion. A higher value makes it more sensitive and a lower value makes it less sensitive. Note that values above 200 are not recommended when EZMotion is battery operated. </p> <p>Recommended values: </p> <p>10 = Pet Immune<br /> 100 = Medium sensitivity for hallways<br /> 200 = Highly sensitive for rooms where people are sitting still </p>
-        ]]></description>
+        <description>Sensitivity sets the amount of motion required for EZMotion to detect motion.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSensitivity sets the amount of motion required for EZMotion to detect motion. A higher value makes it more sensitive and a lower value makes it less sensitive. Note that values above 200 are not recommended when EZMotion is battery operated. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtRecommended values: &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt10 = Pet Immune&amp;lt;br /&amp;amp;gt 100 = Medium sensitivity for hallways&amp;lt;br /&amp;amp;gt 200 = Highly sensitive for rooms where people are sitting still &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>200</default>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>2: On Time</label>
-        <description><![CDATA[
-Sets the number of minutes the lights stay on when motion has not been detected.<br /><h1>Overview</h1><p>On Time sets the number of minutes that the lights stay on when motion has not been detected.<br /> A value of 0 On Time is a special mode where the lights are constantly sent a command to turn them on whenever motion is detected. EZMotion will NOT turn the lights off in this mode. Note that this mode will significantly shorten battery life.</p> <p>Recommended values:</p> <p>5 min for hallways<br /> 20 min for an office environment<br /> 60 min for a library or other room where someone may be sitting still for a long time </p>
-        ]]></description>
+        <description>Sets the number of minutes the lights stay on when motion has not been detected.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtOn Time sets the number of minutes that the lights stay on when motion has not been detected.&amp;lt;br /&amp;amp;gt A value of 0 On Time is a special mode where the lights are constantly sent a command to turn them on whenever motion is detected. EZMotion will NOT turn the lights off in this mode. Note that this mode will significantly shorten battery life.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtRecommended values:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gt5 min for hallways&amp;lt;br /&amp;amp;gt 20 min for an office environment&amp;lt;br /&amp;amp;gt 60 min for a library or other room where someone may be sitting still for a long time &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>20</default>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: LED On/Off</label>
-        <description><![CDATA[
-LED ON/OFF turns the LED on or off.<br /><h1>Overview</h1><p>LED ON/OFF turns the LED on or off. A slight improvement in battery life is obtained by turning the LED off. Setting LED ON/OFF to zero will turn the LED off and 255 turns it on. </p>
-        ]]></description>
+        <description>LED ON/OFF turns the LED on or off.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLED ON/OFF turns the LED on or off. A slight improvement in battery life is obtained by turning the LED off. Setting LED ON/OFF to zero will turn the LED off and 255 turns it on. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
         <options>
           <option value="0">Off</option>
@@ -121,27 +113,21 @@ LED ON/OFF turns the LED on or off.<br /><h1>Overview</h1><p>LED ON/OFF turns th
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>4: Light Threshold</label>
-        <description><![CDATA[
-Light Threshold is the % of light above which the lights will not be turned on.<br /><h1>Overview</h1><p>Light Threshold is the percentage of light in the room above which the lights will not be turned on. Light Threshold is often used in room with a lot of natural daylight. Setting Light Threshold to a value of 50% will cause EZMotion to not turn the lights on when the natural light in the room is already at the 50% value. This feature only prevents the lights from coming on when motion is first detected and the light level in the room is already above Light Threshold. It will not turn the lights off when the amount of natural light in the room increases. It will automatically turn on the lights in a room that has motion in it and that the amount of natural light has dropped below Light Threshold.</p> <p>A value of 100% turns off this feature.</p> <p>Recommended values:</p> <p>Usually a value between 40% and 60% will prevent the lights from coming on in a reasonably well light room and will turn them on as it is getting dark. Some experimentation is required with each room to determine the proper setting. </p>
-        ]]></description>
+        <description>Light Threshold is the % of light above which the lights will not be turned on.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtLight Threshold is the percentage of light in the room above which the lights will not be turned on. Light Threshold is often used in room with a lot of natural daylight. Setting Light Threshold to a value of 50% will cause EZMotion to not turn the lights on when the natural light in the room is already at the 50% value. This feature only prevents the lights from coming on when motion is first detected and the light level in the room is already above Light Threshold. It will not turn the lights off when the amount of natural light in the room increases. It will automatically turn on the lights in a room that has motion in it and that the amount of natural light has dropped below Light Threshold.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtA value of 100% turns off this feature.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtRecommended values:&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtUsually a value between 40% and 60% will prevent the lights from coming on in a reasonably well light room and will turn them on as it is getting dark. Some experimentation is required with each room to determine the proper setting. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>100</default>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>5: Stay Awake</label>
-        <description><![CDATA[
-Setting Stay Awake value<br /><h1>Overview</h1><p>Setting Stay Awake to a non-zero value will cause EZMotion to always be awake. NOTE: this mode should NOT be used when EZMotion is battery powered! Batteries will only last a few days in this mode. </p> <p>Stay Awake is NOT set to the factory default (0) when EZMotion is Excluded (reset) from the Z-Wave network.<br /> Setting Stay Awake to a non-zero value will cause the Z-Wave Listening Bit to be set. EZMotion will become a routing node in the Z-Wave Mesh-Network when the Listening Bit is set. </p> <p>To properly have EZMotion included in the routing tables, set Stay Awake to a non-zero value, then reset EZMotion (Exclude from the network), then add it back to the network. The new routing information will be used now that the listening bit is set. </p>
-        ]]></description>
+        <description>Setting Stay Awake value&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtSetting Stay Awake to a non-zero value will cause EZMotion to always be awake. NOTE: this mode should NOT be used when EZMotion is battery powered! Batteries will only last a few days in this mode. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtStay Awake is NOT set to the factory default (0) when EZMotion is Excluded (reset) from the Z-Wave network.&amp;lt;br /&amp;amp;gt Setting Stay Awake to a non-zero value will cause the Z-Wave Listening Bit to be set. EZMotion will become a routing node in the Z-Wave Mesh-Network when the Listening Bit is set. &amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtTo properly have EZMotion included in the routing tables, set Stay Awake to a non-zero value, then reset EZMotion (Exclude from the network), then add it back to the network. The new routing information will be used now that the listening bit is set. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>0</default>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="0" max="255">
         <label>6: On Value</label>
-        <description><![CDATA[
-The value sent by the Z-Wave BASIC_SET command when motion is detected.<br /><h1>Overview</h1><p>On Value is the value sent by the Z-Wave BASIC_SET command when motion is detected.<br /> A value of 0 will turn the lights off (not recommended).<br /> A value between 1 and 100 will set the dim level to between 1% and 100%.</p> <p>A value of 255 will turn the light on. </p>
-        ]]></description>
+        <description>The value sent by the Z-Wave BASIC_SET command when motion is detected.&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtOn Value is the value sent by the Z-Wave BASIC_SET command when motion is detected.&amp;lt;br /&amp;amp;gt A value of 0 will turn the lights off (not recommended).&amp;lt;br /&amp;amp;gt A value between 1 and 100 will set the dim level to between 1% and 100%.&amp;lt;/p&amp;amp;gt &amp;lt;p&amp;amp;gtA value of 255 will turn the light on. &amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>255</default>
       </parameter>
 

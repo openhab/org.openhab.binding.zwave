@@ -10,28 +10,22 @@ This describes the Z-Wave device *YKFCON*, manufactured by *ASSA ABLOY* with the
 
 The device is in the category of *Lock*, defining Devices whose primary pupose is locking something.
 
-![YKFCON product image](https://www.cd-jackson.com/zwave_device_uploads/292/292_default.jpg)
+![YKFCON product image](https://opensmarthouse.org/zwavedatabase/292/image/)
 
 
 The YKFCON supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
 
 ## Overview
 
-The Yale Keyfree Connected smart lock gives you freedom to secure your home without the need for a key. Simple to use, you now have complete control on how you unlock your door.
+<p&gtThe Yale Keyfree Connected smart lock gives you freedom to secure your home without the need for a key. Simple to use, you now have complete control on how you unlock your door.</p&gt
 
 ### Inclusion Information
 
-  1. Enter Master Code #
-  2. Enter 7 #
-  3. Keypad model will flash BLUE; press ‘1#’ to join the network ; lock will beep three times to indicate lock has joined the network successfully.
-  4. Touch model voice response will say” Network Mode”; lock screen will display ‘1’; select ‘1#’ to join the network . Voice response will say “Joining the wireless network” and then “Completed” when lock has successfully joined the network.
+<ol&gt<li&gtEnter Master Code #</li&gt <li&gtEnter 7 #</li&gt <li&gtKeypad model will flash BLUE; press ‘1#’ to join the network ; lock will beep three times to indicate lock has joined the network successfully.</li&gt <li&gtTouch model voice response will say” Network Mode”; lock screen will display ‘1’; select ‘1#’ to join the network . Voice response will say “Joining the wireless network” and then “Completed” when lock has successfully joined the network.</li&gt </ol&gt
 
 ### Exclusion Information
 
-  1. Enter Master Code #
-  2. Enter 7 #
-  3. Keypad model will flash RED; press ‘3#’ to leave the network ; lock will beep three times to indicate lock has left the network successfully.
-  4. Touch model voice response will say” Network Mode”; lock screen will display ‘3’; select ‘3#’ to leave the network . Voice response will say “Exit the wireless network” and then “Completed” when lock has successfully left the network
+<ol&gt<li&gtEnter Master Code #</li&gt <li&gtEnter 7 #</li&gt <li&gtKeypad model will flash RED; press ‘3#’ to leave the network ; lock will beep three times to indicate lock has left the network successfully.</li&gt <li&gtTouch model voice response will say” Network Mode”; lock screen will display ‘3’; select ‘3#’ to leave the network . Voice response will say “Exit the wireless network” and then “Completed” when lock has successfully left the network</li&gt </ol&gt
 
 ## Channels
 
@@ -85,11 +79,7 @@ Detailed information on each parameter can be found in the sections below.
 ### Parameter 1: Audio Volume
 
 Sets the volume level of the beeps and voice prompts
-1 = Silent
-
-2 = Low
-
-3 = High
+<p&gt1 = Silent</p&gt <p&gt2 = Low</p&gt <p&gt3 = High</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -106,9 +96,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 ### Parameter 2: Auto Re-lock
 
 When enabled, the unit will automatically re-lock
-0 = Off
-
-255 = On
+<p&gt0 = Off</p&gt <p&gt255 = On</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -146,11 +134,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 5: Language
 
 Language used by the voice prompts
-1 = English
-
-2 = Spanish
-
-3 = French
+<p&gt1 = English</p&gt <p&gt2 = Spanish</p&gt <p&gt3 = French</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -178,11 +162,7 @@ This parameter has the configuration ID ```config_7_1``` and is of type ```INTEG
 ### Parameter 8: Operating Mode
 
 Sets if the unit operates normal, or disables keypad and Z-Wave lock/unlock
-0 = Normal
-
-1 = Vacation Mode (User Codes Disabled)
-
-2 = Privacy Mode (User Codes and ZWave Codes Disabled
+<p&gt0 = Normal</p&gt <p&gt1 = Vacation Mode (User Codes Disabled)</p&gt <p&gt2 = Privacy Mode (User Codes and ZWave Codes Disabled</p&gt
 The following option values may be configured -:
 
 | Value  | Description |
@@ -242,11 +222,11 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [Data Sheet](https://www.cd-jackson.com/zwave_device_uploads/292/yale-smart-living-keyfree-connected-data-sheet.pdf)
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/292/yale-smart-living-keyfree-connected-user-manual.pdf)
-* [Technical Information](https://www.cd-jackson.com/zwave_device_uploads/292/yale-locks-info.pdf)
+* [Data Sheet](https://opensmarthouse.org/zwavedatabase/292/yale-smart-living-keyfree-connected-data-sheet.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/292/yale-smart-living-keyfree-connected-user-manual.pdf)
+* [Technical Information](https://opensmarthouse.org/zwavedatabase/292/yale-locks-info.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/292).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/292).

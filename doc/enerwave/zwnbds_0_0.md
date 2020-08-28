@@ -10,7 +10,7 @@ This describes the Z-Wave device *ZWN-BDS*, manufactured by *Wenzhou MTLC Electr
 
 The device is in the category of *Sensor*, defining Device used to measure something.
 
-![ZWN-BDS product image](https://www.cd-jackson.com/zwave_device_uploads/834/834_default.png)
+![ZWN-BDS product image](https://opensmarthouse.org/zwavedatabase/834/image/)
 
 
 The ZWN-BDS supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,28 +19,15 @@ The ZWN-BDS does not permanently listen for messages sent from the controller - 
 
 ## Overview
 
-The ZWN-BDS is a battery-powered, magnetic contact sensor that wirelessly controls lights and appliances throughout your house. When the magnetic contact is broken, such as happens when a door or window is opened, the ZWN-BDS transmits Open/Close status to the gateway.
+<p&gtThe ZWN-BDS is a battery-powered, magnetic contact sensor that wirelessly controls lights and appliances throughout your house. When the magnetic contact is broken, such as happens when a door or window is opened, the ZWN-BDS transmits Open/Close status to the gateway.</p&gt
 
 ### Inclusion Information
 
-_At the back of the door/window sensor, there is a program button which is used to do adding/deleting and association. Also it can be userd as a tamper alarm button, and wake up the door/window sensor manually._
-
-**Inclusion**
-
-  1. Set a Z-Wave controller into inclusion mode
-  2. Press and release the program button located at the back of the door/window sensor to add it into your Z-Wave network and send a Node Information Frame.
-  3. The status LED will stay solid for 10 seconds and turn off once inclusion is successful.
-  4. If the LED never turns on and the inclusion mode times out, then repeat the inclusion process again, and exclude if necessary.
+<p&gt<em&gtAt the back of the door/window sensor, there is a program button which is used to do adding/deleting and association. Also it can be userd as a tamper alarm button, and wake up the door/window sensor manually.</em&gt</p&gt <p&gt<strong&gtInclusion</strong&gt</p&gt <ol&gt<li&gtSet a Z-Wave controller into inclusion mode</li&gt <li&gtPress and release the program button located at the back of the door/window sensor to add it into your Z-Wave network and send a Node Information Frame.</li&gt <li&gtThe status LED will stay solid for 10 seconds and turn off once inclusion is successful.</li&gt <li&gtIf the LED never turns on and the inclusion mode times out, then repeat the inclusion process again, and exclude if necessary.</li&gt </ol&gt
 
 ### Exclusion Information
 
-_At the back of the door/window sensor, there is a program button which is used to do adding/deleting and association. Also it can be userd as a tamper alarm button, and wake up the door/window sensor manually._
-
-**Exclusion**
-
-  1. Set the Z-Wave controller into exclusion mode.
-  2. Press and release the program button located at the back of the door/window sensor to exclude it from your Z-Wave network and remove the Node Information Frame.
-  3. The status LED will blink 3 times after releasing the program button, which means it's no longer associated with any Z-Wave network.
+<p&gt<em&gtAt the back of the door/window sensor, there is a program button which is used to do adding/deleting and association. Also it can be userd as a tamper alarm button, and wake up the door/window sensor manually.</em&gt</p&gt <p&gt<strong&gtExclusion</strong&gt</p&gt <ol&gt<li&gtSet the Z-Wave controller into exclusion mode.</li&gt <li&gtPress and release the program button located at the back of the door/window sensor to exclude it from your Z-Wave network and remove the Node Information Frame.</li&gt <li&gtThe status LED will blink 3 times after releasing the program button, which means it's no longer associated with any Z-Wave network.</li&gt </ol&gt
 
 ### Wakeup Information
 
@@ -49,7 +36,7 @@ The ZWN-BDS does not permanently listen for messages sent from the controller - 
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-To complete Z-Wave association, please refer to your controller's manual. Each controller has its own association method. **If your controller needs the sensor to wake up, press and hold the program button for 2 seconds, release the button when the status LED turns off, and the ZWN-BDS will wake up manually.**
+<p&gtTo complete Z-Wave association, please refer to your controller's manual. Each controller has its own association method. <strong&gtIf your controller needs the sensor to wake up, press and hold the program button for 2 seconds, release the button when the status LED turns off, and the ZWN-BDS will wake up manually.</strong&gt</p&gt
 
 ## Channels
 
@@ -128,9 +115,9 @@ Association group 1 supports 5 nodes.
 
 ### Documentation Links
 
-* [ZWN-BDS Instruction Manual](https://www.cd-jackson.com/zwave_device_uploads/834/ZWN-BDS-Insturction-Manual.pdf)
+* [ZWN-BDS Instruction Manual](https://opensmarthouse.org/zwavedatabase/834/ZWN-BDS-Insturction-Manual.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/834).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/834).

@@ -7,9 +7,7 @@
 
   <thing-type id="zooz_zst10_00_000" listed="false">
     <label>ZST10 S2 USB Stick Controller</label>
-    <description><![CDATA[
-S2 USB Stick Controller<br /><h1>Overview</h1><ul><li>Z-Wave Plus Static USB Controller</li> <li>Latest S2 security protocol for a truly private network</li> <li>Works with Smart Start Z-Wave devices</li> <li>Extended range up to 130 feet indoors and up to 500 feet in open space</li> <li>Z-Wave Plus chip for faster command processing</li> <li>LED indicator signals wireless communication in progress for efficient troubleshooting</li> <li>No drivers needed: works out of the box on Windows, Linux, and MAC OS</li> </ul><h3><strong>NOTE:</strong> Windows 7 &amp; 8 require drivers available free from Zooz support. Windows 8.1 and later do not require drivers.</h3> <br /><h2>Inclusion Information</h2><p>N/A - controller</p> <br /><h2>Exclusion Information</h2><p>N/A - controller</p>
-    ]]></description>
+    <description>S2 USB Stick Controller&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;ul&gt&lt;li&gtZ-Wave Plus Static USB Controller&lt;/li&gt &lt;li&gtLatest S2 security protocol for a truly private network&lt;/li&gt &lt;li&gtWorks with Smart Start Z-Wave devices&lt;/li&gt &lt;li&gtExtended range up to 130 feet indoors and up to 500 feet in open space&lt;/li&gt &lt;li&gtZ-Wave Plus chip for faster command processing&lt;/li&gt &lt;li&gtLED indicator signals wireless communication in progress for efficient troubleshooting&lt;/li&gt &lt;li&gtNo drivers needed: works out of the box on Windows, Linux, and MAC OS&lt;/li&gt &lt;/ul&gt&lt;h3&gt&lt;strong&gtNOTE:&lt;/strong&gt Windows 7 &amp;amp; 8 require drivers available free from Zooz support. Windows 8.1 and later do not require drivers.&lt;/h3&gt &lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;p&gtN/A - controller&lt;/p&gt &lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;p&gtN/A - controller&lt;/p&gt</description>
     <category>RemoteControl</category>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->

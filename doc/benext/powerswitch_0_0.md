@@ -10,30 +10,22 @@ This describes the Z-Wave device *powerSwitch*, manufactured by *[BeNext](http:/
 
 The device is in the category of *Power Outlet*, defining Small devices to be plugged into a power socket in a wall which stick there.
 
-![powerSwitch product image](https://www.cd-jackson.com/zwave_device_uploads/224/224_default.png)
+![powerSwitch product image](https://opensmarthouse.org/zwavedatabase/224/image/)
 
 
 The powerSwitch supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
-Basic operations
-
-  * The Power Switch can be remotely controlled.
-  * The Power Switch can be controlled by the push button on the front of the device.
-  * The Power Switch’s indicator light can indicate the status of the switch (ON or OFF).
-
-How it operates
-
-Control and monitor your lightning or any other appliance. Easy plug and play. 
+<p&gtBasic operations</p&gt <ul&gt<li&gtThe Power Switch can be remotely controlled.</li&gt <li&gtThe Power Switch can be controlled by the push button on the front of the device.</li&gt <li&gtThe Power Switch’s indicator light can indicate the status of the switch (ON or OFF).</li&gt </ul&gt<p&gtHow it operates</p&gt <p&gtControl and monitor your lightning or any other appliance. Easy plug and play. </p&gt
 
 ### Inclusion Information
 
-Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.
+<p&gtPress and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.</p&gt
 
 ### Exclusion Information
 
-Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.
+<p&gtPress and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.</p&gt
 
 ## Channels
 
@@ -88,9 +80,7 @@ This parameter has the configuration ID ```config_4_1``` and is of type ```INTEG
 ### Parameter 9: Relay delay time
 
 Relay delay time
-When the relay is switched it can't be switched again until the configured time has passed
-
-Value * 10 milliseconds
+<p&gtWhen the relay is switched it can't be switched again until the configured time has passed</p&gt <p&gtValue * 10 milliseconds</p&gt
 Values in the range 0 to 255 may be set.
 
 The manufacturer defined default value is ```50```.
@@ -155,9 +145,9 @@ Association group 1 supports 1 node.
 
 ### Documentation Links
 
-* [User Manual](https://www.cd-jackson.com/zwave_device_uploads/224/powerswitch.pdf)
+* [User Manual](https://opensmarthouse.org/zwavedatabase/224/powerswitch.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/224).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/224).

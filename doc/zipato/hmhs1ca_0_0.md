@@ -10,7 +10,7 @@ This describes the Z-Wave device *HM-HS1CA*, manufactured by *[Zipato](http://ww
 
 The device is in the category of *Smoke Detector*, defining Smoke detectors.
 
-![HM-HS1CA product image](https://www.cd-jackson.com/zwave_device_uploads/741/741_default.jpg)
+![HM-HS1CA product image](https://opensmarthouse.org/zwavedatabase/741/image/)
 
 
 The HM-HS1CA supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is unable to participate in the routing of data from other devices.
@@ -19,15 +19,15 @@ The HM-HS1CA does not permanently listen for messages sent from the controller -
 
 ## Overview
 
-This product is a Smart Carbon Monoxide Sensor and adopts super low power consumption Z-Wave wireless network technology, used for detecting carbon monoxide. Sensor adopts high performance eloctrochemical sensor, supports sound and flash alarm. It has high stability, super low power consumption, little sensitivity drift and many other features.
+<p&gtThis product is a Smart Carbon Monoxide Sensor and adopts super low power consumption Z-Wave wireless network technology, used for detecting carbon monoxide. Sensor adopts high performance eloctrochemical sensor, supports sound and flash alarm. It has high stability, super low power consumption, little sensitivity drift and many other features.</p&gt
 
 ### Inclusion Information
 
- Press the Net_Button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.
+<p&gt Press the Net_Button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.</p&gt
 
 ### Exclusion Information
 
- Press the Net_Button 3 times within 1.5s
+<p&gt Press the Net_Button 3 times within 1.5s</p&gt
 
 ### Wakeup Information
 
@@ -36,7 +36,7 @@ The HM-HS1CA does not permanently listen for messages sent from the controller -
 The wakeup period does not impact the devices ability to report events or sensor data. The device can be manually woken with a button press on the device as described below - note that triggering a device to send an event is not the same as a wakeup notification, and this will not allow the controller to communicate with the device.
 
 
-Every 24h by default
+<p&gtEvery 24h by default</p&gt
 
 ## Channels
 
@@ -97,19 +97,13 @@ Association group 1 supports 1 node.
 
 ### Group 2: Group 2
 
-Root Device group(Binary Sensor) Binary Sensor Command Class: Compatible with 300 series 
-
-  1. Binary Sensor reports status of CO or no CO via Lifeline.
-  2. When the sensor detects status change of CO and no CO, the device will be triggered.
+<p&gtRoot Device group(Binary Sensor) Binary Sensor Command Class: Compatible with 300 series </p&gt <ol&gt<li&gtBinary Sensor reports status of CO or no CO via Lifeline.</li&gt <li&gtWhen the sensor detects status change of CO and no CO, the device will be triggered.</li&gt </ol&gt
 
 Association group 2 supports 5 nodes.
 
 ### Group 3: Group 3
 
-Root Device group(Notification) 
-
-  1. Notification reports status of detect CO or no CO via Lifeline. 
-  2. When the sensor detects status change of CO and no CO, the device will be triggered.
+<p&gtRoot Device group(Notification) </p&gt <ol&gt<li&gtNotification reports status of detect CO or no CO via Lifeline. </li&gt <li&gtWhen the sensor detects status change of CO and no CO, the device will be triggered.</li&gt </ol&gt
 
 Association group 3 supports 5 nodes.
 
@@ -136,9 +130,9 @@ Association group 3 supports 5 nodes.
 
 ### Documentation Links
 
-* [Manual](https://www.cd-jackson.com/zwave_device_uploads/741/hm-hs1ca-z-USER-MANUAL.pdf)
+* [Manual](https://opensmarthouse.org/zwavedatabase/741/hm-hs1ca-z-USER-MANUAL.pdf)
 
 ---
 
 Did you spot an error in the above definition or want to improve the content?
-You can [contribute to the database here](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list/devicesummary/741).
+You can [contribute to the database here](https://opensmarthouse.org/zwavedatabase/741).

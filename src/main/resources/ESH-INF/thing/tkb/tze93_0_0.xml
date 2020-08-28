@@ -7,9 +7,7 @@
 
   <thing-type id="tkb_tze93_00_000" listed="false">
     <label>TZE93 Weekly Programming Thermostat with LCD Touch Screen</label>
-    <description><![CDATA[
-Weekly Programming Thermostat with LCD Touch Screen<br /><h1>Overview</h1><p>TZE93.716 Plus Z-WAVE Weekly Programming Heating Thermostat with LCD Touch Screen</p> <ul><li>868.42MHz(EU), 869MHz(RU) </li> <li>Adopt Z-Wave 500 series chip </li> <li>Voltage: AC230V, 50Hz </li> <li>Current: 16A</li> <li>Setting range: 5~90℃ </li> <li>Switching differential: ±1℃ </li> <li>Ambient temperature: -5~50℃ </li> <li>Protective housing: IP20 </li> <li>Housing material: Anti-flammable PC </li> <li>Operation range: up to 130 feet line of sight</li> </ul><br /><h2>Inclusion Information</h2><ul><li>Make sure the thermostat in the off mode.</li> <li>Have Z-Wave controller enter inclusion mode.</li> <li>Press &lt;book&gt; key on thermostat 3 times in 1.5 seconds - will enter inclusion mode. The wireless icon will start to blink.</li> <li>After the blink stop, if the wireless icon lights steady means product inclusion is completed</li> </ul><br /><h2>Exclusion Information</h2><ul><li>Make sure the thermostat in the off mode.</li> <li>Have Z-Wave controller enter exclusion mode.</li> <li>Press &lt;book&gt; key on thermostat 3 times in 1.5 seconds - will enter exclusion mode. The wireless icon will blink.</li> <li>After the blink stop, if the wireless icon is off that means product exclusion is completed.</li> </ul>
-    ]]></description>
+    <description>Weekly Programming Thermostat with LCD Touch Screen&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gtTZE93.716 Plus Z-WAVE Weekly Programming Heating Thermostat with LCD Touch Screen&lt;/p&gt &lt;ul&gt&lt;li&gt868.42MHz(EU), 869MHz(RU) &lt;/li&gt &lt;li&gtAdopt Z-Wave 500 series chip &lt;/li&gt &lt;li&gtVoltage: AC230V, 50Hz &lt;/li&gt &lt;li&gtCurrent: 16A&lt;/li&gt &lt;li&gtSetting range: 5~90℃ &lt;/li&gt &lt;li&gtSwitching differential: ±1℃ &lt;/li&gt &lt;li&gtAmbient temperature: -5~50℃ &lt;/li&gt &lt;li&gtProtective housing: IP20 &lt;/li&gt &lt;li&gtHousing material: Anti-flammable PC &lt;/li&gt &lt;li&gtOperation range: up to 130 feet line of sight&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtInclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtMake sure the thermostat in the off mode.&lt;/li&gt &lt;li&gtHave Z-Wave controller enter inclusion mode.&lt;/li&gt &lt;li&gtPress &amp;lt;book&amp;gt; key on thermostat 3 times in 1.5 seconds - will enter inclusion mode. The wireless icon will start to blink.&lt;/li&gt &lt;li&gtAfter the blink stop, if the wireless icon lights steady means product inclusion is completed&lt;/li&gt &lt;/ul&gt&lt;br /&gt&lt;h2&gtExclusion Information&lt;/h2&gt&lt;ul&gt&lt;li&gtMake sure the thermostat in the off mode.&lt;/li&gt &lt;li&gtHave Z-Wave controller enter exclusion mode.&lt;/li&gt &lt;li&gtPress &amp;lt;book&amp;gt; key on thermostat 3 times in 1.5 seconds - will enter exclusion mode. The wireless icon will blink.&lt;/li&gt &lt;li&gtAfter the blink stop, if the wireless icon is off that means product exclusion is completed.&lt;/li&gt &lt;/ul&gt</description>
     <category>HVAC</category>
 
     <!-- CHANNEL DEFINITIONS -->
@@ -73,9 +71,7 @@ Weekly Programming Thermostat with LCD Touch Screen<br /><h1>Overview</h1><p>TZE
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Memory function</label>
-        <description><![CDATA[
-Recover after a power failure<br /><h1>Overview</h1><p>The memory function means the thermostat will recover the operating mode after a power failure.</p>
-        ]]></description>
+        <description>Recover after a power failure&lt;br /&gt&lt;h1&gtOverview&lt;/h1&gt&lt;p&gt&amp;lt;p&amp;amp;gtThe memory function means the thermostat will recover the operating mode after a power failure.&amp;lt;/p&amp;amp;gt&lt;/p&gt</description>
         <default>1</default>
         <options>
           <option value="0">Device memory function not open</option>
@@ -106,9 +102,9 @@ Recover after a power failure<br /><h1>Overview</h1><p>The memory function means
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="5">Resume</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
+        <option value="5">Resume</option>
       </options>
     </state>
   </channel-type>
