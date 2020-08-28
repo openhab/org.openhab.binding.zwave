@@ -209,7 +209,7 @@ Flush Pilot<br /><h1>Overview</h1><p>This Z-Wave module is used to control elect
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Basic on/off - input I3</label>
+        <label>5: Basic on/off -  input I3</label>
         <description>Triggered at change of the input I3 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>

@@ -285,4 +285,12 @@ Sending commands with command class scene activation<br /><h1>Overview</h1><p>Th
 
   </thing-type>
 
+  <channel-type id="fibaro_fgd211_02_001_config_decimal_param40">
+    <item-type>Number</item-type>
+    <label>Updating the dimming level without switch.</label>
+    <description>Available settings: from 1 to 99.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

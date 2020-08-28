@@ -274,7 +274,7 @@ Allows for turning of the internal flood sensor<br /><h1>Overview</h1><p>Allows 
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Tilt &amp; Tamper Sensors</label>
+        <label>2: Tilt & Tamper Sensors</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
