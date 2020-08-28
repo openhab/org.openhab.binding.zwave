@@ -98,7 +98,7 @@ Motion Sensor<br /><h1>Overview</h1><p>Detect Motion</p>
       </parameter>
 
       <parameter name="config_28_1" type="integer" groupName="configuration">
-        <label>28: Enable &amp; Disable the LED indication</label>
+        <label>28: Enable & Disable the LED indication</label>
         <description><![CDATA[
 Enable &amp; Disable the LED indication<br /><h1>Overview</h1><p>Enable &amp; Disable the LED indication when PIR is triggered</p>
         ]]></description>

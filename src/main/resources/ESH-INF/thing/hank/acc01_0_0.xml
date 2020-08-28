@@ -59,7 +59,7 @@ HKZW<br /><h1>Overview</h1><p>ACC01 is an IR Transceiver based on Z-Wave technol
 
       <parameter name="config_255_4" type="integer" groupName="configuration"
                  min="1" max="1431655765">
-        <label>255: Reset &amp; remove from Z-Wave network</label>
+        <label>255: Reset & remove from Z-Wave network</label>
         <description>Reset &amp; remove from Z-Wave network</description>
         <default>1</default>
         <options>

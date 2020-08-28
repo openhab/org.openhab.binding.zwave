@@ -225,7 +225,7 @@ Value sent in SWITCH OFF command frame.<br /><h1>Overview</h1><p>This parameter 
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>22: SWITCH ON frame value for FLICK DOWN</label>
+        <label>22: SWITCH ON frame value  for FLICK DOWN</label>
         <description><![CDATA[
 Value sent in SWITCH ON command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>

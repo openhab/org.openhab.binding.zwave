@@ -152,4 +152,28 @@ Devices in the group are controlled by the PIR sensor<br /><h1>Overview</h1><p>B
 
   </thing-type>
 
+  <channel-type id="homeseer_hsfls100_00_000_config_decimal_param1">
+    <item-type>Number</item-type>
+    <label>PIR Trigger Off Period</label>
+    <description>Period to send Trigger Off command after PIR is triggered.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="homeseer_hsfls100_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>Lux sensor threshold</label>
+    <description>Lux level to activate the PIR</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="homeseer_hsfls100_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Auto Report luminance interval</label>
+    <description>sets the interval of periodic lux level report to the controller</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

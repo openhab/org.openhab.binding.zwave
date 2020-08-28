@@ -236,7 +236,7 @@ Percentage change in power to induce a automatic report (Clamp 3).<br /><h1>Over
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="1061109568">
-        <label>101: Reports for group 1</label>
+        <label>101: Reports  for group 1</label>
         <description><![CDATA[
 Reports for group 1<br /><h1>Overview</h1><p>1 -&gt; Battery Report<br /><br />2 -&gt; MultiSensor Report for the whole device<br /><br />4 -&gt; Meter Report for Watt for the whole device<br /><br />8 -&gt; Meter Report for kWh for the whole device<br /><br />256 -&gt; Meter Report for Watt for clamp 1<br /><br />512 -&gt; Meter Report for W</p>
         ]]></description>

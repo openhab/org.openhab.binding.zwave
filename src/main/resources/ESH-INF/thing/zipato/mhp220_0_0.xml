@@ -211,7 +211,7 @@ max brightness level<br /><h1>Overview</h1><p>Double click of S1</p> <p>Values i
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
-        <label>15: Operation report Switch1 to Assoc Group 2 &amp; 3</label>
+        <label>15: Operation report Switch1 to Assoc Group 2 & 3</label>
         <description><![CDATA[
 Dimming level report only valid when holding external button<br /><h1>Overview</h1><p>Operation report from Switch1 to Association Group 2 &amp; 3</p> <p>Values in the range 0 to 255 may be set.</p> <p>The manufacturer defined default value is 0.</p> <p>This parameter has the configuration ID config_15_1 and is of type INTEGER.</p>
         ]]></description>

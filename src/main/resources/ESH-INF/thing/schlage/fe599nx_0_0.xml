@@ -79,7 +79,7 @@ Connected Keypad with Lever<br /><h1>Overview</h1><p>Camelot style residential k
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Lock &amp; Leave</label>
+        <label>5: Lock & Leave</label>
         <description>Enable/Disable Lock &amp; Leave</description>
         <default>1</default>
         <options>

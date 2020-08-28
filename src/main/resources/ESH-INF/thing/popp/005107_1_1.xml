@@ -104,7 +104,7 @@ Temperature correction with positive and negative offset values<br /><h1>Overvie
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>3: Send unsolicited temperature report</label>
+        <label>3: Send unsolicited  temperature report</label>
         <description><![CDATA[
 Threshold temperature to send unsolicited report. 10 = 1°C<br /><h1>Overview</h1><p>In 0.1°C (Default 10)</p>
         ]]></description>

@@ -137,7 +137,7 @@ Set Timer Units to Seconds or Milliseconds<br /><h1>Overview</h1><p>Choose if yo
 
       <parameter name="config_40_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>40: Treshold Change in Power for reporting</label>
+        <label>40: Treshold Change in Power  for reporting</label>
         <description><![CDATA[
 Change of power consumption [Watt] reporting threshold<br /><h1>Overview</h1><p>Choose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages, so if 20 is set (by default), the device will report any power consumption changes of 20% or more compared to the last reading.</p> <ul><li>0 - Power consumption reporting disabled</li> <li>1 - 100 = 1% - 100% Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).</li> </ul><p>NOTE: Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter.</p> <p>NOTE: When reporting Watts, module will automatically report also [V] (Voltage) and [A] (Amperes)</p>
         ]]></description>

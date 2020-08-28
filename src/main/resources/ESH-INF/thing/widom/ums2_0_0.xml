@@ -95,7 +95,7 @@ WiDom Smart Roller Shutter<br /><h1>Overview</h1><p>WiDom Smart Roller Shutter i
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="-1" max="99">
-        <label>4: Value for Group 2 with 1 click on UP button</label>
+        <label>4: Value for Group 2 with 1 click on  UP button</label>
         <description><![CDATA[
 Value for Group 2 with 1 click on UP button<br /><h1>Overview</h1><p>Value used for devices belonging to Group 2 when UP button receive 1 Click</p>
         ]]></description>

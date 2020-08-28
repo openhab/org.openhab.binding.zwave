@@ -96,7 +96,7 @@ LED indicator and acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Type of alarm frame for 1st group (FLOOD)</label>
+        <label>5: Type of alarm frame for 1st  group (FLOOD)</label>
         <description><![CDATA[
 Command frame sent by the Sensor in case flooding<br /><h1>Overview</h1><p>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</p>
         ]]></description>

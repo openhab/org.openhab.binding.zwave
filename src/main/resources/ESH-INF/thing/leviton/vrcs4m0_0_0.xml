@@ -30,16 +30,16 @@
       <property name="manufacturerRef">1302:0243</property>
       <property name="dbReference">881</property>
       <property name="commandClass:COMMAND_CLASS_NO_OPERATION">setVersion=1</property>
-      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SCENE_ACTUATOR_CONF">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SCENE_CONTROLLER_CONF">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_POWERLEVEL">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTUATOR_CONF">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_CONTROLLER_CONF">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_POWERLEVEL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=1</property>
       <property name="defaultAssociations">1,2,3,4</property>
     </properties>
 

@@ -323,4 +323,12 @@ Dimming time when key pressed<br /><h1>Overview</h1><p>1 – 127 = from 1 to 127
     </state>
   </channel-type>
 
+  <channel-type id="qubino_zmnhwd_00_000_config_decimal_param6">
+    <item-type>Number</item-type>
+    <label>Auto Scene Mode</label>
+    <description>Duration between Colour change</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

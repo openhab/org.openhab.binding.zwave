@@ -92,7 +92,7 @@ Root Device group (Notification)<br /><h1>Overview</h1><p>1-Notification reports
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Root Device group (Water &amp; Tamper Notification)</label>
+        <label>5: Root Device group (Water & Tamper Notification)</label>
         <description><![CDATA[
 Root Device group (Notification)<br /><h1>Overview</h1><p>1-Binary Sensor reports the removed status of water sensor <br />1-When the sensor detects status change of tamper, the device will be triggered.</p> <p>4-Association &amp; Association Group Information <br />- Lifeline between controller and the product <br />- Supported command classes: Battery report, multilevel sensor, and Device Reset Locally notification.</p>
         ]]></description>

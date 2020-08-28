@@ -150,7 +150,7 @@ Choose the recovery state for your Mini Plug if power outage occurs<br /><h1>Ove
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
-        <label>8: Auto Turn-Off Timer Enable</label>
+        <label>8: Auto Turn-Off Timer  Enable</label>
         <description><![CDATA[
 : Use this parameter to enable or disable the auto turn-off timer function<br /><h1>Overview</h1><p>Use this parameter to enable or disable the auto turn-off timer function. If this feature is enabled, the Mini Plug will automatically turn off after a fixed period of time (set in parameter 9). Values: 0 – timer disabled (default); 1 – timer enabled </p>
         ]]></description>

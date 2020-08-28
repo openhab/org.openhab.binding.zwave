@@ -352,4 +352,12 @@ Starting predefined program when device set to work in RGB/RGBW mode<br /><h1>Ov
 
   </thing-type>
 
+  <channel-type id="fibaro_fgrgbw_00_000_scene_number_param72">
+    <item-type>Number</item-type>
+    <label>Starting animation program</label>
+    <description>Starting predefined program when device set to work in RGB/RGBW mode</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

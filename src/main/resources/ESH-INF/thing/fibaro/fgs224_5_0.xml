@@ -166,7 +166,7 @@ which alarm frames and how the device should react<br /><h1>Overview</h1><table>
 
       <parameter name="config_30_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>30: Alarm configuration - 1st slot - Notify Status</label>
+        <label>30: Alarm configuration - 1st slot -  Notify Status</label>
         <description>Notification Status</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>

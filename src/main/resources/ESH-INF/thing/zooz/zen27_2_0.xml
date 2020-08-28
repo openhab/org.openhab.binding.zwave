@@ -28,7 +28,7 @@ Paddle Switch v2<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brigh
         </properties>
       </channel>
       <channel id="config_decimal_param18" typeId="config_decimal">
-        <label>Custom Brightness Level</label>
+        <label>Custom Brightness Level </label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=18</property>
         </properties>
@@ -300,5 +300,13 @@ Brightness reporting<br /><h1>Overview</h1><p>Choose how you'd like the dimmer t
     </config-description>
 
   </thing-type>
+
+  <channel-type id="zooz_zen27_02_000_config_decimal_param18">
+    <item-type>Number</item-type>
+    <label>Custom brightness level</label>
+    <description>Custom brightness level</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

@@ -273,12 +273,12 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
-        <option value="2">Cool</option>
-        <option value="1">Heat</option>
-        <option value="4">Aux Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
         <option value="13">Away</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
+        <option value="4">Aux Heat</option>
       </options>
     </state>
   </channel-type>

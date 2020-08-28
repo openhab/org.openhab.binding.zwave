@@ -246,6 +246,22 @@ Reset to factory settings<br /><h1>Overview</h1><p>1. Size=0x01， Configuration
 
   </thing-type>
 
+  <channel-type id="aeon_zw056_00_000_config_decimal_param8">
+    <item-type>Number</item-type>
+    <label>Ringtone volume</label>
+    <description>Default=10</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="aeon_zw056_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>Repetitions of ringtone</label>
+    <description>Set the repetitions for playing doorbell ringtone. </description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
   <channel-type id="aeon_zw056_00_000_config_decimal_param6">
     <item-type>Number</item-type>
     <label>Ringtone to play</label>

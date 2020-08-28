@@ -15,7 +15,7 @@ Single-socket PowerNode<br /><h1>Overview</h1><p>This Configuration is for the 1
     <!-- CHANNEL DEFINITIONS -->
     <channels>
       <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
+        <label> Switch</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>

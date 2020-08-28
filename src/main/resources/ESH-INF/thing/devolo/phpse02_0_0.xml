@@ -73,7 +73,7 @@ Multisound indoor siren<br /><h1>Overview</h1><p><strong>### NOTE ###</strong></
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_7_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>7: Costumer Function</label>
+        <label>7: Costumer  Function</label>
         <description><![CDATA[
 NotificationReport/BinaryReport<br /><h1>Overview</h1><p>Notification Type,</p> <p>0: Using Notification Report.</p> <p>1: Using Sensor Binary Report.</p>
         ]]></description>

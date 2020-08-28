@@ -21,7 +21,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         </properties>
       </channel>
       <channel id="config_decimal_param21" typeId="logic_zdb5100_00_000_config_decimal_param21">
-        <label>Colour commands for LED indication, pushbutton 1</label>
+        <label> Colour commands for LED indication, pushbutton 1</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=21</property>
         </properties>
@@ -33,7 +33,7 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         </properties>
       </channel>
       <channel id="config_decimal_param37" typeId="logic_zdb5100_00_000_config_decimal_param37">
-        <label>Colour commands for LED indication, pushbutton 3</label>
+        <label>Colour commands for LED indication,  pushbutton 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=37</property>
         </properties>
@@ -65,13 +65,13 @@ MATRIX Switch with Dimmer and Backlight<br /><h1>Overview</h1><p>MATRIX type ZDB
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
-        <label>State, pushbutton 2</label>
+        <label>State,  pushbutton 2</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="color_color2" typeId="color_color">
-        <label>Color, pushbutton 2</label>
+        <label>Color,  pushbutton 2</label>
         <properties>
           <property name="binding:*:HSBType">COMMAND_CLASS_SWITCH_COLOR:2;colorMode=RGB</property>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
@@ -780,8 +780,8 @@ Dimmer Basic Report<br /><h1>Overview</h1><p>Sends Basic Report with information
 
   <channel-type id="logic_zdb5100_00_000_config_decimal_param29">
     <item-type>Number</item-type>
-    <label> Colour commands for pushbutton 2 LED indication.</label>
-    <description> Colour commands for pushbutton 2 LED indication.</description>
+    <label>Colour commands for pushbutton 2 LED indication.</label>
+    <description>Colour commands for pushbutton 2 LED indication.</description>
     <state pattern="%s">
       <options>
         <option value="0">Direct control</option>
@@ -793,8 +793,8 @@ Dimmer Basic Report<br /><h1>Overview</h1><p>Sends Basic Report with information
 
   <channel-type id="logic_zdb5100_00_000_config_decimal_param37">
     <item-type>Number</item-type>
-    <label> Colour commands for pushbutton 3 LED indication.</label>
-    <description> Colour commands for pushbutton 3 LED indication.</description>
+    <label>Colour commands for pushbutton 3 LED indication.</label>
+    <description>Colour commands for pushbutton 3 LED indication.</description>
     <state pattern="%s">
       <options>
         <option value="0">Direct control</option>
@@ -814,6 +814,14 @@ Dimmer Basic Report<br /><h1>Overview</h1><p>Sends Basic Report with information
         <option value="1">Color for OFF state</option>
         <option value="2">Color for ON state</option>
       </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="logic_zdb5100_00_000_config_decimal_param14">
+    <item-type>Number</item-type>
+    <label>Global brightness control</label>
+    <description>Global brightness control</description>
+    <state pattern="%s">
     </state>
   </channel-type>
 

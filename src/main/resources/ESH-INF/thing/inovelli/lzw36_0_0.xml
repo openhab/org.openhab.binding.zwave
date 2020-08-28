@@ -475,7 +475,7 @@ Active Power Reports<br /><h1>Overview</h1><p>The power level change that will r
 
       <parameter name="config_29_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>29: Periodic Power &amp; Energy Reports</label>
+        <label>29: Periodic Power & Energy Reports</label>
         <description><![CDATA[
 Periodic Power &amp; Energy Reports<br /><h1>Overview</h1><p>Time period between consecutive power and energy reports being sent (in seconds). The timer is reset after each report is sent.</p>
         ]]></description>
@@ -571,6 +571,22 @@ Switch MultiLevel Start/Stop Fan<br /><h1>Overview</h1><p> Sends start / stop le
     </config-description>
 
   </thing-type>
+
+  <channel-type id="inovelli_lzw36_00_000_config_decimal_param18">
+    <item-type>Number</item-type>
+    <label>Light LED Indicator Color</label>
+    <description>Light LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw36_00_000_config_decimal_param20">
+    <item-type>Number</item-type>
+    <label>Fan LED Indicator Color</label>
+    <description>Fan LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
   <channel-type id="inovelli_lzw36_00_000_config_decimal_param24">
     <item-type>Number</item-type>

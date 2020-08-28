@@ -62,7 +62,7 @@ Double Relay Switch 2x1.5kW<br /><h1>Overview</h1><p>Remotely Controlled Relay S
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Activate / deactivate functions ALL ON / ALL OFF</label>
+        <label>1: Activate / deactivate functions ALL ON / ALL  OFF</label>
         <description>Activate / deactivate functions ALL ON / ALL OFF</description>
         <default>255</default>
         <options>
