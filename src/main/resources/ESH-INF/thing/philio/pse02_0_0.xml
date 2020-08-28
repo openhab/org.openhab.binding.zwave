@@ -50,7 +50,7 @@ Siren<br /><h1>Overview</h1><p>The PSE02 is a wireless siren with multiple sound
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_7_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>7: Costumer Function</label>
+        <label>7: Costumer  Function</label>
         <description><![CDATA[
 NotificationReport/BinaryReport<br /><h1>Overview</h1><p>Customer function switch, using bit control. 0       Bit4: Notification Type,       0: Using Notification Report.   1: Using Sensor Binary Report.</p>
         ]]></description>

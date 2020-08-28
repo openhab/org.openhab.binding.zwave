@@ -286,7 +286,7 @@ Set notification sent to associated nodes (group 4)<br /><h1>Overview</h1><p>To 
         <default>0</default>
         <options>
           <option value="0">The LED will follow the status</option>
-          <option value="1">Follow the status &amp; turn off after 5 sec.</option>
+          <option value="1">Follow the status & turn off after 5 sec.</option>
           <option value="2">Night light mode</option>
         </options>
       </parameter>
@@ -381,7 +381,7 @@ To set which reports need to be sent in Report group 2<br /><h1>Overview</h1><p>
 
       <parameter name="config_103_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>103: Set Group 3 Reports</label>
+        <label>103: Set  Group 3 Reports</label>
         <description><![CDATA[
 To set which reports need to be sent in Report group 3<br /><h1>Overview</h1><p>1     Send Meter Report of voltage (V)<br />2     Send Meter Report of current (A)<br />4     Send Meter Report of wattage (W)<br />8     Send Meter Report of energy (kWh)</p>
         ]]></description>

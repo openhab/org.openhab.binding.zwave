@@ -147,7 +147,7 @@ Micro Dimmer<br /><h1>Overview</h1><p>Micro Dimmer is a Z-Wave Plus enabled in-w
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>15: Operation report Switch1 to Assoc Group 2 &amp; 3</label>
+        <label>15: Operation report Switch1 to Assoc Group 2 & 3</label>
         <description>Operation report from Switch1 to Association Group 2 &amp; 3</description>
         <default>0</default>
       </parameter>

@@ -79,7 +79,7 @@ Touchscreen Deadbolt<br /><h1>Overview</h1><p>Z-Wave Enabled residential auto-th
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Lock &amp; Leave</label>
+        <label>5: Lock & Leave</label>
         <description>Press the Schlage button to lock the deadbolt</description>
         <default>255</default>
         <options>

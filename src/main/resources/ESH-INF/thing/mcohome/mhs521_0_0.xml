@@ -125,8 +125,8 @@ Key Mode<br /><h1>Overview</h1><p>This function works for corridor or stairwell 
           <option value="0">single click to switch on/off status</option>
           <option value="1">Key default as off state</option>
           <option value="2">Key default as on state</option>
-          <option value="3">hold &gt;3s then key is on, and off once released</option>
-          <option value="4">single click + hold &gt;3s then key is on</option>
+          <option value="3">hold >3s then key is on, and off once released</option>
+          <option value="4">single click + hold >3s then key is on</option>
         </options>
       </parameter>
 

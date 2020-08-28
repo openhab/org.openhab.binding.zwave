@@ -74,7 +74,7 @@ Built-in Dimmer<br /><h1>Overview</h1><p>Basic operations</p> <ul><li>The Built-
         <options>
           <option value="0">Toggle light when button is pressed only</option>
           <option value="1">Toggle light on release, dimming on press</option>
-          <option value="2">Toggle on press &amp; Dim with quick press &amp; release</option>
+          <option value="2">Toggle  on press & Dim with quick press & release</option>
         </options>
       </parameter>
 

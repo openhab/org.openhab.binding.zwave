@@ -115,7 +115,7 @@ Range Extender 6<br /><h1>Overview</h1><p>Aeotec Range Extender is a Z-Wave mesh
         <default>1</default>
         <options>
           <option value="1">Reset to factory default settings</option>
-          <option value="1431655765">Reset to factory default &amp; remove from network</option>
+          <option value="1431655765">Reset to factory default & remove from network</option>
         </options>
       </parameter>
 

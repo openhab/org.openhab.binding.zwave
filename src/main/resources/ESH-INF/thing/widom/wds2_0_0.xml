@@ -218,8 +218,8 @@ Defines the behavior of the device Channels<br /><h1>Overview</h1><p>Defines the
         <description>Defines the status of the device following a restart.</description>
         <default>4</default>
         <options>
-          <option value="0">OFF_OFF - Both Channel 1 and Channel 2 OFF</option>
-          <option value="1">OFF_ON - Channel 1 OFF, Channel 2 ON</option>
+          <option value="0">OFF_OFF  - Both Channel 1 and Channel 2 OFF</option>
+          <option value="1">OFF_ON - Channel 1 OFF, Channel  2 ON</option>
           <option value="2">ON_OFF - Channel 1 ON, Channel 2 OFF</option>
           <option value="3">ON_ON - Both Channel 1 and Channel 2 ON</option>
           <option value="4">PREVIOUS STATUS - Status prior to restart</option>

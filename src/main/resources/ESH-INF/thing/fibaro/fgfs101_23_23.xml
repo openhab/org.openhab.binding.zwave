@@ -96,7 +96,7 @@ LED indicator and acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Type of alarm frame for 1st group (FLOOD)</label>
+        <label>5: Type of alarm frame for 1st  group (FLOOD)</label>
         <description><![CDATA[
 Command frame sent by the Sensor in case flooding<br /><h1>Overview</h1><p>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</p>
         ]]></description>
@@ -255,7 +255,7 @@ Turning of the internal flood sensor.<br /><h1>Overview</h1><p>Allows for turnin
         ]]></description>
         <default>0</default>
         <options>
-          <option value="0">Default (flood detection, reactions)</option>
+          <option value="0">Default  (flood detection, reactions)</option>
           <option value="1">Built in flood sensor TURNED OFF</option>
         </options>
       </parameter>

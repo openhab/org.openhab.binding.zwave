@@ -394,7 +394,7 @@ Automatic report interval for Report group 3<br /><h1>Overview</h1><p>Set the in
         <default>0</default>
         <options>
           <option value="0">(Default) Reset all configuration parameters</option>
-          <option value="1431655765">Reset &amp; Remove from Network</option>
+          <option value="1431655765">Reset & Remove from Network</option>
         </options>
       </parameter>
 

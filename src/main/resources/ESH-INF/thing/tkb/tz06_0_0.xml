@@ -80,7 +80,7 @@ Selected Relay (Endpoint)<br /><h1>Overview</h1><p>If Controller not using Multi
         <options>
           <option value="1">Relay 1</option>
           <option value="2">Relay 2</option>
-          <option value="3">Relay 1&amp;2</option>
+          <option value="3">Relay 1&2</option>
         </options>
       </parameter>
 

@@ -140,7 +140,7 @@ Send heavy rain stop to group 3<br /><h1>Overview</h1><p>This BASIC Set Command 
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Switching Command when Rain (&gt; 0 mm/h)</label>
+        <label>2: Switching Command when Rain (> 0 mm/h)</label>
         <description>Switching Command when Rain (&gt; 0 mm/h). Basic Set Comand is sent.</description>
         <multipleLimit>5</multipleLimit>
       </parameter>

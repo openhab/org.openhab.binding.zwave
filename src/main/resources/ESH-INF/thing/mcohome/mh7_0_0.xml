@@ -90,8 +90,8 @@ Water/Electrical Heating Thermostat<br /><h1>Overview</h1><p>MCOHome Water / Ele
       <options>
         <option value="0">Off</option>
         <option value="1">Heat</option>
-        <option value="13">Away</option>
         <option value="11">Economy Heat</option>
+        <option value="13">Away</option>
       </options>
     </state>
   </channel-type>

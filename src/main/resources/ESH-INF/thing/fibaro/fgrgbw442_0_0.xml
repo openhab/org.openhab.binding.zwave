@@ -221,7 +221,7 @@ RGBW CONTROLLER 2<br /><h1>Overview</h1><p>FIBARO RGBW Controller 2 uses PWM out
           <option value="1">Analog input with internal pull-up</option>
           <option value="2">Momentary switch (Central Scene)</option>
           <option value="3">Toggle switch: switch state on every input change</option>
-          <option value="4">Toggle switch: closed – ON, opened – OFF</option>
+          <option value="4">Toggle switch:  closed – ON, opened – OFF</option>
         </options>
       </parameter>
 

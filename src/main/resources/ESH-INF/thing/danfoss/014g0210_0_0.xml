@@ -325,8 +325,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -338,8 +338,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -351,8 +351,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -364,8 +364,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -377,8 +377,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -390,8 +390,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -403,8 +403,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -416,8 +416,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -429,8 +429,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -442,8 +442,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -455,8 +455,8 @@ Pulse-width modulation period<br /><h1>Overview</h1><p>The PWM period can be set
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>

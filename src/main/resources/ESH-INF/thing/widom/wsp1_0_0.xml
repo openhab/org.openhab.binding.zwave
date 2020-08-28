@@ -33,7 +33,7 @@ Widom Smart Plug<br /><h1>Overview</h1><p>WiDom Smart Plug is able to detect ove
         </properties>
       </channel>
       <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
+        <label>Electric meter (kWh) </label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>

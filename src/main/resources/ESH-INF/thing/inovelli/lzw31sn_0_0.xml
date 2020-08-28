@@ -267,7 +267,7 @@ LED Indicator Timeout<br /><h1>Overview</h1><p>Changes the amount of time the RG
 
       <parameter name="config_19_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>19: Periodic Power &amp; Energy Reports</label>
+        <label>19: Periodic Power & Energy Reports</label>
         <description>Periodic Power &amp; Energy Reports</description>
         <default>3600</default>
         <limitToOptions>false</limitToOptions>
@@ -367,5 +367,37 @@ Enable "smart bulb" mode<br /><h1>Overview</h1><p>Smart bulb mode: If set to 1, 
     </config-description>
 
   </thing-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param16">
+    <item-type>Number</item-type>
+    <label>LED Strip Effect</label>
+    <description>LED Strip Effect</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param9">
+    <item-type>Number</item-type>
+    <label>Default Level (Local)</label>
+    <description>Default Level (Local)</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param13">
+    <item-type>Number</item-type>
+    <label>LED Indicator Color</label>
+    <description>LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param14">
+    <item-type>Number</item-type>
+    <label>LED Indicator Intensity</label>
+    <description>LED Indicator Intensity</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

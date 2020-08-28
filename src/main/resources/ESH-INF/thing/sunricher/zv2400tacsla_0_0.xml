@@ -124,7 +124,7 @@ Default fade time<br /><h1>Overview</h1><p>Default fade time (unit is second, th
         <options>
           <option value="0">Instantly</option>
           <option value="1">from 1 to 127 seconds</option>
-          <option value="80">1 to 127 minutes</option>
+          <option value="80">1  to 127 minutes</option>
           <option value="255">Factory default duration. (3 second)</option>
         </options>
       </parameter>

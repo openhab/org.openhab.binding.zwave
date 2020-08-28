@@ -97,10 +97,10 @@ Power Failure<br /><h1>Overview</h1><p>This parameter is to set-up the Power Fai
         <label>3: Follow State</label>
         <default>3</default>
         <options>
-          <option value="0">Disable group 2 &amp; 3</option>
+          <option value="0">Disable group 2 & 3</option>
           <option value="1">Enable group 2</option>
           <option value="2">Enable group 3</option>
-          <option value="3">Enable group 2 &amp; 3</option>
+          <option value="3">Enable group 2 & 3</option>
         </options>
       </parameter>
 

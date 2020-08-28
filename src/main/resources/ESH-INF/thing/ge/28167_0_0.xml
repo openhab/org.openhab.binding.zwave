@@ -94,7 +94,7 @@ Dim Rate Adjustments (When Manually Controlled)<br /><h1>Overview</h1><p>Number 
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>10: Dim Timing (When Manually Controlled)</label>
+        <label>10: Dim Timing  (When Manually Controlled)</label>
         <description><![CDATA[
 Dim Rate Adjustments (When Manually Controlled)<br /><h1>Overview</h1><p>Timing of steps</p>
         ]]></description>

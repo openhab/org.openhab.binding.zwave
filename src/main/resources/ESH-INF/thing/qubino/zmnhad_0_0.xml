@@ -314,7 +314,7 @@ Digital temperature sensor reporting<br /><h1>Overview</h1><p>If digital tempera
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Notification report (triggered input I2 state)</label>
+        <label>4: Notification report (triggered  input I2 state)</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p>Notification report (triggered at change of the input I2 state and reflecting its state) up to 16 nodes.</p>
         ]]></description>
@@ -322,7 +322,7 @@ Digital temperature sensor reporting<br /><h1>Overview</h1><p>If digital tempera
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: Binary Sensor (triggered input I2 state)</label>
+        <label>5: Binary Sensor (triggered  input I2 state)</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p> Binary sensor (triggered at change of the input I2 state and reflecting its state) up to 16 nodes.</p>
         ]]></description>
@@ -346,7 +346,7 @@ Digital temperature sensor reporting<br /><h1>Overview</h1><p>If digital tempera
       </parameter>
 
       <parameter name="group_8" type="text" groupName="association" multiple="true">
-        <label>8: Binary Sensor report (triggered input I3 state)</label>
+        <label>8: Binary Sensor report (triggered  input I3 state)</label>
         <description><![CDATA[
 <br /><h1>Overview</h1><p> binary sensor report (triggered at change of the input I3 state and reflecting its state) up to 16 nodes</p>
         ]]></description>

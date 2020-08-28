@@ -218,7 +218,7 @@ Selected Relay<br /><h1>Overview</h1><p>If Controller not using Multi_Channel co
         <options>
           <option value="1">Relay1</option>
           <option value="2">Relay2</option>
-          <option value="3">Relay1 &amp; Relay2</option>
+          <option value="3">Relay1 & Relay2</option>
         </options>
       </parameter>
 

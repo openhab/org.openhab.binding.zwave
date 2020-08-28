@@ -179,7 +179,7 @@ Flush pilot (DIN version)<br /><h1>Overview</h1><p>The ZMNHUD is used to control
       </parameter>
 
       <parameter name="group_4" type="text" groupName="association" multiple="true">
-        <label>4: Basic on/off - input I2</label>
+        <label>4: Basic on/off -  input I2</label>
         <description>Triggered at change of the input I2 state and reflecting its state</description>
         <multipleLimit>99</multipleLimit>
       </parameter>

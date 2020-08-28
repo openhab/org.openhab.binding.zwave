@@ -77,7 +77,7 @@ Set the duration value of the sent commands<br /><h1>Overview</h1><p>Setting the
         <default>1</default>
         <options>
           <option value="85">Factory Reset without Remove</option>
-          <option value="1431655765">Factory Reset &amp; Remove</option>
+          <option value="1431655765">Factory Reset & Remove</option>
         </options>
       </parameter>
 

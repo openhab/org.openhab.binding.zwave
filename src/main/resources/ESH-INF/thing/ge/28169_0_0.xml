@@ -60,7 +60,7 @@ Plug in Smart Switch<br /><h1>Overview</h1><p>Z-wave controlled AC outlet for st
         <description>Set the state of the LED Light</description>
         <default>0</default>
         <options>
-          <option value="0">LED Light on when Z-Wave turned OFF (Default)</option>
+          <option value="0">LED Light on when Z-Wave turned OFF  (Default)</option>
           <option value="1">LED Light on when Z-Wave turned On</option>
           <option value="2">LED Light Always Off</option>
         </options>

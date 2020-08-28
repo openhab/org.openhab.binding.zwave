@@ -264,7 +264,7 @@ Set power level for plain switch functionality<br /><h1>Overview</h1><p>0=disabl
         <default>0</default>
         <options>
           <option value="0">Press and release any button (Default)</option>
-          <option value="1">Press &amp; release “X” btn &amp; then “ON“ btn</option>
+          <option value="1">Press & release “X” btn & then “ON“ btn</option>
         </options>
         <advanced>true</advanced>
       </parameter>

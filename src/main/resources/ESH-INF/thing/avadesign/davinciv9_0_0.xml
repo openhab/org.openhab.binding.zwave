@@ -57,7 +57,7 @@ button 1 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p>
           <option value="0">Null</option>
           <option value="1">Switch On/Off</option>
           <option value="2">Blind up</option>
-          <option value="3">Blind down</option>
+          <option value="3">Blind  down</option>
           <option value="4">Switch multiway</option>
           <option value="5">Blind-up multiway</option>
           <option value="6">Blind-down multiway</option>
@@ -525,7 +525,7 @@ Button 7 Type<br /><h1>Overview</h1><p>1 = switch on/off</p> <p>2 = blind up</p>
         <options>
           <option value="1">On/Off Switch</option>
           <option value="2">Blind up</option>
-          <option value="3">Blind down</option>
+          <option value="3">Blind  down</option>
           <option value="4">Switch multiway</option>
           <option value="5">Blind-up multiway</option>
           <option value="6">Blind-down multiway</option>

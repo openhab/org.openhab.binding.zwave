@@ -499,7 +499,7 @@ Digital temperature sensor reporting<br /><h1>Overview</h1><p>If digital teperat
           <option value="2">temperature is grabbed from ext battery sensor</option>
           <option value="4">setpoint is grabbed by sensor with assoc 5</option>
           <option value="8">setpoint is grabbed from ext battery sensor</option>
-          <option value="10">temperature &amp; setpoint from ext batt sensor</option>
+          <option value="10">temperature & setpoint from ext batt sensor</option>
         </options>
       </parameter>
 

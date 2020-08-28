@@ -97,10 +97,10 @@ Allows to enable or disable Group 2 &amp; Group 3<br /><h1>Overview</h1><p>This 
         ]]></description>
         <default>3</default>
         <options>
-          <option value="0">Group 2 &amp; Group 3 disable</option>
+          <option value="0">Group 2 & Group 3 disable</option>
           <option value="1">Group 2 enable</option>
           <option value="2">Group 3 enable</option>
-          <option value="3">Group 2 &amp; Group 3 enable</option>
+          <option value="3">Group 2 & Group 3 enable</option>
         </options>
       </parameter>
 
@@ -266,11 +266,11 @@ Defines actions if the power Low/High Threshold are reached.<br /><h1>Overview</
           <option value="1">Power High Group 4 OFF</option>
           <option value="3">Power High Group 4 ON</option>
           <option value="4">Power Low Group 5 OFF</option>
-          <option value="5">Power High Group 4 OFF &amp; Power Low Group 5 OFF</option>
-          <option value="7">Power High Group 4 ON &amp; Power Low Group 5 OFF</option>
+          <option value="5">Power High Group 4 OFF & Power Low Group 5 OFF</option>
+          <option value="7">Power High Group 4 ON & Power Low Group 5 OFF</option>
           <option value="12">Power High Group 5 ON</option>
-          <option value="13">Power High Group 4 OFF &amp; Power Low Gourp 5 ON</option>
-          <option value="15">Power High Group 4 ON &amp; Power Low Group 5 ON</option>
+          <option value="13">Power High Group 4 OFF & Power Low Gourp 5 ON</option>
+          <option value="15">Power High Group 4 ON & Power Low Group 5 ON</option>
         </options>
       </parameter>
 

@@ -92,7 +92,7 @@ Blade Turn Time (Unit = 0.01 seconds)<br /><h1>Overview</h1><p>Note:</p> <ul><li
 
       <parameter name="config_35_2" type="integer" groupName="configuration"
                  min="500" max="32767">
-        <label>35: Curtain Trip Time (Unit = 0.01 seconds)</label>
+        <label>35: Curtain Trip Time (Unit  = 0.01 seconds)</label>
         <description><![CDATA[
 Curtain Trip Time<br /><h1>Overview</h1><p>Note:</p> <ul><li>For Venetian, if this value is set too large for curtain trip, blade turn positioning may cause errors.</li> <li>This configuration will not change after network exclusion</li> </ul>
         ]]></description>
@@ -128,10 +128,10 @@ Enter/Exit Calibration<br /><h1>Overview</h1><p>Note:</p> <p>Product will enter 
         <default>0</default>
         <options>
           <option value="0">Complete (Default)</option>
-          <option value="1">-&gt; Reference Point A</option>
-          <option value="2">-&gt; Reference Point B</option>
+          <option value="1">-> Reference Point A</option>
+          <option value="2">-> Reference Point B</option>
           <option value="3">Wait</option>
-          <option value="4">-&gt; Reference Point C</option>
+          <option value="4">-> Reference Point C</option>
           <option value="5">Terminated</option>
         </options>
       </parameter>

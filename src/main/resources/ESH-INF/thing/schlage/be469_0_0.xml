@@ -77,11 +77,11 @@ Touchscreen Deadbolt<br /><h1>Overview</h1><p>Touchscreen Deadbolt with Alarm</p
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Lock &amp; Leave</label>
+        <label>5: Lock & Leave</label>
         <default>0</default>
         <options>
-          <option value="0">Disable Lock &amp; Leave</option>
-          <option value="255">Enable Lock &amp; Leave</option>
+          <option value="0">Disable Lock & Leave</option>
+          <option value="255">Enable Lock & Leave</option>
         </options>
       </parameter>
 

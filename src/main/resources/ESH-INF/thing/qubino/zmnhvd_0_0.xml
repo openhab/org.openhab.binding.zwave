@@ -249,7 +249,7 @@ Input 1 Switch Type<br /><h1>Overview</h1><p>By this parameter the user can set 
       </parameter>
 
       <parameter name="group_5" type="text" groupName="association" multiple="true">
-        <label>5: multilevel sensor report - analogue sensor</label>
+        <label>5: multilevel sensor report -  analogue sensor</label>
         <description>triggered at change of analogue sensor</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

@@ -222,7 +222,7 @@ Duration (min) the device flashes after a communication error.<br /><h1>Overview
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: LED for network error</label>
+        <label>4: LED for network  error</label>
         <description>If the LED should indicate a network error by flashing or not</description>
         <default>1</default>
         <options>

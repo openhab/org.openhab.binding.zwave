@@ -335,7 +335,7 @@ LED signalling mode<br /><h1>Overview</h1><p>The parameter determines the way in
         <default>10</default>
         <options>
           <option value="0">LED inactive.</option>
-          <option value="1">Long / None colour temperature dependent</option>
+          <option value="1">Long / None colour  temperature dependent</option>
           <option value="2">Long / None Flashlight mode</option>
           <option value="3">Long / None White.</option>
           <option value="4">Long / None Red.</option>
@@ -353,7 +353,7 @@ LED signalling mode<br /><h1>Overview</h1><p>The parameter determines the way in
           <option value="16">Long / Short Yellow.</option>
           <option value="17">Long / Short Cyan.</option>
           <option value="18">Long / Short Magenta.</option>
-          <option value="19">Long / 2 Short colour temperature dependent</option>
+          <option value="19">Long / 2 Short colour  temperature dependent</option>
           <option value="20">Long / 2 Short White.</option>
           <option value="21">Long / 2 Short Red.</option>
           <option value="22">Long / 2 Short Green.</option>

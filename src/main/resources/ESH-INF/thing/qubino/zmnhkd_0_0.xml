@@ -144,7 +144,7 @@ I1 Functionality selection<br /><h1>Overview</h1><p>If "Window Sensor" selected 
         <options>
           <option value="1">Input I1 changes between Off and Heat/Cool</option>
           <option value="2">Input I1 influences the heating/cooling valves</option>
-          <option value="32767">Input I1 doesn't influence the process</option>
+          <option value="32767">Input I1 doesn't  influence the process</option>
         </options>
       </parameter>
 
@@ -156,7 +156,7 @@ I2 Functionality selection<br /><h1>Overview</h1><p>0-990 - Temperature setpoint
         ]]></description>
         <default>32767</default>
         <options>
-          <option value="2000">Input I2 influences cooling with condense sensor</option>
+          <option value="2000">Input I2 influences  cooling with condense sensor</option>
           <option value="32767">Input I2 doesnt influence on the Heat/Cool process</option>
         </options>
         <limitToOptions>false</limitToOptions>
@@ -429,7 +429,7 @@ Digital temperature sensor / setpoint selector<br /><h1>Overview</h1><p>If digit
           <option value="2">temperature is grabbed from ext battery sensor</option>
           <option value="4">setpoint is grabbed by sensor with assoc 5</option>
           <option value="8">setpoint is grabbed from ext battery sensor</option>
-          <option value="10">temperature &amp; setpoint from ext batt sensor</option>
+          <option value="10">temperature & setpoint  from ext batt sensor</option>
         </options>
       </parameter>
 
@@ -512,8 +512,8 @@ Node ID of external battery powered room sensor<br /><h1>Overview</h1><p>If digi
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>

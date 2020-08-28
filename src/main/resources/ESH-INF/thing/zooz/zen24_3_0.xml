@@ -172,7 +172,7 @@ Scene Control Enable<br /><h1>Overview</h1><p>Enable or disable scene control fo
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
-        <label>14: Double &amp; Single Tap Enable</label>
+        <label>14: Double & Single Tap Enable</label>
         <description><![CDATA[
 Double &amp; Single Tap Enable<br /><h1>Overview</h1><p>Enable or disable the double-tap function and assign brightness level to single tap.</p>
         ]]></description>

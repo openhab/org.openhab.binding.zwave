@@ -94,7 +94,7 @@ Strips Multisensor Comfort/Drip<br /><h1>Overview</h1><p>Strips Comfort is a dis
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Temperature &amp; Light reporting frequency</label>
+        <label>3: Temperature & Light reporting frequency</label>
         <description>Temperature &amp; Light reporting frequency</description>
         <default>1</default>
         <options>
@@ -154,7 +154,7 @@ Strips Multisensor Comfort/Drip<br /><h1>Overview</h1><p>Strips Comfort is a dis
         <options>
           <option value="0">Off</option>
           <option value="1">On</option>
-          <option value="2">Report when levels in parameter 10 &amp; 11 are passed</option>
+          <option value="2">Report when levels in parameter 10 & 11 are passed</option>
         </options>
       </parameter>
 

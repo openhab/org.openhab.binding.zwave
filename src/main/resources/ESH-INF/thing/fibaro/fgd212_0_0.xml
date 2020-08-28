@@ -747,4 +747,12 @@ Power reported by the device at its maximum brightness level<br /><h1>Overview</
 
   </thing-type>
 
+  <channel-type id="fibaro_fgd212_00_000_config_decimal_param19">
+    <item-type>Number</item-type>
+    <label>Forced switch on brightness level</label>
+    <description>Switching on the Dimmer will always set this brightness level.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

@@ -58,7 +58,7 @@ Smart Toggle Switch<br /><h1>Overview</h1><p>In-Wall Smart Toggle Switch (120/27
         <description>LED Configuration</description>
         <default>2</default>
         <options>
-          <option value="0">LED ON when device is OFF, OFF when device is ON</option>
+          <option value="0">LED ON when device is OFF,  OFF when device is ON</option>
           <option value="1">LED ON when device is ON, OFF when device is OFF</option>
           <option value="2">LED always OFF</option>
           <option value="3">LED Always ON</option>
