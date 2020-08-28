@@ -193,7 +193,7 @@ Whether to blink the LED when motion is detected<br /><h1>Overview</h1><p>This p
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
-        <label>13: Led Color For Light Sensor Report</label>
+        <label>13: Led Color For Light Sensor Report </label>
         <description>LED color when sending a light sensor report</description>
         <default>0</default>
         <options>
@@ -210,7 +210,7 @@ Whether to blink the LED when motion is detected<br /><h1>Overview</h1><p>This p
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
-        <label>15: Led Color For Wakeup Notification Report</label>
+        <label>15: Led Color For Wakeup Notification Report </label>
         <description>LED color when sending a wakeup report</description>
         <default>0</default>
         <options>

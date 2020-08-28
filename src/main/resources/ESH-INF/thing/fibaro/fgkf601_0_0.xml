@@ -157,7 +157,7 @@ This parameter allows to choose operating mode for single button associations.<b
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>12: Value sent to ○ association group</label>
+        <label>12: Value sent to ○ association group	</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /><h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
@@ -166,7 +166,7 @@ This parameter allows to choose operating mode for single button associations.<b
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>13: Value sent to x association group</label>
+        <label>13: Value sent to x association group	</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /><h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
@@ -184,7 +184,7 @@ This parameter allows to choose operating mode for single button associations.<b
 
       <parameter name="config_15_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>15: Value sent to - association group</label>
+        <label>15: Value sent to - association group	</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /><h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>
@@ -256,7 +256,7 @@ allows to activate paired buttons association mode for - and + buttons<br /><h1>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>23: Scene activation for x button</label>
+        <label>23: Scene activation for x button	</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /><h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
         ]]></description>
@@ -265,7 +265,7 @@ allows to activate paired buttons association mode for - and + buttons<br /><h1>
 
       <parameter name="config_24_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>24: Scene activation for Δ button</label>
+        <label>24: Scene activation for Δ button	</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /><h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
         ]]></description>
@@ -274,7 +274,7 @@ allows to activate paired buttons association mode for - and + buttons<br /><h1>
 
       <parameter name="config_25_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>25: Scene activation for - button</label>
+        <label>25: Scene activation for - button	</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /><h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
         ]]></description>
@@ -283,7 +283,7 @@ allows to activate paired buttons association mode for - and + buttons<br /><h1>
 
       <parameter name="config_26_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>26: Scene activation for + button</label>
+        <label>26: Scene activation for + button	</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /><h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
         ]]></description>

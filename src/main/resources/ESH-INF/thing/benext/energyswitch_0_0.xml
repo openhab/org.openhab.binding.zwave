@@ -77,7 +77,7 @@ If value is set to 1 the info shall be presented with 1 decimal<br /><h1>Overvie
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="0" max="4500">
-        <label>3: Power Limit</label>
+        <label>3: Power Limit </label>
         <description><![CDATA[
 The device will shut down when it reaches an amount higher then defined (W)<br /><h1>Overview</h1><p>0 = no power limit.</p> <p>1-4500 are acceptable values and can be used, everything above the 4500 shall be changed to 4500.</p>
         ]]></description>

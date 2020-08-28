@@ -113,7 +113,7 @@ LED frame – colour when OFF<br /><h1>Overview</h1><table><tr><td>0 (default)</
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
                  min="0" max="102">
-        <label>13: LED frame – brightness</label>
+        <label>13: 	LED frame – brightness</label>
         <description><![CDATA[
 LED frame – brightness<br /><h1>Overview</h1><table><tr><td>0</td> <td>LED disable</td> </tr><tr><td>1 to 100<br />(Default)</td> <td>(1-100% brightness)</td> </tr><tr><td>101</td> <td>brightness directly proportional to measured power</td> </tr><tr><td>102</td> <td>brightness inversely proportional to measured power</td> </tr></table>
         ]]></description>
@@ -248,7 +248,7 @@ Power reports for first channel – periodic<br /><h1>Overview</h1><table><tr><t
 
       <parameter name="config_63_2" type="integer" groupName="configuration"
                  min="0" max="500">
-        <label>63: Power reports for second channel – on change</label>
+        <label>63: 	Power reports for second channel – on change</label>
         <description><![CDATA[
 Power reports for second channel – on change<br /><h1>Overview</h1><table><tr><td>0</td> <td>reporting on change disabled</td> </tr><tr><td>1 to 500<br />(Default)</td> <td>(1-500%, 1% step) – minimal change</td> </tr></table>
         ]]></description>

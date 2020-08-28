@@ -333,7 +333,7 @@ enables/disables random ID<br /><h1>Overview</h1><p>If Random ID is disabled, th
 
       <parameter name="config_250_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>250: Unsecure / Secure Inclusion</label>
+        <label>250: Unsecure / Secure Inclusion </label>
         <description><![CDATA[
 Unsecure / Secure Inclusion<br /><h1>Overview</h1><ul><li>default Value 0</li> <li>0 – Unsecure Inclusion</li> <li>1 – Secure Inclusion</li> </ul><p>The Weather Station Key supports both, the secure and unsecure inclusion. Even if the controller does not support security command classes, the Key could be included as unsecure and keep all the functionality. By default, the Key includes as unsecure. To include the Key as secure follow the procedure:</p> <ol><li>Include the Key into the controller</li> <li>Set the parameter 250 to the value “1”</li> <li>Enable add/remove mode on main controller,</li> <li>Hold service button S between 1.5 and 4 seconds to exclude the module</li> <li>If the exclusion of the module was successful, the LED on the module starts blinking</li> <li>Unplug the module out of the power supply</li> <li>enable add/remove mode on main controller</li> <li>Plug the module into the power supply to star autoinclusion</li> <li>Now the module should be included as secure</li> </ol><p>The same procedure is to include the module as unsecure</p>
         ]]></description>

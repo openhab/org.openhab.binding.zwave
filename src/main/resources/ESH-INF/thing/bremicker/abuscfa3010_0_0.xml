@@ -91,7 +91,7 @@ This parameter defines the torque of the latch.<br /><h1>Overview</h1><p>Setting
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Acoustic Feedback</label>
+        <label>3: Acoustic Feedback </label>
         <description><![CDATA[
 This parameter defines Acoustic Feedback signals.<br /><h1>Overview</h1><p>Setting of  acoustic signals to the following values: <br />1 = all signals inactive <br />2 = signal only at start of  travel <br />3 = signal when latch position is reached <br />4 = signal when  locked position is reached <br />5 = signal when  end position is reached <br />Button, low-battery and error/alarm signals cannot be changed.</p>
         ]]></description>

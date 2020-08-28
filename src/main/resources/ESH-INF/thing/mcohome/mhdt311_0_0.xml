@@ -119,7 +119,7 @@ Auto detection of dimming mode when powered on<br /><h1>Overview</h1><p>0 - Auto
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="10">
-        <label>4: LED Backlit brightness level</label>
+        <label>4: LED Backlit brightness level </label>
         <description><![CDATA[
 LED Backlit brightness level<br /><h1>Overview</h1><p>0 - LED disabled </p> <p>1-10 Min level-Max level</p>
         ]]></description>

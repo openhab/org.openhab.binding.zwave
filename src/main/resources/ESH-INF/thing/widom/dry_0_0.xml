@@ -63,7 +63,7 @@ Widom Smart Dry contact<br /><h1>Overview</h1><p>WiDom Smart Dry Contact Switch 
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="-1" max="100">
-        <label>5: Value used for devices belonging to Group 3</label>
+        <label>5:  Value used for devices belonging to Group 3</label>
         <description><![CDATA[
 Value sent wen the external switch receives 2 Clicks<br /><h1>Overview</h1><p> Value used for devices belonging to Group 3 when the external switch receives 2 Clicks</p>
         ]]></description>
@@ -72,7 +72,7 @@ Value sent wen the external switch receives 2 Clicks<br /><h1>Overview</h1><p> 
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="-1" max="100">
-        <label>6: Value used for devices belonging to Group 4</label>
+        <label>6:  Value used for devices belonging to Group 4</label>
         <description><![CDATA[
 Value sent when external switch receives 3 Clicks<br /><h1>Overview</h1><p> Value used for devices belonging to Group 4 when external switch receives 3 Clicks</p>
         ]]></description>
@@ -110,7 +110,7 @@ Defines the Scene Activation Set value sent to the Lifeline group with 1 Click<b
 
       <parameter name="config_21_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>21: Two Clicks Scene Activation Set</label>
+        <label>21: Two Clicks Scene Activation Set </label>
         <description><![CDATA[
 Defines the Scene Activation Set value sent to the Lifeline group with 2 Clicks<br /><h1>Overview</h1><p>Defines the Scene Activation Set value sent to the Lifeline group with 2 Clicks on the external switch</p>
         ]]></description>

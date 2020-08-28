@@ -155,7 +155,7 @@ Parameter for dimming/opening blinds<br /><h1>Overview</h1><p>Value of the param
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
-        <label>9: Enable/Disable transmission cancelling alarm</label>
+        <label>9: Enable/Disable transmission cancelling alarm 	</label>
         <description><![CDATA[
 Enable/Disable transmission of frame cancelling alarm<br /><h1>Overview</h1><p>Deactivating transmission of the alarm cancelling frame or the control frame deactivating the device (Basic). It allows for disabling the function of deactivating the device and cancelling alarms for devices associated with IN input. Default value: 0</p> <p>Available parameter settings:</p> <p>0 – for association group no. 1 information is sent</p> <p>1 – for association group no. 1 information is not sent.</p> <p>Parameter size: 1 [byte].</p>
         ]]></description>

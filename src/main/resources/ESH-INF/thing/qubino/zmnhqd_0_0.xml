@@ -70,7 +70,7 @@ Qubino LUXY Smart Light<br /><h1>Overview</h1><p>The Qubino LUXY Smart Light i
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Digital input type</label>
+        <label>1: Digital input type </label>
         <description>Defines the type of input device connected to digital input.</description>
         <default>1</default>
         <options>
@@ -92,7 +92,7 @@ Qubino LUXY Smart Light<br /><h1>Overview</h1><p>The Qubino LUXY Smart Light i
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="32535">
-        <label>5: Motion sensor memory timer</label>
+        <label>5: Motion sensor memory timer </label>
         <description><![CDATA[
 Time after which the output triggered by motion sensor is turned off.<br /><h1>Overview</h1><p>0 – 32534 = 0-32534 seconds after which the LED will be turned off.</p> <p>32535 – never turns off.</p>
         ]]></description>
@@ -102,7 +102,7 @@ Time after which the output triggered by motion sensor is turned off.<br /><h1>O
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="0" max="32535">
-        <label>10: Auto-on timer</label>
+        <label>10: Auto-on timer </label>
         <description><![CDATA[
 Defines the time after which the device is turned to last known state.<br /><h1>Overview</h1><p>0 – disabled</p> <p>30 – 32535 = 30 – 32535 seconds after which the device turns on</p>
         ]]></description>
@@ -112,7 +112,7 @@ Defines the time after which the device is turned to last known state.<br /><h1>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
                  min="0" max="32535">
-        <label>11: Auto-off timer</label>
+        <label>11: Auto-off timer </label>
         <description><![CDATA[
 Defines the time after which the device is turned to last known state.<br /><h1>Overview</h1><p>0 – disabled</p> <p>30 – 32535 = 30 – 32535 seconds after which the device turns off</p>
         ]]></description>
@@ -121,7 +121,7 @@ Defines the time after which the device is turned to last known state.<br /><h1>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
-        <label>30: Restore state on power failure</label>
+        <label>30: Restore state on power failure </label>
         <description><![CDATA[
 Restore state on power failure<br /><h1>Overview</h1><p>1 – enabled (the device will restore state on power failure)</p> <p>0 – disabled (the device will not restore state on power failure and will remain off)</p>
         ]]></description>
@@ -155,7 +155,7 @@ Enable/disable beeper<br /><h1>Overview</h1><p>0 – disabled (the beeper does n
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: LEDs on/off</label>
         <description><![CDATA[
-BASIC SET – status change for the LEDs<br /><h1>Overview</h1>  
+BASIC SET – status change for the LEDs<br /><h1>Overview</h1>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

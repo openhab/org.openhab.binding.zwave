@@ -76,14 +76,14 @@ LED Light Control<br /><h1>Overview</h1><p>When shipped from the factory, the LE
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>8: Dim Rate Adjustments (Z-Wave Controller, Timing)</label>
+        <label>8: Dim Rate Adjustments (Z-Wave Controller, Timing) </label>
         <description>Timing of steps</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>9: Dim Rate Adjustments (manually controlled)</label>
+        <label>9: Dim Rate Adjustments (manually controlled) </label>
         <description>Number of steps or levels</description>
         <default>1</default>
       </parameter>
@@ -97,7 +97,7 @@ LED Light Control<br /><h1>Overview</h1><p>When shipped from the factory, the LE
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>11: Dim Rate Adjustments (All-On/Off Commands)</label>
+        <label>11: Dim Rate Adjustments (All-On/Off Commands) </label>
         <description>Number of steps or levels</description>
         <default>1</default>
       </parameter>

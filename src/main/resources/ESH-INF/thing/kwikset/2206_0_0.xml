@@ -79,7 +79,7 @@ User Code Type for User Code 10<br /><h1>Overview</h1><p>User Code Type for User
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
-        <label>11: User Code 11</label>
+        <label>11:  User Code 11</label>
         <description>User Code Type for User Code 11</description>
         <default>1</default>
         <options>

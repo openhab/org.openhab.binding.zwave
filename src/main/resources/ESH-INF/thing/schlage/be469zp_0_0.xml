@@ -104,7 +104,7 @@ Occupied slots for User Codes<br /><h1>Overview</h1><p>This configuration settin
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: Alarm Mode</label>
+        <label>7:  Alarm Mode</label>
         <description><![CDATA[
 Lock Specific Alarm Mode<br /><h1>Overview</h1><p>This configuration setting indicates the Mode of the built-in alarm function of the lock. </p>
         ]]></description>

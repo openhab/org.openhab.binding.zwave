@@ -150,7 +150,7 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="10" max="127">
-        <label>7: Shutdown</label>
+        <label>7: Shutdown </label>
         <description>Shutdown time after wrong code entries</description>
         <default>60</default>
       </parameter>
@@ -225,6 +225,14 @@ Number of incorrect PINs before lockout<br /><h1>Overview</h1><p>Number of incor
         <option value="0">No auto-relock</option>
         <option value="255">Auto relock</option>
       </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="yale_yrd446_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Auto relock time</label>
+    <description>Time for auto relock</description>
+    <state pattern="%s">
     </state>
   </channel-type>
 

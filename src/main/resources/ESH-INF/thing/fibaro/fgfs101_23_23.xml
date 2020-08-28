@@ -96,7 +96,7 @@ LED indicator and acoustic alarm deactivation<br /><h1>Overview</h1><p>Parameter
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Type of alarm frame for 1st group (FLOOD)</label>
+        <label>5: Type of alarm frame for 1st  group (FLOOD)</label>
         <description><![CDATA[
 Command frame sent by the Sensor in case flooding<br /><h1>Overview</h1><p>Parameter determines a type of command frame sent by the Sensor in case flooding has been detected or cancelled</p>
         ]]></description>
@@ -130,7 +130,7 @@ Allows for deactivating device turn off and alarm cancellation functions<br /><h
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="1" max="32767">
-        <label>10: Temperature reading Interval</label>
+        <label>10: Temperature reading Interval </label>
         <description><![CDATA[
 Interval between successive readings of temperature in seconds.<br /><h1>Overview</h1><p>Interval between successive readings of temperature from all sensors connected to the device in seconds.</p>
         ]]></description>

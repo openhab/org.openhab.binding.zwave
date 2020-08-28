@@ -91,7 +91,7 @@ Micro Smart Energy Switch<br /><h1>Overview</h1><p>The Aeon Labs Micro SES is a 
       </parameter>
 
       <parameter name="config_90_1" type="integer" groupName="configuration">
-        <label>90: Enable Automated sending of a Report</label>
+        <label>90: Enable Automated sending of a Report </label>
         <description><![CDATA[
 Automated sending of a Report triggered by minimal change of value.<br /><h1>Overview</h1><p>Automated sending of a Report triggered by minimal change of value.</p>
         ]]></description>
@@ -125,7 +125,7 @@ Which reports need to send automatically in timing intervals for group 1<br /><h
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>102: Automatic reports for group 2</label>
+        <label>102:  Automatic reports for group 2</label>
         <description><![CDATA[
 Which reports need to send automatically in timing intervals for group 2<br /><h1>Overview</h1><p>Which reports need to send automatically in timing intervals for group 2</p>
         ]]></description>
@@ -134,7 +134,7 @@ Which reports need to send automatically in timing intervals for group 2<br /><h
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>103: Automatic reports for group 3</label>
+        <label>103:  Automatic reports for group 3</label>
         <description><![CDATA[
 Which reports need to send automatically in timing intervals for group 3<br /><h1>Overview</h1><p>Which reports need to send automatically in timing intervals for group 3</p>
         ]]></description>

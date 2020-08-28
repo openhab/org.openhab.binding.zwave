@@ -448,7 +448,7 @@ Load control mode<br /><h1>Overview</h1><p>This parameter allows to set the desi
 
       <parameter name="config_171_1" type="integer" groupName="configuration" readOnly="true"
                  min="0" max="1">
-        <label>171: Load control mode recognized</label>
+        <label>171: Load control mode recognized </label>
         <description><![CDATA[
 Load control mode recognized during auto-calibration<br /><h1>Overview</h1><p>This parameter allows to read load control mode that was set during auto-calibration.</p> <p>Parameter size: 1B</p> <p>Default value: –</p> <p>Available values:</p> <p>0 – leading edge</p> <p>1 – trailing edge</p>
         ]]></description>
@@ -512,7 +512,7 @@ Auto-calibration after power on<br /><h1>Overview</h1><p>This parameter determin
 
       <parameter name="config_177_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>177: Brightness level correction flickering</label>
+        <label>177: Brightness level correction flickering </label>
         <description><![CDATA[
 Brightness level correction for flickering loads<br /><h1>Overview</h1><p>Correction reduces spontaneous flickering of some capacitive loads (e.g. dimmable LEDs) at certain brightness levels in 2-wire installation.</p> <p>In countries using ripple-control, correction may cause changes in brightness. In this case it is necessary to disable correction or adjust the time of correction for flickering loads.</p> <p>Parameter size: 2B</p> <p>Default value: 255</p> <p>Available values:</p> <p>0 – automatic correction disabled</p> <p>1-254 (1-254s, 1s step) – duration of correction</p> <p>255 – automatic correction always enabled</p>
         ]]></description>

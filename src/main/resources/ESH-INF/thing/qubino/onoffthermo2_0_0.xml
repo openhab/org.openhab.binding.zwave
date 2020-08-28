@@ -149,7 +149,7 @@ Hysteresis Lower temperature offset<br /><h1>Overview</h1><p>This parameter defi
 
       <parameter name="config_45_2" type="integer" groupName="configuration"
                  min="-125" max="1000">
-        <label>45: Antifreeze</label>
+        <label>45:  Antifreeze</label>
         <description><![CDATA[
 Antifreeze<br /><h1>Overview</h1><p>Set value determines at which temperature the device will be turned on even (if the thermostat was manually set to off).<br /></p> <p>Values:<br />• default value 50 (5.0 °C)<br />• -125 - 545<br />• 1000 - Antifreeze functionality disabled</p> <p><strong>NOTE1: Antifreeze is activated only in heating mode and it uses hysteresis of ±0.5°C.<br />NOTE2: If configuration parameter 78 (Scale selection) is set to Celsius, then valid interval is -125 – 125 (-12.5 °C – 12.5 °C, resolution 0.1 °C)<br />NOTE3: If configuration parameter 78 (Scale selection) is set to Fahrenheit, then valid interval is 95 – 545 (9.5 °F – 54.5 °F, resolution 0.1 °F)<br />NOTE4: If configuration parameter 78 (Scale selection) is set to Fahrenheit, note that Fahrenheit values will be converted to Celsius degrees. Due to conversion algorithm please be advised that configuration value could drift when converting values back and forth. </strong> </p>
         ]]></description>

@@ -76,7 +76,7 @@ Switch state saved or not when power failure<br /><h1>Overview</h1><p>0x00 not s
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>3: ALL ON/ALL OFF</label>
+        <label>3: ALL ON/ALL OFF </label>
         <description><![CDATA[
 ALL ON/ALL OFF<br /><h1>Overview</h1><p>0x00 forbid ALL ON, forbid ALL OFF</p> <p>0x01 forbid ALL ON, allow ALL OFF</p> <p>0x02 allow ALL ON, forbid ALL OFF</p> <p>0xFF allow ALL ON, allow ALL OFF - DEFAULT</p>
         ]]></description>
@@ -103,7 +103,7 @@ Key Mode<br /><h1>Overview</h1><p>0x00 single click to switch on/off status - DE
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>6: Key On duration</label>
+        <label>6: Key On duration </label>
         <description><![CDATA[
 Key On duration<br /><h1>Overview</h1><p>0x00 infinite - DEFAULT</p> <p>1~65535 unit "sec"</p>
         ]]></description>
@@ -121,7 +121,7 @@ Basic CC integration setting<br /><h1>Overview</h1><p>0x00 "Basic Set" received�
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>10: Scene respond</label>
+        <label>10: Scene respond </label>
         <description><![CDATA[
 Scene respond<br /><h1>Overview</h1><p>0x00: Scene respond disabled</p> <p>Bit0: =1 Key1 respond scene</p> <p>        =0 Key1 not respond scene</p> <p>Bit1: =1 Key2 respond scene</p> <p>        =0 Key2 not respond scene</p> <p>Bit7:4 Rev</p>
         ]]></description>

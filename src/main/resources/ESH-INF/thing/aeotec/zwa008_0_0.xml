@@ -128,7 +128,7 @@ Sending a BASIC command to all devices of Association Group 2<br /><h1>Overview<
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Command Sent to Devices of Association Group 2</label>
+        <label>6:  Command Sent to Devices of Association Group 2 </label>
         <description>This parameter defines which commands is sent to 2nd Association Group</description>
         <default>2</default>
         <options>

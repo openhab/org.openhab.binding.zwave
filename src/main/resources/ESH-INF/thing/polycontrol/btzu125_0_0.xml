@@ -160,7 +160,7 @@ TurnAndGo<br /><h1>Overview</h1><p>using a optional rotation sensor. Latch&amp;G
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
-        <label>10: BrakeAndGoBack</label>
+        <label>10: BrakeAndGoBack	</label>
         <description><![CDATA[
 Turn 75 degrees back after x seconds<br /><h1>Overview</h1><p>0 -&gt; (Default) Disabled</p> <p>1 to 15 -&gt; Seconds to brake. When used the lock will brake for x amount of seconds and then turn 75 degrees back. Made for special doors without door lever.(Only when unlatching).</p>
         ]]></description>

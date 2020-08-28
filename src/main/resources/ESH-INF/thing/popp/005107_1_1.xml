@@ -104,7 +104,7 @@ Temperature correction with positive and negative offset values<br /><h1>Overvie
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>3: Send unsolicited temperature report</label>
+        <label>3: Send unsolicited  temperature report</label>
         <description><![CDATA[
 Threshold temperature to send unsolicited report. 10 = 1°C<br /><h1>Overview</h1><p>In 0.1°C (Default 10)</p>
         ]]></description>
@@ -125,7 +125,7 @@ Send unsolicited temperature report after N wake up<br /><h1>Overview</h1><p>Sen
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Switch mode</label>
+        <label>5: Switch mode </label>
         <description>Switch mode : siren only, flash only, flash + siren</description>
         <default>2</default>
         <options>

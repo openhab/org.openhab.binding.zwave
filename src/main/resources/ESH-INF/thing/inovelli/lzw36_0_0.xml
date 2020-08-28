@@ -572,6 +572,22 @@ Switch MultiLevel Start/Stop Fan<br /><h1>Overview</h1><p> Sends start / stop le
 
   </thing-type>
 
+  <channel-type id="inovelli_lzw36_00_000_config_decimal_param18">
+    <item-type>Number</item-type>
+    <label>Light LED Indicator Color</label>
+    <description>Light LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw36_00_000_config_decimal_param20">
+    <item-type>Number</item-type>
+    <label>Fan LED Indicator Color</label>
+    <description>Fan LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
   <channel-type id="inovelli_lzw36_00_000_config_decimal_param24">
     <item-type>Number</item-type>
     <label>Light LED Strip Effect Type</label>

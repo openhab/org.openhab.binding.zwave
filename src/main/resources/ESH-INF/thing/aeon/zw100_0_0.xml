@@ -85,7 +85,7 @@ MultiSensor 6<br /><h1>Overview</h1><p>Technical Specifications</p> <ul><li>Batt
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Stay Awake in Battery Mode</label>
+        <label>2: Stay Awake in Battery Mode			</label>
         <description><![CDATA[
 Stay awake for 10 minutes at power on<br /><h1>Overview</h1><p>Enable/Disable waking up for 10 minutes when re-power on (battery mode) the MultiSensor.<br />1. Value = 0, disable.<br />2. Value =others, enable.</p>
         ]]></description>
@@ -205,7 +205,7 @@ Ultraviolet change threshold<br /><h1>Overview</h1><p>Threshold change in ultrav
       </parameter>
 
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set parameters 101-103 to default.</label>
+        <label>100: Set parameters 101-103 to default.			</label>
         <description><![CDATA[
 Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
         ]]></description>
@@ -223,7 +223,7 @@ Periodic reports to send to Group 1<br /><h1>Overview</h1><p>This value is a com
 
       <parameter name="config_102_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>102: Group 2 Periodic Reports</label>
+        <label>102: Group 2 Periodic Reports			</label>
         <description><![CDATA[
 Periodic reports to send to Group 2<br /><h1>Overview</h1><p>This value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have these values:</p> <ul><li>Battery=1</li> <li>Ultraviolet=16</li> <li>Temperature=32</li> <li>Humidity=64</li> <li>Light=128</li> </ul>
         ]]></description>
@@ -232,7 +232,7 @@ Periodic reports to send to Group 2<br /><h1>Overview</h1><p>This value is a com
 
       <parameter name="config_103_4_000000FF" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>103: Group 3 Periodic Reports</label>
+        <label>103: Group 3 Periodic Reports			</label>
         <description><![CDATA[
 Periodic reports to send to Group 3<br /><h1>Overview</h1><p>This value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have these values:</p> <ul><li>Battery=1</li> <li>Ultraviolet=16</li> <li>Temperature=32</li> <li>Humidity=64</li> <li>Light=128</li> </ul>
         ]]></description>
@@ -240,7 +240,7 @@ Periodic reports to send to Group 3<br /><h1>Overview</h1><p>This value is a com
       </parameter>
 
       <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set parameters 111-113 to default.</label>
+        <label>110: Set parameters 111-113 to default.			</label>
         <description><![CDATA[
 Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
         ]]></description>
@@ -311,7 +311,7 @@ Ultraviolet Sensor Calibration<br /><h1>Overview</h1><p>Ultraviolet sensor calib
       </parameter>
 
       <parameter name="config_252_1" type="integer" groupName="configuration">
-        <label>252: Disable/Enable Configuration Lock</label>
+        <label>252: Disable/Enable Configuration Lock		</label>
         <description><![CDATA[
 Disable/Enable Configuration Lock (0=Disable, 1=Enable)<br /><h1>Overview</h1><p>Enable/disable Configuration Locked (0 =disable, 1 = enable).</p>
         ]]></description>

@@ -178,7 +178,7 @@ LED Color on ON state<br /><h1>Overview</h1><p>Defines the behavior of the LED w
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
                  min="0" max="250">
-        <label>23: Voltage Report Threshold</label>
+        <label>23: Voltage Report Threshold </label>
         <description><![CDATA[
 Voltage Report Threshold<br /><h1>Overview</h1><p>Report the voltage when the voltage has changed by more then X  * 1 V. When disabled (Value 0) the device will report every 10 minutes regardless of current voltage.</p>
         ]]></description>
@@ -223,7 +223,7 @@ Soft Circuit Breaker Recovery Time<br /><h1>Overview</h1><p>Once the soft circui
 
       <parameter name="config_28_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>28: Soft Circuit Breaker Delay Time</label>
+        <label>28: Soft Circuit Breaker Delay Time </label>
         <description><![CDATA[
 Soft Circuit Breaker Delay Time<br /><h1>Overview</h1><p>This delay time (x * 0,1s) defines how fast the soft circuit breaker wil react when the threshold power is exceeded. The power is cut off only if the power draw remains over the threshold level for the defines time.</p>
         ]]></description>

@@ -227,7 +227,7 @@ Overload safety switch<br /><h1>Overview</h1><p>The function allows for turning 
       </parameter>
 
       <parameter name="config_71_1" type="integer" groupName="configuration">
-        <label>71: Calibration trigger</label>
+        <label>71:  Calibration trigger</label>
         <description><![CDATA[
 Calibration trigger<br /><h1>Overview</h1><p>Choose when will be the calibration procedure triggered.</p> <p><br />Values:<br />• default value 0 - calibration done after power cycle if module is excluded<br />• 1 – calibration done after power cycle regardless of inclusion status<br />• 2 – force calibration. Calibration will start immediately </p>
         ]]></description>

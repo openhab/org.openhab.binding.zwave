@@ -166,7 +166,7 @@ Humidity Lower Watermark value<br /><h1>Overview</h1><p>Parameter 8: Humidity Lo
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>9: Low Temperature Trigger</label>
+        <label>9: Low Temperature Trigger </label>
         <description><![CDATA[
 Low Temperature Trigger BASIC Set Command Value<br /><h1>Overview</h1><p>Parameter 9: Low Temperature Trigger BASIC Set Command Value<br /><br />This defines what BASIC command shall be sent out into association group 3 <br />Size: 1 Byte, Default Value: 255</p>
         ]]></description>

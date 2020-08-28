@@ -77,7 +77,7 @@ Orientation in relation to default position.<br /><h1>Overview</h1><p>Parameter 
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: LED diode - visual indicator settings</label>
+        <label>3:  LED diode - visual indicator settings</label>
         <description>Visual indication of gestures detection</description>
         <default>0</default>
         <options>
@@ -177,7 +177,7 @@ Define sent command for specified association groups.<br /><h1>Overview</h1><p>P
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="15">
-        <label>12: Mode of 2nd-5th "Flick UP/DOWN/LEFT/RIGHT”</label>
+        <label>12: Mode of 2nd-5th &quot;Flick UP/DOWN/LEFT/RIGHT”</label>
         <description><![CDATA[
 Choose control mode for 2nd-5th groups and scenes.<br /><h1>Overview</h1><p>Parameter allows to choose control mode for 2nd-5th groups and scenes.</p> <p>By default, Toggle Mode is active, meaning that a single flick turns ON the group and the same flick turns it OFF, doubled flicks are inactive.</p> <p>After disabling Toggle Mode a single flick will turn the device ON and the same flick doubled will turn it OFF.</p> <p>Parameter 12 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are selected.</p> <p><strong>N.B. Disabling Toggle Mode will introduce delay when performing single gestures.</strong></p>
         ]]></description>
@@ -225,7 +225,7 @@ Value sent in SWITCH OFF command frame.<br /><h1>Overview</h1><p>This parameter 
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>22: SWITCH ON frame value for FLICK DOWN</label>
+        <label>22: SWITCH ON frame value  for FLICK DOWN</label>
         <description><![CDATA[
 Value sent in SWITCH ON command frame.<br /><h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
         ]]></description>

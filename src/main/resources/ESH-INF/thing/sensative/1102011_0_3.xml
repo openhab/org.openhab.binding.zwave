@@ -142,7 +142,7 @@ Strips Multisensor Comfort/Drip<br /><h1>Overview</h1><p>Strips Comfort is a dis
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="-20" max="60">
-        <label>8: Low temperature alarm level</label>
+        <label>8: Low temperature alarm level </label>
         <description>Low temperature alarm level</description>
         <default>-20</default>
       </parameter>

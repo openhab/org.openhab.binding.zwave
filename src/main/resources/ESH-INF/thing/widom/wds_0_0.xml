@@ -78,7 +78,7 @@ Universal Double Switch<br /><h1>Overview</h1><p>Universal Double Switch is an O
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Status upon receipt of 1 click</label>
+        <label>1: Status upon receipt of 1 click </label>
         <description><![CDATA[
 Defines the status of the output O1/O2 after 1 Click<br /><h1>Overview</h1><p>Defines the status of the output O1/O2 when the switch connected to I1/I2 receives 1 Click</p> <p>INFO:</p> <p>0 – IN_OUT configuration is available on WiDom Universal Double Switch starting from the<br />firmware version 1.40.</p>
         ]]></description>

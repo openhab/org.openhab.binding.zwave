@@ -166,7 +166,7 @@ Dual Nano Switch with Energy Metering<br /><h1>Overview</h1><p>Fantech Dual Nano
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: Overheat protection</label>
+        <label>4:  Overheat protection</label>
         <description>Overheat protection</description>
         <default>0</default>
         <options>

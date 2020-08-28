@@ -161,4 +161,11 @@ Z-Wave Plus smart accessory dimmer<br /><h1>Overview</h1><p>Z-Wave Plus accessor
 
   </thing-type>
 
+  <channel-type id="cooper_rf9642_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Dimmer Ramp Time</label>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

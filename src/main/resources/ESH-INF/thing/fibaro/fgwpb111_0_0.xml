@@ -325,7 +325,7 @@ LED frame color at the Z-Wave network alarm detection<br /><h1>Overview</h1><p>T
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: OnOffButton</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>devices in this group will be switched on or off when relay status is changed using the but- ton</p>
+<br /><h1>Overview</h1><p>devices in this group will be switched on or off when relay status is changed using the but- ton</p>
         ]]></description>
         <multipleLimit>50</multipleLimit>
       </parameter>
@@ -333,7 +333,7 @@ LED frame color at the Z-Wave network alarm detection<br /><h1>Overview</h1><p>T
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: OnOffPlugPower</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>devices in this group will be switched on or off depending on the current load of plugged device (uses Basic command class).</p>
+<br /><h1>Overview</h1><p>devices in this group will be switched on or off depending on the current load of plugged device (uses Basic command class).</p>
         ]]></description>
         <multipleLimit>50</multipleLimit>
       </parameter>

@@ -84,7 +84,7 @@ Multisensor 6<br /><h1>Overview</h1><p>Battery or USB powered PIR motion sensor,
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Stay Awake in Battery Mode</label>
+        <label>2: Stay Awake in Battery Mode			</label>
         <description><![CDATA[
 Stay awake for 10 minutes at power on<br /><h1>Overview</h1><p>Enable/Disable waking up for 10 minutes when re-power on (battery mode) the MultiSensor.<br />1. Value = 0, disable.<br />2. Value =others, enable.</p>
         ]]></description>
@@ -395,7 +395,7 @@ Recover limit value of temperature sensor<br /><h1>Overview</h1><p>Set the recov
 
       <parameter name="config_58_1" type="integer" groupName="configuration"
                  min="1" max="50">
-        <label>58: Recover limit value of humidity sensor</label>
+        <label>58:  Recover limit value of humidity sensor</label>
         <description><![CDATA[
 Recover limit value of humidity sensor<br /><h1>Overview</h1><p>Set the recover limit value of humidity sensor.</p> <p>Note:</p> <ol><li>When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</li> <li>When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</li> <li>Recover limit range: 1 to 50% (0x01 to 0x32).</li> <li>E.g. The default recover limit value is 5%, when the measurement is less than (Upper limit – 5), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 5), the lower limit report would be enabled one time. </li> </ol>
         ]]></description>
@@ -404,7 +404,7 @@ Recover limit value of humidity sensor<br /><h1>Overview</h1><p>Set the recover 
 
       <parameter name="config_59_1" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>59: Recover limit value of Lighting sensor.</label>
+        <label>59: Recover limit value of Lighting sensor. </label>
         <description><![CDATA[
 Recover limit value of Lighting sensor.<br /><h1>Overview</h1><p>Set the recover limit value of Lighting sensor.</p> <p><em>Note</em>:</p> <ol><li>When the current measurement &lt;= (Upper limit – Recover limit), the upper limit report is enabled and then it would send out a sensor report when the next measurement is more than the upper limit. After that the upper limit report would be disabled again until the measurement &lt;= (Upper limit – Recover limit).</li> <li>When the current measurement &gt;= (Lower limit + Recover limit), the lower limit report is enabled and then it would send out a sensor report when the next measurement is less than the lower limit. After that the lower limit report would be disabled again until the measurement &gt;= (Lower limit + Recover limit).</li> <li>Unit = 10×Recover limit (Lux)</li> <li><strong>Recover limit range: 10 to 2550Lux (0x01 to 0xFF). </strong></li> <li>E.g. The default recover limit value is 100 Lux, when the measurement is less than (Upper limit – 100), the upper limit report would be enabled one time or when the measurement is more than (Lower limit + 100), the lower limit report would be enabled one time. </li> </ol>
         ]]></description>
@@ -431,7 +431,7 @@ Out-of-limit state of the Sensors<br /><h1>Overview</h1><p>Get the out-of-limit 
 
       <parameter name="config_64_1" type="integer" groupName="configuration"
                  min="1" max="2">
-        <label>64: Default unit of the automatic temperature report</label>
+        <label>64: Default unit of the automatic temperature report </label>
         <description><![CDATA[
 Default unit of the automatic temperature report<br /><h1>Overview</h1><p>Set the default unit of the automatic temperature report in parameter 101- 103. 1 = Celsius. 2 = Fahrenheit.  </p>
         ]]></description>
@@ -452,7 +452,7 @@ Disable/Enable LED function<br /><h1>Overview</h1><p>Enable/disable the LED blin
       </parameter>
 
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set parameters 101-103 to default.</label>
+        <label>100: Set parameters 101-103 to default.			</label>
         <description><![CDATA[
 Reset 101-103 to defaults<br /><h1>Overview</h1><p>Set 101-103 to default.</p>
         ]]></description>
@@ -470,7 +470,7 @@ Periodic reports to send to Group 1<br /><h1>Overview</h1><p>This value is a com
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>102: Group 2 Periodic Reports</label>
+        <label>102: Group 2 Periodic Reports			</label>
         <description><![CDATA[
 Periodic reports to send to Group 2<br /><h1>Overview</h1><p>This value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have these values:</p> <ul><li>Battery=1</li> <li>Ultraviolet=16</li> <li>Temperature=32</li> <li>Humidity=64</li> <li>Light=128</li> </ul>
         ]]></description>
@@ -479,7 +479,7 @@ Periodic reports to send to Group 2<br /><h1>Overview</h1><p>This value is a com
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>103: Group 3 Periodic Reports</label>
+        <label>103: Group 3 Periodic Reports			</label>
         <description><![CDATA[
 Periodic reports to send to Group 3<br /><h1>Overview</h1><p>This value is a combination number made up of the sum of the values for the individual sensors and battery. The sensors have these values:</p> <ul><li>Battery=1</li> <li>Ultraviolet=16</li> <li>Temperature=32</li> <li>Humidity=64</li> <li>Light=128</li> </ul>
         ]]></description>
@@ -487,7 +487,7 @@ Periodic reports to send to Group 3<br /><h1>Overview</h1><p>This value is a com
       </parameter>
 
       <parameter name="config_110_1_wo" type="integer" groupName="configuration">
-        <label>110: Set parameters 111-113 to default.</label>
+        <label>110: Set parameters 111-113 to default.			</label>
         <description><![CDATA[
 Set parameters 111-113 to default.<br /><h1>Overview</h1><p>Set parameters 111-113 to default.   </p>
         ]]></description>

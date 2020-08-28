@@ -143,7 +143,7 @@ Strips Comfort/Drips Multisensor<br /><h1>Overview</h1><p>Strips, the ultra-thin
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
                  min="-20" max="60">
-        <label>8: Low Temperature alarm level</label>
+        <label>8: Low Temperature alarm level </label>
         <description>-20 to + 60 degree C</description>
         <default>-20</default>
         <options>

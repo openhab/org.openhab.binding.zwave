@@ -78,7 +78,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
       <property name="manufacturerRef">0002:0015</property>
       <property name="dbReference">1150</property>
       <property name="commandClass:COMMAND_CLASS_BASIC">Provides access to basic functionality</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">Provides or sets the valve opening degree of the valve Controlling  the valve opening degree requires manufacturer specific mode</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">Provides or sets the valve opening degree of the valve Controlling the valve opening degree requires manufacturer specific mode</property>
       <property name="commandClass:COMMAND_CLASS_SENSOR_MULTILEVEL">Provides the measured room temperature</property>
       <property name="commandClass:COMMAND_CLASS_THERMOSTAT_MODE">Configures the operation mode</property>
       <property name="commandClass:COMMAND_CLASS_THERMOSTAT_SETPOINT">Allows to configure the desired room temperature</property>
@@ -158,7 +158,7 @@ LCD Timeout<br /><h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: LC
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="50">
-        <label>5: Measured Temperature report</label>
+        <label>5: Measured  Temperature report</label>
         <description><![CDATA[
 Measured Temperature report<br /><h1>Overview</h1><p>0: Unsolicited Temperature reporting disabled</p> <p>1-50: report if temperature changed by delta = 0,1°C ... 5,0 °C</p> <p>default 5: report on delta T = 0,5°C</p>
         ]]></description>
@@ -225,8 +225,8 @@ Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /><h1>O
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="11">Economy Heat</option>
         <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
         <option value="15">Full Power</option>
         <option value="31">Manual</option>
       </options>

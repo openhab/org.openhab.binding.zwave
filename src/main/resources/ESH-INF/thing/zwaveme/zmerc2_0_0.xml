@@ -197,7 +197,7 @@ Command to Control Scene No2<br /><h1>Overview</h1><p>This parameter defines the
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
-        <label>19: Command to Control Scene No3</label>
+        <label>19: Command to Control Scene No3 </label>
         <description><![CDATA[
 Command to Control Scene No3<br /><h1>Overview</h1><p>This parameter defines the command to be sent to devices of control scene group No3 when the related button is pressed (association group 11)</p>
         ]]></description>

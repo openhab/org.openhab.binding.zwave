@@ -119,7 +119,7 @@ Power Factor delta based configuration<br /><h1>Overview</h1><p><i>This configur
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="4000">
-        <label>5: Active Power</label>
+        <label>5: Active Power </label>
         <description><![CDATA[
 Active Power delta based configuration<br /><h1>Overview</h1><p><i>This configuration Parameter will be used to enable/disable the delta base Active Power reporting in 1 W resolution.</i></p>
         ]]></description>
@@ -209,7 +209,7 @@ Apparent Energy time interval based<br /><h1>Overview</h1><p><i>This configurati
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
                  min="0" max="3">
-        <label>15: Relay and LED configuration</label>
+        <label>15: Relay and LED configuration </label>
         <description><![CDATA[
 Relay and LED configuration<br /><h1>Overview</h1><p><i>This configuration is used to change the relay LED status when relay is open/close and also enable to whether to retain the last relay status over power cycle. </i></p> <table><tr><td>0</td> <td>Relay status will not be retain over power cycle, and Relay status LED will lit when relay ON and relay status LED will off when relay OFF.</td> </tr><tr><td>1</td> <td>Relay status will be retain over power cycle, and Relay status LED will lit when relay ON and relay status LED will off when relay OFF.</td> </tr><tr><td>2</td> <td>Relay status will not be retain over power cycle, and Relay status LED will off when relay ON and relay status LED will lit when relay OFF.</td> </tr><tr><td>3</td> <td>Relay status will be retain over power cycle, and Relay status LED will off when relay ON and relay status LED will lit when relay OFF.</td> </tr></table>
         ]]></description>

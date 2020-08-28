@@ -67,7 +67,7 @@ Battery Powered Wall Controller<br /><h1>Overview</h1><p><strong>Single-surface 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_0_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>0: Switching/dimming/shutters dual-surface:</label>
+        <label>0: Switching/dimming/shutters dual-surface: </label>
         <default>0</default>
       </parameter>
 
@@ -104,7 +104,7 @@ Battery Powered Wall Controller<br /><h1>Overview</h1><p><strong>Single-surface 
 
       <parameter name="config_60_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>60: Retrieve/save scene</label>
+        <label>60: Retrieve/save scene </label>
         <default>0</default>
       </parameter>
 

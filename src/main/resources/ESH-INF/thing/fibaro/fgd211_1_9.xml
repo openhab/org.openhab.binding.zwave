@@ -272,4 +272,12 @@ Command class scene activation for group no. 3<br /><h1>Overview</h1><p>The devi
 
   </thing-type>
 
+  <channel-type id="fibaro_fgd211_01_009_config_decimal_param40">
+    <item-type>Number</item-type>
+    <label>Updating the dimming level without switch.</label>
+    <description>Parameter’s value changes depending on the dimming level.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

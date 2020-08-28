@@ -142,7 +142,7 @@ Threshold for change in humidity to trigger a report.<br /><h1>Overview</h1><p>T
 
       <parameter name="config_43_2" type="integer" groupName="configuration"
                  min="0" max="1000">
-        <label>43: luminance report threshold</label>
+        <label>43:  luminance report threshold</label>
         <description><![CDATA[
 luminance report threshold<br /><h1>Overview</h1><p>Threshold for changes in luminance to trigger a report. Note the sensor range is just 1-1000 lux !</p>
         ]]></description>
@@ -151,7 +151,7 @@ luminance report threshold<br /><h1>Overview</h1><p>Threshold for changes in lum
 
       <parameter name="config_44_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>44: Battery level to induce an automatic report.</label>
+        <label>44: Battery level  to induce an automatic report.</label>
         <description><![CDATA[
 Battery level to induce an automatic report.<br /><h1>Overview</h1><p>The accuracy is 0.1.</p> <p>The high byte is the part of integer, the low byte is the fractional part.</p>
         ]]></description>
@@ -159,7 +159,7 @@ Battery level to induce an automatic report.<br /><h1>Overview</h1><p>The accura
       </parameter>
 
       <parameter name="config_46_1" type="integer" groupName="configuration">
-        <label>46: Enable/disable low temperature alarm report</label>
+        <label>46: Enable/disable low temperature alarm report </label>
         <description><![CDATA[
 Enable/disable low temperature alarm report<br /><h1>Overview</h1><p>Enable/disable to send the alarm report of low temperature(‐15C)</p>
         ]]></description>
@@ -181,7 +181,7 @@ Reports sent automatically for group 1<br /><h1>Overview</h1><p>The value is a c
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>102: Reports sent automatically for group 2</label>
+        <label>102: Reports sent automatically  for group 2</label>
         <description><![CDATA[
 Reports sent automatically for group 2<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual sensors and battery.</p> <p>The sensors have the values:</p> <ul><li>Temperature=32</li> <li>Humidity=64</li> <li>Lightlevel=128</li> <li>Battery=1</li> </ul>
         ]]></description>

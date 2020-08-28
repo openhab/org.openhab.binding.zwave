@@ -106,7 +106,7 @@ The time between meter reports.<br /><h1>Overview</h1><p>This parameter sets the
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="16">
-        <label>3: Set "Overload" Current level</label>
+        <label>3: Set &quot;Overload&quot; Current level</label>
         <description><![CDATA[
 Maximum current the plug will pass<br /><h1>Overview</h1><p>Sets the maximum current the plug will pass before it cuts off power and sends a NOTIFICATION_EVENT_POWER_ MANAGEMENT_OVER_LOAD_DETECTED signal to Group 1 and a BASIC_SET(FF) to Group 2. The LED will then blink red once per second until the current returns to normal. To clear the NOTIFICATION and start monitoring again, the BUTTON must be pushed once (only after the current is back to normal.) <strong>NOTE: this value must be higher than Param 4</strong></p>
         ]]></description>
@@ -115,7 +115,7 @@ Maximum current the plug will pass<br /><h1>Overview</h1><p>Sets the maximum cur
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="1" max="16">
-        <label>4: Set "Alert" Current Level</label>
+        <label>4: Set &quot;Alert&quot; Current Level</label>
         <description><![CDATA[
 Current level warning threshold<br /><h1>Overview</h1><p>Sets the current level at which the On/Off Plug-In Switch will flash its LED yellow, until the current returns to below this level. It will NOT cut off current to the device; this functions as a visible warning to the user. <strong>NOTE: this value must be lower than Param 3</strong></p>
         ]]></description>

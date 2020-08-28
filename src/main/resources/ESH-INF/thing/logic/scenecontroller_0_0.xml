@@ -458,7 +458,7 @@ Disable House Cleaning Mode, double press = 100% light<br /><h1>Overview</h1><p>
       </parameter>
 
       <parameter name="config_13_4_00000001" type="integer" groupName="configuration">
-        <label>13: Multilevel Switch for button #1</label>
+        <label>13: Multilevel Switch  for button #1</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /><h1>Overview</h1><p>Byte 1: Enable / Disable</p> <p>0 Disabled – When single pressing the button, nodes associated to group 6 won’t be switched.</p> <p>1 Enabled – When single pressing the button, nodes associated to group 6 will be switched between the configured upper and lower switch values. (Default)</p>
         ]]></description>

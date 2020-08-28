@@ -102,7 +102,7 @@ Amount of beeps a second<br /><h1>Overview</h1><p>To set the amount of beeps per
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>5: Mode</label>
+        <label>5: Mode </label>
         <description><![CDATA[
 To configure mode<br /><h1>Overview</h1><p>Mode 1 =  normal working mode</p> <p>Mode 3 = z-wave chip is always on to be asked for information, for example version or manufacturer ID.</p> <p>Any other value will be reported after a GET, but will be seen as a mode 1.</p>
         ]]></description>

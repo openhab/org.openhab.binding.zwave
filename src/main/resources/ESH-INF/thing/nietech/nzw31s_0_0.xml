@@ -73,7 +73,7 @@ Lowest dim setting before turning off<br /><h1>Overview</h1><p>Lowest dim settin
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: Switch Orientation</label>
+        <label>4: 	Switch Orientation</label>
         <description><![CDATA[
 Invert On/Off from Top/Bottom<br /><h1>Overview</h1><p>Invert the switch on/off position.</p> <p>00 - Up = On, Down = Off</p> <p>01 - Up = Off, Down = On</p>
         ]]></description>

@@ -72,7 +72,7 @@ Multi Sensor Dual: motion and temperature sensor<br /><h1>Overview</h1><p>Presen
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
-        <label>2: Celsius / Fahrenheit</label>
+        <label>2: 	Celsius / Fahrenheit</label>
         <description>0 = Celsius, 1 = Fahrenheit</description>
         <default>0</default>
         <options>

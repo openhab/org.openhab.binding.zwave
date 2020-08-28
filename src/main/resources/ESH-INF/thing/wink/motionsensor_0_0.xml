@@ -114,7 +114,7 @@ Group 2 Ambient Light Threshold<br /><h1>Overview</h1><p>If Parameter 8 is enabl
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
                  min="1" max="8">
-        <label>6: Retrigger Interval</label>
+        <label>6:  Retrigger Interval</label>
         <description><![CDATA[
 Retrigger Interval<br /><h1>Overview</h1><p>After each motion event, the Motion Detector is disabled for the amount of time (in seconds) set by this parameter before it can send out another Motion Detected Notification Report/Binary Sensor Report.This value must be lower than the value of Parameter 2, and if this parameter is reset to default settings, Parameter 2 will also be reset.</p> <p>Essentially, when motion is detected the sensor will send a motion event every X seconds to the controller, as controlled by this parameter. (When motion is not detected, it fires off one and is done.)</p>
         ]]></description>

@@ -121,7 +121,7 @@ Which notification to be sent to the associated devices.<br /><h1>Overview</h1><
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
-Central Scene Notification<br /><h1>Overview</h1> <p>When touching the Button 1 to 4, the Central Scene Notificcation c group 1.</p>
+Central Scene Notification<br /><h1>Overview</h1><p>When touching the Button 1 to 4, the Central Scene Notificcation c group 1.</p>
         ]]></description>
         <multipleLimit>2</multipleLimit>
       </parameter>
@@ -129,7 +129,7 @@ Central Scene Notification<br /><h1>Overview</h1> <p>When touching the Button 1 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Button 1 basic</label>
         <description><![CDATA[
-On/off control via button 1<br /><h1>Overview</h1> <p>When touching the Button 1, the Basic Set command will be sent.</p>
+On/off control via button 1<br /><h1>Overview</h1><p>When touching the Button 1, the Basic Set command will be sent.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -137,7 +137,7 @@ On/off control via button 1<br /><h1>Overview</h1> <p>When touching the Button 1
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Button 1 multilevel</label>
         <description><![CDATA[
-Dim control via button 1<br /><h1>Overview</h1> <p>When touching the Button 1, the Multilevel Switch Set command</p>
+Dim control via button 1<br /><h1>Overview</h1><p>When touching the Button 1, the Multilevel Switch Set command</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -145,7 +145,7 @@ Dim control via button 1<br /><h1>Overview</h1> <p>When touching the Button 1, t
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Button 2 basic</label>
         <description><![CDATA[
-On/off control via button 2<br /><h1>Overview</h1> <p>When touching the Button 2, the Basic Set command will be sent</p>
+On/off control via button 2<br /><h1>Overview</h1><p>When touching the Button 2, the Basic Set command will be sent</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -153,7 +153,7 @@ On/off control via button 2<br /><h1>Overview</h1> <p>When touching the Button 2
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Button 2 multilevel</label>
         <description><![CDATA[
-Dim control via button 2<br /><h1>Overview</h1> <p>When touching the Button 2, the Multilevel Switch Set command will be sent </p>
+Dim control via button 2<br /><h1>Overview</h1><p>When touching the Button 2, the Multilevel Switch Set command will be sent </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -161,7 +161,7 @@ Dim control via button 2<br /><h1>Overview</h1> <p>When touching the Button 2, t
       <parameter name="group_6" type="text" groupName="association" multiple="true">
         <label>6: Button 3 basic</label>
         <description><![CDATA[
-On/off control via button 3<br /><h1>Overview</h1> <p>On/off control via button 3</p>
+On/off control via button 3<br /><h1>Overview</h1><p>On/off control via button 3</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -169,7 +169,7 @@ On/off control via button 3<br /><h1>Overview</h1> <p>On/off control via button 
       <parameter name="group_7" type="text" groupName="association" multiple="true">
         <label>7: Button 3 multilevel</label>
         <description><![CDATA[
-Dim control via button 3<br /><h1>Overview</h1> <p>When touching the Button 3, the Multilevel Switch Set command will be sent to the ass</p>
+Dim control via button 3<br /><h1>Overview</h1><p>When touching the Button 3, the Multilevel Switch Set command will be sent to the ass</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -177,7 +177,7 @@ Dim control via button 3<br /><h1>Overview</h1> <p>When touching the Button 3, t
       <parameter name="group_8" type="text" groupName="association" multiple="true">
         <label>8: Button 4 basic</label>
         <description><![CDATA[
-On/off control via button 4<br /><h1>Overview</h1> <p>When touching the Button 4, the Basic Set command will be sent to the associated node</p>
+On/off control via button 4<br /><h1>Overview</h1><p>When touching the Button 4, the Basic Set command will be sent to the associated node</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -185,7 +185,7 @@ On/off control via button 4<br /><h1>Overview</h1> <p>When touching the Button 4
       <parameter name="group_9" type="text" groupName="association" multiple="true">
         <label>9: Button 4 multilevel</label>
         <description><![CDATA[
-Dim control via button 4<br /><h1>Overview</h1> <p>When touching the Button 4, the Multilevel Switch Set command will be sent to the ass</p>
+Dim control via button 4<br /><h1>Overview</h1><p>When touching the Button 4, the Multilevel Switch Set command will be sent to the ass</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

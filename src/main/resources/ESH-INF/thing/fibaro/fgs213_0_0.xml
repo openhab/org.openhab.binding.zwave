@@ -344,7 +344,7 @@ Reaction to General Alarm<br /><h1>Overview</h1><p>This parameter determines how
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration">
-        <label>41: Reaction to Flood Alarm</label>
+        <label>41:  Reaction to Flood Alarm</label>
         <description><![CDATA[
 Reaction to Flood Alarm<br /><h1>Overview</h1><p>This parameter determines how the device will react to Flood Alarm frame. </p>
         ]]></description>

@@ -50,7 +50,7 @@ Wall Dimmer Module - Flush Mounted<br /><h1>Overview</h1><p>The flush-mounted CO
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_196_1" type="integer" groupName="configuration"
                  min="0" max="240">
-        <label>196: Dimmer speed</label>
+        <label>196:  Dimmer speed</label>
         <description>Set dimming speed. fast=0 ... 240=slow.</description>
         <default>0</default>
       </parameter>

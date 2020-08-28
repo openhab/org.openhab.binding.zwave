@@ -67,7 +67,7 @@ Danalock Universal Module V3<br /><h1>Overview</h1><p>The Universal Model V3 sup
 
       <parameter name="config_2_4" type="integer" groupName="configuration"
                  min="0" max="2147483647">
-        <label>2: Relay 1 Delay length (ms)</label>
+        <label>2: Relay 1 Delay length (ms) </label>
         <description>Time before the relay is activated.</description>
         <default>0</default>
       </parameter>
@@ -81,7 +81,7 @@ Danalock Universal Module V3<br /><h1>Overview</h1><p>The Universal Model V3 sup
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
                  min="0" max="2147483647">
-        <label>4: Relay 2 Delay length (ms)</label>
+        <label>4: Relay 2 Delay length (ms) </label>
         <description>Time before the relay is activated.</description>
         <default>0</default>
       </parameter>
@@ -95,7 +95,7 @@ Danalock Universal Module V3<br /><h1>Overview</h1><p>The Universal Model V3 sup
 
       <parameter name="config_6_4" type="integer" groupName="configuration"
                  min="0" max="2147483647">
-        <label>6: Relay 3 Delay length (ms)</label>
+        <label>6: Relay 3 Delay length (ms) </label>
         <description>Time before the relay is activated.</description>
         <default>0</default>
       </parameter>
@@ -112,7 +112,7 @@ Danalock Universal Module V3<br /><h1>Overview</h1><p>The Universal Model V3 sup
 
       <parameter name="config_8_4" type="integer" groupName="configuration"
                  min="0" max="2147483647">
-        <label>8: Battery Sample Interval Seconds</label>
+        <label>8:  Battery Sample Interval Seconds </label>
         <description>Battery Sample Interval Seconds</description>
         <default>3600</default>
       </parameter>

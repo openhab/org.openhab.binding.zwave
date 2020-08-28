@@ -221,7 +221,7 @@ RGBW Dimmer for LED Strips<br /><h1>Overview</h1><ul><li>Manual or Z-Wave on/off
       </parameter>
 
       <parameter name="config_40_1_00000004" type="integer" groupName="configuration">
-        <label>40: Click/toggle three times to trigger a scene (IN1)</label>
+        <label>40: Click/toggle three times  to trigger a scene (IN1)</label>
         <description>Assign scene activation trigger for IN1 terminal</description>
         <default>1</default>
         <options>

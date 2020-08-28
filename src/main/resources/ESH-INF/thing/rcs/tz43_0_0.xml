@@ -90,7 +90,7 @@ Thermostat<br /><h1>Overview</h1><p>The TZ43 thermostat provides for typical the
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: System Type</label>
+        <label>1: System Type </label>
         <description>System Type</description>
         <default>0</default>
         <options>
@@ -112,7 +112,7 @@ Thermostat<br /><h1>Overview</h1><p>The TZ43 thermostat provides for typical the
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Change Over Type</label>
+        <label>3: Change Over Type </label>
         <description>Change Over Type</description>
         <default>0</default>
         <options>
@@ -200,7 +200,7 @@ Thermostat<br /><h1>Overview</h1><p>The TZ43 thermostat provides for typical the
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
                  min="0" max="8">
-        <label>17: H Delta Stage 3 Off</label>
+        <label>17: H Delta Stage 3 Off </label>
         <description>H Delta Stage 3 Off</description>
         <default>3</default>
         <advanced>true</advanced>
@@ -262,7 +262,7 @@ Thermostat<br /><h1>Overview</h1><p>The TZ43 thermostat provides for typical the
 
       <parameter name="config_75_1" type="integer" groupName="configuration"
                  min="0" max="120">
-        <label>75: Fan Cycler ON Time</label>
+        <label>75: Fan Cycler ON Time </label>
         <description>Fan Cycler ON Time</description>
         <default>0</default>
         <advanced>true</advanced>
@@ -331,10 +331,10 @@ Thermostat<br /><h1>Overview</h1><p>The TZ43 thermostat provides for typical the
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="2">Cool</option>
+        <option value="3">Auto</option>
         <option value="4">Aux Heat</option>
       </options>
     </state>
@@ -347,8 +347,8 @@ Thermostat<br /><h1>Overview</h1><p>The TZ43 thermostat provides for typical the
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">On (Low)</option>
         <option value="0">Auto (Low)</option>
+        <option value="1">On (Low)</option>
       </options>
     </state>
   </channel-type>

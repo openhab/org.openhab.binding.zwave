@@ -115,7 +115,7 @@ Set the actions sent to controller<br /><h1>Overview</h1><p>This parameter allow
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: LED diode indications</label>
+        <label>3:  LED diode indications</label>
         <description><![CDATA[
 Set the actions which result in LED diode indications<br /><h1>Overview</h1><p>This parameter allows to set the actions which result in LED diode indications.</p> <p>This parameter does not apply to the most important actions, such as CO Alarm, Malfunction Alarm and Low Battery Alarm.</p> <p>The CO Sensor allows to customize its operation to user’s needs.</p> <p>Default setting: 0</p> <p>Parameter size: 1 [byte]</p>
         ]]></description>
@@ -173,7 +173,7 @@ Commands sent to devices in 2nd association group<br /><h1>Overview</h1><p>This 
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration">
-        <label>11: Value of BASIC ON command sent to 2nd assoc group</label>
+        <label>11:  Value of BASIC ON command sent to 2nd assoc group</label>
         <description><![CDATA[
 Define value of BASIC ON cmd sent to 2nd assoc group<br /><h1>Overview</h1><p>This parameter defines the value of BASIC ON command sent to devices in 2nd association group after the CO Alarm activation.</p> <p>Default setting: 255 (turn on)</p> <p>Parameter size: 2 [bytes]</p>
         ]]></description>
@@ -187,7 +187,7 @@ Define value of BASIC ON cmd sent to 2nd assoc group<br /><h1>Overview</h1><p>Th
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>12: Value of BASIC OFF cmd sent to 2nd assoc group</label>
+        <label>12:  Value of BASIC OFF cmd sent to 2nd assoc group</label>
         <description><![CDATA[
 Defines value of BASIC OFF cmd sent 2nd assoc group<br /><h1>Overview</h1><p>This parameter defines the value of BASIC OFF command sent to devices in 2nd association group after the CO Alarm cancellation.</p> <p>Available settings:</p> <p>0-99 or 255</p> <p>Setting parameter to appropriate value will result in:</p> <p>0 - turning associated devices off</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p> <p>Default setting: 0 (turn off)</p> <p>Parameter size: 2 [bytes]</p>
         ]]></description>
@@ -259,7 +259,7 @@ Time interval between consecutive reports of temperature<br /><h1>Overview</h1><
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
                  min="1" max="20">
-        <label>21: Temperature reporting hysteresis</label>
+        <label>21:  Temperature reporting hysteresis</label>
         <description><![CDATA[
 Min change in temperature resulting in a report being sent<br /><h1>Overview</h1><p>This parameter defines a minimum change in temperature resulting in a report being sent to the main Z-Wave controller.</p> <p>Available settings: 1-20 (0.5°C - 10°C, each 0.5°C)</p> <p>Default setting: 2 (1°C)</p> <p>Parameter size: 1 [byte]</p>
         ]]></description>

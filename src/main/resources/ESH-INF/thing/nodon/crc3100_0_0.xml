@@ -144,7 +144,7 @@ Octan Remote Control<br /><h1>Overview</h1><p>The Octan remote is capable to lau
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
-<br /><h1>Overview</h1>    
+<br /><h1>Overview</h1>
         ]]></description>
       </parameter>
 

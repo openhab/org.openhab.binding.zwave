@@ -216,7 +216,7 @@ Set the OFF time of output load<br /><h1>Overview</h1><p>256 to 316 The hour val
       </parameter>
 
       <parameter name="config_90_1" type="integer" groupName="configuration">
-        <label>90: Enables/disables parameter 91 and 92</label>
+        <label>90: Enables/disables parameter 91 and 92 </label>
         <description>Enables/disables parameter 91 and 92</description>
         <default>0</default>
         <options>

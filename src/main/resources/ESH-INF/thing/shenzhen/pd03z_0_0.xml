@@ -148,7 +148,7 @@ How much the Lux Level must change<br /><h1>Overview</h1><p>How much the Lux Lev
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="127">
-        <label>10: Temperature Report</label>
+        <label>10:  Temperature Report</label>
         <description><![CDATA[
 Ambient Temperature Differential Report<br /><h1>Overview</h1><p>This parameter is configured the value that differential between current measured and previous report value. If the differential value larger than the settings, device will report this measured temperature value to nodes associated in lifeline. Differential Value = [Value] × 0.1℃</p>
         ]]></description>

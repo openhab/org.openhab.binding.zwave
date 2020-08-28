@@ -93,7 +93,7 @@ Dipswitch Settings<br /><h1>Overview</h1><p>Configuration parameter is a one byt
 
       <parameter name="config_33_4" type="integer" groupName="configuration"
                  min="32" max="126">
-        <label>33: first four most significant bytes of the SKU</label>
+        <label>33:  first four most significant bytes of the SKU</label>
         <description><![CDATA[
 SKU (length = 8 bytes)<br /><h1>Overview</h1><h1>Configuration Parameter 33 and 34</h1> <p>The Configuration Parameter 33 and 34 are used to set the SKU part numbers to the Kwikset locks. Configuration parameter 33 is the first four most significant bytes (MSB). Configuration parameter 34 is the least four significant bytes (LSB). Below describes how Configuration Parameter 33 and 34 are being used.</p> <ul><li>For a ZW Configuration Set, the DLM will first do a GET_SKU_ID to retrieve the full SKU from the lock, and the lock will respond with all 8 bytes. (If it’s not yet set, the DLM will consider that as all 0x30s.) The DLM changes only the appropriate 4 bytes in its local copy of the SKU, and it then sends the full 8 bytes down to the lock in a SET_SKU_ID.</li> <li>For a ZW Configuration Get, the DLM will do a GET_SKU_ID down to the lock, to which the lock will respond with all 8 bytes. The DLM will return the requested 4 bytes via ZW. If the SKU is not set, it will return all 0x30s (ASCII ‘0’s).</li> </ul>
         ]]></description>

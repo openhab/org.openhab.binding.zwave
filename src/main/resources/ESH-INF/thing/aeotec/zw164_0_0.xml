@@ -180,7 +180,7 @@ Intercepting duration of a tone for Endpoint 2 (Tampering)<br /><h1>Overview</h1
       </parameter>
 
       <parameter name="config_2_4_7F000000" type="integer" groupName="configuration">
-        <label>2: Light Effect for EP 2 (Tampering)</label>
+        <label>2: Light Effect  for EP 2 (Tampering)</label>
         <description><![CDATA[
 Light Effect for EP 2 (Tampering)<br /><h1>Overview</h1><p>Light Effect Index for Endpoint 2 (Tampering)</p>
         ]]></description>

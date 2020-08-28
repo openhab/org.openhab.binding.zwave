@@ -339,7 +339,7 @@ Enable or disable the auto turn-off timer for CH1 outlet<br /><h1>Overview</h1><
 
       <parameter name="config_15_4" type="integer" groupName="configuration"
                  min="1" max="65535">
-        <label>15: CH3 Auto Turn-Off Setting</label>
+        <label>15: CH3  Auto Turn-Off Setting</label>
         <description>Time in minutes to turn off the device connected to CH3 after being turned on</description>
         <default>60</default>
         <limitToOptions>false</limitToOptions>

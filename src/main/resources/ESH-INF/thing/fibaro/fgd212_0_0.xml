@@ -251,7 +251,7 @@ Time of a dimming step at manual control.<br /><h1>Overview</h1><p>The parameter
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
                  min="0" max="32767">
-        <label>10: Timer functionality (auto - off).</label>
+        <label>10: Timer functionality (auto - off). </label>
         <description><![CDATA[
 Setting of the timer.<br /><h1>Overview</h1><p>The parameter defines the setting of the timer.</p> <p>Available settings:</p> <ul><li>1-32767 - time to turn off measured in seconds (1s - 9,1h)</li> <li>0 disables the function</li> </ul>
         ]]></description>
@@ -382,7 +382,7 @@ Actions not resulting in sending frames to association groups<br /><h1>Overview<
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration">
-        <label>25: Command frames sent in 4th and 5th assoc groups</label>
+        <label>25: Command frames sent in 4th and 5th assoc groups </label>
         <description><![CDATA[
 Actions not resulting in sending frames to association groups<br /><h1>Overview</h1><p>Parameter determines, which actions will not result in sending frames to association groups.</p>
         ]]></description>
@@ -746,5 +746,13 @@ Power reported by the device at its maximum brightness level<br /><h1>Overview</
     </config-description>
 
   </thing-type>
+
+  <channel-type id="fibaro_fgd212_00_000_config_decimal_param19">
+    <item-type>Number</item-type>
+    <label>Forced switch on brightness level</label>
+    <description>Switching on the Dimmer will always set this brightness level.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

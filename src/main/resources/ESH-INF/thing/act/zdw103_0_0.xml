@@ -49,7 +49,7 @@ Wall Mounted 3-Way Dimmer Receiver<br /><h1>Overview</h1><p>This Wall Mounted Di
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Set Ignore Start Level Bit For Dim</label>
+        <label>1: Set Ignore Start Level Bit For Dim </label>
         <description><![CDATA[
 Defines the behavior when transmitting dim commands<br /><h1>Overview</h1><p>The ZDW103 can send Dim commands to Z-Wave enabled dimmers. The Dim command has a start level embedded in it. A dimmer receiving this command will start dimming from that start level. However, the command also has a bit that indicates whether the dimmer should ignore the start level. If the bit is set to 1, the dimmer will ignore the start level and instead start dimming from its current level. To clear this bit, configure this parameter to the value of 0.</p>
         ]]></description>

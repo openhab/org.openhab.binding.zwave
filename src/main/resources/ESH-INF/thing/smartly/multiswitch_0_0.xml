@@ -393,7 +393,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>The Lifeline group where all Local State Changes are reported. All unsolicited Reports for the supported command classes will be issued to this group.<br />Commands Issued:</p> <p>- Basic Report - Notifies Local Light Zone changes (button press)<br />- Central Scene Notification - Notifies Scene events from the controller (in Scene Mode)<br />- Sensor Multilevel Report - Reports Power Consumption and Temperatures<br />- Meter - Reports power consumption to the Controller every 15 minutes.<br />- Device Reset Locally – Reports factory resets to the Controller</p>
+<br /><h1>Overview</h1><p>The Lifeline group where all Local State Changes are reported. All unsolicited Reports for the supported command classes will be issued to this group.<br />Commands Issued:</p> <p>- Basic Report - Notifies Local Light Zone changes (button press)<br />- Central Scene Notification - Notifies Scene events from the controller (in Scene Mode)<br />- Sensor Multilevel Report - Reports Power Consumption and Temperatures<br />- Meter - Reports power consumption to the Controller every 15 minutes.<br />- Device Reset Locally – Reports factory resets to the Controller</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -401,7 +401,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Light Zone 1</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Associated devices will be controlled by Light Zone 1. Also supports multichannel association in any combination. Command Issued: Basic Set</p>
+<br /><h1>Overview</h1><p>Associated devices will be controlled by Light Zone 1. Also supports multichannel association in any combination. Command Issued: Basic Set</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -409,7 +409,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Light Zone 2</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Associated devices will be controlled by Light Zone 2.<br />Also supports multichannel association in any combination. Command Issued: Basic Set</p>
+<br /><h1>Overview</h1><p>Associated devices will be controlled by Light Zone 2.<br />Also supports multichannel association in any combination. Command Issued: Basic Set</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -417,7 +417,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Light Zone 3</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Associated devices will be controlled by Light Zone 3.<br />Also supports multichannel association in any combination. Command Issued: Basic Set</p>
+<br /><h1>Overview</h1><p>Associated devices will be controlled by Light Zone 3.<br />Also supports multichannel association in any combination. Command Issued: Basic Set</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -425,7 +425,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Light Zone 4</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Associated devices will be controlled by Light Zone 4.<br />Also supports multichannel association in any combination. Command Issued: Basic Set</p>
+<br /><h1>Overview</h1><p>Associated devices will be controlled by Light Zone 4.<br />Also supports multichannel association in any combination. Command Issued: Basic Set</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -433,7 +433,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_6" type="text" groupName="association" multiple="true">
         <label>6: Thermostat Control</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Control Set-Point and Mode of an external Thermostat Device Commands Issued: Thermostat Setpoint Set and Thermostat Mode Set</p>
+<br /><h1>Overview</h1><p>Control Set-Point and Mode of an external Thermostat Device Commands Issued: Thermostat Setpoint Set and Thermostat Mode Set</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -441,7 +441,7 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
       <parameter name="group_7" type="text" groupName="association" multiple="true">
         <label>7: Thermostat Relay Control</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Control external Relay from the Local Thermostat Command Issued: Basic Set (ON and OFF values ONLY).</p>
+<br /><h1>Overview</h1><p>Control external Relay from the Local Thermostat Command Issued: Basic Set (ON and OFF values ONLY).</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -464,8 +464,8 @@ Temperature Offset in 1/10th of a degree Celcius<br /><h1>Overview</h1><p>Define
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="4">Aux Heat</option>
         <option value="1">Heat</option>
+        <option value="4">Aux Heat</option>
       </options>
     </state>
   </channel-type>

@@ -112,7 +112,7 @@ Flush Shutter DC<br /><h1>Overview</h1><p>This Z-Wave module is used to control 
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_10_2" type="integer" groupName="configuration">
-        <label>10: Activate/deactivate functions ALL ON / ALL OFF</label>
+        <label>10: Activate/deactivate functions ALL ON / ALL OFF </label>
         <description><![CDATA[
 Activate/deactivate functions ALL ON / ALL OFF<br /><h1>Overview</h1><p>Module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controllerbelonging to the system.</p>
         ]]></description>

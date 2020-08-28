@@ -36,7 +36,7 @@ FUGA Wall 4-way Switch with LED + Relay<br /><h1>Overview</h1><p>ZHC5010 is a wa
       <channel id="indicator_raw" typeId="indicator_raw">
         <label>Button 1 Indicator</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR;type=BUTTON1_INDICATION</property>
         </properties>
       </channel>
       <channel id="switch_binary1" typeId="switch_binary">
@@ -432,7 +432,7 @@ Multilevel Switch - Upper switch value - (button #4)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_22_4_00FF0000" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>22: Lower switch value - (button #4)</label>
+        <label>22:  Lower switch value - (button #4)</label>
         <description><![CDATA[
 Multilevel Switch - Lower switch value - (button #4)<br /><h1>Overview</h1><p>When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
         ]]></description>

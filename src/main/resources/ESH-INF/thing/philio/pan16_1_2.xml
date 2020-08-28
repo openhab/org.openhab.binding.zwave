@@ -95,7 +95,7 @@ Watt Meter Report Period<br /><h1>Overview</h1><h1>720*5s = 3600s = 1 hour</h1> 
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
                  min="1" max="32767">
-        <label>2: KWH Meter Report Period</label>
+        <label>2: KWH Meter Report Period </label>
         <description><![CDATA[
 KWH Meter Report Period<br /><h1>Overview</h1><h1>6*10min=1 hour</h1> <p>If the setting is configured for 1hour (set value =6), the PAN16 will report its Accumulated Power Consumption (KW/h) every 1 hour to Group1 node. </p> <p>The maximum interval to report its Accumulated Power Consumption (KW/h) is 227.55 days (10min*32767/1440=227.55 days). </p>
         ]]></description>
@@ -104,7 +104,7 @@ KWH Meter Report Period<br /><h1>Overview</h1><h1>6*10min=1 hour</h1> <p>If the 
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="10" max="1300">
-        <label>3: Threshold of current for Load caution</label>
+        <label>3: Threshold of current for Load caution </label>
         <description><![CDATA[
 Threshold of current for Load caution<br /><h1>Overview</h1><h1>1300*0.01A = 13A </h1> <p>This is a warning when the current of load over the preset threshold value, if the setting value is 1300, when the load current of Relay1 over this value, PAN16 will send current meter report to warn the Group1 node. </p> <p>The Range of the setting value is from 10 to 1300,and the default value is 1300. </p>
         ]]></description>
@@ -113,7 +113,7 @@ Threshold of current for Load caution<br /><h1>Overview</h1><h1>1300*0.01A = 13A
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="1" max="10000">
-        <label>4: Threshold of KWh for Load caution</label>
+        <label>4: Threshold of KWh for Load caution </label>
         <description><![CDATA[
 Threshold of KWh for Load caution<br /><h1>Overview</h1><p>This is a warning when the KWh of load over the preset threshold value, If the setting value is 10000, when the Accumulated Power Consumption of Relay1 over this value, PAN16 will send KWH meter report to warn the Group1 node,</p> <p>minimum value is 1KWh and default value is 10000 kWh. </p>
         ]]></description>
@@ -121,7 +121,7 @@ Threshold of KWh for Load caution<br /><h1>Overview</h1><p>This is a warning whe
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Restore switch state mode</label>
+        <label>5: Restore switch state mode </label>
         <description>Restore switch state mode</description>
         <default>1</default>
         <options>
@@ -142,7 +142,7 @@ Threshold of KWh for Load caution<br /><h1>Overview</h1><p>This is a warning whe
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: LED indication mode</label>
+        <label>7: LED indication mode </label>
         <description>LED indication mode</description>
         <default>1</default>
         <options>

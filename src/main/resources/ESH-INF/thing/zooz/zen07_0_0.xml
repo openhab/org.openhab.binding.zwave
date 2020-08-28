@@ -100,7 +100,7 @@ Frecuency metering reports to the controller.<br /><h1>Overview</h1><p>Choose ho
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="1" max="16">
-        <label>3: Overload Protection</label>
+        <label>3: Overload Protection </label>
         <description><![CDATA[
 Maximum amount of electricity Mini Plug to handle.<br /><h1>Overview</h1><p>Use this parameter to adjust the maximum amount of electricity you want your Mini Plug to handle. The number entered as the value corresponds to the number of Amperes. Overload protection will turn the Mini Plug’s relay off once load exceeds 13A by default. It will also send a notification (NOTIFICATION_EVENT_POWER_MANAGEMENT_OVER_LOAD_DETECTED) to the controller and all associated devices. LED indicator on the device will blink red until the load is disconnected. Press the Z-Wave button ONCE to switch the alarm off. The value set in this parameter needs to be greater than the value in parameter 4. </p>
         ]]></description>
@@ -117,7 +117,7 @@ LED notifications of heavy load.<br /><h1>Overview</h1><p>Use this parameter to 
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: LED Notifications</label>
+        <label>5: LED Notifications </label>
         <description><![CDATA[
 Use this parameter to turn LED notifications on or off<br /><h1>Overview</h1><p>Use this parameter to turn LED notifications on or off. Values: 0 – LED disabled; 1 – LED enabled (default).</p>
         ]]></description>
@@ -138,7 +138,7 @@ Mini Plug to report energy usage percentage rate.<br /><h1>Overview</h1><p>Choos
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
-        <label>7: On/Off Status Recovery After Power Failure</label>
+        <label>7: On/Off Status Recovery After Power Failure </label>
         <description><![CDATA[
 Choose the recovery state for your Mini Plug if power outage occurs<br /><h1>Overview</h1><p>Choose the recovery state for your Mini Plug if power outage occurs. Values: 0 – Mini Plug automatically turns OFF once power is restored (it does not remember the status prior to power outage); 1 – Mini Plug remembers the status prior to power outage and turns back to it (default); </p>
         ]]></description>
@@ -150,7 +150,7 @@ Choose the recovery state for your Mini Plug if power outage occurs<br /><h1>Ove
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
-        <label>8: Auto Turn-Off Timer Enable</label>
+        <label>8: Auto Turn-Off Timer  Enable</label>
         <description><![CDATA[
 : Use this parameter to enable or disable the auto turn-off timer function<br /><h1>Overview</h1><p>Use this parameter to enable or disable the auto turn-off timer function. If this feature is enabled, the Mini Plug will automatically turn off after a fixed period of time (set in parameter 9). Values: 0 – timer disabled (default); 1 – timer enabled </p>
         ]]></description>

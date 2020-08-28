@@ -130,7 +130,7 @@ Power threashold for when to send reports to associated devices<br /><h1>Overvie
 
       <parameter name="config_152_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>152: Power Report Percentage Threshold</label>
+        <label>152: Power Report Percentage Threshold </label>
         <description><![CDATA[
 Percentage threshold for when to send report to associated devices<br /><h1>Overview</h1><p>When the change value of the load power exceeds the threshold, the meter report is send to associated devices.</p> <p>0 -- The function is disabled.</p>
         ]]></description>

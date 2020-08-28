@@ -107,7 +107,7 @@ Sets auto off delay for S1<br /><h1>Overview</h1><p>Sets delay after which switc
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
                  min="0" max="65000">
-        <label>5: S1 On delay</label>
+        <label>5: S1 On delay </label>
         <description><![CDATA[
 Delay after ON command received<br /><h1>Overview</h1><p>Sets time after which switch S1 will turn on after receiving ON command in 1/10 sec. (0 - disable feature)</p>
         ]]></description>

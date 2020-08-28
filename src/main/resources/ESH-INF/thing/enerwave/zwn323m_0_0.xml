@@ -102,7 +102,7 @@ Autosend interval (SENSOR_MULTILEVEL_REPORT)<br /><h1>Overview</h1><p>Instant En
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>10: Accumulated Autosend Interval ( METER_REPORT)</label>
+        <label>10: Accumulated Autosend Interval (  METER_REPORT)</label>
         <description><![CDATA[
 Accumulated Autosend Interval ( METER_REPORT)<br /><h1>Overview</h1><p>Accumulated Energy Autosend Interval report (send METER_REPORT)</p>
         ]]></description>

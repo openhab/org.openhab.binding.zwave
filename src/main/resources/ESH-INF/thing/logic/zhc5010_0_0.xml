@@ -413,7 +413,7 @@ Multilevel Switch - Lower switch value - (button #3)<br /><h1>Overview</h1><p>Wh
 
       <parameter name="config_22_4_0000FF00" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>22: Upper switch value - (button #4)</label>
+        <label>22:  Upper switch value - (button #4)</label>
         <description><![CDATA[
 Multilevel Switch - Upper switch value - (button #4)<br /><h1>Overview</h1><p>When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
         ]]></description>

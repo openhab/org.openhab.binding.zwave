@@ -107,7 +107,7 @@ Warn when wattage of load over the preset threshold value<br /><h1>Overview</h1>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>4: Threshold of KWh for Load caution</label>
+        <label>4: Threshold of KWh for Load caution </label>
         <description><![CDATA[
 Warn if Acc. Power Consumption exceeds the set value<br /><h1>Overview</h1><p>This is a warning when the KWh of load over the preset threshold value, if the Accumulated Power Consumption exceeds the setting value the device will send a warning alarm command to the controller.</p>
         ]]></description>

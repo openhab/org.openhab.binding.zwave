@@ -127,7 +127,7 @@ See overview<br /><h1>Overview</h1><p>The LSB defines the total time the device 
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
                  min="0" max="65535">
-        <label>101: Reports to send to Group 1</label>
+        <label>101: Reports to send to Group 1 </label>
         <description><![CDATA[
 See overview<br /><h1>Overview</h1><p>The value is a combination number made up of the sum of the values for the individual parameters. The parameters have the values: Wattage=4, Current=2, Voltage=1.</p>
         ]]></description>

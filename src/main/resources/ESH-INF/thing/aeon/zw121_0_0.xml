@@ -89,7 +89,7 @@ Enable/disable last brightness level when using the Color Switch Set CC<br /><h1
       </parameter>
 
       <parameter name="config_36_1" type="integer" groupName="configuration">
-        <label>36: Reboot/save/exit Colorful mode.</label>
+        <label>36: Reboot/save/exit Colorful mode. </label>
         <description><![CDATA[
 Reboot/save/exit Colorful mode.<br /><h1>Overview</h1><p>Reboot/save/exit Colorful mode.</p> <p>0=Un-reboot Colorful mode.</p> <p>1=Reboot Colorful mode.</p> <p>2=Exit Colorful mode.</p> <p>3=Save the current Colorful mode value and then to be exited. </p>
         ]]></description>

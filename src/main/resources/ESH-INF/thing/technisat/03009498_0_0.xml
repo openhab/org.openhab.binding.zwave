@@ -124,7 +124,7 @@ Configuration of switch type connected to extension connector S<br /><h1>Overvie
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
-        <label>6: Extension input scene mapping</label>
+        <label>6: Extension input scene mapping </label>
         <description><![CDATA[
 Central Scene mapping of extension input S<br /><h1>Overview</h1><p><strong>1</strong> - map S to central scene of T1</p> <p><strong>2</strong> - map S to central scene of T2</p> <p><strong>3</strong>- map S to own central scene</p>
         ]]></description>

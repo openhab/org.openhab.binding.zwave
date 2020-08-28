@@ -100,7 +100,7 @@ After this time the Door Bell will receive an OFF.<br /><h1>Overview</h1><p>Afte
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Central Scene ID</label>
+        <label>5:  Central Scene ID</label>
         <description>Defines if different user codes shall cause individual or similar scene ID.</description>
         <default>0</default>
         <options>

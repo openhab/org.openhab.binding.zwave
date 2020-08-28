@@ -81,7 +81,7 @@ This parameter sets the “firing mode” of the Mouser.<br /><h1>Overview</h1><
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="64" max="168">
-        <label>3: High Voltage Duration Time</label>
+        <label>3: High Voltage Duration Time </label>
         <description><![CDATA[
 How long the Mouser will fire continuously before it starts to burst-fire<br /><h1>Overview</h1><p>This parameter defines how long the Mouser will fire continuously before it starts to burst-fire (see parameter 2.)</p> <p>00 64 ~ 01 68 (100~360 in Seconds)</p>
         ]]></description>

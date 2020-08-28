@@ -355,7 +355,7 @@ Scale Selection<br /><h1>Overview</h1><p>This parameter determines in which meas
       </parameter>
 
       <parameter name="config_100_1" type="integer" groupName="configuration">
-        <label>100: Endpoint I1 Enable/Disable or Type and Event</label>
+        <label>100:  Endpoint I1 Enable/Disable or Type and Event</label>
         <description><![CDATA[
 Enable/Disable Endpoint I1 or select NotificationType and Event<br /><h1>Overview</h1><p>Choose whether the Endpoint I1 is disabled (and not shown on the UI) or enabled (and displayed on the UI). By enabling this endpoint (setting it to be either a notification sensor or a binary sensor), the user also selects a Notification Type and a Notification Event for which notification reports will be sent (in case the endpoint is configured as a notification sensor).<br /> After changing the values of the parameter, first exclude the device (without setting the parameters to their default values), then wait at least 30s and then re-include the device!<br /> When the parameter is set to the value 9 the notifications are sent for the Home Security notification type.<br /> If "endpoint enabled" (value is set to 1-9), parameter 11 must be set to "2" as "Window Sensor" to determine how device input I1 will operate</p>
         ]]></description>
@@ -512,8 +512,8 @@ Node ID of external battery powered room sensor<br /><h1>Overview</h1><p>If digi
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>

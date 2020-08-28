@@ -275,4 +275,12 @@ Range 3-30 (0.3°C 3.0°C)<br /><h1>Overview</h1><p>In this mode you are able to
     </state>
   </channel-type>
 
+  <channel-type id="thermofloor_tf016_01_092_config_decimal_param12">
+    <item-type>Number</item-type>
+    <label>P setting</label>
+    <description>Power mode. 0 is always off, 10 is always on.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

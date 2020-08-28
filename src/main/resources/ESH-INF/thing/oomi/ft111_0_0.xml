@@ -247,7 +247,7 @@ To set which reports need to be sent in Report group 2<br /><h1>Overview</h1><p>
 
       <parameter name="config_103_1" type="integer" groupName="configuration"
                  min="0" max="15">
-        <label>103: Reports sent to Report group 3</label>
+        <label>103: Reports  sent to Report group 3</label>
         <description><![CDATA[
 Reports sent to Report group 3<br /><h1>Overview</h1><p>1     Send Meter Report of voltage (V)<br />2     Send Meter Report of current (A)<br />4     Send Meter Report of wattage (W)<br />8     Send Meter Report of energy (kWh)</p>
         ]]></description>

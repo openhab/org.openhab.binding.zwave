@@ -139,7 +139,7 @@ Command frames sent to devices added to the 2nd association group.<br /><h1>Over
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>12: ON command sent to 2nd assoc. group</label>
+        <label>12: ON command  sent to 2nd assoc. group</label>
         <description><![CDATA[
 Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p>The value of 0 turns OFF the device, 255 turns it On. In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set<br />an associated device to a specifed level.</p>
         ]]></description>
@@ -148,7 +148,7 @@ Value of ON command frame sent to 2nd association group<br /><h1>Overview</h1><p
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>13: OFF command sent to 2nd assoc. group</label>
+        <label>13: OFF command  sent to 2nd assoc. group</label>
         <description><![CDATA[
 The value of 0 turns OFF the device, 255 turns it ON.<br /><h1>Overview</h1><p>In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set an associated device to a specified level</p> <p>The value of 0 turns OFF the device, 255 turns it On. In case of associating the Dimmer or Roller Shutter module, values 1-99 allow to set<br />an associated device to a specifed level.</p>
         ]]></description>

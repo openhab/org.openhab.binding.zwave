@@ -71,7 +71,7 @@ Paddle Dimmer<br /><h1>Overview</h1><ul><li>Manual or remote on/off and dimming 
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
-        <label>3: Enable / Disable LED Indicator</label>
+        <label>3: Enable / Disable LED Indicator </label>
         <description>Enable or disable the LED indicator</description>
         <default>0</default>
         <options>

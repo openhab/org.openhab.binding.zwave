@@ -116,7 +116,7 @@ Enables automatic notifications to associated devices<br /><h1>Overview</h1><p>P
       </parameter>
 
       <parameter name="config_90_1" type="integer" groupName="configuration">
-        <label>90: Enables/disables parameter 91 and 92</label>
+        <label>90: Enables/disables parameter 91 and 92 </label>
         <description><![CDATA[
 Automated sending of a Report triggered by minimal change of value.<br /><h1>Overview</h1><p>Parameter to Enable/Disable automated sending of a Report triggered by minimal change of value.</p>
         ]]></description>

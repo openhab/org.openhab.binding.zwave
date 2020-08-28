@@ -135,7 +135,7 @@ number of 10 minute intervals<br /><h1>Overview</h1><p>Enable automatic interval
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
                  min="10" max="1300">
-        <label>3: Definition of warning of current load (A)</label>
+        <label>3: Definition of  warning of current  load (A)</label>
         <description>1300*0.01A = 13A</description>
         <default>1300</default>
       </parameter>
@@ -150,7 +150,7 @@ load caution threshold<br /><h1>Overview</h1><p>Enable automatic warning when th
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
-        <label>5: Mode for restoring status</label>
+        <label>5: Mode for restoring  status</label>
         <description><![CDATA[
 Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is disconnected and reconnected from the mains power supply.</p>
         ]]></description>
@@ -195,7 +195,7 @@ Restore switch state mode.<br /><h1>Overview</h1><p>Status of the plug if it is 
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
-        <label>9: Device from command status</label>
+        <label>9: Device from  command status</label>
         <description>RF off command mode</description>
         <default>0</default>
         <options>

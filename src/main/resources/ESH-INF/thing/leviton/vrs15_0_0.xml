@@ -46,7 +46,7 @@ Scene Capable Push On/Off<br /><h1>Overview</h1><p>Vizia-RF + 15A Relay Switch f
       <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_ASSOCIATION">setVersion=1</property>
       <property name="commandClass:COMMAND_CLASS_VERSION">setVersion=1</property>
-      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_PROPRIETARY">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_PROPRIETARY">setVersion=1</property>
       <property name="defaultAssociations">1</property>
     </properties>
 

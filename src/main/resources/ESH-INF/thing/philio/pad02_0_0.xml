@@ -61,7 +61,7 @@ Dimmer Socket<br /><h1>Overview</h1><p>PAD02 is an E27(EU)/ E26(US) Edison screw
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Mode of Switch Off function</label>
+        <label>1: Mode of  Switch Off  function</label>
         <description><![CDATA[
 Switch button mode (enabled/disabled).<br /><h1>Overview</h1><p>When the mode of switch On/Off is set to 0, any command of switch off will be disabled and the On/Off function of include button will be disabled.</p> <p>The default setting is enable mode.</p>
         ]]></description>

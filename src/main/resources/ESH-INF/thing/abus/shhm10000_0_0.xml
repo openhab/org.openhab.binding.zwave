@@ -116,7 +116,7 @@ Device status report when device status changes.<br /><h1>Overview</h1><p>Device
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
-        <label>4: LED indicator</label>
+        <label>4: LED indicator </label>
         <description><![CDATA[
 Behaviour of the LED display with device status "On".<br /><h1>Overview</h1><p>Behaviour of the LED display with device status "On".</p> <ul><li>0 = LED is permanently active with device status "On</li> <li>1 = LED is active for 5 seconds when changing to device status "On" and then extinguishes</li> </ul><p>(Hexadezimal: 0x00 – 0x01)</p>
         ]]></description>

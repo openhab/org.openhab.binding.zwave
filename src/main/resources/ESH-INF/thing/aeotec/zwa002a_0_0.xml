@@ -95,7 +95,7 @@ Bulb 6 Multi-Color<br /><h1>Overview</h1><p>Aeotec LED Bulb 6 Multi-Color, Z-Wav
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
                  min="0" max="100">
-        <label>16: Ramp rate when dimming using Multilevel Switch</label>
+        <label>16: Ramp rate when dimming using Multilevel Switch </label>
         <default>20</default>
       </parameter>
 

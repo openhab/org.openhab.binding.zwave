@@ -59,7 +59,7 @@ Battery Operated Siren<br /><h1>Overview</h1><p>The ZM1621 will sound a loud sir
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
-        <label>1: Siren Strobe Mode</label>
+        <label>1: 	Siren Strobe Mode</label>
         <description>Defines the reaction of the siren</description>
         <default>0</default>
         <options>

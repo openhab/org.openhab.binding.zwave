@@ -60,7 +60,7 @@ Motion &amp; Vibration Sensor<br /><h1>Overview</h1><p>Motion detection, built-i
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_12_1" type="integer" groupName="configuration"
                  min="1" max="8">
-        <label>12: PIR sensor sensitivity</label>
+        <label>12:  PIR sensor sensitivity</label>
         <description>1 = low sensitivity and 8 = high sensitivity.</description>
         <default>4</default>
       </parameter>

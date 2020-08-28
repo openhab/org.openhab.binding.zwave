@@ -257,7 +257,7 @@ Defines the status of Group 3 devices<br /><h1>Overview</h1><p>Defines the statu
 
       <parameter name="config_43_4" type="integer" groupName="configuration"
                  min="0" max="2000000">
-        <label>43: Energy Level</label>
+        <label>43: Energy Level </label>
         <description><![CDATA[
 Sets the energy level in KWh<br /><h1>Overview</h1><p>Sets the energy level that once exceeded an Energy Limit event occurs<b>.</b></p> <p>From 0 to 2.000.000 KWh – Default value: <b>2.000.000 KWh</b></p>
         ]]></description>

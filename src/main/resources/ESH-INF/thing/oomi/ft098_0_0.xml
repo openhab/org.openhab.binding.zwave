@@ -93,7 +93,7 @@ Byte 1: reserved, Bytes 2, 3, 4: Red, Green, Blue<br /><h1>Overview</h1><p>Value
       </parameter>
 
       <parameter name="config_34_1" type="integer" groupName="configuration">
-        <label>34: Allow external switch to turn the bulb on/off</label>
+        <label>34: Allow external switch to turn the bulb on/off </label>
         <default>0</default>
         <options>
           <option value="0">Disable</option>

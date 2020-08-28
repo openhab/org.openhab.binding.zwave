@@ -72,7 +72,7 @@ Saving load state before power failure<br /><h1>Overview</h1><p>Info: Saving loa
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>3: Enable/disable to send report</label>
+        <label>3: Enable/disable to send report </label>
         <description><![CDATA[
 basic report to the Lifeline when the load state changed<br /><h1>Overview</h1><p>Enable/disable to send the basic report to the Lifeline when the load state changed (When value set as 1, re-power on the dimmer, it will send Basic report automatically)</p> <p>0 – Disable to send Basic report</p> <p>1 – Enable to send Basic report</p>
         ]]></description>

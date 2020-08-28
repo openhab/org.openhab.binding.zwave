@@ -124,7 +124,7 @@ Enable device to send notification to associated devices<br /><h1>Overview</h1><
       </parameter>
 
       <parameter name="config_81_1" type="integer" groupName="configuration">
-        <label>81: Configure the state of red LED</label>
+        <label>81: Configure the state of red LED </label>
         <description><![CDATA[
 Enable the device to send notification to associated devices (Group 1)<br /><h1>Overview</h1><p>Enable the device to send notification to associated devices (Group 1) when the state of the Micro Smart Switch's load changed</p>
         ]]></description>

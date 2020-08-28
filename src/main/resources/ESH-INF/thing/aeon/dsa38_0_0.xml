@@ -53,7 +53,7 @@ Panic Button Key Fob<br /><h1>Overview</h1><p>The Aeon Labs Panic Button is a fu
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_250_1" type="integer" groupName="configuration">
-        <label>250: Mode of Button 1</label>
+        <label>250: Mode of Button 1 </label>
         <description>Defines the switching mode of Button 1</description>
         <default>0</default>
         <options>

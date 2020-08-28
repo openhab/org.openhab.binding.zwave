@@ -130,21 +130,21 @@ Ignore start level when recieving dim commands<br /><h1>Overview</h1><p>The WT00
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>9: Local control dim step</label>
+        <label>9: Local control dim step </label>
         <description>dim step parameter valid values: 1-99</description>
         <default>3</default>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
                  min="1" max="255">
-        <label>10: Local control dim timer</label>
+        <label>10: Local control dim timer </label>
         <description>dim timer parameter valid values: 1-255</description>
         <default>10</default>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
                  min="1" max="99">
-        <label>11: ALL ON/ ALL OFF dim step</label>
+        <label>11: ALL ON/ ALL OFF dim step </label>
         <description>dim step parameter valid values: 1-99</description>
         <default>3</default>
       </parameter>

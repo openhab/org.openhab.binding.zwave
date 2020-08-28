@@ -141,4 +141,12 @@ Default Siren on mode<br /><h1>Overview</h1><p>This parameter defines the defaul
 
   </thing-type>
 
+  <channel-type id="shenzhen_nasab01z_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Default Siren on mode</label>
+    <description>Default Siren on mode</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

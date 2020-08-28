@@ -122,7 +122,7 @@ Speed of stage mode<br /><h1>Overview</h1><p>Parameter number 6 defines the spee
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="255">
-        <label>7: Stage Mode Execution</label>
+        <label>7: Stage Mode Execution </label>
         <description><![CDATA[
 Execution times of stage mode<br /><h1>Overview</h1><p>Parameter number 7 defines execution times of stage mode:</p> <p>Value 0 is unlimited times.</p> <p>Value 1~0xFF is 1~255 times.</p>
         ]]></description>

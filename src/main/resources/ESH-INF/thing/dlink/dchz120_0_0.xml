@@ -142,7 +142,7 @@ Parameter to set the Customer Function.<br /><h1>Overview</h1><p>Bit0: Reserve.<
       </parameter>
 
       <parameter name="config_7_1_00000002" type="integer" groupName="configuration">
-        <label>7: Bit1: Enable sending motion OFF report.</label>
+        <label>7: Bit1: Enable sending motion OFF report. </label>
         <description><![CDATA[
 0:Disable, 1:Enable<br /><h1>Overview</h1><p>Note: Depends on the Bit4, 0: Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report, Type: 0x0C, Value: 0x00  </p>
         ]]></description>

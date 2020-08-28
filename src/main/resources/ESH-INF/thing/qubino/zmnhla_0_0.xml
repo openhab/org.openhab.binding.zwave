@@ -132,7 +132,7 @@ Flush PWM thermostat<br /><h1>Overview</h1><p>This Z-Wave module is used to regu
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
-        <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
+        <label>10: Activate / deactivate functions ALL ON/ALL OFF			</label>
         <description><![CDATA[
 Respond to ALL ON/ALL OFF<br /><h1>Overview</h1><p>Flush PWM thermostat module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.           </p>
         ]]></description>
@@ -414,8 +414,8 @@ Input 3 Status off delay<br /><h1>Overview</h1><ul><li>default value 0</li> <li>
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
+        <option value="3">Auto</option>
       </options>
     </state>
   </channel-type>

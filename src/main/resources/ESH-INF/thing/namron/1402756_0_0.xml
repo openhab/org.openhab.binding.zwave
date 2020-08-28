@@ -119,7 +119,7 @@ Setting dimming way<br /><h1>Overview</h1><p>Setting dimming way.</p> <p>0 - Lin
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
                  min="0" max="99">
-        <label>7: Setting default brightness when turn on</label>
+        <label>7: Setting default brightness when turn on </label>
         <description><![CDATA[
 Setting default brightness when turn on the dimmer from off status<br /><h1>Overview</h1><p>Setting default brightness when turn on the dimmer from off status</p> <p>Setting 0 means that the dimmer will use parameter 1.</p> <p>Valid value: 0 - 99</p>
         ]]></description>

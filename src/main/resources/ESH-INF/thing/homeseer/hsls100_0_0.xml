@@ -128,7 +128,7 @@ Temperature report time (minute)<br /><h1>Overview</h1><p>The higher the value ,
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
                  min="-670" max="2570">
-        <label>20: Set the high temperature alarm trigger value</label>
+        <label>20: Set the high temperature alarm trigger value </label>
         <description><![CDATA[
 Set the high temperature alarm trigger value<br /><h1>Overview</h1><p>The larger the value , the higher the high temperature in Fahrenheits (US)</p>
         ]]></description>

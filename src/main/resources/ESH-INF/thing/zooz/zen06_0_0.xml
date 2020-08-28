@@ -107,7 +107,7 @@ turns relay off once voltage exceeds 16.5A for over 5 secs if enabled<br /><h1>O
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration">
-        <label>24: On/Off Status Change Notifications</label>
+        <label>24: On/Off Status Change Notifications </label>
         <description><![CDATA[
 Send notifications to associated devices<br /><h1>Overview</h1><p>Your Smart Plug will automatically send a notification to the controller and other associated devices if its status changes from on to off or the other way round. Choose when you want it to send the report.</p>
         ]]></description>
@@ -161,7 +161,7 @@ How often to report power consumption (W) in secs<br /><h1>Overview</h1><p>Choos
 
       <parameter name="config_172_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
-        <label>172: Energy Report Frequency</label>
+        <label>172: Energy Report Frequency </label>
         <description><![CDATA[
 How often to report energy usage (KWH) in secs<br /><h1>Overview</h1><p>Choose how often you want your Smart Plug to report energy usage (KWH) to your controller and associated device.</p> <p>The number entered as value corresponds to the number of seconds.</p> <p>So if 300 is entered by default, the smart plug will report energy usage every 300 seconds (5 minutes).</p> <p>Values: 5 – 2678400;</p> <p>0 – disabled (it will not report energy usage);</p>
         ]]></description>
@@ -171,7 +171,7 @@ How often to report energy usage (KWH) in secs<br /><h1>Overview</h1><p>Choose h
 
       <parameter name="config_173_4" type="integer" groupName="configuration"
                  min="0" max="2678400">
-        <label>173: Voltage Report Frequency</label>
+        <label>173: Voltage Report Frequency </label>
         <description><![CDATA[
 How often to report voltage (V) in secs<br /><h1>Overview</h1><p>Choose how often you want your Smart Plug to report voltage (V) to your controller and associated device.</p> <p>The number entered as value corresponds to the number of seconds.</p> <p>Values: 5 – 2678400;</p> <p>0 – disabled</p>
         ]]></description>

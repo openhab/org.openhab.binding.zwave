@@ -182,7 +182,7 @@ Configure the RGB value when it is in Night light mode<br /><h1>Overview</h1><p>
 
       <parameter name="config_84_3" type="integer" groupName="configuration"
                  min="0" max="16777215">
-        <label>84: Color in energy mode</label>
+        <label>84: Color in energy mode </label>
         <default>0</default>
         <advanced>true</advanced>
       </parameter>
@@ -241,7 +241,7 @@ minimum change in wattage percent<br /><h1>Overview</h1><p>The value here repres
       </parameter>
 
       <parameter name="config_100_1_wo" type="integer" groupName="configuration">
-        <label>100: Set 101‐103 to default.</label>
+        <label>100: Set 101‐103 to default. </label>
         <description>Set 101‐103 to default.</description>
         <default>0</default>
         <options>
