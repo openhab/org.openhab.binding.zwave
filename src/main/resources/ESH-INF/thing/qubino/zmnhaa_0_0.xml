@@ -168,13 +168,13 @@ triggered at change of the output Q state and reflecting its state<br /><h1>Over
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: basic on/off - input I2</label>
+        <label>2: basic on/off -  input I2</label>
         <description>(triggered at change of the input I2 state and reflecting its state)</description>
         <multipleLimit>16</multipleLimit>
       </parameter>
 
       <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: basic on/off - input I3</label>
+        <label>3: basic on/off -  input I3</label>
         <description>ttriggered at change of the input I3 state and reflecting its state)</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

@@ -258,9 +258,9 @@ Enable or disables Multicast<br /><h1>Overview</h1><p>If set to 0, multicast is 
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="2">Cool</option>
         <option value="0">Off</option>
         <option value="1">Heat</option>
+        <option value="2">Cool</option>
       </options>
     </state>
   </channel-type>

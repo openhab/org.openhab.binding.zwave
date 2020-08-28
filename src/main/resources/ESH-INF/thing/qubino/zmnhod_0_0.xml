@@ -257,7 +257,7 @@ Digital temperature sensor reporting<br /><h1>Overview</h1><p>If digital tempera
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic on/off - input I1</label>
+        <label>2: Basic on/off -  input I1</label>
         <description>Triggered at change of the input I1 state and reflecting its state</description>
         <multipleLimit>16</multipleLimit>
       </parameter>

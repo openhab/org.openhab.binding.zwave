@@ -48,7 +48,8 @@
       <channel id="indicator_level" typeId="indicator_level">
         <label>Indicator Light Control</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_INDICATOR</property>
         </properties>
       </channel>
     </channels>
@@ -192,5 +193,13 @@ Turn on or off rapid start feature<br /><h1>Overview</h1><p>Ensures that LED / C
     </config-description>
 
   </thing-type>
+
+  <channel-type id="cooper_rf9536n_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>Dimmer Ramp Time</label>
+    <description>Time in seconds to reach desired level</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

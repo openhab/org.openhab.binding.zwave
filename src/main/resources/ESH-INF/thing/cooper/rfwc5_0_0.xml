@@ -29,7 +29,8 @@
       <channel id="indicator_level" typeId="indicator_level">
         <label>Indicator Light Control 1</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_INDICATOR</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_INDICATOR</property>
         </properties>
       </channel>
       <channel id="basic_switch_binary1" typeId="switch_binary">
@@ -47,7 +48,8 @@
       <channel id="indicator_level1" typeId="indicator_level">
         <label>Indicator Light Control 2</label>
         <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_INDICATOR:1</property>
+          <property name="binding:*:PercentType">COMMAND_CLASS_INDICATOR:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_INDICATOR:1</property>
         </properties>
       </channel>
     </channels>
