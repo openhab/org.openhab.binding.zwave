@@ -43,13 +43,13 @@ RS-232 Serial Interface<br /><h1>Overview</h1><p>Serial interface to z-wave over
       <property name="manufacturerRef">0B01:0209</property>
       <property name="dbReference">883</property>
       <property name="commandClass:COMMAND_CLASS_NO_OPERATION">setVersion=1</property>
-      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=0</property>
-      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=0</property>
+      <property name="commandClass:COMMAND_CLASS_BASIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_BINARY">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SWITCH_MULTILEVEL">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_SCENE_ACTIVATION">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_MANUFACTURER_SPECIFIC">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_NODE_NAMING">setVersion=1</property>
+      <property name="commandClass:COMMAND_CLASS_HAIL">setVersion=1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
