@@ -82,9 +82,9 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Comet Z-wave is a Z-Wave radio stand
     <state pattern="%s">
       <options>
         <option value="0">Off (Frost Protect)</option>
-        <option value="31">Manual (Valve Openness)</option>
         <option value="1">Heat (Comfort)</option>
         <option value="11">Heat (Eco)</option>
+        <option value="31">Manual (Valve Openness)</option>
       </options>
     </state>
   </channel-type>

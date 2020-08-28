@@ -195,8 +195,8 @@ Lifeline<br /><h1>Overview</h1><p>Z-Wave Plus Lifeline association group that re
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>
@@ -208,8 +208,8 @@ Lifeline<br /><h1>Overview</h1><p>Z-Wave Plus Lifeline association group that re
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="1">Heat</option>
         <option value="0">Off</option>
+        <option value="1">Heat</option>
       </options>
     </state>
   </channel-type>

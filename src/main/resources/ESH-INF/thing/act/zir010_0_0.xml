@@ -121,7 +121,7 @@ Duration ranges from 15 to 45 seconds. Valid values range from 15 to 45.<br /><h
       <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Battery</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Any device that is associated into Group 3 will be sent battery level indications at specific intervals. There can be up to 5 devices associated into each group. <br /></p>
+<br /><h1>Overview</h1><p>Any device that is associated into Group 3 will be sent battery level indications at specific intervals. There can be up to 5 devices associated into each group. <br /></p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

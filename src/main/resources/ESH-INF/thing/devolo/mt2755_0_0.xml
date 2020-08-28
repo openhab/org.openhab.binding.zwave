@@ -176,7 +176,7 @@ The humidity differential to report.<br /><h1>Overview</h1><p>The humidity diffe
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Receiving Report Message</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Group 1 is for receiving the report message, like triggered event, temperature, humidity </p>
+<br /><h1>Overview</h1><p>Group 1 is for receiving the report message, like triggered event, temperature, humidity </p>
         ]]></description>
         <multipleLimit>8</multipleLimit>
       </parameter>

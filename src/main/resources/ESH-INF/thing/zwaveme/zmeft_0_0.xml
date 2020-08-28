@@ -144,9 +144,9 @@ Maximal allowed temperature<br /><h1>Overview</h1><p>In all modes the thermostat
     <category>Temperature</category>
     <state pattern="%s">
       <options>
+        <option value="0">Off</option>
         <option value="1">Heat</option>
         <option value="11">Economy Heat</option>
-        <option value="0">Off</option>
         <option value="7">Furnace</option>
       </options>
     </state>

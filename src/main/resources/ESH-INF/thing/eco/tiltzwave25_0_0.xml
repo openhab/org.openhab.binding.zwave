@@ -110,7 +110,7 @@ Send Reports<br /><h1>Overview</h1><p>Send or not to send Sensor Binary Report c
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
-Sends low-battery, tamper, open/close, and sensor binary reports<br /><h1>Overview</h1> <p>Group one is a lifeline group who will receive unsolicited messages relating to door/window open/close notifications (because there is no association group for tilt switches), case tampering notifications, low-battery notifications, and sensor binary reports.</p>
+Sends low-battery, tamper, open/close, and sensor binary reports<br /><h1>Overview</h1><p>Group one is a lifeline group who will receive unsolicited messages relating to door/window open/close notifications (because there is no association group for tilt switches), case tampering notifications, low-battery notifications, and sensor binary reports.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -118,7 +118,7 @@ Sends low-battery, tamper, open/close, and sensor binary reports<br /><h1>Overvi
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Set</label>
         <description><![CDATA[
-Sends ON/OFF commands to other devices based on state<br /><h1>Overview</h1> <p>Group 2 is intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set</p>
+Sends ON/OFF commands to other devices based on state<br /><h1>Overview</h1><p>Group 2 is intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
