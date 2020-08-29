@@ -155,7 +155,7 @@ Enable/disable beeper<br /><h1>Overview</h1><p>0 – disabled (the beeper does n
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: LEDs on/off</label>
         <description><![CDATA[
-BASIC SET – status change for the LEDs<br /><h1>Overview</h1>  
+BASIC SET – status change for the LEDs<br /><h1>Overview</h1>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

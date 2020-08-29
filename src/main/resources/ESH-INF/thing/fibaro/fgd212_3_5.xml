@@ -749,10 +749,18 @@ Sends BASIC SET command class<br /><h1>Overview</h1><p>Sends BASIC SET command c
 
   </thing-type>
 
+  <channel-type id="fibaro_fgd212_03_005_config_decimal_param19">
+    <item-type>Number</item-type>
+    <label>Forced switch on brightness level</label>
+    <description>Dimmer 2 will always set this brightness level.</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
   <channel-type id="fibaro_fgd212_03_005_config_decimal_param26">
     <item-type>Number</item-type>
     <label>The function of 3-way switch</label>
-    <description>Key no. 2 controls the Dimmer additionally </description>
+    <description>Key no. 2 controls the Dimmer additionally</description>
     <state pattern="%s">
       <options>
         <option value="0">3-way switch function for S2 disabled</option>

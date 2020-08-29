@@ -301,4 +301,12 @@ Brightness reporting<br /><h1>Overview</h1><p>Choose how you'd like the dimmer t
 
   </thing-type>
 
+  <channel-type id="zooz_zen27_02_000_config_decimal_param18">
+    <item-type>Number</item-type>
+    <label>Custom brightness level</label>
+    <description>Custom brightness level</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

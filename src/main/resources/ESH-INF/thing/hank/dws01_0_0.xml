@@ -95,7 +95,7 @@ Door and Window Sensor<br /><h1>Overview</h1><p>Sensor detects when a door is op
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[
-Association Group 1<br /><h1>Overview</h1> <ul><li> <p>Group 1 reports the status of the Door/Window Sensor, the battery level, and the tamper button status. </p> </li> </ul>
+Association Group 1<br /><h1>Overview</h1><ul><li> <p>Group 1 reports the status of the Door/Window Sensor, the battery level, and the tamper button status. </p> </li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -103,7 +103,7 @@ Association Group 1<br /><h1>Overview</h1> <ul><li> <p>Group 1 reports the statu
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
         <description><![CDATA[
-Association Group 2<br /><h1>Overview</h1> <ul><li> <p>Group 2 is assigned to the Door/Window Sensor BASIC SET command. </p> </li> </ul>
+Association Group 2<br /><h1>Overview</h1><ul><li> <p>Group 2 is assigned to the Door/Window Sensor BASIC SET command. </p> </li> </ul>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

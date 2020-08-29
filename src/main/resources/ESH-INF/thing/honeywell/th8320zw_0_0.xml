@@ -100,12 +100,12 @@ Touchscreen Programmable Thermostat<br /><h1>Overview</h1><p>Touchscreen Thermos
     <category>Temperature</category>
     <state pattern="%s">
       <options>
-        <option value="3">Auto</option>
         <option value="0">Off</option>
-        <option value="11">Economy Heat</option>
-        <option value="2">Cool</option>
-        <option value="12">Economy Cool</option>
         <option value="1">Heat</option>
+        <option value="11">Economy Heat</option>
+        <option value="12">Economy Cool</option>
+        <option value="2">Cool</option>
+        <option value="3">Auto</option>
         <option value="5">Resume</option>
       </options>
     </state>

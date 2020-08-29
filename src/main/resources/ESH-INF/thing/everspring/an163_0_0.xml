@@ -115,7 +115,7 @@ Grouping 1 reports status<br /><h1>Overview</h1><p> Grouping 1 includes ALARM_R
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Grouping 2</label>
         <description><![CDATA[
-Allows control of up to four other devices<br /><h1>Overview</h1> <p> Grouping 2 includes BASIC_SET.</p>
+Allows control of up to four other devices<br /><h1>Overview</h1><p> Grouping 2 includes BASIC_SET.</p>
         ]]></description>
         <multipleLimit>4</multipleLimit>
       </parameter>

@@ -131,4 +131,12 @@ Z-Wave Plus Lifeline<br /><h1>Overview</h1><p>This Multisiren supports Group 1 w
 
   </thing-type>
 
+  <channel-type id="zooz_zse19_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>Custom sound selection for audio speaker</label>
+    <description>Custom sound selection for audio speaker</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>

@@ -98,7 +98,7 @@ Send Sensor Binary Report to Association Group 1<br /><h1>Overview</h1><p>Config
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Receive unsolicited messages relating to door/window open/close notifications, case tampering notifications, low-battery notifications, and sensor binary reports.</p>
+<br /><h1>Overview</h1><p>Receive unsolicited messages relating to door/window open/close notifications, case tampering notifications, low-battery notifications, and sensor binary reports.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -106,7 +106,7 @@ Send Sensor Binary Report to Association Group 1<br /><h1>Overview</h1><p>Config
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Control</label>
         <description><![CDATA[
-Group to receive Basic Set<br /><h1>Overview</h1> <p>Intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set. </p>
+Group to receive Basic Set<br /><h1>Overview</h1><p>Intended for devices that are to be controlled i.e. turned on or off (on only by default) with a Basic Set. </p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

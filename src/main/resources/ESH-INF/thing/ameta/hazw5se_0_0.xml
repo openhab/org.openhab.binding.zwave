@@ -113,7 +113,7 @@ Lock/unlock all configuration parameters.<br /><h1>Overview</h1><p>0 – Unlock
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Group 1</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <ol><li>Notification Report.<br />Sensor will send Notification Report when the supported event is triggered.</li> <li>Battery Report.<br />Sensor will send Battery Report when the battery level is low and the battery report’s value is 0xFF.</li> <li>Device Reset Locally.</li> </ol>
+<br /><h1>Overview</h1><ol><li>Notification Report.<br />Sensor will send Notification Report when the supported event is triggered.</li> <li>Battery Report.<br />Sensor will send Battery Report when the battery level is low and the battery report’s value is 0xFF.</li> <li>Device Reset Locally.</li> </ol>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
@@ -121,7 +121,7 @@ Lock/unlock all configuration parameters.<br /><h1>Overview</h1><p>0 – Unlock
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
         <description><![CDATA[
-<br /><h1>Overview</h1> <p>Basic Set, Sensor will send Basic Set when the sensor body and magnet removed or combined.</p>
+<br /><h1>Overview</h1><p>Basic Set, Sensor will send Basic Set when the sensor body and magnet removed or combined.</p>
         ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>

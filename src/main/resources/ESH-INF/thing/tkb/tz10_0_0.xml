@@ -104,8 +104,8 @@ Thermostat with LCD Screen<br /><h1>Overview</h1><p>Heating thermostat with LCD 
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
-        <option value="5">Resume</option>
         <option value="1">Heat</option>
+        <option value="5">Resume</option>
       </options>
     </state>
   </channel-type>

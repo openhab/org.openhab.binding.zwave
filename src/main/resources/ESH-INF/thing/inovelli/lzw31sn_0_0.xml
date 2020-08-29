@@ -368,4 +368,36 @@ Enable "smart bulb" mode<br /><h1>Overview</h1><p>Smart bulb mode: If set to 1, 
 
   </thing-type>
 
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param16">
+    <item-type>Number</item-type>
+    <label>LED Strip Effect</label>
+    <description>LED Strip Effect</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param9">
+    <item-type>Number</item-type>
+    <label>Default Level (Local)</label>
+    <description>Default Level (Local)</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param13">
+    <item-type>Number</item-type>
+    <label>LED Indicator Color</label>
+    <description>LED Indicator Color</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
+  <channel-type id="inovelli_lzw31sn_00_000_config_decimal_param14">
+    <item-type>Number</item-type>
+    <label>LED Indicator Intensity</label>
+    <description>LED Indicator Intensity</description>
+    <state pattern="%s">
+    </state>
+  </channel-type>
+
 </thing:thing-descriptions>
