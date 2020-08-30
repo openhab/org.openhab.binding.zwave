@@ -17,11 +17,6 @@
             <channel id="serial_cse" typeId="serial_cse" />
         </channels>
 
-        <properties>
-            <property name="modelId"></property>
-            <property name="manufacturerId"></property>
-            <property name="nodeId"></property>
-        </properties>
         <representation-property>homeId</representation-property>
 
         <config-description>
