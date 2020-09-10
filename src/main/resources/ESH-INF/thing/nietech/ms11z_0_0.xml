@@ -5,12 +5,12 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="nietech_ms11z_04_000" listed="false">
+  <thing-type id="nietech_ms11z_00_000" listed="false">
     <label>MS11Z Minoston Smart Dimmer Switch</label>
     <description><![CDATA[
-Minoston Smart Dimmer Switch<br /><h1>Overview</h1><p>In-Wall Switch (Dimmer)</p> <br /><h2>Inclusion Information</h2><p>Add  the MS13Z from the existing Z-Wave home control network with your primary controller.</p> <ul><li> Refer to your primary controller instructions to process the inclusion / exclusion setup procedure.</li> <li> When prompted by your primary controller, click the Up or Down button three times in one second.</li> </ul><p>Include MS13Z to/from a Z-Wave Gateway with supporting Security.The MS13Z can support the Primary Controller that implemented the security S2.</p> <br /><h2>Exclusion Information</h2><p>Remove the MS13Z from the existing Z-Wave home control network with your primary controller.</p> <ul><li> Refer to your primary controller instructions to process the inclusion / exclusion setup procedure.</li> <li> When prompted by your primary controller, click the Up or Down button three times in one second.</li> </ul>
+Minoston Smart Dimmer Switch<br /><h1>Overview</h1><p>In-Wall Switch (Dimmer)</p> <br /><h2>Inclusion Information</h2><p>Add  the MS13Z from the existing Z-Wave home control network with your primary controller.</p> <ul><li> Refer to your primary controller instructions to process the inclusion / exclusion setup procedure.</li> <li> When prompted by your primary controller, click the Up or Down button three times in one second.</li> </ul><p>Include MS13Z to/from a Z-Wave Gateway with supporting Security.The MS13Z can support the Primary Controller that implemented the security S2.</p> <br /><h2>Exclusion Information</h2><p>Remove the MS13Z from the existing Z-Wave home control network with your primary controller.</p> <ul><li> Refer to your primary controller instructions to process the inclusion / exclusion setup procedure.</li> <li> When prompted by your primary controller, click the Up or Down button three times in one second.</li> </ul><br /><h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
-    <category>WallSwitch</category>
+    <category>Battery</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -35,8 +35,6 @@ Minoston Smart Dimmer Switch<br /><h1>Overview</h1><p>In-Wall Switch (Dimmer)</p
       <property name="modelId">MS11Z</property>
       <property name="manufacturerId">0312</property>
       <property name="manufacturerRef">FF00:FF04</property>
-      <property name="versionMin">4.0</property>
-      <property name="versionMax">4.0</property>
       <property name="dbReference">1231</property>
       <property name="defaultAssociations">1</property>
     </properties>
