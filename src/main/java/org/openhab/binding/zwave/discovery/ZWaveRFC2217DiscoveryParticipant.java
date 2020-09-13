@@ -56,6 +56,7 @@ public class ZWaveRFC2217DiscoveryParticipant implements MDNSDiscoveryParticipan
     public @Nullable DiscoveryResult createResult(ServiceInfo service) {
         ThingUID thingUID = getThingUID(service);
         if (thingUID != null) {
+            String homeId = service.getPropertyString("HOME_ID");
             String ipAddress = service.getHostAddresses()[0];
             int port = service.getPort();
             String port_id = String.format("rfc2217://%s:%d", ipAddress, port);
@@ -64,8 +65,14 @@ public class ZWaveRFC2217DiscoveryParticipant implements MDNSDiscoveryParticipan
                     isZWaveController(service) ? ZWAVE_CONTROLLER_DEFAULT_LABEL : ZWAVE_PLUS_CONTROLLER_DEFAULT_LABEL,
                     ipAddress);
 
-            return DiscoveryResultBuilder.create(thingUID).withProperty(CONFIGURATION_PORT, port_id)
-                    .withRepresentationProperty(CONFIGURATION_PORT).withLabel(label).build();
+            DiscoveryResultBuilder discoveryResult = DiscoveryResultBuilder.create(thingUID)
+                    .withProperty(CONFIGURATION_PORT, port_id).withLabel(label);
+
+            if (homeId != null) {
+                discoveryResult.withProperty("homeId", homeId).withRepresentationProperty("homeId");
+            }
+
+            return discoveryResult.build();
         }
         return null;
 
@@ -77,9 +84,14 @@ public class ZWaveRFC2217DiscoveryParticipant implements MDNSDiscoveryParticipan
             if (isZWaveController(service) || isZWavePlusController(service)) {
                 String ipAddress = getIPAddress(service);
                 if (ipAddress != null) {
+                    String homeId = service.getPropertyString("HOME_ID");
                     String ipAddressLastOctet = getIPAddressLastOctet(ipAddress);
                     String id = String.format("%s%s%s", service.getPropertyString("VENDOR_ID"),
                             service.getPropertyString("MODEL_ID"), ipAddressLastOctet);
+
+                    if (homeId != null) {
+                        id = homeId;
+                    }
 
                     return new ThingUID(CONTROLLER_SERIAL, id);
                 }
