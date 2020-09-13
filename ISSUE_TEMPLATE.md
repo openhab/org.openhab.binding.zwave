@@ -9,11 +9,11 @@ If the problem is associated with a device, please provide the following -:
 
 * Device name:
 * Device version:
-* Link to [database](http://www.cd-jackson.com/index.php/zwave/zwave-device-database/zwave-device-list):
+* Link to [database](http://opensmarthouse.org/zwavedatabase):
 * If the device is not in the database, provide a link to the manual.
 * If there is an XML being generted for the device (in the /userdata/zwave folder), please provide it.
 
-Provide a full debug level log of the problem. Preferably, you should try use the [log viewer](http://www.cd-jackson.com/index.php/openhab/zwave-log-viewer) to see if you can identify the problem.
+Provide a full debug level log of the problem. Preferably, you should try use the [log viewer](https://www.opensmarthouse.org/utilities/logviewer/zwave/) to see if you can identify the problem.
 
 If a device will not initialise, ensure the log is provided from the time OH starts.
 
