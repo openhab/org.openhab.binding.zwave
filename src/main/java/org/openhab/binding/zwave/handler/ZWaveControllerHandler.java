@@ -400,10 +400,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         Map<String, String> properties = editProperties();
-        properties.put("manufacturerId", Integer.toHexString(controller.getManufactureId()));
-        properties.put("modelId", Integer.toHexString(controller.getDeviceId()));
-        properties.put("homeId", Integer.toHexString(controller.getHomeId()));
-        properties.put("nodeId", Integer.toString(controller.getOwnNodeId()));
+        properties.put(PROPERTY_MANUFACTURER, Integer.toHexString(controller.getManufactureId()));
+        properties.put(PROPERTY_DEVICEID, Integer.toHexString(controller.getDeviceId()));
+        properties.put(PROPERTY_HOMEID, Integer.toHexString(controller.getHomeId()));
+        properties.put(PROPERTY_NODEID, Integer.toString(controller.getOwnNodeId()));
         updateProperties(properties);
     }
 
