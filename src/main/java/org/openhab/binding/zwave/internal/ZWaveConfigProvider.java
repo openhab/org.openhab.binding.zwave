@@ -491,11 +491,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         ThingUID thingUID = new ThingUID(uri.getSchemeSpecificPart());
-        ThingType thingType = thingTypeRegistry.getThingType(thingUID.getThingTypeUID());
-        if (thingType == null) {
-            return null;
-        }
-
         // Is this a zwave thing?
         if (!thingUID.getBindingId().equals(ZWaveBindingConstants.BINDING_ID)) {
             return null;
