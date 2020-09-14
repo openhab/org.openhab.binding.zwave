@@ -17,7 +17,6 @@ import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Optional;
 import java.util.TooManyListenersException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -91,44 +90,15 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         portId = (String) getConfig().get(CONFIGURATION_PORT);
 
         super.initialize();
-        watchdog = scheduler.scheduleWithFixedDelay(this::watchSerialPort, WATCHDOG_INIT_SECONDS,
-                WATCHDOG_CHECK_SECONDS, TimeUnit.SECONDS);
 
-    }
-
-    /**
-     * Gets a serial port identifier for a given name.
-     * Workaround for getIdentifier in SerialPortManager class, because it doesn't detected correctly that the device is
-     * unplugged.
-     *
-     * @param the name
-     * @return a serial port identifier or null
-     */
-    private @Nullable SerialPortIdentifier getSerialPortIdentifier(final String name) {
-        if (name.startsWith("rfc2217://")) {
-            return serialPortManager.getIdentifier(name);
-        }
-
-        Optional<SerialPortIdentifier> opt = serialPortManager.getIdentifiers().filter(id -> id.getName().equals(name))
-                .findFirst();
-        if (opt.isPresent()) {
-            return opt.get();
-        } else {
-            return null;
-        }
+        watchdog = scheduler.schedule(this::watchSerialPort, WATCHDOG_INIT_SECONDS, TimeUnit.SECONDS);
     }
 
     private void watchSerialPort() {
         try {
-            SerialPortIdentifier portIdentifier = getSerialPortIdentifier(portId);
+            SerialPortIdentifier portIdentifier = serialPortManager.getIdentifier(portId);
             if (portIdentifier == null) {
-                if (serialPort != null) {
-                    onSerialPortError(ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND);
-                }
-                return;
-            }
-
-            if (serialPort != null) {
+                watchdog = scheduler.schedule(this::watchSerialPort, WATCHDOG_CHECK_SECONDS, TimeUnit.SECONDS);
                 return;
             }
 
@@ -137,11 +107,10 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             try {
                 commPort = portIdentifier.open("org.openhab.binding.zwave", 2000);
             } catch (IllegalStateException e) {
-                if (serialPort != null) {
-                    onSerialPortError(ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND);
-                }
+                watchdog = scheduler.schedule(this::watchSerialPort, WATCHDOG_CHECK_SECONDS, TimeUnit.SECONDS);
                 return;
             }
+
             serialPort = commPort;
             commPort.setSerialPortParams(115200, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
             try {
@@ -155,6 +124,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             } catch (UnsupportedCommOperationException e) {
                 logger.debug("Enabling receive timeout is unsupported");
             }
+
             inputStream = commPort.getInputStream();
             outputStream = commPort.getOutputStream();
             logger.debug("Starting receive thread");
@@ -163,8 +133,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
             receiveThread = zWaveReceiveThread;
             zWaveReceiveThread.start();
 
-            // RXTX serial port library causes high CPU load
-            // Start event listener, which will just sleep and slow down event loop
+            // Start event listener, which will notify when the USB device is disconnected
             commPort.addEventListener(zWaveReceiveThread);
             commPort.notifyOnDataAvailable(false);
 
@@ -213,6 +182,9 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         stopNetwork();
         disposeReceiveThread();
         disposeSerialConnection();
+        receiveTimeoutEnabled = false;
+
+        watchdog = scheduler.schedule(this::watchSerialPort, WATCHDOG_INIT_SECONDS, TimeUnit.SECONDS);
     }
 
     /**
@@ -282,6 +254,8 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
         private static final int SEARCH_LEN = 1;
         private static final int SEARCH_DAT = 2;
 
+        private static final int HARDWARE_ERROR = 11;
+
         private int rxState = SEARCH_SOF;
         private int messageLength;
         private int rxLength;
@@ -293,10 +267,8 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
 
         @Override
         public void serialEvent(SerialPortEvent arg0) {
-            try {
-                logger.trace("RXTX library CPU load workaround, sleep forever");
-                Thread.sleep(Long.MAX_VALUE);
-            } catch (InterruptedException e) {
+            if (arg0.getEventType() == HARDWARE_ERROR) {
+                onSerialPortError(ZWaveBindingConstants.OFFLINE_SERIAL_NOTFOUND);
             }
         }
 
@@ -346,6 +318,7 @@ public class ZWaveSerialHandler extends ZWaveControllerHandler {
                         if (serialPort == null) {
                             break;
                         }
+
                         nextByte = inputStream.read();
                         // logger.debug("SERIAL:: STATE {}, nextByte {}, count {} ", rxState, nextByte, rxLength);
 
