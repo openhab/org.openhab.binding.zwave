@@ -69,7 +69,7 @@ public class ZWaveRFC2217DiscoveryParticipant implements MDNSDiscoveryParticipan
                     .withProperty(CONFIGURATION_PORT, port_id).withLabel(label);
 
             if (homeId != null) {
-                discoveryResult.withProperty("homeId", homeId).withRepresentationProperty("homeId");
+                discoveryResult.withProperty(PROPERTY_HOMEID, homeId).withRepresentationProperty(PROPERTY_HOMEID);
             }
 
             return discoveryResult.build();
