@@ -398,6 +398,13 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         } catch (IllegalStateException e) {
             // Eat it...
         }
+
+        Map<String, String> properties = editProperties();
+        properties.put(PROPERTY_MANUFACTURER, Integer.toHexString(controller.getManufactureId()));
+        properties.put(PROPERTY_DEVICEID, Integer.toHexString(controller.getDeviceId()));
+        properties.put(PROPERTY_HOMEID, Integer.toHexString(controller.getHomeId()));
+        properties.put(PROPERTY_NODEID, Integer.toString(controller.getOwnNodeId()));
+        updateProperties(properties);
     }
 
     @Override

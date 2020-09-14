@@ -73,6 +73,7 @@ public class ZWaveBindingConstants {
     public final static String PROPERTY_DEVICETYPE = "zwave_devicetype";
     public final static String PROPERTY_VERSION = "zwave_version";
 
+    public final static String PROPERTY_HOMEID = "zwave_homeid";
     public final static String PROPERTY_NODEID = "zwave_nodeid";
     public final static String PROPERTY_NEIGHBOURS = "zwave_neighbours";
     public final static String PROPERTY_LISTENING = "zwave_listening";
