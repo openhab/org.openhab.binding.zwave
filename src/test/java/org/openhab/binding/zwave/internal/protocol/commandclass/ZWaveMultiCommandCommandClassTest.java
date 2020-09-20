@@ -19,15 +19,14 @@ import java.util.List;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiCommandCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
- * Tests for {@link ZWaveMultiCommandCommandClass}
+ * Tests for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiCommandCommandClass}
  *
  * @author Chris Jackson - initial contribution
- *
  */
 public class ZWaveMultiCommandCommandClassTest extends ZWaveCommandClassTest {
     @Test

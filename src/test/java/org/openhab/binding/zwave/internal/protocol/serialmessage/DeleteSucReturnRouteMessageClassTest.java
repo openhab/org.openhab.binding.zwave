@@ -18,7 +18,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteSucReturnRouteMessageClass;
 
 /**
  * Test cases for DeleteSucReturnRouteMessageClass message.

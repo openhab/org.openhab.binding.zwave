@@ -17,12 +17,12 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
- * Test cases for {@link ZWaveBasicCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass}.
  *
  * @author Chris Jackson - Initial version
  */

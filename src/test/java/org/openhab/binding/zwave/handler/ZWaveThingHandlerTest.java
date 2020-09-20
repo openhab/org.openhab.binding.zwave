@@ -99,8 +99,7 @@ public class ZWaveThingHandlerTest {
             Mockito.when(controllerHandler.getNode(Matchers.anyInt())).thenReturn(node);
             Mockito.when(node.getNodeId()).thenReturn(1);
             Mockito.when(node.getAssociationGroup(Matchers.anyInt())).thenReturn(new ZWaveAssociationGroup(1));
-            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP)))
-                    .thenReturn(wakeupClass);
+            Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_WAKE_UP))).thenReturn(wakeupClass);
             Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_ASSOCIATION)))
                     .thenReturn(associationClass);
             Mockito.when(node.getCommandClass(Matchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))

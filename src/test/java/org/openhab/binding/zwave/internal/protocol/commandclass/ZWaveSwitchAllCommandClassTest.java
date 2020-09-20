@@ -19,14 +19,14 @@ import java.util.List;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass.SwitchAllMode;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
- * Test cases for {@link ZWaveSwitchAllCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass}.
  *
  * @author Chris Jackson - Initial version
  */

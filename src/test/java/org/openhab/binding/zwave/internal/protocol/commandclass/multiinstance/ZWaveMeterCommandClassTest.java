@@ -20,8 +20,8 @@ import java.util.List;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClassTest;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.ZWaveMeterValueEvent;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClassTest;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**

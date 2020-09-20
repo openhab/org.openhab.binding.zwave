@@ -27,13 +27,12 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
- * Test cases for {@link ZWaveAssociationGroupInfoCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationGroupInfoCommandClass}.
  *
  * @author Jorg de Jong - Initial version
  * @author Chris Jackson

@@ -23,12 +23,12 @@ import java.util.TimeZone;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveTimeParametersCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
- * Test cases for {@link ZWaveTimeParametersCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveTimeParametersCommandClass}.
  *
  * @author Jorg de Jong
  */

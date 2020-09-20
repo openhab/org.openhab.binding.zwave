@@ -18,7 +18,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
@@ -26,7 +25,8 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
- * Test cases for {@link ZWaveColorCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass}.
  *
  * @author Chris Jackson - Initial version
  */

@@ -19,7 +19,6 @@ import java.util.Arrays;
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 
 /**
  * Test cases for RequestNodeNeighborUpdateMessageClass message.

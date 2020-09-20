@@ -15,14 +15,12 @@ package org.openhab.binding.zwave.internal.protocol;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
-import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 
 /**
- * Test cases for {@link SerialMessage}. This performs basic checks on the serial message processing to ensure packets
- * are handled correctly.
+ * Test cases for {@link org.openhab.binding.zwave.internal.protocol.SerialMessage}. This performs
+ * basic checks on the serial message processing to ensure packets are handled correctly.
  *
  * @author Chris Jackson - Initial version
  */
