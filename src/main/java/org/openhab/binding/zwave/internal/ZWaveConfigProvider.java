@@ -41,6 +41,7 @@ import org.openhab.core.config.core.ConfigDescriptionParameter;
 import org.openhab.core.config.core.ConfigDescriptionParameter.Type;
 import org.openhab.core.config.core.ConfigDescriptionParameterBuilder;
 import org.openhab.core.config.core.ConfigDescriptionParameterGroup;
+import org.openhab.core.config.core.ConfigDescriptionParameterGroupBuilder;
 import org.openhab.core.config.core.ConfigDescriptionProvider;
 import org.openhab.core.config.core.ConfigDescriptionRegistry;
 import org.openhab.core.config.core.ConfigOptionProvider;
@@ -191,9 +192,10 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         List<ConfigDescriptionParameterGroup> groups = new ArrayList<ConfigDescriptionParameterGroup>();
-        groups.add(new ConfigDescriptionParameterGroup("actions", "", false, "Actions", "Actions"));
-        groups.add(new ConfigDescriptionParameterGroup("thingcfg", "home", false, "Device Configuration",
-                "Device Configuration"));
+        groups.add(ConfigDescriptionParameterGroupBuilder.create("actions").withLabel("Actions")
+                .withDescription("Actions").build());
+        groups.add(ConfigDescriptionParameterGroupBuilder.create("thingcfg").withContext("home")
+                .withLabel("Device Configuration").withDescription("Device Configuration").build());
 
         List<ParameterOption> options = new ArrayList<ParameterOption>();
         options.add(new ParameterOption("600", "10 Minutes"));
@@ -227,8 +229,9 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveWakeUpCommandClass wakeupCmdClass = (ZWaveWakeUpCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_WAKE_UP);
         if (wakeupCmdClass != null) {
-            groups.add(new ConfigDescriptionParameterGroup("wakeup", "sleep", false, "Wakeup Configuration",
-                    "Configuration for wakeup parameters on battery devices"));
+            groups.add(ConfigDescriptionParameterGroupBuilder.create("wakeup").withContext("sleep")
+                    .withLabel("Wakeup Configuration")
+                    .withDescription("Configuration for wakeup parameters on battery devices").build());
 
             parameters.add(ConfigDescriptionParameterBuilder
                     .create(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, Type.INTEGER)
@@ -285,8 +288,8 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         ZWaveUserCodeCommandClass userCodeClass = (ZWaveUserCodeCommandClass) node
                 .getCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_USER_CODE);
         if (userCodeClass != null && userCodeClass.getNumberOfSupportedCodes() > 0) {
-            groups.add(new ConfigDescriptionParameterGroup("usercode", "lock", false, "User Code",
-                    "Define the user codes for locks"));
+            groups.add(ConfigDescriptionParameterGroupBuilder.create("usercode").withContext("lock")
+                    .withLabel("User Code").withDescription("Define the user codes for locks").build());
 
             for (int code = 1; code <= userCodeClass.getNumberOfSupportedCodes(); code++) {
                 UserCode userCode = userCodeClass.getCachedUserCode(code);
