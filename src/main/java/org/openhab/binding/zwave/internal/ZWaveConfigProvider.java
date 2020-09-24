@@ -25,8 +25,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
@@ -484,7 +482,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
     }
 
     @Override
-    public Collection<ParameterOption> getParameterOptions(URI uri, String param, Locale locale) {
+    public Collection<ParameterOption> getParameterOptions(URI uri, String param, String context, Locale locale) {
         // We need to update the options of all requests for association groups...
         if (!"thing".equals(uri.getScheme())) {
             return null;
@@ -573,11 +571,5 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         return Collections.unmodifiableList(options);
-    }
-
-    @Override
-    public @Nullable Collection<@NonNull ParameterOption> getParameterOptions(URI uri, String param,
-            @Nullable String context, @Nullable Locale locale) {
-        return getParameterOptions(uri, param, locale);
     }
 }
