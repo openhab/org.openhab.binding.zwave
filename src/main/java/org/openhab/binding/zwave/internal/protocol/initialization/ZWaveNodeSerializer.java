@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import org.openhab.core.config.core.ConfigConstants;
+import org.openhab.core.OpenHAB;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
@@ -52,7 +52,7 @@ public class ZWaveNodeSerializer {
     public ZWaveNodeSerializer() {
         logger.trace("Initializing ZWaveNodeSerializer.");
 
-        folderName = ConfigConstants.getUserDataFolder() + "/" + ZWaveBindingConstants.BINDING_ID;
+        folderName = OpenHAB.getUserDataFolder() + "/" + ZWaveBindingConstants.BINDING_ID;
 
         final File folder = new File(folderName);
 
