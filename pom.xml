@@ -19,9 +19,9 @@
 
 	<properties>
 		<report.fail.on.error>false</report.fail.on.error>
-		<spotless.version>1.24.3</spotless.version>
+		<spotless.version>2.0.3</spotless.version>
 		<spotless.check.skip>true</spotless.check.skip> <!-- Spotless disabled for now -->
-		<sat.version>0.9.0</sat.version>
+		<sat.version>0.10.0</sat.version>
 	</properties>
 
 	<scm>
@@ -101,7 +101,7 @@
 						<java>
 							<eclipse>
 								<file>openhab_codestyle.xml</file>
-								<version>4.11.0</version>
+								<version>4.13.0</version>
 							</eclipse>
 							<removeUnusedImports />
 							<importOrder>
@@ -116,15 +116,15 @@
 									<include>src/**/*.xml</include>
 								</includes>
 								<excludes>
-									<exclude>src/main/resources/ESH-INF/thing/**/*.xml</exclude>
 									<exclude>**/pom.xml</exclude>
+									<exclude>src/main/resources/OH-INF/thing/**/*.xml</exclude>
 								</excludes>
 								<eclipseWtp>
 									<type>XML</type>
 									<files>
 										<file>openhab_wst_xml_files.prefs</file>
 									</files>
-									<version>4.12.0</version>
+									<version>4.13.0</version>
 								</eclipseWtp>
 								<trimTrailingWhitespace />
 								<endWithNewline />
@@ -139,7 +139,7 @@
 									<files>
 										<file>openhab_wst_pom_file.prefs</file>
 									</files>
-									<version>4.12.0</version>
+									<version>4.13.0</version>
 								</eclipseWtp>
 								<trimTrailingWhitespace />
 								<endWithNewline />
