@@ -569,8 +569,9 @@ public class ZWaveNodeInitStageAdvancer {
     private void doStaticStages() {
         setCurrentStage(ZWaveNodeInitStage.MANUFACTURER);
         // Try and get the manufacturerSpecific command class.
+        // If it doesn't exist, we add it as it should be supported by all devices
         ZWaveManufacturerSpecificCommandClass manufacturerSpecific = (ZWaveManufacturerSpecificCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
+                .getOrAddCommandClass(node.getEndpoint(0), CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
 
         if (manufacturerSpecific != null) {
             // If we already known the manufacturer information, then don't request again
