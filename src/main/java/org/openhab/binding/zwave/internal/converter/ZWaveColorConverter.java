@@ -29,6 +29,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorCommandClass.ZWaveColorValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
@@ -111,11 +112,15 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
             Command command) {
-        ZWaveColorCommandClass commandClass = (ZWaveColorCommandClass) node
+        ZWaveColorCommandClass colorCommandClass = (ZWaveColorCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_COLOR, channel.getEndpoint());
+        ZWaveMultiLevelSwitchCommandClass levelCommandClass = (ZWaveMultiLevelSwitchCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL,
+                        channel.getEndpoint());
 
-        Collection<ZWaveCommandClassTransactionPayload> rawMessages = null;
+        Collection<ZWaveCommandClassTransactionPayload> rawMessages = new ArrayList<>();
 
+        int level = -1;
         Map<ZWaveColorType, Integer> colors = new TreeMap<>();
 
         // Since we get an HSB, there is brightness information. However, we only deal with the color class here
@@ -123,15 +128,16 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         if ("RGB".equals(channel.getArguments().get("colorMode"))) {
             // Command must be color - convert to zwave format
             HSBType color = (HSBType) command;
+            level = color.getBrightness().intValue();
 
             // Queue the command
             colors.put(ZWaveColorType.RED, scaleColor(color.getRed()));
             colors.put(ZWaveColorType.GREEN, scaleColor(color.getGreen()));
             colors.put(ZWaveColorType.BLUE, scaleColor(color.getBlue()));
-            if (commandClass.isColorSupported(ZWaveColorType.COLD_WHITE)) {
+            if (colorCommandClass.isColorSupported(ZWaveColorType.COLD_WHITE)) {
                 colors.put(ZWaveColorType.COLD_WHITE, 0);
             }
-            if (commandClass.isColorSupported(ZWaveColorType.WARM_WHITE)) {
+            if (colorCommandClass.isColorSupported(ZWaveColorType.WARM_WHITE)) {
                 colors.put(ZWaveColorType.WARM_WHITE, 0);
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
@@ -153,14 +159,22 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
             colors.put(ZWaveColorType.WARM_WHITE, value);
         } else {
             logger.warn("NODE {}: Unknown color mode {}.", node.getNodeId(), channel.getArguments().get("colorMode"));
+            return null;
         }
 
         logger.debug("NODE {}: Converted command '{}' to {} for channel = {}, endpoint = {}.", node.getNodeId(),
                 command.toString(), colors, channel.getUID(), channel.getEndpoint());
 
-        rawMessages = commandClass.setColor(colors);
+        if (levelCommandClass != null && level != -1) {
+            if (level == 100) {
+                level = 99;
+            }
+            rawMessages.add(levelCommandClass.setValueMessage(level));
+        }
+        rawMessages.addAll(colorCommandClass.setColor(colors));
 
-        if (rawMessages == null) {
+        if (rawMessages.isEmpty()) {
+            logger.debug("NODE {}: No commands generated from {}", node.getNodeId(), command);
             return null;
         }
 
@@ -170,7 +184,7 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
         }
 
         // Add a poll to update the color
-        rawMessages = commandClass.getColor();
+        rawMessages = colorCommandClass.getColor();
         for (ZWaveCommandClassTransactionPayload msg : rawMessages) {
             messages.add(node.encapsulate(msg, channel.getEndpoint()));
         }
