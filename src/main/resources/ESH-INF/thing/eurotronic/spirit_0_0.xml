@@ -135,8 +135,7 @@ Thermostatic Valve<br /><h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio
         </options>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="5" max="30">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: LCD Timeout</label>
         <description><![CDATA[
 LCD Timeout<br /><h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: LCD will turn off after 5 to 30 seconds</p>
@@ -145,7 +144,6 @@ LCD Timeout<br /><h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: LC
         <options>
           <option value="0">No Timeout LCD always on</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
@@ -198,8 +196,7 @@ Valve opening percentage report<br /><h1>Overview</h1><p>0: Unsolicited valve op
         </options>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="-50" max="50">
+      <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Temperature Offset</label>
         <description><![CDATA[
 Measured temperature offset<br /><h1>Overview</h1><p>-50 ... +50: Offsets the measured temp by -5,0°C ... +5,0°C</p> <p>128: External temp sensor will be used for regulation.</p>
@@ -208,7 +205,6 @@ Measured temperature offset<br /><h1>Overview</h1><p>-50 ... +50: Offsets the me
         <options>
           <option value="128">Use ext. temp. sensor</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

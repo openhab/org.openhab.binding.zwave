@@ -434,12 +434,22 @@ restore factory defaults<br /><h1>Overview</h1><p><strong>Factory Reset.</strong
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Basic Set Commands Sw 1</label>
+        <label>2: Associate with Key 1</label>
+        <description><![CDATA[
+Associate with Key 1<br /><h1>Overview</h1><p><br /></p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association" multiple="true">
-        <label>3: Basic Set Commands Sw 2</label>
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
+        <label>5: Associate with Key 2 if any</label>
+        <description>Associate with Key 2 if any</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_8" type="text" groupName="association" multiple="true">
+        <label>8: Associate with Key 3 if any</label>
+        <description>Associate with Key 3 if any</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
