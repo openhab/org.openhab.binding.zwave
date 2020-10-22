@@ -5,10 +5,10 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="zooz_zen23_03_000" listed="false">
-    <label>ZEN23 Toggle Switch v3</label>
+  <thing-type id="zooz_zen23_04_000" listed="false">
+    <label>ZEN23 Toggle Switch v4</label>
     <description><![CDATA[
-Toggle Switch v3<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Manual or remote on/off control from your mobile device or computer (when included to a Z-Wave gateway controller) </li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication</li> <li>Works with LED, CFL, and incandescent bulbs (minimum 15Watts on load required) </li> <li>Based on simple and universal binary switch command class - supported by most Z-Wave controllers </li> <li>May be associated and grouped with other Z-Wave devices for advanced home automation </li> <li>Built-in Z-Wave signal repeater for a stronger and more reliable network </li> </ul><br /><h2>Inclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller within direct range of the switch</li> <li>Put your Z-Wave controller in inclusion mode</li> <li>Toggle the switch up quickly 3 times to finalize the inclusion process</li> <li>A new on/off device should appear on your controller's device list</li> </ol><br /><h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller within direct range of the switch</li> <li>Put your Z-Wave controller in exclusion mode</li> <li>Toggle the switch down quickly 3 times to complete the exclusion process</li> <li>The device should disappear from your controller's device list</li> </ol><p>Please repeat the process following all steps carefully if the first attempt is unsuccessful</p> <br /><h2>Wakeup Information</h2><p><br /></p>
+Toggle Switch v4<br /><h1>Overview</h1><p><br /></p><p>FEATURES</p> <ul><li>Manual or remote on/off control from your mobile device or computer (when included to a Z-Wave gateway controller) </li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication</li> <li>Works with LED, CFL, and incandescent bulbs (minimum 15Watts on load required) </li> <li>Based on simple and universal binary switch command class - supported by most Z-Wave controllers </li> <li>May be associated and grouped with other Z-Wave devices for advanced home automation </li> <li>Built-in Z-Wave signal repeater for a stronger and more reliable network </li> </ul><br /><h2>Inclusion Information</h2><p><br /></p><ol><li>Bring your Z-Wave gateway hub or controller within direct range of the switch</li> <li>Put your Z-Wave controller in inclusion mode</li> <li>Toggle the switch up quickly 3 times to finalize the inclusion process</li> <li>A new on/off device should appear on your controller's device list</li> </ol><br /><h2>Exclusion Information</h2><p><br /></p><ol><li>Bring your Z-Wave gateway hub or controller within direct range of the switch</li> <li>Put your Z-Wave controller in inclusion mode</li> <li>Toggle the switch up quickly 3 times to finalize the inclusion process</li> <li>A new on/off device should appear on your controller's device list</li> </ol><br /><h2>Wakeup Information</h2><p><br /></p><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -17,7 +17,7 @@ Toggle Switch v3<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Manual or remote 
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -33,10 +33,9 @@ Toggle Switch v3<br /><h1>Overview</h1><p>FEATURES</p> <ul><li>Manual or remote 
       <property name="vendor">Zooz</property>
       <property name="modelId">ZEN23</property>
       <property name="manufacturerId">027A</property>
-      <property name="manufacturerRef">1111:1E1C,B111:251C</property>
-      <property name="versionMin">3.0</property>
-      <property name="versionMax">3.255</property>
-      <property name="dbReference">1072</property>
+      <property name="manufacturerRef">B111:251C</property>
+      <property name="versionMin">4.0</property>
+      <property name="dbReference">1302</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -134,6 +133,33 @@ Enable or disable scene control functionality for quick 2-tap.<br /><h1>Overview
         </options>
       </parameter>
 
+      <parameter name="config_11_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>11: Smart Bulb Mode</label>
+        <description><![CDATA[
+Enable/Disable Toggle / Z-Wave Control<br /><h1>Overview</h1><p>Enable or disable local on/off control. If enabled, you’ll only be able to control the connected light via Z-Wave. Scenes and other functionality will still be available through toggle.<br /></p>
+        ]]></description>
+        <default>1</default>
+        <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_12_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>12: 3-Way Switch Type</label>
+        <description>3-Way Switch Type</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_13_1" type="integer" groupName="configuration"
+                 min="0" max="255">
+        <label>13: Report for Disabled Toggle</label>
+        <description>Report for Disabled Toggle</description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
@@ -141,6 +167,12 @@ Enable or disable scene control functionality for quick 2-tap.<br /><h1>Overview
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
+        <description>BASIC Command Set</description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 3</label>
         <description>BASIC Command Set</description>
         <multipleLimit>5</multipleLimit>
       </parameter>
