@@ -13,9 +13,9 @@
 package org.openhab.binding.zwave.internal.protocol.commandclass.impl;
 
 import java.io.ByteArrayOutputStream;
-import java.lang.IllegalArgumentException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

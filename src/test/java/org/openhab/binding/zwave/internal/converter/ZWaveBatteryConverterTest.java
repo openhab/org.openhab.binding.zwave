@@ -23,7 +23,6 @@ import org.eclipse.smarthome.core.types.State;
 import org.junit.Test;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
-import org.openhab.binding.zwave.internal.converter.ZWaveBatteryConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 

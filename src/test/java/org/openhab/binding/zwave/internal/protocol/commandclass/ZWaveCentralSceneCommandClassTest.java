@@ -19,15 +19,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBatteryCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCentralSceneCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
- * Test cases for {@link ZWaveBatteryCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBatteryCommandClass}.
  *
  * @author Chris Jackson - Initial version
  */

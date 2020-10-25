@@ -16,7 +16,6 @@ import static org.junit.Assert.*;
 
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.ZWaveProduct;
 
 /**
  * Test product matches
