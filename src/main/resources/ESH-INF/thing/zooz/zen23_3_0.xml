@@ -65,6 +65,7 @@ Determines whether up is on and down is off; or up is off, down is on<br /><h1>O
           <option value="0">UP=On, DOWN=Off</option>
           <option value="1">UP=Off, DOWN=On</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
@@ -77,6 +78,7 @@ Use this parameter to enable or disable the auto turn-off timer<br /><h1>Overvie
           <option value="0">Auto Turn-Off Timer Disabled</option>
           <option value="1">Auto Turn-Off Timer Enabled</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
@@ -86,6 +88,7 @@ Use this parameter to enable or disable the auto turn-off timer<br /><h1>Overvie
 Time after which the switch automatically turns off<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the switch to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p> <p>Values:</p> <p>1 – 65535 (minutes). <br />60 – default.<br /><br /></p>
         ]]></description>
         <default>60</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
@@ -98,6 +101,7 @@ Use this parameter to enable or disable the auto turn-on timer<br /><h1>Overview
           <option value="0">Auto Turn-On Timer Disabled</option>
           <option value="1">Auto Turn-On Timer Enabled</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_4" type="integer" groupName="configuration"
@@ -107,6 +111,7 @@ Use this parameter to enable or disable the auto turn-on timer<br /><h1>Overview
 Set the time after which the switch automatically turns on<br /><h1>Overview</h1><p>Use this parameter to set the time after which you want the switch to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p> <p>Values:</p> <p>1 – 65535 (minutes). Default set to 60</p>
         ]]></description>
         <default>60</default>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
@@ -120,6 +125,7 @@ Set the on off status for the switch after power failure<br /><h1>Overview</h1><
           <option value="1">forced to ON</option>
           <option value="2">Restore Previous Status</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
@@ -132,6 +138,7 @@ Enable or disable scene control functionality for quick 2-tap.<br /><h1>Overview
           <option value="0">Disable Scene Control</option>
           <option value="1">Enable Scene Control</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
