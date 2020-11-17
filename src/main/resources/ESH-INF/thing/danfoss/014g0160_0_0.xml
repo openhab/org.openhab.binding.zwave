@@ -44,7 +44,7 @@ Room Thermostat<br /><h1>Overview</h1><p>The Danfoss Link™ RS (Room Sensor) ha
       <property name="vendor">Danfoss</property>
       <property name="modelId">014G0160</property>
       <property name="manufacturerId">0002</property>
-      <property name="manufacturerRef">0003:8010</property>
+      <property name="manufacturerRef">0003:8010,8003:8001</property>
       <property name="dbReference">359</property>
     </properties>
 
