@@ -69,7 +69,8 @@ In Wall Micro Switch<br /><h1>Overview</h1><p>This insert switch module in a tra
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration">
+      <parameter name="config_3_1" type="integer" groupName="configuration"
+                 min="1" max="3">
         <label>3: Switch Mode</label>
         <description><![CDATA[
 Edge or Pulse mode or EdgeToggle mode<br /><h1>Overview</h1><p>Edge mode: this mode is suitable for the bi stable wall switch that has indicator point on the switch, and the same position correspond to same state of relay1.<br />Pulse mode: this mode is suitable for the toggle type wall switch to swap the state of Relay1.<br />Edge-Toggle mode: this mode is suitable for the normal bi-stable switch, every time when change the state of the wall switch will also swap the state of Relay1.<br /><br /></p>
@@ -80,12 +81,16 @@ Edge or Pulse mode or EdgeToggle mode<br /><h1>Overview</h1><p>Edge mode: this m
           <option value="2">Pulse mode</option>
           <option value="3">Edge-Toggle mode</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: On/Off</label>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
