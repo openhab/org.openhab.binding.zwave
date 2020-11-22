@@ -103,10 +103,21 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
         if (!channel.getUID().getId().equals("sensor_door")) {
             return null;
         }
-
+        Integer eventValue = (Integer) event.getValue();
+        if (channel.getArguments().containsKey("type")) {
+            String sensorType = channel.getArguments().get("type").toUpperCase();
+            switch (sensorType) {
+                case "BOLT":
+                    eventValue = ~(eventValue >> 1);
+                    break;
+                case "LATCH":
+                    eventValue = eventValue >> 2;
+                    break;
+            }
+        }
         switch (channel.getDataType()) {
             case OpenClosedType:
-                return ((Integer) event.getValue() & 0x01) == 0x00 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
+                return (eventValue & 0x01) == 0x00 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
             default:
                 logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
                 break;
