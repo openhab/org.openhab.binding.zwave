@@ -19,6 +19,7 @@ import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
+import org.eclipse.smarthome.core.types.UnDefType;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -82,7 +83,14 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
 
         switch (channel.getDataType()) {
             case OnOffType:
-                return (Integer) event.getValue() == 0x00 ? OnOffType.OFF : OnOffType.ON;
+                switch ((Integer) event.getValue()) {
+                    case 0xFF:
+                        return OnOffType.ON;
+                    case 0xFE:
+                        return UnDefType.UNDEF;
+                    default:
+                        return OnOffType.OFF;
+                }
             default:
                 logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
                 break;
