@@ -77,7 +77,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
     }
 
     private State handleEventLockState(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        if (!channel.getUID().getId().equals("lock_door")) {
+        if (!channel.getChannelTypeUID().getId().equals("lock_door")) {
             return null;
         }
 
@@ -100,7 +100,7 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
     }
 
     private State handleEventCondition(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        if (!channel.getUID().getId().startsWith("sensor_door")) {
+        if (!channel.getChannelTypeUID().getId().equals("sensor_door")) {
             return null;
         }
         Integer eventValue = (Integer) event.getValue();
