@@ -92,6 +92,7 @@ The following state translation is provided for this channel to the ```Number```
 | 11 | Heat Economy |
 | 12 | Cool Economy |
 | 13 | Away |
+| 15 | Boost |
 
 ### Setpoint (heat)
 Precision 0,1 and 2 Scale Celsius and Fahrenheit Temp. Range 8°C-28°C
