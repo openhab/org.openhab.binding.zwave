@@ -8,7 +8,7 @@
   <thing-type id="tkb_tz10_00_000" listed="false">
     <label>TZ10 Thermostat with LCD Screen</label>
     <description><![CDATA[
-Thermostat with LCD Screen<br /><h1>Overview</h1><p>Heating thermostat with LCD Screen, adopt z-wave technology to realize remote and manual control. The thermostat is recommended for the control of electric heating device or on/off valve actuator used in hydronic heating.</p> <br /><h2>Inclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p> <br /><h2>Exclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p>
+Thermostat with LCD Screen<br /> <h1>Overview</h1><p>Heating thermostat with LCD Screen, adopt z-wave technology to realize remote and manual control. The thermostat is recommended for the control of electric heating device or on/off valve actuator used in hydronic heating.</p> <br /> <h2>Inclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p> <br /> <h2>Exclusion Information</h2><p>Press "Manual" button three times in two seconds, "wireless" icon will start to blink</p>
     ]]></description>
     <category>HVAC</category>
 
@@ -75,7 +75,7 @@ Thermostat with LCD Screen<br /><h1>Overview</h1><p>Heating thermostat with LCD 
                  min="0" max="1">
         <label>4: Memory function</label>
         <description><![CDATA[
-The thermostat will recover the operating mode after a power failure.<br /><h1>Overview</h1><p><br /></p>
+The thermostat will recover the operating mode after a power failure.<br /> <h1>Overview</h1><p><br /></p>
         ]]></description>
         <default>1</default>
         <options>
