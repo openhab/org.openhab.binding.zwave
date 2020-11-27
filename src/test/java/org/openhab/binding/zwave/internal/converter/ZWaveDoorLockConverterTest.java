@@ -54,7 +54,7 @@ public class ZWaveDoorLockConverterTest extends ZWaveCommandClassConverterTest {
         assertEquals(OnOffType.class, state.getClass());
         assertEquals(state, OnOffType.OFF);
 
-        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_DOOR_LOCK, 1,
+        event = new ZWaveCommandClassValueEvent(1, 0, CommandClass.COMMAND_CLASS_DOOR_LOCK, 0xFF,
                 ZWaveDoorLockCommandClass.Type.DOOR_LOCK_STATE);
         state = converter.handleEvent(channel, event);
         assertEquals(OnOffType.class, state.getClass());

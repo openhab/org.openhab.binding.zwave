@@ -19,6 +19,7 @@ import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.OpenClosedType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
+import org.eclipse.smarthome.core.types.UnDefType;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -76,13 +77,20 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
     }
 
     private State handleEventLockState(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        if (!channel.getUID().getId().equals("lock_door")) {
+        if (!channel.getChannelTypeUID().getId().equals("lock_door")) {
             return null;
         }
 
         switch (channel.getDataType()) {
             case OnOffType:
-                return (Integer) event.getValue() == 0x00 ? OnOffType.OFF : OnOffType.ON;
+                switch ((Integer) event.getValue()) {
+                    case 0xFF:
+                        return OnOffType.ON;
+                    case 0xFE:
+                        return UnDefType.UNDEF;
+                    default:
+                        return OnOffType.OFF;
+                }
             default:
                 logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
                 break;
@@ -92,13 +100,24 @@ public class ZWaveDoorLockConverter extends ZWaveCommandClassConverter {
     }
 
     private State handleEventCondition(ZWaveThingChannel channel, ZWaveCommandClassValueEvent event) {
-        if (!channel.getUID().getId().equals("sensor_door")) {
+        if (!channel.getChannelTypeUID().getId().equals("sensor_door")) {
             return null;
         }
-
+        Integer eventValue = (Integer) event.getValue();
+        if (channel.getArguments().containsKey("type")) {
+            String sensorType = channel.getArguments().get("type").toUpperCase();
+            switch (sensorType) {
+                case "BOLT":
+                    eventValue = ~(eventValue >> 1);
+                    break;
+                case "LATCH":
+                    eventValue = eventValue >> 2;
+                    break;
+            }
+        }
         switch (channel.getDataType()) {
             case OpenClosedType:
-                return ((Integer) event.getValue() & 0x01) == 0x00 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
+                return (eventValue & 0x01) == 0x00 ? OpenClosedType.OPEN : OpenClosedType.CLOSED;
             default:
                 logger.warn("No conversion in {} to {}", this.getClass().getSimpleName(), channel.getDataType());
                 break;
