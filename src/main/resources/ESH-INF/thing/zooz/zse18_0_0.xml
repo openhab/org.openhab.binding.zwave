@@ -40,7 +40,7 @@ Motion &amp; Vibration Sensor<br /> <h1>Overview</h1><p>Motion detection, built-
       <property name="manufacturerId">027A</property>
       <property name="manufacturerRef">0301:0012</property>
       <property name="dbReference">869</property>
-      <property name="defaultAssociations">1,2</property>
+      <property name="defaultAssociations">1</property>
     </properties>
 
     <!-- CONFIGURATION DESCRIPTIONS -->
@@ -134,6 +134,9 @@ percent battery left<br /> <h1>Overview</h1><p>battery level for low battery rep
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: BASIC SET</label>
+        <description><![CDATA[
+<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 
