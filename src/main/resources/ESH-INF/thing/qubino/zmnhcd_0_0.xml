@@ -82,7 +82,7 @@ Flush Shutter<br /> <h1>Overview</h1><p>ZMNHCD version S1 for version up to 4.0Â
       <property name="modelId">ZMNHCD</property>
       <property name="manufacturerId">0159</property>
       <property name="manufacturerRef">0003:0052</property>
-      <property name="versionMax">4.0</property>
+      <property name="versionMax">4.1</property>
       <property name="dbReference">614</property>
       <property name="defaultAssociations">1</property>
     </properties>
