@@ -5,10 +5,10 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="inovelli_lzw31dimmer_00_000" listed="false">
+  <thing-type id="inovelli_lzw31_00_000" listed="false">
     <label>LZW31 Black Series Dimmer</label>
     <description><![CDATA[
-Black Series Dimmer<br /> <h1>Overview</h1><p>For starters, we’ve upgraded our Z-Wave module for better distance. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p> <p>Lastly, the LED bar can be changed to any default color you’d prefer and also allows for it to be dimmed, or disabled altogether.</p> <br /> <h2>Inclusion Information</h2><p>Start the Inclusion process on your HUB/Gateway. Turn the power back on and auto-inclusion will activate.You will have 60 seconds before it times out. If it does timeout,the backup method to pair/include the device is to press the Config Button (A) 3 times.</p> <br /> <h2>Exclusion Information</h2><p>Put your HUB in Exclusion mode and press the Config Button (A) 3x until your HUB says the device is excluded.</p>
+Black Series Dimmer<br /> <h1>Overview</h1><p>For starters, we’ve upgraded our Z-Wave module for better distance. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p> <p>Lastly, the LED bar can be changed to any default color you’d prefer and also allows for it to be dimmed, or disabled altogether.</p> <br /> <h2>Inclusion Information</h2><p>Start the Inclusion process on your HUB/Gateway. Turn the power back on and auto-inclusion will activate.You will have 60 seconds before it times out. If it does timeout,the backup method to pair/include the device is to press the Config Button (A) 3 times.</p> <br /> <h2>Exclusion Information</h2><p>Put your HUB in Exclusion mode and press the Config Button (A) 3x until your HUB says the device is excluded.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
 
@@ -215,6 +215,26 @@ Add sweet effects to the LED bar<br /> <h1>Overview</h1><p>Sweet effects: pulse,
 Timeout for LED notifications<br /> <h1>Overview</h1><p>Changes the amount of time the RGB bar shows the dim level if the LED bar has been disabled</p> <p>0=always off, 1=1 second after level is adjusted, 10=10 seconds after level is adjusted</p>
         ]]></description>
         <default>3</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_21_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>21: AC Power Type</label>
+        <description><![CDATA[
+Neutral or no neutral<br /> <h1>Overview</h1><p>Select whether you are wiring your switch with or without a neutral wire</p><p>0 = No-Neutral, 1 = Neutral</p>
+        ]]></description>
+        <default>1</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_22_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>22: Switch Type</label>
+        <description><![CDATA[
+Single Pole or Multi Pole<br /> <h1>Overview</h1><p>Select what type of installation you have</p><p>0 = Single-Pole (ie: one switch), 1 = Multi-Switch (Dumb Switch), 2 = Multi-Switch (Auxillary Switch)</p>
+        ]]></description>
+        <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
