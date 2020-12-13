@@ -13,7 +13,6 @@
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.SendDataMessageClass;
 
 /**
  * Test cases for SendDataMessageClass message.

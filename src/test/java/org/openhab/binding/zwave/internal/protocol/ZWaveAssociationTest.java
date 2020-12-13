@@ -15,7 +15,6 @@ package org.openhab.binding.zwave.internal.protocol;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 
 /**
  * Tests for the Association group
