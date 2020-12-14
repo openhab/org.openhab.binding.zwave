@@ -14,12 +14,6 @@ Door/Window Contact<br /> <h1>Overview</h1><p>The Door/Window Contact and the Mo
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
-      <channel id="sensor_door" typeId="sensor_door">
-        <label>Door / Window Status</label>
-        <properties>
-          <property name="binding:*:OpenClosedType">COMMAND_CLASS_SENSOR_BINARY</property>
-        </properties>
-      </channel>
       <channel id="sensor_temperature" typeId="sensor_temperature">
         <label>Sensor (temperature)</label>
         <properties>
@@ -32,10 +26,16 @@ Door/Window Contact<br /> <h1>Overview</h1><p>The Door/Window Contact and the Mo
           <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
         </properties>
       </channel>
-      <channel id="alarm_general" typeId="alarm_general">
-        <label>Alarm</label>
+      <channel id="alarm_tamper" typeId="alarm_tamper">
+        <label>Tamper Alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
+        </properties>
+      </channel>
+      <channel id="sensor_door" typeId="sensor_door">
+        <label></label>
+        <properties>
+          <property name="binding:*:OpenClosedType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="battery-level" typeId="system.battery-level">
