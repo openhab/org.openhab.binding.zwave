@@ -5,31 +5,79 @@
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
                       https://openhab.org/schemas/thing-description/v1.0.0">
 
-  <thing-type id="zooz_zen16_00_000" listed="false">
+  <thing-type id="zooz_zen16_01_010" listed="false">
     <label>ZEN16 Multirelay</label>
     <description><![CDATA[
-Multirelay<br /> <h1>Overview</h1><p><strong>Features</strong></p> <ul><li>Powerful dry contact relays to control loads up to 15 A and 20 A</li> <li>Perfect for outdoor lighting, pool pumps, garage door, or gas fireplace</li> <li>Control up to 3 connected loads independently or together</li> <li>Z-Wave or optional wall switch control (toggle or momentary type)</li> <li>Built-in timers for each relay to simplify automation</li> <li>Remembers and restores on/off status after power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Powered by 12-24 V DC/AC or USB C port for easy set-up</li> <li>Wall mounting and minimal design for clean installation</li> <li>S2 security protocol and the latest 500 Z-Wave chip</li> </ul><p><strong>Specifications</strong></p> <ul><li>Model Number: ZEN16</li> <li>Z-Wave Signal Frequency: 908.42 MHz</li> <li>Power: 12-24 V DC/AC or USB C</li> <li>Maximum Load: Relay 1: 15A (HP), R2: 15A (HP), R3: 20A (HP)</li> <li>Range: Up to 100 feet line of sight</li> <li>Operating Temperature: 32-104° F (0-40° C)</li> <li>Installation and Use: Indoor only</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Start Z-Wave inclusion.</li> <li>Quickly press the Z-Wave button 3 times.</li> </ol><p>The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</p> <br /> <h2>Exclusion Information</h2><ol><li>Bring the Multirelay close to the Z-Wave controller and then supply power to it.</li> <li>Put the Z-Wave binding into exclusion mode.</li> <li>Quickly press the Z-Wave button 3 times.</li> </ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
+Multirelay<br /> <h1>Overview</h1><p><strong>Features</strong></p> <ul><li>Powerful dry contact relays to control loads up to 15 A and 20 A</li> <li>Perfect for outdoor lighting, pool pumps, garage door, or gas fireplace</li> <li>Control up to 3 connected loads independently or together</li> <li>Z-Wave or optional wall switch control (toggle or momentary type)</li> <li>Built-in timers for each relay to simplify automation</li> <li>Remembers and restores on/off status after power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Powered by 12-24 V DC/AC or USB C port for easy set-up</li> <li>Wall mounting and minimal design for clean installation</li> <li>S2 security protocol and the latest 500 Z-Wave chip</li> </ul><p><strong>Specifications</strong></p> <ul><li>Model Number: ZEN16</li> <li>Z-Wave Signal Frequency: 908.42 MHz</li> <li>Power: 12-24 V DC/AC or USB C</li> <li>Maximum Load: Relay 1: 15A (HP), R2: 15A (HP), R3: 20A (HP)</li> <li>Range: Up to 100 feet line of sight</li> <li>Operating Temperature: 32-104° F (0-40° C)</li> <li>Installation and Use: Indoor only</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Start Z-Wave inclusion.</li> <li>Quickly press the Z-Wave button 3 times.</li> </ol><p>The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</p> <br /> <h2>Exclusion Information</h2><ol><li>Start Z-Wave inclusion.</li> <li>Quickly press the Z-Wave button 3 times.</li> </ol><p>The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
-    <category>PowerOutlet</category>
+    <category>Battery</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="switch_binary" typeId="switch_binary">
+        <label>Switch</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
+        </properties>
+      </channel>
+      <channel id="sensor_binary" typeId="sensor_binary">
+        <label>Binary Sensor</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_kvah" typeId="meter_kvah">
+        <label>Electric meter (kVAh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KVAh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
         </properties>
       </channel>
       <channel id="switch_binary3" typeId="switch_binary">
         <label>Switch 3</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3,COMMAND_CLASS_BASIC:3</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3</property>
         </properties>
       </channel>
     </channels>
@@ -39,9 +87,10 @@ Multirelay<br /> <h1>Overview</h1><p><strong>Features</strong></p> <ul><li>Power
       <property name="vendor">Zooz</property>
       <property name="modelId">ZEN16</property>
       <property name="manufacturerId">027A</property>
-      <property name="manufacturerRef">A000:A00A</property>
-      <property name="versionMax">1.0</property>
-      <property name="dbReference">1176</property>
+      <property name="manufacturerRef">A000:A055</property>
+      <property name="versionMin">1.10</property>
+      <property name="versionMax">1.30</property>
+      <property name="dbReference">1326</property>
       <property name="defaultAssociations">1</property>
     </properties>
 
@@ -84,6 +133,7 @@ Choose the wall switch type you want to connect to the Sw1 terminal<br /> <h1>Ov
           <option value="0">Momentary switch</option>
           <option value="1">Normal</option>
           <option value="2">Toggle switch (default)</option>
+          <option value="3">Garage door switch</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -98,6 +148,7 @@ Choose the wall switch type you want to connect to the Sw2 terminal<br /> <h1>Ov
           <option value="0">Momentary switch</option>
           <option value="1">Normal</option>
           <option value="2">Toggle switch (default)</option>
+          <option value="3">Garage door switch</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -112,6 +163,7 @@ Choose the wall switch type you want to connect to the Sw3 terminal.<br /> <h1>O
           <option value="0">Momentary switch</option>
           <option value="1">Normal</option>
           <option value="2">Toggle switch (default)</option>
+          <option value="3">Garage door switch</option>
         </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
@@ -240,6 +292,127 @@ Enable/Disable Manual Control for Sw3<br /> <h1>Overview</h1><p>Enable or disabl
           <option value="1">Enable (default)</option>
         </options>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_15_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>15: Auto Timer-Off Timer Unit for Relay 1</label>
+        <description><![CDATA[
+Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-off unit for Relay 1<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Minutes (default)</option>
+          <option value="1">Seconds</option>
+          <option value="2">Hours</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_16_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>16: Auto Timer-On Timer Unit for Relay 1</label>
+        <description>Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-on unit for Relay 1</description>
+        <default>0</default>
+        <options>
+          <option value="0">Minutes (default)</option>
+          <option value="1">Seconds</option>
+          <option value="2">Hours</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_17_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>17: Auto Timer-Off Timer Unit for Relay 2</label>
+        <description>Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-off unit for Relay 2</description>
+        <default>0</default>
+        <options>
+          <option value="0">Minutes (default)</option>
+          <option value="1">Seconds</option>
+          <option value="2">Hours</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_18_1" type="integer" groupName="configuration">
+        <label>18: Auto Timer-On Unit for Relay 2</label>
+        <description>Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-on unit for Relay 2</description>
+        <default>0</default>
+        <options>
+          <option value="0">Minutes (default)</option>
+          <option value="1">Seconds</option>
+          <option value="2">Hours</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_19_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>19: Auto Timer-Off Timer Unit for Relay 3</label>
+        <description>Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-off unit for Relay 3</description>
+        <default>0</default>
+        <options>
+          <option value="0">Minutes (default)</option>
+          <option value="1">Seconds</option>
+          <option value="2">Hours</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_20_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>20: Auto Timer-On Timer Unit for Relay 3</label>
+        <description>Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-on unit for Relay 3</description>
+        <default>0</default>
+        <options>
+          <option value="0">Minutes (default)</option>
+          <option value="1">Seconds</option>
+          <option value="2">Hours</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_21_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>21: Relay 1 - Default Relay State</label>
+        <description>Decide whether you'd like Relay 1 to be normally open (NO) or normally closed (NC)</description>
+        <default>0</default>
+        <options>
+          <option value="0">Normally open (relay reports off when it's open / switch is off and on</option>
+          <option value="1">Normally closed (relay reports off when it's open / switch is on and o</option>
+          <option value="2">Normally closed (relay reports off when it's closed / switch is off an</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_22_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>22: Relay 2 - Default Relay State</label>
+        <description>Decide whether you'd like Relay 2 to be normally open (NO) or normally closed (NC)</description>
+        <default>0</default>
+        <options>
+          <option value="0">Normally open (relay reports off when it's open / switch is off and on</option>
+          <option value="1">Normally closed (relay reports off when it's open / switch is on and o</option>
+          <option value="2">Normally closed (relay reports off when it's closed / switch is off an</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_23_1" type="integer" groupName="configuration"
+                 min="0" max="2">
+        <label>23: Relay 3 - Default Relay State</label>
+        <description>Decide whether you'd like Relay 3 to be normally open (NO) or normally closed (NC)</description>
+        <default>0</default>
+        <options>
+          <option value="0">Normally open (relay reports off when it's open / switch is off and on</option>
+          <option value="1">Normally closed (relay reports off when it's open / switch is on and o</option>
+          <option value="2">Normally closed (relay reports off when it's closed / switch is off an</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_24_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>24: DC Motor Mode</label>
+        <description>Sync Relay 1 and Relay 2 together to prevent them from being activated at the same time</description>
+        <default>0</default>
+        <options>
+          <option value="0">DC motor mode disabled (relays will always turn on whenever activated)</option>
+          <option value="1">DC motor mode enabled (relay checks the status of the other relay afte</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
