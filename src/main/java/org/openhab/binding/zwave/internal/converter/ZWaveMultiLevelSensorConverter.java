@@ -121,9 +121,9 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
             case LUMINANCE:
                 switch (sensorEvent.getSensorScale()) {
                     case 0:
-                        return new QuantityType<>(val, SmartHomeUnits.LUX);
-                    case 1:
                         return new QuantityType<>(val, SmartHomeUnits.PERCENT);
+                    case 1:
+                        return new QuantityType<>(val, SmartHomeUnits.LUX);
                     default:
                         logger.debug("NODE {}: Unknown Luminance scale {}", event.getNodeId(),
                                 sensorEvent.getSensorScale());
