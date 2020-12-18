@@ -99,7 +99,7 @@ public class ZWaveMultiLevelSensorConverterTest {
         State state = converter.handleEvent(channel, event);
 
         assertEquals(state.getClass(), QuantityType.class);
-        assertEquals(Units.LUX, ((QuantityType) state).getUnit());
+        assertEquals(Units.PERCENT, ((QuantityType) state).getUnit());
         assertEquals(((QuantityType) state).toBigDecimal(), value);
     }
 
