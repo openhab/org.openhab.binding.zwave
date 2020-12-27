@@ -19,10 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.openhab.core.library.types.HSBType;
-import org.openhab.core.thing.ChannelUID;
-import org.openhab.core.thing.type.ChannelTypeUID;
-import org.openhab.core.types.State;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -36,6 +32,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.HSBType;
+import org.openhab.core.library.types.StringType;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
+import org.openhab.core.types.State;
 
 /**
  *
@@ -76,7 +77,7 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
     }
 
     @Test
-    public void convert() {
+    public void convertRGB() {
         ZWaveColorConverter converter = new ZWaveColorConverter(null);
         Map<String, String> args = new HashMap<>();
         args.put("colorMode", "RGB");
@@ -86,9 +87,25 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveNode node = CreateMockedNode(1);
         List<ZWaveCommandClassTransactionPayload> transactions = converter.receiveCommand(channel, node,
                 new HSBType("0,100,100"));
-        assertEquals(1, transactions.size());
-        ZWaveCommandClassTransactionPayload transaction = transactions.get(0);
+        assertEquals(2, transactions.size());
+        ZWaveCommandClassTransactionPayload transaction = transactions.get(1);
 
         assertTrue(Arrays.equals(new byte[] { 51, 5, 3, 2, -1, 3, 0, 4, 0 }, transaction.getPayloadBuffer()));
+    }
+
+    @Test
+    public void convertRGBW() {
+        ZWaveColorConverter converter = new ZWaveColorConverter(null);
+        Map<String, String> args = new HashMap<>();
+        args.put("colorMode", "RGBW");
+        ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.StringType,
+                CommandClass.COMMAND_CLASS_SWITCH_COLOR.toString(), 0, args);
+
+        ZWaveNode node = CreateMockedNode(1);
+        List<ZWaveCommandClassTransactionPayload> transactions = converter.receiveCommand(channel, node,
+                new StringType("red=1,green=2,blue=3,warm_white=4,level=44"));
+        assertEquals(2, transactions.size());
+        ZWaveCommandClassTransactionPayload transaction = transactions.get(1);
+        assertTrue(Arrays.equals(new byte[] { 51, 5, 4, 0, 4, 2, 1, 3, 2, 4, 3 }, transaction.getPayloadBuffer()));
     }
 }
