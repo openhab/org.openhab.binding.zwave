@@ -64,6 +64,45 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>com.mycila</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>3.0</version>
+					<configuration>
+						<basedir>${basedir}</basedir>
+						<header>licenses/epl-2.0/header.txt</header>
+						<quiet>false</quiet>
+						<failIfMissing>true</failIfMissing>
+						<strictCheck>true</strictCheck>
+						<aggregate>true</aggregate>
+						<mapping>
+							<xml>xml-header-style</xml>
+						</mapping>
+						<headerDefinitions>
+							<headerDefinition>licenses/epl-2.0/xml-header-style.xml</headerDefinition>
+						</headerDefinitions>
+						<includes>
+							<include>**/org/openhab/**/*.java</include>
+							<include>**/OSGI-INF/*.xml</include>
+						</includes>
+						<excludes>
+							<exclude>**/pom.xml</exclude>
+							<exclude>target/**</exclude>
+						</excludes>
+						<useDefaultExcludes>true</useDefaultExcludes>
+						<properties>
+							<year>2021</year>
+						</properties>
+						<encoding>UTF-8</encoding>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<groupId>org.openhab.tools.sat</groupId>
 					<artifactId>sat-plugin</artifactId>
 					<version>${sat.version}</version>
