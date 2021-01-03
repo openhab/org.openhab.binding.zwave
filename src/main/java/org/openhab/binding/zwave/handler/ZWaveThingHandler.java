@@ -291,6 +291,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     first = false;
                 }
             }
+
+            // if the channel is already linked, add it to our list of channels to poll for
+            if (isLinked(channel.getUID().getId())) {
+                thingChannelsPoll.add(channel.getUID());
+            }
         }
 
         startPolling();
