@@ -21,13 +21,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import org.openhab.core.OpenHAB;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.core.OpenHAB;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,6 +62,8 @@ public class ZWaveNodeSerializer {
             folder.mkdirs();
         }
 
+        XStream.setupDefaultSecurity(stream);
+        stream.allowTypesByWildcard(new String[] { ZWaveNode.class.getPackageName() + ".**" });
         stream.setClassLoader(ZWaveNodeSerializer.class.getClassLoader());
 
         // Process the annotations so that XStream knows all the alias's
