@@ -14,12 +14,12 @@ package org.openhab.binding.zwave.internal.protocol.commandclass.impl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.lang.IllegalArgumentException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1179,5 +1179,4 @@ public class CommandClassNotificationV8 {
         // Return the map of processed response data;
         return response;
     }
-
 }

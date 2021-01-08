@@ -71,5 +71,4 @@ public class ZWaveManufacturerSpecificCommandClassTest extends ZWaveCommandClass
         } catch (ZWaveSerialMessageException e) {
         }
     }
-
 }

@@ -88,5 +88,4 @@ public class AddNodeMessageClassTest {
             assertTrue(false);
         }
     }
-
 }

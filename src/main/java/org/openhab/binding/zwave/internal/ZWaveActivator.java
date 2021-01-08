@@ -68,5 +68,4 @@ public final class ZWaveActivator implements BundleActivator {
     public static Version getVersion() {
         return context.getBundle().getVersion();
     }
-
 }

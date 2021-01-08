@@ -457,7 +457,6 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         protected String getLabel() {
             return label;
         }
-
     }
 
     /**
@@ -507,6 +506,5 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         public MeterTblMonitorScale getMeterScale() {
             return meterScale;
         }
-
     }
 }

@@ -379,5 +379,4 @@ public class CommandClassUserCodeV1 {
         // Return the map of processed response data;
         return response;
     }
-
 }

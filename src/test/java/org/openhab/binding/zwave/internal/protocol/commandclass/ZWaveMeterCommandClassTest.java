@@ -190,5 +190,4 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
 
         assertEquals(events.size(), 0);
     }
-
 }

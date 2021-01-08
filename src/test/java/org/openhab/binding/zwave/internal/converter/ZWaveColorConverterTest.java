@@ -19,10 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.openhab.core.library.types.HSBType;
-import org.openhab.core.thing.ChannelUID;
-import org.openhab.core.thing.type.ChannelTypeUID;
-import org.openhab.core.types.State;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
@@ -36,6 +32,10 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.HSBType;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
+import org.openhab.core.types.State;
 
 /**
  *

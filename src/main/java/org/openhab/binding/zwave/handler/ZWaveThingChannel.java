@@ -14,11 +14,11 @@ package org.openhab.binding.zwave.handler;
 
 import java.util.Map;
 
-import org.openhab.core.thing.ChannelUID;
-import org.openhab.core.thing.type.ChannelTypeUID;
 import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
 
 /**
  *

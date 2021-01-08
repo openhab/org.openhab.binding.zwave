@@ -18,10 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import org.openhab.core.library.types.HSBType;
-import org.openhab.core.library.types.PercentType;
-import org.openhab.core.types.Command;
-import org.openhab.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -31,6 +27,10 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveColorComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.HSBType;
+import org.openhab.core.library.types.PercentType;
+import org.openhab.core.types.Command;
+import org.openhab.core.types.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

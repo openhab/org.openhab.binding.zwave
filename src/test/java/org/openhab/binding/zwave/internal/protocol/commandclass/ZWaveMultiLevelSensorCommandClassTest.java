@@ -210,5 +210,4 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
         byte[] expectedResponseV5 = { 0x31, 0x05, 0x01, 0x22, 0x00, (byte) 0xEA };
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV5));
     }
-
 }
