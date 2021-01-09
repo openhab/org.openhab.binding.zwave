@@ -76,7 +76,7 @@ Dimmer flush mount compatible to Busch-Jaeger<br /> <h1>Overview</h1><p>The Tech
                  min="0" max="1">
         <label>1: Central scene notification</label>
         <description><![CDATA[
-Enable/Disable Central scene notifcations for 2x-5x press<br /> <h1>Overview</h1><p>0 - disable, 1 - enable<br /></p>
+Enable/Disable Central scene notifcations for 2x-5x press<br /> <h1>Overview</h1><p><b>0</b> - disable, </p><p><b>1</b> - enable<br /></p>
         ]]></description>
         <default>0</default>
         <options>
@@ -107,26 +107,68 @@ Interval of active energy meter report in minutes<br /> <h1>Overview</h1><p>Inte
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
                  min="0" max="1">
-        <label>4: Manual shutter calibration</label>
+        <label>4: Operation mode of T1 and T2</label>
         <description><![CDATA[
-Function of switch position T1 (up) and T2 (down)<br /> <h1>Overview</h1><p>Manual shutter calibration (shutter will move up, down and up again)</p><p>0 - idle, 1 - start a manual shutter calibration</p>
+Function of switch position T1 (up) and T2 (down)<br /> <h1>Overview</h1><p><b>0</b> -T1 turns output L1 on, T2 turn output L1 off<br /></p><p><b>1 </b>- T1 and T2 toggle output L1</p>
         ]]></description>
         <default>0</default>
-        <limitToOptions>false</limitToOptions>
+        <options>
+          <option value="0">T1 turns output L1 on, T2 turn output L1 off</option>
+          <option value="1">T1 and T2 toggle output L1</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>5: Extension connector switch type</label>
+        <description><![CDATA[
+Configuration of switch type connected to extension connector S<br /> <h1>Overview</h1><p><b>0 </b>- a toggle switch type is connected to extension connector S<br /></p><p><b>1 </b>- a push button switch type is connected to extension connector S</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">a toggle switch type is connected to extension connector S</option>
+          <option value="1">a push button switch type is connected to extension connector S</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration"
+                 min="1" max="3">
+        <label>6: Extension connector central scenes</label>
+        <description><![CDATA[
+Central Scene mapping of extension input S<br /> <h1>Overview</h1><p><b>1 - </b>map extension input S to central scene of T1</p><p><b>2</b>: map extension input S to central scene of T2</p><p><b>3</b>: map extension input S to own central scene</p>
+        ]]></description>
+        <default>1</default>
+        <options>
+          <option value="1">map extension input S to central scene of T1</option>
+          <option value="2">map extension input S to central scene of T2</option>
+          <option value="3">map extension input S to own central scene</option>
+        </options>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="1">
+        <label>7: Dimming curve selection</label>
+        <description><![CDATA[
+Select Dimming curve selection<br /> <h1>Overview</h1><p><b>0</b> - select dimming curve 1</p><p><b>1</b> - select dimming curve 2</p>
+        ]]></description>
+        <default>0</default>
+        <advanced>true</advanced>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association">
         <label>1: Lifeline</label>
         <description><![CDATA[
-<br /> <h1>Overview</h1><p>- Device Reset Locally Notification<br />- Central Scene notification<br />- Meter Report<br />- Multilevel Switch Report<br />- Notification Report</p>
+The lifeline group reports the device's status.<br /> <h1>Overview</h1><p>- Device Reset Locally Notification<br />- Central Scene notification<br />- Meter Report<br />- Multilevel Switch Report<br />- Notification Report</p>
         ]]></description>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
-        <label>2: Switch State</label>
+        <label>2: Basic SET</label>
         <description><![CDATA[
-<br /> <h1>Overview</h1><p>- Basic Set</p>
+Sends basic set commands to associated devices, according to the current state of the device.<br /> <h1>Overview</h1><p>Z-Wave devices control other Z-Wave devices. The relationship between one device controlling another device is called association. In order to control a different device, the controlling device needs to maintain a list of devices that will receive controlling commands. These lists are called association groups and they are always related to certain events (e.g. button pressed, sensor triggers, ...). In case the event happens all devices stored in the respective association group will receive the same wireless command wireless command, typically a 'Basic Set' Command.<br /></p>
         ]]></description>
         <multipleLimit>10</multipleLimit>
       </parameter>
