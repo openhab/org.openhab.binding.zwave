@@ -162,7 +162,7 @@ This parameter has the configuration ID ```config_10_2``` and is of type ```INTE
 Automatic turning off output after set time
   * 0 - Auto OFF disabled
   * 1 – 32536 = 1 second – 32536 seconds Auto OFF enabled with defined time, step is 1 second.
-The following option values may be configured, in addition to values in the range 0 to 32536 -:
+The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
@@ -178,7 +178,7 @@ This parameter has the configuration ID ```config_11_2``` and is of type ```INTE
 Automatic turning on output after set time
   * 0 - Auto ON disabled
   * 1 – 32536 = 1 second – 32536 seconds Auto ON enabled with defined time, step is 1 second.
-The following option values may be configured, in addition to values in the range 0 to 32536 -:
+The following option values may be configured -:
 
 | Value  | Description |
 |--------|-------------|
