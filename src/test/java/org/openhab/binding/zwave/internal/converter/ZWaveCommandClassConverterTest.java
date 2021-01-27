@@ -20,7 +20,6 @@ import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
@@ -28,10 +27,10 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
- * Base class for {@link ZWaveCommandClassConverter} tests
+ * Base class for {@link org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter}
+ * tests
  *
  * @author Chris Jackson - initial contribution
- *
  */
 public class ZWaveCommandClassConverterTest {
     ZWaveNode CreateMockedNode(final int version) {

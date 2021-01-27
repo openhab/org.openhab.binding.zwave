@@ -18,7 +18,6 @@ import java.util.Arrays;
 
 import org.junit.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.GetVersionMessageClass;
 
 /**
  * Test cases for EnableSUCMessageClass message.

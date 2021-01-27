@@ -22,7 +22,6 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransactio
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
-import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 
 public class ZWaveCommandProcessorTest {
 

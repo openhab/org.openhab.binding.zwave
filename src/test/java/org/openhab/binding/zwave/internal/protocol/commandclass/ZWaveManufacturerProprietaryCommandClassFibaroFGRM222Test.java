@@ -19,20 +19,20 @@ import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
- * Test cases for {@link ZWaveBasicCommandClass}.
+ * Test cases for {@link
+ * org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass}.
  *
  * @author Chris Jackson - Initial version
  */
-public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends ZWaveCommandClassTest {
+public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test
+    extends ZWaveCommandClassTest {
 
     @Ignore
     @Test
