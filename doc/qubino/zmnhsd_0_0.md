@@ -105,7 +105,7 @@ Detailed information on each parameter can be found in the sections below.
 
 
 
-The following option values may be configured -:
+The following option values may be configured, in addition to values in the range 0 to 1 -:
 
 | Value  | Description |
 |--------|-------------|
@@ -121,7 +121,7 @@ This parameter has the configuration ID ```config_1_1``` and is of type ```INTEG
 
 Module presentation on the user interface.
 With this parameter it is possible to change the module presentation on the user interface.
-The following option values may be configured -:
+The following option values may be configured, in addition to values in the range 0 to 1 -:
 
 | Value  | Description |
 |--------|-------------|
