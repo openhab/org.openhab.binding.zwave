@@ -77,6 +77,10 @@ Slim Multi-Sensor (Door/Temperature/Illumination)<br /> <h1>Overview</h1><p>The 
 Setting the BASIC command value to turn on the light.<br /> <h1>Overview</h1><p>Setting the BASIC command value to turn on the light.</p> <ul><li>-1 = 0xFF(-1) turns on the light. (Default)</li> <li>0 = Turn off the light.</li> <li>1 - 100 = For dimmers 1 to 100 means the light strength.</li> </ul>
         ]]></description>
         <default>-1</default>
+        <options>
+          <option value="-1">Default, turn light ON</option>
+          <option value="0">Turn light OFF</option>
+        </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -91,17 +95,24 @@ Setting the illumination threshold to turn on the light.<br /> <h1>Overview</h1>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="255">
         <label>5: Operation Mode</label>
         <description><![CDATA[
 Parameter to set the Operation Mode.<br /> <h1>Overview</h1><p>Parameter to set the Operation Mode.</p> <ul><li>Bit 0: Reserved.</li> <li>Bit 1: 1 means enable test mode; 0 means normal mode. Notice: Ignored if DIP Switch is not set to Customer Mode. Otherwise it decides by DIP switch setting to Test or Normal mode</li> <li>Bit 2: Disable the door/window function. (1: Disable, 0: Enable)</li> <li>Bit 3: Setting the temperature scale (0: Fahrenheit, 1: Celcius)</li> <li>Bit 4: Disable the illumination report after event triggered (1: Disable, 0: Enable)</li> <li>Bit 5: Disable the temperature report after event triggered (1: Disable, 0: Enable)</li> <li>Bit 6: Reserved</li> <li>Bit 7: Disable the back key release into test mode (1: Disable, 0: Enable)</li> </ul>
         ]]></description>
         <default>0</default>
+        <options>
+          <option value="0">Default (Bits: 00000000 = 0)</option>
+          <option value="2">Enable test mode (Bits: 00000010 = 2)</option>
+          <option value="4">Disable door/window function (Bits: 00000100 = 4)</option>
+          <option value="8">Set Celsius (Bits: 00001000 = 8)</option>
+          <option value="10">Set Celsius and enable test mode (Bits: 00001010 = 10)</option>
+        </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="255">
         <label>6: Multi-Sensor Function Switch</label>
         <description><![CDATA[
 Parameter to set the sensor functions.<br /> <h1>Overview</h1><p>Parameter to set the sensor functions.</p> <ul><li>Bit 0: Disable magnetic integrate illumination to turn ON the lighting nodes in the association group 2. (1:Disable, 0:Enable)</li> <li>Bit 1: Disable PIR integrate Illumination to turn ON the lighting nodes in the association group 2. (1:Disable, 0:Enable)</li> <li>Bit 2: Disable magnetic integrate PIR to turn ON the lighting nodes in the association group 2. (1:Disable, 0:Enable) (Default is Disable)</li> <li>Bit 3: When Bit2 is 0 (Enable), Are the device and the lighting in the same room?</li> </ul><p>0: In the same room(Default), <br /> 1: In the different room. <br />Notice: If this bit is 1, it is recommended also set the Bit1 to 1, cause the PIR triggered, doesn't mean the people in that room.</p> <ul><li>Bit 4: Disable delay 5 seconds to turn off the light, when door/window closed. (1:Disable, 0:Enable)</li> <li>Bit 5: Disable auto turn off the light, after door/window opened to turn on the light. (1:Disable, 0:Enable)</li> </ul><p>Notice: If bit2 is zero, this setting is useless<br />Notice: If the configuration No.9 is zero, this setting is useless.</p> <ul><li>Bit 6: Reserve.</li> <li>Bit 7: Reserve.</li> </ul>
@@ -111,12 +122,17 @@ Parameter to set the sensor functions.<br /> <h1>Overview</h1><p>Parameter to se
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="255">
         <label>7: Customer Function</label>
         <description><![CDATA[
 Parameter to set the Customer Function.<br /> <h1>Overview</h1><p>Parameter to set the Customer Function.</p> <ul><li>Bit 0: Reserve.</li> <li>Bit 1: Enable sending motion OFF report. (0:Disable, 1:Enable) <br />Note: Depends on the Bit4, <br />Report Notification CC, Type: 0x07, Event: 0xFE 1: Sensor Binary Report, Type: 0x0C, Value: 0x00</li> <li>Bit 2: Enable PIR super sensitivity mode. (0:Disable, 1:Enable)</li> <li>Bit 3: Disable send out BASIC OFF after door closed. (1:Disable, 0:Enable)</li> <li>Bit 4: Notification Type, <br />Using Notification Report. 1: Using Sensor Binary Report.</li> <li>Bit 5: Disable Multi CC in auto report. (1:Disable, 0:Enable)</li> <li>Bit 6: Disable to report battery state when the device triggered. (1:Disable, 0:Enable)</li> <li>Bit 7: Reserve.</li> </ul>
         ]]></description>
         <default>4</default>
+        <options>
+          <option value="4">Default, enable PIR super-sensitivity mode, using notification report (Bits: 00000100 = 4)</option>
+          <option value="20">Enable PIR super-sensitivity mode, using sensor-binary report (Bits: 00010100 = 20)</option>
+          <option value="22">Enable PIR super-sensitivity mode, sending motion OFF reports as sensor-binary report (Bits: 00010110 = 22)</option>
+        </options>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
