@@ -14,11 +14,14 @@ package org.openhab.binding.zwave.handler;
 
 import java.util.Map;
 
+import org.openhab.core.library.types.*;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.type.ChannelTypeUID;
+import org.openhab.core.types.Command;
 import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.core.types.State;
 
 /**
  *
@@ -27,17 +30,37 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
  */
 public class ZWaveThingChannel {
     public enum DataType {
-        DecimalType,
-        HSBType,
-        IncreaseDecreaseType,
-        OnOffType,
-        OpenClosedType,
-        PercentType,
-        StringType,
-        DateTimeType,
-        UpDownType,
-        QuantityType,
-        StopMoveType;
+        DecimalType(DecimalType.class),
+        HSBType(HSBType.class),
+        IncreaseDecreaseType(IncreaseDecreaseType.class),
+        OnOffType(OnOffType.class),
+        OpenClosedType(OpenClosedType.class),
+        PercentType(PercentType.class),
+        StringType(StringType.class),
+        DateTimeType(DateTimeType.class),
+        UpDownType(UpDownType.class),
+        QuantityType(QuantityType.class),
+        StopMoveType(StopMoveType.class);
+
+        private final Class<? extends Command> typeClass;
+
+        DataType(Class<? extends Command> typeClass) {
+            this.typeClass = typeClass;
+        }
+
+        public Class<? extends Command> getTypeClass() {
+            return this.typeClass;
+        }
+
+        public static DataType fromTypeClass(Class<? extends Command> typeClass) {
+            for (DataType dt : DataType.values()) {
+                if (dt.getTypeClass().equals(typeClass)) {
+                    return dt;
+                }
+            }
+
+            throw new IllegalArgumentException("No DataType found for class " + typeClass.getName());
+        }
     }
 
     // int nodeId;
@@ -97,4 +120,5 @@ public class ZWaveThingChannel {
     public ZWaveCommandClassConverter getConverter() {
         return converter;
     }
+
 }

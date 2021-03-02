@@ -38,12 +38,19 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpComma
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.core.config.core.Configuration;
 import org.openhab.core.config.core.status.ConfigStatusMessage;
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.library.types.QuantityType;
+import org.openhab.core.library.types.StopMoveType;
+import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.ThingHandlerCallback;
 import org.openhab.core.thing.binding.builder.ThingBuilder;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.thing.type.ThingTypeBuilder;
+import org.openhab.core.types.Command;
+
+import javax.measure.quantity.Temperature;
 
 /**
  * Test of the ZWaveThingHandler
@@ -242,6 +249,38 @@ public class ZWaveThingHandlerTest {
         assertEquals(2, response.size());
 
         response = doConfigurationUpdateCommands("group_1", "[node_1, node_2_1, node_2]");
+    }
+
+    @Test
+    public void testConvertToDataType() {
+        ZWaveThingHandler sut = new ZWaveThingHandlerForTest(null);
+
+        ChannelUID channelUID = new ChannelUID("channel:for:a:test");
+        Command command = new QuantityType<>("22 °C");
+
+        Command result = sut.convertCommandToDataType(channelUID, ZWaveThingChannel.DataType.DecimalType, command,
+                ZWaveThingChannel.DataType.QuantityType);
+
+        assertTrue(result instanceof DecimalType);
+    }
+
+    @Test
+    public void testConvertToDataTypeFails() {
+        ZWaveThingHandler sut = new ZWaveThingHandlerForTest(null);
+
+        ChannelUID channelUID = new ChannelUID("channel:for:a:test");
+
+        // couldnt convert to channel data-type because channel data-type is not an instance of State
+        Command result = sut.convertCommandToDataType(channelUID, ZWaveThingChannel.DataType.StopMoveType,
+                StopMoveType.STOP, ZWaveThingChannel.DataType.DecimalType);
+
+        assertNull(result);
+
+        // command is not an instance of State and couldnt be converted to something
+        result = sut.convertCommandToDataType(channelUID, ZWaveThingChannel.DataType.DecimalType,
+                StopMoveType.STOP, ZWaveThingChannel.DataType.StopMoveType);
+
+        assertNull(result);
     }
 
     @Test
