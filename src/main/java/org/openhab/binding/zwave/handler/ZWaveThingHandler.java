@@ -31,9 +31,11 @@ import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import org.jetbrains.annotations.Nullable;
 import org.openhab.core.config.core.Configuration;
 import org.openhab.core.config.core.status.ConfigStatusMessage;
 import org.openhab.core.config.core.validation.ConfigValidationException;
+import org.openhab.core.library.types.*;
 import org.openhab.core.thing.Bridge;
 import org.openhab.core.thing.Channel;
 import org.openhab.core.thing.ChannelUID;
@@ -1151,7 +1153,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         DataType dataType;
         try {
-            dataType = DataType.valueOf(command.getClass().getSimpleName());
+            dataType = DataType.fromTypeClass(command.getClass());
         } catch (IllegalArgumentException e) {
             logger.warn("NODE {}: Command received with no implementation ({}).", nodeId,
                     command.getClass().getSimpleName());
@@ -1159,11 +1161,28 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         // Find the channel
-        ZWaveThingChannel cmdChannel = null;
+        Map<DataType, ZWaveThingChannel> cmdChannels = new HashMap<>();
         for (ZWaveThingChannel channel : thingChannelsCmd) {
-            if (channel.getUID().equals(channelUID) && channel.getDataType() == dataType) {
-                cmdChannel = channel;
-                break;
+            if (channel.getUID().equals(channelUID)) {
+                cmdChannels.put(channel.getDataType(), channel);
+            }
+        }
+
+        // first try to get a channel by the expected datatype
+        ZWaveThingChannel cmdChannel = cmdChannels.get(dataType);
+
+        if (cmdChannel == null && !cmdChannels.isEmpty()) {
+            // nothing by expected datatype found, try to find one where the datatype can be converted to
+            for (ZWaveThingChannel channel : cmdChannels.values()) {
+                command = convertCommandToDataType(channelUID, channel.getDataType(), command, dataType);
+                if (command != null) {
+                    cmdChannel = channel;
+
+                    logger.debug("NODE {}: Received command {} was converted --> {} [{}]", nodeId, channelUID, command,
+                            command.getClass().getSimpleName());
+
+                    break;
+                }
             }
         }
 
@@ -1200,6 +1219,41 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         if (commandPollDelay != 0) {
             startPolling(commandPollDelay);
         }
+    }
+
+    @Nullable
+    Command convertCommandToDataType(ChannelUID channelUID, DataType channelDataType, Command command,
+                                     DataType dataType) {
+
+        if (!(command instanceof State)) {
+            logger.debug("NODE {}: Received commands datatype {} doesn't support conversion",
+                    nodeId, dataType);
+            return null;
+        }
+
+        if (!State.class.isAssignableFrom(channelDataType.getTypeClass())) {
+            logger.debug("NODE {}: Channel {} with datatype {} doesn't support conversion",
+                    nodeId, channelUID, channelDataType);
+            return null;
+        }
+
+        Class<? extends State> targetStateClass = channelDataType.getTypeClass().asSubclass(State.class);
+
+        State convertedState = ((State) command).as(targetStateClass);
+
+        if (convertedState == null) {
+            logger.debug("NODE {}: Received commands datatype {} couldn't be converted to channels datatype {}",
+                    nodeId, dataType, channelDataType);
+            return null;
+        }
+
+        if (!(convertedState instanceof Command)) {
+            logger.debug("NODE {}: Received commands datatype {} was converted to type {} which is not a Command",
+                    nodeId, dataType, convertedState.getClass());
+            return null;
+        }
+
+        return (Command) convertedState;
     }
 
     @Override
