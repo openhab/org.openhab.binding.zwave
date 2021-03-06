@@ -419,7 +419,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         HEAT__RAPID_RISE("HEAT", 3),
         HEAT__RAPID_RISE_UNKNOWN("HEAT", 4),
         HEAT__LOW_DETECTED("HEAT", 5),
-        HEAT__LOW_DETECTED_UNKNOWN("HEAT", 5),
+        HEAT__LOW_DETECTED_UNKNOWN("HEAT", 6),
 
         WATER__NONE("FLOOD", 0),
         WATER__LEAK_DETECTED("FLOOD", 1),
