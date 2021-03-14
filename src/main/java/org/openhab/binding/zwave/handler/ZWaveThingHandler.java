@@ -31,24 +31,7 @@ import java.util.TimeZone;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import org.jetbrains.annotations.Nullable;
-import org.openhab.core.config.core.Configuration;
-import org.openhab.core.config.core.status.ConfigStatusMessage;
-import org.openhab.core.config.core.validation.ConfigValidationException;
-import org.openhab.core.library.types.*;
-import org.openhab.core.thing.Bridge;
-import org.openhab.core.thing.Channel;
-import org.openhab.core.thing.ChannelUID;
-import org.openhab.core.thing.Thing;
-import org.openhab.core.thing.ThingStatus;
-import org.openhab.core.thing.ThingStatusDetail;
-import org.openhab.core.thing.ThingStatusInfo;
-import org.openhab.core.thing.binding.ConfigStatusThingHandler;
-import org.openhab.core.thing.binding.ThingHandler;
-import org.openhab.core.thing.type.ThingType;
-import org.openhab.core.types.Command;
-import org.openhab.core.types.RefreshType;
-import org.openhab.core.types.State;
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
@@ -82,6 +65,22 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveTransactionCompletedEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeSerializer;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.config.core.Configuration;
+import org.openhab.core.config.core.status.ConfigStatusMessage;
+import org.openhab.core.config.core.validation.ConfigValidationException;
+import org.openhab.core.thing.Bridge;
+import org.openhab.core.thing.Channel;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.Thing;
+import org.openhab.core.thing.ThingStatus;
+import org.openhab.core.thing.ThingStatusDetail;
+import org.openhab.core.thing.ThingStatusInfo;
+import org.openhab.core.thing.binding.ConfigStatusThingHandler;
+import org.openhab.core.thing.binding.ThingHandler;
+import org.openhab.core.thing.type.ThingType;
+import org.openhab.core.types.Command;
+import org.openhab.core.types.RefreshType;
+import org.openhab.core.types.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1137,7 +1136,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     }
 
     @Override
-    public void handleCommand(ChannelUID channelUID, Command command) {
+    public void handleCommand(ChannelUID channelUID, Command commandParam) {
+        Command command = commandParam;
         logger.debug("NODE {}: Command received {} --> {} [{}]", nodeId, channelUID, command,
                 command.getClass().getSimpleName());
         if (controllerHandler == null) {
@@ -1223,17 +1223,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     @Nullable
     Command convertCommandToDataType(ChannelUID channelUID, DataType channelDataType, Command command,
-                                     DataType dataType) {
+            DataType dataType) {
 
         if (!(command instanceof State)) {
-            logger.debug("NODE {}: Received commands datatype {} doesn't support conversion",
-                    nodeId, dataType);
+            logger.debug("NODE {}: Received commands datatype {} doesn't support conversion", nodeId, dataType);
             return null;
         }
 
         if (!State.class.isAssignableFrom(channelDataType.getTypeClass())) {
-            logger.debug("NODE {}: Channel {} with datatype {} doesn't support conversion",
-                    nodeId, channelUID, channelDataType);
+            logger.debug("NODE {}: Channel {} with datatype {} doesn't support conversion", nodeId, channelUID,
+                    channelDataType);
             return null;
         }
 
@@ -1242,8 +1241,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         State convertedState = ((State) command).as(targetStateClass);
 
         if (convertedState == null) {
-            logger.debug("NODE {}: Received commands datatype {} couldn't be converted to channels datatype {}",
-                    nodeId, dataType, channelDataType);
+            logger.debug("NODE {}: Received commands datatype {} couldn't be converted to channels datatype {}", nodeId,
+                    dataType, channelDataType);
             return null;
         }
 
