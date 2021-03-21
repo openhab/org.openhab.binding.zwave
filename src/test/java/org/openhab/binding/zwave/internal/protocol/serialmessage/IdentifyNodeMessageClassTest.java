@@ -118,10 +118,10 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(listening.getValue(), true);
         assertEquals(frequentlyListening.getValue(), false);
         assertEquals(routing.getValue(), false);
-        assertEquals(version.getValue(), new Integer(3));
+        assertEquals(version.getValue(), Integer.valueOf(3));
         assertEquals(security.getValue(), false);
         assertEquals(beaming.getValue(), true);
-        assertEquals(maxBaud.getValue(), new Integer(40000));
+        assertEquals(maxBaud.getValue(), Integer.valueOf(40000));
         assertEquals(basicClass.getValue(), Basic.BASIC_TYPE_STATIC_CONTROLLER);
         assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_STATIC_CONTROLLER);
         assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_PC_CONTROLLER);
@@ -135,10 +135,10 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(listening.getValue(), false);
         assertEquals(frequentlyListening.getValue(), false);
         assertEquals(routing.getValue(), false);
-        assertEquals(version.getValue(), new Integer(4));
+        assertEquals(version.getValue(), Integer.valueOf(4));
         assertEquals(security.getValue(), false);
         assertEquals(beaming.getValue(), true);
-        assertEquals(maxBaud.getValue(), new Integer(40000));
+        assertEquals(maxBaud.getValue(), Integer.valueOf(40000));
         assertEquals(basicClass.getValue(), Basic.BASIC_TYPE_CONTROLLER);
         assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_GENERIC_CONTROLLER);
         assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE);

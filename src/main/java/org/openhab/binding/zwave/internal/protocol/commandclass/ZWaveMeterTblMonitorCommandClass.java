@@ -15,6 +15,7 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -177,7 +178,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
 
         try {
             BigDecimal value = new BigDecimal(valueRaw / Math.pow(10, precision)).setScale(precision,
-                    BigDecimal.ROUND_HALF_UP);
+                    RoundingMode.HALF_UP);
             logger.debug("NODE {}: Meter Tbl Monitor: Type={}, Scale={}({}), Value={}, Dataset={}",
                     getNode().getNodeId(), meterType.getLabel(), scale.getUnit(), scale.getScale(), value, dataset);
 

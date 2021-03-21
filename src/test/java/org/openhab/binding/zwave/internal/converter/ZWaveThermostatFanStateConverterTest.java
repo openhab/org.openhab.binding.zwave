@@ -53,7 +53,7 @@ public class ZWaveThermostatFanStateConverterTest {
     public void FanState() {
         ZWaveThermostatFanStateConverter converter = new ZWaveThermostatFanStateConverter(null);
         ZWaveThingChannel channel = createChannel();
-        Integer value = new Integer(3);
+        Integer value = Integer.valueOf(3);
 
         ZWaveCommandClassValueEvent event = new ZWaveCommandClassValueEvent(0, 0,
                 CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_STATE, value);

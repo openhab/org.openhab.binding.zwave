@@ -133,7 +133,7 @@ public class ZWaveMultiInstanceCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(CommandClass.COMMAND_CLASS_SWITCH_BINARY, event.getCommandClass());
         // assertEquals(event.getNodeId(), 44);
         // assertEquals(2, event.getEndpoint());
-        assertEquals(new Integer("255"), event.getValue());
+        assertEquals(Integer.valueOf("255"), event.getValue());
     }
 
     @Test

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -183,7 +184,7 @@ public class CommandClassSecurityV1 {
         int msgOffset = 2;
 
         // Process 'Reports to follow'
-        response.put("REPORTS_TO_FOLLOW", new Integer(payload[msgOffset]));
+        response.put("REPORTS_TO_FOLLOW", Integer.valueOf(payload[msgOffset]));
         msgOffset += 1;
 
         // Process 'Command Class support'
@@ -256,7 +257,7 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Supported Security Schemes'
-        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[2]));
+        response.put("SUPPORTED_SECURITY_SCHEMES", Integer.valueOf(payload[2]));
 
         // Return the map of processed response data;
         return response;
@@ -304,7 +305,7 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Supported Security Schemes'
-        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[2]));
+        response.put("SUPPORTED_SECURITY_SCHEMES", Integer.valueOf(payload[2]));
 
         // Return the map of processed response data;
         return response;
@@ -446,7 +447,7 @@ public class CommandClassSecurityV1 {
         Map<String, Object> response = new HashMap<String, Object>();
 
         // Process 'Supported Security Schemes'
-        response.put("SUPPORTED_SECURITY_SCHEMES", new Integer(payload[2]));
+        response.put("SUPPORTED_SECURITY_SCHEMES", Integer.valueOf(payload[2]));
 
         // Return the map of processed response data;
         return response;
@@ -634,9 +635,9 @@ public class CommandClassSecurityV1 {
         msgOffset += 8;
 
         // Process 'Properties1'
-        response.put("SEQUENCE_COUNTER", new Integer(payload[msgOffset] & 0x0F));
-        response.put("SEQUENCED", new Boolean((payload[msgOffset] & 0x10) != 0));
-        response.put("SECOND_FRAME", new Boolean((payload[msgOffset] & 0x20) != 0));
+        response.put("SEQUENCE_COUNTER", Integer.valueOf(payload[msgOffset] & 0x0F));
+        response.put("SEQUENCED", Boolean.valueOf((payload[msgOffset] & 0x10) != 0));
+        response.put("SECOND_FRAME", Boolean.valueOf((payload[msgOffset] & 0x20) != 0));
         msgOffset += 1;
 
         // Process 'Command byte'
@@ -648,7 +649,7 @@ public class CommandClassSecurityV1 {
         response.put("COMMAND_BYTE", valCommandByte.toByteArray());
 
         // Process 'Receivers nonce Identifier'
-        response.put("RECEIVERS_NONCE_IDENTIFIER", new Integer(payload[msgOffset]));
+        response.put("RECEIVERS_NONCE_IDENTIFIER", Integer.valueOf(payload[msgOffset]));
         msgOffset += 1;
 
         // Process 'Message Authentication Code byte'
@@ -756,9 +757,9 @@ public class CommandClassSecurityV1 {
         msgOffset += 8;
 
         // Process 'Properties1'
-        response.put("SEQUENCE_COUNTER", new Integer(payload[msgOffset] & 0x0F));
-        response.put("SEQUENCED", new Boolean((payload[msgOffset] & 0x10) != 0));
-        response.put("SECOND_FRAME", new Boolean((payload[msgOffset] & 0x20) != 0));
+        response.put("SEQUENCE_COUNTER", Integer.valueOf(payload[msgOffset] & 0x0F));
+        response.put("SEQUENCED", Boolean.valueOf((payload[msgOffset] & 0x10) != 0));
+        response.put("SECOND_FRAME", Boolean.valueOf((payload[msgOffset] & 0x20) != 0));
         msgOffset += 1;
 
         // Process 'Command byte'
@@ -770,7 +771,7 @@ public class CommandClassSecurityV1 {
         response.put("COMMAND_BYTE", valCommandByte.toByteArray());
 
         // Process 'Receivers nonce Identifier'
-        response.put("RECEIVERS_NONCE_IDENTIFIER", new Integer(payload[msgOffset]));
+        response.put("RECEIVERS_NONCE_IDENTIFIER", Integer.valueOf(payload[msgOffset]));
         msgOffset += 1;
 
         // Process 'Message Authentication Code byte'
