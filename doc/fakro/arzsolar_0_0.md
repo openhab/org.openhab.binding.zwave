@@ -33,9 +33,15 @@ The following table summarises the channels available for the ARZ Solar -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
+| Blinds control | blinds_control | blinds_control | Blinds | Rollershutter | 
 | Switch | switch_binary | switch_binary | Switch | Switch | 
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
 | Battery Level | battery-level | system.battery_level | Battery | Number |
+
+### Blinds control
+Provides start / stop control of blinds.
+
+The ```blinds_control``` channel is of type ```blinds_control``` and supports the ```Rollershutter``` item and is in the ```Blinds``` category.
 
 ### Switch
 Switch the power on and off.
