@@ -166,9 +166,7 @@ LED Indicator Mode for Scene Control<br /> <h1>Overview</h1><p>Choose if you wan
 Auto Turn-Off Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the dimmer to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="0">Timer disabled (default)</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_9_4" type="integer" groupName="configuration"
@@ -178,9 +176,7 @@ Auto Turn-Off Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to s
 Auto Turn-On Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the dimmer to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="0">Timer disabled (default)</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_4" type="integer" groupName="configuration"
@@ -190,9 +186,7 @@ Auto Turn-On Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to se
 Auto Turn-Off Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the relay to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="0">Timer disabled (default)</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_11_4" type="integer" groupName="configuration"
@@ -202,9 +196,7 @@ Auto Turn-Off Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to se
 Auto Turn-On Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the relay to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="0">Timer disabled (default)</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
@@ -234,9 +226,7 @@ On Off Status After Power Failure<br /> <h1>Overview</h1><p>Set the on/off statu
 Ramp Rate Control for Dimmer<br /> <h1>Overview</h1><p>Adjust the ramp rate for the dimmer (fade-in / fade-out effect for ON/OFF operation). Values correspond to the number of seconds it takes for the dimmer to reach full brightness or turn OFF when operated manually.</p>
         ]]></description>
         <default>1</default>
-        <options>
-          <option value="0">Instant ON/OFF</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration"
@@ -341,9 +331,7 @@ Z-Wave Ramp Rate for Dimmer<br /> <h1>Overview</h1><p>Choose if you would like t
 Default Brightness Level ON for Dimmer<br /> <h1>Overview</h1><p>Set custom brightness level (in %) for the dimmer to come on to at single tap</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="0">Last brightness level (default)</option>
-        </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

@@ -8,7 +8,7 @@
   <thing-type id="shenzhen_powerplug_00_000" listed="false">
     <label>NAS-WR01ZE Wall Plug Switch</label>
     <description><![CDATA[
-Wall Plug Switch<br /> <h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol>
+Wall Plug Switch<br /> <h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p> <ul><li><strong>Voltage</strong> – The Supply Power Voltage For Plug.</li> <li><strong>Current</strong> – The Current for the Electric Device Connect to Plug Consumption.</li> <li><strong>Power</strong> – Power Consumed by an Electric Device in an instant, unit: Watt (W).</li> <li><strong>Energy</strong> – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off with green alternately five times within 2 seconds.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the LED will flash on and off with yellow alternately five times within 2 seconds.</li> </ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
 
@@ -63,7 +63,7 @@ Wall Plug Switch<br /> <h1>Overview</h1><p>This Plug provides line voltage, curr
       <property name="vendor">Shenzhen Neo Electronics Co., Ltd</property>
       <property name="modelId">NAS-WR01ZE</property>
       <property name="manufacturerId">0258</property>
-      <property name="manufacturerRef">0003:0087,0003:1087,0003:1483,0003:2087</property>
+      <property name="manufacturerRef">0003:0087,0003:1087,0003:1483,0003:2087,0020:0707</property>
       <property name="dbReference">397</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -83,15 +83,17 @@ Wall Plug Switch<br /> <h1>Overview</h1><p>This Plug provides line voltage, curr
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration">
+      <parameter name="config_1_1" type="integer" groupName="configuration"
+                 min="0" max="1">
         <label>1: Meter Report Enable</label>
-        <description>This parameter defines Disable/Enable meter report measure data to controller.</description>
+        <description><![CDATA[
+This parameter defines Disable/Enable meter report measure data to controller.<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disable Report</option>
           <option value="1">Enable Report</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
@@ -124,15 +126,17 @@ Max current for over-current notification<br /> <h1>Overview</h1><p>Defines maxi
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration">
+      <parameter name="config_5_1" type="integer" groupName="configuration"
+                 min="0" max="1">
         <label>5: LED enable</label>
-        <description>This parameter defines the LED indication Function ON/OFF.</description>
+        <description><![CDATA[
+This parameter defines the LED indication Function ON/OFF.<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Disable LED indication Function</option>
           <option value="1">Enable LED indication Function</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
@@ -145,7 +149,8 @@ Power consumed change to be reported<br /> <h1>Overview</h1><p>How much the powe
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration">
+      <parameter name="config_7_1" type="integer" groupName="configuration"
+                 min="0" max="1">
         <label>7: Remember Relay ON/OFF status after power failure.</label>
         <description><![CDATA[
 Plug state after power-on<br /> <h1>Overview</h1><p>Define how will the Plug react after the power supply is back on.  0 = will be off after the power supply is reconnected.  Others = remember relay status</p>
@@ -155,10 +160,10 @@ Plug state after power-on<br /> <h1>Overview</h1><p>Define how will the Plug rea
           <option value="0">Don’t remember relay state</option>
           <option value="1">Remember the Relay Status.</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration">
+      <parameter name="config_8_1" type="integer" groupName="configuration"
+                 min="0" max="1">
         <label>8: Plug Time switch Function</label>
         <description><![CDATA[
 Timer plug OFF after time period<br /> <h1>Overview</h1><p>Defines if the timer function is enabled/disabled to switch the Plug OFF after the time period, which is defined in parameter 9#.</p>
@@ -168,7 +173,6 @@ Timer plug OFF after time period<br /> <h1>Overview</h1><p>Defines if the timer 
           <option value="0">Time switch Disable</option>
           <option value="1">Time switch Enable</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
@@ -181,7 +185,8 @@ Delay time after the plug is switched off (in minutes)<br /> <h1>Overview</h1><p
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration">
+      <parameter name="config_10_1" type="integer" groupName="configuration"
+                 min="0" max="1">
         <label>10: Button On/Off Enable</label>
         <description><![CDATA[
 Enable/Disable top button function<br /> <h1>Overview</h1><p>If this parameter is set to ‘1’, users can turn on and off the wall plug by pressing the button on the top of the wall plug. If this parameter is set to ‘0’, the wall plug cannot be turned on and off by pressing the button.</p>
@@ -191,7 +196,6 @@ Enable/Disable top button function<br /> <h1>Overview</h1><p>If this parameter i
           <option value="0">Disable Button</option>
           <option value="1">Enable Button</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->

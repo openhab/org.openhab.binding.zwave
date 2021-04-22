@@ -8,7 +8,7 @@ title: Door/Window Sensor - ZWave
 # Door/Window Sensor Wink D/W Sensor
 This describes the Z-Wave device *Door/Window Sensor*, manufactured by *Wink Inc.* with the thing type UID of ```wink_doorwinsensor_00_000```.
 
-The device is in the category of *Battery*, defining Batteries, Energy Storages.
+The device is in the category of *Sensor*, defining Device used to measure something.
 
 ![Door/Window Sensor product image](https://opensmarthouse.org/zwavedatabase/1294/image/)
 
@@ -176,14 +176,13 @@ The Door/Window Sensor supports 4 association groups.
 The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
 Lifeline
 
+
 Association group 1 supports 5 nodes.
 
 ### Group 2: Control
 
 Directly triggers devices in response to events
-The Door/Window Sensor sends a Basic Set command to association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) in response to events. 
-
-Then, after a preset delay, a BASIC\_SET(0x00) command is sent to reset the device (e.g. turn off the light.) The value of the Basic Set command (e.g. brightness of the lamp,) and the delay time before the BASIC\_SET(0x00) is sent is configured using configuration parameters 1 and 2 respectively.
+The Door/Window Sensor sends a Basic Set command to association Group 2 (or the Control Group) to directly trigger devices (like a light, chime, etc.) in response to events.
 
 Association group 2 supports 5 nodes.
 

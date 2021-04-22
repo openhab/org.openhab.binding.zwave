@@ -302,15 +302,9 @@ Alarm configuration – duration<br /> <h1>Overview</h1><p>This parameter define
                  min="0" max="15">
         <label>40: First button – scenes sent</label>
         <description><![CDATA[
-First button – scenes sent<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent). Enabling scenes for triple click disables entering the device in learn mode by triple clicking.<br />Available values <br />1 – Key pressed 1 time <br />2 – Key pressed 2 times <br />4 – Key pressed 3 times <br />8 – Key hold down and key released</p>
+1 - Key pressed 1 time<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending scene IDs assigned to them. Values can be combined (e.g. 1+2=3 means that scenes for single and double click are sent). Enabling scenes for triple click disables entering the device in learn mode by triple clicking.<br />Available values <br />1 – Key pressed 1 time <br />2 – Key pressed 2 times <br />4 – Key pressed 3 times <br />8 – Key hold down and key released</p>
         ]]></description>
         <default>0</default>
-        <options>
-          <option value="1">Key pressed 1 time</option>
-          <option value="2">Key pressed 2 times</option>
-          <option value="4">Key pressed 3 times</option>
-          <option value="8">Key hold down and key released</option>
-        </options>
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration"

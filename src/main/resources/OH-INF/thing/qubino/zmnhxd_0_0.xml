@@ -175,11 +175,9 @@ Available configuration parameters for input switch I1<br /> <h1>Overview</h1><u
           <option value="4">External relay control – mono stable push button</option>
           <option value="5">External relay control – bi-stable switch</option>
         </options>
-        <advanced>true</advanced>
       </parameter>
 
-      <parameter name="config_40_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+      <parameter name="config_40_1" type="integer" groupName="configuration">
         <label>40: Reporting on power change</label>
         <description><![CDATA[
 This parameter is valid for Active Powers Total, Phase1, Phase2 and Phase3.<br /> <h1>Overview</h1><p>Available configuration parameters (data type is 1 Byte DEC)</p> <ul><li>Default value 50</li> <li>0 – reporting disabled</li> <li>1-100 = 1% - 100% reporting enabled. Power report is send only when actual power in Watts (in real time changes for more than set percentage comparing to previous Active Power, step is 1%.</li> </ul><p><strong>NOTE:</strong> if power change is less than 5 W, the report is not send (pushed).<br /><strong>NOTE:</strong> Device is measuring also some disturbances even if on the output is no load. To avoid disturbances:</p> <ul><li>If measured Active Power (W) is below e.g. 5W-&gt; the reported value in this case is 0W</li> </ul>
@@ -188,11 +186,10 @@ This parameter is valid for Active Powers Total, Phase1, Phase2 and Phase3.<br /
         <options>
           <option value="0">reporting disabled</option>
         </options>
-        <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_42_2" type="integer" groupName="configuration"
-                 min="600" max="65535">
+      <parameter name="config_42_2" type="integer" groupName="configuration">
         <label>42: Reporting on time interval</label>
         <description><![CDATA[
 Energy report time intervals<br /> <h1>Overview</h1><p>This parameter is currently valid only for Active Energy Total Import/Export (kWh), Reactive<br />Energy Total (kvarh), Total Energy (kVAh)</p> <p><strong>Available configuration parameters (data type is 2 Byte DEC)</strong></p> <ul><li>Default value 600 (600 seconds - 10 minutes)</li> <li>0 – reporting disabled</li> <li>600-65536 = 600 (600 seconds – 65536 seconds). Reporting enabled. Report is send with the time interval set by entered value.</li> </ul><p><strong>Note:</strong> Device is reporting only if there was a change of 0.1 in Energy</p> <p><strong>Note:</strong> In the future will be possible to measure and report also Active Energy on PH1, PH2 and PH3.</p>
@@ -201,11 +198,10 @@ Energy report time intervals<br /> <h1>Overview</h1><p>This parameter is current
         <options>
           <option value="0">reporting disabled</option>
         </options>
-        <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_43_2" type="integer" groupName="configuration"
-                 min="600" max="65535">
+      <parameter name="config_43_2" type="integer" groupName="configuration">
         <label>43: Other Values - Reporting on time interval</label>
         <description><![CDATA[
 Energy reports for Voltage, Current, Total Power Factor, Total Reactive Power<br /> <h1>Overview</h1><p><strong>Available configuration parameters (data type is 2 Byte DEC)</strong></p> <ul><li>Default value 600 (600 seconds - 10 minutes)</li> <li>0 – reporting disabled</li> <li>600-65536 = 600 (600 seconds – 65536 seconds). Reporting enabled. Report is sent with the time interval set by entered value.</li> <li>Note: Device is reporting only if there was a change</li> </ul>
@@ -214,7 +210,7 @@ Energy reports for Voltage, Current, Total Power Factor, Total Reactive Power<br
         <options>
           <option value="0">reporting disabled</option>
         </options>
-        <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_100_1" type="integer" groupName="configuration">
@@ -228,7 +224,6 @@ Enable / Disable External IR relay (BICOM)<br /> <h1>Overview</h1><p>Available c
           <option value="1">IR relay enabled for all 3 phases</option>
           <option value="2">IR relay enabled for Phase 1</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -242,7 +237,6 @@ Enable / Disable External relay (IKA)<br /> <h1>Overview</h1><p>Available config
           <option value="0">External relay disabled</option>
           <option value="1">External relay enabled</option>
         </options>
-        <advanced>true</advanced>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -253,11 +247,9 @@ Enable / Disable External relay (IKA)<br /> <h1>Overview</h1><p>Available config
 maximum power threshold of all phases together<br /> <h1>Overview</h1><p>External IR relay (BICOM) power threshold settings – maximum power of all phases together</p> <p>This parameter defines a threshold when External IR relay is being turned off. (If Parameter no. 100 is set to the value 1 or 2)</p> <p>Available configuration parameters (data type is 2 Byte<br />DEC)</p> <ul><li>Default value 0</li> <li>0 – no function</li> <li>10-60000 – 10W-60000W</li> </ul><p><strong>NOTE:</strong> Meter is capable of measuring max 3x65A!</p>
         ]]></description>
         <default>0</default>
-        <advanced>true</advanced>
       </parameter>
 
-      <parameter name="config_112_2" type="integer" groupName="configuration"
-                 min="0" max="32535">
+      <parameter name="config_112_2" type="integer" groupName="configuration">
         <label>112: Power threshold – Delay before power on</label>
         <description><![CDATA[
 Power threshold – Delay before power on<br /> <h1>Overview</h1><p>External IR relay/ External relay is turned off due to detected overload (as set by parameter 106&amp;107) and remains off for a time, defined in this parameter. After that time, the output turns on to check, if the overload is still present.</p> <p>Available configuration parameters (data type is 2 Byte DEC)</p> <ul><li>Default value 0 (disabled)</li> <li>0 – External IR relay/ External relay will not turn back on</li> <li>30 – 32535 = 30 s – 32535 s</li> </ul><p><strong>NOTE:</strong> the delay time may be prolonged for more then 10s of the time set by the parameter.</p>
@@ -266,7 +258,7 @@ Power threshold – Delay before power on<br /> <h1>Overview</h1><p>External IR 
         <options>
           <option value="0">External relay will not turn back on</option>
         </options>
-        <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
