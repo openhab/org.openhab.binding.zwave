@@ -70,8 +70,7 @@ Door &amp; Window Sensor<br /> <h1>Overview</h1><p>The sensor DCH-Z110 has a doo
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Basic Set Level</label>
         <description><![CDATA[
 Setting the BASIC command value to turn on the light.<br /> <h1>Overview</h1><ul> <li>0: Turn off the light.</li> <li>1 - 100: For dimmers 1 to 100 means the light level.</li> <li>255: Turns on the light. (Default) </li> </ul>
@@ -81,10 +80,10 @@ Setting the BASIC command value to turn on the light.<br /> <h1>Overview</h1><ul
           <option value="0">Off</option>
           <option value="255">On</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+      <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: PIR Sensitivity</label>
         <description><![CDATA[
 Set the sensitivity for the PIR (Passive Infrared Sensor).<br /> <h1>Overview</h1><ul> <li>0 = Disable the PIR motion detection.</li> <li>1 - 99 = 1 means the lowest sensitivity, 99 means the highest sensitivity</li> </ul> <p>High sensitivity means de</p>
@@ -93,10 +92,10 @@ Set the sensitivity for the PIR (Passive Infrared Sensor).<br /> <h1>Overview</h
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+      <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Light Threshold</label>
         <description><![CDATA[
 Set the illumination threshold to turn on the light.<br /> <h1>Overview</h1><p>When the event triggers and the environment illumination is lower than the threshold, the device will turn on the light.</p> <ul> <li>0 = Turn off illumination detected function and never turn</li> </ul>
@@ -105,10 +104,10 @@ Set the illumination threshold to turn on the light.<br /> <h1>Overview</h1><p>W
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+      <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Operation Mode</label>
         <description><![CDATA[
 Operation Mode<br /> <h1>Overview</h1><p>Parameter to set the Operation Mode.</p> <ul><li>Bit 0: Reserved.</li> <li>Bit 1: 1 means enable test mode;   0 means normal mode.  Notice: Ignored if DIP Switch is not set to Customer Mode.</li> <li>Bit 2: Disable the door/window function(1:Disable, 0:Enable)</li> <li>Bit3: Setting the temperature scale. 0: Fahrenheit, 1:Celsius </li> <li>Bit4: Disable the illumination report after event triggered. (1:Disable, 0:Enable) </li> <li>Bit5: Disable the temperature report after event triggered. (1:Disable, 0:Enable) </li> <li>Bit6: Reserved.</li> <li>Bit7: Disable the back key release into test mode. (1:Disable, 0:Enable)</li> </ul>
@@ -117,6 +116,7 @@ Operation Mode<br /> <h1>Overview</h1><p>Parameter to set the Operation Mode.</p
         <options>
           <option value="10">Preset: Celsius and LED on = Bits: 00001010 = 10</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
@@ -129,8 +129,7 @@ Multi-Sensor Function Switch<br /> <h1>Overview</h1><p>Parameter to set the sens
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+      <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Customer Function</label>
         <description><![CDATA[
 Parameter to set the Customer Function.<br /> <h1>Overview</h1><p>l</p>
@@ -140,6 +139,7 @@ Parameter to set the Customer Function.<br /> <h1>Overview</h1><p>l</p>
           <option value="20">Enable PIR Super Sensitivity and Binary Report</option>
         </options>
         <advanced>true</advanced>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_7_1_00000008" type="integer" groupName="configuration">
