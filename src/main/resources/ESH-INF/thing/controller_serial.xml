@@ -17,6 +17,8 @@
             <channel id="serial_cse" typeId="serial_cse" />
         </channels>
 
+        <representation-property>zwave_homeid</representation-property>
+
         <config-description>
             <parameter-group name="port">
                 <label>Port Configuration</label>
