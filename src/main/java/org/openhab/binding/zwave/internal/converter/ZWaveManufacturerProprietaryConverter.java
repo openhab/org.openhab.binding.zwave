@@ -79,10 +79,10 @@ public class ZWaveManufacturerProprietaryConverter extends ZWaveCommandClassConv
         ZWaveValueEvent valueEvent = (ZWaveValueEvent) event;
         switch (channel.getUID().getId()) {
             case "blinds_lamella":
-                value = Integer.parseInt(valueEvent.getValue("LAMELLA_POSITION"));
+                value = (Integer) valueEvent.getValue("LAMELLA_POSITION");
                 break;
             case "blinds_shutter":
-                value = Integer.parseInt(valueEvent.getValue("SHUTTER_POSITION"));
+                value = (Integer) valueEvent.getValue("SHUTTER_POSITION");
                 break;
         }
 

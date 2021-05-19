@@ -15,17 +15,18 @@ package org.openhab.binding.zwave.internal.protocol.commandclass;
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ReportType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass.ZWaveAlarmValueEvent;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBasicCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveValueEvent;
 
 /**
  * Test cases for {@link ZWaveBasicCommandClass}.
@@ -80,5 +81,21 @@ public class ZWaveManufacturerProprietaryCommandClassFibaroFGRM222Test extends Z
         assertEquals(event.getAlarmType(), ZWaveAlarmCommandClass.AlarmType.BURGLAR);
         assertEquals(event.getAlarmEvent(), 8);
         assertEquals(event.getAlarmStatus(), 0xFF);
+    }
+
+    @Test
+    public void ReceiveReportMessage() {
+        byte[] packetData = { 0x01, 0x0E, 0x00, 0x04, 0x00, 0x0B, 0x08, (byte) 0x91, 0x01, 0x0F, 0x26, 0x03, 0x03, 0x16,
+                0x63, 0x3A };
+
+        Map<String, String> options = new HashMap<String, String>();
+        options.put("className", "FIBARO_FGRM222_V1");
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 1, 0x010f, 0x0302, options);
+
+        assertEquals(1, events.size());
+        ZWaveValueEvent event = (ZWaveValueEvent) events.get(0);
+        assertEquals(22, event.getValue("SHUTTER_POSITION"));
+        assertEquals(99, event.getValue("LAMELLA_POSITION"));
     }
 }

@@ -22,7 +22,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
  * @author Chris Jackson
  */
 public class ZWaveValueEvent extends ZWaveCommandClassValueEvent {
-    private Map<String, String> values;
+    private Map<String, Object> values;
 
     /**
      * Constructor. Creates a new instance of the ZWaveCommandClassValueEvent class.
@@ -30,9 +30,9 @@ public class ZWaveValueEvent extends ZWaveCommandClassValueEvent {
      * @param nodeId the nodeId of the event
      * @param endpoint the endpoint of the event.
      * @param commandClass the command class that fired the event;
-     * @param values the value for the event as Map<String, String>.
+     * @param values the value for the event as Map<String, Object>.
      */
-    public ZWaveValueEvent(int nodeId, int endpoint, CommandClass commandClass, Map<String, String> values) {
+    public ZWaveValueEvent(int nodeId, int endpoint, CommandClass commandClass, Map<String, Object> values) {
         super(nodeId, endpoint, commandClass, values);
 
         this.values = values;
@@ -44,8 +44,7 @@ public class ZWaveValueEvent extends ZWaveCommandClassValueEvent {
      * @param key the key for the requested value
      * @return the value.
      */
-    public String getValue(String key) {
+    public Object getValue(String key) {
         return values.get(key);
     }
-
 }

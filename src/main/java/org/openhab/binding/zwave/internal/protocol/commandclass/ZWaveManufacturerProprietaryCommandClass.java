@@ -18,6 +18,10 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassManufacturerProprietaryFibaroFgrm222V1;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveValueEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -30,6 +34,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
  */
 @XStreamAlias("COMMAND_CLASS_MANUFACTURER_PROPRIETARY")
 public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveManufacturerProprietaryCommandClass.class);
+
     private ManufacturerProprietaryClass classType;
 
     /**
@@ -50,10 +56,33 @@ public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass 
     }
 
     @ZWaveResponseHandler(id = 0, name = "DEFAULT_HANDLER")
-    public void handleManufacturerSpecificReport(ZWaveCommandClassPayload payload, int endpoint) {
+    public void handleManufacturerProprietaryReport(ZWaveCommandClassPayload payload, int endpoint) {
+        logger.debug("NODE {}: classType: {}", getNode().getNodeId(), classType);
+
         // If we don't have an implementation specified then just return
         if (classType == null) {
             return;
+        }
+
+        Map<String, Object> values = null;
+        switch (classType) {
+            case FIBARO_FGRM222_V1:
+                logger.debug("NODE {}: calling CommandClassManufacturerProprietaryFibaroFgrm222V1.handleFgrm222Report",
+                        getNode().getNodeId());
+                values = CommandClassManufacturerProprietaryFibaroFgrm222V1
+                        .handleFgrm222Report(payload.getPayloadBuffer());
+                logger.debug("NODE {}: handleFgrm222Report created values: {}", getNode().getNodeId(), values);
+                break;
+
+            default:
+                // If we don't know the implementation specified then do nothing
+                logger.debug("NODE {}: class {} is not supported", getNode().getNodeId(), classType);
+                break;
+        }
+
+        if (values != null) {
+            ZWaveValueEvent zEvent = new ZWaveValueEvent(getNode().getNodeId(), endpoint, getCommandClass(), values);
+            getController().notifyEventListeners(zEvent);
         }
     }
 
