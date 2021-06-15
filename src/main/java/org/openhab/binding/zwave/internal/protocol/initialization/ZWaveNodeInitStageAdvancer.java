@@ -23,9 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import org.openhab.core.config.core.ConfigDescription;
-import org.openhab.core.config.core.ConfigDescriptionParameter;
-import org.openhab.core.thing.type.ThingType;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
@@ -63,6 +60,9 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfo
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.config.core.ConfigDescription;
+import org.openhab.core.config.core.ConfigDescriptionParameter;
+import org.openhab.core.thing.type.ThingType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -569,8 +569,9 @@ public class ZWaveNodeInitStageAdvancer {
     private void doStaticStages() {
         setCurrentStage(ZWaveNodeInitStage.MANUFACTURER);
         // Try and get the manufacturerSpecific command class.
+        // If it doesn't exist, we add it as it should be supported by all devices
         ZWaveManufacturerSpecificCommandClass manufacturerSpecific = (ZWaveManufacturerSpecificCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
+                .getOrAddCommandClass(node.getEndpoint(0), CommandClass.COMMAND_CLASS_MANUFACTURER_SPECIFIC);
 
         if (manufacturerSpecific != null) {
             // If we already known the manufacturer information, then don't request again
