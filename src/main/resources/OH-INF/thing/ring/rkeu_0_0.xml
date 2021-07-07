@@ -50,7 +50,7 @@ Alarm Keypad EU<br /> <h1>Overview</h1><p>Ring Alarm features a Z-Wave keypad, w
       <property name="vendor">Ring</property>
       <property name="modelId">Keypad</property>
       <property name="manufacturerId">0346</property>
-      <property name="manufacturerRef">0101:0202</property>
+      <property name="manufacturerRef">0101:0202,0101:0401</property>
       <property name="dbReference">1353</property>
       <property name="defaultAssociations">1</property>
     </properties>
