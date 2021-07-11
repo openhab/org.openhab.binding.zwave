@@ -468,11 +468,11 @@
         </state>
     </channel-type>
 
-    <!-- Energy - Current Consumption -->
+    <!-- Energy - Current -->
     <channel-type id="meter_current">
         <item-type>Number</item-type>
-        <label>Electric Current Consumption</label>
-        <description>Indicates the instantaneous current consumption</description>
+        <label>Electric Current</label>
+        <description>Indicates the instantaneous current</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -512,7 +512,17 @@
     <channel-type id="meter_kvah">
         <item-type>Number</item-type>
         <label>Energy Consumption</label>
-        <description>Indicates the energy consumption (kVAh)</description>
+        <description>Indicates the apperent energy consumption (kVAh)</description>
+        <category>Energy</category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
+    <!-- Energy - Energy Consumption (kVarh) -->
+    <channel-type id="meter_kvarh">
+        <item-type>Number</item-type>
+        <label>Energy Consumption</label>
+        <description>Indicates the reactive energy consumption (kVarh)</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -522,7 +532,7 @@
     <channel-type id="meter_kwh">
         <item-type>Number</item-type>
         <label>Energy Consumption</label>
-        <description>Indicates the energy consumption (kWh)</description>
+        <description>Indicates the instantaneous energy consumption (kWh)</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -611,6 +621,16 @@
         <item-type>Number</item-type>
         <label>Electric Power Consumption</label>
         <description>Indicates the instantaneous power consumption</description>
+        <category>Energy</category>
+        <state pattern="%.1f" readOnly="true">
+        </state>
+    </channel-type>
+
+    <!-- Energy - Power Consumption -->
+    <channel-type id="meter_kvar">
+        <item-type>Number</item-type>
+        <label>Electric Power Consumption</label>
+        <description>Indicates the reactive power consumption</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
         </state>
