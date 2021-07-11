@@ -10,74 +10,25 @@
     <description><![CDATA[
 Multirelay<br /> <h1>Overview</h1><p><strong>Features</strong></p> <ul><li>Powerful dry contact relays to control loads up to 15 A and 20 A</li> <li>Perfect for outdoor lighting, pool pumps, garage door, or gas fireplace</li> <li>Control up to 3 connected loads independently or together</li> <li>Z-Wave or optional wall switch control (toggle or momentary type)</li> <li>Built-in timers for each relay to simplify automation</li> <li>Remembers and restores on/off status after power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Powered by 12-24 V DC/AC or USB C port for easy set-up</li> <li>Wall mounting and minimal design for clean installation</li> <li>S2 security protocol and the latest 500 Z-Wave chip</li> </ul><p><strong>Specifications</strong></p> <ul><li>Model Number: ZEN16</li> <li>Z-Wave Signal Frequency: 908.42 MHz</li> <li>Power: 12-24 V DC/AC or USB C</li> <li>Maximum Load: Relay 1: 15A (HP), R2: 15A (HP), R3: 20A (HP)</li> <li>Range: Up to 100 feet line of sight</li> <li>Operating Temperature: 32-104° F (0-40° C)</li> <li>Installation and Use: Indoor only</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Start Z-Wave inclusion.</li> <li>Quickly press the Z-Wave button 3 times.</li> </ol><p>The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</p> <br /> <h2>Exclusion Information</h2><ol><li>Start Z-Wave inclusion.</li> <li>Quickly press the Z-Wave button 3 times.</li> </ol><p>The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
-    <category>Battery</category>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
-    <channels>
-      <channel id="switch_binary" typeId="switch_binary">
-        <label>Switch</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
-        </properties>
-      </channel>
-      <channel id="switch_dimmer" typeId="switch_dimmer">
-        <label>Dimmer</label>
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
-        </properties>
-      </channel>
-      <channel id="scene_number" typeId="scene_number">
-        <label>Scene Number</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_SCENE_ACTIVATION</property>
-        </properties>
-      </channel>
-      <channel id="sensor_binary" typeId="sensor_binary">
-        <label>Binary Sensor</label>
-        <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SENSOR_BINARY</property>
-        </properties>
-      </channel>
-      <channel id="meter_kwh" typeId="meter_kwh">
-        <label>Electric meter (kWh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
-        </properties>
-      </channel>
-      <channel id="meter_kvah" typeId="meter_kvah">
-        <label>Electric meter (kVAh)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KVAh</property>
-        </properties>
-      </channel>
-      <channel id="meter_watts" typeId="meter_watts">
-        <label>Electric meter (watts)</label>
-        <properties>
-          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
-        </properties>
-      </channel>
-      <channel id="battery-level" typeId="system.battery-level">
-        <properties>
-          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
-        </properties>
-      </channel>
       <channel id="switch_binary1" typeId="switch_binary">
         <label>Switch 1</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:1,COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="switch_binary2" typeId="switch_binary">
         <label>Switch 2</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2,COMMAND_CLASS_BASIC:2</property>
         </properties>
       </channel>
       <channel id="switch_binary3" typeId="switch_binary">
         <label>Switch 3</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3,COMMAND_CLASS_BASIC:3</property>
         </properties>
       </channel>
     </channels>
