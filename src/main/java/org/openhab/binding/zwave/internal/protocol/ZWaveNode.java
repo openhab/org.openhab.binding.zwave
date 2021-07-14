@@ -1456,6 +1456,7 @@ public class ZWaveNode {
     private class WakeupTimerTask extends TimerTask {
         // Two cycles through the loop are required to send a device to sleep
         private boolean triggered;
+        private int count;
         private final ZWaveWakeUpCommandClass wakeUpCommandClass;
 
         WakeupTimerTask() {
@@ -1468,6 +1469,7 @@ public class ZWaveNode {
             }
 
             triggered = false;
+            count = 0;
         }
 
         @Override
@@ -1476,12 +1478,16 @@ public class ZWaveNode {
                 logger.trace("NODE {}: WakeupTimerTask Already asleep", getNodeId());
                 return;
             }
+            count = count + 1;
 
-            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {}", getNodeId(),
-                    controller.getSendQueueLength(getNodeId()), getNodeInitStage());
+            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {} count {}", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()), getNodeInitStage(), count);
+            if (count == 18) {
+                triggered = true;
+            }
             if (triggered == false) {
                 logger.trace("NODE {}: WakeupTimerTask First iteration", getNodeId());
-                triggered = true;
+                triggered = isInitializationComplete();
                 return;
             }
 
@@ -1515,7 +1521,7 @@ public class ZWaveNode {
         if (isInitializationComplete()) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 5000;
+            timerDelay = 2000;
         }
         logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 
