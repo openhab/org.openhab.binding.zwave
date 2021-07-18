@@ -67,7 +67,7 @@ public class AddNodeMessageClassTest {
         msg = handler.doRequestStop(true);
         assertEquals(msg.getSerialMessageClass(), SerialMessageClass.AddNodeToNetwork);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStopComplete));
-//        assertTrue(msg.getSerialMessage().getCallbackId() == 0);
+        assertTrue(msg.getSerialMessage().getCallbackId() == 0);
     }
 
     @Test
