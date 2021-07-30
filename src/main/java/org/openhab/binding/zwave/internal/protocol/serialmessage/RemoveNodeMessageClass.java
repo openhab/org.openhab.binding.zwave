@@ -55,7 +55,7 @@ public class RemoveNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("Ending EXCLUSION mode.");
 
         ZWaveSerialPayload payload = new ZWaveTransactionMessageBuilder(SerialMessageClass.RemoveNodeFromNetwork)
-                .withPayload(REMOVE_NODE_STOP).withTimeout(1000).withRequiresData(false).build();
+                .withPayload(REMOVE_NODE_STOP).withRequiresData(false).build();
 
         if (complete) {
             payload.setCallbackId(0);
