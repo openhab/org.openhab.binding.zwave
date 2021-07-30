@@ -1454,7 +1454,7 @@ public class ZWaveNode {
      * The timer just provides some time for anything further to be sent as a result of any processing.
      */
     private class WakeupTimerTask extends TimerTask {
-        // Two cycles through the loop are required to send a device to sleep
+        // Cycles through loop in 0.5 or 1.0 second intervals until Done or cap is reached
         private boolean triggered;
         private int count;
         private final ZWaveWakeUpCommandClass wakeUpCommandClass;
@@ -1492,7 +1492,7 @@ public class ZWaveNode {
             }
 
             // Tell the device to go back to sleep.
-            logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
+            logger.debug("NODE {}: Go back to sleep, state {} count {}", getNodeId(), getNodeInitStage(), count);
             if (wakeUpCommandClass != null) {
                 ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
                         0);
