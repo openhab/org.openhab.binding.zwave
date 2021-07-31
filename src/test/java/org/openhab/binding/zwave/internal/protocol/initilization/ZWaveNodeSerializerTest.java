@@ -39,6 +39,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * Tests for ZWaveNode serialization into XML
+ *
+ * @author Sami Salonen
+ *
+ */
 @Execution(ExecutionMode.SAME_THREAD)
 public class ZWaveNodeSerializerTest {
 
