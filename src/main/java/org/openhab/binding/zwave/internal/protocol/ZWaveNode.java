@@ -1486,7 +1486,10 @@ public class ZWaveNode {
             }
 
             // Tell the device to go back to sleep.
-            logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
+            if (isInitializationComplete() == true) {
+                logger.debug("NODE {}: No More Messages, Go back to sleep", getNodeId());
+                }
+                logger.warn("NODE {}: Initialization or Heal not complete, but sleep anyway, state {}", getNodeId(), getNodeInitStage());
             if (wakeUpCommandClass != null) {
                 ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
                         0);
