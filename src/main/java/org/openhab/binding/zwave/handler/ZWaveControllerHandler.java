@@ -191,7 +191,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         initializeHeal();
-
     }
 
     /**
@@ -254,6 +253,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void dispose() {
+        scheduler.submit(() -> {
+            disposeSchedulerJob();
+        });
+    }
+
+    /**
+     * Execute long running disposal actions on a background thread
+     */
+    private void disposeSchedulerJob() {
         if (healJob != null) {
             healJob.cancel(true);
             healJob = null;
