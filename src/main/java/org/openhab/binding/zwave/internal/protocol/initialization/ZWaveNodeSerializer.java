@@ -22,6 +22,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.internal.OrderingMapConverter;
+import org.openhab.binding.zwave.internal.OrderingSetConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -65,6 +67,12 @@ public class ZWaveNodeSerializer {
         XStream.setupDefaultSecurity(stream);
         stream.allowTypesByWildcard(new String[] { ZWaveNode.class.getPackageName() + ".**" });
         stream.setClassLoader(ZWaveNodeSerializer.class.getClassLoader());
+
+        // Register custom converters for Maps and Sets such that entries
+        // are ordered (if possible). This will result in minimal changes
+        // in serialized XML.
+        stream.registerConverter(new OrderingMapConverter(stream.getMapper()));
+        stream.registerConverter(new OrderingSetConverter(stream.getMapper()));
 
         // Process the annotations so that XStream knows all the alias's
         stream.processAnnotations(ZWaveNode.class);
