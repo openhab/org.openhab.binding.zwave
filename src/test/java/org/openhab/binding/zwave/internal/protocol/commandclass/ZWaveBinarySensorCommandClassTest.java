@@ -81,4 +81,5 @@ public class ZWaveBinarySensorCommandClassTest extends ZWaveCommandClassTest {
         assertTrue(cls.getSupportedTypes().contains(SensorType.TAMPER));
         assertTrue(cls.getSupportedTypes().contains(SensorType.MOTION));
     }
+
 }

@@ -50,4 +50,5 @@ public class ZWaveBarrierOperatorCommandClassTest extends ZWaveCommandClassTest 
         msg = cls.setValueMessage(77);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
+
 }

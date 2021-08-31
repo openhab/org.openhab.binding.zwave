@@ -82,6 +82,7 @@ public class ZWaveClockCommandClass extends ZWaveCommandClass implements ZWaveCo
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                 getCommandClass(), nodeTime);
         getController().notifyEventListeners(zEvent);
+
     }
 
     @ZWaveResponseHandler(id = CLOCK_GET, name = "CLOCK_GET")

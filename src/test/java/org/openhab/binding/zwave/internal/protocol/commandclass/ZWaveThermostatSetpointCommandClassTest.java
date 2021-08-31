@@ -75,4 +75,5 @@ public class ZWaveThermostatSetpointCommandClassTest extends ZWaveCommandClassTe
 
         assertEquals(0, events.size());
     }
+
 }

@@ -137,6 +137,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
                 getCommandClass(), value);
         getController().notifyEventListeners(zEvent);
+
     }
 
     @Override

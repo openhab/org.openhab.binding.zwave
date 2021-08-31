@@ -280,7 +280,6 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         OCCUPIED(0x01, "Occupied"),
         RESERVED_BY_ADMINISTRATOR(0x02, "Reserved by administrator"),
         STATUS_NOT_AVAILABLE(0xFE, "Status not available"),;
-
         /**
          * A mapping between the integer code and its corresponding door
          * lock state type to facilitate lookup by code.

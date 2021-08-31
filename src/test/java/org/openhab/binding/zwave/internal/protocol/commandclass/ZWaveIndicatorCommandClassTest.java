@@ -71,5 +71,6 @@ public class ZWaveIndicatorCommandClassTest extends ZWaveCommandClassTest {
                 0x63 };
 
         List<ZWaveEvent> events = processCommandClassMessage(packetData, 2);
+
     }
 }

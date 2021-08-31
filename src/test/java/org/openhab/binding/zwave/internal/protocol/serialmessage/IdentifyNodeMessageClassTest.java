@@ -143,4 +143,5 @@ public class IdentifyNodeMessageClassTest {
         assertEquals(genericClass.getValue(), Generic.GENERIC_TYPE_GENERIC_CONTROLLER);
         assertEquals(specificClass.getValue(), Specific.SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE);
     }
+
 }

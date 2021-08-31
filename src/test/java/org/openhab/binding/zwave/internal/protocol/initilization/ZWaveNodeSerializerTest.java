@@ -210,4 +210,5 @@ public class ZWaveNodeSerializerTest {
                 .toArray(ZWaveCommandClass.CommandClass[]::new);
         assertArrayEquals(expected, vals);
     }
+
 }

@@ -15,6 +15,9 @@ package org.openhab.binding.zwave.internal.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.types.Command;
+import org.openhab.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -25,9 +28,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionC
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveProtectionCommandClass.Type;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
-import org.openhab.core.library.types.DecimalType;
-import org.openhab.core.types.Command;
-import org.openhab.core.types.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

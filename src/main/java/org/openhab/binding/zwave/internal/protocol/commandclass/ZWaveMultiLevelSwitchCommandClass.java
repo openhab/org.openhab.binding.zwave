@@ -75,9 +75,9 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     /**
      * Creates a new instance of the ZWaveMultiLevelSwitchCommandClass class.
      *
-     * @param node the node this command class belongs to
+     * @param node       the node this command class belongs to
      * @param controller the controller to use
-     * @param endpoint the endpoint this Command class belongs to
+     * @param endpoint   the endpoint this Command class belongs to
      */
     public ZWaveMultiLevelSwitchCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -348,5 +348,7 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
 
             this.direction = direction;
         }
+
     }
+
 }

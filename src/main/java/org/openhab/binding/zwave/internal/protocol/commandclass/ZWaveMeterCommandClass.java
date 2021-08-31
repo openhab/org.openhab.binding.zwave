@@ -78,11 +78,11 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
      * Creates a new instance of the ZWaveMeterCommandClass class.
      *
      * @param node
-     *            the node this command class belongs to
+     *                       the node this command class belongs to
      * @param controller
-     *            the controller to use
+     *                       the controller to use
      * @param endpoint
-     *            the endpoint this Command class belongs to
+     *                       the endpoint this Command class belongs to
      */
     public ZWaveMeterCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -363,7 +363,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * code does not exist.
          *
          * @param i
-         *            the code to lookup
+         *              the code to lookup
          * @return enumeration value of the meter type.
          */
         public static MeterType getMeterType(int i) {
@@ -432,10 +432,10 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         /**
          * Constructor. Creates a new enumeration value.
          *
-         * @param scale the scale number
+         * @param scale     the scale number
          * @param meterType the meter type
-         * @param unit the unit
-         * @param label the label.
+         * @param unit      the unit
+         * @param label     the label.
          */
         private MeterScale(int scale, MeterType meterType, String unit, String label) {
             this.scale = scale;
@@ -460,7 +460,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * Lookup function based on the meter type and code. Returns null if the code does not exist.
          *
          * @param meterType the meter type to use to lookup the scale
-         * @param i the code to lookup
+         * @param i         the code to lookup
          * @return enumeration value of the meter scale.
          */
         public static MeterScale getMeterScale(MeterType meterType, int i) {
@@ -523,6 +523,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         protected String getLabel() {
             return label;
         }
+
     }
 
     /**
@@ -537,15 +538,15 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * Constructor. Creates a instance of the ZWaveMeterValueEvent class.
          *
          * @param nodeId
-         *            the nodeId of the event
+         *                      the nodeId of the event
          * @param endpoint
-         *            the endpoint of the event.
+         *                      the endpoint of the event.
          * @param meterType
-         *            the meter type that triggered the event;
+         *                      the meter type that triggered the event;
          * @param meterType
-         *            the meter scale for the event;
+         *                      the meter scale for the event;
          * @param value
-         *            the value for the event.
+         *                      the value for the event.
          */
         public ZWaveMeterValueEvent(int nodeId, int endpoint, MeterType meterType, MeterScale meterScale,
                 Object value) {
@@ -571,5 +572,6 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         public MeterScale getMeterScale() {
             return meterScale;
         }
+
     }
 }

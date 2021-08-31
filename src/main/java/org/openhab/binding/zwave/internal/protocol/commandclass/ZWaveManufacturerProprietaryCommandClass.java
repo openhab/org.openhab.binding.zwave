@@ -75,4 +75,5 @@ public class ZWaveManufacturerProprietaryCommandClass extends ZWaveCommandClass 
     private enum ManufacturerProprietaryClass {
         FIBARO_FGRM222_V1
     }
+
 }

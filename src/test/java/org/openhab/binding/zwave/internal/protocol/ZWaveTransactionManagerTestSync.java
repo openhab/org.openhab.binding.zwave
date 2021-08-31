@@ -293,4 +293,5 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
         assertNotNull(response2);
         assertEquals(ZWaveTransactionResponse.State.COMPLETE, response2.getState());
     }
+
 }

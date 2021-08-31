@@ -73,4 +73,5 @@ public class ZWaveProtectionConverterTest {
         assertEquals(state.getClass(), DecimalType.class);
         assertEquals(((DecimalType) state).intValue(), RfProtectionType.NORFRESPONSE.ordinal());
     }
+
 }

@@ -29,7 +29,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
-import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;;
 
 public class ZWaveTransactionManagerTest {
     protected ArgumentCaptor<SerialMessage> txQueueCapture;

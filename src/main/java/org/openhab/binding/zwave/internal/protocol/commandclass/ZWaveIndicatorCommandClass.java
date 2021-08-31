@@ -418,5 +418,6 @@ public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
         public String toString() {
             return "ZWaveIndicator [type=" + type + ", property=" + property + ", value=" + value + "]";
         }
+
     }
 }

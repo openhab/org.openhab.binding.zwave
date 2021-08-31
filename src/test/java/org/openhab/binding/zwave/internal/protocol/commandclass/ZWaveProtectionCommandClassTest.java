@@ -142,4 +142,5 @@ public class ZWaveProtectionCommandClassTest extends ZWaveCommandClassTest {
                 new byte[] { 75, 3, (byte) localType.ordinal(), (byte) rfType.ordinal() });
         cls.handleProtectionReport(payload, 1);
     }
+
 }

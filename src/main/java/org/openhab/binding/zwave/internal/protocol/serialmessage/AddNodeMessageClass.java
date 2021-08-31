@@ -172,5 +172,6 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
 
             commandClasses.add(commandClass);
         }
+
     }
 }

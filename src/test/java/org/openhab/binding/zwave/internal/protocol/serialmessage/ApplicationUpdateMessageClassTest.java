@@ -39,4 +39,5 @@ public class ApplicationUpdateMessageClassTest {
 
         assertTrue(appUpdate.correlateTransactionResponse(transaction, incomingMessage));
     }
+
 }

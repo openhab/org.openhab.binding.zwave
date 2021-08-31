@@ -309,4 +309,5 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
     public int getMaxGroup() {
         return maxGroups;
     }
+
 }

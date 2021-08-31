@@ -20,8 +20,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.ZWaveMeterValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClassTest;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMeterCommandClass.ZWaveMeterValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 
 /**
@@ -49,4 +49,5 @@ public class ZWaveMeterCommandClassTest extends ZWaveMultiInstanceCommandClassTe
         assertEquals(event.getMeterType(), ZWaveMeterCommandClass.MeterType.ELECTRIC);
         assertEquals(event.getValue(), new BigDecimal("0.006"));
     }
+
 }

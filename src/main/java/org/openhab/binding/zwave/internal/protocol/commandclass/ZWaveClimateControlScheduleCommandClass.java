@@ -89,6 +89,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SCHEDULE_CHANGED_REPORT).withPayload(scheduleChangeCounter)
                         .withPriority(ZWaveTransaction.TransactionPriority.RealTime).build();
+
     }
 
     // Visible for Testing
@@ -149,6 +150,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
                 codeToScheduledStateState.put(s.value, s);
             }
         }
+
     }
 
     // Visible for Testing
@@ -199,4 +201,5 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
             return Objects.hash(state, setBack);
         }
     }
+
 }

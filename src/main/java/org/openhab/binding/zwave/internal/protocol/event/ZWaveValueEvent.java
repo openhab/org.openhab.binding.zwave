@@ -47,4 +47,5 @@ public class ZWaveValueEvent extends ZWaveCommandClassValueEvent {
     public String getValue(String key) {
         return values.get(key);
     }
+
 }

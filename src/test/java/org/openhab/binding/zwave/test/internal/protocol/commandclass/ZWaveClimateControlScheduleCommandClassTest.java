@@ -67,4 +67,5 @@ public class ZWaveClimateControlScheduleCommandClassTest extends ZWaveCommandCla
 
         assertArrayEquals(expectedResponse, msg.getMessagePayload());
     }
+
 }

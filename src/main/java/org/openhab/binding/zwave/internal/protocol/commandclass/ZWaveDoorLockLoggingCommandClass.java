@@ -192,4 +192,5 @@ public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implemen
             return key;
         }
     }
+
 }
