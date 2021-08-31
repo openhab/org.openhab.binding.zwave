@@ -73,5 +73,4 @@ public class OrderingSetConverter extends CollectionConverter {
         });
         super.marshal(ordered, writer, context);
     }
-
 }

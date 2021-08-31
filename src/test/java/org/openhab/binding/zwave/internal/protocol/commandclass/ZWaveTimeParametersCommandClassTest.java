@@ -66,5 +66,4 @@ public class ZWaveTimeParametersCommandClassTest extends ZWaveCommandClassTest {
 
         assertTrue(Arrays.equals(msg.getMessagePayload(), expectedResponse));
     }
-
 }

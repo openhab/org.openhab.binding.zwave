@@ -305,5 +305,4 @@ public class CommandClassManufacturerProprietaryFibaroFgrm222V1 {
         // Return the map of processed response data;
         return response;
     }
-
 }

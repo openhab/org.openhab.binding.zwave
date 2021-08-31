@@ -617,7 +617,6 @@ public class ZWaveController {
                     break;
             }
         }
-
     }
 
     /**

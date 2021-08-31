@@ -231,5 +231,4 @@ public class ZWaveInclusionControllerTest {
         assertTrue(Arrays.equals(new byte[] { 5 }, txFrame.getPayloadBuffer()));
         assertTrue(txFrame.getSerialMessage().getCallbackId() != 0);
     }
-
 }

@@ -1179,5 +1179,4 @@ public class CommandClassNotificationV8 {
         // Return the map of processed response data;
         return response;
     }
-
 }

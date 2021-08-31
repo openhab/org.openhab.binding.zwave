@@ -69,5 +69,4 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
         assertEquals(1, transactionCompleteCapture.getAllValues().size());
         assertEquals(2, txQueueCapture.getAllValues().size());
     }
-
 }
