@@ -97,6 +97,16 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
                     state = new PercentType(colorMap.get(ZWaveColorType.COLD_WHITE));
                 } else if ("WARM_WHITE".equals(channel.getArguments().get("colorMode"))) {
                     state = new PercentType(colorMap.get(ZWaveColorType.WARM_WHITE));
+                } else if ("DIFF_WHITE".equals(channel.getArguments().get("colorMode"))) {
+                    int warm = colorMap.get(ZWaveColorType.WARM_WHITE) != null ? colorMap.get(ZWaveColorType.WARM_WHITE) : 0;
+                    int cold = colorMap.get(ZWaveColorType.COLD_WHITE) != null ? colorMap.get(ZWaveColorType.COLD_WHITE) : 0;
+                    if(warm + cold > 0) { 
+                        float ratio = ((float) warm) / (float) (warm + cold);
+                        int percentage = (int) ((ratio * 100.0f) + 0.5f);
+                        state = new PercentType(percentage);
+                    } else {
+                        state = new PercentType(0);
+                    }
                 } else {
                     state = new PercentType(0);
                 }
