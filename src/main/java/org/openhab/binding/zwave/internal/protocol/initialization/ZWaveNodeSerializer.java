@@ -64,7 +64,6 @@ public class ZWaveNodeSerializer {
             folder.mkdirs();
         }
 
-        XStream.setupDefaultSecurity(stream);
         stream.allowTypesByWildcard(new String[] { ZWaveNode.class.getPackageName() + ".**" });
         stream.setClassLoader(ZWaveNodeSerializer.class.getClassLoader());
 
