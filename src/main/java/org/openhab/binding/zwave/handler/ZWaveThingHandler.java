@@ -710,7 +710,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         }
                     }
 
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    addPendingConfig(configurationParameter.getKey(), valueObject);
                     break;
 
                 case "group":
@@ -846,7 +846,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // Request an update to the association group
                     node.sendMessage(node.getAssociation(groupIndex));
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    addPendingConfig(configurationParameter.getKey(), valueObject);
 
                     // Create a clean association list
                     valueObject = getAssociationConfigList(newMembers.getAssociations());
@@ -881,7 +881,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             break;
                     }
 
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    addPendingConfig(configurationParameter.getKey(), valueObject);
                     break;
 
                 case "nodename":
@@ -906,7 +906,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         node.sendMessage(
                                 nameCommandClass.setLocationMessage(configurationParameter.getValue().toString()));
                     }
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    addPendingConfig(configurationParameter.getKey(), valueObject);
                     break;
 
                 case "switchall":
@@ -921,7 +921,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         controllerHandler.sendData(node.encapsulate(switchallCommandClass
                                 .setValueMessage(Integer.parseInt(configurationParameter.getValue().toString())), 0));
                     }
-                    pendingCfg.put(configurationParameter.getKey(), valueObject);
+                    addPendingConfig(configurationParameter.getKey(), valueObject);
                     break;
 
                 case "doorlock":
@@ -945,7 +945,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             controllerHandler.sendData(
                                     node.encapsulate(commandClass.setConfigMessage(timeoutEnabled, doorlockValue), 0));
                             controllerHandler.sendData(node.encapsulate(commandClass.getConfigMessage(), 0));
-                            pendingCfg.put(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, valueObject);
+                            addPendingConfig(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, valueObject);
                         } catch (NumberFormatException e) {
                             logger.debug("Number format exception parsing doorlock_timeout '{}'", valueObject);
                         }
@@ -971,7 +971,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                                 controllerHandler.sendData(node
                                         .encapsulate(userCodeCommandClass.setUserCode(code, (String) valueObject), 0));
                                 controllerHandler.sendData(node.encapsulate(userCodeCommandClass.getUserCode(code), 0));
-                                pendingCfg.put(configurationParameter.getKey(), valueObject);
+                                addPendingConfig(configurationParameter.getKey(), valueObject);
                             } else {
                                 logger.warn("Value format error processing user code {}", valueObject);
                             }
@@ -1355,14 +1355,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                     // cfgUpdated = true;
                     configuration.put("group_" + groupId, getAssociationConfigList(groupMembers));
-                    pendingCfg.remove("group_" + groupId);
+                    removePendingConfig("group_" + groupId);
                     // }
                     break;
 
                 case COMMAND_CLASS_SWITCH_ALL:
                     cfgUpdated = true;
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE, event.getValue());
-                    pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE);
+                    removePendingConfig(ZWaveBindingConstants.CONFIGURATION_SWITCHALLMODE);
                     break;
 
                 case COMMAND_CLASS_NODE_NAMING:
@@ -1370,12 +1370,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         case NODENAME_LOCATION:
                             cfgUpdated = true;
                             configuration.put(ZWaveBindingConstants.CONFIGURATION_NODELOCATION, event.getValue());
-                            pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_NODELOCATION);
+                            removePendingConfig(ZWaveBindingConstants.CONFIGURATION_NODELOCATION);
                             break;
                         case NODENAME_NAME:
                             cfgUpdated = true;
                             configuration.put(ZWaveBindingConstants.CONFIGURATION_NODENAME, event.getValue());
-                            pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_NODENAME);
+                            removePendingConfig(ZWaveBindingConstants.CONFIGURATION_NODENAME);
                             break;
                     }
                     break;
@@ -1385,7 +1385,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                         case DOOR_LOCK_TIMEOUT:
                             cfgUpdated = true;
                             configuration.put(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT, event.getValue());
-                            pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT);
+                            removePendingConfig(ZWaveBindingConstants.CONFIGURATION_DOORLOCKTIMEOUT);
                             break;
                         default:
                             break;
@@ -1401,7 +1401,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     } else {
                         configuration.put(codeParameterName, "");
                     }
-                    pendingCfg.remove(codeParameterName);
+                    removePendingConfig(codeParameterName);
                     break;
 
                 default:
@@ -1468,9 +1468,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                             .getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP);
                     Configuration configuration = editConfiguration();
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL, commandClass.getInterval());
-                    pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL);
+                    removePendingConfig(ZWaveBindingConstants.CONFIGURATION_WAKEUPINTERVAL);
                     configuration.put(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE, commandClass.getTargetNodeId());
-                    pendingCfg.remove(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE);
+                    removePendingConfig(ZWaveBindingConstants.CONFIGURATION_WAKEUPNODE);
                     updateConfiguration(configuration);
                     break;
             }
@@ -1837,7 +1837,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             cfgUpdated = true;
             configuration.put(key, value);
-            pendingCfg.remove(key);
+            removePendingConfig(key);
         }
 
         return cfgUpdated;
@@ -1876,6 +1876,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         public int getValue(int value) {
             return (value & ~this.bitmask) + this.value;
         }
+    }
+
+    private void addPendingConfig(String configName, Object valueObject) {
+        logger.debug("NODE {}: Configuration pending added for {}", nodeId, configName);
+        pendingCfg.put(configName, valueObject);
+    }
+
+    private void removePendingConfig(String configName) {
+        logger.debug("NODE {}: Configuration pending removed for {}", nodeId, configName);
+        pendingCfg.remove(configName);
     }
 
     @Override
