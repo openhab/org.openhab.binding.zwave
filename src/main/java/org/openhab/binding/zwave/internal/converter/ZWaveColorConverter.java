@@ -98,9 +98,11 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
                 } else if ("WARM_WHITE".equals(channel.getArguments().get("colorMode"))) {
                     state = new PercentType(colorMap.get(ZWaveColorType.WARM_WHITE));
                 } else if ("DIFF_WHITE".equals(channel.getArguments().get("colorMode"))) {
-                    int warm = colorMap.get(ZWaveColorType.WARM_WHITE) != null ? colorMap.get(ZWaveColorType.WARM_WHITE) : 0;
-                    int cold = colorMap.get(ZWaveColorType.COLD_WHITE) != null ? colorMap.get(ZWaveColorType.COLD_WHITE) : 0;
-                    if(warm + cold > 0) { 
+                    int warm = colorMap.get(ZWaveColorType.WARM_WHITE) != null ? colorMap.get(ZWaveColorType.WARM_WHITE)
+                            : 0;
+                    int cold = colorMap.get(ZWaveColorType.COLD_WHITE) != null ? colorMap.get(ZWaveColorType.COLD_WHITE)
+                            : 0;
+                    if (warm + cold > 0) {
                         float ratio = ((float) warm) / (float) (warm + cold);
                         int percentage = (int) ((ratio * 100.0f) + 0.5f);
                         state = new PercentType(percentage);
@@ -136,7 +138,21 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
 
         // Since we get an HSB, there is brightness information. However, we only deal with the color class here
         // so we need to scale the color and let the brightness be handled by the multi_level command class
-        if ("RGB".equals(channel.getArguments().get("colorMode"))) {
+        if (command instanceof StringType) {
+            // If a String channel is provided, then we assume it is the raw format
+            String rgbwColor = ((StringType) command).toString().toUpperCase();
+
+            String[] rgbwColors = rgbwColor.split(",");
+            for (String color : rgbwColors) {
+                String[] colorData = color.split("=");
+
+                if ("LEVEL".equals(colorData[0])) {
+                    level = Integer.parseInt(colorData[1]);
+                } else {
+                    colors.put(ZWaveColorType.valueOf(colorData[0]), Integer.parseInt(colorData[1]));
+                }
+            }
+        } else if ("RGB".equals(channel.getArguments().get("colorMode"))) {
             // Command must be color - convert to zwave format
             HSBType color = (HSBType) command;
             level = color.getBrightness().intValue();
@@ -150,20 +166,6 @@ public class ZWaveColorConverter extends ZWaveCommandClassConverter {
             }
             if (colorCommandClass.isColorSupported(ZWaveColorType.WARM_WHITE)) {
                 colors.put(ZWaveColorType.WARM_WHITE, 0);
-            }
-        } else if ("RGBW".equals(channel.getArguments().get("colorMode"))) {
-            // Command must be color - convert to zwave format
-            String rgbwColor = ((StringType) command).toString().toUpperCase();
-
-            String[] rgbwColors = rgbwColor.split(",");
-            for (String color : rgbwColors) {
-                String[] colorData = color.split("=");
-
-                if ("LEVEL".equals(colorData[0])) {
-                    level = Integer.parseInt(colorData[1]);
-                } else {
-                    colors.put(ZWaveColorType.valueOf(colorData[0]), Integer.parseInt(colorData[1]));
-                }
             }
         } else if ("COLD_WHITE".equals(channel.getArguments().get("colorMode"))) {
             PercentType color = (PercentType) command;
