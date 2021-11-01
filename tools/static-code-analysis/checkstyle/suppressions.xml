@@ -6,6 +6,7 @@
     <suppress files=".+[\\/]internal[\\/].+\.java" checks="JavadocType|JavadocVariable|JavadocMethod|MissingJavadocFilterCheck|NullAnnotationsCheck"/>
     <suppress files=".+DTO\.java" checks="JavadocType|JavadocVariable|JavadocMethod|MissingJavadocFilterCheck" />
     <suppress files=".+Impl\.java" checks="JavadocType|JavadocVariable|JavadocMethod|MissingJavadocFilterCheck"/>
+    <suppress files=".+[\\/]OH-INF[\\/].+\.xml" checks="OhInfXmlLabelCheck"/>
 
     <!-- Some checks will be supressed for test bundles -->
     <suppress files=".+.test[\\/].+" checks="RequireBundleCheck"/>
