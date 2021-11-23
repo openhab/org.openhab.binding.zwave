@@ -372,7 +372,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
-                                                                    Command command) {
+            Command command) {
         ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_ALARM, channel.getEndpoint());
         if (commandClass == null) {
