@@ -86,6 +86,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.ACCESS_CONTROL__MANUAL_UNLOCK, OnOffType.OFF);
         notifications.put("alarm_entry", events);
 
+        // Heart beats
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
+        notifications.put("alarm_system", events);
+
         // Heat alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HEAT__NONE, OnOffType.OFF);
@@ -114,6 +120,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.HOME_SECURITY__TAMPER, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_MOVED, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_INVALID_CODE, OnOffType.ON);
+        events.put(NotificationEvent.SMOKE__SMOKE_ALARM_TEST, OnOffType.ON);
+        events.put(NotificationEvent.SMOKE__NONE, OnOffType.OFF);
         events.put(NotificationEvent.SYSTEM__TAMPERING, OnOffType.ON);
         notifications.put("alarm_tamper", events);
 
@@ -364,7 +372,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
-            Command command) {
+                                                                    Command command) {
         ZWaveAlarmCommandClass commandClass = (ZWaveAlarmCommandClass) node
                 .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_ALARM, channel.getEndpoint());
         if (commandClass == null) {
