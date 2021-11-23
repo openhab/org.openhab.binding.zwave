@@ -5,8 +5,5 @@
 /.settings/org.eclipse.*
 target
 OSGI-INF/*.xml
-.idea
-.idea/**
-*.iml
 .java-version
 
