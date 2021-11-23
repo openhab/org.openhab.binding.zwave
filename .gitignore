@@ -5,3 +5,4 @@
 /.settings/org.eclipse.*
 target
 OSGI-INF/*.xml
+.java-version
