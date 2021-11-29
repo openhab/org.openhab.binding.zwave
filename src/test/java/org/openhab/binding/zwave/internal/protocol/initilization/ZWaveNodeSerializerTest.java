@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -22,8 +21,7 @@ import javax.xml.xpath.XPathFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
+import org.junit.jupiter.api.io.TempDir;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
@@ -42,34 +40,22 @@ import org.xml.sax.SAXException;
 /**
  * Tests for ZWaveNode serialization into XML
  *
- * @author Sami Salonen
- *
+ * @author Sami Salonen - Initial contribution
  */
-@Execution(ExecutionMode.SAME_THREAD)
 public class ZWaveNodeSerializerTest {
 
-    private Path tempDir;
+    private @TempDir Path tempDir;
     private ZWaveNodeSerializer serializer;
     private String previousUserData;
 
     @BeforeEach
-    public void startup() {
-        try {
-            tempDir = Files.createTempDirectory("openhabzwavetests-");
-        } catch (IOException e) {
-            fail(e);
-            throw new RuntimeException(e);
-        }
+    public void startup() throws IOException {
         previousUserData = System.setProperty(OpenHAB.USERDATA_DIR_PROG_ARGUMENT, tempDir.toString());
         serializer = new ZWaveNodeSerializer();
     }
 
     @AfterEach
     public void cleanup() {
-        try {
-            Files.deleteIfExists(tempDir);
-        } catch (IOException e) {
-        }
         if (previousUserData == null) {
             System.clearProperty(OpenHAB.USERDATA_DIR_PROG_ARGUMENT);
         } else {
@@ -83,8 +69,7 @@ public class ZWaveNodeSerializerTest {
             DocumentBuilder builder = factory.newDocumentBuilder();
             return builder.parse(file);
         } catch (SAXException | IOException | ParserConfigurationException e) {
-            fail(e);
-            throw new RuntimeException(e); // make compiler happy
+            throw new IllegalStateException("Failed to create Document from XML in: " + file, e);
         }
     }
 
@@ -111,8 +96,7 @@ public class ZWaveNodeSerializerTest {
         try {
             nodes = (NodeList) xPath.compile(expression).evaluate(doc, XPathConstants.NODESET);
         } catch (XPathExpressionException e) {
-            fail(e);
-            throw new IllegalStateException(e); // making compiler happy
+            throw new IllegalStateException("Failed to compile XPath expression: " + expression, e);
         }
         String[] result = new String[nodes.getLength()];
         for (int i = 0; i < nodes.getLength(); i++) {
