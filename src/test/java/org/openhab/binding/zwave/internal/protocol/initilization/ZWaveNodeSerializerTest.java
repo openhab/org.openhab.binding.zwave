@@ -49,7 +49,7 @@ public class ZWaveNodeSerializerTest {
     private String previousUserData;
 
     @BeforeEach
-    public void startup() throws IOException {
+    public void startup() {
         previousUserData = System.setProperty(OpenHAB.USERDATA_DIR_PROG_ARGUMENT, tempDir.toString());
         serializer = new ZWaveNodeSerializer();
     }
