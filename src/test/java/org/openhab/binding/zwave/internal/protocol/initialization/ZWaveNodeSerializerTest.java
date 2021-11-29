@@ -1,4 +1,4 @@
-package org.openhab.binding.zwave.internal.protocol.initilization;
+package org.openhab.binding.zwave.internal.protocol.initialization;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,12 +18,9 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-import org.junit.jupiter.api.parallel.Execution;
-import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
@@ -31,9 +28,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmSensor
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveClimateControlScheduleCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
-import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeSerializer;
-import org.openhab.core.OpenHAB;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -44,26 +38,14 @@ import org.xml.sax.SAXException;
  *
  * @author Sami Salonen - Initial contribution
  */
-@Execution(ExecutionMode.SAME_THREAD)
 public class ZWaveNodeSerializerTest {
 
     private @TempDir Path tempDir;
     private ZWaveNodeSerializer serializer;
-    private String previousUserData;
 
     @BeforeEach
     public void startup() {
-        previousUserData = System.setProperty(OpenHAB.USERDATA_DIR_PROG_ARGUMENT, tempDir.toString());
-        serializer = new ZWaveNodeSerializer();
-    }
-
-    @AfterEach
-    public void cleanup() {
-        if (previousUserData == null) {
-            System.clearProperty(OpenHAB.USERDATA_DIR_PROG_ARGUMENT);
-        } else {
-            System.setProperty(OpenHAB.USERDATA_DIR_PROG_ARGUMENT, previousUserData);
-        }
+        serializer = new ZWaveNodeSerializer(tempDir.toString());
     }
 
     private Document domFromXML(File file) {
@@ -78,11 +60,20 @@ public class ZWaveNodeSerializerTest {
 
     private static void assertEndpointSomewhatEqual(ZWaveEndpoint e1, ZWaveEndpoint e2) {
         assertEquals(e1.getEndpointId(), e2.getEndpointId());
-        assertEquals(e1.getDeviceClass(), e2.getDeviceClass());
+
+        assertEquals(e1.getDeviceClass().getBasicDeviceClass().name(),
+                e2.getDeviceClass().getBasicDeviceClass().name());
+        assertEquals(e1.getDeviceClass().getGenericDeviceClass().name(),
+                e2.getDeviceClass().getGenericDeviceClass().name());
+        assertEquals(e1.getDeviceClass().getSpecificDeviceClass().name(),
+                e2.getDeviceClass().getSpecificDeviceClass().name());
+
         // compare command classes
         assertArrayEquals(
-                e1.getCommandClasses().stream().map(c -> c.getCommandClass()).collect(Collectors.toList()).toArray(),
-                e2.getCommandClasses().stream().map(c -> c.getCommandClass()).collect(Collectors.toList()).toArray());
+                e1.getCommandClasses().stream().map(c -> c.getCommandClass().name()).sorted()
+                        .collect(Collectors.toList()).toArray(),
+                e2.getCommandClasses().stream().map(c -> c.getCommandClass().name()).sorted()
+                        .collect(Collectors.toList()).toArray());
         assertArrayEquals(
                 e1.getCommandClasses().stream().map(c -> c.getInstances()).collect(Collectors.toList()).toArray(),
                 e2.getCommandClasses().stream().map(c -> c.getInstances()).collect(Collectors.toList()).toArray());

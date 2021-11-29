@@ -52,9 +52,13 @@ public class ZWaveNodeSerializer {
      * Constructor. Creates a new instance of the {@link ZWaveNodeSerializer} class.
      */
     public ZWaveNodeSerializer() {
+        this(OpenHAB.getUserDataFolder());
+    }
+
+    ZWaveNodeSerializer(String userDataFolder) {
         logger.trace("Initializing ZWaveNodeSerializer.");
 
-        folderName = OpenHAB.getUserDataFolder() + "/" + ZWaveBindingConstants.BINDING_ID;
+        this.folderName = userDataFolder + "/" + ZWaveBindingConstants.BINDING_ID;
 
         final File folder = new File(folderName);
 
