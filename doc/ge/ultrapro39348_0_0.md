@@ -1,19 +1,19 @@
 ---
 layout: documentation
-title: UltraPro 39348/ZW4008 - ZWave
+title: ZW4008 / GE39348 - ZWave
 ---
 
 {% include base.html %}
 
-# UltraPro 39348/ZW4008 UltraPro 39348/ZW4008 In Wall Switch
-This describes the Z-Wave device *UltraPro 39348/ZW4008*, manufactured by *Jasco Products* with the thing type UID of ```ge_ultrapro39348_00_000```.
+# ZW4008 / GE39348 UltraPro 39348/ZW4008 In Wall Switch
+This describes the Z-Wave device *ZW4008 / GE39348*, manufactured by *Jasco Products* with the thing type UID of ```ge_ultrapro39348_00_000```.
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
-![UltraPro 39348/ZW4008 product image](https://opensmarthouse.org/zwavedatabase/1322/image/)
+![ZW4008 / GE39348 product image](https://opensmarthouse.org/zwavedatabase/1322/image/)
 
 
-The UltraPro 39348/ZW4008 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
+The ZW4008 / GE39348 supports routing. This allows the device to communicate using other routing enabled devices as intermediate routers.  This device is also able to participate in the routing of data between other devices in the mesh network.
 
 ## Overview
 
@@ -37,7 +37,7 @@ Now you have complete control to turn your fixture ON/OFF according to groups, 
 
 ## Channels
 
-The following table summarises the channels available for the UltraPro 39348/ZW4008 -:
+The following table summarises the channels available for the ZW4008 / GE39348 -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
@@ -69,7 +69,7 @@ This channel provides the scene, and the event as a decimal value in the form ``
 
 ## Device Configuration
 
-The following table provides a summary of the 1 configuration parameters available in the UltraPro 39348/ZW4008.
+The following table provides a summary of the 1 configuration parameters available in the ZW4008 / GE39348.
 Detailed information on each parameter can be found in the sections below.
 
 | Param | Name  | Description |
@@ -91,7 +91,7 @@ This parameter has the configuration ID ```config_3_1``` and is of type ```INTEG
 
 Association groups allow the device to send unsolicited reports to the controller, or other devices in the network. Using association groups can allow you to eliminate polling, providing instant feedback of a device state change without unnecessary network traffic.
 
-The UltraPro 39348/ZW4008 supports 3 association groups.
+The ZW4008 / GE39348 supports 3 association groups.
 
 ### Group 1: Lifeline
 

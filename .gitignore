@@ -1,3 +1,8 @@
+.idea
+.vscode
+.DS_Store
+*.iml
 /.settings/org.eclipse.*
 target
 OSGI-INF/*.xml
+.java-version
