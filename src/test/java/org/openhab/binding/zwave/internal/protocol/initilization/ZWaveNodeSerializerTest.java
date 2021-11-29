@@ -22,6 +22,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmCommandClass;
@@ -42,6 +44,7 @@ import org.xml.sax.SAXException;
  *
  * @author Sami Salonen - Initial contribution
  */
+@Execution(ExecutionMode.SAME_THREAD)
 public class ZWaveNodeSerializerTest {
 
     private @TempDir Path tempDir;
