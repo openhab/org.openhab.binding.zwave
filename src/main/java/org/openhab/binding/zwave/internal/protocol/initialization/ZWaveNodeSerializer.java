@@ -40,7 +40,7 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
 /**
  * ZWaveNodeSerializer class. Serializes nodes to XML and back again.
  *
- * @author Chris Jackson
+ * @author Chris Jackson - Initial contribution
  * @author Jan-Willem Spuij
  */
 public class ZWaveNodeSerializer {
@@ -52,9 +52,13 @@ public class ZWaveNodeSerializer {
      * Constructor. Creates a new instance of the {@link ZWaveNodeSerializer} class.
      */
     public ZWaveNodeSerializer() {
+        this(OpenHAB.getUserDataFolder());
+    }
+
+    ZWaveNodeSerializer(String userDataFolder) {
         logger.trace("Initializing ZWaveNodeSerializer.");
 
-        folderName = OpenHAB.getUserDataFolder() + "/" + ZWaveBindingConstants.BINDING_ID;
+        folderName = userDataFolder + "/" + ZWaveBindingConstants.BINDING_ID;
 
         final File folder = new File(folderName);
 
@@ -104,15 +108,15 @@ public class ZWaveNodeSerializer {
      */
     public void serializeNode(ZWaveNode node) {
         synchronized (stream) {
-            // Don't serialise if the stage is not at least finished static
-            // If we do serialise when we haven't completed the static stages
+            // Don't serialize if the stage is not at least finished static
+            // If we do serialize when we haven't completed the static stages
             // then when the binding starts it will have incomplete information!
             if (node.getNodeInitStage().isStaticComplete() == false) {
                 logger.debug("NODE {}: Serialise aborted as static stages not complete", node.getNodeId());
                 return;
             }
 
-            File file = new File(this.folderName,
+            File file = new File(folderName,
                     String.format("network_%08x__node_%d.xml", node.getHomeId(), node.getNodeId()));
             BufferedWriter writer = null;
 
