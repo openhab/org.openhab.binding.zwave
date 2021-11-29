@@ -94,10 +94,9 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
     }
 
     @Test
-    public void convertRGBW() {
+    public void convertString() {
         ZWaveColorConverter converter = new ZWaveColorConverter(null);
         Map<String, String> args = new HashMap<>();
-        args.put("colorMode", "RGBW");
         ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.StringType,
                 CommandClass.COMMAND_CLASS_SWITCH_COLOR.toString(), 0, args);
 
