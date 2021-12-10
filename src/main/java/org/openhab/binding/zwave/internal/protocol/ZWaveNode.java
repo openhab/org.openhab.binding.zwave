@@ -1493,7 +1493,9 @@ public class ZWaveNode {
             if (isInitializationComplete() == true) {
             logger.debug("NODE {}: Go back to sleep, count {}", getNodeId(), count);
             }
-            logger.warn("NODE {}: Initialization or Heal not complete, but sleep anyway, state {} count {}", getNodeId(), getNodeInitStage(), count);
+            else {
+            logger.info("NODE {}: Initialization or Heal timed out, sleep message-rewake to complete, state {} count {}", getNodeId(), getNodeInitStage(), count);
+            }
             if (wakeUpCommandClass != null) {
                 ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
                         0);
