@@ -69,6 +69,7 @@ public abstract class ZWaveCommandClassConverter {
         temp.put(CommandClass.COMMAND_CLASS_SENSOR_ALARM, ZWaveAlarmSensorConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SENSOR_BINARY, ZWaveBinarySensorConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL, ZWaveMultiLevelSensorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SOUND_SWITCH, ZWaveSoundSwitchConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SWITCH_BINARY, ZWaveBinarySwitchConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, ZWaveMultiLevelSwitchConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, ZWaveThermostatFanModeConverter.class);
