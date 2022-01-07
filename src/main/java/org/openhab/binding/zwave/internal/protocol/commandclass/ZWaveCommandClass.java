@@ -551,6 +551,7 @@ public abstract class ZWaveCommandClass {
         COMMAND_CLASS_PROTECTION(0x75, ZWaveProtectionCommandClass.class),
         COMMAND_CLASS_LOCK(0x76, ZWaveLockCommandClass.class),
         COMMAND_CLASS_NODE_NAMING(0x77, ZWaveNodeNamingCommandClass.class),
+        COMMAND_CLASS_SOUND_SWITCH(0x79, ZWaveSoundSwitchCommandClass.class),
         COMMAND_CLASS_FIRMWARE_UPDATE_MD(0x7A, ZWaveFirmwareUpdateCommandClass.class),
         COMMAND_CLASS_GROUPING_NAME(0x7B, ZWaveGroupingNameCommandClass.class),
         COMMAND_CLASS_REMOTE_ASSOCIATION_ACTIVATE(0x7C, null),
