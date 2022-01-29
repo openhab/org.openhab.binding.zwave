@@ -477,7 +477,7 @@ Output 6 can be controlled via Z-Wave or Input 6.<br /> <h1>Overview</h1><p>Choo
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 RELAY OUTPUT. Basic Report On/Off when relay output is activated.<br /> <h1>Overview</h1><p>Lifeline. Lifeline group for the entire module.<br />Sends <strong>Basic Report On / Off</strong> when relay output 1 is activated.<br />This group is typically used for reporting the actual status of the output to the Controller to let the Controller visualize the output in its user interface.</p>

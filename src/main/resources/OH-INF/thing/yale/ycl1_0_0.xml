@@ -122,7 +122,7 @@ Time after the wrong tag limit being exceeded before re-trying<br /> <h1>Overvie
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Z-Wave Plus Lifeline</description>
       </parameter>

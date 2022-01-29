@@ -76,7 +76,7 @@ Wall Plug Switch<br /> <h1>Overview</h1><p>Plug­in switch, controls lighting an
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p>The plug will send it's status to the node in this group whenever the status of the plug changes.<br />Lifeline is normally used to send the plug status to the main controller / gateway.</p>

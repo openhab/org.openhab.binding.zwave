@@ -200,7 +200,7 @@ How much the Lux Level must change<br /> <h1>Overview</h1><p>How much the Lux Le
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><ul> <li>NOTIFICATION_REPORT</li> <li>COMMAND_CLASS_SENSOR_BINARY_V2</li> <li>COMMAND_CLASS_SENSOR_MULTILEVEL_V7</li> <li>BATTERY_REPORT</li> <li>DEVICE_RESET_LOCALLY_NOTIFICATION</li> </ul>

@@ -262,7 +262,7 @@ Sleep Current Config<br /> <h1>Overview</h1><p><i>This configuration is used to 
         <multipleLimit>4</multipleLimit>
       </parameter>
 
-      <parameter name="group_5" type="text" groupName="association">
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Time</label>
       </parameter>
 

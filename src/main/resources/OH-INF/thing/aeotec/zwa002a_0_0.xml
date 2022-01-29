@@ -160,7 +160,7 @@ Ramp rate in 100ms<br /> <h1>Overview</h1><p>Ramp rate when dimming using Multil
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
       </parameter>
 

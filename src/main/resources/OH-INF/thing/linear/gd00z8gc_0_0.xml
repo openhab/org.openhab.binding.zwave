@@ -54,7 +54,7 @@ Garage Door Opener<br /> <h1>Overview</h1><p>A garage door remote command transc
       </parameter-group>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
       </parameter>
 

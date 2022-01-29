@@ -237,22 +237,22 @@ Duration (min) the device flashes after a communication error.<br /> <h1>Overvie
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Wheel position change</label>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Current leakage on relay</label>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Power level change</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p>The new power reading is sent if the delta of the change is greater than the defined minimum variation.</p>
         ]]></description>
       </parameter>
 
-      <parameter name="group_4" type="text" groupName="association">
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
         <label>4: Over-current detection</label>
       </parameter>
 

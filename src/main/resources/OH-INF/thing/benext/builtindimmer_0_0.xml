@@ -203,14 +203,14 @@ All nodes in this group will receive a BASIC_SET frame<br /> <h1>Overview</h1><p
         <multipleLimit>8</multipleLimit>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Group 2</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p>The node associated in this group will receive a SWITCH_MULTILEVEL_REPORT frame every time the level of light is changed, where the value represents the (changed) dim level. The status is reported after every change that means manual but also if changed by Z-Wave.</p> <p>The node in this group will also received the (auto) METER_REPORT (see § COMMAND_CLASS_METER à unsolicited METER_REPORT for more information about this feature).</p> <p>It is most likely that a controller or screen is associated in this group to report (unsolicited) any changes to the light.</p>
         ]]></description>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Group 3</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p>If configured that the control mode is extern only (configuration param3 à value 1) then a BASIC_SET frame is sent to the node in this group when the button is changed. Note that the light of the Built-in Dimmer is not switched on/off but instead the BASIC_SET frame is sent, because the Built-in Dimmer doesn’t know what the extern status is the value of the BASIC_SET frame toggles between the values 0 and 255.</p> <p>It is most likely that a Gateway (controller) is associated in this group. A Gateway can handle upon the received frame. With a Gateway controlled network it possible to add multiple functionalities to the button of the Builtin Dimmer.</p>

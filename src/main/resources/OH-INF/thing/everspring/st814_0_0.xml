@@ -198,7 +198,7 @@ Sets the humidity change causing a sensor report.<br /> <h1>Overview</h1><p>0 = 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Reports</label>
       </parameter>
 

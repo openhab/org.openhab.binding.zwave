@@ -330,21 +330,21 @@ Endpoint 3<br /> <h1>Overview</h1><p>Multi-Channel Command is a good way to cont
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Relay 1 + 2</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p><br /></p>
         ]]></description>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Relay 1</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p><br /></p>
         ]]></description>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Relay 2</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p><br /></p>

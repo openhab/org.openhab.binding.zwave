@@ -230,7 +230,7 @@ AUTO report by time interval.<br /> <h1>Overview</h1><ul><li>0 = Disabled or</li
         <multipleLimit>4</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Controller Update</label>
       </parameter>
 

@@ -47,11 +47,11 @@ Z-Wave Plus Smart Switch Dual Toggle<br /> <h1>Overview</h1><p>Automates wall sw
       </parameter-group>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
       </parameter>
 
-      <parameter name="group_2" type="text" groupName="association">
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
         <label>2: Basic Reports</label>
       </parameter>
 

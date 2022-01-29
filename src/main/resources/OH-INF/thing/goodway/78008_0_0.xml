@@ -167,7 +167,7 @@ BIT0: sensor1 (S1), BIT1: sensor2 (S2)<br /> <h1>Overview</h1><p>BIT0: sensor1 (
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Reports</label>
         <description>All autoreports send to Group 1</description>
       </parameter>

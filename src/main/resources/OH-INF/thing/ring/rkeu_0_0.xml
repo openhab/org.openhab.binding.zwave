@@ -271,7 +271,7 @@ Z-Wave Sleep Timeout<br /> <h1>Overview</h1><p>Time to wait after receiving ZW f
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Controller Updates<br /> <h1>Overview</h1><p>1. Notification Report. Keypad will send Notification Report to the associated nodes when AC power / PIR sensor is triggered /system software failure. <br />2. Entry Control Notification. Keypad will send Entry Control Notification to the associated nodes when the mode button is triggered. <br />3. Battery Report. Keypad will send Battery Report when the battery level is low and the battery report’s value is 0xFF or Hearbeat. <br />4. Device Reset Locally Notification<br /></p>

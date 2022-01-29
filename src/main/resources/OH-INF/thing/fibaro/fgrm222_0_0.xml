@@ -350,7 +350,7 @@ Only applies to momentary switches<br /> <h1>Overview</h1><p><strong>Roller Shut
         <multipleLimit>16</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Controller Updates</label>
       </parameter>
 

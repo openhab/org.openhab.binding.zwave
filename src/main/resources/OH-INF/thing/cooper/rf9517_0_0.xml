@@ -67,7 +67,7 @@ Accessory Switch<br /> <h1>Overview</h1><p>Aspire RF Accessory Switch Compatible
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_127" type="text" groupName="association">
+      <parameter name="group_127" type="text" groupName="association" multiple="true">
         <label>127: Group 255</label>
       </parameter>
 

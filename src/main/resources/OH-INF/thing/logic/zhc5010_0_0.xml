@@ -512,7 +512,7 @@ Control of association groups for device 4 (button #4).<br /> <h1>Overview</h1><
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
       </parameter>
 

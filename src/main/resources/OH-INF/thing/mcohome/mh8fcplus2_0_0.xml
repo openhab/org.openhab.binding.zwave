@@ -139,7 +139,7 @@ Factory Setting<br /> <h1>Overview</h1><p>0x55 Restore the factory setting (writ
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>For sending temperature, working mode, notifications, etc.</description>
       </parameter>

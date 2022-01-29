@@ -244,7 +244,7 @@ Factory setting<br /> <h1>Overview</h1><p>0x55 restore factory setting</p>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>1st AG: reports device’s dimming state. It supports only one Node ID. A controller/gateway SHOULD be associated to this AG.</description>
       </parameter>

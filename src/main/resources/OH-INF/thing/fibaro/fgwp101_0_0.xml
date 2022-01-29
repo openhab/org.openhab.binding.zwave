@@ -342,7 +342,7 @@ This function allows for turning off the controlled device...<br /> <h1>Overview
         <multipleLimit>10</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Controller Updates</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p>Reports the device status and allows to assign single device only (the main controller by default).</p> <p>Fibaro Association Group Info</p> <p>3rd group is reserved solely for the controller and hence only 1 node can be assigned.</p>

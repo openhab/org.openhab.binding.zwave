@@ -85,7 +85,7 @@ Tick length in 10ms units<br /> <h1>Overview</h1><p>Indicates the time duration 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p>Association:</p> <p>1. PD-100 supports group #1 for lifeline communication.</p> <p>2. PD-100 supports a maximum of 1 node for group #1.</p> <p>3. Lifeline association only supports the "manual reset" event.</p> <p>4. For instructions on how to "set lifeline associate," please refer to your wireless controller instructions.</p>

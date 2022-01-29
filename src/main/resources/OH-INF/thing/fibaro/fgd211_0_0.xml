@@ -249,7 +249,7 @@ Change of control impulse length.<br /> <h1>Overview</h1><p>This function will e
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Controller Updates</label>
       </parameter>
 

@@ -215,7 +215,7 @@ Micro Dimmer<br /> <h1>Overview</h1><p>Micro Dimmer is a Z-Wave Plus enabled in-
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
       </parameter>
 
