@@ -98,7 +98,7 @@ Night Light Setup<br /> <h1>Overview</h1><p>This parameter can access you to set
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="-127" max="128">
         <label>8: State Restore</label>
         <description><![CDATA[
 Power Failure Restore State Setup<br /> <h1>Overview</h1><p>This parameter can access you to set the switch to be on/off after power failure.</p><p><b>Operation: quickly press 8 times to change this parameter.</b></p><p>(LED flashes 3 times when the configuration parameter changed.)</p>

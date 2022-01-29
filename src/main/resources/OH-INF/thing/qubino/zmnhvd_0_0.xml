@@ -186,7 +186,7 @@ Input 1 Switch Type<br /> <h1>Overview</h1><p>By this parameter the user can set
       </parameter>
 
       <parameter name="config_66_1" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="-127" max="128">
         <label>66: Dimming time when key pressed</label>
         <default>3</default>
         <limitToOptions>false</limitToOptions>

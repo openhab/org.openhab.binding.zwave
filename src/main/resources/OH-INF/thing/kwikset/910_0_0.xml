@@ -109,7 +109,7 @@ SKU (length = 8 bytes)<br /> <h1>Overview</h1><p>The configuration parameters 33
       </parameter>
 
       <parameter name="config_35_2" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="65535">
+                 min="-32767" max="32768">
         <label>35: Lock Type</label>
         <description><![CDATA[
 Report the Unique ID of the lock type<br /> <h1>Overview</h1><p>The configuration Parameter 35 is used as read-only to report the Unique ID of the lock type.</p> <table><tr><td><strong>Released Board ID</strong></td> <td><strong>Unique ID</strong></td> </tr><tr><td>910 Z-wave (Legacy, FW 3.4)</td> <td>0x00 0x00</td> </tr><tr><td>912 Z-wave (Legacy, FW 3.2)</td> <td>0x00 0x00</td> </tr><tr><td>910 Z-wave</td> <td>0x02 0x36</td> </tr><tr><td>912 Z-wave</td> <td>0x03 0x36</td> </tr><tr><td>914 Z-wave</td> <td>0x04 0x36</td> </tr><tr><td>916 Z-wave</td> <td>0x06 0x42</td> </tr></table>

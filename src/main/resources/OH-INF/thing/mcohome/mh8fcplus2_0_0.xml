@@ -119,7 +119,7 @@ Upload the difference<br /> <h1>Overview</h1><p>Base on 0.1C unit. 5 by default.
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="10" max="65535">
+                 min="-32767" max="32768">
         <label>4: Upload time interval regularly</label>
         <description><![CDATA[
 Upload time interval in seconds (10-65535)<br /> <h1>Overview</h1><p>Base is 1s unit. It is suggested to be set above 30s, 0x000A to 0xFFFF</p>

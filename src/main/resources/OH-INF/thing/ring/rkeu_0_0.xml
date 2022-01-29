@@ -255,7 +255,7 @@ Z-Wave Sleep Timeout<br /> <h1>Overview</h1><p>Time to wait after receiving ZW f
       </parameter>
 
       <parameter name="config_23_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="2147483647">
         <label>23: Parameter 23</label>
         <description>Bit mask data for supported languages</description>
         <default>0</default>

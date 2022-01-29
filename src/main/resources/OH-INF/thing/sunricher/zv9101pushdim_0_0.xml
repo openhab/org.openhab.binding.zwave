@@ -79,7 +79,7 @@ basic report to the Lifeline when the load state changed<br /> <h1>Overview</h1>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="-127" max="128">
         <label>4: Default fade time</label>
         <description><![CDATA[
 Default fade time (unit is second)<br /> <h1>Overview</h1><p>Default fade time (unit is second, this value has the same function as Duration of Multilevel) Valid value: 0x00 - 0xFF</p> <table><tr><td>Value</td> <td>Description</td> </tr><tr><td>0-127</td> <td>1 second to 127 seconds in 1 second resolution</td> </tr><tr><td>128-254</td> <td>1 minute to 127 minutes in 1 minute resolution</td> </tr><tr><td>255</td> <td>Factory default duration. (1 sec.)</td> </tr></table>

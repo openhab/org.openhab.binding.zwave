@@ -141,7 +141,7 @@ Frequency Region<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_3_4" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="2147483647">
         <label>3: Hardware and Software Versions</label>
         <description><![CDATA[
 Hardware and Software Versions<br /> <h1>Overview</h1><p><br /></p>
@@ -151,7 +151,7 @@ Hardware and Software Versions<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="2147483647">
         <label>4: Energy Consumption, kW</label>
         <description><![CDATA[
 Energy Consumption, kW<br /> <h1>Overview</h1><p><br /></p>
