@@ -434,8 +434,9 @@ Node ID of external battery powered room sensor<br /> <h1>Overview</h1><p>If  d
         <multipleLimit>16</multipleLimit>
       </parameter>
 
-      <parameter name="group_6" type="text" groupName="association">
+      <parameter name="group_6" type="text" groupName="association" multiple="true">
         <label>6: Default Reporting Group</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

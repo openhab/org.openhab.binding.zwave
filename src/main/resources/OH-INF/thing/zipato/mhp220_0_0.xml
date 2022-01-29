@@ -327,9 +327,10 @@ Operation report from Switch2 to Association Group 4<br /> <h1>Overview</h1><p>O
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Reports device’s dimming state</label>
         <description>reports device’s dimming state. It supports only one Node ID. A controller / gateway SHOULD be associated to this AG.</description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

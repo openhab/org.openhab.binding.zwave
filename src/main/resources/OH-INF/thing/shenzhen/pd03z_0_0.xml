@@ -202,11 +202,12 @@ Define the calibrated scale for ambient light intensity<br /> <h1>Overview</h1><
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Is assigned to the device status - OPEN/CLOSED. It enables the sensor to send reports and readings to Z-Wave Controller or Z-Wave Gateway whenever the sensor is triggered.<br /> <h1>Overview</h1><ul> <li>NOTIFICATION_REPORT</li> <li>COMMAND_CLASS_SENSOR_BINARY_V2</li> <li>COMMAND_CLASS_SENSOR_MULTILEVEL_V7</li> <li>BATTERY_REPORT</li> <li>DEVICE_RESET_LOCALLY_NOTIFICATION</li> </ul>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

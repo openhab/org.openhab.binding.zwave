@@ -542,11 +542,12 @@ Hour and Minutes<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Reports full state of the device and is used to communicate with the Z-Wave gateway.<br /> <h1>Overview</h1><p>≡ Note: It is not recommended to modify this group.</p><p>≡ Note: For correct operating in Fibaro gateways, the Single Channel Association should be removed from the device LifeLine (EndPoint 0 Group 1).</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

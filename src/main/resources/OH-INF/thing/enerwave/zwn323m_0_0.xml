@@ -139,9 +139,10 @@ Minimum change in wattage report<br /> <h1>Overview</h1><p>0-255: 0.0-25.5W</p>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Notifications</label>
         <description>Lifeline</description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
