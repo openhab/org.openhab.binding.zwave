@@ -96,7 +96,7 @@ Defines if internal magnet sensor or the external terminal input is detected<br 
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="1" max="31">
+                 min="1" max="1">
         <label>3: Visual LED Indications</label>
         <description><![CDATA[
 Defines when the red LED will indicate events.<br /> <h1>Overview</h1><p>Disabling all indications may extend battery life.</p> <table><tr><td><strong>Setting</strong></td> <td><strong>Description</strong></td> </tr><tr><td>Byte 1: 00000001 </td> <td>No Indications</td> </tr><tr><td>Byte 1: 00000010 </td> <td>Open/Close Status Change </td> </tr><tr><td>Byte 1: 00000100 </td> <td>Wake Up </td> </tr><tr><td>Byte 1: 00010000</td> <td>Device Tampering </td> </tr></table>
@@ -145,7 +145,7 @@ Sending a BASIC command to all devices of Association Group 2<br /> <h1>Overview
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>7: BASIC command value sent to 2nd Assoc Group on On</label>
         <description>BASIC command value sent to 2nd Association Group on ‘On‘ event</description>
         <default>255</default>
@@ -153,7 +153,7 @@ Sending a BASIC command to all devices of Association Group 2<br /> <h1>Overview
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>8: BASIC command value sent to 2nd Assoc Group on Off</label>
         <description>BASIC command value sent to 2nd Association Group on ‘Off‘ event</description>
         <default>0</default>
@@ -161,7 +161,7 @@ Sending a BASIC command to all devices of Association Group 2<br /> <h1>Overview
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="0" max="32400">
+                 min="0" max="0">
         <label>9: Time Delay of ‘On‘ command frame</label>
         <description>Time Delay of ‘On‘ command frame</description>
         <default>0</default>
@@ -169,7 +169,7 @@ Sending a BASIC command to all devices of Association Group 2<br /> <h1>Overview
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
-                 min="0" max="32400">
+                 min="0" max="0">
         <label>10: Time Delay of ‘Off‘ command frame</label>
         <description>Time Delay of ‘Off‘ command frame</description>
         <default>0</default>
@@ -177,7 +177,7 @@ Sending a BASIC command to all devices of Association Group 2<br /> <h1>Overview
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="0" max="32400">
+                 min="0" max="0">
         <label>11: Delay of Tamper Alarm Cancellation</label>
         <description>Delay of Tamper Alarm Cancellation</description>
         <default>0</default>
@@ -218,7 +218,7 @@ Sending a BASIC command to all devices of Association Group 2<br /> <h1>Overview
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>15: Tilt Sensor Sensitivity</label>
         <description>Tilt Sensor Sensitivity</description>
         <default>50</default>

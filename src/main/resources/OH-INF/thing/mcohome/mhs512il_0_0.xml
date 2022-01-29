@@ -66,7 +66,7 @@ MCOHome Touch Dual Switch Relay<br /> <h1>Overview</h1><p>Touch Panel Switch is 
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>1: State saved after pwr failure</label>
         <description><![CDATA[
 State saved after pwr failure<br /> <h1>Overview</h1><p>0: not saved, switch will be off when powered again<br />1: saved, switch will keep the same state when powered again</p>
@@ -76,7 +76,7 @@ State saved after pwr failure<br /> <h1>Overview</h1><p>0: not saved, switch wil
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+                 min="0" max="0">
         <label>3: LED Backlit brightness level</label>
         <description>LED Backlit brightness level</description>
         <default>10</default>
@@ -84,7 +84,7 @@ State saved after pwr failure<br /> <h1>Overview</h1><p>0: not saved, switch wil
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>4: Scene respond</label>
         <description><![CDATA[
 Scene respond<br /> <h1>Overview</h1><p>0: All switches respond Scene CC<br />1: only S1 responds</p>
@@ -94,7 +94,7 @@ Scene respond<br /> <h1>Overview</h1><p>0: All switches respond Scene CC<br />1:
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>5: ALL ON/ALL OFF</label>
         <description><![CDATA[
 ALL ON/ALL OFF<br /> <h1>Overview</h1><p>0: forbid ALL ON, forbid ALL OFF<br />1: forbid ALL ON, allow ALL OFF<br />2: allow ALL ON, forbid ALL OFF<br />255: allow ALL ON, allow ALL OFF</p>

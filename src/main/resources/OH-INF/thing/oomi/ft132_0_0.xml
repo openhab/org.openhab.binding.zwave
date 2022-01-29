@@ -236,7 +236,7 @@ Dual Nano Switch with Energy Metering<br /> <h1>Overview</h1><p>Fantech Dual Nan
       </parameter>
 
       <parameter name="config_91_2" type="integer" groupName="configuration"
-                 min="0" max="60000">
+                 min="0" max="0">
         <label>91: Set the threshold value of wattage.</label>
         <description>Set the threshold value of wattage.</description>
         <default>25</default>
@@ -244,7 +244,7 @@ Dual Nano Switch with Energy Metering<br /> <h1>Overview</h1><p>Fantech Dual Nan
       </parameter>
 
       <parameter name="config_92_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>92: Set the threshold value of percent power</label>
         <description>Set the threshold value of wattage.</description>
         <default>5</default>
@@ -330,7 +330,7 @@ Dual Nano Switch with Energy Metering<br /> <h1>Overview</h1><p>Fantech Dual Nan
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
-                 min="1" max="2147483647">
+                 min="1" max="1">
         <label>111: Automatic report interval for Report group 1.</label>
         <description><![CDATA[
 Automatic report interval for Report group 1.<br /> <h1>Overview</h1><p>Set the interval of automatic report for Report group 1.</p>
@@ -340,7 +340,7 @@ Automatic report interval for Report group 1.<br /> <h1>Overview</h1><p>Set the 
       </parameter>
 
       <parameter name="config_112_4" type="integer" groupName="configuration"
-                 min="1" max="2147483647">
+                 min="1" max="1">
         <label>112: Automatic report interval for Report group 2</label>
         <description><![CDATA[
 Automatic report interval for Report group 2<br /> <h1>Overview</h1><p>Set the interval of automatic report for Report group 2</p>
@@ -350,7 +350,7 @@ Automatic report interval for Report group 2<br /> <h1>Overview</h1><p>Set the i
       </parameter>
 
       <parameter name="config_113_4" type="integer" groupName="configuration"
-                 min="1" max="2147483647">
+                 min="1" max="1">
         <label>113: Automatic report interval for Report group 3</label>
         <description><![CDATA[
 Automatic report interval for Report group 3<br /> <h1>Overview</h1><p>Set the interval of automatic report for Report group 3.</p>

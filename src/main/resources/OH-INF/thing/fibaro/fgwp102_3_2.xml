@@ -129,7 +129,7 @@ Allows to turn off the controlled device in case of exceeding the defined power.
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+                 min="1" max="1">
         <label>10: High priority power report</label>
         <description><![CDATA[
 minimum percentage change in active power<br /> <h1>Overview</h1><p>This parameter determines the minimum percentage change in active power that will result in sending power report to the main controller with the highest priority in the Z-Wave network.</p> <p>By default, the Wall Plug immediately sends the power report if the power load changes by 80%.</p> <p>1-99 - power change in percent</p> <p>100 - reports are disabled</p>
@@ -139,7 +139,7 @@ minimum percentage change in active power<br /> <h1>Overview</h1><p>This paramet
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+                 min="1" max="1">
         <label>11: Standard power report</label>
         <description><![CDATA[
 minimum percentage change in active power<br /> <h1>Overview</h1><p>This parameter determines the minimum percentage change in active power that will result in sending power report to the main controller</p> <p>Compared to parameter 10, the maximum number of reports sent is reduced (parameter 12) to 5 in a specified time interval. In addition, the reports are not sent in mode, which may result in overloading the Z-Wave network.</p> <p>By default changes in power load may be reported up to 5 times per 30 seconds, when power load changes by 15%.</p>
@@ -149,7 +149,7 @@ minimum percentage change in active power<br /> <h1>Overview</h1><p>This paramet
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="5" max="600">
+                 min="5" max="5">
         <label>12: Power reporting interval</label>
         <description><![CDATA[
 defines the time interval of sending at most 5 standard power reports<br /> <h1>Overview</h1><p>This parameter defines the time interval of sending at most 5 standard power reports when the power changes by the value set in parameter 11. The higher the value of parameter 12, the fewer reports the device will send.</p> <p>Settings in second</p> <p>Default: 30s</p>
@@ -209,7 +209,7 @@ Control of „On/Off (Button)” association group (2) devices<br /> <h1>Overvie
       </parameter>
 
       <parameter name="config_21_2" type="integer" groupName="configuration"
-                 min="0" max="24900">
+                 min="0" max="0">
         <label>21: DOWN value - association group (3)</label>
         <description><![CDATA[
 DOWN value - „On/Off (Power)” for association group (3)<br /> <h1>Overview</h1><p>Lower power threshold, used in parameter 23. DOWN value cannot be higher than a value specified in parameter 22.</p> <p>Setting: 0-24900 (0.0-2490.0W, step 0.1W)</p> <p>Default: 300 (30W)</p>
@@ -219,7 +219,7 @@ DOWN value - „On/Off (Power)” for association group (3)<br /> <h1>Overview</
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
-                 min="100" max="25000">
+                 min="100" max="100">
         <label>22: UP value - association group (3)</label>
         <description><![CDATA[
 UP value - „On/Off (Power)” for association group (3)<br /> <h1>Overview</h1><p>Upper power threshold, used in parameter 23. UP value cannot belower than a value specified in parameter 21.</p> <p>Available settings: 100-25000 (10.0-2500.0W, step 0.1W)<br />Default setting: 500 (50W)</p>
@@ -290,7 +290,7 @@ defines how the Wall Plug will respond to alarms<br /> <h1>Overview</h1><p>This 
       </parameter>
 
       <parameter name="config_32_2" type="integer" groupName="configuration"
-                 min="1" max="32400">
+                 min="1" max="1">
         <label>32: Alarm state duration</label>
         <description><![CDATA[
 specifies the duration of alarm state<br /> <h1>Overview</h1><p>This parameter specifies the duration of alarm state. If a device sending an alarm frame through the Z-Wave network sets alarm duration as well, this settings are ignored.</p> <p>Available settings: 1-32400 (in seconds)<br />Default setting: 600 (10min)</p>
@@ -300,7 +300,7 @@ specifies the duration of alarm state<br /> <h1>Overview</h1><p>This parameter s
       </parameter>
 
       <parameter name="config_40_2" type="integer" groupName="configuration"
-                 min="1000" max="30000">
+                 min="1000" max="1000">
         <label>40: Power load for violet colour</label>
         <description><![CDATA[
 determines maximum active power value<br /> <h1>Overview</h1><p>This parameter determines maximum active power value, which when exceeded, causes the LED ring flash violet. Function is active only when parameter 41 is set to 1 or 2.</p> <p>Available settings: 1000-30000 (100.0-3000.0W, step 0.1W)<br />Default setting: 25000 (2500W)</p>

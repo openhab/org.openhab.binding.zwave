@@ -73,7 +73,7 @@ Motion Sensor<br /> <h1>Overview</h1><p>Detect Motion</p>
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration"
-                 min="1" max="60">
+                 min="1" max="1">
         <label>18: PIR Timeout Duration</label>
         <description>PIR Timeout Duration in Minutes</description>
         <default>60</default>

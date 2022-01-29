@@ -67,7 +67,7 @@ Plug-In Smart Dimmer<br /> <h1>Overview</h1><p>Transform any home into a smart h
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="1" max="1">
         <label>7: Dim Steps (From Z-Wave Controller)</label>
         <description><![CDATA[
 Dim Rate Adjustments (From Z-Wave Controller)<br /> <h1>Overview</h1><p>Number of steps or levels</p>
@@ -77,7 +77,7 @@ Dim Rate Adjustments (From Z-Wave Controller)<br /> <h1>Overview</h1><p>Number o
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>8: Dim Timing (From Z-Wave Controller)</label>
         <description><![CDATA[
 Dim Rate Adjustments (From Z-Wave Controller)<br /> <h1>Overview</h1><p>Timing of steps</p>
@@ -87,7 +87,7 @@ Dim Rate Adjustments (From Z-Wave Controller)<br /> <h1>Overview</h1><p>Timing o
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="1" max="1">
         <label>9: Dim Steps (When Manually Controlled)</label>
         <description><![CDATA[
 Dim Rate Adjustments (When Manually Controlled)<br /> <h1>Overview</h1><p>Number of steps or levels</p>
@@ -97,7 +97,7 @@ Dim Rate Adjustments (When Manually Controlled)<br /> <h1>Overview</h1><p>Number
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>10: Dim Timing (When Manually Controlled)</label>
         <description><![CDATA[
 Dim Rate Adjustments (When Manually Controlled)<br /> <h1>Overview</h1><p>Timing of steps</p>
@@ -107,7 +107,7 @@ Dim Rate Adjustments (When Manually Controlled)<br /> <h1>Overview</h1><p>Timing
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="1" max="1">
         <label>11: Dim Steps (All-On/Off Commands)</label>
         <description><![CDATA[
 Dim Rate Adjustments (All-On/Off Commands)<br /> <h1>Overview</h1><p>Dim Rate Adjustments (When Receiving All-On/Off Commands)</p> <p>Number of steps or levels</p>
@@ -117,7 +117,7 @@ Dim Rate Adjustments (All-On/Off Commands)<br /> <h1>Overview</h1><p>Dim Rate Ad
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>12: Dim Rate Adjustments (All-On/Off Command)</label>
         <description><![CDATA[
 Dim Rate Adjustments (All-On/Off Command)<br /> <h1>Overview</h1><p>Dim Rate Adjustments (When Receiving All-On/Off Command)</p> <p>Timing of steps</p>

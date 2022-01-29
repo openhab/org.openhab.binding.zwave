@@ -87,7 +87,7 @@ Door and Window Sensor<br /> <h1>Overview</h1><p>Sensor detects when a door is o
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
-                 min="10" max="50">
+                 min="10" max="10">
         <label>32: Level for Low Battery Alarm</label>
         <description>Adjust the percent of battery left before a low battery level alarm is sent</description>
         <default>20</default>

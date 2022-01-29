@@ -141,7 +141,7 @@ Frequency Region<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_3_4" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>3: Hardware and Software Versions</label>
         <description><![CDATA[
 Hardware and Software Versions<br /> <h1>Overview</h1><p><br /></p>
@@ -151,7 +151,7 @@ Hardware and Software Versions<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>4: Energy Consumption, kW</label>
         <description><![CDATA[
 Energy Consumption, kW<br /> <h1>Overview</h1><p><br /></p>
@@ -161,7 +161,7 @@ Energy Consumption, kW<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+                 min="0" max="0">
         <label>5: Display brightness control</label>
         <description>Display brightness control</description>
         <default>0</default>
@@ -169,7 +169,7 @@ Energy Consumption, kW<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="1" max="10">
+                 min="1" max="1">
         <label>6: Touch buttons sensitivity</label>
         <description><![CDATA[
 Touch buttons sensitivity<br /> <h1>Overview</h1><p>Touch buttons sensitivity. </p><p>1 = Lowest</p><p>10 = Highest</p>
@@ -179,7 +179,7 @@ Touch buttons sensitivity<br /> <h1>Overview</h1><p>Touch buttons sensitivity. 
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>7: Relay output</label>
         <description><![CDATA[
 Relay output NO or NC mode<br /> <h1>Overview</h1><p><br /></p>
@@ -189,7 +189,7 @@ Relay output NO or NC mode<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="3">
+                 min="0" max="0">
         <label>8: External input mode</label>
         <description><![CDATA[
 External input mode<br /> <h1>Overview</h1><p>If Parameter value = 0 no action will be taken (the input state changes will be ignored by the Thermostat logic).</p><p>If Parameter value = 1 the external input will operate in ―Toggle Switch‖ mode: if the external input is shorted (with Sx or N) the Thermostat switches to the operating mode selected in the Parameter 09 and switches to MAN mode with IDLE state (OFF) when the external input is open (released).</p><p>If Parameter value = 2 the external input will operate in ―Toggle Switch Reverse‖ mode: if the external input is shorted the Thermostat switches to MAN mode with IDLE state (OFF) and switches to the operating mode selected in the Parameter 09 when the input is open.</p><p>If Parameter value = 3 the external input will operate in ―Push Button (Momentary Switch)‖ mode: each press of button (shorten of the input) will consistently change the mode to mode selected in the Parameter 09 then to MAN mode with IDLE state.</p>
@@ -204,7 +204,7 @@ External input mode<br /> <h1>Overview</h1><p>If Parameter value = 0 no action w
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="1" max="6">
+                 min="1" max="1">
         <label>9: Mode number</label>
         <description><![CDATA[
 Mode number for external input action<br /> <h1>Overview</h1><p>Mode number for EXT input action. This parameter allows selecting which operating mode the thermostat should go to if the external input is short-circuited.</p> <p>1=COM, 2=TIME, 3=DRY, 4=ECO, 5=VAC, 6=MAN.</p> <p><strong>Note:</strong> When thermostat goes to MAN mode it will be in IDLE state till HEATING key is not pressed manually.</p>
@@ -221,7 +221,7 @@ Mode number for external input action<br /> <h1>Overview</h1><p>Mode number for 
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+                 min="1" max="1">
         <label>10: Floor sensor resistance</label>
         <description><![CDATA[
 Floor Sensor Resistance, kohm<br /> <h1>Overview</h1><p><br /></p>
@@ -230,7 +230,7 @@ Floor Sensor Resistance, kohm<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="1" max="7">
+                 min="1" max="1">
         <label>11: Source sensor</label>
         <description><![CDATA[
 Source sensor<br /> <h1>Overview</h1><p>Source Sensor: <br />1=A, 2=AF, 3=F, 4=FA, 5=t, 6=tA, 7=tF. <br />A=Air sensor, AF - Air sensor + Floor sensor, F - Floor sensor, FA - Floor sensor +Air sensor, t - Time regulator, tA - Time regulator + Air sensor, tF - Time regulator + Floor sensor</p>
@@ -248,7 +248,7 @@ Source sensor<br /> <h1>Overview</h1><p>Source Sensor: <br />1=A, 2=AF, 3=F, 4=F
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="10" max="360">
+                 min="10" max="10">
         <label>12: Air temp min</label>
         <description><![CDATA[
 Air Temperature Minimum in degree, x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 21.5°C = 215</p>
@@ -258,7 +258,7 @@ Air Temperature Minimum in degree, x10<br /> <h1>Overview</h1><p>Centigrade valu
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="20" max="370">
+                 min="20" max="20">
         <label>13: Air temp max</label>
         <description><![CDATA[
 Air Temperature Maximum in degree, x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 27°C = 270</p>
@@ -268,7 +268,7 @@ Air Temperature Maximum in degree, x10<br /> <h1>Overview</h1><p>Centigrade valu
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
-                 min="10" max="360">
+                 min="10" max="10">
         <label>14: Floor temp min</label>
         <description><![CDATA[
 Floor Temperature Minimum in degree, x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 18°C = 180</p>
@@ -278,7 +278,7 @@ Floor Temperature Minimum in degree, x10<br /> <h1>Overview</h1><p>Centigrade va
       </parameter>
 
       <parameter name="config_15_2" type="integer" groupName="configuration"
-                 min="20" max="370">
+                 min="20" max="20">
         <label>15: Floor temp max</label>
         <description><![CDATA[
 Floor Temperature Maximum in degree, x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 32°C = 320</p>
@@ -288,7 +288,7 @@ Floor Temperature Maximum in degree, x10<br /> <h1>Overview</h1><p>Centigrade va
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
-                 min="-100" max="100">
+                 min="-100" max="-100">
         <label>16: Floor temp calibration</label>
         <description><![CDATA[
 Floor Temperature Calibration in degree x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 1.5°C = 15</p>
@@ -298,7 +298,7 @@ Floor Temperature Calibration in degree x10<br /> <h1>Overview</h1><p>Centigrade
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
-                 min="-100" max="100">
+                 min="-100" max="-100">
         <label>17: Air temp calibration</label>
         <description><![CDATA[
 Air Temperature Calibration in degree x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 1.0°C = 10</p>
@@ -308,7 +308,7 @@ Air Temperature Calibration in degree x10<br /> <h1>Overview</h1><p>Centigrade v
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration"
-                 min="2" max="100">
+                 min="2" max="2">
         <label>18: Temp hysteresis</label>
         <description><![CDATA[
 Temperature Hysteresis in degree, x10<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 0.5 = 5</p>
@@ -318,7 +318,7 @@ Temperature Hysteresis in degree, x10<br /> <h1>Overview</h1><p>Centigrade value
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>19: Time by controller</label>
         <description><![CDATA[
 Time correction by controller<br /> <h1>Overview</h1><p><br /></p>
@@ -341,7 +341,7 @@ Time format<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
-                 min="1" max="7">
+                 min="1" max="1">
         <label>21: Week day</label>
         <description><![CDATA[
 Manually set week day<br /> <h1>Overview</h1><p><br /></p>
@@ -351,7 +351,7 @@ Manually set week day<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
-                 min="0" max="2359">
+                 min="0" max="0">
         <label>22: Time</label>
         <description><![CDATA[
 Time: Hour and Minutes<br /> <h1>Overview</h1><p><br /></p>
@@ -361,7 +361,7 @@ Time: Hour and Minutes<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_23_2" type="integer" groupName="configuration"
-                 min="10" max="240">
+                 min="10" max="10">
         <label>23: Time reg on</label>
         <description><![CDATA[
 Time Regulation ON time, min<br /> <h1>Overview</h1><p><br /></p>
@@ -371,7 +371,7 @@ Time Regulation ON time, min<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_24_2" type="integer" groupName="configuration"
-                 min="10" max="240">
+                 min="10" max="10">
         <label>24: Time reg off</label>
         <description><![CDATA[
 Time Regulation OFF time, min<br /> <h1>Overview</h1><p><br /></p>
@@ -381,7 +381,7 @@ Time Regulation OFF time, min<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration"
-                 min="5" max="90">
+                 min="5" max="5">
         <label>25: Dry time</label>
         <description><![CDATA[
 Dry time<br /> <h1>Overview</h1><p><br /></p>
@@ -391,14 +391,14 @@ Dry time<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_26_1" type="integer" groupName="configuration"
-                 min="1" max="6">
+                 min="1" max="1">
         <label>26: Mode After Dry mode</label>
         <description>Mode After Dry mode</description>
         <default>1</default>
       </parameter>
 
       <parameter name="config_41_2" type="integer" groupName="configuration"
-                 min="0" max="2359">
+                 min="0" max="0">
         <label>41: Morning start time</label>
         <description><![CDATA[
 Morning start time<br /> <h1>Overview</h1><p>Morning start time. <br />Format: HHMM. e.g.08:00 should be sent as 0800</p>
@@ -407,7 +407,7 @@ Morning start time<br /> <h1>Overview</h1><p>Morning start time. <br />Format: H
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
-                 min="0" max="2359">
+                 min="0" max="0">
         <label>42: Day start time</label>
         <description><![CDATA[
 Day start time<br /> <h1>Overview</h1><p>Day start time. Format: HHMM.</p>
@@ -416,7 +416,7 @@ Day start time<br /> <h1>Overview</h1><p>Day start time. Format: HHMM.</p>
       </parameter>
 
       <parameter name="config_43_2" type="integer" groupName="configuration"
-                 min="0" max="2359">
+                 min="0" max="0">
         <label>43: Evening start time</label>
         <description><![CDATA[
 Evening start time<br /> <h1>Overview</h1><p>Evening start time. Format: HHMM.</p>
@@ -426,7 +426,7 @@ Evening start time<br /> <h1>Overview</h1><p>Evening start time. Format: HHMM.</
       </parameter>
 
       <parameter name="config_44_2" type="integer" groupName="configuration"
-                 min="0" max="2359">
+                 min="0" max="0">
         <label>44: Night Start time</label>
         <description><![CDATA[
 Night Start time<br /> <h1>Overview</h1><p>Night start time. Format: HHMM.</p>
@@ -436,7 +436,7 @@ Night Start time<br /> <h1>Overview</h1><p>Night start time. Format: HHMM.</p>
       </parameter>
 
       <parameter name="config_45_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>45: Monday morning temp</label>
         <description><![CDATA[
 Monday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -446,7 +446,7 @@ Monday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_46_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>46: Monday day temp</label>
         <description><![CDATA[
 Monday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -456,7 +456,7 @@ Monday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5
       </parameter>
 
       <parameter name="config_47_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>47: Monday evening temp</label>
         <description><![CDATA[
 Monday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -466,7 +466,7 @@ Monday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_48_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>48: Monday night temp</label>
         <description><![CDATA[
 Monday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -476,7 +476,7 @@ Monday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_49_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>49: Tuesday morning temp</label>
         <description><![CDATA[
 Tuesday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -486,7 +486,7 @@ Tuesday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g.
       </parameter>
 
       <parameter name="config_50_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>50: Tuesday day temp</label>
         <description><![CDATA[
 Tuesday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -496,7 +496,7 @@ Tuesday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.
       </parameter>
 
       <parameter name="config_51_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>51: Tuesday evening temp</label>
         <description><![CDATA[
 Tuesday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -506,7 +506,7 @@ Tuesday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g.
       </parameter>
 
       <parameter name="config_52_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>52: Tuesday night temp</label>
         <description><![CDATA[
 Tuesday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -516,7 +516,7 @@ Tuesday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 2
       </parameter>
 
       <parameter name="config_53_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>53: Wednesday morning temp</label>
         <description><![CDATA[
 Wednesday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -526,7 +526,7 @@ Wednesday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.
       </parameter>
 
       <parameter name="config_54_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>54: Wednesday day temp</label>
         <description><![CDATA[
 Wednesday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -536,7 +536,7 @@ Wednesday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 2
       </parameter>
 
       <parameter name="config_55_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>55: Wednesday evening temp</label>
         <description><![CDATA[
 Wednesday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -546,7 +546,7 @@ Wednesday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.
       </parameter>
 
       <parameter name="config_56_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>56: Wednesday night temp</label>
         <description><![CDATA[
 Wednesday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -556,7 +556,7 @@ Wednesday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g.
       </parameter>
 
       <parameter name="config_57_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>57: Thursday morning temp</label>
         <description><![CDATA[
 Thursday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -566,7 +566,7 @@ Thursday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g
       </parameter>
 
       <parameter name="config_58_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>58: Thursday day temp</label>
         <description><![CDATA[
 Thursday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -576,7 +576,7 @@ Thursday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_59_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>59: Thursday evening temp</label>
         <description><![CDATA[
 Thursday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -586,7 +586,7 @@ Thursday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g
       </parameter>
 
       <parameter name="config_60_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>60: Thursday night temp</label>
         <description><![CDATA[
 Thursday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -596,7 +596,7 @@ Thursday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_61_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>61: Friday morning temp</label>
         <description><![CDATA[
 Friday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -606,7 +606,7 @@ Friday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_62_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>62: Friday day temp</label>
         <description><![CDATA[
 Friday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -616,7 +616,7 @@ Friday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5
       </parameter>
 
       <parameter name="config_63_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>63: Friday evening temp</label>
         <description><![CDATA[
 Friday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -626,7 +626,7 @@ Friday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_64_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>64: Friday night temp</label>
         <description><![CDATA[
 Friday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -636,7 +636,7 @@ Friday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_65_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>65: Saturday morning temp</label>
         <description><![CDATA[
 Saturday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -646,7 +646,7 @@ Saturday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g
       </parameter>
 
       <parameter name="config_66_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>66: Saturday day temp</label>
         <description><![CDATA[
 Saturday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -656,7 +656,7 @@ Saturday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_67_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>67: Saturday evening temp</label>
         <description><![CDATA[
 Saturday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -666,7 +666,7 @@ Saturday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g
       </parameter>
 
       <parameter name="config_68_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>68: Saturday night temp</label>
         <description><![CDATA[
 Saturday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -676,7 +676,7 @@ Saturday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_69_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>69: Sunday morning temp</label>
         <description><![CDATA[
 Sunday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -686,7 +686,7 @@ Sunday morning temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_70_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>70: Sunday day temp</label>
         <description><![CDATA[
 Sunday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -696,7 +696,7 @@ Sunday day temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5
       </parameter>
 
       <parameter name="config_71_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>71: Sunday evening temp</label>
         <description><![CDATA[
 Sunday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -706,7 +706,7 @@ Sunday evening temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 
       </parameter>
 
       <parameter name="config_72_2" type="integer" groupName="configuration"
-                 min="10" max="370">
+                 min="10" max="10">
         <label>72: Sunday night temp</label>
         <description><![CDATA[
 Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22.5 = 225</p>
@@ -716,7 +716,7 @@ Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_141_1" type="integer" groupName="configuration"
-                 min="1" max="120">
+                 min="1" max="1">
         <label>141: Consumption reporting interval</label>
         <description>Consumption meter consecutive reporting interval, minutes</description>
         <default>10</default>
@@ -724,7 +724,7 @@ Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_142_1" type="integer" groupName="configuration"
-                 min="0" max="50">
+                 min="0" max="0">
         <label>142: Consumption difference</label>
         <description>Consumption difference to send to controller, %</description>
         <default>25</default>
@@ -732,7 +732,7 @@ Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_143_1" type="integer" groupName="configuration"
-                 min="1" max="120">
+                 min="1" max="1">
         <label>143: Sensors reporting interval</label>
         <description>Sensors consecutive reporting interval, minutes</description>
         <default>10</default>
@@ -740,7 +740,7 @@ Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_144_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>144: Temperature difference</label>
         <description>Temperature difference to send to controller, value X 10</description>
         <default>2</default>
@@ -748,7 +748,7 @@ Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_145_1" type="integer" groupName="configuration"
-                 min="0" max="25">
+                 min="0" max="0">
         <label>145: Humidity difference</label>
         <description>Humidity difference to send to controller, %</description>
         <default>2</default>
@@ -756,7 +756,7 @@ Sunday night temp<br /> <h1>Overview</h1><p>Centigrade value * 10</p> <p>e.g. 22
       </parameter>
 
       <parameter name="config_146_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>146: Light sensor difference</label>
         <description>Light sensor values difference to send to controller, %</description>
         <default>50</default>

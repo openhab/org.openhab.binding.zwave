@@ -106,7 +106,7 @@ External switch Protection<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+                 min="0" max="0">
         <label>3: Delay time for automatic closing</label>
         <description><![CDATA[
 When the door is opened, set the delay time for automatic closing<br /> <h1>Overview</h1><p>0: Disable automatic closing</p><p>1 - 32767: The door will be closed automatically in 1 - 32767sec</p>
@@ -116,7 +116,7 @@ When the door is opened, set the delay time for automatic closing<br /> <h1>Over
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+                 min="0" max="0">
         <label>4: Delay time for automatic notification</label>
         <description><![CDATA[
 When the door is open, set the delay time for automatic notification<br /> <h1>Overview</h1><p>0: Disable automatic notification</p><p>1 - 32767: The notification will be sent automatically in 1 - 32767 sec</p>
@@ -157,7 +157,7 @@ Set the angle of blinds<br /> <h1>Overview</h1><p>0：0∘</p><p>1：30∘</p><p
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="0">
         <label>7: Slats turning time</label>
         <description><![CDATA[
 Set the slats turning time<br /> <h1>Overview</h1><p>0：Disable</p><p>1 - 127: 0.1 - 12.7 sec</p>
@@ -167,7 +167,7 @@ Set the slats turning time<br /> <h1>Overview</h1><p>0：Disable</p><p>1 - 127: 
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="0">
         <label>8: Delay time to start the motor up to the blade</label>
         <description><![CDATA[
 Set the delay time to start the motor up to the blade<br /> <h1>Overview</h1><p>0：No offset time</p><p>1 - 127: 0.1 - 12.7 sec</p>
@@ -177,7 +177,7 @@ Set the delay time to start the motor up to the blade<br /> <h1>Overview</h1><p>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="0">
         <label>9: Delay time to start the motor down to the blade</label>
         <description><![CDATA[
 Set the delay time to start the motor down to the blade<br /> <h1>Overview</h1><p>0：No offset time</p><p>1 - 127: 0.1 – 12.7 sec</p>
@@ -187,7 +187,7 @@ Set the delay time to start the motor down to the blade<br /> <h1>Overview</h1><
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>10: Power changed percentage to send the power report</label>
         <description><![CDATA[
 Set the power changed percentage to send the power report<br /> <h1>Overview</h1><p>0：Disabled</p><p>1 - 100: 1% - 100%</p>
@@ -197,7 +197,7 @@ Set the power changed percentage to send the power report<br /> <h1>Overview</h1
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="60" max="32767">
+                 min="60" max="60">
         <label>11: Time interval of reporting watts in seconds</label>
         <description><![CDATA[
 Set the time interval of reporting watts in seconds<br /> <h1>Overview</h1><p>0：Disable</p><p>60 - 32767: 60 - 32767sec</p>
@@ -207,7 +207,7 @@ Set the time interval of reporting watts in seconds<br /> <h1>Overview</h1><p>0�
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="60" max="32767">
+                 min="60" max="60">
         <label>12: Time interval of reporting KWH in seconds</label>
         <description><![CDATA[
 Set the time interval of reporting KWH in seconds<br /> <h1>Overview</h1><p>0：Disable</p><p>60 - 32767: 60 - 32767sec</p>

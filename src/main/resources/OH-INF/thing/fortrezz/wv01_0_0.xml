@@ -58,7 +58,7 @@ Wireless Z-Wave Water Valve<br /> <h1>Overview</h1><p>Fortrezz WV-01 Wireless Z-
       </parameter>
 
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="1" max="32767">
+                 min="1" max="1">
         <label>1: WaterLevel Timeout</label>
         <default>60</default>
         <limitToOptions>false</limitToOptions>

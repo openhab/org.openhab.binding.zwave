@@ -53,7 +53,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>1: Lock Mode - unlocking sequence</label>
         <description><![CDATA[
 0 - Lock Mode disabled, 9-28086 - unlocking sequence<br /> <h1>Overview</h1><p>This parameter allows to activate Lock Mode and set up unlocking sequence. Device will lock after time set in parameter 2 or after pressing and holding selected button. </p>
@@ -63,7 +63,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="1791">
+                 min="0" max="0">
         <label>2: Lock Mode - time to lock and locking button</label>
         <description><![CDATA[
 0 - Lock Mode disabled, 5-1791 - calculated value<br /> <h1>Overview</h1><ul><li>This parameter allows to set time that must elapse from the last press of the button to lock the device and locking button.</li> <li>Setting locking button will deactivate associations and scenes for pressing and holding the selected button.</li> <li>This parameter is irrelevant if parameter 1 is set to 0 (Lock Mode disable).</li> </ul>
@@ -73,7 +73,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>3: First scene sequence</label>
         <description><![CDATA[
 0 - 1st sequence disabled, 9-28086 - value of sequence<br /> <h1>Overview</h1><p>This parameter allows to set up sequence that activates scene with ID 7. See "Sequences" on page 10 for more information.</p>
@@ -83,7 +83,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>4: Second scene sequence</label>
         <description><![CDATA[
 0 - 2nd sequence disabled, 9-28086 - value of sequence<br /> <h1>Overview</h1><p>This parameter allows to set up sequence that activates scene with ID 8.</p>
@@ -93,7 +93,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>5: Third scene sequence</label>
         <description><![CDATA[
 0 - 3rd sequence disabled, 9-28086 - value of sequence<br /> <h1>Overview</h1><p>This parameter allows to set up sequence that activates scene with ID 9.</p>
@@ -103,7 +103,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>6: Fourth scene sequence</label>
         <description><![CDATA[
 0 - 4th sequence disabled, 9-28086 - value of sequence<br /> <h1>Overview</h1><p>This parameter allows to set up sequence that activates scene with ID 10. </p>
@@ -113,7 +113,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>7: Fifth scene sequence</label>
         <description><![CDATA[
 0 - 5th sequence disabled, 9-28086 - value of sequence<br /> <h1>Overview</h1><p>This parameter allows to set up sequence that activates scene with ID 11. </p>
@@ -123,7 +123,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="0" max="28086">
+                 min="0" max="0">
         <label>8: Sixth scene sequence</label>
         <description><![CDATA[
 0 - 6th sequence disabled, 9-28086 - value of sequence<br /> <h1>Overview</h1><p>This parameter allows to set up sequence that activates scene with ID 12.</p>
@@ -133,7 +133,7 @@ Keyfob<br /> <h1>Overview</h1><p>FIBARO KeyFob is a Z-Wave Plus compatible, batt
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="5" max="30">
+                 min="5" max="5">
         <label>9: Sequences - timeout</label>
         <description><![CDATA[
 5-30 (0.5-3s, 0.1s step) - time to lock<br /> <h1>Overview</h1><p>This parameter allows to set time that must elapse from the last click of the button to check if the sequence is valid.</p>
@@ -157,7 +157,7 @@ This parameter allows to choose operating mode for single button associations.<b
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>11: Value sent to □ association group</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /> <h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
@@ -167,7 +167,7 @@ This parameter allows to choose operating mode for single button associations.<b
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>12: Value sent to ○ association group</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /> <h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
@@ -177,7 +177,7 @@ This parameter allows to choose operating mode for single button associations.<b
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>13: Value sent to x association group</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /> <h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
@@ -187,7 +187,7 @@ This parameter allows to choose operating mode for single button associations.<b
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>14: Value sent to Δ association group</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /> <h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
@@ -197,7 +197,7 @@ This parameter allows to choose operating mode for single button associations.<b
       </parameter>
 
       <parameter name="config_15_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>15: Value sent to - association group</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /> <h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
@@ -207,7 +207,7 @@ This parameter allows to choose operating mode for single button associations.<b
       </parameter>
 
       <parameter name="config_16_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+                 min="1" max="1">
         <label>16: Value sent to + association group</label>
         <description><![CDATA[
 1-99 or 255 (last state)<br /> <h1>Overview</h1><p>This parameter allows to set value sent to devices in association group. It will result in turning multilevel devices on with set or last level. Value is irrelevant for simple on/off devices.</p> <p>1-99 - forcing level of associated devices<br />255 - setting associated devices to the last remembered state or turning them on</p>
@@ -256,7 +256,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
-                 min="0" max="15">
+                 min="0" max="0">
         <label>21: Scene activation for □ button</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
@@ -266,7 +266,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_22_1" type="integer" groupName="configuration"
-                 min="0" max="15">
+                 min="0" max="0">
         <label>22: Scene activation for ○ button</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
@@ -276,7 +276,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
-                 min="0" max="15">
+                 min="0" max="0">
         <label>23: Scene activation for x button</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
@@ -286,7 +286,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration"
-                 min="0" max="15">
+                 min="0" max="0">
         <label>24: Scene activation for Δ button</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
@@ -296,7 +296,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration"
-                 min="0" max="15">
+                 min="0" max="0">
         <label>25: Scene activation for - button</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
@@ -306,7 +306,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_26_1" type="integer" groupName="configuration"
-                 min="0" max="15">
+                 min="0" max="0">
         <label>26: Scene activation for + button</label>
         <description><![CDATA[
 1 = 1 time, 2 = 2 times, 4 = 3 times, 8 = held down and released<br /> <h1>Overview</h1><p>This parameter determines which actions result in sending assigned scene IDs and attributes to the controller.</p> <p>1 - Key pressed 1 time<br />2 - Key pressed 2 times<br />4 - Key pressed 3 times<br />8 - Key held down &amp; released</p> <p>Combine multiple actions by combining the values.</p>
@@ -316,7 +316,7 @@ allows to activate paired buttons association mode for - and + buttons<br /> <h1
       </parameter>
 
       <parameter name="config_29_2" type="integer" groupName="configuration"
-                 min="0" max="4095">
+                 min="0" max="0">
         <label>29: Associations in Z-Wave network security mode</label>
         <description><![CDATA[
 defines how commands are sent in specified association groups<br /> <h1>Overview</h1><p>Parameter defines how commands are sent in specified association groups: using Security Mode or not. Parameter is active only in Z-Wave network Security Mode. It does not apply to 1st “Lifeline” association group.</p> <p>Available settings:</p> <p>1 - 2nd group sent using Security Mode<br />2 - 3rd group sent using Security Mode<br />4 - 4th group sent using Security Mode<br />8 - 5th group sent using Security Mode<br />16 - 6th group sent using Security Mode<br />32 - 7th group sent using Security Mode<br />64 - 8th group sent using Security Mode<br />128 - 9th group sent using Security Mode <br />256 - 10th group sent using Security Mode<br />512 - 11th group sent using Security Mode<br />1024 - 12th group sent using Security Mode<br />2048 - 13th group sent using Security Mode</p> <p>Set multiple values by combining the values together.</p>

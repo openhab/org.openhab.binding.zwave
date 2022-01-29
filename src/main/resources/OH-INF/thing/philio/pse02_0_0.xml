@@ -49,7 +49,7 @@ Siren<br /> <h1>Overview</h1><p>The PSE02 is a wireless siren with multiple soun
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_7_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>7: Costumer Function</label>
         <description><![CDATA[
 NotificationReport/BinaryReport<br /> <h1>Overview</h1><p>Customer function switch, using bit control. 0       Bit4: Notification Type,       0: Using Notification Report.   1: Using Sensor Binary Report.</p>
@@ -60,7 +60,7 @@ NotificationReport/BinaryReport<br /> <h1>Overview</h1><p>Customer function swit
       </parameter>
 
       <parameter name="config_29_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>29: Disable Alarm</label>
         <description><![CDATA[
 Disable the alarm function.<br /> <h1>Overview</h1><p>Disable the alarm  function. 1: Disable  Alarm, 0: Enable Alarm.  Caution: After the power  up, this configuration is  always 0.</p>
@@ -70,7 +70,7 @@ Disable the alarm function.<br /> <h1>Overview</h1><p>Disable the alarm  functi
       </parameter>
 
       <parameter name="config_31_4_0000000C" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="0">
         <label>31: Alarm Duration</label>
         <default>6</default>
         <limitToOptions>false</limitToOptions>

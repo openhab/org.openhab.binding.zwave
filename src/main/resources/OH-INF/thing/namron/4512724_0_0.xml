@@ -97,7 +97,7 @@ Dimmer 2 400W<br /> <h1>Overview</h1><p>Z-wave in-wall dimmer v2 with power cons
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>2: State after Power Failure</label>
         <description><![CDATA[
 State after Power Failure<br /> <h1>Overview</h1><p>Determines what the load stats should be after a device power failure.<br /></p>
@@ -106,7 +106,7 @@ State after Power Failure<br /> <h1>Overview</h1><p>Determines what the load sta
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>3: Enable/disable to send the basic report</label>
         <description><![CDATA[
 Enable/disable to send the basic report<br /> <h1>Overview</h1><p>Enable/disable to send the basic report to the Lifeline when the load state changed.(When value set as 1, re-power on the dimmer, it will send basic report automatically)<br /></p>
@@ -115,7 +115,7 @@ Enable/disable to send the basic report<br /> <h1>Overview</h1><p>Enable/disable
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="0">
         <label>4: Default fade time</label>
         <description><![CDATA[
 Default fade time<br /> <h1>Overview</h1><p>Default fade time (unit is second, this value has the same function as Duration of Multilevel)</p><p>Valid value: 0~127</p>
@@ -125,7 +125,7 @@ Default fade time<br /> <h1>Overview</h1><p>Default fade time (unit is second, t
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="50">
+                 min="0" max="0">
         <label>5: Setting minimum Brightness value</label>
         <description><![CDATA[
 Setting minimum Brightness value<br /> <h1>Overview</h1><p>Setting minimum brightness value. Valid value: 0~50, the bigger the value is, the higher the load’s minimum brightness is.</p>
@@ -135,7 +135,7 @@ Setting minimum Brightness value<br /> <h1>Overview</h1><p>Setting minimum brigh
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>6: Setting maximum brightness value</label>
         <description><![CDATA[
 Setting maximum brightness value<br /> <h1>Overview</h1><p>Setting maximum brightness value. Valid value: 0~100.</p>
@@ -145,7 +145,7 @@ Setting maximum brightness value<br /> <h1>Overview</h1><p>Setting maximum brigh
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>7: Choose MOSFET driving type</label>
         <description><![CDATA[
 Choose MOSFET driving type<br /> <h1>Overview</h1><p>Choose MOSFET driving type.</p><p>0 – trailing edge<br />1 – leading edge</p>
@@ -155,7 +155,7 @@ Choose MOSFET driving type<br /> <h1>Overview</h1><p>Choose MOSFET driving type.
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>8: External switch type</label>
         <description><![CDATA[
 External switch type<br /> <h1>Overview</h1><p>External switch type<br /></p>
@@ -165,7 +165,7 @@ External switch type<br /> <h1>Overview</h1><p>External switch type<br /></p>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>9: Added/removed through external switch</label>
         <description><![CDATA[
 Added to and removed from a network through external switch<br /> <h1>Overview</h1><p>Added to and removed from a network through external switch (when enables this function, triple press the external switch within 1.5 seconds to be added to or removed from a network)</p>
@@ -175,7 +175,7 @@ Added to and removed from a network through external switch<br /> <h1>Overview</
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>11: Wiring type</label>
         <description><![CDATA[
 Wiring type<br /> <h1>Overview</h1><p>Wiring type<br /></p>
@@ -185,7 +185,7 @@ Wiring type<br /> <h1>Overview</h1><p>Wiring type<br /></p>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="3">
+                 min="0" max="0">
         <label>12: Load type</label>
         <description><![CDATA[
 Load type<br /> <h1>Overview</h1><p>Load type</p>
@@ -195,7 +195,7 @@ Load type<br /> <h1>Overview</h1><p>Load type</p>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>13: Enable/disable over current protection</label>
         <description><![CDATA[
 Enable/disable over current protection (over 2.1A for 20 seconds continuously)<br /> <h1>Overview</h1><p>Enable/disable over current protection (over 2.1A for 20 seconds continuously)<br /></p>
@@ -205,7 +205,7 @@ Enable/disable over current protection (over 2.1A for 20 seconds continuously)<b
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="-32767" max="-32767">
         <label>14: Power automatic report absolute threshold</label>
         <description><![CDATA[
 Power automatic report absolute threshold<br /> <h1>Overview</h1><p>Power automatic report absolute threshold, unit is W. When power changes above the absolute threshold, immediately report current power value.</p>
@@ -215,7 +215,7 @@ Power automatic report absolute threshold<br /> <h1>Overview</h1><p>Power automa
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>15: Power automatic report percentage threshold</label>
         <description><![CDATA[
 Power automatic report percentage threshold<br /> <h1>Overview</h1><p>Power automatic report percentage threshold, unit is % When power changes above the percentage threshold, immediately report current power value</p>
@@ -225,7 +225,7 @@ Power automatic report percentage threshold<br /> <h1>Overview</h1><p>Power auto
       </parameter>
 
       <parameter name="config_21_4" type="integer" groupName="configuration"
-                 min="5" max="2678400">
+                 min="5" max="5">
         <label>21: Power metering automatic report time cycle</label>
         <description><![CDATA[
 Power metering automatic report time cycle<br /> <h1>Overview</h1><p>Power metering automatic report time cycle, unit is second. Valid time cycle value: 5~2678400, when set as 0, report function disabled.</p>
@@ -235,7 +235,7 @@ Power metering automatic report time cycle<br /> <h1>Overview</h1><p>Power meter
       </parameter>
 
       <parameter name="config_22_4" type="integer" groupName="configuration"
-                 min="5" max="2678400">
+                 min="5" max="5">
         <label>22: Energy metering automatic report time cycle</label>
         <description><![CDATA[
 Energy metering automatic report time cycle<br /> <h1>Overview</h1><p>Energy metering automatic report time cycle, unit is second. Valid time cycle value: 5~2678400, when set as 0, report function disabled.</p>
@@ -245,7 +245,7 @@ Energy metering automatic report time cycle<br /> <h1>Overview</h1><p>Energy met
       </parameter>
 
       <parameter name="config_23_4" type="integer" groupName="configuration"
-                 min="5" max="2678400">
+                 min="5" max="5">
         <label>23: Voltage metering automatic report time cycle</label>
         <description><![CDATA[
 Voltage metering automatic report time cycle<br /> <h1>Overview</h1><p>Voltage metering automatic report time cycle, unit is second. Valid time cycle value: 5~2678400, when set as 0, report function disabled.</p>
@@ -255,7 +255,7 @@ Voltage metering automatic report time cycle<br /> <h1>Overview</h1><p>Voltage m
       </parameter>
 
       <parameter name="config_24_4" type="integer" groupName="configuration"
-                 min="5" max="2678400">
+                 min="5" max="5">
         <label>24: Current metering automatic report time cycle</label>
         <description><![CDATA[
 Current metering automatic report time cycle<br /> <h1>Overview</h1><p>Current metering automatic report time cycle, unit is second. Valid time cycle value: 5~2678400, when set as 0, report function disabled.</p>
@@ -265,7 +265,7 @@ Current metering automatic report time cycle<br /> <h1>Overview</h1><p>Current m
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>31: Setting dimming curve</label>
         <description>Setting dimming curve</description>
         <default>0</default>
@@ -273,7 +273,7 @@ Current metering automatic report time cycle<br /> <h1>Overview</h1><p>Current m
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>32: Setting startup brightness of the load</label>
         <description><![CDATA[
 Setting startup brightness of the load<br /> <h1>Overview</h1><p>Setting startup brightness of the load. Valid value: 0~99. </p><p>Note: every time when turn on the load from OFF status, if the target brightness is lower than the startup brightness, the brightness will first go to the startup brightness value then fall down to the target brightness</p>

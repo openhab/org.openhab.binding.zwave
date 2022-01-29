@@ -133,7 +133,7 @@ Default fade time<br /> <h1>Overview</h1><p>Default fade time (unit is second, t
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="50">
+                 min="0" max="0">
         <label>5: Minimum brightness value</label>
         <description><![CDATA[
 Setting minimum brightness value<br /> <h1>Overview</h1><p>Valid value: 0~50, the bigger the value is, the higher the load’s minimum brightness is </p>
@@ -143,7 +143,7 @@ Setting minimum brightness value<br /> <h1>Overview</h1><p>Valid value: 0~50, th
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>6: Maximum brightness value</label>
         <description><![CDATA[
 Setting maximum brightness value<br /> <h1>Overview</h1><p>Setting maximum brightness value Valid value: 0~100</p>
@@ -193,7 +193,7 @@ Enable/disable to detect load<br /> <h1>Overview</h1><p>Enable/disable to detect
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>11: Wiring type</label>
         <description><![CDATA[
 Wiring type<br /> <h1>Overview</h1><p>Wiring type</p> <p>0 - unknown</p> <p>1 - 2 Wire With No Neutral</p> <p>2 - 3 Wire With Neutral</p>
@@ -203,7 +203,7 @@ Wiring type<br /> <h1>Overview</h1><p>Wiring type</p> <p>0 - unknown</p> <p>1 - 
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="3">
+                 min="0" max="0">
         <label>12: Load type</label>
         <description><![CDATA[
 Load type<br /> <h1>Overview</h1><p>Load type</p> <p>0 - unknown</p> <p>1 - resistive</p> <p>2 - inductive</p> <p>3 - capacitive</p>
@@ -226,7 +226,7 @@ Enable/disable over current protection<br /> <h1>Overview</h1><p>Enable/disable 
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>14: Threshold, unit is W</label>
         <description><![CDATA[
 Threshold, unit is W<br /> <h1>Overview</h1><p>Power automatic report absolute threshold, unit is W When power changes above the absolute threshold, immediately report current power value</p>
@@ -236,7 +236,7 @@ Threshold, unit is W<br /> <h1>Overview</h1><p>Power automatic report absolute t
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+                 min="0" max="0">
         <label>15: Threshold, unit is %</label>
         <description><![CDATA[
 Threshold, unit is %<br /> <h1>Overview</h1><p>Power automatic report percentage threshold, unit is % When power changes above the percentage threshold, immediately report current power value</p>
@@ -246,7 +246,7 @@ Threshold, unit is %<br /> <h1>Overview</h1><p>Power automatic report percentage
       </parameter>
 
       <parameter name="config_21_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+                 min="0" max="0">
         <label>21: Power metering time cycle</label>
         <description><![CDATA[
 Power metering time cycle<br /> <h1>Overview</h1><p>Power metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p>
@@ -256,7 +256,7 @@ Power metering time cycle<br /> <h1>Overview</h1><p>Power metering automatic rep
       </parameter>
 
       <parameter name="config_22_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+                 min="0" max="0">
         <label>22: Energy metering time cycle</label>
         <description><![CDATA[
 Energy metering time cycle<br /> <h1>Overview</h1><p>Energy metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p>
@@ -266,7 +266,7 @@ Energy metering time cycle<br /> <h1>Overview</h1><p>Energy metering automatic r
       </parameter>
 
       <parameter name="config_23_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>23: Voltage metering time cycle</label>
         <description><![CDATA[
 Voltage metering time cycle<br /> <h1>Overview</h1><p>Voltage metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p>
@@ -276,7 +276,7 @@ Voltage metering time cycle<br /> <h1>Overview</h1><p>Voltage metering automatic
       </parameter>
 
       <parameter name="config_24_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>24: Current metering time cycle</label>
         <description><![CDATA[
 Current metering time cycle<br /> <h1>Overview</h1><p>Current metering automatic report time cycle, unit is second Valid time cycle value: 5~2678400, when set as 0, report function disabled </p>

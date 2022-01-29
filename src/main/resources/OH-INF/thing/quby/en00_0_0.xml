@@ -66,7 +66,7 @@ Engie Meter Adapter<br /> <h1>Overview</h1><p>The meter adapter measures gas and
       </parameter>
 
       <parameter name="config_2_4" type="integer" groupName="configuration"
-                 min="120" max="40000">
+                 min="120" max="120">
         <label>2: Analog gas/heat port resolution</label>
         <description><![CDATA[
 Analog gas/heat port resolution<br /> <h1>Overview</h1><p>Analog gas/heat port resolution</p> <p>(pulses per cubic meter / pulses per MJ; in Q14.2 notation)</p>
@@ -88,7 +88,7 @@ Analog gas/heat port resolution<br /> <h1>Overview</h1><p>Analog gas/heat port r
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
-                 min="120" max="40000">
+                 min="120" max="120">
         <label>4: Analog electricity port resolution</label>
         <description><![CDATA[
 Analog electricity port resolution<br /> <h1>Overview</h1><p>Analog electricity port resolution</p> <p>(pulses per kWh; in Q14.2 notation)</p>
@@ -98,7 +98,7 @@ Analog electricity port resolution<br /> <h1>Overview</h1><p>Analog electricity 
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>5: Digital port mode</label>
         <description>Digital port mode</description>
         <default>2</default>

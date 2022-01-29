@@ -47,7 +47,7 @@ Mini Smart Plug<br /> <h1>Overview</h1><p>This product can be included and opera
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>1: LED Indicator</label>
         <description><![CDATA[
 Define LED behavior<br /> <h1>Overview</h1><p><br /></p>
@@ -61,7 +61,7 @@ Define LED behavior<br /> <h1>Overview</h1><p><br /></p>
       </parameter>
 
       <parameter name="config_2_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>2: Auto Turn-Off Timer</label>
         <description><![CDATA[
 Timer to turn switch off<br /> <h1>Overview</h1><p>Set timer to turn off the switch Set the number of minutes for the timer.</p>
@@ -71,7 +71,7 @@ Timer to turn switch off<br /> <h1>Overview</h1><p>Set timer to turn off the swi
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>4: Auto Turn-On Timer</label>
         <description><![CDATA[
 Timer to turn switch on<br /> <h1>Overview</h1><p>Set timer to turn switch on. Set the number of minutes for the timer.</p>
@@ -81,7 +81,7 @@ Timer to turn switch on<br /> <h1>Overview</h1><p>Set timer to turn switch on. 
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="-127" max="-127">
         <label>6: Restores state after power failure</label>
         <description><![CDATA[
 Define state for device after power failure<br /> <h1>Overview</h1><p>Define state for device after power failure<br /></p>

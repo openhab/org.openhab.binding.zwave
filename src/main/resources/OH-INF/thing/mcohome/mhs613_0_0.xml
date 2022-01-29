@@ -79,7 +79,7 @@ Touch Panel Switch 3-Way (Horizontal)<br /> <h1>Overview</h1><p>Touch Panel Swit
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>2: Switch state saved or not when power failure</label>
         <description><![CDATA[
 Switch state saved or not when power failure<br /> <h1>Overview</h1><p>0=not saved，switch will be off when powered again 1=saved，switch will keep the same state when powered again</p>
@@ -89,7 +89,7 @@ Switch state saved or not when power failure<br /> <h1>Overview</h1><p>0=not sav
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>3: ALL ON/ALL OFF</label>
         <description><![CDATA[
 ALL ON/ALL OFF<br /> <h1>Overview</h1><table><tr><td> <p>0=forbid ALL ON, forbid ALL OFF</p> <p>1=forbid ALL ON, allow ALL OFF</p> <p>2=allow ALL ON, forbid ALL OFF</p> <p>255=allow ALL ON, allow ALL OFF</p> </td> </tr></table>
@@ -99,7 +99,7 @@ ALL ON/ALL OFF<br /> <h1>Overview</h1><table><tr><td> <p>0=forbid ALL ON, forbid
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+                 min="0" max="0">
         <label>4: LED Backlit brightness level</label>
         <description><![CDATA[
 LED Backlit brightness level<br /> <h1>Overview</h1><p>0 LED disabled 1-10 Min level-Max level &gt;10 same level as 10</p>
@@ -109,7 +109,7 @@ LED Backlit brightness level<br /> <h1>Overview</h1><p>0 LED disabled 1-10 Min l
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="4">
+                 min="0" max="0">
         <label>5: Key Mode</label>
         <description><![CDATA[
 Key Mode<br /> <h1>Overview</h1><p>0=single click to switch on/off status</p> <p>1=Key default as off state. When it is turned on, then it will be turned off automatically after a time period , which can be set in item 5</p> <p>2=Key default as on state. When it is turned off, then it will be turned on automatically after a time period , which can be set in item 5</p> <p>3=hold &gt;3s then key is on, and off once released</p> <p>4=single click to switch on/off status +hold &gt;3s then key is on, and off once released</p>
@@ -119,7 +119,7 @@ Key Mode<br /> <h1>Overview</h1><p>0=single click to switch on/off status</p> <p
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>6: Key On duration</label>
         <description><![CDATA[
 Key On duration<br /> <h1>Overview</h1><p>0x00 infinite</p> <p>1~65535 unit "sec"</p>

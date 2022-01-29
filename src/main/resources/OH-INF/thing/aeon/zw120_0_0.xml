@@ -96,7 +96,7 @@ Default setting: Disable<br /> <h1>Overview</h1><p>Wake up 10 minutes when re-po
       </parameter>
 
       <parameter name="config_39_1" type="integer" groupName="configuration"
-                 min="10" max="50">
+                 min="10" max="10">
         <label>39: Set the low battery value.</label>
         <description>10% to 50%</description>
         <default>10</default>
@@ -104,7 +104,7 @@ Default setting: Disable<br /> <h1>Overview</h1><p>Wake up 10 minutes when re-po
       </parameter>
 
       <parameter name="config_111_4" type="integer" groupName="configuration"
-                 min="0" max="2147483647">
+                 min="0" max="0">
         <label>111: Set the interval time of low battery checking.</label>
         <description>Minimum interval is 4 minutes, Range is 0 to 2147483647</description>
         <default>86640</default>
@@ -112,7 +112,7 @@ Default setting: Disable<br /> <h1>Overview</h1><p>Wake up 10 minutes when re-po
       </parameter>
 
       <parameter name="config_121_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>121: Report type</label>
         <description><![CDATA[
 Sensor report sent when triggered Opened/Closed<br /> <h1>Overview</h1><p>To configure which sensor report will be sent when the Sensor is triggered Opened/Closed. Bitsets: 0-&gt;Battery report, 4-&gt;Sensor Binary, 8-&gt;Basic Set, Default setting: 0x00000100 (Basic Set).Ideal Setting for OZW is 17 (Sensor Binary and Battery Report).</p>

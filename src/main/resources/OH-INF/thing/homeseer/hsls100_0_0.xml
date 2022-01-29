@@ -99,7 +99,7 @@ HomeSeer Z-Wave Plus Leak Sensor<br /> <h1>Overview</h1><p>Homeseer HS-LS100+ is
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>17: Set flooding alarm interval (Minute)</label>
         <description><![CDATA[
 Set flooding alarm interval (Minute)<br /> <h1>Overview</h1><p>The higher the value, the long the report periodically - in hexadecimal values from 0x01 to 0xFF, or 1 to 255 if your controller allows unsigned decimal values.</p> <p>0 - Disable flooding alarm</p>
@@ -119,7 +119,7 @@ Set flooding alarm interval (Minute)<br /> <h1>Overview</h1><p>The higher the va
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>19: Temperature report time (minute)</label>
         <description><![CDATA[
 Temperature report time (minute)<br /> <h1>Overview</h1><p>The higher the value ,the long the report time</p> <p>0 - Disable report</p>
@@ -128,7 +128,7 @@ Temperature report time (minute)<br /> <h1>Overview</h1><p>The higher the value 
       </parameter>
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
-                 min="-670" max="2570">
+                 min="-670" max="-670">
         <label>20: Set the high temperature alarm trigger value</label>
         <description><![CDATA[
 Set the high temperature alarm trigger value<br /> <h1>Overview</h1><p>The larger the value , the higher the high temperature in Fahrenheits (US)</p>
@@ -137,7 +137,7 @@ Set the high temperature alarm trigger value<br /> <h1>Overview</h1><p>The large
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
-                 min="-670" max="2570">
+                 min="-670" max="-670">
         <label>22: Set the low temperature alarm trigger value</label>
         <description><![CDATA[
 Set the low temperature alarm trigger value<br /> <h1>Overview</h1><p>The smaller the value , the lower the low temperature in Fahrenheits (US)</p>
@@ -157,7 +157,7 @@ Set the low temperature alarm trigger value<br /> <h1>Overview</h1><p>The smalle
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
-                 min="10" max="50">
+                 min="10" max="10">
         <label>32: Level of low battery</label>
         <description><![CDATA[
 Level of low battery<br /> <h1>Overview</h1><p>Set the trigger value for the low battery alarm</p>

@@ -54,7 +54,7 @@ Siren Gen5<br /> <h1>Overview</h1><p>Indoor Siren Gen5</p> <br /> <h2>Inclusion 
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_37_2_000000FF" type="integer" groupName="configuration"
-                 min="0" max="5">
+                 min="0" max="0">
         <label>37: Siren Sound</label>
         <default>1</default>
         <options>
@@ -68,7 +68,7 @@ Siren Gen5<br /> <h1>Overview</h1><p>Indoor Siren Gen5</p> <br /> <h2>Inclusion 
       </parameter>
 
       <parameter name="config_37_2_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="3">
+                 min="0" max="0">
         <label>37: Siren Volume</label>
         <default>3</default>
         <options>
@@ -80,7 +80,7 @@ Siren Gen5<br /> <h1>Overview</h1><p>Indoor Siren Gen5</p> <br /> <h2>Inclusion 
       </parameter>
 
       <parameter name="config_80_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>80: Enable Notifications to Group 1</label>
         <description><![CDATA[
 what type of notification to send to Group 1<br /> <h1>Overview</h1><p>Enable to send notifications to associated devices (Group1) when the state of Siren changed (0=nothing,1=hailCC,2=basic CC report).</p>
@@ -90,14 +90,14 @@ what type of notification to send to Group 1<br /> <h1>Overview</h1><p>Enable to
       </parameter>
 
       <parameter name="config_200_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>200: Partner ID</label>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_252_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>252: Enable/disable Configuration Updates</label>
         <default>0</default>
         <options>

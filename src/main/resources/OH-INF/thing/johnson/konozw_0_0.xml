@@ -113,7 +113,7 @@ LUX KONOzw Smart Hub Thermostat<br /> <h1>Overview</h1><p>KONOzw is the smart hu
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="-250" max="250">
+                 min="-250" max="-250">
         <label>1: User Temperature Calibration</label>
         <description><![CDATA[
 Step-size = 10<br /> <h1>Overview</h1><p>Adjusts room temperature display to match a calibrated value.</p>
@@ -173,7 +173,7 @@ Step-size = 10<br /> <h1>Overview</h1><p>Adjusts room temperature display to mat
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="60" max="90">
+                 min="60" max="60">
         <label>8: Temperature Limit - Heat Max</label>
         <description><![CDATA[
 Increment by 1F<br /> <h1>Overview</h1><p>60.00F-90.00F (16C-32C)</p>
@@ -183,7 +183,7 @@ Increment by 1F<br /> <h1>Overview</h1><p>60.00F-90.00F (16C-32C)</p>
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="45" max="60">
+                 min="45" max="45">
         <label>9: Temperature Limit - Heat Min</label>
         <description><![CDATA[
 Increment by 1F<br /> <h1>Overview</h1><p>45.00F-60.00F (7C-16C)</p>
@@ -193,7 +193,7 @@ Increment by 1F<br /> <h1>Overview</h1><p>45.00F-60.00F (7C-16C)</p>
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
-                 min="60" max="95">
+                 min="60" max="60">
         <label>10: Temperature Limit - Cool Max</label>
         <description><![CDATA[
 Increment by 1F. Actual allowable range depends on the heat set point limit<br /> <h1>Overview</h1><p>60F-95F (16C-35C)</p>
@@ -203,7 +203,7 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="50" max="75">
+                 min="50" max="50">
         <label>11: Temperature Limit - Cool Min</label>
         <description><![CDATA[
 Increment by 1F. Actual allowable range depends on the heat set point limit<br /> <h1>Overview</h1><p>50F-75F (10C-24C)</p>
@@ -213,7 +213,7 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="100" max="250">
+                 min="100" max="100">
         <label>12: Temperature Minimum Setpoint Deadband</label>
         <description><![CDATA[
 100 to 250, stepsize = 10<br /> <h1>Overview</h1><p>The Dead Band is a temperature range in which neither COOL or HEAT turns on when in AUTO mode.</p>
@@ -240,7 +240,7 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="1" max="24">
+                 min="1" max="1">
         <label>15: Regular Ambient Temperature Reporting Interval</label>
         <description>1-24 hours</description>
         <default>4</default>
@@ -248,7 +248,7 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
-                 min="1" max="24">
+                 min="1" max="1">
         <label>16: Regular Operating State Reporting Interval</label>
         <description>1-24 hours</description>
         <default>4</default>
@@ -256,7 +256,7 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>17: Command Echo Enable</label>
         <description>0=Disable, 1=Enable</description>
         <default>0</default>

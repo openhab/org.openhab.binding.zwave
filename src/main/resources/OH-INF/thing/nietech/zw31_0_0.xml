@@ -83,7 +83,7 @@ LED Indicator<br /> <h1>Overview</h1><p>When the LED indicator should be ON/OFF<
       </parameter>
 
       <parameter name="config_3_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>3: Auto Turn-Off Timer</label>
         <description>Automatically turn off switch</description>
         <default>0</default>
@@ -91,7 +91,7 @@ LED Indicator<br /> <h1>Overview</h1><p>When the LED indicator should be ON/OFF<
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>4: Auto Turn-On Timer</label>
         <description>Automatically turn on switch</description>
         <default>0</default>

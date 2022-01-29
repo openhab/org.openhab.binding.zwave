@@ -103,7 +103,7 @@ Set servomotor in previous position<br /> <h1>Overview</h1><p>This parameter set
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="120">
+                 min="0" max="0">
         <label>15: Close after time</label>
         <description><![CDATA[
 Close after time min<br /> <h1>Overview</h1><p>0-120 minutes</p>

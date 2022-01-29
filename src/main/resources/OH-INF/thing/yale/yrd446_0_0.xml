@@ -123,7 +123,7 @@ Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth<br /
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="5" max="255">
+                 min="5" max="5">
         <label>3: Auto relock time</label>
         <description><![CDATA[
 Time for auto relock<br /> <h1>Overview</h1><p>Number of seconds after the door is unlocked that it will attempt to automatically re-lock itself, if enabled.</p>
@@ -133,7 +133,7 @@ Time for auto relock<br /> <h1>Overview</h1><p>Number of seconds after the door 
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="1" max="7">
+                 min="1" max="1">
         <label>4: Incorrect PIN limit</label>
         <description><![CDATA[
 Number of incorrect PINs before lockout<br /> <h1>Overview</h1><p>Number of incorrect PINs that can be attempted before lock goes into temporary keypad lockout.</p>
@@ -154,7 +154,7 @@ Number of incorrect PINs before lockout<br /> <h1>Overview</h1><p>Number of inco
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="10" max="127">
+                 min="10" max="10">
         <label>7: Shutdown</label>
         <description>Shutdown time after wrong code entries</description>
         <default>60</default>
@@ -203,7 +203,7 @@ Number of incorrect PINs before lockout<br /> <h1>Overview</h1><p>Number of inco
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>15: Reset To Factory Defaults</label>
         <default>0</default>
         <options>

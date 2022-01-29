@@ -483,7 +483,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 1: Enable 
       </parameter>
 
       <parameter name="config_13_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>13: Multilevel Switch for button #1</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
@@ -495,7 +495,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper s
       </parameter>
 
       <parameter name="config_13_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>13: Lower switch value</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
@@ -507,7 +507,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower s
       </parameter>
 
       <parameter name="config_13_4_01000000" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>13: Multilevel Switch for button #1</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
@@ -530,7 +530,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 1: Enable 
       </parameter>
 
       <parameter name="config_14_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>14: Multilevel Switch for button #2</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
@@ -542,7 +542,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper s
       </parameter>
 
       <parameter name="config_14_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>14: Multilevel Switch for button #2</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
@@ -554,7 +554,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower s
       </parameter>
 
       <parameter name="config_14_4_01000000" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>14: Multilevel Switch for button #2</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
@@ -577,7 +577,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 1: Enable 
       </parameter>
 
       <parameter name="config_15_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>15: Multilevel Switch for button #3</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
@@ -589,7 +589,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper s
       </parameter>
 
       <parameter name="config_15_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>15: Multilevel Switch for button #3</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
@@ -601,7 +601,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower s
       </parameter>
 
       <parameter name="config_15_4_01000000" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>15: Multilevel Switch for button #3</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
@@ -624,7 +624,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 1: Enable 
       </parameter>
 
       <parameter name="config_16_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>16: Multilevel Switch for button #4</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
@@ -636,7 +636,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper s
       </parameter>
 
       <parameter name="config_16_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>16: Multilevel Switch for button #4</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
@@ -648,7 +648,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower s
       </parameter>
 
       <parameter name="config_16_4_01000000" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>16: Multilevel Switch for button #4</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
@@ -671,7 +671,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 1: Enable 
       </parameter>
 
       <parameter name="config_17_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>17: Multilevel Switch for button #5</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
@@ -683,7 +683,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper s
       </parameter>
 
       <parameter name="config_17_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>17: Multilevel Switch for button #5</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
@@ -695,7 +695,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower s
       </parameter>
 
       <parameter name="config_17_4_01000000" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>17: Multilevel Switch for button #5</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>
@@ -718,7 +718,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 1: Enable 
       </parameter>
 
       <parameter name="config_18_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>18: Multilevel Switch for button #6</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper switch value</p> <p>0 – 99, 255 When single pressing the button for ON, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 255)</p>
@@ -730,7 +730,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 2: Upper s
       </parameter>
 
       <parameter name="config_18_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>18: Multilevel Switch for button #6</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower switch value</p> <p>0 - 99 When single pressing the button for OFF, a Multilevel Switch Set with this value will be send to devices in association group 6. (Default = 0)</p>
@@ -742,7 +742,7 @@ Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 3: Lower s
       </parameter>
 
       <parameter name="config_18_4_01000000" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="-2147483646">
         <label>18: Multilevel Switch for button #6</label>
         <description><![CDATA[
 Configuration of the Multilevel Switch<br /> <h1>Overview</h1><p>Byte 4: Not used – must be set to 0.</p>

@@ -67,7 +67,7 @@ Homeseer Z-Wave Indicator Light Sensor<br /> <h1>Overview</h1><p>HS-FS100-L is a
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>1: Light Sensitvity</label>
         <description><![CDATA[
 Light Sensitvity<br /> <h1>Overview</h1><p>0=high sensitvity<br />1=medium sensitvity<br />2=low sensitvity</p>
@@ -77,7 +77,7 @@ Light Sensitvity<br /> <h1>Overview</h1><p>0=high sensitvity<br />1=medium sensi
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+                 min="0" max="0">
         <label>2: Water Detecton beep frequency</label>
         <description><![CDATA[
 Water Detecton beep frequency<br /> <h1>Overview</h1><p>0=every 10 minutes (approx batery life of 3 months in this mode)<br />1=every 5 minutes<br />2=every 30 minutes</p>
@@ -87,7 +87,7 @@ Water Detecton beep frequency<br /> <h1>Overview</h1><p>0=every 10 minutes (appr
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="30" max="255">
+                 min="30" max="30">
         <label>3: Temperature reportng interval when on line power</label>
         <description><![CDATA[
 Temperature reportng interval when on line power<br /> <h1>Overview</h1><p>30-255 seconds, default=60</p>
@@ -97,7 +97,7 @@ Temperature reportng interval when on line power<br /> <h1>Overview</h1><p>30-25
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+                 min="0" max="0">
         <label>4: Enable Notfcaton Buzzer</label>
         <description><![CDATA[
 Enable Notfcaton Buzzer<br /> <h1>Overview</h1><p>0 = Disabled<br />1 = Enabled (Default)</p>

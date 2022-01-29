@@ -160,7 +160,7 @@ LED Indicator Mode for Scene Control<br /> <h1>Overview</h1><p>Choose if you wan
       </parameter>
 
       <parameter name="config_8_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>8: Auto Turn-Off Timer for Dimmer</label>
         <description><![CDATA[
 Auto Turn-Off Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the dimmer to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p>
@@ -170,7 +170,7 @@ Auto Turn-Off Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to s
       </parameter>
 
       <parameter name="config_9_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>9: Auto Turn-On Timer for Dimmer</label>
         <description><![CDATA[
 Auto Turn-On Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the dimmer to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p>
@@ -180,7 +180,7 @@ Auto Turn-On Timer for Dimmer<br /> <h1>Overview</h1><p>Use this parameter to se
       </parameter>
 
       <parameter name="config_10_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>10: Auto Turn-Off Timer for Relay</label>
         <description><![CDATA[
 Auto Turn-Off Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the relay to automatically turn off once it has been turned on. The number entered as value corresponds to the number of minutes.</p>
@@ -190,7 +190,7 @@ Auto Turn-Off Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to se
       </parameter>
 
       <parameter name="config_11_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+                 min="0" max="0">
         <label>11: Auto Turn-On Timer for Relay</label>
         <description><![CDATA[
 Auto Turn-On Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to set the time after which you want the relay to automatically turn on once it has been turned off. The number entered as value corresponds to the number of minutes.</p>
@@ -220,7 +220,7 @@ On Off Status After Power Failure<br /> <h1>Overview</h1><p>Set the on/off statu
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>13: Ramp Rate Control for Dimmer</label>
         <description><![CDATA[
 Ramp Rate Control for Dimmer<br /> <h1>Overview</h1><p>Adjust the ramp rate for the dimmer (fade-in / fade-out effect for ON/OFF operation). Values correspond to the number of seconds it takes for the dimmer to reach full brightness or turn OFF when operated manually.</p>
@@ -230,7 +230,7 @@ Ramp Rate Control for Dimmer<br /> <h1>Overview</h1><p>Adjust the ramp rate for 
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="1" max="1">
         <label>14: Minimum Brightness</label>
         <description><![CDATA[
 Minimum Brightness<br /> <h1>Overview</h1><p>Set the minimum brightness level (in %) for the dimmer. You won’t be able to dim the light below the set value.</p>
@@ -239,7 +239,7 @@ Minimum Brightness<br /> <h1>Overview</h1><p>Set the minimum brightness level (i
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="1" max="1">
         <label>15: Maximum Brightness</label>
         <description><![CDATA[
 Maximum Brightness<br /> <h1>Overview</h1><p>Set the maximum brightness level (in %) for the dimmer. You won’t be able to add brightness to the light beyond the set value.</p>
@@ -303,7 +303,7 @@ Enable/Disable Load Control for Relay<br /> <h1>Overview</h1><p>Enable or disabl
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+                 min="1" max="1">
         <label>21: Manual Dimming Speed</label>
         <description><![CDATA[
 Manual Dimming Speed<br /> <h1>Overview</h1><p>Choose how many seconds it takes for the dimmer to go from 0% to 100% brightness when pressing and holding the paddle. Increase the value to decrease the dimming speed.</p>
@@ -325,7 +325,7 @@ Z-Wave Ramp Rate for Dimmer<br /> <h1>Overview</h1><p>Choose if you would like t
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+                 min="0" max="0">
         <label>23: Default Brightness Level ON for Dimmer</label>
         <description><![CDATA[
 Default Brightness Level ON for Dimmer<br /> <h1>Overview</h1><p>Set custom brightness level (in %) for the dimmer to come on to at single tap</p>

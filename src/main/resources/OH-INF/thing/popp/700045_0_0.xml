@@ -71,7 +71,7 @@ Battery driven IP44 keypad for access control.<br /> <h1>Overview</h1><p>This ke
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+                 min="0" max="0">
         <label>1: Automatic Secure Timeout</label>
         <description>After this time a CLOSE is sent to the door lock.</description>
         <default>0</default>
@@ -79,7 +79,7 @@ Battery driven IP44 keypad for access control.<br /> <h1>Overview</h1><p>This ke
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="3" max="127">
+                 min="3" max="3">
         <label>2: Ring Button OFF Timeout</label>
         <description><![CDATA[
 After this time the Door Bell will receive an OFF.<br /> <h1>Overview</h1><p>After this time the Door Bell will receive an OFF command regardless of the actuall button is pressed or not</p>
@@ -89,7 +89,7 @@ After this time the Door Bell will receive an OFF.<br /> <h1>Overview</h1><p>Aft
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>3: Ring Button ON Command</label>
         <description>Value to send on ring button press.</description>
         <default>255</default>
@@ -97,7 +97,7 @@ After this time the Door Bell will receive an OFF.<br /> <h1>Overview</h1><p>Aft
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="0" max="0">
         <label>4: Ring Button OFF Command</label>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
