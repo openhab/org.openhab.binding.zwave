@@ -123,7 +123,7 @@ Yale Real Living Key Free Touchscreen Assure Lock with Z-Wave and Bluetooth<br /
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="5" max="255">
+                 min="-127" max="128">
         <label>3: Auto relock time</label>
         <description><![CDATA[
 Time for auto relock<br /> <h1>Overview</h1><p>Number of seconds after the door is unlocked that it will attempt to automatically re-lock itself, if enabled.</p>

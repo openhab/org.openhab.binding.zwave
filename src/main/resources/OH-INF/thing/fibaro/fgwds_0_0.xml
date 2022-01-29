@@ -86,7 +86,7 @@ Fibaro Walli Single Switch<br /> <h1>Overview</h1><p>FIBARO Walli Single Switch 
       </parameter>
 
       <parameter name="config_2_4" type="integer" groupName="configuration"
-                 min="0" max="4294967295">
+                 min="-2147483646" max="2147483647">
         <label>2: First channel – overload safety switch</label>
         <description><![CDATA[
 First channel – overload safety switch<br /> <h1>Overview</h1><table><tr><td>0 (default)</td> <td>function disabled</td> </tr><tr><td>10 to 36200</td> <td>(1.0-3620.0W, step 0.1W) – power threshold</td> </tr></table>

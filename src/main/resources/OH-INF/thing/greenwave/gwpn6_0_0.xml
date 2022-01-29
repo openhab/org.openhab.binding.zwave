@@ -185,7 +185,7 @@ Minimum variation in load current before a message is sent.<br /> <h1>Overview</
       </parameter>
 
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+                 min="-127" max="128">
         <label>1: No communication light</label>
         <description><![CDATA[
 Duration (min) the device flashes after a communication error.<br /> <h1>Overview</h1><p>After how many minutes the GreenWave device should start flashing if the controller didn't communicate with this device.</p>
