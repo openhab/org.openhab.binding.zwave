@@ -155,11 +155,12 @@ Water / Electrical Heating Thermostat<br /> <h1>Overview</h1><p>MCOHome Water / 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 For sending temperature, working mode, etc. notifications<br /> <h1>Overview</h1><p>Thermostat supports 1 association group. A gateway is suggested to associate with this group.</p> <p>Then if any changes happen, such as: temperature, working mode, etc., the thermostat will report to this associated device (gateway).</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

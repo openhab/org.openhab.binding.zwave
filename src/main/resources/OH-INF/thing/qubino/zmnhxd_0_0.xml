@@ -262,9 +262,10 @@ Power threshold – Delay before power on<br /> <h1>Overview</h1><p>External IR 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Lifeline group (reserved for communication with the gateway (hub))</description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

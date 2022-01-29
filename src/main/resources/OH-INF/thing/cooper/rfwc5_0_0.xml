@@ -155,8 +155,9 @@ Group 5 Level<br /> <h1>Overview</h1><p>Value 0x00-0x63 or 0xFF is the level for
         <multipleLimit>232</multipleLimit>
       </parameter>
 
-      <parameter name="group_255" type="text" groupName="association">
+      <parameter name="group_255" type="text" groupName="association" multiple="true">
         <label>255: Group 255</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

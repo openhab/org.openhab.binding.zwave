@@ -358,8 +358,9 @@ Starting predefined program when device set to work in RGB/RGBW mode<br /> <h1>O
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_5" type="text" groupName="association">
+      <parameter name="group_5" type="text" groupName="association" multiple="true">
         <label>5: Reports device status</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

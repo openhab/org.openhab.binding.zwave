@@ -296,8 +296,9 @@ Allows for turning of the internal flood sensor<br /> <h1>Overview</h1><p>Allows
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Device Status</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

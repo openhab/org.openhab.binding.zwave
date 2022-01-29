@@ -296,9 +296,10 @@ Returns to the last position saved<br /> <h1>Overview</h1><p>Fibaro Switch retur
         <multipleLimit>16</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Controller Updates</label>
         <description>Reports state of devices.</description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

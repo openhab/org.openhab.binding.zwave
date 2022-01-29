@@ -222,8 +222,9 @@ Enable/Disable scene functionality<br /> <h1>Overview</h1><p>Scene activation fu
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Condition</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

@@ -89,11 +89,12 @@ Auto report Door/Window status time<br /> <h1>Overview</h1><p>Under normal worki
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Is assigned to the device status - OPEN/CLOSED.<br /> <h1>Overview</h1><p>1.It will send “NOTIFICATION_REPORT”to the device in Group 1 when the door sensor is opened / closed, tamper switch is triggered / recovered.</p> <p>2.When in low battery status, door sensor will send “BATTERY_REPORT” to Group 1 device periodically.</p> <p>3.The door sensor will send “DEVICE_RESET_LOCALLY_NOTIFICATION” to Group1 device when the device recovers to factory settings.</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

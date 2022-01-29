@@ -142,8 +142,9 @@ The state of the Led compared to the relais state<br /> <h1>Overview</h1><p>0 = 
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Report</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->
