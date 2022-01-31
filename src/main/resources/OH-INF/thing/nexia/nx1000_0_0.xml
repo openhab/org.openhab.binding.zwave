@@ -307,7 +307,7 @@ Wall Controller<br /> <h1>Overview</h1><h3>Product Description</h3> <p>The Nexia
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration"
-                 min="10" max="15">
+>
         <label>25: Scene Button Press Backlight Timeout</label>
         <description>Backlight timeout after a scene (rectangular) button press</description>
         <default>10</default>
@@ -315,7 +315,7 @@ Wall Controller<br /> <h1>Overview</h1><h3>Product Description</h3> <p>The Nexia
       </parameter>
 
       <parameter name="config_26_1" type="integer" groupName="configuration"
-                 min="5" max="15">
+>
         <label>26: Page Button Press Backlight Timeout</label>
         <description>Backlight timeout after a page (round) button press</description>
         <default>5</default>
@@ -348,7 +348,7 @@ Wall Controller<br /> <h1>Overview</h1><h3>Product Description</h3> <p>The Nexia
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration"
-                 min="0" max="20">
+>
         <label>30: Battery Stat Shutdown Threshold</label>
         <description>Battery status shutdown threshold</description>
         <default>5</default>
@@ -356,7 +356,7 @@ Wall Controller<br /> <h1>Overview</h1><h3>Product Description</h3> <p>The Nexia
       </parameter>
 
       <parameter name="config_31_1" type="integer" groupName="configuration"
-                 min="0" max="40">
+>
         <label>31: Battery Radio Cutoff Threshold</label>
         <description>Battery % Radio Cutoff Threshold</description>
         <default>10</default>
@@ -364,7 +364,7 @@ Wall Controller<br /> <h1>Overview</h1><h3>Product Description</h3> <p>The Nexia
       </parameter>
 
       <parameter name="config_32_1" type="integer" groupName="configuration"
-                 min="5" max="50">
+>
         <label>32: Battery LOWBATT Indicator Threshold</label>
         <description>Low Battery % Indicator Threshold</description>
         <default>20</default>
@@ -372,7 +372,7 @@ Wall Controller<br /> <h1>Overview</h1><h3>Product Description</h3> <p>The Nexia
       </parameter>
 
       <parameter name="config_33_1" type="integer" groupName="configuration"
-                 min="30" max="80">
+>
         <label>33: Battery Threshold Value for Midlevel</label>
         <description>Battery % threshold for midlevel indicator</description>
         <default>50</default>

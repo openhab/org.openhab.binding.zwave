@@ -147,7 +147,7 @@ Timer to turn off the relay automatically<br /> <h1>Overview</h1><p>Setting this
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>7: Channel 1 Off Time Settings</label>
         <description><![CDATA[
 Delay timer to turn off the channel<br /> <h1>Overview</h1><p>This configuration sets the time delay to turn off switch channel 1 when channel 1 is turned on. This configuration is only valid when previous configuration Timer enabled is set to 1.</p>
@@ -157,7 +157,7 @@ Delay timer to turn off the channel<br /> <h1>Overview</h1><p>This configuration
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>8: Channel 2 Off Time Settings</label>
         <description><![CDATA[
 Delay timer to turn off the channel<br /> <h1>Overview</h1><p>This configuration sets the time delay to turn off switch channel 2 when channel 2 is turned on. This configuration is only valid when previous configuration Timer enabled is set to 1.</p>
@@ -167,7 +167,7 @@ Delay timer to turn off the channel<br /> <h1>Overview</h1><p>This configuration
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>9: Channel 3 Off Time Settings</label>
         <description><![CDATA[
 Delay timer to turn off the channel<br /> <h1>Overview</h1><p>This configuration sets the time delay to turn off switch channel 3 when channel 3 is turned on. This configuration is only valid when previous configuration Timer enabled is set to 1.</p>

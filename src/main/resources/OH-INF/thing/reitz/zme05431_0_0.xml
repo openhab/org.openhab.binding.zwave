@@ -84,7 +84,7 @@ Switch<br /> <h1>Overview</h1><h3>Inclusion/Exclusion</h3> <p>On factory default
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="-32767" max="32768">
+>
         <label>2: Automatic switch off</label>
         <description>If not zero, automatically switch off after a user defined time</description>
         <default>0</default>
@@ -222,7 +222,7 @@ Defines hot to interprete button Down press.<br /> <h1>Overview</h1><p>Defines h
       </parameter>
 
       <parameter name="config_20_2_wo" type="integer" groupName="configuration"
-                 min="0" max="1800">
+>
         <label>20: Energy consumption</label>
         <description><![CDATA[
 Specify the consumption of the loads in watts (0=disabled)<br /> <h1>Overview</h1><p>Specify the consumption of the loads in watts, for the calculation of power consumption. Max. load 1800 W. 0=disabled.</p>

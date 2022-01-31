@@ -62,7 +62,7 @@ Status LED Configuration<br /> <h1>Overview</h1><p>Value: 00(default) outlet on,
       </parameter>
 
       <parameter name="config_2_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+>
         <label>2: Auto Turn-Off Timer</label>
         <description><![CDATA[
 The countdown time, the socket closed<br /> <h1>Overview</h1><p>Countdown time can be set.</p> <p>LED flashes two times when the configuration parameter is changed</p>
@@ -71,7 +71,7 @@ The countdown time, the socket closed<br /> <h1>Overview</h1><p>Countdown time c
       </parameter>
 
       <parameter name="config_4_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+>
         <label>4: Auto Turn-On Timer</label>
         <description>Outlet will turn on after</description>
         <default>0</default>

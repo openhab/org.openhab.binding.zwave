@@ -66,7 +66,7 @@ Aeon Labs Garage Door Controller Gen5<br /> <h1>Overview</h1><p>Aeon Labs Garage
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_32_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+>
         <label>32: Startup ringtone</label>
         <description><![CDATA[
 Configure the default startup ringtone<br /> <h1>Overview</h1><p>Configure the default startup ringtone.</p> <p>Value=0, disable the Startup ringtone.<br />Value=others, Enable and select a startup ringtone for the Garage Door Controller.</p>
@@ -89,7 +89,7 @@ Perform Sensor Calibration<br /> <h1>Overview</h1><p>Sensor Calibration.</p> <p>
       </parameter>
 
       <parameter name="config_35_2" type="integer" groupName="configuration"
-                 min="1" max="255">
+>
         <label>35: Calibration timout</label>
         <description><![CDATA[
 Set the timeout of all calibration steps for the Sensor.<br /> <h1>Overview</h1><p>Set the timeout of all calibration steps for the Sensor.</p>
@@ -99,7 +99,7 @@ Set the timeout of all calibration steps for the Sensor.<br /> <h1>Overview</h1>
       </parameter>
 
       <parameter name="config_36_1" type="integer" groupName="configuration" readOnly="true"
-                 min="1" max="100">
+>
         <label>36: Number of alarm musics</label>
         <description><![CDATA[
 Get the number of alarm musics<br /> <h1>Overview</h1><p>Get the numbers of alarm music.</p>
@@ -122,7 +122,7 @@ Disable opening alarm<br /> <h1>Overview</h1><p>Configure the alarm mode when th
       </parameter>
 
       <parameter name="config_37_4_0000FF00" type="integer" groupName="configuration"
-                 min="1" max="10">
+>
         <label>37: Opening alarm volume</label>
         <description><![CDATA[
 Opening alarm volume<br /> <h1>Overview</h1><p>Configure the alarm mode when the garage door is opening.</p> <p>Value3: configure the volume of alarm sound (there are 10 levels, the min volume is 1 level and the max volume is 10 levels).</p>
@@ -132,7 +132,7 @@ Opening alarm volume<br /> <h1>Overview</h1><p>Configure the alarm mode when the
       </parameter>
 
       <parameter name="config_37_4_00FF0000" type="integer" groupName="configuration"
-                 min="1" max="4">
+>
         <label>37: Opening alarm choice</label>
         <description><![CDATA[
 Alarm mode when the garage door is opening<br /> <h1>Overview</h1><p>Configure the alarm mode when the garage door is opening.</p> <p>Value2: configure the alarm sound (there are 4 types sound saved in EEPROM and user also can update it).</p>
@@ -142,7 +142,7 @@ Alarm mode when the garage door is opening<br /> <h1>Overview</h1><p>Configure t
       </parameter>
 
       <parameter name="config_37_4_0F000000" type="integer" groupName="configuration"
-                 min="1" max="10">
+>
         <label>37: Opening alarm LED mode</label>
         <description><![CDATA[
 Opening alarm LED mode<br /> <h1>Overview</h1><p>Configure the alarm mode when the garage door is opening.</p> <p>Value1: configure the frequency of blinking for the Alarm LED , there are 10 levels from 1 to 10, the minimum frequency is level 1 and the max frequency is level 10.</p>
@@ -165,7 +165,7 @@ Disable closing alarm<br /> <h1>Overview</h1><p>Configure the alarm mode when th
       </parameter>
 
       <parameter name="config_38_4_0000FF00" type="integer" groupName="configuration"
-                 min="1" max="10">
+>
         <label>38: Closing alarm volume</label>
         <description><![CDATA[
 Closing alarm volume<br /> <h1>Overview</h1><p>Configure the alarm mode when the garage door is closing.</p> <p>Value3: configure the volume of alarm sound (there are 10 levels, the min volume is 1 level and the max volume is 10 levels).</p>
@@ -175,7 +175,7 @@ Closing alarm volume<br /> <h1>Overview</h1><p>Configure the alarm mode when the
       </parameter>
 
       <parameter name="config_38_4_00FF0000" type="integer" groupName="configuration"
-                 min="1" max="4">
+>
         <label>38: Closing alarm choice</label>
         <description><![CDATA[
 Alarm mode when the garage door is closing<br /> <h1>Overview</h1><p>Configure the alarm mode when the garage door is closing.</p> <p>Value2: configure the alarm sound (there are 4 types sound saved in EEPROM and user also can update it).</p>
@@ -185,7 +185,7 @@ Alarm mode when the garage door is closing<br /> <h1>Overview</h1><p>Configure t
       </parameter>
 
       <parameter name="config_38_4_0F000000" type="integer" groupName="configuration"
-                 min="1" max="10">
+>
         <label>38: Closing alarm LED mode</label>
         <description><![CDATA[
 Closing alarm LED mode<br /> <h1>Overview</h1><p>Configure the alarm mode when the garage door is closing.</p> <p>Value1: configure the frequency of blinking for the Alarm LED , there are 10 levels from 1 to 10, the minimum frequency is level 1 and the max frequency is level 10.</p>
@@ -195,7 +195,7 @@ Closing alarm LED mode<br /> <h1>Overview</h1><p>Configure the alarm mode when t
       </parameter>
 
       <parameter name="config_39_4" type="integer" groupName="configuration"
-                 min="-2147483646" max="2147483647">
+>
         <label>39: Unknown state alarm mode</label>
         <description><![CDATA[
 Configuration alarm mode when the garage door is in "unknown" state<br /> <h1>Overview</h1><p>Configuration alarm mode when the garage door is in<br />"unknown" state:<br />1, Value1: configure the frequency of blinking for the Alarm<br />LED , there are 10 levels that 1 to10 level, the minimum<br />frequency is level 1 and the max frequency is level 10.<br />2, Value2: configure the alarm sound (there are 4 types sound<br />saved in EEPROM and user also can update it).<br />3, Value3: configure the volume of alarm sound (there are 10<br />levels, the min volume is 1 level and the max volume is 10</p> <p>levels).<br />4, Value4=0, disable the alarm prompt. Value4=1, enable the<br />alarm prompt.</p> <p>default values:</p> <p>Value1=4<br />Value2=3<br />Value3=8<br />Value4=0</p>
@@ -205,7 +205,7 @@ Configuration alarm mode when the garage door is in "unknown" state<br /> <h1>Ov
       </parameter>
 
       <parameter name="config_40_4" type="integer" groupName="configuration"
-                 min="-2147483646" max="2147483647">
+>
         <label>40: Closed alarm mode</label>
         <description><![CDATA[
 Configure the alarm mode when the garage door is in closed position.<br /> <h1>Overview</h1><p>Configuration alarm mode when the garage door is in<br />"closed" state:<br />1, Value1: configure the frequency of blinking for the Alarm<br />LED , there are 10 levels that 1 to10 level, the minimum<br />frequency is level 1 and the max frequency is level 10.<br />2, Value2: configure the alarm sound (there are 4 types sound<br />saved in EEPROM and user also can update it).<br />3, Value3: configure the volume of alarm sound (there are 10<br />levels, the min volume is 1 level and the max volume is 10 levels).<br />4, Value4=0, disable the alarm prompt. Value4=1, enable the<br />alarm prompt.</p> <p>default values:</p> <p>Value1=2<br />Value2=4<br />Value3=8<br />Value4=0</p>
@@ -215,7 +215,7 @@ Configure the alarm mode when the garage door is in closed position.<br /> <h1>O
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>41: Tamper switch configuration</label>
         <description><![CDATA[
 Configuration report for the tamper switch State<br /> <h1>Overview</h1><p>Configuration report for the tamper switch state:<br />1, Value=0x00: Sensor is not removed<br />2, Value=0x0F: Sensor is removed</p> <p><br />Note:<br />1. The Garage Door Controller will send this configuration report to gateway controller or associated nodes automatically if the Sensor is removed.<br />2. You can send the value=0x55555555 of this parameter to controller to relieve the alarm state.</p>
@@ -225,7 +225,7 @@ Configuration report for the tamper switch State<br /> <h1>Overview</h1><p>Confi
       </parameter>
 
       <parameter name="config_42_1" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="16">
+>
         <label>42: Battery state</label>
         <description><![CDATA[
 Configuration report for the battery state of Sensor<br /> <h1>Overview</h1><p>Configuration report for the battery state of Sensor:<br />1, Value=0x00: battery power is nominal.<br />2, Value=0x0F: battery power of Sensor is in low battery.<br />It will report the battery power state to associated nodes automatically when the battery power is in low battery.</p>
@@ -253,7 +253,7 @@ Set volume for test of ringtone<br /> <h1>Overview</h1><p>Test the volume of the
       </parameter>
 
       <parameter name="config_45_2" type="integer" groupName="configuration" readOnly="true"
-                 min="0" max="500">
+>
         <label>45: Temperature</label>
         <description><![CDATA[
 Get the environment temperature<br /> <h1>Overview</h1><p>Get the environment temperature:<br />The temperature value contains one decimal point. E.g. If the report value=252, the temperature is 25.2 °C .<br />Range is 0 to 500 (0 to 50.0 °C ).</p>

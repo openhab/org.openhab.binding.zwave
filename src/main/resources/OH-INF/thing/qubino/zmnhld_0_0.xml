@@ -200,7 +200,7 @@ I3 Functionality selection<br /> <h1>Overview</h1><p>default value 32767<br /> 3
       </parameter>
 
       <parameter name="config_40_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>40: Power reporting in Watts on power change</label>
         <description><![CDATA[
 Power reporting in Watts on power change<br /> <h1>Overview</h1><p>Choose by how much power consumption needs to increase or decrease to be reported. Values correspond to percentages so if 10 is set, for example, the device will report any power consumption changes of 10% or more compared to the last reading. Power consumption needs to increase or decrease by at least 1 Watt to be reported, REGARDLESS of percentage set in this parameter. <br /> 0 - Power consumption reporting disabled<br /> 1 - 100 = 1% - 100% Power consumption reporting enabled. New value is reported only when Wattage in real time changes by more than the percentage value set in this parameter compared to the previous Wattage reading, starting at 1% (the lowest value possible).</p>
@@ -212,7 +212,7 @@ Power reporting in Watts on power change<br /> <h1>Overview</h1><p>Choose by how
       </parameter>
 
       <parameter name="config_42_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>42: Power reporting in Watts by time interval</label>
         <description><![CDATA[
 Power reporting in Watts by time interval<br /> <h1>Overview</h1><p>Set value refers to the time interval with which power consumption in Watts is reported (0 – 32767 seconds). If for example 300 is entered, energy consumption reports will be sent to the gateway (hub) every 300 seconds (or 5 minutes).<br /></p><p>0 - report disabled<br />1-32767 = 1 second - 32767 seconds interval. Reporting enabled with time interval</p>
@@ -222,7 +222,7 @@ Power reporting in Watts by time interval<br /> <h1>Overview</h1><p>Set value re
       </parameter>
 
       <parameter name="config_45_2" type="integer" groupName="configuration"
-                 min="0" max="1127">
+>
         <label>45: Antifreeze</label>
         <description><![CDATA[
 Antifreeze<br /> <h1>Overview</h1><p>Set value means at which temperature the device will be turned on even if the thermostat was manually set to off. Available config. parameters (data type is 2 Byte DEC):<br />  default value 50 (5,0 °C)<br />  0 - 127 = 0,0°C … 12,7 °C<br />  1001 - 1127 = -0,1°C … - 12,6 °C<br />  255 - Antifreeze functionality disabled<br /> NOTE: Antifreeze is activated only in heating mode.</p>
@@ -232,7 +232,7 @@ Antifreeze<br /> <h1>Overview</h1><p>Set value means at which temperature the de
       </parameter>
 
       <parameter name="config_50_1" type="integer" groupName="configuration"
-                 min="2" max="100">
+>
         <label>50: PWM maximum value</label>
         <description><![CDATA[
 PWM maximum value<br /> <h1>Overview</h1><p>2..100 = 2..100% Maximum PWM is set by entered value</p>
@@ -242,7 +242,7 @@ PWM maximum value<br /> <h1>Overview</h1><p>2..100 = 2..100% Maximum PWM is set 
       </parameter>
 
       <parameter name="config_51_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+>
         <label>51: PWM minimum value</label>
         <description><![CDATA[
 PWM minimum value<br /> <h1>Overview</h1><p>0..99 = 0..99% Minimum PWM is set by entered value</p>
@@ -252,7 +252,7 @@ PWM minimum value<br /> <h1>Overview</h1><p>0..99 = 0..99% Minimum PWM is set by
       </parameter>
 
       <parameter name="config_52_1" type="integer" groupName="configuration"
-                 min="5" max="127">
+>
         <label>52: PWM cycle duration</label>
         <description><![CDATA[
 PWM cycle duration<br /> <h1>Overview</h1><p>5..127 = 5-125 seconds. PWM cycle duration is set by entered value</p>
@@ -262,7 +262,7 @@ PWM cycle duration<br /> <h1>Overview</h1><p>5..127 = 5-125 seconds. PWM cycle d
       </parameter>
 
       <parameter name="config_53_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+>
         <label>53: PID value inside deadband</label>
         <description><![CDATA[
 PID value inside deadband<br /> <h1>Overview</h1><p>0 - PID value equals PWM minimum cycle<br />1 - PID value set to LAST VALUE</p>
@@ -272,7 +272,7 @@ PID value inside deadband<br /> <h1>Overview</h1><p>0 - PID value equals PWM min
       </parameter>
 
       <parameter name="config_54_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+>
         <label>54: PID deadband</label>
         <description><![CDATA[
 PID deadband<br /> <h1>Overview</h1><p>0..127 = 0..12.7 °C <br />This parameter defines the zone where PID is not active.</p>
@@ -282,7 +282,7 @@ PID deadband<br /> <h1>Overview</h1><p>0..127 = 0..12.7 °C <br />This parameter
       </parameter>
 
       <parameter name="config_55_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+>
         <label>55: Integral sampling time</label>
         <description><![CDATA[
 Integral sampling time<br /> <h1>Overview</h1><p>0..127 = 0..127 seconds.<br />Parameter defines the time between samples.</p>
@@ -292,7 +292,7 @@ Integral sampling time<br /> <h1>Overview</h1><p>0..127 = 0..127 seconds.<br />P
       </parameter>
 
       <parameter name="config_56_2" type="integer" groupName="configuration"
-                 min="0" max="1000">
+>
         <label>56: P parameter</label>
         <description>P parameter</description>
         <default>100</default>
@@ -300,7 +300,7 @@ Integral sampling time<br /> <h1>Overview</h1><p>0..127 = 0..127 seconds.<br />P
       </parameter>
 
       <parameter name="config_57_2" type="integer" groupName="configuration"
-                 min="0" max="1000">
+>
         <label>57: I parameter</label>
         <description>I parameter</description>
         <default>1</default>
@@ -308,7 +308,7 @@ Integral sampling time<br /> <h1>Overview</h1><p>0..127 = 0..127 seconds.<br />P
       </parameter>
 
       <parameter name="config_58_2" type="integer" groupName="configuration"
-                 min="0" max="1000">
+>
         <label>58: D parameter</label>
         <description>D parameter</description>
         <default>0</default>
@@ -329,7 +329,7 @@ Thermostat mode<br /> <h1>Overview</h1><p>Available config. parameters (data typ
       </parameter>
 
       <parameter name="config_60_2" type="integer" groupName="configuration"
-                 min="1" max="1150">
+>
         <label>60: Too low temperature limit</label>
         <description><![CDATA[
 Too low temperature limit<br /> <h1>Overview</h1><p>This parameter determines the temperature at which the device sends a command to the associated device - to turn ON device or to turn OFF device.<br />Too low temperature limit is used with Association Group 4. <br />• Default value 50 (Too low temperature limit is 5.0 °C)<br /> • 1 - 1000 = 0.1 °C to 100.0 °C, step is 0.1 °C.<br /> • 1001 - 1150: - 0.1 °C to – 15.0 °C</p>
@@ -339,7 +339,7 @@ Too low temperature limit<br /> <h1>Overview</h1><p>This parameter determines th
       </parameter>
 
       <parameter name="config_61_2" type="integer" groupName="configuration"
-                 min="1" max="1000">
+>
         <label>61: Too high temperature limit</label>
         <description><![CDATA[
 Too high temperature limit<br /> <h1>Overview</h1><p>This parameter determines the temperature at which the device sends a command to the associated device, to turn ON device or to turn OFF device.<br /> • default value 700 (too high temperature limit is 70.0 °C)<br /> • 1 - 1000 = 0.1 °C - 100.0 °C, step is 0.1 °C. Too high temperature limit is used with Association Group 4.</p>
@@ -362,7 +362,7 @@ Output Switch selection<br /> <h1>Overview</h1><p>Set value means the type of th
       </parameter>
 
       <parameter name="config_70_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
+>
         <label>70: Input I1 status on delay</label>
         <description><![CDATA[
 Input I1 status on delay<br /> <h1>Overview</h1><p>This parameter specifies the delay before the device executes command, after input I1 is activated. For example, if you set the parameter to 30 seconds and close the window, heater will turn ON after 30 seconds.<br /> If the value of parameter is different to 0, means that the Influence of this input to heating or cooling will react after inserted time. This parameter has influence only when the window sensor functionality is selected by the parameter no. 11.<br /> Device status on UI change immediately, but the command will be sent after time set.</p>
@@ -372,7 +372,7 @@ Input I1 status on delay<br /> <h1>Overview</h1><p>This parameter specifies the 
       </parameter>
 
       <parameter name="config_71_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
+>
         <label>71: Input I1 status off delay</label>
         <description><![CDATA[
 Input I1 status off delay<br /> <h1>Overview</h1><p>This parameter specifies the delay before the device executes command after input I1 is deactivated. For example, if you set the parameter to 30 seconds and close the window, heater will turn OFF after 30 seconds.<br />If the value of parameter is different to 0, means that the Influence of this input to heating or cooling will react after inserted time. This parameter has influence only when the window sensor functionality is selected by the parameter no. 11.Device status on UI change immediately but the command will be send after the set time.</p>
@@ -382,7 +382,7 @@ Input I1 status off delay<br /> <h1>Overview</h1><p>This parameter specifies the
       </parameter>
 
       <parameter name="config_72_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
+>
         <label>72: Input I2 status on delay</label>
         <description><![CDATA[
 Input I2 status on delay<br /> <h1>Overview</h1><p>This parameter specifies the delay before the device execute command after input I2 is activated.<br /> This parameter has influence only when the condense sensor functionality is selected by the parameter no. 12.</p>
@@ -392,7 +392,7 @@ Input I2 status on delay<br /> <h1>Overview</h1><p>This parameter specifies the 
       </parameter>
 
       <parameter name="config_73_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
+>
         <label>73: Input I2 status off delay</label>
         <description><![CDATA[
 Input I2 status off delay<br /> <h1>Overview</h1><p>This parameter specifies the delay before the device execute command after input I2 is deactivated.<br /> This parameter has influence only when the condense sensor functionality is selected by the parameter no. 12.</p>
@@ -402,7 +402,7 @@ Input I2 status off delay<br /> <h1>Overview</h1><p>This parameter specifies the
       </parameter>
 
       <parameter name="config_74_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
+>
         <label>74: Input 3 status ON delay</label>
         <description><![CDATA[
 Input 3 status ON delay<br /> <h1>Overview</h1><p>This parameter specifies the delay before the device execute command after input I3 is activated.<br /> This parameter has influence only when the flood sensor functionality is selected by the parameter no. 13.</p>
@@ -412,7 +412,7 @@ Input 3 status ON delay<br /> <h1>Overview</h1><p>This parameter specifies the d
       </parameter>
 
       <parameter name="config_75_2" type="integer" groupName="configuration"
-                 min="0" max="32000">
+>
         <label>75: Input I3 status off delay</label>
         <description><![CDATA[
 Input I3 status off delay<br /> <h1>Overview</h1><p>If the value of the parameter is different to 0 means that the influence of this input to heating or cooling will react after inserted time.</p>
@@ -422,7 +422,7 @@ Input I3 status off delay<br /> <h1>Overview</h1><p>If the value of the paramete
       </parameter>
 
       <parameter name="config_76_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+>
         <label>76: Reporting on time interval</label>
         <description><![CDATA[
 Reporting on time interval<br /> <h1>Overview</h1><p>Association group 2, 10 - reporting on time interval</p> <p>Determinates the time interval of sending device status ON/OFF to the associated device.<br /> If the Association groups 2 or 10 are set, the device is reporting its state (Basic Set ON/ OFF) on change and on time interval (if this parameter is set).<br /> • Default value 30 = 30 minutes<br /> • 0 = Reporting disabled<br /> • 1-127 = 1 minute – 127 minutes, reporting enabled</p>
@@ -432,7 +432,7 @@ Reporting on time interval<br /> <h1>Overview</h1><p>Association group 2, 10 - r
       </parameter>
 
       <parameter name="config_77_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>77: Group 10 - delay before sending Basic Set ON</label>
         <description><![CDATA[
 Group 10 - delay before sending Basic Set ON<br /> <h1>Overview</h1><p>Association group 10 - delay before sending Basic Set ON</p> <p>Set a time delay before sent Basic set ON to the associated device. The same time frame also applies for the Basic set OFF.<br /> If this parameter is set, Basic Set ON/OFF Report is delayed for the time defined in this parameter.<br /> • Default value 180 = 3 minutes<br /> • 0 = Reports with no delay<br /> • 1-32767 = 1 second– 32767 seconds, reporting enabled</p>
@@ -508,7 +508,7 @@ Enable/Disable I1 or select Type and Event<br /> <h1>Overview</h1><p>Choose whet
       </parameter>
 
       <parameter name="config_110_2" type="integer" groupName="configuration"
-                 min="0" max="32536">
+>
         <label>110: Temperature sensor offset settings</label>
         <description><![CDATA[
 Temperature sensor offset settings<br /> <h1>Overview</h1><p>32536 = offset is 0.0°C<br />1..100 = offset is 0.1..10.0°C added to actual measuring value<br />1001..1100 = offset is -0.1..-10.0°C subtracted to actual measuring value</p>
@@ -518,7 +518,7 @@ Temperature sensor offset settings<br /> <h1>Overview</h1><p>32536 = offset is 0
       </parameter>
 
       <parameter name="config_120_1" type="integer" groupName="configuration"
-                 min="0" max="127">
+>
         <label>120: Digital temperature sensor reporting</label>
         <description><![CDATA[
 Digital temperature sensor reporting<br /> <h1>Overview</h1><p>If digital teperature sensor is connected, module reports measured temperature on temperture change defined by this parameter</p>
@@ -543,7 +543,7 @@ Digital temperature sensor reporting<br /> <h1>Overview</h1><p>If digital tepera
       </parameter>
 
       <parameter name="config_122_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>122: Node Id of external battery powered sensor</label>
         <description><![CDATA[
 Node Id of external battery powered sensor<br /> <h1>Overview</h1><p>0 - disabled</p> <p>1..254 = NodeId of external battery powered room sensor</p>

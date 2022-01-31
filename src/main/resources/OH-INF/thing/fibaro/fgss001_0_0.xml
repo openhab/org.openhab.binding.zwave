@@ -77,7 +77,7 @@ Smoke Sensor<br /> <h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, o
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="0" max="3600">
+>
         <label>1: Alarm Cancellation Delay</label>
         <description><![CDATA[
 Alarm Cancellation Delay<br /> <h1>Overview</h1><p>Additional delay after an alarm has ceased. The parameter allows you to specify additional time, after which the alarm is cancelled once its violation has ceased.</p>
@@ -115,7 +115,7 @@ Type of alarm to 1st association group (SMOKE)<br /> <h1>Overview</h1><p>Allows 
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>7: Forced Level of Dimming group 1</label>
         <description><![CDATA[
 Forced Level of Dimming group 1<br /> <h1>Overview</h1><p>Value of the parameter specifying the forced level of dimming / opening sun blinds when comes 'switch on' / 'open' command to devices from association group no. 1</p> <p>In the case of alarm frames the alarm priority is specified.</p>
@@ -125,7 +125,7 @@ Forced Level of Dimming group 1<br /> <h1>Overview</h1><p>Value of the parameter
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
-                 min="1" max="32767">
+>
         <label>10: Interval between temperature readings</label>
         <description><![CDATA[
 Interval between temperature readings<br /> <h1>Overview</h1><p>Interval between successive readings of temperature from all sensors connected to the device in seconds.</p> <p>Note: taking temperature readings from the sensor does not result in sending a temperature condition report to the central hub.</p>
@@ -135,7 +135,7 @@ Interval between temperature readings<br /> <h1>Overview</h1><p>Interval between
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>12: Insensitiveness to temperature changes.</label>
         <default>20</default>
         <limitToOptions>false</limitToOptions>
@@ -157,7 +157,7 @@ Frame broadcast mode<br /> <h1>Overview</h1><p>Transmitting the alarm or control
       </parameter>
 
       <parameter name="config_73_2" type="integer" groupName="configuration"
-                 min="-1000" max="1000">
+>
         <label>73: Temperature measurement compensation</label>
         <description><![CDATA[
 Temperature measurement compensation<br /> <h1>Overview</h1><p>Temperature value to be added to or deducted from the current measured temperature measured by internal temperature sensor in order to compensate the difference between air temperature and temperature measured at the ceiling level</p> <p>Available settings: -1000 -/+ 1000 (in 0,1 C steps)</p>
@@ -167,7 +167,7 @@ Temperature measurement compensation<br /> <h1>Overview</h1><p>Temperature value
       </parameter>
 
       <parameter name="config_80_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>80: Z-Wave range test interval</label>
         <description><![CDATA[
 Z-Wave range test interval<br /> <h1>Overview</h1><p>Time period between the consecutive Z-Wave network range tests.</p> <p>Available settings: 0 – 144 (10min multiplier) [10min-24h]</p> <p>0 – Z-Wave network range test inactive Default setting: 1 (10min)</p>
@@ -177,7 +177,7 @@ Z-Wave range test interval<br /> <h1>Overview</h1><p>Time period between the con
       </parameter>
 
       <parameter name="config_81_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>81: Temperature alarm threshold</label>
         <description><![CDATA[
 Temperature alarm threshold<br /> <h1>Overview</h1><p>Temperature value, measured by the built-in temperature sensor which the temperature alarm is sent.</p> <p>Available settings: 0,2 - 100</p> <ul><li>0 – temperature alarm inactive</li> <li>2 - 100 – (2 - 100 C) Default setting:</li> <li>54 (54 C)</li> </ul>
@@ -215,7 +215,7 @@ Black Box sensitivity level<br /> <h1>Overview</h1><p>Parameter specifies temper
       </parameter>
 
       <parameter name="config_84_1" type="integer" groupName="configuration"
-                 min="-126" max="127">
+>
         <label>84: Malfunction alarm</label>
         <description><![CDATA[
 Malfunction alarm<br /> <h1>Overview</h1><p>Time interval in which malfuntion alarm, if detected, is repeated using visual and acoustic alarms.</p> <p>Available settings:</p> <ul><li>1 - 255 (100 ms multiplier) [100ms-25,5s]</li> <li>Default setting: 10 (1s) </li> </ul>
@@ -225,7 +225,7 @@ Malfunction alarm<br /> <h1>Overview</h1><p>Time interval in which malfuntion al
       </parameter>
 
       <parameter name="config_85_1" type="integer" groupName="configuration"
-                 min="-126" max="127">
+>
         <label>85: Temperature alarm</label>
         <description><![CDATA[
 Temperature alarm<br /> <h1>Overview</h1><p>Time interval in which temperature alarm, if detected, is repeated using visual and acoustic alarms.</p> <p>Available settings:</p> <ul><li>1 - 255 (100 ms multiplier) [100ms-25,5s]</li> <li>Default setting: 5 (500ms)</li> </ul>
@@ -235,7 +235,7 @@ Temperature alarm<br /> <h1>Overview</h1><p>Time interval in which temperature a
       </parameter>
 
       <parameter name="config_86_2" type="integer" groupName="configuration"
-                 min="1" max="17280">
+>
         <label>86: Lack of the Z-Wave range alarm</label>
         <description><![CDATA[
 Lack of the Z-Wave range alarm<br /> <h1>Overview</h1><p>Time interval in which lack of the Z-Wave network alarm, if detected, is repeated using visual and acoustic alarms.</p> <p>Available settings:</p> <ul><li>1 - 17280 (5s multiplier) [5s-24h]</li> <li>Default setting: 360 (30min)</li> </ul>
@@ -245,7 +245,7 @@ Lack of the Z-Wave range alarm<br /> <h1>Overview</h1><p>Time interval in which 
       </parameter>
 
       <parameter name="config_87_2" type="integer" groupName="configuration"
-                 min="1" max="17280">
+>
         <label>87: Low battery alarm</label>
         <description><![CDATA[
 Low battery alarm<br /> <h1>Overview</h1><p>Time interval in which low battery alarm, if detected, is repeated using visual and acoustic alarms.</p> <p>Available settings:</p> <ul><li>1 - 17280 (5s multiplier) [5s-24h]</li> <li>Default setting: 360 (30min)</li> </ul>

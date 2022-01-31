@@ -82,7 +82,7 @@ Summer/Winter mode<br /> <h1>Overview</h1><p>Summer / Winter mode</p> <p>50 - Au
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="1" max="30">
+>
         <label>3: Measurement frequency</label>
         <description>Measurement frequency</description>
         <default>3</default>
@@ -90,7 +90,7 @@ Summer/Winter mode<br /> <h1>Overview</h1><p>Summer / Winter mode</p> <p>50 - Au
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+>
         <label>4: Level of sensitivity for day</label>
         <description>Level of sensitivity for day</description>
         <default>60</default>
@@ -98,7 +98,7 @@ Summer/Winter mode<br /> <h1>Overview</h1><p>Summer / Winter mode</p> <p>50 - Au
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration" readOnly="true"
-                 min="-127" max="128">
+>
         <label>5: Temperature</label>
         <description>Temperature</description>
         <default>0</default>
@@ -106,7 +106,7 @@ Summer/Winter mode<br /> <h1>Overview</h1><p>Summer / Winter mode</p> <p>50 - Au
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="1" max="9">
+>
         <label>6: Level of sensitivity for night</label>
         <description>Level of sensitivity for night</description>
         <default>3</default>

@@ -75,7 +75,7 @@ State after Power Failure<br /> <h1>Overview</h1><p>Determines what the load sta
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>3: Enable/disable to send the basic report</label>
         <description><![CDATA[
 Enable/disable to send the basic report<br /> <h1>Overview</h1><p>Enable/disable to send the basic report to the Lifeline when the load state changed.(When value set as 1, re-power on the dimmer, it will send basic report automatically)</p>
@@ -85,7 +85,7 @@ Enable/disable to send the basic report<br /> <h1>Overview</h1><p>Enable/disable
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>4: Default fade time</label>
         <description><![CDATA[
 Default fade time<br /> <h1>Overview</h1><p>Default(255) Is 1 second</p> <p>254 is 1 Minute</p>
@@ -94,7 +94,7 @@ Default fade time<br /> <h1>Overview</h1><p>Default(255) Is 1 second</p> <p>254 
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="50">
+>
         <label>5: Setting minimum Brightness value</label>
         <description><![CDATA[
 Setting minimum Brightness value<br /> <h1>Overview</h1><p>Setting minimum Brightness value</p>
@@ -104,7 +104,7 @@ Setting minimum Brightness value<br /> <h1>Overview</h1><p>Setting minimum Brigh
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>6: Choose MOSFET driving type</label>
         <description><![CDATA[
 Choose MOSFET driving type<br /> <h1>Overview</h1><p>Choose MOSFET driving type</p>
@@ -114,7 +114,7 @@ Choose MOSFET driving type<br /> <h1>Overview</h1><p>Choose MOSFET driving type<
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>7: Enable/disable external switch.</label>
         <description><![CDATA[
 Enable/disable external switch.<br /> <h1>Overview</h1><p>Enable/disable external switch to be added and removed from a network.</p>
@@ -124,7 +124,7 @@ Enable/disable external switch.<br /> <h1>Overview</h1><p>Enable/disable externa
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>8: Setting dimmer curve</label>
         <description><![CDATA[
 Setting dimmer curve<br /> <h1>Overview</h1><p>Setting dimmer curve</p>
@@ -134,7 +134,7 @@ Setting dimmer curve<br /> <h1>Overview</h1><p>Setting dimmer curve</p>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="0" max="99">
+>
         <label>9: Setting startup brightness of the load.</label>
         <description><![CDATA[
 Setting startup brightness of the load.<br /> <h1>Overview</h1><p>Setting startup brightness of the load.</p>

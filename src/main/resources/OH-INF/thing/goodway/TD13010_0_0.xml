@@ -138,7 +138,7 @@ In wall Power Monitor Switch<br /> <h1>Overview</h1><p>This In-wall Power Monito
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="1" max="32767">
+>
         <label>1: D1 automatically turn off</label>
         <description><![CDATA[
 Time in second that the O2 will turn off automatically.<br /> <h1>Overview</h1><p>Time in second that the O2 will turn off automatically. <br /></p><p>0 : Disable (Default)</p><p>1~32767 :seconds<br /></p>
@@ -148,7 +148,7 @@ Time in second that the O2 will turn off automatically.<br /> <h1>Overview</h1><
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="1" max="32767">
+>
         <label>2: D2 automatically turn off</label>
         <description>0 : Disable (Default)1~32767: Time in second that the O2 will turn off automatically. Size: 2 Byte, Default Value: 0</description>
         <default>0</default>
@@ -156,7 +156,7 @@ Time in second that the O2 will turn off automatically.<br /> <h1>Overview</h1><
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>3: Switch Type</label>
         <description><![CDATA[
 Switch Type<br /> <h1>Overview</h1><p>0 : Toggle switches (Default)</p><p>1 : Toggle switches with memory</p><p>2 : Momentary switch </p><p>Size: 1 Byte, Default Value: 0</p>
@@ -170,7 +170,7 @@ Switch Type<br /> <h1>Overview</h1><p>0 : Toggle switches (Default)</p><p>1 : To
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>4: Reload power status</label>
         <description><![CDATA[
 Reload power status<br /> <h1>Overview</h1><p>0 : device does not memorize its status at power cut. Load is disconnected </p><p>1 : device memorizes its status at the power cut.Load will be set to the status from before power cut. </p><p>Size: 1 Byte, Default Value: 0<br /></p>
@@ -183,7 +183,7 @@ Reload power status<br /> <h1>Overview</h1><p>0 : device does not memorize its s
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>5: Power reporting on power change</label>
         <description>0 : Disabled1~100 : 1 % ~ 100 %. (Default = 10%) Size: 1 Byte, Default Value: 10</description>
         <default>10</default>
@@ -191,7 +191,7 @@ Reload power status<br /> <h1>Overview</h1><p>0 : device does not memorize its s
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="60" max="32767">
+>
         <label>6: Watts auto-report period</label>
         <description>0 : Disabled60~32767Seconds. (Default = 300 Seconds) Size: 2 Byte, Default Value: 300</description>
         <default>300</default>
@@ -199,7 +199,7 @@ Reload power status<br /> <h1>Overview</h1><p>0 : device does not memorize its s
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="30" max="32767">
+>
         <label>7: KWH auto-report period</label>
         <description>0 : DisabledSet time interval of reporting KWH (60 ~32767) in seconds. Size: 2 Byte, Default Value: 3600</description>
         <default>3600</default>
@@ -207,7 +207,7 @@ Reload power status<br /> <h1>Overview</h1><p>0 : device does not memorize its s
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="1" max="32767">
+>
         <label>8: D1 automatically turn on</label>
         <description>0 : Disable (Default)1~32767 : Time in second that the O2 will turn on automatically. Size: 2 Byte, Default Value: 0</description>
         <default>0</default>
@@ -215,7 +215,7 @@ Reload power status<br /> <h1>Overview</h1><p>0 : device does not memorize its s
       </parameter>
 
       <parameter name="config_9_2" type="integer" groupName="configuration"
-                 min="1" max="32767">
+>
         <label>9: D2 automatically turn on</label>
         <description>0 : Disable (Default)1~32767: Time in second that the O2 will turn on automatically. Size: 2 Byte, Default Value: 0</description>
         <default>0</default>

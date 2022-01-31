@@ -104,7 +104,7 @@ Acoustic signalling of gesture recognition result (using the built-in buzzer).<b
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="0" max="1080">
+>
         <label>5: Powering mode update interval</label>
         <description><![CDATA[
 Check if the USB pwr supply is connected, update pwr mode<br /> <h1>Overview</h1><p>This parameter determines how often the device checks if the USB power supply is connected and updates powering mode if needed.</p>
@@ -145,7 +145,7 @@ Choose if the menu can be entered using the Hold gesture.<br /> <h1>Overview</h1
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration" readOnly="true"
-                 min="1" max="63">
+>
         <label>10: Scenes sent to the controller</label>
         <description><![CDATA[
 Defines which actions result in sending scenes to 1st “Lifeline” group.<br /> <h1>Overview</h1><p>Parameter 10 values may be combined, e.g. 1+2=3 means that scenes for flick UP and DOWN are enabled.</p>
@@ -163,7 +163,7 @@ Defines which actions result in sending scenes to 1st “Lifeline” group.<br /
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="1" max="31">
+>
         <label>11: Associations in Z-Wave network security mode</label>
         <description><![CDATA[
 Define sent command for specified association groups.<br /> <h1>Overview</h1><p>Parameter defines how commands are sent in specified association groups: as secure or non-secure. Parameter is active only in Z-Wave network security mode. It does not apply to 1st “Lifeline” association group.</p> <p>Parameter 11 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are sent as secure.</p>
@@ -179,7 +179,7 @@ Define sent command for specified association groups.<br /> <h1>Overview</h1><p>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="1" max="15">
+>
         <label>12: Mode of 2nd-5th "Flick UP/DOWN/LEFT/RIGHT”</label>
         <description><![CDATA[
 Choose control mode for 2nd-5th groups and scenes.<br /> <h1>Overview</h1><p>Parameter allows to choose control mode for 2nd-5th groups and scenes.</p> <p>By default, Toggle Mode is active, meaning that a single flick turns ON the group and the same flick turns it OFF, doubled flicks are inactive.</p> <p>After disabling Toggle Mode a single flick will turn the device ON and the same flick doubled will turn it OFF.</p> <p>Parameter 12 values may be combined, e.g. 1+2=3 means that 2nd &amp; 3rd group are selected.</p> <p><strong>N.B. Disabling Toggle Mode will introduce delay when performing single gestures.</strong></p>
@@ -194,7 +194,7 @@ Choose control mode for 2nd-5th groups and scenes.<br /> <h1>Overview</h1><p>Par
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>13: Rate of smooth level control</label>
         <description><![CDATA[
 Choose gesture time for "AirWheel" to reach max/min level.<br /> <h1>Overview</h1><p>Parameter allows to choose how long the hand has to be held near the center of the pad after "AirWheel" gesture for the associated devices to reach their maximum/minimum level.</p> <p>Available settings:</p> <p>0-10 - duration in seconds</p> <p>255 - default settings of controlled devices</p>
@@ -203,7 +203,7 @@ Choose gesture time for "AirWheel" to reach max/min level.<br /> <h1>Overview</h
       </parameter>
 
       <parameter name="config_20_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>20: SWITCH ON control frame value for FLICK UP gesture</label>
         <description><![CDATA[
 Value sent in SWITCH ON command<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -213,7 +213,7 @@ Value sent in SWITCH ON command<br /> <h1>Overview</h1><p>This parameter allows 
       </parameter>
 
       <parameter name="config_21_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>21: SWITCH OFF frame value for FLICK UP</label>
         <description><![CDATA[
 Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -223,7 +223,7 @@ Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>22: SWITCH ON frame value for FLICK DOWN</label>
         <description><![CDATA[
 Value sent in SWITCH ON command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -233,7 +233,7 @@ Value sent in SWITCH ON command frame.<br /> <h1>Overview</h1><p>This parameter 
       </parameter>
 
       <parameter name="config_23_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>23: SWITCH OFF frame value for FLICK DOWN</label>
         <description><![CDATA[
 Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -243,7 +243,7 @@ Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter
       </parameter>
 
       <parameter name="config_24_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>24: SWITCH ON frame value for FLICK LEFT</label>
         <description><![CDATA[
 Value sent in SWITCH ON command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -253,7 +253,7 @@ Value sent in SWITCH ON command frame.<br /> <h1>Overview</h1><p>This parameter 
       </parameter>
 
       <parameter name="config_25_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>25: SWITCH OFF frame value for FLICK LEFT</label>
         <description><![CDATA[
 Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -263,7 +263,7 @@ Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter
       </parameter>
 
       <parameter name="config_26_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>26: SWITCH ON frame value for FLICK RIGHT</label>
         <description><![CDATA[
 Value sent in SWITCH ON command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH ON command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -273,7 +273,7 @@ Value sent in SWITCH ON command frame.<br /> <h1>Overview</h1><p>This parameter 
       </parameter>
 
       <parameter name="config_27_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>27: SWITCH OFF frame value for FLICK RIGHT</label>
         <description><![CDATA[
 Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter allows to set value sent in SWITCH OFF command frame to the association group.</p> <p>Commands sent to association group for turn ON/OFF can be adjusted in parameters 20-27.</p> <p>0 - turning off associated devices</p> <p>1-99 - forcing level of associated devices</p> <p>255 - setting associated devices to the last remembered state or turning them on</p>
@@ -283,7 +283,7 @@ Value sent in SWITCH OFF command frame.<br /> <h1>Overview</h1><p>This parameter
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration"
-                 min="0" max="6">
+>
         <label>30: Sequence learning mode</label>
         <description><![CDATA[
 Launch sequence learning procedure<br /> <h1>Overview</h1><p>Parameter activated by the main Z-Wave controller. Change its value to launch sequence learning procedure for the desired slot.</p> <p>0 - learning mode disabled</p> <p>1-6 - launch sequence learning for selected slot</p> <p><strong>N.B. Sequences do not allow to use same gestures next to each other</strong></p>
@@ -293,7 +293,7 @@ Launch sequence learning procedure<br /> <h1>Overview</h1><p>Parameter activated
       </parameter>
 
       <parameter name="config_31_2" type="integer" groupName="configuration"
-                 min="0" max="1076">
+>
         <label>31: 1st gestures sequence (SLOT 1)</label>
         <description><![CDATA[
 Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.</p> Gesture Value Empty 0 ^ 1 v 2 &lt; 3 &gt; 4 <h4>Rules of creating sequences:</h4> <p>• Maximum of six sequences can be created.</p> <p>• Each sequence must be unique.</p> <p>• Sequence can consist of two or three basic gestures (left, right, up</p> <p>or down).</p> <p>• Two identical gestures cannot be used next to each other</p> <p>To manually create or edit a sequence slot:</p> <p>1. Calculate new value of parameter using table and formula:</p> <p>Value of parameter = 256 * Value of first gesture + 16 * Value of second gesture + Value of third gesture</p> <p>2. Change the value of corresponding parameter (parameters 31 to 36 for slots 1 to 6).</p> <p><strong>N.B. Setting parameter to 0 will delete the sequence.</strong></p>
@@ -303,7 +303,7 @@ Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create
       </parameter>
 
       <parameter name="config_32_2" type="integer" groupName="configuration"
-                 min="0" max="1076">
+>
         <label>32: 2nd gestures sequence (SLOT 2)</label>
         <description><![CDATA[
 Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.</p> <p>Gesture Value</p> <p>Empty 0</p> <p>^ 1</p> <p>v 2</p> <p>&lt; 3</p> <p>&gt; 4</p> <p>Rules of creating sequences:</p> <p>• Maximum of six sequences can be created.</p> <p>• Each sequence must be unique.</p> <p>• Sequence can consist of two or three basic gestures (left, right, up</p> <p>or down).</p> <p>• Two identical gestures cannot be used next to each other</p> <p>To manually create or edit a sequence slot:</p> <p>1. Calculate new value of parameter using table and formula:</p> <p>Value of parameter = 256 * Value of first gesture + 16 * Value of second gesture + Value of third gesture</p> <p>2. Change the value of corresponding parameter (parameters 31 to 36 for slots 1 to 6).</p> <p><strong>N.B. Setting parameter to 0 will delete the sequence.</strong></p>
@@ -313,7 +313,7 @@ Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create
       </parameter>
 
       <parameter name="config_33_2" type="integer" groupName="configuration"
-                 min="0" max="1076">
+>
         <label>33: 3rd gestures sequence (SLOT 3)</label>
         <description><![CDATA[
 Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.</p> <p>Gesture Value</p> <p>Empty 0</p> <p>^ 1</p> <p>v 2</p> <p>&lt; 3</p> <p>&gt; 4</p> <p>Rules of creating sequences:</p> <p>• Maximum of six sequences can be created.</p> <p>• Each sequence must be unique.</p> <p>• Sequence can consist of two or three basic gestures (left, right, up</p> <p>or down).</p> <p>• Two identical gestures cannot be used next to each other</p> <p>To manually create or edit a sequence slot:</p> <p>1. Calculate new value of parameter using table and formula:</p> <p>Value of parameter = 256 * Value of first gesture + 16 * Value of second gesture + Value of third gesture</p> <p>2. Change the value of corresponding parameter (parameters 31 to 36 for slots 1 to 6).</p> <p><strong>N.B. Setting parameter to 0 will delete the sequence.</strong></p>
@@ -323,7 +323,7 @@ Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create
       </parameter>
 
       <parameter name="config_34_2" type="integer" groupName="configuration"
-                 min="0" max="1076">
+>
         <label>34: 4th gestures sequence (SLOT 4)</label>
         <description><![CDATA[
 Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.</p> <p>Gesture Value</p> <p>Empty 0</p> <p>^ 1</p> <p>v 2</p> <p>&lt; 3</p> <p>&gt; 4</p> <p>Rules of creating sequences:</p> <p>• Maximum of six sequences can be created.</p> <p>• Each sequence must be unique.</p> <p>• Sequence can consist of two or three basic gestures (left, right, up</p> <p>or down).</p> <p>• Two identical gestures cannot be used next to each other</p> <p>To manually create or edit a sequence slot:</p> <p>1. Calculate new value of parameter using table and formula:</p> <p>Value of parameter = 256 * Value of first gesture + 16 * Value of second gesture + Value of third gesture</p> <p>2. Change the value of corresponding parameter (parameters 31 to 36 for slots 1 to 6).</p> <p><strong>N.B. Setting parameter to 0 will delete the sequenc</strong>e.</p>
@@ -333,7 +333,7 @@ Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create
       </parameter>
 
       <parameter name="config_35_2" type="integer" groupName="configuration"
-                 min="0" max="1076">
+>
         <label>35: 5th gestures sequence (SLOT 5)</label>
         <description><![CDATA[
 Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.</p> <p>Gesture Value</p> <p>Empty 0</p> <p>^ 1</p> <p>v 2</p> <p>&lt; 3</p> <p>&gt; 4</p> <p>Rules of creating sequences:</p> <p>• Maximum of six sequences can be created.</p> <p>• Each sequence must be unique.</p> <p>• Sequence can consist of two or three basic gestures (left, right, up</p> <p>or down).</p> <p>• Two identical gestures cannot be used next to each other</p> <p>To manually create or edit a sequence slot:</p> <p>1. Calculate new value of parameter using table and formula:</p> <p>Value of parameter = 256 * Value of first gesture + 16 * Value of second gesture + Value of third gesture</p> <p>2. Change the value of corresponding parameter (parameters 31 to 36 for slots 1 to 6).</p> <p><strong>N.B. Setting parameter to 0 will delete the sequence.</strong></p>
@@ -343,7 +343,7 @@ Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create
       </parameter>
 
       <parameter name="config_36_2" type="integer" groupName="configuration"
-                 min="0" max="1076">
+>
         <label>36: 6th gestures sequence (SLOT 6)</label>
         <description><![CDATA[
 Value containing sequence of gestures.<br /> <h1>Overview</h1><p>User can create sequences of two or three gestures to expand number of possible actions. Every sequence is saved in its advanced parameter (no. 31-36) with 16 bits, every basic gesture is identified with 4 bits.</p> <p>Gesture Value</p> <p>Empty 0</p> <p>^ 1</p> <p>v 2</p> <p>&lt; 3</p> <p>&gt; 4</p> <p>Rules of creating sequences:</p> <p>• Maximum of six sequences can be created.</p> <p>• Each sequence must be unique.</p> <p>• Sequence can consist of two or three basic gestures (left, right, up</p> <p>or down).</p> <p>• Two identical gestures cannot be used next to each other</p> <p>To manually create or edit a sequence slot:</p> <p>1. Calculate new value of parameter using table and formula:</p> <p>Value of parameter = 256 * Value of first gesture + 16 * Value of second gesture + Value of third gesture</p> <p>2. Change the value of corresponding parameter (parameters 31 to 36 for slots 1 to 6).</p> <p><strong>N.B. Setting parameter to 0 will delete the sequence.</strong></p>

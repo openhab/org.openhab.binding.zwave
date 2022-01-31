@@ -90,7 +90,7 @@ Floodlight Sensor<br /> <h1>Overview</h1><p>The HS-FLS100+ is a PIR module thatâ
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="8" max="720">
+>
         <label>1: PIR Trigger Off Period</label>
         <description><![CDATA[
 Period to send Trigger Off command after PIR is triggered.<br /> <h1>Overview</h1><p>Period to send Trigger Off command after PIR is triggered. Before this period expires, the PIR will not be able to detect any subsequent motion.</p>
@@ -113,7 +113,7 @@ Lux level to activate the PIR<br /> <h1>Overview</h1><p>When the lux level falls
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="1440">
+>
         <label>3: Auto Report luminance interval</label>
         <description><![CDATA[
 Sets the interval of periodic lux level report to the controller<br /> <h1>Overview</h1><p><br /></p>
@@ -123,7 +123,7 @@ Sets the interval of periodic lux level report to the controller<br /> <h1>Overv
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>4: Basic Report</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p><br /></p>

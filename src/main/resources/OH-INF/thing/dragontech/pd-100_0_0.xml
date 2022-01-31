@@ -55,7 +55,7 @@ Plug-in Dimmer Switch<br /> <h1>Overview</h1><p>The PD-100 can be used turn on/o
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>3: LED Indicator</label>
         <description><![CDATA[
 Controls LED behavior when switch state is on/off<br /> <h1>Overview</h1><p><br /></p>
@@ -64,7 +64,7 @@ Controls LED behavior when switch state is on/off<br /> <h1>Overview</h1><p><br 
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="1" max="99">
+>
         <label>9: Dimming Steps</label>
         <description>Set preferred increments of levels. Higher the number the faster the device will change brightness level.</description>
         <default>1</default>
@@ -72,7 +72,7 @@ Controls LED behavior when switch state is on/off<br /> <h1>Overview</h1><p><br 
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>10: Duration of each level</label>
         <description>Control the dim rate</description>
         <default>3</default>

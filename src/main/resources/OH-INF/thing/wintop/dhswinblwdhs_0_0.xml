@@ -76,7 +76,7 @@ Set number and type of directly connected buttons<br /> <h1>Overview</h1><ul><li
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="255">
+>
         <label>2: Automatically close after</label>
         <description>If not zero, automatically close blind after a user defined time</description>
         <default>0</default>
@@ -96,7 +96,7 @@ Set number and type of directly connected buttons<br /> <h1>Overview</h1><ul><li
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+>
         <label>4: Typical click timeout</label>
         <description>Typical time used to differentiate click, hold, double and triple clicks</description>
         <default>50</default>
@@ -138,7 +138,7 @@ Set number and type of directly connected buttons<br /> <h1>Overview</h1><ul><li
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>10: Full close time</label>
         <description><![CDATA[
 Time to go from opened to closed state<br /> <h1>Overview</h1><p>Time to go from opened to closed state. Used to estimate the current level. Note that in Permanent motion mode the reported value would be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close</p>
@@ -147,7 +147,7 @@ Time to go from opened to closed state<br /> <h1>Overview</h1><p>Time to go from
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>11: Full open time</label>
         <description><![CDATA[
 Time to go from closed to open state<br /> <h1>Overview</h1><p> Time to go from closed to open state. This value may differ from full close time for some blinds due to gravity. Used to estimate the current level. Note that in Permanent motion mode the reported value would be Closed or Opened, while all Basic and Multilevel Set values (1-99, 255) would Open except 0 value that would Close</p>
@@ -156,7 +156,7 @@ Time to go from closed to open state<br /> <h1>Overview</h1><p> Time to go from
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="24">
+>
         <label>12: Node Id of the blocking device</label>
         <description><![CDATA[
 Node Id of the blocking device<br /> <h1>Overview</h1><p>Id of the device which commands would be interpreted not as Open/Close, but as block/unblock. Useful with door opening detector: if the door is open, block the blind not to break shades while they move. </p>

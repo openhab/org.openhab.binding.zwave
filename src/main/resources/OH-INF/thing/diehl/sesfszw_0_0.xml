@@ -90,7 +90,7 @@ Plug Actuator<br /> <h1>Overview</h1><p>Smart outlet with energy monitoring.</p>
       </parameter>
 
       <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>2: Energy minimum report time</label>
         <description>Minimum time between two (non-requested) energy values</description>
         <default>10</default>
@@ -98,7 +98,7 @@ Plug Actuator<br /> <h1>Overview</h1><p>Smart outlet with energy monitoring.</p>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>3: Energy maximum report time</label>
         <description>Maximum time between two energy values, independently of changes in the value</description>
         <default>120</default>
@@ -106,7 +106,7 @@ Plug Actuator<br /> <h1>Overview</h1><p>Smart outlet with energy monitoring.</p>
       </parameter>
 
       <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>4: Power minimum report time</label>
         <description>Minimum time between two (non-requested) power values</description>
         <default>10</default>
@@ -114,7 +114,7 @@ Plug Actuator<br /> <h1>Overview</h1><p>Smart outlet with energy monitoring.</p>
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>5: Power maximum report time</label>
         <description>Maximum time between two power values, independently of changes in the value</description>
         <default>120</default>
@@ -122,7 +122,7 @@ Plug Actuator<br /> <h1>Overview</h1><p>Smart outlet with energy monitoring.</p>
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>6: Energy delta value</label>
         <description><![CDATA[
 Minimum change required for a new energy value to be transmitted.<br /> <h1>Overview</h1><p>The transmission must take place in the time window between parameter 2 and 3.</p>
@@ -132,7 +132,7 @@ Minimum change required for a new energy value to be transmitted.<br /> <h1>Over
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>7: Power delta value</label>
         <description><![CDATA[
 Minimum change required for a new power value to be transmitted.<br /> <h1>Overview</h1><p>The transmission must take place in the time window between parameter 4 and 5</p>

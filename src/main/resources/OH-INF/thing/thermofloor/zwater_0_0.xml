@@ -160,7 +160,7 @@ Configuration of the status LED<br /> <h1>Overview</h1><p>0 LED turned off.</p> 
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>2: LED brightness</label>
         <description><![CDATA[
 Configure the percentage of light in the status LED, when the LED is turned on<br /> <h1>Overview</h1><p>Specifies the brightness level of the LED when it is on. Default is 50.</p>
@@ -222,7 +222,7 @@ This parameter decides which kind of thermistor that is connected to the input.<
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>7: Input 1 calibration</label>
         <description><![CDATA[
 Input 1 calibration<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (0.0°C).</p>
@@ -232,7 +232,7 @@ Input 1 calibration<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>8: Input 2 calibration</label>
         <description><![CDATA[
 Input 1 calibratio2<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (0.0°C).</p>
@@ -242,7 +242,7 @@ Input 1 calibratio2<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>9: Input 3 calibration</label>
         <description><![CDATA[
 Input 3 calibration<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (0.0°C).</p>
@@ -252,7 +252,7 @@ Input 3 calibration<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>10: Input 4 calibration</label>
         <description><![CDATA[
 Input 4 calibration<br /> <h1>Overview</h1><p>-4.0°C – 4.0°C. Default is 0 (0.0°C).</p>
@@ -275,7 +275,7 @@ Time interval between consecutive temperature reports.<br /> <h1>Overview</h1><p
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration"
-                 min="0" max="8640">
+>
         <label>12: Input 2 report interval</label>
         <description><![CDATA[
 Time interval between consecutive temperature reports.<br /> <h1>Overview</h1><p>0 Reporting of temperatures disabled.</p> <p>1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).</p>
@@ -285,7 +285,7 @@ Time interval between consecutive temperature reports.<br /> <h1>Overview</h1><p
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="0" max="8640">
+>
         <label>13: Input 3 report interval</label>
         <description><![CDATA[
 Time interval between consecutive temperature reports.<br /> <h1>Overview</h1><p>0 Reporting of temperatures disabled.</p> <p>1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).</p>
@@ -295,7 +295,7 @@ Time interval between consecutive temperature reports.<br /> <h1>Overview</h1><p
       </parameter>
 
       <parameter name="config_14_2" type="integer" groupName="configuration"
-                 min="0" max="8640">
+>
         <label>14: Input 4 report interval</label>
         <description><![CDATA[
 Time interval between consecutive temperature reports.<br /> <h1>Overview</h1><p>0 Reporting of temperatures disabled.</p> <p>1 - 8640 Multiply with 10 seconds, 10 seconds – 24 hours. Default is 6 (60 seconds).</p>

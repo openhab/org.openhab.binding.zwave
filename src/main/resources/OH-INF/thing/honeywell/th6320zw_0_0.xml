@@ -143,7 +143,7 @@ T6 Pro Z-Wave Programmable Thermostat<br /> <h1>Overview</h1><p>The Honeywell T6
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>11: Fossil Kit Control</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><p><br /></p>
@@ -153,7 +153,7 @@ T6 Pro Z-Wave Programmable Thermostat<br /> <h1>Overview</h1><p>The Honeywell T6
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>12: Auto Changeover</label>
         <default>0</default>
         <limitToOptions>false</limitToOptions>

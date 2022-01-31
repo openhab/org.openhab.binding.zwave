@@ -127,7 +127,7 @@ Send status in Lifeline when Load status change<br /> <h1>Overview</h1><p>Smart 
       </parameter>
 
       <parameter name="config_16_2" type="integer" groupName="configuration"
-                 min="1" max="2500">
+>
         <label>16: Report on change of power consumption</label>
         <description><![CDATA[
 Send report on change of power consumption (W)<br /> <h1>Overview</h1><p>This parameter will send a power report automatically if the power value changes of x W (Watts) compared to the last report</p>
@@ -139,7 +139,7 @@ Send report on change of power consumption (W)<br /> <h1>Overview</h1><p>This pa
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>17: Send report on change of pwr consumption</label>
         <description>Send report on change of power consumption (%)</description>
         <default>10</default>
@@ -147,7 +147,7 @@ Send report on change of power consumption (W)<br /> <h1>Overview</h1><p>This pa
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>101: Power (W) report interval</label>
         <description>Power (W) report interval</description>
         <default>600</default>
@@ -155,7 +155,7 @@ Send report on change of power consumption (W)<br /> <h1>Overview</h1><p>This pa
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>102: Energy (kWh) report interval</label>
         <description>Energy (kWh) report interval</description>
         <default>3600</default>
@@ -163,7 +163,7 @@ Send report on change of power consumption (W)<br /> <h1>Overview</h1><p>This pa
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>103: Voltage (V) report interval</label>
         <description>Voltage (V) report interval</description>
         <default>0</default>
@@ -171,7 +171,7 @@ Send report on change of power consumption (W)<br /> <h1>Overview</h1><p>This pa
       </parameter>
 
       <parameter name="config_104_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>104: Current (A) report interval</label>
         <description>Current (A) report interval</description>
         <default>0</default>

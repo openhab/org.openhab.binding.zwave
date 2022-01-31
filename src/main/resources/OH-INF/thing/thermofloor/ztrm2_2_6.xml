@@ -201,7 +201,7 @@ Floor sensor type<br /> <h1>Overview</h1><p>1. Value = 0, 10K-NTC (default)<br /
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration"
-                 min="0" max="30">
+>
         <label>4: Temperature control hysteresis (DIFF I)</label>
         <description><![CDATA[
 Temperature control hysteresis (DIFF I)<br /> <h1>Overview</h1><p>1. Value = 0 - 30, 0.3C - 3.0C (default is 0.5C)<br />When using a water-based heating, the recommended hysteresis is a minimum of 1.0C</p>
@@ -210,7 +210,7 @@ Temperature control hysteresis (DIFF I)<br /> <h1>Overview</h1><p>1. Value = 0 -
       </parameter>
 
       <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>5: Floor minimum temperature limit (FLo)</label>
         <description><![CDATA[
 Floor minimum temperature limit (FLo)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C</p>
@@ -220,7 +220,7 @@ Floor minimum temperature limit (FLo)<br /> <h1>Overview</h1><p>1. Value = 50 - 
       </parameter>
 
       <parameter name="config_6_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>6: Floor maximum temperature (FHi)</label>
         <description><![CDATA[
 Floor maximum temperature (FHi)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p>
@@ -230,7 +230,7 @@ Floor maximum temperature (FHi)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5
       </parameter>
 
       <parameter name="config_7_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>7: Air minimum temperature limit (ALo)</label>
         <description><![CDATA[
 Air minimum temperature limit (ALo)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 5.0C</p>
@@ -240,7 +240,7 @@ Air minimum temperature limit (ALo)<br /> <h1>Overview</h1><p>1. Value = 50 - 40
       </parameter>
 
       <parameter name="config_8_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>8: Air maximum temperature limit (AHi)</label>
         <description><![CDATA[
 Air maximum temperature limit (AHi)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 40.0C)</p>
@@ -250,7 +250,7 @@ Air maximum temperature limit (AHi)<br /> <h1>Overview</h1><p>1. Value = 50 - 40
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration"
-                 min="0" max="9">
+>
         <label>9: FP mode P setting (PLo)</label>
         <description><![CDATA[
 FP mode P setting (PLo)<br /> <h1>Overview</h1><p>1. Value = 0 - 9, default = 0</p>
@@ -260,7 +260,7 @@ FP mode P setting (PLo)<br /> <h1>Overview</h1><p>1. Value = 0 - 9, default = 0<
       </parameter>
 
       <parameter name="config_10_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>10: Heating mode setpoint (CO)</label>
         <description><![CDATA[
 Heating mode setpoint (CO)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C</p>
@@ -270,7 +270,7 @@ Heating mode setpoint (CO)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C -
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>11: Energy saving mode setpoint (ECO)</label>
         <description><![CDATA[
 Energy saving mode setpoint (ECO)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 18.0C</p>
@@ -280,7 +280,7 @@ Energy saving mode setpoint (ECO)<br /> <h1>Overview</h1><p>1. Value = 50 - 400,
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+>
         <label>12: P setting</label>
         <description><![CDATA[
 P setting<br /> <h1>Overview</h1><p>1. Value = 0 - 10, default = 2</p>
@@ -290,7 +290,7 @@ P setting<br /> <h1>Overview</h1><p>1. Value = 0 - 10, default = 2</p>
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="50" max="400">
+>
         <label>13: Cooling setpoint (COOL)</label>
         <description><![CDATA[
 Cooling setpoint (COOL)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40.0C, default = 21.0C</p>
@@ -300,7 +300,7 @@ Cooling setpoint (COOL)<br /> <h1>Overview</h1><p>1. Value = 50 - 400, 5.0C - 40
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>14: Room sensor calibration</label>
         <description><![CDATA[
 Room sensor calibration<br /> <h1>Overview</h1><p>1. Value = -40 - 40, -4.0V - 4.0C, default = 0.0C</p>
@@ -310,7 +310,7 @@ Room sensor calibration<br /> <h1>Overview</h1><p>1. Value = -40 - 40, -4.0V - 4
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>15: Floor sensor calibration</label>
         <description><![CDATA[
 Floor sensor calibration<br /> <h1>Overview</h1><p>1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C</p>
@@ -320,7 +320,7 @@ Floor sensor calibration<br /> <h1>Overview</h1><p>1. Value = -40 - 40, -4.0C - 
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
-                 min="-40" max="40">
+>
         <label>16: External sensor calibration</label>
         <description><![CDATA[
 External sensor calibration<br /> <h1>Overview</h1><p>1. Value = -40 - 40, -4.0C - 4.0C, default = 0.0C</p>
@@ -343,7 +343,7 @@ Temperature display<br /> <h1>Overview</h1><p>1. Value = 0, Display setpoint tem
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>18: Button brightness - dimmed state</label>
         <description><![CDATA[
 Button brightness - dimmed state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 50%</p>
@@ -353,7 +353,7 @@ Button brightness - dimmed state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 0
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>19: Button brightness - active state</label>
         <description><![CDATA[
 Button brightness - active state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 100%</p>
@@ -363,7 +363,7 @@ Button brightness - active state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 0
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>20: Display brightness - dimmed state</label>
         <description><![CDATA[
 Display brightness - dimmed state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 50%</p>
@@ -373,7 +373,7 @@ Display brightness - dimmed state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+>
         <label>21: Display brightness - active state</label>
         <description><![CDATA[
 Display brightness - active state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 0% - 100%, default = 100%</p>
@@ -383,7 +383,7 @@ Display brightness - active state<br /> <h1>Overview</h1><p>1. Value = 0 - 100, 
       </parameter>
 
       <parameter name="config_22_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>22: Temperature report interval</label>
         <description><![CDATA[
 Temperature report interval<br /> <h1>Overview</h1><p>1. Value = 0, Reporting of temperature disabled<br />2. Value = 1 - 32767, 1s - 32767s, default = 60s</p> <p>Time interval between consecutive temperature reports.<br />Temperature reports can also be sent as a result of polling.</p>
@@ -392,7 +392,7 @@ Temperature report interval<br /> <h1>Overview</h1><p>1. Value = 0, Reporting of
       </parameter>
 
       <parameter name="config_23_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+>
         <label>23: Temperature report hysteresis</label>
         <description><![CDATA[
 Temperature report hysteresis<br /> <h1>Overview</h1><p>1. Value = 1 - 100, 0.1C - 10.0C, default = 1.0C</p> <p>The temperature report will be sent if there is a difference in temperature from the previous value reported,<br />defined in this parameter (hysteresis).<br />Temperature reports can also be sent as a result of polling.</p>
@@ -402,7 +402,7 @@ Temperature report hysteresis<br /> <h1>Overview</h1><p>1. Value = 1 - 100, 0.1C
       </parameter>
 
       <parameter name="config_24_2" type="integer" groupName="configuration"
-                 min="0" max="32767">
+>
         <label>24: Meter report interval</label>
         <description><![CDATA[
 Meter report interval<br /> <h1>Overview</h1><p>1. Value = 0, Reporting of metering values is disabled<br />2. Value = 1 - 32767, 1s - 32767s, default = 60s</p> <p>Time interval between consecutive meter reports.<br />Meter reports can also be sent as a result of polling.</p>
@@ -411,7 +411,7 @@ Meter report interval<br /> <h1>Overview</h1><p>1. Value = 0, Reporting of meter
       </parameter>
 
       <parameter name="config_25_1" type="integer" groupName="configuration"
-                 min="-127" max="128">
+>
         <label>25: Meter report delta value</label>
         <description><![CDATA[
 Meter report delta value<br /> <h1>Overview</h1><p>1. Value = 0 - 255, 0kWh - 25.5kWh, default = 1.0kWh</p> <p>Delta value in kWh between consecutive meter reports.<br />Meter reports can also be sent as a result of polling.</p>

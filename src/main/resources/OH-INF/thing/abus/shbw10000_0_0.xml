@@ -77,7 +77,7 @@ PIR Multisensor<br /> <h1>Overview</h1><p>The SHBW10000 was developed for use in
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="10" max="50">
+>
         <label>10: Low Battery Alarm Level</label>
         <description><![CDATA[
 Low Battery Alarm Level<br /> <h1>Overview</h1><p>Low Battery Power Level Alarm Level</p>
@@ -87,7 +87,7 @@ Low Battery Alarm Level<br /> <h1>Overview</h1><p>Low Battery Power Level Alarm 
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+>
         <label>12: PIR sensitivity</label>
         <description><![CDATA[
 PIR sensitivity<br /> <h1>Overview</h1><ul><li>The value 10 is the highest sensitivity.</li> <li>The value 0 disables the PIR sensor. </li> </ul>
@@ -99,7 +99,7 @@ PIR sensitivity<br /> <h1>Overview</h1><ul><li>The value 10 is the highest sensi
       </parameter>
 
       <parameter name="config_13_2" type="integer" groupName="configuration"
-                 min="5" max="15300">
+>
         <label>13: Waiting time between two PIR triggers</label>
         <description><![CDATA[
 Waiting time between two PIR triggers<br /> <h1>Overview</h1><p>Waiting time from one PIR trigger to the next trigger.</p> <ul><li>Adjustable from 5 - 15300 in seconds</li> </ul>
@@ -133,7 +133,7 @@ BASIC SET Command after PIR triggering<br /> <h1>Overview</h1><p>BASIC SET shoul
       </parameter>
 
       <parameter name="config_100_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>100: Reset parameters 101-104 to factory defaults</label>
         <description><![CDATA[
 Reset parameters 101-104 to factory defaults<br /> <h1>Overview</h1><p>Resets parameter 101 - 104 to factory setting.</p>
@@ -146,7 +146,7 @@ Reset parameters 101-104 to factory defaults<br /> <h1>Overview</h1><p>Resets pa
       </parameter>
 
       <parameter name="config_101_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>101: Temperature report Time</label>
         <description><![CDATA[
 Temperature report Time<br /> <h1>Overview</h1><p>The interval time of the temperature report.</p> <p>The value 0 disables the report.</p> <p><strong>NOTE:</strong> The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
@@ -158,7 +158,7 @@ Temperature report Time<br /> <h1>Overview</h1><p>The interval time of the tempe
       </parameter>
 
       <parameter name="config_102_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>102: Humidity report Time</label>
         <description><![CDATA[
 Humidity report Time<br /> <h1>Overview</h1><p>The interval time of the humidity report.</p> <p>The value 0 disables the report. </p> <p><strong>NOTE: </strong>The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
@@ -170,7 +170,7 @@ Humidity report Time<br /> <h1>Overview</h1><p>The interval time of the humidity
       </parameter>
 
       <parameter name="config_103_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>103: Brightness report Time</label>
         <description><![CDATA[
 Brightness report Time<br /> <h1>Overview</h1><p>The interval time of the brightness report.</p> <p>The value 0 disables the report. </p> <p><strong>NOTE:</strong> The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
@@ -179,7 +179,7 @@ Brightness report Time<br /> <h1>Overview</h1><p>The interval time of the bright
       </parameter>
 
       <parameter name="config_104_4" type="integer" groupName="configuration"
-                 min="0" max="2678400">
+>
         <label>104: Battery report Time</label>
         <description><![CDATA[
 Battery report Time<br /> <h1>Overview</h1><p>The interval time of the battery report.</p> <p>The value 0 disables the report. </p> <p><strong>NOTE:</strong> The value is always rounded up to the full minute. (e.g. 62 seconds -&gt; value is rounded up to 120 seconds)</p>
@@ -204,7 +204,7 @@ Enable/Disable Report 111-114<br /> <h1>Overview</h1><p>Enable or disable report
       </parameter>
 
       <parameter name="config_111_2" type="integer" groupName="configuration"
-                 min="1" max="500">
+>
         <label>111: Temperature report Threshold</label>
         <description><![CDATA[
 Temperature report Threshold<br /> <h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p> <ul><li>Adjustable from 1 - 500 in 0,1°. (e.g. 25 = 2.5°)</li> </ul>
@@ -214,7 +214,7 @@ Temperature report Threshold<br /> <h1>Overview</h1><p>The threshold value serve
       </parameter>
 
       <parameter name="config_112_1" type="integer" groupName="configuration"
-                 min="1" max="32">
+>
         <label>112: Humidity report Threshold</label>
         <description><![CDATA[
 Humidity report Threshold<br /> <h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p>
@@ -224,7 +224,7 @@ Humidity report Threshold<br /> <h1>Overview</h1><p>The threshold value serves a
       </parameter>
 
       <parameter name="config_113_2" type="integer" groupName="configuration"
-                 min="-32767" max="32768">
+>
         <label>113: Brightness report Threshold</label>
         <description><![CDATA[
 Brightness report Threshold<br /> <h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p>
@@ -234,7 +234,7 @@ Brightness report Threshold<br /> <h1>Overview</h1><p>The threshold value serves
       </parameter>
 
       <parameter name="config_114_1" type="integer" groupName="configuration"
-                 min="1" max="100">
+>
         <label>114: Battery report Threshold</label>
         <description><![CDATA[
 Battery report Threshold<br /> <h1>Overview</h1><p>The threshold value serves as an additional condition for the time-based report.</p> <p>If the threshold value was not exceeded, the time-based report is not sent.</p>

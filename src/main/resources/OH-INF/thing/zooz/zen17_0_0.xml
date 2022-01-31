@@ -54,7 +54,7 @@ Universal Relay<br /> <h1>Overview</h1><p><strong>Features</strong></p> <ul><li>
 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="4">
+>
         <label>1: On Off Status After Power Failure</label>
         <description><![CDATA[
 Set the on off status for the relays after power failure<br /> <h1>Overview</h1><p><br /></p>
@@ -70,7 +70,7 @@ Set the on off status for the relays after power failure<br /> <h1>Overview</h1>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+>
         <label>2: Input Type for Relay 1 (S1)</label>
         <description><![CDATA[
 Choose the wall switch or input type you want to connect to the S1 C terminals<br /> <h1>Overview</h1><p>Press and hold the Z-Wave button for 5 seconds to change to garage mode manually. IMPORTANT: If you set this parameter to value 4-10, you'll need to exclude and re-include the device (without changing any settings) so that a child device is created for the input of your choice!<br /></p>
@@ -92,7 +92,7 @@ Choose the wall switch or input type you want to connect to the S1 C terminals<b
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration"
-                 min="0" max="10">
+>
         <label>3: Input Type for Relay 2 (S2)</label>
         <description><![CDATA[
 Choose the wall switch or input type you want to connect to the S2 C terminals<br /> <h1>Overview</h1><p>Press and hold the Z-Wave button for 5 seconds to change to garage mode manually. IMPORTANT: If you set this parameter to value 4-10, you'll need to exclude and re-include the device (without changing any settings) so that a child device is created for the input of your choice!</p>
@@ -114,7 +114,7 @@ Choose the wall switch or input type you want to connect to the S2 C terminals<b
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="3">
+>
         <label>5: LED Indicator Control</label>
         <description><![CDATA[
 LED Indicator Control<br /> <h1>Overview</h1><p>Choose if you want the LED indicator to turn on when any of the relays are on or if all of them are off, or if you want it to remain on or off at all times.</p> <p>Click the Z-Wave button 5 times quickly to change mode manually.</p>
@@ -177,7 +177,7 @@ Auto Turn-On Timer for Relay 2<br /> <h1>Overview</h1><p>Use this parameter to s
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>10: Input Trigger for Relay 1</label>
         <description><![CDATA[
 Input Trigger for Relay 1<br /> <h1>Overview</h1><p>Choose if you'd like the connected input (switch) on S1 C/VC C to trigger the load connected to R1 or if you want to use the input reports for monitoring only and separate the output from the input.<br /></p>
@@ -190,7 +190,7 @@ Input Trigger for Relay 1<br /> <h1>Overview</h1><p>Choose if you'd like the con
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>11: Input Trigger for Relay 2</label>
         <description><![CDATA[
 Input Trigger for Relay 2<br /> <h1>Overview</h1><p>Choose if you'd like the connected input (switch) on S2 C/VC C to trigger the load connected to R2 or if you want to use the input reports for monitoring only and separate the output from the input.</p>
@@ -203,7 +203,7 @@ Input Trigger for Relay 2<br /> <h1>Overview</h1><p>Choose if you'd like the con
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>15: Auto Timer-Off Timer Unit for Relay 1</label>
         <description><![CDATA[
 Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-off unit for Relay 1<br /> <h1>Overview</h1><p><br /></p>
@@ -217,7 +217,7 @@ Use this parameter to choose between seconds, minutes, or hours to be used as th
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>16: Auto Timer-On Timer Unit for Relay 1</label>
         <description><![CDATA[
 Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-on unit for Relay 1<br /> <h1>Overview</h1><p><br /></p>
@@ -231,7 +231,7 @@ Use this parameter to choose between seconds, minutes, or hours to be used as th
       </parameter>
 
       <parameter name="config_17_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>17: Auto Timer-Off Timer Unit for Relay 2</label>
         <description><![CDATA[
 Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-off unit for Relay 2<br /> <h1>Overview</h1><p><br /></p>
@@ -245,7 +245,7 @@ Use this parameter to choose between seconds, minutes, or hours to be used as th
       </parameter>
 
       <parameter name="config_18_1" type="integer" groupName="configuration"
-                 min="0" max="2">
+>
         <label>18: Auto Timer-On Timer Unit for Relay 2</label>
         <description><![CDATA[
 Use this parameter to choose between seconds, minutes, or hours to be used as the auto timer-on unit for Relay 2<br /> <h1>Overview</h1><p><br /></p>
@@ -259,7 +259,7 @@ Use this parameter to choose between seconds, minutes, or hours to be used as th
       </parameter>
 
       <parameter name="config_24_1" type="integer" groupName="configuration"
-                 min="0" max="1">
+>
         <label>24: DC Motor Mode</label>
         <description><![CDATA[
 Sync Relay 1 and Relay 2 together to prevent them from being activated at the same time<br /> <h1>Overview</h1><p><br /></p>
