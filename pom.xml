@@ -10,7 +10,7 @@
 
 	<groupId>org.openhab.addons.bundles</groupId>
 	<artifactId>org.openhab.binding.zwave</artifactId>
-	<version>3.2.0</version>
+	<version>3.2.1</version>
 	<!-- do not delete the version here as it is required by the release process -->
 
 	<name>openHAB Add-ons :: Bundles :: ZWave Binding</name>
@@ -26,7 +26,6 @@
 		<connection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</connection>
 		<developerConnection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</developerConnection>
 		<url>https://github.com/openhab/org.openhab.binding.zwave</url>
-<tag>3.2.0</tag>
 	</scm>
 
 	<distributionManagement>
