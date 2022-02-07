@@ -237,10 +237,10 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
 
         logger.debug("NODE {}: Creating new message for command SENSOR_MULTILEVEL_GET", getNode().getNodeId());
         ByteArrayOutputStream outputData = new ByteArrayOutputStream();
-        // Pre v5 does not have a sensortype argument- should these only be set (fixed) for pre v5?
-        if (getVersion() <= 4) {
+        // Pre v5 does not have a sensortype argument
+        if (getVersion() >= 5) {
             outputData.write(sensorType.getKey());
-            outputData.write(0); // first scale -Note forum user modified to get degrees F
+            outputData.write(0); // first scale
         }
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
