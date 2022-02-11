@@ -56,6 +56,7 @@ public class ZWaveBindingConstants {
 
     public final static String CONFIGURATION_POLLPERIOD = "binding_pollperiod";
     public final static String CONFIGURATION_CMDREPOLLPERIOD = "binding_cmdrepollperiod";
+    public final static String CONFIGURATION_MAXBATTERYWAKEDURATION = "controller_maxbatterywakeduration";
 
     public final static String ZWAVE_THING = BINDING_ID + ":device";
     public final static ThingTypeUID ZWAVE_THING_UID = new ThingTypeUID(ZWAVE_THING);

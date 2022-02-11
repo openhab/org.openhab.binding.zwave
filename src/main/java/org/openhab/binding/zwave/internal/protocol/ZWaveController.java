@@ -107,6 +107,7 @@ public class ZWaveController {
 
     private ZWaveInclusionController inclusionController = null;
     private int defaultWakeupPeriod = 0;
+    private int maxbatterywakeduration = 5;
 
     private final ZWaveTransactionManager transactionManager = new ZWaveTransactionManager(this);
 
@@ -150,6 +151,10 @@ public class ZWaveController {
         defaultWakeupPeriod = config.containsKey("wakeupDefaultPeriod")
                 ? Integer.parseInt(config.get("wakeupDefaultPeriod"))
                 : 0;
+
+        maxbatterywakeduration = config.containsKey("maxbatteryawake")
+                ? Integer.parseInt(config.get("maxbatteryawake"))
+                : 5;
 
         logger.info("Starting ZWave controller");
 
@@ -1085,6 +1090,10 @@ public class ZWaveController {
      */
     public int getSystemDefaultWakeupPeriod() {
         return defaultWakeupPeriod;
+    }
+
+    public int getSystemMaxBatteryWakeDuration() {
+        return maxbatterywakeduration;
     }
 
     public String getSecurityKey() {
