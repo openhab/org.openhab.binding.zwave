@@ -191,6 +191,7 @@ Reporting intervall for power and energy to lifeline.<br /> <h1>Overview</h1><p>
         <default>3600</default>
         <options>
           <option value="0">Metering Pulse disable</option>
+          <option value="900">Enable and send report every 15 minutes</option>
           <option value="3600">Metering Pulse enable and send report every hour</option>
           <option value="21600">Enable and send report every 6 hours</option>
           <option value="43200">Enable and send report every 12 hours</option>
