@@ -23,9 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import org.openhab.core.config.core.ConfigDescription;
-import org.openhab.core.config.core.ConfigDescriptionParameter;
-import org.openhab.core.thing.type.ThingType;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
@@ -33,6 +30,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
+import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransactionResponse;
@@ -63,6 +61,9 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfo
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeNeighborUpdateMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.config.core.ConfigDescription;
+import org.openhab.core.config.core.ConfigDescriptionParameter;
+import org.openhab.core.thing.type.ThingType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -734,9 +735,15 @@ public class ZWaveNodeInitStageAdvancer {
 
                 if (optionMap.containsKey("ccRemove")) {
                     // If we want to remove the class, then remove it!
-                    node.getEndpoint(endpoint).removeCommandClass(CommandClass.getCommandClass(cmds[1]));
-                    logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
-                            CommandClass.getCommandClass(cmds[1]));
+                    ZWaveEndpoint endpointForRemoval = node.getEndpoint(endpoint);
+                    if (endpointForRemoval == null) {
+                        logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - endpoint null - unable to remove {}",
+                                node.getNodeId(), CommandClass.getCommandClass(cmds[1]));
+                    } else {
+                        endpointForRemoval.removeCommandClass(CommandClass.getCommandClass(cmds[1]));
+                        logger.debug("NODE {}: Node advancer: UPDATE_DATABASE - removing {}", node.getNodeId(),
+                                CommandClass.getCommandClass(cmds[1]));
+                    }
                     continue;
                 }
 
