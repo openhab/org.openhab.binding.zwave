@@ -110,7 +110,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private ScheduledFuture<?> pollingJob = null;
     private final long POLLING_PERIOD_MIN = 15;
     private final long POLLING_PERIOD_MAX = 864000;
-    private final long POLLING_PERIOD_DEFAULT = 1800;
+    private final long POLLING_PERIOD_DEFAULT = 86400;
     private final long DELAYED_POLLING_PERIOD_MAX = 10;
     private final long REFRESH_POLL_DELAY = 50;
     private long pollingPeriod = POLLING_PERIOD_DEFAULT;
