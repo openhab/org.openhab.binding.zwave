@@ -78,6 +78,7 @@ Strobe light interval<br /> <h1>Overview</h1><p>Values range from 0 to 25 in int
 Strobe light pulse count<br /> <h1>Overview</h1><p>Values range from 0 to 120 and </p> <p>a special value 127 (0x7F) which sets infinite flashing</p>
         ]]></description>
         <default>0</default>
+	<limitToOptions>false</limitToOptions>
         <options>
           <option value="127">Infinite flashing</option>
         </options>
@@ -100,6 +101,7 @@ Random strobe pulse colors<br /> <h1>Overview</h1><p>Values range are 0(turn off
         <label>255: Reset bulb to factory settings</label>
         <description>Reset bulb to factory settings</description>
         <default>1</default>
+	<limitToOptions>false</limitToOptions>
         <options>
           <option value="255">Reset bulb to factory settings</option>
         </options>
