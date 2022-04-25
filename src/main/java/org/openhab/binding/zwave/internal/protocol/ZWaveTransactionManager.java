@@ -1149,7 +1149,7 @@ public class ZWaveTransactionManager {
                 if (transactionEvent.getTransactionId() != transactionId) {
                     return;
                 }
-                logger.debug("TID {}: Transaction event listener: DONE: {} -> ", transactionId,
+                logger.debug("TID {}: Transaction event listener: DONE: {} -> {}", transactionId,
                         transactionEvent.getTransactionState(), transactionEvent.getTransactionCancelledState());
 
                 // Return the response

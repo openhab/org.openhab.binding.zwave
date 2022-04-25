@@ -68,7 +68,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         if (transaction == null) {
-            logger.debug("NODE {}: transaction not correlated for ReplaceFailedNodeMessageClass");
+            logger.debug("NODE ?: transaction not correlated for ReplaceFailedNodeMessageClass");
             return false;
         }
         logger.debug("Got ReplaceFailedNode response.");
@@ -132,7 +132,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         if (transaction == null) {
-            logger.debug("NODE {}: transaction not correlated for ReplaceFailedNodeMessageClass");
+            logger.debug("NODE ?: transaction not correlated for ReplaceFailedNodeMessageClass");
             return false;
         }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
