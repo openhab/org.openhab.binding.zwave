@@ -43,7 +43,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         if (transaction == null) {
-            logger.debug("NODE {}: transaction not correlated for DeleteSucReturnRouteMessageClass");
+            logger.debug("NODE ?: transaction not correlated for DeleteSucReturnRouteMessageClass");
             return false;
         }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
@@ -66,7 +66,7 @@ public class DeleteSucReturnRouteMessageClass extends ZWaveCommandProcessor {
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         if (transaction == null) {
-            logger.debug("NODE {}: transaction not correlated for DeleteSucReturnRouteMessageClass");
+            logger.debug("NODE ?: transaction not correlated for DeleteSucReturnRouteMessageClass");
             return false;
         }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
