@@ -150,8 +150,8 @@ public class SerialMessage {
             logger.trace("NODE {}: Checksum matched", nodeId);
             isValid = true;
         } else {
-            logger.trace("NODE {}: Checksum error. Calculated = 0x%02X, Received = 0x%02X", nodeId, messageCheckSumm,
-                    messageCheckSummReceived);
+            logger.trace("NODE {}: Checksum error. Calculated = {}, Received = {}", nodeId,
+                    String.format("%02X", messageCheckSumm), String.format("%02X", messageCheckSummReceived));
             isValid = false;
             return;
         }

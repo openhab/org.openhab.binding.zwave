@@ -293,7 +293,7 @@ public class ZWaveTransaction {
 
     public boolean transactionAdvance(SerialMessage incomingMessage) {
         logger.trace("TID {}: TransactionAdvance ST: {}", transactionId, transactionStateTracker);
-        logger.trace("TID {}: TransactionAdvance WT: {} {}", transactionId,
+        logger.trace("TID {}: TransactionAdvance WT: {}", transactionId,
                 payload.getExpectedResponseSerialMessageClass());
         logger.trace("TID {}: TransactionAdvance RX: {}", transactionId, incomingMessage);
 

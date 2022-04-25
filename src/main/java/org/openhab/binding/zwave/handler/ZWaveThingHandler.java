@@ -330,7 +330,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
         String parmVersion = this.getThing().getProperties().get(ZWaveBindingConstants.PROPERTY_VERSION);
         if (parmVersion == null) {
-            logger.debug("NODE {}: VERSION not set {}", nodeId);
+            logger.debug("NODE {}: VERSION not set", nodeId);
             return false;
         }
 
@@ -492,7 +492,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         if (bridgeStatusInfo.getStatus() != ThingStatus.ONLINE) {
             updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE,
                     ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
-            logger.debug("NODE {}: Controller is not online.", nodeId, bridgeStatusInfo.getStatus());
+            logger.debug("NODE {}: Controller is not online.", nodeId);
             synchronized (pollingSync) {
                 if (pollingJob != null) {
                     pollingJob.cancel(true);
@@ -895,7 +895,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     if (configurationParameter.getValue() == null
                             || !(configurationParameter.getValue() instanceof String)) {
                         logger.debug("NODE {}: Error setting NodeNamingCommandClass {} to invalid value {}", nodeId,
-                                cfg[1], configurationParameter.getValue(), configurationParameter.getValue());
+                                cfg[1], configurationParameter.getValue());
                         continue;
                     }
 

@@ -615,8 +615,7 @@ public class ZWaveNode {
             return zwaveCommandClass;
         }
 
-        logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
-                commandClass.getKey());
+        logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass.getKey());
 
         zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
         if (zwaveCommandClass == null) {
@@ -966,7 +965,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.getAssociationMessage(groupId);
         } else {
-            logger.debug("NODE {}: Unable to get association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to get association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1001,7 +1000,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.setAssociationMessage(groupId, member.getNode());
         } else {
-            logger.debug("NODE {}: Unable to set association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to set association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1032,7 +1031,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.removeAssociationMessage(groupId, member.getNode());
         } else {
-            logger.debug("NODE {}: Unable to remove association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to remove association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1059,7 +1058,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.clearAssociationMessage(groupId);
         } else {
-            logger.debug("NODE {}: Unable to clear association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to clear association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 

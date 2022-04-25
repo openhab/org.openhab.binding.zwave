@@ -321,12 +321,10 @@ public abstract class ZWaveCommandClass {
             Class<? extends ZWaveCommandClass> commandClassClass = commandClass.getCommandClassClass();
 
             if (commandClassClass == null) {
-                logger.debug("NODE {}: Unsupported command class {}", node.getNodeId(), commandClass.toString(),
-                        classId);
+                logger.debug("NODE {}: Unsupported command class {}", node.getNodeId(), commandClass);
                 return null;
             }
-            logger.debug("NODE {}: Creating new instance of command class {}", node.getNodeId(),
-                    commandClass.toString());
+            logger.debug("NODE {}: Creating new instance of command class {}", node.getNodeId(), commandClass);
 
             Constructor<? extends ZWaveCommandClass> constructor = commandClassClass.getConstructor(ZWaveNode.class,
                     ZWaveController.class, ZWaveEndpoint.class);

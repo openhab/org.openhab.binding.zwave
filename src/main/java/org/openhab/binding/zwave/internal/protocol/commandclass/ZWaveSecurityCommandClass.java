@@ -222,7 +222,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         for (Integer secureClassKey : (List<Integer>) response.get("COMMAND_CLASS_SUPPORT")) {
             CommandClass commandClass = CommandClass.getCommandClass(secureClassKey);
             if (commandClass == null) {
-                logger.debug("NODE {}: Command class 0x%02X is not known.", getNode().getNodeId(),
+                logger.debug("NODE {}: Command class {} is not known.", getNode().getNodeId(),
                         String.format("%02X", secureClassKey));
                 continue;
             }
