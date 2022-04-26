@@ -1488,7 +1488,7 @@ public class ZWaveNode {
                 triggered = true;
             }
             if (triggered == false) {
-                if (count == 1) {
+                if (count == 4) {
                     controller.kickQueue();
                 }
                 logger.trace("NODE {}: WakeupTimerTask iteration", getNodeId());
