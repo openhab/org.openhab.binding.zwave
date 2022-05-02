@@ -1457,7 +1457,7 @@ public class ZWaveNode {
         private boolean triggered;
         private int count;
         private final ZWaveWakeUpCommandClass wakeUpCommandClass;
-        private int awakemax = (controller.getSystemMaxBatteryWakeDuration() * 2);
+        private int awakeMax = (controller.getSystemMaxAwakePeriod() * 2);
         WakeupTimerTask() {
             logger.trace("NODE {}: Creating WakeupTimerTask", getNodeId());
             wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
@@ -1484,7 +1484,7 @@ public class ZWaveNode {
             if (isInitializationComplete() == true  && controller.getSendQueueLength(getNodeId()) == 0) {
                 triggered = true;
             }     
-            if (count == awakemax || count == 40) {
+            if (count == awakeMax) {
                 triggered = true;
             }
             if (triggered == false) {
@@ -1498,10 +1498,12 @@ public class ZWaveNode {
             // Tell the device to go back to sleep. This message may be queued if the prior message timed out
             // and the node was therefore assumed to be asleep.  It can disrupt a future awake.
             if (isInitializationComplete() == true  && controller.getSendQueueLength(getNodeId()) == 0) {
-            logger.debug("NODE {}: Go back to sleep, state {}, count {} messages {}", getNodeId(), getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
+                logger.debug("NODE {}: Go back to sleep, state {}, count {} messages {}", getNodeId(),
+                    getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
             }
             else {
-            logger.info("NODE {}: Wake duration reached, state {} count {}, messages {}", getNodeId(), getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
+                logger.info("NODE {}: Wake duration reached, state {} count {}, messages {}", getNodeId(),
+                    getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
             }
             // Stop the timer now in the event the "go to Sleep" command is only queued and not sent
             resetSleepTimer();
