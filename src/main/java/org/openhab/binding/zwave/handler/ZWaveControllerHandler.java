@@ -122,8 +122,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         param = getConfig().get(CONFIGURATION_MAXAWAKEPERIOD);
         if (param instanceof BigDecimal) {
             maxAwakePeriod = ((BigDecimal) param).intValue();
-        } else {
-            maxAwakePeriod = 5;
         }
 
         param = getConfig().get(CONFIGURATION_SISNODE);

@@ -107,7 +107,7 @@ public class ZWaveController {
 
     private ZWaveInclusionController inclusionController = null;
     private int defaultWakeupPeriod = 0;
-    private int maxAwakePeriod = 5;
+    private int maxAwakePeriod;
 
     private final ZWaveTransactionManager transactionManager = new ZWaveTransactionManager(this);
 
