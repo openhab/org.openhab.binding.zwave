@@ -1487,6 +1487,8 @@ public class ZWaveNode {
             if (count == awakeMax) {
                 triggered = true;
             }
+            // This is a one-time action at the 2 second mark to get the message queue going again
+            // Mostly observed as needed if initialization is not completed. Should be benign otherwise
             if (triggered == false) {
                 if (count == 4) {
                     controller.kickQueue();
