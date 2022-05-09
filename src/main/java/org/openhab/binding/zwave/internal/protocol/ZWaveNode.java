@@ -1450,14 +1450,15 @@ public class ZWaveNode {
     /**
      * The following timer implements a re-triggerable timer. The timer is triggered (stopped) 
      * when DONE & no messages in queue then the 'Go To Sleep' message is sent to the node.
-     * The timer just provides some time for anything further to be sent as a result of any processing.
+     * There is a time limit backstop for a 'Go To Sleep' message 
+     * in case the trigger conditions are not met.
      */
     private class WakeupTimerTask extends TimerTask {
-        // Sleep message after max battery awake duration or 20 seconds
         private boolean triggered;
         private int count;
         private final ZWaveWakeUpCommandClass wakeUpCommandClass;
         private int awakeMax = (controller.getSystemMaxAwakePeriod() * 2);
+
         WakeupTimerTask() {
             logger.trace("NODE {}: Creating WakeupTimerTask", getNodeId());
             wakeUpCommandClass = (ZWaveWakeUpCommandClass) getEndpoint(0)
@@ -1466,7 +1467,7 @@ public class ZWaveNode {
                 logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found - setting AWAKE", getNodeId());
                 awake = true;
             }
-
+            logger.debug("awakeMax for this Timer Task {} in 0.5 second intervals", awakeMax);
             count = 0;
             triggered = false;
         }
@@ -1487,8 +1488,9 @@ public class ZWaveNode {
             if (count == awakeMax) {
                 triggered = true;
             }
-            // This is a one-time action at the 2 second mark to get the message queue going again
-            // Mostly observed as needed if initialization is not completed. Should be benign otherwise
+
+            // Below is a one-time action at the 2 second mark to get the message queue going again
+            // Mostly observed as needed if device initialization is not completed. Benign otherwise
             if (triggered == false) {
                 if (count == 4) {
                     controller.kickQueue();
@@ -1497,18 +1499,20 @@ public class ZWaveNode {
                 return;
             }
 
-            // Tell the device to go back to sleep. This message may be queued if the prior message timed out
-            // and the node was therefore assumed to be asleep.  It can disrupt a future awake.
+            // Send the "go to Sleep" message. Note: This message may be queued but not sent 
+            // if the prior message timed out and the node was therefore assumed to be asleep.
+            // If this happens, a future awake will be short regardless of the above conditions.
             if (isInitializationComplete() == true  && controller.getSendQueueLength(getNodeId()) == 0) {
                 logger.debug("NODE {}: Go back to sleep, state {}, count {} messages {}", getNodeId(),
                     getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
             }
             else {
-                logger.info("NODE {}: Wake duration reached, state {} count {}, messages {}", getNodeId(),
+                logger.info("NODE {}: Maximum Awake time period reached, state {} count {}, messages {}", getNodeId(),
                     getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
             }
             // Stop the timer now in the event the "go to Sleep" command is only queued and not sent
             resetSleepTimer();
+            
             if (wakeUpCommandClass != null) {
                 ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
                         0);

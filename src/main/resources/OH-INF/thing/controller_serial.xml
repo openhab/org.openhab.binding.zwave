@@ -72,10 +72,10 @@
                 <advanced>true</advanced>
             </parameter>
 
-            <parameter name="controller_maxawakeperiod" type="integer" groupName="network" min="2" max="20">
+            <parameter name="controller_maxawakeperiod" type="integer" groupName="network" min="5" max="20">
                 <label>Battery device awake duration - MAX.  Actual awake time may vary.</label>
                 <description>Maximum awake time for battery nodes (in seconds). Raise if trouble initializing or healing. Will sleep earlier if finished</description>
-                <default>5</default>
+                <default>10</default>
                 <advanced>true</advanced>
             </parameter>
 

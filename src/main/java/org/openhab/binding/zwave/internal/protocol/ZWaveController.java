@@ -171,6 +171,17 @@ public class ZWaveController {
         initTimer.schedule(new InitializeDelayTask(), 3000);
     }
 
+/**
+     * Update the Controller Parameter maxAwakePeriod when changed from the Controller Handler class. 
+     * Used in Node class only as backstop for "Go to Sleep" message
+     * 
+     * @param maxAwakeProperty Updated maxAwakePeriod from the Controller Handler
+     */
+    public void updateControllerProperty(Integer maxAwakeProperty) {
+        maxAwakePeriod = maxAwakeProperty;
+        logger.debug("maxAwakePeriod changed in Controller class to {}", maxAwakePeriod );       
+    }
+
     private class InitializeDelayTask extends TimerTask {
         private final Logger logger = LoggerFactory.getLogger(InitializeDelayTask.class);
 
@@ -1093,7 +1104,9 @@ public class ZWaveController {
     }
 
     /**
-     * Gets the system wide default period for max awake time
+     * Gets the maximum awake time.  This is the backstop to send the battery
+     * Node to sleep in case messages stall in the device queue.  Applies to
+     * all battery devices.
      *
      * @return the awake period in seconds, or 5 if no default is set
      */

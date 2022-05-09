@@ -70,6 +70,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
     private Integer maxAwakePeriod;
+    private Integer maxAwakePeriodUpdate;
 
     private final int SEARCHTIME_MINIMUM = 20;
     private final int SEARCHTIME_DEFAULT = 30;
@@ -336,7 +337,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
                     reinitialise = true;
                 } else if (cfg[1].equals("maxawakeperiod") && value instanceof BigDecimal) {
-                    reinitialise = true;                   
+                    maxAwakePeriodUpdate = ((BigDecimal) value).intValue();
+                    controller.updateControllerProperty(maxAwakePeriodUpdate);                   
                 }
             }
             if ("security".equals(cfg[0])) {
@@ -529,16 +531,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
      */
     public Integer getDefaultWakeupPeriod() {
         return wakeupDefaultPeriod;
-    }
-
-    /**
-     * Gets the  max awake period configured for this network
-     *
-     * @return the default awake period, or null if not set
-     */
-
-    public Integer getMaxAwakePeriod() {
-        return maxAwakePeriod;
     }
 
     public UID getUID() {
