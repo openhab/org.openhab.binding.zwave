@@ -77,16 +77,20 @@ public class AddNodeMessageClass extends ZWaveCommandProcessor {
     }
 
     public ZWaveSerialPayload doRequestStop(boolean complete) {
-        logger.debug("Ending INCLUSION mode.");
-
         // Create the request
+        if (complete) {
+            logger.debug("Stop INCLUSION mode with timeout.");
+            ZWaveSerialPayload payload = new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork)
+            .withPayload(ADD_NODE_STOP).withTimeout(500).withRequiresData(false).build();
+
+            payload.setCallbackId(0);
+            return payload;
+        }
+        logger.debug("Ending Protocol INCLUSION mode.");
         ZWaveSerialPayload payload = new ZWaveTransactionMessageBuilder(SerialMessageClass.AddNodeToNetwork)
                 .withPayload(ADD_NODE_STOP).withRequiresData(false).build();
 
-        if (complete) {
-            payload.setCallbackId(0);
-        }
-        return payload;
+        return payload;  
     }
 
     @Override
