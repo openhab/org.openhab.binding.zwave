@@ -70,7 +70,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
     private Integer maxAwakePeriod;
-    private Integer maxAwakePeriodUpdate;
 
     private final int SEARCHTIME_MINIMUM = 20;
     private final int SEARCHTIME_DEFAULT = 30;
@@ -297,6 +296,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         validateConfigurationParameters(configurationParameters);
 
         boolean reinitialise = false;
+        Integer maxAwakePeriodUpdate;
 
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
