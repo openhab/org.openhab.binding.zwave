@@ -296,7 +296,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         validateConfigurationParameters(configurationParameters);
 
         boolean reinitialise = false;
-        Integer maxAwakePeriodUpdate;
 
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
@@ -337,8 +336,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                 } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
                     reinitialise = true;
                 } else if (cfg[1].equals("maxawakeperiod") && value instanceof BigDecimal) {
-                    maxAwakePeriodUpdate = ((BigDecimal) value).intValue();
-                    controller.updateControllerProperty(maxAwakePeriodUpdate);                   
+                    controller.updateControllerProperty(((BigDecimal) value).intValue());                   
                 }
             }
             if ("security".equals(cfg[0])) {
