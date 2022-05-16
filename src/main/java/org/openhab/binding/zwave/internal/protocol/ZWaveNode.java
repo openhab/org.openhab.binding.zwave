@@ -1515,7 +1515,7 @@ public class ZWaveNode {
         if (isInitializationComplete()) {
             timerDelay = sleepDelay;
         } else {
-            timerDelay = 5000;
+            timerDelay = 25000;        // give enough time, original 5000ms
         }
         logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
 

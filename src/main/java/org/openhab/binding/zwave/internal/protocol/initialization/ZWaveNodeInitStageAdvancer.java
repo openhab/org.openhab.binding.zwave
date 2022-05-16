@@ -389,6 +389,13 @@ public class ZWaveNodeInitStageAdvancer {
         // return;
         // }
 
+        if (node.getNodeId() == 1) {
+            // workaround for zwave700, seems no better solution ??
+            logger.debug("NODE 1: Controller node, Node device class and type {}. Zwave700 Init Done!!", node.getDeviceClass().getSpecificDeviceClass());
+            setCurrentStage(ZWaveNodeInitStage.DONE);
+            return;
+        }
+
         // Controllers aren't designed to allow communication with their node.
         // If this is a controller, we're done
         if (node.getDeviceClass().getSpecificDeviceClass() == Specific.SPECIFIC_TYPE_PC_CONTROLLER) {

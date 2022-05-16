@@ -564,6 +564,7 @@ public class SerialMessage {
         SetSlaveLearnMode(0xA4), // Enter slave learn mode
         GetVirtualNodes(0xA5), // Return all virtual nodes
         IsVirtualNode(0xA6), // Virtual node test
+        AppCmdHandlerBridge(0xA8), // FUNC_ID_APPLICATION_COMMAND_HANDLER_BRIDGE
         SetWutTimeout(0xB4),
         WatchDogEnable(0xB6),
         WatchDogDisable(0xB7),
