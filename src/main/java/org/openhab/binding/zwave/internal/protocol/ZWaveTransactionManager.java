@@ -516,7 +516,18 @@ public class ZWaveTransactionManager {
                 }
 
                 // Manage incoming command class messages separately so we can manage transaction responses
-                if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler) {
+                if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler
+                		|| incomingMessage.getMessageClass() == SerialMessageClass.AppCmdHandlerBridge) {
+                    if (incomingMessage.getMessageClass() == SerialMessageClass.AppCmdHandlerBridge) {
+                   	    // zwave700 seems to be 1 more byte than legacy
+                        int arr_len = incomingMessage.getMessagePayload().length-1;
+                        byte[] arr_new = new byte[arr_len];
+                        for(int i=0; i<arr_len; i++){
+                            arr_new[i]=incomingMessage.getMessagePayload()[i+1];
+                        }
+                        incomingMessage.setMessagePayload(arr_new);
+                    }
+
                     try {
                         int nodeId = incomingMessage.getMessagePayloadByte(1);
                         ZWaveNode node = controller.getNode(nodeId);
@@ -566,8 +577,8 @@ public class ZWaveTransactionManager {
                                                 continue;
                                             }
 
-                                            if (transaction
-                                                    .getExpectedReplyClass() == SerialMessageClass.ApplicationCommandHandler
+                                            if ((transaction.getExpectedReplyClass() == SerialMessageClass.ApplicationCommandHandler || 
+                                                    transaction.getExpectedReplyClass() == SerialMessageClass.AppCmdHandlerBridge)
                                                     && transaction.getExpectedCommandClass() != null
                                                     && command.getCommandClassId() == transaction
                                                             .getExpectedCommandClass().getKey()
@@ -577,6 +588,19 @@ public class ZWaveTransactionManager {
                                                 logger.debug("NODE {}: Command verified {}.", nodeId, command);
 
                                                 transaction.transactionAdvance(incomingMessage);
+                                                
+                                                logger.debug("NODE {}: zwave700 dbg msg_class {}, cmd_id {} cmd_class {} replay_class {}.", 
+                                                		nodeId, incomingMessage.getMessageClass(), command.getCommandClassId(), 
+                                                		command.getCommandClassCommand(), 
+                                                		transaction.getExpectedReplyClass());
+                                                
+                                                // Manufacture report 
+                                                if (incomingMessage.getMessageClass() == SerialMessageClass.AppCmdHandlerBridge) {
+                                                    logger.debug("NODE {}: zwave700 dbg => cmd_id {} cmd_class {} replay_class {}.", 
+                                                    		nodeId, command.getCommandClassId(), command.getCommandClassCommand(), 
+                                                    		transaction.getExpectedReplyClass());
+                                                	transaction.setTransactionComplete();
+                                                }
 
                                                 // Notify the sender
                                                 notifyTransactionComplete(transaction);
