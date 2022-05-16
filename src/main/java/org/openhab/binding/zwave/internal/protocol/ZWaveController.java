@@ -177,7 +177,7 @@ public class ZWaveController {
      * 
      * @param maxAwakeProperty Updated maxAwakePeriod from the Controller Handler
      */
-    public void updateControllerProperty(Integer maxAwakeProperty) {
+    public void updateControllerProperty(int maxAwakeProperty) {
         maxAwakePeriod = maxAwakeProperty;
         logger.debug("maxAwakePeriod changed in Controller class to {}", maxAwakePeriod );       
     }
