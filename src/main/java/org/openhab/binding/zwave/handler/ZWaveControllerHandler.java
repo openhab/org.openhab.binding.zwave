@@ -69,6 +69,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer secureInclusionMode;
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
+    private Integer maxAwakePeriod;
 
     private final int SEARCHTIME_MINIMUM = 20;
     private final int SEARCHTIME_DEFAULT = 30;
@@ -116,6 +117,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             wakeupDefaultPeriod = ((BigDecimal) param).intValue();
         } else {
             wakeupDefaultPeriod = 0;
+        }
+
+        param = getConfig().get(CONFIGURATION_MAXAWAKEPERIOD);
+        if (param instanceof BigDecimal) {
+            maxAwakePeriod = ((BigDecimal) param).intValue();
         }
 
         param = getConfig().get(CONFIGURATION_SISNODE);
@@ -178,6 +184,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         config.put("secureInclusion", secureInclusionMode.toString());
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
+        config.put("maxAwakePeriod", maxAwakePeriod.toString());
 
         // TODO: Handle soft reset?
         controller = new ZWaveController(this, config);
@@ -328,6 +335,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     // TODO: Do we need to set this immediately
                 } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
                     reinitialise = true;
+                } else if (cfg[1].equals("maxawakeperiod") && value instanceof BigDecimal) {
+                    controller.updateControllerProperty(((BigDecimal) value).intValue());                   
                 }
             }
             if ("security".equals(cfg[0])) {
