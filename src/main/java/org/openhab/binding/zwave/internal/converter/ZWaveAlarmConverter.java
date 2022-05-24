@@ -128,8 +128,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // Battery alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__BATTERY_CHARGING, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__BATTERY_FULL, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__REPLACE_BATTERY_SOON, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__REPLACE_BATTERY_NOW, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__CHARGE_BATTERY_SOON, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__CHARGE_BATTERY_NOW, OnOffType.ON);
         notifications.put("alarm_battery", events);
 
         // Power alarms
