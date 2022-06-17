@@ -139,6 +139,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         // Power alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__OVER_CURRENT, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_DISCONNECTED, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_APPLIED, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_RECONNECTED, OnOffType.OFF);
