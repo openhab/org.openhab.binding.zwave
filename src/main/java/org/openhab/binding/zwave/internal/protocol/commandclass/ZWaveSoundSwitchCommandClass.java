@@ -34,7 +34,8 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class ZWaveSoundSwitchCommandClass extends ZWaveCommandClass {
     public enum Type {
         TONE_PLAY,
-        VOLUME
+        VOLUME,
+        DEFAULT_TONE
     }
 
     private static final Logger logger = LoggerFactory.getLogger(ZWaveSoundSwitchCommandClass.class);
@@ -70,6 +71,7 @@ public class ZWaveSoundSwitchCommandClass extends ZWaveCommandClass {
      */
     private static final int TONE_PLAY_REPORT = 0x0A;
     
+    int lastVolume = -1;
     /**
      * Creates a new instance of the ZWaveSoundSwitchCommandClass class.
      *
@@ -88,12 +90,16 @@ public class ZWaveSoundSwitchCommandClass extends ZWaveCommandClass {
 
     @ZWaveResponseHandler(id = CONFIGURATION_REPORT, name = "CONFIGURATION_REPORT")
     public void handleConfigReport(ZWaveCommandClassPayload payload, int endpoint) {
-        int volume = payload.getPayloadByte(2);
-        //int defaultTone = payload.getPayloadByte(3);
-        logger.debug("NODE {}: Config report - volume={}", this.getNode().getNodeId(), volume);
+        lastVolume = payload.getPayloadByte(2);
+        int defaultTone = payload.getPayloadByte(3);
+        logger.debug("NODE {}: Config report - volume={} defaultTone={}", this.getNode().getNodeId(), lastVolume, defaultTone);
 
         ZWaveCommandClassValueEvent zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
-                CommandClass.COMMAND_CLASS_SOUND_SWITCH,volume , Type.VOLUME );
+                CommandClass.COMMAND_CLASS_SOUND_SWITCH,lastVolume , Type.VOLUME );
+        this.getController().notifyEventListeners(zEvent);
+
+        zEvent = new ZWaveCommandClassValueEvent(this.getNode().getNodeId(), endpoint,
+                CommandClass.COMMAND_CLASS_SOUND_SWITCH,defaultTone , Type.DEFAULT_TONE );
         this.getController().notifyEventListeners(zEvent);
     }
      
@@ -133,12 +139,29 @@ public class ZWaveSoundSwitchCommandClass extends ZWaveCommandClass {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CONFIGURATION_GET)
                 .withExpectedResponseCommand(CONFIGURATION_REPORT).withPriority(TransactionPriority.Get).build();
     }
-
-    public ZWaveCommandClassTransactionPayload setConfigMessage(int volume) {
+    /**
+     * Create a new configuration set message
+     *
+     * @param volume in percent from 0 to 100. The Value 255 is special and Z-Wave Application Command Class Specification.pdf specifies this:
+     *                   This value MUST indicate to restore most recent non-zero volume setting.
+     *                   This value MUST be ignored if the current volume is not zero (0x00). 
+     *                   This value MAY be used to set the Default Tone Identifier and do not modify the volume setting
+     * @param defaultTone Values in the range 1..{Total number of supported tones} MUST indicate that the receiving node MUST use the specified Identifier as Default Tone.
+     *                    The value 0x00 MUST indicate that the receiving node MUST NOT update its current default tone and the command is sent to configure the volume only. 
+     *                     
+     * @return SerialMessage
+     */
+    public ZWaveCommandClassTransactionPayload setConfigMessage(int volume,int defaultTone) {
         logger.debug("NODE {}: Creating new message for application command CONFIGURATION_SET", this.getNode().getNodeId());
-        
-        int defaultTone = 0; // The value 0x00 MUST indicate that the receiving node MUST NOT update its current default tone and
-        //the command is sent to configure the volume only.
+        if( volume == 255 ) {
+            // We are trying not to change volume. But as described in params above this may happen if the volume is 0 therefore we handle this differently
+            if( lastVolume == 0 ) {
+                // If we know that the last volume was 0 then the device will change it in case we use 255
+                // Therefore we set it to 0 instead.
+                // If we do not know what the last volume was set to then lastVolume should be (-1) and we just use 255 and hope not to change volume 
+                volume = 0;
+            }
+        }
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), CONFIGURATION_SET)
                 .withPayload(volume,defaultTone).withPriority(TransactionPriority.Set).build();
     }

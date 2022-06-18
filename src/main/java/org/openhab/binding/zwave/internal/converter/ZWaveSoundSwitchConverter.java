@@ -62,6 +62,10 @@ public class ZWaveSoundSwitchConverter extends ZWaveCommandClassConverter {
         {
             payload = commandClass.getConfigMessage();
         }
+        else if( channel.getChannelTypeUID().getId().equals("sound_default_tone") )
+        {
+            payload = commandClass.getConfigMessage();
+        }
         else
         {
             payload = commandClass.getValueMessage();
@@ -83,7 +87,11 @@ public class ZWaveSoundSwitchConverter extends ZWaveCommandClassConverter {
         ZWaveCommandClassTransactionPayload payload = null;
         if( channel.getChannelTypeUID().getId().equals("sound_volume") )
         {
-            payload = commandClass.setConfigMessage(((PercentType) command).intValue());
+            payload = commandClass.setConfigMessage(((PercentType) command).intValue(),0);
+        }
+        else if( channel.getChannelTypeUID().getId().equals("sound_default_tone") )
+        {
+            payload = commandClass.setConfigMessage(255, ((DecimalType) command).intValue());
         }
         else
         {
@@ -112,6 +120,11 @@ public class ZWaveSoundSwitchConverter extends ZWaveCommandClassConverter {
                 return new PercentType((Integer)event.getValue());
             case TONE_PLAY:
                 if (!channel.getChannelTypeUID().getId().equals("sound_tone_play")) {
+                    return null;
+                }
+                return new DecimalType((Integer) event.getValue());
+            case DEFAULT_TONE:
+                if (!channel.getChannelTypeUID().getId().equals("sound_default_tone")) {
                     return null;
                 }
                 return new DecimalType((Integer) event.getValue());
