@@ -1245,6 +1245,12 @@
             The value 0 will stop any tone beeing played. 
             The value 255 will play the default tone</description>
         <category></category>
+        <state>
+            <options>
+                <option value="0">Stop</option>
+                <option value="255">Play default tone</option>
+            </options>
+        </state>
     </channel-type>
 
     <!-- Sound volume Channel -->
