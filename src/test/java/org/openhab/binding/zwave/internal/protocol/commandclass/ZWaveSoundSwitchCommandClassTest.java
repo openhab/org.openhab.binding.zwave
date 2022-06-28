@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
@@ -62,16 +63,29 @@ public class ZWaveSoundSwitchCommandClassTest extends ZWaveCommandClassTest {
         msg = cls.getConfigMessage();
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
-    
+
     @Test
     public void setConfigMessage() {
         ZWaveSoundSwitchCommandClass cls = (ZWaveSoundSwitchCommandClass) getCommandClass(
                 CommandClass.COMMAND_CLASS_SOUND_SWITCH);
         ZWaveCommandClassTransactionPayload msg;
 
-        byte[] expectedResponseV1 = { 0x79, 5 , 100 , 0 };
+        byte[] expectedResponseV1 = { 0x79, 5, 100, 0 };
         cls.setVersion(1);
-        msg = cls.setConfigMessage(100);
+        msg = cls.setConfigMessage(100, 0);
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void setConfigMessage_will_use_volume_0_when_changing_tone_when_this_is_the_last_known_volume() {
+        ZWaveSoundSwitchCommandClass cls = (ZWaveSoundSwitchCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_SOUND_SWITCH);
+        cls.setVersion(1);
+        byte[] input = { 0x79, 7, 0, 2 }; // volume 0 and default tone 2
+        cls.handleConfigReport(new ZWaveCommandClassPayload(input), 0);
+
+        byte[] expectedResponseV1 = { 0x79, 5, 0, 1 };
+        ZWaveCommandClassTransactionPayload msg = cls.setConfigMessage(255, 1);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
     }
 }

@@ -15,10 +15,6 @@ package org.openhab.binding.zwave.internal.converter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.openhab.core.library.types.DecimalType;
-import org.openhab.core.library.types.PercentType;
-import org.openhab.core.types.Command;
-import org.openhab.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -26,6 +22,10 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSoundSwitchCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.library.types.PercentType;
+import org.openhab.core.types.Command;
+import org.openhab.core.types.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,17 +58,15 @@ public class ZWaveSoundSwitchConverter extends ZWaveCommandClassConverter {
         logger.debug("NODE {}: Generating poll message for {}, endpoint {}", node.getNodeId(),
                 commandClass.getCommandClass(), channel.getEndpoint());
         ZWaveCommandClassTransactionPayload payload = null;
-        if ( channel.getChannelTypeUID().getId().equals("sound_volume") ) 
-        {
+        if (channel.getChannelTypeUID().getId().equals("sound_volume")) {
             payload = commandClass.getConfigMessage();
-        }
-        else
-        {
+        } else if (channel.getChannelTypeUID().getId().equals("sound_default_tone")) {
+            payload = commandClass.getConfigMessage();
+        } else {
             payload = commandClass.getValueMessage();
         }
-        
-        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(payload,
-                channel.getEndpoint());
+
+        ZWaveCommandClassTransactionPayload transaction = node.encapsulate(payload, channel.getEndpoint());
         List<ZWaveCommandClassTransactionPayload> response = new ArrayList<ZWaveCommandClassTransactionPayload>(1);
         response.add(transaction);
         return response;
@@ -77,19 +75,18 @@ public class ZWaveSoundSwitchConverter extends ZWaveCommandClassConverter {
     @Override
     public List<ZWaveCommandClassTransactionPayload> receiveCommand(ZWaveThingChannel channel, ZWaveNode node,
             Command command) {
-        ZWaveSoundSwitchCommandClass commandClass = (ZWaveSoundSwitchCommandClass) node.resolveCommandClass(
-                ZWaveCommandClass.CommandClass.COMMAND_CLASS_SOUND_SWITCH, channel.getEndpoint());
+        ZWaveSoundSwitchCommandClass commandClass = (ZWaveSoundSwitchCommandClass) node
+                .resolveCommandClass(ZWaveCommandClass.CommandClass.COMMAND_CLASS_SOUND_SWITCH, channel.getEndpoint());
 
         ZWaveCommandClassTransactionPayload payload = null;
-        if( channel.getChannelTypeUID().getId().equals("sound_volume") )
-        {
-            payload = commandClass.setConfigMessage(((PercentType) command).intValue());
-        }
-        else
-        {
+        if (channel.getChannelTypeUID().getId().equals("sound_volume")) {
+            payload = commandClass.setConfigMessage(((PercentType) command).intValue(), 0);
+        } else if (channel.getChannelTypeUID().getId().equals("sound_default_tone")) {
+            payload = commandClass.setConfigMessage(255, ((DecimalType) command).intValue());
+        } else {
             payload = commandClass.setValueMessage(((DecimalType) command).intValue());
         }
-        ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(payload,channel.getEndpoint());
+        ZWaveCommandClassTransactionPayload serialMessage = node.encapsulate(payload, channel.getEndpoint());
 
         if (serialMessage == null) {
             logger.warn("NODE {}: Generating message failed for command class = {}, endpoint = {}", node.getNodeId(),
@@ -109,9 +106,14 @@ public class ZWaveSoundSwitchConverter extends ZWaveCommandClassConverter {
                 if (!channel.getChannelTypeUID().getId().equals("sound_volume")) {
                     return null;
                 }
-                return new PercentType((Integer)event.getValue());
+                return new PercentType((Integer) event.getValue());
             case TONE_PLAY:
                 if (!channel.getChannelTypeUID().getId().equals("sound_tone_play")) {
+                    return null;
+                }
+                return new DecimalType((Integer) event.getValue());
+            case DEFAULT_TONE:
+                if (!channel.getChannelTypeUID().getId().equals("sound_default_tone")) {
                     return null;
                 }
                 return new DecimalType((Integer) event.getValue());
