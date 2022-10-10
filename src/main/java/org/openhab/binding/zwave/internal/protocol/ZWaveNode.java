@@ -1507,7 +1507,7 @@ public class ZWaveNode {
                     getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
             }
             else {
-                logger.info("NODE {}: Maximum Awake time period reached, state {} count {}, messages {}", getNodeId(),
+                logger.debug("NODE {}: Maximum Awake time period reached, state {} count {}, messages {}", getNodeId(),
                     getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
             }
             // Stop the timer now in the event the "go to Sleep" command is only queued and not sent
