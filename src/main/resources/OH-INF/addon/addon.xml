@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<binding:binding id="zwave"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:binding="http://eclipse.org/smarthome/schemas/binding/v1.0.0"
-	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/binding/v1.0.0 http://eclipse.org/smarthome/schemas/binding-1.0.0.xsd">
+<addon:addon id="zwave" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:addon="https://openhab.org/schemas/addon/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/addon/v1.0.0 https://openhab.org/schemas/addon-1.0.0.xsd">
 
+	<type>binding</type>
 	<name>Z-Wave Binding</name>
 	<description>
 	   <![CDATA[
-	   The ZWave binding supports an interface to a wireless Z-Wave home automation network. 
+	   The ZWave binding supports an interface to a wireless Z-Wave home automation network.
 <br>
 ZWave is a wireless home automation protocol with reliable two way communications between nodes. It supports a mesh network where mains powered nodes can route messages between nodes that could otherwise not communicate with each other. The network supports hop distances of up to four hops.
 <br>
 A wide range of devices are supported from lights, switches and sensors to smoke alarms, window coverings and keyfobs. Z-Wave certification guarantees that certified devices will be compatible with each other and the network.
 <br>
-The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave devices. There are many sticks available, and they all support the same interface so the binding does not distinguish between them.	   
-	   ]]> 
+The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave devices. There are many sticks available, and they all support the same interface so the binding does not distinguish between them.
+	   ]]>
 	</description>
 	<author>Chris Jackson</author>
 
-</binding:binding>
+</addon:addon>
