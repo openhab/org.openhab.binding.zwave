@@ -134,7 +134,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         if (expectedResponseCommandClass == null) {
             return null;
         }
-        return SerialMessageClass.ApplicationCommandHandler;
+        return SerialMessageClass.BridgeApplicationCommandHandler;
     }
 
     @Override
