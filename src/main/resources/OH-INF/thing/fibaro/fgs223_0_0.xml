@@ -245,7 +245,7 @@ Second channel - pulse time for flashing mode<br /> <h1>Overview</h1><p>This par
       <parameter name="config_20_1" type="integer" groupName="configuration">
         <label>20: Switch type</label>
         <description><![CDATA[
-Switch type<br /> <h1>Overview</h1><p>This parameter defines as what type the device should treat the switch connected to the S1 and S2 terminals</p>
+Switch type<br /> <h1>Overview</h1><p>This parameter defines as what type the device should treat the switch connected to the S1 and S2 terminals:</p><p>0 - momentary switch<br />1 - toggle switch (contact closed - ON, contact opened - OFF)<br />2 - toggle switch (device changes status when switch changes status)<br /></p>
         ]]></description>
         <default>2</default>
         <options>
