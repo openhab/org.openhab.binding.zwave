@@ -6,7 +6,7 @@ title: Zerodim 2 phase - ZWave
 {% include base.html %}
 
 # Zerodim 2 phase Q-light / Q-Light Zerodim 2phase
-This describes the Z-Wave device *Zerodim 2 phase*, manufactured by *AcTEC (Fuzhou) Electronics Co., Ltd.* with the thing type UID of ```actec_zerodim2pol_00_000```.
+This describes the Z-Wave device *Zerodim 2 phase*, manufactured by *AcTEC (Fuzhou) Electronics Co., Ltd.* with the thing type UID of ```actec_Zerodim2pol_00_000```.
 
 The device is in the category of *Wall Switch*, defining Any device attached to the wall that controls a binary status of something, for ex. a light switch.
 
@@ -19,18 +19,20 @@ The Zerodim 2 phase supports routing. This allows the device to communicate usin
 
 Zerodim Z-Wave 2 pole is a universal LED dimmer based on the Z-Wave protocol. 
 
-Features:  
+Certified by the Z-Wave Alliance.
+
+Technical description  
 
 
-  * 0-99% dimming range
-  * 2-180W LED load
-  * Compatible with any Z-Wave or Z-Wave Plus Controller
-  * There is memorized function at power off
-  * OverLoad protection
-  * Soft start function
-  * SmartStart
+The dimmer is a phase section and has a memory function in the event of a power cut.
 
-This device is a security enable Z-Wave Plus product that is able to use encrypted Z-Wave Plus messages to communicate to other security enable Z-Wave Plus products.
+Functionality
+
+All non-battery-powered nodes in the network act as repeaters regardless of provider to increase the reliability of the network. Zerodim Z-Wave supports SmartStart inclusion, and products can be added to a Z-Wave network by scanning the Z-Wave QR code found on the product with a controller that provides SmartStart inclusion. No further action is required and the SmartStart product is automatically added within 10 minutes of powering on in the network area.
+
+Area of ​​use
+
+This product can be used in any Z-Wave network with other Z-Wave certified devices from other manufacturers.
 
 ### Inclusion Information
 
@@ -50,10 +52,17 @@ The following table summarises the channels available for the Zerodim 2 phase -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
+| Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
 | Scene Number | scene_number | scene_number |  | Number | 
 | Alarm (heat) | alarm_heat | alarm_heat | Fire | Switch | 
 | Alarm (power) | alarm_power | alarm_power | Energy | Switch | 
-| Dimmer1 | switch_dimmer1 | switch_dimmer | DimmableLight | Dimmer | 
+| Dimmer 1 | switch_dimmer1 | switch_dimmer | DimmableLight | Dimmer | 
+
+### Dimmer
+The brightness channel allows to control the brightness of a light.
+            It is also possible to switch the light on and off.
+
+The ```switch_dimmer``` channel is of type ```switch_dimmer``` and supports the ```Dimmer``` item and is in the ```DimmableLight``` category.
 
 ### Scene Number
 Triggers when a scene button is pressed.
@@ -84,7 +93,7 @@ The following state translation is provided for this channel to the ```Switch```
 | OFF | OK |
 | ON | Alarm |
 
-### Dimmer1
+### Dimmer 1
 The brightness channel allows to control the brightness of a light.
             It is also possible to switch the light on and off.
 
@@ -214,7 +223,34 @@ This parameter has the configuration ID ```config_9_2``` and is of type ```INTEG
 
 Association groups allow the device to send unsolicited reports to the controller, or other devices in the network. Using association groups can allow you to eliminate polling, providing instant feedback of a device state change without unnecessary network traffic.
 
-The device does not support associations.
+The Zerodim 2 phase supports 3 association groups.
+
+### Group 1: Lifeline
+
+The Lifeline association group reports device status to a hub and is not designed to control other devices directly. When using the Lineline group with a hub, in most cases, only the lifeline group will need to be configured and normally the hub will perform this automatically during the device initialisation.
+Lifeline
+Supports the following command classes: 
+
+- Device Reset Locally: triggered upon reset. 
+
+- Switch Multilevel Report: triggered by local light level change. 
+
+- Notification Report: triggered by Notification.
+
+Association group 1 supports 1 node.
+
+### Group 2: On/Off(rotary knob)
+
+Mirroring of endpoint 1, group2
+
+Association group 2 supports 5 nodes.
+
+### Group 3: Dimmer(rotary knob)
+
+Mirroring of endpoint 1, group3
+
+Association group 3 supports 5 nodes.
+
 ## Technical Information
 
 ### Endpoints
@@ -224,7 +260,7 @@ The device does not support associations.
 | Command Class | Comment |
 |---------------|---------|
 | COMMAND_CLASS_NO_OPERATION_V1| |
-| COMMAND_CLASS_BASIC_V1| Linked to BASIC|
+| COMMAND_CLASS_BASIC_V1| |
 | COMMAND_CLASS_SWITCH_MULTILEVEL_V3| |
 | COMMAND_CLASS_SCENE_ACTIVATION_V1| |
 | COMMAND_CLASS_SCENE_ACTUATOR_CONF_V1| |
@@ -248,7 +284,7 @@ The device does not support associations.
 
 | Command Class | Comment |
 |---------------|---------|
-| COMMAND_CLASS_BASIC_V1| Linked to BASIC|
+| COMMAND_CLASS_BASIC_V1| |
 | COMMAND_CLASS_SWITCH_MULTILEVEL_V3| |
 | COMMAND_CLASS_ASSOCIATION_GRP_INFO_V1| |
 | COMMAND_CLASS_ZWAVEPLUS_INFO_V1| |
