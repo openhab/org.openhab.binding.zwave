@@ -106,19 +106,22 @@
 					<groupId>org.openhab.tools.sat</groupId>
 					<artifactId>sat-plugin</artifactId>
 					<version>${sat.version}</version>
+					<configuration>
+						<checkstyleProperties>${basedirRoot}/tools/static-code-analysis/checkstyle/ruleset.properties</checkstyleProperties>
+						<checkstyleFilter>${basedirRoot}/tools/static-code-analysis/checkstyle/suppressions.xml</checkstyleFilter>
+					</configuration>
 					<executions>
 						<execution>
 							<id>sat-all</id>
-							<configuration>
-								<checkstyleProperties>tools/static-code-analysis/checkstyle/ruleset.properties</checkstyleProperties>
-								<checkstyleFilter>tools/static-code-analysis/checkstyle/suppressions.xml</checkstyleFilter>
-							</configuration>
+							<goals>
+								<goal>checkstyle</goal>
+								<goal>pmd</goal>
+								<goal>spotbugs</goal>
+								<goal>report</goal>
+							</goals>
+							<phase>verify</phase>
 						</execution>
 					</executions>
-					<configuration>
-						<checkstyleProperties>tools/static-code-analysis/checkstyle/ruleset.properties</checkstyleProperties>
-						<checkstyleFilter>tools/static-code-analysis/checkstyle/suppressions.xml</checkstyleFilter>
-					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -215,15 +218,15 @@
 				<executions>
 					<execution>
 						<id>directories</id>
-						<phase>none</phase>
 						<goals>
 							<goal>directory-of</goal>
 						</goals>
+						<phase>initialize</phase>
 						<configuration>
 							<property>basedirRoot</property>
 							<project>
-								<groupId>org.openhab.addons</groupId>
-								<artifactId>org.openhab.addons.reactor</artifactId>
+								<groupId>org.openhab.addons.bundles</groupId>
+								<artifactId>org.openhab.binding.zwave</artifactId>
 							</project>
 						</configuration>
 					</execution>
