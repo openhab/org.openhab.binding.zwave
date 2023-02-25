@@ -90,8 +90,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
         events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
-	    events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
-	    events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
+	events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
+	events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
         notifications.put("alarm_system", events);
 
         // Heat alarms
@@ -149,7 +149,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__OVER_CURRENT, OnOffType.ON);
-	    events.put(NotificationEvent.POWER_MANAGEMENT__OVER_LOAD, OnOffType.ON);
+	events.put(NotificationEvent.POWER_MANAGEMENT__OVER_LOAD, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_DISCONNECTED, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_APPLIED, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_RECONNECTED, OnOffType.OFF);
