@@ -38,7 +38,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ZWaveAlarmConverter class. Converter for communication with the {@link ZWaveAlarmCommandClass}. Implements polling of
+ * ZWaveAlarmConverter class. Converter for communication with the
+ * {@link ZWaveAlarmCommandClass}. Implements polling of
  * the alarm status and receiving of alarm events.
  *
  * @author Chris Jackson
@@ -86,10 +87,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.ACCESS_CONTROL__MANUAL_UNLOCK, OnOffType.OFF);
         notifications.put("alarm_entry", events);
 
-        // Heart beats
+        // System Status
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
         events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
+        events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
         notifications.put("alarm_system", events);
 
         // Heat alarms
@@ -147,6 +150,7 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__OVER_CURRENT, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__OVER_LOAD, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_DISCONNECTED, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_APPLIED, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_RECONNECTED, OnOffType.OFF);
@@ -219,7 +223,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         }
 
         // Notifications can't be polled for their state
-        // This will return an event that allows us to know if the event is configured for pull or push
+        // This will return an event that allows us to know if the event is configured
+        // for pull or push
         // and not the actual state of the event.
         if (commandClass.getVersion() >= 3) {
             return null;
@@ -315,7 +320,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
     private State handleNotificationReport(ZWaveThingChannel channel, ZWaveAlarmValueEvent eventAlarm) {
 
         // Don't trigger event if this item is bound to another event type
-        // if (alarmType != null && AlarmType.valueOf(alarmType) != eventAlarm.getAlarmType()) {
+        // if (alarmType != null && AlarmType.valueOf(alarmType) !=
+        // eventAlarm.getAlarmType()) {
         // return null;
         // }
 
@@ -338,7 +344,8 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return null;
         }
 
-        // Don't trigger event if there is no event match. Note that 0 is always acceptable
+        // Don't trigger event if there is no event match. Note that 0 is always
+        // acceptable
         // if (alarmEvent != null && event != 0 && alarmEvent != event) {
         // return null;
         // }
