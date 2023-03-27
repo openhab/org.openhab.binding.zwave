@@ -91,6 +91,11 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
         events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
+<<<<<<< HEAD
+=======
+        events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE, OnOffType.OFF);
+        events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE, OnOffType.OFF);
+>>>>>>> 66c23b777c3183c892dd084cff4a931358ccf52c
         events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
         events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE, OnOffType.OFF);
         notifications.put("alarm_system", events);
