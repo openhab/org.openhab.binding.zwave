@@ -99,6 +99,13 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.HEAT__HIGH_DETECTED_UNKNOWN, OnOffType.ON);
         notifications.put("alarm_heat", events);
 
+        // Cold alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.HEAT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.HEAT__LOW_DETECTED, OnOffType.ON);
+        events.put(NotificationEvent.HEAT__LOW_DETECTED_UNKNOWN, OnOffType.ON);
+        notifications.put("alarm_cold", events);
+
         // Motion alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HOME_SECURITY__NONE, OnOffType.OFF);
@@ -182,6 +189,16 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.SIREN__NONE, OnOffType.OFF);
         events.put(NotificationEvent.SIREN__ACTIVE, OnOffType.ON);
         notifications.put("notification_siren", events);
+
+        // Weather Alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.WEATHER__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.WEATHER__RAIN, OnOffType.ON);
+        events.put(NotificationEvent.WEATHER__MOISTURE, OnOffType.ON);
+        events.put(NotificationEvent.WEATHER__FREEZE, OnOffType.ON);
+        events.put(NotificationEvent.WEATHER__DRY, OnOffType.ON);
+        notifications.put("alarm_humidity", events);
+
     }
 
     /**
@@ -560,6 +577,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
 
         SIREN__NONE("SIREN", 0),
         SIREN__ACTIVE("SIREN", 1),
+
+        WEATHER__NONE("WEATHER", 0),
+        WEATHER__RAIN("WEATHER", 1),
+        WEATHER__MOISTURE("WEATHER", 2),
+        WEATHER__FREEZE("WEATHER", 3),
+        WEATHER__DRY("WEATHER", 6),
 
         GAS__NONE("GAS", 0),
         GAS__COMBUSTIBLE_DETECTED("GAS", 1),
