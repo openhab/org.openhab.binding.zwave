@@ -275,7 +275,7 @@ Channel 2 import kWh value<br /> <h1>Overview</h1><p>PAB05 will start accumulati
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_15_5" type="integer" groupName="configuration">
+      <parameter name="config_15_4" type="integer" groupName="configuration">
         <label>15: Channel 2 export kWh value</label>
         <description><![CDATA[
 Channel 2 export kWh value<br /> <h1>Overview</h1><p>PAB05 will start accumulating from user setting value. The default value is 0 and value can be set 0 to 100000000.<br /></p>
