@@ -152,9 +152,7 @@ public class ZWaveController {
                 ? Integer.parseInt(config.get("wakeupDefaultPeriod"))
                 : 0;
 
-        maxAwakePeriod = config.containsKey("maxAwakePeriod")
-                ? Integer.parseInt(config.get("maxAwakePeriod"))
-                : 5;
+        maxAwakePeriod = config.containsKey("maxAwakePeriod") ? Integer.parseInt(config.get("maxAwakePeriod")) : 5;
 
         logger.info("Starting ZWave controller");
 
@@ -171,15 +169,15 @@ public class ZWaveController {
         initTimer.schedule(new InitializeDelayTask(), 3000);
     }
 
-/**
-     * Update the Controller Parameter maxAwakePeriod when changed from the Controller Handler class. 
+    /**
+     * Update the Controller Parameter maxAwakePeriod when changed from the Controller Handler class.
      * Used in Node class only as backstop for "Go to Sleep" message
      * 
      * @param maxAwakeProperty Updated maxAwakePeriod from the Controller Handler
      */
     public void updateControllerProperty(int maxAwakeProperty) {
         maxAwakePeriod = maxAwakeProperty;
-        logger.debug("maxAwakePeriod changed in Controller class to {}", maxAwakePeriod );       
+        logger.debug("maxAwakePeriod changed in Controller class to {}", maxAwakePeriod);
     }
 
     private class InitializeDelayTask extends TimerTask {
@@ -633,7 +631,6 @@ public class ZWaveController {
                     break;
             }
         }
-
     }
 
     /**
@@ -1104,8 +1101,8 @@ public class ZWaveController {
     }
 
     /**
-     * Gets the maximum awake time.  This is the backstop to send the battery
-     * Node to sleep in case messages stall in the device queue.  Applies to
+     * Gets the maximum awake time. This is the backstop to send the battery
+     * Node to sleep in case messages stall in the device queue. Applies to
      * all battery devices.
      *
      * @return the awake period in seconds, or 5 if no default is set

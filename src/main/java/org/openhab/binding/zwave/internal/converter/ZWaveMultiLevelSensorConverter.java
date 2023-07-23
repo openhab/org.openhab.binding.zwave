@@ -185,5 +185,4 @@ public class ZWaveMultiLevelSensorConverter extends ZWaveCommandClassConverter {
         messages.add(payload);
         return messages;
     }
-
 }

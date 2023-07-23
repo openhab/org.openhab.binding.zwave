@@ -120,5 +120,4 @@ public class ZWaveUserCodeCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(140, event.getId());
         assertEquals(UserIdStatusType.OCCUPIED, event.getStatus());
     }
-
 }

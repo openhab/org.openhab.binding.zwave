@@ -241,5 +241,4 @@ public class CommandClassZwaveplusInfoV2 {
         // Return the map of processed response data;
         return response;
     }
-
 }

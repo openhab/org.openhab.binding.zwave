@@ -70,6 +70,5 @@ public class ZWaveConfigProviderTest {
         // config = provider.getConfigDescription(uri, null);
         // parameter = config.getParameters().get(0);
         // assertEquals("node_id", parameter.getName());
-
     }
 }

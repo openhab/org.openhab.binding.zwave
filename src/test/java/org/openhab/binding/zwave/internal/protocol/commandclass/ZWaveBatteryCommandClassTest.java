@@ -56,5 +56,4 @@ public class ZWaveBatteryCommandClassTest extends ZWaveCommandClassTest {
         assertEquals(CommandClass.COMMAND_CLASS_BATTERY, event.getCommandClass());
         assertEquals(108, event.getValue());
     }
-
 }
