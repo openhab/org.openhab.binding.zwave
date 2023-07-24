@@ -124,5 +124,4 @@ public class ZWaveBasicCommandClass extends ZWaveCommandClass {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), BASIC_SET)
                 .withPayload(level).withPriority(TransactionPriority.Set).build();
     }
-
 }

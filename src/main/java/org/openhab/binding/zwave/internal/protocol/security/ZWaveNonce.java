@@ -92,5 +92,4 @@ public class ZWaveNonce {
         return "ZWaveNonce [nonceBytes=(" + bb2hex(nonceBytes) + "), timer=" + (System.nanoTime() - timer) + ", valid="
                 + isValid() + "]";
     }
-
 }

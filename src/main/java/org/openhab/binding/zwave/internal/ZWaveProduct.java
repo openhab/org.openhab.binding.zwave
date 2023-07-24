@@ -12,8 +12,8 @@
  */
 package org.openhab.binding.zwave.internal;
 
-import org.openhab.core.thing.ThingTypeUID;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.core.thing.ThingTypeUID;
 import org.osgi.framework.Version;
 
 /**

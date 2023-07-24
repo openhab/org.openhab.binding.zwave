@@ -51,6 +51,5 @@ public class RemoveNodeMessageClassTest {
         assertEquals(msg.getSerialMessageClass(), SerialMessageClass.RemoveNodeFromNetwork);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseStopComplete));
         assertTrue(msg.getSerialMessage().getCallbackId() == 0);
-
     }
 }

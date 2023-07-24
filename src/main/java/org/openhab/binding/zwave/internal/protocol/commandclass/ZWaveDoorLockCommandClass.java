@@ -251,6 +251,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         SECURED(0xFF, "Secured"),
         UNKNOWN(0xFE, "Unknown"), // This isn't per the spec, it's just our definition
         ;
+
         /**
          * A mapping between the integer code and its corresponding door
          * lock state type to facilitate lookup by code.

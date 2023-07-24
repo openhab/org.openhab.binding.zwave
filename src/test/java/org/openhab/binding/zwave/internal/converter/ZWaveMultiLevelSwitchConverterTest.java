@@ -278,5 +278,4 @@ public class ZWaveMultiLevelSwitchConverterTest {
         State state = sut.handleEvent(channel, event);
         assertEquals(new StringType("{\"direction\":\"STOP\"}"), state);
     }
-
 }
