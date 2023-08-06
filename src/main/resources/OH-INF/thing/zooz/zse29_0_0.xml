@@ -26,10 +26,10 @@ Outdoor Motion Sensor<br /> <h1>Overview</h1><p>OUTDOOR SENSOR: Introducing the 
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=BURGLAR,event=8</property>
         </properties>
       </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
+      <channel id="alarm_battery" typeId="alarm_battery">
+        <label>Alarm Battery Status</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM</property>
         </properties>
       </channel>
       <channel id="alarm_tamper" typeId="alarm_tamper">
@@ -66,9 +66,10 @@ Outdoor Motion Sensor<br /> <h1>Overview</h1><p>OUTDOOR SENSOR: Introducing the 
       </parameter-group>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description>Notification Reports to Controller</description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

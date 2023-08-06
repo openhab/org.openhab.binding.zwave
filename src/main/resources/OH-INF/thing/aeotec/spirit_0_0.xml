@@ -115,17 +115,17 @@ Thermostatic Valve<br /> <h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radi
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: LCD Invert</label>
-        <description>LCD Invert</description>
+        <description><![CDATA[
+LCD Invert<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">LCD-content normal</option>
           <option value="1">LCD-content inverted (UK Edition)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="5" max="30">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: LCD Timeout</label>
         <description><![CDATA[
 LCD Timeout<br /> <h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: LCD will turn off after 5 to 30 seconds</p>
@@ -134,32 +134,34 @@ LCD Timeout<br /> <h1>Overview</h1><p>0: No Timeout LCD always on</p> <p>5-30: L
         <options>
           <option value="0">No Timeout LCD always on</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
         <label>3: Backlight</label>
-        <description>Backlight</description>
+        <description><![CDATA[
+Backlight<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">Backlight disabled</option>
           <option value="1">Backlight enabled</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
         <label>4: Battery report</label>
-        <description>Battery report</description>
+        <description><![CDATA[
+Battery report<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">system notification</option>
           <option value="1">Send battery status unsolicited once a day.</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_5_1" type="integer" groupName="configuration"
-                 min="0" max="50">
+      <parameter name="config_5_1" type="integer" groupName="configuration">
         <label>5: Measured Temperature report</label>
         <description><![CDATA[
 Measured Temperature report<br /> <h1>Overview</h1><p>0: Unsolicited Temperature reporting disabled</p> <p>1-50: report if temperature changed by delta = 0,1°C ... 5,0 °C</p> <p>default 5: report on delta T = 0,5°C</p>
@@ -168,8 +170,7 @@ Measured Temperature report<br /> <h1>Overview</h1><p>0: Unsolicited Temperature
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_6_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+      <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Valve opening percentage report</label>
         <description><![CDATA[
 Valve opening percentage report<br /> <h1>Overview</h1><p>0: Unsolicited valve opening percentage reporting disabled.</p> <p>1-100: report if valve opening changed by delta = 1% ... 100%</p>
@@ -180,7 +181,9 @@ Valve opening percentage report<br /> <h1>Overview</h1><p>0: Unsolicited valve o
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Window open detection</label>
-        <description>Window open detection</description>
+        <description><![CDATA[
+Window open detection<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>2</default>
         <options>
           <option value="0">Disabled</option>
@@ -188,11 +191,9 @@ Valve opening percentage report<br /> <h1>Overview</h1><p>0: Unsolicited valve o
           <option value="2">Sensitivity medium</option>
           <option value="3">Sensitivity high</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_8_1" type="integer" groupName="configuration"
-                 min="-50" max="50">
+      <parameter name="config_8_1" type="integer" groupName="configuration">
         <label>8: Temperature Offset</label>
         <description><![CDATA[
 Measured temperature offset<br /> <h1>Overview</h1><p>-50 ... +50: Offsets the measured temp by -5,0°C ... +5,0°C</p> <p>128: External temp sensor will be used for regulation.</p>
@@ -201,14 +202,16 @@ Measured temperature offset<br /> <h1>Overview</h1><p>-50 ... +50: Offsets the m
         <options>
           <option value="128">Use ext. temp. sensor</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /> <h1>Overview</h1><p>Commands:</p> <p>BATTERY_REPORT, DEVICE_RESET_LOCALLY_NOTIFICATION, THERMOSTAT_MODE_REPORT, THERMOSTAT_SETPOINT_REPORT, NOTIFICATION_REPORT, PROTECTION_REPORT, SENSOR_MULTILEVEL_REPORT, SWITCH_MULTILEVEL_REPORT</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

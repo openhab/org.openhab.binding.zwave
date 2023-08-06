@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -56,6 +56,7 @@ public class ZWaveBindingConstants {
 
     public final static String CONFIGURATION_POLLPERIOD = "binding_pollperiod";
     public final static String CONFIGURATION_CMDREPOLLPERIOD = "binding_cmdrepollperiod";
+    public final static String CONFIGURATION_MAXAWAKEPERIOD = "controller_maxawakeperiod";
 
     public final static String ZWAVE_THING = BINDING_ID + ":device";
     public final static ThingTypeUID ZWAVE_THING_UID = new ThingTypeUID(ZWAVE_THING);

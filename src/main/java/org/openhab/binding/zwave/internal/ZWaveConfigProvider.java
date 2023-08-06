@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -293,6 +293,10 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
 
             for (int code = 1; code <= userCodeClass.getNumberOfSupportedCodes(); code++) {
                 UserCode userCode = userCodeClass.getCachedUserCode(code);
+                boolean readOnly = false;
+                if (userCode != null) {
+                    readOnly = userCode.getState() == UserIdStatusType.RESERVED_BY_ADMINISTRATOR;
+                }
                 parameters.add(ConfigDescriptionParameterBuilder
                         .create(ZWaveBindingConstants.CONFIGURATION_USERCODE_LABEL + code, Type.TEXT)
                         .withLabel("Code " + code + " Label").withDescription("Name for user code " + code)
@@ -300,8 +304,7 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                 parameters.add(ConfigDescriptionParameterBuilder
                         .create(ZWaveBindingConstants.CONFIGURATION_USERCODE_CODE + code, Type.TEXT)
                         .withLabel("Code " + code).withDescription("Set the user code (4 to 10 numbers)")
-                        .withReadOnly(userCode.getState() == UserIdStatusType.RESERVED_BY_ADMINISTRATOR)
-                        .withGroupName("usercode").build());
+                        .withReadOnly(readOnly).withGroupName("usercode").build());
             }
         }
 

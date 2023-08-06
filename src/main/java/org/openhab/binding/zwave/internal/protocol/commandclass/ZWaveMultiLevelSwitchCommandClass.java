@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -75,9 +75,9 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
     /**
      * Creates a new instance of the ZWaveMultiLevelSwitchCommandClass class.
      *
-     * @param node       the node this command class belongs to
+     * @param node the node this command class belongs to
      * @param controller the controller to use
-     * @param endpoint   the endpoint this Command class belongs to
+     * @param endpoint the endpoint this Command class belongs to
      */
     public ZWaveMultiLevelSwitchCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -348,7 +348,5 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
 
             this.direction = direction;
         }
-
     }
-
 }

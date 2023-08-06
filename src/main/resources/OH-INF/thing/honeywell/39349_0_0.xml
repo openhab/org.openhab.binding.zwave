@@ -8,12 +8,18 @@
   <thing-type id="honeywell_39349_00_000" listed="false">
     <label>39349 Smart Outlet</label>
     <description><![CDATA[
-Smart Outlet<br /> <h1>Overview</h1><ul><li>One Z-Wave remote controlled outlet, one always-ON outlet</li> <li>Remote ON/OFF control via the Z-Wave controller/network</li> <li>Manual ON/OFF control with the manual/program button</li> <li>Blue LED indicates outlet location in a dark room </li> </ul> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode, then press and release the program button to add it to the network. </p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode, then press and release the program button to remove it from the network.</p>
+Smart Outlet<br /> <h1>Overview</h1><ul><li>One Z-Wave remote controlled outlet, one always-ON outlet</li> <li>Remote ON/OFF control via the Z-Wave controller/network</li> <li>Manual ON/OFF control with the manual/program button</li> <li>Blue LED indicates outlet location in a dark room </li> </ul> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode, then press and release the program button to add it to the network. </p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode, then press and release the program button to remove it from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
-    <category>WallSwitch</category>
+    <category>PowerOutlet</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
+      <channel id="basic_switch_binary" typeId="switch_binary">
+        <label>SwitchQ</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC</property>
+        </properties>
+      </channel>
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>

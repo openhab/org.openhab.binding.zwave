@@ -91,27 +91,29 @@ Flush 1D relay<br /> <h1>Overview</h1><p>This Z-Wave module is used for switchin
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Input 1 switch type</label>
-        <description>Input 1 switch type</description>
+        <description><![CDATA[
+Input 1 switch type<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">mono-stable switch type (push button)</option>
           <option value="1">bi-stable switch type</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Input 2 contact type</label>
-        <description>Input 2 contact type</description>
+        <description><![CDATA[
+Input 2 contact type<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">NO (normaly open) input type</option>
           <option value="1">NC (normaly close) input type</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_10_1" type="integer" groupName="configuration">
+      <parameter name="config_10_2" type="integer" groupName="configuration">
         <label>10: Activate / deactivate functions ALL ON/ALL OFF</label>
         <description><![CDATA[
 Activate / deactivate functions ALL ON/ALL OFF<br /> <h1>Overview</h1><p>Flush 1D relay module responds to commands ALL ON / ALL OFF that may be sent by the main controller or by other controller belonging to the system.</p>
@@ -123,7 +125,6 @@ Activate / deactivate functions ALL ON/ALL OFF<br /> <h1>Overview</h1><p>Flush 1
           <option value="2">ALL ON active ALL OFF is not active</option>
           <option value="255">ALL ON active, ALL OFF active</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_11_2" type="integer" groupName="configuration">
@@ -160,7 +161,6 @@ Auto turn off / on seconds or milliseconds<br /> <h1>Overview</h1><p>Automatic t
           <option value="0">Seconds selected</option>
           <option value="1">Milliseconds selected</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_30_1" type="integer" groupName="configuration">
@@ -173,7 +173,6 @@ Save state after power failure<br /> <h1>Overview</h1><p>Saving the state of the
           <option value="0">Saves state before power failure</option>
           <option value="1">Do not save state after power failure</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_63_1" type="integer" groupName="configuration">
@@ -186,7 +185,6 @@ Output Switch selection<br /> <h1>Overview</h1><p>Set value means the type of th
           <option value="0">Output 0V when system turned off</option>
           <option value="1">Output 230V or 24V when system turned off</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_100_1" type="integer" groupName="configuration">
@@ -208,8 +206,7 @@ Endpoint I2 Notification and Event<br /> <h1>Overview</h1><p>Enabling I2 means t
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_110_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_110_2" type="integer" groupName="configuration">
         <label>110: Temperature sensor offset settings</label>
         <description><![CDATA[
 Temperature sensor offset settings<br /> <h1>Overview</h1><p>Set value is added to or subtracted from actual measured value by sensor. </p> <p>Available configuration parameters:</p> <ul><li>32536: offset is 0.0 °C</li> <li>1 to 100: value from 0.1 °C to 10.0 °C is added to actual measured temperature</li> <li>1001 to 1100: value from -0.1 °C to -10.0 °C is subtracted to actual measured temperature<br /></li> </ul>
@@ -218,8 +215,7 @@ Temperature sensor offset settings<br /> <h1>Overview</h1><p>Set value is added 
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_120_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_120_1" type="integer" groupName="configuration">
         <label>120: Digital temperature sensor reporting</label>
         <description><![CDATA[
 Digital temperature sensor reporting<br /> <h1>Overview</h1><p>If digital temperature sensor is connected, module reports measured temperature on temperature change defined by this parameter.</p> <ul><li>0: Reporting disabled</li> <li>1- 127: 0,1°C - 12,7°C, step is 0,1°C</li> </ul>
@@ -229,11 +225,12 @@ Digital temperature sensor reporting<br /> <h1>Overview</h1><p>If digital temper
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Lifeline to Controller<br /> <h1>Overview</h1><p>Lifeline group (reserved for communication with the main controller), 1 node allowed.</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

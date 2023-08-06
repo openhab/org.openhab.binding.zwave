@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -222,7 +222,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         for (Integer secureClassKey : (List<Integer>) response.get("COMMAND_CLASS_SUPPORT")) {
             CommandClass commandClass = CommandClass.getCommandClass(secureClassKey);
             if (commandClass == null) {
-                logger.debug("NODE {}: Command class 0x%02X is not known.", getNode().getNodeId(),
+                logger.debug("NODE {}: Command class {} is not known.", getNode().getNodeId(),
                         String.format("%02X", secureClassKey));
                 continue;
             }

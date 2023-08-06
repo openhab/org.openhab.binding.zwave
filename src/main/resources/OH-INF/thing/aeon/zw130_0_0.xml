@@ -20,8 +20,8 @@ WallMote Quad<br /> <h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
-      <channel id="alarm_power" typeId="alarm_power">
-        <label>Alarm (power)</label>
+      <channel id="alarm_battery" typeId="alarm_battery">
+        <label>Low battery alarm</label>
         <properties>
           <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
         </properties>
@@ -29,6 +29,12 @@ WallMote Quad<br /> <h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z
       <channel id="battery-level" typeId="system.battery-level">
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+      <channel id="basic_switch_binary1" typeId="switch_binary">
+        <label>Button Number 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC:1</property>
         </properties>
       </channel>
       <channel id="switch_startstop1" typeId="switch_startstop">
@@ -43,6 +49,12 @@ WallMote Quad<br /> <h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE:1</property>
         </properties>
       </channel>
+      <channel id="basic_switch_binary2" typeId="switch_binary">
+        <label>Button Number 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC:2</property>
+        </properties>
+      </channel>
       <channel id="switch_startstop2" typeId="switch_startstop">
         <label>Swipe Switch 2</label>
         <properties>
@@ -55,6 +67,12 @@ WallMote Quad<br /> <h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE:2</property>
         </properties>
       </channel>
+      <channel id="basic_switch_binary3" typeId="switch_binary">
+        <label>Button Number 3</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC:3</property>
+        </properties>
+      </channel>
       <channel id="switch_startstop3" typeId="switch_startstop">
         <label>Swipe Switch 3</label>
         <properties>
@@ -65,6 +83,12 @@ WallMote Quad<br /> <h1>Overview</h1><p>Aeotec WallMote Quad is an intelligent Z
         <label>Scene Number 3</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE:3</property>
+        </properties>
+      </channel>
+      <channel id="basic_switch_binary4" typeId="switch_binary">
+        <label>Button Number 4</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_BASIC:4</property>
         </properties>
       </channel>
       <channel id="switch_startstop4" typeId="switch_startstop">
@@ -152,8 +176,7 @@ Which notification to be sent to the associated devices.<br /> <h1>Overview</h1>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_5_4" type="integer" groupName="configuration"
-                 min="0" max="4294967040">
+      <parameter name="config_5_4" type="integer" groupName="configuration">
         <label>5: Color</label>
         <description><![CDATA[
 Configure which color will be displayed when a button is pressed<br /> <h1>Overview</h1><p>Each color component occupies a single byte. To calculate the color value do:</p> <p>color = ((((Red * 256) + Green) * 256) + Blue) * 256</p> <p>Value 1 = Red</p> <p>Value 2 = Green</p> <p>Value 3 = Blue</p> <p>Value 4 = Reserved</p>
@@ -162,8 +185,7 @@ Configure which color will be displayed when a button is pressed<br /> <h1>Overv
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_39_1" type="integer" groupName="configuration"
-                 min="0" max="50">
+      <parameter name="config_39_1" type="integer" groupName="configuration">
         <label>39: Low battery value</label>
         <description>Set the low battery value</description>
         <default>5</default>
@@ -182,11 +204,12 @@ Configure which color will be displayed when a button is pressed<br /> <h1>Overv
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Central Scene Notification<br /> <h1>Overview</h1><p>When touching the Button 1 to 4, the Central Scene Notificcation command will be sent to the associated node (1) in Association group 1.</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

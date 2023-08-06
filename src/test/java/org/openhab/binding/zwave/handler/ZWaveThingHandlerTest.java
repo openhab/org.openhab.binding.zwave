@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -49,8 +49,6 @@ import org.openhab.core.thing.binding.builder.ThingBuilder;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.thing.type.ThingTypeBuilder;
 import org.openhab.core.types.Command;
-
-import javax.measure.quantity.Temperature;
 
 /**
  * Test of the ZWaveThingHandler
@@ -277,8 +275,8 @@ public class ZWaveThingHandlerTest {
         assertNull(result);
 
         // command is not an instance of State and couldnt be converted to something
-        result = sut.convertCommandToDataType(channelUID, ZWaveThingChannel.DataType.DecimalType,
-                StopMoveType.STOP, ZWaveThingChannel.DataType.StopMoveType);
+        result = sut.convertCommandToDataType(channelUID, ZWaveThingChannel.DataType.DecimalType, StopMoveType.STOP,
+                ZWaveThingChannel.DataType.StopMoveType);
 
         assertNull(result);
     }

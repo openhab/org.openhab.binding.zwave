@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -94,10 +94,9 @@ public class ZWaveColorConverterTest extends ZWaveCommandClassConverterTest {
     }
 
     @Test
-    public void convertRGBW() {
+    public void convertString() {
         ZWaveColorConverter converter = new ZWaveColorConverter(null);
         Map<String, String> args = new HashMap<>();
-        args.put("colorMode", "RGBW");
         ZWaveThingChannel channel = new ZWaveThingChannel(null, typeUid, uid, DataType.StringType,
                 CommandClass.COMMAND_CLASS_SWITCH_COLOR.toString(), 0, args);
 

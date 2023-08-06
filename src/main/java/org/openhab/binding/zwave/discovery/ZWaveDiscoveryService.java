@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -18,12 +18,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import org.openhab.core.config.discovery.AbstractDiscoveryService;
-import org.openhab.core.config.discovery.DiscoveryResult;
-import org.openhab.core.config.discovery.DiscoveryResultBuilder;
-import org.openhab.core.thing.ThingTypeUID;
-import org.openhab.core.thing.ThingUID;
-import org.openhab.core.thing.type.ThingType;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
@@ -34,6 +28,12 @@ import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInitializationStateEvent;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveInclusionState;
+import org.openhab.core.config.discovery.AbstractDiscoveryService;
+import org.openhab.core.config.discovery.DiscoveryResult;
+import org.openhab.core.config.discovery.DiscoveryResultBuilder;
+import org.openhab.core.thing.ThingTypeUID;
+import org.openhab.core.thing.ThingUID;
+import org.openhab.core.thing.type.ThingType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

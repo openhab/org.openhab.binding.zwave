@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -458,7 +458,6 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         protected String getLabel() {
             return label;
         }
-
     }
 
     /**
@@ -508,6 +507,5 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
         public MeterTblMonitorScale getMeterScale() {
             return meterScale;
         }
-
     }
 }

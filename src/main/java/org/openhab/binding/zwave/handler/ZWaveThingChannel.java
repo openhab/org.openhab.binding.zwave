@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -14,14 +14,13 @@ package org.openhab.binding.zwave.handler;
 
 import java.util.Map;
 
+import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.core.library.types.*;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.type.ChannelTypeUID;
 import org.openhab.core.types.Command;
-import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
-import org.openhab.core.types.State;
 
 /**
  *
@@ -120,5 +119,4 @@ public class ZWaveThingChannel {
     public ZWaveCommandClassConverter getConverter() {
         return converter;
     }
-
 }

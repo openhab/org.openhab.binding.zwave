@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -18,12 +18,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import org.openhab.core.library.types.DecimalType;
-import org.openhab.core.library.types.OnOffType;
-import org.openhab.core.library.types.OpenClosedType;
-import org.openhab.core.library.types.StringType;
-import org.openhab.core.types.Command;
-import org.openhab.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
@@ -34,6 +28,12 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAlarmComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.library.types.OnOffType;
+import org.openhab.core.library.types.OpenClosedType;
+import org.openhab.core.library.types.StringType;
+import org.openhab.core.types.Command;
+import org.openhab.core.types.State;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,12 +86,25 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.ACCESS_CONTROL__MANUAL_UNLOCK, OnOffType.OFF);
         notifications.put("alarm_entry", events);
 
+        // Heart beats
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
+        notifications.put("alarm_system", events);
+
         // Heat alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.HEAT__NONE, OnOffType.OFF);
         events.put(NotificationEvent.HEAT__HIGH_DETECTED, OnOffType.ON);
         events.put(NotificationEvent.HEAT__HIGH_DETECTED_UNKNOWN, OnOffType.ON);
         notifications.put("alarm_heat", events);
+
+        // Cold alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.HEAT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.HEAT__LOW_DETECTED, OnOffType.ON);
+        events.put(NotificationEvent.HEAT__LOW_DETECTED_UNKNOWN, OnOffType.ON);
+        notifications.put("alarm_cold", events);
 
         // Motion alarms
         events = new HashMap<NotificationEvent, State>();
@@ -114,18 +127,26 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.HOME_SECURITY__TAMPER, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_MOVED, OnOffType.ON);
         events.put(NotificationEvent.HOME_SECURITY__TAMPER_INVALID_CODE, OnOffType.ON);
+        events.put(NotificationEvent.SMOKE__SMOKE_ALARM_TEST, OnOffType.ON);
+        events.put(NotificationEvent.SMOKE__NONE, OnOffType.OFF);
         events.put(NotificationEvent.SYSTEM__TAMPERING, OnOffType.ON);
         notifications.put("alarm_tamper", events);
 
         // Battery alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__BATTERY_CHARGING, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__BATTERY_FULL, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__REPLACE_BATTERY_SOON, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__REPLACE_BATTERY_NOW, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__CHARGE_BATTERY_SOON, OnOffType.ON);
+        events.put(NotificationEvent.POWER_MANAGEMENT__CHARGE_BATTERY_NOW, OnOffType.ON);
         notifications.put("alarm_battery", events);
 
         // Power alarms
         events = new HashMap<NotificationEvent, State>();
         events.put(NotificationEvent.POWER_MANAGEMENT__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.POWER_MANAGEMENT__OVER_CURRENT, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_DISCONNECTED, OnOffType.ON);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_APPLIED, OnOffType.OFF);
         events.put(NotificationEvent.POWER_MANAGEMENT__MAINS_RECONNECTED, OnOffType.OFF);
@@ -168,6 +189,16 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.SIREN__NONE, OnOffType.OFF);
         events.put(NotificationEvent.SIREN__ACTIVE, OnOffType.ON);
         notifications.put("notification_siren", events);
+
+        // Weather Alarms
+        events = new HashMap<NotificationEvent, State>();
+        events.put(NotificationEvent.WEATHER__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.WEATHER__RAIN, OnOffType.ON);
+        events.put(NotificationEvent.WEATHER__MOISTURE, OnOffType.ON);
+        events.put(NotificationEvent.WEATHER__FREEZE, OnOffType.ON);
+        events.put(NotificationEvent.WEATHER__DRY, OnOffType.ON);
+        notifications.put("alarm_humidity", events);
+
     }
 
     /**
@@ -547,6 +578,12 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         SIREN__NONE("SIREN", 0),
         SIREN__ACTIVE("SIREN", 1),
 
+        WEATHER__NONE("WEATHER", 0),
+        WEATHER__RAIN("WEATHER", 1),
+        WEATHER__MOISTURE("WEATHER", 2),
+        WEATHER__FREEZE("WEATHER", 3),
+        WEATHER__DRY("WEATHER", 6),
+
         GAS__NONE("GAS", 0),
         GAS__COMBUSTIBLE_DETECTED("GAS", 1),
         GAS__COMBUSTIBLE_DETECTED_UNKNOWN("GAS", 2),
@@ -599,5 +636,4 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
             return event;
         }
     }
-
 }

@@ -95,8 +95,7 @@ Door Opening Sensor<br /> <h1>Overview</h1><p>The Fibaro Door / Window Sensor is
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_1_2" type="integer" groupName="configuration">
         <label>1: IN1 Alarm Cancellation Delay</label>
         <description><![CDATA[
 Additional delay after an alarm from input IN1 has ceased.<br /> <h1>Overview</h1><p>The parameter allows you to specify additional time, after which the input no. 1 alarm is cancelled once its violation has ceased.    </p>
@@ -136,7 +135,7 @@ Type of IN input<br /> <h1>Overview</h1><p>Default = 0- INPUT_NC (Normally close
         <description><![CDATA[
 Type of transmitted control frame for association group 1<br /> <h1>Overview</h1><p>Type of transmitted control frame for association group 1, activated via input IN1. The parameter allows to specify the type of alarm frame or to force transmission of control commands (BASIC_SET)</p> <p>Default value = 255 - BASIC SET</p> <p>Available parameter settings</p> <p>1 - ALARM SMOKE frame</p> <p>2 - ALARM CO frame</p> <p>3 - ALARM CO2 frame</p> <p>4 - ALARM HEAT frame</p> <p>5 - ALARM WATER frame</p> <p>255 Control frame BASIC_SET</p>
         ]]></description>
-        <default>255</default>
+        <default>-1</default>
         <options>
           <option value="0">ALARM GENERIC</option>
           <option value="1">ALARM SMOKE</option>
@@ -149,13 +148,12 @@ Type of transmitted control frame for association group 1<br /> <h1>Overview</h1
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_7_1" type="integer" groupName="configuration"
-                 min="1" max="255">
+      <parameter name="config_7_1" type="integer" groupName="configuration">
         <label>7: Forced Level of Dimming group 1</label>
         <description><![CDATA[
 Parameter for dimming/opening blinds<br /> <h1>Overview</h1><p>Value of the parameter specifying the forced level of dimming/opening roller blinds when “switch on”/”open” commands are sent to devices from association group no.1. In case of alarm frames an alarm priority is specified. Default value: 255 Possible parameter settings: (1 – 99) and 255 Value of 255 makes it possible to activate a device. In case of the Dimmer module it means activating the device and setting it to the previously stored condition, e.g. when Dimmer is set to 30%, deactivated and then reactivated using 255 commend, it will be automatically set to the previous condition i.e. 30%</p>
         ]]></description>
-        <default>255</default>
+        <default>-1</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
@@ -173,8 +171,7 @@ Enable/Disable transmission of frame cancelling alarm<br /> <h1>Overview</h1><p>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_12_1" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Sensitivity to temperature changes</label>
         <description><![CDATA[
 Sensitivity to temperature changes<br /> <h1>Overview</h1><p>Sensitivity to temperature changes. The maximum acceptable difference between the last reported temperature and the current temperature read from the sensor. If the temperatures differ by the set value or more, a report with the current temperature value is sent to the device assigned to association group no. 3.</p> <p>Default value: 8 [0,5o C]</p> <p>Available parameter settings: 0 – 255 [0o C to 16o C] [32o F – 60,8o F] To set an appropriate parameter value use the following formula: x = delta T x 16 - for Celsius x = delta T x 80 / 9 - for Fahrenheit x = parameter value delta T – maximum acceptable temperature gradient in Celsius or Fahrenheit If the value is set to 0: - if the wake-up interval is set to 255 seconds, temperature report will be sent according to the interval, - if the wake-up interval is set to over 255, temperature report will be sent each ca. 4 minutes. Parameter size: 1 [byte].</p>
@@ -222,8 +219,9 @@ Enable/Disable scene functionality<br /> <h1>Overview</h1><p>Scene activation fu
         <multipleLimit>5</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Condition</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

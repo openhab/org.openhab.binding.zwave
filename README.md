@@ -90,6 +90,13 @@ This sets the maximum time that the controller will remain in inclusion or exclu
 Note that updating this value will cause the controller to be reinitialised which will take all your Z-Wave devices offline for a short period.
 
 
+#### Battery Device Awake Duration [controller_maxawakeperiod]
+
+This sets the maximum awake time for battery nodes (in seconds). This should be set high enough to allow initialization and healing to proceed uninterupted by a "Go to Sleep" command. The "Go to Sleep" will normally be sent much earlier (when the device is fully initializated and no messages remain in the device queue).  This is just a backstop for when Zwave communications breakdown between the controller and the device. (see #### Message Routing) 
+
+It is defined in seconds.
+
+
 #### Default Wakeup Period [controller_wakeupperiod]
 
 This sets the system wide default wakeup period. If a battery device does not have the wakeup period set to a value, then the system will configure it to use this value during the device configuration. 
@@ -278,7 +285,7 @@ This section endeavors to provide some practical information about Z-Wave networ
 
 ### Inclusion and Exclusion
 
-Inclusion and exclusion are always started by the primary controller, unless an *SIS* is available in the network, in which case any controller can start these functions.  To include or exclude a device in the network, set the controller into include mode, and press the appropriate button on the device to place the device into include mode.  All Z-Wave devices will have such a button, and you should refer to the device manual.
+Inclusion and exclusion are always started by the primary controller, unless an *SIS* is available in the network, in which case any controller can start these functions.  To include a device in the network, set the controller into include mode by going to Things > + sign in bottom right corner > Z-Wave Binding > Scan, and press the appropriate button on the device to place the device into include mode.  All Z-Wave devices will have such a button, and you should refer to the device manual.  To exclude a device, set the controller into exclude mode by going to Things > Controller Thing (e.g. "Z-Wave Serial Controller") > Exclude Devices, and press the appropriate button on the device to place the device into exclude mode.
 
 Secure inclusion **must** be started from the binding directly (ie with the controller plugged in to the USB and *Online*). This is because once the device is included into the network, a key exchange takes place between the binding and the device. This key exchange must take place within a very short time of the inclusion, and if it doesn't succeed, the device must be excluded and included again.  Secure inclusion will generate a lot of activity on the network, so you should avoid other activities at the same time, and the device being included should be close to the controller to reduce any retries that could cause the security handshake to fail.
 
@@ -408,11 +415,8 @@ log:set INFO org.openhab.binding.zwave
 By default, this will put all logging into the standard ```openhab.log``` file.  If you prefer to have all ZWave logging in a separate file, put this in your ```userdata/etc/log4j2.xml``` file.
 
 ```
-<!-- Zwave custom logger -->
-	<Logger additivity="false" level="INFO" name="org.openhab.binding.zwave">
-		<AppenderRef ref="ZWAVE"/>
-	</Logger>
-
+<Appenders>
+...
 <!-- Zwave custom file appender -->
 <RollingRandomAccessFile fileName="${sys:openhab.logdir}/zwave.log" filePattern="${sys:openhab.logdir}/zwave.log.%i" name="ZWAVE">
 	<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5.5p] [%-36.36c] - %m%n"/>
@@ -421,6 +425,17 @@ By default, this will put all logging into the standard ```openhab.log``` file. 
 			<SizeBasedTriggeringPolicy size="16 MB"/>
 		</Policies>
 </RollingRandomAccessFile>
+...
+</Appenders>
+
+<Loggers>
+...
+<!-- Zwave custom logger -->
+	<Logger additivity="false" level="INFO" name="org.openhab.binding.zwave">
+		<AppenderRef ref="ZWAVE"/>
+	</Logger>
+</Loggers>
+...
 ```
 
 An online viewer that presents the logs in a clearer way in order to help with their understanding, is available [here](https://opensmarthouse.org/utilities/logviewer/zwave/).

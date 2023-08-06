@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -157,8 +157,8 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
                     if (node == MULTI_INSTANCE_MARKER) {
                         break;
                     }
-                    logger.debug("NODE {}: Associated with Node {} endpoint {} in group", getNode().getNodeId(), node,
-                            endpointId, group);
+                    logger.debug("NODE {}: Associated with Node {} endpoint {} in group {}", getNode().getNodeId(),
+                            node, endpointId, group);
 
                     // Add the node to the group
                     pendingAssociation.addAssociation(new ZWaveAssociation(node, endpointId));

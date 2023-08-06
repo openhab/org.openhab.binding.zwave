@@ -64,7 +64,7 @@ Double Relay Switch 2x1.5kW<br /> <h1>Overview</h1><p>Remotely Controlled Relay 
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Enable/Disable ALL ON/OFF</label>
         <description>Activate/Deactive ALL ON/OFF</description>
-        <default>255</default>
+        <default>-1</default>
         <options>
           <option value="-1">ALL ON active / ALL OFF active</option>
           <option value="0">ALL ON disabled/ ALL OFF disabled</option>
@@ -85,16 +85,14 @@ Double Relay Switch 2x1.5kW<br /> <h1>Overview</h1><p>Remotely Controlled Relay 
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_4_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_4_2" type="integer" groupName="configuration">
         <label>4: Relay 1: OFF-delay time</label>
         <description>Automatic turning off relay 1 after set time in milliseconds, 0 to disable</description>
         <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_5_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_5_2" type="integer" groupName="configuration">
         <label>5: Relay 2: OFF-delay time</label>
         <description>Automatic turning off relay 2 after set time in milliseconds, 0 to disable</description>
         <default>0</default>
@@ -220,8 +218,7 @@ Enable/Disable operation of dimmer associated to group 1.<br /> <h1>Overview</h1
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_39_2" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_39_2" type="integer" groupName="configuration">
         <label>39: ALARM FLASHING alarm time</label>
         <description>Amount of time (ms) the device keeps on flashing after receipt of Alarm Frame</description>
         <default>600</default>
@@ -287,8 +284,9 @@ Enable/Disable operation of dimmer associated to group 1.<br /> <h1>Overview</h1
         <multipleLimit>16</multipleLimit>
       </parameter>
 
-      <parameter name="group_3" type="text" groupName="association">
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
         <label>3: Controller Updates</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <!-- STATIC DEFINITIONS -->

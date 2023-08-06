@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -188,7 +188,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
         // Check if this is a V1 alarm report
         v1Supported = (payload.getPayloadByte(2) & 0x80) == 0;
         if (v1Supported) {
-            logger.debug("NODE: NOTIFICATION_SUPPORTED_REPORT reports V1 ALARM support", getNode().getNodeId());
+            logger.debug("NODE {}: NOTIFICATION_SUPPORTED_REPORT reports V1 ALARM support", getNode().getNodeId());
         }
 
         int numBytes = payload.getPayloadByte(2) & 0x1f;

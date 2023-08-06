@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -280,6 +280,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
         OCCUPIED(0x01, "Occupied"),
         RESERVED_BY_ADMINISTRATOR(0x02, "Reserved by administrator"),
         STATUS_NOT_AVAILABLE(0xFE, "Status not available"),;
+
         /**
          * A mapping between the integer code and its corresponding door
          * lock state type to facilitate lookup by code.

@@ -26,6 +26,66 @@ Scene Controller<br /> <h1>Overview</h1><p><b>Features</b></p><ul><li>Switch but
           <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
         </properties>
       </channel>
+      <channel id="config_decimal_param1" typeId="zooz_zen32_00_000_config_decimal_param1">
+        <label>Relay Button LED State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=1</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param2" typeId="zooz_zen32_00_000_config_decimal_param2">
+        <label>Button 1 LED State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=2</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param3" typeId="zooz_zen32_00_000_config_decimal_param3">
+        <label>Button 2 LED State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=3</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param4" typeId="zooz_zen32_00_000_config_decimal_param4">
+        <label>Button 3 LED State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=4</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param5" typeId="zooz_zen32_00_000_config_decimal_param5">
+        <label>Button 4 LED State</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=5</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param6" typeId="zooz_zen32_00_000_config_decimal_param6">
+        <label>Relay Button LED Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=6</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param7" typeId="zooz_zen32_00_000_config_decimal_param7">
+        <label>Button 1 LED Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=7</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param8" typeId="zooz_zen32_00_000_config_decimal_param8">
+        <label>Button 2 LED Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=8</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param9" typeId="zooz_zen32_00_000_config_decimal_param9">
+        <label>Button 3 LED Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=9</property>
+        </properties>
+      </channel>
+      <channel id="config_decimal_param10" typeId="zooz_zen32_00_000_config_decimal_param10">
+        <label>Button 4 LED Color</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CONFIGURATION;parameter=10</property>
+        </properties>
+      </channel>
     </channels>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
@@ -65,7 +125,6 @@ LED Indicator mode for relay<br /> <h1>Overview</h1><p>Choose if you want the LE
           <option value="2">LED always off</option>
           <option value="3">LED always on</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
@@ -80,7 +139,6 @@ LED Indicator mode for Button 1<br /> <h1>Overview</h1><p>Choose if you want the
           <option value="2">LED always off</option>
           <option value="3">LED always on</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_1" type="integer" groupName="configuration">
@@ -95,7 +153,6 @@ LED Indicator mode for Button 2<br /> <h1>Overview</h1><p>Choose if you want the
           <option value="2">LED always off</option>
           <option value="3">LED always on</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_4_1" type="integer" groupName="configuration">
@@ -110,7 +167,6 @@ LED Indicator mode for Button 3<br /> <h1>Overview</h1><p>Choose if you want the
           <option value="2">LED always off</option>
           <option value="3">LED always on</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_5_1" type="integer" groupName="configuration">
@@ -125,7 +181,6 @@ LED Indicator mode for Button 4<br /> <h1>Overview</h1><p>Choose if you want the
           <option value="2">LED always off</option>
           <option value="3">LED always on</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_6_1" type="integer" groupName="configuration">
@@ -140,7 +195,6 @@ LED Indicator color for relay<br /> <h1>Overview</h1><p>Choose the <b>color </b>
           <option value="2">green</option>
           <option value="3">red</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_7_1" type="integer" groupName="configuration">
@@ -155,7 +209,6 @@ LED Indicator color for Button 1<br /> <h1>Overview</h1><p>Choose the <b>color <
           <option value="2">green</option>
           <option value="3">red</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_8_1" type="integer" groupName="configuration">
@@ -170,7 +223,6 @@ LED Indicator color for Button 2<br /> <h1>Overview</h1><p>Choose the color of t
           <option value="2">green</option>
           <option value="3">red</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_9_1" type="integer" groupName="configuration">
@@ -185,7 +237,6 @@ LED Indicator color for Button 3<br /> <h1>Overview</h1><p>Choose the <b>color <
           <option value="2">green</option>
           <option value="3">red</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
@@ -200,7 +251,6 @@ LED Indicator color for Button 4<br /> <h1>Overview</h1><p>Choose the <b>color <
           <option value="2">green</option>
           <option value="3">red</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
@@ -214,7 +264,6 @@ LED Indicator brightness for relay<br /> <h1>Overview</h1><p>Choose the LED indi
           <option value="1">medium (60%) (default)</option>
           <option value="2">low (30%)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_1" type="integer" groupName="configuration">
@@ -228,7 +277,6 @@ LED Indicator brightness for Button 1<br /> <h1>Overview</h1><p>Choose the LED i
           <option value="1">medium (60%) (default)</option>
           <option value="2">low (30%)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_13_1" type="integer" groupName="configuration">
@@ -242,7 +290,6 @@ LED Indicator brightness for Button 2<br /> <h1>Overview</h1><p>Choose the LED i
           <option value="1">medium (60%) (default)</option>
           <option value="2">low (30%)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_14_1" type="integer" groupName="configuration">
@@ -256,7 +303,6 @@ LED Indicator brightness for Button 3<br /> <h1>Overview</h1><p>Choose the LED i
           <option value="1">medium (60%) (default)</option>
           <option value="2">low (30%)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_15_1" type="integer" groupName="configuration">
@@ -270,11 +316,9 @@ LED Indicator brightness for Button 4<br /> <h1>Overview</h1><p>Choose the LED i
           <option value="1">medium (60%) (default)</option>
           <option value="2">low (30%)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_16_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_16_4" type="integer" groupName="configuration">
         <label>16: Auto Turn-Off Timer for Relay</label>
         <description><![CDATA[
 Auto Turn-Off Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to enable or disable the auto turn-off timer function (the time after which you want the switch to automatically turn off once it has been turned on).</p><p>0 – disabled (default); 1 – 65535 (minutes)</p>
@@ -283,8 +327,7 @@ Auto Turn-Off Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to en
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_17_4" type="integer" groupName="configuration"
-                 min="0" max="65535">
+      <parameter name="config_17_4" type="integer" groupName="configuration">
         <label>17: Auto Turn-On Timer for Relay</label>
         <description><![CDATA[
 Auto Turn-On Timer for Relay<br /> <h1>Overview</h1><p>Use this parameter to enable or disable the auto turn-on timer function (the time after which you want the switch to automatically turn on once it has been turned off).</p><p>0 – disabled (default); 1 – 65535 (minutes)</p>
@@ -304,7 +347,6 @@ State After Power Failure<br /> <h1>Overview</h1><p>Set the on off status for th
           <option value="1">Relay and buttons forced to off after power failure</option>
           <option value="2">Relay and buttons forced to on after power failure</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_19_1" type="integer" groupName="configuration">
@@ -318,7 +360,6 @@ Disable / Enable Control on the Relay<br /> <h1>Overview</h1><p>Enable or disabl
           <option value="1">Enable local control, enable Z-Wave control (default)</option>
           <option value="2">Disable local control, disable Z-Wave control</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_20_1" type="integer" groupName="configuration">
@@ -331,7 +372,6 @@ Relay Behavior with Disabled Local / Z-Wave Control<br /> <h1>Overview</h1><p>Se
           <option value="0">report on/off status</option>
           <option value="1">DON'T report on/off status (default)</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration">
@@ -344,15 +384,33 @@ Relay Behavior with Disabled Local / Z-Wave Control<br /> <h1>Overview</h1><p>Se
           <option value="0">regular mechanical 3-way on/off switch (default)</option>
           <option value="1">momentary switch</option>
         </options>
+      </parameter>
+
+      <parameter name="config_23_1" type="integer" groupName="configuration">
+        <label>23: Enable/disable LED indicator on settings change</label>
+        <description><![CDATA[
+Enable/disable LED indicator on settings change<br /> <h1>Overview</h1><p>Choose if you want the LED indicators to flash whenever a parameter (setting) is adjusted on the device to confirm the change. Disable this feature if you're using the LED indicators in automations.<br /></p>
+        ]]></description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_24_1" type="integer" groupName="configuration">
+        <label>24: Enable or disable scene control on the relay button</label>
+        <description><![CDATA[
+Enable or disable scene control on the relay button<br /> <h1>Overview</h1><p>Enable or disable scene control on the relay button. If scene control is disabled, the slight delay for physical press will be reduced but the relay button will no longer send central scene events to the hub. It's recommended to disable the feature only if using the relay button for direct electrical control of the connected load without any additional remote control functions<br /></p>
+        ]]></description>
+        <default>0</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Lifeline<br /> <h1>Overview</h1><p>Main button binary switch (Z-Wave) / basic set (button) lifeline to hub</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">
@@ -444,5 +502,145 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     </config-description>
 
   </thing-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param1">
+    <item-type>Number</item-type>
+    <label>LED Indicator mode for relay</label>
+    <description>LED Indicator mode for relay</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">LED on when relay off, LED off when relay on (default)</option>
+        <option value="1">LED on when relay on, LED off when relay off</option>
+        <option value="2">LED always off</option>
+        <option value="3">LED always on</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param2">
+    <item-type>Number</item-type>
+    <label>LED Indicator mode for Button 1</label>
+    <description>LED Indicator mode for Button 1</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
+        <option value="1">LED on when dimmer on, LED off when dimmer off</option>
+        <option value="2">LED always off</option>
+        <option value="3">LED always on</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param3">
+    <item-type>Number</item-type>
+    <label>LED Indicator mode for Button 2</label>
+    <description>LED Indicator mode for Button 2</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
+        <option value="1">LED on when dimmer on, LED off when dimmer off</option>
+        <option value="2">LED always off</option>
+        <option value="3">LED always on</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param4">
+    <item-type>Number</item-type>
+    <label>LED Indicator mode for Button 3</label>
+    <description>LED Indicator mode for Button 3</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
+        <option value="1">LED on when dimmer on, LED off when dimmer off</option>
+        <option value="2">LED always off</option>
+        <option value="3">LED always on</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param5">
+    <item-type>Number</item-type>
+    <label>LED Indicator mode for Button 4</label>
+    <description>LED Indicator mode for Button 4</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
+        <option value="1">LED on when dimmer on, LED off when dimmer off</option>
+        <option value="2">LED always off</option>
+        <option value="3">LED always on</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param6">
+    <item-type>Number</item-type>
+    <label>LED Indicator color for relay</label>
+    <description>LED Indicator color for relay</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">white (default)</option>
+        <option value="1">blue</option>
+        <option value="2">green</option>
+        <option value="3">red</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param7">
+    <item-type>Number</item-type>
+    <label>LED Indicator color for Button 1</label>
+    <description>LED Indicator color for Button 1</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">white (default)</option>
+        <option value="1">blue</option>
+        <option value="2">green</option>
+        <option value="3">red</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param8">
+    <item-type>Number</item-type>
+    <label>LED Indicator color for Button 2</label>
+    <description>LED Indicator color for Button 2</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">white (default)</option>
+        <option value="1">blue</option>
+        <option value="2">green</option>
+        <option value="3">red</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param9">
+    <item-type>Number</item-type>
+    <label>LED Indicator color for Button 3</label>
+    <description>LED Indicator color for Button 3</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">white (default)</option>
+        <option value="1">blue</option>
+        <option value="2">green</option>
+        <option value="3">red</option>
+      </options>
+    </state>
+  </channel-type>
+
+  <channel-type id="zooz_zen32_00_000_config_decimal_param10">
+    <item-type>Number</item-type>
+    <label>LED Indicator color for Button 4</label>
+    <description>LED Indicator color for Button 4</description>
+    <state pattern="%s">
+      <options>
+        <option value="0">white (default)</option>
+        <option value="1">blue</option>
+        <option value="2">green</option>
+        <option value="3">red</option>
+      </options>
+    </state>
+  </channel-type>
 
 </thing:thing-descriptions>

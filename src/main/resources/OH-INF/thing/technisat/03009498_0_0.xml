@@ -32,6 +32,12 @@ Single ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The Single-Switch Relay con
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Meter reset</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
+        </properties>
+      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
@@ -82,8 +88,7 @@ Single ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The Single-Switch Relay con
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="8640">
+      <parameter name="config_2_2" type="integer" groupName="configuration">
         <label>2: Current wattage meter</label>
         <description><![CDATA[
 Interval of current wattage meter reports in 10 seconds<br /> <h1>Overview</h1><p><strong>0</strong> - disable unsolicited reports</p> <p><strong>3 ... 8640</strong> (30 seconds - 1 day)</p>
@@ -92,8 +97,7 @@ Interval of current wattage meter reports in 10 seconds<br /> <h1>Overview</h1><
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="30240">
+      <parameter name="config_3_2" type="integer" groupName="configuration">
         <label>3: Active energy meter</label>
         <description><![CDATA[
 Interval of active energy meter reports in minutes<br /> <h1>Overview</h1><p><strong>0</strong> - disable unsolicited reports</p> <p><strong>10 ... 30240</strong> (10 minutes - 3 weeks)</p>
@@ -143,11 +147,12 @@ Central Scene mapping of extension input S<br /> <h1>Overview</h1><p><strong>1</
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><ul> <li>Device Reset Locally Notification</li> <li>Central Scene notification</li> <li>Meter Report</li> <li>Switch Binary Report</li> <li>Notification Report</li> </ul>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

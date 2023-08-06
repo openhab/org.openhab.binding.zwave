@@ -17,7 +17,9 @@ The ZMNHHD supports routing. This allows the device to communicate using other r
 
 ## Overview
 
-Mini Dimmer is a MOSFET-switching light device that also supports control of low-voltage halogen lamps with electronic transformers, dimmable compact fluorescent lights, and dimmable LED bulbs. It measures power consumption of the connected device. It supports push-button/momentary switches (default) and toggle switches. It can work with or without the neutral line. Qubino Mini Dimmer allows the easiest and quickest installation. It is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch. It acts as repeater in order to improve range and stability of Z-Wave network.
+Mini Dimmer is a MOSFET-switching light device that also supports control of low-voltage halogen lamps with electronic transformers, dimmable compact fluorescent lights, and dimmable LED bulbs. It measures power consumption of the connected device. It supports push-button/momentary switches (default) and toggle switches. It can work with or without the neutral line. 
+
+Qubino Mini Dimmer allows the easiest and quickest installation. It is designed to be mounted inside a “flush mounting box”, hidden behind a traditional wall switch. It acts as repeater in order to improve range and stability of Z-Wave network.
 
 ### Inclusion Information
 
@@ -47,7 +49,7 @@ OR
 
 Press and hold the S (Service) button between 2 and 6 seconds if connected to 24-30VDC (this procedure put the device in LEARN MODE)
 
-4. A new device will appear on your dashboard
+  1. A new device will appear on your dashboard
 
 **NOTE: LEARN MODE state allows the device to receive network infromation from the conttoller **
 
@@ -120,10 +122,17 @@ The following table summarises the channels available for the ZMNHHD -:
 
 | Channel Name | Channel ID | Channel Type | Category | Item Type |
 |--------------|------------|--------------|----------|-----------|
+| Switch | switch_binary | switch_binary | Switch | Switch | 
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number | 
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number | 
+| Reset Meter | meter_reset | meter_reset | Energy | Switch | 
 | Alarm (power) | alarm_power | alarm_power | Energy | Switch | 
+
+### Switch
+Switch the power on and off.
+
+The ```switch_binary``` channel is of type ```switch_binary``` and supports the ```Switch``` item and is in the ```Switch``` category.
 
 ### Dimmer
 The brightness channel allows to control the brightness of a light.
@@ -140,6 +149,11 @@ The ```meter_kwh``` channel is of type ```meter_kwh``` and supports the ```Numbe
 Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel is of type ```meter_watts``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+
+### Reset Meter
+Reset the meter.
+
+The ```meter_reset``` channel is of type ```meter_reset``` and supports the ```Switch``` item and is in the ```Energy``` category.
 
 ### Alarm (power)
 Indicates if a power alarm is triggered.

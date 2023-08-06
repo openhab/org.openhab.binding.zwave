@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -12,19 +12,13 @@
  */
 package org.openhab.binding.zwave.internal.converter;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Matchers.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.openhab.core.library.types.OnOffType;
-import org.openhab.core.library.types.PercentType;
-import org.openhab.core.library.types.StringType;
-import org.openhab.core.thing.ChannelUID;
-import org.openhab.core.thing.type.ChannelTypeUID;
-import org.openhab.core.types.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -37,6 +31,12 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelS
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiLevelSwitchCommandClass.ZWaveStartStopEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.OnOffType;
+import org.openhab.core.library.types.PercentType;
+import org.openhab.core.library.types.StringType;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
+import org.openhab.core.types.State;
 
 /**
  *
@@ -278,5 +278,4 @@ public class ZWaveMultiLevelSwitchConverterTest {
         State state = sut.handleEvent(channel, event);
         assertEquals(new StringType("{\"direction\":\"STOP\"}"), state);
     }
-
 }

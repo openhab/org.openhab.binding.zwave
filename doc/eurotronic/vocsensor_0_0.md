@@ -21,27 +21,17 @@ Z-Wave sensor in an ultra slim design housing provides comprehensive information
 
 Based on these information it is possible to always ensure a healthy living climate.
 
-• Ultra-flat design housing
-
-• Use of high-precision, Swiss sensor technology
-
-• Multicolor LED for signalling ventilation recommendations
-
-• Returns the following values:
-
-- VOC value (volatile organic compounds) in ppm
-
-- CO2 value (as CO2 equivalent) in ppm
-
-- Temperature (°C) and humidity (%)
-
-- Dew point (°C)
-
-• Supports Z-Wave Plus S2 security (encryption)
-
-• Z-Wave repeater function
-
-• Operation with plug-in power supply unit
+  * Ultra-flat design housing
+  * Use of high-precision, Swiss sensor technology
+  * Multicolor LED for signalling ventilation recommendations
+  * Returns the following values:
+      * VOC value (volatile organic compounds) in ppm
+      * CO2 value (as CO2 equivalent) in ppm
+      * Temperature (°C) and humidity (%)
+      * Dew point (°C)
+  * Supports Z-Wave Plus S2 security (encryption)
+  * Z-Wave repeater function
+  * Operation with plug-in power supply unit
 
 ### Inclusion Information
 
@@ -162,11 +152,7 @@ Temperature on-change reporting
 0x00 No on-change reporting (only time-based reports).
 
 0x01 - 0x32 report if temperature changed by delta = 0,1°C - 5,0°C
-The following option values may be configured, in addition to values in the range 0 to 50 -:
-
-| Value  | Description |
-|--------|-------------|
-| 0 | No on-change reporting |
+Values in the range 0 to 50 may be set.
 
 The manufacturer defined default value is ```5```.
 
@@ -179,11 +165,7 @@ Humidity on-change reporting
 0x00 No on-change reporting (only time-based reports)
 
 0x01 - 0x0A report if humidity changed by delta = 1% ...10%
-The following option values may be configured, in addition to values in the range 0 to 10 -:
-
-| Value  | Description |
-|--------|-------------|
-| 0 | No on change reporting |
+Values in the range 0 to 10 may be set.
 
 The manufacturer defined default value is ```5```.
 

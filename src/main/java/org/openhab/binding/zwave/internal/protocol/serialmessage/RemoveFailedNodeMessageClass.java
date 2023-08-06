@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -70,7 +70,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got RemoveFailedNode response.");
         if (transaction == null) {
-            logger.debug("NODE {}: transaction not correlated for RemoveFailedNodeMessageClass");
+            logger.debug("NODE ?: transaction not correlated for RemoveFailedNodeMessageClass");
             return false;
         }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
@@ -125,7 +125,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
     public boolean handleRequest(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         if (transaction == null) {
-            logger.debug("NODE {}: transaction not correlated for RemoveFailedNodeMessageClass");
+            logger.debug("NODE ?: transaction not correlated for RemoveFailedNodeMessageClass");
             return false;
         }
         int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);

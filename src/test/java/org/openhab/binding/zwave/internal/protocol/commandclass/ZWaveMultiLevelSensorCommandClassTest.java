@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -210,5 +210,4 @@ public class ZWaveMultiLevelSensorCommandClassTest extends ZWaveCommandClassTest
         byte[] expectedResponseV5 = { 0x31, 0x05, 0x01, 0x22, 0x00, (byte) 0xEA };
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV5));
     }
-
 }

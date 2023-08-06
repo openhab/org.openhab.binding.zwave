@@ -45,6 +45,10 @@ The wakeup period does not impact the devices ability to report events or sensor
 You can press the button  three times within 1.5 second to wake up the device and send wakeup notification to controller. If press successfully, the LED will blink one time. The minimum wakeup interval is 300s, the maximum wakeup interval is 16,777,200s (about 194 days). Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480…  
 Note: The default value is 12 hours. This value is longer, the battery life is greater.
 
+### General Usage Information
+
+
+
 ## Channels
 
 The following table summarises the channels available for the Motion Sensor -:

@@ -7,7 +7,10 @@
 
   <thing-type id="zwaveme_zweather_00_000" listed="false">
     <label>Z-Weather Z-Wave weather interface</label>
-    <description>Z-Wave weather interface</description>
+    <description><![CDATA[
+Z-Wave weather interface<br /> <h1>Overview</h1><p>Z-Weather is a cup anemometer for Z-Wave installations. It continually measures the wind speed and can, for example, trigger closing of the awning and blinds if it is too windy. It also measures the amount of rotation, enabling calculation of the wind yield per day or per year. In addition, Z-Weather includes sensors for humidity, temperature, pressure and dew point, essentially providing the core sensors of a weather station. <br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Charge the device by solar radiation for approx. 24h.</li><li>Press the button on the bottom of the device three times in succession.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Charge the device by solar radiation for approx. 24h.</li><li>Press the button on the bottom of the device three times in succession.</li></ol> <br /> <h2>Wakeup Information</h2><p>Push the button 3 times within 1.5 seconds.</p><p>The LED blinks once indicating that Z-Weather is alive.<br /></p>
+    ]]></description>
+    <category>Sensor</category>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -97,16 +100,16 @@
       </parameter-group>
 
       <!-- PARAMETER DEFINITIONS -->
-      <parameter name="config_1_1" type="integer" groupName="configuration"
-                 min="0" max="30">
+      <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Wind Speed Action Threshold</label>
-        <description>Available Parameters: 0 - Off 1 - 30 in milliseconds Default = 6 m/s</description>
+        <description><![CDATA[
+Available Parameters: 0 - Off; 1 - 30: threshold in m/s - Default = 6 m/s<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>6</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_2_1" type="integer" groupName="configuration"
-                 min="0" max="100">
+      <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Twilight Action Threshold</label>
         <description>Set from 0 - 100 % Default = 37% (street lighting)</description>
         <default>37</default>
@@ -114,8 +117,9 @@
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Life Line</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

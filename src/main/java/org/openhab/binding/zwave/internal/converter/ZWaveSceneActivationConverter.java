@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -12,11 +12,11 @@
  */
 package org.openhab.binding.zwave.internal.converter;
 
-import org.openhab.core.library.types.DecimalType;
-import org.openhab.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.core.library.types.DecimalType;
+import org.openhab.core.types.State;
 
 /**
  * ZWaveSceneConverter class. Converters between binding items and the Z-Wave API for scene controllers.

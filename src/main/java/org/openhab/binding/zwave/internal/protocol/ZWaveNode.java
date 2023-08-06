@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -100,8 +100,8 @@ public class ZWaveNode {
     @XStreamOmitField
     private boolean awake = false;
 
-    // Half the period to wait before telling a sleeping node to sleep again
-    private final int sleepDelay = 1000;
+    // Half second intervals to check if Done and no more messages
+    private final int sleepDelay = 500;
 
     // Keep the NIF - just used for information and debug in the XML
     @SuppressWarnings("unused")
@@ -615,8 +615,7 @@ public class ZWaveNode {
             return zwaveCommandClass;
         }
 
-        logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass,
-                commandClass.getKey());
+        logger.debug("NODE {}: Command class {} not found, trying to add it.", getNodeId(), commandClass.getKey());
 
         zwaveCommandClass = ZWaveCommandClass.getInstance(commandClass.getKey(), this, controller);
         if (zwaveCommandClass == null) {
@@ -966,7 +965,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.getAssociationMessage(groupId);
         } else {
-            logger.debug("NODE {}: Unable to get association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to get association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1001,7 +1000,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.setAssociationMessage(groupId, member.getNode());
         } else {
-            logger.debug("NODE {}: Unable to set association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to set association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1032,7 +1031,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.removeAssociationMessage(groupId, member.getNode());
         } else {
-            logger.debug("NODE {}: Unable to remove association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to remove association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1059,7 +1058,7 @@ public class ZWaveNode {
         if (associationCommandClass != null && groupId <= associationCommandClass.getMaxGroup()) {
             return associationCommandClass.clearAssociationMessage(groupId);
         } else {
-            logger.debug("NODE {}: Unable to clear association group {}. Association={}", groupId,
+            logger.debug("NODE {}: Unable to clear association group {}. Association={}", nodeId, groupId,
                     associationCommandClass.getMaxGroup());
         }
 
@@ -1421,8 +1420,8 @@ public class ZWaveNode {
         // Start the timer
         if (!this.awake) {
             // We're awake
-            logger.debug("NODE {}: Is awake with {} messages in the queue", getNodeId(),
-                    controller.getSendQueueLength(getNodeId()));
+            logger.debug("NODE {}: Is awake with {} messages in the queue, state {}", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()), getNodeInitStage());
 
             setSleepTimer();
 
@@ -1449,14 +1448,16 @@ public class ZWaveNode {
     }
 
     /**
-     * The following timer implements a re-triggerable timer. The timer is triggered when there are no more messages to
-     * be sent in the wake-up queue. When the timer times out it will send the 'Go To Sleep' message to the node.
-     * The timer just provides some time for anything further to be sent as a result of any processing.
+     * The following timer implements a re-triggerable timer. The timer is triggered (stopped)
+     * when DONE & no messages in queue then the 'Go To Sleep' message is sent to the node.
+     * There is a time limit backstop for a 'Go To Sleep' message
+     * in case the trigger conditions are not met.
      */
     private class WakeupTimerTask extends TimerTask {
-        // Two cycles through the loop are required to send a device to sleep
         private boolean triggered;
+        private int count;
         private final ZWaveWakeUpCommandClass wakeUpCommandClass;
+        private int awakeMax = (controller.getSystemMaxAwakePeriod() * 2);
 
         WakeupTimerTask() {
             logger.trace("NODE {}: Creating WakeupTimerTask", getNodeId());
@@ -1466,7 +1467,8 @@ public class ZWaveNode {
                 logger.debug("NODE {}: COMMAND_CLASS_WAKE_UP not found - setting AWAKE", getNodeId());
                 awake = true;
             }
-
+            logger.debug("awakeMax for this Timer Task {} in 0.5 second intervals", awakeMax);
+            count = 0;
             triggered = false;
         }
 
@@ -1476,17 +1478,40 @@ public class ZWaveNode {
                 logger.trace("NODE {}: WakeupTimerTask Already asleep", getNodeId());
                 return;
             }
+            count = count + 1;
+            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {} count {}", getNodeId(),
+                    controller.getSendQueueLength(getNodeId()), getNodeInitStage(), count);
 
-            logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {}", getNodeId(),
-                    controller.getSendQueueLength(getNodeId()), getNodeInitStage());
-            if (triggered == false) {
-                logger.trace("NODE {}: WakeupTimerTask First iteration", getNodeId());
+            if (isInitializationComplete() == true && controller.getSendQueueLength(getNodeId()) == 0) {
                 triggered = true;
+            }
+            if (count == awakeMax) {
+                triggered = true;
+            }
+
+            // Below is a one-time action at the 2 second mark to get the message queue going again
+            // Mostly observed as needed if device initialization is not completed. Benign otherwise
+            if (triggered == false) {
+                if (count == 4) {
+                    controller.kickQueue();
+                }
+                logger.trace("NODE {}: WakeupTimerTask iteration", getNodeId());
                 return;
             }
 
-            // Tell the device to go back to sleep.
-            logger.debug("NODE {}: No more messages, go back to sleep", getNodeId());
+            // Send the "go to Sleep" message. Note: This message may be queued but not sent
+            // if the prior message timed out and the node was therefore assumed to be asleep.
+            // If this happens, a future awake will be short regardless of the above conditions.
+            if (isInitializationComplete() == true && controller.getSendQueueLength(getNodeId()) == 0) {
+                logger.debug("NODE {}: Go back to sleep, state {}, count {} messages {}", getNodeId(),
+                        getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
+            } else {
+                logger.debug("NODE {}: Maximum Awake time period reached, state {} count {}, messages {}", getNodeId(),
+                        getNodeInitStage(), count, controller.getSendQueueLength(getNodeId()));
+            }
+            // Stop the timer now in the event the "go to Sleep" command is only queued and not sent
+            resetSleepTimer();
+
             if (wakeUpCommandClass != null) {
                 ZWaveTransactionResponse response = sendTransaction(wakeUpCommandClass.getNoMoreInformationMessage(),
                         0);
@@ -1494,9 +1519,6 @@ public class ZWaveNode {
             }
             // When this transaction completes, assume we're asleep
             setAwake(false);
-
-            // Stop the timer
-            resetSleepTimer();
         }
     }
 
@@ -1507,19 +1529,9 @@ public class ZWaveNode {
         // Create the timer task
         timerTask = new WakeupTimerTask();
 
-        int timerDelay;
+        logger.debug("NODE {}: Start sleep timer with {}ms interval", getNodeId(), sleepDelay);
 
-        // Start the timer
-        // If the initialisation is complete, then use a short delay,
-        // Otherwise use a longer delay...
-        if (isInitializationComplete()) {
-            timerDelay = sleepDelay;
-        } else {
-            timerDelay = 5000;
-        }
-        logger.debug("NODE {}: Start sleep timer at {}ms", getNodeId(), timerDelay);
-
-        timer.schedule(timerTask, timerDelay / 2, timerDelay / 2);
+        timer.schedule(timerTask, sleepDelay, sleepDelay);
     }
 
     private synchronized void resetSleepTimer() {

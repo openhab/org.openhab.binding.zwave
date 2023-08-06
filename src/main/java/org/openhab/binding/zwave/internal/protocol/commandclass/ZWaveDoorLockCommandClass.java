@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -251,6 +251,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
         SECURED(0xFF, "Secured"),
         UNKNOWN(0xFE, "Unknown"), // This isn't per the spec, it's just our definition
         ;
+
         /**
          * A mapping between the integer code and its corresponding door
          * lock state type to facilitate lookup by code.

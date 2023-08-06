@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -22,9 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.openhab.core.library.types.PercentType;
-import org.openhab.core.types.Command;
-import org.openhab.core.types.State;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -32,8 +29,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
+import org.openhab.core.library.types.PercentType;
+import org.openhab.core.types.Command;
+import org.openhab.core.types.State;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;;
+import org.slf4j.LoggerFactory;
 
 /**
  * ZWaveCommandClassConverter class. Base class for all converters that convert between Z-Wave command classes and
@@ -69,6 +69,7 @@ public abstract class ZWaveCommandClassConverter {
         temp.put(CommandClass.COMMAND_CLASS_SENSOR_ALARM, ZWaveAlarmSensorConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SENSOR_BINARY, ZWaveBinarySensorConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SENSOR_MULTILEVEL, ZWaveMultiLevelSensorConverter.class);
+        temp.put(CommandClass.COMMAND_CLASS_SOUND_SWITCH, ZWaveSoundSwitchConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SWITCH_BINARY, ZWaveBinarySwitchConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_SWITCH_MULTILEVEL, ZWaveMultiLevelSwitchConverter.class);
         temp.put(CommandClass.COMMAND_CLASS_THERMOSTAT_FAN_MODE, ZWaveThermostatFanModeConverter.class);

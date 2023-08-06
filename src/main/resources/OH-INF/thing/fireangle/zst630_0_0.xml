@@ -35,7 +35,7 @@ Thermoptek Smoke Alarm/Smoke Detector<br /> <h1>Overview</h1><p>The ST-630 W2 th
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>
-      <property name="vendor">Fireangle</property>
+      <property name="vendor">Sprue Safety Products Ltd</property>
       <property name="modelId">ZST-630</property>
       <property name="manufacturerId">026F</property>
       <property name="manufacturerRef">0001:0001</property>
@@ -55,7 +55,9 @@ Thermoptek Smoke Alarm/Smoke Detector<br /> <h1>Overview</h1><p>The ST-630 W2 th
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
-        <description>Z-Wave Plus Lifeline</description>
+        <description><![CDATA[
+Z-Wave Plus Lifeline<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <multipleLimit>5</multipleLimit>
       </parameter>
 

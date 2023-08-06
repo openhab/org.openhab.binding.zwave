@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -69,6 +69,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private Integer secureInclusionMode;
     private Integer healTime;
     private Integer wakeupDefaultPeriod;
+    private Integer maxAwakePeriod;
 
     private final int SEARCHTIME_MINIMUM = 20;
     private final int SEARCHTIME_DEFAULT = 30;
@@ -116,6 +117,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
             wakeupDefaultPeriod = ((BigDecimal) param).intValue();
         } else {
             wakeupDefaultPeriod = 0;
+        }
+
+        param = getConfig().get(CONFIGURATION_MAXAWAKEPERIOD);
+        if (param instanceof BigDecimal) {
+            maxAwakePeriod = ((BigDecimal) param).intValue();
         }
 
         param = getConfig().get(CONFIGURATION_SISNODE);
@@ -178,6 +184,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         config.put("secureInclusion", secureInclusionMode.toString());
         config.put("networkKey", networkKey);
         config.put("wakeupDefaultPeriod", wakeupDefaultPeriod.toString());
+        config.put("maxAwakePeriod", maxAwakePeriod.toString());
 
         // TODO: Handle soft reset?
         controller = new ZWaveController(this, config);
@@ -191,7 +198,6 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         initializeHeal();
-
     }
 
     /**
@@ -254,6 +260,15 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     @Override
     public void dispose() {
+        scheduler.submit(() -> {
+            disposeSchedulerJob();
+        });
+    }
+
+    /**
+     * Execute long running disposal actions on a background thread
+     */
+    private void disposeSchedulerJob() {
         if (healJob != null) {
             healJob.cancel(true);
             healJob = null;
@@ -320,6 +335,8 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     // TODO: Do we need to set this immediately
                 } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
                     reinitialise = true;
+                } else if (cfg[1].equals("maxawakeperiod") && value instanceof BigDecimal) {
+                    controller.updateControllerProperty(((BigDecimal) value).intValue());
                 }
             }
             if ("security".equals(cfg[0])) {
@@ -486,7 +503,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         if (controller == null) {
-            logger.info("Attempting to add listener when controller is null");
+            logger.debug("Attempting to add listener when controller is null");
             return false;
         }
         controller.addEventListener(listener);

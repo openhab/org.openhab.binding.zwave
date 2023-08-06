@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -293,7 +293,7 @@ public class ZWaveTransaction {
 
     public boolean transactionAdvance(SerialMessage incomingMessage) {
         logger.trace("TID {}: TransactionAdvance ST: {}", transactionId, transactionStateTracker);
-        logger.trace("TID {}: TransactionAdvance WT: {} {}", transactionId,
+        logger.trace("TID {}: TransactionAdvance WT: {}", transactionId,
                 payload.getExpectedResponseSerialMessageClass());
         logger.trace("TID {}: TransactionAdvance RX: {}", transactionId, incomingMessage);
 

@@ -102,8 +102,7 @@ Set servomotor in previous position<br /> <h1>Overview</h1><p>This parameter set
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_15_1" type="integer" groupName="configuration"
-                 min="0" max="120">
+      <parameter name="config_15_1" type="integer" groupName="configuration">
         <label>15: Close after time</label>
         <description><![CDATA[
 Close after time min<br /> <h1>Overview</h1><p>0-120 minutes</p>
@@ -113,11 +112,12 @@ Close after time min<br /> <h1>Overview</h1><p>0-120 minutes</p>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 Position reporting<br /> <h1>Overview</h1><p>Life Line – group for position reporting actuator after each a stoppage and alarm reporting (overcurrent, damage encoders). This group can be a maximum 1 device.</p>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

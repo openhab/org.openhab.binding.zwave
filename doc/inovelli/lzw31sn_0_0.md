@@ -23,9 +23,7 @@ From a hardware side we’ve upgraded our Z-Wave module for better distance and 
 
 From a firmware side, this switch has it all (literally). Scene control, notifications (flashes if your garage door is left open) and can be configured on any HUB.
 
-==
-
-Important:  If you have a neutral wire, set parameter 21 correctly.  If setting the switch up in a 3-way configuration, set parameter 22 (you may need to enable advanced settings to see this).
+Updated instructions here: https://community.inovelli.com/t/resources-red-series-dimmer-switch-manual/7306#
 
 ### Inclusion Information
 
@@ -37,7 +35,7 @@ Press the Config Button 3X
 
 ### General Usage Information
 
-
+Important: If you have a neutral wire, set parameter 21 correctly. If setting the switch up in a 3-way configuration, set parameter 22 (you may need to enable advanced settings to see this).
 
 ## Channels
 
@@ -54,6 +52,7 @@ The following table summarises the channels available for the LZW31-SN -:
 | Default Level (Local) | config_decimal | config_decimal |  | Number | 
 | LED Indicator Color | config_decimal | config_decimal |  | Number | 
 | LED Indicator Intensity | config_decimal | config_decimal |  | Number | 
+| Auto Off Timer (Seconds) | config_decimal | config_decimal |  | Number | 
 | Protection Local | protection_local | protection_local |  | Number | 
 
 ### Dimmer
@@ -109,6 +108,13 @@ Generic class for configuration parameter.
 The ```config_decimal``` channel is of type ```config_decimal``` and supports the ```Number``` item.
 
 ### LED Indicator Intensity
+Generic class for configuration parameter.
+
+The ```config_decimal``` channel is of type ```config_decimal``` and supports the ```Number``` item.
+
+### Auto Off Timer (Seconds)
+Auto off timer in seconds. 0 to disable, max 32767
+
 Generic class for configuration parameter.
 
 The ```config_decimal``` channel is of type ```config_decimal``` and supports the ```Number``` item.
@@ -464,13 +470,21 @@ This parameter has the configuration ID ```config_51_1``` and is of type ```INTE
 ### Parameter 52: Enable "smart bulb" mode
 
 Enable "smart bulb" mode
-Smart bulb mode: If set to 1, power will output maximum % when dimmer is on to optimize performance with smart bulbs.
-The following option values may be configured, in addition to values in the range 0 to 1 -:
+Switch Mode  
+0 = Normal operation
+
+1 = On /Off Mode - Switch will either be in the state of 0% power or 99% power, not allowing dimming. Useful for non-dimmable bulbs or other unique loads
+
+2 = Smart Bulb - Switch always at 99% for use with loads like an Inovelli Bulb or Philips Hue Bulb. Use in conjunction with associations or scenes to achieve an awesome smart bulb experience
+
+Requires firmware 1.47 and above.
+The following option values may be configured, in addition to values in the range 0 to 2 -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | normal bulb |
-| 1 | smart bulb |
+| 1 | On/Off Mode |
+| 2 | Smart Bulb |
 
 The manufacturer defined default value is ```0``` (normal bulb).
 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -16,17 +16,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 
-import org.openhab.core.library.types.OnOffType;
-import org.openhab.core.library.types.OpenClosedType;
-import org.openhab.core.thing.ChannelUID;
-import org.openhab.core.thing.type.ChannelTypeUID;
-import org.openhab.core.types.State;
 import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveDoorLockCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.core.library.types.OnOffType;
+import org.openhab.core.library.types.OpenClosedType;
+import org.openhab.core.thing.ChannelUID;
+import org.openhab.core.thing.type.ChannelTypeUID;
+import org.openhab.core.types.State;
 
 /**
  *

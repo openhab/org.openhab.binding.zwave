@@ -32,6 +32,12 @@ Series ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The TechniSat series switch
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset" typeId="meter_reset">
+        <label>Meter reset</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER</property>
+        </properties>
+      </channel>
       <channel id="scene_number" typeId="scene_number">
         <label>Scene Number</label>
         <properties>
@@ -62,6 +68,12 @@ Series ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The TechniSat series switch
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
         </properties>
       </channel>
+      <channel id="meter_reset1" typeId="meter_reset">
+        <label>Meter reset</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER:1</property>
+        </properties>
+      </channel>
       <channel id="alarm_power1" typeId="alarm_power">
         <label>Alarm (power) 1</label>
         <properties>
@@ -84,6 +96,12 @@ Series ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The TechniSat series switch
         <label>Electric meter (kWh) 2</label>
         <properties>
           <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_reset2" typeId="meter_reset">
+        <label>Meter reset</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_METER:2</property>
         </properties>
       </channel>
       <channel id="alarm_power2" typeId="alarm_power">
@@ -130,8 +148,7 @@ Series ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The TechniSat series switch
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_2_2" type="integer" groupName="configuration"
-                 min="0" max="8640">
+      <parameter name="config_2_2" type="integer" groupName="configuration">
         <label>2: Current wattage meter</label>
         <description><![CDATA[
 Interval of current wattage meter reports in 10 seconds<br /> <h1>Overview</h1><p><strong>0</strong> - disable unsolicited reports</p> <p><strong>3 ... 8640</strong> (30 seconds - 1 day)</p>
@@ -140,8 +157,7 @@ Interval of current wattage meter reports in 10 seconds<br /> <h1>Overview</h1><
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_3_2" type="integer" groupName="configuration"
-                 min="0" max="30240">
+      <parameter name="config_3_2" type="integer" groupName="configuration">
         <label>3: Active energy meter</label>
         <description><![CDATA[
 Interval of active energy meter reports in minutes<br /> <h1>Overview</h1><p><strong>0</strong> - disable unsolicited reports</p> <p><strong>10 ... 30240</strong> (10 minutes - 3 weeks)</p>
@@ -151,11 +167,12 @@ Interval of active energy meter reports in minutes<br /> <h1>Overview</h1><p><st
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
         <description><![CDATA[
 <br /> <h1>Overview</h1><ul> <li>Device Reset Locally Notification</li> <li>Central Scene notification</li> <li>Meter Report</li> <li>Switch Binary Report</li> <li>Notification Report</li> </ul>
         ]]></description>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

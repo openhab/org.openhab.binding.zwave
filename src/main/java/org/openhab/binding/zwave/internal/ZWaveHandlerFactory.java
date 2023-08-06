@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -19,7 +19,13 @@ import java.util.Hashtable;
 import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
+import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
+import org.openhab.binding.zwave.handler.ZWaveSerialHandler;
+import org.openhab.binding.zwave.handler.ZWaveThingHandler;
 import org.openhab.core.config.discovery.DiscoveryService;
+import org.openhab.core.io.transport.serial.SerialPortManager;
 import org.openhab.core.thing.Bridge;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingTypeUID;
@@ -27,12 +33,6 @@ import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.BaseThingHandlerFactory;
 import org.openhab.core.thing.binding.ThingHandler;
 import org.openhab.core.thing.binding.ThingHandlerFactory;
-import org.openhab.core.io.transport.serial.SerialPortManager;
-import org.openhab.binding.zwave.ZWaveBindingConstants;
-import org.openhab.binding.zwave.discovery.ZWaveDiscoveryService;
-import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
-import org.openhab.binding.zwave.handler.ZWaveSerialHandler;
-import org.openhab.binding.zwave.handler.ZWaveThingHandler;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
@@ -114,5 +114,4 @@ public class ZWaveHandlerFactory extends BaseThingHandlerFactory {
             }
         }
     }
-
 }

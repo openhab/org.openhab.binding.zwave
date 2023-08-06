@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -285,9 +285,12 @@ public class ZWaveAlarmConverterTest extends ZWaveCommandClassConverterTest {
         ZWaveCommandClassValueEvent event = createEvent(AlarmType.ACCESS_CONTROL, ReportType.NOTIFICATION, 6, 255);
         StringType state = (StringType) converter.handleEvent(channel, event);
 
-        assertEquals(
-                "{\"notification\":\"ACCESS_CONTROL__KEYPAD_UNLOCK\",\"level\":\"0\",\"type\":\"ACCESS_CONTROL\",\"event\":\"6\",\"status\":\"255\"}",
-                state.toString());
+        String stateStr = state.toString();
+        assertTrue(stateStr.contains("\"notification\":\"ACCESS_CONTROL__KEYPAD_UNLOCK\""));
+        assertTrue(stateStr.contains("\"level\":\"0\""));
+        assertTrue(stateStr.contains("\"type\":\"ACCESS_CONTROL\""));
+        assertTrue(stateStr.contains("\"event\":\"6\""));
+        assertTrue(stateStr.contains("\"status\":\"255\""));
     }
 
     @Test

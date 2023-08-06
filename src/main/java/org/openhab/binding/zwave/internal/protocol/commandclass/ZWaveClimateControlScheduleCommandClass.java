@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -89,7 +89,6 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SCHEDULE_CHANGED_REPORT).withPayload(scheduleChangeCounter)
                         .withPriority(ZWaveTransaction.TransactionPriority.RealTime).build();
-
     }
 
     // Visible for Testing
@@ -150,7 +149,6 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
                 codeToScheduledStateState.put(s.value, s);
             }
         }
-
     }
 
     // Visible for Testing
@@ -201,5 +199,4 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
             return Objects.hash(state, setBack);
         }
     }
-
 }

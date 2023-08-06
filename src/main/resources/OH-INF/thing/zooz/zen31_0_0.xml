@@ -8,7 +8,7 @@
   <thing-type id="zooz_zen31_00_000" listed="false">
     <label>ZEN31 RGBW Dimmer for LED Strips</label>
     <description><![CDATA[
-RGBW Dimmer for LED Strips<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/off, brightness, and RGBW color control</li> <li>Perfect for programming your existing RGBW LED strip</li> <li>Energy monitoring in live mode and over time</li> <li>Double tap to full brightness feature + optional scene control</li> <li>Remembers and restores on/off status a?er power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> </ul> <br /> <h2>Inclusion Information</h2><p>Make sure the RGBW Dimmer is powered up. <strong>Click the Z-Wave button 3 times </strong><strong>quickly</strong> to include the device. The LED will blink yellow to indicate communication with the hub. It will blink green (for non-secure, S0, or S2 unauthenticated inclusion) or magenta (for S2 authenticated) once the device is successfully included to your network. It will blink red if inclusion is not successful</p> <br /> <h2>Exclusion Information</h2><p>Click the Z-Wave button 3 times quickly.</p>
+RGBW Dimmer for LED Strips<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/off, brightness, and RGBW color control</li> <li>Perfect for programming your existing RGBW LED strip</li> <li>Energy monitoring in live mode and over time</li> <li>Double tap to full brightness feature + optional scene control</li> <li>Remembers and restores on/off status after a power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> </ul> <br /> <h2>Inclusion Information</h2><p>Make sure the RGBW Dimmer is powered up. <strong>Click the Z-Wave button 3 times </strong><strong>quickly</strong> to include the device. The LED will blink yellow to indicate communication with the hub. It will blink green (for non-secure, S0, or S2 unauthenticated inclusion) or magenta (for S2 authenticated) once the device is successfully included to your network. It will blink red if inclusion is not successful</p> <br /> <h2>Exclusion Information</h2><p>Click the Z-Wave button 3 times quickly.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>LightBulb</category>
 
@@ -66,6 +66,12 @@ RGBW Dimmer for LED Strips<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/of
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
         </properties>
       </channel>
+      <channel id="color_raw1" typeId="color_raw">
+        <label>Color Raw</label>
+        <properties>
+          <property name="binding:*:StringType">COMMAND_CLASS_SWITCH_COLOR:1</property>
+        </properties>
+      </channel>
       <channel id="alarm_system1" typeId="alarm_system">
         <label>Alarm (system) 1</label>
         <properties>
@@ -104,6 +110,30 @@ RGBW Dimmer for LED Strips<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/of
         <properties>
           <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:5,COMMAND_CLASS_BASIC:5</property>
           <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:5</property>
+        </properties>
+      </channel>
+      <channel id="sensor_voltage6" typeId="sensor_voltage">
+        <label>Input 1 Voltage</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:6,COMMAND_CLASS_BASIC:6;type=VOLTAGE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_voltage7" typeId="sensor_voltage">
+        <label>Input 2 Voltage</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:7,COMMAND_CLASS_BASIC:7;type=VOLTAGE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_voltage8" typeId="sensor_voltage">
+        <label>Input 3 Voltage</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:8,COMMAND_CLASS_BASIC:8;type=VOLTAGE</property>
+        </properties>
+      </channel>
+      <channel id="sensor_voltage9" typeId="sensor_voltage">
+        <label>Input 4 Voltage</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL:9,COMMAND_CLASS_BASIC:9;type=VOLTAGE</property>
         </properties>
       </channel>
     </channels>
@@ -381,8 +411,7 @@ RGBW Dimmer for LED Strips<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/of
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_62_2" type="integer" groupName="configuration"
-                 min="30" max="32400">
+      <parameter name="config_62_2" type="integer" groupName="configuration">
         <label>62: Power report frequency</label>
         <description><![CDATA[
 Power report frequency<br /> <h1>Overview</h1><p>Allowed values: 0 (disabled) or 30 - 32400 seconds</p> <p>Default: 3600 seconds (1 hour)</p>
@@ -391,10 +420,10 @@ Power report frequency<br /> <h1>Overview</h1><p>Allowed values: 0 (disabled) or
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_63_2" type="integer" groupName="configuration"
-                 min="0" max="100">
+      <parameter name="config_63_2" type="integer" groupName="configuration">
         <label>63: Voltage Reporting / Trigger Threshold</label>
         <description><![CDATA[
 Choose how you want your RGBW Dimmer to report voltage changes.<br /> <h1>Overview</h1><p>Choose how you want your RGBW Dimmer to report voltage changes from the connected analog sensors and trigger status change on the output. The number entered as value corresponds to decimal values in voltage change. So if 5 is entered by default, the RGBW Dimmer will report any change in voltage of the connected sensor over 0.5 V. This setting is only in effect if at least one of Parameters 20 – 23 is set to value 0 or 1 (input is set to analog sensor mode).</p> <p>Allowed range: 0 -100</p> <p>Default: 5</p>
@@ -402,8 +431,7 @@ Choose how you want your RGBW Dimmer to report voltage changes.<br /> <h1>Overvi
         <default>5</default>
       </parameter>
 
-      <parameter name="config_64_2" type="integer" groupName="configuration"
-                 min="30" max="32400">
+      <parameter name="config_64_2" type="integer" groupName="configuration">
         <label>64: Analog Sensor Report Frequency</label>
         <description><![CDATA[
 Choose how often you want your RGBW Dimmer to report voltage changes.<br /> <h1>Overview</h1><p>Choose how often you want your RGBW Dimmer to report voltage changes from the connected analog sensors to your hub. The number entered as value corresponds to the number of seconds. So if 3600 isentered as value, the RGBW Dimmer will report voltage from connected analog sensors every hour (independent of the threshold set in parameter 63). Voltage reports are sent in at least 30-second intervals. This setting is only in effect if at least one of Parameters 20 – 23 is set to value 0 or 1 (input is set to analog sensor mode).</p> <p>Allowed values: 0 (disabled) or 30 - 32400 seconds</p> <p>Default: 0 (disabled)</p>
@@ -412,10 +440,10 @@ Choose how often you want your RGBW Dimmer to report voltage changes.<br /> <h1>
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_65_2" type="integer" groupName="configuration"
-                 min="0" max="500">
+      <parameter name="config_65_2" type="integer" groupName="configuration">
         <label>65: Energy report threshold</label>
         <description><![CDATA[
 Energy report threshold<br /> <h1>Overview</h1><p>Choose how you want your RGBW Dimmer to report energy use (kWh) to your hub. The number entered as value corresponds to decimal values in energy usage change. So if 10 is entered by default, the RGBW Dimmer will report any change in energy use over 0.1 kWh. Energy reports are sent in at least 30-second intervals.</p> <p>Allowed values: 0 (disabled) or 1 - 500 (0.01 - 5.00 kWh)</p> <p>Default: 10 (0.1 kWh)</p>
@@ -423,8 +451,7 @@ Energy report threshold<br /> <h1>Overview</h1><p>Choose how you want your RGBW 
         <default>10</default>
       </parameter>
 
-      <parameter name="config_66_2" type="integer" groupName="configuration"
-                 min="30" max="32400">
+      <parameter name="config_66_2" type="integer" groupName="configuration">
         <label>66: Energy report frequency</label>
         <description><![CDATA[
 Energy report frequency<br /> <h1>Overview</h1><p>Choose how often you want your RGBW Dimmer to report energy (kWh) to your controller. The number entered as value corresponds to the number of seconds. So if 3600 is entered by default, the RGBW Dimmer will report energy use every hour(independent of the threshold set in parameter 65). Energy reports are sent in at least 30-second intervals.</p> <p>Allowed values: 0 (disabled) or 30 - 32400 seconds</p> <p>Default: 3600 seconds (1 hour)</p>
@@ -433,6 +460,7 @@ Energy report frequency<br /> <h1>Overview</h1><p>Choose how often you want your
         <options>
           <option value="0">Disable</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_150_1" type="integer" groupName="configuration">
@@ -448,8 +476,7 @@ Choose how switches connected to the input terminals control your LED strip<br /
         <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_151_2" type="integer" groupName="configuration"
-                 min="0" max="254">
+      <parameter name="config_151_2" type="integer" groupName="configuration">
         <label>151: Ramp Rate</label>
         <description><![CDATA[
 Adjust the fade-in/fade-out effect for ON/OFF operation<br /> <h1>Overview</h1><p>Adjust the ramp rate for your RGBW dimmer (fade-in/fade-out effect for ON/OFF operation). Values correspond to the number of seconds it takes for the dimmer to reach full brightness or turn OFF when operated from the connected wall switch.</p> <p>You can also set the physical ramp rate in minutes instead of seconds by using a value between 128-254. For minutes, subtract 127 from the value (e.g. a value of 132 corresponds to 132 - 127 = 5 minutes).</p> <p>Allowed values: 0 (instant ON/OFF), 1 - 127 seconds, or 128 - 254 (1 - 127 minutes)</p>
@@ -457,8 +484,7 @@ Adjust the fade-in/fade-out effect for ON/OFF operation<br /> <h1>Overview</h1><
         <default>3</default>
       </parameter>
 
-      <parameter name="config_152_2" type="integer" groupName="configuration"
-                 min="0" max="254">
+      <parameter name="config_152_2" type="integer" groupName="configuration">
         <label>152: Ramp Rate (remote)</label>
         <description><![CDATA[
 Adjust the ramp rate of your RGBW dimmer when operated remotely through openHAB<br /> <h1>Overview</h1><p>Adjust the ramp rate for your RGBW dimmer (fade-in / fade-out effect for on / off operation). Values correspond to the number of seconds it take for the dimmer to reach full brightness or turn off when operated from the connected wall switch.</p> <p>You can also set the Z-Wave ramp rate in minutes instead of seconds by using a value between 128-254. For minutes, subtract 127 from the value (e.g. a value of 132 corresponds to 132 - 127 = 5 minutes).</p> <p>Allowed values: 0 instant ON/OFF), 1 - 127 seconds, or 128 - 254 (1 - 127 minutes)</p>
@@ -466,8 +492,7 @@ Adjust the ramp rate of your RGBW dimmer when operated remotely through openHAB<
         <default>3</default>
       </parameter>
 
-      <parameter name="config_154_4_000000FF" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_154_4_000000FF" type="integer" groupName="configuration">
         <label>154: Single Click ON Trigger (IN1)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN1)<br /> <h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -476,10 +501,10 @@ Single Click ON Trigger (IN1)<br /> <h1>Overview</h1><p>Set the status or bright
         <options>
           <option value="255">On</option>
         </options>
+        <limitToOptions>false</limitToOptions>
       </parameter>
 
-      <parameter name="config_154_4_0000FF00" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_154_4_0000FF00" type="integer" groupName="configuration">
         <label>154: Single Click ON Trigger (IN2)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN2)<br /> <h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -487,8 +512,7 @@ Single Click ON Trigger (IN2)<br /> <h1>Overview</h1><p>Set the status or bright
         <default>255</default>
       </parameter>
 
-      <parameter name="config_154_4_00FF0000" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_154_4_00FF0000" type="integer" groupName="configuration">
         <label>154: Single Click ON Trigger (IN3)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN3)<br /> <h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -496,8 +520,7 @@ Single Click ON Trigger (IN3)<br /> <h1>Overview</h1><p>Set the status or bright
         <default>255</default>
       </parameter>
 
-      <parameter name="config_154_4_7F000000" type="integer" groupName="configuration"
-                 min="0" max="255">
+      <parameter name="config_154_4_7F000000" type="integer" groupName="configuration">
         <label>154: Single Click ON Trigger (IN4)</label>
         <description><![CDATA[
 Single Click ON Trigger (IN4)<br /> <h1>Overview</h1><p>Set the status or brightness level triggering other associated devices in your network if the dimmer is turned ON with a single click. Each of the 4 available bytes refers to one channel, starting with IN1 and ending with IN4. This setting applies to basic set and switch multilevel commands sent to associated devices in the appropriate association group.</p> <p>Allow value: 0 - 99, 255 (ON)</p>
@@ -523,8 +546,9 @@ Enable one of the preset animated color programs to set the mood with a click<br
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
-      <parameter name="group_1" type="text" groupName="association">
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
+        <multipleLimit>1</multipleLimit>
       </parameter>
 
       <parameter name="group_2" type="text" groupName="association" multiple="true">

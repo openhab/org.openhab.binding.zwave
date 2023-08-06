@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -107,6 +107,7 @@ public class ZWaveController {
 
     private ZWaveInclusionController inclusionController = null;
     private int defaultWakeupPeriod = 0;
+    private int maxAwakePeriod;
 
     private final ZWaveTransactionManager transactionManager = new ZWaveTransactionManager(this);
 
@@ -151,6 +152,8 @@ public class ZWaveController {
                 ? Integer.parseInt(config.get("wakeupDefaultPeriod"))
                 : 0;
 
+        maxAwakePeriod = config.containsKey("maxAwakePeriod") ? Integer.parseInt(config.get("maxAwakePeriod")) : 5;
+
         logger.info("Starting ZWave controller");
 
         if (timeout >= 1500 && timeout <= 10000) {
@@ -164,6 +167,17 @@ public class ZWaveController {
         // received before sending the init sequence. This avoids protocol errors (CAN errors).
         Timer initTimer = new Timer();
         initTimer.schedule(new InitializeDelayTask(), 3000);
+    }
+
+    /**
+     * Update the Controller Parameter maxAwakePeriod when changed from the Controller Handler class.
+     * Used in Node class only as backstop for "Go to Sleep" message
+     * 
+     * @param maxAwakeProperty Updated maxAwakePeriod from the Controller Handler
+     */
+    public void updateControllerProperty(int maxAwakeProperty) {
+        maxAwakePeriod = maxAwakeProperty;
+        logger.debug("maxAwakePeriod changed in Controller class to {}", maxAwakePeriod);
     }
 
     private class InitializeDelayTask extends TimerTask {
@@ -617,7 +631,6 @@ public class ZWaveController {
                     break;
             }
         }
-
     }
 
     /**
@@ -1085,6 +1098,17 @@ public class ZWaveController {
      */
     public int getSystemDefaultWakeupPeriod() {
         return defaultWakeupPeriod;
+    }
+
+    /**
+     * Gets the maximum awake time. This is the backstop to send the battery
+     * Node to sleep in case messages stall in the device queue. Applies to
+     * all battery devices.
+     *
+     * @return the awake period in seconds, or 5 if no default is set
+     */
+    public int getSystemMaxAwakePeriod() {
+        return maxAwakePeriod;
     }
 
     public String getSecurityKey() {

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2021 Contributors to the openHAB project
+ * Copyright (c) 2010-2023 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -321,12 +321,10 @@ public abstract class ZWaveCommandClass {
             Class<? extends ZWaveCommandClass> commandClassClass = commandClass.getCommandClassClass();
 
             if (commandClassClass == null) {
-                logger.debug("NODE {}: Unsupported command class {}", node.getNodeId(), commandClass.toString(),
-                        classId);
+                logger.debug("NODE {}: Unsupported command class {}", node.getNodeId(), commandClass);
                 return null;
             }
-            logger.debug("NODE {}: Creating new instance of command class {}", node.getNodeId(),
-                    commandClass.toString());
+            logger.debug("NODE {}: Creating new instance of command class {}", node.getNodeId(), commandClass);
 
             Constructor<? extends ZWaveCommandClass> constructor = commandClassClass.getConstructor(ZWaveNode.class,
                     ZWaveController.class, ZWaveEndpoint.class);
@@ -551,6 +549,7 @@ public abstract class ZWaveCommandClass {
         COMMAND_CLASS_PROTECTION(0x75, ZWaveProtectionCommandClass.class),
         COMMAND_CLASS_LOCK(0x76, ZWaveLockCommandClass.class),
         COMMAND_CLASS_NODE_NAMING(0x77, ZWaveNodeNamingCommandClass.class),
+        COMMAND_CLASS_SOUND_SWITCH(0x79, ZWaveSoundSwitchCommandClass.class),
         COMMAND_CLASS_FIRMWARE_UPDATE_MD(0x7A, ZWaveFirmwareUpdateCommandClass.class),
         COMMAND_CLASS_GROUPING_NAME(0x7B, ZWaveGroupingNameCommandClass.class),
         COMMAND_CLASS_REMOTE_ASSOCIATION_ACTIVATE(0x7C, null),
