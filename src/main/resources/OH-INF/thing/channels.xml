@@ -549,7 +549,7 @@
     <!-- Energy - Energy Consumption (kVAh) -->
     <channel-type id="meter_kvah">
         <item-type>Number</item-type>
-        <label>Energy Consumption</label>
+        <label>Apperent Energy Consumption</label>
         <description>Indicates the apperent energy consumption (kVAh)</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
@@ -559,7 +559,7 @@
     <!-- Energy - Energy Consumption (kVarh) -->
     <channel-type id="meter_kvarh">
         <item-type>Number</item-type>
-        <label>Energy Consumption</label>
+        <label>Reactive Energy Consumption</label>
         <description>Indicates the reactive energy consumption (kVarh)</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
@@ -570,7 +570,7 @@
     <channel-type id="meter_kwh">
         <item-type>Number</item-type>
         <label>Energy Consumption</label>
-        <description>Indicates the instantaneous energy consumption (kWh)</description>
+        <description>Indicates the energy consumption (kWh)</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -657,7 +657,7 @@
     <!-- Energy - Power Consumption -->
     <channel-type id="meter_watts">
         <item-type>Number</item-type>
-        <label>Electric Power Consumption</label>
+        <label>Power Consumption</label>
         <description>Indicates the instantaneous power consumption</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
@@ -667,7 +667,7 @@
     <!-- Energy - Power Consumption -->
     <channel-type id="meter_kvar">
         <item-type>Number</item-type>
-        <label>Electric Power Consumption</label>
+        <label>Reactive Power Consumption</label>
         <description>Indicates the reactive power consumption</description>
         <category>Energy</category>
         <state pattern="%.1f" readOnly="true">
