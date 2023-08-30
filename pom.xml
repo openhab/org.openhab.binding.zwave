@@ -19,9 +19,12 @@
 
   <properties>
     <report.fail.on.error>false</report.fail.on.error>
-    <spotless.version>2.0.3</spotless.version>
+    <spotless.version>2.38.0</spotless.version>
     <spotless.check.skip>true</spotless.check.skip> <!-- Spotless disabled for now -->
-    <sat.version>0.13.0</sat.version>
+    <!-- Eclipse Java formatter version 4.26+ does not check test files -->
+    <spotless.eclipse.version>4.25</spotless.eclipse.version>
+    <spotless.eclipse.wtp.version>4.21.0</spotless.eclipse.wtp.version>
+    <sat.version>0.15.0</sat.version>
   </properties>
 
   <scm>
@@ -68,33 +71,38 @@
         <plugin>
           <groupId>com.mycila</groupId>
           <artifactId>license-maven-plugin</artifactId>
-          <version>3.0</version>
+          <version>4.2</version>
           <configuration>
             <basedir>${basedir}</basedir>
-            <header>licenses/epl-2.0/header.txt</header>
             <quiet>false</quiet>
             <failIfMissing>true</failIfMissing>
             <strictCheck>true</strictCheck>
             <aggregate>true</aggregate>
             <mapping>
+              <java>JAVADOC_STYLE</java>
               <xml>xml-header-style</xml>
             </mapping>
-            <headerDefinitions>
-              <headerDefinition>licenses/epl-2.0/xml-header-style.xml</headerDefinition>
-            </headerDefinitions>
-            <includes>
-              <include>**/org/openhab/**/*.java</include>
-              <include>**/OSGI-INF/*.xml</include>
-            </includes>
-            <excludes>
-              <exclude>**/pom.xml</exclude>
-              <exclude>target/**</exclude>
-            </excludes>
             <useDefaultExcludes>true</useDefaultExcludes>
             <properties>
               <year>2023</year>
             </properties>
             <encoding>UTF-8</encoding>
+            <licenseSets>
+              <licenseSet>
+                <header>licenses/epl-2.0/header.txt</header>
+                <headerDefinitions>
+                  <headerDefinition>licenses/epl-2.0/xml-header-style.xml</headerDefinition>
+                </headerDefinitions>
+                <includes>
+                  <include>**/org/openhab/**/*.java</include>
+                  <include>**/OSGI-INF/*.xml</include>
+                </includes>
+                <excludes>
+                  <exclude>**/pom.xml</exclude>
+                  <exclude>target/**</exclude>
+                </excludes>
+              </licenseSet>
+            </licenseSets>
           </configuration>
           <executions>
             <execution>
@@ -143,7 +151,7 @@
             <java>
               <eclipse>
                 <file>openhab_codestyle.xml</file>
-                <version>4.13.0</version>
+                <version>${spotless.eclipse.version}</version>
               </eclipse>
               <removeUnusedImports/>
               <importOrder>
@@ -166,7 +174,7 @@
                   <files>
                     <file>openhab_wst_xml_files.prefs</file>
                   </files>
-                  <version>4.13.0</version>
+                  <version>${spotless.eclipse.wtp.version}</version>
                 </eclipseWtp>
                 <trimTrailingWhitespace/>
                 <endWithNewline/>
@@ -181,7 +189,7 @@
                   <files>
                     <file>openhab_wst_pom_file.prefs</file>
                   </files>
-                  <version>4.13.0</version>
+                  <version>${spotless.eclipse.wtp.version}</version>
                 </eclipseWtp>
                 <trimTrailingWhitespace/>
                 <endWithNewline/>
@@ -211,12 +219,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.1.2</version>
       </plugin>
       <plugin>
         <groupId>org.commonjava.maven.plugins</groupId>
         <artifactId>directory-maven-plugin</artifactId>
-        <version>0.3.1</version>
+        <version>1.0</version>
         <executions>
           <execution>
             <id>directories</id>
