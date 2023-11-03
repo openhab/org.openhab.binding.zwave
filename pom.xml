@@ -4,13 +4,13 @@
   <parent>
     <groupId>org.openhab.addons</groupId>
     <artifactId>org.openhab.addons.reactor</artifactId>
-    <version>4.0.4-SNAPSHOT</version>
+    <version>4.0.4</version>
     <relativePath/>
   </parent>
 
   <groupId>org.openhab.addons.bundles</groupId>
   <artifactId>org.openhab.binding.zwave</artifactId>
-  <version>4.0.4-SNAPSHOT</version>
+  <version>4.0.4</version>
   <!-- do not delete the version here as it is required by the release process -->
 
   <name>openHAB Add-ons :: Bundles :: ZWave Binding</name>
@@ -26,6 +26,7 @@
     <connection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</connection>
     <developerConnection>scm:git:${scm.gitBaseUrl}/org.openhab.binding.zwave.git</developerConnection>
     <url>https://github.com/openhab/org.openhab.binding.zwave</url>
+<tag>4.0.4</tag>
   </scm>
 
   <distributionManagement>
