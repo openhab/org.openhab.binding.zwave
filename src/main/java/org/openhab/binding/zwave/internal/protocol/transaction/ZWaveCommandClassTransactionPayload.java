@@ -13,7 +13,6 @@
 package org.openhab.binding.zwave.internal.protocol.transaction;
 
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
-import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
@@ -33,7 +32,6 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
     private final Integer expectedResponseCommandClassCommand;
     private TransactionPriority priority;
     private int maxAttempts = 0;
-    private int zstickchiptype = ZWaveController.getZwaveLibraryType();
 
     private boolean requiresSecurity = false;
     private boolean requiresResponse = true;
@@ -136,12 +134,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
         if (expectedResponseCommandClass == null) {
             return null;
         }
-        if (zstickchiptype == 7) {
-            return SerialMessageClass.BridgeApplicationCommandHandler;
-        }
-        else {
             return SerialMessageClass.ApplicationCommandHandler;
-        }
     }
 
     @Override

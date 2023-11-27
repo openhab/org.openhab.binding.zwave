@@ -350,7 +350,7 @@ public class ZWaveTransaction {
                 break;
 
             case WAIT_DATA:
-                if (incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
+            if ((incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass() && incomingMessage.getMessageClass() != SerialMessageClass.BridgeApplicationCommandHandler)
                         || incomingMessage.getMessageType() != SerialMessageType.Request) {
                     break;
                 }

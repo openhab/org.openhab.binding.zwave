@@ -94,7 +94,7 @@ public class ZWaveController {
     private int manufactureId = 0;
     private int deviceType = 0;
     private int deviceId = 0;
-    private static int zwaveLibraryType = 0;
+    private int zwaveLibraryType = 0;
     private final int sentDataPointer = 1;
     private Integer sucNode = 0;
     private ZWaveDeviceType controllerType = ZWaveDeviceType.UNKNOWN;
@@ -948,15 +948,6 @@ public class ZWaveController {
      */
     public String getZWaveVersion() {
         return zwaveVersion;
-    }
-    
-    /**
-     * Gets the zWave Library Type (7=700) of the controller.
-     *
-     * @return the zWaveLibraryType
-     */
-    public static int getZwaveLibraryType() {
-        return zwaveLibraryType;
     }
 
     /**
