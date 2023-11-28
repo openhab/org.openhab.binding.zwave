@@ -350,9 +350,18 @@ public class ZWaveTransaction {
                 break;
 
             case WAIT_DATA:
-                if ((incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass() && incomingMessage.getMessageClass() != SerialMessageClass.BridgeApplicationCommandHandler)
-                        || incomingMessage.getMessageType() != SerialMessageType.Request) {
-                    break;
+                // Check expected response in two steps for non-controller and controller (500/700/800)
+                if (payload.getExpectedResponseSerialMessageClass() != SerialMessageClass.ApplicationCommandHandler) {
+                    if (incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
+                            || incomingMessage.getMessageType() != SerialMessageType.Request) {
+                        break;
+                    } 
+                } else {
+                    if ((incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
+                        && incomingMessage.getMessageClass() != SerialMessageClass.BridgeApplicationCommandHandler)
+                        || incomingMessage.getMessageType() != SerialMessageType.Request) {      
+                        break;                   
+                    }
                 }
 
                 // Check if the nodeId is correct
