@@ -30,6 +30,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveIoHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -240,8 +241,9 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     }
                     logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
                     for (ZWaveNode node : controller.getNodes()) {
-                        logger.debug("Starting network mesh heal for controller {}.", getThing().getUID());
-                        node.healNode();
+                        if (node.getDeviceClass().getSpecificDeviceClass() != Specific.SPECIFIC_TYPE_PC_CONTROLLER) {
+                            node.healNode();
+                        }
                     }
                 }
             };

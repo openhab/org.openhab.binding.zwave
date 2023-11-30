@@ -516,7 +516,23 @@ public class ZWaveTransactionManager {
                 }
 
                 // Manage incoming command class messages separately so we can manage transaction responses
-                if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler) {
+                if (incomingMessage.getMessageClass() == SerialMessageClass.ApplicationCommandHandler
+                        || incomingMessage.getMessageClass() == SerialMessageClass.BridgeApplicationCommandHandler) {
+                    if (incomingMessage.getMessageClass() == SerialMessageClass.BridgeApplicationCommandHandler) {
+                        // Extra byte is "Destination" (i.e controller node) legacy was "Source", now "Destination"
+                        // "Source"
+                        // This strips the "Destination" to create a "500 chip-like" message
+                        int arraylengthold = incomingMessage.getMessagePayload().length;
+                        int arraylengthnew = arraylengthold - 1;
+                        byte[] arraynew = new byte[arraylengthnew];
+                        for (int i = 0, j = 0; i < arraylengthold; i++) {
+                            if (i != 1) {
+                                arraynew[j++] = incomingMessage.getMessagePayload()[i];
+                            }
+                        }
+                        incomingMessage.setMessagePayload(arraynew);
+                    }
+
                     try {
                         int nodeId = incomingMessage.getMessagePayloadByte(1);
                         ZWaveNode node = controller.getNode(nodeId);
@@ -566,8 +582,10 @@ public class ZWaveTransactionManager {
                                                 continue;
                                             }
 
-                                            if (transaction
+                                            if ((transaction
                                                     .getExpectedReplyClass() == SerialMessageClass.ApplicationCommandHandler
+                                                    || transaction
+                                                            .getExpectedReplyClass() == SerialMessageClass.BridgeApplicationCommandHandler)
                                                     && transaction.getExpectedCommandClass() != null
                                                     && command.getCommandClassId() == transaction
                                                             .getExpectedCommandClass().getKey()
