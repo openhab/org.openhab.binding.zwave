@@ -355,12 +355,12 @@ public class ZWaveTransaction {
                     if (incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
                             || incomingMessage.getMessageType() != SerialMessageType.Request) {
                         break;
-                    } 
+                    }
                 } else {
                     if ((incomingMessage.getMessageClass() != payload.getExpectedResponseSerialMessageClass()
-                        && incomingMessage.getMessageClass() != SerialMessageClass.BridgeApplicationCommandHandler)
-                        || incomingMessage.getMessageType() != SerialMessageType.Request) {      
-                        break;                   
+                            && incomingMessage.getMessageClass() != SerialMessageClass.BridgeApplicationCommandHandler)
+                            || incomingMessage.getMessageType() != SerialMessageType.Request) {
+                        break;
                     }
                 }
 

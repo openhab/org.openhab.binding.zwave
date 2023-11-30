@@ -165,8 +165,8 @@ public class SerialMessage {
         if (messageType == SerialMessageType.Request) {
             callbackId = buffer[4] & 0xFF;
             messageNode = buffer[5] & 0xFF;
-            if(messageClassKey == SerialMessageClass.BridgeApplicationCommandHandler.getKey()) {
-                messageNode = buffer[6] & 0xFF; 
+            if (messageClassKey == SerialMessageClass.BridgeApplicationCommandHandler.getKey()) {
+                messageNode = buffer[6] & 0xFF;
             }
         }
         logger.trace("NODE {}: Message payload = {}", getMessageNode(), SerialMessage.bb2hex(messagePayload));
