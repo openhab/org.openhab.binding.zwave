@@ -17,4 +17,16 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 	   ]]>
 	</description>
 
+	<discovery-methods>
+		<discovery-method>
+			<service-type>usb</service-type>
+			<match-properties>
+				<match-property>
+					<name>product</name>
+					<regex>(?i).*z-wave|hubz|husbzb|z-stick.*</regex>
+				</match-property>
+			</match-properties>
+		</discovery-method>
+	</discovery-methods>
+
 </addon:addon>
