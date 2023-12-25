@@ -31,6 +31,19 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 				</match-property>
 			</match-properties>
 		</discovery-method>
+		<discovery-method>
+			<service-type>usb</service-type>
+			<match-properties>
+				<match-property>
+					<name>remote</name>
+					<regex>false</regex>
+				</match-property>
+				<match-property>
+					<name>chipId</name>
+					<regex>0x0658:0x0200|0x1A86:0x55D4|0x10C4:0x8A2A</regex>
+				</match-property>
+			</match-properties>
+		</discovery-method>
 	</discovery-methods>
 
 </addon:addon>
