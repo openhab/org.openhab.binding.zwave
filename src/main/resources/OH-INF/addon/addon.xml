@@ -40,7 +40,7 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 				</match-property>
 				<match-property>
 					<name>chipId</name>
-					<regex>0x0658:0x0200|0x1A86:0x55D4|0x10C4:0x8A2A</regex>
+					<regex>0x0658:0x0200|0x10C4:0x8A2A|0x1A86:0x55D4</regex>
 				</match-property>
 			</match-properties>
 		</discovery-method>
