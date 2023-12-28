@@ -32,6 +32,12 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 			<match-properties>
 				<match-property>
 					<name>chipId</name>
+					<!--
+						The following chipId's are supported:
+						0658:0200 Aeotec Z-Stick Gen5 (ZW090) - UZB
+						10C4:8A2A Silicon Labs HubZ Smart Home Controller
+						1A86:55D4 Zooz 800 Z-Wave Stick
+					-->
 					<regex>0658:0200|10C4:8A2A|1A86:55D4</regex>
 				</match-property>
 			</match-properties>
