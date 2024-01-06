@@ -38,7 +38,7 @@ The binding uses a standard Z-Wave serial stick to communicate with the Z-Wave d
 						10C4:8A2A Silicon Labs HubZ Smart Home Controller
 						1A86:55D4 Zooz 800 Z-Wave Stick
 					-->
-					<regex>0658:0200|10C4:8A2A|1A86:55D4</regex>
+					<regex>(?i)0658:0200|10C4:8A2A|1A86:55D4</regex>
 				</match-property>
 			</match-properties>
 		</discovery-method>
