@@ -48,7 +48,7 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMultiLevelSensorCommandClass.class);
-    private static final int MAX_SUPPORTED_VERSION = 10;
+    private static final int MAX_SUPPORTED_VERSION = 11;
 
     private static final int SENSOR_MULTILEVEL_GET = 0x04;
     private static final int SENSOR_MULTILEVEL_REPORT = 0x05;
@@ -389,7 +389,34 @@ public class ZWaveMultiLevelSensorCommandClass extends ZWaveCommandClass
         RF_SIGNAL_STRENGTH(58, "RF Signal Strength"),
         PARTICULATE(59, "Particulate Matter"),
         RESPIRATORY_RATE(60, "Respiratory Rate"),
-        MAX_TYPE(61, "MaxType");
+        RELATIVE_MODULATION_LEVEL(61, "Relative Modulation Level"),
+        BOILER_WATER_TEMPERATURE(62, "Boiler Water Temperature"),
+        DOMESTIC_HOT_WATER_TEMPERATURE(63,"Domestic Hot Water (DHW) Temperature"),
+        OUTSIDE_TEMPERATURE(64,"Outside Temperature"),
+        EXHAUST_TEMPERATURE(65,"Exhaust Temperature"),
+        WATER_CHLORINE_LEVEL(66,"Water Chlorine Level"),
+        WATER_ACIDITY(67,"Water Acidity"),
+        WATER_OXIDATION_REDUCTION_POTENTIAL(68,"Water Oxidation Reduction Potential"),
+        HEART_RATE_LF_HF_RATIO(69,"Heart Rate LF/HF Ratio"),
+        MOTION_DIRECTION(70,"Motion Direction (0-360)"),
+        APPLIED_FORCE_ON_SENSOR(71,"Applied Force on Sensor"),
+        RETURN_AIR_TEMPERATURE(72,"Return Air Temperature"),
+        SUPPLY_AIR_TEMPERATURE(73,"Supply Air Temperature"),
+        CONDENSER_COIL_TEMPERATURE(74,"Condenser Coil Temperature"),
+        EVAPORATOR_COIL_TEMPERATURE(75,"Evaporator Coil Temperature"),
+        LIQUID_LINE_TEMPERATURE(76,"Liquid Line Temperature"),
+        DISCHARGE_LINE_TEMPERATURE(77,"Discharge Line Temperature"),
+        SUCTION_PRESSURE(78,"Suction Pressure"),
+        DISCHARGE_PRESSURE(79,"Discharge Pressure"),
+        DEFROST_TEMPERATURE(80,"Defrost Temperature"),
+        OZONE(81,"Ozone (O3)"),
+        SULFUR_DIOXIDE(82,"Sulfur Dioxide (SO2)"),
+        NITROGEN_DIOXIDE(83,"Nitrogen Dioxide (NO2)"),
+        AMMONIA(84,"Ammonia (NH3)"),
+        LEAD(85,"Lead (Pb)"),
+        PARTICULATE_MATTER_1(86,"Particulate Matter 1"),
+        PERSON_ENTER(87,"Person Entering Count"),
+        PERSON_EXIT(88,"Person Exiting Count");
 
         /**
          * A mapping between the integer code and its corresponding Sensor type to facilitate lookup by code.
