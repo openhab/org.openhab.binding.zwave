@@ -167,7 +167,7 @@ public class ZWaveProtectionCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 PROTECTION_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(PROTECTION_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(PROTECTION_SUPPORTED_REPORT).build();
     }
 
     /**

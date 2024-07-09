@@ -359,7 +359,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_INSTANCE_GET).withPayload(commandClass.getKey()).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(MULTI_INSTANCE_REPORT).build();
+                .withExpectedResponseCommand(MULTI_INSTANCE_REPORT).build();
     }
 
     /**
@@ -403,7 +403,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_CHANNEL_ENDPOINT_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(MULTI_CHANNEL_ENDPOINT_REPORT).build();
+                .withExpectedResponseCommand(MULTI_CHANNEL_ENDPOINT_REPORT).build();
     }
 
     /**
@@ -419,7 +419,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_CHANNEL_CAPABILITY_GET).withPayload(endpoint).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(MULTI_CHANNEL_CAPABILITY_REPORT).build();
+                .withExpectedResponseCommand(MULTI_CHANNEL_CAPABILITY_REPORT).build();
     }
 
     /**

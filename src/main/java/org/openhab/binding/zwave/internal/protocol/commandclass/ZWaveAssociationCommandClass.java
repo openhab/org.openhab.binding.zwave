@@ -211,7 +211,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATIONCMD_SET).withPayload((group & 0xff), (node & 0xff)).withPriority(TransactionPriority.Config)
-                        .build();
+                .build();
     }
 
     /**
@@ -229,7 +229,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATIONCMD_REMOVE).withPayload((group & 0xff), (node & 0xff))
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -262,7 +262,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATIONCMD_GET).withExpectedResponseCommand(ASSOCIATIONCMD_REPORT).withPayload(group)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -276,7 +276,7 @@ public class ZWaveAssociationCommandClass extends ZWaveCommandClass implements Z
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATIONCMD_GROUPINGS_GET).withExpectedResponseCommand(ASSOCIATIONCMD_GROUPINGS_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**

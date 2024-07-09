@@ -151,7 +151,7 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SENSOR_BINARY_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
+                .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
     }
 
     public ZWaveCommandClassTransactionPayload getValueMessage(SensorType type) {
@@ -165,7 +165,7 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SENSOR_BINARY_GET).withPayload(type.getKey()).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
+                .withExpectedResponseCommand(SENSOR_BINARY_REPORT).build();
     }
 
     @Override
@@ -193,7 +193,7 @@ public class ZWaveBinarySensorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SENSOR_BINARY_SUPPORTED_SENSOR_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(SENSOR_BINARY_SUPPORTED_SENSOR_REPORT).build();
+                .withExpectedResponseCommand(SENSOR_BINARY_SUPPORTED_SENSOR_REPORT).build();
     }
 
     @Override

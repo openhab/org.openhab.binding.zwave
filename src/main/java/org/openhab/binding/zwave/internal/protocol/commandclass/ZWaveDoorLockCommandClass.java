@@ -173,7 +173,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 DOOR_LOCK_CONFIG_GET).withExpectedResponseCommand(DOOR_LOCK_CONFIG_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     public ZWaveCommandClassTransactionPayload setConfigMessage(boolean timeoutEnabled, int timeoutValue) {
@@ -202,7 +202,7 @@ public class ZWaveDoorLockCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 DOOR_LOCK_CONFIG_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
-                        .build();
+                .build();
     }
 
     @Override

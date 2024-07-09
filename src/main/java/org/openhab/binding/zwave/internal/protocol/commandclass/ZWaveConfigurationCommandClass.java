@@ -139,7 +139,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 CONFIGURATION_GET).withPayload(parameter).withExpectedResponseCommand(CONFIGURATION_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -168,7 +168,7 @@ public class ZWaveConfigurationCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 CONFIGURATION_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
-                        .build();
+                .build();
     }
 
     /**

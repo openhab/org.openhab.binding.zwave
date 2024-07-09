@@ -161,7 +161,7 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 VERSION_COMMAND_CLASS_GET).withPayload(commandClass.getKey()).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(VERSION_COMMAND_CLASS_REPORT).build();
+                .withExpectedResponseCommand(VERSION_COMMAND_CLASS_REPORT).build();
     }
 
     /**

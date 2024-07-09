@@ -108,7 +108,7 @@ public class ZWaveBinarySwitchCommandClass extends ZWaveCommandClass implements 
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_BINARY_GET).withExpectedResponseCommand(SWITCH_BINARY_REPORT)
-                        .withPriority(TransactionPriority.Get).build();
+                .withPriority(TransactionPriority.Get).build();
     }
 
     /**

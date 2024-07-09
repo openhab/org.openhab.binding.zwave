@@ -174,7 +174,7 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_MODE_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(THERMOSTAT_MODE_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_MODE_REPORT).build();
     }
 
     @Override
@@ -197,7 +197,7 @@ public class ZWaveThermostatModeCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_MODE_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(THERMOSTAT_MODE_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_MODE_SUPPORTED_REPORT).build();
     }
 
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {

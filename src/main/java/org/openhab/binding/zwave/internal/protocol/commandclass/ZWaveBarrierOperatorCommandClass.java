@@ -82,7 +82,7 @@ public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass implemen
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 BARRIER_OPERATOR_SET).withPayload(value > 0 ? 0xFF : 0x00).withPriority(TransactionPriority.Set)
-                        .build();
+                .build();
     }
 
     public ZWaveCommandClassTransactionPayload getValueMessage() {
@@ -90,7 +90,7 @@ public class ZWaveBarrierOperatorCommandClass extends ZWaveCommandClass implemen
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 BARRIER_OPERATOR_GET).withExpectedResponseCommand(BARRIER_OPERATOR_REPORT)
-                        .withPriority(TransactionPriority.Get).build();
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
