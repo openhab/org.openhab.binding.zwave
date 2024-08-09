@@ -232,9 +232,9 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         ON_LOW(1, "On Low"),
         AUTO_HIGH(2, "Auto High"),
         ON_HIGH(3, "On High"),
-        UNKNOWN_4(4, "Unknown 4"),
-        UNKNOWN_5(5, "Unknown 5"),
-        CIRCULATE(6, "Circulate");
+        AUTO_MEDIUM(4, "Auto Medium"),
+        MEDIUM(5, "Medium"),
+        CIRCULATE(6, "Circulate");  //Circulate is Version 3 Option
 
         /**
          * A mapping between the integer code and its corresponding fan mode type to facilitate lookup by code.
