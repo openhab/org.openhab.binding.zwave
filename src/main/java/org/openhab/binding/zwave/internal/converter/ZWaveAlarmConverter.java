@@ -86,10 +86,14 @@ public class ZWaveAlarmConverter extends ZWaveCommandClassConverter {
         events.put(NotificationEvent.ACCESS_CONTROL__MANUAL_UNLOCK, OnOffType.OFF);
         notifications.put("alarm_entry", events);
 
-        // Heart beats
+        // System Alarms and Heart Beat
         events = new HashMap<NotificationEvent, State>();
-        events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
         events.put(NotificationEvent.SYSTEM__NONE, OnOffType.OFF);
+        events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__HARDWARE_FAILURE_MANUFACTURER_CODE, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__SOFTWARE_FAILURE_MANUFACTURER_CODE, OnOffType.ON);
+        events.put(NotificationEvent.SYSTEM__HEARTBEAT, OnOffType.ON);
         notifications.put("alarm_system", events);
 
         // Heat alarms
