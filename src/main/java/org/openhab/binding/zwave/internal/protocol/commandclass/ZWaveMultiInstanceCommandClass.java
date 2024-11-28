@@ -77,6 +77,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
 
     private boolean useDestEndpointAsSource = false;
     private boolean endpointsAreTheSameDeviceClass;
+    private boolean onlyEndpointZero;
 
     // List of classes that DO NOT support multiple instances.
     // This is used to reduce the number of requests during initialisation.
@@ -171,10 +172,15 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                     getNode().getNodeId());
         }
 
-        // Add all the endpoints
-        for (int i = 1; i <= endpointsSupported; i++) {
-            getNode().addEndpoint(i);
-        }
+        // Handle case where Multichannel CC is supported, but no Endpoints (except EP 0)
+        if (endpointsSupported == 0) {
+            onlyEndpointZero = true;
+        } else {
+            // Add all the endpoints
+            for (int i = 1; i <= endpointsSupported; i++) {
+                getNode().addEndpoint(i);
+            }
+        }   
     }
 
     /**
@@ -495,6 +501,8 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 // Request the number of endpoints
                 if (refresh == true || getNode().getEndpointCount() == 1) {
                     result.add(getMultiChannelEndpointGetMessage());
+                } else if (onlyEndpointZero) {
+                    // Don't ask for EP capabilities
                 } else {
                     // We know the number of endpoints, so request the capabilites of each
                     for (int endpoint = 1; endpoint < getNode().getEndpointCount(); endpoint++) {
