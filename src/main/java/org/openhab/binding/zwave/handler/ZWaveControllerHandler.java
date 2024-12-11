@@ -191,6 +191,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         controller = new ZWaveController(this, config);
         controller.addEventListener(this);
 
+        // Set controller properties for Network Map since it will not be healed
+        getThing().setProperty(ZWaveBindingConstants.PROPERTY_NEIGHBOURS, sucNode.toString());
+        getThing().setProperty(ZWaveBindingConstants.PROPERTY_NODEID, sucNode.toString());
+
         // Add any listeners that were registered before the manager was registered
         synchronized (listeners) {
             for (ZWaveEventListener listener : listeners) {
