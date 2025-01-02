@@ -41,9 +41,13 @@ public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
+        int messageLength = incomingMessage.getMessagePayload().length;
         homeId = ((incomingMessage.getMessagePayloadByte(0)) << 24) | ((incomingMessage.getMessagePayloadByte(1)) << 16)
                 | ((incomingMessage.getMessagePayloadByte(2)) << 8) | (incomingMessage.getMessagePayloadByte(3));
-        ownNodeId = incomingMessage.getMessagePayloadByte(4);
+        ownNodeId = incomingMessage.getMessagePayloadByte(4);  
+        if (messageLength == 6) {
+            ownNodeId = (incomingMessage.getMessagePayloadByte(4) | incomingMessage.getMessagePayloadByte(5));
+        }
         logger.debug("Got MessageMemoryGetId response. Home id = 0x{}, Controller Node id = {}",
                 Integer.toHexString(homeId), ownNodeId);
 
