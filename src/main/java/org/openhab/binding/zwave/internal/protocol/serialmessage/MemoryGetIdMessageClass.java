@@ -46,7 +46,7 @@ public class MemoryGetIdMessageClass extends ZWaveCommandProcessor {
                 | ((incomingMessage.getMessagePayloadByte(2)) << 8) | (incomingMessage.getMessagePayloadByte(3));
         ownNodeId = incomingMessage.getMessagePayloadByte(4);  
         if (messageLength == 6) {
-            ownNodeId = (incomingMessage.getMessagePayloadByte(4) | incomingMessage.getMessagePayloadByte(5));
+            ownNodeId = ((incomingMessage.getMessagePayloadByte(4)) << 8) | (incomingMessage.getMessagePayloadByte(5));
         }
         logger.debug("Got MessageMemoryGetId response. Home id = 0x{}, Controller Node id = {}",
                 Integer.toHexString(homeId), ownNodeId);
