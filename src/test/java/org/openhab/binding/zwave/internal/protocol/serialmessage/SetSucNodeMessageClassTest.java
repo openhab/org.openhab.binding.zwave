@@ -30,8 +30,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 public class SetSucNodeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponseNone = { 12, 1, 0, 1 };
-        byte[] expectedResponseBasic = { 12, 0, 0, 0 };
+        byte[] expectedResponseNone = { 0, 12, 1, 0, 1 };
+        byte[] expectedResponseBasic = { 0, 12, 0, 0, 0 };
 
         ZWaveSerialPayload msg;
         SetSucNodeMessageClass handler = new SetSucNodeMessageClass();

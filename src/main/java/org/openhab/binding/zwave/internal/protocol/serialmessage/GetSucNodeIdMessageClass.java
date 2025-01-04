@@ -43,10 +43,10 @@ public class GetSucNodeIdMessageClass extends ZWaveCommandProcessor {
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
         logger.debug("Got SUC NodeID response.");
-
-        if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.debug("NODE {}: Node is SUC.", incomingMessage.getMessagePayloadByte(0));
-            sucNode = incomingMessage.getMessagePayloadByte(0);
+                //will need to fix if this works
+        if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
+            logger.debug("NODE {}: Node is SUC.", incomingMessage.getMessagePayloadByte(1));
+            sucNode = incomingMessage.getMessagePayloadByte(1);
         } else {
             logger.debug("No SUC Node is set");
         }

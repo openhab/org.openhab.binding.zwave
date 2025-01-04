@@ -38,8 +38,8 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(IdentifyNodeMessageClass.class);
 
     public ZWaveSerialPayload doRequest(int nodeId) {
-        // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.IdentifyNode).withPayload(nodeId).build();
+        // Create the request- Will need to fix
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.IdentifyNode).withPayload(0x00, nodeId).build();
         // .withResponseNodeId(nodeId).build();
     }
 
@@ -54,7 +54,7 @@ public class IdentifyNodeMessageClass extends ZWaveCommandProcessor {
         if (transaction.getSerialMessage() == null) {
             return false;
         }
-        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(0);
+        int nodeId = transaction.getSerialMessage().getMessagePayloadByte(1);
         logger.debug("NODE {}: ProtocolInfo", nodeId);
 
         ZWaveNode node = zController.getNode(nodeId);

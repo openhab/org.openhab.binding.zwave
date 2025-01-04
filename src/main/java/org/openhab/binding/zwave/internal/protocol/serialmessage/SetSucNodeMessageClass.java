@@ -33,11 +33,13 @@ public class SetSucNodeMessageClass extends ZWaveCommandProcessor {
     public ZWaveSerialPayload doRequest(int nodeId, boolean enable) {
         logger.debug("NODE {}: SetSucNodeID node {}", nodeId, enable);
 
-        byte[] payload = new byte[4];
-        payload[0] = (byte) nodeId;
-        payload[1] = (byte) (enable ? 1 : 0);
-        payload[2] = 0;
-        payload[3] = (byte) (enable ? 1 : 0);
+        byte[] payload = new byte[5];
+        //will need to figure a switch if this works
+        payload[0] = 0;
+        payload[1] = (byte) nodeId;
+        payload[2] = (byte) (enable ? 1 : 0);
+        payload[3] = 0;
+        payload[4] = (byte) (enable ? 1 : 0);
 
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.SetSucNodeID).withPayload(payload).build();
