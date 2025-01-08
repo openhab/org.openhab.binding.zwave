@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2010-2025 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
@@ -35,12 +35,7 @@ public class SetNodeIdTypeMessageClass extends ZWaveCommandProcessor {
 
         byte[] payload = new byte[2];
         payload[0] = (byte) 0x80;
-        payload[1] = (byte) 0x01;  // 1=8bit, 2=16bit
-
-        // Possibly restrict command to library 7
-        // GetVersionMessageClass instance = new GetVersionMessageClass();
-        // if(instance.getLibraryType() == 7) {}
-        // What happens with no command?
+        payload[1] = (byte) 0x01;  // 1=8 bit, 2=16 bit
         
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.SetUpZwaveApi).withPayload(payload).build();
@@ -49,11 +44,11 @@ public class SetNodeIdTypeMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-        int nodeIdType = transaction.getSerialMessage().getMessagePayloadByte(1);
 
-        logger.debug("SetNodeIdType node response {}", nodeIdType);
+        logger.debug("SetNodeIdType node response {}");
 
-        if (incomingMessage.getMessagePayloadByte(1) != 0x00) {
+        // Index 0 = 0x00 means the serial message class is not supported, so NodeId has to be the 8 bit default
+        if (incomingMessage.getMessagePayloadByte(1) != 0x00 || incomingMessage.getMessagePayloadByte(0) == 0x00) {
             logger.debug("Eight bit NodeId command OK.");
         } else {
             logger.error("Eight bit NodeId command failed.");
