@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 /**
  * This class sets the NodeId Type to 8 bits
  *
- * @author Bob Eckhoff - Initial Conteribution
+ * @author Bob Eckhoff - Initial contribution
  */
 public class SetNodeIdTypeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(SetNodeIdTypeMessageClass.class);
@@ -44,8 +44,7 @@ public class SetNodeIdTypeMessageClass extends ZWaveCommandProcessor {
     @Override
     public boolean handleResponse(ZWaveController zController, ZWaveTransaction transaction,
             SerialMessage incomingMessage) throws ZWaveSerialMessageException {
-
-        logger.debug("SetNodeIdType node response {}");
+        logger.debug("SetNodeIdType node response");
 
         // Index 0 = 0x00 means the serial message class is not supported, so NodeId has to be the 8 bit default
         if (incomingMessage.getMessagePayloadByte(1) != 0x00 || incomingMessage.getMessagePayloadByte(0) == 0x00) {
