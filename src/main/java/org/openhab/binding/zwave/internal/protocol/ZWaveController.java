@@ -59,6 +59,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetCap
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiGetInitDataMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSetTimeoutsMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SerialApiSoftResetMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.SetNodeIdTypeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.SetSucNodeMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.ZWaveCommandProcessor;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -639,6 +640,7 @@ public class ZWaveController {
      */
     public void initialize() {
         enqueue(new GetVersionMessageClass().doRequest());
+        enqueue(new SetNodeIdTypeMessageClass().doRequest());
         enqueue(new MemoryGetIdMessageClass().doRequest());
         enqueue(new SerialApiGetCapabilitiesMessageClass().doRequest());
         enqueue(new SerialApiSetTimeoutsMessageClass().doRequest(150, 15));
