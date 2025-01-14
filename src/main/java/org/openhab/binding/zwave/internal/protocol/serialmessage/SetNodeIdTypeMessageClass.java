@@ -30,15 +30,15 @@ import org.slf4j.LoggerFactory;
 public class SetNodeIdTypeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(SetNodeIdTypeMessageClass.class);
 
-    private static byte cmdSetNodeIdType = (byte) 0x80; // Subclass of SetUpZwaveAPI for NodeID Type
-    private static byte nodeIdType8Bit = (byte) 0x01;  // 1=8 bit, 2=16 bit NodeID Type
+    private static final byte CMD_SETNODEID = (byte) 0x80; // Subclass of SetUpZwaveAPI for NodeID Type
+    private static final byte NODEID_8BIT = (byte) 0x01;  // 1=8 bit, 2=16 bit NodeID Type
 
     public ZWaveSerialPayload doRequest() {
         logger.debug("SetNodeIdType for controller");
 
         byte[] payload = new byte[2];
-        payload[0] = cmdSetNodeIdType;
-        payload[1] = nodeIdType8Bit;
+        payload[0] = CMD_SETNODEID;
+        payload[1] = NODEID_8BIT;
         
         // Create the request
         return new ZWaveTransactionMessageBuilder(SerialMessageClass.SetUpZwaveApi).withPayload(payload).build();
