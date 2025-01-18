@@ -501,6 +501,7 @@ public class SerialMessage {
         SerialApiSetTimeouts(0x06, true, false, false), // Set Serial API timeouts
         SerialApiGetCapabilities(0x07, true, false, false), // Request Serial API capabilities
         SerialApiSoftReset(0x08, false, false, false), // Soft reset. Restarts Z-Wave chip
+        SetUpZwaveApi(0x0B,true, false, false), // Set the Node ID to 8 bits
         RfReceiveMode(0x10), // Power down the RF section of the stick
         SetSleepMode(0x11), // Set the CPU into sleep mode
         SendNodeInfo(0x12), // Send Node Information Frame of the stick
