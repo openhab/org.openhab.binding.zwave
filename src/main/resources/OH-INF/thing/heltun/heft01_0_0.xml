@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="heltun_heft01_00_000" listed="false">
+		<label>HE-FT01 Wall Heating Thermostat</label>
+		<description><![CDATA[
+Wall Fan Coil Thermostat<br /><h1>Overview</h1><h2>Perfectly controls air conditioning systems</h2><p>The HE-FT01 is designed to maintain constant room temperatures by using internal air temperature sensor. It controls 2-pipe or 4-pipe air conditioning/heating systems such as: split/multi-split systems, chillers and fan coil unit systems, central air conditioning systems, multi-zone VRF/VRV air conditioning systems, etc. The fan speed is controlled by three relay outputs. Two more relay outputs control cooling and heating valves. The HE-FT01 has two independent inputs for relay channels which allow it to control fans and valves with different power sources or to use relay outputs as dry contacts. Each relay can carry a load of up to 5 Amps.</p><h2>Multiple built-in sensors</h2><p>The HE-FT01 has an LCD screen, six high sensitivity capacitive touch buttons, and internal temperature sensor with compensating software for precise temperature monitoring and control. It also has built-in humidity and illumination sensors. You can instantly access information from all sensors on the user-friendly display.</p><h2>Monitor all important information without even a touch</h2><p>The at-a-glance display shows: ambient air temperature, user set point, humidity level, current operating mode, climate mode, fan speed, time, day of the week, and status of the Z-Wave™ network. Display brightness adjusts to ambient light conditions automatically making it easy to read.</p><h2>Highly configurable</h2><p>You can select one of four operation modes (COM, TIME, ECO, OFF) with individual set points either manually or by using a Z-Wave controller/gateway. The HE-FT01 operates in four Climate Modes: Heating & Cooling, Heating only, Cooling only, and Ventilation and has six fan speed control modes: Low, Medium, High, Auto Medium, Auto High, & Off.</p><h2>Know how much energy you use</h2><p>The HE-FT01 built-in Power Consumption System monitors how much energy you used during any particular day, week, or month. Just specify the consumption of the load in watts for each relay channel and the thermostat logic will calculate total consumption relative to the time since the output was in the „ON‟ state.</p><h1>Based on the latest Z-Wave platform</h1><p>The HE-FT01 integrates a Z-Wave Plus™ v2 700 platform module allowing it to be used with Z-Wave home automation systems. The HE-FT01 supports Z-Wave „S0‟ and „S2‟ security protocols, SmartStart technology, and can be connected (“associated”) to other Z-Wave devices, such as relays, switchers, etc.</p><h2>Inclusion Information</h2><p><strong>To include the thermostat in the Z-Wave network</strong></p><ol><li>Enter “SETTINGS“ Mode by pressing and holding the Gear button for three seconds.</li><li>If you need to change the device factory default Z-Wave frequency, see the Parameter description and steps to change the value on page 12 of documentation</li><li>Scroll menu to “Parameter 2 – nEt“. The current state of the network will be displayed in the Parameter Value position (upper right). It should display “ECL“. Note: If “InC“ is displayed, the HE-FT01 must first be Excluded from an existing Z-Wave network (see “Removing from Z-Wave network“ below).</li><li>Start the Inclusion Mode from openhab.</li><li>On the HE-FT01 in the Parameter 2 press the Plus “+“ button to start the Inclusion process.</li><li>Note that lines will be moving in the Parameter value position (upper right).</li><li>“InC“ should appear at the Parameter Value position (and the icon on the main display bottom right corner) if Inclusion was successful.</li><li>If “EСL“ or “Err“ is on Value position (or icon on the main display bottom right corner), the HE-FT01 Inclusion was not successful (try repeating steps 4-7).</li></ol> <br /> <h2>Exclusion Information</h2><p><strong>To remove the thermostat in the Z-Wave network</strong></p><ol><li>Enter “SETTINGS“ Mode by pressing and holding the Gear button for three seconds.</li><li><p>Scroll menu to “Parameter 2 – nEt“ using the Heating Element button to scroll up, and the “MODE“ button to scroll down.</p></li><li><p>The current state of the network will display in the Parameter Value position (upper right). It should display “InC“. Note: If “EСL“ is displayed, the HE-FT01 is already Excluded.</p></li><li><p>Start the Exclusion Mode from the openhab.</p></li><li><p>Press the Minus “–“ button in the HE-FT01 Parameter 2 to start the Exclusion process</p></li><li><p>Note that lines will be moving in the Parameter value position (upper right).</p></li><li><p>“EСL“ should appear in the value position (and icon in the bottom right corner of the main display) if the Exclusion was successful.</p></li><li><p>If “InC“ or “Err“ in value position (or icon in the bottom right corner of the main display) are displayed, repeat the Exclusion process. </p></li></ol>Note: If the HE-FT01 has previously been part of a Z-Wave network and not Excluded since, Inclusion is not possible without first performing an Exclusion or Factory Reset procedure.<p><br /></p><p>Note: If the HE-FT01 is included in the Z-Wave network the antenna icon will appear in the bottom right corner of the main screen with signal strength bars</p>
+    ]]></description>
+		<category>HVAC</category>
+
+		<!-- CHANNEL DEFINITIONS -->
+		<channels>
+			<channel id="air_temperature" typeId="sensor_temperature">
+				<label>Air Temperature</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=TEMPERATURE</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_setpoint_auto_changeover" typeId="heltun_heft01_thermostat_setpoint">
+				<label>Setpoint (auto changeover)</label>
+				<properties>
+					<property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=AUTO_CHANGEOVER</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_setpoint_heating" typeId="heltun_heft01_thermostat_setpoint">
+				<label>Setpoint (heating)</label>
+				<properties>
+					<property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=HEATING</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_setpoint_cooling" typeId="heltun_heft01_thermostat_setpoint">
+				<label>Setpoint (cooling)</label>
+				<properties>
+					<property name="binding:*:QuantityType">COMMAND_CLASS_THERMOSTAT_SETPOINT;type=COOLING</property>
+				</properties>
+			</channel>
+			<channel id="sensor_relhumidity" typeId="sensor_relhumidity">
+				<label>Relative Humidity</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=RELATIVE_HUMIDITY</property>
+				</properties>
+			</channel>
+			<channel id="sensor_luminance" typeId="sensor_luminance">
+				<label>Luminance</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_SENSOR_MULTILEVEL;type=LUMINANCE</property>
+				</properties>
+			</channel>
+			<channel id="meter_watts" typeId="meter_watts">
+				<label>Electric meter (watts)</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+				</properties>
+			</channel>
+			<channel id="meter_kwh" typeId="meter_kwh">
+				<label>Electric meter (kWh)</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_mode" typeId="heltun_heft01_thermostat_mode">
+				<label>Thermostat mode</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_MODE</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_fan_mode" typeId="heltun_heft01_thermostat_fan_mode">
+				<label>Thermostat Fan mode</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_MODE</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_operating_state" typeId="heltun_heft01_thermostat_operating_state">
+				<label>Thermostat Operating State</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_OPERATING_STATE</property>
+				</properties>
+			</channel>
+			<channel id="thermostat_fan_state" typeId="heltun_heft01_thermostat_fan_state">
+				<label>Thermostat Fan State</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_THERMOSTAT_FAN_STATE</property>
+				</properties>
+			</channel>
+			<channel id="time_offset" typeId="time_offset">
+				<label>Clock Time Offset</label>
+				<properties>
+					<property name="binding:*:DecimalType">COMMAND_CLASS_CLOCK</property>
+				</properties>
+			</channel>
+		</channels>
+
+		<!-- DEVICE PROPERTY DEFINITIONS -->
+		<properties>
+			<property name="vendor">Heltun</property>
+			<property name="modelId">HE-FT01</property>
+			<property name="manufacturerId">0344</property>
+			<property name="manufacturerRef">0004:0002</property>
+			<property name="dbReference">9999</property>
+			<property name="defaultAssociations">1</property>
+		</properties>
+
+		<!-- CONFIGURATION DESCRIPTIONS -->
+		<config-description>
+
+			<!-- GROUP DEFINITIONS -->
+			<parameter-group name="configuration">
+				<context>setup</context>
+				<label>Configuration Parameters</label>
+			</parameter-group>
+
+			<parameter-group name="association">
+				<context>link</context>
+				<label>Association Groups</label>
+			</parameter-group>
+
+			<!-- PARAMETER DEFINITIONS -->
+			<parameter name="config_1_1" type="integer" groupName="configuration">
+				<label>1: Frequency Region</label>
+				<description>Frequency Region</description>
+				<default>0</default>
+				<options>
+					<option value="0">EU (868.4 MHz, 869.85 MHz)</option>
+					<option value="1">US (908.4 MHz, 916.0 MHz)</option>
+					<option value="2">AU (919.8 MHz, 921.4 MHz)</option>
+					<option value="3">HO (919.8 MHz)</option>
+					<option value="4">In (865.2 MHz)</option>
+					<option value="5">IL (916.0 MHz)</option>
+					<option value="6">RU (869.0 MHz)</option>
+					<option value="7">Cn (868.4 MHz)</option>
+					<option value="8">JP (922.5 MHz, 923.9 MHz, 926.3 MHz)</option>
+					<option value="9">Or (920.9 MHz, 921.7 MHz, 923.1 MHz)</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_2_1" type="integer" groupName="configuration" readOnly="true">
+				<label>2: Inclusion / Exclusion Mode</label>
+				<description>Inclusion / Exclusion Mode (read Only)</description>
+				<default>0</default>
+				<options>
+					<option value="0">Inc</option>
+					<option value="1">Ecl</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_3_4" type="integer" groupName="configuration" readOnly="true">
+				<label>3: Hardware and Software Versions</label>
+				<description><![CDATA[
+Hardware and Software Versions (read Only)<br /> <h1>Overview</h1><p>Parameter returns value in the format XXYYZZ,<br />where XX is Hardware Version, YY is Firmware Major Version and ZZ is Firmware Minor version.</p>
+        ]]></description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_4_4" type="integer" groupName="configuration" readOnly="true">
+				<label>4: Energy Consumption, kW</label>
+				<description>This Parameter allows you to check the Cumulative and Real-Time Energy Consumption of the connected
+					load</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_5_1" type="integer" groupName="configuration" min="0" max="10">
+				<label>5: Display brightness control</label>
+				<description><![CDATA[
+This Parameter allows the device Display brightness to be adjusted<br /> <h1>Overview</h1><p>Set the Parameter value to 0 to activate the Automatic Brightness Control or set from value 1 (lowest brightness) to 10 (highest brightest) for Manual Control.</p>
+        ]]></description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_6_1" type="integer" groupName="configuration" min="0" max="10">
+				<label>6: Touch Sensor Sensitivity Threshold</label>
+				<description>This Parameter allows the device Touch Button Sensitivity Threshold to be adjusted from level 1 (low
+					sensitivity) to 10 (high sensitivity).</description>
+				<default>6</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_7_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>7: Fan Relay Output Mode (NO / NC)</label>
+				<description>This Parameter determines the type of load connected to the device fan relay outputs (OUT-1, OUT-2,
+					OUT-3).</description>
+				<default>0</default>
+				<options>
+					<option value="0">Normally open</option>
+					<option value="1">Normally close</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_8_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>8: Heater Relay Output Mode (NO / NC)</label>
+				<description>This parameter determines the type of load connected to the device heater relay output (OUT-4).
+				</description>
+				<default>0</default>
+				<options>
+					<option value="0">Normally open</option>
+					<option value="1">Normally close</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_9_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>9: Cooler Relay Output Mode (NO / NC)</label>
+				<description>This parameter determines the type of load connected to the device cooler relay output (OUT-5).
+				</description>
+				<default>0</default>
+				<options>
+					<option value="0">Normally open</option>
+					<option value="1">Normally close</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_10_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>10: Heating state FAN control</label>
+				<description>This parameter determines if fan should be enabled or disabled in heating mode.</description>
+				<default>0</default>
+				<options>
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_11_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>11: Cooling state FAN control</label>
+				<description>This parameter determines if fan should be enabled or disabled in cooling mode.</description>
+				<default>0</default>
+				<options>
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_12_2" type="integer" groupName="configuration" min="0" max="1100" unit="W">
+				<label>12: Fan Low Speed Relay: Load Power (W)</label>
+				<description>The power of the connected device, which is used to determine energy consumption (OUT-1).</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_13_2" type="integer" groupName="configuration" min="0" max="1100" unit="W">
+				<label>13: Fan Medium Speed Relay: Load Power (W)</label>
+				<description>The power of the connected device, which is used to determine energy consumption (OUT-2).</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_14_2" type="integer" groupName="configuration" min="0" max="1100" unit="W">
+				<label>14: Fan Hight Speed Relay: Load Power (W)</label>
+				<description>The power of the connected device, which is used to determine energy consumption (OUT-3).</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_15_2" type="integer" groupName="configuration" min="0" max="1100" unit="W">
+				<label>15: Heating Valve Relay: Load Power (W)</label>
+				<description>The power of the connected device, which is used to determine energy consumption (OUT-4).</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_16_2" type="integer" groupName="configuration" min="0" max="1100" unit="W">
+				<label>16: Cooling Valve Relay: Load Power (W)</label>
+				<description>The power of the connected device, which is used to determine energy consumption (OUT-5).</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_17_1" type="integer" groupName="configuration" min="-100" max="100">
+				<label>17: Air temp calibration</label>
+				<description><![CDATA[
+This parameter defines the offset value for room air temperature.<br /> <h1>Overview</h1><p>Celsius value * 10 e.g. 1.0°C = 10</p>
+        ]]></description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_18_1" type="integer" groupName="configuration" min="1" max="100">
+				<label>18: Temp hysteresis</label>
+				<description><![CDATA[
+This Parameter defines the hysteresis value for temperature control.<br /> <h1>Overview</h1><p>Celsius value * 10 e.g. 0.5°C = 5</p>
+        ]]></description>
+				<default>5</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_19_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>19: Time Correction by Main Controlle</label>
+				<description>This Parameter determines if the Time correction should be enabled or disabled.</description>
+				<default>1</default>
+				<options>
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_20_1" type="integer" groupName="configuration" min="0" max="1">
+				<label>20: Time format</label>
+				<description>Either 24 hour or 12-hour time formats may be selected.</description>
+				<default>0</default>
+				<options>
+					<option value="0">24 hour</option>
+					<option value="1">12 hour (AM / PM)</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_21_1" type="integer" groupName="configuration" min="1" max="7">
+				<label>21: Week day</label>
+				<description>This Parameter allows manual adjustment of the day of the week in case the HE-FT01 is not connected to
+					any Z-Wave gateway or auto-correction is disabled (Parameter 19 value is 0).</description>
+				<default>1</default>
+				<options>
+					<option value="1">Monday</option>
+					<option value="2">Tuesday</option>
+					<option value="3">Wednesday</option>
+					<option value="4">Thursday</option>
+					<option value="5">Friday</option>
+					<option value="6">Saturday</option>
+					<option value="7">Sunday</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_22_2" type="integer" groupName="configuration">
+				<label>22: Time Manual Adjustment</label>
+				<description>This Parameter allows manual adjustment of Time. Format: HHMM. e.g.08:00 should be sent as 0800
+				</description>
+				<default>0</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_23_1" type="integer" groupName="configuration" min="1" max="3">
+				<label>23: TIME mode operation</label>
+				<description>This Parameter determines the Climate Mode (Heating or Cooling) in which HE-FT01 will operates when the
+					TIME mode is selected.</description>
+				<default>1</default>
+				<options>
+					<option value="1">Heating &amp; Cooling mode</option>
+					<option value="2">Heating mode</option>
+					<option value="3">Cooling mode</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_41_2" type="integer" groupName="configuration">
+				<label>41: Morning start time</label>
+				<description>Morning start time. Format: HHMM. e.g.08:00 should be sent as 0800.</description>
+				<default>600</default>
+			</parameter>
+
+			<parameter name="config_42_2" type="integer" groupName="configuration">
+				<label>42: Day start time</label>
+				<description>Day start time. Format: HHMM. e.g.08:00 should be sent as 0800.</description>
+				<default>900</default>
+			</parameter>
+
+			<parameter name="config_43_2" type="integer" groupName="configuration">
+				<label>43: Evening start time</label>
+				<description>Evening start time. Format: HHMM. e.g.08:00 should be sent as 0800.</description>
+				<default>1800</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_44_2" type="integer" groupName="configuration">
+				<label>44: Night Start time</label>
+				<description>Night start time. Format: HHMM. e.g.08:00 should be sent as 0800.</description>
+				<default>2300</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_45_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>45: Monday morning temp</label>
+				<description>Monday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_46_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>46: Monday day temp</label>
+				<description>Monday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_47_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>47: Monday evening temp</label>
+				<description>Monday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_48_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>48: Monday night temp</label>
+				<description>Monday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_49_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>49: Tuesday morning temp</label>
+				<description>Tuesday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_50_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>50: Tuesday day temp</label>
+				<description>Tuesday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_51_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>51: Tuesday evening temp</label>
+				<description>Tuesday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_52_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>52: Tuesday night temp</label>
+				<description>Tuesday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_53_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>53: Wednesday morning temp</label>
+				<description>Wednesday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_54_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>54: Wednesday day temp</label>
+				<description>Wednesday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_55_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>55: Wednesday evening temp</label>
+				<description>Wednesday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_56_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>56: Wednesday night temp</label>
+				<description>Wednesday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_57_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>57: Thursday morning temp</label>
+				<description>Thursday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_58_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>58: Thursday day temp</label>
+				<description>Thursday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_59_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>59: Thursday evening temp</label>
+				<description>Thursday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_60_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>60: Thursday night temp</label>
+				<description>Thursday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_61_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>61: Friday morning temp</label>
+				<description>Friday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_62_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>62: Friday day temp</label>
+				<description>Friday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_63_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>63: Friday evening temp</label>
+				<description>Friday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_64_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>64: Friday night temp</label>
+				<description>Friday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_65_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>65: Saturday morning temp</label>
+				<description>Saturday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_66_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>66: Saturday day temp</label>
+				<description>Saturday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_67_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>67: Saturday evening temp</label>
+				<description>Saturday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_68_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>68: Saturday night temp</label>
+				<description>Saturday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_69_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>69: Sunday morning temp</label>
+				<description>Sunday morning temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>240</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_70_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>70: Sunday day temp</label>
+				<description>Sunday day temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>200</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_71_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>71: Sunday evening temp</label>
+				<description>Sunday evening temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>230</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_72_2" type="integer" groupName="configuration" min="10" max="370">
+				<label>72: Sunday night temp</label>
+				<description>Sunday night temp. Celsius value * 10 e.g. 22.5 = 225.</description>
+				<default>180</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_141_1" type="integer" groupName="configuration">
+				<label>141: Consumption reporting interval</label>
+				<description>Consumption meter consecutive reporting interval, minutes. The value can be adjusted from 1 min to 120
+					min.</description>
+				<default>10</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_142_1" type="integer" groupName="configuration">
+				<label>142: Consumption Change Report</label>
+				<description>Consumption change to send to controller.</description>
+				<default>1</default>
+				<options>
+					<option value="0">Disabled</option>
+					<option value="1">Enabled</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<parameter name="config_143_1" type="integer" groupName="configuration">
+				<label>143: Sensors reporting interval</label>
+				<description>Sensors consecutive reporting interval, minutes. The value can be adjusted from 1 min to 120 min.
+				</description>
+				<default>10</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_144_1" type="integer" groupName="configuration">
+				<label>144: Temperature difference</label>
+				<description>Temperature difference to send to controller, value X 10</description>
+				<default>2</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_145_1" type="integer" groupName="configuration">
+				<label>145: Humidity difference</label>
+				<description>Humidity difference to send to controller, %</description>
+				<default>2</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_146_1" type="integer" groupName="configuration">
+				<label>146: Light sensor difference</label>
+				<description>Light sensor values difference to send to controller, %</description>
+				<default>50</default>
+				<limitToOptions>false</limitToOptions>
+			</parameter>
+
+			<parameter name="config_171_1" type="integer" groupName="configuration">
+				<label>171: Thermostat Mode</label>
+				<description>Thermostat Mode</description>
+				<default>1</default>
+				<options>
+					<option value="0">No Action</option>
+					<option value="1">COM with Heating &amp; Cooling</option>
+					<option value="2">COM with Heating</option>
+					<option value="3">COM with Cooling</option>
+					<option value="4">TIME with Heating &amp; Cooling</option>
+					<option value="5">TIME with Heating</option>
+					<option value="6">TIME with Cooling</option>
+					<option value="7">ECO with Heating</option>
+					<option value="8">ECO with Cooling</option>
+					<option value="9">Ventilation</option>
+				</options>
+				<limitToOptions>true</limitToOptions>
+			</parameter>
+
+			<!-- ASSOCIATION DEFINITIONS -->
+			<parameter name="group_1" type="text" groupName="association" multiple="true">
+				<label>1: Lifeline</label>
+				<description>Reports full state of the device and used to communicate with the Z-Wave gateway.</description>
+				<multipleLimit>1</multipleLimit>
+			</parameter>
+
+			<parameter name="group_2" type="text" groupName="association" multiple="true">
+				<label>2: Basic Set On/Off: Fan Low Speed (OUT-1)</label>
+				<description><![CDATA[
+is used to turn the associated devices on/off reflecting OUT-1 operation. Max supported nodes: 1. The HE-FT01 sends Basic Set command with value 0 (Off) when the relay goes to OFF state and sends 255 (On) when the relay goes to ON state.
+        ]]></description>
+				<multipleLimit>1</multipleLimit>
+			</parameter>
+
+			<parameter name="group_3" type="text" groupName="association" multiple="true">
+				<label>3: Basic Set On/Off: Fan Low Speed (OUT-2)</label>
+				<description><![CDATA[
+is used to turn the associated devices on/off reflecting OUT-2 operation. Max supported nodes: 1. The HE-FT01 sends Basic Set command with value 0 (Off) when the relay goes to OFF state and sends 255 (On) when the relay goes to ON state.
+        ]]></description>
+				<multipleLimit>1</multipleLimit>
+			</parameter>
+
+			<parameter name="group_4" type="text" groupName="association" multiple="true">
+				<label>4: Basic Set On/Off: Fan Low Speed (OUT-3)</label>
+				<description><![CDATA[
+is used to turn the associated devices on/off reflecting OUT-3 operation. Max supported nodes: 1. The HE-FT01 sends Basic Set command with value 0 (Off) when the relay goes to OFF state and sends 255 (On) when the relay goes to ON state.
+        ]]></description>
+				<multipleLimit>1</multipleLimit>
+			</parameter>
+
+			<parameter name="group_5" type="text" groupName="association" multiple="true">
+				<label>5: Basic Set On/Off: Heater OUT-4</label>
+				<description><![CDATA[
+is used to turn the associated devices on/off reflecting OUT-4 operation. Max supported nodes: 1. The HE-FT01 sends Basic Set command with value 0 (Off) when the relay goes to OFF state and sends 255 (On) when the relay goes to ON state.
+        ]]></description>
+				<multipleLimit>1</multipleLimit>
+			</parameter>
+
+			<parameter name="group_6" type="text" groupName="association" multiple="true">
+				<label>6: Basic Set On/Off: Cooler OUT-5</label>
+				<description><![CDATA[
+is used to turn the associated devices on/off reflecting OUT-5 operation. Max supported nodes: 1. The HE-FT01 sends Basic Set command with value 0 (Off) when the relay goes to OFF state and sends 255 (On) when the relay goes to ON state.
+        ]]></description>
+				<multipleLimit>1</multipleLimit>
+			</parameter>
+
+			<!-- STATIC DEFINITIONS -->
+			<parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+				<label>Node ID</label>
+				<advanced>true</advanced>
+			</parameter>
+
+		</config-description>
+
+	</thing-type>
+
+	<channel-type id="heltun_heft01_thermostat_mode">
+		<item-type>Number</item-type>
+		<label>Thermostat Mode</label>
+		<description>Sets the thermostat mode</description>
+		<category>Temperature</category>
+		<state pattern="%s">
+			<options>
+				<option value="0">Off</option>
+				<option value="1">Heat</option>
+				<option value="2">Cool</option>
+				<option value="3">Auto</option>
+				<option value="6">Fan</option>
+				<option value="10">Auto Changeover</option>
+				<option value="11">Economy Heat</option>
+				<option value="12">Economy Cool</option>
+			</options>
+		</state>
+	</channel-type>
+
+	<channel-type id="heltun_heft01_thermostat_operating_state">
+		<item-type>Number</item-type>
+		<label>Thermostat Operating State</label>
+		<description>The thermostat operating state</description>
+		<category>Temperature</category>
+		<state pattern="%s">
+			<options>
+				<option value="0">Idle</option>
+				<option value="1">Heating</option>
+				<option value="2">Cooling</option>
+				<option value="3">Fan Only</option>
+			</options>
+		</state>
+	</channel-type>
+
+	<channel-type id="heltun_heft01_thermostat_fan_mode">
+		<item-type>Number</item-type>
+		<label>Thermostat Fan Mode</label>
+		<description>Sets the thermostat fan mode</description>
+		<category>Temperature</category>
+		<state pattern="%s">
+			<options>
+				<option value="1">Low</option>
+				<option value="2">Auto High</option>
+				<option value="3">High</option>
+				<option value="4">Auto Medium</option>
+                <option value="5">Medium</option>
+                <option value="128">OFF</option>
+			</options>
+		</state>
+	</channel-type>
+
+	<channel-type id="heltun_heft01_thermostat_fan_state">
+		<item-type>Number</item-type>
+		<label>Thermostat Fan Speed</label>
+		<description>The thermostat fan speed</description>
+		<category>Temperature</category>
+		<state pattern="%s">
+			<options>
+				<option value="0">Idle</option>
+				<option value="1">Low</option>
+				<option value="2">High</option>
+				<option value="3">Medium</option>
+			</options>
+		</state>
+	</channel-type>
+
+	<channel-type id="heltun_heft01_thermostat_setpoint">
+		<item-type>Number:Temperature</item-type>
+		<label>Setpoint</label>
+		<description>Sets the thermostat setpoint</description>
+		<category></category>
+        <state pattern="%.1f %unit%" min="1" max="37" step="0.5"/>
+	</channel-type>
+</thing:thing-descriptions>
