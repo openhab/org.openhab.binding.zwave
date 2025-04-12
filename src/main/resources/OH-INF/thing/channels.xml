@@ -1416,6 +1416,7 @@
         <category>Moisture</category>
         <tags>
             <tag>Measurement</tag>
+            <tag>Moisture</tag>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
