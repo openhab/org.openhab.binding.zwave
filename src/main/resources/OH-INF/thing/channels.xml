@@ -1237,8 +1237,7 @@
         </description>
         <category></category>
         <tags>
-            <tag>Switch</tag>
-            <tag>OnOff</tag>
+            <tag>Status</tag>
         </tags>
         <state readOnly="true">
             <options>
@@ -1666,7 +1665,7 @@
         <category>Switch</category>
         <tags>
             <tag>Switch</tag>
-            <tag>OnOff</tag>
+            <tag>Power</tag>
         </tags>
     </channel-type>
 
