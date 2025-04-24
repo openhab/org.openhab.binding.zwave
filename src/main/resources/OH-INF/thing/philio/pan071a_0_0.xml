@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_pan071a_00_000" listed="false">
     <label>Philio PAN07-1A TWO SPDT Switch module with meter</label>
@@ -11,6 +11,7 @@
 TWO SPDT Switch module with meter<br /> <h1>Overview</h1><p>This in-wall switch module is able to detect Instant power wattage and overload current (6A) of connected light or appliances. When detecting overload state, the Module will be disabled and its On/Off button will be lockout of which LED will flash quickly. However, disconnect and re-connect the Module will reset its overload condition to normal status. </p> <br /> <h2>Inclusion Information</h2><p>Pressing INCLUDE_BUTTON three times within 2 seconds will enter inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing INCLUDE_BUTTON three times within 2 seconds will enter exclusion mode. </p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

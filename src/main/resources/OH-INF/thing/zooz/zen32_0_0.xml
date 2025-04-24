@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen32_00_000" listed="false">
     <label>ZEN32 Scene Controller</label>
@@ -11,6 +11,7 @@
 Scene Controller<br /> <h1>Overview</h1><p><b>Features</b></p><ul><li>Switch button: 15 A relay for Z-Wave on/off control</li><li>4 remote control buttons: trigger scenes and control other devices in your Z-Wave network from this switch</li><li><b>NEW 700 series Z-Wave</b> chip for better range and faster control</li><li><b>Direct 3-Way</b>: works with regular on/off switches in a 3-way</li><li><b>Scene control</b>: trigger actions with multi-tap (select hubs only)</li><li><b>Smart bulb mode</b>: disable relay and control the light via Z-Wave</li><li>Adjustable LED indicator in 4 colors and 3 brightness levels</li><li>S2 Security and SmartStart for easier inclusion</li></ul><p><b>Specifications</b></p><ul><li>Model Number: ZEN32</li><li>Z-Wave Signal Frequency: 908.42 MHz</li><li>Power: 120 VAC, 60 Hz</li><li><b>Maximum Load</b>: 150W LED, 960W Incandescent, 1800W (15A) Resistive, 3A motor (DON'T use with receptacles)</li><li>Range: Up to 500 feet line of sight</li><li>Operating Temperature: 32-104°F (0-40°C)</li><li>Installation and Use: Indoor only<br /></li></ul> <br /> <h2>Inclusion Information</h2><ol><li> Start Z-Wave inclusion.</li><li> Quickly press the switch button 3 times.</li></ol><p>The LED indicator will blink blue to signal communications and turn green for 3 seconds if inclusion is successful or turn red for 3 seconds if the pairing attempt fails.<br /></p> <br /> <h2>Exclusion Information</h2><ol><li> Start Z-Wave exclusion.</li><li>Quickly press the switch button 3 times.</li></ol><p>If successful, the LED will turn green for 3 seconds.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -507,6 +508,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator mode for relay</label>
     <description>LED Indicator mode for relay</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">LED on when relay off, LED off when relay on (default)</option>
@@ -521,6 +526,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator mode for Button 1</label>
     <description>LED Indicator mode for Button 1</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
@@ -535,6 +544,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator mode for Button 2</label>
     <description>LED Indicator mode for Button 2</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
@@ -549,6 +562,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator mode for Button 3</label>
     <description>LED Indicator mode for Button 3</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
@@ -563,6 +580,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator mode for Button 4</label>
     <description>LED Indicator mode for Button 4</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">LED on when dimmer off, LED off when dimmer on (default)</option>
@@ -577,6 +598,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator color for relay</label>
     <description>LED Indicator color for relay</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">white (default)</option>
@@ -591,6 +616,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator color for Button 1</label>
     <description>LED Indicator color for Button 1</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">white (default)</option>
@@ -605,6 +634,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator color for Button 2</label>
     <description>LED Indicator color for Button 2</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">white (default)</option>
@@ -619,6 +652,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator color for Button 3</label>
     <description>LED Indicator color for Button 3</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">white (default)</option>
@@ -633,6 +670,10 @@ Multilevel<br /> <h1>Overview</h1><p>Small button #4 multilevel (held) &gt; in s
     <item-type>Number</item-type>
     <label>LED Indicator color for Button 4</label>
     <description>LED Indicator color for Button 4</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">white (default)</option>

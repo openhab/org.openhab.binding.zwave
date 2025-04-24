@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="tkb_tsm10_00_000" listed="false">
     <label>TSM10 Door/Window Sensor</label>
@@ -11,6 +11,7 @@
 Door/Window Sensor<br /> <h1>Overview</h1><p>A slim door/window sensor.</p> <br /> <h2>Inclusion Information</h2><p>Once the Z-Wave controller has entered inclusion mode, pressing tamper key on the TSM10 three times within 1.5 seconds will enter inclusion mode.<br />LED will twinkle to indicate success.</p> <br /> <h2>Exclusion Information</h2><p>Once the Z-Wave controller has entered exclusion mode, pressing tamper key on the TSM10 three times within 1.5 seconds will enter exclusion mode.<br />LED will twinkle to indicate success. Once excluded  LED will flash one second on, one second off.</p> <br /> <h2>Wakeup Information</h2><p>When the power on, the device will wake about 10 seconds. In this duration, the controller can communicate with the device. Normally the device is always sleeping to save the battery energy.</p>
     ]]></description>
     <category>Door</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

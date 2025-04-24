@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_zw139_00_000" listed="false">
     <label>ZW139 Nano Switch Gen5 (without meter)</label>
@@ -11,6 +11,7 @@
 Nano Switch Gen5 (without meter)<br /> <h1>Overview</h1><p>Once installed behind a switch or socket, Nano Switch offers unparalleled wireless control via Z-Wave Plus. It lets you control, automate, and monitor</p> <br /> <h2>Inclusion Information</h2><ol><li>Power on your Dual Nano Switch, the RGB LED will be colorful gradient status.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action button.</li> <li>If the inclusion is successful, the LED will be solid. Otherwise, the LED will remain colorful gradient status, in which you need to repeat the process from step 2.  </li> </ol><p><strong>Add Dual Nano Switch into a secure Z-Wave network: </strong></p> <ol><li>Power on your Dual Nano Switch, the RGB LED will be colorful gradient status.</li> <li>Let the secure primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Quick press the Action button 2 times.If the inclusion is successful, the LED will be solid. Otherwise, the LED will remain colorful gradient status, in which you need to repeat the process from step 2. </li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Power on your Dual Nano Switch, the RGB LED will be solid.</li> <li>Let the primary controller into remove mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action button.</li> <li>If the remove is successful, the LED will blink slowly and then be colorful gradient status. If the LED still is solid, please repeat the process from step 2.</li> </ol><p><strong>Remove Dual Nano Switch from a Z-Wave network: </strong></p> <ol><li>Power on your Dual Nano Switch, the LED will be solid.</li> <li>Let the primary controller into remove mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action button.</li> <li>If the remove is successful, the LED will be colorful gradient status. If the LED is still solid, please repeat the process from step 2.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

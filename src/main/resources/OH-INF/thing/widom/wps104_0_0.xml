@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="widom_wps104_00_000" listed="false">
     <label>WPS104 Energy Driven Switch</label>
@@ -11,6 +11,7 @@
 Energy Driven Switch<br /> <h1>Overview</h1><p>WiDom Energy Driven Switch is a device designed to monitor all <b>parameters</b>, <b>usage</b>, <b>faults</b> and <b>overloads </b>of your electrical system. Unlike an ordinary energy meter, WiDom Energy Driven Switch can be installed to monitor an entire electricity network or a section of the latter.</p> <p>·         <b>Active Energy-saving management</b></p> <p>Automatically connects and disconnects a specific load if the established threshold limit is exceeded, or supplies the required power, momentarily excluding non-priority loads.</p> <p>·         <b>Management and prevention of electrical faults </b></p> <p>Identifies malfunctions based on irregular consumptions and to the maximum time of activity.</p> <p>·         <b>Electrical overload management </b></p> <p>Notifies or disconnects non-priority loads in the eventuality of system overloads.</p> <br /> <h2>Inclusion Information</h2><p>If the device is not included into a Z-Wave network, a single click on the (B) button or on the external switch will launch the process of traditional inclusion. If the device inclusion procedure does not start within 2 seconds, the Network Wide Inclusion network will be launched lasting a variable amount of time between 15-30 seconds</p> <br /> <h2>Exclusion Information</h2><p>Only a controller can remove a device from the network. WiDom Energy Driven Switch is compatible with all Z-Wave certified controllers. After the exclusion procedure has been activated by the controller, the device can be removed, putting it in <i>Exclusion</i> <i>Mode</i> by three consecutive clicks on the (B) button or on the external switch, when available.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

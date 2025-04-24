@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgms001_03_002" listed="false">
     <label>FGMS001 Motion Sensor</label>
@@ -11,6 +11,7 @@
 Motion Sensor<br /> <h1>Overview</h1><p>FIBARO Motion Sensor is a universal Z-Wave multi-sensor. Along with detecting motion the device measures the temperature and light intensity. The sensor has a built-in accelerometer to detect any tampering of the device. FIBARO Motion Sensor is battery powered device and designed to be installed quickly and easily on any surface.</p> <p>The LED indicator signals motion, temperature level, operating mode and can be used to see if device is within the Z-Wave network. The motion sensor can be used for lighting scenes and presence monitoring systems.</p> <br /> <h2>Inclusion Information</h2><p>Quickly, three times press the B-button</p> <br /> <h2>Exclusion Information</h2><p>Quickly, three times press the B-button</p> <br /> <h2>Wakeup Information</h2><p>Press the B-button once</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

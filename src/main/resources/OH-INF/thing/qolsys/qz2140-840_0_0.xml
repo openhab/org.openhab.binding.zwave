@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="qolsys_qz2140-840_00_000" listed="false">
     <label>QZ2140-840 IQ Dimmer (PD-100)</label>
@@ -11,6 +11,7 @@
 IQ Dimmer (PD-100)<br /> <h1>Overview</h1><p>The IQ Dimmer is plug in lamp module that allows you control a lamp on, off or any degree in between. It plugs into any standard outlet and acts as a repeater to strengthen the performance of your Z-Wave network.</p> <br /> <h2>Inclusion Information</h2><p>1. Place your network controller into inclusion mode by following the controller manufacturer's instructions.</p><p>2. When the controller is ready, single press the button on the front of the IQ Dimmer. </p> <br /> <h2>Exclusion Information</h2><p>1. Place your network controller into exclusion mode by following the controller manufacturer's instructions.</p><p>2. When the controller is ready, single press the button on the front of the IQ Dimmer. </p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

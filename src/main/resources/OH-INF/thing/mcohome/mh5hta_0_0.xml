@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="mcohome_mh5hta_00_000" listed="false">
     <label>MH5H-TA Dual Control System Thermostat</label>
@@ -11,6 +11,7 @@
 Dual Control System Thermostat<br /> <h1>Overview</h1><p>MH5H-TA dual control system thermostat is a Z-wave (800 series) enabled device for indoor temperature control. It is mainly applied to a heat pump air-conditioning system with fan coil and floor heating control.</p> <br /> <h2>Inclusion Information</h2><p>Under normal display, long press "^" and "fan symbol" to enter interface for inclusion or exclusion of Z-wave network. Before device included into network, "---" will display on the screen. Then press M once, device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds. <br /><br />A node ID can always inform us whether the device is in the network or not.</p> <br /> <h2>Exclusion Information</h2><p>Follow the same steps for inclusion to exclude the device from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -262,6 +263,10 @@ Reports all changes to the nodes in the group<br /> <h1>Overview</h1><p>Changes 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -277,6 +282,10 @@ Reports all changes to the nodes in the group<br /> <h1>Overview</h1><p>Changes 
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -286,6 +295,10 @@ Reports all changes to the nodes in the group<br /> <h1>Overview</h1><p>Changes 
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="2">High</option>

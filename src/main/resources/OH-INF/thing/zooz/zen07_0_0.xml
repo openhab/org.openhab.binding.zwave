@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen07_00_000" listed="false">
     <label>ZEN07 Mini Plug</label>
@@ -11,6 +11,7 @@
 Mini Plug<br /> <h1>Overview</h1><p>You have picked the finest solution for your smart home, congratulations! Now it's time to enjoy these great features of your new Mini Plug:</p> <ul><li>Wireless and manual on / off control of floor lamps and small appliances</li> <li>Energy monitoring in live mode or over time (your Z-Wave gateway needs to support this feature)</li> <li>Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller</li> <li>Advanced configuration to customize LED indicator display and Z-Wave button functionality</li> <li>Automatic status recovery after power outage</li> <li>Timer option to turn off the device automatically (your Z-Wave gateway needs to support this feature)</li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication</li> <li>Built-in range extender for a stronger, more reliable network</li> <li>Super small size – easily fits two in a standard double receptacle</li> </ul> <br /> <h2>Inclusion Information</h2><p>Press and release the Z-Wave button on the Mini Plug 3 TIMES quickly.</p> <p>The LED indicator will flash green. It will turn solid green once the process has been completed</p> <br /> <h2>Exclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES quickly. The LED indicator will flash pink</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

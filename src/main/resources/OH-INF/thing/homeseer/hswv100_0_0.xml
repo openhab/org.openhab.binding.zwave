@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="homeseer_hswv100_00_000" listed="false">
     <label>HS-WV100+ Z-Wave water valve controller</label>
@@ -11,6 +11,7 @@
 Z-Wave water valve controller<br /> <h1>Overview</h1><p>HS-WV100+ is a valve controller system that is designed to control the flow of water when Z-Wave commands are received. It may be used with compatible home automation systems (and sensors) to mitigate water damage when leaks are detected. It may also be used for a variety of other automated or remotely controlled water or irrigation needs. </p> <br /> <h2>Inclusion Information</h2><ol><li>Put your home automation controller into ‘inclusion’ mode. Consult your system’s manual for details.</li> <li>Press the “program” button on the water valve controller unit. Wait for the process to finish.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put your home automation controller into ‘exclusion’ mode. Consult your system’s manual for details.</li> <li>Press the “program” button on the water valve controller unit. Wait for the process to finish</li> </ol>
     ]]></description>
     <category>Valve</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

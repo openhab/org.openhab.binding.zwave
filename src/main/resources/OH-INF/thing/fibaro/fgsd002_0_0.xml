@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgsd002_00_000" listed="false">
     <label>FGSD002 Smoke Detector</label>
@@ -11,6 +11,7 @@
 Smoke Detector<br /> <h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, optical Z-Wave smoke detector. Fire alarm is signaled by sound, visual indicator blinking and by sending Z-Wave alarm and control commands</p> <br /> <h2>Inclusion Information</h2><ol><li>Install the battery. Visual indicator will signal the Z-Wave network inclusion status (red - device ready for inclusion, green - device included, remove firstly - see p. II).</li> <li>Make sure the device is located within direct range of the Z-Wave controller.</li> <li>Set the main controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the B-button, located on Fibaro Smoke Sensor’s casing.</li> <li>Fibaro Smoke Sensor will be detected and included in the Z-Wave network</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the sensor is connected to battery.</li> <li>Set the main controller into the learning mode (see main controller’s operating manual)</li> <li>Quickly, triple click the B-button, located on Fibaro Smoke Sensor’s casing.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Click the B-button once.</p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

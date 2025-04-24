@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="vemmio_mt100_00_000" listed="false">
     <label>MT-100 Motion and Light Mini Sensor</label>
@@ -11,6 +11,7 @@
 Motion and Light Mini Sensor<br /> <h1>Overview</h1><p>Motion Mini Sensor provides accurate motion and illumination level detection. When integrated with your controller - wireless notifications, low battery alerts, custom automation scenarios based on both light and motion triggers become available. For example, when motion is detected, the controller will send an alert to any smartphone, set off an alarm or trigger a lighting scene. The sensor works with any Z-Wave-certified controller </p> <p>Wireless standard Z-Wave Plus Frequency 868.40 MHz Network range 30 m line of sight Operating temperature 0°C ~ 40°C Illumination measurement range 0 ~ 8500 lux Movement Sensor Measurement range 6 m Battery CR123A 3V Battery &gt;2 years, low power indication.</p> <p>Factory reset: press and hold the Z-Wave button for at least 10 seconds until the LED indicator flashes once (it may then flash 5 times to indicate the device is no longer part of Z-Wave network). Release the button.</p> <br /> <h2>Inclusion Information</h2><p>When prompted by the controller, press quickly one of the Z-wave button 3 times in a row. The sensor should be included in 5 seconds. The sensor should appear on your controller’s device list.</p> <br /> <h2>Exclusion Information</h2><p>When prompted by the controller, press quickly one of the Z-wave button 3 times in a row. The sensor should be excluded in 5 seconds. The sensor should appear on your controller’s device list.</p> <br /> <h2>Wakeup Information</h2><p>You can press the button once to wake up the device and send wakeup notification to controller -the LED will flash once.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

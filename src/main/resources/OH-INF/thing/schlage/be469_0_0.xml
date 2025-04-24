@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="schlage_be469_00_000" listed="false">
     <label>BE469 Touchscreen Deadbolt</label>
@@ -11,6 +11,7 @@
 Touchscreen Deadbolt<br /> <h1>Overview</h1><p>Touchscreen Deadbolt with Alarm</p> <br /> <h2>Inclusion Information</h2><p>Extend the bolt on the lock and then perform the following:</p> <p>Enter 6 Digit Programming Code, then press 0. There will be a green check mark if enrolled or a red X if not enrolled<br /><br />To verify enrollment:<br />1. Remove the battery cover. See Replacing the Batteries on page 4 of the User Guide.<br />2. Disconnect the battery connector.<br />3. While watching the inside Schlage button, reconnect the battery connector.<br />4. The inside Schlage button will blink if the lock is enrolled.</p> <br /> <h2>Exclusion Information</h2><p>Same as inclusion</p> <br /> <h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_pab01_00_000" listed="false">
     <label>ZIP-PAB01 Zipato Micromodule Energy Meter</label>
@@ -11,6 +11,7 @@
 Zipato Micromodule Energy Meter<br /> <h1>Overview</h1><p>Zipato Energy Meter monitors total electricity consumption of connected appliances and reports it to Zipato or any other Z-Wave enabled controller in real time. Small and compact size allows easy installation in majority of electricity distribution boxes. It supports two loads up to 6000W each (@ 120V)</p> <br /> <h2>Inclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

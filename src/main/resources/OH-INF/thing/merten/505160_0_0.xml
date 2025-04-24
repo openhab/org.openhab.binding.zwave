@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="merten_505160_00_000" listed="false">
     <label>5071xx Radio Push-button CONNECT, 1 button</label>
@@ -11,6 +11,7 @@
 Radio Push-button CONNECT, 1 button<br /> <h1>Overview</h1><p>Single-surface push-button: Top button: Association Group = 1 Parameter no. = 0 Bottom button: Association Group = 2 Parameter no. = 1</p> <br /> <h2>Inclusion Information</h2><p>Triple click on operating surface LED flashes approx. 6 seconds. Used for include/exclude the device by the primary</p> <br /> <h2>Exclusion Information</h2><p>Triple click on operating surface LED flashes approx. 6 seconds. Used for include/exclude the device by the primary</p> <br /> <h2>Wakeup Information</h2><p>Triple click on operating surface LED flashes approx. 6 seconds.</p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

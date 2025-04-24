@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="innovus_smartpower_00_000" listed="false">
     <label>SmartPower RAone SmartPower</label>
@@ -11,6 +11,7 @@
 RAone SmartPower<br /> <h1>Overview</h1><p>For the further reduction of energy consumption INNOVUS offers "RAone SmartPower". This module is an on / off module, which is used in particular to reduce the energy consumption of devices that unnecessarily consume power in "stand-by mode". This module also has a fingertip panel and is also equipped with an internal power meter. </p> <br /> <h2>Inclusion Information</h2><p>The device is put into learn mode by touching the touchplate.</p> <br /> <h2>Exclusion Information</h2><p>The device is put into learn mode by touching the touchplate.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

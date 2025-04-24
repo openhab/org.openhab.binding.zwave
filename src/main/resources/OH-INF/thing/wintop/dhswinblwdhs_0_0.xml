@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="wintop_dhswinblwdhs_00_000" listed="false">
     <label>DHS-WIN-BLW-DHS Blind controller</label>
@@ -11,6 +11,7 @@
 Blind controller<br /> <h1>Overview</h1><p>The DHS Z-Wave AC Motor Shutter Controller DHS-WIN-BLW-DHS is Z-Wave Shutter device specifically designed for use in smart homes and offices. </p> <p>The product allows to operate roller blinds/shutters wirelessly using a Z-wave enabled (AUS/NZ version 921.42 MHz) controllers (compatible universal remote controllers, control panels, gateways, PC with Z-Wave USB dongle) or manually via connected manual switch.</p> <p>The shutter controller can act as a wireless repeater to ensure that commands intended for another device in the network are received. This is useful to eliminate “RF deadspots” when the radio range of the Z-Wave network is influenced. This function is part of the Z-Wave network functionality and is set up via Z-Wave controller.</p> <br /> <h2>Inclusion Information</h2><ol><li>Connect the Z-Wave Shutter Controller to the motor, power circuits and to the manual switches as per instructions in the section INSTALLATION above.</li> <li>When the Shutter Controller is not yet included in a Z-Wave network, NWI works for 30 seconds when the Shutter Controller is power ON. Make sure your Z-Wave Gateway is in the correct operating mode (inclusion). To include/exclude press 5 times any connected buttons. During the whole procedure controller (Gateway) and Z-Wave Shutter Controller must be in close proximity of 3 m. Successful inclusion will be indicated by your Z-Wave remote controller (Gateway). In case inclusion was not successful, try the procedure again or reset network settings by running exclusion procedure (see below).</li> <li>Once the Z-Wave Shutter Controller has been added into your Z-Wave home network successfully, you may need to assign it to a speciö c button on your controller (Gateway). Refer to your Z-Wave controller (Gateway) / panel for instructions on how to do this.</li> <li>Now, you can control your lamp via your Z-Wave Gateway or other controller</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Install Connect the Z-Wave Shutter Controller to the load, power circuits and to the manual switch as per instructions in the section INSTALLATION above.</li> <li>Start exclusion procedure on your controller and when requested press and release any connected button 5 times. During the whole procedure the controller and Z-Wave Shutter Controller must be close proximity of not more then 3 m.</li> <li>Successful exclusion will be indicated by your Z-Wave remote controller. LED on the Z-Wave Shutter Controller will start slow blinking. In case exclusion was not successful, try the procedure again.</li> </ol>
     ]]></description>
     <category>Blinds</category>
+    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

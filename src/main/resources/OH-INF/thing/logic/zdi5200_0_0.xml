@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="logic_zdi5200_00_000" listed="false">
     <label>Dimmy ZDI5200 Universal light dimmer</label>
@@ -11,6 +11,7 @@
 Universal light dimmer<br /> <h1>Overview</h1><p>DIMMY type ZDI5200 is a Z-Wave light dimmer with power metering, the module is designed to be installed in, for example, lamp outlets and thereby making the connected lamp dimmable through the Z-Wave network.</p> <p>The DIMMY module can dim all kind of dimmable light sources from 0 - 250W.</p> <p>The built-in power metering can measure the power consumption of the connected load as low as 2W and the metering data, both Watt and kWh, are reported to the Z-Wave Controller.</p> <p>DIMMY is controlled via Z-Wave commands, for example by Logic Group MATRIX wall switches, and is able to send status-reports back to the switches and thereby be a part of a multi-way switching configuration, where several switches can control the DIMMY module and the switches receives reports about the actual status of the module.</p> <p>DIMMY is also working as a repeater in the Z-Wave network and therefore expands the Z-Wave network coverage.</p> <p>DIMMY is a single channel device, which means that all associations to DIMMY must be made as single channel associations.</p> <br /> <h2>Inclusion Information</h2><p>Add DIMMY to a network with Classic Inclusion by triple-pressing on the switch shaped as a power symbol (I) (Figure 4). The LED inside the module will start blinking.</p> <p>If DIMMY already belongs to a Z-Wave network, the remove process must be performed before adding it in a new network. Otherwise, the adding of the device will fail.</p> <br /> <h2>Exclusion Information</h2><p>Remove DIMMY from a network by triple-pressing on the switch shaped as a power symbol (I) (Figure 4). The LED inside the module will start blinking.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="trane_azemt500bb32ma_00_000" listed="false">
     <label>AZEMT500BB32MA American Standard Z-Wave Programmable Thermostat</label>
@@ -11,6 +11,7 @@
 American Standard Z-Wave Programmable Thermostat<br /> <h1>Overview</h1><p>T500B Z-Wave Thermostat. The ComfortLink™ control is an innovative product that is compatible with Trane products as well as any other brand of standard central heating and air conditioning systems. It works through the Nexia™ Home Intelligence system</p> <br /> <h2>Inclusion Information</h2><p>Press the MENU button on the thermostat.<br />Scroll down to Z Wave Install, and press the Select button.<br />Press the Yes button to enroll the thermostat.</p> <br /> <h2>Exclusion Information</h2><p>Press the MENU button on the thermostat.<br />Scroll down to Z-Wave Install and press the Select button.<br />Press the Yes button to exclude the thermostat.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -132,6 +133,10 @@ American Standard Z-Wave Programmable Thermostat<br /> <h1>Overview</h1><p>T500B
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -147,6 +152,10 @@ American Standard Z-Wave Programmable Thermostat<br /> <h1>Overview</h1><p>T500B
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -160,6 +169,10 @@ American Standard Z-Wave Programmable Thermostat<br /> <h1>Overview</h1><p>T500B
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

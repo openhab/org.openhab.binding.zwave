@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_pan34_00_000" listed="false">
     <label>PAN34 In Wall Roller Shutter Controller</label>
@@ -11,6 +11,7 @@
 In Wall Roller Shutter Controller<br /> <h1>Overview</h1><p>The in-wall Roller Shutter Controller is designed to switch rise/lower roller shutter connected to its terminals using radio waves, controllers and a push button directly connected to this Roller Controller. This in-wall Roller Shutter Controller is a Z-Wave Plus enabled wireless device fully compatible with any Z-Wave enabled networks.<br /></p> <br /> <h2>Inclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter inclusion mode.<br /></p> <br /> <h2>Exclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
+    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

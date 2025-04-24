@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="yale_yrl220_00_000" listed="false">
     <label>YRL220 Yale Real Living Touchscreen Lever Lock</label>
@@ -11,6 +11,7 @@
 Yale Real Living Touchscreen Lever Lock<br /> <h1>Overview</h1><p>The Yale Real Living™ Stand-alone Touchscreen Lever Lock combines a robust lockset with a contemporary electronic aesthetic.</p> <p>Users benefit from an interactive touchscreen that makes day-to-day access effortless, as well as offering voice-guided programming for simple updates to user information in the event of staffing changes or security breaches. Yale Real Living™ is engineered for quick and easy installation and fits in place of a standard deadbolt lock door prep</p> <br /> <h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 1, then #</li> </ol><p>The lock will now be in inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual:</p> <ol><li>Touch the lock screen to activate</li> <li>Enter the master pin and press #</li> <li>Press 7, then #</li> <li>Press 3, then #</li> </ol><p>The lock will now be in exclusion mode.</p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

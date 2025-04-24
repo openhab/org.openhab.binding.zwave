@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsc26_00_000" listed="false">
     <label>DSC26 Micro Switch G2</label>
@@ -11,6 +11,7 @@
 Micro Switch G2<br /> <h1>Overview</h1><p>Relay based unit designed to be included inside a junction box to switch a load.  Supports external switch.</p> <br /> <h2>Inclusion Information</h2><p>Push case button.</p> <p>External switch (if attached) can be toggled 10X quickly to include/exclude.</p> <br /> <h2>Exclusion Information</h2><p>Push case button.</p> <p>External switch (if attached) can be toggled 10X quickly to include/exclude.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

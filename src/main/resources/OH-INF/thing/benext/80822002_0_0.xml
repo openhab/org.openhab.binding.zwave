@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="benext_80822002_00_000" listed="false">
     <label>Panic Button Keyfob with red panic button, lock button and unlock button (BEN_80822002)</label>
@@ -11,6 +11,7 @@
 Keyfob with red panic button, lock button and unlock button (BEN_80822002)<br /> <h1>Overview</h1><p>The BeNext Panic Button is a small panic button meant for wearing as a necklace. It has a big red SOS button, and a lock and unlock button. In newer versions, the buttons are colored. <br />The device is only available in the EU region. </p> <br /> <h2>Inclusion Information</h2><ol><li>Press and hold the red SOS button 2 seconds until the LED starts blinking.<br /></li><li>Release the button.</li><li>The LED blinks 2 times every second indicating the inclusion process is going on.</li><li>When included succesfully, the LED is on for one second.</li></ol><p>When classic inclusion fails, network wide inclusion will be tried. </p><p>Inclusion usually takes a few minutes, but sometimes last longer, up to some hours. In the last case, manually wake up the devices several times (by pressing the red SOS button for 5 seconds), until the configuration is finished.</p> <br /> <h2>Exclusion Information</h2><ol><li>Press and hold the red SOS button (5 to 10 seconds) until the LED starts blinking triple every 1,5 second. </li><li>Then release the button.</li><li>The LED blinks 3 times every 1,5 second indicating the exclusion process is going on.</li><li>When excluded successfully, the LED is on for one second. </li></ol> <br /> <h2>Wakeup Information</h2><p>Hold the red SOS Button for approximately 5 seconds. As a side effect, the SOS alarm will be toggled.</p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -115,7 +116,8 @@ Minimum time the control buttons must be pressed before a message is sent<br /> 
       <parameter name="config_6_1" type="integer" groupName="configuration">
         <label>6: Min LED on time after control</label>
         <description><![CDATA[
-Minimum time that LED will be on after a control message<br /> <h1>Overview</h1><p>The time the LED will be on after a control message has been sent out. Unit is 10 ms, so for instance 100 is 1 second.</p><p>In case of 0, LED will be on while sending the message<br />In case of 1 - 255, LED will be on during send time + <i>this value </i>* 10 ms.<br /><br /> Default is 50 (500 ms)</p>
+Minimum time that LED will be on after a control message<br /> <h1>Overview</h1><p>The time the LED will be on after a control message has been sent out. Unit is 10 ms, so for instance 100 is 1 second.</p><p>In case of 0, LED will be on while sending the message<br />In case of 1 - 255, LED will be on during send time + <i>this value </i>* 10 ms.<br /><br />
+Default is 50 (500 ms)</p>
         ]]></description>
         <default>50</default>
         <limitToOptions>false</limitToOptions>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="yale_yrd110_00_000" listed="false">
     <label>YRD110 Yale button deadbolt without keyway</label>
@@ -11,6 +11,7 @@
 Yale button deadbolt without keyway<br /> <h1>Overview</h1><p>Security Keyless Push Button Stand Alone Deadbolt.</p> <br /> <h2>Inclusion Information</h2><p>To enroll using the Z-Wave button:</p> <ol><li>Remove the battery cover</li> <li>Press the Z-Wave button and hold until the lock beeps two times</li> <li>Release the button to start network joining</li> <li>Replace the battery conver</li> </ol> <br /> <h2>Exclusion Information</h2><p>To remove the lock using the Z-Wave button:</p> <ol><li>Remove the battery cover</li> <li>Press the Z-Wave button and hold until the lock beeps five times</li> <li>Release the button to start network removal</li> <li>Replace the battery cover</li> </ol>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

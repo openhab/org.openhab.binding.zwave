@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="cooper_rf9642_00_000" listed="false">
     <label>RF9642 Z-Wave Plus smart accessory dimmer</label>
@@ -11,6 +11,7 @@
 Z-Wave Plus smart accessory dimmer<br /> <h1>Overview</h1><p>Z-Wave Plus accessory dimmers can be paired with Z-Wave Plus universal smart dimmers to provide multi-location ON/OFF/BRIGHT/DIM control for up to (5) locations. These are ideal when there’s no traveler wire between the two locations in a 3-way application. Z-Wave Plus accessories will need to be associated with the load controlling dimmer using a compatible Z-Wave compliant controller Compatible with Z-Wave Plus universal dimmers (RF9640-N, RF9643-N) for wireless 3-way control, eliminating the need for traditional 3-way wiring or dedicated traveler wire</p> <br /> <h2>Inclusion Information</h2><p>Put the controller into inclusion mode, press the Install button once</p> <br /> <h2>Exclusion Information</h2><p>Put the controller into exclusion mode, press the Install button once</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -166,6 +167,10 @@ Z-Wave Plus smart accessory dimmer<br /> <h1>Overview</h1><p>Z-Wave Plus accesso
   <channel-type id="cooper_rf9642_00_000_config_decimal_param7">
     <item-type>Number</item-type>
     <label>Dimmer Ramp Time</label>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

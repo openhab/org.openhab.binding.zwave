@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgbs001_00_000" listed="false">
     <label>FGBS001 Universal Binary Sensor</label>
@@ -11,6 +11,7 @@
 Universal Binary Sensor<br /> <h1>Overview</h1><p>The Universal Binary Sensor is a wireless module that makes it possible to improve the functionality of any sensor with a binary output by allowing it to communicate with Z-WAVE.<br />The module allows for wireless communication between the system and the DS18B20 temperature sensors. The device can service up to two binary sensors and up to four DS18B20 temperature sensors.</p> <br /> <h2>Inclusion Information</h2><p>The Fibaro Sensor is added to the network by quickly pressing the B button three times (the button is located in the center of the device).</p> <p><strong>Note:</strong> Every time when any changes are made to the configuration of TP and TD lines (1-wire), e.g. when DS18B20 sensor(s) is (are) included/excluded, it is necessary to execute the procedure of exclusion and repeated inclusion of the sensor module to the central hub. It should be remembered that the system shall enter into the programming mode only once all the connected sensors have been detected (about 10 s).</p> <br /> <h2>Exclusion Information</h2><p>The Fibaro Sensor is removed from the network by quickly pressing the B button three times (the button is located in the center of the device).</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

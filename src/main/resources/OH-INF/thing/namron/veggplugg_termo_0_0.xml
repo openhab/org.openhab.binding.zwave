@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="namron_veggplugg_termo_00_000" listed="false">
     <label>4512725 Smart plug with thermostat</label>
@@ -11,6 +11,7 @@
 Smart plug with thermostat<br /> <h1>Overview</h1><p>Z-Wave Smart Plug</p> <br /> <h2>Inclusion Information</h2><p>Press action button three times.</p> <br /> <h2>Exclusion Information</h2><p>Press action button three times. Pressing the action button for 10 seconds will do a factory reset, which will reset any Z-Wave inclusions.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -270,6 +271,10 @@ Current protection threshold; 10..16 Amperes, 0 to disable<br /> <h1>Overview</h
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

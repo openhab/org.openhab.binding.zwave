@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_pst02b_00_000" listed="false">
     <label>PST02B Slim Multi-Sensor (PIR/Temperature/Illumination)</label>
@@ -11,6 +11,7 @@
 Slim Multi-Sensor (PIR/Temperature/Illumination)<br /> <h1>Overview</h1><p>The slim multisensor PST02 has PIR, temperature and illumination, 3 sensors function in one, based on Z-WaveTM technology.</p> <br /> <h2>Inclusion Information</h2><p>Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</p> <br /> <h2>Wakeup Information</h2><p>If the user want to wake-up the device immediately, please remove the front cover, and press the tamper key once. The device will wake-up 10 seconds. </p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

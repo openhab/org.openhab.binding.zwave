@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_zw100_00_000" listed="false">
     <label>ZW100 MultiSensor 6</label>
@@ -11,6 +11,7 @@
 MultiSensor 6<br /> <h1>Overview</h1><p>Technical Specifications</p> <ul><li>Battery or USB powered PIR motion sensor, operating distance: Up to 500 feet/150 metres outdoors.</li> <li>Operating temperature: 0°C to 40°C</li> <li>Relative humidity: 8% RH to 80% RH</li> </ul> <br /> <h2>Inclusion Information</h2><p>Click one time:</p> <ul><li>Send non-security Node Info Frame</li> <li>Add MultiSensor into Z-wave network (non security inclusion)</li> </ul><p>Short press 2 times within 1 second:</p> <ul><li>Send Security Node Info Frame</li> <li>Add Multisensor into Z-Wave network (security inclusion)</li> </ul> <br /> <h2>Exclusion Information</h2><p>Click one time:</p> <ul><li>Send non-security Node Info Frame</li> <li>Remove MultiSensor from Z-wave network</li> </ul><p>Short press 2 times within 1 second:</p> <ul><li>Send Security Node Info Frame</li> <li>Remove MultiSensor from network</li> </ul> <br /> <h2>Wakeup Information</h2><p>Click one time:</p> <ul><li>Send non-security Node Info Frame</li> </ul><p>Short press 2 times within 1 second:</p> <ul><li>Send Security Node Info Frame</li> </ul>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

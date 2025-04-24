@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sunricher_rob1000171_00_000" listed="false">
     <label>ROB_100-017-1 ROBB Smart Wallplug 3680Watt</label>
@@ -11,6 +11,7 @@
 ROBB Smart Wallplug 3680Watt<br /> <h1>Overview</h1><p>Zwave Smart Plug. The Device supports metering functions (voltage, current, energy consumption and power). It also supports thermostat's Heat mode, Energy Heat mode, OFF mode. The device cannot act as as network controller (primary or secondary) and wil allways need a Z-Wave network controller to be included into a Z-Wave network.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Set the primary controller into inclusion mode (Please refer to your primary controllers manual on how to turn your controller into inclusion).</li><li>Power on the smart plug, make sure it does not belong to any Z-Wave network. There are two methods to set the smart plug into inclusion mode:</li><li>Repower the smart plug, it will be set into inclusion mode automatically, and wait to be included<ol><li>Triple press the action button on the smart plug, it will set the plug into inclusion mode. The LED indicator will flash white fast then stay solid white for 3 seconds to indicate successful inclusion. lf there is no Z-Wave network available, the LED indicator will flash white fast for 30 seconds and the plug will quit inclusion mode automatically.</li></ol></li></ol><p>(Note: When using S2 encryption mode to include the device, an encrypted key will need to be generated. The LED indicator may not flash, please wait and do not unplug the device.)</p> <br /> <h2>Exclusion Information</h2><p>There are two exclusion methods:</p><p>Method l : Exclusion from the primary controller as follows:</p><ol><li>Set the primary controller into exclusion mode (Please refer to your primary controllers manual on howto set your controller into exclusion).</li><li>Triple press the action button, the smart plug will be set to exclusion mode, the LED indicator will flash white fast and then flash white slowly 3 times to indicate successful exclusion. lf exclusion fails, the LED indicator will flash fast for 30 seconds and the plug will quit exclusion mode automatically.</li></ol><p>There are 3 methods for the smart plug to exit out of “exclusion mode". Once it exits “exclusion mode", the LED light will stop the fast fade-in and fade-out.</p><ol><li>Automatically exits after successful exclusion.</li><li>Exits after 6 second timeout.</li><li>Repowering on the smart plug.</li></ol><p>Method 2: A "Factory reset" of the smart plug will force the device to be excluded from a network (please refer to the part “Factory Reset” of this manual).</p><p>(Note: A "Factory reset" is not recommended for exclusion. Please use this procedure only if the primary controller is missing or otherwise inoperable.)</p><p>Factory Reset:</p><p>Press and hold the action button for over 10 seconds, the LED indicator should stay solid white for 3 seconds to indicate successfull factory reset. Release the action button, the smart plug will restart automatically. If the LED indicator ﬂashes yellow slowly, the device was not included to any network in the first place.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -219,6 +220,10 @@ ROBB Smart Wallplug 3680Watt<br /> <h1>Overview</h1><p>Zwave Smart Plug. The Dev
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

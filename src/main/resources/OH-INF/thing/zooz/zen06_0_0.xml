@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen06_00_000" listed="false">
     <label>ZEN06 Smart Plug with 2 USB ports</label>
@@ -11,6 +11,7 @@
 Smart Plug with 2 USB ports<br /> <h1>Overview</h1><h2>Product features: </h2> <ul><li>Manual and remote on / off control </li> <li>Energy monitoring </li> <li>Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller </li> <li>LED indicator displaying Z-Wave signal strength and power usage </li> <li>Security enabled Z-Wave device with AES signal encryption (requires a security enabled gateway controller for full functionality) </li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication </li> <li>Built-in range extender for a stronger, more reliable network </li> <li>2 USB charging ports for your smart phone or tablet (no Z-Wave functionality) </li> <li>Built-in overload protection in Z-Wave outlet and USB ports </li> </ul><h2>How to read LED indicator colors?</h2> <ul><li>Burgundy = Smart Plug is off</li> <li>Blue = 0 – 300 W</li> <li>Cyan = 300 – 600 W</li> <li>Green = 600 – 900 W</li> <li>Yellow = 900 – 1200 W</li> <li>Red = 1200 – 1500 W</li> <li>Purple = 1500 – 1800 W</li> <li>Purple blink = over 1800 W</li> </ul><h2>How to test Z-Wave network range for my Smart Plug?</h2> <p>You can easily check if the Smart Plug is within your Z-Wave controller’s range.</p> <h3>Here is how:</h3> <p>Press and hold the Z-Wave button for 6 to 9 seconds until the LED indicator turns violet.</p> <p>The LED indicator will then report signal strength.</p> <ul><li>Flashing green = direct communication with the primary controller is established and still being diagnosed</li> <li>Solid green for 2 seconds = direct communication with the primary controller is stable</li> <li>Flashing orange = direct communication with the primary controller is intermittent and being diagnosed</li> <li>Solid orange = communication quality is fair</li> <li>Solid red = communication with the primary controller has failed</li> <li>Press and release the Z-Wave button to exit testing mode.</li> </ul><p>NOTE: This function may only be activated once the Smart Plug has been included to a ZWave network.</p> <br /> <h2>Inclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES QUICKLY</p> <br /> <h2>Exclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES QUICKLY</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

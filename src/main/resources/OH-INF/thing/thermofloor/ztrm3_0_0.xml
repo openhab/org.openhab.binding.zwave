@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="thermofloor_ztrm3_00_000" listed="false">
     <label>HEATIT Z-TRM3 Floor thermostat</label>
@@ -11,6 +11,7 @@
 Floor thermostat<br /> <h1>Overview</h1><h3>FEATURES</h3> <ul><li>Floor sensor</li> <li>Internal room sensor</li> <li>External room sensor (connected by cable)</li> <li>Temperature limiter</li> <li>SmartStart</li> <li>Weekly program/setback via gateway</li> <li>Temperature read out in gateway</li> <li>Firmware update (OTA)</li> <li>Power metering</li> <li>Relay status LED</li> <li>Single pole switch</li> <li>Lock mode/child lock</li> <li>Calibration</li> <li>5 associations</li> <li>Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li> </ul> <br /> <h2>Inclusion Information</h2><p>1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings</p> <br /> <h2>Exclusion Information</h2><p>1. Press Center (confirm) for 10 seconds. The display will show OFF. 2. Press Right (down) 5 times until you see Con on the display.3. Start the add/remove device process in your primary controller.4. Start the add/remove mode in the Heatit Z-TRM3 by pressing Center (confirm) for approximately 2 seconds. Adding/removing mode is indicated on the display by rotating LED segments on the display. This lasts until the timeout occurs after 90 seconds, or until the module has been added/removed in the network. Confirmation will show Inc/EcL on the display. Exit programming mode by choosing ESC in the menu. Your thermostat is now ready for use with default settings.NB! When the thermostat is removed from the gateway, the parameters are not reset. To reset the parameters, see Chapter 7: ”Factory reset”. If adding/removing fails, Err (error) will appear. Please perform a ”remove device” process and try again. If Err displays again, please see Chapter 7: “Factory reset”.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -384,6 +385,10 @@ Meter report delta value<br /> <h1>Overview</h1><p>Delta value in kWh between co
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -397,6 +402,10 @@ Meter report delta value<br /> <h1>Overview</h1><p>Delta value in kWh between co
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="intermatic_ca3500_00_000" listed="false">
     <label>CA3500 15 Amp Split-Duplex Receptacle</label>
@@ -11,6 +11,7 @@
 15 Amp Split-Duplex Receptacle<br /> <h1>Overview</h1><p>In-Wall receptacle (dual, one switched); 15A</p> <br /> <h2>Inclusion Information</h2><p>Press the Activator button.</p> <br /> <h2>Exclusion Information</h2><p>Press the Activator button.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

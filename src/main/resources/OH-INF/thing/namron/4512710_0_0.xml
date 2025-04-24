@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="namron_4512710_00_000" listed="false">
     <label>4512710 Dimmer 400W</label>
@@ -11,6 +11,7 @@
 Dimmer 400W<br /> <h1>Overview</h1><p>Z-wave in-wall dimmer.  400W 1 channel.</p> <br /> <h2>Inclusion Information</h2><ol><li>Set primary controller/gateway into inclusion mode (Please refer to your primary controllers manual on how to turn your controller into inclusion)</li> <li>Power on the In-wall dimmer and set it into inclusion mode. There are ttwo methods to set the In-wall dimmer into inclusion mode: <ol><li>Repower on the dimmer, it will be set into inclusion mode automatically, and waiting to be included.</li> <li>Triple press the action button on the dimmer, it will set the dimmer into inclusion mode.</li> </ol></li> </ol><p>The connected light will stay on for 3 seconds to indicate successful inclusion.</p> <br /> <h2>Exclusion Information</h2><p>There are two exclusion methods:</p> <p>Method 1:</p> <ol><li>Set primarry controller/gateway into exclusion mode(Please refer to your primary controllers manual on how to turn your controller into exclusion)</li> <li>Triple press the action button on the dimmer, the dimmer will be set to exclusion mode, and waiting to be excluded, then the dimmer will be excluded from the network.</li> </ol><p>Method 2:</p> <p>Factory reset the dimmer will force the dimmer to be excluded.</p> <p>Factory reset:</p> <ul><li>Press and hold down the action button for over 10 seconds, the dimmer will be reset to factory defaults. </li> </ul>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

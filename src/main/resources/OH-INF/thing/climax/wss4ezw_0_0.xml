@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="climax_wss4ezw_00_000" listed="false">
     <label>WSS-4E-ZW Smart Scenario Switch</label>
@@ -11,6 +11,7 @@
 Smart Scenario Switch<br /> <h1>Overview</h1><p>WSS-4E-ZW is a Z-Wave Four-Button Scenario Switch designed to control a group of pre-programmed home automation devices by simply pressing the scenario buttons under the same Z-Wave network<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Remove the cover by using a screwdriver.</li><li>Insert the battery then replace the cover.</li><li>Put the Z-Wave control panel into Inclusion mode (please refer to the Z-Wave control panel manual).</li><li>Within 1.5 seconds, press the Function Button 3 times.</li><li>Refer to the operation manual of the Z-Wave gateway or control panel to complete the adding process.</li><li>If the device has already been added (included) into another Z-Wave Gateway/Control Panel, or if the device is unable to be added into the current Z-Wave Gateway/Control Panel, try removing it first (see Removing Device).</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Put the Z-Wave gateway or control panel into Exclusion mode (please refer to the Z-Wave or control panel manual).</li><li>Within 1.5 seconds, press the Function Button 3 times and the device will be removed from the Z-Wave network.</li></ol> <br /> <h2>Wakeup Information</h2><p>This function uses the Z-Wave Wake Up Command Class. The Wake Up Command Class allows the battery-powered Light Switch to notify the Control Panel/Gateway that it is awake and ready to receive any queued commands. The wake up interval time period is programmed automatically according to Control Panel’s setting when The Light Switch is included. The recommended setting of the interval time is between 30 to 60 minutes.<br /></p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

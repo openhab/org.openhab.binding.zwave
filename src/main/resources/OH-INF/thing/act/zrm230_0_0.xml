@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="act_zrm230_00_000" listed="false">
     <label>ZRM230 Wall Switch/Transmitter (2-gang)</label>
@@ -11,6 +11,7 @@
 Wall Switch/Transmitter (2-gang)<br /> <h1>Overview</h1><p>Radio Frequency Controlled, 6A, 230 VAC, European Wall Mounted 3-Way Switch, Dual Switch, Release 1.1  </p> <p>The ZRM230 Wall Mounted 3-Way Switch is a component of the HomePro lighting control system. This Wall Mounted Switch is designed to work with other Z-Wave enabled devices. Z-Wave nodes of other types can be added to the system and will also act as repeaters if they support this function of repeating the signal received to other modules in the system.  </p> <br /> <h2>Inclusion Information</h2><p>Including to the Network (Must be installed in permanent location, not on test bench).<br />1. Setup the controller you are using to include a device into network.<br />2. Tap either the top or bottom of the left switch once  </p> <br /> <h2>Exclusion Information</h2><p>1. Setup the controller you are using to exclude a device from the network.<br />2. Tap either the top or the bottom of the left switch once.  </p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

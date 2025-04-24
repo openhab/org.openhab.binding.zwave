@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ge_14321_00_000" listed="false">
     <label>GE/Jasco 14321 In-Wall Dimmer</label>
@@ -11,6 +11,7 @@
 In-Wall Dimmer<br /> <h1>Overview</h1><p>The Jasco Z-Wave Plus Dimmer Wall Switch (Gen5) enables Z-Wave remote control as well as local control for wired dimmable lighting. The rocker switch provides On/Off and Dim/Brighten control and can be included in multiple automation groups or scenes. A blue LED indicator helps guide you to the switch through the dark.</p><p>Features</p><p>Works with dimmable incandescent CFL and LED lights</p><p>Suitable for single-pole or multi-pole applications</p><p>Can be included in multiple groups or scenes</p><p>"Z-Wave Plus" certified for wide compatibility</p><p>Uses a standard decorative-size wallplate (sold separately)</p> <br /> <h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press and release the top or bottom of the dimmer switch (rocker) to add it in the network.</p> <br /> <h2>Exclusion Information</h2><p>Once the controller is ready to remove your device, press and release the top or bottom of the wireless smart switch (rocker) to remove it from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

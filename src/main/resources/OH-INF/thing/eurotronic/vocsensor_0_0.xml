@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="eurotronic_vocsensor_00_000" listed="false">
     <label>VOC-SENSOR Air Quality Sensor</label>
@@ -11,6 +11,7 @@
 Air Quality Sensor<br /> <h1>Overview</h1><p>Z-Wave sensor in an ultra slim design housing provides comprehensive information on indoor air quality.</p> <p>Based on these information it is possible to always ensure a healthy living climate.</p> <ul><li>Ultra-flat design housing</li><li>Use of high-precision, Swiss sensor technology</li><li>Multicolor LED for signalling ventilation recommendations</li><li>Returns the following values:<ul><li>VOC value (volatile organic compounds) in ppm</li><li>CO2 value (as CO2 equivalent) in ppm</li><li>Temperature (°C) and humidity (%)</li><li>Dew point (°C)</li></ul></li><li>Supports Z-Wave Plus S2 security (encryption)</li><li>Z-Wave repeater function</li><li>Operation with plug-in power supply unit</li></ul> <br /> <h2>Inclusion Information</h2><p>Press the back button three times within 1 second.</p> <p>While the inclusion is active, the LED is blinking green. If the inclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.</p> <br /> <h2>Exclusion Information</h2><p>Press the back button three times within 1 second.</p> <p>While the exclusion is active, the LED is blinking green. If the exclusion was successful the green LED will light up for 5 seconds. Otherwise the red led will light up for 5 seconds to indicate failure.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

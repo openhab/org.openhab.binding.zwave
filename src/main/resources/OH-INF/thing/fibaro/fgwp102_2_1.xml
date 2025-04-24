@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgwp102_02_001" listed="false">
     <label>FGWP102 Metered Wall Plug Switch</label>
@@ -11,6 +11,7 @@
 Metered Wall Plug Switch<br /> <h1>Overview</h1><p>FIBARO Wall Plug is a universal, Z-Wave Plus compatible, remotely controlled outlet adapter. This device may be applied wherever you want to control electrical devices with up to 2500W load.<br /><br />The Wall Plug is equipped with a power and energy metering function. It uses a LED ring to visualize the current load with colour changing illumination and operating mode. This is the smallest and most attractive device of this type available in the world.<br /><br />The Wall Plug may be operated using the B-button located on its casing or via any Z-Wave compatible controller.</p> <br /> <h2>Inclusion Information</h2><p>To add the device to the Z-Wave network:<br /><br />    Plug the device into a socket nearby the main Z-Wave controller.<br />    The LED ring will glow red signalling not being added (reset or remove the device otherwise).<br />    Set the main controller in (security/non-security) add mode (see the controller’s manual).<br />    Quickly, triple click the B-button located on the casing.<br />    Wait for the adding process to end.<br />    Successful adding will be confirmed by the Z-Wave controller’s message.</p> <br /> <h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:<br /><br />    Plug the device into a socket nearby the main Z-Wave controller.<br />    The LED ring will glow green signalling being added (removing is not necessary otherwise).<br />    Set the main controller into remove mode (see the controller’s manual).<br />    Quickly, triple click the B-button located on the casing.<br />    Wait for the removing process to end.<br />    Successful removing will be confirmed by the Z-Wave controller’s message.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

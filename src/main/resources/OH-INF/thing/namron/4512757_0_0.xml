@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="namron_4512757_00_000" listed="false">
     <label>4512757 Z-Wave thermostat</label>
@@ -11,6 +11,7 @@
 Z-Wave thermostat<br /> <h1>Overview</h1><p>Z-Wave 16A heating (or cooling) wall thermostat with four regular buttons below the display. Internal, external and floor temperature sensors are supported.</p> <br /> <h2>Inclusion Information</h2><p>Press M-key for 10 seconds to enter settings mode. Press up/down arrow keys to select "NET". Short press M-key, should show "IN". Press M-key for 2 seconds to start inclusion, display will show "i..."<b> .</b> <br /></p> <br /> <h2>Exclusion Information</h2><p>Press M-key for 10 seconds to enter settings mode. Press up/down arrow keys to select "NET". Short press M-key, should show "OUT." Press M-key for 2 seconds to start inclusion, display will show "o..." .</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -430,6 +431,10 @@ Report<br /> <h1>Overview</h1><p>Available commands:</p><p><b>DEVICE_RESET_LOCAL
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

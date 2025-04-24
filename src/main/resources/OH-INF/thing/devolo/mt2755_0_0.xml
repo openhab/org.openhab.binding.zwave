@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="devolo_mt2755_00_000" listed="false">
     <label>MT02755 Humidity Sensor</label>
@@ -11,6 +11,7 @@
 Humidity Sensor<br /> <h1>Overview</h1><p>The multisensor MT02755 has temperature and humidity function in one, based on Z-WaveTM technology.</p> <br /> <h2>Inclusion Information</h2><p>There are one tamper keys in the back side of the device, It can add, remove, reset or association from the Z-WaveTM network.</p> <p>In the first time, add the device into the Z-WaveTM network. First, make sure the primary controller is in the add mode. And then power on the device, just take out the insulation Mylar in the back side of the device. The device will auto start the NWI (Network Wide Inclusion) mode. And it should be included in 5 seconds. You will see the LED light ON one second.</p> <ol><li>Have Z-WaveTM Controller entered inclusion mode.</li> <li>Pressing the tamper key three times within 1.5 seconds to enter the inclusion mode.</li> <li>After add successful, the device will wake to receive the setting command from Z-WaveTM Controller about 20 seconds.</li> </ol> <br /> <h2>Exclusion Information</h2><p><strong>Exclude/Remove:</strong></p> <ol><li>Have Z-WaveTM Controller entered exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode. Node ID has been excluded. </li> </ol><p><strong>Reset:</strong></p> <p>Notice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.</p> <ol><li> <p>Pressing tamper key four times within 1.5 seconds and do not release the tamper key in the 4th pressed, and the LED will light ON.</p> </li> <li> <p>After 3 seconds the LED will turn OFF, after that within 2 seconds, release the tamper key. If successful, the LED will light ON one second. Otherwise, the LED will flash once. </p> </li> <li> <p>IDs are excluded and all settings will reset to factory default. </p> </li> </ol> <br /> <h2>Wakeup Information</h2><p>Press the tamper button on the back side</p>
     ]]></description>
     <category>Door</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

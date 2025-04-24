@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="danfoss_014g0210_00_000" listed="false">
     <label>014G0210 HC-Z Hydronic Floor Heating Controller</label>
@@ -11,6 +11,7 @@
 HC-Z Hydronic Floor Heating Controller<br /> <h1>Overview</h1><p>Product information "Danfoss HC10 (Hydronic contoller for 10 outputs)"</p> <p>The Danfoss HC (Hydronic Controller) is part of the wireless Z-wave controlsystems for heating systems in residential homes.</p> <p>The Danfoss HC allows the control of warmwater floor heating systems. The system offers a big bandwidth of advanced functions for optimal comfort and energy savings and allows a single room temperature control.</p> <p>The Danfoss HC includes among other things: 10 short circiut safe outputs for 24V actuator drives NC or NO, Relays for pump and boilercontrol, self-testing program, regulation by ON/OFF- or PWM-principle (pulse width modulation) etc.</p> <p>The system can exist of multiple Danfoss HC for bigger systems with more than 10 actuators drives. The Danfoss HC has a direct connector to a power supply of 230V. Because of that you do not need an additional transformer but all actuator drives will be supplied with 24V power.</p> <p> <strong>Features:</strong></p> <ul><li>Controlling of warmwater floor heating systems</li> <li>10 short circuit protected outputs with LED notice</li> <li>Output for 24V actuator drive NC or NO</li> <li>Guarantee of valve function at alle outputs even when there is temperatur control, every 14 day valve movement for ca. 12 minutes</li> <li>Regulation by PWM-principle (pulse width modulation)</li> <li>Relays for pump regulation with automatic 1 minute pump start-up on every third day, to avoid damages during the Standby time periods</li> <li>Relays for boiler regulation, only active during warming needs</li> <li>Automatic self diagnostics to show lost connection to the device</li> <li>Wireless technologie: Z-Wave</li> </ul> <br /> <h2>Inclusion Information</h2><p>To include the Hydronic Controller in Z-Wave follow the procedure:</p> <ul><li>Verify Hydronic Controller indicates "not included" on the MMI.</li> <li>Activate "Inclusion" on the Z-Wave Controller</li> <li>Press the button on the Hydronic Controller</li> <li>Observe Hydronic Controller indicate included on the MMI</li> </ul> <br /> <h2>Exclusion Information</h2><p>Exclusion can be done in two ways:</p> <p><strong>1. Initiated from the Controller</strong></p> <ul><li>Verify Hydronic Controller indicate "Included" on the MMI. "Fault" indication also covers "Included".</li> <li>Activate "Exclusion" on the controller</li> <li>Press the button on the Hydronic Controller</li> <li>Observe Hydronic Controller indicate not included in a network on the MMI.</li> </ul><p><strong>2. Initiated from the Hydronic Controller by a factory reset to default</strong></p> <ul><li>Verify the Hydronic Controller indicate "Included" or "Fault" on the MMI</li> <li>Remove the mains power from the Hydronic Controller</li> <li>Wait for 15 seconds</li> <li>Press and hold the button while applying mains power. LED will light RED while leaving network.</li> <li>Observe the Hydronic Controller indicate not included in a network on the MMI</li> </ul>
     ]]></description>
     <category>RadiatorControl</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -327,6 +328,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -340,6 +345,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -353,6 +362,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -366,6 +379,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -379,6 +396,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -392,6 +413,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -405,6 +430,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -418,6 +447,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -431,6 +464,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -444,6 +481,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -457,6 +498,10 @@ Pulse-width modulation period<br /> <h1>Overview</h1><p>The PWM period can be se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

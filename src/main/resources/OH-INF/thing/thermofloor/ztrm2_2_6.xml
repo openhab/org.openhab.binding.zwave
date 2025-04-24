@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="thermofloor_ztrm2_02_006" listed="false">
     <label>Heatit Z-TRM 2 Floor thermostat</label>
@@ -11,6 +11,7 @@
 Floor thermostat<br /> <h1>Overview</h1><h3>FEATURES</h3> <ul><li>Floor sensor</li> <li>Built-in room sensor</li> <li>External room sensor</li> <li>Temperature limiter</li> <li>Weekly program/setback via gateway or pilot wire</li> <li>Multilevel sensor command class</li> <li>Firmware updates (OTA)</li> <li>Power metering</li> <li>LED-diode</li> <li>Can be used in connection with different NTC-sensors</li> <li>Lock mode/child lock</li> <li>Calibration</li> <li>8 associations</li> <li>Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li> </ul> <br /> <h2>Inclusion Information</h2><p>To include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.</p> <p>The display will show OFF. Press Right (down) 4 times till you see Con in the display.</p> <p>Now start add device in your home automation software.</p> <p>Start inclusion mode by pressing Center (confirm) for approximately 2 seconds.</p> <p>Adding mode is indicated in the display by some 'circling' LED segments in the display until the timeout occurs after 20 seconds or the module has been added in the network.</p> <p>Confirmation will show Inc in the display. If inclusion fails, Err (error) will appear.</p> <p>Leave programming mode by choosing ESC in the menu.</p> <p>Your thermostat is ready for use with default settings.</p> <br /> <h2>Exclusion Information</h2><p>To exclude the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.</p> <p>The display will show OFF. Press Right (down) 4 times till you see Con in the display.</p> <p>Now start excluding device in your home automation software.</p> <p>Start exclusion mode by pressing Center (confirm) for approximately 2 seconds.</p> <p>Adding mode is indicated in the display by some 'circling' LED segments in the display until the timeout occurs after 20 seconds or the module has been excluded from the network.</p> <p>Confirmation will show Ecl in the display. If exclusion fails, Err (error) will appear.</p> <p>Leave programming mode by choosing ESC in the menu.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -455,6 +456,10 @@ Meter report delta value<br /> <h1>Overview</h1><p>1. Value = 0 - 255, 0kWh - 25
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -477,6 +482,10 @@ Meter report delta value<br /> <h1>Overview</h1><p>1. Value = 0 - 255, 0kWh - 25
     <item-type>Number</item-type>
     <label>Display brightness - dimmed state</label>
     <description>Display brightness - dimmed state</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

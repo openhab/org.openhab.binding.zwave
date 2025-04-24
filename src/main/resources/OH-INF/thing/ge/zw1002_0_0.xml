@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ge_zw1002_00_000" listed="false">
     <label>ZW1002 Smart Outlet</label>
@@ -11,6 +11,7 @@
 Smart Outlet<br /> <h1>Overview</h1><p>When paired with a compatible hub, the smart outlet controls and schedules plug-in devices through ON/OFF commands and programmed settings. Wirelessly operate lamps, fans, small appliances and more for effortless management of your home. </p> <br /> <h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</li><li>Once the controller is ready to add your device, press and release the program button to add it in the network.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network. </li><li>Once the controller is ready to remove your device, press and release the manual/program button to remove it from the network.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

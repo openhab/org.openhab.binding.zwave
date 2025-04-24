@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="rtc_ct80_00_000" listed="false">
     <label>CT80 Z-Wave Thermostat</label>
@@ -11,6 +11,7 @@
 Z-Wave Thermostat<br /> <h1>Overview</h1><p>The CT80 programmable communicating thermostat operates via a high-quality, easy-to-use touch screen. To program or adjust your CT80, simply touch your finger firmly to the screen. The screen will automatically light up. The screen will respond differently to different types of touches, so you may want to experiment with your finger or a stylus (not included), to see what works best for you. The “beep” sound is heard when the CT80 senses a valid touch of the screen.</p> <br /> <h2>Inclusion Information</h2><p>Push Menu button, choose network, choose Z-Wave Radio, push "Mate" (only usable with Z-Wave Module)</p> <br /> <h2>Exclusion Information</h2><h1>Factory Default Restore</h1> <p>Performing a Factory Default Restore will return your thermostat to the state it was in when it left the factory. This means that all of its configuration and parameters will be returned to their default values. This includes resetting its Z-Wave network information, removing it from its previous network. This action should only be used in the event that the network primary controller is missing or otherwise inoperable. To perform this action, the thermostat must be switch to OFF mode. Wait until the radio wave icons on the left side of the screen stop blinking then touch the screen once to turn on the back light and then hold the center of the screen for about 8 seconds until the thermostat beeps. </p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -262,6 +263,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, multicast is
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -276,6 +281,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, multicast is
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>

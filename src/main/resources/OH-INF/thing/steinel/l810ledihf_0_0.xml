@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="steinel_l810ledihf_00_000" listed="false">
     <label>L 810 LED iHF Sensor-switched outdoor up and downlighting</label>
@@ -11,6 +11,7 @@
 Sensor-switched outdoor up and downlighting<br /> <h1>Overview</h1><p>A high-quality product is cleverly thought through and made from materials that last. Its value also extends beyond today, it has permanency and constancy. The L 810 iHF outdoor SensorLight is an LED uplight and downlight that translates intelligent technology into form and function. For the first time, we have managed to make a light's sensor completely invisible – without compromising on first-class design and technological perfection. For stunning upward and downward lighting. New: optional manual override for 4 hours.<br /><br />The optional Smart Friends box and the free Smart Friends app make it easy to set the L 810 LED iHF Z-Wave via smart phone or tablet. The light can also be switched ON or OFF via app. Other Steinel products can also be interconnected. If you wish, this also works via remote control when you are out. That completes your own light management system.</p> <br /> <h2>Inclusion Information</h2><p>4) Briefly press the device's button to set the light to inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Briefly press the device's button to set the light to exclusion mode. </p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="eco_dwzwave25_00_000" listed="false">
     <label>DWZWAVE25 Z-Wave Door/Window Sensor</label>
@@ -11,6 +11,7 @@
 Z-Wave Door/Window Sensor<br /> <h1>Overview</h1><p>Z-Wave+ enabled device which provides open/closed position status</p> <p>Transmits open/closed status</p> <p>Reports tamper condition when cover is open</p> <br /> <h2>Inclusion Information</h2><p>Start by placing the controller into inclusion mode.</p> <p>Activate inclusion mode for the sensor by removing the plastic pull-tab from the back of the sensor. When the inclusion process in complete, the LED on the sensor will be solid blue, then go out.</p> <p>Test the sensor. Place the magnet next to the sensor to represent a closed position (see Installation section to see where to position the magnet). If the LED flashes ONE TIME, it is successfully communicating on your Zwave network. If the LED on the sensor flashes slow and steady for 5 seconds, you need to repeat the inclusion process.</p> <p>Notes:</p> <p>If you need to repeat the inclusion process, repeat STEP ONE above, then for STEP TWO you will need to simply remove the cover of the sensor, remove the battery for 10 seconds, reinsert the battery, and replace the sensor cover. This will re-enter the sensor in inclusion mode.</p> <p>This sensor also supports Network Wide Inclusion such that the Sensor can be included into the Z-Wave network over the mesh network and not directly near the main controller. This mode is automatically activated after regular inclusion was not successful.</p> <br /> <h2>Exclusion Information</h2><p>Exclusion mode on the sensor is initiated following the same exact procedure as inclusion.</p> <br /> <h2>Wakeup Information</h2><p>The sensor will wake up every so often and when the case is closed to send a Wake-Up Notification to allow the life line master node controller that the sensor is now available for any queued messages that the controller may have for the sensor. The time between Wake-Up Notifications can be configured with the Wake- Up Notification command class to be between 1 hour and 1 week with interval steps of 200 seconds.</p> <p>To save power, this sensor sleeps most of the time and is therefore not awake to receive messages from a gateway for testing. Removing the top case from the sensor will put in device into a tampered mode in which the sensor will stay awake and able to receive messages. Most of the time an end user would not do this, but if the sensor needs to be configured after inclusion, an end user can follow the instructions below for sending Wake-Up notifications.</p>
     ]]></description>
     <category>Door</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

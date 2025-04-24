@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="popp_700045_00_000" listed="false">
     <label>700045 Battery driven IP44 keypad for access control.</label>
@@ -11,6 +11,7 @@
 Battery driven IP44 keypad for access control.<br /> <h1>Overview</h1><p>This keypad is a security enabled Z-Wave Plus product. An security enabled Z-Wave controller must be used to fully utilize this product. The keypad allows securely controlling devices  - such as door locks   - and trigger actions in a gateway – such as arm/disarm alarm system– based on the entry of certain key codes. Additionally a bell key allows emulating a doorbell by operating e.g. a door bell or a light or both.      The device can operate in two different modes. The mode is chosen the way the device is included into a Z-Wave network:</p> <ol><li><strong>Stand Alone Mode.</strong> In this case the keypad acts as the primary network controller and will include other devices such as e.g. a strike lock control or a door bell. No other central controller is needed. The management of user codes is done using the keypad itself.</li> <li><strong>Network Mode.</strong> The keypad is included as additional device into an exiting network. In Z-Wave terms it will then act as inclusion (secondary) controller. It will send commands to a central controller and is managed by this controller. In this mode the device can still directly control door locks but it can also be used to trigger scenes in a central controller. </li> </ol><p>The device is protected by a tamper switch sending out an alarm message when the enclosure is opened.</p> <br /> <h2>Inclusion Information</h2><p>Turn the device into management mode by removing the back cover or typing the master code if set. Hit button 4 and confirm with * (Star Key)</p> <br /> <h2>Exclusion Information</h2><p>Turn the device into management mode by removing the back cover or typing the master code if set. Hit button 4 and confirm with * (Star Key)</p> <br /> <h2>Wakeup Information</h2><p>Wakeup: Ring Key.</p> <p>To issue a NIF: 0 plus * (Star Key) in Management Mode</p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

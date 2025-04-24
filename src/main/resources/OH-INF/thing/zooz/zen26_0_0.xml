@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen26_00_000" listed="false">
     <label>ZEN26 Paddle Switch</label>
@@ -11,6 +11,7 @@
 Paddle Switch<br /> <h1>Overview</h1><p>Manual or Z-Wave on/off control with instant status updates</p> <p>Simple Direct 3-Way: connect with existing on/off switches in 3-way, 4-way, and 5-way set-ups, no add-on needed (neutral wire required)</p> <p>Remembers and restores on/off status after power failure</p> <p>LED indicator signals inclusion, exclusion, reset, and setting changes</p> <p>Built-in Z-Wave Plus signal repeater to extend network range</p> <p>Works with LED, CFL, and incandescent bulbs</p> <p>S2 security protocol and the latest 500 Z-Wave chip for faster and safer wireless communication</p> <p>Supported by most Z-Wave controllers</p> <br /> <h2>Inclusion Information</h2><p>TAP Upper paddle 3-5 TIMES QUICKLY</p> <p>The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion</p> <br /> <h2>Exclusion Information</h2><p> Tap the lower paddle on the switch 3 times quickly</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

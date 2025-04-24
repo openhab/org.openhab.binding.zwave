@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fortrezz_fmi_00_000" listed="false">
     <label>FMI Flow Meter</label>
@@ -11,6 +11,7 @@
 Flow Meter<br /> <h1>Overview</h1><p>With Flow meter, you have the power to automate, manage water consumption, and detect leaks in your home or building.</p> <p>This is an integral part to a complete water management solution.  Flow Meter tracks water usage and reports gallons used.  Track your households water usage and drill into reports to find out where your peak consumption is and make changes to reduce your water bills.</p> <p>Flow meter tells you if water is flowing or if it’s off.  It knows if the flow is small, like a running toilet, or if it’s large, like a garden hose left on.</p> <p>Flow meter can detect leaks or fixtures left on.  It tracks usage and allows you create smart triggers using your Z-wave home automation system.  To add to it’s capabilities, flow meter checks the temperature in the nearby surrounds to detect for freezing conditions and sends temperature alerts.</p> <p>There’s also a backup battery, just in case power is interrupted.  You won’t have to worry about lost data or lack of leak monitoring.  Plumbed on the water main, flow meter is sure to be a valuable part of your total home automation &amp; leak prevention system.</p> <br /> <h2>Inclusion Information</h2><ol><li>Set up  the  inclusion  mode  at  the  controller;</li> <li>Press  the  switch  once  and  the  controller  will indicate the unit has been included in the network.  Also, the LED will blink when the inclusion completes. </li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Set up the exclusion mode at the controller;</li> <li>Briefly press the switch once and then release.  The controller will indicate the unit has been removed from the network.  The LED will blink when the exclusion completes.</li> </ol>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

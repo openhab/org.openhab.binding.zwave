@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="benext_tagreader500_00_000" listed="false">
     <label>Tag Reader 500 WTRFID Mini Keypad</label>
@@ -11,6 +11,7 @@
 WTRFID Mini Keypad<br /> <h1>Overview</h1><p>A Z-Wave security enabled entry control device. You can arm/disarm your house to home or away with the Tag Reader 500. With the use of a RFID tag or a numerical code the device can send an entry control message which can be handled by a supported gateway. In addition the Tag Reader supports the activation of scenes.</p> <br /> <h2>Inclusion Information</h2><ol><li>To include the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). </li> <li>Release the enter button now to start the inclusion (during the inclusion routine the indication LED willblink twice per second).</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>To exclude the Tag Reader 500 US press and hold the enter button for two seconds (indication LED blinks shortly). </li> <li>Release the enter button now to start the exclusion (during the exclusion routine the indication LED willblink twice three times per 1,5 second).</li> </ol> <br /> <h2>Wakeup Information</h2><p>Press and hold the button for 7 seconds, the indication LED will go on for 1 full second.</p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

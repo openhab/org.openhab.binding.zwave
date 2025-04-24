@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="cooper_rftr9505_00_000" listed="false">
     <label>RFTR9505 Duplex receptacle</label>
@@ -11,6 +11,7 @@
 Duplex receptacle<br /> <h1>Overview</h1><p>The Aspire RF 15A split receptacle replaces regular receptacles to provide local and remote RF ON/OFF control of a single outlet. Moreover, the Aspire RF receptacle provides other programmable functions (scenes, events, association, child lockout, etc.) when used with Aspire RF or other Z-Wave® compliant controllers*. The receptacle can be manually and remotely controlled by commands sent from an Aspire RF controller (RFHDCSG, RFTDCSG, RFTCP, RFUSB-PRO) or other Z-Wave compatible controllers or programs. An Aspire RF receptacle utilizes existing 120 V/AC 60Hz standard house wiring and fits into a standard wallbox. No new wiring needed.*Note: some specific Aspire RF features may not be programmable</p> <br /> <h2>Inclusion Information</h2><p>Press the Install button</p> <br /> <h2>Exclusion Information</h2><p>Press the Install button</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

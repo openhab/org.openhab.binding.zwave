@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="shenzhen_neomotion_00_000" listed="false">
     <label>NeoMotion Motion Sensor</label>
@@ -11,6 +11,7 @@
 Motion Sensor<br /> <h1>Overview</h1><p>Motion sensor(PIR) is a passive infrared detector or physical sensor. This sensor doesn't emitany energy but only passively receive and detect infrared radiation from outside. Under roomtemperature, all items have radiation. Human beings are warm-blooded animals with stableinfrared radiation, so are most easily to be detected. That's why we also call it body sensor.PIR send messages via Z-Wave network to Z-Wave gateway. In the Z-Wavenetwork communications, PIR can be connected to any Z-Wave gateway. Different countriesor areas, the radio frequency is different. In the communication between PIR and Z-Wave gatwway, PIR can only send messages, not be able to receive messages. When PIR istriggered, PIR will send message to Z-Wave gateway, and associate devices to work throughZWave gateway. PIR is battery powered, is small and can be installed easily.<br /></p> <br /> <h2>Inclusion Information</h2><p>Press the code button in PIR sensor three times continuously<br /></p> <br /> <h2>Exclusion Information</h2><p>Press the code button in PIR sensor three times continuously<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

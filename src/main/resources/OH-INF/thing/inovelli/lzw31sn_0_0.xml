@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="inovelli_lzw31sn_00_000" listed="false">
     <label>LZW31-SN Red Series Dimmer</label>
@@ -11,6 +11,7 @@
 Red Series Dimmer<br /> <h1>Overview</h1><p>Inovelli’s new dimmer switch is packed with features and designed with your house in mind.</p> <p>From a hardware side we’ve upgraded our Z-Wave module for better distance and there is no longer a need for a neutral wire. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p> <p>From a firmware side, this switch has it all (literally). Scene control, notifications (flashes if your garage door is left open) and can be configured on any HUB.</p><p>Updated instructions here: https://community.inovelli.com/t/resources-red-series-dimmer-switch-manual/7306#</p> <br /> <h2>Inclusion Information</h2><p>Once the inclusion process has started press the config button 3X and the LED bar will flash blue.  If the switch was included successfully the bar will turn GREEN, however if the switch was not included successfully it will turn RED.</p> <br /> <h2>Exclusion Information</h2><p>Press the Config Button 3X</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -366,6 +367,10 @@ Enable "smart bulb" mode<br /> <h1>Overview</h1><p>Switch Mode<br />0 = Normal o
     <item-type>Number</item-type>
     <label>LED Strip Effect</label>
     <description>LED Strip Effect</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -374,6 +379,10 @@ Enable "smart bulb" mode<br /> <h1>Overview</h1><p>Switch Mode<br />0 = Normal o
     <item-type>Number</item-type>
     <label>Default Level (Local)</label>
     <description>Default Level (Local)</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Level</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -382,6 +391,10 @@ Enable "smart bulb" mode<br /> <h1>Overview</h1><p>Switch Mode<br />0 = Normal o
     <item-type>Number</item-type>
     <label>LED Indicator Color</label>
     <description>LED Indicator Color</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -390,6 +403,10 @@ Enable "smart bulb" mode<br /> <h1>Overview</h1><p>Switch Mode<br />0 = Normal o
     <item-type>Number</item-type>
     <label>LED Indicator Intensity</label>
     <description>LED Indicator Intensity</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -398,6 +415,10 @@ Enable "smart bulb" mode<br /> <h1>Overview</h1><p>Switch Mode<br />0 = Normal o
     <item-type>Number</item-type>
     <label>Auto Off Timer</label>
     <description>Auto Off Timer</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

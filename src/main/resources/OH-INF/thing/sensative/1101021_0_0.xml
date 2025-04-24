@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sensative_1101021_00_000" listed="false">
     <label>11 01 021 Strips Guard</label>
@@ -11,6 +11,7 @@
 Strips Guard<br /> <h1>Overview</h1><p>Strips Guard 700 is a magnetic sensor for monitoring of windows, doors, and valuables.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Open your Z-Wave Controller application and start pairing mode.</li><li>Remove both magnets from Strips.*</li><li>One long LED blink means Strips has been successfully added to your Z-Wave network.</li></ol><p>*If you have previously removed the magnets from Strips, or need to re-add the device, performing a manual wake up will join the device when the controller is in pairing mode.</p> <br /> <h2>Exclusion Information</h2><ol><li>Set your Z-Wave Controller to remove/exclude mode</li><li>Move the magnet all the way to the rounded edge, you should see 1 short LED blink</li><li>Move magnet towards center 2 more times (2 LED blinks)</li><li>If successful: 1 long LED blink</li></ol> <br /> <h2>Wakeup Information</h2><ol><li>Take the magnet and move it to the rounded edge and wait for the blink, then move the magnet away.</li><li>Repeat this 3 times. A final short blink will confirm that the user-command was successful.</li></ol>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

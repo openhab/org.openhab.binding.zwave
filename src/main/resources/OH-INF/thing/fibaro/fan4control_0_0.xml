@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fan4control_00_000" listed="false">
     <label>Fan4-Control Fan Coil Thermostat (4-pipe)</label>
@@ -11,6 +11,7 @@
 Fan Coil Thermostat (4-pipe)<br /> <h1>Overview</h1><p>The Fan4-Control is a Z-Wave enabled thermostat designed specifically for 4-pipe fan coil systems, ensuring optimal indoor temperature control. Compatible with various Nice hubs equipped with Z-Wave technology, such as Yubii Home, Yubii Home Pro, and FIBARO Home Center models. This device enhances energy efficiency and user comfort by allowing detailed control settings through Z-Wave network commands.<br /></p> <br /> <h2>Inclusion Information</h2><p>To include the Fan4-Control device using the manual method, set your Z-Wave gateway (such as Yubii Home) to inclusion mode and then perform a long press of the "fan speed button" and "temperature up button" on the device to enter adding mode. For SmartStart inclusion, scan the DSK QR code or enter the 5-digit PIN, then power the device. Successful inclusion will be indicated on the device’s display, showing the node number in the Z-Wave network.</p> <br /> <h2>Exclusion Information</h2><p>To exclude the Fan4-Control device from your Z-Wave network, set your gateway to exclusion mode. Perform a long press of the "fan speed button" and "temperature up button" on the device to initiate the removal mode. The display will show the existing product ID. Press the 'M' button (Mode) to exclude the device from the network; successful exclusion will be confirmed by the display showing "000".<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -236,6 +237,10 @@ Controller Lifeline<br /> <h1>Overview</h1><p>Gateway Controller association gro
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -245,6 +250,10 @@ Controller Lifeline<br /> <h1>Overview</h1><p>Gateway Controller association gro
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

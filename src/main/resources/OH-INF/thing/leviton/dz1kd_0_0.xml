@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="leviton_dz1kd_00_000" listed="false">
     <label>DZ1KD 1000W Dimmer</label>
@@ -11,6 +11,7 @@
 1000W Dimmer<br /> <h1>Overview</h1><p>Universal Incandescent, LED, CFL, Magnetic Low Voltage or Fluorescent Dimmer</p> <br /> <h2>Inclusion Information</h2><ul><li>Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</li> <li>Tap the top of the paddle one time.</li> <li>The Locator LED will quickly ﬂash green.</li> <li>The Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave network.</li> <li>Follow directions in the Z-Wave® controller to complete the adding process.</li> <li>Upon successful addition to network the LED will turn off and then blink green 3 times.</li> <li>If the adding process is not successful the LED will ﬂash red 3 times.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</li> <li>Follow directions in the Z-Wave® controller to enter exclusion mode</li> <li>Tap the top of the paddle one time. The Locator LED will quickly ﬂash green.</li> <li>The Z-Wave® controller will exclude the Decora SmartTM device</li> <li>The Z-Wave® controller will confirm successful exclusion from the network.</li> </ul>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

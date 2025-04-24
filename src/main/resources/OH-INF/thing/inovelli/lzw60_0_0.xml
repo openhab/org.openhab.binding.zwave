@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="inovelli_lzw60_00_000" listed="false">
     <label>LZW60 4-in-1 motion sensor</label>
@@ -11,6 +11,7 @@
 4-in-1 motion sensor<br /> <h1>Overview</h1><ul><li>Light: Save energy by making sure lights don’t turn on if it’s bright enough.</li> <li>Motion: Be notified when you’re away and automate your lighting.</li> <li>Humidity: To avoid excess moisture, trigger fans and dehumidifiers.</li> <li>Temperature: Smarter climate control by monitoring every room in your home.</li> </ul> <br /> <h2>Inclusion Information</h2><p>Put your hub into inclusion mode and press the button on the back of the 4-in-1 sensor one time.</p> <br /> <h2>Exclusion Information</h2><p>Put your hub into exclusion mode and press the button on the back of the 4-in-1 sensor one time. </p> <br /> <h2>Wakeup Information</h2><p>To wake up the sensor so that your hub can send it configuration parameters quickly press on the button on the back 3 times.</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

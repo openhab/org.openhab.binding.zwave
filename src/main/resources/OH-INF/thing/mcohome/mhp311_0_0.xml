@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="mcohome_mhp311_00_000" listed="false">
     <label>MH-P311 MCO Home Dimmer Switch</label>
@@ -11,6 +11,7 @@
 MCO Home Dimmer Switch<br /> <h1>Overview</h1><p>Wall Dimmer Switch </p> <br /> <h2>Inclusion Information</h2><p>INCLUDING the device into Z-Wave network:</p> <ol><li>Set the controller into INCLUSION mode. Follow instructions provided by controller manufacturer.</li> <li>Press the key on the panel 3 times in quick succession (within approx 1.5sec).</li> </ol><p>Note: Check the controller or gateway to see whether inclusion is successful. </p> <br /> <h2>Exclusion Information</h2><p>EXCLUDING the device from Z-Wave network:</p> <ol><li>Set the controller into EXCLUSION mode. Follow instructions provided by controller manufacturer.</li> <li>Press the key on the panel 3 times in quick succession (within approx 1.5sec).</li> </ol><p>Note: Check the controller or gateway to see whether exclusion is successful. The exclusion will delete all association data. </p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

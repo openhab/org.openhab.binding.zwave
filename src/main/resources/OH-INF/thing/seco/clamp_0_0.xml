@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="seco_clamp_00_000" listed="false">
     <label>Zwave Clamp Clamp Energy Meter</label>
@@ -11,6 +11,7 @@
 Clamp Energy Meter<br /> <h1>Overview</h1><p>The Wireless Energy Meter performs real-time measurement of power, energy, voltage, and current, and transmits them wirelessly to a central controller.</p> <br /> <h2>Inclusion Information</h2><p>Press the WEM button for about 1 second.</p> <p>WEM enters the “Learning” state and the LED changes blinking pattern.</p> <p>When the learning phase ends successfully, WEM enters the “Synchronizing” state, and then the “Joined, Comm. Ok” state.</p> <br /> <h2>Exclusion Information</h2><p>Press the WEM button for about 3 seconds.</p> <p>WEM enters the “Leaving” state, and waits for the controller to acknowledge its exclusion.</p> <p>When the exclusion process is complete, WEM goes into the “Idle” state.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

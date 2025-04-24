@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="brk_zsmoke_00_000" listed="false">
     <label>ZSMOKE Smoke Alarm</label>
@@ -11,6 +11,7 @@
 Smoke Alarm<br /> <h1>Overview</h1><p>A smart home can also be a safe home. With the First Alert Smoke Detector (ZSMOKE)  you will be immediately notified at the first sign of smoke. The First Alert Smoke Detector is a Z-Wave device that emits a loud alarm when smoke is detected.</p> <br /> <h2>Inclusion Information</h2><ol><li>Open the battery tray</li> <li>Hold the Test button while re-inserting the battery tray</li> <li>When the device beeps, release the button</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Open the battery tray</li> <li>Hold the Test button while re-inserting the battery tray</li> <li>When the device beeps, release the button</li> </ol>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

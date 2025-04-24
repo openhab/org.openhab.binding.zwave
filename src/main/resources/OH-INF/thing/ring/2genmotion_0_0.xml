@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ring_2genmotion_00_000" listed="false">
     <label>2Gen Motion 2nd Gen Motion Sensor</label>
@@ -11,6 +11,7 @@
 2nd Gen Motion Sensor<br /> <h1>Overview</h1><p>Ring Alarm Motion Detector is a wireless sensor for the Ring Alarm system which provides users the ability to know when there is movement of a person or similar object within an area. </p><p>Notes:</p><ol><li>This product can be operated in any Z-Wave™ network with other Z-Wave certified devices from other manufacturers. All mains operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.</li></ol> <br /> <h2>Inclusion Information</h2><p>After powering on the device, press and hold the button on the front of the device for ~3 seconds.<br /></p><p>Release the button and the device will enter Classic inclusion mode which implements both classic inclusion with a Node Information Frame, and Network Wide Inclusion. </p><p>During Classic Inclusion mode, the green LED will blink three times followed by a brief pause, repeatedly. When Classic inclusion times-out, the device will blink alternating red and green a few times.</p> <br /> <h2>Exclusion Information</h2><ol><li>Locate the pinhole reset button on the back of the device in the battery compartment.</li><li>With the controller in Remove (Z-Wave Exclusion) mode, use a paper clip or similar object and tap the pinhole button. The device’s red LED turns on solid to indicate the device was removed from the network.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

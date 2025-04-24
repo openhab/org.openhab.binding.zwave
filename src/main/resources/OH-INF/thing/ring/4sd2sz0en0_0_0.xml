@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ring_4sd2sz0en0_00_000" listed="false">
     <label>4SD2SZ-0EN0 2nd Gen Door/Window Sensor</label>
@@ -11,6 +11,7 @@
 2nd Gen Door/Window Sensor<br /> <h1>Overview</h1><p>Ring Alarm Contact Sensor is a wireless sensor for the Ring Alarm system which provides users the ability to know when a door or window is open or closed. After installing the sensor on a door or window and setting up the sensor in the Ring app, monitor and receive notifications when the door or window opens or closes.</p> <br /> <h2>Inclusion Information</h2><p>After powering on the device, press and hold the button on the front of the device for ~3 seconds.<br /></p><p>Release the button and the device will enter Classic inclusion mode which implements both classic inclusion with a Node Information Frame, and Network Wide Inclusion. </p><p>During Classic Inclusion mode, the green LED will blink three times followed by a brief pause, repeatedly. When Classic inclusion times-out, the device will blink alternating red and green a few times.</p><p>LED Behaviour for Inclusion Blink Pattern</p><p>SmartStart Started Green LED three times, repeated after a brief pause</p><p>Classic Inclusion Started Green LED three times, repeated after a brief pause</p><p>Classic Inclusion Timed-Out Alternate red and green a few times</p><p>Inclusion Successful (Authenticated S2) Green LED on solid</p><p>Inclusion Not Successful (Self-Destruct) Red LED on solid</p> <br /> <h2>Exclusion Information</h2><p> With the controller in Remove (Z-Wave Exclusion) mode, use a paper clip or similar object and tap the pinhole button. The device’s red LED turns on solid to indicate the device was removed from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

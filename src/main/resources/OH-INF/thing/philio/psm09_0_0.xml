@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_psm09_00_000" listed="false">
     <label>PSM09 Recessed Door Sensor + Door lock Sensor</label>
@@ -11,6 +11,7 @@
 Recessed Door Sensor + Door lock Sensor<br /> <h1>Overview</h1><p>The PSM09 can detect the the door is open or not, and lock or unlock. The Recessed door sensor PSM09 is Base on Z-WaveTM technology. It is the Z-WaveTM plus product, it support the security, OTA... Those newest features of the Z-WaveTM technology. Z-WaveTM is a wireless communication protocol designed for home automation, specifically to remotely control applications in residential and light commercial environments. The technology uses a low-power RF radio embedded or retrofitted into home electronics devices and systems, such as lighting, home access control, entertainment systems and household appliances</p> <br /> <h2>Inclusion Information</h2><p>Have Z-WaveTM Controller entered inclusion mode. Pressing tamper key three times within 3 seconds to enter the inclusion mode. If the learning code is successful, the LED will flash slowly.</p> <br /> <h2>Exclusion Information</h2><p>Have Z-WaveTM Controller entered exclusion mode. Pressing tamper key three times within 3 seconds to enter the exclusion mode. If the removal is successful, the code light will flash for 30 seconds. Node ID has been excluded.</p> <br /> <h2>Wakeup Information</h2><p>If the user want to wake-up the device immediately, please press the tamper key once. The device will wake-up 10 seconds.<br /></p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="rtc_ct200_00_000" listed="false">
     <label>CT200 Vivint Element Thermostat w/ other sensors</label>
@@ -11,6 +11,7 @@
 Vivint Element Thermostat w/ other sensors<br /> <h1>Overview</h1><p>This thermostat is provided by Vivint, but can join a non-Vivint ZWave network.</p> <br /> <h2>Inclusion Information</h2><p>The Vivint Element Thermostat is a Z-Wave® compliant thermostat. It has an onboard radio that can be added to an existing Z-Wave® network. This device can be used on a network with products from different vendors.</p> <ol><li>Set your primary controller to INCLUDE mode to add the thermostat as a node on your network (see your specific controller’s User Manual for detailed instructions).</li> <li>The Thermostat main screen shows a welcome message. Press the SIDE button to continue.</li> <li>Press the SIDE button to initiate the inclusion process. This initiates the network connection process. <ul><li>If inclusion fails, the screen says “Failed”. Press the SIDE button to try adding again.</li> </ul></li> <li>When the Thermostat has been successfully included to a Z-Wave network, the screen displays a confirmation check mark. Press the SIDE button to continue. You can now configure the thermostat to work with your HVAC system.</li> <li>Your primary controller indicates that the thermostat was successfully added to its network (see your specific controller’s User Manual for details).</li> </ol> <br /> <h2>Exclusion Information</h2><p>The Vivint Element can be excluded from the Z-Wave network process similar to the inclusion process. Set your primary controller to EXCLUDE.</p> <br /> <h2>Wakeup Information</h2><p>When your thermostat is running on battery power, the Z-Wave radio will turn off to help conserve battery life. The Thermostat Z-Wave radio module supports Z-Wave beaming, which allows other devices in the network to wake up the Z-Wave module and accept commands and then go back to sleep.</p> <p>When your thermostat is running on C-Wire power, the Z-Wave radio will stay on and actively help route messages within the Z-Wave network. The thermostat’s node type is fixed when it is included to the Z-Wave network; if the C-Wire is present and powered when including to the network, the thermostat will remain an alwayslistening node until it is removed from the network.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -395,6 +396,10 @@ Celsius or Fahrenheit<br /> <h1>Overview</h1><p>This configuration is used to se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -410,6 +415,10 @@ Celsius or Fahrenheit<br /> <h1>Overview</h1><p>This configuration is used to se
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -423,6 +432,10 @@ Celsius or Fahrenheit<br /> <h1>Overview</h1><p>This configuration is used to se
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>
@@ -435,6 +448,10 @@ Celsius or Fahrenheit<br /> <h1>Overview</h1><p>This configuration is used to se
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -450,6 +467,10 @@ Celsius or Fahrenheit<br /> <h1>Overview</h1><p>This configuration is used to se
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -463,6 +484,10 @@ Celsius or Fahrenheit<br /> <h1>Overview</h1><p>This configuration is used to se
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

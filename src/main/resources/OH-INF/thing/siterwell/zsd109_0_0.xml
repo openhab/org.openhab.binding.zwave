@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="siterwell_zsd109_00_000" listed="false">
     <label>ZSD-109 Smoke detector</label>
@@ -11,6 +11,7 @@
 Smoke detector<br /> <h1>Overview</h1><p>The Nexa ZSD-109 fire alarm is designed to sense smoke particles. It has a built-in temperature sensor to provide an early warning if a fire should break out (assuming correct placement and maintenance). Principal properties is built-in temperature alarm, elevated sensitivity and stability test and pause function, LED-diode indicates normal operation and Low-battery signal.</p> <br /> <h2>Inclusion Information</h2><ol><li>Set the Z-Wave controller to “inclusion” mode (see the controller manual)</li><li>Press the Test button three times within 1.5 seconds; the LED indicator will light up.</li><li>You will then hear a beep, the LED indicator will go out and the smoke alarm is now included in your Z-Wave network.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Set the Z-Wave controller to “exclusion” mode (see the controller manual).</li><li>Press the Test button three times within 1.5 seconds; the LED indicator will light up.</li><li>Wait for the Z-Wave controller to complete the exclusion.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

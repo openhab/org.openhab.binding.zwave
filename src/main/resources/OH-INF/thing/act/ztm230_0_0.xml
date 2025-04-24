@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="act_ztm230_00_000" listed="false">
     <label>ZTM230 Dual paddle wall mounted transmitter</label>
@@ -11,6 +11,7 @@
 Dual paddle wall mounted transmitter<br /> <h1>Overview</h1><p>The ZTM230 Wall Mounted Transmitter is a component of the HomePro lighting control system. Wire the Transmitter anywhere power is available according to the diagram above and program from the Wireless Controller to operate loads. Inclusion of the ZTM230 Wall Mounted Transmitter on the ZTH200 Wireless Controller menu allows remote ON/OFF control and dimming of lights controlled by associated modules, as it does not control any electrical load directly.</p> <p>This Wall Mounted Transmitter is designed to work with other Z-Wave enabled devices. Z-Wave nodes of other types can be Included in the network and will also act as repeaters to increase the range of the network.  </p> <br /> <h2>Inclusion Information</h2><p>Including to the Network (Must be installed in its permanent location, not on test bench)</p> <ol><li>Setup the controller you are using to include the device into the network.</li> <li>Tap the top or bottom of the left switch once  <br /><br /></li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Setup the controller you are using to exclude a device from the network.</li> <li>Tap the top or the bottom of the left switch once.  </li> </ol>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

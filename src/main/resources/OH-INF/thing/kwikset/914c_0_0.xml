@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="kwikset_914c_00_000" listed="false">
     <label>Kwikset 914C Convert Smart Lock Smart Lock</label>
@@ -11,6 +11,7 @@
 Smart Lock<br /> <h1>Overview</h1><p>Kwikset®, the leader in residential security, introduces the Smart Lock Convert Kit with Z-Wave. <br /><br />Extend your smart home system to your current deadbolt, enabling your existing deadbolt to wirelessly communicate with your smart home or security system</p> <p>Dramatically reduced, all-metal interior</p> <p>Works with existing select single cylinder deadbolts</p> <br /> <h2>Inclusion Information</h2><p>Initiate the process to add the lock to your system at your smart home controller.</p> <p><strong>Note</strong>: On some systems you may need to ensure you are using<strong> "secure inclusion"</strong>.</p> <p>When prompted by your smart home system to add the lock, press button “A” on the lock interior one time. The red LED will illuminate when the lock enters Add Mode. Please allow time for the controller to add the lock to your system.</p> <p>Note: Some controllers are required to be within close proximity to the lock (less than 12") while including for security reasons. </p> <br /> <h2>Exclusion Information</h2><p>Follow your smart home system’s instructions to remove the lock from the network. When prompted by the system, press button A” on the lock interior once.  The red LED will illuminate when the lock enters Remove mode. </p> <br /> <h2>Wakeup Information</h2><p>The electronic conversion kit remains asleep until an action occurs on the latch or a request is received from the RF side.<br />For the RF side, it will wake up every 1 second to check if there are any requests from your smart home controller.</p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

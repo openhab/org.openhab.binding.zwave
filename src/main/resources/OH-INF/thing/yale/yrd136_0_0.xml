@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="yale_yrd136_00_000" listed="false">
     <label>YRD136 Yale Pro™ SL Key-Free Deadbolt (YRD136 or YRD156)</label>
@@ -11,6 +11,7 @@
 Yale Pro™ SL Key-Free Deadbolt (YRD136 or YRD156)<br /> <h1>Overview</h1><p>Built for the Pros. Designed for the Home.<br /><br />The Yale Pro™ SL (YRD156 or YRD136) is a key-free deadbolt with Z-Wave Plus built-in, available in touchscreen or keypad models. It replaces a standard deadbolt in minutes using just a screwdriver and can be added to dozens of Z-Wave smart home and alarm systems with one-touch enrollment.<br /></p><p>The lock is 100% key free so it can't be picked and there's no keys to lose. To prevent lockouts due to dead batteries, there is a 9V battery terminal located below the keypad. The lock has a backlit keypad that wakes with a touch and has numbers that won't wear off. It's backed by a lifetime limited warranty on finish and mechanics, and a one year warranty for electronics. Get the premium Yale design and features seen in retail, with a product offered specifically to the pro channel.<br /></p> <br /> <h2>Inclusion Information</h2><p>N/A</p> <br /> <h2>Exclusion Information</h2><p>N/A<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zwa006_00_000" listed="false">
     <label>ZWA006 Boost Timer Switch</label>
@@ -11,6 +11,7 @@
 Boost Timer Switch<br /> <h1>Overview</h1><p>The Aeotec Smart boost timer switch is used to control immersion heaters or other switched loads up to 16 amps.  It also allows for a manual boost of up to two hours.  Suitable for indor use only.  Fits in a single UK electrial back box.  Z-Wave Plus S2 with smart start, 16 amps, monitor power use, backup battery</p> <br /> <h2>Inclusion Information</h2><ol><li>Press the Action Button on your Switch once and the LED will flash a green LED.</li><li>If your switch has been successfully linked to your network, its LED will become solid green for 2 seconds. If linking was unsuccessful, the LED will return to a rainbow gradient.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Press the Action Button on your Switch.<br /></li><li>If your switch has been successfully unlinked from your network, its LED will become a rainbow gradient. If linking was unsuccessful, the LED will become green or purple depending on how your LED mode is set.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

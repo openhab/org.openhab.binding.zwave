@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsc35_00_000" listed="false">
     <label>DSC35 Micro Double Switch</label>
@@ -11,6 +11,7 @@
 Micro Double Switch<br /> <h1>Overview</h1><p>Micro Double Switch</p> <br /> <h2>Inclusion Information</h2><p>Press the Z-Wave button</p> <br /> <h2>Exclusion Information</h2><p>Press the Z-Wave button</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

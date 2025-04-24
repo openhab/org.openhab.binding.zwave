@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="heiman_hs1dsz_00_000" listed="false">
     <label>HS1DS-Z Smart Door Sensor</label>
@@ -11,6 +11,7 @@
 Smart Door Sensor<br /> <h1>Overview</h1><p>Door/Window Contact.</p> <p>Same hardware as DOMUX DX1DS-Z.</p> <br /> <h2>Inclusion Information</h2><ul><li>Press a Func_Button 3 time in HS1DS-Z (Door Sensor), Green LED is Blinking 3 times within 1 second.</li> <li>If Inclusion Process is successful, Green led will turn off. </li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Press a Func_Button 3 times quickly on HS1DS-Z.</li> <li>If Exclusion Process is successful, Green led is Blinking 6 times, then turn off the HS1DS-Z.</li> </ul> <br /> <h2>Wakeup Information</h2><ul><li>Wake up Notification is transmitted every 24 hours by default.</li> <li>Wake up Notification is transmitted after Notification Report is Transmitted.</li> </ul>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

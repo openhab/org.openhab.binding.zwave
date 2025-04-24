@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen27_00_000" listed="false">
     <label>ZEN27 Paddle Switch</label>
@@ -11,6 +11,7 @@
 Paddle Switch<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brightness control</li> <li>Simple Direct 3-Way: connect with existing on/off switches in 3-way,4-way, and 5-way set-ups, no add-on needed (neutral wire required)</li> <li>Fully adjustable ramp rate for just the right on/off speed</li> <li>Double tap to full brightness feature</li> <li>Remembers and restores on/off status a?er power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Extended compatibility with LED bulbs, no more flickering!</li> <li>S2 security protocol and the latest 500 Z-Wave chip</li> <li>Customizable LED indicator and air-gap switch for added safety</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Initiate inclusion (pairing) in the app (or web interface).</li> <li>Finalize inclusion at the switch. TAP 3 TIMES QUICKLY. The LED indicator will blink to signal communication and remain on for 2 seconds to confirm inclusion.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway (hub) close to the switch if possible</li> <li>Put the Z-Wave hub into exclusion mode</li> <li>Tap the lower paddle on the switch 3 times quickly</li> <li>Your hub will confirm exclusion and the device will disappear from your controller's device list</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

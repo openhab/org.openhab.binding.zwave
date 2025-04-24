@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zse43_00_000" listed="false">
     <label>ZSE43 Tilt / Shock Sensor</label>
@@ -11,6 +11,7 @@
 Tilt / Shock Sensor<br /> <h1>Overview</h1><p>Battery Powered Tilt / Shock sensor</p><ul><li>Tilt monitoring for garage doors and gates: quick open/close reports you can depend on sent to your Z-Wave system for both vertical and horizontal tilt movement (NOT suitable for swinging gates or doors)</li><li>Shock sensor: monitor window glass and other surfaces for vibration to improve security of your home</li></ul> <br /> <h2>Inclusion Information</h2><ol><li>Put the Z-Wave hub into inclusion/pairing mode (see your hub's manual for instructions since each brand is different)</li><li>Click the Z-Wave button 3 times quickly (button inside cover by battery)</li><li>The new device should appear on your hub's device list</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Bring the Sensor within 3 feet of your Z-Wave hub </li><li>Put your Z-Wave hub into exclusion mode (see your controller's manual for details, as each brand is different)</li><li>Click the Z-Wave button 3 times quickly (button inside cover by battery)</li><li>Your hub should confirm exclusion and the sensor will disappear from the interface</li></ol> <br /> <h2>Wakeup Information</h2><p>Click the Z-Wave button 4 times quickly to wake the sensor up manually. The LED indicator will flash twice to confirm the device is awake. During wake-up, the sensor turns the Z-Wave radio on for one minute to receive communication from the hub. </p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

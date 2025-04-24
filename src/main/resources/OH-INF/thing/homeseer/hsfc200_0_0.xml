@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="homeseer_hsfc200_00_000" listed="false">
     <label>HS-FC200+ Scene Capable Fan Control Switch</label>
@@ -11,6 +11,7 @@
 Scene Capable Fan Control Switch<br /> <h1>Overview</h1><p>HS-FC200+ is a Z-Wave Plus fan controller for use with most 3-speed or 4-speed ceiling fans. The switch includes RBG LED indicators which may be controlled wirelessly to suit color preferences or to reflect the changing status of other devices in your home. HS-FC200+ is also designed to trigger automation events with a multi-tap operation (up to 5 taps).</p> <br /> <h2>Inclusion Information</h2><p>Tap the paddle of your HomeSeer fan controller to begin the inclusion process. This will take a few moments to complete.</p> <br /> <h2>Exclusion Information</h2><p>Put your Z-Wave controller into exclusion mode. Tap the paddle of your HomeSeer fan controller.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -318,6 +319,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status Mode</label>
     <description>Sets LED indicator mode of operation</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Normal mode (load status)</option>
@@ -330,6 +335,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Normal mode LED color</label>
     <description>Sets the Normal mode LED color</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">White</option>
@@ -347,6 +356,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status mode LED 1 Color</label>
     <description>Status mode LED 1 (bottom) color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -365,6 +378,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status mode LED 2 color</label>
     <description>Status mode LED 2 color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -383,6 +400,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status mode LED 3 color</label>
     <description>Status mode LED 3 color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -401,6 +422,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status mode LED 4 color</label>
     <description>Status mode LED 4 color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -419,6 +444,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Blink Frequency</label>
     <description>Sets the Blink frequency for All LEDs in Status mode</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">No blink</option>
@@ -435,6 +464,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>LED 1 Blink Status</label>
     <description>LED 1 Blink Status (bottom)</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Solid</option>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zse44_00_000" listed="false">
     <label>ZSE44 Temperature Humidity Sensor</label>
@@ -11,6 +11,7 @@
 Temperature Humidity Sensor<br /> <h1>Overview</h1><p>Temperature and humidity sensor.</p> <br /> <h2>Inclusion Information</h2><p>Open cover, click Z-Wave button 3 times rapidly.  LED indicator will start blinking.</p> <br /> <h2>Exclusion Information</h2><p>Open cover, click Z-Wave button 3 times rapidly.  LED indicator will start blinking.</p> <br /> <h2>Wakeup Information</h2><p>Open cover, click Z-Wave button rapidly 4 times.  The LED indication will flash twice.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

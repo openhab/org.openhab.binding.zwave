@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zwa018_00_000" listed="false">
     <label>ZWA018 Aeotec Water Sensor 7 Basic</label>
@@ -11,6 +11,7 @@
 Aeotec Water Sensor 7 Basic<br /> <h1>Overview</h1><p>The AEOTEC Water Sensor 7 Basic is a sensor, which detects water leakage.</p> <br /> <h2>Inclusion Information</h2><p><b>SmartStart Inclusion.</b></p><p>You can use this method of inclusion only if your Z-Wave gateway/controller/hub supports SmartStart.</p><ol><li> Open up your Z-Wave gateway/controller/app.</li><li>Select SmartStart inclusion.</li><li>Scan the QR code located on the Water Sensor 7.</li><li>Within 10 minutes after powering your Water Sensor 7, it will automatically get included into your Z-Wave gateway/controller/hub.</li></ol><p><b>Classic Inclusion</b></p><ol><li> Set your Z-Wave controller into pairing mode.</li><li>Triple-click the tamper switch on Water Sensor 7 - this begins to blink five times</li><li>After completion of the inclusion, the LED will illuminate green for 3 seconds.</li><li>If you pairing with S2 encryption/security, enter the first 5 digits of the DSK into your controller/gateway/hub interface when requested. </li><li>Close the cover</li></ol> <br /> <h2>Exclusion Information</h2><p>Your sensor can be removed from your Z-Wave network at any time. You'll need to use your Z-Wave network's main controller/gateway. To do this, please refer to the part of your gateways respective manual that tells you how to remove devices from your network. </p><ol><li> Set your Z-Wave controller into unpair mode.</li><li> Triple-click the tamper switch on Water Sensor 7 within 1.5 seconds - this will cause the LED to blink five times.</li><li>After a successful exclusion, it will light up its LED for 2 seconds then deactivate.</li></ol> <br /> <h2>Wakeup Information</h2><p>In order to send your sensors new configuration commands from your Z-Wave controller or gateway, it will need to be woken up. </p><ol><li> Wake Up the device by removing the cover. </li><li>The hit the tamper switch once.</li></ol><p><b>Note:</b> Water Sensor 7 remains awake until the housing is closed again.</p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

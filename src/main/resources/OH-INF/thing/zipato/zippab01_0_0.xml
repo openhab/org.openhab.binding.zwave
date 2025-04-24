@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zipato_zippab01_00_000" listed="false">
     <label>ZIP-PAB01 Micro Module Energy Meter</label>
@@ -11,6 +11,7 @@
 Micro Module Energy Meter<br /> <h1>Overview</h1><ul><li>Slim, compact remote Z-Wave module measures power parameters of connected device</li> <li>Dual power meter function</li> <li>Instant power wattage and</li> <li>Accumulated power consumption KWh report</li> <li>Amper meter clamp included in the box</li> <li>Maximum current measure 60A</li> <li>Higher output power enhances communication range(+2.5dBm output power compared to -2.5dBm 300 series)</li> <li>New Z-Wave 500 series chip supports multichannel operation and higher data rates (9.6/40/100kbps)</li> <li>Very low power power consumption</li> <li>Over-the-air firmware update Easy installation</li> </ul> <br /> <h2>Inclusion Information</h2><p>In the front casing, there is an On/Off button with LED indicator which is used to carry out inclusion, exclusion, reset or association. After being excluded, its LED flashes on and off alternately and repeatedly at 2-second intervals. It implies that it has not been assigned a node ID and cannot work with Z-Wave enabled devices.</p> <p><strong>AUTO INCLUSION</strong></p> <p>The function of auto inclusion will be executed as long as the Micromodule does not have Node ID and is plugged into a wall outlet. When first power is applied, its LED flashes on and off alternately and repeatedly at 0.5 second intervals. It implies that it is in learning mode now.</p> <p>Note: Auto inclusion timeout lasts 2 minutes during which the node information of explorer frame will be emitted once per every 5 seconds. Unlike “inclusion” function as shown in the table below, auto inclusion doesn’t require pressing on/off buttons on the switch.</p> <br /> <h2>Exclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

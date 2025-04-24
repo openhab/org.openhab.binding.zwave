@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen31_00_000" listed="false">
     <label>ZEN31 RGBW Dimmer for LED Strips</label>
@@ -11,6 +11,7 @@
 RGBW Dimmer for LED Strips<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/off, brightness, and RGBW color control</li> <li>Perfect for programming your existing RGBW LED strip</li> <li>Energy monitoring in live mode and over time</li> <li>Double tap to full brightness feature + optional scene control</li> <li>Remembers and restores on/off status after a power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> </ul> <br /> <h2>Inclusion Information</h2><p>Make sure the RGBW Dimmer is powered up. <strong>Click the Z-Wave button 3 times </strong><strong>quickly</strong> to include the device. The LED will blink yellow to indicate communication with the hub. It will blink green (for non-secure, S0, or S2 unauthenticated inclusion) or magenta (for S2 authenticated) once the device is successfully included to your network. It will blink red if inclusion is not successful</p> <br /> <h2>Exclusion Information</h2><p>Click the Z-Wave button 3 times quickly.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -637,6 +638,10 @@ Brightness (dimming) sync from input IN4<br /> <h1>Overview</h1><p>Brightness (d
     <item-type>Number</item-type>
     <label>Preset Programs</label>
     <description>Enable one of the preset animated color programs to set the mood with a click</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Preset programs disabled</option>

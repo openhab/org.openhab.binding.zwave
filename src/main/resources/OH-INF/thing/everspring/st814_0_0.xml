@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="everspring_st814_00_000" listed="false">
     <label>ST814 Temperature and Humidity Sensor</label>
@@ -11,6 +11,7 @@
 Temperature and Humidity Sensor<br /> <h1>Overview</h1><p>The Temperature/Humidity Detector is a Z-WaveTM enabled device which is fully compatible with any Z-WaveTM enabled network. Z-WaveTM enabled devices displaying the Z-WaveTM logo can also be used with it regardless of the manufacturer, and ours can also be used in other manufacturer’s Z-WaveTM enabled networks. Inclusion of this detector on other manufacturer’s Wireless Controller menu allows remote operation of connected modules when the detector is triggered.</p> <p>The Temperature/Humidity Detector is designed to monitor the current temperature and humidity of ambient environment. The reading of temperature/humidity can be reported to you on a regular base at your disposal. If temperature/humidity reaches set points, the detector will send alerts to associated devices for further execution. Since sudden temperature/humidity change may cause health problems to people such as elderly or very young children, Temp./Humid. Detector provides you most up-to-date temperature and humidity reading for you to watch your family’s health. </p> <br /> <h2>Inclusion Information</h2><p>One of function key (C/F/L) is used to carry out inclusion, exclusion, association and reset. When the detector is first powered up, the reading in RF mode is 00 which implies that it hasn’t been allocated a node ID and cannot work with Z-WaveTM enabled devices. The Temp./Humid. Detector will stay “awake” for 10 minutes when power is first applied to allow time for configuration.</p> <ul><li>Pressing key 3 times within 1.5 seconds will enter inclusion mode</li> </ul> <br /> <h2>Exclusion Information</h2><p>One of function key (C/F/L) is used to carry out inclusion, exclusion, association and reset. When the detector is first powered up, the reading in RF mode is 00 which implies that it hasn’t been allocated a node ID and cannot work with Z-WaveTM enabled devices. The Temp./Humid. Detector will stay “awake” for 10 minutes when power is first applied to allow time for configuration.</p> <ul><li>Pressing key 3 times within 1.5 seconds will enter exclusion mode</li> </ul> <br /> <h2>Wakeup Information</h2><ul><li>Pressing key 3 times within 1.5 seconds will wake the device</li> </ul>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -222,6 +223,10 @@ Sets the humidity change causing a sensor report.<br /> <h1>Overview</h1><p>0 = 
     <item-type>Number</item-type>
     <label>Temperature Trigger ON value</label>
     <description>Temperature level when a ON command is sent out. Set to 99 to disable.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="99">Disable</option>
@@ -233,6 +238,10 @@ Sets the humidity change causing a sensor report.<br /> <h1>Overview</h1><p>0 = 
     <item-type>Number</item-type>
     <label>Temperature Trigger OFF value</label>
     <description>Temperature level when a OFF command is sent out. Set to 99 to disable.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="99">Disable</option>
@@ -255,6 +264,10 @@ Sets the humidity change causing a sensor report.<br /> <h1>Overview</h1><p>0 = 
     <item-type>Number</item-type>
     <label>Humidity Trigger OFF value</label>
     <description>Humidity level when a OFF command is sent out. Set to 99 to disable.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Humidity</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="99">Disable</option>

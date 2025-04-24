@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgd211_01_009" listed="false">
     <label>FGD211 Universal Dimmer 500W</label>
@@ -11,6 +11,7 @@
 Universal Dimmer 500W<br /> <h1>Overview</h1><p>Remotely controlled Dimmer is designed to operate with or without neutral lead. It may be used as a switch in systems without neutral lead.</p> <br /> <h2>Inclusion Information</h2><p>The Dimmer enters the mode of inclusion after quick pressing three times the push-button connected to S1 terminal or push-button B located inside the housing.</p> <br /> <h2>Exclusion Information</h2><p>The Dimmer enters the mode of exclusion after quick pressing three times the push-button connected to S1 terminal or push-button B located inside the housing.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -288,6 +289,10 @@ Command class scene activation for group no. 3<br /> <h1>Overview</h1><p>The dev
     <item-type>Number</item-type>
     <label>Updating the dimming level without switch.</label>
     <description>Parameter’s value changes depending on the dimming level.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

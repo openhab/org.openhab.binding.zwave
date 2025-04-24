@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="benext_heatingcontrol_00_000" listed="false">
     <label>Heating Control Thermostat for controlling the opentherm protocol</label>
@@ -11,6 +11,7 @@
 Thermostat for controlling the opentherm protocol<br /> <h1>Overview</h1><p>The Heating Control is the central point of your climate environment. You can overwrite the temperature setpoint of your thermostat, and this product also reports information about your thermostat or boiler. For example the room temperature, boiler pressure, modulation level or water temperature.</p> <p>This product can be simply placed between your thermostat and boiler. The current setup is not changed and therefore you can still use the device as you normally would do. You don’t have to replace your current thermostat.</p> <p>Note: This product only works if the current communication between your thermostat and boiler uses the standardized modulating protocol Open Therm. If you are not sure whether your thermostat/boiler uses Open Therm, you may find that in the manual of your thermostat/boiler. You can also find it on the internet. You can search for example on ‘Honeywell round clock open therm’.</p> <br /> <h2>Inclusion Information</h2><p>Press and hold the push button for 2 seconds and release to start the inclusion or exclude process.</p> <br /> <h2>Exclusion Information</h2><p>Press and hold the push button for 2 seconds and release to start the inclusion or exclude process.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

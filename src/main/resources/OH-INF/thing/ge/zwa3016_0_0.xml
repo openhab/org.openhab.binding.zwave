@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ge_zwa3016_00_000" listed="false">
     <label>59350/ZWA3016 UltraPro 700 Series Z-Wave in-Wall Smart Rocker Light Dimmer</label>
@@ -11,6 +11,7 @@
 UltraPro 700 Series Z-Wave in-Wall Smart Rocker Light Dimmer<br /> <h1>Overview</h1><p>Experience the latest generation of Z-Wave™ smart controls for in-wall configurations with paddle-style dimmers to accommodate any home.</p><p>In-Wall Smart Switch with QuickFit and SimpleWire enhancements. Revolutionary QuickFit design features a housing depth that is up to 20 percent smaller than the previous Z-Wave models. This reduced size coupled with the elimination of heat taps provides a better fit in older style boxes and multi-gang configurations. SimpleWire technology allows line and load to automatically be configured with auto-sensing line-load terminals. All of this is coupled with Z-Wave S2 and Smart Start allows for effortless installation while being safer than ever!<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</li><li>Once the controller is ready to add your device, press the top or bottom of the rocker.</li></ol><br /><p>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</p><p>Once the controller is ready to add your device, press and release the top or bottom of the wireless smart switch (rocker).</p> <br /> <h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network.</li><li>Once the controller is ready to remove your device, press the top or bottom of the rocker.</li></ol><p>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</p><p>Once the controller is ready to add your device, press and release the top or bottom of the wireless smart switch (rocker).</p> <br /> <h2>Wakeup Information</h2><p><br /></p><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

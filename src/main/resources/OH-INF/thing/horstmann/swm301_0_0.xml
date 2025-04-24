@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="horstmann_swm301_00_000" listed="false">
     <label>SWM301 Z-Wave Module for Water Meter</label>
@@ -11,6 +11,7 @@
 Z-Wave Module for Water Meter<br /> <h1>Overview</h1><p>SWM 301 is a battery-powered RF module using Z-Wave® technology for reporting secondary water metering readings in domestic dwellings.</p> <p>The RF module records the meter reading by backlash-free pick-up on the litre wheel of the meter register and transmits the data over the Zwave network either on a time or delta change.</p> <br /> <h2>Inclusion Information</h2><ol><li>Put network controller in Inclusion / Exclusion mode.</li> <li>Hold a small magnet near to reed switch until the LED is turned on. Remove magnet right away when LED turned on. LED will remain on for next 4 seconds and then it will flash once to indicate NIF is sent.</li> <li>Repeat the step 2 if LED is not flashed once.</li> <li>The controller will indicate the successful inclusion/ exclusion operation.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put network controller in Inclusion / Exclusion mode.</li> <li>Hold a small magnet near to reed switch until the LED is turned on. Remove magnet right away when LED turned on. LED will remain on for next 4 seconds and then it will flash once to indicate NIF is sent.</li> <li>Repeat the step 2 if LED is not flashed once.</li> <li>The controller will indicate the successful inclusion/ exclusion operation.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Hold a small magnet near to reed switch until the LED is turned on. Remove magnet right away when LED turned on. LED will remain on for next 4 seconds and then it will flash once to indicate NIF is sent.</p> <p>SWM301 will wake up for 10 seconds after sending NIF</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sunricher_9040_00_000" listed="false">
     <label>9040 In Wall Dimmer module</label>
@@ -11,6 +11,7 @@
 In Wall Dimmer module<br /> <h1>Overview</h1><p>Z-Wave Built-in receiver with dimmer function. Control input, AC 230V / DC 12V, for Pushdim. Max 400 W resistive load, 200 W LED. Front edge / Rear dimmer, adjustable lowest level. Compatible with Nexa Bridge and other Z-Wave controllers.</p> <br /> <h2>Inclusion Information</h2><p>Press the "Reset" button 3 times within 3 seconds or</p><p>press 3 times on connected switch within 3 seconds</p> <br /> <h2>Exclusion Information</h2><p>Set the Z-Wave controller in the exclusion mode (see controller's manual)</p><p>Press the "Reset" button 3 times within 3 seconds</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

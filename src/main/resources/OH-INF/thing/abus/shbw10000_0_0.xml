@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="abus_shbw10000_00_000" listed="false">
     <label>SHBW10000 PIR Multisensor</label>
@@ -11,6 +11,7 @@
 PIR Multisensor<br /> <h1>Overview</h1><p>The SHBW10000 was developed for use in home automation systems that use the Z-Wave wireless standard.</p> <p>The multisensor has the following sensors:</p> <ul><li>PIR</li> <li>temperature</li> <li>atmospheric humidity</li> <li>lights</li> </ul><p>The motion sensor lets you know when something moves within a certain range and can then trigger various scenes/actions.</p> <p>The device also reports the current room temperature, humidity and illuminance.</p> <p>In conjunction with configurable scenes, smart functions can also be initiated in addition to monitoring, e.g. if temperature &lt;20 degrees, heating on.</p> <br /> <h2>Inclusion Information</h2><p>Click the + (Add) button in your Z-Wave App and follow the further instructions.</p> <p>Press the Button on the device once.</p> <p>The App will show if the Add device process was successful. The Status LED will light up for 2 seconds.</p> <p>Repeat the inclusion process if it was not successful.</p> <br /> <h2>Exclusion Information</h2><p>Click the - (Remove) button in your Z-Wave App and follow the further instructions.</p> <p>Press the Button on the device once.</p> <p>The App will show if the Remove device process was successful.</p> <p>Repeat the exclusion process if it was not successful.</p> <br /> <h2>Wakeup Information</h2><p>If included:</p> <p>The device sends a wake up notification command to the node devices which are connected by a wake up command.</p> <p>The LED will light up when information is received, and will go out when there is no exchange for 10 seconds.</p> <p>If not included: nothing</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

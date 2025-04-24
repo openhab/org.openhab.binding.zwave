@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_ms13z_00_000" listed="false">
     <label>MS13Z Minoston Toggle Dimmer Switch</label>
@@ -11,6 +11,7 @@
 Minoston Toggle Dimmer Switch<br /> <h1>Overview</h1><p>Transform any home into a smart home with the Z-Wave Smart Switch. The switch enables you to wirelessly control to turn lights on and off, schedule a timed event or create a custom scene from anywhere in the world, at any time of the day. Take control of your home lighting with Z-Wave Smart Lighting Controls</p> <br /> <h2>Inclusion Information</h2><p>Make your controller/hub into the "inclusion" mode, triple press the Up/Down push button quickly to include it in the network.</p> <br /> <h2>Exclusion Information</h2><p>Make your controller/hub into the "exclusion" mode, triple press the Up/Down push button quickly to exclude it from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

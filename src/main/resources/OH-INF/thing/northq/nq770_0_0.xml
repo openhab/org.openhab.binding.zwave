@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="northq_nq770_00_000" listed="false">
     <label>NQ-9770 In Wall Micromodule Single Switch</label>
@@ -11,6 +11,7 @@
 In Wall Micromodule Single Switch<br /> <h1>Overview</h1><p>PAN03-1: 868.40MHz; 869.85MHz(EU) /</p><p>PAN03-2: 908.40MHz; 916.00MHz(USA/Canada) /</p><p>PAN03-3: 920.90 MHz, 921.70 MHz, 923.10 MHz (Taiwan)</p><p>PAN03-IL: 916.00MHz(Israel)</p><p><br />This plug-in ON/OFF switch NQ-9770 (labeled as PAN03) is a security enabled wireless switch, based on Z-Wave Plus technology. Z-Wave PlusTM enabled devices displaying the Z-Wave PlusTM logo can also be used with it regardless of the manufacturer, and can also be used in other manufacturer’s Z-WaveTM enabled networks. Remote On/Off control of the connected load is possible with other manufacturer’s wireless Controller. Each switch is designed to act as a repeater. <br /><br />Repeaters will re-transmit the RF signal to ensure that the signal is received by its intended destination by routing the signal around obstacles and radio dead spots. Because NQ-9770 (labeled as PAN03) supports Security Command Class, it can learn with Secured controller. Its functionality and supported command classes is identical when included as a secure and non-secure device.</p> <br /> <h2>Inclusion Information</h2><ol><li>Put your Z-Wave controller into inclusion mode by following the instructions provided by the controller manufacturer.</li><li>Pressing On/Off button three times within 2 seconds will enter inclusion mode.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Put your Z-Wave controller into inclusion mode by following the instructions provided by the controller manufacturer.</li><li>Pressing On/Off button three times within 2 seconds will enter inclusion mode.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

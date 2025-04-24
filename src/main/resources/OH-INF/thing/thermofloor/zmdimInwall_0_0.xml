@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="thermofloor_zmdimInwall_00_000" listed="false">
     <label>Heatit_ZM_dimmer_250W Heatit_ZM_dimmer_250W</label>
@@ -11,6 +11,7 @@
 Heatit_ZM_dimmer_250W<br /> <h1>Overview</h1><p>Inwall dimmer for 230VAC</p> <br /> <h2>Inclusion Information</h2><p>Add/remove mode is indicated on the device by a blinking green LED. It indicates this for 90 seconds until a timeout occurs, or until the module has been added to/removed from the network. Configuration mode can also be cancelled by performing the same procedure used for starting Configuration mode.</p><p>To start the configuration process, press the reset button 3 times in rapid succession. The LED will light up in solid green for 3 seconds if add/remove is successful. The device is now ready for use with default settings.</p> <br /> <h2>Exclusion Information</h2><p>Add/remove mode is indicated on the device by a blinking green LED. It indicates this for 90 seconds until a timeout occurs, or until the module has been added to/removed from the network. Configuration mode can also be cancelled by performing the same procedure used for starting Configuration mode.</p><p>To start the configuration process, press the reset button 3 times in rapid succession. The LED will light up in solid green for 3 seconds if add/remove is successful. The device is now ready for use with default settings.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>FloorHeating</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

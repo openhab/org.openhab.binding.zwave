@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="heltun_hezwsw5a1_00_000" listed="false">
     <label>HE-ZW-SW-5A-1 5 Way Switch old</label>
@@ -11,6 +11,7 @@
 5 Way Switch old<br /> <h1>Overview</h1><p>The HELTUN 5 channel wall touch panel switch replaces an existing in-wall switch and enables manual or remote switch (On/Off) controls of lights, blinds, motors and heating systems with a maximum load of SA for each channel.</p><p>The switcher has two independent inputs for the relay channels which allows it to control systems with different power sources or to use outputs as dry contacts. Each relay can be controlled by the switcher touch buttons or independently via a Z-Wave gateway.</p><p>The panel has five sensitive capacitive touch control buttons with a two-colour (red and blue) backlight for each button. Button backlight brightness can be adjusted automatically depending on the illumination of the ambient environment or manually in the settings.</p><p>Each touch button can be configured tocontrol any relay (from one uptofive)outputstate in 7 different modes. The buttons also can be used as controller scene activators and the backlight can indicate the gateway mode or associated device status</p> <br /> <h2>Inclusion Information</h2><p>Inclusion</p><ol><li>Start the inclusion mode from the gateway</li><li>To start the inclusion process on the device simultaneously press two bottom touch buttons and hold them for 3 seconds.</li><li>Two upper buttons will sequentially blink blue-red</li><li>If the inclusion has been successful the two upper buttons will turn blue.</li><li>If the inclusion was not completed the two upper buttons will turn red. In that case start the inclusion process again.</li></ol><p>Note: In case the device has been part of the Z-Wave network before and not excluded since, inclusion is not possible. In this case, exclusion or factory reset must be performed before inclusion.</p><p>Security: SO, S2 unauthorized and S2 authorized inclusion modes are supported. If you use S2 authorized inclusion mode the security key should be used in inclusion process.</p><p>NOTE: Be sure to save this key. Without this key it is impossible to perform an inclusion in S2 authorized mode</p> <br /> <h2>Exclusion Information</h2><p>Exclusion</p><p>To exclude the thermostat from the Z-Wave network</p><ol><li>Start the exclusion mode from the gateway</li><li>Simultaneouslypress two bottom touch buttons and hold them for 3 seconds.</li><li>Two upper buttons will sequentially blink blue-red</li><li>If the exclusion has been successful the two upper buttons will turn red</li><li>If the exclusion was not completed the two upper buttons will turn blue. In that case start the exclusion process again.</li></ol> <br /> <h2>Wakeup Information</h2><p>constantly powered, always awake</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

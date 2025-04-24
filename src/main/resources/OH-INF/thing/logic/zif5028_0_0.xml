@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="logic_zif5028_00_000" listed="false">
     <label>ZIF5028 / HeatIt Z-DIN 616 6 relay switches and 6 digital inputs module for DIN rail</label>
@@ -11,6 +11,7 @@
 6 relay switches and 6 digital inputs module for DIN rail<br /> <h1>Overview</h1><h3>Features</h3> <ul><li>DIN rail module with 6 relay outputs and 6 digital inputs</li> <li>Z-Wave interface for other systems in order to control them through the Z-Wave network</li> <li>Mounted on DIN-rail in switch board</li> <li>6 x 16A potential free relays</li> <li>2-poled switch solution when using 2 x relays in combination</li> <li>Works as slave Z-Wave repeater</li> <li>Firmware Update (OTA)</li> <li>Supports encryption mode: S0, S2 Access Control Class,</li> <li>S2 Authenticated Class, S2 Unauthenticated Class</li> </ul><h3><br /></h3> <br /> <h2>Inclusion Information</h2><p>The inclusion mode / exclusion mode on the Logic Group ZIF5028/Heatit Z-DIN 616 device is activated by pressing the small button through the hole in the front of the module, marked ”INCLUSION”, after which the status LED will start flashing.</p> <br /> <h2>Exclusion Information</h2><p>The same as the inclusion. Put the Z-Wave controller into Exclusion mode and then press the small button through the hole in the front of the module, marked ”INCLUSION”, after which the status LED will start flashing.</p> <p>FACTORY RESET</p> <p>Logic Group ZIF5028/Heatit Z-DIN 616 can be reset to factory settings, i.e. all configurations and device address will be reset to default settings. The device must then be reconnected to the Z-Wave network.</p> <p>Resetting is performed by activating the small pushbutton marked ”INCLUSION” located on the front for at least 10 seconds until the LED flashes briefly. E.g. slide a needle pin or a toothpick through the small hole to activate the pushbutton.</p> <p>This procedure only applies to cases where the primary network controller is not available or not operational.</p> <br /> <h2>Wakeup Information</h2><p>This device works as Z-Wave signal repeater. It's always on.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

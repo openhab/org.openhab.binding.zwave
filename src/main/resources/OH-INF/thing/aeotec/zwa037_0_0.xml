@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zwa037_00_000" listed="false">
     <label>ZWA037 Aeotec Illumino Dimmer Switch</label>
@@ -11,6 +11,7 @@
 Aeotec Illumino Dimmer Switch<br /> <h1>Overview</h1><p>This product can be operated in any Z-Wave™ network with other Z-Wave Plus™ certified devices from other manufacturers. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network. Each module is designed to act as a repeater, which will re-transmit a radio frequency (RF) signal by routing the signal around obstacles and radio dead spots to ensure that the signal is received at its intended destination. ZWA037-A is a security enabled Z-Wave Plus™ device. A security Enabled Z-Wave Plus™</p><p>Controller must be used in order to fully utilize the product. </p> <br /> <h2>Inclusion Information</h2><p>Inclusion 1x tap</p><p>Out of network</p><p>Send NIF for network pairing/ inclusion (white LED quick flashes). If pairing is successful, the LED will turn to solid green for 2s, then deactivates.</p><p>In network</p><p>Trigger to send Central Scene 1x tap scene.</p><p>ON/OFF control of output load. </p> <br /> <h2>Exclusion Information</h2><p>Exclusion 3x tap</p><p>In network Send NIF for network unpairing/ exclusion (purple LED flashes).</p><p>Out of network</p><p>Trigger to send Central Scene 3x tap scene. </p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -454,6 +455,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Auto Turn Off Timer</label>
     <description>Timer that auto turn off once turned on.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -486,6 +491,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Led Indicator Settings</label>
     <description>Select the indicator function for output.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -494,6 +503,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Led Indicator Color For Output</label>
     <description>Select the indicator color for output.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -502,6 +515,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Led Indicator Color For Scene</label>
     <description>Select the indicator color for scene.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -510,6 +527,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Led Brightness</label>
     <description>Setting the brightness of indicator.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -566,6 +587,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Ramp Rate for Tap and Hub contro</label>
     <description>Setting ramp rate when tap to on off or controlled by HUB.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -582,6 +607,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Minimum most dim setting</label>
     <description>Setting the minimum value of dimmer.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -590,6 +619,10 @@ Top and bottom button set multilevel set<br /> <h1>Overview</h1><p>Switch Multil
     <item-type>Number</item-type>
     <label>Custom brightness</label>
     <description>Setting user custom brightness.</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

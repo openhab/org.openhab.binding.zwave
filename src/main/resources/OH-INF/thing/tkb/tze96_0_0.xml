@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="tkb_tze96_00_000" listed="false">
     <label>TZE96 Color Touch Heating Thermostat</label>
@@ -11,6 +11,7 @@
 Color Touch Heating Thermostat<br /> <h1>Overview</h1><p>Thermostat TZE96 is a 230AC powered device which works in Z-Wave network. It is mounted on Wall with using electrical box. It has additional input for temperature sensor mounted in floor. Screen shows actual temperature in room or floor and clock. Thermostat has relay which could control load up to 16A (3600W). The possibility of defining the heating schedule. The ability to adjust the comfort mode, economy mode, party mode, holiday mode and control program mode.</p> <ul><li>This model has a glass front and color touchscreen.</li> <li>Set contains cable temperature sensor for floor heating.</li> <li>Works in the newest standard Z-Wave Plus (500 series). Thermostat works fine with Fibaro (4.x firmware) and Vera gateways.</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Make sure the thermostat in the Main interface of OFF mode.</li> <li>Have z-wave controller enter inclusion mode.</li> <li>Press Up Button on thermostat 3 times in 1,5 seconds will enter inclusion mode.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the thermostat in the Main interface of OFF mode.</li> <li>Have z-wave controller enter exclusion mode.</li> <li>Press Up Button on thermostat 3 times in 1,5 seconds will enter exclusion mode.</li> </ol>
     ]]></description>
     <category>RadiatorControl</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -105,6 +106,10 @@ Remember device status before the power failure.<br /> <h1>Overview</h1><p>This 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

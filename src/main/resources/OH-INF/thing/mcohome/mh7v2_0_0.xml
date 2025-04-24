@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="mcohome_mh7v2_00_000" listed="false">
     <label>MH7v2 Water / Electrical Heating Thermostat</label>
@@ -11,6 +11,7 @@
 Water / Electrical Heating Thermostat<br /> <h1>Overview</h1><p>MCOHome Water / Electrical Heating Thermostat is a Z-Wave Plus enabled device for indoor temperature control. MH7H-WH is mainly applied to control wall mounted boiler, water valve/pump etc., while MH7H-EH is for electrical heating system.</p> <br /> <h2>Inclusion Information</h2><p>In normal working interface, press &amp; hold S4 to enter interface for inclusion or exclusion of Z-Wave network. Before device included into network, “- - -” will display on the screen. Then press S4 once, device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds</p> <br /> <h2>Exclusion Information</h2><p>In normal working interface, press &amp; hold S4 to enter interface for inclusion or exclusion of Z-Wave network.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -168,6 +169,10 @@ Factory Reset<br /> <h1>Overview</h1><p>0x55 Restore the factory setting(write 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

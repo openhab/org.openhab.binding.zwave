@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zwa009_01_000" listed="false">
     <label>ZWA009 Temperature and Humidity Sensor</label>
@@ -11,6 +11,7 @@
 Temperature and Humidity Sensor<br /> <h1>Overview</h1><p>Small sensor that offers monitoring of temperature, humidity, dew and mold. Uses a CR2477 battery with up to 2 years' lifespan.</p> <br /> <h2>Inclusion Information</h2><p>Triple click the intrusion (button on the front) button.<br /></p> <br /> <h2>Exclusion Information</h2><p>Triple click the intrusion (button on the front) button.</p> <br /> <h2>Wakeup Information</h2><p>Click the intrusion (button on the front) button.<br /></p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

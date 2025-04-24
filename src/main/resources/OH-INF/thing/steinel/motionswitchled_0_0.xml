@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="steinel_motionswitchled_00_000" listed="false">
     <label>MotionSwitch LED Infrared motion detector with orientation light</label>
@@ -11,6 +11,7 @@
 Infrared motion detector with orientation light<br /> <h1>Overview</h1><p>Infrared motion detector with orientation light and Z-Wave interface for indoor power sockets.</p> <p>The ininfrared sensor can be used for switching light ON and OFF automatically. The unit is not suitable for burglar alarm systems as it is not tamperproof in the manner prescribed for such systems. The orientation light can be switched ON and OFF via the sensor or the button on the MotionSwitch LED. The relevant setting can be programmed.</p> <br /> <h2>Inclusion Information</h2><p>To start the motion detector's inclusion mode, press the button three times in rapid succession. During inclusion mode and following configuration process device is blinking.</p> <br /> <h2>Exclusion Information</h2><p>To start the motion detector's exclusion mode, press the button three times in rapid succession. During exclusion mode and following configuration process device is blinking.</p> <p>Following exclusion, all configuration parameters (time, sensitivity etc.) remain intact until the next inclusion.</p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -304,6 +305,10 @@ Button dim<br /> <h1>Overview</h1><p>Group 7 is used for dimming ( use just for 
     <item-type>Number</item-type>
     <label>TIME</label>
     <description>Duration of light after motion detection [s]</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Duration</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -312,6 +317,10 @@ Button dim<br /> <h1>Overview</h1><p>Group 7 is used for dimming ( use just for 
     <item-type>Number</item-type>
     <label>LIGHT</label>
     <description>Light threshold [lx]</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Motion</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

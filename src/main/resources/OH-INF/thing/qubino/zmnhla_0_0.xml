@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="qubino_zmnhla_00_000" listed="false">
     <label>ZMNHLA Flush PWM thermostat</label>
@@ -11,6 +11,7 @@
 Flush PWM thermostat<br /> <h1>Overview</h1><p>This Z-Wave module is used to regulate temperature. Regulation is done using full wave PWM technology. The module can be controlled either through Z-wave network or through the wall switch. </p> <br /> <h2>Inclusion Information</h2><ul><li>press service button S for more than 2 seconds or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>press service button S for more than 6 seconds or</li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply.</li> </ul>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -423,6 +424,10 @@ Input 3 Status off delay<br /> <h1>Overview</h1><ul><li>default value 0</li> <li
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

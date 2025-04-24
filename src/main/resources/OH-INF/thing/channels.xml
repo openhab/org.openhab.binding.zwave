@@ -585,6 +585,10 @@
         <label>Indicator Period</label>
         <description>Sets the indicator On/Off period</description>
         <category></category>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     </channel-type>
 
     <!-- Indicator Command Class - Period -->
@@ -1629,6 +1633,10 @@
             The value 0 will stop any tone beeing played. 
             The value 255 will play the default tone</description>
         <category></category>
+    <tags>
+      <tag>Control</tag>
+      <tag>SoundVolume</tag>
+    </tags>
         <state>
             <options>
                 <option value="0">Stop</option>
@@ -1655,6 +1663,10 @@
         <label>Sound default tone</label>
         <description>The sound default tone used when the device is activated</description>
         <category></category>
+    <tags>
+      <tag>Control</tag>
+      <tag>SoundVolume</tag>
+    </tags>
     </channel-type>
 
     <!-- Switch Channel -->

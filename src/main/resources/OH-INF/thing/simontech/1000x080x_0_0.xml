@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="simontech_1000x080x_00_000" listed="false">
     <label>1000X080-XXX S100 iO Roller Blind (2023)</label>
@@ -11,6 +11,7 @@
 S100 iO Roller Blind (2023)<br /> <h1>Overview</h1><p>Roller Blind IO is ready to operate with Z-Wave controllers and configured to be managed by Simon100 IO APP using the HUB plug IO for getting a better user experience. Sending the Blind Up/Down or setting a specific position.</p> <br /> <h2>Inclusion Information</h2><p>When the pushbutton is released after a press of (2sec&lt;T&lt;10sec) the device will send a NIF to include from Z-Wave network or perform an association with other Z-Wave device. Central LED will Blink with 0,3 sec period to inform that NIF can be send after release of pushbutton. This process does not perform a default reset of configurations. Main LED will Blink with 0,3 sec period to inform that NIF can be send after release of pushbutton. <br /></p> <br /> <h2>Exclusion Information</h2><p>When the pushbutton is released after a press of (2sec&lt;T&lt;10sec) the device will send a NIF to exclude from Z-Wave network or perform an association with other Z-Wave device. Main LED will Blink with 0,3 sec period to inform that NIF can be send after release of pushbutton. This process does not perform a default reset of configurations. Main LED will Blink with 0,3 sec period to inform that NIF can be send after release of pushbutton. <br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
+    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

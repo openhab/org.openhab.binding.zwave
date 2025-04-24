@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="homeseer_hsls100_00_000" listed="false">
     <label>HS-LS100+ HomeSeer Z-Wave Plus Leak Sensor</label>
@@ -11,6 +11,7 @@
 HomeSeer Z-Wave Plus Leak Sensor<br /> <h1>Overview</h1><p>Homeseer HS-LS100+ is a compact, easy to install leak sensor. It designed control other ZLS100+ is a compact, easy to install leak sensor. It designed control other Z-Wave devices directly or it may be used with a variety of Z-Wave certified home controllers to launch automation events or scenes.</p> <br /> <h2>Inclusion Information</h2><p>Inclusion (recommended if your home controller supports “S0” or “S2” Z-Wave encryption)<br />1. Put your home controller into Z-Wave ‘inclusion’ mode.<br />2. Quickly triple-press the Z-Wave network button, then release it. Wait for the inclusion process to finish.</p> <br /> <h2>Exclusion Information</h2><p>Exclusion<br />1. Put your home automation controller into Z-Wave ‘exclusion’ mode.<br />2. Quickly triple-press the Z-Wave network button. Wait for the exclusion process to finish.</p> <br /> <h2>Wakeup Information</h2><p>Press and hold the Z button for more that 5 seconds and release</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

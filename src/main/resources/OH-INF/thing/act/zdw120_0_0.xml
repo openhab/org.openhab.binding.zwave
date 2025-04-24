@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="act_zdw120_00_000" listed="false">
     <label>ZDW120 Two Wire Wall Dimmer</label>
@@ -11,6 +11,7 @@
 Two Wire Wall Dimmer<br /> <h1>Overview</h1><p>The ZDW120 Wall Mounted Dimmer is a component of the HomePro lighting control system. Wire the Wall Mounted Dimmer in place of the standard wall switch according to the diagram above and program from the Wireless Controller to operate loads. Inclusion of the ZDW120 Wall Mounted Dimmer on the ZTH100 Wireless Controller menu allows remote ON/OFF control and dimming of lights connected</p> <br /> <h2>Inclusion Information</h2><p>Tap either the top or the bottom of the ZDW20 switch once.</p> <br /> <h2>Exclusion Information</h2><p>Tap either the top or the bottom of the ZDW20 switch once.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nexa_zpr111_00_000" listed="false">
     <label>ZPR-111 Plug-in Switch with enery meter</label>
@@ -11,6 +11,7 @@
 Plug-in Switch with enery meter<br /> <h1>Overview</h1><p>Z-Wave plugin receiver (On/Off) with power consumption measurement function, LED indicator, built-in switch-off timer and on/off button.<br /></p> <br /> <h2>Inclusion Information</h2><p>Press the link button three times within 1.5 seconds; the LED flashes Yellow 5 times.<br /></p> <br /> <h2>Exclusion Information</h2><p>Press the link button three times within 1.5 seconds: the LED flashes Purple 5 times.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

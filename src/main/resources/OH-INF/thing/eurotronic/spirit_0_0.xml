@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="eurotronic_spirit_00_000" listed="false">
     <label>Spirit Thermostatic Valve</label>
@@ -11,6 +11,7 @@
 Thermostatic Valve<br /> <h1>Overview</h1><p>Spirit Z-Wave Plus is a Z-Wave radio standard compatible energy-saving radiator thermostat.</p> <p>FLiRS (Frequently Listening Receiver Slave): Spirit Z-Wave uses FLiRS to provide short latency and short responding times.</p> <br /> <h2>Inclusion Information</h2><p>Start Inclusion mode of your primary Z-Wave Controller. Press the Boost-Button. Spirit Z-Wave Plus will show the assigned NodeID.</p> <br /> <h2>Exclusion Information</h2><p>Start Exclusion mode of your primary Z-Wave Controller. Now press and hold the boost button of the Spirit Z-Wave Plus for at least 5 seconds.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>RadiatorControl</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -247,6 +248,10 @@ Spirit Z-Wave Plus can only be associated with the Z-Wave controller.<br /> <h1>
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

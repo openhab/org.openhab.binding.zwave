@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_mr40z_00_000" listed="false">
     <label>MR40Z S2 Remote Control Switch</label>
@@ -11,6 +11,7 @@
 S2 Remote Control Switch<br /> <h1>Overview</h1><p>Remote Scene Controller</p><p>Scene 1: First Button 1-Tap/2-Tap/3-Tap/Held/Released</p><p>Scene 2: First Button 1-Tap/2-Tap/3-Tap/Held/Released<br /></p><p>Scene 3: First Button 1-Tap/2-Tap/3-Tap/Held/Released<br /></p><p>Scene 4: First Button 1-Tap/2-Tap/3-Tap/Held/Released<br /></p> <br /> <h2>Inclusion Information</h2><p>Place hub in inclusion mode</p><p>Tap first button 5x</p> <br /> <h2>Exclusion Information</h2><p>Place hub in exclusion mode</p><p>Tap second button 5x</p> <br /> <h2>Wakeup Information</h2><p>Tap third button 5x</p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
