@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="linear_wd500z5_00_000" listed="false">
     <label>WD500Z5-1 An in-wall lighting dimmer</label>
@@ -11,6 +11,7 @@
 An in-wall lighting dimmer<br /> <h1>Overview</h1><p>The WD500Z5-1 is an in-wall lighting dimmer switch designed to operate with LED, halogen and incandescent lights. Not only can this switch control the connected load, with Central Scene support it can run up to 6 scenes created by the Hub it is the most versatile Home Automation light switch available. With OTA upgrading supported, this light switch may be the last one ever installed in a home.</p> <br /> <h2>Inclusion Information</h2><p><strong>Adding to a Network: </strong></p> <p>Refer to your Controller operating instructions to add this switch under the command of the Wireless Controller.</p> <ol><li>With your Controller in Discovery or Add Mode, tap the switch. The LED will blink slowly when in ADD Mode.</li> <li>You should see an indication on your Controller that the “device was added” to the network and the LED will stop blinking.</li> <li>The device will appear in the list of Switches. It should display as a switch.</li> </ol><p>If the Controller/Gateway shows the addition failed, repeat Steps 1-3.</p> <br /> <h2>Exclusion Information</h2><p><strong>Removing from a Network: </strong></p> <p>The GoControl Dimmer can be removed from the network by the Controller/Gateway. Refer to the Controller operating instructions for details.</p> <ol><li>Set the Controller into Removal Mode and follow its instruction to delete the GoControl Dimmer from the Controller.</li> <li>Remove the switch by tapping the paddle 2 times. The LED will begin blinking slowly for 10 seconds indicating that it has been removed.</li> <li>You should see an indication on your Controller that the “device was removed” from the network.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

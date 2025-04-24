@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ameta_hazw5se_00_000" listed="false">
     <label>HA-ZW-5SE Door/Window Sensor</label>
@@ -11,6 +11,7 @@
 Door/Window Sensor<br /> <h1>Overview</h1><ul><li>The AIBASE Door/Window Sensor contains a sensor body and a magnet.</li> <li>The AIBASE Door/Window Sensor detects through the separation and combination of the main body and the magnet.</li> <li>Recommend installation distance between the sensor body and the magnet is 10mm.</li> <li>The Sensor also anti‐tamper functionality. Once the sensor is moved, it will notify the gateway.</li> <li>The AIBASE Door/Window Sensor is powered by CR2 battery with 2 years battery life.</li> <li>The AIBASE Door/Window Sensor is designed to be mounted on the door or windows.</li> <li>The AIBASE Door/Window Sensor supports low battery alarm function.</li> <li>The AIBASE Door/Window Sensor supports firmware OTA.</li> </ul> <br /> <h2>Inclusion Information</h2><p>Add for inclusion: </p> <ol><li>Insert the battery.</li> <li>Set the Z-Wave network main controller into learning mode.</li> <li>Short press the action button one time.</li> <li>If the add for inclusion is successful, the LED will blink fast and then keep on 3 seconds. Otherwise, the LED will blink 25 seconds and then turn off, in which case you need to repeat the process from step </li> </ol> <br /> <h2>Exclusion Information</h2><p>Remove for exclusion;</p> <ol><li>Insert the CR battery.</li> <li>Set the Z-Wave network main controller into exclusion mode.</li> <li>Short press the action button one time.</li> </ol><p>If the remove for exclusion is successful, the LED will blink fast and turn off. Otherwise, the LED will keep solid for 2 seconds and then turn off, in which case you need to repeat the process from step 2.</p> <br /> <h2>Wakeup Information</h2><ol><li>Short press 3 time.</li> <li>LED will blink one time; sending wake up notification cc</li> </ol>
     ]]></description>
     <category>Door</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

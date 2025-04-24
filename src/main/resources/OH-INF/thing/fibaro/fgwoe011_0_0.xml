@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgwoe011_00_000" listed="false">
     <label>FGWOE-011 Fibaro Walli Outlet type E/F</label>
@@ -11,6 +11,7 @@
 Fibaro Walli Outlet type E/F<br /> <h1>Overview</h1><p>FIBARO Walli Outlet is a smart electrical outlet designed to control electrical devices via Z-Wave network.<br />It measures active power and energy consumed by the controlled load.<br />You can install it with provided cover plate and socket cover or other compatible.</p> <br /> <h2>Inclusion Information</h2><ol><li>Power the device. </li> <li>Set the main controller into the adding mode (see the controller’s manual).</li> <li>Quickly, three times click the button.</li> <li>If you are adding in Security S2 Authenticated, input the underlined part of the DSK (label on the bottom of the box).</li> <li>LED will start blinking yellow, wait for the adding process to end.Adding result will be confirmed by the Z-Wave controller’s message and the LED frame: <ol><li>Green – successful (non-secure, S0, S2 non-authenticated)</li> <li>Magenta – successful (Security S2 Authenticated)</li> <li>Red – not successful.</li> </ol></li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Power the device </li> <li>Set the main controller in remove mode (see the controller's manual) </li> <li>Quickly, three times click the button </li> <li>LED will start blinking yellow, wait for the removing process to end </li> <li>Successful removing will be confirmed by the Z-Wave controller’s message and red LED colour.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -315,6 +316,10 @@ Power<br /> <h1>Overview</h1><p>2nd association group – “Power” devices in
     <item-type>Number</item-type>
     <label>LED frame - colour when ON</label>
     <description>LED frame - colour when ON</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -323,6 +328,10 @@ Power<br /> <h1>Overview</h1><p>2nd association group – “Power” devices in
     <item-type>Number</item-type>
     <label>LED frame - colour when OFF</label>
     <description>LED frame - colour when OFF</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -331,6 +340,10 @@ Power<br /> <h1>Overview</h1><p>2nd association group – “Power” devices in
     <item-type>Number</item-type>
     <label>LED frame – brightness</label>
     <description>LED frame – brightness</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zwa038_00_000" listed="false">
     <label>ZWA038 illumino Switch</label>
@@ -11,6 +11,7 @@
 illumino Switch<br /> <h1>Overview</h1><p>Wall switch, supports 3-way circuits.</p> <br /> <h2>Inclusion Information</h2><p>1x  tap will send NIF for network pairing/ inclusion (white LED quick flashes). If pairing is successful, the LED will turn to solid green for 2s, then deactivates. </p> <br /> <h2>Exclusion Information</h2><p>3x tap will send NIF for network unpairing/ exclusion (purple LED flashes). </p> <br /> <h2>Wakeup Information</h2><p>na</p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="tkb_tz36d_02_001" listed="false">
     <label>TZ36D Dual Paddle Wall Switch</label>
@@ -11,6 +11,7 @@
 Dual Paddle Wall Switch<br /> <h1>Overview</h1><p>The TKB Z-Wave dual wall switch is switching attached loads and is controlled either by the local switching paddle or remotely via the Z-Wave wireless protocol<br />It is included and controlled in a Z-Wave network by a remote control, a wireless control centre or any other kind of Z-Wave controller including a PC-software.</p> <br /> <h2>Inclusion Information</h2><p>Press On/Off button three times within 1.5 seconds.</p> <br /> <h2>Exclusion Information</h2><p>Press On/Off button three times within 1.5 seconds.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="yale_ayr202_00_000" listed="false">
     <label>AYR202 Yale nexTouch NTB610 with ayr202 network module</label>
@@ -11,6 +11,7 @@
 Yale nexTouch NTB610 with ayr202 network module<br /> <h1>Overview</h1><p>This is based on the Yale NTB610 nexTouch lock using the AY202 network module.  Yale nexTouch is part of its line of commerical door locks.  The NTB610 is a cylindrical lock with a keybutton or membrane keypad, battery powered, with optional sensors.  The device can store 250 user entry codes, has privacy settings, and has a speaker where user can be "talked through" the menu options.</p> <br /> <h2>Inclusion Information</h2><ol><li>Enter your Master Pin code followed by the Settings Button (Gear Icon)</li><li>Press 7 then press Settings Button</li><li>Press 1 then press Settings Button</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Enter your Master Pin code followed by the Settings Button (Gear Icon)</li><li>Press 7 then press Settings Button</li><li>Press 3 then press Settings Button</li></ol> <br /> <h2>Wakeup Information</h2><p>Press the Settings Button</p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

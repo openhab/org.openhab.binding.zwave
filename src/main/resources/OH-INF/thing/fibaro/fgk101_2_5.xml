@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgk101_02_005" listed="false">
     <label>FGK101 Door/Window Sensor</label>
@@ -11,6 +11,7 @@
 Door/Window Sensor<br /> <h1>Overview</h1><p>The Fibaro Door / Window Sensor is a wireless, battery powered, Z-Wave compatible reed sensor. Each time its two parts, i.e. the sensor's body and a magnet separate, a radio signal is sent. In addition the Fibaro Door / Window Sensor supports one DS18B20 temperature sensor and has one potential free input.</p> <p>The Fibaro Door / Window Sensor is designed for use with scenes in home automation systems and everywhere else where information related to opening / closing of doors, windows, garage gates, etc. is needed.</p> <br /> <h2>Inclusion Information</h2><ol><li>Place the device within direct range of the Z-Wave controller.</li> <li>Make sure that Sensor’s cover is closed.</li> <li>Find the TMP button located on the underside of the device, which allows for proper inclusion.</li> <li>Set the main Z-Wave controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the TMP button.</li> <li>Wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol><p>Adding/removing will be confirmed by LED blinking. Fast blinking means that the inclusion process has not been successful.</p> <br /> <h2>Exclusion Information</h2><ol><li>Place the device within direct range of the Z-Wave controller.</li> <li>Make sure that Sensor’s cover is closed.</li> <li>Find the TMP button located on the underside of the device, which allows for proper inclusion.</li> <li>Set the main Z-Wave controller into exclusion mode (see main controller’s operating manual).</li> <li>Quickly, triple click the TMP button.</li> <li>Wait for the exclusion process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> </ol> <br /> <h2>Wakeup Information</h2><p>FIBARO Door/Window Sensor needs to be woken up to receive information about the new configuration from the controller, like parameters and associations.</p> <p>To wake up the sensor manually triple click the TMP button located underside the casing.</p>
     ]]></description>
     <category>Door</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="rtc_ct30_00_000" listed="false">
     <label>CT30 Z-Wave Thermostat</label>
@@ -11,6 +11,7 @@
 Z-Wave Thermostat<br /> <h1>Overview</h1><p>This thermostat was made by Radio Thermostat Company of America or 2Gig.  It can use either WiFi or Z-Wave or both depending on <br />which USNAP modules are installed.</p> <br /> <h2>Inclusion Information</h2><ul><li>Put your primary controller in include mode.</li> <li>Press the MENU button</li> <li>Tap the MATE button under the radio tower icon.  A large "r1" or "r2" wil be displayed indicating which slot the USNAP module is in.</li> <li>Tap the MATE button under the radio tower icon again to include.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Put your primary controller in exclude mode.</li> <li>Press the MENU button</li> <li>Tap the MATE button under the radio tower icon.  A large "r1" or "r2" wil be displayed indicating which slot the USNAP module is in.</li> <li>Tap the MATE button under the radio tower icon again to exclude.</li> </ul> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -182,6 +183,10 @@ Thermostat Diff Temperature<br /> <h1>Overview</h1><p>The Thermostat Differentia
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -196,6 +201,10 @@ Thermostat Diff Temperature<br /> <h1>Overview</h1><p>The Thermostat Differentia
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>

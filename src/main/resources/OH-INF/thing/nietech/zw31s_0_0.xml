@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_zw31s_00_000" listed="false">
     <label>ZW31S EVA LOGIK 3-Way Z-Wave Smart Dimmer Switch</label>
@@ -11,6 +11,7 @@
 EVA LOGIK 3-Way Z-Wave Smart Dimmer Switch<br /> <h1>Overview</h1><ul><li> manual &amp; wireless control switch on/off and light brightness.</li><li> 2 locations control: support 3-way wiring installation (neutral required).</li><li> built-in z-wave plus signal repeater /range extender.</li><li> s2 security protocol + the latest 500 series z-wave chip.</li><li> z-wave certificated hub/gateway required.</li><li> work with dimmable led, cfl, halogen and incandescent bulbs.</li></ul> <br /> <h2>Inclusion Information</h2><p>Adding Device To Z-Wave Network:</p><ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network</li><li>Once the controller is ready to add your device, <b>press the "down" button on the switch 3 times quickly</b>.  The blue LED will blink quickly.</li></ol>Now you have conplete control to turn your fixture ON/OFF or set dim levels according to groups, scenes, schedules and interactive automation programmed by your controller.  If your Z-Wave certified controller features remove access, you can control your fixture from your mobile devices.<p><br /></p><b>Again:  </b>If you have issues with pairing/including, please move the hub as close as possible to the device and try again.<p><br /></p><b>Note:  </b>If the Blue LED indicator doesn't light up after pressed the "down" button 3 times, please reset the device:  <b>click the button 2 times quickly then hold for at least 10 seconds.</b>  This operation could be done when manual control is functional--single press can turn on/off the light.<br /> <br /> <h2>Exclusion Information</h2><p>To Remove The Device:</p><ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network.</li><li>Once the controller is ready to remove your device, press the "down" button on the switch 3 times quickly.<br /></li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="trane_xr524_00_000" listed="false">
     <label>Trane XR524 Touchscreen Comfort Control Thermostat</label>
@@ -11,6 +11,7 @@
 Touchscreen Comfort Control Thermostat<br /> <h1>Overview</h1><p>The Trane 524 Touchscreen Comfort Control is compatible with single and multistage forced air systems, including:</p> <ul><li>Gas furnace systems</li> <li>Oil furnace systems</li> <li>Electric furnace systems</li> <li>Heat pump systems</li> <li>Air conditioning systems</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Press MENU on the 524 Control.</li> <li>Press NEXT to advance to the Z-WAVE menu.</li> <li>Press SELECT</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Press MENU on the 524 Control.</li> <li>Press NEXT to scroll to Z-WAVE screen then press SELECT.</li> <li>Press YES to exclude the control</li> </ol>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -691,6 +692,10 @@ Schedule Sat-4<br /> <h1>Overview</h1><p>This value holds information about the 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -707,6 +712,10 @@ Schedule Sat-4<br /> <h1>Overview</h1><p>This value holds information about the 
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -721,6 +730,10 @@ Schedule Sat-4<br /> <h1>Overview</h1><p>This value holds information about the 
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

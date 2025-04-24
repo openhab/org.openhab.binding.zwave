@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sunricher_zv9101pushdim_00_000" listed="false">
     <label>ZV-9101 In-Wall Dimmer Module</label>
@@ -11,6 +11,7 @@
 In-Wall Dimmer Module<br /> <h1>Overview</h1><p>Z-Wave Built-in receiver with dimmer function. Control input, AC 230V / DC 12V, for Pushdim. Max 400 W resistive load, 200 W LED. Front edge / Rear dimmer, adjustable lowest level. Compatible with Nexa Bridge and other Z-Wave controllers.</p> <br /> <h2>Inclusion Information</h2><ul><li>Press the "Reset" button 3 times within 3 seconds or</li> <li>press 3 times on connected switch within 3 seconds</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Set the Z-Wave controller in the exclusion mode (see controller's manual)</li> <li>Press the "Reset" button 3 times within 3 seconds</li> </ul>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

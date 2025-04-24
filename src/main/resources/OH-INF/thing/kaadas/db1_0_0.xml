@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="kaadas_db1_00_000" listed="false">
     <label>DB1 Alfred DB1 Digital Deadbolt Lock</label>
@@ -11,6 +11,7 @@
 Alfred DB1 Digital Deadbolt Lock<br /> <h1>Overview</h1><p>Lock and unlock your door anywhere and anytime by integrate your lock into your Z-Wave home automation or security system for ultimate convenience. Features Bluetooth technology for added convenience with auto-unlock.<br /></p> <br /> <h2>Inclusion Information</h2><p>-Follow the user guide of hub to enter inclusion mode.</p><p>-Operate on lock following guide below:</p><ol><li>1.Enter master mode(refer to programming instruction)</li><li>2.Input “8” to enter “function extension settings”</li><li>3.Input “1” to join a network.</li></ol> <br /> <h2>Exclusion Information</h2><p>-Follow the user guide of hub to enter exclusion mode.</p><p>-Operate on lock following guide below:</p><ol><li>1.Enter master mode(refer to programming instruction)</li><li>2.Input “8” to enter “function extension settings”</li><li>3.Input “2” to log off a network.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

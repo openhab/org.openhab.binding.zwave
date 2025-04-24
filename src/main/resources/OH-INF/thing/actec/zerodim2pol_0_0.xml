@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="actec_zerodim2pol_00_000" listed="false">
     <label>Zerodim 2 phase Q-light / Q-Light Zerodim 2phase</label>
@@ -11,6 +11,7 @@
 Q-light / Q-Light Zerodim 2phase<br /> <h1>Overview</h1><p>Zerodim Z-Wave 2 pole is a universal LED dimmer based on the Z-Wave protocol. </p><p>Features:<br /></p><ul><li>0-99% dimming range</li><li>2-180W LED load</li><li>Compatible with any Z-Wave or Z-Wave Plus Controller</li><li>There is memorized function at power off</li><li>OverLoad protection</li><li>Soft start function</li><li>SmartStart</li></ul><p>This device is a security enable Z-Wave Plus product that is able to use encrypted Z-Wave Plus messages to communicate to other security enable Z-Wave Plus products.</p> <br /> <h2>Inclusion Information</h2><p>Quickly, three times press the rotary button to enter inclusion mode<br /></p> <br /> <h2>Exclusion Information</h2><p>Quickly, three times press the rotary button to enter exclusion mode<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

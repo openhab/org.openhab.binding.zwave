@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zse42_00_000" listed="false">
     <label>ZSE42 Water Leak XS Sensor</label>
@@ -11,6 +11,7 @@
 Water Leak XS Sensor<br /> <h1>Overview</h1><p><b>Features</b></p><ul><li>Quick and reliable water leak alerts sent to your Z-Wave hub</li><li>NEW 700 series chip for faster communication and more battery life than ever</li><li>Extra small to fit anywhere</li><li>Powered by a long-lasting single coin battery</li><li>The latest S2 security and SmartStart for secure set-up</li><li>Supports OTA firmware updates</li></ul><p><b>Specifications</b></p><ul><li>Model Number: ZSE42</li><li>Power: 1 x CR2032 battery</li><li>Operating Temperature: 32° – 104° F</li><li>Dimensions: 1.9” x 1” x 0.3”</li><li>Range: Up to 130 feet line of sight </li><li>Installation and Use: Indoor or outdoor under eve (can’t be exposed to direct rainfall or sun, a little splash is OK)</li></ul> <br /> <h2>Inclusion Information</h2><p><b>1. ADD DEVICE to your hub</b></p><ul><li>Initiate inclusion (pairing) in the app (or web interface). <br /></li><li>If you’re using an S2 hub, it will ask you to enter the DSK PIN or scan the QR code printed on the back cover sticker of the sensor to complete SmartStart inclusion.</li></ul><b>2. ACTIVATE the sensor</b><ul><li>While the hub is looking for new devices, click the Z-Wave button 3 times as quickly as possible. The LED indicator will start flashing to confirm inclusion mode and turn off once inclusion is completed. </li></ul><b>TIP!</b><p>It’s best to add your sensor from the area where it will be installed so the hub can find the best route to reach it right away</p> <br /> <h2>Exclusion Information</h2><ol><li>Bring the sensor within direct range of your Z-Wave hub.</li><li>Put the Z-Wave hub into exclusion mode</li><li>Click the Z-Wave button 3 times as quickly as possible.</li></ol><p>Your hub will confirm exclusion and the sensor will disappear from your controller's device list.</p> <br /> <h2>Wakeup Information</h2><p><b>Wakeup</b><br /></p><p>The sensor’s wake-up interval is set to 12 hours by default to save battery life. Use the Wake Up Command Class to adjust the interval. Click the Z-Wave button 4 times quickly to wake the sensor up manually. The LED indicator will flash twice to confirm the device is awake. During wake-up, the sensor turns the Z-Wave radio on for one minute to receive communication from the hub. Long wake-up interval will not affect how often the sensor reports to your hub so we recommend leaving the default to conserve battery life.<br /></p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

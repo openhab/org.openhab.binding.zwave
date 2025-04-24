@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="climax_psm-29zw_00_000" listed="false">
     <label>PSM-29ZW Power Switch with Meter</label>
@@ -11,6 +11,7 @@
 Power Switch with Meter<br /> <h1>Overview</h1><p>The Power Switch with Meter function (PSM-29ZW) has the extra feature of keeping tracks of energy consumption with built-in power meter and transmitting the data to coordinator regularly.<br /></p> <br /> <h2>Inclusion Information</h2><p>1. Plug the Power Switch into a power outlet.</p><p>2. Put the Z-Wave Gateway or Control Panel into Inclusion mode (please refer to the Z-Wave Gateway or Control Panel manual).</p><p>3. Within 1.5 seconds, press the Function Button 3 times.</p><p>4. Refer to the operation manual of the Z-Wave Gateway or Control Panel to complete the adding process.</p><p>5. If the device has already been added (included) into another Z-Wave Gateway/Control Panel, or if the device is unable to be added into the current Z-Wave Gateway/Control Panel, please exclude it first (see Removing Device) before attempting to include it into the current Z-Wave Gateway/Control Panel.</p> <br /> <h2>Exclusion Information</h2><p>1. Put the Z-Wave Gateway or Control Panel into Exclusion mode (please refer to the Z-Wave Gateway or Control Panel manual).</p><p>2. Within 1.5 seconds, press the Function Button 3 times and the device will be removed from the Z-Wave network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

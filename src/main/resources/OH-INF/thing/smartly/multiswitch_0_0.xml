@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="smartly_multiswitch_00_000" listed="false">
     <label>FMS01 Multifunction Switch</label>
@@ -11,6 +11,7 @@
 Multifunction Switch<br /> <h1>Overview</h1><p>The Multifunction Switch is a Z-Wave Plus mains powered Wallbox mountable Wall Controller. It can be configured to control up to Four separate Light Zones or Central Scenes. Each Light Zone can consist of both Dimmers and Switches. The device can be combined with a Back Unit, which provide local Switch or Dimmer functionality. <br />Room and Floor temperature sensors can also be connected to the device, which enables the device to function as a head-less Thermostat. The Thermostat is fully controllable from a Z-Wave Controller, and can control both a Local and Remote heating relay.</p> <p>The Multifunction Switch is capable of controlling local loads via a modular Back Unit. The back unit can be mounted and connected to mains electricity inside a Electrical Wall box. Two types of Relay and Dimmer Back Units are currently available. The maximum controllable local load are specified in each Back Unit product sheets. </p> <br /> <h2>Inclusion Information</h2><p>Push and Hold both Lower buttons simultaneously for 5 seconds. Inclusion is indicated by the LEDs flashing in a "U" shaped pattern. </p> <br /> <h2>Exclusion Information</h2><p>Push and Hold both Lower buttons simultaneously for 5 seconds. Exclusion is indicated by the LEDs flashing in a "U" shaped pattern. </p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -461,6 +462,10 @@ Temperature Offset in 1/10th of a degree Celcius<br /> <h1>Overview</h1><p>Defin
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

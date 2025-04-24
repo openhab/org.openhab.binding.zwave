@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="megachips_fibefgs213mega_00_000" listed="false">
     <label>FIBEFGS-213 FIBARO Single Relais Switch</label>
@@ -11,6 +11,7 @@
 FIBARO Single Relais Switch<br /> <h1>Overview</h1><p>FIBARO Switch 2 is designed to be installed in standard wall switch boxes or anywhere else where it is necessary to control electric devices. FIBARO Switch 2 allows to control connected devices either via the Z-Wave+ network or via a switch connected directly to it and is equipped with active power and energy consumption metering functionality.</p> <br /> <h2>Inclusion Information</h2><p>Z-Wave device learning mode, allowing to add the device to existing Z-Wave network.<br />To add the device to the Z-Wave network:</p> <ol><li>Place the Switch 2 within the direct range of your Z-Wave controller.</li> <li>Identify the S1 switch.</li> <li>Set the main controller in (security/non-security) add mode (see the controller’s manual).</li> <li>Quickly, three times press the S1 switch.</li> <li>Wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Z-Wave device learning mode, allowing to remove the device from existing Z-Wave network.<br />To remove the device from the Z-Wave network:</p> <ol><li>Place the Switch 2 within the direct range of your Z-Wave controller.</li> <li>Identify the S1 switch.</li> <li>Set the main controller in remove mode (see the controller’s manual).</li> <li>Quickly, three times press the S1 switch.</li> <li>Wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

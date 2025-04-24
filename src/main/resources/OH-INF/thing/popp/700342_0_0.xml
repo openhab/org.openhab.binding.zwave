@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="popp_700342_00_000" listed="false">
     <label>700342 10 Year Smoke Detector</label>
@@ -11,6 +11,7 @@
 10 Year Smoke Detector<br /> <h1>Overview</h1><p>This smoke detector will report smoke alarms wirelessly and securily into a Z-Wave network and is able to control other devices using associations The smoke detector’s sensor head is certified with the Q quality label, conforms DIN EN 14604 and satisfies all contemporary legal requirements. The High-End 10-years smoke detector offers a large test button conveniently accessible even with a broomstick when mounted on the ceiling. The smoke chamber is monitored electronically to avoid any malfunction and wrong alerts. The device will also report its end of life to make sure it is getting replaced on time. Tampering a smoke detector by removing it from the mounting base will issue a wireless alarm command as well.</p> <br /> <h2>Inclusion Information</h2><p>Secure Inclusion: Push the button for 3 seconds<br />Unsecure Inclusion: Push the button for 1 seconds</p> <br /> <h2>Exclusion Information</h2><p>Push the button for 1 second</p> <br /> <h2>Wakeup Information</h2><p>Push the button shortly to wake up the device.</p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

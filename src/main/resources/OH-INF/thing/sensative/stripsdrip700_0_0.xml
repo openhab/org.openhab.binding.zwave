@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sensative_stripsdrip700_00_000" listed="false">
     <label>11 04 021 Strips Drip 700 Water leak &amp; temperature sensor</label>
@@ -11,6 +11,7 @@
 Strips Drip 700 Water leak &amp; temperature sensor<br /> <h1>Overview</h1><p>Strips Drip 700/800 water leak sensor also comes with temperature alerts for detecting freezing pipes, which makes it ideal for monitoring any area where a leak might occur. Drip offers a range of up to 100 meters, and with its sturdy design, these sensors can be installed in environmentally challenging areas such as in cellars or employed in outdoor environments such as under the roof where water might leak into the house structure.</p><ul><li>Water-leak detection</li><li>Discreet mounting</li><li>Temperature sensor</li><li>Easy set up &amp; installation</li><li>Long lasting battery</li><li>SmartStart &amp; S2 Security</li><li>Z-Wave™ 700/800 extended range (up to 100 m range)</li></ul> <br /> <h2>Inclusion Information</h2><p>Add Strips Drip 700/800 using classic inclusion (Non SmartStart Controllers):</p><ol><li>Open your Z-Wave™ Controller application and start pairing mode.</li><li>Remove the magnets from Strips (If you have previously removed the magnets from Strips, or need to re-add the device, performing a manual wake up will join the device when the controller is in pairing mode).</li><li>One long LED blink means Strips has been successfully added to your Z-Wave™ network.</li></ol><p>To perform a manual wake up:</p><ol><li>Take the magnet, move it to the rounded edge and wait for the blink. Then move the magnet away.</li><li>Repeat this 3 times. A final short blink will confirm that the user command was successful.</li></ol> <br /> <h2>Exclusion Information</h2><p>Place the controller into exclude mode and perform the "wake up" pattern described in the Wakeup section.</p> <br /> <h2>Wakeup Information</h2><p>To perform a manual wake up:</p><ol><li>Take the magnet, move it to the rounded edge and wait for the blink. Then move the magnet away.</li><li>Repeat this 3 times. A final short blink will confirm that the user command was successful.</li></ol>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

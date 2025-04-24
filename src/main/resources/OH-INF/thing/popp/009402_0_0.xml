@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="popp_009402_00_000" listed="false">
     <label>009402 10 Year Smoke Detector with Siren Function</label>
@@ -11,6 +11,7 @@
 10 Year Smoke Detector with Siren Function<br /> <h1>Overview</h1><p>This product combines a certified '10 year' stand-alone smoke detector with a plug-in Z-Wave module to form a wirelessly reporting automatically meshing smoke sensor plus wirelessly controllable indoor siren. The smoke detector is certified by the VdS for Q quality and DIN EN 14604 and satisfies all contemporary legal requirements.</p> <p>The High-End 10 years smoke detector offers a test button conveniently accessible even with a broomstick when mounted on the sealing. The smoke chamber is monitored electronically to avoid any malfunction and wrong alerts. The device will also report its end of life to make sure it is getting replaced on time.</p> <p>According to the VdS 3515 (smoke sensors with radio communication) this device will relay all alarms to all other smoke sensors in the Z-Wave network to create a house-wide alarm. This connection of the smoke sensors is fully automated and needs no further configuration. The smoke sensors and the controller communicate via a secure protocol to prevent manipulation. </p> <br /> <h2>Inclusion Information</h2><ul><li>Pressing the button 'Inclusion Button' for one second includes the device.</li> <li>If the button is pressed for at least 2 seconds the inclusion will be done without the Security Command Class</li> </ul> <br /> <h2>Exclusion Information</h2><p> A single click on the button 'Inclusion Button' will exclude the device. </p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

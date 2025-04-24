@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="mcohome_mhs312_00_000" listed="false">
     <label>MH-S312 Two Way Switch</label>
@@ -11,6 +11,7 @@
 Two Way Switch<br /> <h1>Overview</h1><p>Touch Panel Switch is a wall switch with built-in Z-Wave module. It supports basic command class，multi channel command class and multi channel association command class, which can control all associated devices synchronously. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufacturers. </p> <br /> <h2>Inclusion Information</h2><p>Press and hold any key on the panel for 8 seconds. If inclusion is successful, all INDICATION LEDs on the panel will turn green, and all switches will turn on.</p> <br /> <h2>Exclusion Information</h2><p>Press and hold any key on the panel for 8 seconds.  If the exclusion is successful, all INDICATION LEDs on the panel will turn orange, and all switches will turn off. The exclusion will delete all association data</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

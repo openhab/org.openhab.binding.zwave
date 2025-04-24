@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="devolo_flushdimmer_00_000" listed="false">
     <label>Flush Dimmer Flush Dimmer</label>
@@ -11,6 +11,7 @@
 Flush Dimmer<br /> <h1>Overview</h1><p>This Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch. The module is designed to be mounted inside a "flush mounting box", hidden behind a traditional wall switch. Module measures power consumption of bulb or fan and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p> <br /> <h2>Inclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply (with temperature sensor connected - if purchased),</li> <li>Enable add/remove mode on main controller</li> <li>Auto-inclusion (works for about 2 minutesafter connected to power supply) or</li> <li><strong>110V-230V power supply: </strong>Press push button I1 three times within 3 seconds (3 times change switch state within 3 seconds)</li> <li><strong>24V SELV: </strong>Press service button <strong>S</strong> for more than 2 seconds.</li> </ul><p><strong>NOTE1:</strong> For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p> <p><strong>NOTE2:</strong> When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.</p> <br /> <h2>Exclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply (with temperature sensor connected - if purchased),</li> <li>Enable add/remove mode on main controller</li> <li>Auto-inclusion (works for about 2 minutesafter connected to power supply) or</li> <li><strong>110V-230V power supply: </strong>Press push button I1 three times within 3 seconds (3 times change switch state within 3 seconds)</li> <li><strong>24V SELV: </strong>Press service button <strong>S</strong> for more than 2 seconds.</li> </ul><p><strong>NOTE1:</strong> For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p> <p><strong>NOTE2:</strong> When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

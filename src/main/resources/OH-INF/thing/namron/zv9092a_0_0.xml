@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="namron_zv9092a_00_000" listed="false">
     <label>SR-ZV9092A Z-Wave Heating Thermostat</label>
@@ -11,6 +11,7 @@
 Z-Wave Heating Thermostat<br /> <h1>Overview</h1><p>Z-Wave 16A underfloor heating thermostat with a touch panel. Both internal and external temperature sensor supported.<br /></p> <br /> <h2>Inclusion Information</h2><h3>Method 1:</h3><p>Select <b>ZWAVE INFO</b> on Home Interface to enter into Z-Wave network management. Select <b>Add</b>, then short press button , the device will send out an inclusion request, <b>Status</b> will show “Inclusion...”. If there is no response from a gateway within 30 seconds, or if the inclusion failed, <b>Status</b> will show “Fail”. If included successfully, <b>Status</b> will show “Inclusion OK” and the device ID.</p><h3>Method 2:</h3><p>Set the gateway into inclusion mode, make sure the device is already removed from previous network and reset the power of the device. The device will be included automatically.</p> <br /> <h2>Exclusion Information</h2><p>Select <b>Remove</b>, then short press button, the device will send out an exclusion request, <b>Status</b> will show “Exclusion...". If there is no response from a gateway within 30 seconds, or exclusion failed, <b>Status</b> will show “Fail”. If excluded successfully, <b>Status</b> will show “Exclusion OK” and the device ID will be displayed as 0.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -434,6 +435,10 @@ Heat set<br /> <h1>Overview</h1><p>Transfer Command Class <b>THERMOSTAT_SETPOINT
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -450,6 +455,10 @@ Heat set<br /> <h1>Overview</h1><p>Transfer Command Class <b>THERMOSTAT_SETPOINT
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

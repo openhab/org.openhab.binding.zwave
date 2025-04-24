@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="leviton_zw15s_00_000" listed="false">
     <label>ZW15S ZW15S Switch</label>
@@ -11,6 +11,7 @@
 ZW15S Switch<br /> <h1>Overview</h1><p>Leviton Decora Smart ZW15S Wall Switch</p> <br /> <h2>Inclusion Information</h2><p>When using a Z-Wave Plus certiﬁed hub, choose network wide inclusion or SmartStart. If network wide inclusion does not discover your device, try classic inclusion.</p><p>Network Wide Inclusion to a Z-Wave Network</p><p>Enter Setup Mode</p><ol><li>Hold the top rocker for 7 seconds.</li><li>The Status LED will turn AMBER, release and the Status LED will blink AMBER. </li><li>The device is now in setup mode</li><li>Enter setup mode (see above)</li><li> Tap the top rocker 1 time. The Status LED will quickly ﬂash GREEN. The device is now ready to learn into the Z-Wave network.</li><li>Use the Z-Wave controller to complete the device enrollment process (follow the Z-Wave controller instructions)</li><li>The device’s Status LED will turn OFF and then ﬂash GREEN 4 times to conﬁrm it has been successfully added to a Z-Wave network. If the device was not successfully added, the Status LED will ﬂash RED 4 times.</li></ol><p>Classic inclusion to a Z-Wave network</p><p>For older controllers, Classic Inclusion is supported. Depending on the age of the controller it may need to be 3 to 35 feet from the device when including.</p><ol><li>Enter setup mode (see page 10).</li><li>Follow the Z-Wave controller instructions to enter inclusion mode.</li><li>Tap the top rocker 1 time, the Status LED will quickly ﬂash GREEN.</li><li>The Z-Wave controller will conﬁrm successful inclusion to the Z-Wave network.</li></ol> <br /> <h2>Exclusion Information</h2><p>Exclusion from a Z-Wave network<br /></p><p>The Exclusion command found in the Z-Wave controller is used as a best  practice for removing devices from a Z-Wave network.<br /><br /></p><ol><li>Enter setup mode (see Inclusion notes).</li><li>Follow the Z-Wave controller instructions to enter exclusion mode</li><li>Tap the top rocker 1 time, the Status LED will quickly ﬂash GREEN</li><li>The Z-Wave controller will conﬁrm successful exclusion from the Z-Wave network.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsc06_00_000" listed="false">
     <label>DSC06 Smart Energy Switch</label>
@@ -11,6 +11,7 @@
 Smart Energy Switch<br /> <h1>Overview</h1><p>The Aeon Labs Smart Energy Switch is a Z-Wave appliance switch which can report wattage energy usage or kWh energy usage to a Z-Wave gateway. It can also be controlled by other Z-Wave devices to turn on/off to save electricity when appropriate.</p> <br /> <h2>Inclusion Information</h2><ol><li>Plug the Smart Energy Switch into an outlet</li> <li>Put the controller in inclusion mode</li> <li>Press the button located between the LED</li> </ol><p>If the Aeon Labs Smart Energy Switch was not successfully included into any Z-Wave network, the LED will be blinking. If the Aeon Labs Smart Energy Switch was successfully included to a Z-Wave network, the LED will either be on or off (depending on if the switch is on or off). </p> <br /> <h2>Exclusion Information</h2><ol><li>Put the controller in exclusion mode</li> <li>Press the button located between the LED</li> </ol><p>If the Aeon Labs Smart Energy Switch was removed from the Z-Wave network, the LED will be blinking. If the Aeon Labs Smart Energy Switch was not successfully removed from the Z-Wave network, the LED will either be on or off (depending on if the switch is on or off). </p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zen24_20_015" listed="false">
     <label>ZEN24 Toggle Dimmer v2</label>
@@ -11,6 +11,7 @@
 Toggle Dimmer v2<br /> <h1>Overview</h1><ul><li>Manual or remote on/off and dimming control from your mobile device or computer (when included to a Z-Wave gateway controller)</li> <li>Universal 3-way capability – works with existing 3-way switches as long as neutral is present</li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication</li> <li>Works with LED, CFL, and incandescent bulbs</li> <li>Remembers and restores on/off / brightness status after power failure</li> <li>Based on universal multilevel switch command class - supported by most Z-Wave controllers</li> <li>May be associated and grouped with other Z-Wave devices for advanced home automation</li> <li>Air-gap switch for added safety</li> <li>Classic toggle design</li> <li>Built-in Z-Wave signal repeater for a stronger, more reliable network</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into inclusion mode</li> <li>Toggle the switch UP 3 times very quickly to finalize the inclusion process</li> <li>A new dimming device will appear on your controller's device list</li> </ol><p><strong>TROUBLESHOOTING TIPS: </strong></p> <p>If you are unable to include the Z-Wave switch to your controller, please try one of the following:</p> <ul><li>Bring the controller closer to your ZWave switch or use a hand-held secondary controller for inclusion</li> <li>Toggle your Z-Wave switch UP even quicker at least 5 or 7 times once you put the controller into inclusion mode to ensure the command has gone through</li> <li>Put your controller into EXCLUSION mode and toggle the switch DOWN 3 times quickly, then try adding it to your network again</li> </ul> <br /> <h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into exclusion mode 3. Toggle the switch DOWN</li> <li>times very quickly to complete the exclusion process</li> <li>The device will disappear from your controller's device list</li> </ol><p>Please repeat the process following all steps carefully if the first attempt is unsuccessful. </p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="merten_50x4xx_00_000" listed="false">
     <label>50x4xx Switch Sensor Cover</label>
@@ -11,6 +11,7 @@
 Switch Sensor Cover<br /> <h1>Overview</h1><p>The sensor cover contains a radio receiver. Using the connected transmitters, you can switch connected ohmic and complex loads (such as incandescent lamps, low voltage halogen lamps) using the relay switch insert.</p> <br /> <h2>Inclusion Information</h2><p>Triple click on operating surface.<br /></p> <br /> <h2>Exclusion Information</h2><p>Triple click on operating surface.<br /></p> <br /> <h2>Wakeup Information</h2><p>Triple click on operating surface.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

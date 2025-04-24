@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="merten_50x5xx_01_006" listed="false">
     <label>50x5xx Roller shutter push-button</label>
@@ -11,6 +11,7 @@
 Roller shutter push-button<br /> <h1>Overview</h1><p>The roller shutter push-button contains a radio receiver for the Merten CONNECT radio system. If you use the blind control inserts 580699 or 580698, you can operate the connected roller shutter drive remotely using a Merten CONNECT radio transmitter. You can also operate the roller shutters using the rocker on the roller shutter push-button.</p> <p>You can use the Merten CONNECT radio button, the Merten CONNECT radio remote control or the Merten CONNECT radio central unit as the transmitter.</p> <br /> <h2>Inclusion Information</h2><p>Program (transmits Node info frame)</p> <p>Triple click on operating surface. Used for include/exclude the device by the primary  </p> <br /> <h2>Exclusion Information</h2><p>Reset to the factory settings; exclude  </p> <p>Triple click on operating surface. Used for include/exclude the device by the primary  </p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
+    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

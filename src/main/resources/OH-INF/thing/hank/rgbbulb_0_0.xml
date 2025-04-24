@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="hank_rgbbulb_00_000" listed="false">
     <label>RGB bulb HKZW-RGB01-V1.0</label>
@@ -11,6 +11,7 @@
 HKZW-RGB01-V1.0<br /> <h1>Overview</h1><p>A smart bulb with over 16 million colors</p> <br /> <h2>Inclusion Information</h2><p>Toggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On</p> <br /> <h2>Exclusion Information</h2><p>Toggle the wall switch off and on 3 times quickly (within 3 seconds) ending with On</p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="benext_powerswitch_00_000" listed="false">
     <label>powerSwitch Power Switch EU</label>
@@ -11,6 +11,7 @@
 Power Switch EU<br /> <h1>Overview</h1><p>Basic operations</p> <ul><li>The Power Switch can be remotely controlled.</li> <li>The Power Switch can be controlled by the push button on the front of the device.</li> <li>The Power Switch’s indicator light can indicate the status of the switch (ON or OFF).</li> </ul><p>How it operates</p> <p>Control and monitor your lightning or any other appliance. Easy plug and play. </p> <br /> <h2>Inclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.</p> <br /> <h2>Exclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

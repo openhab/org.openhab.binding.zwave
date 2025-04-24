@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="vision_zw4101_00_000" listed="false">
     <label>ZW4101 Drapery controller (up/stop/down)</label>
@@ -11,6 +11,7 @@
 Drapery controller (up/stop/down)<br /> <h1>Overview</h1><p>Drapery controller, supports up/stop/down commands.</p> <p>Devices is OEMed as Monoprice 11993.</p> <br /> <h2>Inclusion Information</h2><p>Press the program switch on the module once to be included.</p> <br /> <h2>Exclusion Information</h2><p> Press the program switch on the module once to be excluded.</p>
     ]]></description>
     <category>Blinds</category>
+    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="linear_lb65r6z_00_000" listed="false">
     <label>Smart Retrofit Lighting Kit LB65R6Z-1</label>
@@ -11,6 +11,7 @@
 LB65R6Z-1<br /> <h1>Overview</h1><p>Smart Retrofit Lighting Kit with Z-Wave radio.</p> <ul><li>Control lights remotely and save energy</li> <li>Compatible with smart home systems supporting Z-Wave</li> <li>65 Watt equivalent light (650 lumens)</li> <li>Consumes only 8.5 watts of power</li> <li>2700K Soft White with frosted glass</li> <li>Instant ON and fully dimmable</li> <li>Functions as a Z-Wave signal repeater</li> <li>Very simple to include in your network</li> <li>Z-Wave Plus certified</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Turn Off power to the light bulb socket</li> <li>Screw in the light bulb</li> <li>Place your network controller into inclusion mode by following the controller manufacturer's instructions</li> <li>Turn On power to the light bulb.  If successful, the LED light bulb will flash twice to indicate successful inclusion.</li> <li>If the controller/gateway shows it was a fail, repeat the procedure.</li> </ol><p>Note: If Inclusion still fails after the 2nd attempt, you need to first RESET the dt Smart Bulb before repeating the above steps.</p> <br /> <h2>Exclusion Information</h2><ol><li>Turn off power to the light bulb socket</li> <li>Follow the network controller instruction to place your network controller into exclusion mode to remove the dt light bulb from the network.</li> <li>After being prompted by the network controller, turn On power to the light bulb.  If successful, the LED light bulb will flash twice to indicate successful inclusion.</li> </ol>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

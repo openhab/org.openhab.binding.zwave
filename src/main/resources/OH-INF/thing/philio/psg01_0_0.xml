@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_psg01_00_000" listed="false">
     <label>ZIPATO ZIP-PSG01 Daaf Zipato Smoke Sensor</label>
@@ -11,6 +11,7 @@
 Daaf Zipato Smoke Sensor<br /> <h1>Overview</h1><p>Zipato Smoke Sensor (Z-Wave) is designed to give early warning of developing fires by giving off the alarm sounds from its build-in alarm horn, based on Z-Wave technology. Zipato Smoke Sensor is Z-Wave Plus product, it supports security, OTA and all other new features of 500 Series Z-Wave chipset.</p> <br /> <h2>Inclusion Information</h2><p>Press test button three times within 1.5 seconds to enter the inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing test button three times within 1.5 seconds to enter the exclusion mode.</p> <br /> <h2>Wakeup Information</h2><p>If you want to wake-up device immediately, please press the button once. The device will wake-up for 10 seconds.</p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

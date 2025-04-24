@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="eco_flfzwave5r1_00_000" listed="false">
     <label>FLF-ZWAVE5 R1 Z-Wave Wireless Flood/Freeze Sensor</label>
@@ -11,6 +11,7 @@
 Z-Wave Wireless Flood/Freeze Sensor<br /> <h1>Overview</h1><ul><li>Z-Wave+™ enabled device which detects flood and freeze.</li> <li>Reports tamper condition when cover is open</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Remove the battery for at least 10 seconds</li> <li>Reinstall the battery</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Remove the battery for at least 10 seconds</li> <li>Reinstall the battery</li> </ol> <br /> <h2>Wakeup Information</h2><p>Not provided</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

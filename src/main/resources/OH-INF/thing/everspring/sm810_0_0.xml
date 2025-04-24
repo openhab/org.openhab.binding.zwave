@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="everspring_sm810_00_000" listed="false">
     <label>SM810 Door/Window Detector</label>
@@ -11,6 +11,7 @@
 Door/Window Detector<br /> <h1>Overview</h1><p>The Door/Window Detector is a Z-Wave Plus enabled device and is fully compatible with any Z-Wave enabled network. The device can be set up in a Z-wave network to communicate directly with other end devices such as lighting controllers, or to report directly to a Z-wave controller (usually a gateway).</p> <br /> <h2>Inclusion Information</h2><p>Auto Inclusion -The power is applied for the first time and no node ID has been stored in the module, or after executing reset.</p> <p>Manual Inclusion</p> <ol><li>Put the Z-Wave Controller into inclusion mode.</li> <li>Press the tamper switch 3 times within 1.5 seconds to put the unit into inclusion mode.  </li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put the Z - Wave Controller into exclusion mode.  </li> <li>Press the tamper switch 3 times within 1.5 Seconds to put the unit into exclusion mode.  </li> </ol> <br /> <h2>Wakeup Information</h2><p>After it has been included into a Z-wave network, the detector will go to sleep but send a Wakeup Notifiication Command periodically at preset period to the controller. The detector will stay awake for 10 seconds at least and then go back to sleep to conserve battery life.</p> <p>The time internal between Wakeup Notification Commands can be set in the Wakeup Command Class based on the range values below:</p> <table><tr><td>Minimum Wake Up Interval</td> <td> <p>600s (10 minutes)</p> </td> </tr><tr><td>Maximum Wake Up Interval</td> <td>86400s (1 day)</td> </tr><tr><td>Default Wake Up Interval</td> <td>14400s (4 hours)</td> </tr><tr><td>Wake Up Interval Step Seconds</td> <td>600s (10 minutes)</td> </tr></table>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

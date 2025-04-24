@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ge_45607_00_000" listed="false">
     <label>45607 2-Way Dimmer Switch</label>
@@ -11,6 +11,7 @@
 2-Way Dimmer Switch<br /> <h1>Overview</h1><p>Transform any home into a smart home with the Jasco Z-Wave Wireless Lighting Control Dimmer Switch. The Jasco Z-Wave Wireless Lighting Control Dimmer Switch enables wireless control of on/off and dim functions of hard-wired incandescent lighting. The dimmer switch replaces your current light switch, uses your existing wiring, and provides Z-Wave wireless and in-wall control of overhead lighting. Use the dimmer feature to customize the lighting output and create the perfect ambiance for any room. Providing ultimate flexibility, the Jasco Z-Wave Wireless Lighting Control Dimmer Switch allows you to operate the switch by itself or easily integrate the switch with two-way, three-way or four-way wiring configurations by adding the Jasco Auxiliary switch for Z-Wave. Two-way wiring configuration turns the light or appliance on/off from one location. Three-way wiring configuration turns the light or appliance on/off from two separate locations. Four-way wiring configuration turns the light or appliance on/off from three separate locations. The Jasco Auxiliary Switch for Z-Wave is required for three-way or four-way installations. The dimmer switch includes an LED indicator light to easily locate the switch in a dark room. Take control of your home lighting with Jasco Z-Wave Wireless Lighting Controls! </p> <br /> <h2>Inclusion Information</h2><p>Tap the top or bottom of the rocker.</p> <br /> <h2>Exclusion Information</h2><p>Tap the top or bottom of the rocker.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

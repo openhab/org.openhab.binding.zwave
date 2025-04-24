@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="everspring_ac301_00_000" listed="false">
     <label>AC301 Electronic radiator thermostat, intended for use with water based room radiators.</label>
@@ -11,6 +11,7 @@
 Electronic radiator thermostat, intended for use with water based room radiators.<br /> <h1>Overview</h1><p>Thermostatic Radiator Valves (TRVs) sense the air temperature around them and regulate the flow of water through the radiator which they are fitted to.</p><p>• Comply with S2 security and SmartStart solution</p><p>• Manual/remote setting of desired temperature</p><p>• Heat Mode and Energy Heat Mode</p><p>• Manual override the preset settings</p><p>• Open window detection</p><p>• Frost protection</p><p>• Child lock protection</p><p>• Low battery indication</p><p>• OTA function</p><p>• Decalc function</p><p><br /></p> <br /> <h2>Inclusion Information</h2><p>Manual: Press the P button 3 times within 1.5 seconds to put the unit into inclusion mode.</p><p>Automatic: When the power is applied for the first time and no node ID has been stored in the module, or after executing reset.</p> <br /> <h2>Exclusion Information</h2><p> Press the P button 3 times within 1.5 seconds to put the unit into exclusion mode.</p> <br /> <h2>Wakeup Information</h2><p>When changing target value of temperature.</p>
     ]]></description>
     <category>RadiatorControl</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -170,6 +171,10 @@ Electronic radiator thermostat, intended for use with water based room radiators
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

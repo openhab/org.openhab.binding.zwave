@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="homeseer_HSM200_00_000" listed="false">
     <label>HS-M200 Homeseer Z-Wave Sensor</label>
@@ -11,6 +11,7 @@
 Homeseer Z-Wave Sensor<br /> <h1>Overview</h1><p>The HSM200 is designed to sense motion, temperature and light levels and will work with most Z-Wave certified controllers or smart hubs. HomeSeer HS4 system users can also program the unit to display up to 7 different colors when things happen in the home. Since the HSM200 is line powered, it can function as a Z-Wave network repeater and there are no batteries to replace!<br /></p> <br /> <h2>Inclusion Information</h2><p>Adding the HSM200 to your Z-Wave Network </p><p>a) The HSM200 is Z-Wave certified multi-sensor that should work with any Z-Wave certified system controller. Please follow the procedure required by your controller manufacturer for including the HSM200 with your Z-Wave network.</p><p>b) Once that is started, press the button on the side of the HSM200 once to activate inclusion.</p> <br /> <h2>Exclusion Information</h2><p>Press the button on the side of the HSM200 once </p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

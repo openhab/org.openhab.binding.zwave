@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsb45_00_000" listed="false">
     <label>DSB45 Water Sensor</label>
@@ -11,6 +11,7 @@
 Water Sensor<br /> <h1>Overview</h1><p>The Aeotec Z-Wave Water Sensor is able to detect the accidental presence of water, from small leaks to large floods, making it the perfect emergency accessory for your smart home network. This smart water sensor will send radio signals up to 6 associated Z-Wave devices within your Z-Wave smart home network when the water probe detects water. The Aeotec Z-Wave Water Sensor is capable of detecting both the absence and presence of water at measurements as small as 0.03% of an inch.</p> <br /> <h2>Inclusion Information</h2><ol><li>On the rear of your water sensor, remove the spacing tab to connect the batteries. Your water sensor's LED will blink for 8 seconds.</li> <li>Place your controller into Inclusion Mode.</li> <li>Press the Z-Wave button on your water sensor. If it has been successfully added to your Z-Wve network, its LED will illuminate for 10 minutes, During this period your primary Z-Wave controller is able to configure your sensor</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Press the Z-Wave button on your sensor.</li> <li>If your sensor has been successfully removed from your network, its LED will blink for 8 seconds. If the removal was unsuccessful the LED will be switched on for 8 seconds</li> </ol> <br /> <h2>Wakeup Information</h2><p>To wake up the sensor, <em>don't</em> push the wake up button, as it does nothing.  Instead, tap the zwave button once.  Use wake up button to put back to sleep immediately.</p> <p>Press WakeUp button or hold z-wave button</p> <p>The Water Sensor will keep waking up for 8 seconds after sending the wake up notification command.<br />The Water Sensor will keep waking up for 8 seconds to waiting for the next command after receiving a command.<br />The Water Sensor will be woken up for 10 minutes when power is on (configurable).<br />There are 3 ways to exit the Wake up 10 minutes state:</p> <ol><li>Triple click the tamper switch, and the Water Sensor will sleep immediately</li> <li>Receive the “Wake up no more information CC” command , sleep right now;</li> <li>Receive the other command except “Wake up no more information CC” , the Water Sensor will wake up for 8 seconds and then go to sleep.</li> </ol>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

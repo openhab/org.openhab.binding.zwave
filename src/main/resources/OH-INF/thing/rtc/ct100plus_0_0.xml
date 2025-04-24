@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="rtc_ct100plus_00_000" listed="false">
     <label>CT100 Plus Z-Wave Thermostat</label>
@@ -11,6 +11,7 @@
 Z-Wave Thermostat<br /> <h1>Overview</h1><p>The CT100 Plus is a sleek, modern thermostat design for home automation systems. It’s clean user interface compliments app-enabled systems. It features adjustable real-time alerts to enable cloud triggers, a robust data stream of HVAC information for cloud monitoring, and configurable comfort response settings to customize home control scenes. The CT100 Plus is compatible with all popular HVAC systems and is battery-operated without the need for a C-wire.</p> <br /> <h2>Inclusion Information</h2><ol><li> From the CT100’s Menu screen, touch MATE under the radio icon. The Network Include screen displays a large r1.</li> <li>Touch MATE again. This initiates the network connection (mating) process. The MATE icon and the status indicator LEDs will blink.</li> </ol><p>When the CT100 has successfully joined a Z-Wave network, the MATE icon is replaced by the LINK icon under the radio tower. </p> <br /> <h2>Exclusion Information</h2><ol><li> From the CT100’s Menu screen, touch MATE under the radio icon. The Network Include screen displays a large r1.</li> <li>Touch MATE again. This initiates the network connection (mating) process. The MATE icon and the status indicator LEDs will blink.</li> </ol><p>When you are trying to disconnect from (leave) a network, the LINK icon disappears when the node has successfully left the network.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -374,6 +375,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, Multicast is
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -391,6 +396,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, Multicast is
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -404,6 +413,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, Multicast is
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Running</option>
@@ -416,6 +429,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, Multicast is
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -433,6 +450,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, Multicast is
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -446,6 +467,10 @@ Enable or disables Multicast<br /> <h1>Overview</h1><p>If set to 0, Multicast is
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Running</option>

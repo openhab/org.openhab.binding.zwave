@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fgss001_00_000" listed="false">
     <label>FGSS001 Smoke Sensor</label>
@@ -11,6 +11,7 @@
 Smoke Sensor<br /> <h1>Overview</h1><p>The Fibaro Smoke Sensor is a universal, optical Z-Wave smoke sensor. The device can be hard wired (12 or 24 VDC) or battery operated (battery life 3 years*). Smoke detection is signaled through siren and LED diode blinking. Additionally, the smoke sensor signal can be sent to an alarm system or fire alarm system hub, through a NC (normally closed) contact terminals. </p> <p>The optical sensor detects smoke at an early stage of fire, often before flames appear and temperature starts to rise significantly. Moreover the device has a built-in temperature sensor, which can also trigger the alarm once the specified temperatute threshold is exceeded. </p> <p>The Fibaro Smoke Sensor is designed to be placed on a wall or ceiling. LED indicator signals fire, operating mode and used to see if device is within the Z-Wave network. The smoke sensor is designed to operate in confined spaces, under normal conditions (lacking smoke, dust, condensed water vapor)</p> <br /> <h2>Inclusion Information</h2><p>Manual Fibaro Smoke Sensor inclusion:</p> <ol><li>Connect the power source to the Fibaro Smoke Detctor and/or install the battery. Make sure the device is located within direct range of the Z-Wave controller.</li> <li>Set the main controller into the learn mode (see main controller’s operating manual).</li> <li>Quickly, triple click the B-button, located on Fibaro Smoke Sensor’s enclosure.</li> <li>Fibaro Smoke Sensor will be detected and included in the Z-Wave network.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the sensor is connected to power source (battery and/or hard wired).</li> <li>Set the main controller into the learn mode (see main controller’s operating manual)</li> <li>Quickly, triple click the B-button, located on Fibaro Smoke Sensor’s enclosure</li> </ol> <br /> <h2>Wakeup Information</h2><p>If the sensor is already included in the Z-Wave network, wake it up by triple clicking the B-button..</p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

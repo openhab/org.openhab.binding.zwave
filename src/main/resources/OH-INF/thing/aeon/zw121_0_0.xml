@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_zw121_00_000" listed="false">
     <label>ZW121 Aeotec LED Strip</label>
@@ -11,6 +11,7 @@
 Aeotec LED Strip<br /> <h1>Overview</h1><p>Aeotec LED Strip has been crafted to power connected lighting using Z-Wave Plus. It is powered by Aeotec’s Gen5 technology. The LED Strip is a multi-colored LED Strip which allows control (on/off/dim/color change) via Z-Wave commands.</p> <p>Note that configuration parameters 37 and 39 only apply when the strip is in color transition mode. Color transition mode is entered when a change to parameter 37 or 39 is submitted. Color transition mode is exited when a change to any of the channels is submitted. </p> <br /> <h2>Inclusion Information</h2><ol><li>Set your Z-Wave controller into pairing mode.</li> <li>Press the Action Button located on the back of the LED Strip's white controller box once (The network LED will blink green as an indication it is pairing insecurely, please refer to section "Enabling Security Encryption" in the Advanced Function section of the manual to pair it securely).</li> <li>If the LED Strip has been successfully added to your Z-Wave network, its Network LED will become solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colorful gradient, repeat the instructions above from step 1. </li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Set your Z-Wave controller into device removal mode.</li> <li>Press the Action Button located on the back of the LED Strip's white controller box once.</li> <li>If the LED Strip has been successfully removed from your  Z-Wave network, its Network LED will remain colorful gradient. If the removal was unsuccessful, the Network LED will still be solid, repeat the instructions above from step 1.</li> </ol>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -300,6 +301,10 @@ Retransmit commands to associated nodes<br /> <h1>Overview</h1><p>Forward the Ba
     <item-type>Number</item-type>
     <label>Color Transition Style</label>
     <description>Defines how the strip transitions between colors</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Smooth color transition</option>

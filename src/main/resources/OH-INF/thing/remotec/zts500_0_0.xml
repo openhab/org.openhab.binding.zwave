@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="remotec_zts500_00_000" listed="false">
     <label>ZTS-500 Thermostat</label>
@@ -11,6 +11,7 @@
 Thermostat<br /> <h1>Overview</h1><p>Remotec ZTS-500 is a security Z-Wave enabled thermostat designed to control residential HVAC systems. </p> <br /> <h2>Inclusion Information</h2><p>Z-Wave Inclusion and Exclusion</p> <p>When ZTS-500 is not in any Z-Wave network, "Z-Wave Disconnected" icon will show up on the standby menu, you can navigate to the Z-Wave from operation menu to do the inclusion. Or you can go to system settings menu, the first menu is for Z-Wave setup, you can do both inclusion and exclusion.</p> <p>Tap the "+" scroll key when an inclusion or exclusion request is sent by a local Z-Wave gateway, HUB, or controller. If the procedure is successful, a "" screen will display. If the procedure fails, a "" screen will display.<br /> If the ZTS-500 is included in a Z-Wave network, the "Z-Wave Disconnected" icon will no longer display in the standby menu.</p> <p>Note: All Z-Wave configuration parameter values will keep no changes after excluding the unit from the network, except for the association groups information. The ZTS-500 will retain the last selected HVAC system type.</p> <br /> <h2>Exclusion Information</h2><p>Z-Wave Inclusion and Exclusion</p> <p>When ZTS-500 is not in any Z-Wave network, "Z-Wave Disconnected" icon will show up on the standby menu, you can navigate to the Z-Wave from operation menu to do the inclusion. Or you can go to system settings menu, the first menu is for Z-Wave setup, you can do both inclusion and exclusion.</p> <p>Tap the "+" scroll key when an inclusion or exclusion request is sent by a local Z-Wave gateway, HUB, or controller. If the procedure is successful, a "" screen will display. If the procedure fails, a "" screen will display.<br /> If the ZTS-500 is included in a Z-Wave network, the "Z-Wave Disconnected" icon will no longer display in the standby menu.</p> <p>Note: All Z-Wave configuration parameter values will keep no changes after excluding the unit from the network, except for the association groups information. The ZTS-500 will retain the last selected HVAC system type.</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -174,6 +175,10 @@ Changes Temp. Display (-10=-10F/-5C - 10=+10F/5C)<br /> <h1>Overview</h1><p>Adju
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -190,6 +195,10 @@ Changes Temp. Display (-10=-10F/-5C - 10=+10F/5C)<br /> <h1>Overview</h1><p>Adju
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -203,6 +212,10 @@ Changes Temp. Display (-10=-10F/-5C - 10=+10F/5C)<br /> <h1>Overview</h1><p>Adju
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Speed</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ge_45609_00_000" listed="false">
     <label>45609 On/Off Relay Switch</label>
@@ -11,6 +11,7 @@
 On/Off Relay Switch<br /> <h1>Overview</h1><p>Wall mounted On/Off switch. Control the On/Off status of permanently installed lighting, fans and more!</p> <br /> <h2>Inclusion Information</h2><p>When prompted by your primary controller, tap the top or bottom of the rocker</p> <br /> <h2>Exclusion Information</h2><p>Once the controller is ready to Exclude your device, press and release the top or bottom of the wireless smart switch (rocker) to exclude it from the network</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

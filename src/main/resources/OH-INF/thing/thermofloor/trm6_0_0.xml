@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="thermofloor_trm6_00_000" listed="false">
     <label>Heatit Z-TRM6 Thermostat for electrical heating</label>
@@ -11,6 +11,7 @@
 Thermostat for electrical heating<br /> <h1>Overview</h1><h3>Features<br /></h3><ul><li>Z-Wave thermostat (Z-Wave Plus v2)</li><li>Internal room sensor</li><li>External room sensor (wired by cable)</li><li>Floor sensor <br />(compatible NTC-sensors (kΩ @ 25°C) 6.8, 10, 12, 15, 22, 33, 47, 100)</li><li>fits in standard European junction boxes and may be used with most System 55 frames</li><li>Temperature limiter</li><li>3 modes: Heat - Cool and Eco</li><li>Open window detection</li><li>Lock mode/child lock</li><li>Temperature readout in gateway</li><li>Active power metering</li><li>SmartStart</li><li>Firmware update (OTA)</li><li>Supports encryption modes S0, S2 Authenticated Class, S2 Unauthenticated Class</li><li>Z-Wave 800 chip</li><li><p>Max load (resistive load) 3600W<br />Max current 16A<br />Own power usage 2W</p></li></ul> <br /> <h2>Inclusion Information</h2><h3>Method 1: Standard (Manual)</h3><ol><li>Hold the Center button for 5 seconds</li><li>The display will show “OFF”</li><li>Press the ”+” button once to see “CON” in the display</li><li>Start the add device process in your primary controller</li><li>Start the configuration mode on the thermostat by holding the Center button for approximately 2 seconds</li></ol><h3>Method 2: SmartStart (Automatic)</h3><p>Scan the Z-Wave QR-Code on the product if your primary controller supports SmartStart inclusion. No further action is required and the SmartStart product will be added automatically after being powered on within range of the primary controller.</p> <br /> <h2>Exclusion Information</h2><ol><li> Hold the Center button for 5 seconds</li><li>The display will show “OFF”</li><li>Press the ”+” button once to see “CON” in the display</li><li>Start the remove device process in your primary controller</li><li>Start the configuration mode on the thermostat by holding the Center button for approximately 2 seconds</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>RadiatorControl</category>
+    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -476,6 +477,10 @@ Size of load<br /> <h1>Overview</h1><p>Allows the user to set the power consump
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
+    <tags>
+      <tag>Setpoint</tag>
+      <tag>Temperature</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

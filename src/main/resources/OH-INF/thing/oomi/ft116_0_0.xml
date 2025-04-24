@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="oomi_ft116_00_000" listed="false">
     <label>FT116 In-Wall Smart Switch</label>
@@ -11,6 +11,7 @@
 In-Wall Smart Switch<br /> <h1>Overview</h1><p>The In-Wall Switch is a Z-Wave Smart Switch specifically used to enable Z-Wave command and control (on/off) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.It can connect to 2 external manual switches to control the load ON/OFF independently. Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the In-Wall Switch.The In-Wall Switch is also a security Z-Wave device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <br /> <h2>Inclusion Information</h2><p>Turn the primary controller of Z-Wave network into inclusion mode, short press the products Action button that you can find on the product's housing.</p> <br /> <h2>Exclusion Information</h2><p>Turn the primary controller of Z-Wave network into exclusion mode, short press the products Action button that you can find on the product's housing.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

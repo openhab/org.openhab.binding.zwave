@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="avadesign_davincivsw9_00_000" listed="false">
     <label>Da Vinci Switch Default</label>
@@ -11,6 +11,7 @@
 <br /> <h1>Overview</h1><p>The Da Vinci wall controller is a Multi Chanel Z-Wave device that contains up to 6 relays and up to 9 touch buttons that can be set to control either the relays (On/Off switches and shutters) or any other on/off (SWITCH_BINARY)  , shutter (MULTILEVEL_SWITCH) Z-Wave device.</p> <br /> <h2>Inclusion Information</h2><p>Press the #1 button 3 times.</p> <br /> <h2>Exclusion Information</h2><p>Press the #1 button 3 times.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

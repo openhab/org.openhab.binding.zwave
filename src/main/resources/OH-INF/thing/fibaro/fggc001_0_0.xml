@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fibaro_fggc001_00_000" listed="false">
     <label>FGGC001 Fibaro Swipe Scene Controller</label>
@@ -11,6 +11,7 @@
 Fibaro Swipe Scene Controller<br /> <h1>Overview</h1><p>FIBARO Swipe is a revolutionary battery gesture control pad that allows you to control devices in your Z-Wave network without actually touching anything. Swipe up, down, left, right, make a circular gesture and use sequences to get full and intuitive control of your home. </p> <br /> <h2>Inclusion Information</h2><ol><li>Place the Swipe within the direct range of your Z-Wave controller.</li><li>Set the main controller in (security/non-security) add mode (see the controller’s manual).</li><li>Move and hold your hand close to the center of the pad.</li><li>If the device is battery powered, high pitched beep will signal exiting the Standby Mode.</li><li>Loud sound sequence will confirm entering the menu, keep holding your hand.</li><li>After hearing two short beeps (green indicator colour), withdraw the hand and perform swiping up gesture to confirm selection (two beeps will confrm validity).</li><li>Wait for the adding process to end.</li><li>Successful adding will be confirmed by the Z-Wave controller’s message and 3 short beeps (green visual indicator colour).</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Place the Swipe within the direct range of your Z-Wave controller.</li><li>Set the main controller in remove mode (see the controller’s manual).</li><li>Move and hold your hand close to the center of the pad.</li><li>If the device is battery powered, high pitched beep will signal exiting the Standby Mode.</li><li>Loud sound sequence will confirm entering the menu, keep holding your hand.</li><li>After hearing two short beeps (green indicator colour), withdraw the hand and perform swiping up gesture to confirm selection (two beeps will confirm validity).</li><li>Wait for the removing process to end.</li><li>Successful removing will be confirmed by the Z-Wave controller’s message and sequence of 2 short beeps, pause, 1 short beep (red visual indicator colour).</li></ol> <br /> <h2>Wakeup Information</h2><p>Use 1st menu position to wake up the device or click the button on the back of the device once. </p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

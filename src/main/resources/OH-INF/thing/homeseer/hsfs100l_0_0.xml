@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="homeseer_hsfs100l_00_000" listed="false">
     <label>HS-FS100-L Homeseer Z-Wave Indicator Light Sensor</label>
@@ -11,6 +11,7 @@
 Homeseer Z-Wave Indicator Light Sensor<br /> <h1>Overview</h1><p>HS-FS100-L is a sensor designed to monitor indicator lights on appliances and other equipment in your home. It will send Z-Wave commands to your smart home system when things turn on, turn off or change their status.</p> <p><strong>Main Features</strong></p> <ul><li>Indicator Light Sensor</li> <li>Temperature Sensor</li> <li>Z-Wave Controllable Buzzer</li> <li>Acts as a Z-Wave repeater when used on line power</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Attach the included light or water sensor cable. Put your home automation controller into Z-Wave ‘inclusion’ mode.</li> <li>Press the Z-Wave network button on the front of the unit one time. Wait for the inclusion process to finish. This may take some time.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put your home automation controller into Z-Wave ‘exclusion’ mode.</li> <li>Press the Z-Wave network button on the front of the unit one time. Wait for the exclusion process to finish. This may take some time.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Flex Sensor can be programmed to wake up and send its battery status based on the polling interval set. The polling interval is set to 12 hours by default when the unit is added on battery power. When on line power, wake up is not supported.</p> <p>Wake up interval</p> <p>Available settings: 6-1500 (minutes)Default setting: 0 -A setting of “0” disables the regular reporting feature and requires the sensor to be manually woken up to send updates.</p> <p>Default setting when added to HomeSeer systems: 12 hours</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

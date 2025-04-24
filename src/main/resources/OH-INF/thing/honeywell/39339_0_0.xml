@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="honeywell_39339_00_000" listed="false">
     <label>39339 (ZW3107) Z-Wave Plug-in Smart Dimmer</label>
@@ -11,6 +11,7 @@
 Z-Wave Plug-in Smart Dimmer<br /> <h1>Overview</h1><p>Stay connected to your home with a Honeywell Z-Wave Smart Dimmer. Compatible with all Z‑Wave certified gateways, the smart dimmer gives you wireless control of your dimmable lights from any mobile device, computer or Z-Wave enabled remote. Setup is easy – simply plug the dimmer into any in-wall outlet, then connect your light to one of the two dual smart outlets located on either side of the dimmer. Whether you’re at home or away, access the dimmer to turn your lights on and off, or to adjust the brightness levels of the room.</p> <p>The smart dimmer incorporates reliable, dynamic illumination to your home, giving you a fully lit workspace or letting you settle down for the evening with effective, stylish accent lighting. Not only does the smart dimmer help cut energy costs, but it boosts the safety of your home by keeping rooms looking bright and lived‑in. Give your space the perfect amount of light with a Honeywell Z-Wave Smart Dimmer.</p> <h4>Features</h4> <ul><li>ALEXA COMPATIBLE (HUB REQUIRED) - Requires an Alexa supported hub for voice control with Amazon Echo Products (Alexa device and hub are sold separately).Cannot connect directly with ECHO PLUS (Only ZigBee products can connect directly to Echo Plus)</li> <li>REQUIRES A Z-WAVE CERTIFIED HUB - Compatible with the following Z-Wave Hubs: Honeywell, SmartThings, Pulse, Trane, Wink, Nexia, Honeywell, HomeSeer, Smart Security, Harmony Home Hub Extender, Vera, and Fibaro</li> <li>WIRELESSLY CONTROL &amp; SCHEDULE LIGHTS - Schedule timed events for connected lighting. Customize scenes for day or night, home or away. Wirelessly control from anywhere through your smartphone, tablet, PC or Z-Wave remote</li> <li>FULL RANGE DIMMING – Give your space the perfect amount of light with the ability to customize the brightness levels from 0 to 100%. Works ONLY with dimmable bulbs and lamps</li> <li>2 SIMULTANEOUSLY CONTROLLED POLARIZED OUTLET - features 2 polarized outlets that can be controlled at the same time (NOT SEPERATLEY) and a manual ON/OFF, dim &amp; program physical button. To setup simply plug the module into any in-wall outlet, then connect</li> </ul> <br /> <h2>Inclusion Information</h2><p>Press and release the manual/program button. (Tested to work with Network Wide Inclusion.)</p> <br /> <h2>Exclusion Information</h2><p>Press and release the manual/program button.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zipato_phpsg01_00_000" listed="false">
     <label>PH-PSG01 Smoke Sensor</label>
@@ -11,6 +11,7 @@
 Smoke Sensor<br /> <h1>Overview</h1><p>Zipato Smoke Sensor (Z-Wave) is designed to give early warning of developing fires by giving off the alarm sounds from its build-in alarm horn, based on Z-Wave technology. Zipato Smoke Sensor is Z-Wave Plus product, it supports security, OTA and all other new features of 500 Series Z-Wave chipset.</p> <br /> <h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller entered inclusion mode.</li> <li>Press test button three times within 1.5 seconds to enter the inclusion mode.</li> <li>After the adding was successful, the device will wake to receive the setting from Z-Wave Controller about 20 seconds. </li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Have Z-Wave Controller entered inclusion mode.</li> <li>Pressing test button three times within 1.5 seconds to enter the exclusion mode. Node ID has been removed. </li> </ol> <br /> <h2>Wakeup Information</h2><p>After device is added to the network, it will wake-up once per day by default.When it wakes-up it will broadcast the “Wake  Up Notification” message to the network, and wake-up 10 seconds to receive the setting commands. The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. Interval step is 30 minutes. If you want to wake-up device immediately, please press the button once. The device will wake-up for 10 seconds. </p>
     ]]></description>
     <category>SmokeDetector</category>
+    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

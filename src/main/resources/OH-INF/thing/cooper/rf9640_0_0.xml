@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="cooper_rf9640_00_000" listed="false">
     <label>RF9640 Z-Wave Plus universal smart dimmer</label>
@@ -11,6 +11,7 @@
 Z-Wave Plus universal smart dimmer<br /> <h1>Overview</h1><p><strong>OPERATION INSTRUCTIONS</strong></p> <ul><li>Press once to turn lights ON at previously selected level.</li> <li>Press again to turn lights OFF.</li> <li>When lights are OFF, press and hold for 2 seconds for full brightness.</li> <li>When lights are ON, press and hold for 2 seconds until the blue LED blinks. After the preset delay, the lights will begin fading to OFF (up to 4 minutes).</li> <li>Amber ON/OFF LED indicates that dimmer is turned on</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>This product may be added to a new or existing Z-Wave network. A Cooper Wiring Devices Z-Wave device has a blue LED, which will blink when the device is not included in a Z-Wave network. The LED stops blinking when the device is in a network.</li> <li>To include this device in a Z-Wave network, select the command on your Z Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the device switch one time to include it in the network. The LED will stop blinking.</li> </ol> <br /> <h2>Exclusion Information</h2><p>To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the device switch one time to exclude it from the network. The LED will start blinking.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -222,6 +223,10 @@ Reset max/min levels to factory default<br /> <h1>Overview</h1><p>Sets the max/m
     <item-type>Number</item-type>
     <label>Dimmer Ramp Time</label>
     <description>Time in seconds to reach desired level</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

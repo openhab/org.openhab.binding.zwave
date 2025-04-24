@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="yale_zws2dsk_00_000" listed="false">
     <label>Yale Zwave S2 Security Module Supported on Lock models - SYDM3109PLUS and SYDM4109PLUS</label>
@@ -11,6 +11,7 @@
 Supported on Lock models - SYDM3109PLUS and SYDM4109PLUS<br /> <h1>Overview</h1><p>RFHX-YZW51-00</p><p>YALE AU ZWAVE MODULE FOR ASEAN MODEL<br /></p><p>Yale Z-Wave Network Module</p><p>Lose Your Keys - Forget carrying around keys; lock and unlock your door with your smartphone. Remote Access Control - With the Yale Z-Wave Network Module control your Yale SYDM3109plus/ 4109plus Lock from anywhere via your Home Automation Hub.</p><p>Features</p><ul><li>Remote access to lock features</li><li>Requires compatible 3rd party Z-Wave Home Automation Hub (sold separately)</li><li>Features may vary based on 3rd party hub software</li><li>Supported on Lock models - SYDM3109PLUS and SYDM4109PLUS</li></ul><p><br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Put the Z-Wave controller into add or learn mode</li><li>Enter the master code on the lock, followed by Registration(R or I)</li><li>Press the 9 button, followed by #</li><li>Press the 1 button followed by #</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Put the Z-Wave controller into add or learn mode</li><li>Enter the master code on the lock, followed by Registration(R or I)</li><li>Press the 9 button, followed by #</li><li>Press the 3 button followed by #</li><li>Enter the master code on the lock</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

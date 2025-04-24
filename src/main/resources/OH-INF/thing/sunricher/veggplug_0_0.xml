@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sunricher_veggplug_00_000" listed="false">
     <label>VEGGPLUG NAMRON Smart Plug</label>
@@ -11,6 +11,7 @@
 NAMRON Smart Plug<br /> <h1>Overview</h1><p>Zwave Smart Plug</p> <br /> <h2>Inclusion Information</h2><p>Press and hold down action button for 10 seconds</p> <br /> <h2>Exclusion Information</h2><p>Triple click the action button</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

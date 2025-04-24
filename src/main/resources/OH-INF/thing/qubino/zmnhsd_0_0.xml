@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="qubino_zmnhsd_00_000" listed="false">
     <label>ZMNHSD DIN Rail Dimmer</label>
@@ -11,6 +11,7 @@
 DIN Rail Dimmer<br /> <h1>Overview</h1><p>This Z-wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either thorough Z-wave network or through the wall switch.</p> <p>The module is designed to be mounted inside an electrical cabinet onto DIN rail.</p> <p>Module measures power consumption of bulb or fan and supports connection of digital temperature sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p> <br /> <h2>Inclusion Information</h2><p>Press service button S for more than 6 seconds or press push button I five times within 3s (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</p> <br /> <h2>Exclusion Information</h2><p>If service button S is pressed more than 2 and less than 6 seconds (or if push button I is pressed three times within 3s) module is excluded, but configuration parametres are not set to default values.</p> <p>Note: If the module is included with parameter 5 with value different from default and module reset is done, wait at least 30s before next inclusion</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

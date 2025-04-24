@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="philio_pat05_00_000" listed="false">
     <label>PAT05 AIR QUALITY MULTI SENSOR</label>
@@ -11,6 +11,7 @@
 AIR QUALITY MULTI SENSOR<br /> <h1>Overview</h1><p>The PAT05 multi-sensor is a device that allows you to check the air quality in your home, as well as detect temperature and humidity.</p> <p>The PAT05 Multi-sensor is easy to use and very convenient for your home. Just set the sensor on the wall of the rooms you would like to control, and you are ready to go.</p> <br /> <h2>Inclusion Information</h2><p>1. Have Z-WaveTM Controller entered inclusion mode.</p> <p>2. Pressing tamper key three times within 2 seconds to enter the inclusion mode.</p> <p>3. After add successful, the device will wake to receive the setting command from Z-WaveTM Controller about 20 seconds.</p> <br /> <h2>Exclusion Information</h2><p>1. Have Z-WaveTM Controller entered exclusion mode.</p> <p>2. Pressing tamper key three times within 2 seconds to enter the exclusion mode.</p> <p>Node ID has been excluded.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="kwikset_ged2150_00_000" listed="false">
     <label>GED2150 SmartCode 10 Touchpad Electronic Deadbolt</label>
@@ -11,6 +11,7 @@
 SmartCode 10 Touchpad Electronic Deadbolt<br /> <h1>Overview</h1><ul><li>Compatible with Echo Plus.</li><li>Capacitive touchscreen featuring SecureScreenTM technology. Codes cannot be identified by examining the touchscreen for fingerprints.</li><li>Featuring SmartKey® re-key technology; re-key the lock yourself in seconds in 3 easy steps.</li><li>Deadbolt operated by touchscreen electronic keypad or key; backlit for increased visibility at night.</li><li>Keypad stays lit for 30 seconds after inactivity.</li><li>Customized automatic door locking after 30 seconds for peace of mind.</li><li>One touch motorized locking. Lock your door with a single touch. No additional turning/twisting needed.</li><li>Features 30 user access codes and 1 master code option.</li><li>ANSI/BHMA grade 2 certified/20 minute fire rating - UL certified.</li><li>Fits most standard residential door preparations - installs in minutes with just a screw driver.</li><li>Lifetime mechanical and finish warranty, One year electronics warranty.</li><li>4 AA, purchased separately.</li><li>Full 128-bit encryption security.</li></ul><p><br /></p> <br /> <h2>Inclusion Information</h2><p>Press button “A” on the lock one time to include it in your system.</p> <br /> <h2>Exclusion Information</h2><p>Press button “A” on the lock one time to include it in your system.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

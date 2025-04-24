@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_mp21zp_00_000" listed="false">
     <label>MP21ZP/MP31ZP Mini Plug with Power Meter</label>
@@ -11,6 +11,7 @@
 Mini Plug with Power Meter<br /> <h1>Overview</h1><p><b>Z-Wave Plus Outlet Mini Plug with Power Meter (MP21ZP)</b><br /></p><p><b>Z-Wave Plug with Energy Monitor (700 Chip) (MP31ZP)</b></p><p><b><br /></b></p><p><b>Specification</b></p><p>Input: 125VAC 60Hz</p><p>Frequency: 908.42 MHz</p><p>Loading: 15A Max 1875W resistive or general purpose 5A Max 625W tungsten</p><p>Indoor use in dry location</p><p><br /></p><p><b>Features</b></p><ol><li>Z-Wave control on / off.</li><li>Z-Wave controlled AC outlet for standard incandescent lighting, CFL/LEDs, fans or small appliances (1875W Resistive Max).</li><li>Grounded 3-wire power connection for safety.</li><li>Remembers and restores on / off status after power failure</li><li>Built-in Z-Wave Plus signal repeater to extend network range.</li><li>S2 security and for reliable wireless communication.</li><li>Work with all certificated Z-Wave controllers.</li><li>Protection function (When the production function is triggered, the device needs to be powered on again for normal use.)</li></ol><ul><li>Voltage protection: when the voltage＞135V, the device will be forcibly shut down</li><li>Current protection, when the current＞16A, the device will be forcibly shut down</li><li>Power Wattage protection, when the power＞2000W, the device will be forcibly shut down</li></ul> <br /> <h2>Inclusion Information</h2><p><b>Adding Device To Z-Wave Network:</b><br /></p><p>Once the controller is ready to add your device, press the Manual/Program button on the smart plug 3 times quickly. The blue LED will blink quickly.</p><p> Auto-add mode: LED will blink within 30 seconds after first plugged in.</p> <br /> <h2>Exclusion Information</h2><p><b>Removing Device To Z-Wave Network:</b></p><p>Once the controller is ready to remove your device, press the Manual/Program button on the smart plug 3 times quickly. The blue LED will blink quickly.</p><p>Auto-add mode: LED will blink within 30 seconds after first plugged in.</p> <br /> <h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

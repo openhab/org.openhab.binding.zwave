@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="elexa_dmwd1_00_000" listed="false">
     <label>DMWD1 Dome door &amp; window sensor</label>
@@ -11,6 +11,7 @@
 Dome door &amp; window sensor<br /> <h1>Overview</h1><p>The Dome Door/Window Sensor is a battery powered Z-Wave Plus magnetic reed switch that can monitor the status of doors, windows, and anything else that opens and closes.</p> <p>The Door/Window Sensor consists of two parts - the “sensor,” and the “magnet.” The sensor has a “reed switch” inside, which is sensitive to the magnet’s presence when aligned properly and within the defined distance. When the sensor and magnet are brought together or pulled apart, the sensor will report its open/close status to its Z-Wave controller.</p> <br /> <h2>Inclusion Information</h2><p>The Door/Window Sensor should be within 10’ of your Z-Wave controller for the inclusion process. After successful pairing, the device can be brought to the desired location.</p> <ul><li>Remove the SENSOR COVER.</li> <li>Remove the BATTERY TAB.</li> <li>Press the BUTTON quickly 3 times in a row.</li> </ul><p>A red LED will flash five times indicating inclusion</p> <br /> <h2>Exclusion Information</h2><p>Follow the instructions for your Z-Wave Certified Controller enter exclusion mode. When prompted by the controller:</p> <ul><li>Remove the SENSOR COVER.</li> <li>Press the BUTTON button quickly 3 times in a row.</li> </ul><p>A red LED will flash five times indicating exclusion/disconnection.<br /><br /></p> <br /> <h2>Wakeup Information</h2><p>Press and hold the BUTTON for two seconds. The LED INDICATOR will flash once indicating successful wake up.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

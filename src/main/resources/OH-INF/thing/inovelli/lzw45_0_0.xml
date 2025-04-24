@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="inovelli_lzw45_00_000" listed="false">
     <label>LZW45 Red Series - RGBTW Lightstrip</label>
@@ -11,6 +11,7 @@
 Red Series - RGBTW Lightstrip<br /> <h1>Overview</h1><p>The LZW45 Inovelli RGBTW Smart LED Strip is the first Z-Wave enabled individually addressable lightstrip that works with many different hubs and gateways and allows remote control from anywhere in the world.<br /></p> <br /> <h2>Inclusion Information</h2><p>Tap A button (rectangle) 3x</p> <br /> <h2>Exclusion Information</h2><p>Tap A button (rectangle) 3x<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

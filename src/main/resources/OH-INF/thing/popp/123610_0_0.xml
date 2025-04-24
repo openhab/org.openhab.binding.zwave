@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="popp_123610_00_000" listed="false">
     <label>123610 Wall Plug Switch</label>
@@ -11,6 +11,7 @@
 Wall Plug Switch<br /> <h1>Overview</h1><p>This is a switch plug that can be placed between a standard Schuko (Type F) wall outlet and electric devices, plugged in by cord. It can switch all electrical loads up to 3500 W. The device is IP 20 rated and can therefore only be used on dry environments. Switching is controlled wirelessly using Z-Wave or locally using a toggleing button. A blue LED indicates the switching status. An automatic 'Off' function and programmable switching behavior make the device a very flexible tool for the inhouse lighting</p> <br /> <h2>Inclusion Information</h2><p> Inclusion and Exclusion are confirmed by a tripple click of the button. </p> <br /> <h2>Exclusion Information</h2><p> Inclusion and Exclusion are confirmed by a tripple click of the button. </p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

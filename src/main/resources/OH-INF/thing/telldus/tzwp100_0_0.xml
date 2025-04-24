@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="telldus_tzwp100_00_000" listed="false">
     <label>TZWP-100 Wall Plug Switch</label>
@@ -11,6 +11,7 @@
 Wall Plug Switch<br /> <h1>Overview</h1><p>Plug­in switch, controls lighting and other electronic equipment up to 2000 W (resistive load). </p> <br /> <h2>Inclusion Information</h2><p>Press the button on the device three times fast.</p> <br /> <h2>Exclusion Information</h2><p>Press the button on the device three times fast.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

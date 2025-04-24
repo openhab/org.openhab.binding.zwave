@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsd31_00_000" listed="false">
     <label>DSD31 Outlet Plugable Siren</label>
@@ -11,6 +11,7 @@
 Outlet Plugable Siren<br /> <h1>Overview</h1><p>Aeon Labs Siren is a switch binary device based on Z-wave enhanced 232 slave library of V6.51.01. </p> <br /> <h2>Inclusion Information</h2><ol><li>Press and release the Action button. LED will blink for 3 seconds.</li> <li>If successfully included, LED will no longer blink after the Action button is quickly pressed.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Press and release the Action button. </li> <li>If successfully removed, LED will blink for 3 seconds after the Action button is quickly pressed.</li> </ol>
     ]]></description>
     <category>Siren</category>
+    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

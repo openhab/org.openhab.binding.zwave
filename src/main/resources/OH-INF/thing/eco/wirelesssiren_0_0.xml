@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="eco_wirelesssiren_00_000" listed="false">
     <label>Wireless Siren Z-Wave plus plug in siren</label>
@@ -11,6 +11,7 @@
 Z-Wave plus plug in siren<br /> <h1>Overview</h1><p>The device is as simple to use as plugging in a wall outlet.</p><p>The device can create 4 independent tones for different alerts to the user. These could include but are not limited to: Security Alarm, entry/exit, smoke/Fire, temperature and more. The Z-Wave Plus Siren can also be used as a Z-Wave Plus network extension.</p> <br /> <h2>Inclusion Information</h2><p>Plug in the Z-Wave Siren and verify a single beep sound is heard.</p><p>The LED on the front of the unit will turn off if successful included into a network.</p> <br /> <h2>Exclusion Information</h2><ol><li> Plug in the Z-Wave Siren.</li><li>Unplug and re-plug in your Z-Wave Plus Siren.  </li></ol><p>The device will play a long beep and the LED will begin to breathe if the device is successfully removed from the network.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Siren</category>
+    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="shenzhen_motionsensor2_00_000" listed="false">
     <label>Motion Sensor 2 PIR Motion Sensor 2</label>
@@ -11,6 +11,7 @@
 PIR Motion Sensor 2<br /> <h1>Overview</h1><p><br /></p><p>Motion Sensor with illuminance and sometimes a temperature feature.</p> <br /> <h2>Inclusion Information</h2><p><br /></p><ol><li>Remove the sensor cover.</li> <li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..</li> </ol> <br /> <h2>Exclusion Information</h2><p><br /></p><ol><li>Remove the sensor cover.</li> <li>Make sure the sensor is powered.</li> <li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li> <li>Press the button three times within 1.5 second, the device will enter inclusion mode. And the LED will flash on and off alternately five times..</li> </ol> <br /> <h2>Wakeup Information</h2><p><br /></p><p>You can press the button  three times within 1.5 second to wake up the device and send wakeup notification to controller. If press successfully, the LED will blink one time. The minimum wakeup interval is 300s, the maximum wakeup interval is 16,777,200s (about 194 days). Allowable interval among each wakeup interval is 60 second, such as 360, 420, 480… <br />Note: The default value is 12 hours. This value is longer, the battery life is greater.</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

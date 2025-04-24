@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="shenzhen_naspd07zu1_00_000" listed="false">
     <label>NAS-PD07Z1U NEO Coolcam PIR 5 in 1</label>
@@ -11,6 +11,7 @@
 NEO Coolcam PIR 5 in 1<br /> <h1>Overview</h1><p>5 in 1 sensor: motion, temperature, humidity, luminance, tamper alarm<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Power up the device.</li><li>Set Z-Wave Controller into inclusion mode.</li><li>Press and hold the button for 5 s until white led light is on, then release the button before led turns off.</li></ol><p>Blue led will blink with 1 s interval until inclusion successful.<br /></p><p>This device supports 2 role type: AOS(Always On Slave) and LPM(Low Power Mode). Which role type is valid decided by which power (Battery or DC Power) is supplied when included.</p><p>The role type is AOS only if DC power supply first. Listening=true </p><p>The role type is LPM only if battery supply first. Listening = false</p><p>When device is included with AOS, it also can make a repeater role.</p> <br /> <h2>Exclusion Information</h2><ol><li>Power up the device.</li><li>Set Z-Wave Controller into exclusion mode.</li><li>Press and hold the button for 5 s until white led light is on, then release the button before led turns off.</li></ol><p>Blue led will blink with 0.5 s interval until exclusion successful.</p> <br /> <h2>Wakeup Information</h2><p>Send NIF: <br /></p><p>Press and hold the button for 5 s until white led light is on, then release the button before led turns off.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

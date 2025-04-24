@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="inovelli_lzw31_00_000" listed="false">
     <label>LZW31 Black Series Dimmer</label>
@@ -11,6 +11,7 @@
 Black Series Dimmer<br /> <h1>Overview</h1><p>For starters, we’ve upgraded our Z-Wave module for better distance. The switch can be used in any 3-Way or 4-Way setting and allows you to use either an auxiliary switch, a smart switch or your existing dumb switch (NOTE: this only applies if a neutral wire is installed. If there is no neutral wire, the switch only works in a single-pole setting).</p> <p>Lastly, the LED bar can be changed to any default color you’d prefer and also allows for it to be dimmed, or disabled altogether.</p> <br /> <h2>Inclusion Information</h2><p>Start the Inclusion process on your HUB/Gateway. Turn the power back on and auto-inclusion will activate.You will have 60 seconds before it times out. If it does timeout,the backup method to pair/include the device is to press the Config Button (A) 3 times.</p> <br /> <h2>Exclusion Information</h2><p>Put your HUB in Exclusion mode and press the Config Button (A) 3x until your HUB says the device is excluded.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -306,6 +307,10 @@ Disable switching the load off in Smart Bulb Mode<br /> <h1>Overview</h1><p>If i
     <item-type>Number</item-type>
     <label>LED Indicator Color</label>
     <description>Sets the default color of the LED bar</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -314,6 +319,10 @@ Disable switching the load off in Smart Bulb Mode<br /> <h1>Overview</h1><p>If i
     <item-type>Number</item-type>
     <label>LED Indicator Intensity</label>
     <description>Sets the intensity of the LED bar (brightness)</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -322,6 +331,10 @@ Disable switching the load off in Smart Bulb Mode<br /> <h1>Overview</h1><p>If i
     <item-type>Number</item-type>
     <label>LED Indicator Intensity (when off)</label>
     <description>LED Indicator brightness when switch is off</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -330,6 +343,10 @@ Disable switching the load off in Smart Bulb Mode<br /> <h1>Overview</h1><p>If i
     <item-type>Number</item-type>
     <label>Auto Off Timer</label>
     <description>Automatically tuns the switch off after X seconds</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="simontech_10001020-230_00_000" listed="false">
     <label>10001020-230 Simon iO dimmer switch</label>
@@ -11,6 +11,7 @@
 Simon iO dimmer switch<br /> <h1>Overview</h1><p>This product is standard, having dimensions of 85.5x83.5mm. Its type of emborning is by cut and can be installed both vertically and horizontally. It should be noted that the voltage capacity of this front kit for 1 element with 1 Simon iO switch will be 250V. This product of the Simon 100 series features activation using a push-button. The interval for the temperature of its proper operation will be from 5º C to 40º C and its storage temperature range is from -25º C to 50° C. For proper maintenance it is suggested to dampen a soft cloth slightly in soapy water, thus avoiding the use of abrasive cleaners that contain chlorine and may compromise the surface of the cloth.<br /></p> <br /> <h2>Inclusion Information</h2><p>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.<br /></p> <br /> <h2>Exclusion Information</h2><p>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="sunricher_ves-zw-swi-014_00_000" listed="false">
     <label>VES-ZW-SWI-014 Vesternet Z-Wave 2 Channel Switch</label>
@@ -11,6 +11,7 @@
 Vesternet Z-Wave 2 Channel Switch<br /> <h1>Overview</h1><p>Switch module to switch two loads on and off.</p><p>2 Inputs For Connecting Switches</p><p>2 Independently Controlled Output Channels</p><p>Power, Energy, Voltage &amp; Current Metering</p><p>3-Wire (with Neutral)</p><p>Configurable Power Failure State</p> <br /> <h2>Inclusion Information</h2><p>Press the onboard button three times in quick succession to put module into include mode.<br /></p> <br /> <h2>Exclusion Information</h2><p>Press the onboard button three times in quick succession to put module into exclusion mode.</p> <br /> <h2>Wakeup Information</h2><p>Module is mains powered and does not seem to require waking.<br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

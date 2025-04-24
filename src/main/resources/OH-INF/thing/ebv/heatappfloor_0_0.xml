@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ebv_heatappfloor_00_000" listed="false">
     <label>heatapp! floor heatapp! floor is a controller for thermal actuators in underfloor heating installations and is part of the heatapp! system, providing individual circ</label>
@@ -11,6 +11,7 @@
 heatapp! floor is a controller for thermal actuators in underfloor heating installations and is part of the heatapp! system, providing individual circ<br /> <h1>Overview</h1><p>Information at the z-wave alliance product cataloge: https://products.z-wavealliance.org/products/1249</p> <br /> <h2>Inclusion Information</h2><p>Press the learn key (10) for 2 seconds that will start the inclusion process on the device.</p> <br /> <h2>Exclusion Information</h2><p>Press the learn key (10) for 2 seconds that will start the exclusion process on the device.</p>
     ]]></description>
     <category>RadiatorControl</category>
+    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

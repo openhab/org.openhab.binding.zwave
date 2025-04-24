@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="widom_wsp1_00_000" listed="false">
     <label>WSP1 Widom Smart Plug</label>
@@ -11,6 +11,7 @@
 Widom Smart Plug<br /> <h1>Overview</h1><p>WiDom Smart Plug is able to detect overvoltage and/or overcurrent events and indicate them through a multicolor LED. Furthermore, it protects appliances from eventual overload. A very innovative design, which integrates a complex system that allows a precise energy consumption monitoring. The integration of these features in its very small size product, make it unique on the market.</p> <p>The device is equipped with contact protection technology (<i>Zero Crossing</i>) which reduces the electrical stress on the relay contacts and ensures a longer life. The open / closed switching of the device always occur when the instantaneous value of voltage is 0.</p> <p>It operates in any Z-Wave network with other Z-Wave/Z-Wave Plus certified devices and controllers from any other manufacturer. As a constantly powered node, WiDom Smart Plug will act as repeater regardless of the vendor in order to increase the reliability of the network.</p> <br /> <h2>Inclusion Information</h2><p>If the device is not included into a Z-Wave network, <b>three consecutive clicks</b> on the Push Button will launch the process of traditional inclusion. If the device inclusion procedure does not start within 2 seconds, the Network Wide Inclusion network will be launched and will last between 15-30 seconds.</p> <br /> <h2>Exclusion Information</h2><p>After activating the exclusion function by the controller, the device can be removed by setting it in <i>Exclusion</i> <i>Mode</i> by <b>three consecutive clicks</b> on the Push Button.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

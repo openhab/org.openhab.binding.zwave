@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsb29_00_000" listed="false">
     <label>DSB29 Door/Window sensor Gen2</label>
@@ -11,6 +11,7 @@
 Door/Window sensor Gen2<br /> <h1>Overview</h1><p>The Door &amp; Window Sensor finds out something very simple – whether a door or a window, or in fact any object in your home, is open or closed. But there’s power in simplicity. Power that allows you to inform the rest of your Z-Wave network about your selected doors and windows. Like a thermostat lets your heating and cooling systems know what they should do next, Aeotec’s Z-Wave Door &amp; Window Sensor does the same. Perhaps an open door means that your lights should turn on and welcome you home. Perhaps an open window means that an alarm should be triggered. Whatever it means to your home, with door and window sensors installed, your Z-Wave network will have both the power and the intelligence to do it.</p> <br /> <h2>Inclusion Information</h2><ol><li>Let your Z-Wave primary controller/gateway enter into adding/inclusion mode. </li> <li>Take your Sensor near to your primary controller. </li> <li>Press the Action Button once on your Sensor. </li> <li>If your Door Window Sensor has been successfully added to your Z-Wave network, its Status LED will fast blink for 2 seconds and then be solid for 2 seconds when you press the Action Button again. If the adding was unsuccessful and the Status LED continues to fast blink for 8 seconds and then slow blink for 3 seconds, repeat the above steps.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put your primary controller into device removal mode. </li> <li>Unlock your Sensor from the Back Mount plate and take the Sensor unit near to your primary controller.  </li> <li>Press the Action Button on your Sensor. </li> <li>If your Door Window Sensor has been successfully removed from your Z-Wave network, its Status LED will fast blink for 8 seconds and then slow blink for 3 seconds when you press the Action Button again. If the removing was unsuccessful, the Status LED will fast blink for 2 seconds and then be solid for 2 seconds when you press the Action Button, repeat the above steps.</li> </ol> <br /> <h2>Wakeup Information</h2><ol><li>Remove your Sensor unit from its Back Mounting Plate, press  the Action Button on the back of the Sensor unit and then release the Action Button. This will trigger and send a wake up notification command to your controller/gateway. </li> <li>If you want your Sensor to keep awake for a longer time, press and hold the Action Button on the back of the Sensor unit for 3 seconds, then your Sensor will wake up for 10 minutes and the Status LED will fast blink while it is awake.</li> </ol> 
     ]]></description>
     <category>Door</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsc14_00_000" listed="false">
     <label>DSC14 Micro Motor Controller</label>
@@ -11,6 +11,7 @@
 Micro Motor Controller<br /> <h1>Overview</h1><p>The Aeon Labs Micro Motor Controller is a Motor Control Class C Specific Device which is connected with window rail to remote control curtain to any position that you want directly.</p> <br /> <h2>Inclusion Information</h2><p>Click the Zwave button once.</p> <br /> <h2>Exclusion Information</h2><p>Click the Zwave button once.</p>
     ]]></description>
     <category>Blinds</category>
+    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

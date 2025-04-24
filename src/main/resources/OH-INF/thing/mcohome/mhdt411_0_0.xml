@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="mcohome_mhdt411_00_000" listed="false">
     <label>MH-DT411 Touch Panel Dimmer</label>
@@ -11,6 +11,7 @@
 Touch Panel Dimmer<br /> <h1>Overview</h1><p>Dimmer Switch is a wall panel built-in with Z-Wave plus module. It supports basic command class, multi channel command class and multi channel association command class, also works as a repeater in a Z-Wave network. </p> <br /> <h2>Inclusion Information</h2><p>Set the controller into Add/Remove mode, and press 3 clicks on "+" or "-" button on the panel to add/remove. If succeed, green LED flicks 4 times.</p> <br /> <h2>Exclusion Information</h2><p>Set the controller into Add/Remove mode, and press 3 clicks on "+" or "-" button on the panel to add/remove. If succeed, green LED flicks 4 times.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

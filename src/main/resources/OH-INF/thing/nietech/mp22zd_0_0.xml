@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_mp22zd_00_000" listed="false">
     <label>MP22ZD Outdoor Dimmer Plug</label>
@@ -11,6 +11,7 @@
 Outdoor Dimmer Plug<br /> <h1>Overview</h1>The Minoston MP22ZD is a 400W Loading Z-Wave smart outdoor dimmer plug designed for seasonal, landscape lighting, or porch light.<p><br /></p><p><b>Features</b></p><ul><li> Z-Wave on/off + dimmer control</li><li> Grounded 3-wire power connection for safety</li><li> Remembers and restores on/off status after power failure</li><li> Built-in Z-Wave Plus signal repeater to extend network range</li><li> S2 security and 700 Z-Wave chip for reliable wireless communication</li><li> Remote ON/OFF control via the Z-Wave™ controller</li><li> Manual ON/OFF control with the front panel push button</li><li> Association group and auto report switch status</li><li> Firmware upgrades via over-the-air (needs gateway's support)</li><li> Scenes</li></ul><p><b>Specs</b></p><ul><li>Model: MP22ZD</li><li>Loading: 400 W max for resistive (incandescent). 150 W max for LED/CFL.</li><li>Temperature Range: 32-104 °F (0-40 °C)</li><li>Range: Up to 100 feet line-of-sight</li></ul> <br /> <h2>Inclusion Information</h2><p> The plug is equipped with auto-inclusion. Do not plug in until you've started the inclusion process on your Z-Wave controller.</p><ol><li> Follow the instructions for your Z-Wave controller to prepare the controller to add a device to the network.</li><li> Once the controller is ready to add your device, plug in the smart plug. The inclusion process may start automatically, indicated by the LED blinking within 30 seconds after first plugged in. If not, press the button on the smart plug 3 times guickly. The blue LED will begin blinking quickly. If it does not, consider triggering exclusion or factory reset. If you have issues with adding the device, please move the device as close as possible to the hub and try again.</li></ol><p><b>SmartStart / DSK</b><br /></p><p>The device is compatible with SmartStart. SmartStart-enabled products can be added into a Z-Wave network by scanning the Z-Wave QR Code found on the top of the outlet or the back of the box with a controller providing SmartStart inclusion. No further action is required and the SmartStart product will be added automatically within 10 minutes of being switched on and in the network vicinity.</p> <br /> <h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave controller to remove a device from the network.</li><li>Once the controller is ready to remove your device, press the button on the smart plug three times quickly.<br /></li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

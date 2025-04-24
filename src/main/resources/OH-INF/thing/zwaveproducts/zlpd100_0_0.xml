@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zwaveproducts_zlpd100_00_000" listed="false">
     <label>ZL-PD-100 Plug-In Dimmer</label>
@@ -11,6 +11,7 @@
 Plug-In Dimmer<br /> <h1>Overview</h1><p>Plug-in lamp control module with dimmer, supporting incandescent, LED, and CFL bulbs. </p> <br /> <h2>Inclusion Information</h2><ol><li>Place your network controller into inclusion mode.</li> <li>When the controller is ready, single click the button on the front of the PD-100.</li> <li>The controller should indicate that the new device was added successfully.</li> </ol><p>If the controller shows it was a fail, repeat the procedure. </p> <p>Note: If inclusion still failed after the 2nd attempt, you need to first reset the PD-100 before repeating the above step. The manual reset method is as follows:</p> <ol><li>Unplug the PD-100 from the AC outlet and also unplug the power plugs of the lighting from the module (if plugged in).</li> <li>Press and hold the button on the PD-100.</li> <li>Plug the PD-100 back into the AC outlet with the button pressed. After 3 seconds, release the button. If you see the button blink, that means that the PD-100 has been reset successfully and you may retry Step 3 above to add the module into your network. Otherwise, please repeat the manual reset procedures.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Note: If PD-100 was previously Added (Included) in your network, resetting it locally does not mean it has been removed from your network. If you wish to remove PD-100 from your network you will need to Delete (Exclude) the module from the network by your controller.</p> <p>Use the manual reset procedure only in the event that the network primary controller is lost or otherwise inoperable. </p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="horstmann_ssp302_00_000" listed="false">
     <label>SSP302 Switch Meter Plugin</label>
@@ -11,6 +11,7 @@
 Switch Meter Plugin<br /> <h1>Overview</h1><p>ON/OFF module with energy metering</p> <br /> <h2>Inclusion Information</h2><p>To include the SSP 302 onto a network, put the controller into inclusion mode. Now, press and hold the button on SSP 302 for 4 to 7 seconds then release. The network status LED will start flashing (twice per second) on successful start of inclusion process.</p> <p>Note: Refer to the controller's manual for controller relevant actions.</p> <p>On successful inclusion the LED will turn off.</p> <p>Note: Inclusion means add and exclusion means delete.<br /><br />The total process can take up to 20 seconds (Refer to the “Technical specifications – Radio” section for details). If the device fails to join the network it will go back to factory default state and the Network status LED will start flashing once per second. If there is an issue with RF Communication, then re-locate the device and repeat the inclusion process again.</p> <br /> <h2>Exclusion Information</h2><p>To exclude the SSP 302 from a network, put the controller into exclusion mode (refer to controller instructions) and follow the same sequence as per the inclusion process for include node. After successful exclusion the network status LED will start flashing once per second, and the device will reset to factory default.</p> <p>If exclusion fails, SSP 302 network status LED will turn off after about 5 seconds.</p> <p>Note: Exclusion only works when the device is in direct range of the controller (no repeater allowed).</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

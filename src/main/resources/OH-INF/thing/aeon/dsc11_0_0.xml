@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsc11_00_000" listed="false">
     <label>DSC11 Smart Strip</label>
@@ -11,6 +11,7 @@
 Smart Strip<br /> <h1>Overview</h1><p>Aeotec by Aeon Labs Smart Strip is a power board with 6 power points of which 4 can be wireless controlled. Customer can turn on/off their electrics when needed with manually operation or Z‐wave wireless control. Smart Strip has plenty of functions, for example the Over Current Protection and Surge Protection, these functions can efficiently protect people’s various electrics from damage.</p> <br /> <h2>Inclusion Information</h2><p>Tap the Action Button.</p> <p>The Main (blue) LED will be on steady when successfully included.</p> <br /> <h2>Exclusion Information</h2><p>Tap the Action Button.</p> <p>The Main (blue) LED will be flashing when successfully excluded.</p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

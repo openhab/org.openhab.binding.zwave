@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="fortrezz_wv01_00_000" listed="false">
     <label>WV-01 Wireless Z-Wave Water Valve</label>
@@ -11,6 +11,7 @@
 Wireless Z-Wave Water Valve<br /> <h1>Overview</h1><p>Fortrezz WV-01 Wireless Z-Wave Water Valve is a patented, wireless water detection and automatic water shut-off system that works as an automatic valve for your home's main water supply line and can easily be installed by a certified professional plumber.</p> <p>When used in a Z-Wave home automation network, the smart valve can be used along with Z-Wave water alarm sensors to reduce or eliminate water damage caused by leaky pipes or faulty appliances. It can also be used in conjunction with remotely installed flood sensors to shut off the main water supply in case of water leakage.</p> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode, then press the Program button once.</p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode, then press the Program button once.</p>
     ]]></description>
     <category>Valve</category>
+    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

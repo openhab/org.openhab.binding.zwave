@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_zw122_00_000" listed="false">
     <label>ZW122 Water Sensor 6</label>
@@ -11,6 +11,7 @@
 Water Sensor 6<br /> <h1>Overview</h1><p>The ZW122  contains 4 sensing points, which would be more accurately to detect the presence and absence of water or detect whether there is water leak in some places of your home. The Water Sensor 6 has an inbuilt buzzer that can play alarm sounds to let you know when the water is detected.</p> <br /> <h2>Inclusion Information</h2><ol><li>Let your Z-Wave primary controller/gateway enter into adding/inclusion mode. Take your Sensor near to your primary controller.</li> <li>Press the Action Button once on your Sensor, the green LED will blink.</li> <li>If your Water Sensor has been successfully added to your Z-Wave network, its green LED will be solid for 2 seconds and then the orange LED will fast blink for 10 minutes if the Sensor does not receive the Wake Up No More info Command from Controller. If the adding was unsuccessful and the red LED will be solid for 2 seconds and then become colourful gradient for a few seconds before it turns off, repeat the above steps.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Turn your primary controller into device removal mode. Take the Sensor unit near to your primary controller.</li> <li>Press the Action Button on your Sensor.</li> <li>If your Water Sensor is successfully removed from the Z-Wave network, the RGB LED will become a colourful gradient for a few seconds and then turn off. If the removing was unsuccessful, the blue LED will be solid for 2 seconds and then turn off, repeat the above steps</li> </ol> <br /> <h2>Wakeup Information</h2><p>Press the Action Button on the Sensor unit and then release the Action Button. This will trigger and send a wake up notification command to your controller/gateway.<br />If you want your Sensor to keep awake for a longer time, press and hold the Action Button on the back of the Sensor unit for 3 seconds, then your Sensor will wake up for 10 minutes and the orange LED will fast blink while it is awake.</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

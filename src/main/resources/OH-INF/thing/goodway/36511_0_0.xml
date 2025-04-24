@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="goodway_36511_00_000" listed="false">
     <label>36511 RGBW Dimmer Module</label>
@@ -11,6 +11,7 @@
 RGBW Dimmer Module<br /> <h1>Overview</h1><p>This RGBW Dimmer Module enables remote control of your LED light strips, dimmable bulbs, and halogen bulbs. When included in your Z-Wave® mesh network, you can easily adjust the brightness and intensity of the lights. The dimmer is small and lightweight, making it easier to fit into junction boxes and tight spaces.</p> <br /> <h2>Inclusion Information</h2><p>Press the include button three times within 2 seconds or use the auto inclusion feature after powering up.</p> <br /> <h2>Exclusion Information</h2><p>Press the exclude button three times within 2 seconds.</p>
     ]]></description>
     <category>LightBulb</category>
+    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_n4001_00_000" listed="false">
     <label>N4001 Mini Smart Plug</label>
@@ -11,6 +11,7 @@
 Mini Smart Plug<br /> <h1>Overview</h1><p>This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase the reliability of the network. This Device supports Lifeline (association group 1) supporting 1 node for lifeline communication.</p><p>Group 1 must be assigned the Node ID of the primary controller where unsolicited notifications will be sent. The Z-Wave controller should set this association automatically after inclusion.</p><p>Lifeline association only supports the "Device Reset Locally" function.</p> <br /> <h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press the Manual/Program button on the smart plug 3 times quickly. The blue LED will blink quickly. Auto-add mode: LED will blink within 30 seconds after first plugged in. Now, you have complete control to turn your fixture ON/OFF according to groups, schedules and interactive automation programmed by your controller. If your Z-Wave certified controller features remote access, you can control your fixture from your mobile devices.<br /></p><p>If you have issues with pairing/including, please move the device as close as possible to the hub and try again--you can move to your final location when completed.</p><p>Note: If the manual button doesn't light up after pressed 3 times, please reset the device: click the button 2 times quickly then hold for at least 10 seconds. This operation could be done when manual control is functional--single press can turn on/off the lamp.</p> <br /> <h2>Exclusion Information</h2><p>Once the controller is ready to remove your device, press the manual/program button the smart plug 3 times quickly.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="remotec_adt8020_00_000" listed="false">
     <label>ZRM-80 Wall plug switch</label>
@@ -11,6 +11,7 @@
 Wall plug switch<br /> <h1>Overview</h1><p>ZRW-80US Z-Wave Wall Switch</p> <br /> <h2>Inclusion Information</h2><p>Triple click the PROG button within 1 second.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

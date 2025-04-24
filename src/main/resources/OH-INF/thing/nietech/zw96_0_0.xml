@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_zw96_00_000" listed="false">
     <label>ZW96 Smart Plug Outdoor</label>
@@ -11,6 +11,7 @@
 Smart Plug Outdoor<br /> <h1>Overview</h1><p>Outdoor Z-Wave Plus On/Off Light and Appliance Plug, 1 On/Off Outlet + 1 Alway On Outlet</p> <ul><li>AC plug</li> <li>Always-On outlet</li> <li>Z-Wave controlled outlet</li> <li>ON/OFF/PROG Push button</li> <li>Status LED   Supported max 15 Amp, 120V AC.</li> <li>IP65 Waterproof Design (don't immerse), ideal outdoor use for garden, washing machine, patio, Christmas tree, landscape lighting, fountains, pumps and other indoor and outdoor plug-in appliances, etc.</li> <li>Operating Temp of -4F to 120F</li> </ul> <br /> <h2>Inclusion Information</h2><p>Include ZW96 to/from a Z-Wave Gateway with supporting Security.The ZW96 can support the Primary Controller that implemented the security S2.</p> <p>Notice: Including a node ID allocated by Z-WaveTM Controller means “Add” or “Inclusion”. Excluding a node ID allocated by</p> <p>Z-WaveTM Controller means “Remove” or “Exclusion”.</p> <br /> <h2>Exclusion Information</h2><p>Include ZW96 to/from a Z-Wave Gateway with supporting Security.The ZW96 can support the Primary Controller that implemented the security S2.</p> <p>Notice: Including a node ID allocated by Z-WaveTM Controller means “Add” or “Inclusion”. Excluding a node ID allocated by</p> <p>Z-WaveTM Controller means “Remove” or “Exclusion”.</p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

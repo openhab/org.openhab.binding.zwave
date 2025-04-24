@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_mp21z_00_000" listed="false">
     <label>MP21Z Z-Wave Mini Plug</label>
@@ -11,6 +11,7 @@
 Z-Wave Mini Plug<br /> <h1>Overview</h1><p>Outdoor AC Plug</p><p>Key Features:</p><ul><li>Remote ON/OFF control via the Z-Wave controller<br /></li><li>Manual ON/OFF control with the front panel push button<br /></li><li>Support Association Group and Auto Report switch status<br /></li><li>Over temperature protection<br /></li><li>Support firmware upgrades via Over-the-air (need Gateways support)<br /></li></ul><p>Outdoor AC Plug</p> <p>Key Features:</p> <ul><li>Remote ON/OFF control via the Z-Wave controller</li> <li>Manual ON/OFF control with the front panel push button</li> <li>Support Association Group and Auto Report switch status</li> <li>Over temperature protection</li> <li>Support firmware upgrades via Over-the-air (need Gateways support)</li> </ul> <br /> <h2>Inclusion Information</h2><p>Put the Z-wave interface controller into “Add” mode, triple press the Program button (A). It will be included to network.<br /></p><p>Put the Z-wave interface controller into “Add” mode, triple press the Program button (A). It will be included to network.</p> <br /> <h2>Exclusion Information</h2><p>Put the Z-Wave interface controller into "Remove" mode, triple press the Program button (A). It will be excluded to network<br /></p><p>Put the Z-wave interface controller into “Add” mode, triple press the Program button (A). It will be included to network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

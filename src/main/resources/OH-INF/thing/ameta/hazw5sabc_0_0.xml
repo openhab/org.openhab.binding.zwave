@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ameta_hazw5sabc_00_000" listed="false">
     <label>HA-ZW-5SABC 4 In 1 Motion Sensor</label>
@@ -11,6 +11,7 @@
 4 In 1 Motion Sensor<br /> <h1>Overview</h1><p>The 4-in-1 motion sensor is designed for using with scenes in home automation systems, integrate motion, light, temperature and humidity sensors, powered by CR123A battery or MicroUSB cable. The Motion Sensor lets you know when movement is detected in a certain area and can trigger different actions in response to that movement (or lack of movement). It also lets you know the ambient temperature and humidity to trigger different actions to make you more comfort. </p> <br /> <h2>Inclusion Information</h2><ul><li>Put your primary controller in inclusion mode</li> <li>Short press the button at the back of the sensor once.</li> <li>The 4-in-1 Motion Sensor LED will blink, If the inclusion is successful, then LED will stay on for 2 seconds. Otherwise, the LED will blink until timeout, in which case you need to repeat the process from step b.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Put your primary controller in exclusion mode</li> <li>Short press the button at the back of the sensor once.</li> <li>The 4-in-1 Motion Sensor LED will blink, If the exclusion is successful, then LED will stay on for 2 seconds. Otherwise, the LED will blink until timeout, in which case you need to repeat the process from step b.</li> </ul> <br /> <h2>Wakeup Information</h2><p>To wake up the sensor so that your hub can send it configuration parameters quickly press on the button on the back 3 times.</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

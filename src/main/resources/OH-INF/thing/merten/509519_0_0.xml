@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="merten_509519_00_000" listed="false">
     <label>509519 Argus 220 Connect Movement Detector</label>
@@ -11,6 +11,7 @@
 Argus 220 Connect Movement Detector<br /> <h1>Overview</h1><p>Movement/presence detectors switch on as soon as they detect a moving heat source. This can be a person, but also animals, trees, cars or differences in temperature in windows. In order to avoid false alarms, the chosen installation site should be such that undesired heat sources cannot be detected (see section „Selecting the installation site“). </p> <br /> <h2>Inclusion Information</h2><p>Turn the controller A on the ARGUS to position B: The learning mode is activated. </p> <br /> <h2>Exclusion Information</h2><p>Turn the controller A on the ARGUS to position B: The learning mode is activated. </p> <br /> <h2>Wakeup Information</h2><p>Turn the controller A on the ARGUS to position B:</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

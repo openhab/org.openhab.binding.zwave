@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zwa023_00_000" listed="false">
     <label>ZWA023 Smart Switch 7</label>
@@ -11,6 +11,7 @@
 Smart Switch 7<br /> <h1>Overview</h1><p>Switched power outlet with energy metering.<br /></p><p><br /></p> <br /> <h2>Inclusion Information</h2><p>Using your existing Z-Wave Controller supports Smart Start:</p><ol><li>Scan the QR code on Smart Switch using your Z-Wave gateway/controllers app.</li><li>Plugin your Smart Switch to any outlet that you wish to install it on.</li><li>Your Smart Switch will automatically pair to your Z-Wave network.</li></ol><p>Using your existing Z-Wave Controller without Smart Start:</p><ol><li>Set your Z-Wave Controller into its 'Add Device' mode. Refer to the Controller's manual if you are unsure of how to perform this step.</li><li>Power your Smart Switch to any outlet; its LED will slowly fade in and out slowly with a blue color to indicate it is ready to pair.</li><li>Tap the action button once. The LED will rapidly flash when it enters pair mode.</li><li>If your Z-Wave Controller supports S2 encryption, enter the first 5 digits of DSK into your Controller's interface if it is requested. The DSK is printed on Smart Switch.<ol><li>If pairing succeeds, it will become a bright blue light for 2 seconds.</li><li>If pairing fails, it will light a solid bright red light for 2 seconds and then return to a breathing blue light; repeat steps 1 to 4 if this happens.</li></ol></li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Set your Z-Wave Controller into 'Remove Device' / 'Unpair Device' mode. Refer to the Controller's manual if you are unsure of how to perform this step.</li><li>Make sure the product is powered. If not, plug it into a wall socket and power it on.</li><li>Click Action Button 2 times quickly; it will bright violet light up to 2s.<ol><li>If Removing fails, it will light a bright red color for 2 seconds and then turn back to Load Indicator Mode; repeat steps 1 to 3. Contact us for further support if needed.</li><li>If Removing succeeds, it will become breathing blue light. Smart Switch is removed from the Z-Wave network successfully and is ready to be paired again.</li></ol></li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

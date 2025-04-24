@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="cooper_rf9542_00_000" listed="false">
     <label>RF9542 Dimmer Accessory Switch</label>
@@ -11,6 +11,7 @@
 Dimmer Accessory Switch<br /> <h1>Overview</h1><p>Aspire RF smart dimmer system accessory, compatible with Aspire RF master dimmer (RF9540-N, RF9534, RF9536, RF9536-N, RF9537-N) for wireless 3-way control, eliminating the need for traditional 3-way wiring or dedicated traveller wires.</p> <br /> <h2>Inclusion Information</h2><p>Put the controller into inclusion mode, press the Install button once</p> <br /> <h2>Exclusion Information</h2><p>Put the controller into exclusion mode, press the Install button once</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -167,6 +168,10 @@ time in seconds to ramp to desired level<br /> <h1>Overview</h1><p>The amount of
     <item-type>Number</item-type>
     <label>Dimmer Ramp Time</label>
     <description>time in seconds to ramp to desired level</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Brightness</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

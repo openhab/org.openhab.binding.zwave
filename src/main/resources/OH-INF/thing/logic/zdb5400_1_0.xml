@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="logic_zdb5400_01_000" listed="false">
     <label>ZDB5400 MATRIX 55 Switch with Dimmer and Backlight</label>
@@ -11,6 +11,7 @@
 MATRIX 55 Switch with Dimmer and Backlight<br /> <h1>Overview</h1><p>MATRIX type ZDB5400 is a multifunction switch that can be mounted in a modular wall-box, with built-in light dimmer and four configurable pushbuttons with RGB indicators.</p><p>The pushbuttons can control other Z-Wave devices through the wireless Z-Wave network. The pushbuttons can send ’ON’, ’OFF’ and ’DIM’ commands to the associated Z-Wave devices. These devices could be other light dimmers, blinds, sun-screens, etc.</p><p>The built-in light dimmer is per default attached to pushbutton 1. This attachment can be configured, thus it can be configured to not be controlled by any the four pushbuttons, so it can be independent of the local operation and thereby only be controllable from the Z-Wave network.</p><p>Furthermore, the pushbuttons can be configured to work together in pairs; thereby it can be possible to have one pushbutton to dim the light up, and another pushbutton to dim the light down.</p><p>MATRIX can also issue scene activation commands that can be used to activate scenes in the Z-Wave Controller.</p><p>The four RGB indicators, one for each pushbutton, can be used for different purposes, for example as orientation light, status light, different kind of indications, etc. The colour of the light and the control of it is fully controllable from the Z-Wave network.</p><p>MATRIX 55 also works as a repeater for the Z-Wave network and therefore expands the Z-Wave network coverage.</p> <br /> <h2>Inclusion Information</h2><p>MATRIX’ add function is initiated by pressing once on the switch (I) (under the pushbutton cover). The LED inside the module will start blinking. <br /></p><p>If MATRIX already belongs to a Z-Wave network, the remove process must be performed before adding it into a new network. Otherwise, the adding of the device will fail.</p><p>MATRIX 55 can be factory reset by holding the switch through the hole (I) for at least 10 seconds. <br /></p> <br /> <h2>Exclusion Information</h2><p>MATRIX’ remove function is initiated by pressing once on the switch (I) (under the pushbutton cover). The LED inside the module will start blinking.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

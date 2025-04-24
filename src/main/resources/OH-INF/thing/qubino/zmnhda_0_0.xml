@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="qubino_zmnhda_00_000" listed="false">
     <label>ZMNHDA Flush dimmer</label>
@@ -11,6 +11,7 @@
 Flush dimmer<br /> <h1>Overview</h1><p>This Z-Wave module is used for dimming the bulb or to manage the speed of a fan. The module can be controlled either through a Z-Wave network or through the wall switch.  <br /> <br />The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. <br /> <br />Module measures power consumption of bulb or fan and supports connection of digital temperature sensor.</p> <br /> <h2>Inclusion Information</h2><ul><li>Connect module to power supply,</li> <li>bring module within maximum 1 meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller,</li> <li>auto-inclusion (30 minutes after connected to power supply) or</li> <li>press service button S for more than 2 seconds or</li> <li>press push button I1 three times within 3s (3 times change switch state within 3 seconds).</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Connect module to power supply,</li> <li>bring module within maximum 1 meter (3 feet) of the main controller,</li> <li>enable add/remove mode on main controller,</li> <li>press service button S for more than 6 seconds or </li> <li>press push button I1 five times within 3s (5 times change switch state within 3 seconds)</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted.</p> <p>If service button S is pressed more than 2 and less than 6 second module is excluded, but configuration parameters are not set to default values. </p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

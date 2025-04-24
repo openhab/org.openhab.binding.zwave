@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="kwikset_2206_00_000" listed="false">
     <label>Kwikset Obsidian 954 Obsidian Touchscreen Electronic Deadbolt</label>
@@ -11,6 +11,7 @@
 Obsidian Touchscreen Electronic Deadbolt<br /> <h1>Overview</h1><p>Kwikset®, the leader in residential security, introduces the Obsidian Touchscreen Electronic Deadbolt with Z-Wave Plus. Capacitive touchscreen with keyless entry SecureScreen: Additional security by preventing fingerprint code detection One touch locking Dramatically reduced, all-metal interior 30 user codes plus master code BHMA grade 2 certified 20 minute fire rating - UL certified Full 128-bit encryption security 9 Volt backup power</p> <br /> <h2>Inclusion Information</h2><p>Initiate the process to add the lock to your system at your smart home controller. When prompted by your smart home system to add the lock, press button “A” on the lock interior one time. The red LED will illuminate when the lock enters Add Mode. Please allow time for the controller to add the lock to your system.</p> <br /> <h2>Exclusion Information</h2><p>Follow your smart home system’s instructions to remove the lock from the network. When prompted by the system, press button A” on the lock interior once. The red LED will illuminate when the lock enters Remove mode.</p> <br /> <h2>Wakeup Information</h2><p>Even though the lock is sleeping, all buttons are active and can be used to initiate any lock activity. For the RF side, it will wake up every 1 second to check if there are any requests from your smart home controller.</p>
     ]]></description>
     <category>Lock</category>
+    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

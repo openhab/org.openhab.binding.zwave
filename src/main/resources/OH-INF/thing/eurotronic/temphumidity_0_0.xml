@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="eurotronic_temphumidity_00_000" listed="false">
     <label>Eurotronic Temperature &amp; Humidity Sensor Z-Wave Plus Temperature &amp; Humidity Sensor Z-Wave Plus</label>
@@ -11,6 +11,7 @@
 Temperature &amp; Humidity Sensor Z-Wave Plus<br /> <h1>Overview</h1><p>The Temperature &amp; Humidity Sensor Z-Wave Plus is a temperature and humidity sensor for living and working rooms that is compatible with the Z-Wave wireless standard.<br /></p> <br /> <h2>Inclusion Information</h2><p>Press button three times within 1 second</p> <br /> <h2>Exclusion Information</h2><p>Press button three times within 1 second<br /></p> <br /> <h2>Wakeup Information</h2><p>Press button once</p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

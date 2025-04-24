@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="shelly_wavepmmini_00_000" listed="false">
     <label>Wave PM Mini Z-Wave smart power meter, 1 channel 16 A</label>
@@ -11,6 +11,7 @@
 Z-Wave smart power meter, 1 channel 16 A<br /> <h1>Overview</h1><p>The Device is a small form factor smart power meter, which allows remote monitoring of an electric appliance's power consumption with a load of up to 16 A.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Connect the Device to a power supply.</li><li>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</li><li>Enable add/remove mode on the gateway.</li><li>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</li><li>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking in Mode 3. Releasing the S button will start the Learn mode.</li><li>The blue LED will be blinking in Mode 2 during the adding process.</li><li>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</li></ol><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p> <br /> <h2>Exclusion Information</h2><ol><li>Connect the Device to a power supply.</li><li>Check if the green LED is blinking in Mode 1. If so, the Device is added to a Z-Wave® network.</li><li>Enable add/remove mode on the gateway.</li><li>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</li><li>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking in Mode 3. Releasing the S button will start the LEARN MODE.</li><li>The blue LED will be blinking in Mode 2 during the removing process.</li><li>The blue LED will be blinking in Mode 1 if the Device is successfully removed from a Z-Wave® network.</li></ol><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
+    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

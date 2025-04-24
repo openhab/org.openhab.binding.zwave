@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeotec_zw164_00_000" listed="false">
     <label>ZW164 Indoor Siren 6 and Doorbell 6</label>
@@ -11,6 +11,7 @@
 Indoor Siren 6 and Doorbell 6<br /> <h1>Overview</h1><p>Siren 6 is your home’s smart indoor siren.</p> <p>Built with Z-Wave Plus S2 to be a smart home security siren, it features a 110dB speaker coupled with 1,000 lumens visual light alert strobe. Can be used as siren for security alarm, smoke sensor, and CO sensors via Z-Wave</p> <br /> <h2>Inclusion Information</h2><p>Click Chime Action Button once, it will quickly flash white light for 30 seconds until Chime is added into the network.</p> <p>It will become constantly bright white light after being assigned a NodeID.</p> <br /> <h2>Exclusion Information</h2><p>Click Chime Action Button 6 times quickly; it will bright white light, up to 2s.</p> <p>If Removing succeeds, it will quickly flash white light 3 times and then become breathing white light. Now, Chime is removed from Z-Wave network successfully.</p> <br /> <h2>Wakeup Information</h2><p>Not Provided</p>
     ]]></description>
     <category>Siren</category>
+    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

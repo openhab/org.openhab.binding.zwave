@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zooz_zac36_00_000" listed="false">
     <label>ZAC36 Titan Water Valve Actuator</label>
@@ -11,6 +11,7 @@
 Titan Water Valve Actuator<br /> <h1>Overview</h1><p><b>Features</b></p><ul><li>Automatic shut-off actuator for your main water valve.</li><li>Connect it to your Z-Wave hub for full smart home control.</li><li> Use it offline with the included leak sensor probe.</li><li> Built-in temperature detection for instant freeze detection.</li><li>Retrofit installation with no tools required.</li><li> Use with ½” – 1 ¼” ball valves only (close prior to installation).</li><li> Indoor &amp; outdoor installation with IP66 rating (avoid direct sunlight).</li><li> NEW 700 series Z-Wave chip for better range and faster control.</li><li> S2 Security and SmartStart for easier inclusion.</li></ul><p><b>Specifications</b></p><ul><li> Model Number: ZAC36</li><li> Z-Wave Signal Frequency: 908.42 MHz.</li><li> Power: 12 V DC (1 A) power supply (included).</li><li> Temperature Sensor Range: -40° to 257° F.</li><li> Sound Indicator: up to 85 dB</li><li> Z-Wave Range: Up to 400 feet line of sight (up to 130 feet indoors).</li><li> Operating Temperature: 14-122° F (-10-50° C).</li><li> Installation and Use: Indoor &amp; outdoor (IP66)</li><li> Standby Power Consumption: 0.12 W</li><li> Full Operation Power Consumption: 8.4 W</li></ul> <br /> <h2>Inclusion Information</h2><b>1. ADD DEVICE to your hub.</b><ul><li>Initiate inclusion (pairing) in the app (or web interface).</li></ul><p><br /></p><p><b>2. Finalize inclusion at the actuator.</b><b><br /></b></p><ul><li><b>Tap THE Z-WAVE BUTTON 3 TIMES</b> if using traditional Z-Wave inclusion.</li></ul> <br /> <h2>Exclusion Information</h2><ol><li>Bring your Titan Valve Actuator close to the Z-Wave gateway (hub), if possible.</li><li>Put the Z-Wave hub into <b>exclusion mode</b>.</li><li>Tap the Z-Wave button <b>3 times quickly</b> (it will flash and beep once each time you tap to confirm communication).</li><li>Your hub will confirm exclusion, the LED indicator on the actuator will turn green for 3 seconds, and the device will sound 2 short beeps for a successful exclusion. The actuator will disappear from your controller’s device list. The LED indicator on the Titan will go back to the yellow blinking mode.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Valve</category>
+    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

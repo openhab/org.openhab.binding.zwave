@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="cooper_rf9518_00_000" listed="false">
     <label>RF9518 Single-Pole Wireless Light Switch</label>
@@ -11,6 +11,7 @@
 Single-Pole Wireless Light Switch<br /> <h1>Overview</h1><p>The ASPIRE RF 8A switch (RF9518) replaces regular switches or dimmers to provide local and remote ON/OFF control for incandescent loads. Each switch can be manually controlled and remotely controlled by commands sent from an ASPIRE RF controller or other Z-Wave compatible controllers or programs. An ASPIRE RF switch utilizes existing 120V/AC, 60Hz standard house wiring and fits in a standard wallbox. No new wiring is needed.</p> <br /> <h2>Inclusion Information</h2><p>To include this device in a Z-Wave network, select the command on your Z-Wave controller for inclusion (Install, Add Device, Add Node, Include Device, etc.). Then press the RF switch ON/OFF switch one time to include it in the network. The LED will stop blinking.</p> <br /> <h2>Exclusion Information</h2><p>To exclude this device from a Z-Wave network, select the command on your Z-Wave controller for exclusion (Uninstall, Remove Device, Remove Node, Exclude Device, etc.). Then press the RF switch ON/OFF switch one time to exclude it from the network. The LED will start blinking.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

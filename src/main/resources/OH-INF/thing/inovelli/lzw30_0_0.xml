@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="inovelli_lzw30_00_000" listed="false">
     <label>LZW30 Black Series On/Off switch</label>
@@ -11,6 +11,7 @@
 Black Series On/Off switch<br /> <h1>Overview</h1><p>The Inovelli Black Series On/Off switch is a Z-Wave device that controls attached LED, CFL, &amp; Incandescent lighting which can be highly customized to your liking at the switch itself with our unique config button and advanced firmware.</p> <p>Configuration/Favorites Button: This switch allows for ultimate customization via the Configuration Button (rather than via a Z-Wave HUB) such as the power on state, LED Indicator Color, LED Indicator Intensity, and LED Indicator Intensity (When Off). </p> <p>OTA (Over-the-Air) Enabled: As with all our devices, the switch allows you to receive our latest firmware updates (NOTE: Please make sure your HUB supports this).</p> <br /> <h2>Inclusion Information</h2><p>Now that the switch is physically installed, let’s start the inclusion (pairing) process.</p> <ul><li>Restore power to your switch and if wired properly, the LED bar will light up (should flash a series of colors, then turn blue)</li> <li>Start the inclusion process on your HUB/Gateway</li> <li>Press the config button (A) 3x and the LED bar should pulse blue (if it doesn’t, try pressing the buttons faster or slower) indicating the switch is in inclusion mode. If successful, the switch LED Bar (B) will turn Green. If unsuccessful, the LED Bar will turn RED.</li> <li><strong>Z-Wave Range Check:</strong> Easily check whether or not your switch is within range by holding the Config Button (A) for 5-10 seconds. The LED bar will indicate: RED = Not in Range, or = Within Range GREEN (Good Signal).</li> </ul><p><strong>Final Thoughts / Tips: </strong>If you’re having issues pairing your switch, there’s a couple things you can try. The first one is to hold down the config button for 5 seconds until the LED bar indicates RED or GREEN, where RED = Not in Range, or = Within Range GREEN (Good Signal). If the signal is GREEN, then let’s try an exclusion to reset your switch.</p> <br /> <h2>Exclusion Information</h2><ul><li>Start the exclusion process on your HUB/Gateway</li> <li>Press, “Remove” and tap the Config button 3x and the LED bar should pulse blue</li> <li>The LED bar should flash GREEN if successful</li> </ul> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -210,6 +211,10 @@ Enable Instant On<br /> <h1>Overview</h1><p>Enable instant on (ie: disable the 7
     <item-type>Number</item-type>
     <label>Auto Off Timer</label>
     <description>Auto Off Timer (in seconds)</description>
+    <tags>
+      <tag>Control</tag>
+      <tag>Power</tag>
+    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

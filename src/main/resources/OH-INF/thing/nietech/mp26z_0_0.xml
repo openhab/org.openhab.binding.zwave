@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="nietech_mp26z_00_000" listed="false">
     <label>MP24Z / MP26Z Minoston MP24Z / MP26Z</label>
@@ -11,6 +11,7 @@
 Minoston MP24Z / MP26Z<br /> <h1>Overview</h1><p>This Minoston Z-wave smart plug has two outlets that can be controlled independently, allowing you to turn each connected device on or off separately manually or in your hub.</p> <br /> <h2>Inclusion Information</h2><p>Press either button 3 times quickly while scanning for inclusion<br /></p> <br /> <h2>Exclusion Information</h2><p>Press either button 3 times quickly while scanning for inclusion<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

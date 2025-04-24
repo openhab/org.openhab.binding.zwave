@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="aeon_dsb05_00_000" listed="false">
     <label>DSB05 4 in One MultiSensor</label>
@@ -11,6 +11,7 @@
 4 in One MultiSensor<br /> <h1>Overview</h1><p>The Aeon Labs MultiSensor is a routing binary sensor device based on Zwave routing slave library V5.03.  </p> <br /> <h2>Inclusion Information</h2><p>Press the tamper button 3 times rapidly.</p> <br /> <h2>Exclusion Information</h2><p>Press the tamper button 3 times rapidly.</p> <p>NOTE:</p> <p>As soon as the MultiSensor is removed from a z-wave network it will restore itself to factory settings. </p> <br /> <h2>Wakeup Information</h2><p>· Waking up the Multisensor for 10 minutes:</p> <p>Try ONE of the following:</p> <ol><li>MultiSensor will wake up 10 minutes after it is included into z-wave network.</li> <li>The button is pressed 3 times, then the MultiSensor will wake 10 minutes.</li> <li>If configured, the MultiSensor can wake 10 minutes when on power</li> </ol>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

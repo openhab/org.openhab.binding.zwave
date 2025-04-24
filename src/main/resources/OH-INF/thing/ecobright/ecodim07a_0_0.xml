@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="ecobright_ecodim07a_00_000" listed="false">
     <label>ECO-DIM.07 LED Smart Dimmer</label>
@@ -11,6 +11,7 @@
 LED Smart Dimmer<br /> <h1>Overview</h1><p>Two wire dimmer that uses z-wave as the protocol. Has options for leading and trailing and supports up to 250W RC LED and up to 150W RL LED. <br />For halogen bulbs and regular light bulbs it supports 10 - 300W. <br />Minimum on level can be modified physically by turning a screw.<br /></p> <br /> <h2>Inclusion Information</h2><p>Remove the device from previous z-wave networks if it was already added. Else the inclusion will fail. <br />Press the reset button twice. The indication light will blink blue and stays on for 10 seconds when the inclusion process succeeded. Time out is 15 minutes.<br /></p> <br /> <h2>Exclusion Information</h2><p>Method1:<br />Use the z-wave hub interface to remove the device or reconfigure the device according the documentation.</p><p>Method 2:<br />Press the reset button 3 times<br />The indication light blinks purple and stays on for 10 seconds without blinking when succeeded. Time out is 3 minutes.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

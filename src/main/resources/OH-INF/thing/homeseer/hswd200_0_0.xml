@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="homeseer_hswd200_00_000" listed="false">
     <label>HS-WD200+ Scene Capable Wall Dimmer Switch</label>
@@ -11,6 +11,7 @@
 Scene Capable Wall Dimmer Switch<br /> <h1>Overview</h1><p>HS-WD200+ is a Z-Wave wall dimmer that’s designed for wireless on-oﬀ-dim control of connected dimmable lighting loads.</p> <br /> <h2>Inclusion Information</h2><p>Put your Z-Wave controller into inclusion mode, tap the paddle of your new HomeSeer dimmer to begin the inclusion process. This will take a few moments to complete.</p> <br /> <h2>Exclusion Information</h2><p>Put your Z-Wave controller into exclusion mode, tap the paddle of your new HomeSeer dimmer to begin the inclusion process. This will take a few moments to complete.</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -429,6 +430,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status Mode</label>
     <description>Set dimmer display mode</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Mode</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Load Status</option>
@@ -441,6 +446,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Load Status LED Color</label>
     <description>Set the LED color when displaying load status</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">White</option>
@@ -458,6 +467,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 1 Color</label>
     <description>Status LED 1 Color (bottom)</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -476,6 +489,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 2 Color</label>
     <description>Status LED 2 Color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -494,6 +511,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 3 Color</label>
     <description>Status LED 3 Color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -512,6 +533,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 4 Color</label>
     <description>Status LED 4 Color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -530,6 +555,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 5 Color</label>
     <description>Status LED 5 Color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -548,6 +577,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 6 Color</label>
     <description>Status LED 6 Color</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -566,6 +599,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Status LED 7 Color</label>
     <description>Status LED 7 Color (top)</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Color</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -584,6 +621,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>Blink Frequency</label>
     <description>Set blink frequency when displaying custom status</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Frequency</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">No Blink</option>
@@ -600,6 +641,10 @@ LED 1 Blink Status (bottom)<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>LED 1 Blink Status</label>
     <description>LED 1 Blink Status (bottom)</description>
+    <tags>
+      <tag>Status</tag>
+      <tag>Light</tag>
+    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Solid</option>

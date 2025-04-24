@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="abus_shbe10000_00_000" listed="false">
     <label>SHBE10000 Z-Wave Button</label>
@@ -11,6 +11,7 @@
 Z-Wave Button<br /> <h1>Overview</h1><p>Lights, shutters, heating and more: now all you need to switch on your smart home components is a wireless, battery-operated button. </p> <br /> <h2>Inclusion Information</h2><p>Press the Link button 3 times quickly (within 1.5 seconds).</p> <br /> <h2>Exclusion Information</h2><p>Press the Link button 3 times quickly (within 1.5 seconds). </p> <br /> <h2>Wakeup Information</h2><p>Press the Link button 3x to wake up the device.</p>
     ]]></description>
     <category>RemoteControl</category>
+    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

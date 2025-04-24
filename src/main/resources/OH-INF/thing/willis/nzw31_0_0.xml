@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="willis_nzw31_00_000" listed="false">
     <label>NZW31 In-wall Dimming Switch</label>
@@ -11,6 +11,7 @@
 In-wall Dimming Switch<br /> <h1>Overview</h1><p>Z-Wave Plus dimming switch with instant status reporting.</p> <br /> <h2>Inclusion Information</h2><p> Press the top (UP) button 6x within 2 seconds</p> <br /> <h2>Exclusion Information</h2><p> triple press the Up/Down push button to exclude it from the network</p>
     ]]></description>
     <category>WallSwitch</category>
+    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

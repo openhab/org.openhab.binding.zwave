@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="everspring_sp817_00_000" listed="false">
     <label>SP817 SP817 Motion Sensor</label>
@@ -11,6 +11,7 @@
 SP817 Motion Sensor<br /> <h1>Overview</h1><p>The detector can be used as a security device or home automation device. When the detector is cooperated with security appliances, the detector is acting as a security device by detecting changes in infra-red radiation levels.</p> <p>If a person moves within or across the devices field of vision, a trigger radio signal will be transmitted to cause full alarm condition in order to frighten intruders away.</p> <p>Alternatively, when the detector is worked with Z-Wave controller, the detector can be set to perform the role of home automation device by detecting both changes in infra-red radiation levels and percentage of lux levels. Once night falls, the percentage of ambient illumination is lower than preset value. If a person moves within or across the devices field of vision, a trigger radio signal will be transmitted so as to turn connected lightings for better illumination.</p> <p>This product supports the S2 security protocol that uses encrypted Z-Wave Plus messages to communicate to other security-enabled Z-Wave Plus products. A security-enabled Z-Wave Plus Controller must be used in order to fully utilize the security features of this product.</p> <br /> <h2>Inclusion Information</h2><p>Auto Inclusion</p> <p>Network</p> <ul><li>Do not position the detector facing a window or direct sunlight.</li> <li>The detector supports Auto Inclusion feature where it will automatically enter Inclusion mode when first powered up after a factory reset.</li> <li>Where possible, mount the detector so that the path of an intruder would cut across the fan pattern rather than directly towards the detector.</li> </ul><ol><li>Use a screwdriver to detach the rear cover.</li> <li>Put a Z-Wave Controller into inclusion mode.</li> <li>Insert  battery to the battery compartment with the correct polarity. The LED on the device should turns ON.. <ol><li>The Inclusion process should be completed when the LED stops blinking.</li> <li>Do not refit the rear cover yet.</li> <li>Note: If Auto Inclusion fails, refer to the Troubleshooting section regarding Manual Inclusion.</li> </ol></li> </ol><p>Manual Inclusion</p> <ol><li>Put the Z-Wave Controller into inclusion mode.</li> <li>Press the tamper switch 3 times within 1.5 seconds to put the unit into inclusion mode.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Manual Exclusion</p> <ol><li>Put the Z-Wave Controller into inclusion mode.</li> <li>Press the tamper switch 3 times within 1.5 seconds to put the unit into inclusion mode.</li> </ol> <br /> <h2>Wakeup Information</h2><p>For waking up please triple click the tamper switch</p>
     ]]></description>
     <category>MotionDetector</category>
+    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

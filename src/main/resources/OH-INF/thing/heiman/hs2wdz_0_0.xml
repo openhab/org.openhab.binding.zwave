@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="heiman_hs2wdz_00_000" listed="false">
     <label>HS2WD-Z Smart Siren</label>
@@ -11,6 +11,7 @@
 Smart Siren<br /> <h1>Overview</h1><p>Product support sound and light alarm.</p> <br /> <h2>Inclusion Information</h2><ul><li>Press the pin-hole 3 times within 1.5s, Green LED is Blinking 3 times within 1.5 second.</li> <li>If add Process is successful, Green LED will turn off.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Press the pin-hole 3 times within 1.5 second.</li> <li>If remove Process is successful, Green LED is Blinking 6 times, then turn off.</li> </ul>
     ]]></description>
     <category>Siren</category>
+    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

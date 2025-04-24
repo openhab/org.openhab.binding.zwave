@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="zwaveme_zmetio3s_00_000" listed="false">
     <label>ZME_TIO_3S TION 3S Ventilator</label>
@@ -11,6 +11,7 @@
 TION 3S Ventilator<br /> <h1>Overview</h1><p>Compact ventilation system, developed by tion.ru</p> <br /> <h2>Inclusion Information</h2><p>Press the power button  5 sec until it blinks blue </p> <br /> <h2>Exclusion Information</h2><p>Press the power button 5 sec until it blinks blue <br /></p> <br /> <h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>HVAC</category>
+    <semantic-equipment-tag>SmartVent</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

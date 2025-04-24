@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="hank_hkzwso08_00_000" listed="false">
     <label>HKZW-SO08 Smart Plug</label>
@@ -11,6 +11,7 @@
 Smart Plug<br /> <h1>Overview</h1><p>Smart Plug is a Z-Wave Switch plugin module specifically used to enable Z-Wave command and control (on/off) of any plug-in tool. It can report wattage consumption or kWh energy usage.</p><p>This device is a security enabled Z-Wave Plus product that is able to use encrypted Z-Wave Plus messages to communicate to other security enabled Z-Wave Plus products.</p><p>Smart Plug is also a security Z-Wave device and supports the Over The Air (OTA) feature for the product’s firmware upgrade.</p><p>This device must be used in conjunction with a Security Enabled Z-Wave Controller in order to fully utilize all implemented functions.</p><p>Features:</p><ol><li>AC output switch on/off by manual or Z-Wave command;</li><li>RGB LED indicates the Z-WAVE network range and load power;</li><li>Support S0 and S2 security network;</li><li>Supporting power meter;</li><li>Supporting repeater role;</li><li>Supporting firmware OTA;</li><li>Supporting Smart Start;</li><li>Supports over-current protection</li></ol> <br /> <h2>Inclusion Information</h2><p>Manual Z-Wave network inclusion:</p><ol><li>Connect the power supply.</li><li>Set the Z-Wave network main controller into learning mode (see Z-Wave network controller operating manual).</li><li>Triple click the Z-button</li><li>Smart Plug should be recognized and included into the Z-Wave network.</li></ol> <br /> <h2>Exclusion Information</h2><p>To remove Smart Plug from the Z-Wave network:<br /></p><ol><li>Insert the Plug into a socket</li><li>Set the Z-Wave network controller into the exclusion mode (see Z-Wave controller operating manual)</li><li>Triple click the Z button.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
+    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

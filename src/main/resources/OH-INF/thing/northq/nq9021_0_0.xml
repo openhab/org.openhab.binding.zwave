@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description/v1.0.0">
+                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
 
   <thing-type id="northq_nq9021_00_000" listed="false">
     <label>NQ-9021 Electrical Meter</label>
@@ -11,6 +11,7 @@
 Electrical Meter<br /> <h1>Overview</h1><p>The Z-Wave Smart Meter Sensor is a compact sensor designed to read meter values from traditional electromechanical and electronic meters with optical port. The sensor is easy to install and ideal for precise meter reading down to 0,1kwh. Its compact size and external wireless transmitter makes it easy to install in any distribution board. The device is battery powered (will last about 1 year) and reports the meter value once in 15 minutes. If there won't be a Z-Wave network, the device will store values up to 3 month. This ensures, that the system can even be used in a minimal configuration with a simple Z-Wave USB Stick (Not part of delivery!) connected to a PC.</p> <br /> <h2>Inclusion Information</h2><p>Press the sensor button 3 times</p> <br /> <h2>Exclusion Information</h2><p>Press the sensor button 3 times</p> <br /> <h2>Wakeup Information</h2><p>A single click on the Z-Wave button will wake up the device</p>
     ]]></description>
     <category>Sensor</category>
+    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
