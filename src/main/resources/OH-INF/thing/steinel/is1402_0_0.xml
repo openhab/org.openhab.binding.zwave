@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="steinel_is1402_00_000" listed="false">
     <label>IS140-2 PIR sensor with relay</label>
@@ -11,7 +11,6 @@
 PIR sensor with relay<br /> <h1>Overview</h1><p>PIR sensor with relay, mains powered 230-240 V, 50 Hz</p> <ul><li>Output Incandescent lamps, max. 1000 W at 230 V AC</li> <li>Fluorescent lamp, max. 500 VA at cos = 0.5,</li> <li>inductive load at 230 V AC</li> <li>LED lamps, max. 6 × 58 W, C ≤ 132 μF at 230 V AC *1)</li> <li>Z-Wave wireless range approx. 100 m (unobstructed line of vision)</li> </ul> <br /> <h2>Inclusion Information</h2><p>To start the motion detector's inclusion, turn the device's control dial to "Set" and back to "0" within 5 seconds.</p> <br /> <h2>Exclusion Information</h2><p>To start the motion detector's exclusion mode, turn the device's control dial to "Set" and back to "0" within 5 seconds.</p> <p>Following exclusion, all configuration parameters (time, sensitivity etc.) remain intact until next inclusion and the light now works in standalone mode – as a result, Z-Wave can also be used for the light’s standalone setting. Z-Wave control dial (E) Control dial for inclusion and exclusion as well as for returning the device to the factory setting.</p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

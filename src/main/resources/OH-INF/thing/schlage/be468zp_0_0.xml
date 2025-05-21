@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="schlage_be468zp_00_000" listed="false">
     <label>BE468ZP Touchscreen Deadbolt Z-Wave Plus</label>
@@ -11,7 +11,6 @@
 Touchscreen Deadbolt Z-Wave Plus<br /> <h1>Overview</h1><p>Touchscreen Deadbolt with Alarm</p> <br /> <h2>Inclusion Information</h2><p>One-button Add lock to Z-Wave Network (Inclusion) 1.Place your home automation system or panel into the Add or Inclusion Mode (Refer to the respective documentation for that specific home automation system or panel device for details). 2.Remove the battery cover of the deadbolt. 3.Press then release the button on the PCB.4.An LED will flash amber indicating the Add or Inclusion process is in progress. If the Security Scheme is Security 2 (S2), verify the DSK of the lock at the Z-Wave Controller. The PIN Code portion of the Z-Wave DSK will be needed.5.When a green LED turns ON, the Add or Inclusion has completed successfully. 6. If a red LED turns ON, try repeating steps 1-3</p> <p>Interactive Instruction for Add https://instructions.allegion.com/instr/86/2543</p> <br /> <h2>Exclusion Information</h2><p>One-button Remove lock from Z-Wave Network (Exclusion) 1.Place your home automation system or panel into the Remove or Exclusion Mode (Refer to the respective documentation for that specific home automation system or panel device for details). 2.Remove the battery cover of the deadbolt. 3.Press then release the button on the PCB. 4.An LED will flash amber indicating the Remove or Exclusion process is in progress. 5.When a green LED flashes 3 times, the Remove or Exclusion process is completed successfully. 6. If a red LED turns ON, try repeating steps 1-3</p> <p>Interactive Instruction for Remove https://instructions.allegion.com/instr/86/2581</p>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

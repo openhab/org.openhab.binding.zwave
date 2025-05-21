@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qees_p313a_00_000" listed="false">
     <label>P313A Plug-in Socket Dimmer</label>
@@ -11,7 +11,6 @@
 Plug-in Socket Dimmer<br /> <h1>Overview</h1><p>QEES RETO Plug-in Dimmer Plus brings along comfort and elegance with an extremely easy setup and a unique design. With its help you can now wirelessly control all the dimmable loads you have inside your home.<br /><br />QEES RETO Plug-in Dimmer Plus is a Z-Wave-controlled 400W universal dimmer (US frequency) with schuko plug-in socket outlet, built-in power meter, multi-color LED feedback and one programmable group for retrofit installation.</p> <br /> <h2>Inclusion Information</h2><p>To manually put your slave device in Network Wide Inclusion mode press three times on its shell</p> <br /> <h2>Exclusion Information</h2><p>You can reset the device by</p> <ol><li>pressing 4 times quickly (the LED flashes blue).</li> <li>Then press 3 times quickly</li> </ol><p>(the LED flashes yellow, red, green for 5 seconds).</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

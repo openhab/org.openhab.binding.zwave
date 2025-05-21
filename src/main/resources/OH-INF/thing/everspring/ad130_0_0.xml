@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_ad130_00_000" listed="false">
     <label>AD130 Dimmer Plugin</label>
@@ -11,7 +11,6 @@
 Dimmer Plugin<br /> <h1>Overview</h1><p>This plug-in Lamp Module is designed to work with our Passive Infrared Detectors SP103 and Door/Window Detectors SM103, serving as a receiver.</p> <br /> <h2>Inclusion Information</h2><p>Press the knob on the module</p> <br /> <h2>Exclusion Information</h2><p>Press the knob on the module</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

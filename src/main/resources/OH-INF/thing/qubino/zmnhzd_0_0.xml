@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhzd_00_000" listed="false">
     <label>ZMNHZD Multifunctional Weather Station</label>
@@ -11,7 +11,6 @@
 Multifunctional Weather Station<br /> <h1>Overview</h1><p>Weather Station is used for measuring temperature, humidity, wind &amp; rain properties and sending the measurement values to your Z-Wave network.The Weather Station can measure 10 different values: two sets of temperature/humidity sensors, wing gauge with 5 sensors (direction, velocity, wind gust, temperature and wind chill) and a rain sensor. With the use of the included Weather Station USB KEY all 10 values (end points) are sent and rendered in your home Z-Wave network. Qubino Weather Station Key is used for receiving Wireless data packages (from Thermo/ Hygro Sensor Ch1, Thermo/ Hygro Sensor Ch2, Rain Gauge, Wind Gauge) and sends it to the Z-Wave Controller. The Key is designed to be plugged into the USB Power Adapter. Module receives data for Temperature, Wind Chill, Velocity, Wind Gust, Wind Direction, Humidity, Rain Rate and Battery Level for each Sensor. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p> <p>Remote Weather Sensors The remote weather sensors include a thermo-hygrometer, anemometer (wind sensor) and rain sensor. All data collected by the sensors are transmitted to the Weather Station Key by wireless RF, with a range up to 100 meters (open area). The Weather station Key supports a maximum of 2 thermo-hygrometers, allowing 2 channels of temperature/humidity display (Ch1 and Ch2)</p> <br /> <h2>Inclusion Information</h2><p>Connect module to USB Power Supply auto-inclusion (works for about 5 seconds after connected to power supply) or enable add/remove mode on main controller hold service button S between 1.5 and 4 seconds</p> <p>NOTE: For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to USB power supply.</p> <br /> <h2>Exclusion Information</h2><p>Connect module to power supply enable add/remove mode on main controller, hold service button S between 4 seconds and 8 seconds By this function, all parameters of the module are set to default values and own ID is deleted.</p> <p>If service button S hold more than 1.5 and less than 4 seconds module is excluded, but configuration parameters are not set to default values.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

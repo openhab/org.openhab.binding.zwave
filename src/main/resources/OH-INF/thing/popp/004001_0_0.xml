@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_004001_00_000" listed="false">
     <label>004001 Smoke Detector and Siren</label>
@@ -11,7 +11,6 @@
 Smoke Detector and Siren<br /> <h1>Overview</h1><h1>Secure Z-Wave Smoke Sensor plus Siren</h1> <p>This product combines a certified stand-alone smoke detector with an insertable Z-Wave module. The smoke detector is certified by the VdS and DIN EN 14604 and satisfies all legal requirements. The smokebox is made of steel and antistatic plastic.</p> <p>A button on the device can be used to test the smokebox, the electronics and the battery. In addition the device has an integrated test functionality to make manual tests with Aerosol unnecessary. The battery warning gets send for at least 30 days. During this time the smoke sensor stays fully functional.</p> <p>The Z-Wave radio module enables the smoke and battery alarms to be transmitted to a central Z-Wave controller. The smoke sensor can also be used as Z-Wave siren; for that the Z-Wave controller sends an on or off command to the siren. The radio module uses either the smoke sensors integrated 9V battery or can be powered by an external 12V power supply.</p> <p>According to the VdS 3515 (smoke sensors with radio communication) this device will relay all alarms to all other smoke sensors (004001) in the Z-Wave network to create a house-wide alarm. This connection of the smoke sensors is fully automatical and needs no further configuration. The smoke sensors and the controller communicate via an secure protocol to prevent manipulation.</p> <br /> <h2>Inclusion Information</h2><p>A single click on the button (3) includes the device. If the button is pressed for at least 2 seconds the inclusion will be done without the (Security Command Class ). </p> <br /> <h2>Exclusion Information</h2><p>A single click on the button will exclude the device.</p>
     ]]></description>
     <category>SmokeDetector</category>
-    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

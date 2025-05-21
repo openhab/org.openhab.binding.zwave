@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="northq_nq9022_00_000" listed="false">
     <label>NQ-9022 Electrical Meter</label>
@@ -11,7 +11,6 @@
 Electrical Meter<br /> <h1>Overview</h1><p>The basic purpose of the device is to count impulses / flashes from a metering device and to save impulse count in nonvolatile memory with 15 minutes interval.</p> <br /> <h2>Inclusion Information</h2><p>3 times press on the button to include</p> <br /> <h2>Exclusion Information</h2><p>3 times press on the button to exclude</p> <br /> <h2>Wakeup Information</h2><p>Press the sensor button 1 time to enter Wakeup (real-time) mode </p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

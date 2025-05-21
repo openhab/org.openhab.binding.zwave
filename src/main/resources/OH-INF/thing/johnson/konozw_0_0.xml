@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="johnson_konozw_00_000" listed="false">
     <label>KONOzw LUX KONOzw Smart Hub Thermostat</label>
@@ -11,7 +11,6 @@
 LUX KONOzw Smart Hub Thermostat<br /> <h1>Overview</h1><p>KONOzw is the smart hub thermostat made with you in mind. It seamlessly connects to many smart hubs and blends in or stands out with its interchangeable Décorsnap covers™. KONOzw makes it easier than ever to personalize your comfort, décor, and savings.</p> <br /> <h2>Inclusion Information</h2><p>- In HOME screen, press the knob once to enter the menu settings </p> <p>- Rotate the knob to select wireless symbol, then press the knob to enter the inclusion/exclusion menu</p> <p>- In the inclusion/exclusion menu, select ADD and press the knob to confirm</p> <p>- The device will begin the adding process</p> <br /> <h2>Exclusion Information</h2><p>- In HOME screen, press the knob once to enter the menu settings </p> <p>- Rotate the knob to select wireless symbol, then press the knob to enter the inclusion/exclusion menu</p> <p>- In the inclusion/exclusion menu, select RST and press the knob to confirm</p> <p>- The device will begin the removal process</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -277,10 +276,6 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -298,10 +293,6 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -315,10 +306,6 @@ Increment by 1F. Actual allowable range depends on the heat set point limit<br /
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Running</option>

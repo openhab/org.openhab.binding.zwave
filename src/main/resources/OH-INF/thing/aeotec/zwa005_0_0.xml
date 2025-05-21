@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa005_00_000" listed="false">
     <label>ZWA005 Motion, light, and temperature sensor</label>
@@ -11,7 +11,6 @@
 Motion, light, and temperature sensor<br /> <h1>Overview</h1><p>Aeotec TriSensor is a universal Z-Wave Plus compatible product, consists of temperature, lighting and motion sensors, powered by a CR123A battery. It can be included and operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers and/or other applications. By the built-in motion sensor, an alarm will be sent to the gateway when the motion sensor is triggered.</p> <br /> <h2>Inclusion Information</h2><p>Press once TriSensor’s Action Button. If it is the first installation, the yellow LED will keep solid until whole network processing is complete. If successful, the LED will flash white -&gt; green -&gt; white -&gt; green, after 2 seconds finished. If failed, the yellow LED lasts for 30 seconds, then the green LED flashes once. If it is the S2 encryption network, please enter the first 5 digits of DSK.</p> <br /> <h2>Exclusion Information</h2><p>Press once TriSensor’s Action Button, the Purple LED will keep solid until whole network processing is complete. If the exclusion is successful, the LED will flash white -&gt; green - &gt;white -&gt; green and then LED will pulse a blue. If failed, the yellow LED lasts for 30 seconds, then the green LED flashes once.</p> <br /> <h2>Wakeup Information</h2><p>Press and hold the button at least 2s until Red Led is on and then release the button,device will send wakeup notification to controller if device is in a Z-Wave network.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

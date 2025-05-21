@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="thermofloor_tf016_01_092" listed="false">
     <label>TF016 ZWave Thermostat</label>
@@ -11,7 +11,6 @@
 ZWave Thermostat<br /> <h1>Overview</h1><p>The Heatit Z-Wave is designed for controlling electrical heating cables and electrical radiators/convectors. The thermostat has 2 internal temperature sensors and has 3 algorithms for temperature compensation. After you have set the temperature, the thermostat will use a hysteresis to regulate the temperature. The hysteresis is adjustable.</p> <p>The temperature shown in the display is the actual temperature for floor sensor and the external room sensor. You are able to calibrate the sensor values. When using the internal room sensor, the temperature shown is the set point. When using the internal sensor, the thermostat can seem somewhat inaccurate. This is due to heat generation inside the thermostat, draft and other external influences.</p> <p>1.92 is an unofficial firmware upgrade with the following changes:</p> <p>* Reporting of the relay status is fixed.</p> <p>* All temperature sensors can be reported (internal, floor, external) via its association groups</p> <br /> <h2>Inclusion Information</h2><p>To include the thermostat to your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF. Press Right (down) 4 times till you see Con in the display. Now start add device in your home automation software. Start inclusion mode by pressing Center (confirm) for approximately 2 seconds. The inclusion/exclusion icon will appear in the display. Confirmation will show Inc/EcL in the display. If inclusion fails, Err (error) will appear. Leave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings</p> <br /> <h2>Exclusion Information</h2><p>See information for inclusion.</p> <br /> <h2>Wakeup Information</h2><p>Not applicable</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -269,10 +268,6 @@ Range 3-30 (0.3°C 3.0°C)<br /> <h1>Overview</h1><p>In this mode you are able t
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -287,10 +282,6 @@ Range 3-30 (0.3°C 3.0°C)<br /> <h1>Overview</h1><p>In this mode you are able t
     <item-type>Number</item-type>
     <label>P setting</label>
     <description>Power mode. 0 is always off, 10 is always on.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Power</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

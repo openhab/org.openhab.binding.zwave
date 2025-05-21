@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nodon_asp31_00_000" listed="false">
     <label>ASP-3-1 Smart Plug</label>
@@ -11,7 +11,6 @@
 Smart Plug<br /> <h1>Overview</h1><h1>"Learning Mode"</h1> <p>Press on the Smart Plug button during 2 seconds until the LED becomes red. Release the button, the LED will then glow in red. The Smart Plug is in “Learning mode”. To add or to remove the Smart Plug from a Z-Wave® network, follow “INCLUSION” or “EXCLUSION” procedures below.</p> <p>If the Smart Plug is not added or removed from a network within 30 seconds (or if the button is pushed during learning mode), the Smart Plug will automatically exit learning mode.</p> <h1>“Factory Reset”</h1> <p>To perform a factory reset, press on the Smart Plug button during 5 seconds until the LED becomes orange. Release the button, the LED will blink red/green. Factory Reset clears the Smart Plug’s memory and set parameters to default value.</p> <p>Please use this procedure only when the primary controller is missing or otherwise inoperable. Resetting the Smart Plug does not mean it has been removed from Z-Wave network controller’s memory. Use the primary controller to remove the Smart Plug from its Z-Wave network (follow “EXCLUSION” procedures below), before doing a Factory Reset.</p> <br /> <h2>Inclusion Information</h2><p>To add the Smart Plug into a Z-Wave network:</p> <ol><li>Plug the Smart Plug.</li> <li>Put the Smart Plug in “Learning mode”.</li> <li>Within 30 seconds put the Z-Wave Controller in “Learning mode” (See the Controller user guide for its own Inclusion procedure).</li> <li>The Smart Plug will confirm the Inclusion procedure by blinking its LED in Green.</li> </ol> <br /> <h2>Exclusion Information</h2><p>To remove the Smart Plug from a Z-Wave network:</p> <ol><li>Make sure the Smart Plug is plugged.</li> <li>Put the Smart Plug in “Learning mode”.</li> <li>Within 30 seconds put the Z-Wave Controller in “Learning mode” (See the Controller user guide for its own Exclusion procedure).</li> <li>The Smart Plug will confirm the Exclusion procedure by blinking its LED in Red.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

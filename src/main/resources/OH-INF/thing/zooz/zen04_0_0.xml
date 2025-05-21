@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen04_00_000" listed="false">
     <label>ZEN04 Smart Plug</label>
@@ -11,7 +11,6 @@
 Smart Plug<br /> <h1>Overview</h1><p><b>Features</b></p><ul><li>Reliable Z-Wave™ control of lamps and small appliances</li><li>Energy monitoring to help you manage power use</li><li>Quick set-up: just plug it into a grounded receptacle</li><li>Extra small, doesn’t block the other outlet</li><li>The latest S2 security and Z-Wave Plus technology™</li><li>Supports OTA firmware updates</li><li>ETL listed for safety standards</li></ul><p><b>Maximum Load</b></p><ul><li>15A resistive, 150W LED Bulbs, 1000 W incandescent, 1/3 hp motor</li></ul><p><b>Warnings</b><br /></p><p>Make sure the load you are about to connect does NOT exceed 15 A in power. This Smart Plug can hold up to 15 A in total.<br /></p><p>Connecting heavy duty equipment to this Smart Plug will DAMAGE the device and may cause the connected appliance to malfunction. Do NOT plug washers, dryers, refrigerators, or motors over 1/3 hp to this Smart Plug.</p><p><br /></p> <br /> <h2>Inclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES QUICKLY</p> <br /> <h2>Exclusion Information</h2><p>Press and release the Z-Wave button 3 TIMES QUICKLY</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

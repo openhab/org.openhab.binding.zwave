@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="monoprice_wallsocket_00_000" listed="false">
     <label>PID15654 Z Wave Wall Socket Plug In Receptical</label>
@@ -11,7 +11,6 @@
 Z Wave Wall Socket Plug In Receptical<br /> <h1>Overview</h1><p>Monitor and manage energy consumption to reduce costs with the Monoprice Z-Wave Plus® Wall Socket Smart Plug. This product is a Z-Wave® switched AC plug-in adapter. AC power can be remotely switched on or off manually with a button on the plug, remotely using Z-Wave manual control, or automatically with Z-Wave programming or triggered response.</p> <p>Using Z-Wave commands, you can query the plug-in to report the power consumption, either as direct wattage or the kilowatt hours (kWh). It also includes two USB ports, one capable of 1A of charging power and the other capable of 2.4A of charging power, so you can keep your mobile devices charged without using another AC power socket for a wall charger.</p> <br /> <h2>Inclusion Information</h2><h1>Non-Secure</h1> <p>Triple-click the Z-Button on the plug-in.</p> <h1>Secure</h1> <p>Press and hold the Z-Button for about 3 seconds. The LED indicator will begin blinking rapidly.</p> <br /> <h2>Exclusion Information</h2><p>Triple-click the Z-Button on the plug-in.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>IceMaker</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

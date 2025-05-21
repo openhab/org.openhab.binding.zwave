@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="heltun_heht01_00_000" listed="false">
     <label>HE-HT01 Wall Heating Thermostat</label>
@@ -11,7 +11,6 @@
 Wall Heating Thermostat<br /> <h1>Overview</h1><p>The Heltun Heating Thermostat is built control the heating and mesures not only the room temperature with the build in sensor, but also humidity, lighting and the floor temperature if a sensor is attached.</p> <br /> <h2>Inclusion Information</h2><p><strong>To include the thermostat in the Z-Wave network</strong></p><ol><li>Enter “SETTINGS“ Mode by pressing and holding the Gear button for three seconds.</li><li>If you need to change the device factory default Z-Wave frequency, see the Parameter description and steps to change the value on page 12 of documentation</li><li>Scroll menu to “Parameter 2 – nEt“. The current state of the network will be displayed in the Parameter Value position (upper right). It should display “ECL“. Note: If “InC“ is displayed, the HE-HT01 must first be Excluded from an existing Z-Wave network (see “Removing from Z-Wave network“ below).</li><li>Start the Inclusion Mode from openhab.</li><li>On the HE-HT01 in the Parameter 2 press the Plus “+“ button to start the Inclusion process.</li><li>Note that lines will be moving in the Parameter value position (upper right).</li><li>“InC“ should appear at the Parameter Value position (and the icon on the main display bottom right corner) if Inclusion was successful.</li><li>If “EСL“ or “Err“ is on Value position (or icon on the main display bottom right corner), the HE-HT01 Inclusion was not successful (try repeating steps 4-7).</li></ol> <br /> <h2>Exclusion Information</h2><p><strong>To remove the thermostat in the Z-Wave network</strong></p><ol><li>Enter “SETTINGS“ Mode by pressing and holding the Gear button for three seconds.</li><li><p>Scroll menu to “Parameter 2 – nEt“ using the Heating Element button to scroll up, and the “MODE“ button to scroll down.</p></li><li><p>The current state of the network will display in the Parameter Value position (upper right). It should display “InC“. Note: If “EСL“ is displayed, the HE-HT01 is already Excluded.</p></li><li><p>Start the Exclusion Mode from the openhab.</p></li><li><p>Press the Minus “–“ button in the HE-HT01 Parameter 2 to start the Exclusion process</p></li><li><p>Note that lines will be moving in the Parameter value position (upper right).</p></li><li><p>“EСL“ should appear in the value position (and icon in the bottom right corner of the main display) if the Exclusion was successful.</p></li><li><p>If “InC“ or “Err“ in value position (or icon in the bottom right corner of the main display) are displayed, repeat the Exclusion process. </p></li></ol>Note: If the HE-HT01 has previously been part of a Z-Wave network and not Excluded since, Inclusion is not possible without first performing an Exclusion or Factory Reset procedure.<p><br /></p><p>Note: If the HE-HT01 is included in the Z-Wave network the antenna icon will appear in the bottom right corner of the main screen with signal strength bars</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -751,10 +750,6 @@ is assigned to the HE-HT01 operating state. It sends a Basic Set command with va
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

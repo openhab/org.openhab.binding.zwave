@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen77_00_000" listed="false">
     <label>ZEN77 Paddle Dimmer (S2)</label>
@@ -11,7 +11,6 @@
 Paddle Dimmer (S2)<br /> <h1>Overview</h1><p>Z-Wave dimmer paddle switch, 700 series, operating in compatibility mode.</p> <br /> <h2>Inclusion Information</h2><p>1. Put hub in inclusion mode</p><p>2. Tap UP three (3) times</p> <br /> <h2>Exclusion Information</h2><p>1. Bring hub close to switch, if possible</p><p>2. Put hub in exclusion mode</p><p>3. Tap DOWN three (3) times</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="sunricher_zv9102facct_00_000" listed="false">
     <label>ZV9102FA-CCT Z-wave CCT LED controller</label>
@@ -11,7 +11,6 @@
 Z-wave CCT LED controller<br /> <h1>Overview</h1><p>The SR-ZV9102FA-CCT is a dual color zwave lighting device and z wave slave that adopts z-wave RF Plus and z-wave mesh network technology with 4 channel, 5A per channel output for dual color LED lights. As a z-wave slave, the device can be added to z-wave network or removed from z-wave network by z-wave primary (master) controllers or gateway. The z wave devices are transceivers that enable to receive and transmit RF signal from the z wave remote while both of them are added to the network. The transceiver is a universal z wave slave which is compatible with universal z wave primary (master) controllers/gateway.</p> <br /> <h2>Inclusion Information</h2><p>Power on the receiver. By factory default setting, the connected LED lights will be under a slow rhythm breath status which means the receiver is waiting to be searched by the master (primary) controller or z-wave gateway -&gt; set the z-wave master (primary) controller or gateway into network inclusion mode (please refer to the user manual to learn how)</p> <p>There shall be an indication on the master (primary) controller or gateway -&gt; LED light connected with the receiver flashes 5 times quickly to indicate successful and automatic adding to z-wave network</p> <br /> <h2>Exclusion Information</h2><p>When the receiver has already been added to z-wave network and connected LED light is switched on, set the z-wave master (primary) controller or gateway into network exclusion mode (please refer to the user manual to learn how).</p> <p>Click the “prog” key on the receiver -&gt; there shall be an indication on the master (primary) controller -&gt; the connected LED light with the receiver flashes twice to indicate successful removal from z-wave network</p>
     ]]></description>
     <category>LightBulb</category>
-    <semantic-equipment-tag>Lightbulb</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

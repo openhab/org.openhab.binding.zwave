@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen55lr_00_000" listed="false">
     <label>ZEN55 LR DC Signal Sensor (Smoke and CO Detector Bridge)</label>
@@ -11,7 +11,6 @@
 DC Signal Sensor (Smoke and CO Detector Bridge)<br /> <h1>Overview</h1><ul><li>Z-Wave alerts from low-voltage trigger signals</li><li>Connect to smoke or CO detectors to monitor activity</li><li>120 V relay to control a security siren or lights</li><li>Installs in the box with the last smoke detector in series</li><li>800 series Z-Wave chip for better range and faster control</li><li>Z-Wave Long Range for ultra reliable no-mesh communication</li><li>Advanced settings to customize the device’s behavior</li><li>Built-in Z-Wave signal repeater for boosted communication</li><li>SmartStart and S2 Authenticate Security for a safer network</li></ul> <br /> <h2>Inclusion Information</h2><ol><li> Initiate inclusion (pairing) in the app (or web interface).</li><li> Tap the Z-WAVE button 3 times quickly if using traditional Z-Wave inclusion.</li><li> The LED indicator will blink green to signal communication and turn green for 2 seconds if inclusion is successful or turn red for 2 seconds if the pairing attempt fails.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li> Bring your Z-Wave gateway (hub) close to the relay if possible</li><li> Put the Z-Wave hub into exclusion mode (not sure how to do that? ask@getzooz.com)</li><li> Click the on the relay 3 times quickly (the Z-Wave button LED indicator will start blinking green)</li><li> Your hub will confirm exclusion, the LED indicator on the relay will turn green for 2 seconds, and the device will disappear from your controller's device list.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="technisat_03009498_00_000" listed="false">
     <label>0300/9499 Single ON/OFF Switch Relay</label>
@@ -11,7 +11,6 @@
 Single ON/OFF Switch Relay<br /> <h1>Overview</h1><p>The Single-Switch Relay controls the on/off function for one electrical device. It measures power consumption of the connected device. The single is installed in standard flush-mounted boxes.</p> <br /> <h2>Inclusion Information</h2><ol><li>Install the TechniSat Shutter.</li> <li>After checking the correct installation, re-enable electrical power at the main fuse or circuit breaker.</li> <li>Start the Z-Wave device add mode on your Z-Wave gateway, according to the gateway‘s manual.</li> <li>Press T1 3x within 1 second.</li> <li>The red status LED is on while the device is added to the Z-Wave network.</li> <li>The green LED is on for 5 seconds after successfully adding the device.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Press and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

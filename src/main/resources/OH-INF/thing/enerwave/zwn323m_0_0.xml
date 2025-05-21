@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zwn323m_00_000" listed="false">
     <label>Plug-In Smart Meter Dimmer Switch ZWN323M</label>
@@ -11,7 +11,6 @@
 ZWN323M<br /> <h1>Overview</h1><p>This ZWN-323 Dimming Module is a Z-Wave enabled device and is fully interoperable with other Z-Wave certified device. In a Z-Wave network, ZWN-323M enable you to remotely ON/OFF&amp;Dim control a Z-Wave ZWN-323M also acts as a repeater, retransmitting the RF signal from one device to another until the intended device is reached. With a horizontal design, the ZWN-323M plug-in dimmer module will not block other nearby AC outlets.</p> <br /> <h2>Inclusion Information</h2><p> While the gateway/remote is in the adding mode and the blue LED blinks on the ZWN-323M, press the program button on the module. </p> <br /> <h2>Exclusion Information</h2><p>While the gateway or remote in the deleting mode, press the program button on the ZWN-323M. The gateway or remote will verify the deleting, remove the module from the current Z-Wave network, and the LED will blink on the module. </p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

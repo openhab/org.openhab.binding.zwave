@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_mhds221_00_000" listed="false">
     <label>MH-DS221 MCO HOME Micro Switch Dry Contact</label>
@@ -11,7 +11,6 @@
 MCO HOME Micro Switch Dry Contact<br /> <h1>Overview</h1><p>Dry Contact Module MH-DS221 is a smart wall switch taht can on/off control wall-boiler, active normal close valve, automatic door etc via Z-Wave network, you can install it with traditional switch for both local and remote control. It supports basic command class, and also can act as a repeater in Z-Wave network. This product can be included and operated in any Z-Wave network with other Z-Wave certified devices from any other manufactures.</p> <br /> <h2>Inclusion Information</h2><ol><li>Set controller into Add/Remove mode. Follow the instructions provided by the controller/gateway manufacturer.</li><li>Press momentary button on the device, or the connected external button S1 3 times in quick succession.</li></ol><p>Note: If the INCLUSION/EXCLUSION is successful, the INDICATION LED will blink slowly 6 times, if not, INDICATION LED will be solid on or off depending on switch's state.</p> <br /> <h2>Exclusion Information</h2><ol><li>Set controller into Add/Remove mode. Follow the instructions provided by the controller/gateway manufacturer.</li><li>Press momentary button on the device, or the connected external button S1 3 times in quick succession.</li></ol><p>Note: If the INCLUSION/EXCLUSION is successful, the INDICATION LED will blink slowly 6 times, if not, INDICATION LED will be solid on or off depending on switch's state.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>GarageDoor</category>
-    <semantic-equipment-tag>ContactSensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

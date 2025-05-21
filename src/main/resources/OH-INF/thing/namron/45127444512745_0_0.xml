@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="namron_45127444512745_00_000" listed="false">
     <label>4512744 / 4512745 Z-Wave Touch Thermostat</label>
@@ -11,7 +11,6 @@
 Z-Wave Touch Thermostat<br /> <h1>Overview</h1><p>Z-Wave 16A underfloor heating thermostat with a touch panel. Both internal and external temperature sensor supported. Available in white or black.<br /></p> <br /> <h2>Inclusion Information</h2><p>Under Home Interface, while the device is at OFF mode , press and hold up and down buttons at the same time for over 5 seconds to enter Settings Menu.</p><p>Short press move up and down button to select a settings item, then short press button F to enter selected item.</p><p>Select ZWAVE INFO on Home Interface to enter into Z-Wave network management interface, to include device as follows:<br /></p><p>Method 1: Select “Add”, then short press button , the device will send out inclusion request, “Status” will show “Inclusion...”. If<br /></p><p>there is no response from a gateway within 30 seconds, or inclusion failed, “Status” will show “Fail”. If included successfully, </p><p>“Status” will show “Inclusion OK” and device ID.</p><p>Method 2: Operate the gateway into inclusion mode, make sure the device is already removed from previous network, reset </p><p>power off the device, the device will be included to the gateway automatically</p> <br /> <h2>Exclusion Information</h2><p>Select “Remove”, then short press button , the device will send out exclusion request, “Status” will show “Exclusion... If ”.</p><p>there is no response from a gateway within 30 seconds, or exclusion failed, “Status” will show “Fail”. If excluded successfully, </p><p>“Status” will show “Exclusion OK” and device ID will be showed as 0</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -407,10 +406,6 @@ Z-Wave Touch Thermostat<br /> <h1>Overview</h1><p>Z-Wave 16A underfloor heating 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -427,10 +422,6 @@ Z-Wave Touch Thermostat<br /> <h1>Overview</h1><p>Z-Wave 16A underfloor heating 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

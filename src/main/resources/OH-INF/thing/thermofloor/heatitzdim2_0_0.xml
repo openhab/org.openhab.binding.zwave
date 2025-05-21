@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="thermofloor_heatitzdim2_00_000" listed="false">
     <label>HEATIT Z-DIM2 250W Heatit Z-Dim2 is a Z-Wave rotary dimmer for many different types of light fixtures.</label>
@@ -11,7 +11,6 @@
 Heatit Z-Dim2 is a Z-Wave rotary dimmer for many different types of light fixtures.<br /> <h1>Overview</h1><p>Heatit Z-Dim2 is a Z-Wave™ rotary dimmer for many different types of light fixtures. The Heatit Z-Dim2 works on most low loads without causing flickering.</p><p>The dimmer is equipped with an external switch option. This allows you to dim and turn on/off the load from an external switch.</p><p>Heatit Z-Dim2 is very well suited for LED, and fits into System 55 frames. </p><p>When connecting low loads it is recommended to use a bypass.</p> <br /> <h2>Inclusion Information</h2><p>Press the Reset button, or the external switch connected to P, 3 times in rapid succession. </p> <br /> <h2>Exclusion Information</h2><p>Press the Reset button, or the external switch connected to P, 3 times in rapid succession. <br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

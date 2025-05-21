@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgwpb111_00_000" listed="false">
     <label>FGWPB-111 FIBARO Wall Plug</label>
@@ -11,7 +11,6 @@
 FIBARO Wall Plug<br /> <h1>Overview</h1><p>FIBARO Wall Plug is a remotely controlled plug-in switch with the ability to measure power and energy consumption.</p> <ul><li>Compatible with type B sockets and plugs.</li> <li>Compatible with any Z-Wave or Z-Wave+ Controller.</li> <li>Supports Z-Wave network Security Modes: S0 with AES-128 encryption and S2 with PRNG-based encryption.</li> <li>Extremely easy installation – simply plug the device into the mains socket.</li> <li>Active power and energy consumption metering.</li> <li>Equipped with USB charging port with power metering (only FGWPB-121).</li> <li>Works as a Z-Wave signal repeater.</li> <li>Current value of the load and operating mode are indicated by the multi-color LED frame.</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Plug the device into a socket nearby the main Z-Wave controller.</li> <li>The LED frame will glow red signaling not being added (reset or remove the device otherwise)</li> <li>Set the main controller into the adding mode (see the controller’s manual).</li> <li>Quickly, triple click the button located on the casing.</li> <li>If you are adding in S2 authenticated mode, type in the device pin code (underlined part of the public key available on the device or in the manual).</li> <li>Wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Plug the device into a socket nearby the main Z-Wave controller.</li> <li>The LED frame will glow green signaling being added (removing is not necessary otherwise).</li> <li>Set the main controller in remove mode (see the controller's manual).</li> <li>Quickly, triple click the button located on the casing.</li> <li>Wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_zme05459_00_000" listed="false">
     <label>ZME_05459 Blinds controller</label>
@@ -11,7 +11,6 @@
 Blinds controller<br /> <h1>Overview</h1><p>The Z-Wave.Me Flush Mountable Motor Control is a wireless actuator able to control 230 V powered motors for blinds and jalousies.</p> <p>The device is delivered as a complete set with ush mountable insert, paddle and mounting frame compatible to the design of the switching series DURO 2000 SI in color pearl white from Busch Jaeger. The paddle of the device is used to control the device itself but can also be congured to activate scenes in a central IP gateway or controller.</p> <p>The status of the motor control is indicated on a dual color LED for test purposes and every status change is - if congured - reported to a central IP gateway or controller. The function of the local paddle can be congured as detached from the local operation. In this local control different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave.</p> <p>This device is designed for a 3 wire system and needs a neutral wire in the wall box</p> <br /> <h2>Inclusion Information</h2><p>Triple click one of the buttons on the device will include the device</p> <br /> <h2>Exclusion Information</h2><p>The device is excluded by triple click to one of the buttons.</p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

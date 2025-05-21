@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="honeywell_39349_00_000" listed="false">
     <label>39349 Smart Outlet</label>
@@ -11,7 +11,6 @@
 Smart Outlet<br /> <h1>Overview</h1><ul><li>One Z-Wave remote controlled outlet, one always-ON outlet</li> <li>Remote ON/OFF control via the Z-Wave controller/network</li> <li>Manual ON/OFF control with the manual/program button</li> <li>Blue LED indicates outlet location in a dark room </li> </ul> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode, then press and release the program button to add it to the network. </p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode, then press and release the program button to remove it from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

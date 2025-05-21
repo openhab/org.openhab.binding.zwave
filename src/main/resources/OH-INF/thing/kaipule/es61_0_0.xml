@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kaipule_es61_00_000" listed="false">
     <label>ES-61 Smoke Sensor</label>
@@ -11,7 +11,6 @@
 Smoke Sensor<br /> <h1>Overview</h1><p>ES61 is a battery powered independent photoelectric smoke sensor, mainly used for detecting surrounding smoke concentration. It will make loud audio alert when the concentration exceeds its alarm threshold, and send alarm signal to Control Panel at the same time.</p> <p>Restore Factory Settings - press the anti-tamper switch for 6 times within 2.5 seconds to restore factory settings.</p> <br /> <h2>Inclusion Information</h2><p>Enter the Inclusion Mode of the gateway, and press the tamper switch 3 times within 1.5s, then the Smoke Sensor will stay in enrolment state until successfully enrolled into network enrolment time out after 30s.</p> <br /> <h2>Exclusion Information</h2><p>Enter the Exclusion Mode of the gateway, and press the tamper switch 3 times within 1.5s, then the Smoke Sensor will be removed after period of time.</p> <br /> <h2>Wakeup Information</h2><p>a) Manual Wake-up - Quickly press tamper switch once, the Smoke Sensor will automatically send wake-up information, and there will be 10s after wake-up to receive gateway setting information.</p> <p>b) Automatic Wake-up - Default time of automatic wake-up is 24 hours, and there will be 10s after wake-up to receive gateway setting information. The max automatic report time = 24 hours, minimum = 30 min.</p>
     ]]></description>
     <category>SmokeDetector</category>
-    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kwikset_910_00_000" listed="false">
     <label>Kwikset SmartCode 910 Touchpad Electronic Deadbolt with Z-Wave</label>
@@ -11,7 +11,6 @@
 Touchpad Electronic Deadbolt with Z-Wave<br /> <h1>Overview</h1><p>Kwikset®, the leader in residential security, introduces the SmartCode™ 910 Touchpad Electronic Deadbolt with Z-Wave.</p> <ul><li>Backlit keypad with One touch locking</li> <li>30 user codes</li> <li>BHMA grade 2 certified</li> <li>Full 128-bit encryption security</li> <li>Drill and pick resistant backup keyway</li> <li>SmartKey: Re-key the lock in seconds</li> </ul> <br /> <h2>Inclusion Information</h2><ul><li>Initiate the process to add the lock to your system at your smart home controller.</li> <li>When prompted by your smart home system to add the lock, press button “A” on the lock interior one time. The red LED will illuminate when the lock enters Add Mode.</li> <li>Please allow time for the controller to add the lock to your system.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Follow your smart home system’s instructions to remove the lock from the network.</li> <li>When prompted by the system, press button A” on the lock interior once. </li> <li>The red LED will illuminate when the lock enters Remove mode. </li> </ul> <br /> <h2>Wakeup Information</h2><p>Even though the lock is sleeping, all buttons are active and can be used to initiate any lock activity.</p> <p>For the RF side, it will wake up every 1 second to check if there are any requests from your smart home controller</p>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

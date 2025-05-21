@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_zme05433_00_000" listed="false">
     <label>ZME_05433 Zwave.Me Dimmer Set Everlux</label>
@@ -11,7 +11,6 @@
 Zwave.Me Dimmer Set Everlux<br /> <h1>Overview</h1><p>The Z-Wave.Me Dimmer Flush Mountable is a wireless actuator able to dim lights up to 300 W. The device is delivered as complete set with flush mountable insert, paddle and mounting frame compatible to the design of the switching series Everlux in color white from RE / Duewi. The paddle of the device is used to control the device itself but can also be configured to activate scenes in a central IP gateway or controller. The status of the dimmer is indicated on a dual color LED for test purposes and every status change is - if configured - reported to a central IP gateway or controller. For dimming the devices apply leading edge phase cutting with a special alignment algorithm for inductive loads. It is therefore possible to dim incandescent lamps, high voltage halogen lights and low voltage halogen lights with traditional transformer. Low voltage halogen lights with switching power supply, LEDs and CFLs must not be attached. The function of the local paddle can be configured as detached from the local operation. In this local control, different devices are controlled by Z-Wave while the local actuator is controlled by other devices using Z-Wave. This device is designed for a 2 wire system. There is no need for a neutral wire in the wall box.</p> <br /> <h2>Inclusion Information</h2><p>Triple click on A e of the buttons on the device will include the device. </p> <br /> <h2>Exclusion Information</h2><p> The device is excluded by triple click to one of the buttons. </p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>IlluminanceSensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

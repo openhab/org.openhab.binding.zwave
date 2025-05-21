@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="keemple_wallplug_00_000" listed="false">
     <label>KP-SO-02 Wall Plug Switch</label>
@@ -11,7 +11,6 @@
 Wall Plug Switch<br /> <h1>Overview</h1><p>This Plug provides line voltage, current load, power consumption and energy consumption measuring. </p><p>Voltage – The Supply Power Voltage For Plug.</p><p>Current – The Current for the Electric Device Connect to Plug Consumption.</p><p>Power – Power Consumed by an Electric Device in an instant, unit: Watt (W).</p><p>Energy – Energy Consumed by an Electric Device through a Time Period. Most commonly measured in Kilowatt-hours (kWh). One kilowatt-hour is Equal to One Kilowatt of Power Consumed over a Period of One Hour, 1kWh = 1000Wh.0Wh.</p> <br /> <h2>Inclusion Information</h2><ol><li>Connect a plug to power and wait at least 20 seconds.</li><li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (refer to the controller or gateway operating manual).</li><li>Briefly press the plug button three times (the LED will alternately flash gree five times).</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Connect a plug to power and wait at least 20 seconds.</li><li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (refer to the controller or gateway operating manual).</li><li>Briefly press the plug button three times (the LED will alternately flash pink five times).</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

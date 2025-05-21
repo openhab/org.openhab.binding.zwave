@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw100_01_008" listed="false">
     <label>ZW100 MultiSensor 6</label>
@@ -11,7 +11,6 @@
 MultiSensor 6<br /> <h1>Overview</h1><p>Battery or USB powered PIR motion sensor, operating distance: Up to 500 feet/150 metres outdoors.</p> <br /> <h2>Inclusion Information</h2><h2>Click one time</h2> <p>1. Send <strong>non-security</strong> Node Info frame  </p> Add MultiSensor into Z-Wave network(non-security inclusion):<br /><ol><li>Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action Button.</li><li>Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li><li>Press the Action Button.</li><li>If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short</li><li>press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from</li><li>step 2.</li></ol><h2>Short press 2 times within 1 second</h2> <ol><li>Send <strong>Security</strong> Node Info frame.</li><li>Add MultiSensor into z-wave network(Security inclusion):<ol><li>Power on MultiSensor. The MultiSensor’s LED will blink slowly when you short press the Action Button</li><li>Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li><li>Press the Action Button.</li><li>If the inclusion is success, MultiSensor’s LED will be kept turning on for 8 seconds when you short press the Action Button. If the LED is still in slow blink, in which you need to repeat the process from step 2. </li></ol></li></ol> <br /> <h2>Exclusion Information</h2><p>Remove MultiSensor from Z-wave network:<br /></p><ol><li>Power on MultiSensor. The MultiSensor’s LED will be kept turning on for 8 seconds when you short press the Action Button.</li><li>Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).</li><li>Press the Action Button.</li><li>If the exclusion is success, MultiSensor’s LED will blink slowly when you short press the Action</li><li>Button. If MultiSensor’s LED still keeps on status, in which you need to repeat the process from step 2.  </li></ol> <br /> <h2>Wakeup Information</h2><h2>Press and hold for 3 seconds</h2> <p>Enable/disable wake up for 10 minutes.<br />(When it is enabled, the orange Led will fast blink) </p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

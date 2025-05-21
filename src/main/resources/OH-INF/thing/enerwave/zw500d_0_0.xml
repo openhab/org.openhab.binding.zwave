@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zw500d_00_000" listed="false">
     <label>ZW500D Dimmer</label>
@@ -11,7 +11,6 @@
 Dimmer<br /> <h1>Overview</h1><p>The ZW500D Dimmer Switch is a perfect wireless manual and remote on/off/dim/ bright control replacement of regular on/off and dimmer switch, controlling incandescent, dimmable LED and CFL. This ZW500D dimmer switch is fully compatible with other Z-Wave devices, provides programmable function creating a perfect ambiance such as scenes, association, schedule event, etc. Also it can be added to most Z-Wave compliant controllers. Sliding Air-Gap switch to a totally disconnect power while replacing light bulbs and preventing from leakage current from the fixture(s). This ZW500D dimmer works with ZW3K 3-Way Auxiliary Switch that reducing energy consumption, enhancing the value of technology of your home, condominiums and apartment.</p> <br /> <h2>Inclusion Information</h2><p>When the primary controller sends the program command, press the button</p> <br /> <h2>Exclusion Information</h2><p>When the primary controller sends the program command, press the button</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

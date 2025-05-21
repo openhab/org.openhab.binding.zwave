@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_dsc19_00_000" listed="false">
     <label>DSC19 Micro Smart Energy Illuminator G2</label>
@@ -11,7 +11,6 @@
 Micro Smart Energy Illuminator G2<br /> <h1>Overview</h1><p>The Aeon Labs Micro Smart Dimmer (2nd Edition) is a scene multilevel switch device based on Z‐wave enhanced slave library V4.55.00.</p> <br /> <h2>Inclusion Information</h2><p>Include Smart Dimmer into an existing Z‐Wave network: 1. Install Micro Smart Dimmer, and connect Micro Smart Dimmer to an AC‐input power source. 2. Let the primary controller of existing Z‐Wave network into inclusion mode (If you don’t know how to do this, refer to its manual). 3. Press the Z‐Wave button. 4. If the Learning failed, please repeat the process from step 2.</p> <br /> <h2>Exclusion Information</h2><p>Remove Smart Switch from an existing Z‐Wave network: 1. Installed Micro Smart Dimmer, and connect Micro Smart Dimmer to an AC‐ input power source. 2. Let the primary controller of existing Z‐Wave network into remove mode (If you don’t know how to do this, refer to its manual). 3. Press the Z‐Wave button. 4. If the remove failed, please repeat the process from step 2</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

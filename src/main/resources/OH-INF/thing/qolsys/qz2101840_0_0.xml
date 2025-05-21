@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qolsys_qz2101840_00_000" listed="false">
     <label>QZ2101-840 / STW-W3350WU IQ Smart Plug</label>
@@ -11,7 +11,6 @@
 IQ Smart Plug<br /> <h1>Overview</h1><p>Smart Plug switch with voltage, power and energy measurement.</p><p>- Technical parameters</p><p>- ON/OFF control</p><p>- Compatible with 300 series and 500 series</p><p>- Measuring voltage, current, instant power, accumulated power.</p><p>- Input voltage: 110-230V AC 50/60HZ</p><p>- Max current: 13A</p><p>- Rated input current: 10A,110-230V ,50/60 Hz Continuous load current</p><p>                                   16A,110-230V ,50/60Hz Instantaneous load current</p><p>- Radio Protocol: Z-Wave</p><p>- Radio Frequency: 868.4MHz EU; 908.4MHz US; 921.4MHz ANZ; 869.2MHz RU</p><p>- Wireless distance:50m</p><p>- Operation temperature: 0-40°C</p><p>- Storage temperature:0-60°C</p><p>- Dimension (D x W x H):</p><p>- US plug: 43mm x 43mm x 45mm</p><p>- EU plug: 43mm x 43mm x 65mm (F Type)</p> <br /> <h2>Inclusion Information</h2><p>Set controller to include mode. Quickly, triple click the code button, the device will enter adding mode, and the LED light will flash red 5 times.</p> <br /> <h2>Exclusion Information</h2><p>Set controller to exclude/remove mode. Quickly, triple click the code button, the device will enter adding mode, and the LED light will flash red 5 times.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

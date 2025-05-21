@@ -3,13 +3,12 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fakro_vmzsolarplus_00_000" listed="false">
     <label>VMZ Solar z-wave plus Awning Blind z-wave plus version</label>
     <description>Awning Blind z-wave plus version</description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

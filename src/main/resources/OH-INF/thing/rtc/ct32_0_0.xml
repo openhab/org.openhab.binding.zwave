@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="rtc_ct32_00_000" listed="false">
     <label>CT32 Z-Wave Thermostat</label>
@@ -11,7 +11,6 @@
 Z-Wave Thermostat<br /> <h1>Overview</h1><p>The Z-Wave enabled CT32 thermostat is a compact, easy-to-use thermostat that is packed with functionality. The CT32 has a responsive touchscreen interface, easy-to-read backlight display, and 7-day programmability. It features a system lock to avoid unintentional changes for maximum efficiency, a filter change indicator to keep your HVAC system running efficiently, wide temperature operation range, and room temperature calibration for precise control.</p> <br /> <h2>Inclusion Information</h2><p>Go to Menu screen, and press INCLUDE icon.</p> <br /> <h2>Exclusion Information</h2><p>Go to Menu screen, and press EXCLUDE icon.</p> <br /> <h2>Wakeup Information</h2><p>When included into a Z-Wave network on battery power, this device is a FLiRS device. The Thermostat will wake up for communication when it receives a valid Z-Wave beam.</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -338,10 +337,6 @@ Enables or Disables Simple UI Mode<br /> <h1>Overview</h1><p>If set to 0, Simple
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -359,10 +354,6 @@ Enables or Disables Simple UI Mode<br /> <h1>Overview</h1><p>If set to 0, Simple
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -376,10 +367,6 @@ Enables or Disables Simple UI Mode<br /> <h1>Overview</h1><p>If set to 0, Simple
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>
@@ -392,10 +379,6 @@ Enables or Disables Simple UI Mode<br /> <h1>Overview</h1><p>If set to 0, Simple
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -413,10 +396,6 @@ Enables or Disables Simple UI Mode<br /> <h1>Overview</h1><p>If set to 0, Simple
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -430,10 +409,6 @@ Enables or Disables Simple UI Mode<br /> <h1>Overview</h1><p>If set to 0, Simple
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

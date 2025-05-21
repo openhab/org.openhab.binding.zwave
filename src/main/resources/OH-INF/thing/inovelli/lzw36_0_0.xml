@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="inovelli_lzw36_00_000" listed="false">
     <label>LZW36 Fan &amp; Light Switch</label>
@@ -11,7 +11,6 @@
 Fan &amp; Light Switch<br /> <h1>Overview</h1><p>There are two different wireless protocols that are used to make this fan &amp; light switch - Z-Wave and RF.</p> <p>Z-Wave is what gives the switch remote (smart) control, whereas RF is what connects the switch to the module. In other words, your hub/gateway connects to your switch, where you can tell it to change the speed of the fan or the brightness of the lights. From there the switch sends an RF command to the module to physically make those commands happen at the fan itself.</p> <br /> <h2>Inclusion Information</h2><p>Enable the inclusion process on your Hub or Gateway. Hold down button A and press button B 3x quickly and your LED Bars will pulse blue signifying the switch is in inclusion mode. If successful, the switch LED Bars will flash Green and if unsuccessful, the LED Bars will flash Red.</p> <br /> <h2>Exclusion Information</h2><p>Place your hub or gateway into exclusion mode. Then: Hold button A + Press Button B 3x. If it is successful the LED will blink green.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -594,10 +593,6 @@ Switch MultiLevel Start/Stop Fan<br /> <h1>Overview</h1><p> Sends start / stop l
     <item-type>Number</item-type>
     <label>Light LED Indicator Color</label>
     <description>Light LED Indicator Color</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -606,10 +601,6 @@ Switch MultiLevel Start/Stop Fan<br /> <h1>Overview</h1><p> Sends start / stop l
     <item-type>Number</item-type>
     <label>Fan LED Indicator Color</label>
     <description>Fan LED Indicator Color</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -618,10 +609,6 @@ Switch MultiLevel Start/Stop Fan<br /> <h1>Overview</h1><p> Sends start / stop l
     <item-type>Number</item-type>
     <label>Light LED Strip Effect Type</label>
     <description>Light LED Strip Effect Type</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Light</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -638,10 +625,6 @@ Switch MultiLevel Start/Stop Fan<br /> <h1>Overview</h1><p> Sends start / stop l
     <item-type>Number</item-type>
     <label>Fan LED Strip Effect Type</label>
     <description>Fan LED Strip Effect Type</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

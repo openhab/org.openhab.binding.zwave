@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kaipule_im20_00_000" listed="false">
     <label>IM-20 Door/Window Sensor</label>
@@ -11,7 +11,6 @@
 Door/Window Sensor<br /> <h1>Overview</h1><p>Battery powered door/window sensor.</p> <br /> <h2>Inclusion Information</h2><p>To include the sensor in a networks start by placing the controller in inclusion mode. Then activate the inclusion mode at the sensor by pressing the tamper switch 3 times within 1.5s.</p> <br /> <h2>Exclusion Information</h2><p>To exclude the sensor in a networks start by placing the controller in exclusion mode. Then activate the exclusion mode at the sensor by pressing the tamper switch 3 times within 1.5s.</p> <br /> <h2>Wakeup Information</h2><ul><li>Manual Wake-up<br />Quickly press tamper switch once, the door sensor will automatically send wake-up information, and there will be 10s after wake-up to receive gateway setting information.</li> <li>Automatic Wake-up<br />Default time of automatic wake-up is 24 hours, and there will be 10s after wake-up to receive gateway setting information, the max automatic report time = 24 hours, minimum=30min</li> </ul>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

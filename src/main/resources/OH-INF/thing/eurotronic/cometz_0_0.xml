@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eurotronic_cometz_00_000" listed="false">
     <label>CometZ Thermostatic Valve</label>
@@ -11,7 +11,6 @@
 Thermostatic Valve<br /> <h1>Overview</h1><p>Comet Z-wave is a Z-Wave radio standard compatible energy-saving radiator thermostat.</p> <br /> <h2>Inclusion Information</h2><p>Press and hold the button in the battery compartment of the Comet Z-wave for 5 seconds. The device moves into installation position in order to enable (de)installation.</p> <br /> <h2>Exclusion Information</h2><p>Press and hold the button in the battery compartment of the Comet Z-wave for 5 seconds. The device moves into installation position in order to enable (de)installation.</p> <br /> <h2>Wakeup Information</h2><p>Click the button in the battery compartment of the Comet Z-wave once.</p>
     ]]></description>
     <category>RadiatorControl</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -81,10 +80,6 @@ Thermostatic Valve<br /> <h1>Overview</h1><p>Comet Z-wave is a Z-Wave radio stan
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off (Frost Protect)</option>

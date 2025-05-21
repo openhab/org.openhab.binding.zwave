@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="reitz_05431_00_000" listed="false">
     <label>Reitz 05431 Duewi ZW BJ ES 1000 / Reitz 05431 / ZWave.me 05457 Single button wall switch</label>
@@ -11,7 +11,6 @@
 Duewi ZW BJ ES 1000 / Reitz 05431 / ZWave.me 05457 Single button wall switch<br /> <h1>Overview</h1><p>For wireless switching of: light bulbs, HV and LV halogen lamps or electrical equipment (e.g. fans). Combinable with all Z-Wave transmitters and remote controls, with installation in splash-proof junction box IP 44, can be selectively installed in flush-mounted power points and canopies or triggered directly via wireless rockers.</p> <br /> <h2>Inclusion Information</h2><p>Press 3x within 1.5 seconds the "UP" or "DOWN" button for the group on the remote control in which the device is to be included.</p> <br /> <h2>Exclusion Information</h2><p>In the case of a flush mounted module press 3x within 1.5 seconds either the "UP" 1 or the "DOWN" 2 button.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

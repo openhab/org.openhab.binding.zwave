@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="econet_ebv105_00_000" listed="false">
     <label>EBV-105 Wireless Water Shutoff Valve</label>
@@ -11,7 +11,6 @@
 Wireless Water Shutoff Valve<br /> <h1>Overview</h1><p>Wireless z-wave water shutoff controller, prevent water damage. </p> <p>The EBV105 water shutoff controller is easy to install and configure. No special tools or plumbing required. The included clamp supports installation.</p> <p>You need to add a water leak sensor.</p> <br /> <h2>Inclusion Information</h2><p>Place the Z-Wave controller in pairing (learning) mode. Press the SET/Power button 3 or more times rapidly (within 0.5 seconds).</p> <br /> <h2>Exclusion Information</h2><p>Place your Z-Wave controller in exclusion (un-learning) mode. Once the controller is in exclusion mode, bring the EBV105 close to the Z-Wave controller (several feet) and press the Power button 3 or more time rapidly (within 0.5 seconds).</p>
     ]]></description>
     <category>Valve</category>
-    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

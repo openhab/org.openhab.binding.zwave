@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_mhc421_00_000" listed="false">
     <label>MH-C421 Shutter Panel</label>
@@ -11,7 +11,6 @@
 Shutter Panel<br /> <h1>Overview</h1><p>Touch Panel Switch is a wall panel built-in with Z-Wave Plus module. With its stylish design the panel can be used to control electrical shutters or blinds.<br /></p> <br /> <h2>Inclusion Information</h2><p>Set controller into Include/Exclude mode, and press 8 seconds or 3 clicks on "UP" or "DOWN" button to add/remove. If succeed, green LED flicks 4 times.</p> <br /> <h2>Exclusion Information</h2><p>Set controller into Include/Exclude mode, and press 8 seconds or 3 clicks on "UP" or "DOWN" button to add/remove. If succeed, green LED flicks 4 times.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="leviton_vrr151lz_00_000" listed="false">
     <label>VRR15-1LZ Receptacle</label>
@@ -11,7 +11,6 @@
 Receptacle<br /> <h1>Overview</h1><p>Vizia RF + Split Duplex Receptacle</p> <br /> <h2>Inclusion Information</h2><p>Install VRR15-1LZ, place controller in inclusion mode, press on/off button on VRR15-1LZ to include</p> <br /> <h2>Exclusion Information</h2><p>Place controller in exclusion mode, press on/off button on VRR15-1LZ to exclude</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

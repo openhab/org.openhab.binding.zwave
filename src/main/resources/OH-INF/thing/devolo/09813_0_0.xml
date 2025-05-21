@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_09813_00_000" listed="false">
     <label>09813 Home Control Smoke Detector</label>
@@ -11,7 +11,6 @@
 Home Control Smoke Detector<br /> <h1>Overview</h1><p>The Home Control Smoke Detector alarms you acoustically via an unmistakable signal sound, visually via an LED light and, if used with the devolo Home Control Central Unit, via text, e-mail or app. Thanks to the mobile and simultaneous notification sent to multiple mobile phone numbers and e-mail addresses that you select, you can respond immediately even when on the go. When combined with other Home Control devices, the Home Control Smoke Detector can, for example, additionally turn on the lights and open the shades via the Z-Wave® controller</p> <br /> <h2>Inclusion Information</h2><p>Press the program switch for 1 second at least to be included.</p> <br /> <h2>Exclusion Information</h2><p>Press the program switch for 1 second at least to be excluded.</p> <br /> <h2>Wakeup Information</h2><p>Press program switch once, the detector will send NIF signal first and will also send “Wake Up Notification” after 3 seconds</p>
     ]]></description>
     <category>SmokeDetector</category>
-    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

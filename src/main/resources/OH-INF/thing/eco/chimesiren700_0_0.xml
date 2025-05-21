@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eco_chimesiren700_00_000" listed="false">
     <label>ISZW7-ECO Z-Wave 700 Chime + Siren</label>
@@ -11,7 +11,6 @@
 Z-Wave 700 Chime + Siren<br /> <h1>Overview</h1><p>Z-Wave Chime and Siren with 20 built in sounds, support for custom sounds via 16GB or 32GB FAT32 SDHC card.</p><p>Plugs into standard AC outlet and contains a battery backup.</p><p>Suitable for door entry chimes, sensor alarms, etc.<br /></p> <br /> <h2>Inclusion Information</h2><p>Start by placing the controller into inclusion mode.</p><p><b>Classic Inclusion:</b><br /></p><p>Activate inclusion mode for the siren by pressing the pair button on the side of its chassis (not to be confused with the volume up and down buttons).</p><p><b>S2 secure pairing (untested):</b></p><p>Use the DSK QR code or 5 digit PIN printed on the unit <br /></p> <br /> <h2>Exclusion Information</h2><p>Start by placing the controller into exclusion mode.</p>Exclusion mode on the sensor is performed following the same exact procedure as inclusion. <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

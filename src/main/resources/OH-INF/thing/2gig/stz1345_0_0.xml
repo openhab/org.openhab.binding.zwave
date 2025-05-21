@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="2gig_stz1345_00_000" listed="false">
     <label>STZ1-345 2GIG Z-Wave Plus Programmable Thermostat (2GIG-STZ1-345)</label>
@@ -11,7 +11,6 @@
 2GIG Z-Wave Plus Programmable Thermostat (2GIG-STZ1-345)<br /> <h1>Overview</h1><p>The 2GIG-STZ-1 Thermostat is a programmable, Z-Wave communicating thermostat. It can be powered using 24VAC (if both “R”&amp;”C”wires are available at the thermostat) or using four (4) AA batteries. Using Z-Wave technology, you have the ability to use most compatible Z-Wave hubs/controllers to operate the thermostat, configure programming settings as well as displaying current conditions in the home or office.</p> <br /> <h2>Inclusion Information</h2><ol><li>Set your primary controller to Include, add or Install mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions).</li><li>Touch any button to take the thermostat out of sleep mode.</li><li>Touch and hold MODE button for 5 seconds. SETUP will be displayed in the status display line.</li><li>Scroll to “Z-Wave” using Up/Down buttons. Touch FAN (Select).</li><li>When prompted by your Z-Wave controller, select YES in the Z-Wave Install screen.</li><li>Touch FAN (Select) to add thermostat to network.</li><li>The display line should flash WAIT and then SUCCESS if Z-Wave connection is made.</li><li>If Z-Wave does not connect to controller, WAIT, then FAIL will flash in status display line.</li><li>If thermostat fails to connect, repeat Steps three (3) through (7) to re-try connecting.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Set your primary controller to exclude or remove mode to remove the thermostat as a node on your network (see your controller’s user manual for detailed instructions).</li><li>Touch any button to take the thermostat out of sleep mode.</li><li>Touch and hold the MODE button for 5 seconds. SETUP will be displayed in the status display line.</li><li>Scroll to “Z-Wave” using Up/Down buttons. Touch FAN (Select).</li><li>When prompted by your Z-Wave controller, select YES in the Z-Wave exclude screen.</li><li>Touch FAN (Select) to remove thermostat to network.</li><li>The display line should flash WAIT then SUCCESS if the thermostat is removed from the network.</li><li>If the removal operation is not successful, WAIT will flash, then FAIL will flash in status display</li></ol><p>line. Repeat Steps three (3) through (7) to re-try</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -143,10 +142,6 @@
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -166,10 +161,6 @@
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -183,10 +174,6 @@
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

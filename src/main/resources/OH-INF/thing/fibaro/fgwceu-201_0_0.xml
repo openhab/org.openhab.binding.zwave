@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgwceu-201_00_000" listed="false">
     <label>FGWCEU-201 FIBARO Walli Double Wall Mounted Remote Controller</label>
@@ -11,7 +11,6 @@
 FIBARO Walli Double Wall Mounted Remote Controller<br /> <h1>Overview</h1><p>FIBARO Walli Controller is a smart wall-mounted Z-Wave™ remote controller that can activate scenes or control other Z-Wave devices via associations.</p><p>Main features:<br />• Can be used for controlling multiple types of devices, e.g. switches, dimmers, roller shutters.<br />• Pre-set configurations allow to easily adjust operation for specific type of controlled devices.<br />• Battery or VDC powered.<br />• Equipped with a built-in temperature sensor.<br /></p><p>• Supports Z-Wave network Security Modes: S0 with AES-128 encryption and S2 Authenticated with PRNG-based encryption.<br />• Works as a Z-Wave signal repeater when VDC powered (all non-battery operated devices within the network will act as repeaters to increase reliability of the network).<br />• May be used with all devices certified with the Z-Wave Plus™ certificate and should be compatible with such devices produced by other manufacturers</p> <br /> <h2>Inclusion Information</h2><p>To add the device to the Z-Wave network manually:</p><p>1. Set the main controller in (Security/non-Security Mode) add mode (see the controller’s manual).<br />2. Quickly, three times click one of the buttons.<br />3. If you are adding in Security S2 Authenticated, input the underlined part of the DSK (label on the box).<br />4. LED will start blinking yellow, wait for the adding process to end.<br />5. Adding result will be confirmed by the Z-Wave controller’s message and the LED frame:<br />• Green – successful (non-secure, S0, S2 non-authenticated),<br />• Magenta – successful (Security S2 Authenticated),<br />• Red – not successful.</p> <br /> <h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:</p><p>1. Set the main controller into remove mode (see the controller’s manual).<br />2. Quickly, three times click, then press and hold one of the buttons for 12 seconds.<br />3. Release the button when the device glows green.<br />4. Quickly click the button to confirm.<br />5. LED will start blinking yellow, wait for the removing process to end.<br />6. Successful removing will be confirmed by the Z-Wave controller’s message and red LED colour</p> <br /> <h2>Wakeup Information</h2><p>You can wake up the device manually using first menu position (white):</p><p>1. Quickly, three times click, then press and hold one of the buttons.</p><p>2. After 3 seconds LED ring signals adding status:<br /></p>• Blinking green – entering the menu (added as non-secure, S0, S2 non-authenticated)<br />• Blinking magenta – entering the menu (added as Security S2 Authenticated)<br />• Blinking red – entering the menu (not added to a Z-Wave network)<p>3. The LED ring will turn off for 3 seconds, then start signalling menu positions.</p><p>4. Release the button when device signals desired position with colour:<br />• WHITE – wake up the device<br />• GREEN – start learning mode (add/remove)<br />• MAGENTA – test Z-Wave range<br />• CYAN – show battery level<br />» Green – 50-100%<br />» Yellow – 16-49%<br />» Red – 1-15%<br />• YELLOW – reset to factory default</p><p>5. Quickly click the button to confirm.<br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -188,10 +187,6 @@ This parameter defines value of Basic Set or Multilevel Set frame (depending on 
     <item-type>Number</item-type>
     <label>LED frame – brightness</label>
     <description>This parameter allows to adjust the LED frame brightness</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="act_zdw103_00_000" listed="false">
     <label>ZDW103 Wall Mounted 3-Way Dimmer Receiver</label>
@@ -11,7 +11,6 @@
 Wall Mounted 3-Way Dimmer Receiver<br /> <h1>Overview</h1><p>This Wall Mounted Dimmer Receiver can be easily installed to directly or remotely control the on/off and dimming of any connected incandescent lighting or control a motorized window shade or blind. Three way control is possible with an AS101 auxiliary switch</p> <br /> <h2>Inclusion Information</h2><p>Tap either the top or bottom of the switch paddle on the ZDW103 once</p> <br /> <h2>Exclusion Information</h2><p>Tap either the top or bottom of the switch paddle on the ZDW103 once</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

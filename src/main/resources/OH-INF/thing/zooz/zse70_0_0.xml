@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse70_00_000" listed="false">
     <label>ZSE70 Outdoor Sensor for Motion, Lux, and Temperature</label>
@@ -11,7 +11,6 @@
 Outdoor Sensor for Motion, Lux, and Temperature<br /> <h1>Overview</h1><p>Sensor monitors motion, lux, and temperature. Utilizes Z-Wave Plus LR for signal up to 1300 feet from hub. Equipped with level S2 security. Rated for outdoor use. Powered by either batteries or optional 12-24 V power supply.</p> <br /> <h2>Inclusion Information</h2><p>Put your Z-Wave hub into <i>inclusion </i>mode and click the Z-Wave button three times quickly. The LED indicator will confirm inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Put your Z-Wave hub into <i>exclusion </i>mode and click the Z-Wave button three times quickly.</p> <br /> <h2>Wakeup Information</h2><p>The sensor’s wake-up interval is set to 4 hours by default to save battery life. Use the Wake Up Command Class to adjust the interval (in seconds, working in 3600s intervals, with 3600 as min and 86400 as max values).</p><p>Click the Z-Wave button once to wake the sensor up manually. During wake-up, the sensor turns the Z-Wave radio for 10 seconds to receive communication from the hub. Long wake-up interval will not affect how often the sensor reports motion or other values to your hub.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

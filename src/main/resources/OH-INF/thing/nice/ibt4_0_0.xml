@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nice_ibt4_00_000" listed="false">
     <label>IBT4 BusT4-Z-Wave interface</label>
@@ -11,7 +11,6 @@
 BusT4-Z-Wave interface<br /> <h1>Overview</h1><p>The BiDi-ZWave accessory is a device that – by means of Z-Wave™ communication – allows for controlling the</p><p>movement and status of Gate&amp;Door-type Nice automations compatible with the BUS T4 (Opera) protocol.</p> <br /> <h2>Inclusion Information</h2><p>Press and release the S1 button 3 times<br /></p> <br /> <h2>Exclusion Information</h2><p>Press and release the S1 button 3 times<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>GarageDoor</category>
-    <semantic-equipment-tag>IceMaker</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

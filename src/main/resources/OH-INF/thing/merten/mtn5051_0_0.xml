@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_mtn5051_00_000" listed="false">
     <label>MTN5051 Remote Control</label>
@@ -11,7 +11,6 @@
 Remote Control<br /> <h1>Overview</h1><p>Remote Control for RF system CONNECT.The device-specific addressing of the radio commands also enables multiple radio systems to operate side by side.</p> <br /> <h2>Inclusion Information</h2><p>Press and hold the [Z] key + press the [Conf] key 3 times: the status LED flashes orange and then continuously lights up green</p> <br /> <h2>Exclusion Information</h2><ul><li>Press the [Z] key.</li><li>Press and hold the [Conf] and [Remove] keys for at least 3 s: the LED flashes orange.</li><li>Enter the 4-digit code 8761: The LED first quickly flashes orange and then goes out:</li></ul> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>

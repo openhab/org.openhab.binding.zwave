@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="heltun_hetps05_00_000" listed="false">
     <label>HE-TPS05 Touch Panel Switch Quinto</label>
@@ -11,7 +11,6 @@
 Touch Panel Switch Quinto<br /> <h1>Overview</h1><p>HELTUN HE-TPS05 Advanced Programmable Touch Panel Switch Quinto brings "Impossibly Smart" capabilities to your home lighting, electric outlets, or motorized blinds, door locks, gates, and valves. It replaces an existing in-wall switch and brings over-the-Internet monitoring, control, and advanced programmability. Device is "Impossibly Thin" on the wall yet packed with features to provide the ultimate in control and convenience:<br /></p><p>Controls up to five systems with two different power sources</p><p>Connects to Z-Wave lights and dimmers</p><p>Controls motorized devices</p><p>Measures energy consumption</p><p>Has 5 ways to trigger programmed scenarios:</p><ul><li>5 buttons</li><li>Real Time Clock (RTC)</li><li>Temperature sensor</li><li>Humidity sensor</li><li>Ambient light sensor</li></ul><p><br /></p> <br /> <h2>Inclusion Information</h2><p>Start the Inclusion Mode from the gateway/controller.<br /></p><p>To start the inclusion process on the HE-TPS05, simultaneously press the two upper touch buttons and hold them for three seconds.</p><p>All buttons will then sequentially blink ‘blue-red’.</p><p>If the inclusion has been successful, all buttons will turn blue for three seconds.</p><p>If the inclusion was not successful, all buttons will turn red for three seconds. In that case repeat the inclusion process.</p> <br /> <h2>Exclusion Information</h2><p>Start the Exclusion Mode from the gateway/controller.<br /></p><p>To start the exclusion process on the HE-TPS05, simultaneously press the two upper touch buttons and hold them for three seconds.</p><p>All buttons will sequentially blink blue-red.</p><p>If the exclusion has been successful, all buttons will turn red for three seconds.</p><p>If the exclusion was not successful, all buttons will turn blue for three seconds. In that case repeat the exclusion process.</p><p>Note: If the HE-TPS05 has previously been part of a Z-Wave network and not Excluded since, Inclusion is not possible without first performing an Exclusion or Factory Reset procedure.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

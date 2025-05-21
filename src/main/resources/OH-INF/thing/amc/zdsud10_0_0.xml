@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="amc_zdsud10_00_000" listed="false">
     <label>ZDS-UD10 Dimming Switch Module</label>
@@ -11,7 +11,6 @@
 Dimming Switch Module<br /> <h1>Overview</h1><p>Thank you for choosing ZDS-100 Z-Wave control product. Our Z-Wave enabled product allows user to remotely control lighting, home appliance, and make home control easy at low installation / maintenance cost. </p> <br /> <h2>Inclusion Information</h2><p>Tap the button</p> <br /> <h2>Exclusion Information</h2><p>Tap the button</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

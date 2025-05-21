@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_dsb54_00_000" listed="false">
     <label>DSB54 Recessed Door/Window Sensor</label>
@@ -11,7 +11,6 @@
 Recessed Door/Window Sensor<br /> <h1>Overview</h1><p>Aeotec Recessed Door Sensor Gen5 has been crafted to power connected lighting using Z-Wave Plus. </p> <br /> <h2>Inclusion Information</h2><ol><li>Place your gateway or controller into Z-Wave pair or inclusion mode.</li> <li>Press the Action Button on your Sensor.</li> <li>If your Sensor has been successfully linked to your network, its LED will become solid for 2 seconds then disappear. If linking was unsuccessful, the LED will continue to blink if you tap its button.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Place your gateway or controller into Z-Wave unpair or exclusion mode</li> <li>Press the Action Button on your Sensor.</li> <li>If your switch has been successfully unlinked to your network, its LED will begin to blink for a short time. If linking was unsuccessful, the LED will return to its last state. Tap the button to confirm if it has been unpaired, if unpaired successfully, the LED will blink when tapped.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Press and hold the Z-Wave button for 6 seconds</p>
     ]]></description>
     <category>Door</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgs224_05_000" listed="false">
     <label>FGS224 Fibaro Double Smart Module</label>
@@ -11,7 +11,6 @@
 Fibaro Double Smart Module<br /> <h1>Overview</h1><h1>Description</h1> <p>The remotely operated FIBARO Smart Module and Double Smart Module are designed to turn electrical devices or circuits on and off. Smart Module allows to control one device or circuit and the Double Smart Module allows to control two devices or circuits. The compact size of the device allows for the product to be installed in the housings of other devices. The devices can be controlled either via the Z-Wave™ network or with buttons connected directly to them.</p> <h1>Main features</h1> <ul><li>Works with various types of switches and buttons.</li> <li>Supports Z-Wave network Security Modes: S0 with AES-128 encryption and S2 Authenticated with PRNG-based encryption.</li> <li>Works as a Z-Wave signal repeater</li> <li>May be used with all devices certified with the Z-Wave Plus™ certificate and should be compatible with such devices produced by other manufacturers.</li> </ul> <br /> <h2>Inclusion Information</h2><p>To add the device to the Z-Wave network manually:</p> <ol><li>Quickly, three times click button connected to S1/S2 or the maintenance button.</li> <li>LED will start blinking yellow, wait for the adding process to end.</li> <li>Adding result will be confirmed by the Z-Wave controller’s message and the LED: <ul><li>Green – successful (non-secure, S0, S2 non-authenticated),</li> <li>Magenta – successful (Security S2 Authenticated),</li> <li>Red – not successful. </li> </ul></li> </ol> <br /> <h2>Exclusion Information</h2><p><strong>Note:</strong> Removing also results in resetting the device to factory defaults. Make sure that restoring the parameters to factory defaults will not result in damaging the connected device, we recommend disconnecting it first.</p> <ol><li>Quickly, three times click the maintenance button.</li> <li>LED will start blinking yellow, wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message and red LED colour.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Quickly, three times click the maintenance button.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

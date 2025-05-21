@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgbs222_00_000" listed="false">
     <label>FGBS222 Smart Implant</label>
@@ -11,7 +11,6 @@
 Smart Implant<br /> <h1>Overview</h1><p>Allows to enhance the functionality of wired sensors and other devices by adding Z-Wave network communication. You can connect binary sensors, analog sensors, DS18B20 temperature sensors or DHT22 humidity and temperature sensor to report their readings to the Z-Wave controller. It can also control devices by opening/closing output contacts independently of the inputs.</p> <br /> <h2>Inclusion Information</h2><p>To add the device to the Z-Wave network manually:</p> <ol><li>Power the device.</li> <li>Set the main controller in (Security/non-Security Mode) add mode (see the controller’s manual).</li> <li>Quickly, triple click button on the device housing or switch connected to IN1 or IN2.</li> <li>If you are adding in Security S2 Authenticated, scan the DSK QR code or input the 5-digit PIN code (label on the bottom of the box).</li> <li>LED will start blinking yellow, wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol> <br /> <h2>Exclusion Information</h2><p>To remove the device from the Z-Wave network:</p> <ol><li>Power the device.</li> <li>Set the main controller into remove mode (see the controller’s manual).</li> <li>Quickly, triple click button on the device housing or switch connected to IN1 or IN2.</li> <li>LED will start blinking yellow, wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> </ol><p><strong>Note:</strong> Removing also results in resetting the device to factory defaults.</p> <p><strong>Note: </strong>Removing using switch connected to IN1 or IN2 works only if parameter 20 (IN1) or 21 (IN2) is set to 3 or 4 and parameter 40 (IN1) or 41 (IN2) does not allow sending scenes for triple click.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

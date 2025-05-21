@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="remotec_zrc100_00_000" listed="false">
     <label>ZRC-100 Remote Control</label>
@@ -11,7 +11,6 @@
 Remote Control<br /> <h2>Inclusion Information</h2><p>Hold the up + down arrow keys simultaneously for 3 seconds and select "Learning Mode"</p> <br /> <h2>Wakeup Information</h2><p>Manually by pressing any button</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

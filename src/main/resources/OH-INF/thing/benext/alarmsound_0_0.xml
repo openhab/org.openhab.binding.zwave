@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_alarmsound_00_000" listed="false">
     <label>Alarm Sound Alarm sound</label>
@@ -11,7 +11,6 @@
 Alarm sound<br /> <h1>Overview</h1><p>The Alarm Sound is a plug&amp;play product developed by BeNext. Depending on present situations and scenes it sets off an alarm sound warning you and your family or scaring off unwanted activities. Use the Alarm Sound for security purposes and notifications indoors.</p> <p>Use the Alarm Sound in combination with the Door Sensor or MoLite Sensor to alert you when someone undesirably enters your home or work-space. The Alarm Sound possesses six different sound- and lighting-configurations to scare off any possible intruder. You can also customize personal preferred ‘scenes’ and ‘rules’ in our free of charge online manager in order to give the Alarm Sound dual functionality. You can even choose to create a new kind of alarm clock, which in combination with the Door Sensor or MoLite Sensor gives a wake up alarm if you haven’t left your bedroom after 09:00 am.</p> <br /> <h2>Inclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process</p> <br /> <h2>Exclusion Information</h2><p>Press and hold the push button until the indicator light is blinking than release the button to start the inclusion or exclusion process</p>
     ]]></description>
     <category>Siren</category>
-    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

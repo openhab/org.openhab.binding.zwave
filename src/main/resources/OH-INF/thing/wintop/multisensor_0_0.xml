@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="wintop_multisensor_00_000" listed="false">
     <label>Multisensor Multi-sensor</label>
@@ -11,7 +11,6 @@
 Multi-sensor<br /> <h1>Overview</h1><p>motion sensor</p> <br /> <h2>Inclusion Information</h2><p>Please press the tamper switch at the back of the device for 3-8 seconds.</p> <p>After 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.</p> <br /> <h2>Exclusion Information</h2><p>Please press the tamper switch at the back of the device for 3-8 seconds.</p> <p>After 3 seconds, the led will blink; you can now release the button. Now it's ready for learn mode (include/exclude/association). Use your controller to include the sensor to the network during this time.</p> <br /> <h2>Wakeup Information</h2><p> Press the temper button on the device and keep it for 3-7 seconds, then release.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

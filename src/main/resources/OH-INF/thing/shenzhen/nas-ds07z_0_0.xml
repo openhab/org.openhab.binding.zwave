@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_nas-ds07z_00_000" listed="false">
     <label>NAS-DS07Z The NEO Coolcam Door/Window Sensor V2</label>
@@ -11,7 +11,6 @@
 The NEO Coolcam Door/Window Sensor V2<br /> <h1>Overview</h1><p><b>Door/Window Sensor</b></p><p><i>Overview</i></p><p>The NEO Coolcam Door/Window Sensor provides information whether a door or window is opened or closed. It also provides temperature and humidity information.</p><p>The battery operated or USB powered sensor consists of the main unit and a magnetic element. The main unit should be installed on the frame and the magnetic element is placed on the door or window.</p><p><b>Technical parameters:</b></p><ul><li>Power: CR14250 x1</li><li>Standby current: 8uA</li><li>Battery life: 2 years</li><li>Radio Protocol: Z-wave</li><li>Radio Frequency: 868.4MHz EU; 908.4MHz US; 921.4MHz ANZ; 869.2MHz RU</li><li>Wireless distance：50m</li><li>Operation temperature: 0-40℃</li><li>Storage temperature: 0-70℃</li><li>Size: </li><li>Contact sensor main body (L x W x H): 82mmx27mmx23mm </li><li>Contact sensor deputy body (L x W x H): 50mmx13mmx16mm</li></ul><p><b>Tips: <br /></b></p><ul><li><b>3x click will wake the device.</b></li><li><b>If device is not reporting, keep the device awake while heal.</b></li></ul> <br /> <h2>Inclusion Information</h2><p><b>Inclusion Information</b></p><ul><li>Remove the sensor cover.</li><li>Make sure the sensor is USB powered.</li><li>Set Z‐Wave controller or Z‐Wave gateway into inclusion mode (Refer to the controller or gateway operating manual)</li><li>Press the button for 5 seconds, until the led turns white, then release before the led turns off, the device will enter inclusion mode. And the blue LED will flash on and off alternately until inclusion succesfull.</li></ul> <br /> <h2>Exclusion Information</h2><p><b>Exclusion Information</b></p><ul><li>Remove the device cover.</li><li>Make sure the sensor is powered.</li><li>Set Z‐Wave controller or Z‐Wave gateway into exclusion mode (Refer to the controller or gateway operating manual)</li><li>Press the button three times within 1.5 second, the device will enter exclusion mode. And the blue LED will flash on and off alternately until exclusion succesfull.</li></ul> <br /> <h2>Wakeup Information</h2><p><b>Wakeup Information</b></p><ul><li>Press the button once to wake the device. If pressed successfully, the LED will blink one time.</li><li>The minimum wakeup interval is 300s (5 minutes)</li><li>The maximum wakeup interval is 16,777,200s (about 194 days)</li><li>Allowable min step among each wakeup interval is 60 seconds, such as 360s, 420s, 480s…</li><li>Note: The default value is 12 hours. This value is longer, the battery life is greater.</li></ul>
     ]]></description>
     <category>Door</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

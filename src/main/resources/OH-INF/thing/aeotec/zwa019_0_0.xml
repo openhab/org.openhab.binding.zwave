@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa019_00_000" listed="false">
     <label>ZWA019 Aeotec Water Sensor 7 Pro</label>
@@ -11,7 +11,6 @@
 Aeotec Water Sensor 7 Pro<br /> <h1>Overview</h1><p>The AEOTEC Water Sensor 7 Pro is a sensor, which detects water leakage, measures temperature and humidity.</p> <br /> <h2>Inclusion Information</h2><p>Inclusion (If your gateway does not support SmartStart) <br /></p><ol><li>Open the housing.</li><li>Remove the battery protection.</li><li>Press the tamper on the side of the appliance three times quickly.</li></ol> <br /> <h2>Exclusion Information</h2><p>Exclusion <br /></p><ol><li>Open the housing.</li><li>Press the tamper on the side of the appliance three times quickly.</li></ol> <br /> <h2>Wakeup Information</h2><p>A single click on the button will wake up the device.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

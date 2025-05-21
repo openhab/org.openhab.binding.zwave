@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgs213_00_000" listed="false">
     <label>FGS213 Single Switch 2</label>
@@ -11,7 +11,6 @@
 Single Switch 2<br /> <h1>Overview</h1><p>FIBARO Switch 2 is designed to be installed in standard wall switch boxes or anywhere else where it is necessary to control electric devices. It allows to control connected devices either via the Z-Wave+ network or via a switch connected directly to it and is equipped with active power and energy consumption metering functionality.</p> <p>Main features of FIBARO Switch 2:</p> <ul><li>Compatible with any Z-Wave or Z-Wave+ Controller,</li> <li>Supports protected mode (Z-Wave network security mode) with</li> <li>AES-128 encryption,</li> <li>Advanced microprocessor control,</li> <li>Active power and energy metering functionality,</li> <li>Works with various types of switches – momentary, toggle, three-way, etc,</li> <li>To be installed in wall switch boxes of dimensions allowing for installation, conforming to provisions of applicable regulations,</li> <li>FIBARO Switch 2 is an extension unit</li> </ul> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode and triple click S1 switch</p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode and triple click S1 switch</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

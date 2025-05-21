@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="climax_rs23zw_00_000" listed="false">
     <label>RS-23-ZW Room Sensor</label>
@@ -11,7 +11,6 @@
 Room Sensor<br /> <h1>Overview</h1><p>The Room Sensor features both temperature and humidity detection function to monitor your home environments. The temperature and humidity information will be transmitted to the Z-Wave network and displayed on the Room Sensor’s LCD screen.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Remove the cover by loosening the fixing screw.</li><li>Insert the 2 alkaline batteries into the battery compartment connecting the correct polarity as shown on the battery compartment lid to power on the Room Sensor.</li><li>Put the Z-Wave gateway or Z-Wave Control Panel into Inclusion or Learning mode (please refer to the Z-wave gateway or Z-Wave Control Panel manual).</li><li>Within 1.5 seconds, press the Function Button 3 times.</li><li>Refer to the operation manual of the Z-Wave gateway or Z-Wave Control Panel to complete the learn-in process.</li><li>If the sensor has already been included (learnt) into another Z-Wave Gateway/Z-Wave Control Panel, or if the sensor is unable to be learnt into the current Z-Wave Gateway/Z-Wave Control Panel, please exclude it first (see Exclusion) before attempting to include it into the current Z-Wave Gateway/Z-Wave Control Panel.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Put the Z-Wave gateway or Z-Wave Control Panel into Exclusion mode (please refer to the Z-Wave gateway or Z-Wave Control Panel manual).</li><li>Within 1.5 seconds, press the Function Button 3 times and the Room Sensor will be removed from the Z-Wave network.</li></ol> <br /> <h2>Wakeup Information</h2><p>The wake up time is programmed automatically according to Z-Wave Control Panel’s setting when The Room Sensor is included. The recommended setting of the wake up time is 60 minutes above.<br /></p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

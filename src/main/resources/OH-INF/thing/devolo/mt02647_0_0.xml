@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_mt02647_00_000" listed="false">
     <label>MT02647 Motion Sensor</label>
@@ -11,7 +11,6 @@
 Motion Sensor<br /> <h1>Overview</h1><p>Door/Window Contact and Motion Detector with temperature and illumination measurement.</p> <br /> <h2>Inclusion Information</h2><ul><li>Have Z-Wave Controller enter inclusion mode.</li> <li>Press tamper key three times within 1.5 seconds to enter the inclusion mode.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Have Z-Wave Controller enter exclusion mode.</li> <li>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</li> </ul><p>RESET:</p> <p>Notice: Use this procedure only in the event that the primary controller is lost or otherwise inoperable.</p> <ul><li>Pressing tamper key four times within 1.5 seconds and do not release the tamper key in the 4th pressed, and the LED will light ON.</li> <li>After 3 seconds the LED will turn OFF, after that within 2 seconds, release the tamper key. If successful, the LED will light ON one second. Otherwise, the LED will flash once.</li> <li>IDs are excluded and all settings will reset to factory default.</li> </ul> <br /> <h2>Wakeup Information</h2><ul><li>After the device is added to the network, it will wake-up once per day in default. When it wakes up it will broadcast the “Wake Up Notification” message to the network, and wake-up 10 seconds for receiving the setting commands.</li> <li>The wake-up interval minimum setting is 30 minutes, and maximum setting is 120 hours. And the interval step is 30 minutes.</li> <li>If the user want to wake-up the device immediately, please remove the front cover, and press the tamper key once. The device will wake-up for 10 seconds.</li> </ul>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_mhs521_00_000" listed="false">
     <label>MH-S521 Shutter Panel</label>
@@ -11,7 +11,6 @@
 Shutter Panel<br /> <h1>Overview</h1><p>Touch Panel Switch is a wall panel built-in with Z-Wave Plus module. With its stylish design and stable performance, the panel can be used to control house-hold electrical appliances like lamp, motor, coffee machine, TV set etc.</p> <br /> <h2>Inclusion Information</h2><p>Press and hold any key on the panel for 8 seconds or 3 clicks in quick succession. </p> <br /> <h2>Exclusion Information</h2><p>Press and hold any key on the panel for 8 seconds or 3 clicks in quick succession. </p> <br /> <h2>Wakeup Information</h2><p> The device can be manually woken with a button press on the device</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

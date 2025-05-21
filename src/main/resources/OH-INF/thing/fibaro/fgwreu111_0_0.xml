@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgwreu111_00_000" listed="false">
     <label>FGWREU-111 Fibaro Walli Roller Shutter</label>
@@ -11,7 +11,6 @@
 Fibaro Walli Roller Shutter<br /> <h1>Overview</h1><p>Smart wall switch designed to control motors of roller blinds, awnings, venetian blinds and other single phase, AC powered devices via Z-Wave network.</p> <p>It measures active power and energy consumed by the controlled load.</p> <p>You can install it with provided cover plate and switch button or other compatible.</p> <br /> <h2>Inclusion Information</h2><p>Z-Wave device learning mode, allowing to add the device to existing Z-Wave network:</p> <ol><li>Power the device.</li> <li>Set the main controller into the adding mode (OH2: search for new things, select Z-Wave binding).</li> <li>Quickly, three times click one of the buttons.</li> <li>If you are adding in Security S2 Authenticated, input the underlined part of the DSK (label on the bottom of the box).</li> <li>LED will start blinking yellow, wait for the adding process to end.</li> <li>Adding result will be confirmed by the Z-Wave controller’s message and the LED frame: <ul><li><strong>Green</strong> – successful (non-secure, S0, S2 non-authenticated),</li> <li><strong>Magenta</strong> – successful (Security S2 Authenticated),</li> <li><strong>Red</strong> – not successful.</li> </ul></li> </ol> <br /> <h2>Exclusion Information</h2><p>Z-Wave device learning mode, allowing to remove the device from existing Z-Wave network. Removing also results in resetting the device to factory defaults:</p> <ol><li>Power the device.</li> <li>Set the main controller in remove mode (see the controller's manual).</li> <li>Quickly, three times click one of the buttons.</li> <li>LED will start blinking yellow, wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message and red LED colour.</li> </ol>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -408,10 +407,6 @@ time needed for roller blinds to reach the bottom<br /> <h1>Overview</h1><p>This
     <item-type>Number</item-type>
     <label>LED frame – colour when not moving</label>
     <description>This parameter defines the LED colour when the device motor is not running.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -420,10 +415,6 @@ time needed for roller blinds to reach the bottom<br /> <h1>Overview</h1><p>This
     <item-type>Number</item-type>
     <label>LED frame colour when moving</label>
     <description>This parameter defines the LED colour when the motor is running.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -432,10 +423,6 @@ time needed for roller blinds to reach the bottom<br /> <h1>Overview</h1><p>This
     <item-type>Number</item-type>
     <label>LED frame – brightness</label>
     <description>This parameter allows to adjust the LED frame brightness.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

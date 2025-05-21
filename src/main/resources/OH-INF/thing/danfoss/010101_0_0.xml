@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="danfoss_010101_00_000" listed="false">
     <label>010101 Popp Wireless Thermostatic Valve TRV</label>
@@ -11,7 +11,6 @@
 Popp Wireless Thermostatic Valve TRV<br /> <h1>Overview</h1><p>This device is a Z-Wave controlled electronic radiator thermostat. It is mounted on wall heating valves and controls them by a motor.</p> <br /> <h2>Inclusion Information</h2><p>Short push middle button</p> <br /> <h2>Exclusion Information</h2><p>Short push middle button</p> <br /> <h2>Wakeup Information</h2><p>Short push middle button</p>
     ]]></description>
     <category>RadiatorControl</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

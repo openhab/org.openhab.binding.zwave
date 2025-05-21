@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="philio_pab05_00_000" listed="false">
     <label>PAB05 Philio PAB05 Energy meter</label>
@@ -11,7 +11,6 @@
 Philio PAB05 Energy meter<br /> <h1>Overview</h1><p>This Energy Meter monitors total electricity consumption of connected appliances and reports it to any Z-Wave enabled controller in real time. Small and compact size allows easy installation in majority of electricity distribution boxes. It supports two loads up to 13800W each (60 Amperes at 230Vac)<br /></p> <br /> <h2>Inclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter inclusion mode.<br /></p> <br /> <h2>Exclusion Information</h2><p>Pressing On/Off (Include) button three times within 2 seconds will enter exclusion mode.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

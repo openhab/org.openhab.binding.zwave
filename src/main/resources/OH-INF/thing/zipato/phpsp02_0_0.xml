@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zipato_phpsp02_00_000" listed="false">
     <label>PSP02 Door/temp/illumination/motion sensor</label>
@@ -11,7 +11,6 @@
 Door/temp/illumination/motion sensor<br /> <h1>Overview</h1><p>Door/Window, motion, temperature and illumination sensor in one device.</p> <p>Primarily used as Door/Window sensor, it consists of two parts: magnet and a sensor.</p> <ul><li>Very low power consumption.</li> <li>Low battery battery indication.</li> <li>Door/Window status and battery status auto-report.</li> <li>LED indicator.</li> <li>Over-the-air firmware update.</li> <li>Tamper proof protection.</li> </ul> <br /> <h2>Inclusion Information</h2><p>Put the Z-Wave Controller in inclusion mode.</p> <p>Pressing tamper key three times within 1.5 seconds will enter inclusion mode.</p> <p>After successful inclusion, the device will wake to receive the setting command from the Z-Wave Controller in about 20 seconds.<br /><br /></p> <br /> <h2>Exclusion Information</h2><p>Put the Z-Wave Controller in exclusion mode.</p> <p>Pressing tamper key three times within 1.5 seconds will enter exclusion mode. Node ID has been excluded.</p> <br /> <h2>Wakeup Information</h2><p>Any action.</p>
     ]]></description>
     <category>Door</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

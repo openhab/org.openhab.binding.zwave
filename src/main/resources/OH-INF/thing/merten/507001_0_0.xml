@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="merten_507001_00_000" listed="false">
     <label>507001 Switch Wall Insert 1 Gang</label>
@@ -11,7 +11,6 @@
 Switch Wall Insert 1 Gang<br /> <h1>Overview</h1><p>You can use the flush-mounted receiver to switch a load on and off via radio signal. When it receives the radio signal, the flush-mounted receiver switches its contact.</p> <br /> <h2>Inclusion Information</h2><p>Press the flush-mounted receiver's switch button three times within approx. 1.5 seconds (with a sharp object such as a phase tester. The LED in the flush-mounted receiver flashes.</p> <br /> <h2>Exclusion Information</h2><p>Press the flush-mounted receiver's switch button three times within approx. 1.5 seconds (with a sharp object such as a phase tester. The LED in the flush-mounted receiver flashes.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="oomi_ft111_00_000" listed="false">
     <label>FT111 Nano Dimmer</label>
@@ -11,7 +11,6 @@
 Nano Dimmer<br /> <h1>Overview</h1><p>Fantem Nano Dimmer is a Z-Wave Smart Dimmer specifically used to enable Z-Wave command and control (on/off/dim) of any wall switches. It can report immediate wattage consumption or kWh energy usage over a period of time.</p> <p>In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status. It can connect to 2 external manual switches to control the load ON/OFF independently.</p> <p>Its surface has a pin socket, which can be used for connecting to the touch panel, so you can also use the touch panel to control the Nano Dimmer.</p> <p>The Nano Dimmer is also a security Z-Wave plus device and supports Over The Air (OTA) feature for the products firmware upgrade.</p> <br /> <h2>Inclusion Information</h2><p>Set your Z-Wave controller into pairing mode. Press the Action Button on the Nano Dimmer or toggle the external manual switch once, the green LED (non-secure indication) will blink to indicate the Nano Dimmer is entering into pairing mode.</p> <p>If the Nano Dimmer has been successfully added to your Z-Wave network, its RGB LED will be solid. If the pairing was unsuccessful, the red LED will be on for 2 seconds and then remain a colourful gradient, repeat the instructions above.</p> <br /> <h2>Exclusion Information</h2><p>Set your Z-Wave controller into removal mode. 2. Press the Action Button on the Nano Dimmer. 3.</p> <p>If the Nano Dimmer has been successfully removed from your Z-Wave network, its RGB LED will remain colourful gradient. If the removal was unsuccessful, the RGB LED will still be solid (following the state of the output load), repeat the instructions above.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

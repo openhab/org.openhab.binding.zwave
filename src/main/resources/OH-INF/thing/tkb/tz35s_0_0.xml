@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz35s_00_000" listed="false">
     <label>TZ35S Single Paddle Wall Dimmer</label>
@@ -11,7 +11,6 @@
 Single Paddle Wall Dimmer<br /> <h1>Overview</h1><h1>TZ35S Wall Mounted Switch</h1> <p>The TZ35S Wall Mounted 3-Way Dimmer Switch is a component of the lighting control system.</p> <p>This Wall Mounted Dimmer Switch is designed to work with other Z-Wave enabled devices. Z-Wave node of other types can be added to the system and will also act as repeaters if they support this function of repeating the signal received to other modules in the system.</p> <p>As part of a Z-Wave network, the TZ35S will also act as a wireless repeater to insure the commands intended for another device in the network are received.</p> <h1>Basic Operation</h1> <h2>(Local control)</h2> <p>The switch on the TZ35S allows the user to:</p> <ul><li>Turn ON/OFF or Dimming the attached load</li> <li>Include or exclude the module from the Z-Wave system</li> <li>Control other Z-Wave enabled devices</li> </ul><p>Also, when a controller prompts you to "Send Node ID" or to "Press Button on Unit", quickly tap the switch ON or OFF once to satisfy those instructions.</p> <ul><li>Tapping top of the switch turns the load attached ON</li> <li>Tapping bottom of switch turns the load attached OFF</li> <li>Pressing and holding the switch will allow dimming and brightening of the attached load or the other Z-Wave dimmers if associated.</li> </ul><p><strong>Caution</strong>: When dimmed to the lowest setting, even though the load looks like its off it still has power. Tap bottom of switch to turn off completely. It is best to turn off the power at the circuit breaker to service the load. Returns to known ON/OFF state after power loss.</p> <p><strong>Note: </strong>Upon restoration of power after a power loss, the switch returns to previous known state. </p> <p><strong>Maximum load:</strong> 300W</p> <br /> <h2>Inclusion Information</h2><h1>Including TZ35 to the network</h1> <p><strong>Including to the network (must be installed in its permanent location, not on test bench)</strong></p> <ol><li>Setup the controller you are using to include a device into network.</li> <li>Tap either the top or bottom of the switch once.</li> </ol> <br /> <h2>Exclusion Information</h2><h1><strong>Excluding from the network</strong></h1> <ol><li>Setup the controller you are using to exclude a device from the network.</li> <li>Tap either the top or the bottom of the switch once.</li> </ol><h1>Reset</h1> <ol><li>Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</li> <li>Within 5 second,press On/Off button again for 1 seconds until LED is off</li> <li>IDs are excluded.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

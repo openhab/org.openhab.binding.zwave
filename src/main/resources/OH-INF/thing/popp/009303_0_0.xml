@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_009303_00_000" listed="false">
     <label>009303 Wall Controller</label>
@@ -11,7 +11,6 @@
 Wall Controller<br /> <h1>Overview</h1><p>The Wall Controller is a 4 button Z-Wave device capable to act both as primary or secondary controller. The four buttons can control other Z-Wave devices such as switches, dimmer and even door locks directly. Various options – configurable by Z-Wave configuration commands – define the actions and the commands used for this control. It is possible to use two sets of buttons (one for on/open/up and one for off/closed/down) or four single buttons to control four different groups of devices.</p> <p>The controller also allows triggering scenes in a central controller. Again different modes can be configured to adapt to the various implementations of scenes in different central controllers in the market. Control options also include special modes like „all on/off“ or always controlling the Z-Wave device in proximity to the controller. </p> <br /> <h2>Inclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /> <h2>Exclusion Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p> <br /> <h2>Wakeup Information</h2><p>see attached file "Popp 009303 Battery Wall Controller Manual" (section Reference Documents)</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

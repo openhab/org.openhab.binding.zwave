@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_nasrc03z_00_000" listed="false">
     <label>NAS-RC03Z SOS/Remote Control 1 Button</label>
@@ -11,7 +11,6 @@
 SOS/Remote Control 1 Button<br /> <h1>Overview</h1><p>Remote control/SOS is a smart security device that can communication with other devices via z-wave. It is compatible with z-wave plus devices, battery powered, compact to carry.</p> <p>SOS is used for emergency: with 4 buttons, you can use Remote control for emergency call and set 6 different scenes.</p> <br /> <h2>Inclusion Information</h2><ol><li>Ensure remote control is in z-wave range.</li> <li>Set the controller in learning mode.(refer to the controller user manual)</li> <li>Quickly pressing the red button three times,Led will blink.</li> <li>The controller will recognize remote control and add it into z-wave network.</li> <li>Wait for the controller to configure.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Ensure the device is connected to power supply.</li> <li>Set the controller in remove mode(refer to controller’s user manual)</li> <li>Quick pressing the red button for three times.</li> <li>Wait for removing SOS from the controller .</li> </ol> <br /> <h2>Wakeup Information</h2><p>Quick pressing the red button for three times.</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

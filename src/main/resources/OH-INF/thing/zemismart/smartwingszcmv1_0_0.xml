@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zemismart_smartwingszcmv1_00_000" listed="false">
     <label>Z-CM-V01 SmartWings Motorized Window Treatments</label>
@@ -11,7 +11,6 @@
 SmartWings Motorized Window Treatments<br /> <h1>Overview</h1><p>Motor control device that powers smart window treatments from brands such as SmartWings and Zemismart</p> <br /> <h2>Inclusion Information</h2><p>Pairing Method 1:</p><ol><li>  1. Remove the back cover of the remote.</li><li>  2. Briefly press the P button until the motor jogs once.</li><li>  3. Press the UP button until the motor jogs again.</li><li>  4. Press the P button once more until the motor jogs once.</li><li>  5. A red LED light will illuminate, indicating the motor is in inclusion mode</li></ol><p>Pairing Method 2:</p><ol><li>  1. Press and hold the P1 button on the motor head for 6 seconds until the motor jogs twice.</li><li>  2. A red LED light will illuminate, indicating the motor is in inclusion mode</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>1. Remove the back cover of the remote.</li><li>2. Briefly press the P button until the motor jogs once.</li><li>3. Press the DOWN button until the motor jogs again.</li><li>4. Press the P button once more until the motor jogs once.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

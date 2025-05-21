@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="yale_yrd240_00_000" listed="false">
     <label>YRD240-ZW2 Yale Assure Lock 2</label>
@@ -11,7 +11,6 @@
 Yale Assure Lock 2<br /> <h1>Overview</h1><p>Never worry about carrying around or losing your keys again. The Assure Lock 2 features Z-Wave and seamlessly integrates into 50+ home automation and security systems including SmartThings, Alarm.com, Honeywell, ADT, Wink and more! When added to most Z-Wave™ automation systems, lock and unlock your door, create pin codes, view access history and receive notifications from anywhere.<br /></p> <br /> <h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network (taken from the installation manual):</p><ul><li>On your lock keypad, enter your programming code, followed by the gear icon</li><li>Press the 7 key, followed by the gear icon</li><li>Press the 1 key, followed by the gear icon</li></ul> <br /> <h2>Exclusion Information</h2><p>To exclude the lock from a Z-Wave Network (taken from the installation manual):</p><ul><li>On your lock keypad, enter your programming code, followed by the gear icon</li><li>Press the 7 key, followed by the gear icon</li><li>Press the 3 key, followed by the gear icon</li></ul> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

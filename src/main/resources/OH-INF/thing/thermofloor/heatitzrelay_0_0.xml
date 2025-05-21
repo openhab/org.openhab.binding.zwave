@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="thermofloor_heatitzrelay_00_000" listed="false">
     <label>HEATIT Z-RELAY Multipurpose relay</label>
@@ -11,7 +11,6 @@
 Multipurpose relay<br /> <h1>Overview</h1><p>The Heatit Z-Relay is a Z-Wave module in a water-resistant housing equipped with 10 x membrane cable entries. </p> <p>The Heatit Z-Relay is equipped with 1 relay output and 3 multi-purpose inputs, and a Z-Wave radio for interfacing to the wireless Z-Wave network. The module must be power supplied from a 230V AC mains connection. </p> <p>This heavy-duty relay can be freely controlled from the Z-Wave network, and can be used for several purposes, e.g. control of valve actuators, stoves etc. </p> <p>Two of the Heatit Z-Relay inputs can be configured to function as either digital inputs or as analogue inputs for interfacing simple NTC temperature sensors. When the inputs are used as digital inputs, they can be connected to potential free contacts, open-collector outputs, and will be able to control other Z-Wave devices when the status of the inputs sent to other Z-Wave devices on the Z-Wave network. The last input can be used as either digital input or be used to be connected to a flood detector. </p> <p>It is possible to configure the level- and the indication of the status indicator LED on the modules circuit board.</p> <br /> <h2>Inclusion Information</h2><p>On delivery, the device does not belong to any Z-Wave network. The device needs to be added to an existing wireless network to communicate with the devices of this network. Devices can also be removed from a network. Both add and remove process are initiated by the primary controller of the Z-Wave network. This controller will be turned into a mode for adding or removing devices. Please refer to your primary controller’s manual on how to turn your controller into add or remove mode. Only if the primary controller is in add or remove mode, this device can be added or removed from the network. When the device is removed from the network, it will set the device back to factory default. </p> <p>If the device already belongs to a network, follow the remove process before adding it in your network. Otherwise, the adding of this device will fail. Place your primary controller in Adding Mode by following the manufacturer’s instructions, then activate the add mode on the device by clicking the inclusion button in the module. The Adding Mode is indicated by status LED is blinking until a timeout occurs after 10 seconds or if the module has been added to the Z-Wave network.  </p> <br /> <h2>Exclusion Information</h2><p>The device is removed in the same manner, when the controller is put into Removing Mode. </p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>FloorHeating</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

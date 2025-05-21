@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ubitech_bvszwe01_00_000" listed="false">
     <label>BVSZWE01 Ball Valve Servo</label>
@@ -11,7 +11,6 @@
 Ball Valve Servo<br /> <h1>Overview</h1><p>The BVS (Ball Valve Servo) is a motor to retrofit existing and installed ball valves into smart water controlling devices. Its wireless communication capabilities are compatible with several industry standards (Lora, Z-Wave, ULE) for easy integration into existing networks. The motor is powered by a 12 V external power supply or - optional – a battery block.</p><p>The variable clamps allow mounting even in complex pipe installations. The patented motor coupling ensures easy installation and precise long-term operation. The device can operate in difficult environmental conditions, even submerged under water and allows to directly connect one additional local water sensor pad by cable. </p> <br /> <h2>Inclusion Information</h2><p>When using Smart start just scan the QR code on your device.</p><p>When using classical Z-Wave inclusion, triple click the button. Success is indicated by a green LED blinking for one second plus two short beeps by the buzzer.</p> <br /> <h2>Exclusion Information</h2><p>Triple click the button. Success is indicated by a green LED blinking for one second plus two short beeps by the buzzer.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Valve</category>
-    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

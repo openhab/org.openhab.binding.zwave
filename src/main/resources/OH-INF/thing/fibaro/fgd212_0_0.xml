@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgd212_00_000" listed="false">
     <label>FGD212 Dimmer 2</label>
@@ -11,7 +11,6 @@
 Dimmer 2<br /> <h1>Overview</h1><p>FIBARO Dimmer 2 remotely controlled light dimming module is designed to work with various types of light sources.  It may be connected to  two-wire or three-wire configuration so it can operate with or without neutral lead. FIBARO Dimmer 2 can switch or dim connected light  source either through radio waves or through the wall switch connected directly to it.</p> <br /> <h2>Inclusion Information</h2><ol><li>Place the Dimmer 2 within the direct range of your Z-Wave controller</li> <li>Identify switch no. 1 (turns the light on) or the B-button (located on the device’s housing)</li> <li>Set the main controller in (security/non-security) add mode (see the controller’s manual)</li> <li>Quickly, three times press switch no. 1 or the B-button</li> <li>Wait for the adding process to end</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Place the Dimmer 2 within the direct range of your Z-Wave controller</li> <li>Identify switch no. 1 (turns the light on) or the B-button (located on the device’s housing)</li> <li>Set the main controller in remove mode (see the controller’s manual)</li> <li>Quickly, three times press switch no. 1 or the B-button</li> <li>Wait for the removing process to end</li> <li>Successful removing will be confrimed by the Z-Wave controller’s message</li> <li>Dimmer 2 will start the calibration process</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -792,10 +791,6 @@ Power reported by the device at its maximum brightness level<br /> <h1>Overview<
     <item-type>Number</item-type>
     <label>Forced switch on brightness level</label>
     <description>Switching on the Dimmer will always set this brightness level.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_55258zw4002_00_000" listed="false">
     <label>ZW4002 / GE55258 3-Speed Fan control</label>
@@ -11,7 +11,6 @@
 3-Speed Fan control<br /> <h1>Overview</h1><p>The in-wall fan control easily replaces any standard in-wall switch remotely controls a ceiling fan in your home and features a three-speed control system. Your home will be equipped with ultimate flexibility with the Enbrighten Z-Wave Smart Fan Control, capable of being used by itself or with up to four Enbrighten add-on switches. Screw terminal installation provides improved space efficiency when replacing existing switches and the integrated LED indicator light allows you to easily locate the switch in a dark room. <br /></p> <br /> <h2>Inclusion Information</h2><p>Press and release the top or bottom rocker</p> <br /> <h2>Exclusion Information</h2><p>Press and release the top or bottom rocker<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

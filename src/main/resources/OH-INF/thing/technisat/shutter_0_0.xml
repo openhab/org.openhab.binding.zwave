@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="technisat_shutter_00_000" listed="false">
     <label>TechniSat Shutter Shutter wall switch</label>
@@ -11,7 +11,6 @@
 Shutter wall switch<br /> <h1>Overview</h1><p>TechniSat roller shutter is a wall switch to control window roller shutters via Z-Wave. At the same time, the roller shutters can still be operated manually via the switch. Furthermore, the power consumption can be determined.</p> <p>The roller shutter switch is installed in standard flush-mounted boxes</p> <br /> <h2>Inclusion Information</h2><p>Press the upper position of the left button (T1) 3x within a second.</p> <br /> <h2>Exclusion Information</h2><p>Press and hold the upper position of the left button (T1) for at least 10 seconds when the shutter is in the top position.</p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

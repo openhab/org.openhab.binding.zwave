@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_fgr316_00_000" listed="false">
     <label>FGR-316 DIN Rail 6x2kW Universal Switch / 4xInputs</label>
@@ -11,7 +11,6 @@
 DIN Rail 6x2kW Universal Switch / 4xInputs<br /> <h1>Overview</h1><ul><li>6CH relay switch (max. 16A)</li> <li>Digital temperature sensor</li> <li>Digital input</li> <li>2x analogue inputs 0-10V and 4-20mA (for general use)</li> </ul> <br /> <h2>Inclusion Information</h2><p>Push 3 times</p> <br /> <h2>Exclusion Information</h2><p>Push 3 times</p> <br /> <h2>Wakeup Information</h2><p>Push 3 times</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_dsc08_00_000" listed="false">
     <label>DSC08 Smart Energy Illuminator</label>
@@ -11,7 +11,6 @@
 Smart Energy Illuminator<br /> <h1>Overview</h1><p>The Aeon Labs Inline Smart Energy Illuminator is a Z-Wave light dimmer specifically used to enable Z-Wave commands and control (on/off/dim) a device that is connected to a standard Schuko Wall Outlet.</p> <p>It can also report immediate power consumption or kWh energy usage over a period of time. The wireless module is powered from the mains supply and is a three-wire design which requires a neutral connection. In the event of power failure, non-volatile memory retains all programmed information relating to the units operating status.</p> <p>The Aeon Labs Inline Smart Energy Illuminator can be plugged between every Standard-Schuko wall outlet and the electrical appliance with maximum load of 625W. To switch the plugged device on or off simply push the local button once or use a Z-Wave Controller. The status is shown by the status LED at the device</p> <br /> <h2>Inclusion Information</h2><p>To include the Aeon Labs Inline Smart Energy Illuminator with your Z-Wave controller simple bring it in the inclusion mode and click the Inclusion/Exclusion button at the Aeon Labs Inline Smart Energy Illuminator once. If the Aeon Labs Micro Inline Smart Energy Illuminator was successfully included to a Z-Wave network, the Status Indication LED will either be solid on or off (depending on if the switch is on or off) after the button was last pressed.</p> <br /> <h2>Exclusion Information</h2><p>To exclude the Aeon Labs Inline Smart Energy Illuminator with your Z-Wave controller simple bring it in the exclusion mode and click the Inclusion/Exclusion button at the Aeon Labs Inline Smart Energy Illuminator once. </p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

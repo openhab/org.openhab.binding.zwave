@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="homeseer_hsds100_00_000" listed="false">
     <label>HS-DS100+ Homeseer Z-Wave Door/Window Sensor</label>
@@ -11,7 +11,6 @@
 Homeseer Z-Wave Door/Window Sensor<br /> <h1>Overview</h1><p>HS-DS100+ is a battery operated sensor that is designed to issue Z-Wave commands when doors or windows are opened or closed. HSDS100+ may be associated directly with other Z-Wave devices or it may be used with a wide variety of Z-Wave hubs and controllers to trigger events, scenes and other automations.</p> <br /> <h2>Inclusion Information</h2><ol><li>Ensure AAA batteries are installed. Pull plastic tab from battery compartment (if necessary)</li> <li>Put your home automation controller into ‘inclusion’ mode. Consult your system’s manual for details.</li> <li>HS-DS100+ may be included “securely” (option a) or “non-securely” (option b). If your automation controller does not support secure devices, or if you wish to improve battery life, add the sensor “non-securely”. Otherwise, include the sensor “securely” <ul><li>a) Secure inclusion: Press and hold the Z-Wave button inside the sensor body for 3 seconds. Wait for the process to finish.</li> <li>b) Non-Secure inclusion: Triple-click the Z-Wave button inside the sensor body. Wait for the process to finish.</li> </ul></li> <li>If successful, the sensor body LED will blink briefly and then stay on for 3 seconds. If unsuccessful, the LED with blink briefly and then turn off. Should this happen, repeat the inclusion process.</li> </ol><p>Note: If you want this Door/window sensor to function as a security device using secure/encrypted Z-Wave communications, then a security enabled Z-Wave controller is required. </p> <br /> <h2>Exclusion Information</h2><ol><li>Put your home automation controller into ‘exclusion’ mode. Consult your system’s manual for details.</li> <li>Triple-click the Z-Wave button inside the sensor body. If successful, the LED will turn off within 1 second. If unsuccessful, the LED with blink for 5 seconds. Should this happen, repeat the exclusion process.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Press the Z-Wave button inside the sensor body to wake device.</p>
     ]]></description>
     <category>Door</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

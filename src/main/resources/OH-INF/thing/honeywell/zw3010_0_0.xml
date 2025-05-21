@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="honeywell_zw3010_00_000" listed="false">
     <label>ZW3010 In-Wall Smart Dimmer ZW3010 / 39351</label>
@@ -11,7 +11,6 @@
 In-Wall Smart Dimmer ZW3010 / 39351<br /> <h1>Overview</h1><ul><li>WIRELESSLY CONTROL &amp; SCHEDULE LIGHTS AND OTHER DEVICES– Wirelessly control switch from anywhere through your smartphone, tablet, PC or Z-Wave remote. Schedule timed events for connected devices and customize scenes for day or night, home or away - Switch can also be operated manually</li> <li>REQUIRES A Z-WAVE CERTIFIED HUB - Compatible with the following Z-Wave Hubs: Honeywell, Ring, SmartThings, Wink, HomeSeer, Fibaro, Trane, Nexia, ADT, Vera, and more.</li> <li>ALEXA COMPATIBLE (HUB REQUIRED) - Requires an Alexa supported hub for voice control with Amazon Echo Products (Alexa device and hub are sold separately). CANNOT connect directly with ECHO PLUS or other Alexa products (Only ZigBee products can connect directly to Echo Plus).</li> <li>IN-WALL INSTALLATION WITH HARD WIRED CONNECTIONS (NEUTRAL WIRE REQUIRED) – Replace your existing switch in as little as 15 minutes. Works with all LED, CFL, halogen and incandescent bulbs, and other devices.</li> <li>INCLUDES CHANGEABLE PADDLE COLORS – Includes white and light almond paddles to match any home décor. Features a blue LED indicator light to locate the switch in a dark room. Wall plate is NOT included.</li> </ul> <br /> <h2>Inclusion Information</h2><p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p> <br /> <h2>Exclusion Information</h2><p><strong>NOTE: See Parameter 19 to set alternate exclusion mode</strong></p> <p>Once the controller is ready to add your device, press and release the top or bottom of the smart fan control switch (rocker) to add it in the network.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

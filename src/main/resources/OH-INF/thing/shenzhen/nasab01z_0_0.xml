@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="shenzhen_nasab01z_00_000" listed="false">
     <label>NAS-AB01Z Siren Alarm</label>
@@ -11,7 +11,6 @@
 Siren Alarm<br /> <h1>Overview</h1><p>Siren Alarm with ten different sounds.</p> <br /> <h2>Inclusion Information</h2><p>The siren alarm can be included to the Z-wave network by pressing on the code button.</p> <ol><li>Disassemble the siren alarm and insert the battery into the siren alarm. Make sure the device is located within the direct range of the controller.</li> <li>Set the controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the code button, LED light will flash red.</li> <li>Siren alarm will be detected and included in the Z-Wave network.</li> <li>Wait for the main controller to configure the siren alarm.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the sensor is connected to power source.</li> <li>Set the main controller into the learning mode (see main controller’s operating manual).</li> <li>Quickly, triple click the code button, LED light will flash red for 5 times.</li> <li>Wait for the main controller to delete the sensor.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Press code button once, LED will blink one time.</p>
     ]]></description>
     <category>Siren</category>
-    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

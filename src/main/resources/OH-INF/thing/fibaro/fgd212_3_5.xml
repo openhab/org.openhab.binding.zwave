@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgd212_03_005" listed="false">
     <label>FGD212 Dimmer 2</label>
@@ -11,7 +11,6 @@
 Dimmer 2<br /> <h1>Overview</h1><p>Remotely controlled light dimming module is designed to work with various types of light sources. It may be connected to two-wire or three-wire configuration so it can operate with or without neutral lead. FIBARO Dimmer 2 can switch or dim connected light source either through radio waves or through the wall switch connected directly to it.</p> <p>New FIBARO Dimmer 2 is equipped with an algorithm of smart light source detection which makes configuration easier and ensures high compatibility of the device. It may be used as a switch with nondimmable light sources (in 3-wire connection).</p> <p><strong>Main features of FIBARO Dimmer 2:</strong></p> <ul><li>Compatible with any Z-Wave or Z-Wave+ Controller</li> <li>Controlled by FIBARO Home Center or any other Z-Wave controller</li> <li>Advanced microprocessor control, • Implemented algorithm of smart light source detection</li> <li>Auto-adjustment of the appropriate control mode to connected load</li> <li>Active power and energy metering functionality</li> <li>Soft start function, • Memory of the last lighting level settings</li> <li>Works with various types of switches – momentary, toggle, three-way, etc</li> <li>Active element: semiconductor electronic switch</li> <li>To be installed in wall switch boxes of dimensions allowing for installation, conforming to provisions of applicable regulations</li> <li>FGD-212 is an extension unit.</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Place the Dimmer 2 within the direct range of your Z-Wave controller.</li> <li>Identify switch no. 1 (turns the light on) or the B-button (located on the device’s housing).</li> <li>Set the main controller in (security/non-security) add mode (see the controller’s manual).</li> <li>Quickly, three times press switch no. 1 or the B-button.</li> <li>Wait for the adding process to end.</li> <li>Successful adding will be confirmed by the Z-Wave controller’s message.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Place the Dimmer 2 within the direct range of your Z-Wave controller.</li> <li>Identify switch no. 1 (turns the light on) or the B-button (located on the device’s housing).</li> <li>Set the main controller in remove mode (see the controller’s manual).</li> <li>Quickly, three times press switch no. 1 or the B-button.</li> <li>Wait for the removing process to end.</li> <li>Successful removing will be confirmed by the Z-Wave controller’s message.</li> <li>Dimmer 2 will start the calibration process.</li> </ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -798,10 +797,6 @@ Sends BASIC SET command class<br /> <h1>Overview</h1><p>Sends BASIC SET command 
     <item-type>Number</item-type>
     <label>Forced switch on brightness level</label>
     <description>Dimmer 2 will always set this brightness level.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -810,10 +805,6 @@ Sends BASIC SET command class<br /> <h1>Overview</h1><p>Sends BASIC SET command 
     <item-type>Number</item-type>
     <label>The function of 3-way switch</label>
     <description>Key no. 2 controls the Dimmer additionally</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">3-way switch function for S2 disabled</option>

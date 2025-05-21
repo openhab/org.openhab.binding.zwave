@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="heltun_he-hls01_00_000" listed="false">
     <label>HE-HLS01 High Load Switch</label>
@@ -11,7 +11,6 @@
 High Load Switch<br /> <h1>Overview</h1><p>The HE-HLS01 High Load Switch with Thermostat Functions fits easily behind outlets making them ‘Impossibly Smart’ with over-the-Internet control and advanced programmability. In addition, built-in Power Consumption System helps to monitor how much energy was used. With included NTC temperature sensor it provides thermostat functions where a local display and controls are not needed. The High Load Switch also adds safety to your home by protecting against overloads, overheat, overvoltage, spark and surge conditions.</p> <br /> <h2>Inclusion Information</h2><ol><li><p>Ensure the HE-HLS01 is Powered On and the LED indicator blinks red slowly (i.e. it is excluded).</p></li><li><p>Start the Inclusion Mode from the gateway/controller.</p></li><li><p>To start the inclusion process on the HE-HLS01: </p><p>a) if you want to use the device as a “Binary Switch”, double-press the service button on the device (with no more than a one-second interval between presses).</p><p>b) if you want to use the device as a “Thermostat”, press four times the service button on the device (with no more than a one-second interval between presses).</p></li><li>The LED indicator will blink green quickly.</li><li><p>If the inclusion has been successful, the LED indicator will turn green for three seconds then continue slowly blinking green while the HE-HLS01 device type is “Binary Switch” and turn blue for three seconds then continue slowly blinking blue while the device type is “Thermostat”.</p></li><li><p>If the inclusion was not successful, the LED indicator will turn red for three seconds then continue slowly blinking red continuously while the HE-HLS01 is Powered On. In that case repeat the inclusion process (2-5) above.</p></li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Ensure the HE-HLS01 is Powered On and the LED indicator blinks green slowly (i.e. it is included in a Z-Wave network).</li><li>Start the Exclusion Mode from the gateway/controller.</li><li>To start the exclusion process on the HE-HLS01, double-press the service button on the device (with no more than a one-second interval between presses).</li><li>The LED indicator will blink red quickly.</li><li>If the exclusion has been successful, LED indicator will turn red for three seconds then continue slowly blinking red continuously while the HE-HLS01 is Powered On.</li><li>If the exclusion was not successful, the LED indicator will turn green for three seconds then continue slowly blinking green continuously while the HE-HLS01 is Powered On. In that case repeat the exclusion process (2-5) above.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

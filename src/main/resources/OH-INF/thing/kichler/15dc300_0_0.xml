@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kichler_15dc300_00_000" listed="false">
     <label>15DC300 300W Design Pro LED Controller</label>
@@ -11,7 +11,6 @@
 300W Design Pro LED Controller<br /> <h1>Overview</h1><p>300W Design Pro LED Controller power supply for use with landscape lighting systems.</p> <br /> <h2>Inclusion Information</h2><p>On the Controller intended to be the subservient press: <strong>Home&gt;Network&gt;Join Network</strong>. Then press <strong>Enter</strong>.</p> <br /> <h2>Exclusion Information</h2><p>On the Controller to be removed press: <strong>Home&gt;Network&gt;Leave Network</strong>. Then press <strong>Enter</strong>.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="habhome_iblindsib20_00_000" listed="false">
     <label>IB2.0 Window Blind Controller</label>
@@ -11,7 +11,6 @@
 Window Blind Controller<br /> <h1>Overview</h1><p>An intelligent Z-Wave blind motor that installs out of sight in existing Horizontal (2" and 2 1/2" slatted-style) blind headrails. Use iBlinds to tilt the slats open, closed or use the value slider for precise positioning of the slat tilt angle.</p> <br /> <h2>Inclusion Information</h2><ol><li>Follow the directions for your Z-Wave hub/controller to place it in the add for inclusion mode.</li> <li>Press the inclusion button (IN/EX) once and wait for the device to be discovered and joined to the Z-Wave network.  Follow the directions of your Z-Wave controller to uniquely identify your iblinds device.   (Ex: Bedroom iblinds).</li> </ol><p><strong><em>Note: If the device is not joined to the network.  Press the CLBR button, wait 1 second and repeat steps 1 and 2 again.  If you continue to have trouble joining the iblinds motor to the Z-Wave network, follow the Z-Wave network exclusion process. </em></strong></p> <br /> <h2>Exclusion Information</h2><ol><li>Follow the directions for your Z-Wave hub/controller to place it in the exclusion mode.</li> <li>Press the exclude button (IN/EX) once and wait for the iblinds device to be removed from the Z-Wave network.</li> </ol><p>If you are having issues with exclusion, please check our troubleshooting page here.</p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

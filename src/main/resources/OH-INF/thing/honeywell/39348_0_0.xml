@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="honeywell_39348_00_000" listed="false">
     <label>39348 In-Wall Smart Switch</label>
@@ -11,7 +11,6 @@
 In-Wall Smart Switch<br /> <h1>Overview</h1><p>Honeywell Z-Wave Plus On/Off Smart Light Switch, In-Wall Paddle, Interchangeable White &amp; Almond | Built-In Repeater &amp; Range Extender | Model 39348</p> <br /> <h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</li> <li>Once the controller is ready to add your device, press and release the top or bottom of the wireless smart fan control (rocker) to add it in the network.</li> </ol><p><br />Now you have complete control to turn your fixture ON/OFF according to groups, scenes, schedules and interactive automations programmed by your controller. If your Z-Wave certified controller features remote access, you can now control your fixture from your mobile devices.</p> <br /> <h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network.</li> <li>Once the controller is ready to remove your device, press and release the top or bottom of the wireless smart fan control (rocker) to remove it from the network.</li> </ol><p>RETURNING SWITCH TO FACTORY DEFAULTS</p> <p>Quickly press ON (Top) button three (3) times then immediately press the OFF (Bottom) button three (3) times. The LED will flash ON/OFF 5 times when completed successfully.<br />Note: This should only be used in the event your network’s primary controller is missing or otherwise inoperable.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="yale_sdm1100_00_000" listed="false">
     <label>SD-M1100 Yale Smart Door Lock Z-Wave Module 2</label>
@@ -11,7 +11,6 @@
 Yale Smart Door Lock Z-Wave Module 2<br /> <h1>Overview</h1><p>Smart Door Lock Z-Wave Module</p> <br /> <h2>Inclusion Information</h2><p>Based on Remote Controller Add on user manual each Yale product.</p> <p>This in steps for Yale Conexis L1</p> <ol><li>Put the Z-Wave controller into add or learn mode</li> <li>Enter the master code on the lock, followed by #</li> <li>Press the 4 button, followed by #</li> <li>Press the 1 button followed by #</li> <li>Refer to the operation manual of the Z-Wave controller to complete the learn in proccess.</li> </ol> <br /> <h2>Exclusion Information</h2><p> Based on Remote Controller Remove on user manual each Yale product.</p> <p>This in steps for Yale Conexis L1</p> <ol><li>Put the Z-Wave controller into add or learn mode</li> <li>Enter the master code on the lock, followed by #</li> <li>Press the 4 button, followed by #</li> <li>Press the 3 button followed by #</li> <li>Refer to the operation manual of the Z-Wave controller to complete the learn in proccess.</li> </ol>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

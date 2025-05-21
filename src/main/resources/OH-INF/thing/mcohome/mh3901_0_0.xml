@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_mh3901_00_000" listed="false">
     <label>MH3901 Boiler Thermostat</label>
@@ -11,7 +11,6 @@
 Boiler Thermostat<br /> <h1>Overview</h1><p>MCOHome Thermostat for Water Heating is a Z-Wave enabled device for indoor temperature control.</p><ul><li> Capacitive touch buttons</li><li>Attractive appearance</li><li>Clear display, easy to operate</li></ul> <br /> <h2>Inclusion Information</h2><p>Long press on S1 + S3 </p> <br /> <h2>Exclusion Information</h2><p>Long press on S1 + S3 <br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -170,10 +169,6 @@ Boiler Thermostat<br /> <h1>Overview</h1><p>MCOHome Thermostat for Water Heating
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

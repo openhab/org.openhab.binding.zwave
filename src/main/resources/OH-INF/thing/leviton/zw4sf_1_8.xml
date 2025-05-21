@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="leviton_zw4sf_01_008" listed="false">
     <label>ZW4SF Fan Speed Controller</label>
@@ -11,7 +11,6 @@
 Fan Speed Controller<br /> <h1>Overview</h1><p>The Decora Smart branded Z-Wave enabled Fan Speed Controller is designed for use with modern Z-Wave hubs.</p><p>This product can be operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers. Your fan controller will act as a repeater in the network to increase the reliability of the network.</p><p>The Decora Smart Z-Wave fan controller allows you to select one of 4 fan speeds or turn your fan off from a smartphone or tablet or by voice when used with a z-wave hub.</p><p>The Decora Smart fan controller looks at home with your other Decora branded products. It has convenient manual on/off control, and an integrated bar to provide easy speed adjustment and hidden indicator lights.</p> <br /> <h2>Inclusion Information</h2><p><b>Network-wide Inclusion:</b></p><p>1. To enter programming mode, hold the top panel for 7 seconds. The status light will turn amber. Release and the status light will blink.</p><p>2. Tap the top of the paddle 1 time. The status light will quickly flash green.</p><p>3. The fan controller is now ready to learn into the Z-Wave network. Follow directions for the Z-Wave controller to complete the process.</p><p>4. Upon successful addition to the network the status light will turn off and then flash green 4 times. If it was not successfully added to the network, the status light will flash red 4 times.</p><p><b>Classic Inclusion:</b></p><ol><li>To enter programming mode, hold the top panel for 7 seconds. The status light will turn amber. Release and the status light will blink.</li><li>Follow the Z-Wave controller instructions to enter inclusion mode.</li><li>Tap the top of the paddle 1 time. The status light will quickly flash green.</li><li>The Z-Wave controller will confirm successful inclusion to the network.</li></ol> <br /> <h2>Exclusion Information</h2><p>To Exclude the device:</p><ol><li>Hold the top paddle for 7 seconds. The status light will turn amber. Release and the status light will blink.</li><li>Follow Z-Wave controller instructions to enter exclusion mode.</li><li>Tap the top of the paddle 1 time. The status light will quickly flash green.</li><li>The Z-Wave controller will remove the device from the network.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

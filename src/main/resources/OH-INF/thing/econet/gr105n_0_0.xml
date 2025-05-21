@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="econet_gr105n_00_000" listed="false">
     <label>GR-105N Z-Wave Motor for water/gas ball valves</label>
@@ -11,7 +11,6 @@
 Z-Wave Motor for water/gas ball valves<br /> <h1>Overview</h1><p>This valve clamps onto your existing valve, allowing you to open/close the valve via Z-Wave as soon as you notice a problem.</p> <br /> <h2>Inclusion Information</h2><p>With controller in inclusion mode, triple-press valve button within 1 second to include.</p> <br /> <h2>Exclusion Information</h2><p>With controller in exclusion mode, triple-press valve button within 1 second to exclude.</p> <p>Holding the valve button for more than 10 seconds resets to factory default settings.</p>
     ]]></description>
     <category>Valve</category>
-    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

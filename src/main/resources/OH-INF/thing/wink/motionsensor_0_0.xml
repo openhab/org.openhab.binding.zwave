@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="wink_motionsensor_00_000" listed="false">
     <label>Motion Sensor Motion Sensor</label>
@@ -11,7 +11,6 @@
 Motion Sensor<br /> <h1>Overview</h1><p>Magnetically mounted motion sensor</p> <br /> <h2>Inclusion Information</h2><p>Twist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times until unit blinks blue five times.</p> <br /> <h2>Exclusion Information</h2><p>Twist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times until unit blinks blue five times.</p> <br /> <h2>Wakeup Information</h2><p>Twist back of unit, then lift off. (Will be difficult due to strong mounting magnet.) Push connect button three times and light will blink blue five times.</p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

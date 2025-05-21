@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="philio_pse02_00_000" listed="false">
     <label>PSE02 Siren</label>
@@ -11,7 +11,6 @@
 Siren<br /> <h1>Overview</h1><p>The PSE02 is a wireless siren with multiple sound capabilities.</p> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode. Press tamper key three times within 1.5 seconds. After device was added successfully, the LED will turn on for 1 second.</p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode. Press tamper key three times within 1.5 seconds. </p>
     ]]></description>
     <category>Siren</category>
-    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

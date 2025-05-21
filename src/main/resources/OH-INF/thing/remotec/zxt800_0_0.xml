@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="remotec_zxt800_00_000" listed="false">
     <label>ZXT-800 AC / AV Master</label>
@@ -11,7 +11,6 @@
 AC / AV Master<br /> <h1>Overview</h1><p>The ZXT-800 is a Z-Wave™plus compliant Z-Wave™-to-IR Bridge to control split air conditioner and entertainment devices by receiving Z-Wave™ commands and translating them into Infrared commands. With a built-in and cloud-stored IR database (library) the ZXT-800 can control different brands and models of infrared devices world-wide.</p>The ZXT-800 can be set from the gateway to a particular brand with the correct IR code. Users can set up the IR (AV + AC) code using the “Conexum ZXT-800” App through Bluetooth download. iOS and Android Apps are available in the app-store. <br /> <h2>Inclusion Information</h2><p>Once the primary controller is ready to include the device, press the “PROG” button once.<br /></p> <br /> <h2>Exclusion Information</h2><p>Once the primary controller is ready to exclude the device, press the “PROG” button once.<br /></p> <br /> <h2>Wakeup Information</h2><p>The device has 2 operating modes. When the device is powered during inclusion the device is always awake / listening. When the device is included whilst on battery power the device will operate in FLiRS mode.<br /></p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -432,10 +431,6 @@ Factory Reset the ZXT-800.<br /> <h1>Overview</h1><p>Set this parameter to 255 t
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -454,10 +449,6 @@ Factory Reset the ZXT-800.<br /> <h1>Overview</h1><p>Set this parameter to 255 t
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>

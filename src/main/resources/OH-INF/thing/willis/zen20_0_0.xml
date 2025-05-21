@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="willis_zen20_00_000" listed="false">
     <label>ZEN20 Smart Energy Power Strip</label>
@@ -11,7 +11,6 @@
 Smart Energy Power Strip<br /> <h1>Overview</h1><ul><li>Wireless control of up to 5 electrical devices</li> <li>Scene inclusion for custom automation scenarios when included to a Z-Wave gateway controller</li> <li>Z-Wave Plus with improved 500 chip for faster and safer wireless communication\</li> <li>Signal repeater for a stronger, more reliable network</li> <li>2 USB charging ports for your smart phone or tablet (no Z-Wave functionality)</li> <li>Built-in overload protection</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Plug the power strip into a grounded receptacle located within direct range from your Z- Wave gateway controller</li> <li>Put your Z-Wave controller in inclusion mode</li> <li>Press and release the CH1 power button on the strip 3 times quickly</li> <li>A new on / off device should appear on your controller's device list</li> </ol><h1>Troubleshooting Tips</h1> <p>If you are unable to include the Z-Wave power strip to your controller, please try one of the following:</p> <ul><li>Bring the power strip closer to your Z-Wave controller</li> <li>Press and release the CH1 power button quickly 7-8 times once you put the controller in the inclusion mode to ensure the command has gone through</li> <li>Put your controller in the EXCLUSION mode and press and release the CH1 power button quickly 3 times, then try adding it to your network again</li> </ul> <br /> <h2>Exclusion Information</h2><ol><li>Plug the power strip into a grounded receptacle located within direct range from your Z-Wave gateway controller</li> <li>Put your Z-Wave controller in exclusion mode</li> <li>Press and release the CH1 power button on the strip 3 times quickly</li> <li>The device should disappear from your controller's device list</li> </ol><p>Please repeat the process following all steps carefully if the first attempt is unsuccessful</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightStrip</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

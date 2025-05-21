@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="defaro_dad101_00_000" listed="false">
     <label>DAD-101 Dimmer with sensors support</label>
@@ -11,7 +11,6 @@
 Dimmer with sensors support<br /> <h1>Overview</h1><p>One channel dimmer with ability to add different sensors to it.</p> <br /> <h2>Inclusion Information</h2><ol><li>Put controller in inclusion mode.</li> <li>Power on device. It should be added automatically (using NWI).</li> <li>If not fast press add/remove button three times.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put controller in exclusion mode.</li> <li>Fast press add/remove button three times.</li> </ol> <br /> <h2>Wakeup Information</h2><p>Always listening</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

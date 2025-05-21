@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw090_00_000" listed="false">
     <label>ZW090 Z‐Stick Gen5 USB Controller</label>
@@ -11,7 +11,6 @@
 Z‐Stick Gen5 USB Controller<br /> <h1>Overview</h1><p>Aeon Labs Z‐Stick Gen5 is a self‐powered Z‐Wave USB adapter with remote network creation capabilities <br />(independent from external power and host microprocessor).  By being able to remotely include/remove Z‐<br />Wave devices, this greatly simplifies Z‐Wave network installation.  When connected to a host controller (via <br />USB), it enables the host controller to take part in the Z‐Wave Network. <br />It can be included and operated in any Z‐wave network with other Z‐wave certified devices from other <br />manufacturers and/or other applications. All non‐battery operated nodes within the network will act as <br />repeaters regardless of vendor to increase reliability of the network. </p> <br /> <h2>Inclusion Information</h2><p>Push the include button.  Controller will blink slowly.  It is in include mode.  Press again to cancel.</p> <br /> <h2>Exclusion Information</h2><p>1. Unplug the Z‐Stick from the USB connector. Then press and hold the Action Button for <br />approximately 2 seconds. (The orange LED will blinking fast.) <br />2. To remove a Z‐Wave device from the network, simply go to the device with the Z‐Stick <br />and press the Action Button on the device you wish to remove. (The LED on the Z‐Stick will <br />become blue and Immediately stay solid for 2 seconds to indicate successful removal from <br />the network.) <br />3.   The orange LED will then return to blinking fast, indicating readiness for further device <br />exclusions. Repeat step 1 for each device as you wish to exclude</p> <br /> <h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>

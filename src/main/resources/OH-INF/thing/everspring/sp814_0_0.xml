@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_sp814_00_000" listed="false">
     <label>SP814 Motion Detector</label>
@@ -11,7 +11,6 @@
 Motion Detector<br /> <h1>Overview</h1><p>The Motion Detector is a Z-WaveTM enabled device which is fully compatible with any Z-WaveTM enabled network. Z-WaveTM enabled devices displaying the Z-WaveTM logo can also be used with it regardless of the manufacturer, and ours can also be used in other manufacturer’s Z-WaveTM enabled networks. This Motion Detector can control our modules via controller setting. Inclusion of this Motion Detector on other manufacturer’s Wireless Controller menu allows remote turn-on of connected modules when the detector is triggered. </p> <br /> <h2>Inclusion Information</h2><p>Pressing link key 3 times within 1.5 second will enter inclusion mode.</p> <p>The Detector will stay “awake” for 10 minutes to allow time for setting and device status enquiring.</p> <br /> <h2>Exclusion Information</h2><p>Pressing link key 3 times within 1.5 second will enter exclusion mode.</p> <p>The Detector will stay “awake” for 10 minutes to allow time for setting and device status enquiring. </p> <br /> <h2>Wakeup Information</h2><p>Not Provided</p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

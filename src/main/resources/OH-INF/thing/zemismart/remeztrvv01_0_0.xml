@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zemismart_remeztrvv01_00_000" listed="false">
     <label>Remotec Thermostat 700 series TRV Z-Wave Plus Remotec Thermostat 700 series TRV</label>
@@ -11,7 +11,6 @@
 Z-Wave Plus Remotec Thermostat 700 series TRV<br /> <h1>Overview</h1><p>This device is a Z-Wave controlled electronic radiator thermostat.</p><p>It is mounted on wall heating valves and controls them by a motor.</p> <br /> <h2>Inclusion Information</h2><ol><li>1. Power on your TRV,</li><li>2. Set your Z-Wave controller into add/inclusion mode.</li><li>3. In the “OF” state, short press the rotary plate three times until the screen shows “–”.</li><li>4. The screen will show “PA” after a few seconds, which meant the inclusion is successful.</li><li>5. And the antenna icon will light on.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>1. Power on your TRV</li><li>2. Set the Z-Wave primary controller into remove/exclusion mode.</li><li>3. In the “OF” state, short press the rotary plate three times until the screen shows “–“.</li><li>4. The screen will turn back to“OF” after a few seconds, which meant the inclusion is successful.</li><li>5. The antenna icon light will be off.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -90,10 +89,6 @@ Group 1 for “Lifeline”<br /> <h1>Overview</h1><p>1.Battery Report </p><p>The
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

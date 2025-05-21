@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="thermofloor_ztrm2fx_03_000" listed="false">
     <label>Z-TRM2fx Floor thermostat</label>
@@ -11,7 +11,6 @@
 Floor thermostat<br /> <h1>Overview</h1><p>FEATURES</p> <ul><li>Floor sensor</li> <li>External room sensor</li> <li>Temperature limiter</li> <li>Weekly program/setback via gateway or pilot wire</li> <li>Multilevel sensor command class</li> <li>Firmware updates (OTA)</li> <li>Power metering</li> <li>LED-diode</li> <li>May be used in connection with different NTC-sensors</li> <li>Lock mode/child lock</li> <li>Calibration</li> <li>5 associations</li> <li>Supports encryption mode: S0, S2 Authenticated Class, S2 Unauthenticated Class</li> </ul> <br /> <h2>Inclusion Information</h2><p>To add the thermostat to your home automation gateway, press Center (confirm) for 10 seconds.The display will show OFF.</p> <p>Press Right (down) 4 times till you see Con in the display.</p> <p>Now start add device in your home automation software.</p> <p>Start adding mode by pressing Center (confirm) for approximately 2 seconds.</p> <p>Adding Mode is indicated in the display by some “circling” LED segments in the display until the timeout occurs after 20 seconds or the module has been added in the network.</p> <p>Confirmation will show Inc in the display. If adding fails, Err (error) will appear.</p> <p>Leave programming mode by choosing ESC in menu. Your thermostat is ready for use with default settings.</p> <br /> <h2>Exclusion Information</h2><p>To remove the thermostat from your home automation gateway, press Center (confirm) for 10 seconds. The display will show OFF.</p> <p>Press Right (down) 4 times till you see Con in the display.</p> <p>Now start remove device in your home automation software.</p> <p>Start removing mode by pressing Center (confirm) for approximately 2 seconds.</p> <p>Removing Mode is indicated in the display by some “circling” LED segments in the display until the timeout occurs after 20 seconds or the module has been removed from the network.</p> <p>Confirmation will show Inc/EcL in the display. If removing fails, Err (error) will appear.</p> <p>Leave programming mode by choosing ESC in menu.</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -438,10 +437,6 @@ The main thermostat device<br /> <h1>Overview</h1><p>Lifeline. (Normally used by
     <item-type>Number</item-type>
     <label>Display brightness - dimmed state</label>
     <description>Display brightness - dimmed state</description>
-    <tags>
-      <tag>Status</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -450,10 +445,6 @@ The main thermostat device<br /> <h1>Overview</h1><p>Lifeline. (Normally used by
     <item-type>Number</item-type>
     <label>Button brightness - dimmed state</label>
     <description>Button brightness - dimmed state</description>
-    <tags>
-      <tag>Status</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -463,10 +454,6 @@ The main thermostat device<br /> <h1>Overview</h1><p>Lifeline. (Normally used by
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

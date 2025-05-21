@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeotec_zwa022_00_000" listed="false">
     <label>ZWA022 illumino WallMote 7</label>
@@ -11,7 +11,6 @@
 illumino WallMote 7<br /> <h1>Overview</h1><p>Battery powered Z-Wave remote control designed to look like a regular light switch. This Z-Wave remote control can be used to easily add a light switch or dimmer to any location in your home to control smart lighting. This versatile smart remote can also be used as a scene controller.<br /></p> <br /> <h2>Inclusion Information</h2><p>Set your Z-Wave controller into pairing mode.</p><p>Single-click the Action button on WallMote7 - the LED flashes quickly.</p><p>After successful inclusion, the LED is solid for 2 seconds.</p> <br /> <h2>Exclusion Information</h2><p>Your WallMote 7 can be removed from your Z-Wave network at any time. You'll need to use your Z-Wave network's main controller/gateway. To do this, please refer to the part of their respective manuals that tell you how to remove devices from your network.</p><p>Steps.</p><ol><li>Put your primary controller into device removal mode.</li><li>Remove your WallMote 7 from the wall and take it near to your primary controller. </li><li>Press the Top or Bottom Button 6x times quickly on your WallMote 7.</li><li>The LED on WallMote 7 will fade its LED in and out to indicate it is ready to be paired to a new hub.</li></ol> <br /> <h2>Wakeup Information</h2><p>To send your WallMote 7 new configuration commands from your Z-Wave controller or gateway, it will need to be woken up.</p><p>Steps.</p><p>Tap the top or bottom button 7x times quickly.</p><p>If successful, the LED will light up yellow.</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nietech_zw31_00_000" listed="false">
     <label>ZW31 In-Wall Smart Dimmer Switch 3-Way</label>
@@ -11,7 +11,6 @@
 In-Wall Smart Dimmer Switch 3-Way<br /> <h1>Overview</h1><p>Rule your home into a smart home with EVA LOGIK Z-Wave Plus Smart Switch. Each switch product also gives you perfect control and perfect intelligent automation.</p> <p>Monitor and control your lighting and small appliances with your smartphone. Connect this Z-Wave switch to your existing 3-way switch. It doesn’t need a dedicated companion so you can save more on multi-switch set-up!</p> <br /> <h2>Inclusion Information</h2><p>Once the controller is ready to include your device, quickly, three times press the top or bottom of the wireless smart switch(rocker) to include it in the network.</p> <br /> <h2>Exclusion Information</h2><p>Once the controller is ready to exclude your device, quickly, three times press the top or bottom of the wireless smart switch (rock- er) to exclude it from the network.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

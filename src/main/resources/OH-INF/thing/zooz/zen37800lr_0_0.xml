@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen37800lr_00_000" listed="false">
     <label>ZEN37 800LR Remote Switch</label>
@@ -11,7 +11,6 @@
 Remote Switch<br /> <h1>Overview</h1><ul><li>4 smart buttons: control Z-Wave devices and activate scenes<br /></li><li>Install anywhere: fits a standard decora switch box, sticks to a wall, or keeps handy on your night stand<br /></li><li>No wires: this device is powered by a rechargeable battery for easier installation and low maintenance<br /></li><li>Scene Control (select hubs only): run up to 24 scenes or control up to 24 devices with multi-tap triggers.<br /></li><li>NEW 800 chip: more range, faster signal, SmartStart inclusion + S2 security<br /></li><li>Z-Wave Long Range ready: extend the wireless coverage up to 1300 feet if your hub supports Long Range<br /></li><li>Magnetic base: take the remote out whenever you need to use it like a traditional remote control and put it back on the base for easy access next time<br /></li></ul> <br /> <h2>Inclusion Information</h2><p>Put your Z-Wave hub into inclusion mode and click the top button 6 times quickly. The LED indicator will blink blue during the process and light up green once added successfully. It will light up red if failed.<br /></p><p>Or scan the QR code shown on the back side of the remote.</p> <br /> <h2>Exclusion Information</h2><ol><li>Bring the Wall Remote within direct range of your Z-Wave hub.<br /></li><li>Put the Z-Wave hub into exclusion mode (not sure how to do that? ask@getzooz.com).<br /></li><li>Click the middle button 6 times very quickly<br /></li><li>Your hub will confirm exclusion and the device will disappear from your controller's device list.<br /></li></ol> <br /> <h2>Wakeup Information</h2><p>You will need to wake the Remote Switch up when changing any advanced settings or assigning any new scenes or actions to it.</p><p>Click the lower left button 6 times as quickly as possible to wake the device up. The LED indicator will stay on solid blue during wake-up and will turn off when the device turns the Z-Wave radio off again.</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="hank_hkzws001_00_000" listed="false">
     <label>HKZW-SO01 Smart Plug with two USB ports</label>
@@ -11,7 +11,6 @@
 Smart Plug with two USB ports<br /> <h1>Overview</h1><p>Hank Smart Plug is a Z-Wave Switch plugin module specifically used to enable Z-Wave command and control (On/Off) of any plug-in tool. It can report wattage consumption or kWh energy usage. Smart Plug is also a security Z-Wave device and supports Over The Air (OTA) feature for the product's firmware upgrade.</p> <p>Based on the Z-Wave Plus specification.</p> <p>Features List:</p> <ol><li>Supports 1xAC output and 2xUSB outputs;</li> <li>AC output switch on/off by manual or Z-Wave command;</li> <li>LED indicates the working status;</li> <li>Z-Wave plus compatible (500 serials Product);</li> <li>Supporting power meter;</li> <li>Supporting repeater role</li> <li>Supporting firmware OTA</li> </ol> <br /> <h2>Inclusion Information</h2><p>Manual Z-Wave network inclusion:</p> <ol><li>Connect the power supply.</li><li>Set the Z-Wave network main controller into learning mode (see Z-Wave network controller operating manual).</li><li>Triple click the Z-button</li><li>Smart Plug should be recognized and included into the Z-Wave network.</li></ol> <p>TIP:</p> <p>If the LED indicator not blinking when inserting a Plug into a socket, it means the plug was already added in other existing network.</p> <br /> <h2>Exclusion Information</h2><p>REMOVING FROM Z-WAVE NETWORK</p> <p>To remove Smart Plug from the Z-Wave network:</p> <ol><li>Insert the Plug into a socket</li><li>Set the Z-Wave network controller into the exclusion mode (see Z-Wave controller operating manual)</li><li>Triple click the Z button.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kaipule_ix32_06_000" listed="false">
     <label>DP-32 / IX-30 / IX-32 PIR Sensor</label>
@@ -11,7 +11,6 @@
 PIR Sensor<br /> <h1>Overview</h1><p>The hardware board for the IX30 (wall) and IX32 (ceiling) is the same thing and reports the same Type and ID.</p> <br /> <h2>Inclusion Information</h2><p>Enter the Inclusion Mode of gateway, and press the tamper switch 3 times within 1.5s, then the PIR sensor will stay in enrollment state until successfully enrolled into network or enrollment time out after 30s.</p> <br /> <h2>Exclusion Information</h2><p>Enter the Exclusion Mode of gateway, and press the tamper switch 3 times within 1.5s, then the PIR sensor will be removed after a period of time.</p> <br /> <h2>Wakeup Information</h2><p>Quickly press tamper switch once, the PIR sensor will automatically send wake-up information, and there will be 10s after wake-up to receive gateway setting information.</p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

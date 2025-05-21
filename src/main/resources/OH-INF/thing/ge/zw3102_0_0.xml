@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw3102_00_000" listed="false">
     <label>ZW3102 Jasco Energy Monitoring Lamp Dimmer</label>
@@ -11,7 +11,6 @@
 Jasco Energy Monitoring Lamp Dimmer<br /> <h1>Overview</h1><p>Energy Monitoring Lamp Module</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>Lamp</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

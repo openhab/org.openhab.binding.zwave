@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="simontech_1000204113x_00_000" listed="false">
     <label>10002041-13X iO Cover for the Simon 100 Schuko Plug Socket</label>
@@ -11,7 +11,6 @@
 iO Cover for the Simon 100 Schuko Plug Socket<br /> <h1>Overview</h1><p>Once plugged to 10002432-039 this front permits the direct control of a load plugged toggling it each time that the pushbutton is pressed. It is also possible to control the load using Z- Wave devices.</p> <br /> <h2>Inclusion Information</h2><p>KeyPad long press (2s&lt;t&lt;30s) -&gt; Central LED blinks until release of Pushbutton -&gt; The Node Information Frame is sent via Z- Wave.</p> <br /> <h2>Exclusion Information</h2><p>KeyPad long press (2s&lt;t&lt;30s) -&gt; Central LED blinks until release of Pushbutton -&gt; The Node Information Frame is sent via Z- Wave.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="qubino_zmnhkd_00_000" listed="false">
     <label>ZMNHKD Flush Heat &amp; Cool Thermostat</label>
@@ -11,7 +11,6 @@
 Flush Heat &amp; Cool Thermostat<br /> <h1>Overview</h1><p>This Z-Wave module is used to regulate temperature in heating and cooling mode. Module can be controlled either through Z-Wave network or through the wall switch. The module is designed to be mounted inside a “flush mounting box” and is hidden behind a traditional wall switch. Module measures power consumption of connected device. It is designed to act as repeater in order to improve range and stability of Z-wave network.</p> <br /> <h2>Inclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply (with temperature sensor connected - if purchased),</li> <li>Enable add/remove mode on main controller</li> <li>Auto-inclusion (works for about 5 seconds after connected to power supply) or</li> <li><strong>110V-230V power supply: </strong>Press push button I1 three times within 3 seconds (3 times change switch state within 3 seconds)</li> <li><strong>24V SELV: </strong>Press service button <strong>S</strong> for more than 2 seconds.</li> </ul><p><strong>NOTE1:</strong> For auto-inclusion procedure, first set main controller into inclusion mode and then connect module to power supply.</p> <p><strong>NOTE2:</strong> When connecting temperature sensor to module that has already been included, you have to exclude module first. Switch off power supply,connect the sensor and re-include the module.</p> <br /> <h2>Exclusion Information</h2><p>WARNING: Service button S <strong>must NOT be used</strong> when module is connected to 110-230V power supply.</p> <ul><li>Connect module to power supply</li> <li>Bring module within maximum 1 meter (3 feet) of the main controller</li> <li>Enable add/remove mode on main controller</li> <li><strong>110V-230V power supply:</strong> Press push button <strong>I1</strong> five times within 3 seconds (5 times change switch state within 3 seconds) in the first 60 seconds after the module is connected to the power supply</li> <li><strong>24V SELV:</strong> Press ervice button <strong>S</strong> for more than 6 seconds.</li> </ul><p>By this function all parameters of the module are set to default values and own ID is deleted. If push button I1 is pressed three times within 3 seconds (or service button S is pressed more than 2 and less than 6 seconds) module is excluded, but configuration parameters are not set to default values.</p> <p>NOTE: If the module is included with parameters 100 or 101 with values different to default and module reset is done, wait at least 30s before next inclusion.</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -486,10 +485,6 @@ Node ID of external battery powered room sensor<br /> <h1>Overview</h1><p>If dig
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fakro_arzsolar_00_000" listed="false">
     <label>ARZ Solar Roller Shutter</label>
@@ -11,7 +11,6 @@
 Roller Shutter<br /> <h1>Overview</h1><p>Roller shutter controlled by a remote control. Solar roller shutter is equipped with a control unit and accumulator. The accumulator is powered by a solar cell placed on the roller shutter. Recommended for places with no access to 230V supply.</p> <br /> <h2>Inclusion Information</h2><p>Start INCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.</p> <br /> <h2>Exclusion Information</h2><p>Start EXCLUDE procedure with the controller of existing network and then press programming button P on the roller shutter being added to the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

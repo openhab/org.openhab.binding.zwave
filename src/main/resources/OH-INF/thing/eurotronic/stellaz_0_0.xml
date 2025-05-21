@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eurotronic_stellaz_00_000" listed="false">
     <label>StellaZ Thermostatic Valve</label>
@@ -11,7 +11,6 @@
 Thermostatic Valve<br /> <h1>Overview</h1><p>StellaZ is a wireless Thermostat Valve Control capable controlling heating, air ventilation and climate control units. Sensors, control and actuator are combined in one single device allowing stand alone energy efficient room control.</p> <p>The device can run in four different operation modes (Off, Energy Saving, Comfort, Direct Control) to control the temperature. The room temperature can also be reported by the device. Open windows will be recognized and lead to a lower control temperature for 20 minutes to prevent waste of energy.</p> <br /> <h2>Inclusion Information</h2><p>Pushing the button behind the round hole in the enclosure for 5 seconds will confirm inclusion of the device.</p> <br /> <h2>Exclusion Information</h2><p>Pushing the button behind the round hole in the enclosure for 5 seconds will confirm exclusion of the device.</p> <br /> <h2>Wakeup Information</h2><p>A single click on button behind the round hole in the enclosure wakes up the device when sleeping.</p>
     ]]></description>
     <category>RadiatorControl</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -86,10 +85,6 @@ Thermostatic Valve<br /> <h1>Overview</h1><p>StellaZ is a wireless Thermostat Va
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

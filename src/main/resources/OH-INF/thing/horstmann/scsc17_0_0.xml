@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="horstmann_scsc17_00_000" listed="false">
     <label>SCSC-17 7 Day Room Thermostat</label>
@@ -11,7 +11,6 @@
 7 Day Room Thermostat<br /> <h1>Overview</h1><p>Mains Operated Programmable Room Thermostat</p> <br /> <h2>Inclusion Information</h2><ul><li>On the C-Stat programmable stat, go to Zwave Menu</li> <li>Press INCLUDE/NODE RECEIVER</li> </ul> <br /> <h2>Exclusion Information</h2><p>not provided</p> <br /> <h2>Wakeup Information</h2><p>not provided</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -137,10 +136,6 @@ Defines the temperature steps of the heating control<br /> <h1>Overview</h1><p>D
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

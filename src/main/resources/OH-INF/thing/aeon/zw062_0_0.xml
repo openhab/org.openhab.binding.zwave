@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw062_00_000" listed="false">
     <label>ZW062 Aeon Labs Garage Door Controller Gen5</label>
@@ -11,7 +11,6 @@
 Aeon Labs Garage Door Controller Gen5<br /> <h1>Overview</h1><p>Aeon Labs Garage Door Controller is a smart and wireless Garage Door Control system, you can control the garage door to open, close, or stop moving via wireless signal on your gateway client or phone application.</p> <p>The Garage Door Controller allows you to configure different alarm sounds to indicate the door ’s action.</p> <p>Each action alarm sound can be customized. To change or update new alarm sounds for the Garage Door Controller, connect the Garage Door Controller to your PC host with a USB cable and download your sound files to the flash memory (128 MB) of the Garage Door Controller.</p> <p>It can be included and operated in any Z-wave network with other Z-wave certified devices from other manufacturers and/or other applications. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.</p> <p>It is also a security Z-wave device and supports the Over The Air (OTA) feature for the product’s firmware upgrade.</p> <br /> <h2>Inclusion Information</h2><p>Add Garage Door Controller into Z-Wave Network:</p> <ol><li>Install Garage Door Controller, and connect it to the 5V DC Adapter.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, please refer to its manual).</li> <li>Press the Z-Wave Button.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Remove Garage Door Controller from Z-Wave Network:</p> <ol><li>Install Garage Door Controller, and connect it to the 5V DC Adapter.</li> <li>Let the primary controller into exclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Z-Wave Button.</li> <li>If the remove is failed, please repeat the process from step 2.</li> </ol><p>Note: If Garage Door Controller is removed from Z-wave network, it will be reset to factory default.</p>
     ]]></description>
     <category>GarageDoor</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -332,10 +331,6 @@ Forward the Basic Set<br /> <h1>Overview</h1><p>Forward the Basic Set, Switch Bi
     <item-type>Number</item-type>
     <label>Battery state</label>
     <description>Configuration report for the battery state of Sensor</description>
-    <tags>
-      <tag>Status</tag>
-      <tag>Power</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>
@@ -344,10 +339,6 @@ Forward the Basic Set<br /> <h1>Overview</h1><p>Forward the Basic Set, Switch Bi
     <item-type>Number</item-type>
     <label>Temperature</label>
     <description>Get the environment temperature</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

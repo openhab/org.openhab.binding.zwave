@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zipato_hmhs1wlz_00_000" listed="false">
     <label>HM-HS1WL-Z Smart Water Leakage Sensor</label>
@@ -11,7 +11,6 @@
 Smart Water Leakage Sensor<br /> <h1>Overview</h1><p>Smart Water Leakage sensor adopts Z-Wave wireless module. Super low power consumption circuit design ensures the long battery lifespan. Separate design of body and sensor efficiently prevents the influence resulted from high humidity. High precision and sensitivity applicable for basement, machine room, hotel, water tower, pool, swimming pool, solar, kitchen, bathroom and other places may have water leakage or water overflow.</p> <p>SPECIFICATION</p> <p>Working voltage: DC3V (2 x AAA battery) <br />Static current: 5uA <br />Alarm current: 35mA <br />Networking: Z-Wave<br /> Wireless networking distance: 70 (open area) <br />Working temperature: -10°C~+50°C<br /> Working humidity: max 95%RH<br /> Body dimensions: 76 x 36.6 x 16.5 mm <br />Sensor dimensions: 28.3 x 26.5 x 12.2 mm</p> <br /> <h2>Inclusion Information</h2><ul><li>Click [Add] icon in Z-Wave PC Controller Program.</li> <li>Press the networking button 3 times within 1.5s, Green LED is blinking 3 times within 1 second.</li> <li>If Inclusion Process is successful, Green led will turn off.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Click [Remove] icon in Z-Wave PC Controller Program</li> <li>Press the networking button 3 times within 1.5s</li> <li>If Exclusion Process is successful, Green led is Blinking 6 times, then turn off.</li> </ul> <br /> <h2>Wakeup Information</h2><p>The manual doesn't say, but I've found that tapping the tamper sensor once makes the device blink and that seems to wake it up.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

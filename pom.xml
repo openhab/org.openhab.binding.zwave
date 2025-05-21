@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.openhab.addons</groupId>
     <artifactId>org.openhab.addons.reactor</artifactId>
-    <version>4.3.0-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
     <relativePath/>
   </parent>
 
@@ -60,6 +60,11 @@
       <artifactId>org.openhab.core.bom.test</artifactId>
       <type>pom</type>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.openhab.core.bundles</groupId>
+    	<artifactId>org.openhab.core.semantics</artifactId>
+    	<version>5.0.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

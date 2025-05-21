@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_an181_00_000" listed="false">
     <label>AN181 Mini Plug Switch with Metering (Gen5)</label>
@@ -11,7 +11,6 @@
 Mini Plug Switch with Metering (Gen5)<br /> <h1>Overview</h1><p>The Metering Plug is designed to control the on/off status appliances load in your house. For metering the unit can detect up to 10485.75kW*h and can support wattage, voltage, ampere, and PF detection. The unit can also detect overload upon which the unit will switch off relay and keep LED flashing until power is off and re-applied. At 220-240V voltage, this Plug can support up to 2500W resistive. </p> <br /> <h2>Inclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Press the link key three times within 1.5 seconds to put the unit into exclusion mode.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

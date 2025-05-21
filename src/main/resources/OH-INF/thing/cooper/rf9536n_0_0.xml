@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="cooper_rf9536n_00_000" listed="false">
     <label>RF9536-N 1000W Dimmer Light Switch</label>
@@ -11,7 +11,6 @@
 1000W Dimmer Light Switch<br /> <h1>Overview</h1><ul><li>ASPIRE RF Dimmers replace regular switches to provide local and remote ON/OFF/DIM/BRIGHT control and are compatible with Incandescent, Magnetic Low-Voltage lighting loads.</li> <li>ASPIRE RF Dimmers provide other programmable functions (scenes, events, association, child lockout, etc.) when used with ASPIRE RF or other Z-Wave compliant controllers*. Each dimmer can be manually and remotely controlled by commands sent from an ASPIRE RF controller (RFTDCSG, RFHDCSG, RFBER) or other Z-Wave compatible controllers or programs.</li> <li>ASPIRE RF Dimmers utilize existing 120V/AC, 60Hz standard house wiring and fit into standard wallboxes. No new wiring needed.</li> </ul><p>(*Note: some specific ASPIRE RF features may not be programmable)</p> <br /> <h2>Inclusion Information</h2><p>Press the device switch one time to include it in the network. The LED will stop blinking.</p> <br /> <h2>Exclusion Information</h2><p>Press the device switch one time to exclude it in the network. The LED will start blinking.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -203,10 +202,6 @@ Turn on or off rapid start feature<br /> <h1>Overview</h1><p>Ensures that LED / 
     <item-type>Number</item-type>
     <label>Dimmer Ramp Time</label>
     <description>Time in seconds to reach desired level</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

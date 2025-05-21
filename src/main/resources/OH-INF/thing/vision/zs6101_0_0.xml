@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vision_zs6101_00_000" listed="false">
     <label>ZS6101 Smoke Detector</label>
@@ -11,7 +11,6 @@
 Smoke Detector<br /> <h1>Overview</h1><p>This detector is designed to sense smoke that comes into the detector chamber and send Z-Wave™ signal when the detector detects a certain density of smoke then the horn of smoke detector will sound. </p> <br /> <h2>Inclusion Information</h2><p>Press the program switch for 1 second at least</p> <br /> <h2>Exclusion Information</h2><p>Press the program switch for 1 second at least</p> <br /> <h2>Wakeup Information</h2><p>Press the program switch for 1 second at least</p>
     ]]></description>
     <category>SmokeDetector</category>
-    <semantic-equipment-tag>SmokeDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

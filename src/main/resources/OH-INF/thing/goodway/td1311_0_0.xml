@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="goodway_td1311_00_000" listed="false">
     <label>TD1311 In wall Power Monitor Switch</label>
@@ -11,7 +11,6 @@
 In wall Power Monitor Switch<br /> <h1>Overview</h1><ul><li>Small form factor that fits in most gang boxes worldwide</li> <li>Switch and Monitor power consumption</li> <li>Switch and Monitor via Z-Wave</li> <li>Latest Z-Wave protocol and commands</li> <li>Optimized antenna range</li> </ul>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

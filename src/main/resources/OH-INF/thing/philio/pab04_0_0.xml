@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="philio_pab04_00_000" listed="false">
     <label>PAB04 Smart Energy Flow Meter</label>
@@ -11,7 +11,6 @@
 Smart Energy Flow Meter<br /> <h1>Overview</h1><p>This valves controller PAB04 is a security enabled wireless switch, based on Z-Wave Plus technology. <br /></p><p>Connect PAB04 with an external water meter which can output pulse signals. PAB04 is able to detect instance water flow and the accumulated water.<br /></p> <br /> <h2>Inclusion Information</h2><p>Pressing On/Off button three times within 2 seconds will enter inclusion mode.<br /></p> <br /> <h2>Exclusion Information</h2><p>Pressing On/Off button three times within 2 seconds will enter exclusion mode.<br /></p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Valve</category>
-    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

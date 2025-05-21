@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_mh4959_00_000" listed="false">
     <label>MH4959 Battery Powered Water Boiler Thermostat</label>
@@ -11,7 +11,6 @@
 Battery Powered Water Boiler Thermostat<br /> <h1>Overview</h1><p>Battery powered water boiler thermostat MH4959 is a smart boiler thermostat, it can automatically detect the indoor temperature and display the relevant temperature value for boiler heating control. It also can automatically turn on/off the heating system according to the temperature difference.</p> <br /> <h2>Inclusion Information</h2><p>In normal working interface, long press S4(+) and S5(-) simultaneously for 3 seconds to enter the interface for inclusion or exclusion of Z-Wave network. Before the device included into network, "---" will display on the screen, short press S4(+) and the device will enter learning mode to get a node ID. If inclusion is success, a node ID will display on the screen in a few seconds, and then short press S1 to exit.</p><p>A node ID can always inform us whether the device is in the network or not.</p> <br /> <h2>Exclusion Information</h2><p>In normal working interface, long press S4(+) and S5(-) simultaneously for 3 seconds to enter the interface for inclusion or exclusion of Z-Wave network.</p> <br /> <h2>Wakeup Information</h2><p>On: short press S1 to power on the device</p><p>Off: under normal working interface, long press S1 for 2 seconds to power off the device, after that, all outputs are forced off.</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -493,10 +492,6 @@ Schedule 4 temperature setting on Sunday<br /> <h1>Overview</h1><p>Byte 1: hour 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

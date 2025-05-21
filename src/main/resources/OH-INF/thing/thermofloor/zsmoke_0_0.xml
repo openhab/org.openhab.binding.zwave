@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="thermofloor_zsmoke_00_000" listed="false">
     <label>Z-Smoke Detector Smoke, temperature and motion detector</label>
@@ -11,7 +11,6 @@
 Smoke, temperature and motion detector<br /> <h1>Overview</h1><p>Heatit Z-Smoke Detector is a multi-functional smoke sensor with a built-in PIR motion sensor, temperature sensor and emergency light.</p><p>Heatit Z-Smoke Detector is a wireless operated photoelectronic smoke detector designed to interact with most Z-Wave enabled controllers.</p><p>The detector features smoke-, temperature-, and IR-detection.</p> <br /> <h2>Inclusion Information</h2><p>Set the primary controller / gateway in add / remove mode. </p><p>After power is applied, the smoke detector initiates a 1-minute warm-up period. During this minute, the device will automatically enter add / remove mode, and may now be added to the system via the primary controller.</p><p>After the calibration process is finished, you may access the add / remove mode by pressing the function button three times within 1.5 seconds.</p> <br /> <h2>Exclusion Information</h2><p>Set the primary controller / gateway in add / remove mode and press the function button three times within 1.5 seconds.</p><p>Removing the device will reset it to factory settings. If the device already belongs to a network, you must remove it from that network before adding into a new one, or the setup will fail.<br /></p><p>When the device is removed from the network, it will revert to factory settings.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>SmokeDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

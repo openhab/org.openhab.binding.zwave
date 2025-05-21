@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_pope700397_00_000" listed="false">
     <label>POPE700397 Popp Smart Outdoor Plug - IP44 rated</label>
@@ -11,7 +11,6 @@
 Popp Smart Outdoor Plug - IP44 rated<br /> <h1>Overview</h1><p>The Wall Plug Switch Outdoor can be placed between a wall outlet for plugs type F and electric devices, plugged in by a cord. It can switch all loads up to 3500 W. The plug switch is IP 44 rated and can, therefore, be used both in dry as well as humid environments in- and outdoor.</p> <p>Switching is controlled by the local button or wirelessly. The use of the local button and the behavior on wireless commands can be configured using configuration parameters. When detached from the control of local leads the button on the device can be used to trigger scenes in a central gateway. A single click and double click are distinguished.</p> <p>The device is also measuring the mains voltage supply reporting mains voltage and mains frequency. Additionally, the power consumption of the attached load is monitored as well.</p> <p>All metering values can be requested from the central controller and will be reported unsolicited if configured. </p> <br /> <h2>Inclusion Information</h2><p>Tripple Click the button for inclusion. </p> <br /> <h2>Exclusion Information</h2><p>Tripple Click the button for exclusion.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

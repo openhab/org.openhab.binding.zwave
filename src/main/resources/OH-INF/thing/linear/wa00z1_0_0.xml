@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="linear_wa00z1_00_000" listed="false">
     <label>WA00Z-1 Wall Mounted Switch</label>
@@ -11,7 +11,6 @@
 Wall Mounted Switch<br /> <h1>Overview</h1><p>The WA00Z-1 Wall Mounted Switch is simple to set up and can be installed anywhere to operate other load bearing Z-Wave devices. </p> <br /> <h2>Inclusion Information</h2><p>Press either button on the WA00Z-1. The green LED should flash twice.</p> <br /> <h2>Exclusion Information</h2><p>Remove the switch by pressing either button on the WA00Z-1. The LED will flash twice indicating that it has been removed.</p> <br /> <h2>Wakeup Information</h2><p>Tap the top switch five times in rapid succession.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

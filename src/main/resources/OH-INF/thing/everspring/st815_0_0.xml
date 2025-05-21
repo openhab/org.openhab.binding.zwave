@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_st815_00_000" listed="false">
     <label>ST815 Illumination Sensor</label>
@@ -11,7 +11,6 @@
 Illumination Sensor<br /> <h1>Overview</h1><p>The Illumination Sensor is designed to monitor the current illumination of ambient environment. The reading of illumination can be reported to you on a regular base at your disposal. If illumination reaches set points, the sensor will send alerts to associated devices for further execution (such as trigger on connected lightings). The Illumination Sensor is suitable for use in darkness and outdoor. </p> <br /> <h2>Inclusion Information</h2><p>Pressing ESC key 3 times within 1.5 seconds will enter inclusion mode. </p> <br /> <h2>Exclusion Information</h2><p>Pressing ESC key 3 times within 1.5 seconds will enter exclusion mode. </p> <br /> <h2>Wakeup Information</h2><p>Not Provided</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

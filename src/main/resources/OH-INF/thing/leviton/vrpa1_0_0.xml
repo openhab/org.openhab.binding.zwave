@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="leviton_vrpa1_00_000" listed="false">
     <label>VRPA1 Vizia RF + Scene Capable Plug-in Module</label>
@@ -11,7 +11,6 @@
 Vizia RF + Scene Capable Plug-in Module<br /> <h1>Overview</h1><p>The Vizia RF + Scene Capable Plug-in Appliance Module (VRPA1-1LW) is ideal for any residential setting where remote ON/OFF switching of appliances, motor loads up to 1/2 HP, or freestanding lights, including Incandescent, Magnetic Low Voltage, Fluorescent and Compact Fluorescent loads is needed. Typical applications include switching of fluorescent lamps, portable fans, kitchen appliances, indoor fountains and more. The Vizia RF + Scene Capable Plug-in Appliance Module also allows users to incorporate small appliances into scene and zone home control applications. </p> <br /> <h2>Inclusion Information</h2><ol><li>Plug in VRPA1</li> <li>Place controller in inclusion mode</li> <li>Press button on front of VRPA1</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Place controller in exclusion mode</li> <li>Press button on front of VRPA1</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

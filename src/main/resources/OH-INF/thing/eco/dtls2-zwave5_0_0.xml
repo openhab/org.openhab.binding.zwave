@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eco_dtls2-zwave5_00_000" listed="false">
     <label>DTLS2-ZWAVE5 Z-Wave Plus Smart Switch Dual Toggle</label>
@@ -11,7 +11,6 @@
 Z-Wave Plus Smart Switch Dual Toggle<br /> <h1>Overview</h1><p>Automates wall switch without replacing existing switches. Battery-powered<br /></p> <br /> <h2>Inclusion Information</h2><p>The Z-Wave Plus Toggle Light Switch must be added to a Z-Wave Plus network prior to use. To include the device in a network both the device and the network controller must be in inclusion mode at the same time. Refer to the instructions provided by the manufacturer of your specific controller for details on initiating the controller’s inclusion mode.<br /></p><p>Verify that the Z-Wave Plus controller you are using is compatible with the Z-Wave Plus Toggle Light Switch.</p><p>Locate the light switch desired to be used with the Z-Wave Plus Toggle Light Switch.</p><p>Put your Z-Wave Plus Controller into add (inclusion) mode.</p><p>Press the inclusion / exclusion button on the Z-Wave Plus Toggle Light Switch. (Figure 1)</p><p>The LED on the front of the unit will turn off if successful included into a network.</p> <br /> <h2>Exclusion Information</h2><p>Any Z-Wave Plus Device can be removed from any Z-Wave Plus controller. Follow the directions to put your Z-Wave Plus Controller into exclusion mode.<br /></p><p>Press the inclusion / exclusion button on the Z-Wave Plus Toggle Light Switch.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

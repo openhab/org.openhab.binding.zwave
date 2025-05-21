@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="innovus_smoothremote_00_000" listed="false">
     <label>SmoothRemote SmoothRemote</label>
@@ -11,7 +11,6 @@
 SmoothRemote<br /> <h1>Overview</h1><p>The company's Z-Wave product portfolio is rounded off with the "SmoothRemote" remote control. This allows all INNOVUS devices as well as other third-party Z-Wave devices to be conveniently controlled from the sofa. </p> <p>The application fields are virtually unlimited. For example, the lights in the entire house can be switched on or off from the living room, unnecessary consumers switched off, or the room temperature in other rooms lowered or increased. All processes can be conveniently and easily set up via the House Control System</p> <br /> <h2>Inclusion Information</h2><p>The remote can be added to or removed from a Z-Wave network by triple clicking the Shift button</p> <br /> <h2>Exclusion Information</h2><p>The remote can be added to or removed from a Z-Wave network by triple clicking the Shift button</p> <br /> <h2>Wakeup Information</h2><p>It is possible to make the device send a Wake Up Notification clicking VIII button 4 times</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zse41_00_000" listed="false">
     <label>ZSE41 Contact Sensor</label>
@@ -11,7 +11,6 @@
 Contact Sensor<br /> <h1>Overview</h1><ul><li><b>Door / window monitoring</b>: fast and reliable reports sent to your Z-Wave hub whenever a door or window is open or closed </li><li><b>Extra small</b>: slim and discreet enough to easily blend in with most frames and surfaces</li><li><b>Protective surface</b>: coated with rubber oil to prevent corrosion and water leak damage</li><li><b>New 700 series Z-Wave chip</b>: faster, more secure, and reliable wireless communication with greater range than ever </li><li><b>Outdoor installation</b>: use the dedicated waterproof cover case for the ZSE41 (sold separately) to mount it anywhere outside </li><li>Power it with a single CR2032 battery </li><li>SmartStart for easier and safer pairing </li><li>Advanced settings to customize your sensor</li></ul> <br /> <h2>Inclusion Information</h2><ol><li>Use a small flat screwdriver to gently open the sensor’s cover and access the battery. Pull the tab from under the battery to activate the sensor. Don’t close the cover just yet. The LED indicator will start blinking for around 10 seconds once the sensor is powered. </li><li>Bring the sensor to the location where you plan to mount it at.</li><li>Put your Z-Wave gateway controller into inclusion/pairing mode.</li><li>Scan the QR code or enter the PIN code located on the back of the battery cover if your hub supports SmartStart S2 inclusion.</li><li>Click the Z-Wave button on the sensor 3 TIMES QUICKLY. The LED indicator will flash quickly.</li><li>A new open/close (door/window) sensor will appear on your controller’s device list.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Bring the sensor within <b>direct range </b>of your Z-Wave hub.</li><li>Put the Z-Wave hub into <b>exclusion </b>mode (not sure how to do that? ask@getzooz.com).</li><li>Click the <b>Z-Wave button 3 times</b> as quickly as possible.</li><li>Your hub will confirm exclusion and the sensor will disappear from your controller's device list.</li></ol> <br /> <h2>Wakeup Information</h2><p>The sensor’s wake-up interval is set to 12 hours by default to save battery life. Use the Wake Up Command Class to adjust the interval. <b>Click the Z-Wave button 4 times quickly to wake the sensor up manually</b>. The LED indicator will flash twice to confirm the device is awake. During wake-up, the sensor turns the Z-Wave radio on for one minute to receive communication from the hub. Long wake-up interval will not affect how often the sensor reports to your hub so we recommend leaving the default setting to conserve battery.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="rcs_tz45_00_000" listed="false">
     <label>TZ45 Thermostat</label>
@@ -11,7 +11,6 @@
 Thermostat<br /> <h1>Overview</h1><p>The Z-Wave thermostat provides for typical thermostat control of a central heating and cooling HVAC system plus has the added feature of Z-Wave communications for remote control.</p> <p>The thermostat has a large, backlit graphical display, control buttons, status LEDs and a temperature sensor. The thermostat can display multiple screens for different functions of the thermostat. The default thermostat control screen shown below, will display the current room temperature, heating and cooling setpoints, system mode, manual-fan mode, time, and status information. </p> <br /> <h2>Inclusion Information</h2><p>General Programming Procedure (for controllers supporting the thermostat device class): 1. Set your primary controller to Include mode, to add the thermostat as a node on your network (see your controller’s user manual for detailed instructions). 2. In the Thermostat’s Main Menu, scroll down to the ZWave Install item. Select the item. 3. Press the YES button in the ZWave Install screen.</p> <br /> <h2>Exclusion Information</h2><p>Not Provided</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -105,10 +104,6 @@ Thermostat<br /> <h1>Overview</h1><p>The Z-Wave thermostat provides for typical 
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -125,10 +120,6 @@ Thermostat<br /> <h1>Overview</h1><p>The Z-Wave thermostat provides for typical 
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>
@@ -142,10 +133,6 @@ Thermostat<br /> <h1>Overview</h1><p>The Z-Wave thermostat provides for typical 
     <label>Thermostat Fan State</label>
     <description>Sets the thermostat fan state</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Idle</option>

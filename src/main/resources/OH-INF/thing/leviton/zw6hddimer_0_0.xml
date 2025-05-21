@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="leviton_zw6hddimer_00_000" listed="false">
     <label>ZW6HD Scene Capable Dimmer</label>
@@ -11,7 +11,6 @@
 Scene Capable Dimmer<br /> <h1>Overview</h1><p>Z-Wave 800 Series. Supports 300W LED, 300W CFL, 600W Incandescent/Halogen, 600VA Magnetic Low Voltage</p> <br /> <h2>Inclusion Information</h2><p>Network Wide Inclusion:</p><p>Network Wide Inclusion allows your device to be included into the network using devices already in the network to assist with communication. Work your way from the closest devices to the controller outward.</p><p> Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</p><p> Tap the top of the paddle one time. The Locator LED will quickly ash green.</p><p> The Decora SmartTM Z-Wave® device is ready to learn into the Z-Wave® network.</p><p> Follow directions in the Z-Wave controller to complete the adding process.</p><p> Upon successful addition to network the LED will turn off and then blink green 3 times.</p><p> If the adding process is not successful the LED will ash red 3 times.</p><p>Traditional Inclusion:</p><p>For older controllers Traditional Inclusion is supported. Depending on the age of the controller the controller will need to be 3 to 35 feet from the device when including.</p><p> Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</p><p> The Decora Smart Z-Wave® device is ready to add to the Z-Wave® network.</p><p> Follow directions in the Z-Wave® controller to enter learn mode.</p><p> Tap the top of the paddle one time. The Locator LED will quickly ash green. The Z-Wave® controller will begin to pair with the Decora Smart device.</p><p> Upon successful addition to the network the LED will turn off and then blink green 3 times.</p><p> If the adding process is not successful the LED will ash red 3 times.</p> <br /> <h2>Exclusion Information</h2><p>When removing a device from a Z-Wave® network best practice is to use the exclusion command found in the Z-Wave® controller.</p><p> Enter Programming Mode by holding the top of the paddle for 7 seconds, the Locator LED will blink amber.</p><p> Follow directions in the Z-Wave® controller to enter exclusion mode.</p><p> Tap the top of the paddle one time. The Locator LED will quickly flash green. The Z-Wave® controller will exclude the Decora Smart device.</p><p> The Z-Wave® controller will confirm successful exclusion from the network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

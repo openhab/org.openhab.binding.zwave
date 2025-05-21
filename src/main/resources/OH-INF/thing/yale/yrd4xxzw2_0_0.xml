@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="yale_yrd4xxzw2_00_000" listed="false">
     <label>YRD4XX-ZW2 Yale 2nd Generation Assure Deadbolt</label>
@@ -11,7 +11,6 @@
 Yale 2nd Generation Assure Deadbolt<br /> <h1>Overview</h1><p>Yale's latest and most advanced Assure Lock 2 collection with Z-Wave Plus built-in connects you to hundreds of brands and devices so you can build your smart home ecosystem.</p><p>Supported Models:</p><ul><li>YRD410-ZW2 (2nd Generation Assure Keyed Push Button Deadbolt) </li><li>YRD420-ZW2 (2nd Generation Assure Keyed Touch Screen Deadbolt)</li><li>YRD430-ZW2 (2nd Generation Assure Keyless Push Button Deadbolt)</li><li>YRD450-ZW2 (2nd Generation Assure KeylessTouch Screen Deadbolt)</li></ul> <br /> <h2>Inclusion Information</h2><p>To include the lock in a Z-Wave Network:<br /></p><ul><li>On your lock keypad, enter your programming code, followed by the gear icon</li><li>Press the 7 key, followed by the gear icon</li><li>Press the 1 key, followed by the gear icon</li></ul> <br /> <h2>Exclusion Information</h2><p>To include the lock in a Z-Wave Network:<br /></p><ul><li>On your lock keypad, enter your programming code, followed by the gear icon</li><li>Press the 7 key, followed by the gear icon</li><li>Press the 1 key, followed by the gear icon</li></ul> <br /> <h2>Wakeup Information</h2><p><br /></p><p><br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

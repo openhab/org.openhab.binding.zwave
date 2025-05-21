@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="rehau_reguard_00_000" listed="false">
     <label>RE.GUARD Water leakage detector and meter</label>
@@ -11,7 +11,6 @@
 Water leakage detector and meter<br /> <h1>Overview</h1><p>The Rehau RE.GUARD is a water manager which protects your home against water leakages and measures your consumption of water.</p><p>It has a highly sophisticated water meter and pressure meter built inside. Its algorithms are able to detect very small microleakages as well as larger leakages like e.g. pipe bursts. The sensibility can be adapted to your needs.<br />Furthermore statistics of your water consumption can be created to help you save water.</p><p>This product is available at your professional plumber.<br /></p> <br /> <h2>Inclusion Information</h2><p>Press Z-wave button for 3 seconds </p> <br /> <h2>Exclusion Information</h2><p>Press Z-wave button 3 times in 3 seconds</p> <br /> <h2>Wakeup Information</h2><p>Always awake; not battery powered</p>
     ]]></description>
     <category>Valve</category>
-    <semantic-equipment-tag>LeakSensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

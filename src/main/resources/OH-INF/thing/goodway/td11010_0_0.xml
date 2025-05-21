@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="goodway_td11010_00_000" listed="false">
     <label>TD11010 Roller Shutter Controller</label>
@@ -11,7 +11,6 @@
 Roller Shutter Controller<br /> <h1>Overview</h1><p>Z-Wave Roller Shutter Controller is an ideal for the remotely electric motor controller. It is used to control the motors of rollers, shades, blinds, venetian blinds and similar sun shade, which are single phase AC powered. The module can be controlled either through a Z-Wave network or through the wall switch, and measures power consumption of motor.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Put the Z-Wave Controller into inclusion mode, and press the pairing button 3 times in 2 seconds to include the module.</li><li>Put the Z-Wave Controller into inclusion mode, and press the external swtich1 or external swtich2 3 times in 2 seconds to include the module.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Put the Z-Wave Controller into exclusion mode, and press the pairing button 3 times in 2 seconds to exclude the device.</li><li>Put the Z-Wave Controller into inclusion mode, and press the external swtich1 or external swtich2 3 times in 2 seconds to exclude the module.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

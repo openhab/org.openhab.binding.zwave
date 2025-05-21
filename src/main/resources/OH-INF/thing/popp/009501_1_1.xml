@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_009501_01_001" listed="false">
     <label>009501 Popp 09501 Flow Stop</label>
@@ -11,7 +11,6 @@
 Popp 09501 Flow Stop<br /> <h1>Overview</h1><p>The Flow Stop moves the operating handle of a ball valve allowing to stopping the flow of gas or water. It can be mounted non-intrusive on any pipe size between 0.5 and 1.5 inch. This means the original water or gas pipe will not be opened or manipulated and it is possible to remove the Flow stop again without any damage to the water or gas pipe. Installing the Flow stop will not tamper or change any security measure applied or your gas or water installation.</p> <p>The device is equipped with a powerful 12 V motor providing sufficient torque to open or close any ball valve within 10 seconds. A complete manual operation of the valve remains possible due to the clutch release bearing.</p> <br /> <h2>Inclusion Information</h2><p>For inclusion press the red button on the top of the enclosure 3 times</p> <br /> <h2>Exclusion Information</h2><p>For exclusion press the red button on the top of the enclosure 3 times</p>
     ]]></description>
     <category>Valve</category>
-    <semantic-equipment-tag>Valve</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

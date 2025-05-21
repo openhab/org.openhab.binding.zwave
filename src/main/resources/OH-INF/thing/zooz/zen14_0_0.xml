@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen14_00_000" listed="false">
     <label>ZEN14 Z-Wave Plus Outdoor Double Plug</label>
@@ -11,7 +11,6 @@
 Z-Wave Plus Outdoor Double Plug<br /> <h1>Overview</h1><p>DOUBLE CONTROL: Add Z-Wave to 2 different outdoor devices (up to 15 A resistive load total between 2 outlets; no dimming control); Z-Wave hub required (sold separately); scroll down for compatibility.</p><p>OUTDOOR HOUSING: This plug is IP65 rated with weatherproof housing that makes it safe for outside use. It works great for Holiday lights, small pumps, and patio lighting.</p> <br /> <h2>Inclusion Information</h2><ol><li>Insert the plug into a standard 120 V receptacle</li><li>Put your Z-Wave controller in inclusion/pairing mode</li><li>Click the Z-Wave button on the plug 3 times quickly to finalize the inclusion process</li><li>A new on/off device will appear on your hub's device list</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Bring the plug within direct range of your Z-Wave™ gateway (hub). </li><li>Put the Z-Wave™ hub into exclusion mode (not sure how to do that? ask@getzooz.com).</li><li>Press and release the Z-Wave™ button 3 times quickly.</li><li>Your hub will confirm exclusion and the plug will disappear from your controller's device list.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

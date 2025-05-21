@@ -39,6 +39,8 @@ import org.openhab.binding.zwave.internal.ZWaveProduct;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociation;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveConfigurationParameter;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEventListener;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
@@ -68,6 +70,8 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.openhab.core.config.core.Configuration;
 import org.openhab.core.config.core.status.ConfigStatusMessage;
 import org.openhab.core.config.core.validation.ConfigValidationException;
+import org.openhab.core.semantics.SemanticTag;
+import org.openhab.core.semantics.model.DefaultSemanticTags.Equipment;
 import org.openhab.core.thing.Bridge;
 import org.openhab.core.thing.Channel;
 import org.openhab.core.thing.ChannelUID;
@@ -1704,6 +1708,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         if (update == true) {
             logger.debug("NODE {}: Properties synchronised", nodeId);
+            updateSemanticTag(properties);
             updateProperties(properties);
         }
 
@@ -1922,5 +1927,370 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         return dateFormat.format(date);
+    }
+
+    /**
+     * Parse the provided new set of properties and set the thing's semantic equipment tag
+     */
+    private void updateSemanticTag(Map<String, String> properties) {
+        SemanticTag equipmentTag = null;
+
+        if (properties.get(ZWaveBindingConstants.PROPERTY_CLASS_SPECIFIC) instanceof String specificString) {
+            Specific specificProperty;
+            try {
+                specificProperty = Specific.valueOf(specificString);
+            } catch (IllegalArgumentException e) {
+                specificProperty = null;
+            }
+            if (specificProperty != null) {
+                switch (specificProperty) {
+                    case SPECIFIC_TYPE_ADVANCED_DOOR_LOCK:
+                        equipmentTag = Equipment.LOCK;
+                        break;
+                    case SPECIFIC_TYPE_ADV_ENERGY_CONTROL:
+                        equipmentTag = Equipment.POWER_SUPPLY;
+                        break;
+                    case SPECIFIC_TYPE_ADV_ZENSOR_NET_ALARM_SENSOR:
+                        equipmentTag = Equipment.ALARM_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_ADV_ZENSOR_NET_SMOKE_SENSOR:
+                        equipmentTag = Equipment.SMOKE_DETECTOR;
+                        break;
+                    case SPECIFIC_TYPE_ALARM_SENSOR:
+                        equipmentTag = Equipment.ALARM_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_BASIC_ROUTING_ALARM_SENSOR:
+                        equipmentTag = Equipment.ALARM_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_BASIC_ROUTING_SMOKE_SENSOR:
+                        equipmentTag = Equipment.SMOKE_DETECTOR;
+                        break;
+                    case SPECIFIC_TYPE_BASIC_WALL_CONTROLLER:
+                        equipmentTag = Equipment.WALL_SWITCH;
+                        break;
+                    case SPECIFIC_TYPE_BASIC_ZENSOR_NET_ALARM_SENSOR:
+                        equipmentTag = Equipment.ALARM_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_BASIC_ZENSOR_NET_SMOKE_SENSOR:
+                        equipmentTag = Equipment.SMOKE_DETECTOR;
+                        break;
+                    case SPECIFIC_TYPE_CHIMNEY_FAN:
+                        equipmentTag = Equipment.FAN;
+                        break;
+                    case SPECIFIC_TYPE_CLASS_A_MOTOR_CONTROL:
+                        break;
+                    case SPECIFIC_TYPE_CLASS_B_MOTOR_CONTROL:
+                        break;
+                    case SPECIFIC_TYPE_CLASS_C_MOTOR_CONTROL:
+                        break;
+                    case SPECIFIC_TYPE_COLOR_TUNABLE_BINARY:
+                        equipmentTag = Equipment.LIGHT_SOURCE;
+                        break;
+                    case SPECIFIC_TYPE_COLOR_TUNABLE_MULTILEVEL:
+                        equipmentTag = Equipment.LIGHT_SOURCE;
+                        break;
+                    case SPECIFIC_TYPE_DOORBELL:
+                        equipmentTag = Equipment.DOORBELL;
+                        break;
+                    case SPECIFIC_TYPE_DOOR_LOCK:
+                        equipmentTag = Equipment.LOCK;
+                        break;
+                    case SPECIFIC_TYPE_ENERGY_PRODUCTION:
+                        equipmentTag = Equipment.POWER_SUPPLY;
+                        break;
+                    case SPECIFIC_TYPE_FAN_SWITCH:
+                        equipmentTag = Equipment.FAN;
+                        break;
+                    case SPECIFIC_TYPE_GATEWAY:
+                        break;
+                    case SPECIFIC_TYPE_GENERAL_APPLIANCE:
+                        equipmentTag = Equipment.WHITE_GOOD;
+                        break;
+                    case SPECIFIC_TYPE_IRRIGATION_CONTROLLER:
+                        equipmentTag = Equipment.IRRIGATION;
+                        break;
+                    case SPECIFIC_TYPE_KITCHEN_APPLIANCE:
+                        equipmentTag = Equipment.WHITE_GOOD;
+                        break;
+                    case SPECIFIC_TYPE_LAUNDRY_APPLIANCE:
+                        equipmentTag = Equipment.WHITE_GOOD;
+                        break;
+                    case SPECIFIC_TYPE_MOTOR_MULTIPOSITION:
+                        break;
+                    case SPECIFIC_TYPE_NOTIFICATION_SENSOR:
+                        equipmentTag = Equipment.SENSOR;
+                        break;
+                    case SPECIFIC_TYPE_NOT_USED:
+                        break;
+                    case SPECIFIC_TYPE_PC_CONTROLLER:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_PORTABLE_INSTALLER_TOOL:
+                        break;
+                    case SPECIFIC_TYPE_PORTABLE_REMOTE_CONTROLLER:
+                        equipmentTag = Equipment.REMOTE_CONTROL;
+                        break;
+                    case SPECIFIC_TYPE_PORTABLE_SCENE_CONTROLLER:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_POWER_STRIP:
+                        equipmentTag = Equipment.POWER_OUTLET;
+                        break;
+                    case SPECIFIC_TYPE_POWER_SWITCH_BINARY:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_POWER_SWITCH_MULTILEVEL:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_REMOTE_CONTROL_AV:
+                        equipmentTag = Equipment.AUDIO_VISUAL;
+                        break;
+                    case SPECIFIC_TYPE_REMOTE_CONTROL_SIMPLE:
+                        equipmentTag = Equipment.REMOTE_CONTROL;
+                        break;
+                    case SPECIFIC_TYPE_REPEATER_SLAVE:
+                        break;
+                    case SPECIFIC_TYPE_RESIDENTIAL_HRV:
+                        equipmentTag = Equipment.HVAC;
+                        break;
+                    case SPECIFIC_TYPE_ROUTING_ALARM_SENSOR:
+                        equipmentTag = Equipment.ALARM_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_ROUTING_SENSOR_BINARY:
+                        equipmentTag = Equipment.SENSOR;
+                        break;
+                    case SPECIFIC_TYPE_ROUTING_SENSOR_MULTILEVEL:
+                        equipmentTag = Equipment.SENSOR;
+                        break;
+                    case SPECIFIC_TYPE_ROUTING_SMOKE_SENSOR:
+                        equipmentTag = Equipment.SMOKE_DETECTOR;
+                        break;
+                    case SPECIFIC_TYPE_SATELLITE_RECEIVER:
+                        equipmentTag = Equipment.AUDIO_VISUAL;
+                        break;
+                    case SPECIFIC_TYPE_SATELLITE_RECEIVER_V2:
+                        equipmentTag = Equipment.AUDIO_VISUAL;
+                        break;
+                    case SPECIFIC_TYPE_SCENE_CONTROLLER:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_SCENE_SWITCH_BINARY:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_SCENE_SWITCH_MULTILEVEL:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_BARRIER_ADDON:
+                        equipmentTag = Equipment.GATE;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_BARRIER_CLOSE_ONLY:
+                        equipmentTag = Equipment.GATE;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_BARRIER_OPEN_ONLY:
+                        equipmentTag = Equipment.GATE;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_DOOR:
+                        equipmentTag = Equipment.DOOR;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_EXTENDER:
+                        break;
+                    case SPECIFIC_TYPE_SECURE_GATE:
+                        equipmentTag = Equipment.GATE;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_KEYPAD:
+                        equipmentTag = Equipment.KEYPAD;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_KEYPAD_DOOR_LOCK:
+                        equipmentTag = Equipment.LOCK;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_KEYPAD_DOOR_LOCK_DEADBOLT:
+                        equipmentTag = Equipment.LOCK;
+                        break;
+                    case SPECIFIC_TYPE_SECURE_LOCKBOX:
+                        equipmentTag = Equipment.LOCK;
+                        break;
+                    case SPECIFIC_TYPE_SETBACK_SCHEDULE_THERMOSTAT:
+                        equipmentTag = Equipment.THERMOSTAT;
+                        break;
+                    case SPECIFIC_TYPE_SETBACK_THERMOSTAT:
+                        equipmentTag = Equipment.THERMOSTAT;
+                        break;
+                    case SPECIFIC_TYPE_SETPOINT_THERMOSTAT:
+                        equipmentTag = Equipment.THERMOSTAT;
+                        break;
+                    case SPECIFIC_TYPE_SET_TOP_BOX:
+                        equipmentTag = Equipment.AUDIO_VISUAL;
+                        break;
+                    case SPECIFIC_TYPE_SIMPLE_DISPLAY:
+                        equipmentTag = Equipment.DISPLAY;
+                        break;
+                    case SPECIFIC_TYPE_SIMPLE_METER:
+                        equipmentTag = Equipment.ELECTRIC_METER;
+                        break;
+                    case SPECIFIC_TYPE_SIMPLE_WINDOW_COVERING:
+                        equipmentTag = Equipment.WINDOW_COVERING;
+                        break;
+                    case SPECIFIC_TYPE_SIREN:
+                        equipmentTag = Equipment.SIREN;
+                        break;
+                    case SPECIFIC_TYPE_SOUND_SWITCH:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_STATIC_INSTALLER_TOOL:
+                        break;
+                    case SPECIFIC_TYPE_SUB_SYSTEM_CONTROLLER:
+                        break;
+                    case SPECIFIC_TYPE_SWITCH_REMOTE_BINARY:
+                        equipmentTag = Equipment.REMOTE_CONTROL;
+                        break;
+                    case SPECIFIC_TYPE_SWITCH_REMOTE_MULTILEVEL:
+                        equipmentTag = Equipment.REMOTE_CONTROL;
+                        break;
+                    case SPECIFIC_TYPE_SWITCH_REMOTE_TOGGLE_BINARY:
+                        equipmentTag = Equipment.REMOTE_CONTROL;
+                        break;
+                    case SPECIFIC_TYPE_SWITCH_REMOTE_TOGGLE_MULTILEVEL:
+                        equipmentTag = Equipment.REMOTE_CONTROL;
+                        break;
+                    case SPECIFIC_TYPE_SWITCH_TOGGLE_BINARY:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_SWITCH_TOGGLE_MULTILEVEL:
+                        equipmentTag = Equipment.CONTROL_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_THERMOSTAT_GENERAL:
+                        equipmentTag = Equipment.THERMOSTAT;
+                        break;
+                    case SPECIFIC_TYPE_THERMOSTAT_GENERAL_V2:
+                        equipmentTag = Equipment.THERMOSTAT;
+                        break;
+                    case SPECIFIC_TYPE_THERMOSTAT_HEATING:
+                        equipmentTag = Equipment.THERMOSTAT;
+                        break;
+                    case SPECIFIC_TYPE_TV:
+                        equipmentTag = Equipment.TELEVISION;
+                        break;
+                    case SPECIFIC_TYPE_VALVE_OPEN_CLOSE:
+                        equipmentTag = Equipment.VALVE;
+                        break;
+                    case SPECIFIC_TYPE_VIRTUAL_NODE:
+                        break;
+                    case SPECIFIC_TYPE_WHOLE_HOME_METER_SIMPLE:
+                        equipmentTag = Equipment.ELECTRIC_METER;
+                        break;
+                    case SPECIFIC_TYPE_ZENSOR_NET_ALARM_SENSOR:
+                        equipmentTag = Equipment.ALARM_DEVICE;
+                        break;
+                    case SPECIFIC_TYPE_ZENSOR_NET_SMOKE_SENSOR:
+                        equipmentTag = Equipment.SMOKE_DETECTOR;
+                        break;
+                    case SPECIFIC_TYPE_ZIP_ADV_NODE:
+                        break;
+                    case SPECIFIC_TYPE_ZIP_TUN_NODE:
+                        break;
+                    case SPECIFIC_TYPE_ZONED_SECURITY_PANEL:
+                        equipmentTag = Equipment.ALARM_SYSTEM;
+                        break;
+                }
+            }
+        }
+
+        /*
+         * TODO reviewer please advise if there could ever be actual cases where specificProperty might not yield
+         * a tag value and yet genericProperty could nevertheless still yield one
+         */
+        if (equipmentTag == null) {
+            if (properties.get(ZWaveBindingConstants.PROPERTY_CLASS_GENERIC) instanceof String genericString) {
+                Generic genericProperty;
+                try {
+                    genericProperty = Generic.valueOf(genericString);
+                } catch (IllegalArgumentException e) {
+                    genericProperty = null;
+                }
+                if (genericProperty != null) {
+                    switch (genericProperty) {
+                        case GENERIC_TYPE_APPLIANCE:
+                            equipmentTag = Equipment.WHITE_GOOD;
+                            break;
+                        case GENERIC_TYPE_AV_CONTROL_POINT:
+                            equipmentTag = Equipment.AUDIO_VISUAL;
+                            break;
+                        case GENERIC_TYPE_DISPLAY:
+                            equipmentTag = Equipment.DISPLAY;
+                            break;
+                        case GENERIC_TYPE_ENTRY_CONTROL:
+                            equipmentTag = Equipment.LOCK;
+                            break;
+                        case GENERIC_TYPE_GENERIC_CONTROLLER:
+                            equipmentTag = Equipment.CONTROL_DEVICE;
+                            break;
+                        case GENERIC_TYPE_METER:
+                            equipmentTag = Equipment.ELECTRIC_METER;
+                            break;
+                        case GENERIC_TYPE_METER_PULSE:
+                            equipmentTag = Equipment.ELECTRIC_METER;
+                            break;
+                        case GENERIC_TYPE_NETWORK_EXTENDER:
+                            break;
+                        case GENERIC_TYPE_NON_INTEROPERABLE:
+                            break;
+                        case GENERIC_TYPE_NOT_USED:
+                            break;
+                        case GENERIC_TYPE_REPEATER_SLAVE:
+                            break;
+                        case GENERIC_TYPE_SECURITY_PANEL:
+                            equipmentTag = Equipment.ALARM_SYSTEM;
+                            break;
+                        case GENERIC_TYPE_SEMI_INTEROPERABLE:
+                            break;
+                        case GENERIC_TYPE_SENSOR_ALARM:
+                            equipmentTag = Equipment.ALARM_DEVICE;
+                            break;
+                        case GENERIC_TYPE_SENSOR_BINARY:
+                            equipmentTag = Equipment.SENSOR;
+                            break;
+                        case GENERIC_TYPE_SENSOR_MULTILEVEL:
+                            equipmentTag = Equipment.SENSOR;
+                            break;
+                        case GENERIC_TYPE_SENSOR_NOTIFICATION:
+                            equipmentTag = Equipment.SENSOR;
+                            break;
+                        case GENERIC_TYPE_STATIC_CONTROLLER:
+                            equipmentTag = Equipment.CONTROL_DEVICE;
+                            break;
+                        case GENERIC_TYPE_SWITCH_BINARY:
+                            equipmentTag = Equipment.CONTROL_DEVICE;
+                            break;
+                        case GENERIC_TYPE_SWITCH_MULTILEVEL:
+                            equipmentTag = Equipment.CONTROL_DEVICE;
+                            break;
+                        case GENERIC_TYPE_SWITCH_REMOTE:
+                            equipmentTag = Equipment.REMOTE_CONTROL;
+                            break;
+                        case GENERIC_TYPE_SWITCH_TOGGLE:
+                            equipmentTag = Equipment.CONTROL_DEVICE;
+                            break;
+                        case GENERIC_TYPE_THERMOSTAT:
+                            equipmentTag = Equipment.THERMOSTAT;
+                            break;
+                        case GENERIC_TYPE_VENTILATION:
+                            equipmentTag = Equipment.HVAC;
+                            break;
+                        case GENERIC_TYPE_WALL_CONTROLLER:
+                            equipmentTag = Equipment.WALL_SWITCH;
+                            break;
+                        case GENERIC_TYPE_WINDOW_COVERING:
+                            equipmentTag = Equipment.WINDOW_COVERING;
+                            break;
+                        case GENERIC_TYPE_ZIP_NODE:
+                            break;
+                    }
+                }
+            }
+        }
+
+        if (equipmentTag != null) {
+            updateThing(editThing().withSemanticEquipmentTag(equipmentTag).build());
+        }
     }
 }

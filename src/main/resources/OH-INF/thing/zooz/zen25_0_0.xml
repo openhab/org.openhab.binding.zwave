@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen25_00_000" listed="false">
     <label>ZEN25 Double Plug</label>
@@ -11,7 +11,6 @@
 Double Plug<br /> <h1>Overview</h1><p>The Double Plug works great as a low profile on/off device for a couple of lamps or small appliances (10A total between both outlets). But it can serve as a smart power monitor, a signal tester, or extender as well. It's fast, it's secure, and it's small.</p> <p>As always, we've included a bunch of useful settings for you to customize the plug so you get the most of it. There is a built-in timer for remote reboots of connected devices or the option to turn off manual control. But if you find anything missing, just let us know and we'll add it</p> <br /> <h2>Inclusion Information</h2><p>AUTO INCLUSION</p> <ol><li>Initiate inclusion (pairing) in the app (or web interface). Not sure how? ask@getzooz.com</li> <li>Plug the device into a grounded 120 VAC receptacle you’re planning to use it at (it doesn’t need to be close. Put your Z-Wave hub into inclusion mode and click the Z-Wave button 3 times quickly. The LED indicators will start blinking and the Double Plug will join the network automatically. If it lights up in yellow, inclusion has failed.</li> <li>You will see 4 new on/off devices in your app: 2 channels for on/off control, 1 channel for on/off monitoring (the USB port reporting charging/ charged status, no control), and 1 master node to control both outlets at the same time and to access and adjust advanced settings in (if your hub supports parameter input).</li> </ol><p>MANUAL INCLUSION</p> <p>Put your Z-Wave hub into inclusion mode and click the Z-Wave button 3 times quickly.</p> <br /> <h2>Exclusion Information</h2><ol><li>Bring the plug within direct range of your Z-Wave gateway (hub).</li> <li>Put the Z-Wave hub into exclusion mode (not sure how to do that? ask@getzooz.com).</li> <li>Press and release the Z-Wave button 3 times quickly.</li> <li>Your hub will confirm exclusion and all of the channels (child outlets) and the main device will disappear from your controller's device list.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

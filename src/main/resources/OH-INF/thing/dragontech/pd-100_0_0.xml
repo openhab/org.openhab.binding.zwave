@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="dragontech_pd-100_00_000" listed="false">
     <label>PD-100 Plug-in Dimmer Switch</label>
@@ -11,7 +11,6 @@
 Plug-in Dimmer Switch<br /> <h1>Overview</h1><p>The PD-100 can be used turn on/off and dim lamps</p> <br /> <h2>Inclusion Information</h2><p>Put controller in inclusion mode and click button once.</p> <br /> <h2>Exclusion Information</h2><p>Put controller in exclusion mode and click button once.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

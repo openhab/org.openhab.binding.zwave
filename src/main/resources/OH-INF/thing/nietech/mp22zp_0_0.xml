@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nietech_mp22zp_00_000" listed="false">
     <label>MP22ZP Outdoor Plug with Power Meter</label>
@@ -11,7 +11,6 @@
 Outdoor Plug with Power Meter<br /> <h1>Overview</h1><p>Z-Wave Plus Outdoor Outlet Mini Plug with Power Meter(MP22ZP)</p><p>Outdoor use</p><p>Power: 120V 60Hz</p><p>Loading: 15 Amp Max Resistive</p><p>Frequency: 908.42MHz</p><p>Temperature Range: 0°C~ 40°C / (32°F~104°F)</p><p>Features:</p><p>Manual and Remote (Z-Wave) on/off control.</p><p>Z-Wave controlled AC outlet for standard incandescent lighting, CFL/LEDs, fans or small appliances(1800W Resistive Max).</p><p>Grounded 3-wire power connection for safety.</p><p>Built-in Z-Wave Plus signal repeater to extend network range.</p><p>S2 security and for reliable wireless communication.</p><p>Work with all certificated Z-Wave controllers.</p><p>Remembers and restores on / off status after power failure.</p><p>Protection function</p><p>(When the protection function is triggered, it needs to be powered the device on again for normal use.)</p><p>Voltage protection: when the voltage＞135V, the device will be forcibly shut down Current protection, when the current＞16A, the device will be forcibly shut down Power Wattage protection, when the power＞2000W, the device will be forcibly shut down.</p><p>Locally Button Press function:</p><p>press 1x: turn output ON or OFF</p><p>quickly press 3x: inclusion or exclusion</p><p>quickly press 10x: Reset KWH<br /></p><p>Factory reset: click Z-Wave button 2 twice quickly, then hold for at least 10 seconds. Light flashes once when reset successful.</p><p>Blue: Light status indicator (on / off)</p><p>Blue: Add / Inclusion</p><p>Purple: Remove / Exclusion</p><p>Red: Network Failure / Over-temperature warning</p> <br /> <h2>Inclusion Information</h2><p>Adding Device To Z-Wave Network:</p><p>Once the controller is ready to add your device, press the Manual/Program button on the smart plug 3 times quickly. The blue LED will blink quickly.</p><p>Auto-add mode: LED will blink within 30 seconds after first plugged in.</p> <br /> <h2>Exclusion Information</h2><p>Removing Device To Z-Wave Network:</p><p>Once the controller is ready to remove your device, press the Manual/Program button on the smart plug 3 times quickly. The blue LED will blink quickly.</p><p>Auto-add mode: LED will blink within 30 seconds after first plugged in.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="kwikset_912_00_000" listed="false">
     <label>Kwikset SmartCode 912 Touch Pad Keyed Entry Lever</label>
@@ -11,7 +11,6 @@
 Touch Pad Keyed Entry Lever<br /> <h1>Overview</h1><p>The SmartCode touchpad smart lock lever with Home Connect technology enables the lock to wirelessly communicate with other devices in home. The lock allows the user (through a third-party smart home controller) to remotely check the door lock status, lock or unlock the door and receive notifications. The SmartCode lever is a one-touch locking motorized lever. With your personalized code, you can enter your home with the convenience of keyless entry and the back-lit keypad provides increased visibility. SmartCode is easy to install, program and use, and operates on 4 AA batteries. It also features SmartKey Security as the back-up keyway.</p> <br /> <h2>Inclusion Information</h2><ul><li>Initiate the process to add the lock to your system at your smart home controller before you enter any keycodes.</li> <li>When prompted by your smart home system to add the lock, press button “A” on the lock interior one time. The red LED will illuminate when the lock enters Add Mode.</li> <li>Please allow time for the controller to add the lock to your system.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Follow your smart home system’s instructions to remove the lock from the network.</li> <li>When prompted by the system, press button A” on the lock interior once. </li> <li>The red LED will illuminate when the lock enters Remove mode. </li> </ul> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

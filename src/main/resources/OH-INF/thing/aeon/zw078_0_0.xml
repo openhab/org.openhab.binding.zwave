@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw078_00_000" listed="false">
     <label>ZW078 Heavy Duty Switch</label>
@@ -11,7 +11,6 @@
 Heavy Duty Switch<br /> <h1>Overview</h1><p>Wall mounted switch for high current appliances, up to 40A. Power reporting.</p> <br /> <h2>Inclusion Information</h2><p>Press the Action Button on your Heavy Duty Smart Switch</p> <p>If your switch has been successfully linked to your Z-Wave network, its Status LED will no longer blink. If the linking was unsuccessful, the Status LED continues to blink.</p> <br /> <h2>Exclusion Information</h2><p>Press the Action Button on your Heavy Duty Smart Switch.</p> <p>If your Heavy Duty Smart Switch has been successfully removed from your network, its Status LED will blink. If the removal was unsuccessful, its Status LED will not blink.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

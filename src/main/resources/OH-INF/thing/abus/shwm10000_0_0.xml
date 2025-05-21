@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="abus_shwm10000_00_000" listed="false">
     <label>SHWM10000 Flood Sensor</label>
@@ -11,7 +11,6 @@
 Flood Sensor<br /> <h1>Overview</h1><p>The SHWM10000 consists of a base unit (detector) and a water sensor (sensor), which are connected by a cable. If the sensor comes into contact with water, inform the detector the gateway and an alarm is triggered.</p> <p>It detects sabotage when opening the case, has a battery-empty warning function and was designed for indoor installation.</p> <br /> <h2>Inclusion Information</h2><p>Within 3 seconds, press 3 times on the tamper button.</p> <p>The status LED on the sensor front 3 x on. Repeat the inclusion process again if this was not successful.</p> <br /> <h2>Exclusion Information</h2><p>Within 3 seconds, press 3 times on the tamper button. The status LED on the sensor front 3 x on.</p> <br /> <h2>Wakeup Information</h2><table><tr><td>To wake-up the device immediately, please remove the front cover, and press the tamper key once.</td> </tr></table>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

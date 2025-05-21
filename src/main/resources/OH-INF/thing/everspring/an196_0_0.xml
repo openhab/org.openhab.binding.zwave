@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_an196_00_000" listed="false">
     <label>AN196 Built in 2 channel on/off switch</label>
@@ -11,7 +11,6 @@
 Built in 2 channel on/off switch<br /> <h1>Overview</h1><p>The dual relay in-wall module contains two sets of relays and switches, with each set dedicated for controlling lighting or an appliance in your home.</p><p>The module is a Z-WaveTM enabled device which is fully compatible with any Z-WaveTM enabled network.</p><p>Each relay can be turned on/off individually using Z-waveTM commands or using the switches connected to the module. At 230V voltage, this module can support up to 2*4.3A output, 2*1000W resistive load.</p><p>This unit is to be installed and sealed inside an electrical switch box</p> <br /> <h2>Inclusion Information</h2><p>1. Put the Z-Wave Controller into inclusion mode.</p><p>2. Press the link key three times within 1.5 seconds to put the unit into inclusion mode.</p><p><br /></p> <br /> <h2>Exclusion Information</h2><p>1. Put the Z-Wave Controller into exclusion mode.</p><p>2. Press the link key three times within 1.5 seconds to put the unit into exclusion mode.</p><p><br /></p><p>If you are connecting this unit to a Z-Wave Controller that utilizes the S2 security protocol, you may be asked to enter a 5 digit Device Specific Key (DSK) that is unique to each unit by your controller. This can be found in one of two places:</p><ul><li>on the QR code label on the back of the unit</li><li>on the insert card inside the packaging</li></ul> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

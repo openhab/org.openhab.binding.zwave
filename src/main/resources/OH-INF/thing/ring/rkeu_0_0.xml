@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ring_rkeu_00_000" listed="false">
     <label>Keypad Alarm Keypad</label>
@@ -11,7 +11,6 @@
 Alarm Keypad<br /> <h1>Overview</h1><p>Ring Alarm features a Z-Wave keypad, will act as an arming station for the Ring Alarm system. In addition to smartphone and web apps, the keypad provides users with an alternative interface for their alarm system. The keypad allows the user to arm and disarm their system, view system status and receive visual and audio feedback regarding system status and events. Designed for convenience, the keypad can be mounted on the wall or left on a tabletop. Additionally, a rechargeable battery and AC power option provide users with the flexibility to use the keypad in ways which work best for each individual. This keypad gives users a home arming station without having to worry about wiring, picking the right location, complicated hardware installation or making modifications to their homes.</p><p>The keypad will include an interactive button interface, an informational display, a speaker, various LED lights, wall mount option, battery power, AC power option, and additional features to extend control of the Ring Protect system beyond the user’s mobile device and web applications. The keypad is intended to be used as a “dumb” terminal and will be non-programmable for end users.</p> <br /> <h2>Inclusion Information</h2><ol><li>Activate inclusion mode on controller</li><li>Hold button 1 on keypad for 3 seconds to enter inclusion mode</li><li>Device should appear in inbox</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Initiate exclusion mode on controller</li><li>Hold button 1 on kepad for 3 seconds.</li><li>Buttons on keypad should no longer beep when pressed</li></ol> <br /> <h2>Wakeup Information</h2><p>Press any button on keypad to wake up</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>AlarmDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

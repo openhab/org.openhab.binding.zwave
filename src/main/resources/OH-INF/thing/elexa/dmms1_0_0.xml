@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="elexa_dmms1_00_000" listed="false">
     <label>DMMS1 Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount</label>
@@ -11,7 +11,6 @@
 Dome Z-Wave Plus Motion Detector with Light Sensor and Flexible Magnetic Mount<br /> <h1>Overview</h1><p>Z-Wave Plus Motion Detector with Light Sensor</p> <br /> <h2>Inclusion Information</h2><ol><li>Bring Motion Detector to within 10 feet (3 meters) of the controller</li> <li>Remove the cover of the Motion Detector by twisting it apart</li> <li>Put the controller into inclusion mode</li> <li>Press the Connect Button quickly 3 times in a row</li> </ol><p>The LED Indicator will flash five times indicating inclusion.</p> <br /> <h2>Exclusion Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Put the controller into exclusion mode</li> <li>Press the Connect Button quickly three times in a row</li> </ol><p>The LED Indicator will flash five times indicating exclusion/disconnection</p> <p>Factory Reset:</p> <ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Hold the Connect Button for 10 seconds until the LED Indicator blinks once, then release the button.</li> </ol> <br /> <h2>Wakeup Information</h2><ol><li>Remove the cover of the Motion Detector by twisting apart and make sure the Motion Detector is powered</li> <li>Press the Connect Button quickly three times in a row</li> </ol>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

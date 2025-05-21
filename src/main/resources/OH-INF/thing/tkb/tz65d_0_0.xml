@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz65d_00_000" listed="false">
     <label>TZ65D Dual Paddle Wall Dimmer</label>
@@ -11,7 +11,6 @@
 Dual Paddle Wall Dimmer<br /> <h1>Overview</h1><p>The TZ65D wall mounted 3-way dimmer switch is a component of the lighting control system.This wall mounted dimmer switch is designed to work with other Z-Wave enabled devices. Z-Wave nodes of other types can be added to the system and will also act as repeaters if they support this function of repeating the signal received to other modules in the system.As part of a Z-Wave network, the TZ65D will also act as a wireless repeater to insure that commands intended for another device in the network are received. This is useful when the device would otherwise be out of the radio range of the wireless controller.   </p> <br /> <h2>Inclusion Information</h2><p>Including to the network (must be installed in its permanent location, not on test bench)</p> <ol><li>Setup the controller you are using to include a device into network.</li> <li>Tap either the top or bottom of the switch once.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Setup the controller you are using to exclude a device from the network.</li> <li>Tap either the top or the bottom of the switch once.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

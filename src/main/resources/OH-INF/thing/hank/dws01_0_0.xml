@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="hank_dws01_00_000" listed="false">
     <label>DWS01 Door and Window Sensor</label>
@@ -11,7 +11,6 @@
 Door and Window Sensor<br /> <h1>Overview</h1><p>Sensor detects when a door is open or closed, also has a tamper switch.</p> <br /> <h2>Inclusion Information</h2><p>Non-secure: press the Z-button three times rapidly.</p> <p>Secure: hold the Z-button for three seconds.</p> <br /> <h2>Exclusion Information</h2><p>Press the Z-button three times rapidly.</p> <br /> <h2>Wakeup Information</h2><p>Separate the magnet from the sensor body or pull the cover back and press the little button near the tamper switch until the little blue LED illuminates.</p>
     ]]></description>
     <category>Door</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

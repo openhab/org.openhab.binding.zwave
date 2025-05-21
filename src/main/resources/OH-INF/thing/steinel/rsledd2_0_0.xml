@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="steinel_rsledd2_00_000" listed="false">
     <label>RS LED D2 Z-Wave Indoor LED-light with motion sensor</label>
@@ -11,7 +11,6 @@
 Indoor LED-light with motion sensor<br /> <h1>Overview</h1><ul><li>The sensor-switched indoor light contains an active motion detector.</li> <li>The integrated HF sensor emits high-frequency electromagnetic waves (5.8 GHz) and receives their echo.</li> <li>The change in echo caused by the slightest movement within the detection zone of the light is detected by the sensor.</li> <li>A microprocessor then issues the switch command "switch light ON".</li> <li>Detection is possible through doors, panes of glass or thin walls.</li> <li>This device can be integrated into the Smart Friends  system or any other Z-Wave network.</li> <li>Z-Wave is a wireless standard for interconnecting Z-Wave devices.</li> <li>The sensor parameters of the RS LED D2 indoor light can be used for wireless-based building automation.</li> </ul><p>The sensor-switched light can be put into service after mounting the enclosure and connecting to the mains power supply. The light will also work without being integrated into a Z-Wave network. In this case, the time setting is permanently set to 3 minutes. When putting the light into operation, the light will switch OFF after the 10-second calibration phase and is then activated for sensor mode. This light can now be integrated into the Z-Wave network. The settings can be made via the control dials or via Z-Wave network. The settings last selected will always be in effect regardless of whether they were made via the control dials or via Z-Wave network.</p> <p>This product can be operated in any Z-Wave network with other Z-Wave certified devices from other manufacturers. All non-battery operated nodes within the network will act as repeaters regardless of vendor to increase reliability of the network.</p> <br /> <h2>Inclusion Information</h2><p>These instructions for including and excluding Steinel Z-Wave products have been written for the Smart Friends system. They may not always apply to other Z-Wave products. You will find further details in the description of your Z-Wave controller.</p> <p><strong>To start the light's inclusion or exclusion mode, briefly press button SET.</strong></p> <p>Following exclusion, all configuration parameters (time, sensitivity etc.) remain intact until next inclusion and the light now works in standalone mode – as a result, Z-Wave can also be used for the light's standalone setting.<br /><br />SET = Z-Wave button: Button for inclusion and exclusion as well as for returning the device  to the factory setting.</p> <br /> <h2>Exclusion Information</h2><p><strong>To start the light's inclusion or exclusion mode, briefly press button SET.</strong></p>
     ]]></description>
     <category>LightBulb</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

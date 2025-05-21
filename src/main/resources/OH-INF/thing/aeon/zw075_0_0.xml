@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw075_00_000" listed="false">
     <label>ZW075 Smart Energy Switch 3rd Edition</label>
@@ -11,7 +11,6 @@
 Smart Energy Switch 3rd Edition<br /> <h1>Overview</h1><p>Smart Energy Switch 3rd Edition</p> <ul><li>Remotely turn connected device on/off to save electricity</li> <li>Reports wattage consumption or kwh energy usage</li> <li>Small size to help minimize blocking of other AC outlets</li> </ul> <br /> <h2>Inclusion Information</h2><p>Put your controller into inclusion mode. Press the Action Button on your switch. If your switch has been successfully linked to your network, its LED will no longer blink. If the linking was unsuccessful the LED will continue to blink.</p> <br /> <h2>Exclusion Information</h2><p>Put your controller into exclusion mode. Press the Action Button on your switch. If your switch has been successfully removed from your network, its LED will blink. If the removal was unsuccessful its LED will not blink.</p> <br /> <h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

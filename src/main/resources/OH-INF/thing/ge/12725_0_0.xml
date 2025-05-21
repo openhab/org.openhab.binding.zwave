@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_12725_00_000" listed="false">
     <label>GE 12725 In-Wall Dimmer</label>
@@ -11,7 +11,6 @@
 In-Wall Dimmer<br /> <h1>Overview</h1><p>RF controlled, in-wall 1000w dimmer, interchangeable paddle</p> <br /> <h2>Inclusion Information</h2><p>Press and release the top or bottom of the dimmer smart switch (rocker) to add it in the network.</p> <br /> <h2>Exclusion Information</h2><p>Press and release the top or bottom of the dimmer smart switch (rocker) to remove it from the network.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

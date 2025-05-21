@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="telldus_znetlitev2_00_000" listed="false">
     <label>ZNet Lite v2 TellStick Z-wave Controller</label>
@@ -11,7 +11,6 @@
 TellStick Z-wave Controller<br /> <h1>Overview</h1><p>The TellStick ZNet Lite v2 gateway combines the best of two worlds to a full extent. It has two-way communication on Z-Wave, which provides high reliability and long range. It also transmit and receive signals at 433MHz, which provides wide compatibility with your existing receivers and sensors. <br /><br /> All configuration for the gateway is made in our cloud service, Telldus Live!. You can create schedules for fixed times or depending on the sun's movements. By allowing incoming signals to create events, you can control and automate your smart home for real. The additional service Telldus Live! Pro gives you even more features, such as the ability to receive email and SMS when things happen in your system. Read more about Telldus Live! Pro here. <br /><br /> Schedules and Event runs locally on TellStick ZNet Lite v2 even though the Internet is not available. The smartphone app Telldus Live! Mobile makes it possible to use your phone as a remote control for the devices in your home, no matter where in the world you are.</p> <p>Source: https://telldus.com</p> <br /> <h2>Inclusion Information</h2><p>Inclusion is triggered by the following procedure:</p> <ul><li>Visit https://live.telldus.com and create an account and/or login</li> <li>In the device settings, select "Z-Wave settings" and press "Start learn mode"</li> </ul><p>The device is now in inclusion mode and can be added to your network.</p> <br /> <h2>Exclusion Information</h2><p>Exclusion is triggered by the following procedure:</p> <ul><li>Visit https://live.telldus.com and create an account and/or login</li> <li>In the device settings, select "Z-Wave settings" and press "Start learn mode"</li> </ul><p>The device is now in excluded from the network.</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- DEVICE PROPERTY DEFINITIONS -->
     <properties>

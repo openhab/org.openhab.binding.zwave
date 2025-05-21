@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_zw099_00_000" listed="false">
     <label>ZW099 Smart Dimmer 6</label>
@@ -11,7 +11,6 @@
 Smart Dimmer 6<br /> <h1>Overview</h1><p>Aeotec Smart Dimmer 6 is a low-cost Z-Wave Dimmer plug-in module specifically used to enable Z-Wave command and control (on/off/dim) of any incandescent bulbs, dimmable LED bulbs, halogen bulbs with or without transformers. It can report immediate wattage consumption or kWh energy usage over a period of time. In the event of power failure, non-volatile memory retains all programmed information relating to the unit’s operating status.</p> <br /> <h2>Inclusion Information</h2><ol><li>Insert the Smart Dimmer to power socket, The RGB LED will be colorful gradient status.</li> <li>Let the primary controller into inclusion mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action button.</li> <li>If the inclusion success, Smart Dimmer LED will be solid. Otherwise, the LED will remain colorful gradient status, in which you need to repeat the process from step 2.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Insert the Smart Dimmer to power socket, The Smart Dimmer LED will be solid.</li> <li>Let the primary controller into remove mode (If you don’t know how to do this, refer to its manual).</li> <li>Press the Action button.</li> <li>If the remove is successful, Smart Dimmer LED will be colorful gradient status. If Smart Dimmer LED still be solid, please repeat the process from step 2.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

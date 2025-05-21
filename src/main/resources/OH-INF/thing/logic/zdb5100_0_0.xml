@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_zdb5100_00_000" listed="false">
     <label>ZDB5100 MATRIX Switch with Dimmer and Backlight</label>
@@ -11,7 +11,6 @@
 MATRIX Switch with Dimmer and Backlight<br /> <h1>Overview</h1><p>MATRIX type ZDB5100 is a multifunction switch that can be mounted in a modular wall-box, with built-in light dimmer and four configurable pushbuttons with RGB indicators.</p> <p>The built-in light dimmer is per default attached to pushbutton 1. This attachment can be configured, thus it can be configured to not be controlled by any the four pushbuttons, so it can be independent of the local operation and thereby only be controllable from the Z-Wave network.</p> <p>Furthermore, the pushbuttons can be configured to work together in pairs; thereby it can be possible to have one pushbutton to dim the light up, and another pushbutton to dim the light down.</p> <p>The four RGB indicators, one for each pushbutton, can be used for different purposes, for example as orientation light, status light, different kind of indications, etc. The colour of the light and the control of it is fully controllable from the Z-Wave network.</p> <p>MATRIX is also working as a repeater for the Z-Wave network and therefore expands the Z-Wave network coverage.</p> <br /> <h2>Inclusion Information</h2><p>MATRIX’ add function is initiated by pressing once on the centre switch (I) (under the pushbutton cover). The LED’s in pushbutton 1 will start blinking. If MATRIX already belongs to a Z-Wave network, the remove process must be performed before adding it into a new network. Otherwise, the adding of the device will fail.</p> <br /> <h2>Exclusion Information</h2><p>MATRIX’ remove function is initiated by pressing once on the centre switch (I) (under the pushbutton cover). The LED’s in pushbutton 1 will start blinking.</p> <p><strong>Factory Reset</strong></p> <p>MATRIX can be factory reset by holding the centre switch (I) under the pushbutton cover, for at least 10 seconds. By following this procedure, all configuration parameters and the device network address will be reset back to the values they had when the device was manufactured.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -790,10 +789,6 @@ Dimmer Basic Report<br /> <h1>Overview</h1><p>Sends Basic Report with informatio
   <channel-type id="logic_zdb5100_00_000_config_decimal_param21">
     <item-type>Number</item-type>
     <label>Colour commands for pushbutton 1 LED indication</label>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Direct control</option>
@@ -807,10 +802,6 @@ Dimmer Basic Report<br /> <h1>Overview</h1><p>Sends Basic Report with informatio
     <item-type>Number</item-type>
     <label>Colour commands for pushbutton 2 LED indication.</label>
     <description>Colour commands for pushbutton 2 LED indication.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Direct control</option>
@@ -824,10 +815,6 @@ Dimmer Basic Report<br /> <h1>Overview</h1><p>Sends Basic Report with informatio
     <item-type>Number</item-type>
     <label>Colour commands for pushbutton 3 LED indication.</label>
     <description>Colour commands for pushbutton 3 LED indication.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Direct control</option>
@@ -841,10 +828,6 @@ Dimmer Basic Report<br /> <h1>Overview</h1><p>Sends Basic Report with informatio
     <item-type>Number</item-type>
     <label>Colour commands for pushbutton 4 LED indication</label>
     <description>Colour commands for pushbutton 4 LED indication</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Color</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Direct control</option>
@@ -858,10 +841,6 @@ Dimmer Basic Report<br /> <h1>Overview</h1><p>Sends Basic Report with informatio
     <item-type>Number</item-type>
     <label>Global brightness control</label>
     <description>Global brightness control</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Brightness</tag>
-    </tags>
     <state pattern="%s">
     </state>
   </channel-type>

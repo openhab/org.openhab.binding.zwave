@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="elexa_dms01_00_000" listed="false">
     <label>DMS01 Dome Wireless Siren</label>
@@ -11,7 +11,6 @@
 Dome Wireless Siren<br /> <h1>Overview</h1><p>Alert you with sounds and built-in LED’s to security threats and problems such as leaks and fires. It can also sound a mild chime when doors or windows open to let you know when people come and go.</p> <br /> <h2>Inclusion Information</h2><p>Follow the instructions for your Z-Wave certified Controller to enter inclusion mode. When prompted by the Controller:</p> <ol><li>For proper inclusion, bring the Siren to within 10 feet of your Controller. After inclusion, the device can be moved to any desired location.</li> <li>Remove the Back Plate of the Siren.</li> <li>Remove the Battery Tabs.</li> <li>Press the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating inclusion.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Follow the instructions for your Z-Wave certified Controller to enter exclusion mode. When prompted by the Controller:</p> <ol><li>Remove the Back Plate of the Siren.</li> <li>Press the Connect Button quickly 3 times in a row. The LED Ring will flash five times indicating exclusion/disconnection.</li> </ol> <br /> <h2>Wakeup Information</h2><p>The device can be forced to wake up to submit these reports or accept new settings immediately by simply pressing and holding the CONNECT BUTTON for two seconds. The LED RING will flash once indicating successful wake up.</p>
     ]]></description>
     <category>Siren</category>
-    <semantic-equipment-tag>Siren</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -238,10 +237,6 @@ Set the siren primary notification sound.<br /> <h1>Overview</h1><p>The siren of
   <channel-type id="elexa_dms01_00_000_config_decimal_param1">
     <item-type>Number</item-type>
     <label>Primary Notification Volume Level</label>
-    <tags>
-      <tag>Control</tag>
-      <tag>Level</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Low Volume</option>
@@ -254,10 +249,6 @@ Set the siren primary notification sound.<br /> <h1>Overview</h1><p>The siren of
   <channel-type id="elexa_dms01_00_000_config_decimal_param4">
     <item-type>Number</item-type>
     <label>Secondary Notification Volume Level</label>
-    <tags>
-      <tag>Control</tag>
-      <tag>Level</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Low Volume</option>
@@ -271,10 +262,6 @@ Set the siren primary notification sound.<br /> <h1>Overview</h1><p>The siren of
     <item-type>Number</item-type>
     <label>Primary Notification Sound</label>
     <description>Set the siren primary notification sound.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>SoundVolume</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Ding dong</option>
@@ -294,10 +281,6 @@ Set the siren primary notification sound.<br /> <h1>Overview</h1><p>The siren of
   <channel-type id="elexa_dms01_00_000_config_decimal_param6">
     <item-type>Number</item-type>
     <label>Secondary Notification Sound</label>
-    <tags>
-      <tag>Control</tag>
-      <tag>SoundVolume</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Ding dong</option>

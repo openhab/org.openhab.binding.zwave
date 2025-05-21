@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eurotronic_700203_00_000" listed="false">
     <label>700203 Door/Window Contact</label>
@@ -11,7 +11,6 @@
 Door/Window Contact<br /> <h1>Overview</h1><p>The Eurotronic Door/Window Contact Z-Wave Plus is a battery powered wireless binary sensor for detecting </p><p>the door or window open/closed position. The device uses an optical sensor for the status detection. </p> <br /> <h2>Inclusion Information</h2><p>Start the inclusion mode of your primary Z-Wave controller . </p><p>Press the button within the housing of your Door/Window Contact three times in quick succession in order to activate the inclusion mode. While the inclusion mode is active, the green LED is blinking. The joining attempt takes approx. 30 seconds.</p><p>If the inclusion was successful, the green LED lights up for 5 seconds. Otherwise, the red LED light up for 5 seconds to indicate failure.</p> <br /> <h2>Exclusion Information</h2><p>Start the exclusion mode of your primary Z-Wave controller. </p><p>Press the button within the housing of your Door/Window Contact three times in quick succession in order to activate the exclusion mode. During the attempt to leave the network, the green LED is blinking.</p><p>If the exclusion was successful, the green LED light up for 5 seconds. Otherwise, the red LED lights up for 5 seconds to indicate failure.</p> <br /> <h2>Wakeup Information</h2><p>Press the button within the housing of your Door/Window Contact three times in quick succession in order to wake up the device (necessary about 3 to 10 times every 4-5 seconds when first identifying the device)<br /></p><p><br /></p>
     ]]></description>
     <category>Door</category>
-    <semantic-equipment-tag>ContactSensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

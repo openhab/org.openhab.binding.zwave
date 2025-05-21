@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_zif5029_00_000" listed="false">
     <label>ZIF5029 Interface for Utility Meters (12-24V)</label>
@@ -11,7 +11,6 @@
 Interface for Utility Meters (12-24V)<br /> <h1>Overview</h1><p>The ZIF5029 DIN-rail module is a device with a wireless Z-Wave communication protocol. It has 6 relay driven outputs and 6 pulse inputs (S0). The unit is a multi-purpose Z-Wave I/O module, which can be used for many applications. E.g. the module provides the possibility to control other systems via the Z-Wave network, by utilizing the 6 outputs as a kind of hand-over function to another automation system.</p> <br /> <h2>Inclusion Information</h2><p>Upon delivery, the ZIF5029 module has not been enrolled into any Z-Wave network. To communicate with other devices in the Z-Wave network, ZIF5029 must be enrolled in the network. This process is called to include the device in the Z-Wave network. Devices can also be removed from the Z-Wave network if they are to be used in another installation. This is called to exclude the device from the Z-Wave network.</p> <p>Both processes are initiated by setting the central network controls in either inclusion or exclusion mode. Please refer to the network controller's manual how to set the central controls in either inclusion or exclusion mode.</p> <p>The inclusion / exclusion mode on the ZIF5029 device is activated by pressing the small button through the hole in the front of the module, marked "INCLUSION", after which the status LED will start flashing.</p> <p>If the device already belongs to a network, the device must be excluded before it can be included in the current network, otherwise the inclusion process will fail.</p> <p>Furthermore, see section 3 above about maintaining configuration parameters during exclusion / inclusion.</p> <br /> <h2>Exclusion Information</h2><p>See inclusion section.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

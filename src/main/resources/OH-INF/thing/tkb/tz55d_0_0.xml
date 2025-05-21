@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz55d_00_000" listed="false">
     <label>TZ55D Dual Paddle Wall Dimmer</label>
@@ -11,7 +11,6 @@
 Dual Paddle Wall Dimmer<br /> <h1>Overview</h1><p>Dual Paddle Wall Dimmer, AC230V 50Hz, 1380W×2</p>The device can control only one attached load and dim/brighten associated Z-Wave dimmers <br /> <h2>Inclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing On/Off button three times within 1.5 seconds will enter exclusion mode.</p> <br /> <h2>Wakeup Information</h2><p>When a controller prompts you to “Send Node ID” or to “Press Button on Unit”,quickly tap the switch on or off three times to satisfy those instructions.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

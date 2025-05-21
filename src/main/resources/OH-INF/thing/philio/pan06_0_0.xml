@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="philio_pan06_00_000" listed="false">
     <label>PAN06 In Wall Dual Relay (1 Way) Switch Module 2 x 1.5kW</label>
@@ -11,7 +11,6 @@
 In Wall Dual Relay (1 Way) Switch Module 2 x 1.5kW<br /> <h1>Overview</h1><p>The PAN06 allows controlling two independent loads both wirelessly via Z-Wave and locally utilizing a traditional wall switch. Thanks to its calibration technology the device cannot only be used to switch resistive devices but also works perfectly with many kind of reactive or resistive loads such as fluorescent lights or LEDs.<br />The device is placed in a wall box right behind the normal switch. The switch is not longer directly<br />connected to the load but acts as input device for the insert that is controlling the load. This device is<br />designed for a 3 wire system and needs a neutral wire in the wall box.</p> <br /> <h2>Inclusion Information</h2><p>1. Have Z-Wave Controller entered inclusion mode<br />2. Pressing Include button of PAN06 three times within 1.5 seconds will enter inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>1. Have Z-Wave Controller entered exclusion mode<br />2. Pressing Include button of PAN06 three times within 1.5 seconds will enter exclusion mode.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

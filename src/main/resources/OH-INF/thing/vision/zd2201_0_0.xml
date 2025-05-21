@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="vision_zd2201_00_000" listed="false">
     <label>ZD2201 Multisensor 4in1</label>
@@ -11,7 +11,6 @@
 Multisensor 4in1<br /> <h1>Overview</h1><p>Contact/temperature/humidity/luminance sensor.  Can also be called Zipato Quad Sensor (Z+).</p> <br /> <h2>Inclusion Information</h2><p> Press the program switch once on Multisensor 4 in 1</p> <br /> <h2>Exclusion Information</h2><p> Press the program switch once on Multisensor 4 in 1 for 1 second at least</p> <br /> <h2>Wakeup Information</h2><p> Press the program switch once on Multisensor 4 in 1</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

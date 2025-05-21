@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_46201_00_000" listed="false">
     <label>46201 GE Quick-fit Smart In-Wall Paddle Switch</label>
@@ -11,7 +11,6 @@
 GE Quick-fit Smart In-Wall Paddle Switch<br /> <h1>Overview</h1><p>Getting to know your new Z-Wave device</p><ul><li>Turn ON/OFF manually or remotely via the Z-Wave controller</li><li>Can be added in multiple groups and scenes</li><li>May be used in single pole installation or with up to four GE-branded Add-on Switches in 3-way or 4-way wiring configurations</li><li>Compatible with all incandescent and CFL/LED bulbs</li><li>Auto line/load detection</li><li>Interchangeable paddle switch — white &amp; light almond paddle in package</li><li>Uses a standard, decorative-size wallplate for single-gang installations (wallplate not included)</li><li>Blue LED indicates switch location in a dark room</li><li>Z-Wave certified for simple pairing and integrated home automation</li><li>Screw terminal installation — requires wiring connections for line (hot), load, neutral and ground. Traveler wire required for 3-way or 4-way installation</li><li>This Z-Wave device has advanced features that allow you to customize your experience. These features can only be adjusted by a Z-Wave enabled controller that supports the Z-Wave configuration command class.</li></ul> <br /> <h2>Inclusion Information</h2><p>Press and release the top or bottom of the wireless smart switch (rocker).</p> <br /> <h2>Exclusion Information</h2><p>Press and release the top or bottom of the wireless smart switch (rocker).</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

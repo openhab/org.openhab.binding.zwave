@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nietech_mp21zd_00_000" listed="false">
     <label>MP21ZD Z-Wave Mini Plug Dimmer</label>
@@ -11,7 +11,6 @@
 Z-Wave Mini Plug Dimmer<br /> <h1>Overview</h1><p><b>Specifications:</b></p><ul><li>Power: 120V 60Hz</li><li>Loading: 200W Max</li><li>Frequency: 908.42Mhz</li><li>Temperature Range: 0°C ~ 40°C</li><li>Indoor use in dry location</li></ul><p><b>Features:</b><br /></p><ol><li>Z-Wave on/off + dimmer control.</li><li>Grounded 3-wire power connection for safety.</li><li>Remembers and restores on/off status after power failure.</li><li>Built-in Z-Wave Plus signal repeater to extend network range.</li><li>S2 security and 700 Z-Wave chip for reliable wireless communication.</li><li>Work with all certificated Z-Wave controllers.</li></ol> <br /> <h2>Inclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</li><li>Once the controller is ready to add your device, press the manual/program button on the smart plug 3 times quickly.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network.</li><li>Once the controller is ready to remove your device, press the manual/program button on the smart plug 3 times quickly.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

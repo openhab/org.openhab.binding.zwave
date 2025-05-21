@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="heltun_hetps02_00_000" listed="false">
     <label>HE-TPS02 Touch Panel Switch Duo</label>
@@ -11,7 +11,6 @@
 Touch Panel Switch Duo<br /> <h1>Overview</h1><p>HELTUN HE-TPS02 Advanced Programmable Touch Panel Switch brings "Impossibly Smart" capabilities to your home lighting, electric outlets, or motorized blinds, door locks, gates, and valves. It replaces an existing in-wall switch and brings over-the-Internet monitoring, control, and advanced programmability. Device is "Impossibly Thin" on the wall yet packed with features to provide the ultimate in control and convenience.<br /></p> <br /> <h2>Inclusion Information</h2><p>To add the HE-TPS02 to an existing Z-Wave network (i.e. “inclusion”), do the following:</p><ol><li>Start the Inclusion Mode from the gateway/controller.</li><li>To start the inclusion process on the HE-TPS02, simultaneously press the two upper hidden touch buttons (see Figure 8) and hold them for three seconds.</li><li>All buttons will then sequentially blink ‘blue-red’.</li><li>If the inclusion has been successful, all buttons will turn blue for three seconds.</li><li>If the inclusion was not successful, all buttons will turn red for three seconds. In that case repeat the inclusion process.</li></ol> <br /> <h2>Exclusion Information</h2><p>To remove the HE-TPS02 from a Z-Wave network (i.e. “Exclusion”), do the following:</p><ol><li>Start the Exclusion Mode from the gateway/controller.</li><li>To start the exclusion process on the HE-TPS02, simultaneously press the two upper hidden touch buttons (see Figure 8) and hold them for three seconds.</li><li>All buttons will sequentially blink blue-red.</li><li>If the exclusion has been successful, all buttons will turn red for three seconds.</li><li>If the exclusion was not successful, all buttons will turn blue for three seconds. In that case repeat the exclusion process.</li></ol><p>Note: If the HE-TPS02 has previously been part of a Z-Wave network and not Excluded since, Inclusion is not possible without rst performing an Exclusion or Factory Reset procedure.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

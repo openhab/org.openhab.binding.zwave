@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="philio_psk01_00_000" listed="false">
     <label>PSK01 Smart Keypad</label>
@@ -11,7 +11,6 @@
 Smart Keypad<br /> <h1>Overview</h1><p>The Philio Smart Keypad with an elegant glass touch panel can be included in your Z-Wave network to increase the security in your home. The smart device support Z-Wave Multi-Functions Smart Switch to report the current key status and setup Arm/ Disarm.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>Enter Programming Code, default is 0000</li><li>Enter 1-0-"Enter/unlock"</li></ol> <br /> <h2>Exclusion Information</h2><ol><li> Enter Programming Code, default is 0000</li><li> Enter 1-0-"Enter/unlock"</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Battery</category>
-    <semantic-equipment-tag>Battery</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

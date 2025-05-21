@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_thermiqtemp_00_000" listed="false">
     <label>ThermIQ Temperature Sensor Ambient Temperature Sensor</label>
@@ -11,7 +11,6 @@
 Ambient Temperature Sensor<br /> <h1>Overview</h1><p>Simple ambient temperature sensor that comes with ThermIQ infrared panels</p> <br /> <h2>Inclusion Information</h2><ul><li>Remove the back cover</li> <li>Mount 2 AAA batteries</li> <li>Enable inclusion mode on the controller</li> <li>Press and hold tamper switch till the red led starts blinking</li> <li>Release tamper switch</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Remove the back cover</li> <li>Mount 2 AAA batteries</li> <li>Enable exclusion mode on the controller</li> <li>Press and hold tamper switch till the red led starts blinking</li> <li>Release tamper switch</li> </ul> <br /> <h2>Wakeup Information</h2><p>Device can be set to wake up on a set time interval</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

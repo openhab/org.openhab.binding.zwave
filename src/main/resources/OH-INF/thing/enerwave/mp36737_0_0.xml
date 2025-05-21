@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_mp36737_00_000" listed="false">
     <label>Monoprice Z-Wave Plus On/Off Switch Monoprice in wall on/off switch model number 36737</label>
@@ -11,7 +11,6 @@
 Monoprice in wall on/off switch model number 36737<br /> <h1>Overview</h1><p>Perfect Replacement for regular wall switch, 120VAC, 15Amp</p><p>Wireless Z-Wave technology creates a mesh network for command and Manual and Remote ON/OFF control of any connected lighting and interoperability with other Z-Wave compliant controller and devices</p><p>Manual and Remote ON/OFF control of any connected lighting and other electrical load </p><p>Can be used for signal pole or 3- Way (Multi-location) with ZW3K Auxiliary Air-Gap Switch</p><p>Air-Gap Switch feature meets UL requirement and disconnect power from load locally</p><p>A blue LED illuminates when the load is off</p> <br /> <h2>Inclusion Information</h2><p>Once switch paddle (top/button) is pressed, the device will enter into learn mode to accomplish inclusion or exclusion by controller.  <br /></p> <br /> <h2>Exclusion Information</h2><p>Once switch paddle (top/button) is pressed, the device will enter into learn mode to accomplish inclusion or exclusion by controller.  <br /></p> <br /> <h2>Wakeup Information</h2><p>N/A</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>IceMaker</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

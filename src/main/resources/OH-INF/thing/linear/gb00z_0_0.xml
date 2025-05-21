@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="linear_gb00z_00_000" listed="false">
     <label>GB00Z Glass Break Detector</label>
@@ -11,7 +11,6 @@
 Glass Break Detector<br /> <h1>Overview</h1><p>The GB00Z is a Glass break sensor/transmitter with built-in Z-Wave® technology.</p> <ul><li>The sensor mounts on a wall or ceiling within 15 feet of the protected glass window(s).</li> <li>The detector is powered from two 3-Volt CR123A lithium batteries (included).</li> <li>Three screws and screw anchors are provided for mounting the detector.</li> </ul> <br /> <h2>Inclusion Information</h2><p>Before adding the device to any Z-Wave network, or after removing it from any Z-Wave network, it is recommended that the GB00Z be reset. Reset the GB00Z by pressing the detector’s button 5 times. The detector’s green indicator will light for 3 seconds to show proper reset.</p> <p>A simple press and release of the front button is used to include (green indicator blinks 3 times when complete), and the same to exclude (green indicator lights for 3 seconds when complete). The detector must be asleep for this action to take place.</p> <br /> <h2>Exclusion Information</h2><p>Before adding the device to any Z-Wave network, or after removing it from any Z-Wave network, it is recommended that the GB00Z be reset. Reset the GB00Z by pressing the detector’s button 5 times. The detector’s green indicator will light for 3 seconds to show proper reset.</p> <p>A simple press and release of the front button is used to include (green indicator blinks 3 times when complete), and the same to exclude (green indicator lights for 3 seconds when complete). The detector must be asleep for this action to take place.</p> <br /> <h2>Wakeup Information</h2><p>Three presses will wake the device for five minutes so that you can begin any required network testing. You will see the green indicator blink three times to indicate it is awake for testing.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

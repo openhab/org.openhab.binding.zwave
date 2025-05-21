@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_builtindimmer_00_000" listed="false">
     <label>builtInDimmer Built-in Dimmer</label>
@@ -11,7 +11,6 @@
 Built-in Dimmer<br /> <h1>Overview</h1><p>Basic operations</p> <ul><li>The Built-in Dimmer can trigger any rule or lifestyle.</li> <li>The Built-in Dimmer can dim up to 125Watt.</li> <li>The Built-in Dimmer can be placed behind your wall switch (41*41*13mm).</li> <li>The Built-in Dimmer is easy to install and configured.</li> <li>The Built-in Dimmer will power itself through halogen or incandescent light. (no blue wire or neutral line is needed)</li> <li>Indoor use only. </li> </ul> <br /> <h2>Inclusion Information</h2><p>When the light is off (!) press/flip the wall switch once, after circa two seconds release/flip back the wall switch to start the inclusion process. </p> <br /> <h2>Exclusion Information</h2><p>When the light is off (!) press/flip the wall switch once, after circa two seconds release/flip back the wall switch to start the exclusion process.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

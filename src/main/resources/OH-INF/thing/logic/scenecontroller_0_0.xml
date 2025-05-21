@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_scenecontroller_00_000" listed="false">
     <label>Heatit Z-Scene Controller Push button 6-gang</label>
@@ -11,7 +11,6 @@
 Push button 6-gang<br /> <h1>Overview</h1><p>The Heatit Z-Wave Scene Controller is a Z-Wave module specifically adapted to Gira KNX touch sensors. The Heatit Z-Wave Scene Controller is a device with built-in wireless Z-Wave communication that may be used to control other Z-Wave devices such as dimmers, relay modules, etc.</p> <p>The scene controller has a built-in relay that can be used to turn on and off a local load, e.g. a lamp, thus replacing a standard 1-pole switch.</p> <br /> <h2>Inclusion Information</h2><p>Pushing the upper left button 3 times (triple click) will activate Inclusion Mode on the device. It is also possible to activate Inclusion Mode by triple clicking the switch inside the module (through a little hole in the front of the module).</p> <br /> <h2>Exclusion Information</h2><p>The inclusion and exclusion of the device is confirmed by sending out a Node Information Frame. Beside this, it may be necessary for certain network operations to send out a Node Information Frame. Triple clicking the button inside the module through a little hole (normally covered by GIRA module) or the upper left button will issue a Node Information Frame.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>Button</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

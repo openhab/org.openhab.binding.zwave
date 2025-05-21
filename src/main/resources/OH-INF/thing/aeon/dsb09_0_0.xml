@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="aeon_dsb09_00_000" listed="false">
     <label>DSB09 Home Energy Meter</label>
@@ -11,7 +11,6 @@
 Home Energy Meter<br /> <h1>Overview</h1><p>Your Home Energy Meter can be reset to default factory settings with ease.</p> <ol><li>Press and hold the Action Button for 10 seconds.</li> <li>If successful, the LED on the HEM should begin to blink slowly.</li> </ol> <br /> <h2>Inclusion Information</h2><p>The electrical installation of your Home Energy Meter (HEM) is now complete. You  must now wirelessly link it to your Z-Wave network.</p> <ol><li>Put your primary Z-Wave controller, usually a gateway or hub, into inclusion mode. If  you are not sure how to do this, please refer to your controller’s user manual.</li> <li>Press the Action Button on your HEM. If it has been successfully linked to your  network, its LED will remain illuminated. If the linking was unsuccessful, your HEM’s LED will continue to blink.</li> </ol> <br /> <h2>Exclusion Information</h2><p>Your Home Energy Meter (HEM) can be removed from your Z-Wave network at  any time. You'll need to use your Z-Wave network’s primary to do this.</p> <ol><li>Put your main controller into its device removal mode. If you are unsure how to do  this, please refer to your controller’s user manual.</li> <li>Press the Action Button on your HEM. If it has been successfully removed from your  network, its LED will blink. If the removal was unsuccessful, its LED will be solid and it will be then repeated again.</li> </ol>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="simontech_1000208113x_00_000" listed="false">
     <label>10002081-13X S100 iO Master Roller Blind</label>
@@ -11,7 +11,6 @@
 S100 iO Master Roller Blind<br /> <h1>Overview</h1><p>Master Roller Blind IO is ready to operate with Z-Wave controllers and configured to be managed by Simon100 IO APP using the HUB plug IO for getting a better user experience. Sending the Blind controller by other window covering devices Up/Down/Stop.</p> <br /> <h2>Inclusion Information</h2><p>When the pushbutton is released after a press of (10sec&lt;T&lt;30sec) the device will Set it into Manual Association Mode. </p><p>Central LED will blink slow during Association mode time.</p><p>Association mode allows add devices to Device Group 2.</p><p>If associated devices are Simon Devices, Master will turn on Central LED to inform the user about which devices are in.</p><p>Once association is finished, Master will turn off the Central LED to allow the normal use of the devices. </p> <br /> <h2>Exclusion Information</h2><p>When the pushbutton is released after a press of (10sec&lt;T&lt;30sec) the device will Set it into Manual Association Mode. </p><p>Central LED will blink slow during Association mode time.</p><p>Association mode allows add devices to Device Group 2.</p><p>If associated devices are Simon Devices, Master will turn on Central LED to inform the user about which devices are in.</p><p>Once association is finished, Master will turn off the Central LED to allow the normal use of the devices. </p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Controller</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

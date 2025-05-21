@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="mcohome_mhir2900_00_000" listed="false">
     <label>IR Thermostat IR2900 IR Thermostat</label>
@@ -11,7 +11,6 @@
 IR Thermostat<br /> <h1>Overview</h1><p>The MCO Home IR Thermostat IR2900 is a Z-Wave enabled device that allows you to control your air conditioning or heating system through infrared signals. It features a built-in temperature sensor and an LCD display that shows the current temperature and humidity levels. The device can be used as a thermostat to regulate the temperature of your home, and it can also be used to set schedules for your air conditioning or heating system.<br /></p> <br /> <h2>Inclusion Information</h2><ol><li>In the home page, long press UP and DOWN synchronously for 3 sec to enter into Z-Wave interface, Product ID will be displayed on the interface.</li><li>If Product ID is 0, press POWER to include the device into Z-Wave network, if the inclusion is successful, it will not show 000 on the interface.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>In the home page, long press UP and DOWN synchronously for 3 sec to enter into Z-Wave interface, Product ID will be displayed on the interface.</li><li>If Product ID is not 0, press to exclude the device from Z-Wave network POWER, if the Exclusion is successful, it will show 000 on the interface.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -243,10 +242,6 @@ Temperature deadband when the device is controlled by association group.<br /> <
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -264,10 +259,6 @@ Temperature deadband when the device is controlled by association group.<br /> <
     <label>Thermostat Fan Mode</label>
     <description>Sets the thermostat fan mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Speed</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Auto (Low)</option>

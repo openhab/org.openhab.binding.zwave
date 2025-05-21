@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zwaveme_wallcs_00_000" listed="false">
     <label>WALLC-S Wall Controller</label>
@@ -11,7 +11,6 @@
 Wall Controller<br /> <h1>Overview</h1><p>The Z-Wave.Me Wall Controller is a Z-Wave device that can both control other Z-Wave devices and activate predefined scenes in an IP gateway. Although it is controlling other devices, the Wall Controller cannot act as Z-Wave network controller (primary or secondary) and will always need a ZWave network controller to be included into a Z-Wave network. The device can be used in different modes that are selected by configuration parameters:</p> <ol><li>Control of groups of other Z-Wave devices using 'ON', 'OFF' and Dim commands.</li> <li>Activation of predefined scenes in Gateways or other Z-Wave devices.</li> </ol><p>This device support secure communication when included by a controller that also supports secure communication. The device will then send all commands as secure commands unless the receiving device can not accept them. Then the command is send the normal way automatically.</p> <p>The device can be operated in two different modes:</p> <ul><li>Operation Mode: This is the mode where the device is controlling other Z-Wave devices or is activating scenes.</li> <li>Management Mode: The device is turned into the management mode by pushing all four buttons for 5 sec. A blinking green LED indicates the management mode. In the management mode the buttons of the device have different functions. If no further action is performed, the device will turn back to the normal mode after 10 sec. Any management action terminates the management mode as well.</li> </ul><p>In management mode the following actions can be performed:</p> <ul><li>Button 1 - Re-Inclusion/Exclusion: Every re-inclusion or exclusion attempt is confirmed by hitting this button. Any button press stops the mode as well.</li> <li>Button 2 - Send Node Information Frame and Wake up Notification.</li> <li>Button 3 - Factory Default Reset. After clicking on button 3 keep button 4 pushed for &gt;4 seconds</li> <li>Button 4 - Enter into Association mode to assign target devices to one of the four association. Refer to the manuals section about association for more information how to set and unset association groups.</li> </ul><p><strong>Factory Reset</strong></p> <p>The device can be set back to factory defaults without performing an exclusion process. Please executes the following steps: (1) Turn the device into Management Mode, (2) click on Button 3, (3) keep button 4 pushed for 4 seconds.</p> <br /> <h2>Inclusion Information</h2><p> Push button 1 in management mode</p> <br /> <h2>Exclusion Information</h2><p> Push button 1 in management mode</p> <br /> <h2>Wakeup Information</h2><p>It is possible to manually wake up the device by pushing button 2 in management mode.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

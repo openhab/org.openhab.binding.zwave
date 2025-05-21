@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw4002_00_000" listed="false">
     <label>ZW4002 In-Wall Smart Fan Control</label>
@@ -11,7 +11,6 @@
 In-Wall Smart Fan Control<br /> <h1>Overview</h1><p><strong>Basic Operation</strong></p> <p>Note: Before starting, fan must be set to ‘HIGH’ position using pull chain. The connected fan can then be turned ON/OFF and adjust speed levels in two ways:</p> <ol><li>Manually from the front panel rocker of the In-wall Fan Control</li> <li>Remotely with a Z-Wave controller</li> </ol><p><strong>Manual Control</strong></p> <p>To turn the connected fan ON: Press and release the top of the rocker. Note: Fan will return to last speed setting of Fan Control. Default setting – HIGH.</p> <p>To turn the fan OFF: Press and release the bottom of the rocker.</p> <p><strong>Adjust fan speed</strong></p> <p>To decrease fan speed: Press and hold lower rocker.</p> <p>To increase fan speed: Press and hold upper rocker.</p> <p>The LED indicator confirms fan speed settings by flashing patterns</p> <ul><li>LOW – LED will blink every 2 seconds for 10 seconds</li> <li>MEDIUM – LED will blink every second for 10 seconds</li> <li>HIGH – LED will blink every half second for 10 seconds</li> </ul> <br /> <h2>Inclusion Information</h2><p>Once the controller is ready to include your device, press and release the top or bottom of the smart fan control switch (rocker) to include it in the network.</p> <br /> <h2>Exclusion Information</h2><p>Tap up or down</p> <br /> <h2>Wakeup Information</h2><p>Tap up or down</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

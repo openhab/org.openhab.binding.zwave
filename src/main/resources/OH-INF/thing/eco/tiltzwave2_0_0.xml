@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="eco_tiltzwave2_00_000" listed="false">
     <label>TILTZWAVE2 Z-Wave Garage Door Sensor</label>
@@ -11,7 +11,6 @@
 Z-Wave Garage Door Sensor<br /> <h1>Overview</h1><p>Sensor which transmits when  a garage door is open or closed. Uses a tilt sensor to detect the angle of a door and transmits open/closed status. Reports tamper condition if cover is removed.</p> <br /> <h2>Inclusion Information</h2><p>Put controller into inclusion mode, remove the cover, remove the battery for 5 seconds, reinsert the battery, close the cover.</p> <br /> <h2>Exclusion Information</h2><p>Put controller into exclusion mode, remove the cover, remove the battery for 5 seconds, reinsert the battery, close the cover.</p> <br /> <h2>Wakeup Information</h2><p>Remove the cover, close the cover.</p>
     ]]></description>
     <category>GarageDoor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

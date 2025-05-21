@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zemismart_smartcurtain_00_000" listed="false">
     <label>Curtain Motor Zwave controlled motor for curtain operation</label>
@@ -11,7 +11,6 @@
 Zwave controlled motor for curtain operation<br /> <h1>Overview</h1><p>Zemismart Smartthings Control Z-wave Motorize Curtain With Track Customized Smart Curtains Smartthing Control</p> <br /> <h2>Inclusion Information</h2><p>Inclusion of curtain motor:</p><ol><li>Click button 3-times to set in inclusion mode</li><li>Scan for z-wave devices</li></ol> <br /> <h2>Exclusion Information</h2><p>Exclusion of curtain motor:</p><ol><li>Click button 3-times to set in exclusion mode</li><li>Remove from smart hub</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

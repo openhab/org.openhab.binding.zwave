@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz79_00_000" listed="false">
     <label>TZ79 Insert switch module</label>
@@ -11,7 +11,6 @@
 Insert switch module<br /> <h1>Overview</h1><p>The zwave power switch module TZ79 by TKB is designed to be placed into a pattress box behind a normal switch . This switch is no longer controlling the electrical load directly but acts as input device for the micro module. It has an internal relay to control the electrical load attached. With this micro module an existing installation can be turned into a Z-Wave enabled smart system keeping the original switches in place. This is particularly useful if you are using switches of a particular pattern and don't what to change them.</p> <br /> <h2>Inclusion Information</h2><ol><li>Have Z-Wave Controller entered inclusion mode.</li> <li>Pressing On/Off button three times within 1.5 secondes will enter inclusion mode.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Have Z-Zwave controller entered exclusion mode.</li> <li>Pressing On/Off button three times within 1.5 secondes will enter exclusion mode.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

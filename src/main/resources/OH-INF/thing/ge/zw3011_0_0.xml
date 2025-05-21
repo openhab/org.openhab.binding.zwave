@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw3011_00_000" listed="false">
     <label>ZW3011/14322/46565 In-Wall Smart Toggle Dimmer</label>
@@ -11,7 +11,6 @@
 In-Wall Smart Toggle Dimmer<br /> <h1>Overview</h1><p>In-Wall Smart Toggle Dimmer with QuickFit and SimpleWire enhancements. Revolutionary QuickFit design features a housing depth that is up to 20 percent smaller than the previous Z-Wave models. This reduced size coupled with the elimination of heat taps provides a better fit in older style boxes and multi-gang configurations. SimpleWire technology allows line and load to automatically be configured with auto-sensing line-load terminals. All of this is coupled with Z-Wave S2 and Smart Start allows for effortless installation while being safer than ever!</p> <br /> <h2>Inclusion Information</h2><p>Adding your device to a Z-Wave network:</p> <ol><li>Follow the instructions for your Z-Wave certified controller to add a device to the Z-Wave network.</li> <li>Once the controller is ready to add your device, press up and release the toggle.</li> </ol> <br /> <h2>Exclusion Information</h2><p>To remove and reset the device:</p> <ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the network.</li> <li>Once the controller is ready to remove your device, press up and release the toggle.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="thermofloor_zwater_00_000" listed="false">
     <label>Heatit Z Water Relay control</label>
@@ -11,7 +11,6 @@
 Relay control<br /> <h1>Overview</h1><ul><li>The relay outputs may be used for controlling actuators/valves in a hydronic heating system</li> <li>May be used to control both 24V actuators and 230V actuators</li> <li>Can be used together with a Heatit Z-Temp sensor in each zone</li> <li>DIN rail mounting</li> <li>Works as a Z-Wave repeater</li> <li>Firmware updates (OTA)</li> <li>Available firmware versions (analog/digital inputs)</li> <li>Supports encryption mode: S0, S2 Access Control Class, S2 Authenticated Class, S2 Unauthenticated Class</li> </ul> <br /> <h2>Inclusion Information</h2><p>Place your primary controller in Adding Mode by following the manufacturer’s instructions, then activate the add mode on the device by clicking the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. The Adding Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been added to the Z-Wave network.</p> <br /> <h2>Exclusion Information</h2><p>Place your primary controller in Remov Mode by following the manufacturer’s instructions, then activate the remove mode on the device by clicking the small button through the little hole, marked with the text “INCLUSION”, in front of the Heatit Z-Water regulator. The Remove Mode is indicated by Heatit Z-Water status LED is blinking until a timeout occurs after 10 seconds or if the module has been removed from the Z-Wave network.</p> <br /> <h2>Wakeup Information</h2><p>NA</p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

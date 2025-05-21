@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="devolo_pst021b_00_000" listed="false">
     <label>PST02-1B Multisensor</label>
@@ -11,7 +11,6 @@
 Multisensor<br /> <h1>Overview</h1><p>The Home Control Motion Sensor measures brightness and temperature. Detects movements in an angle of 80 degrees horizontally and in a distance of up to 8 metres. The integrated light sensor can also be an impulse transmitter for the light controls.</p> <br /> <h2>Inclusion Information</h2><p>Pressing tamper key three times within 1.5 seconds to enter the inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing tamper key three times within 1.5 seconds to enter the exclusion mode.</p> <br /> <h2>Wakeup Information</h2><p>Remove the front cover and press the tamper key once. The device will wake-up 10 seconds.</p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

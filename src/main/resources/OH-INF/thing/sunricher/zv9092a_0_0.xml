@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="sunricher_zv9092a_00_000" listed="false">
     <label>Namron SR-ZV9092A Namron Z-Wave Heating Thermostat SR-ZV9092A</label>
@@ -11,7 +11,6 @@
 Namron Z-Wave Heating Thermostat SR-ZV9092A<br /> <h1>Overview</h1><p>Z-Wave Heating Thermostat SR-ZV9092A for underfloor heating ON/OFF<br /></p> <br /> <h2>Inclusion Information</h2><p>Adding to a Z-Wave Network (Inclusion)</p><p>Method 1:Select “Add”, then short press button , the device will send out inclusion request, “Status” will show “Inclusion...”. If there is no response from a gateway within 30 seconds, or inclusion failed, “Status” will show “Fail”. If included successfully, “Status” will show “Inclusion OK” and device ID.</p><p>Method 2: Operate the gateway into inclusion mode, make sure the device is already removed from previous network, reset power of the device, the device will be included to the gateway automatically.</p> <br /> <h2>Exclusion Information</h2><p>Removing from a Z-Wave Network (Exclusion)</p><p>Select “Remove”, then short press button , the device will send out exclusion request, “Status” will show “Exclusion...”. If there is no response from a gateway within 30 seconds, or exclusion failed, “Status” will show “Fail”. If excluded successfully, “Status” will show “Exclusion OK” and device ID will be showed as 0.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>HVAC</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -383,10 +382,6 @@ Window open detect function temperature threshold<br /> <h1>Overview</h1><p>Wind
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>
@@ -403,10 +398,6 @@ Window open detect function temperature threshold<br /> <h1>Overview</h1><p>Wind
     <label>Thermostat Mode</label>
     <description>Sets the thermostat mode</description>
     <category>Temperature</category>
-    <tags>
-      <tag>Setpoint</tag>
-      <tag>Temperature</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="0">Off</option>

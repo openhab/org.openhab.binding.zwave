@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgr222_24_024" listed="false">
     <label>FGR222 Roller Shutter 2</label>
@@ -11,7 +11,6 @@
 Roller Shutter 2<br /> <h1>Overview</h1><p>The device allows for controlling motors of roller blinds, awnings, venetian blinds, gates and others, which are single phase AC powered.</p> <br /> <h2>Inclusion Information</h2><p>Fibaro Roller Shutter may be included into the Z-Wave network via the B-button or a push button connected to the S1 terminal. In addition, the module may be included in auto inclusion mode, by simply connecting the power supply.</p> <p>Automatic Z-Wave network inclusion:</p> <ol><li>Make sure the power supply is disconnected and a Roller Shutter is located within a direct Z-Wave network’s main controller communication range.</li> <li>Set the main controller into the learn mode (see main controllers operating manual).</li> <li>Connect the power supply to include the Roller Shutter in auto inclusion mode. 4) Fibaro Roller Shutter will be automatically detected and included into the Z-Wave network.</li> </ol><p>To disable the auto inclusion mode, press the B-button briefly, after connecting the module to the power supply.</p> <p>Manual Z-Wave network inclusion: </p> <ol><li>Connect the power supply.</li> <li>Set the main controller into the learn mode (see main controllers operating manual).</li> <li>Triple click the B-button or a push button connected to the S1 terminal.</li> <li>Fibaro Roller Shutter will be detected and included into the Z-Wave network.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Make sure the module is connected to the power supply.</li> <li>Set the main controller into the learn mode (see main controllers operating manual).</li> <li>Triple click the B-button or a push button connected to the S1 terminal.</li> </ol> <br /> <h2>Wakeup Information</h2><p>device has mains power, doesn't sleep.</p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

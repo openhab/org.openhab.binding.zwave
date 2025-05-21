@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen23_00_000" listed="false">
     <label>ZEN23 Toggle Switch v1</label>
@@ -11,7 +11,6 @@
 Toggle Switch v1<br /> <h1>Overview</h1><p>Optimal Wireless Control</p> <p>Monitor and command your lights remotely using your mobile device — turn your basement lights off while you’re lying in bed.</p> <p>Direct 3-Way Solution</p> <p>Wire this Z-Wave switch with your existing 3-way switch. Now you only need one smart switch to monitor and control lights from 2 locations!</p> <p>Advanced Automation</p> <p>Associate with other Z-Wave devices for lighting scenes and events designed around your life.</p> <p>Stronger Connection</p> <p>A toggle that doubles as a signal repeater to give you a faster and more reliable Z-Wave network overall.</p> <p>Wide Compatibility</p> <p>Connect this Z-Wave toggle with dozens of smart home systems and brands. Pair it with LED, CFL, and incandescent bulbs.</p> <br /> <h2>Inclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into inclusion mode</li> <li>Toggle the switch UP 3 times very quickly to finalize the inclusion process</li> <li>A new on/off device will appear on your controller's device list</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Bring your Z-Wave gateway hub or controller as close to the switch as possible</li> <li>Put your Z-Wave controller into exclusion mode</li> <li>Toggle the switch DOWN 3 times very quickly to complete the exclusion process</li> <li>The device will disappear from your controller's device list</li> </ol> <br /> <h2>Wakeup Information</h2><p>Toggle the switch up or down once</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

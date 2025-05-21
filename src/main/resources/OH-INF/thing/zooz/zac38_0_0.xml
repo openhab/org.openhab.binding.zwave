@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zac38_00_000" listed="false">
     <label>ZAC38 Range Extender</label>
@@ -11,7 +11,6 @@
 Range Extender<br /> <h1>Overview</h1><p>- Extend your network with this repeater</p><p>- Backup battery and power outage notifications</p><p>- 800 series chip for faster communication and more range</p> <br /> <h2>Inclusion Information</h2><p>While the controller is scanning for new devices, click the button 3 times as quickly as possible.  LED indicator will flash green to confirm inclusion mode and turn green for 2 seconds once inclusion is completed.</p> <br /> <h2>Exclusion Information</h2><p>Initiate Exclusion on the controller and click the button 3 times as quickly as possible.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

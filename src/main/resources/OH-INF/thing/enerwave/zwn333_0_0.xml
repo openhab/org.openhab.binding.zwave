@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zwn333_00_000" listed="false">
     <label>ZWN-333 Plug-in Appliance Module</label>
@@ -11,7 +11,6 @@
 Plug-in Appliance Module<br /> <h1>Overview</h1><p>Provides 120V/AC NEMA 5-15R grounding receptacle for use with a wide variety of lamps/load, such as incandescent, dimmable LED and CFL table or floor lamp, fluorescent light, small appliance, motor.</p> <br /> <h2>Inclusion Information</h2><p>Once program button is pressed and hold for 3 second, the device will enter into learn mode to accomplish adding or removing by controller</p> <br /> <h2>Exclusion Information</h2><p>Once program button is pressed and hold for 3 second, the device will enter into learn mode to accomplish adding or removing by controller</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

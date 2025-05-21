@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="simontech_1000102013x_00_000" listed="false">
     <label>10001020-13X Dimmer IO: Phase cut dimmer</label>
@@ -11,7 +11,6 @@
 Dimmer IO: Phase cut dimmer<br /> <h1>Overview</h1><p>The electronic dimmer switch 230V ~ with 2/3 wire phase cut is a switch from Simon 100 serie. These types of dimmer switches have a power of 50W to 240W for traditional loads and 9W to 100W for LED loads. This is highly recommended for all types of uses (domestic, hotels, hospitals ...). The dimmer switch is only compatible with Simon 100 frames.</p> <br /> <h2>Inclusion Information</h2><ol><li>Put controller into inclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put controller into exclusion mode.</li> <li>When the pushbutton is released after a press of (2sec&lt;T&lt;20sec) the device will send a NIF to include the device to the Z-Wave network. Main LED will blink with 0,3 sec period.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

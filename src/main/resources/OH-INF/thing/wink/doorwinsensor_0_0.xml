@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="wink_doorwinsensor_00_000" listed="false">
     <label>Door/Window Sensor Wink D/W Sensor</label>
@@ -11,7 +11,6 @@
 Wink D/W Sensor<br /> <h1>Overview</h1><p>Reed Switch Type Door/Window Sensor. Unobtrusive styling. White.</p> <br /> <h2>Inclusion Information</h2><p>Including/Connecting to a Z-Wave Network </p><p>Follow the instructions for your Z-Wave certifed Controller to enter inclusion mode. When prompted by the Controller:</p><ol><li>Bring the door/window sensor to within 10 feet of your controller. After inclusion, the device can be moved to any desired location.</li><li>If connecting a new sensor, remove the battery tab. Press the sensor cover release tab to remove the sensor body cover, and make sure the battery is installed correctly.</li><li>Press the Connect Button quickly 3 times in a row.</li><li>The LED indicator will flash five times to indicate inclusion</li></ol><p><br /></p> <br /> <h2>Exclusion Information</h2><p>Excluding/Disconnecting from the Z-Wave Network:</p><p>Follow the instructions for your Z-Wave certified Controller to enter exclusion mode. </p><p>When prompted by the Controller:</p><ol><li>Press the sensor cover release button to remove the top cover, and be sure it is powered on.</li><li>Press the Connect Button next to the battery quickly 3 times in a row.</li></ol><p>The LED indicator will flash five times indicating exclusion/disconnection</p> <br /> <h2>Wakeup Information</h2><p>Press the Connect Button next to the battery quickly 3 times in a row.</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

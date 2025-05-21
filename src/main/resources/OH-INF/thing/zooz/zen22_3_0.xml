@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="zooz_zen22_03_000" listed="false">
     <label>ZEN22 Paddle Dimmer</label>
@@ -11,7 +11,6 @@
 Paddle Dimmer<br /> <h1>Overview</h1><ul><li>Manual or Z-Wave on/off and brightness control </li> <li>Direct 3-Way: works with regular on/off switches in a 3-way (neutral wire required)</li> <li>Fully adjustable ramp rate for just the right on/off speed</li> <li>Double tap to full brightness feature</li> <li>Remembers and restores on/off status aer power failure</li> <li>Built-in Z-Wave Plus signal repeater to extend network range</li> <li>Works with LED and incandescent bulbs (don’t use with fans)</li> <li>Accepts OTA firmware updates</li> <li>Customizable LED indicator and air-gap switch for added safety</li> </ul> <br /> <h2>Inclusion Information</h2><p>Tap the upper paddle 4-5 times quickly</p> <br /> <h2>Exclusion Information</h2><p>Tap the lower paddle 3 times quickly</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

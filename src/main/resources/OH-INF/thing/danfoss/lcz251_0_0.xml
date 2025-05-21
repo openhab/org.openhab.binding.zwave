@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="danfoss_lcz251_00_000" listed="false">
     <label>LCZ251 Living Connect Z Thermostat 2.51</label>
@@ -11,7 +11,6 @@
 Living Connect Z Thermostat 2.51<br /> <h1>Overview</h1><p>Danfoss Living connect® Z is an electronic radiator thermostat, intended for using with water based room radiators.</p> <br /> <h2>Inclusion Information</h2><p>• Ensure living connect® Z is factory reset .<br />• Activate “Inclusion” on the Z-Wave controller.<br />• Quickly press and release middle button on living connect® Z.<br />• Observe both controller and living connect® Z for status of the process. <br /> </p> <br /> <h2>Exclusion Information</h2><p>• Ensure living connect® Z is factory reset .<br />• Activate “Inclusion” on the Z-Wave controller.<br />• Quickly press and release middle button on living connect® Z.<br />• Observe both controller and living connect® Z for status of the process.</p> <br /> <h2>Wakeup Information</h2><p>• Quickly press and release middle button on living connect® Z.</p>
     ]]></description>
     <category>RadiatorControl</category>
-    <semantic-equipment-tag>Thermostat</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

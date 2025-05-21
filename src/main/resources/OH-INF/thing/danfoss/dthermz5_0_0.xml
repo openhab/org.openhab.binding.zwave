@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="danfoss_dthermz5_00_000" listed="false">
     <label>DTHERMZ5 Z-Wave room sensor</label>
@@ -11,7 +11,6 @@
 Z-Wave room sensor<br /> <h1>Overview</h1><p>qheat RS is a battery operated temperature sensor. When included into Z-Wave wireless network, its buttons can also be used to control the heating system.</p> <br /> <h2>Inclusion Information</h2><p>Press the LED button on the qheat RS</p> <br /> <h2>Exclusion Information</h2><p>Hold down the 3 buttons on the qheat RS for 5 seconds (up, down and LED buttons).</p> <br /> <h2>Wakeup Information</h2><p> The qheat RS can be woken manually by pushing any of the three buttons, and will stay awake for 10 seconds</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="fibaro_fgfs101_00_000" listed="false">
     <label>FGFS101 Flood Sensor</label>
@@ -11,7 +11,6 @@
 Flood Sensor<br /> <h1>Overview</h1><p>Fibaro Flood Sensor is a universal flood and temperature sensor. Device can be battery (ca. 2 years battery life) or VDC powered (12 or 24 VDC).</p> <br /> <h2>Inclusion Information</h2><p>Connect a DC power source to include the Fibaro Flood Sensor into the Z-Wave network in autoinclusion mode or triple click TMP button for manual inclusion.</p> <br /> <h2>Exclusion Information</h2><p>Triple click TMP button</p> <br /> <h2>Wakeup Information</h2><p>Triple click TMP button  (think it's really a quad click)</p>
     ]]></description>
     <category>Sensor</category>
-    <semantic-equipment-tag>Sensor</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

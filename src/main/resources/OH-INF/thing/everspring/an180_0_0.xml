@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="everspring_an180_00_000" listed="false">
     <label>AN180 Switch without metering</label>
@@ -11,7 +11,6 @@
 Switch without metering<br /> <h1>Overview</h1><p>The On/Off Mini Plug is a Z-Wave enabled device which is fully compatible with any Z-Wave enabled network. Z-WaveTM enabled devices displaying the Z-Wave logo can also be used with it regardless of the manufacturer, and ours can also be used in other manufacturer’s Z-Wave enabled networks. Inclusion of this unit on other manufacturer’s Wireless Controller menu allows remote operation of the unit and the connected load. The On/Off Mini Plug is designed to control the on/off status of appliances load in your house. At 220-240V voltage, this Plug can support up to 1500W resistive.</p> <br /> <h2>Inclusion Information</h2><h4>Adding to Z-Wave Network</h4> <p>On the unit you can find a link key which is used to carry out the function of inclusion, exclusion, and reset. When power is applied for the first time, the LED will flash on and off alternately and repeatedly, implying that it has not been assigned a node ID and cannot work with other Z-Wave devices yet. This unit supports the Auto Inclusion function when power is applied and no node ID is stored in the memory.</p> <h4>Auto Inclusion</h4> <p>The module may automatically execute the function of inclusion when...</p> <ol><li>The power is applied for the first time and no node ID has been stored in the module.</li> <li>The execution of reset is successful where the stored node ID is cleared.</li> </ol><p><strong>Note</strong>: The duration for Auto Inclusion is about 4 minutes. Unlike the “inclusion” procedure shown in the table below, the execution of Auto Inclusion is automatic without the necessity of pressing the link key.</p> <h4>Inclusion</h4> <ol><li>Put the Z-Wave Controller into inclusion mode.</li> <li>Press the link key three times within 1.5 seconds to put the unit into inclusion mode.</li> </ol><h4>No node ID</h4> <p>The Controller does not allocate a node ID to the unit. -&gt; LED indication: 2-second on, 2-second off</p> <h4>Reset</h4> <p>(Use this procedure only in the event that the network primary controller is missing, or otherwise inoperable.)</p> <ol><li>Press the link key three times within 1.5 seconds to put the unit into exclusion mode.</li> <li>Within 1 secondof step 1, press link key again and hold it until LED is off (about 5 seconds).</li> <li>Node ID is excluded.The device reverts to factory default state and will be in auto-inclusion mode for 4 minutes.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Put the Z-Wave Controller into exclusion mode.</li> <li>Press the link key three times within 1.5 seconds to put the unit into exclusion mode.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="popp_012501_01_004" listed="false">
     <label>012501 Electric Strike Lock Control</label>
@@ -11,7 +11,6 @@
 Electric Strike Lock Control<br /> <h1>Overview</h1><p>An electric strike is an access control device used to lock and release doors. Electric strikes are installed in or on the doorframe and work in conjunction with mechanical door locks, on the principle of electronically controlling the rotation of the keeper. Allowing for door opening without manual retraction of the mechanical door lock. This product combines a 16 mm thick strike lock (that will fit into almost all door formats) with a Z-Wave plus empowered wireless control.</p> <p>The lock mechanics and the Z-Wave control are operated by a 9V block battery or an external 8-12V AC / 8-24V DC transformer. The Z-Wave control accepts commands to open or close the strike. Depending on a configuration parameter the door will be looked automatically after a certain time even if no ‘close’ command was sent. According to the connected Z-Wave Gateway all actions of the Strike Lock will be recorded with a time stamp.</p> <p>The device is a secure Z-Wave Plus device and can be used in one wireless Z-Wave network with other certified devices regardless of origin and brand. It supports secure communication if the central controller supports secure communication as well. </p> <br /> <h2>Inclusion Information</h2><p>Pressing the Z-Wave button for one second includes the device.</p> <p>It is not allowed to operate the device in a non-secure environment. This means that the including controller must support Secure Command Class.</p> <br /> <h2>Exclusion Information</h2><p>A single click on the button will exclude the device.</p> <br /> <h2>Wakeup Information</h2><p>Normally powered by an electrical transformer</p>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="widom_ums2_00_000" listed="false">
     <label>UMS2 WiDom Smart Roller Shutter</label>
@@ -11,7 +11,6 @@
 WiDom Smart Roller Shutter<br /> <h1>Overview</h1><p>WiDom Smart Roller Shutter is an "in wall device", for the multilevel control of roller shutter motors. It can accurately control the opening and closing of blinds, curtains, shutters, venetian blinds as requested by the user through local commands or remotely using computers, smartphones, tablets. At the same time, it is completely configurable so that it can adapt to the most varied customers’ needs, while being ready for use without needing additional configurations in order to operate.  After an initial calibration procedure, thanks to a proprietary algorithm, WiDom Smart Roller Shutter is able to identify the exact position of the roller shutter without using external sensors. During the operation, a continuous and automatic control of the limit switches allows maintaining the calibration. In the absence of a power source, the system runs a self-repositioning procedure that restores calibration. The device is equipped with contact protection technology (Zero Crossing) which reduces the electrical stress on the relay contacts and ensures a longer life. The open / closed switching of the device always occur when the instantaneous value of voltage is 0. </p> <p>It operates in any Z-Wave network with other Z-Wave/Z-Wave Plus certified devices and controllers from any other manufacturer. As a constantly powered node, WiDom Smart Roller Shutter will act as repeater regardless of the vendor in order to increase the reliability of the network.</p> <br /> <h2>Inclusion Information</h2><p>Before including the device the LED status indicator is solid RED. The procedure of inclusion is activated by clicking Add in the inclusion interface and by pressing any sequence of click on the integrated button. As soon as the inclusion procedure initiates the LED indicator starts a sequence of GREEN-BLUE blinks. </p> <br /> <h2>Exclusion Information</h2><p>The procedure of exclusion can be activated by Removing a node from the Z-Wave network and any click sequence on the integrated button; as soon as the exclusion initiates, the LED indicator starts a sequence of RED-BLUE blinks. The device is excluded from the network when the LED status indicator is solid RED </p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

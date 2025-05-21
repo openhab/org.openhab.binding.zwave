@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ring_1156d_00_000" listed="false">
     <label>PIR Motion Sensor Motion Sensor</label>
@@ -11,7 +11,6 @@
 Motion Sensor<br /> <h1>Overview</h1><p>Ring Alarm Motion Sensor: Expand your Ring Alarm system to secure each room in your home, and get alerts as soon as they detect motion.</p> <br /> <h2>Inclusion Information</h2><ol><li>Activate inclusion mode on controller</li> <li>Pull tab/quickly disconnect and reconnect battery</li> <li>Device should appear in Inbox</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Initiate exclusion mode on controller</li> <li>Open contact sensor’s cover Remove and replace battery quickly</li> </ol><p>Reset:</p> <ol><li>Press and hold the reset button found under the pinhole on the back of the device.</li> <li>The LED of the sensor should begin blinking. Hold the  button down until the blinking stops</li> <li>Remove the cover from your motion sensor.</li> <li>Remove the battery.</li> <li>Place the battery back in the device.</li> <li>Put the cover back on the device. </li> </ol> <br /> <h2>Wakeup Information</h2><p>By opening the cover, the sensor will get to tamper state and stay awake.</p>
     ]]></description>
     <category>MotionDetector</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

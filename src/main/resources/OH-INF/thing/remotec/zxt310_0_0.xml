@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="remotec_zxt310_00_000" listed="false">
     <label>ZXT-310 AV IR Extender</label>
@@ -11,7 +11,6 @@
 AV IR Extender<br /> <h1>Overview</h1><p>ZXT‐310 is a Z‐Wave‐to‐AV IR Extender (Figure 1) and it works with any Z‐Wave compliant controller or gateway by translating Z‐Wave Simple AV command.</p><p>While I am updating this in the database for some basic functionality and testing, the Simple AV Command Class is not supported or working. Blasting power-toggle infrared commands works by sending '255' to the EP0 Basic Value channel. This is mentioned in the guide as sending 0xFF to the basic command class to for the SimpleAV Z-Wave command 39 (Power). The other channels are for testing. They may not be useful, especially without Simple AV CC support.</p> <br /> <h2>Inclusion Information</h2><p>Press the PROG button</p> <br /> <h2>Exclusion Information</h2><p>Press the PROG button</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -351,10 +350,6 @@ Endpoint selection control<br /> <h1>Overview</h1><p><br /></p>
     <item-type>Number</item-type>
     <label>External IR power</label>
     <description>External IR Emitter power level.</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Power</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="-1">IR1 output</option>

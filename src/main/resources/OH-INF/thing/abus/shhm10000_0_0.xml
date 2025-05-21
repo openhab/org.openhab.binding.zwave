@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="abus_shhm10000_00_000" listed="false">
     <label>SHHA10000 Smart Plug, Power Switch</label>
@@ -11,7 +11,6 @@
 Smart Plug, Power Switch<br /> <h1>Overview</h1><p>The SHHA10000 was developed for use in home automation systems that use the Z-Wave wireless standard. The power outlet enables you to switch a large number of your electronic devices - conveniently and directly via the gateway's app or automatically according to an individual schedule. In conjunction with configurable scenes, a large number of smart functions can be initiated, e.g. a presence simulation or you can preheat the coffee machine before getting up.</p> <p>The ABUS Z-Wave SHHA10000...:</p> <ul><li>is a wireless socket</li> <li>is Z-Wave PLUS compatible &amp; certified</li> <li>supports the Z-Wave S2 Standard (Security 2)</li> <li>measures your (current) consumption values reliably over any period of time</li> <li>detects applied mains voltage, wattage consumption, kWh and ampere</li> <li>can be switched on and off via app or manually</li> <li>was developed for indoor installation</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Plug the Wireless-Socket into an outlet. The StatusLED is flashing.</li> <li>Click the + (Add) button in your Z-Wave App and follow the further instructions</li> <li>Press the Network-Button on the Socket once The App will show if the Add device process was successful The Status LED does not flash anymore but indicates if device is switched on or off Repeat the inclusion process if it was not successful.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Click the - (Remove) button in your Z-Wave App and follow the further instructions</li> <li>Press the Button on the socket 3 times The App will show if the Remove Device process was successful. The Status-LED will now flash continuously Repeat the exclusion process if it was not successful.</li> </ol>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

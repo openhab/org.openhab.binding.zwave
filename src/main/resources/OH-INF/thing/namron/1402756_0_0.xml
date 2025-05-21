@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="namron_1402756_00_000" listed="false">
     <label>1402756 LED Dimmer</label>
@@ -11,7 +11,6 @@
 LED Dimmer<br /> <h1>Overview</h1><p>This is a switch multilevel device based on Z-wave enhanced 232 slave library of V6.81.03, and it can be easy configuration, operate and can make traditional LED dimmable lighting to be intelligent control.</p> <br /> <h2>Inclusion Information</h2><ol><li>Set primary controller/gateway into inclusion mode (Please refer top your primary controllers manual on how to set your controller into inclusion).</li> <li>Power on the in-wall dimmer.</li> <li>Tripple Press the reset button on the dimmer, it will set the dimmer into inclusion mode.<br />The purple indicator light will stay solid on for 10 seconds to indicate successful incusion.</li> </ol> <br /> <h2>Exclusion Information</h2><p>There are two exclusion methods:</p> <ul><li>Method 1: <ol><li>Set the primary controller/gateway int exclusion mode (Please refer top your primary controllers manual on how to set your controller into exclusion).</li> <li>Triple press the reset button, the dimmer will be set to exclusion mode, and wait to be excluded, then the dimmer will be excluded form the network.</li> </ol></li> <li>Method 2: Factory reset the dimmer will force the it to be excluded form a network. (Please refer to the part "Factory Reset" of the manual</li> </ul><p>Note: Factory reset is not recommended for exclusion, please use this procedure only if the primary controller/gateway is missing or otherwise inoperable.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

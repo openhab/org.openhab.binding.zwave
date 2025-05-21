@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_26933_00_000" listed="false">
     <label>In-Wall Smart Motion Dimmer 26932/26933/ZW3008 In-Wall Smart Motion Dimmer</label>
@@ -11,7 +11,6 @@
 26932/26933/ZW3008 In-Wall Smart Motion Dimmer<br /> <h1>Overview</h1><h4>Description</h4> <p>Set your life in motion with the Z-Wave Plus In-Wall Smart Motion Switch. This energy-efficient sensor works with your home’s gateway to wirelessly trigger scenes and send alerts to your smartphone or tablet whenever motion is has turned lights on or off.</p> <p>Three different modes offer the best lighting option for you: occupancy, vacancy and manual. In occupancy mode, the lights will automatically turn on when you enter the room and automatically turn off once you’ve left (customizable between 5 seconds and 30 minutes).</p> <p>In vacancy mode, the lights are turned on manually and will turn off automatically after a preset amount of time. In manual mode, the lights will function as a normal light switch and manually turn on and off. Along with conveniently saving you time and energy costs, the smart motion dimmer can replace any existing light switch in your home, and can be used in 3- and 4-way applications.</p> <p>You may also coordinate the switch with your household decor with the included white and light almond buttons. Experience the comfort of automation in your life when you come home to the Z-Wave Plus In Wall Smart Motion Switch.</p> <h4>Features</h4> <ul><li>Wirelessly trigger scenes and send alerts when motion detection has turned lights on or off</li> <li>Remotely monitor with any mobile device (Requires Z-Wave gateway or controller)</li> <li>Compatible with all certified Z-Wave devices</li> <li>Requires in-wall installation with hard-wired connections - neutral wire required</li> <li>Can be used in 3- and 4-way applications</li> <li>Works with all dimmable LED, CFL, halogen and incandescent bulbs</li> <li>Multiple operation modes: Occupancy - auto ON/auto OFF, Vacancy - manual ON/auto OFF, Manual - manual ON/OFF</li> <li>Built-in timer lets you set length of time light stays on after motion ceases - from 5 seconds to 30 minutes</li> <li>3 sensitivity levels - low, medium, high</li> <li>Includes white and light almond paddles</li> <li>Indoor use only</li> </ul><h4>Technical Specifications</h4> <ul><li>Specification Value Max Load 600W Incandescent</li> <li>150W Dimmable Power 120VAC, 60Hz</li> <li>Operating Temp. Rge 32-104°F (0-40°C)</li> <li>Signal Frequency 908.4/916MHz</li> <li>Wireless Range Up to 150 feet</li> </ul> <br /> <h2>Inclusion Information</h2><p>Adding your device to a Z-Wave network</p> <ol><li>Follow the instructions for your Z-Wave certified controller to add the smart dimmer to the Z-Wave network.</li> <li>Once the controller is ready to add your smart dimmer, press and release the top or bottom button on the smart dimmer to include it in the network.</li> </ol><p>To return to factory defaults</p> <p>Press and release the top button ten times within 5 seconds. The LED will flash 3 times quickly confirming change.</p> <br /> <h2>Exclusion Information</h2><p>To remove and reset the device</p> <ol><li>Follow the instructions for your Z-Wave certified controller to remove a device from the Z-Wave network.</li> <li>Once the controller is ready to remove your device, press and release the top button on the smart dimmer to remove it from the network.</li> </ol><p>To return to factory defaults</p> <p>Press and release the top button ten times within 5 seconds. The LED will flash 3 times quickly confirming change.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>MotionDetector</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
@@ -317,10 +316,6 @@ Set power level for plain switch functionality<br /> <h1>Overview</h1><p>0=disab
     <item-type>Number</item-type>
     <label>Operation Mode</label>
     <description>Sets how the light responds to motion</description>
-    <tags>
-      <tag>Control</tag>
-      <tag>Motion</tag>
-    </tags>
     <state pattern="%s">
       <options>
         <option value="1">Manual</option>

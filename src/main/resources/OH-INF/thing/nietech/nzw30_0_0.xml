@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="nietech_nzw30_00_000" listed="false">
     <label>NZW30 In-Wall Switch (On/Off)</label>
@@ -11,7 +11,6 @@
 In-Wall Switch (On/Off)<br /> <h1>Overview</h1><p>Turn ON/OFF manually or remotely via the Z-Wave controller<br />• Can be Included in multiple Groups and Scenes<br />• Compatible with all incandescent and CFL/ LED bulbs<br />• Blue LED indicates switch location in a dark room<br />• Z-Wave Certified for simple pairing and integrated home automation<br />• Screw Terminal Installation — requires wiring connections for Line (Hot), Load, Neutral.</p> <br /> <h2>Inclusion Information</h2><ul><li>Follow the instructions for your Z-Wave certified controller to include a device to the Z-Wave network.</li> <li>Once the controller is ready to include your device, triple press the Up/Down push button to include it in the network.</li> </ul> <br /> <h2>Exclusion Information</h2><ul><li>Follow the instructions for your Z-Wave certified controller to exclude a device from the Z-Wave network.</li> <li>Once the controller is ready to Exclude your device, triple press the Up/Down push button to exclude it from the network.</li> </ul>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

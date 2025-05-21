@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_zso7300_00_000" listed="false">
     <label>ZSO7300 FUGA Metered Wall Outlet</label>
@@ -11,7 +11,6 @@
 FUGA Metered Wall Outlet<br /> <h1>Overview</h1><p>ZSO7300 is a smart multifunction socket outlet designed to control electrical appliances via Z-Wave network that can be mounted in a modular wall-box. It is compatible with existing FUGA® frames and wall boxes</p> <br /> <h2>Inclusion Information</h2><p>ZSO7300 is a SmartStart enabled product and can be added into a Z-Wave network by scanning the Z-Wave QR Code present on the product with a controller providing SmartStart inclusion. No further action is required and the</p><p>SmartStart product will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>Find the QR code and PIN Code under the pushbutton cover (Figure 6a). Find the full DSK on the product packaging or next to QR code.</p><p>Add ZSO7300 to a network with Classic Inclusion by pressing once on the switch (I) behind the pushbutton-cover. The LED will start blinking blue when the adding process is started.</p><p>Use same procedure for removing ZSO7300 with Classic Exclusion.</p><p>If ZSO7300 already belongs to a Z-Wave network, the remove process must be performed before adding it in a new network. Otherwise, the adding of the device will fail.</p> <br /> <h2>Exclusion Information</h2><p>ZSO7300 is a SmartStart enabled product and can be added into a Z-Wave network by scanning the Z-Wave QR Code present on the product with a controller providing SmartStart inclusion. No further action is required and the</p><p>SmartStart product will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>Find the QR code and PIN Code under the pushbutton cover (Figure 6a). Find the full DSK on the product packaging or next to QR code.</p><p>Add ZSO7300 to a network with Classic Inclusion by pressing once on the switch (I) behind the pushbutton-cover</p><p>The LED will start blinking blue when the adding process is started.</p><p>Use same procedure for removing ZSO7300 with Classic Exclusion.</p><p>If ZSO7300 already belongs to a Z-Wave network, the remove process must be performed before adding it in a new network. Otherwise, the adding of the device will fail.</p> <br /> <h2>Wakeup Information</h2><p>No Wakeup information</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>PowerOutlet</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

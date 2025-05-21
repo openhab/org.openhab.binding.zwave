@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="logic_lhc5020_00_000" listed="false">
     <label>LHC5020 DIN-rail module with 10 digital ouputs and 4 digital inputs</label>
@@ -11,7 +11,6 @@
 DIN-rail module with 10 digital ouputs and 4 digital inputs<br /> <h1>Overview</h1><p>This device can be used for controlling standard floor heating valves</p> <br /> <h2>Inclusion Information</h2><p>1.) Set your ZWave controller in inclusion mode</p> <p>2.) Press the inclusion button on the LHC5020 device three times quickly</p> <p>3.) The diode will blink to confirm the inclusion is done</p> <br /> <h2>Exclusion Information</h2><p>1.) Set your ZWave controller in exclusion mode</p> <p>2.) Press the inclusion button on the LHC5020 device three times quickly</p> <p>3.) The diode will blink to confirm the exclusion is done</p> <p><strong>Reset the device</strong></p> <p>The device can be reset by holding down the inclusion button for 10 sec. </p>
     ]]></description>
     <category>RadiatorControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

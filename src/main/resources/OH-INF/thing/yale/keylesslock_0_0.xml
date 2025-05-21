@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="yale_keylesslock_00_000" listed="false">
     <label>Keyless Connected Smart Door Lock Smart door lock with z-wave module.</label>
@@ -11,7 +11,6 @@
 Smart door lock with z-wave module.<br /> <h1>Overview</h1><p>The Yale Keyless Connected Smart Door Lock can have Z-Wave® and Yale modules added to allow easy integration to smart home systems.</p> <br /> <h2>Inclusion Information</h2><p>For more information on how to connect your smart door lock to a Yale system go to www.yale.co.uk/YaleEcoSystem. For other home automation systems please follow their instructions on adding a lock and when prompted follow the instructions below.</p> <p>Touch the keypad with the palm of your hand. Enter the master code, followed by # key. Press the [4] button followed by # key. Press the [1] button followed by the # key. Please wait up to 60 seconds.</p> <br /> <h2>Exclusion Information</h2><p>For security reasons a lock will not connect to a new home automation system if it is linked to another. If you have changed your home automation system please remove the device from the old system before adding it on to the new one.</p> <p>Touch the keypad with the palm of your hand. Enter the master code, followed by # key. Press the [4] button followed by # key. Press the [3] button followed by the # key. Please wait up to 60 seconds.</p>
     ]]></description>
     <category>Lock</category>
-    <semantic-equipment-tag>Lock</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

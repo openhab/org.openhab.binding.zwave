@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="enerwave_zw15sm_00_000" listed="false">
     <label>ZW15SM Binary Switch + Meter</label>
@@ -11,7 +11,6 @@
 Binary Switch + Meter<br /> <h1>Overview</h1><p>The on/off switch replaces your current light switch, uses your existing wiring, and provides in-wall control of overhead lighting and remote access.</p> <br /> <h2>Inclusion Information</h2><p>The process of "Inclusion/ Exclusion" is to Add or Remove the device from the Hub. All Z-Wave devices must be "Included" on the Controller (Hub) before it can be controlled from a smart device. The Hub should be brought physically closer to the device just for the "Inclusion" process (recommended within 10ft). When finished, the Hub and device can be moved back to final installation location. </p> <ol><li>Go to the "Add Device" page.</li> <li>Select "Include Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>From the Control Panel, go the the device Exclusion page.</li> <li>Select "Exclude Device".</li> <li>When prompted, press the "ON" or "OFF" Button on the switch.</li> </ol>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>WallSwitch</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

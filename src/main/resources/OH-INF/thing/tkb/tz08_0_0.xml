@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="tkb_tz08_00_000" listed="false">
     <label>TZ08 Rollershutter Controller</label>
@@ -11,7 +11,6 @@
 Rollershutter Controller<br /> <h1>Overview</h1><p>The in-wall Roller Shutter Controller is designed to switch rise/lower roller shutter connected to its terminals using radio waves, controllers and a push button directly connected to this Roller Controller.</p> <p>This in-wall Roller Shutter Controller is a transceiver which is a Z-WaveTM enabled device and is fully compatible with any Z-WaveTM enabled network. Slim design let the Controller can easily hide itself into the wall box and that will be good for the house decoration.</p> <br /> <h2>Inclusion Information</h2><p>Pressing Include button three times within 1.5 seconds will enter inclusion mode.</p> <br /> <h2>Exclusion Information</h2><p>Pressing Include button three times within 1.5 seconds will enter exclusion mode. </p>
     ]]></description>
     <category>Blinds</category>
-    <semantic-equipment-tag>Blinds</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_plugindimmer_00_000" listed="false">
     <label>plugInDimmer Plug-in Dimmer</label>
@@ -11,7 +11,6 @@
 Plug-in Dimmer<br /> <h1>Overview</h1><p>Basic operations</p> <ul><li>The Plug-in Dimmer can be operated both manually as with Z-Wave.</li> <li>The Plug-in Dimmer can dim up to 125Watt.</li> <li>The Plug-in Dimmer is easy to install and configured.</li> <li>The Plug-in Dimmer can measure and report energy.</li> </ul><p>How it operates</p> <p>A lamp can be switched on and off, manually by pressing the button or by Z-Wave using the basic command class. A (dimmable) lamp can be dimmed to a level, manually by pressing and holding the button or by Z-Wave using the switch multilevel command class.</p> <br /> <h2>Inclusion Information</h2><p>When the lamp and indicator light are off (!) press and hold the button. After circa 2 seconds, when the indicator light starts blinking, release the button to start the inclusion process.</p> <br /> <h2>Exclusion Information</h2><p>When the lamp and indicator light are off (!) press and hold the button. After circa 2 seconds, when the indicator led starts blinking, release the button to start the exclusion process.</p>
     ]]></description>
     <category>PowerOutlet</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

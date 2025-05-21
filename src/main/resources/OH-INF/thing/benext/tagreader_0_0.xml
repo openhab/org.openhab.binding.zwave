@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="benext_tagreader_00_000" listed="false">
     <label>Tag Reader Tag Reader</label>
@@ -11,7 +11,6 @@
 Tag Reader<br /> <h1>Overview</h1><p>Basic operations</p> <ul><li>The Tag Reader 500 is a security enabled Z-Wave Plus product.</li> <li>The Tag Reader 500 can arm/disarm a security system.</li> <li>The Tag Reader 500 can read RFID-tags.</li> <li>The Tag Reader 500 has the possibility for the user to manually insert codes.</li> <li>The Tag Reader 500’s indicator light will react differently on each action.</li> <li>The Tag Reader 500 has a buzzer, which can be used as walk-in/walk-out notification (alarm is being disabled/activated).</li> </ul> <br /> <h2>Inclusion Information</h2><ol><li>Press and hold the enter button for two seconds (indication LED blinks shortly) and release to start the add routine.</li> <li>The indication LED will start blinking twice when the Tag Reader 500 starts the add routine.</li> </ol> <br /> <h2>Exclusion Information</h2><ol><li>Press and hold the enter button for two seconds (indication LED blinks shortly) and release to start the remove routine.</li> <li>The indication LED will blink 3 times when the Tag Reader 500 starts the remove routine</li> </ol> <br /> <h2>Wakeup Information</h2><p>The enter button is pressed for 4 seconds. (led will go on for 1 second to confirm).</p>
     ]]></description>
     <category>RemoteControl</category>
-    <semantic-equipment-tag>ControlDevice</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>

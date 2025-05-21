@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
   xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
-                      https://openhab.org/schemas/thing-description-1.0.0.xsd">
+                      https://openhab.org/schemas/thing-description/v1.0.0">
 
   <thing-type id="ge_zw3003_00_000" listed="false">
     <label>ZW3003, GE 12724 In-Wall Dimmer</label>
@@ -11,7 +11,6 @@
 In-Wall Dimmer<br /> <h1>Overview</h1><p>Also goes by GE / Jasco catalog number 12724.</p> <br /> <h2>Inclusion Information</h2><p>When prompted by your primary controller, tap the top or bottom of the rocker.</p> <br /> <h2>Exclusion Information</h2><p>Tap the top or bottom of the rocker.</p>
     ]]></description>
     <category>WallSwitch</category>
-    <semantic-equipment-tag>LightSource</semantic-equipment-tag>
 
     <!-- CHANNEL DEFINITIONS -->
     <channels>
