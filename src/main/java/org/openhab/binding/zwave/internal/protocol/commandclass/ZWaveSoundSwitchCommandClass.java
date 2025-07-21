@@ -138,7 +138,7 @@ public class ZWaveSoundSwitchCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 CONFIGURATION_GET).withExpectedResponseCommand(CONFIGURATION_REPORT)
-                        .withPriority(TransactionPriority.Get).build();
+                .withPriority(TransactionPriority.Get).build();
     }
 
     /**

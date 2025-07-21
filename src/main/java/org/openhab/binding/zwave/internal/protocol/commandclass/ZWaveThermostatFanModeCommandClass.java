@@ -169,7 +169,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_FAN_MODE_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(THERMOSTAT_FAN_MODE_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_FAN_MODE_REPORT).build();
     }
 
     @Override
@@ -197,7 +197,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_FAN_MODE_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(THERMOSTAT_FAN_MODE_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_FAN_MODE_SUPPORTED_REPORT).build();
     }
 
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
@@ -234,7 +234,7 @@ public class ZWaveThermostatFanModeCommandClass extends ZWaveCommandClass
         ON_HIGH(3, "On High"),
         AUTO_MEDIUM(4, "Auto Medium"),
         MEDIUM(5, "Medium"),
-        CIRCULATE(6, "Circulate");  //Circulate is Version 3 Option
+        CIRCULATE(6, "Circulate"); // Circulate is Version 3 Option
 
         /**
          * A mapping between the integer code and its corresponding fan mode type to facilitate lookup by code.

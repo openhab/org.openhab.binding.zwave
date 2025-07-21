@@ -136,15 +136,15 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
     public ZWaveCommandClassTransactionPayload getSupported() {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassUserCodeV1.getUsersNumberGet())
-                        .withExpectedResponseCommand(CommandClassUserCodeV1.USERS_NUMBER_REPORT)
-                        .withPriority(TransactionPriority.Get).build();
+                .withExpectedResponseCommand(CommandClassUserCodeV1.USERS_NUMBER_REPORT)
+                .withPriority(TransactionPriority.Get).build();
     }
 
     public ZWaveCommandClassTransactionPayload getUserCode(int id) {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassUserCodeV1.getUserCodeGet(id))
-                        .withExpectedResponseCommand(CommandClassUserCodeV1.USER_CODE_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withExpectedResponseCommand(CommandClassUserCodeV1.USER_CODE_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -197,7 +197,7 @@ public class ZWaveUserCodeCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassUserCodeV1.getUserCodeSet(id, status.toString(), code))
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     public boolean userCodeIsValid(String userCode) {

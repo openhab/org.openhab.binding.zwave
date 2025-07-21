@@ -194,7 +194,7 @@ public class ZWaveIndicatorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 INDICATOR_SUPPORTED_GET).withPayload(value).withExpectedResponseCommand(INDICATOR_SUPPORTED_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override
