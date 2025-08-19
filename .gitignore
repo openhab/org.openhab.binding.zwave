@@ -2,6 +2,7 @@
 .vscode
 .DS_Store
 *.iml
+*.log
 /.settings/org.eclipse.*
 target
 OSGI-INF/*.xml
