@@ -296,8 +296,10 @@ public class ZWaveNodeInitStageAdvancer {
                 break;
             }
 
-            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response);
-            if (response != null && response.getState() == State.COMPLETE) {
+            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response.getState());
+            // The controller may report no ACK received on a listening but inactive node before the binding timer sends an abort
+            // This handles both cases.
+            if (response != null && (response.getState() == State.COMPLETE || response.getState() == State.TIMEOUT_WAITING_FOR_RESPONSE)) {
                 break;
             }
 
