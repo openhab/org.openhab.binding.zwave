@@ -193,11 +193,13 @@ public class ZWaveNodeInitStageAdvancer {
                         return;
                     }
 
-                    // If restored from a config file, jump to the dynamic node stage.
+                    // If restored from a config file, jump to Done to reduce congestion.
+                    // Persistance will take care of restoring values
                     if (isRestoredFromConfigfile()) {
                         logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
                                 node.getNodeId());
-                        currentStage = ZWaveNodeInitStage.SESSION_START;
+                        setCurrentStage(ZWaveNodeInitStage.DONE);
+                        return;
                     }
                     if (stopInitialising()) {
                         return;
@@ -438,11 +440,17 @@ public class ZWaveNodeInitStageAdvancer {
                 }
             }
         }
-
-        setCurrentStage(ZWaveNodeInitStage.REQUEST_NIF);
-        processTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
+        // Assumes the node restored is the same as the one on the controller
+        if (isRestoredFromConfigfile()) {
+            logger.debug("NODE {}: Node advancer: Restored from file - skipping REQUEST_NIF", node.getNodeId());
+        } else {
+            // Request the NIF from the device
+            setCurrentStage(ZWaveNodeInitStage.REQUEST_NIF);
+            logger.debug("NODE {}: Node advancer: REQUEST_NIF - send RequestNodeInfo", node.getNodeId());
+            processTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+            if (initRunning == false) {
+                return;
+            }
         }
     }
 
