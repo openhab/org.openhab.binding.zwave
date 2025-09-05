@@ -467,8 +467,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
     }
 
+    // Start polling with a random initial delay, but right after the thing is initialised (DONE).
+    // 30 seconds mimimum, 90 seconds maximum
     private void startPolling() {
-        startPolling(pollingPeriod * (int) (1000 * Math.random()));
+        startPolling(30000 + 60 * (int) (1000 * Math.random()));
     }
 
     @Override

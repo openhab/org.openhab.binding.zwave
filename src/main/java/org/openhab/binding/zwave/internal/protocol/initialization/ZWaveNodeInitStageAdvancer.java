@@ -193,8 +193,8 @@ public class ZWaveNodeInitStageAdvancer {
                         return;
                     }
 
-                    // If restored from a config file, jump to Done to reduce congestion.
-                    // Persistance will take care of restoring values
+                    // If restored from a config file, jump to Done to reduce OH startup congestion.
+                    // Adjusted initial Poll to capture any channel changes since startup.
                     if (isRestoredFromConfigfile()) {
                         logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
                                 node.getNodeId());
