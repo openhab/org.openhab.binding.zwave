@@ -193,11 +193,13 @@ public class ZWaveNodeInitStageAdvancer {
                         return;
                     }
 
-                    // If restored from a config file, jump to the dynamic node stage.
+                    // If restored from a config file, jump to Done to reduce OH startup congestion.
+                    // Adjusted initial Poll to capture any channel changes since startup.
                     if (isRestoredFromConfigfile()) {
                         logger.debug("NODE {}: Node advancer: Restored from file - skipping static initialisation",
                                 node.getNodeId());
-                        currentStage = ZWaveNodeInitStage.SESSION_START;
+                        setCurrentStage(ZWaveNodeInitStage.DONE);
+                        return;
                     }
                     if (stopInitialising()) {
                         return;
@@ -296,8 +298,10 @@ public class ZWaveNodeInitStageAdvancer {
                 break;
             }
 
-            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response);
-            if (response != null && response.getState() == State.COMPLETE) {
+            logger.debug("NODE {}: Node Init response ({}) {}", node.getNodeId(), retryCount, response.getState());
+            // The controller may report no ACK received on a listening but inactive node before the binding timer sends an abort
+            // This handles both cases.
+            if (response != null && (response.getState() == State.COMPLETE || response.getState() == State.TIMEOUT_WAITING_FOR_RESPONSE)) {
                 break;
             }
 
@@ -438,11 +442,17 @@ public class ZWaveNodeInitStageAdvancer {
                 }
             }
         }
-
-        setCurrentStage(ZWaveNodeInitStage.REQUEST_NIF);
-        processTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
-        if (initRunning == false) {
-            return;
+        // Assumes the node restored is the same as the one on the controller
+        if (isRestoredFromConfigfile()) {
+            logger.debug("NODE {}: Node advancer: Restored from file - skipping REQUEST_NIF", node.getNodeId());
+        } else {
+            // Request the NIF from the device
+            setCurrentStage(ZWaveNodeInitStage.REQUEST_NIF);
+            logger.debug("NODE {}: Node advancer: REQUEST_NIF - send RequestNodeInfo", node.getNodeId());
+            processTransaction(new RequestNodeInfoMessageClass().doRequest(node.getNodeId()));
+            if (initRunning == false) {
+                return;
+            }
         }
     }
 
