@@ -204,8 +204,8 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 METER_TBL_CURRENT_DATA_GET).withPayload(dataset >> 16, dataset >> 8, dataset)
-                        .withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(METER_TBL_CURRENT_DATA_REPORT).build();
+                .withPriority(TransactionPriority.Get).withExpectedResponseCommand(METER_TBL_CURRENT_DATA_REPORT)
+                .build();
     }
 
     /**
@@ -219,7 +219,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 METER_TBL_TABLE_CAPABILITY_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(METER_TBL_REPORT).build();
+                .withExpectedResponseCommand(METER_TBL_REPORT).build();
     }
 
     /**
@@ -233,7 +233,7 @@ public class ZWaveMeterTblMonitorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 METER_TBL_TABLE_ID_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(METER_TBL_TABLE_ID_REPORT).build();
+                .withExpectedResponseCommand(METER_TBL_TABLE_ID_REPORT).build();
     }
 
     @Override

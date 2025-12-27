@@ -258,7 +258,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_ASSOCIATIONCMD_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Config)
-                        .build();
+                .build();
     }
 
     /**
@@ -275,7 +275,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_ASSOCIATIONCMD_REMOVE).withPayload(group, 0, node, endpoint)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -309,7 +309,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_ASSOCIATIONCMD_GET).withPayload(group).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(MULTI_ASSOCIATIONCMD_REPORT).build();
+                .withExpectedResponseCommand(MULTI_ASSOCIATIONCMD_REPORT).build();
     }
 
     /**
@@ -323,7 +323,7 @@ public class ZWaveMultiAssociationCommandClass extends ZWaveCommandClass impleme
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MULTI_ASSOCIATIONCMD_GROUPINGS_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(MULTI_ASSOCIATIONCMD_GROUPINGS_REPORT).build();
+                .withExpectedResponseCommand(MULTI_ASSOCIATIONCMD_GROUPINGS_REPORT).build();
     }
 
     /**
