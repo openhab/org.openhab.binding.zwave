@@ -69,14 +69,36 @@ Enbrighten Z-Wave 800 Series In-Wall Smart Switch<br /> <h1>Overview</h1><p>Enbr
         <label>4: Inverted Orientation</label>
         <description>Inverted orientation</description>
         <default>0</default>
+        <options>
+          <option value="0">Normal</option>
+          <option value="1">Inverted</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: 3-Way Setup</label>
+        <description>3-Way setup</description>
+        <default>0</default>
+        <options>
+          <option value="0">Add-on</option>
+          <option value="1">Standard</option>
+        </options>
       </parameter>
 
       <parameter name="config_34_1" type="integer" groupName="configuration">
         <label>34: LED Indicator Color</label>
-        <description><![CDATA[
-LED indicator color<br /> <h1>Overview</h1><p><br /></p>
-        ]]></description>
+        <description>LED indicator color</description>
         <default>5</default>
+        <options>
+          <option value="1">Red</option>
+          <option value="2">Orange</option>
+          <option value="3">Yellow</option>
+          <option value="4">Green</option>
+          <option value="5">Blue</option>
+          <option value="6">Pink</option>
+          <option value="7">Purple</option>
+          <option value="8">White</option>
+        </options>
       </parameter>
 
       <parameter name="config_35_1" type="integer" groupName="configuration">
@@ -91,6 +113,16 @@ LED indicator color<br /> <h1>Overview</h1><p><br /></p>
         <description>Guidelight mode intensity</description>
         <default>4</default>
         <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_84_1" type="integer" groupName="configuration">
+        <label>84: Factory Reset</label>
+        <description>Reset to factory defaults</description>
+        <default>0</default>
+        <options>
+          <option value="0">Disable</option>
+          <option value="1">Enable</option>
+        </options>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
