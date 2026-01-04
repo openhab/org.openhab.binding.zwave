@@ -232,7 +232,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_SETPOINT_GET).withPayload(setpointType.getKey()).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(THERMOSTAT_SETPOINT_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_SETPOINT_REPORT).build();
     }
 
     /**
@@ -246,7 +246,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_SETPOINT_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(THERMOSTAT_SETPOINT_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_SETPOINT_SUPPORTED_REPORT).build();
     }
 
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
@@ -290,7 +290,7 @@ public class ZWaveThermostatSetpointCommandClass extends ZWaveCommandClass
 
             return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                     THERMOSTAT_SETPOINT_SET).withPayload(outputData.toByteArray()).withPriority(TransactionPriority.Set)
-                            .build();
+                    .build();
         } catch (ArithmeticException e) {
             logger.error(
                     "NODE {}: Got an arithmetic exception converting value {} to a valid Z-Wave value. Ignoring THERMOSTAT_SETPOINT_SET message.",

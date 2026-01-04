@@ -190,7 +190,7 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SENSOR_ALARM_GET).withPayload(alarmType.getKey()).withExpectedResponseCommand(SENSOR_ALARM_REPORT)
-                        .withPriority(TransactionPriority.Get).build();
+                .withPriority(TransactionPriority.Get).build();
     }
 
     @Override
@@ -221,7 +221,7 @@ public class ZWaveAlarmSensorCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SENSOR_ALARM_SUPPORTED_GET).withExpectedResponseCommand(SENSOR_ALARM_SUPPORTED_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**

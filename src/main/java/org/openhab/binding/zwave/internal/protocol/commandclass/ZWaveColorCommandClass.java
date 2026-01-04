@@ -175,7 +175,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_COLOR_GET).withExpectedResponseCommand(SWITCH_COLOR_REPORT).withPayload(color)
-                        .withPriority(TransactionPriority.Get).build();
+                .withPriority(TransactionPriority.Get).build();
     }
 
     /**
@@ -189,7 +189,7 @@ public class ZWaveColorCommandClass extends ZWaveCommandClass implements ZWaveCo
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_COLOR_SUPPORTED_GET).withExpectedResponseCommand(SWITCH_COLOR_SUPPORTED_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
