@@ -74,6 +74,30 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
     }
 
     @Test
+    public void Meter_Electric_kvarh() {
+        byte[] packetData = {
+                0x01, 0x15, 0x00, 0x04, 0x00, 0x1B, 0x0F,
+                0x32, 0x02, (byte) 0xC1, 0x7C,
+                0x00, 0x00, 0x00, 0x01, // meter value (4 bytes)
+                0x00, 0x00, // delta time (2 bytes)
+                0x00, 0x00, 0x00, 0x00, // previous meter value (4 bytes)
+                0x01, // scale2 (kVARh)
+                (byte) 0x77 }; // checksum
+
+        List<ZWaveEvent> events = processCommandClassMessage(packetData, 4);
+
+        assertEquals(events.size(), 1);
+
+        ZWaveMeterValueEvent event = (ZWaveMeterValueEvent) events.get(0);
+
+        assertEquals(event.getCommandClass(), CommandClass.COMMAND_CLASS_METER);
+        assertEquals(event.getEndpoint(), 0);
+        assertEquals(event.getMeterScale(), ZWaveMeterCommandClass.MeterScale.E_KVARH);
+        assertEquals(event.getMeterType(), ZWaveMeterCommandClass.MeterType.ELECTRIC);
+        assertEquals(event.getValue(), new BigDecimal("0.001"));
+    }
+
+    @Test
     public void Meter_Supported() {
         byte[] packetData = { 0x32, 0x04, (byte) 0xE1, 0x35 };
 
@@ -140,6 +164,18 @@ public class ZWaveMeterCommandClassTest extends ZWaveCommandClassTest {
         cls.setVersion(1);
         msg = cls.getMessage(MeterScale.E_KWh);
         assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV1));
+    }
+
+    @Test
+    public void getMessageV4() {
+        ZWaveMeterCommandClass cls = (ZWaveMeterCommandClass) getCommandClass(CommandClass.COMMAND_CLASS_METER);
+        ZWaveCommandClassTransactionPayload msg;
+
+        byte[] expectedResponseV4 = { 50, 1, 56, 1 };
+        cls.setVersion(4);
+        msg = cls.getMessage(MeterScale.E_KVARH);
+        // System.out.println("msg payload: " + Arrays.toString(msg.getPayloadBuffer()));
+        assertTrue(Arrays.equals(msg.getPayloadBuffer(), expectedResponseV4));
     }
 
     @Test

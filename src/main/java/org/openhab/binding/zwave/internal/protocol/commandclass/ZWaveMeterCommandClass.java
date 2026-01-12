@@ -50,7 +50,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveMeterCommandClass.class);
-    private static final int MAX_SUPPORTED_VERSION = 3;
+    private static final int MAX_SUPPORTED_VERSION = 5;
 
     // Version 1
     private static final int METER_GET = 1;
@@ -110,6 +110,8 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         }
 
         int meterRateType = (payload.getPayloadByte(2) & 0x60) >> 5;
+        logger.debug("NODE {}: Meter Report: Rate Type={}", getNode().getNodeId(), MeterRateType.values()[meterRateType]
+                .getLabel());
 
         meterType = MeterType.getMeterType(meterTypeIndex);
         int scaleIndex = (payload.getPayloadByte(3) & 0x18) >> 0x03;
@@ -118,6 +120,14 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         if (getVersion() >= 3) {
             // In version 3, an extra scale bit is stored in the meter type byte.
             scaleIndex |= ((payload.getPayloadByte(2) & 0x80) >> 0x05);
+        }
+
+        int scale2Index = (payload.getPayloadLength());
+
+        // Electric meter special handling for scale 8. Only one greater than 7.
+        if (getVersion() >= 4 && scaleIndex == 7 && meterTypeIndex == 1) {
+            // In version 4, scale index = 7 indicates that scale2 must be used.
+            scaleIndex = payload.getPayloadByte(scale2Index - 1) + scaleIndex;
         }
 
         MeterScale scale = MeterScale.getMeterScale(meterType, scaleIndex);
@@ -177,7 +187,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
         for (int i = 0; i < 16; ++i) {
             // scale is supported
-            if ((supportedScales & (1 << i)) == (1 << i)) {
+            if ((supportedScales & (1 << i)) != 0) {
                 MeterScale scale = MeterScale.getMeterScale(meterType, i);
 
                 if (scale == null) {
@@ -254,9 +264,28 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
     public ZWaveCommandClassTransactionPayload getMessage(MeterScale meterScale) {
         logger.debug("NODE {}: Creating new message for application command METER_GET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), METER_GET)
-                .withPayload(meterScale.getScale() << 3).withPriority(TransactionPriority.Get)
-                .withExpectedResponseCommand(METER_REPORT).build();
+        int scaleValue = meterScale.getScale();
+        int firstByte = scaleValue << 3;
+        int secondByte = 0x00;
+
+        // Special handling for scale 8: split into 7 for first byte, 0x01 for second
+        if (scaleValue == 8) {
+            firstByte = 7 << 3; // Override 8 back to 7
+            secondByte = 0x01;
+        }
+
+        // Only Version 4 has support for scale 7 and above and
+        // second byte is supressed for scales less than 7
+        ZWaveCommandClassTransactionPayloadBuilder builder = new ZWaveCommandClassTransactionPayloadBuilder(
+                getNode().getNodeId(), getCommandClass(), METER_GET).withPriority(TransactionPriority.Get)
+                .withExpectedResponseCommand(METER_REPORT);
+
+        if (firstByte < 7) {
+            builder.withPayload(firstByte);
+        } else {
+            builder.withPayload(firstByte, secondByte);
+        }
+        return builder.build();
     }
 
     /**
@@ -410,8 +439,8 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
         W_Cubic_Feet(1, MeterType.WATER, "Cubic Feet", "Volume"),
         W_Gallons(2, MeterType.WATER, "US gallons", "Volume"),
         W_Pulses(3, MeterType.WATER, "Pulses", "Count"),
-        HEATING_KWH(3, MeterType.HEATING, "kWh", "Energy"),
-        COOLING_KWH(3, MeterType.COOLING, "kWh", "Energy");
+        HEATING_KWH(0, MeterType.HEATING, "kWh", "Energy"),
+        COOLING_KWH(0, MeterType.COOLING, "kWh", "Energy");
 
         private final int scale;
         private final MeterType meterType;
@@ -521,6 +550,35 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
          * @return the label
          */
         protected String getLabel() {
+            return label;
+        }
+    }
+
+    public enum MeterRateType {
+        UNDEFINED(0, "Undefined"),
+        IMPORT(1, "Import"),
+        EXPORT(2, "Export"),
+        BOTH(3, "Both Import and Export");
+
+        private final int key;
+        private final String label;
+
+        private MeterRateType(int key, String label) {
+            this.key = key;
+            this.label = label;
+        }
+
+        /**
+         * @return the key
+         */
+        public int getKey() {
+            return key;
+        }
+
+        /**
+         * @return the label
+         */
+        public String getLabel() {
             return label;
         }
     }
