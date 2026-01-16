@@ -280,7 +280,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
                 getNode().getNodeId(), getCommandClass(), METER_GET).withPriority(TransactionPriority.Get)
                 .withExpectedResponseCommand(METER_REPORT);
 
-        if (firstByte < 7) {
+        if (firstByte < 56) {
             builder.withPayload(firstByte);
         } else {
             builder.withPayload(firstByte, secondByte);
