@@ -781,7 +781,7 @@ public class ZWaveController {
      * Requests a network update
      *
      */
-    public void requestRequestNetworkUpdate() {
+    public void requestNetworkUpdate() {
         enqueue(new RequestNetworkUpdateMessageClass().doRequest());
         logger.debug("ZWave controller request network update");
     }
