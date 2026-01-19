@@ -76,7 +76,7 @@ public class ZWaveThingActions implements ThingActions {
         return handler;
     }
 
-    @RuleAction(label = "Set device as FAILed", description = "Set this node as failed")
+    @RuleAction(label = "@text/actions.node-failed.label", description = "@text/actions.node-failed.description")
     public @ActionOutput(type = "boolean", label = "Success") boolean setNodeAsFailed() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
@@ -85,7 +85,7 @@ public class ZWaveThingActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "Remove device from controller", description = "Remove this node from the controller if in failed state")
+    @RuleAction(label = "@text/actions.node-remove.label", description = "@text/actions.node-remove.description")
     public @ActionOutput(type = "boolean", label = "Success") boolean removeFailedNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
@@ -94,7 +94,7 @@ public class ZWaveThingActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "Reinitialise the device", description = "Reinitialise this node")
+    @RuleAction(label = "@text/actions.node-reinit.label", description = "@text/actions.node-reinit.description")
     public @ActionOutput(type = "boolean", label = "Success") boolean reinitNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
@@ -103,7 +103,7 @@ public class ZWaveThingActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "Heal the device", description = "Heal this node")
+    @RuleAction(label = "@text/actions.node-heal.label", description = "@text/actions.node-heal.description")
     public @ActionOutput(type = "boolean", label = "Success") boolean healNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {

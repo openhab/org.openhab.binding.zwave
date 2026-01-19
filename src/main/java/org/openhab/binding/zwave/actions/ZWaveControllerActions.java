@@ -97,7 +97,7 @@ public class ZWaveControllerActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "@text/actions.controller-exclude.label", description = "actions.controller-exclude.description")
+    @RuleAction(label = "@text/actions.controller-exclude.label", description = "@text/actions.controller-exclude.description")
     public @ActionOutput(type = "boolean", label = "Success") boolean exclude() {
         ZWaveController controller = getController();
         if (controller != null) {
@@ -107,7 +107,7 @@ public class ZWaveControllerActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "@text/actions.controller-sync.label", description = "actions.controller-sync.description")
+    @RuleAction(label = "@text/actions.controller-sync.label", description = "@text/actions.controller-sync.description")
     public @ActionOutput(type = "boolean", label = "Success") boolean sync() {
         ZWaveController controller = getController();
         if (controller != null) {
