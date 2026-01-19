@@ -192,8 +192,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         List<ConfigDescriptionParameterGroup> groups = new ArrayList<ConfigDescriptionParameterGroup>();
-        groups.add(ConfigDescriptionParameterGroupBuilder.create("actions").withLabel("Actions")
-                .withDescription("Actions").build());
         groups.add(ConfigDescriptionParameterGroupBuilder.create("thingcfg").withContext("home")
                 .withLabel("Device Configuration").withDescription("Device Configuration").build());
 
