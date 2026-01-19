@@ -129,7 +129,7 @@ public class ZWaveThermostatOperatingStateCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_OPERATING_STATE_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(THERMOSTAT_OPERATING_STATE_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_OPERATING_STATE_REPORT).build();
     }
 
     @Override

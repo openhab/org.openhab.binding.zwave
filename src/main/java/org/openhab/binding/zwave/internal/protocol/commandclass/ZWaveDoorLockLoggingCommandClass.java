@@ -99,7 +99,7 @@ public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implemen
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 LOGGING_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORDS_SUPPORTED_REPORT).build();
     }
 
     public ZWaveCommandClassTransactionPayload getEntry(int id) {
@@ -107,7 +107,7 @@ public class ZWaveDoorLockLoggingCommandClass extends ZWaveCommandClass implemen
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 LOGGING_RECORD_GET).withPayload(id).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORD_REPORT).build();
+                .withExpectedResponseCommand(DOOR_LOCK_LOGGING_RECORD_REPORT).build();
     }
 
     @Override

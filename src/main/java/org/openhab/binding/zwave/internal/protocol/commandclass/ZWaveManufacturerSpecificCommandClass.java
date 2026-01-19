@@ -132,7 +132,7 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MANUFACTURER_SPECIFIC_GET).withExpectedResponseCommand(MANUFACTURER_SPECIFIC_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -146,8 +146,8 @@ public class ZWaveManufacturerSpecificCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 MANUFACTURER_SPECIFIC_DEVICE_GET).withPayload(type)
-                        .withExpectedResponseCommand(MANUFACTURER_SPECIFIC_DEVICE_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withExpectedResponseCommand(MANUFACTURER_SPECIFIC_DEVICE_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override

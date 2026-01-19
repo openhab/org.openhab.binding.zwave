@@ -31,8 +31,8 @@ public class ZWaveTransactionManagerTest_RequestNodeInfo extends ZWaveTransactio
         // Test transaction
         ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(5,
                 CommandClass.COMMAND_CLASS_SENSOR_ALARM, 1)
-                        .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
-                        .withExpectedResponseCommand(2).build();
+                .withPayload(5, 3, CommandClass.COMMAND_CLASS_SENSOR_ALARM.getKey(), 1, 1)
+                .withExpectedResponseCommand(2).build();
 
         final ZWaveTransactionManager manager = getTransactionManager();
 

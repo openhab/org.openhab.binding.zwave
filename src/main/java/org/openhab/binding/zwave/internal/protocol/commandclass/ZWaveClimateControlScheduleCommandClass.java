@@ -88,7 +88,7 @@ public class ZWaveClimateControlScheduleCommandClass extends ZWaveCommandClass {
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SCHEDULE_CHANGED_REPORT).withPayload(scheduleChangeCounter)
-                        .withPriority(ZWaveTransaction.TransactionPriority.RealTime).build();
+                .withPriority(ZWaveTransaction.TransactionPriority.RealTime).build();
     }
 
     // Visible for Testing

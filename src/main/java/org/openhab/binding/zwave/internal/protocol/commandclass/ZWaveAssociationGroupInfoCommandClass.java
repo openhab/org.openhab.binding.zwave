@@ -234,8 +234,8 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATION_GROUP_INFO_NAME_GET).withPayload(groupidx)
-                        .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_NAME_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_NAME_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -255,8 +255,8 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATION_GROUP_INFO_GET).withPayload(listMode, groupidx)
-                        .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_REPORT).withPriority(TransactionPriority.Config)
+                .build();
     }
 
     /**
@@ -272,8 +272,8 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 ASSOCIATION_GROUP_INFO_LIST_GET).withPayload(allowCache, groupidx)
-                        .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_LIST_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withExpectedResponseCommand(ASSOCIATION_GROUP_INFO_LIST_REPORT)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
