@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.actions.ZWaveThingActions;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
@@ -81,6 +82,7 @@ import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.binding.ConfigStatusThingHandler;
 import org.openhab.core.thing.binding.ThingHandler;
+import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
@@ -127,6 +129,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     public ZWaveThingHandler(Thing zwaveDevice) {
         super(zwaveDevice);
+    }
+
+    @Override
+    public Collection<Class<? extends ThingHandlerService>> getServices() {
+        return List.of(ZWaveThingActions.class);
     }
 
     @Override
@@ -1026,33 +1033,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     break;
 
-                case "action":
-                    if ("failed".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        controllerHandler.checkNodeFailed(nodeId);
-                    }
-                    if ("remove".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        controllerHandler.removeFailedNode(nodeId);
-                    }
-                    if ("reinit".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        logger.debug("NODE {}: Re-initialising node!", nodeId);
-
-                        // Delete the saved XML
-                        ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                        nodeSerializer.deleteNode(node.getHomeId(), nodeId);
-
-                        controllerHandler.reinitialiseNode(nodeId);
-                    }
-
-                    if ("heal".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        logger.debug("NODE {}: Starting heal on node!", nodeId);
-
-                        controllerHandler.healNode(nodeId);
-                    }
-
-                    // Don't save the value
-                    valueObject = false;
-                    break;
-
                 default:
                     logger.debug("NODE {}: Configuration invalid {}", nodeId, configurationParameter.getKey());
             }
@@ -1120,6 +1100,44 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 node.sendMessage(wakeupCommandClass.getIntervalMessage());
             }
         }
+    }
+
+    public boolean setNodeAsFailed() {
+        if (controllerHandler.getNode(nodeId).getNodeState() != ZWaveNodeState.FAILED) {
+            controllerHandler.checkNodeFailed(nodeId);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeFailedNode() {
+        if (controllerHandler.getNode(nodeId).getNodeState() == ZWaveNodeState.FAILED) {
+            controllerHandler.removeFailedNode(nodeId);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean reinitNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+
+        if (!node.isInitializationComplete()) {
+            return false;
+        }
+
+        logger.debug("NODE {}: Re-initialising node!", nodeId);
+
+        // Delete the saved XML
+        ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+        nodeSerializer.deleteNode(node.getHomeId(), nodeId);
+
+        controllerHandler.reinitialiseNode(nodeId);
+        return true;
+    }
+
+    public boolean healNode() {
+        logger.debug("NODE {}: Starting heal on node!", nodeId);
+        return controllerHandler.healNode(nodeId);
     }
 
     private Object getAssociationConfigList(List<ZWaveAssociation> groupMembers) {
