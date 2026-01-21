@@ -1028,7 +1028,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
                 case "action":
                     if ("failed".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        controllerHandler.replaceFailedNode(nodeId);
                         controllerHandler.checkNodeFailed(nodeId);
                     }
                     if ("remove".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
