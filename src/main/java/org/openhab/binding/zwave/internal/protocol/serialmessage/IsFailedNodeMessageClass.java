@@ -54,10 +54,13 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
 
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("NODE {}: Is currently marked as failed by the controller!", nodeId);
-            // node.setNodeState(ZWaveNodeState.FAILED);
+            node.setNodeState(ZWaveNodeState.FAILED);
         } else {
             logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
-            node.setNodeState(ZWaveNodeState.ALIVE);
+            // ZWaveNodeState.ALIVE is not necessarily true - The check is only whether the node is in 
+            // the controller's failed nodes list. No ZWave traffic to the node is sent here to verify.
+            // Node state should be updated by other mechanisms such as polling or application commands.
+            // node.setNodeState(ZWaveNodeState.ALIVE);
         }
 
         transaction.setTransactionComplete();
