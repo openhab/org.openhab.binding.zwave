@@ -16,6 +16,7 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.core.automation.Visibility;
 import org.openhab.core.automation.annotation.ActionOutput;
 import org.openhab.core.automation.annotation.RuleAction;
 import org.openhab.core.thing.binding.ThingActions;
@@ -107,7 +108,7 @@ public class ZWaveControllerActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "@text/actions.controller-sync.label", description = "@text/actions.controller-sync.description")
+    @RuleAction(label = "@text/actions.controller-sync.label", description = "@text/actions.controller-sync.description", visibility = Visibility.EXPERT)
     public @ActionOutput(type = "boolean", label = "Success") boolean sync() {
         ZWaveController controller = getController();
         if (controller != null) {

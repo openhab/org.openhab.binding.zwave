@@ -15,6 +15,7 @@ package org.openhab.binding.zwave.actions;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.handler.ZWaveThingHandler;
+import org.openhab.core.automation.Visibility;
 import org.openhab.core.automation.annotation.ActionOutput;
 import org.openhab.core.automation.annotation.RuleAction;
 import org.openhab.core.thing.binding.ThingActions;
@@ -76,7 +77,7 @@ public class ZWaveThingActions implements ThingActions {
         return handler;
     }
 
-    @RuleAction(label = "@text/actions.node-failed.label", description = "@text/actions.node-failed.description")
+    @RuleAction(label = "@text/actions.node-failed.label", description = "@text/actions.node-failed.description", visibility = Visibility.EXPERT)
     public @ActionOutput(type = "boolean", label = "Success") boolean setNodeAsFailed() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
@@ -85,7 +86,7 @@ public class ZWaveThingActions implements ThingActions {
         return false;
     }
 
-    @RuleAction(label = "@text/actions.node-remove.label", description = "@text/actions.node-remove.description")
+    @RuleAction(label = "@text/actions.node-remove.label", description = "@text/actions.node-remove.description", visibility = Visibility.EXPERT)
     public @ActionOutput(type = "boolean", label = "Success") boolean removeFailedNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
