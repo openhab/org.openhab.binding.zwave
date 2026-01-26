@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -28,6 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.actions.ZWaveControllerActions;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
@@ -46,6 +48,7 @@ import org.openhab.core.thing.ThingStatus;
 import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.UID;
 import org.openhab.core.thing.binding.BaseBridgeHandler;
+import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.types.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -81,6 +84,11 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
     public ZWaveControllerHandler(@NonNull Bridge bridge) {
         super(bridge);
+    }
+
+    @Override
+    public Collection<Class<? extends ThingHandlerService>> getServices() {
+        return List.of(ZWaveControllerActions.class);
     }
 
     @Override
@@ -168,6 +176,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
 
         // We must set the state
         updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.BRIDGE_OFFLINE, ZWaveBindingConstants.OFFLINE_CTLR_OFFLINE);
+    }
+
+    public ZWaveController getController() {
+        return controller;
     }
 
     /**
@@ -325,19 +337,7 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
                     continue;
                 }
 
-                if (cfg[1].equals("softreset") && value instanceof Boolean && ((Boolean) value) == true) {
-                    controller.requestSoftReset();
-                    value = false;
-                } else if (cfg[1].equals("hardreset") && value instanceof Boolean && ((Boolean) value) == true) {
-                    controller.requestHardReset();
-                    value = false;
-                } else if (cfg[1].equals("exclude") && value instanceof Boolean && ((Boolean) value) == true) {
-                    controller.requestRemoveNodesStart();
-                    value = false;
-                } else if (cfg[1].equals("sync") && value instanceof Boolean && ((Boolean) value) == true) {
-                    controller.requestRequestNetworkUpdate();
-                    value = false;
-                } else if (cfg[1].equals("suc") && value instanceof Boolean) {
+                if (cfg[1].equals("suc") && value instanceof Boolean) {
                     // TODO: Do we need to set this immediately
                 } else if (cfg[1].equals("inclusiontimeout") && value instanceof BigDecimal) {
                     reinitialise = true;

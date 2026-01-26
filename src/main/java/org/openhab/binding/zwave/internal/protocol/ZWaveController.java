@@ -730,16 +730,17 @@ public class ZWaveController {
 
     /**
      * Puts the controller into exclusion mode to remove new nodes
-     *
+     * 
+     * @return the time in seconds the controller stays in exclusion mode
      */
-    public void requestRemoveNodesStart() {
+    public @Nullable Integer requestRemoveNodesStart() {
         if (inclusionController != null) {
             logger.debug("ZWave inclusion process already running - aborted");
-            return;
+            return null;
         }
 
         inclusionController = new ZWaveInclusionController(this, networkSecurityKey);
-        inclusionController.startExclusion();
+        return inclusionController.startExclusion();
     }
 
     public void requestInclusionStop() {
@@ -781,7 +782,7 @@ public class ZWaveController {
      * Requests a network update
      *
      */
-    public void requestRequestNetworkUpdate() {
+    public void requestNetworkUpdate() {
         enqueue(new RequestNetworkUpdateMessageClass().doRequest());
         logger.debug("ZWave controller request network update");
     }
