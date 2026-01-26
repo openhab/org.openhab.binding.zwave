@@ -12,6 +12,9 @@
  */
 package org.openhab.binding.zwave.actions;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
@@ -34,6 +37,8 @@ import org.osgi.service.component.annotations.ServiceScope;
 @ThingActionsScope(name = "zwave")
 @NonNullByDefault
 public class ZWaveControllerActions implements ThingActions {
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm:ss");
+
     private @Nullable ZWaveControllerHandler handler;
 
     public static boolean softReset(ThingActions actions) {
@@ -52,7 +57,7 @@ public class ZWaveControllerActions implements ThingActions {
         }
     }
 
-    public static boolean exclude(ThingActions actions) {
+    public static String exclude(ThingActions actions) {
         if (actions instanceof ZWaveControllerActions controllerActions) {
             return controllerActions.exclude();
         } else {
@@ -99,13 +104,16 @@ public class ZWaveControllerActions implements ThingActions {
     }
 
     @RuleAction(label = "@text/actions.controller-exclude.label", description = "@text/actions.controller-exclude.description")
-    public @ActionOutput(type = "boolean", label = "Success") boolean exclude() {
+    public @ActionOutput(type = "String") String exclude() {
         ZWaveController controller = getController();
         if (controller != null) {
-            controller.requestRemoveNodesStart();
-            return true;
+            Integer countdown = controller.requestRemoveNodesStart();
+            if (countdown != null) {
+                LocalTime time = LocalTime.now().plusSeconds(countdown);
+                return "Controller in exclusion mode until " + time.format(TIME_FORMATTER) + ".";
+            }
         }
-        return false;
+        return "Failed to put controller in exclusion mode.";
     }
 
     @RuleAction(label = "@text/actions.controller-sync.label", description = "@text/actions.controller-sync.description", visibility = Visibility.EXPERT)
