@@ -35,15 +35,15 @@ import org.osgi.service.component.annotations.ServiceScope;
 public class ZWaveThingActions implements ThingActions {
     private @Nullable ZWaveThingHandler handler;
 
-    public static boolean setNodeAsFailed(ThingActions actions) {
+    public static String checkIsNodeFailed(ThingActions actions) {
         if (actions instanceof ZWaveThingActions nodeActions) {
-            return nodeActions.setNodeAsFailed();
+            return nodeActions.checkIsNodeFailed();
         } else {
             throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
         }
     }
 
-    public static boolean removeFailedNode(ThingActions actions) {
+    public static String removeFailedNode(ThingActions actions) {
         if (actions instanceof ZWaveThingActions nodeActions) {
             return nodeActions.removeFailedNode();
         } else {
@@ -51,7 +51,7 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
-    public static boolean reinitNode(ThingActions actions) {
+    public static String reinitNode(ThingActions actions) {
         if (actions instanceof ZWaveThingActions nodeActions) {
             return nodeActions.reinitNode();
         } else {
@@ -59,7 +59,7 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
-    public static boolean healNode(ThingActions actions) {
+    public static String healNode(ThingActions actions) {
         if (actions instanceof ZWaveThingActions nodeActions) {
             return nodeActions.healNode();
         } else {
@@ -78,38 +78,38 @@ public class ZWaveThingActions implements ThingActions {
     }
 
     @RuleAction(label = "@text/actions.node-failed.label", description = "@text/actions.node-failed.description", visibility = Visibility.EXPERT)
-    public @ActionOutput(type = "boolean", label = "Success") boolean setNodeAsFailed() {
+    public @ActionOutput(type = "String") String checkIsNodeFailed() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
-            return handler.setNodeAsFailed();
+            return handler.checkIsNodeFailed();
         }
-        return false;
+        return "Thing handler is null, check not possible";
     }
 
     @RuleAction(label = "@text/actions.node-remove.label", description = "@text/actions.node-remove.description", visibility = Visibility.EXPERT)
-    public @ActionOutput(type = "boolean", label = "Success") boolean removeFailedNode() {
+    public @ActionOutput(type = "String") String removeFailedNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
             return handler.removeFailedNode();
         }
-        return false;
+        return "Thing handler is null, removal not possible";
     }
 
     @RuleAction(label = "@text/actions.node-reinit.label", description = "@text/actions.node-reinit.description")
-    public @ActionOutput(type = "boolean", label = "Success") boolean reinitNode() {
+    public @ActionOutput(type = "String") String reinitNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
             return handler.reinitNode();
         }
-        return false;
+        return "Thing handler is null, re-interview not possible";
     }
 
     @RuleAction(label = "@text/actions.node-heal.label", description = "@text/actions.node-heal.description")
-    public @ActionOutput(type = "boolean", label = "Success") boolean healNode() {
+    public @ActionOutput(type = "String") String healNode() {
         ZWaveThingHandler handler = this.handler;
         if (handler != null) {
             return handler.healNode();
         }
-        return false;
+        return "Thing handler is null, Heal not possible.";
     }
 }

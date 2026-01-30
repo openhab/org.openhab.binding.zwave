@@ -52,11 +52,14 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
             return false;
         }
 
+        // With Thing Actions, need to inform the user via non-debug log the status.
+        // The Thing UI page may only show OFFLINE for both a success and failure when
+        // testing an OFFLINE node for failed node status.
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
-            logger.debug("NODE {}: Is currently marked as failed by the controller!", nodeId);
+            logger.info("NODE {}: Is currently marked as failed by the controller!", nodeId);
             node.setNodeState(ZWaveNodeState.FAILED);
         } else {
-            logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
+            logger.info("NODE {}: Is currently marked as healthy by the controller", nodeId);
             // ZWaveNodeState.ALIVE is not necessarily true - The check is only whether the node is in 
             // the controller's failed nodes list. No ZWave traffic to the node is sent here to verify.
             // Node state should be updated by other mechanisms such as polling or application commands.
