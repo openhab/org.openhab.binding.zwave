@@ -137,6 +137,8 @@ public class ZWaveBindingConstants {
     public final static String EVENT_REMOVEFAILED_FAILED = "@text/zwave.event.removenode_failed";
     public final static String EVENT_REMOVEFAILED_BUSY = "@text/zwave.event.removenode_busy";
     public final static String EVENT_REMOVEFAILED_UNKNOWN = "@text/zwave.event.removenode_unknown";
+    public final static String NODE_REPLACEMENT_STARTED = "@text/zwave.node.replacement_started";
+    public final static String NODE_REPLACEMENT_COMPLETED = "@text/zwave.node.replacement_completed";
 
     public final static String EVENT_HEAL_START = "@text/zwave.event.heal_start";
     public final static String EVENT_HEAL_DONE = "@text/zwave.event.heal_done";
