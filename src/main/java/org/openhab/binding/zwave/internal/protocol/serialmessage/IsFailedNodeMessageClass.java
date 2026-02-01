@@ -20,6 +20,9 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent.State;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent.Type;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,15 +55,17 @@ public class IsFailedNodeMessageClass extends ZWaveCommandProcessor {
             return false;
         }
 
+        // Use the network event to inform listeners of the failed node status so the description
+        // on the Thing UI page will be different than a normal failed node.
         if (incomingMessage.getMessagePayloadByte(0) != 0x00) {
             logger.debug("NODE {}: Is currently marked as failed by the controller!", nodeId);
+            zController.notifyEventListeners(new ZWaveNetworkEvent(Type.FailedNode, nodeId, State.Success));
             node.setNodeState(ZWaveNodeState.FAILED);
         } else {
             logger.debug("NODE {}: Is currently marked as healthy by the controller", nodeId);
-            // ZWaveNodeState.ALIVE is not necessarily true - The check is only whether the node is in 
-            // the controller's failed nodes list. No ZWave traffic to the node is sent here to verify.
+            // node.setNodeState(ZWaveNodeState.ALIVE) is not necessarily true - The check is only whether the node
+            // is in the controller's failed nodes list. No ZWave traffic to the node is sent here to verify.
             // Node state should be updated by other mechanisms such as polling or application commands.
-            // node.setNodeState(ZWaveNodeState.ALIVE);
         }
 
         transaction.setTransactionComplete();

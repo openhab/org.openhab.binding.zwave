@@ -119,7 +119,8 @@ public class ZWaveBindingConstants {
     public final static String EVENT_EXCLUSION_STARTED = "@text/zwave.event.exclusion_started";
     public final static String EVENT_EXCLUSION_COMPLETED = "@text/zwave.event.exclusion_completed";
     public final static String EVENT_EXCLUSION_FAILED = "@text/zwave.event.exclusion_failed";
-    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_noderemoved";
+    public final static String EVENT_EXCLUSION_NODEREMOVED = "@text/zwave.event.exclusion_noderemoved";
+    public final static String EVENT_MARKED_AS_FAILED = "@text/zwave.event.marked_as_failed";
 
     public final static String EVENT_NETWORKUPDATE_DONE = "@text/zwave.event.networkupdate_done";
     public final static String EVENT_NETWORKUPDATE_ABORT = "@text/zwave.event.networkupdate_abort";

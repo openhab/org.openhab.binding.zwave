@@ -552,9 +552,9 @@ public class SerialMessage {
         RequestNodeNeighborUpdateOptions(0x5a), // Allow options for request node neighbor update
         ExploreRequestInclusion(0x5e), // Initiate a Network-Wide Inclusion process
         RequestNodeInfo(0x60, true, false, true), // Get info (supported command classes) for the specified node
-        RemoveFailedNodeID(0x61, true, true, false), // Mark a specified node id as failed
+        RemoveFailedNodeID(0x61, true, true, false), // Remove a failed node from the controller
         IsFailedNodeID(0x62, true, false, false), // Check to see if a specified node has failed
-        ReplaceFailedNode(0x63, true, true, false), // Remove a failed node from the controller's list (?)
+        ReplaceFailedNode(0x63, true, true, false), // Replace a failed node with a new node of same number
         GetRoutingInfo(0x80, true, false, false), // Get a specified node's neighbor information from
                                                   // the controller
         LockRoute(0x90),

@@ -1102,27 +1102,35 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
     }
 
-    public boolean setNodeAsFailed() {
+    public String checkIsNodeFailed() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be checked for failure";
+        }
         if (controllerHandler.getNode(nodeId).getNodeState() != ZWaveNodeState.FAILED) {
             controllerHandler.checkNodeFailed(nodeId);
-            return true;
+            return "Check for node failure started, check event log to confirm";
         }
-        return false;
+        return "Node is already in FAILED state";
     }
 
-    public boolean removeFailedNode() {
-        if (controllerHandler.getNode(nodeId).getNodeState() == ZWaveNodeState.FAILED) {
+    public String removeFailedNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be removed";
+        }        
+        if (node.getNodeState() == ZWaveNodeState.FAILED) {
             controllerHandler.removeFailedNode(nodeId);
-            return true;
+            return "Failed node remove started, check status to confirm";
         }
-        return false;
+        return "Node is not in FAILED state, cannot be removed";
     }
 
-    public boolean reinitNode() {
+    public String reinitNode() {
         ZWaveNode node = controllerHandler.getNode(nodeId);
 
         if (!node.isInitializationComplete()) {
-            return false;
+            return "Initialization not complete, re-interview not possible";
         }
 
         logger.debug("NODE {}: Re-initialising node!", nodeId);
@@ -1132,10 +1140,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         nodeSerializer.deleteNode(node.getHomeId(), nodeId);
 
         controllerHandler.reinitialiseNode(nodeId);
-        return true;
+        return "Re-interview started for node " + nodeId;
     }
 
-    public boolean healNode() {
+    public String healNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+
+        if (!node.isInitializationComplete()) {
+            return "Initialization not complete, Heal not possible.";
+        }
+
         logger.debug("NODE {}: Starting heal on node!", nodeId);
         return controllerHandler.healNode(nodeId);
     }
@@ -1590,7 +1604,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.DeleteNode) {
-                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE); // TODO: Update to THING_GONE
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
+            }
+
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNode) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, ZWaveBindingConstants.EVENT_MARKED_AS_FAILED);
             }
         }
 

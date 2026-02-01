@@ -569,19 +569,19 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         controller.reinitialiseNode(nodeId);
     }
 
-    public boolean healNode(int nodeId) {
+    public String healNode(int nodeId) {
         if (controller == null) {
-            return false;
+            return "Controller is null, Heal not possible.";
         }
         ZWaveNode node = controller.getNode(nodeId);
         if (node == null) {
             logger.debug("NODE {}: Can't be found!", nodeId);
-            return false;
+            return "Node not found, Heal not possible.";
         }
 
         node.healNode();
 
-        return true;
+        return "Rebuilding route tables started on node " + nodeId;
     }
 
     public boolean isControllerMaster() {
