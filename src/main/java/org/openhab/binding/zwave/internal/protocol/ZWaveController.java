@@ -850,13 +850,12 @@ public class ZWaveController {
     }
 
     /**
-     * Substitutes a failed node in the network. Note that this won't substitute
-     * nodes that are not marked as failed.
+     * Marks a node as failed
      *
      * @param nodeId
-     *            The address of the node to be replaced
+     *            The address of the node to set failed
      */
-    public void replaceFailedNode(int nodeId) {
+    public void requestSetFailedNode(int nodeId) {
         enqueue(new ReplaceFailedNodeMessageClass().doRequest(nodeId));
     }
 
