@@ -1109,7 +1109,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
         if (controllerHandler.getNode(nodeId).getNodeState() != ZWaveNodeState.FAILED) {
             controllerHandler.checkNodeFailed(nodeId);
-            return "Check for node failure started, check logs to confirm";
+            return "Check for node failure started, check event log to confirm";
         }
         return "Node is already in FAILED state";
     }
@@ -1121,7 +1121,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }        
         if (node.getNodeState() == ZWaveNodeState.FAILED) {
             controllerHandler.removeFailedNode(nodeId);
-            return "Failed node remove started, check logs for errors";
+            return "Failed node remove started, check status to confirm";
         }
         return "Node is not in FAILED state, cannot be removed";
     }
@@ -1604,7 +1604,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.DeleteNode) {
-                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE); // TODO: Update to THING_GONE
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
+            }
+
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNode) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, ZWaveBindingConstants.EVENT_MARKED_AS_FAILED);
             }
         }
 
