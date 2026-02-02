@@ -1114,6 +1114,18 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         return "Node is already in FAILED state";
     }
 
+    public String replaceFailedNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be replaced";
+        }        
+        if (node.getNodeState() == ZWaveNodeState.FAILED) {
+            controllerHandler.replaceFailedNode(nodeId);
+            return "Failed node replace started, check status to confirm";
+        }
+        return "Node is not in FAILED state, cannot be replaced";
+    }
+
     public String removeFailedNode() {
         ZWaveNode node = controllerHandler.getNode(nodeId);
         if (!node.isListening() && !node.isFrequentlyListening()) {
