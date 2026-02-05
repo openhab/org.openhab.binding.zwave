@@ -30,6 +30,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
@@ -858,6 +859,23 @@ public class ZWaveController {
      */
     public void requestReplaceFailedNode(int nodeId) {
         enqueue(new ReplaceFailedNodeMessageClass().doRequest(nodeId));
+    }
+
+    /**
+     * Requests a ping to a node
+     *
+     * @param nodeId
+     *            The address of the node to ping
+     */
+    public void requestPingNode(int nodeId) {
+        ZWaveNode node = getNode(nodeId);
+        if (node == null) {
+            logger.debug("NODE {}: Node not found, cannot ping", nodeId);
+            return;
+        }
+        // Use the No Operation command to ping the node
+        node.pingNode();
+        logger.debug("NODE {}: Ping command sent to node", nodeId);
     }
 
     /**

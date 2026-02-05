@@ -75,6 +75,14 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
+    public static String pingNode(ThingActions actions) {
+        if (actions instanceof ZWaveThingActions nodeActions) {
+            return nodeActions.pingNode();
+        } else {
+            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
+        }
+    }
+
     @Override
     public void setThingHandler(ThingHandler thingHandler) {
         this.handler = (ZWaveThingHandler) thingHandler;
@@ -128,5 +136,14 @@ public class ZWaveThingActions implements ThingActions {
             return handler.replaceFailedNode();
         }
         return "Handler is null, cannot replace failed node";
+    }
+
+    @RuleAction(label = "@text/actions.node-ping.label", description = "@text/actions.node-ping.description", visibility = Visibility.EXPERT)
+    public @ActionOutput(type = "String") String pingNode() {
+        ZWaveThingHandler handler = this.handler;
+        if (handler != null) {
+            return handler.pingNode();
+        }
+        return "Handler is null, cannot ping node";
     }
 }

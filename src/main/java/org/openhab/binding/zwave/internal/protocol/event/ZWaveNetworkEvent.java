@@ -69,7 +69,7 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
         DeleteNode,
         FailedNode,
         RequestNetworkUpdate,
-        RemoveFailedNodeID,
+        FailedNodeFailed,
         ReplaceFailedNode,
         ReplaceFailedStart,
         ReplaceFailedNodeDone

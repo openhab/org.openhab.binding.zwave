@@ -1166,6 +1166,15 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         return controllerHandler.healNode(nodeId);
     }
 
+    public String pingNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be pinged";
+        }        
+        controllerHandler.pingNode(nodeId);
+        return "Ping command sent to node";
+    }
+
     private Object getAssociationConfigList(List<ZWaveAssociation> groupMembers) {
         List<String> newAssociationsList = new ArrayList<String>();
         for (ZWaveAssociation association : groupMembers) {
@@ -1619,16 +1628,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
             }
 
-            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNode) {
-                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, ZWaveBindingConstants.EVENT_MARKED_AS_FAILED);
-            }
-
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.ReplaceFailedNodeDone) {
-                updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.NODE_REPLACEMENT_COMPLETED);
+                updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.EVENT_REPLACEMENT_COMPLETED);
+                // Re-initialise the node now. Properties will be updated as part of this process
+                reinitNode();
+                logger.debug("NODE {}: Will need to delete Thing (not exclude) and do inbox SCAN to Update", nodeId);
             }
             
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.ReplaceFailedStart) {
-                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_PENDING, ZWaveBindingConstants.NODE_REPLACEMENT_STARTED);
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_PENDING, ZWaveBindingConstants.EVENT_REPLACEMENT_STARTED);
+            }
+
+            // Generic status for failed Remove or Replace Action
+            // Had to be offline to start the action, so this is to update the status line
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNodeFailed) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, ZWaveBindingConstants.EVENT_REMOVEFAILED_FAILED);  
             }
         }
 

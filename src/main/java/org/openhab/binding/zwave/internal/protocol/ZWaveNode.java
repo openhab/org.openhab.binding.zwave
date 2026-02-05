@@ -34,6 +34,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiCommandCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
@@ -689,6 +690,21 @@ public class ZWaveNode {
 
         logger.debug("NODE {}: Starting network mesh heal.", getNodeId());
         nodeInitStageAdvancer.startInitialisation(ZWaveNodeInitStage.HEAL_START);
+    }
+
+    /**
+     * Ping the node using the No Operation command class
+     */
+    public void pingNode() {
+        ZWaveNoOperationCommandClass noOpCommand = (ZWaveNoOperationCommandClass) getCommandClass(
+                CommandClass.COMMAND_CLASS_NO_OPERATION);
+        if (noOpCommand == null) {
+            logger.debug("NODE {}: No Operation command class not found, cannot ping node", nodeId);
+            return;
+        }
+
+        logger.debug("NODE {}: Sending ping to node", nodeId);
+        sendMessage(noOpCommand.getNoOperationMessage());
     }
 
     /**

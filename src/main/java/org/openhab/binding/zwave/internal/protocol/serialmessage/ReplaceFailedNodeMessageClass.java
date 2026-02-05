@@ -41,9 +41,9 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
     private final int FAILED_NODE_REMOVE_FAIL = 0x20;
 
     private final int FAILED_NODE_IS_OK = 0x00;
-    private final int FAILED_NODE_REPLACE_START = 0x04;
-    private final int FAILED_NODE_REPLACE_DONE = 0x08;
-    private final int FAILED_NODE_REPLACE_FAILED = 0x10;
+    private final int FAILED_NODE_REPLACE_START = 0x03;
+    private final int FAILED_NODE_REPLACE_DONE = 0x04;
+    private final int FAILED_NODE_REPLACE_FAILED = 0x05;
 
     public enum Report {
         FAILED_NODE_REMOVE_STARTED,
@@ -64,7 +64,9 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Marking node as having failed.", nodeId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.ReplaceFailedNode).withPayload(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.ReplaceFailedNode).withPayload(nodeId)
+                .withExpectedResponseClass(SerialMessageClass.ReplaceFailedNode).withResponseNodeId(nodeId)
+                .withTimeout(30000).build();
     }
 
     @Override
@@ -128,7 +130,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         // If this is a fail, then notify now, otherwise wait for the REQuest
         if (report != null) {
             zController.notifyEventListeners(
-                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.ReplaceFailedNode, nodeId, State.Failure, report));
+                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FailedNodeFailed, nodeId, State.Failure, report));
         }
         return true;
     }
@@ -163,7 +165,8 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 break;
             case FAILED_NODE_REPLACE_DONE:
                 logger.debug("NODE {}: The failed node has been replaced.", nodeId);
-                zController.notifyEventListeners(new ZWaveNetworkEvent(Type.ReplaceFailedNodeDone, nodeId, State.Success));
+                zController
+                        .notifyEventListeners(new ZWaveNetworkEvent(Type.ReplaceFailedNodeDone, nodeId, State.Success));
                 state = ZWaveNetworkEvent.State.Success;
                 report = Report.FAILED_NODE_REPLACE_DONE;
                 break;
