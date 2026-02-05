@@ -1628,11 +1628,15 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
             }
 
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNode) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR, ZWaveBindingConstants.EVENT_MARKED_AS_FAILED);
+            }
+
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.ReplaceFailedNodeDone) {
                 updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.EVENT_REPLACEMENT_COMPLETED);
                 // Re-initialise the node now. Properties will be updated as part of this process
                 reinitNode();
-                logger.debug("NODE {}: Will need to delete Thing (not exclude) and do inbox SCAN to Update", nodeId);
+                logger.debug("NODE {}: Will need to delete Thing (not exclude) and do inbox SCAN to update UI page", nodeId);
             }
             
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.ReplaceFailedStart) {

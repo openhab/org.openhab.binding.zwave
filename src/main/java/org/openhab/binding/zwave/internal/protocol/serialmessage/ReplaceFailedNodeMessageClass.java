@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
  * This class processes a serial message from the zwave controller
  *
  * @author Chris Jackson - Initial contribution
+ * @author Bob Eckhoff - Added Replace Failed Node functionality
  */
 public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(ReplaceFailedNodeMessageClass.class);
@@ -165,6 +166,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 break;
             case FAILED_NODE_REPLACE_DONE:
                 logger.debug("NODE {}: The failed node has been replaced.", nodeId);
+                transaction.setTransactionComplete();
                 zController
                         .notifyEventListeners(new ZWaveNetworkEvent(Type.ReplaceFailedNodeDone, nodeId, State.Success));
                 state = ZWaveNetworkEvent.State.Success;
