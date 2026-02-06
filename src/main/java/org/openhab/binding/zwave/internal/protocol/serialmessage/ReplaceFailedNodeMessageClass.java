@@ -153,6 +153,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 // The node is working properly (removed from the failed nodes list). Replace
                 // process is stopped.
                 logger.error("NODE {}: Unable to remove failed node as it is not a failed node!", nodeId);
+                transaction.setTransactionCanceled();
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_IS_OK;
                 break;
@@ -174,12 +175,14 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 break;
             case FAILED_NODE_REPLACE_FAILED:
                 logger.error("NODE {}: The failed node has not been replaced", nodeId);
+                transaction.setTransactionCanceled();
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_REPLACE_FAILED;
                 break;
             default:
                 logger.error("NODE {}: Replace failed node returned with response 0x{}.", nodeId,
                         Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
+                transaction.setTransactionCanceled();
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_UNKNOWN_FAIL;
                 break;
