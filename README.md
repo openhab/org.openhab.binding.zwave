@@ -319,9 +319,9 @@ Internally the binding holds a device state and these states are mapped to the s
 
 ### Thing Actions
 
-At the bottom of the Thing UI page are actions, some advanced, that can be directed to a specific device (node).
+At the bottom of the Thing UI page are actions, some advanced, which can be directed to a specific device (node).
 
-* View Z-Wave Network Map - Shows the nodes in the network and their neighbors. This data is generated during a network or device heal based on the neighbors found. It does not show actual Z-Wave communication routes, so has limited diagnotic value.
+* View Z-Wave Network Map - Shows the nodes in the network and their neighbors. This data is generated during a network or device heal based on the neighbors found. It does not show actual Z-Wave communication routes, so has limited diagnostic value.
 * Re-Interview the node - The node must be fully initialized to execute this action. This action clears all the information about a node, including the XML in the OH-Userdata/zwave folder, and re-interviews the node. This is one way to get new information if the device information has changed. Battery nodes will execute this action when they are next awake.
 * Rebuild routing tables (nee Heal) - The node must be fully initialized to execute this action. This clears all current routes and establishes new routes for this device only. This action generates less network traffic than the network heal option but is only for one node. The new situation for this node will be reflected in the Network Map. Battery nodes will execute this action when they are next awake.
 * Ping the node (advanced) - Sends a ping to the node. If the node stays (or turns) ONLINE it has a network connection. Battery nodes will not be pinged.

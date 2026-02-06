@@ -34,17 +34,17 @@ import org.slf4j.LoggerFactory;
 public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(ReplaceFailedNodeMessageClass.class);
 
-    private final int FAILED_NODE_REMOVE_STARTED = 0x00;
-    private final int FAILED_NODE_NOT_PRIMARY_CONTROLLER = 0x02;
-    private final int FAILED_NODE_NO_CALLBACK_FUNCTION = 0x04;
-    private final int FAILED_NODE_NOT_FOUND = 0x08;
-    private final int FAILED_NODE_REMOVE_PROCESS_BUSY = 0x10;
-    private final int FAILED_NODE_REMOVE_FAIL = 0x20;
+    private static final int FAILED_NODE_REMOVE_STARTED = 0x00;
+    private static final int FAILED_NODE_NOT_PRIMARY_CONTROLLER = 0x02;
+    private static final int FAILED_NODE_NO_CALLBACK_FUNCTION = 0x04;
+    private static final int FAILED_NODE_NOT_FOUND = 0x08;
+    private static final int FAILED_NODE_REMOVE_PROCESS_BUSY = 0x10;
+    private static final int FAILED_NODE_REMOVE_FAIL = 0x20;
 
-    private final int FAILED_NODE_IS_OK = 0x00;
-    private final int FAILED_NODE_REPLACE_START = 0x03;
-    private final int FAILED_NODE_REPLACE_DONE = 0x04;
-    private final int FAILED_NODE_REPLACE_FAILED = 0x05;
+    private static final int FAILED_NODE_IS_OK = 0x00;
+    private static final int FAILED_NODE_REPLACE_START = 0x03;
+    private static final int FAILED_NODE_REPLACE_DONE = 0x04;
+    private static final int FAILED_NODE_REPLACE_FAILED = 0x05;
 
     public enum Report {
         FAILED_NODE_REMOVE_STARTED,
@@ -148,7 +148,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Got ReplaceFailedNode request.", nodeId);
         ZWaveNetworkEvent.State state;
         Report report = null;
-        switch (incomingMessage.getMessagePayloadByte(1)) {// TODO: Should this be (&& 0x0f)?
+        switch (incomingMessage.getMessagePayloadByte(1)) {
             case FAILED_NODE_IS_OK:
                 // The node is working properly (removed from the failed nodes list). Replace
                 // process is stopped.
