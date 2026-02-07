@@ -554,7 +554,7 @@ public class SerialMessage {
         RequestNodeInfo(0x60, true, false, true), // Get info (supported command classes) for the specified node
         RemoveFailedNodeID(0x61, true, true, false), // Remove a failed node from the controller
         IsFailedNodeID(0x62, true, false, false), // Check to see if a specified node has failed
-        ReplaceFailedNode(0x63, true, true, false), // Replace a failed node with a new node of same number
+        ReplaceFailedNode(0x63, true, true, true), // Replace a failed node with a new node of same number
         GetRoutingInfo(0x80, true, false, false), // Get a specified node's neighbor information from
                                                   // the controller
         LockRoute(0x90),

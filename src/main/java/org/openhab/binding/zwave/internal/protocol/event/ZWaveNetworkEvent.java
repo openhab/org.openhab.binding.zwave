@@ -17,7 +17,7 @@ package org.openhab.binding.zwave.internal.protocol.event;
  * This is used to notify higher layers of network functions so they can be handled by (for example) a network heal
  * process.
  *
- * @author Chris Jackson
+ * @author Chris Jackson - Initial contribution
  */
 public class ZWaveNetworkEvent extends ZWaveEvent {
     Type type;
@@ -69,8 +69,10 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
         DeleteNode,
         FailedNode,
         RequestNetworkUpdate,
-        RemoveFailedNodeID,
-        ReplaceFailedNode
+        FailedNodeFailed,
+        ReplaceFailedNode,
+        ReplaceFailedStart,
+        ReplaceFailedNodeDone
     }
 
     public enum State {
