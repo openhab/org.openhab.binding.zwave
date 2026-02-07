@@ -20,6 +20,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent.State;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent.Type;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveTransactionMessageBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,21 +28,23 @@ import org.slf4j.LoggerFactory;
 /**
  * This class processes a serial message from the zwave controller
  *
- * @author Chris Jackson
+ * @author Chris Jackson - Initial contribution
+ * @author Bob Eckhoff - Added Replace Failed Node functionality
  */
 public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(ReplaceFailedNodeMessageClass.class);
 
-    private final int FAILED_NODE_REMOVE_STARTED = 0x00;
-    private final int FAILED_NODE_NOT_PRIMARY_CONTROLLER = 0x02;
-    private final int FAILED_NODE_NO_CALLBACK_FUNCTION = 0x04;
-    private final int FAILED_NODE_NOT_FOUND = 0x08;
-    private final int FAILED_NODE_REMOVE_PROCESS_BUSY = 0x10;
-    private final int FAILED_NODE_REMOVE_FAIL = 0x20;
+    private static final int FAILED_NODE_REMOVE_STARTED = 0x00;
+    private static final int FAILED_NODE_NOT_PRIMARY_CONTROLLER = 0x02;
+    private static final int FAILED_NODE_NO_CALLBACK_FUNCTION = 0x04;
+    private static final int FAILED_NODE_NOT_FOUND = 0x08;
+    private static final int FAILED_NODE_REMOVE_PROCESS_BUSY = 0x10;
+    private static final int FAILED_NODE_REMOVE_FAIL = 0x20;
 
-    private final int FAILED_NODE_OK = 0x00;
-    private final int FAILED_NODE_REMOVED = 0x01;
-    private final int FAILED_NODE_NOT_REMOVED = 0x02;
+    private static final int FAILED_NODE_IS_OK = 0x00;
+    private static final int FAILED_NODE_REPLACE_START = 0x03;
+    private static final int FAILED_NODE_REPLACE_DONE = 0x04;
+    private static final int FAILED_NODE_REPLACE_FAILED = 0x05;
 
     public enum Report {
         FAILED_NODE_REMOVE_STARTED,
@@ -52,16 +55,19 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         FAILED_NODE_REMOVE_FAIL,
         FAILED_NODE_UNKNOWN_FAIL,
 
-        FAILED_NODE_OK,
-        FAILED_NODE_REMOVED,
-        FAILED_NODE_NOT_REMOVED
+        FAILED_NODE_IS_OK,
+        FAILED_NODE_REPLACE_START,
+        FAILED_NODE_REPLACE_DONE,
+        FAILED_NODE_REPLACE_FAILED
     }
 
     public ZWaveSerialPayload doRequest(int nodeId) {
         logger.debug("NODE {}: Marking node as having failed.", nodeId);
 
         // Create the request
-        return new ZWaveTransactionMessageBuilder(SerialMessageClass.ReplaceFailedNode).withPayload(nodeId).build();
+        return new ZWaveTransactionMessageBuilder(SerialMessageClass.ReplaceFailedNode).withPayload(nodeId)
+                .withExpectedResponseClass(SerialMessageClass.ReplaceFailedNode).withResponseNodeId(nodeId)
+                .withTimeout(30000).build();
     }
 
     @Override
@@ -77,12 +83,13 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         Report report = null;
         switch (incomingMessage.getMessagePayloadByte(0)) {
             case FAILED_NODE_REMOVE_STARTED:
-                // The replacing process started and now the new node must emit its node information frame to start the
-                // assign process.
+                // The replacing process started and now the new node must emit its node
+                // information frame to start the assign process.
                 logger.debug("NODE {}: Replace failed node successfully placed on stack.", nodeId);
                 break;
             case FAILED_NODE_NOT_PRIMARY_CONTROLLER:
-                // The replacing process was aborted because the controller is not a primary/inclusion/SIS controller.
+                // The replacing process was aborted because the controller is not a
+                // primary/inclusion/SIS controller.
                 logger.error("NODE {}: Replace failed node failed as not Primary Controller for node!", nodeId);
                 transaction.setTransactionCanceled();
                 report = Report.FAILED_NODE_NOT_PRIMARY_CONTROLLER;
@@ -94,7 +101,8 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
                 report = Report.FAILED_NODE_NO_CALLBACK_FUNCTION;
                 break;
             case FAILED_NODE_NOT_FOUND:
-                // The replacing process aborted because the node was found, thereby not a failing node.
+                // The replacing process aborted because the node was found, thereby not a
+                // failing node.
                 logger.error("NODE {}: Replace failed node failed as node is functioning!", nodeId);
                 transaction.setTransactionCanceled();
                 report = Report.FAILED_NODE_NOT_FOUND;
@@ -123,7 +131,7 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         // If this is a fail, then notify now, otherwise wait for the REQuest
         if (report != null) {
             zController.notifyEventListeners(
-                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.ReplaceFailedNode, nodeId, State.Failure, report));
+                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FailedNodeFailed, nodeId, State.Failure, report));
         }
         return true;
     }
@@ -140,26 +148,41 @@ public class ReplaceFailedNodeMessageClass extends ZWaveCommandProcessor {
         logger.debug("NODE {}: Got ReplaceFailedNode request.", nodeId);
         ZWaveNetworkEvent.State state;
         Report report = null;
-        switch (incomingMessage.getMessagePayloadByte(1)) {// TODO: Should this be (&& 0x0f)?
-            case FAILED_NODE_OK:
-                // The node is working properly (removed from the failed nodes list). Replace process is stopped.
+        switch (incomingMessage.getMessagePayloadByte(1)) {
+            case FAILED_NODE_IS_OK:
+                // The node is working properly (removed from the failed nodes list). Replace
+                // process is stopped.
                 logger.error("NODE {}: Unable to remove failed node as it is not a failed node!", nodeId);
+                transaction.setTransactionCanceled();
                 state = ZWaveNetworkEvent.State.Failure;
-                report = Report.FAILED_NODE_OK;
+                report = Report.FAILED_NODE_IS_OK;
                 break;
-            case FAILED_NODE_REMOVED:
-                logger.debug("NODE {}: Successfully removed node from controller database!", nodeId);
-                state = ZWaveNetworkEvent.State.Failure;
-                report = Report.FAILED_NODE_REMOVED;
+            case FAILED_NODE_REPLACE_START:
+                logger.debug(
+                        "NODE {}: The failed node is ready to be replaced and controller is ready to add new node with the nodeID of the failed node.",
+                        nodeId);
+                zController.notifyEventListeners(new ZWaveNetworkEvent(Type.ReplaceFailedStart, nodeId, State.Success));
+                state = ZWaveNetworkEvent.State.Success;
+                report = Report.FAILED_NODE_REPLACE_START;
                 break;
-            case FAILED_NODE_NOT_REMOVED:
-                logger.error("NODE {}: Unable to remove failed node!", nodeId);
+            case FAILED_NODE_REPLACE_DONE:
+                logger.debug("NODE {}: The failed node has been replaced.", nodeId);
+                transaction.setTransactionComplete();
+                zController
+                        .notifyEventListeners(new ZWaveNetworkEvent(Type.ReplaceFailedNodeDone, nodeId, State.Success));
+                state = ZWaveNetworkEvent.State.Success;
+                report = Report.FAILED_NODE_REPLACE_DONE;
+                break;
+            case FAILED_NODE_REPLACE_FAILED:
+                logger.error("NODE {}: The failed node has not been replaced", nodeId);
+                transaction.setTransactionCanceled();
                 state = ZWaveNetworkEvent.State.Failure;
-                report = Report.FAILED_NODE_NOT_REMOVED;
+                report = Report.FAILED_NODE_REPLACE_FAILED;
                 break;
             default:
                 logger.error("NODE {}: Replace failed node returned with response 0x{}.", nodeId,
                         Integer.toHexString(incomingMessage.getMessagePayloadByte(1)));
+                transaction.setTransactionCanceled();
                 state = ZWaveNetworkEvent.State.Failure;
                 report = Report.FAILED_NODE_UNKNOWN_FAIL;
                 break;

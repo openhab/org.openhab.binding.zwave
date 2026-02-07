@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 /**
  * This class processes a serial message from the zwave controller
  *
- * @author Chris Jackson
+ * @author Chris Jackson - Initial contribution
  */
 public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
     private final Logger logger = LoggerFactory.getLogger(RemoveFailedNodeMessageClass.class);
@@ -116,7 +116,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         // If this is a fail, then notify now, otherwise wait for the REQuest
         if (report != null) {
             zController.notifyEventListeners(
-                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RemoveFailedNodeID, nodeId, State.Failure, report));
+                    new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FailedNodeFailed, nodeId, State.Failure, report));
         }
         return true;
     }
@@ -159,7 +159,7 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
         }
 
         zController.notifyEventListeners(
-                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.RemoveFailedNodeID, nodeId, state, report));
+                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FailedNodeFailed, nodeId, state, report));
 
         transaction.setTransactionComplete();
         return true;
