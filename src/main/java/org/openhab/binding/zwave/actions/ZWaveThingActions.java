@@ -83,6 +83,14 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
+    public static String pollLinkedChannels(ThingActions actions) {
+        if (actions instanceof ZWaveThingActions nodeActions) {
+            return nodeActions.pollLinkedChannels();
+        } else {
+            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
+        }
+    }
+
     @Override
     public void setThingHandler(ThingHandler thingHandler) {
         this.handler = (ZWaveThingHandler) thingHandler;
@@ -145,5 +153,14 @@ public class ZWaveThingActions implements ThingActions {
             return handler.pingNode();
         }
         return "Handler is null, cannot ping node";
+    }
+
+    @RuleAction(label = "@text/actions.poll-linked-channels.label", description = "@text/actions.poll-linked-channels.description")
+    public @ActionOutput(type = "String") String pollLinkedChannels() {
+        ZWaveThingHandler handler = this.handler;
+        if (handler != null) {
+            return handler.pollLinkedChannels();
+        }
+        return "Handler is null, cannot poll linked channels";
     }
 }
