@@ -91,6 +91,22 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
+    public static String firmwareMetaDataGet(ThingActions actions) {
+        if (actions instanceof ZWaveThingActions nodeActions) {
+            return nodeActions.firmwareMetaDataGet();
+        } else {
+            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
+        }
+    }
+    
+    public static String firmwareMetaDataRequestGet(ThingActions actions) {
+        if (actions instanceof ZWaveThingActions nodeActions) {
+            return nodeActions.firmwareMetaDataRequestGet();
+        } else {
+            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
+        }
+    }
+
     @Override
     public void setThingHandler(ThingHandler thingHandler) {
         this.handler = (ZWaveThingHandler) thingHandler;
@@ -162,5 +178,23 @@ public class ZWaveThingActions implements ThingActions {
             return handler.pollLinkedChannels();
         }
         return "Handler is null, cannot poll linked channels";
+    }
+
+    @RuleAction(label = "@text/actions.firmware-metadata.get.label", description = "@text/actions.firmware-metadata.get.description", visibility = Visibility.EXPERT)
+    public @ActionOutput(type = "String") String firmwareMetaDataGet() {
+        ZWaveThingHandler handler = this.handler;
+        if (handler != null) {
+            return handler.firmwareMetaDataGet();
+        }
+        return "Thing handler is null, request not possible";
+    }
+
+    @RuleAction(label = "@text/actions.firmware-metadata.request.get.label", description = "@text/actions.firmware-metadata.request.get.description", visibility = Visibility.EXPERT)
+    public @ActionOutput(type = "String") String firmwareMetaDataRequestGet() {
+        ZWaveThingHandler handler = this.handler;
+        if (handler != null) {
+            return handler.firmwareMetaDataRequestGet();
+        }
+        return "Thing handler is null, request not possible";
     }
 }
