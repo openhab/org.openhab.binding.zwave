@@ -56,6 +56,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCom
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.ZWaveUserCodeValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass.ZWaveWakeUpEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
@@ -1136,6 +1137,44 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return "Failed node remove started, check status to confirm";
         }
         return "Node is not in FAILED state, cannot be removed";
+    }
+
+    /**
+     * Request firmware metadata from the node by sending a Firmware Meta Data Get command.
+     * @return status message
+     */
+    public String firmwareMetaDataGet() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (node == null) {
+            return "Node not available";
+        }
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+        if (fw == null) {
+            return "Firmware Update Metadata command class not supported on node";
+        }
+        logger.debug("NODE {}: Sending Firmware Meta Data Get command", nodeId);
+        node.sendMessage(fw.getMetaDataGetMessage());
+        return "Firmware metadata request sent";
+    }
+
+    /**
+     * Request firmware metadata from the node by sending a Firmware Meta Data Get command.
+     * @return status message
+     */
+    public String firmwareMetaDataRequestGet() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (node == null) {
+            return "Node not available";
+        }
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+        if (fw == null) {
+            return "Firmware Update Metadata command class not supported on node";
+        }
+        logger.debug("NODE {}: Sending Firmware Meta Data Request Get command", nodeId);
+        node.sendMessage(fw.getMetaDataRequestGetMessage());
+        return "Firmware metadata request sent";
     }
 
     public String reinitNode() {
