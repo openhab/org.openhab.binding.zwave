@@ -103,6 +103,11 @@ control auto turn on timer function<br /> <h1>Overview</h1><p>0 - disabled</p><p
         </options>
       </parameter>
 
+      <parameter name="firmwareFile" type="text">
+        <label>Firmware File</label>
+        <description>Path to the firmware file to upload</description>
+      </parameter>
+
       <parameter name="config_12_1" type="integer" groupName="configuration">
         <label>12: Smart Bulb Mode: Enable/Disable Paddle / Z-Wave Control</label>
         <description><![CDATA[
