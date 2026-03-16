@@ -68,6 +68,7 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
         AssociationUpdate,
         DeleteNode,
         FailedNode,
+        FirmwareUpdate,
         RequestNetworkUpdate,
         FailedNodeFailed,
         ReplaceFailedNode,

@@ -249,6 +249,11 @@ Threshold for battery reporting in % changes.<br /> <h1>Overview</h1><p>Set the 
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="firmwareFile" type="text">
+        <label>Firmware File</label>
+        <description>Path to the firmware file to upload</description>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>
