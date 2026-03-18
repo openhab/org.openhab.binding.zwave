@@ -739,7 +739,7 @@ public class ZWaveTransactionManager {
                                 // which means the device didn't respond. Treat as ASLEEP.
                                 logger.debug("NODE {}: Transaction failed waiting for REQUEST, assume sleeping device.",
                                         currentTransaction.getNodeId());
-                                node.setAwake(false);
+                                node.forceSleep();
                             }
 
                             // Handle retries

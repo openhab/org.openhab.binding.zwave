@@ -90,6 +90,14 @@ public class ZWaveThingActions implements ThingActions {
             throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
         }
     }
+    
+    public static String updateLoadedFirmware(ThingActions actions) {
+        if (actions instanceof ZWaveThingActions nodeActions) {
+            return nodeActions.updateLoadedFirmware();
+        } else {
+            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
+        }
+    }
 
     @Override
     public void setThingHandler(ThingHandler thingHandler) {
@@ -162,5 +170,14 @@ public class ZWaveThingActions implements ThingActions {
             return handler.pollLinkedChannels();
         }
         return "Handler is null, cannot poll linked channels";
+    }
+
+    @RuleAction(label = "@text/actions.firmware-update.request.get.label", description = "@text/actions.firmware-update.request.get.description", visibility = Visibility.EXPERT)
+    public @ActionOutput(type = "String") String updateLoadedFirmware() {
+        ZWaveThingHandler handler = this.handler;
+        if (handler != null) {
+            return handler.updateLoadedFirmware();
+        }
+        return "Thing handler is null, firmware update not possible";
     }
 }

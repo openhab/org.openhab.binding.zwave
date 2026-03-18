@@ -13,6 +13,8 @@
 package org.openhab.binding.zwave.handler;
 
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,6 +36,8 @@ import java.util.concurrent.TimeUnit;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.actions.ZWaveThingActions;
+import org.openhab.binding.zwave.firmwareupdate.FirmwareFile;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
@@ -56,6 +60,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCom
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.ZWaveUserCodeValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass.ZWaveWakeUpEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
@@ -94,6 +99,7 @@ import org.slf4j.LoggerFactory;
  * Thing Handler for ZWave devices
  *
  * @author Chris Jackson - Initial contribution
+ * @author Bob Eckoff - Added firmware update handling file import, and events
  *
  */
 public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWaveEventListener {
@@ -101,6 +107,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private ZWaveControllerHandler controllerHandler;
 
+    private byte[] pendingFirmwareBytes;
+    private Integer pendingFirmwareTarget;
+    private @Nullable ZWaveFirmwareUpdateSession firmwareSession;
     private boolean finalTypeSet = false;
 
     private int nodeId;
@@ -621,6 +630,32 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         Integer wakeupNode = null;
         Integer wakeupInterval = null;
 
+        // --- Firmware file handling (runs BEFORE normal Z-Wave config updates) ---
+        if (configurationParameters.containsKey("firmwareFile")) {
+            Object value = configurationParameters.get("firmwareFile");
+            if (value instanceof String path && !path.isBlank()) {
+                try {
+                    byte[] raw = Files.readAllBytes(Paths.get(path));
+                    FirmwareFile parsed = FirmwareFile.extractFirmware(path, raw);
+
+                    // Store everything locally for updateFirmware()
+                    this.pendingFirmwareBytes = parsed.data;
+                    this.pendingFirmwareTarget = (parsed.firmwareTarget != null ? parsed.firmwareTarget : 0);
+
+                    logger.info("NODE {}: Firmware file loaded: {}", nodeId, path);
+                    logger.info("NODE {}: Parsed firmware target={} size={} bytes",
+                            nodeId, pendingFirmwareTarget, raw.length);
+
+                    Configuration config = editConfiguration();
+                    config.put("firmwareFile", "");
+                    updateConfiguration(config);
+
+                } catch (Exception e) {
+                    logger.error("NODE {}: Failed to load firmware file {}", nodeId, path, e);
+                }
+            }
+        }
+
         Configuration configuration = editConfiguration();
         for (Entry<String, Object> configurationParameter : configurationParameters.entrySet()) {
             Object valueObject = configurationParameter.getValue();
@@ -634,6 +669,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             logger.debug("NODE {}: Configuration update set {} to {} ({})", nodeId, configurationParameter.getKey(),
                     valueObject, valueObject == null ? "null" : valueObject.getClass().getSimpleName());
+
+            // Skip firmwareFile — Used above to import firmware file.
+            if ("firmwareFile".equals(configurationParameter.getKey())) {
+                continue;
+            }
             String[] cfg = configurationParameter.getKey().split("_");
             switch (cfg[0]) {
                 case "config":
@@ -1138,6 +1178,45 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         return "Node is not in FAILED state, cannot be removed";
     }
 
+    public String updateLoadedFirmware() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (node == null) {
+            return "Node not available";
+        }
+
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+                
+        if (fw == null) {
+            return "Firmware Update Metadata command class not supported on node";
+        }
+
+        if (pendingFirmwareBytes == null || pendingFirmwareBytes.length == 0) {
+            return "No firmware uploaded";
+        }
+
+        if (firmwareSession != null && firmwareSession.isActive()) {
+            firmwareSession.abort("superseded by a new firmware update request");
+            firmwareSession = null;
+        }
+
+        // Create the Session
+        firmwareSession = new ZWaveFirmwareUpdateSession(
+                node,
+                controllerHandler,
+                pendingFirmwareBytes,
+                pendingFirmwareTarget);
+
+        // Most nodes will be unavailable during a firmware update, but need to be ONLINE to allow the session to run,
+        // so set to ONLINE with a detail of CONFIGURATION_PENDING to reflect the fact we're waiting for the update to complete
+        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING, "Firmware update in progress");
+        
+        //Start the session with MetaData GET to kick off the process
+        firmwareSession.start(); 
+
+        return "Firmware Update started, check event log for progress";
+    }
+
     public String reinitNode() {
         ZWaveNode node = controllerHandler.getNode(nodeId);
 
@@ -1340,6 +1419,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         logger.debug("NODE {}: Got an event from Z-Wave network: {}", nodeId, incomingEvent.getClass().getSimpleName());
+
+        // Firmware Session events are routed to the session for handling
+        if (firmwareSession != null && firmwareSession.isActive()) {
+            if (firmwareSession.handleEvent(incomingEvent)) {
+                return;
+            }
+        }
 
         // Handle command class value events.
         if (incomingEvent instanceof ZWaveCommandClassValueEvent) {
@@ -1645,6 +1731,17 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.DeleteNode) {
                 updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
+            }
+
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate) {
+                if (networkEvent.getState() == ZWaveNetworkEvent.State.Success) {
+                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, "Firmware update completed");
+                }
+
+                if (networkEvent.getState() == ZWaveNetworkEvent.State.Failure) {
+                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE,
+                            "Firmware update failed");
+                }
             }
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNode) {
