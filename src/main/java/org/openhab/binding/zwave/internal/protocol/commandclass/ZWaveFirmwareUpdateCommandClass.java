@@ -219,7 +219,15 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         byte[] data = payload.getPayloadBuffer();
 
         if (data.length < 3) {
-            throw new IllegalArgumentException("payload too short");
+            logger.warn("NODE {}: Firmware Update MD Request Report payload too short", getNode().getNodeId());
+            getController().notifyEventListeners(
+                    FirmwareUpdateEvent.forUpdateMdRequestReport(
+                            getNode().getNodeId(),
+                            endpoint,
+                            -1,
+                            null,
+                            null));
+            return;
         }
 
         int status = data[2] & 0xFF;

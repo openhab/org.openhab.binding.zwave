@@ -310,6 +310,14 @@ public class ZWaveFirmwareUpdateSession {
         return active;
     }
 
+    public void abort(String reason) {
+        if (!active) {
+            return;
+        }
+
+        failFirmwareUpdate("Firmware update session aborted: " + reason, Integer.valueOf(-1));
+    }
+
     private void completeSuccess() {
         logger.info("NODE {}: Firmware update completed", node.getNodeId());
         node.setFirmwareUpdateInProgress(false);
@@ -375,7 +383,7 @@ public class ZWaveFirmwareUpdateSession {
     // ---------------------------------------------------------
     // Fragment preparation
     // ---------------------------------------------------------
-    private void prepareFragments(FirmwareMetadata metadata) {
+    private boolean prepareFragments(FirmwareMetadata metadata) {
         fragments = new ArrayList<>();
 
         // maxFragmentSize specifies the firmware DATA bytes per fragment only;
@@ -383,8 +391,9 @@ public class ZWaveFirmwareUpdateSession {
         int usable = metadata.maxFragmentSize();
 
         if (usable <= 0) {
-            fail("Max fragment size too small for firmware update (max=" + metadata.maxFragmentSize() + ")");
-            return;
+            failFirmwareUpdate("Max fragment size too small for firmware update (max=" + metadata.maxFragmentSize() + ")",
+                    Integer.valueOf(metadata.maxFragmentSize()));
+            return false;
         }
 
         int offset = 0;
@@ -392,9 +401,10 @@ public class ZWaveFirmwareUpdateSession {
 
         while (offset < firmwareBytes.length) {
             if (reportNumber > MAX_REPORT_NUMBER) {
-                fail("Firmware requires more than " + MAX_REPORT_NUMBER + " reports");
+                failFirmwareUpdate("Firmware requires more than " + MAX_REPORT_NUMBER + " reports",
+                        Integer.valueOf(MAX_REPORT_NUMBER));
                 fragments = List.of();
-                return;
+                return false;
             }
 
             int remaining = firmwareBytes.length - offset;
@@ -412,6 +422,7 @@ public class ZWaveFirmwareUpdateSession {
 
         logger.debug("NODE {}: Prepared {} fragments (usable={} bytes each)",
                 node.getNodeId(), fragments.size(), usable);
+        return true;
     }
 
     // ---------------------------------------------------------
@@ -489,10 +500,12 @@ public class ZWaveFirmwareUpdateSession {
                 Integer.toHexString(metadata.requestFlags()));
 
         this.sessionMetadata = metadata;
-    node.setFirmwareUpdateInProgress(true);
+        node.setFirmwareUpdateInProgress(true);
 
         // Prepare fragments using maxFragmentSize
-        prepareFragments(metadata);
+        if (!prepareFragments(metadata)) {
+            return true;
+        }
 
         // Build and send UPDATE_MD_REQUEST_GET
         sendFirmwareUpdateMdRequestGet(metadata);

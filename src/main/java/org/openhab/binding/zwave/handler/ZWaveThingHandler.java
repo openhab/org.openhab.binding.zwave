@@ -1195,6 +1195,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return "No firmware uploaded";
         }
 
+        if (firmwareSession != null && firmwareSession.isActive()) {
+            firmwareSession.abort("superseded by a new firmware update request");
+            firmwareSession = null;
+        }
+
         // Create the Session
         firmwareSession = new ZWaveFirmwareUpdateSession(
                 node,
