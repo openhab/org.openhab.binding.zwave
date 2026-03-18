@@ -100,6 +100,8 @@ public class ZWaveNode {
     private TimerTask timerTask = null;
     @XStreamOmitField
     private boolean awake = false;
+    @XStreamOmitField
+    private volatile boolean firmwareUpdateInProgress = false;
 
     // Half second intervals to check if Done and no more messages
     private final int sleepDelay = 500;
@@ -1415,6 +1417,38 @@ public class ZWaveNode {
     }
 
     /**
+     * Enables/disables a temporary awake hold used during firmware update.
+     * While enabled, backstop sleep handling is bypassed for sleeping nodes,
+     * allowing the device to stay awake without forced sleep once it wakes naturally.
+     * Does NOT artificially wake the node—just prevents forced sleep during session.
+     *
+     * @param inProgress true when firmware update is active
+     */
+    public synchronized void setFirmwareUpdateInProgress(boolean inProgress) {
+        firmwareUpdateInProgress = inProgress;
+
+        if (inProgress) {
+            resetSleepTimer();
+        } else if (awake) {
+            setSleepTimer();
+        }
+    }
+
+    /**
+     * Forces this node into sleep state regardless of firmware update hold.
+     * Used when transport-layer failures indicate the node is no longer reachable.
+     */
+    public synchronized void forceSleep() {
+        if (listening == true || frequentlyListening == true) {
+            return;
+        }
+
+        logger.debug("NODE {}: Force sleep", getNodeId());
+        awake = false;
+        resetSleepTimer();
+    }
+
+    /**
      * Sets the device as awake if the device is normally not listening.
      *
      * @param awake boolean true if the device is currently awake
@@ -1433,13 +1467,24 @@ public class ZWaveNode {
             timer = new Timer();
         }
 
+        if (!awake && firmwareUpdateInProgress) {
+            logger.debug("NODE {}: Ignore sleep while firmware update is active", getNodeId());
+            this.awake = true;
+            resetSleepTimer();
+            return;
+        }
+
         // Start the timer
         if (!this.awake) {
             // We're awake
             logger.debug("NODE {}: Is awake with {} messages in the queue, state {}", getNodeId(),
                     controller.getSendQueueLength(getNodeId()), getNodeInitStage());
 
-            setSleepTimer();
+            if (firmwareUpdateInProgress) {
+                resetSleepTimer();
+            } else {
+                setSleepTimer();
+            }
 
             // Notify application
             ZWaveEvent event = new ZWaveNodeStatusEvent(getNodeId(), ZWaveNodeState.AWAKE);
@@ -1494,6 +1539,12 @@ public class ZWaveNode {
                 logger.trace("NODE {}: WakeupTimerTask Already asleep", getNodeId());
                 return;
             }
+
+            if (firmwareUpdateInProgress) {
+                logger.trace("NODE {}: WakeupTimerTask bypassed during firmware update", getNodeId());
+                return;
+            }
+
             count = count + 1;
             logger.debug("NODE {}: WakeupTimerTask {} Messages waiting, state {} count {}", getNodeId(),
                     controller.getSendQueueLength(getNodeId()), getNodeInitStage(), count);

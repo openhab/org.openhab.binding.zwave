@@ -23,10 +23,12 @@ import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +47,7 @@ public class ZWaveFirmwareUpdateSession {
     private static final int MULTI_FRAGMENT_INTERFRAME_DELAY_MS = 35;
     private static final int IMAGE_CHECKSUM_INITIAL = 0x1D0F;
     private static final int MAX_DUPLICATE_GETS_FOR_SENT_REPORT = 5;
+    private static final int MD_REPORT_WAIT_TIMEOUT_SECONDS = 12;
 
     private int startReportNumber;
     private int count;
@@ -62,6 +65,7 @@ public class ZWaveFirmwareUpdateSession {
     private int highestRequestedStartReport = -1;
     private int highestTransmittedReportNumber = 0;
     private int duplicateGetsForSentReport = 0;
+    private volatile boolean mdReportTimeoutArmed = false;
 
     // ---------------------------------------------------------
     // Constructor
@@ -276,8 +280,30 @@ public class ZWaveFirmwareUpdateSession {
         highestRequestedStartReport = -1;
         highestTransmittedReportNumber = 0;
         duplicateGetsForSentReport = 0;
+        mdReportTimeoutArmed = false;
 
         requestMetadata(); // (1)
+
+        // Start timeout only once the node is awake, since requestMetadata may be queued for sleeping nodes.
+        if (node.isAwake()) {
+            scheduleMdReportTimeout();
+        }
+    }
+
+    private void scheduleMdReportTimeout() {
+        if (mdReportTimeoutArmed) {
+            return;
+        }
+        mdReportTimeoutArmed = true;
+
+        CompletableFuture.runAsync(() -> {
+            if (!active || state != State.WAITING_FOR_MD_REPORT) {
+                return;
+            }
+
+            logger.debug("NODE {}: Timed out waiting for Firmware MD Report", node.getNodeId());
+            failFirmwareUpdate("Timed out waiting for Firmware MD Report", Integer.valueOf(-1));
+        }, CompletableFuture.delayedExecutor(MD_REPORT_WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS));
     }
 
     public boolean isActive() {
@@ -286,12 +312,14 @@ public class ZWaveFirmwareUpdateSession {
 
     private void completeSuccess() {
         logger.info("NODE {}: Firmware update completed", node.getNodeId());
+        node.setFirmwareUpdateInProgress(false);
         state = State.SUCCESS;
         active = false;
     }
 
     private void fail(String reason) {
         logger.error("NODE {}: Firmware update failed: {}", node.getNodeId(), reason);
+        node.setFirmwareUpdateInProgress(false);
         state = State.FAILURE;
         active = false;
     }
@@ -390,6 +418,13 @@ public class ZWaveFirmwareUpdateSession {
     // Event Routing
     // ---------------------------------------------------------
     public boolean handleEvent(Object event) {
+        if (event instanceof ZWaveNodeStatusEvent nodeStatusEvent) {
+            if (state == State.WAITING_FOR_MD_REPORT && nodeStatusEvent.getState() == ZWaveNodeState.AWAKE) {
+                scheduleMdReportTimeout();
+            }
+            return false;
+        }
+
         if (!(event instanceof FirmwareUpdateEvent fwEvent)) {
             return false;
         }
@@ -454,6 +489,7 @@ public class ZWaveFirmwareUpdateSession {
                 Integer.toHexString(metadata.requestFlags()));
 
         this.sessionMetadata = metadata;
+    node.setFirmwareUpdateInProgress(true);
 
         // Prepare fragments using maxFragmentSize
         prepareFragments(metadata);
