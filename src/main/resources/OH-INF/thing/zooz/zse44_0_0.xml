@@ -226,6 +226,11 @@ Sensor will report humidity at least as often as this value<br /> <h1>Overview</
         <limitToOptions>false</limitToOptions>
       </parameter>
 
+      <parameter name="firmwareFile" type="text">
+        <label>Firmware File</label>
+        <description>Path to the firmware file to upload</description>
+      </parameter>
+
       <!-- ASSOCIATION DEFINITIONS -->
       <parameter name="group_1" type="text" groupName="association" multiple="true">
         <label>1: Lifeline</label>

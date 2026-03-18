@@ -59,7 +59,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCo
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.UserIdStatusType;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.ZWaveUserCodeValueEvent;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass.ZWaveWakeUpEvent;
@@ -1187,9 +1186,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
-
-        ZWaveVersionCommandClass version = (ZWaveVersionCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
                 
         if (fw == null) {
             return "Firmware Update Metadata command class not supported on node";
@@ -1197,21 +1193,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         if (pendingFirmwareBytes == null || pendingFirmwareBytes.length == 0) {
             return "No firmware uploaded";
-        }
-
-        // TODO: This needs to be looked at, just a placeholder for now. 
-        if (!node.isListening() && !node.isFrequentlyListening()) {
-            return "Battery (sleeping) nodes are not currently supported for firmware updates";
-        }
-
-        // Ensure the ZwaveFirmware Version is correct so the device doesn't reject the firmware update
-        // This is needed for devices that haven't recently been reinitialized.
-        // The FirmwareUpdate command class was originally capped at version 1.
-        try {
-            logger.debug("NODE {}: Checking firmware version to prepare for firmware update", nodeId);
-            node.sendMessage(version.getVersionMessage());
-        } catch (Exception e) {
-            logger.warn("NODE {}: Failed to check firmware version to prepare for update", nodeId, e);
         }
 
         // Create the Session
