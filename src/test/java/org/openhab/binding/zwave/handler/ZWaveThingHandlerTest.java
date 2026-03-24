@@ -31,6 +31,7 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
@@ -43,6 +44,9 @@ import org.openhab.core.library.types.QuantityType;
 import org.openhab.core.library.types.StopMoveType;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
+import org.openhab.core.thing.ThingStatus;
+import org.openhab.core.thing.ThingStatusDetail;
+import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.ThingHandlerCallback;
 import org.openhab.core.thing.binding.builder.ThingBuilder;
@@ -68,6 +72,28 @@ public class ZWaveThingHandlerTest {
 
         @Override
         protected void validateConfigurationParameters(Map<String, Object> configurationParameters) {
+        }
+    }
+
+    class ZWaveThingHandlerStatusCaptureTest extends ZWaveThingHandler {
+        private ThingStatusInfo statusInfo = new ThingStatusInfo(ThingStatus.UNINITIALIZED, ThingStatusDetail.NONE,
+                null);
+
+        public ZWaveThingHandlerStatusCaptureTest(Thing zwaveDevice) {
+            super(zwaveDevice);
+        }
+
+        @Override
+        protected void validateConfigurationParameters(Map<String, Object> configurationParameters) {
+        }
+
+        @Override
+        protected void updateStatus(ThingStatus status, ThingStatusDetail statusDetail, String description) {
+            statusInfo = new ThingStatusInfo(status, statusDetail, description);
+        }
+
+        public ThingStatusInfo getCapturedStatusInfo() {
+            return statusInfo;
         }
     }
 
@@ -136,6 +162,16 @@ public class ZWaveThingHandlerTest {
         assertEquals(status.iterator().next().parameterName, param);
 
         return payloadCaptor.getAllValues();
+    }
+
+    private void setNodeId(ZWaveThingHandler thingHandler, int nodeId) {
+        try {
+            Field field = ZWaveThingHandler.class.getDeclaredField("nodeId");
+            field.setAccessible(true);
+            field.setInt(thingHandler, nodeId);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail(e);
+        }
     }
 
     @Test
@@ -315,5 +351,23 @@ public class ZWaveThingHandlerTest {
         assertEquals("val3", properties.get("arg3"));
         assertTrue(properties.containsKey("arg4"));
         assertNull(properties.get("arg4"));
+    }
+
+    @Test
+    public void testFirmwareUpdateFailureSetsConfigurationErrorStatus() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+
+        ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
+        setNodeId(handler, 1);
+
+        handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 1,
+                ZWaveNetworkEvent.State.Failure, Integer.valueOf(1)));
+
+        ThingStatusInfo statusInfo = handler.getCapturedStatusInfo();
+        assertEquals(ThingStatus.ONLINE, statusInfo.getStatus());
+        assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusInfo.getStatusDetail());
+        assertEquals("Firmware update failed (status 1)", statusInfo.getDescription());
     }
 }

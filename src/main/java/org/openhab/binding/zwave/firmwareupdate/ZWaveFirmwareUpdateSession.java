@@ -13,11 +13,14 @@
 package org.openhab.binding.zwave.firmwareupdate;
 
 import java.io.ByteArrayOutputStream;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
@@ -35,7 +38,9 @@ import org.slf4j.LoggerFactory;
 
 /**
  * The {@link ZWaveFirmwareUpdateSession} class represents an active firmware
- * update session for a Z-Wave node.
+ * update session for a Z-Wave node. Handles the state and logic of the firmware update process, including
+ * managing firmware fragments, tracking progress, and handling events. Also handles timeouts and retries
+ * for robustness against common issues during firmware updates.
  *
  * @author Robert Eckhoff - Initial contribution
  */
@@ -46,8 +51,10 @@ public class ZWaveFirmwareUpdateSession {
     private static final int MAX_REPORT_NUMBER = 0x7FFF;
     private static final int MULTI_FRAGMENT_INTERFRAME_DELAY_MS = 35;
     private static final int IMAGE_CHECKSUM_INITIAL = 0x1D0F;
-    private static final int MAX_DUPLICATE_GETS_FOR_SENT_REPORT = 5;
     private static final int MD_REPORT_WAIT_TIMEOUT_SECONDS = 12;
+    private static final int STATUS_REPORT_WAIT_TIMEOUT_SECONDS = 30;
+    private static final int PROGRESS_EVENT_STEP_PERCENT = 5;
+    private static final long DUPLICATE_GET_RESEND_DELAY_MS = TimeUnit.SECONDS.toMillis(15);
 
     private int startReportNumber;
     private int count;
@@ -65,7 +72,10 @@ public class ZWaveFirmwareUpdateSession {
     private int highestRequestedStartReport = -1;
     private int highestTransmittedReportNumber = 0;
     private int duplicateGetsForSentReport = 0;
+    private int lastPublishedProgressPercent = 0;
     private volatile boolean mdReportTimeoutArmed = false;
+    private final AtomicInteger statusReportTimeoutGeneration = new AtomicInteger(0);
+    private final Map<Integer, Long> reportLastSentTimes = new HashMap<>();
 
     // ---------------------------------------------------------
     // Constructor
@@ -237,6 +247,14 @@ public class ZWaveFirmwareUpdateSession {
                 -1, 0, status, 0, new byte[0], null, null);
         }
 
+        public static FirmwareUpdateEvent forUpdatePrepareReport(int nodeId, int endpoint, int status,
+            int checksum) {
+            return new FirmwareUpdateEvent(nodeId, endpoint, FirmwareEventType.UPDATE_PREPARE_REPORT,
+                -1, 0, status, 0,
+                new byte[] { (byte) ((checksum >> 8) & 0xFF), (byte) (checksum & 0xFF) },
+                null, null);
+        }
+
         public FirmwareEventType getType() {
             return type;
         }
@@ -280,7 +298,9 @@ public class ZWaveFirmwareUpdateSession {
         highestRequestedStartReport = -1;
         highestTransmittedReportNumber = 0;
         duplicateGetsForSentReport = 0;
+        lastPublishedProgressPercent = 0;
         mdReportTimeoutArmed = false;
+        reportLastSentTimes.clear();
 
         requestMetadata(); // (1)
 
@@ -301,9 +321,40 @@ public class ZWaveFirmwareUpdateSession {
                 return;
             }
 
+            // For sleeping nodes, MD_GET can remain queued until a later wakeup.
+            // Don't fail the session while the node is asleep; re-arm on next wake.
+            if (!node.isAwake()) {
+                logger.debug("NODE {}: Deferring MD report timeout because node is sleeping", node.getNodeId());
+                mdReportTimeoutArmed = false;
+                return;
+            }
+
             logger.debug("NODE {}: Timed out waiting for Firmware MD Report", node.getNodeId());
             failFirmwareUpdate("Timed out waiting for Firmware MD Report", Integer.valueOf(-1));
         }, CompletableFuture.delayedExecutor(MD_REPORT_WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS));
+    }
+
+    private void scheduleStatusReportTimeout() {
+        int generation = statusReportTimeoutGeneration.incrementAndGet();
+
+        CompletableFuture.runAsync(() -> {
+            if (!active) {
+                return;
+            }
+            if (statusReportTimeoutGeneration.get() != generation) {
+                return;
+            }
+            if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
+                return;
+            }
+
+            logger.warn("NODE {}: Timed out waiting for Firmware Update MD Status Report", node.getNodeId());
+            failFirmwareUpdate("Timed out waiting for Firmware Update MD Status Report", Integer.valueOf(-1));
+        }, CompletableFuture.delayedExecutor(getStatusReportWaitTimeoutSeconds(), TimeUnit.SECONDS));
+    }
+
+    protected int getStatusReportWaitTimeoutSeconds() {
+        return STATUS_REPORT_WAIT_TIMEOUT_SECONDS;
     }
 
     public boolean isActive() {
@@ -351,6 +402,27 @@ public class ZWaveFirmwareUpdateSession {
 
         // Fallback for early-session or test scenarios where the internal controller is not available.
         controller.ZWaveIncomingEvent(event);
+    }
+
+    private void publishFirmwareUpdateProgressIfNeeded() {
+        if (fragments.isEmpty()) {
+            return;
+        }
+
+        int transmitted = Math.min(highestTransmittedReportNumber, fragments.size());
+        int percentComplete = (transmitted * 100) / fragments.size();
+
+        // Keep 100% reserved for terminal success status event.
+        if (percentComplete >= 100) {
+            percentComplete = 99;
+        }
+
+        if (percentComplete <= 0 || percentComplete < lastPublishedProgressPercent + PROGRESS_EVENT_STEP_PERCENT) {
+            return;
+        }
+
+        lastPublishedProgressPercent = percentComplete;
+        publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(percentComplete));
     }
 
     // ---------------------------------------------------------
@@ -430,8 +502,13 @@ public class ZWaveFirmwareUpdateSession {
     // ---------------------------------------------------------
     public boolean handleEvent(Object event) {
         if (event instanceof ZWaveNodeStatusEvent nodeStatusEvent) {
-            if (state == State.WAITING_FOR_MD_REPORT && nodeStatusEvent.getState() == ZWaveNodeState.AWAKE) {
-                scheduleMdReportTimeout();
+            if (state == State.WAITING_FOR_MD_REPORT) {
+                if (nodeStatusEvent.getState() == ZWaveNodeState.AWAKE) {
+                    scheduleMdReportTimeout();
+                } else {
+                    // Re-arm timeout on the next wake cycle if node sleeps before MD report arrives.
+                    mdReportTimeoutArmed = false;
+                }
             }
             return false;
         }
@@ -537,7 +614,8 @@ public class ZWaveFirmwareUpdateSession {
     }
 
     private boolean handleUpdateMdGet(FirmwareUpdateEvent event) {
-        if (state != State.WAITING_FOR_UPDATE_MD_GET && state != State.SENDING_FRAGMENTS) {
+        if (state != State.WAITING_FOR_UPDATE_MD_GET && state != State.SENDING_FRAGMENTS
+                && state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
             return false;
         }
 
@@ -552,9 +630,38 @@ public class ZWaveFirmwareUpdateSession {
         logger.debug("NODE {}: Received UPDATE_MD_GET for fragment {} (count={})",
                 node.getNodeId(), requestedStartReport, requestedCount);
 
-        // Ignore stale requests that arrive after the device has already advanced.
-        // Some devices/controllers can emit closely-spaced GETs that arrive out of order.
-        if (highestRequestedStartReport > 0 && requestedStartReport < highestRequestedStartReport) {
+        // Some nodes may queue duplicate GETs for an already-sent report when there is
+        // a slight timing delay. Ignore these near-duplicates, but allow a late retry
+        // window so the device can recover from a truly missed report.
+        if (requestedStartReport <= highestTransmittedReportNumber) {
+            Long lastSentTime = reportLastSentTimes.get(requestedStartReport);
+            long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue() : Long.MAX_VALUE;
+
+            if (lastSentTime != null && elapsedMillis < DUPLICATE_GET_RESEND_DELAY_MS) {
+                duplicateGetsForSentReport++;
+                logger.debug(
+                        "NODE {}: Ignoring duplicate UPDATE_MD_GET for already-transmitted fragment {} (highestTransmitted={}, duplicateCount={}, elapsedMs={})",
+                        node.getNodeId(), requestedStartReport, highestTransmittedReportNumber,
+                        duplicateGetsForSentReport, elapsedMillis);
+                return true;
+            }
+
+            logger.info(
+                    "NODE {}: Re-sending previously transmitted fragment {} after duplicate UPDATE_MD_GET (elapsedMs={}, resendWindowMs={})",
+                    node.getNodeId(), requestedStartReport,
+                    lastSentTime != null ? Long.valueOf(elapsedMillis) : "unknown",
+                    DUPLICATE_GET_RESEND_DELAY_MS);
+
+                // Consume the resend window immediately so another closely-spaced GET
+                // does not trigger a second resend before transmission bookkeeping updates.
+                reportLastSentTimes.put(requestedStartReport, currentTimeMillis());
+            duplicateGetsForSentReport = 0;
+        }
+
+        // Ignore stale requests that arrive after the device has already advanced,
+        // unless they are for a transmitted fragment that we may need to resend.
+        if (requestedStartReport > highestTransmittedReportNumber && highestRequestedStartReport > 0
+                && requestedStartReport < highestRequestedStartReport) {
             logger.debug(
                     "NODE {}: Ignoring stale UPDATE_MD_GET for fragment {} because fragment {} was already requested",
                     node.getNodeId(), requestedStartReport, highestRequestedStartReport);
@@ -562,23 +669,6 @@ public class ZWaveFirmwareUpdateSession {
         }
         if (requestedStartReport > highestRequestedStartReport) {
             highestRequestedStartReport = requestedStartReport;
-        }
-
-        // Some nodes may queue duplicate GETs for an already-sent report when there is
-        // a slight timing delay. Do not resend reports that were already transmitted.
-        if (requestedStartReport <= highestTransmittedReportNumber) {
-            duplicateGetsForSentReport++;
-            logger.warn(
-                "NODE {}: Ignoring duplicate UPDATE_MD_GET for already-transmitted fragment {} (highestTransmitted={}, duplicateCount={})",
-                node.getNodeId(), requestedStartReport, highestTransmittedReportNumber, duplicateGetsForSentReport);
-
-            if (duplicateGetsForSentReport >= MAX_DUPLICATE_GETS_FOR_SENT_REPORT) {
-            failFirmwareUpdate(
-                "Device repeatedly requested already-transmitted fragment " + requestedStartReport
-                    + " (highestTransmitted=" + highestTransmittedReportNumber + ")",
-                Integer.valueOf(requestedStartReport));
-            }
-            return true;
         }
         duplicateGetsForSentReport = 0;
 
@@ -617,7 +707,12 @@ public class ZWaveFirmwareUpdateSession {
     }
 
     private boolean handleUpdateMdStatusReport(FirmwareUpdateEvent event) {
-        if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
+        // Some devices can emit terminal status before we transition to
+        // WAITING_FOR_UPDATE_MD_STATUS_REPORT (for example after a resend/timeout path).
+        // Accept status while transfer is still active to avoid getting stuck.
+        if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT
+                && state != State.SENDING_FRAGMENTS
+                && state != State.WAITING_FOR_UPDATE_MD_GET) {
             return false;
         }
 
@@ -779,12 +874,12 @@ public class ZWaveFirmwareUpdateSession {
 
             ZWaveCommandClassTransactionPayload msg = fw.sendFirmwareUpdateReport(ccFragment);
 
-                if (logger.isDebugEnabled()) {
+                if (logger.isTraceEnabled()) {
                     int advertisedMaxFragmentSize = sessionMetadata != null ? sessionMetadata.maxFragmentSize() : -1;
                 byte[] txPayload = msg.getPayloadBuffer();
                 int crcMsb = txPayload.length >= 2 ? txPayload[txPayload.length - 2] & 0xFF : -1;
                 int crcLsb = txPayload.length >= 1 ? txPayload[txPayload.length - 1] & 0xFF : -1;
-                logger.debug(
+                logger.trace(
                         "NODE {}: Fragment TX details report={}, isLast={}, advertisedMaxDataLen={}, dataLen={}, payloadLen={}, crc=0x{}{}, payload={}",
                     node.getNodeId(),
                     fragment.getReportNumber(),
@@ -799,11 +894,14 @@ public class ZWaveFirmwareUpdateSession {
 
             node.sendMessage(msg);
             highestTransmittedReportNumber = Math.max(highestTransmittedReportNumber, fragment.getReportNumber());
+            reportLastSentTimes.put(fragment.getReportNumber(), currentTimeMillis());
+            publishFirmwareUpdateProgressIfNeeded();
 
             // If this was the last fragment, transition to waiting for status
             if (fragment.isLast()) {
                 logger.debug("NODE {}: Last fragment sent, waiting for status report", node.getNodeId());
                 state = State.WAITING_FOR_UPDATE_MD_STATUS_REPORT;
+                scheduleStatusReportTimeout();
                 return;
             }
 
@@ -1065,6 +1163,10 @@ public class ZWaveFirmwareUpdateSession {
             sb.append(String.format("%02X", data[i] & 0xFF));
         }
         return sb.toString();
+    }
+
+    protected long currentTimeMillis() {
+        return System.currentTimeMillis();
     }
 
 }

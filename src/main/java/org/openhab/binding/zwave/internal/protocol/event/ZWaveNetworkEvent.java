@@ -77,6 +77,7 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
     }
 
     public enum State {
+        Progress,
         Success,
         Failure
     }

@@ -1348,8 +1348,8 @@ public class ZWaveNode {
         }
         for (ZWaveCommandClassPayload command : commands) {
             // Check for WAKEUP_NOTIFICATION
-            if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
-                    && payload.getCommandClassCommand() == 0x07) {
+            if (command.getCommandClassId() == CommandClass.COMMAND_CLASS_WAKE_UP.getKey()
+                    && command.getCommandClassCommand() == 0x07) {
                 setAwake(true);
                 continue;
             }
