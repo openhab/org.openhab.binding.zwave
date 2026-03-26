@@ -91,7 +91,8 @@ public class ZWaveFirmwareDownloadSession {
 
         int ccVersion = fw.getVersion();
         if (ccVersion < 5) {
-            failDownload("Firmware download requires Firmware Update MD CC version 5 or newer", Integer.valueOf(ccVersion));
+            failDownload("Firmware download requires Firmware Update Metadata CC version 5 or newer",
+                    Integer.valueOf(ccVersion));
             return;
         }
 
@@ -184,10 +185,7 @@ public class ZWaveFirmwareDownloadSession {
         state = State.WAITING_FOR_PREPARE_REPORT;
 
         logger.debug("NODE {}: Firmware download metadata parsed manufacturerId={}, firmwareId={}, checksum=0x{}",
-                node.getNodeId(),
-                parsed.manufacturerId(),
-                parsed.firmwareId(),
-                Integer.toHexString(parsed.checksum()));
+                node.getNodeId(), parsed.manufacturerId(), parsed.firmwareId(), Integer.toHexString(parsed.checksum()));
         return true;
     }
 
@@ -205,7 +203,8 @@ public class ZWaveFirmwareDownloadSession {
         byte[] payload = event.getPayload();
         if (payload.length >= 2) {
             int reportedChecksum = ((payload[0] & 0xFF) << 8) | (payload[1] & 0xFF);
-            logger.debug("NODE {}: Prepare report checksum=0x{}", node.getNodeId(), Integer.toHexString(reportedChecksum));
+            logger.debug("NODE {}: Prepare report checksum=0x{}", node.getNodeId(),
+                    Integer.toHexString(reportedChecksum));
         }
 
         requestFragment(nextReportNumber);
@@ -230,7 +229,8 @@ public class ZWaveFirmwareDownloadSession {
         int reportNumber = reportWord & 0x7FFF;
 
         if (reportNumber != nextReportNumber) {
-            failDownload("Unexpected firmware fragment report " + reportNumber + " while waiting for " + nextReportNumber,
+            failDownload(
+                    "Unexpected firmware fragment report " + reportNumber + " while waiting for " + nextReportNumber,
                     Integer.valueOf(reportNumber));
             return true;
         }
@@ -245,11 +245,11 @@ public class ZWaveFirmwareDownloadSession {
         if (crcBytes == 2) {
             int expectedCrc = ((payload[dataEnd] & 0xFF) << 8) | (payload[dataEnd + 1] & 0xFF);
             byte[] crcBuffer = Arrays.copyOfRange(payload, 0, dataEnd);
-            int calculatedCrc = ZWaveFirmwareUpdateCommandClass.crc16Ccitt(
-                    new byte[] {
-                            (byte) CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey(),
-                            (byte) ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_REPORT },
-                    IMAGE_CHECKSUM_INITIAL);
+            int calculatedCrc = ZWaveFirmwareUpdateCommandClass
+                    .crc16Ccitt(
+                            new byte[] { (byte) CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey(),
+                                    (byte) ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_REPORT },
+                            IMAGE_CHECKSUM_INITIAL);
             calculatedCrc = ZWaveFirmwareUpdateCommandClass.crc16Ccitt(crcBuffer, calculatedCrc);
             if (expectedCrc != calculatedCrc) {
                 failDownload("Firmware fragment CRC mismatch", Integer.valueOf(reportNumber));
@@ -311,26 +311,15 @@ public class ZWaveFirmwareDownloadSession {
 
         byte[] payload;
         if (parsed.hardwareVersionPresent()) {
-            payload = new byte[] {
-                    (byte) ((parsed.manufacturerId() >> 8) & 0xFF),
-                    (byte) (parsed.manufacturerId() & 0xFF),
-                    (byte) ((parsed.firmwareId() >> 8) & 0xFF),
-                    (byte) (parsed.firmwareId() & 0xFF),
-                    0,
-                    (byte) ((parsed.maxFragmentSize() >> 8) & 0xFF),
-                    (byte) (parsed.maxFragmentSize() & 0xFF),
-                    (byte) (parsed.hardwareVersion() & 0xFF)
-            };
+            payload = new byte[] { (byte) ((parsed.manufacturerId() >> 8) & 0xFF),
+                    (byte) (parsed.manufacturerId() & 0xFF), (byte) ((parsed.firmwareId() >> 8) & 0xFF),
+                    (byte) (parsed.firmwareId() & 0xFF), 0, (byte) ((parsed.maxFragmentSize() >> 8) & 0xFF),
+                    (byte) (parsed.maxFragmentSize() & 0xFF), (byte) (parsed.hardwareVersion() & 0xFF) };
         } else {
-            payload = new byte[] {
-                    (byte) ((parsed.manufacturerId() >> 8) & 0xFF),
-                    (byte) (parsed.manufacturerId() & 0xFF),
-                    (byte) ((parsed.firmwareId() >> 8) & 0xFF),
-                    (byte) (parsed.firmwareId() & 0xFF),
-                    0,
-                    (byte) ((parsed.maxFragmentSize() >> 8) & 0xFF),
-                    (byte) (parsed.maxFragmentSize() & 0xFF)
-            };
+            payload = new byte[] { (byte) ((parsed.manufacturerId() >> 8) & 0xFF),
+                    (byte) (parsed.manufacturerId() & 0xFF), (byte) ((parsed.firmwareId() >> 8) & 0xFF),
+                    (byte) (parsed.firmwareId() & 0xFF), 0, (byte) ((parsed.maxFragmentSize() >> 8) & 0xFF),
+                    (byte) (parsed.maxFragmentSize() & 0xFF) };
         }
 
         ZWaveCommandClassTransactionPayload msg = fw.setFirmwarePrepareGet(payload);
@@ -356,8 +345,8 @@ public class ZWaveFirmwareDownloadSession {
 
     private Metadata parseMetadata(byte[] payload) {
         if (payload.length < 10) {
-            throw new IllegalArgumentException("payload too short for v5+ metadata (need at least 10 bytes, got "
-                    + payload.length + ")");
+            throw new IllegalArgumentException(
+                    "payload too short for v5+ metadata (need at least 10 bytes, got " + payload.length + ")");
         }
 
         int manufacturerId = ((payload[0] & 0xFF) << 8) | (payload[1] & 0xFF);
@@ -376,7 +365,7 @@ public class ZWaveFirmwareDownloadSession {
         int hardwareVersion = hardwareVersionPresent ? payload[index] & 0xFF : 0;
 
         return new Metadata(manufacturerId, firmwareId, checksum, maxFragmentSize, hardwareVersionPresent,
-            hardwareVersion);
+                hardwareVersion);
     }
 
     private void completeSuccess() {
@@ -400,11 +389,8 @@ public class ZWaveFirmwareDownloadSession {
     }
 
     private void publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State eventState, Object value) {
-        ZWaveNetworkEvent event = new ZWaveNetworkEvent(
-                ZWaveNetworkEvent.Type.FirmwareUpdate,
-                node.getNodeId(),
-                eventState,
-                value);
+        ZWaveNetworkEvent event = new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, node.getNodeId(),
+                eventState, value);
 
         if (controller.getController() != null) {
             controller.getController().notifyEventListeners(event);
