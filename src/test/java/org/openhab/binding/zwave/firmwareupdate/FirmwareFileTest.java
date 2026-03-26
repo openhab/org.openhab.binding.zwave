@@ -47,8 +47,7 @@ public class FirmwareFileTest {
     @Test
     public void testExtractHex() throws Exception {
         String hex = ":020000040000FA\n" + // extended linear address = 0
-                ":10000000000102030405060708090A0B0C0D0E0F78\n" +
-                ":00000001FF\n";
+                ":10000000000102030405060708090A0B0C0D0E0F78\n" + ":00000001FF\n";
 
         byte[] raw = hex.getBytes(StandardCharsets.US_ASCII);
 
@@ -64,10 +63,8 @@ public class FirmwareFileTest {
 
     @Test
     public void testExtractGbl() throws Exception {
-        byte[] raw = new byte[] {
-                (byte) 0xEB, 0x17, (byte) 0xA6, 0x03, // Gecko magic
-                0x11, 0x22, 0x33
-        };
+        byte[] raw = new byte[] { (byte) 0xEB, 0x17, (byte) 0xA6, 0x03, // Gecko magic
+                0x11, 0x22, 0x33 };
 
         FirmwareFile file = FirmwareFile.extractFirmware("firmware.gbl", raw);
 
@@ -120,9 +117,7 @@ public class FirmwareFileTest {
 
     @Test
     public void testExtractZipWithHex() throws Exception {
-        String hex = ":020000040000FA\n" +
-                ":0400000001020304F2\n" +
-                ":00000001FF\n";
+        String hex = ":020000040000FA\n" + ":0400000001020304F2\n" + ":00000001FF\n";
 
         byte[] hexBytes = hex.getBytes(StandardCharsets.US_ASCII);
 

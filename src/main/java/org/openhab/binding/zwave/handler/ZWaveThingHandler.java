@@ -60,6 +60,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveConfigurationCommandClass.ZWaveConfigurationParameterEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveDoorLockCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWavePlusCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSwitchAllCommandClass;
@@ -68,7 +69,6 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCom
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveUserCodeCommandClass.ZWaveUserCodeValueEvent;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass.ZWaveWakeUpEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveAssociationEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
@@ -117,7 +117,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private ZWaveControllerHandler controllerHandler;
 
     private byte[] pendingFirmwareBytes;
-    private Integer pendingFirmwareTarget;
+    private Integer pendingFirmwareTarget = 0;
     private @Nullable ZWaveFirmwareUpdateSession firmwareSession;
     private @Nullable ZWaveFirmwareDownloadSession firmwareDownloadSession;
     private boolean finalTypeSet = false;
@@ -131,8 +131,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private final Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private final Map<String, Object> pendingCfg = new HashMap<String, Object>();
 
-    private static final Set<String> SUPPORTED_FIRMWARE_EXTENSIONS = Set.of(
-        ".bin", ".hex", ".ota", ".otz", ".gbl", ".zip", ".exe", ".ex_");
+    private static final Set<String> SUPPORTED_FIRMWARE_EXTENSIONS = Set.of(".bin", ".hex", ".ota", ".otz", ".gbl",
+            ".zip", ".exe", ".ex_");
 
     private static boolean isSupportedFirmwareFile(Path file) {
         String name = file.getFileName().toString().toLowerCase(Locale.ROOT);
@@ -145,16 +145,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private final Object pollingSync = new Object();
     private ScheduledFuture<?> pollingJob = null;
-    private final long POLLING_PERIOD_MIN = 15;
-    private final long POLLING_PERIOD_MAX = 864000;
-    private final long POLLING_PERIOD_DEFAULT = 86400;
-    private final long DELAYED_POLLING_PERIOD_MAX = 10;
-    private final long REFRESH_POLL_DELAY = 50;
+    private static final long POLLING_PERIOD_MIN = 15;
+    private static final long POLLING_PERIOD_MAX = 864000;
+    private static final long POLLING_PERIOD_DEFAULT = 86400;
+    private static final long DELAYED_POLLING_PERIOD_MAX = 10;
+    private static final long REFRESH_POLL_DELAY = 50;
     private long pollingPeriod = POLLING_PERIOD_DEFAULT;
 
-    private final long REPOLL_PERIOD_MIN = 100;
-    private final long REPOLL_PERIOD_MAX = 15000;
-    private final long REPOLL_PERIOD_DEFAULT = 1500;
+    private static final long REPOLL_PERIOD_MIN = 100;
+    private static final long REPOLL_PERIOD_MAX = 15000;
+    private static final long REPOLL_PERIOD_DEFAULT = 1500;
 
     private long commandPollDelay = 1500;
 
@@ -1215,10 +1215,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             firmwareDownloadSession = null;
         }
 
-        firmwareSession = new ZWaveFirmwareUpdateSession(
-                node,
-                controllerHandler,
-                pendingFirmwareBytes,
+        firmwareSession = new ZWaveFirmwareUpdateSession(node, controllerHandler, pendingFirmwareBytes,
                 pendingFirmwareTarget);
 
         updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING, "Firmware upload in progress");
@@ -1275,7 +1272,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
         if (versionCommandClass == null) {
-            logger.debug("NODE {}: Cannot refresh Firmware Update command class version because VERSION CC is unavailable",
+            logger.debug(
+                    "NODE {}: Cannot refresh Firmware Update command class version because VERSION CC is unavailable",
                     nodeId);
             return versionBefore;
         }
@@ -1297,7 +1295,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     /**
      * Loads firmware bytes from userdata/zwave/firmware/node-<nodeId>.
      * Policy: exactly one supported file must exist.
-    * @return null on success, otherwise a user-facing error message.
+     * 
+     * @return null on success, otherwise a user-facing error message.
      */
     private @Nullable String loadPendingFirmwareFromRepository() {
         Path folder = getNodeFirmwareFolder();
@@ -1308,15 +1307,12 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         if (!Files.isDirectory(folder)) {
             return "Firmware path is not a directory: " + folder;
-     }
+        }
 
         List<Path> candidates;
         try (Stream<Path> files = Files.list(folder)) {
-            candidates = files
-                    .filter(Files::isRegularFile)
-                    .filter(ZWaveThingHandler::isSupportedFirmwareFile)
-                    .sorted(Comparator.comparing(p -> p.getFileName().toString().toLowerCase(Locale.ROOT)))
-                    .toList();
+            candidates = files.filter(Files::isRegularFile).filter(ZWaveThingHandler::isSupportedFirmwareFile)
+                    .sorted(Comparator.comparing(p -> p.getFileName().toString().toLowerCase(Locale.ROOT))).toList();
         } catch (IOException e) {
             logger.error("NODE {}: Error listing firmware directory {}", nodeId, folder, e);
             return "Error reading firmware directory: " + folder;
@@ -1327,9 +1323,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         if (candidates.size() > 1) {
-            String names = candidates.stream()
-                    .map(p -> p.getFileName().toString())
-                    .collect(Collectors.joining(", "));
+            String names = candidates.stream().map(p -> p.getFileName().toString()).collect(Collectors.joining(", "));
             return "Multiple firmware files found for this node. Keep only one: " + names;
         }
 
@@ -1513,7 +1507,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     @Nullable
     Command convertCommandToDataType(ChannelUID channelUID, DataType channelDataType, Command command,
             DataType dataType) {
-
         if (!(command instanceof State)) {
             logger.debug("NODE {}: Received commands datatype {} doesn't support conversion", nodeId, dataType);
             return null;
@@ -2150,7 +2143,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private boolean updateConfigurationParameter(Configuration configuration, int paramIndex, int paramSize,
             int paramValue) {
-
         boolean cfgUpdated = false;
 
         for (String key : configuration.keySet()) {
@@ -2273,8 +2265,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     /**
      * Return an ISO 8601 combined date and time string for specified date/time
      *
-     * @param date
-     *            Date
+     * @param date Date to convert to ISO 8601 string
      * @return String with format "yyyy-MM-dd'T'HH:mm:ss'Z'"
      */
     private static String getISO8601StringForDate(Date date) {

@@ -17,16 +17,16 @@ import java.util.Arrays;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareUpdateEvent;
+import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
-import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareUpdateEvent;
-import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
@@ -64,9 +64,9 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
     /**
      * Creates a new instance of the ZWaveFirmwareUpdateCommandClass class.
      *
-     * @param node       the node this command class belongs to
+     * @param node the node this command class belongs to
      * @param controller the controller to use
-     * @param endpoint   the endpoint this Command class belongs to
+     * @param endpoint the endpoint this Command class belongs to
      */
     public ZWaveFirmwareUpdateCommandClass(ZWaveNode node, ZWaveController controller, ZWaveEndpoint endpoint) {
         super(node, controller, endpoint);
@@ -96,10 +96,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Creating new message for application command FIRMWARE_MD_GET",
                 this.getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                FIRMWARE_MD_GET)
-                .withPriority(TransactionPriority.Config)
-                .withExpectedResponseCommand(FIRMWARE_MD_REPORT).build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(), FIRMWARE_MD_GET)
+                .withPriority(TransactionPriority.Config).withExpectedResponseCommand(FIRMWARE_MD_REPORT).build();
     }
 
     /**
@@ -109,17 +107,11 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * firmware data and whether this is a resume of an interrupted update.
      */
     public ZWaveCommandClassTransactionPayload sendMDRequestGetMessage(byte[] payload) {
-        logger.debug("NODE {}: Creating new message for FIRMWARE_MD_REQUEST_GET",
-                getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for FIRMWARE_MD_REQUEST_GET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(
-                getNode().getNodeId(),
-                getCommandClass(),
-                FIRMWARE_UPDATE_MD_REQUEST_GET)
-                .withPayload(payload)
-                .withPriority(TransactionPriority.Config)
-                .withExpectedResponseCommand(FIRMWARE_UPDATE_MD_REQUEST_REPORT)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                FIRMWARE_UPDATE_MD_REQUEST_GET).withPayload(payload).withPriority(TransactionPriority.Config)
+                .withExpectedResponseCommand(FIRMWARE_UPDATE_MD_REQUEST_REPORT).build();
     }
 
     /**
@@ -127,49 +119,30 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * This sends a single firmware fragment to the device.
      */
     public ZWaveCommandClassTransactionPayload sendFirmwareUpdateReport(FirmwareFragment fragment) {
-        logger.debug(
-                "NODE {}: Creating FIRMWARE_UPDATE_MD_REPORT for fragment {}, isLast={}",
-                getNode().getNodeId(),
-                fragment.reportNumber,
-                fragment.isLast);
+        logger.debug("NODE {}: Creating FIRMWARE_UPDATE_MD_REPORT for fragment {}, isLast={}", getNode().getNodeId(),
+                fragment.reportNumber, fragment.isLast);
 
-        byte[] payload = fragment.toBytes(
-                getVersion(),
-                getCommandClass().getKey(),
-                FIRMWARE_UPDATE_MD_REPORT);
+        byte[] payload = fragment.toBytes(getVersion(), getCommandClass().getKey(), FIRMWARE_UPDATE_MD_REPORT);
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(
-                getNode().getNodeId(),
-                getCommandClass(),
-                FIRMWARE_UPDATE_MD_REPORT)
-                .withPayload(payload)
-                .withPriority(TransactionPriority.Config)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                FIRMWARE_UPDATE_MD_REPORT).withPayload(payload).withPriority(TransactionPriority.Config).build();
     }
 
-            /**
-             * Create a transaction payload for Firmware Update MD Get (5).
-             * This requests one or more firmware fragments from the node.
-             */
-            public ZWaveCommandClassTransactionPayload sendFirmwareUpdateMdGet(int reportNumber, int numberOfReports) {
-            logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_MD_GET report={}, count={}",
+    /**
+     * Create a transaction payload for Firmware Update MD Get (5).
+     * This requests one or more firmware fragments from the node.
+     */
+    public ZWaveCommandClassTransactionPayload sendFirmwareUpdateMdGet(int reportNumber, int numberOfReports) {
+        logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_MD_GET report={}, count={}",
                 getNode().getNodeId(), reportNumber, numberOfReports);
 
-            byte[] payload = new byte[] {
-                (byte) (numberOfReports & 0xFF),
-                (byte) ((reportNumber >> 8) & 0xFF),
-                (byte) (reportNumber & 0xFF)
-            };
+        byte[] payload = new byte[] { (byte) (numberOfReports & 0xFF), (byte) ((reportNumber >> 8) & 0xFF),
+                (byte) (reportNumber & 0xFF) };
 
-            return new ZWaveCommandClassTransactionPayloadBuilder(
-                getNode().getNodeId(),
-                getCommandClass(),
-                FIRMWARE_UPDATE_MD_GET)
-                .withPayload(payload)
-                .withPriority(TransactionPriority.Config)
-                .withExpectedResponseCommand(FIRMWARE_UPDATE_MD_REPORT)
-                .build();
-            }
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                FIRMWARE_UPDATE_MD_GET).withPayload(payload).withPriority(TransactionPriority.Config)
+                .withExpectedResponseCommand(FIRMWARE_UPDATE_MD_REPORT).build();
+    }
 
     /**
      * Create a transaction payload for Firmware Update Activation Set (8).
@@ -179,17 +152,11 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * indicating the result.
      */
     public ZWaveCommandClassTransactionPayload setFirmwareActivation(byte[] firmwareBaseData) {
-        logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_ACTIVATION_SET",
-                getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_ACTIVATION_SET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(
-                getNode().getNodeId(),
-                getCommandClass(),
-                FIRMWARE_UPDATE_ACTIVATION_SET)
-                .withPayload(firmwareBaseData)
-                .withPriority(TransactionPriority.Config)
-                .withExpectedResponseCommand(FIRMWARE_UPDATE_ACTIVATION_STATUS_REPORT)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                FIRMWARE_UPDATE_ACTIVATION_SET).withPayload(firmwareBaseData).withPriority(TransactionPriority.Config)
+                .withExpectedResponseCommand(FIRMWARE_UPDATE_ACTIVATION_STATUS_REPORT).build();
     }
 
     /**
@@ -203,17 +170,11 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * [hardwareVersion(1)].
      */
     public ZWaveCommandClassTransactionPayload setFirmwarePrepareGet(byte[] prepareRequestData) {
-        logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_PREPARE_GET",
-                getNode().getNodeId());
+        logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_PREPARE_GET", getNode().getNodeId());
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(
-                getNode().getNodeId(),
-                getCommandClass(),
-                FIRMWARE_UPDATE_PREPARE_GET)
-                .withPayload(prepareRequestData)
-                .withPriority(TransactionPriority.Config)
-                .withExpectedResponseCommand(FIRMWARE_UPDATE_PREPARE_REPORT)
-                .build();
+        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
+                FIRMWARE_UPDATE_PREPARE_GET).withPayload(prepareRequestData).withPriority(TransactionPriority.Config)
+                .withExpectedResponseCommand(FIRMWARE_UPDATE_PREPARE_REPORT).build();
     }
 
     /**
@@ -232,11 +193,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         byte[] payloadMD = Arrays.copyOfRange(data, 2, data.length);
 
         // Payload is processed in the session. As the information is used for the session.
-        getController().notifyEventListeners(
-                FirmwareUpdateEvent.forMDReport(
-                        getNode().getNodeId(),
-                        endpoint,
-                        payloadMD));
+        getController()
+                .notifyEventListeners(FirmwareUpdateEvent.forMDReport(getNode().getNodeId(), endpoint, payloadMD));
     }
 
     /**
@@ -255,12 +213,7 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         if (data.length < 3) {
             logger.warn("NODE {}: Firmware Update MD Request Report payload too short", getNode().getNodeId());
             getController().notifyEventListeners(
-                    FirmwareUpdateEvent.forUpdateMdRequestReport(
-                            getNode().getNodeId(),
-                            endpoint,
-                            -1,
-                            null,
-                            null));
+                    FirmwareUpdateEvent.forUpdateMdRequestReport(getNode().getNodeId(), endpoint, -1, null, null));
             return;
         }
 
@@ -277,13 +230,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
             nonSecure = (flags & 0b10) != 0;
         }
 
-        getController().notifyEventListeners(
-                FirmwareUpdateEvent.forUpdateMdRequestReport(
-                        getNode().getNodeId(),
-                        endpoint,
-                        status,
-                        resume,
-                        nonSecure));
+        getController().notifyEventListeners(FirmwareUpdateEvent.forUpdateMdRequestReport(getNode().getNodeId(),
+                endpoint, status, resume, nonSecure));
     }
 
     /**
@@ -312,11 +260,7 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Report number = {}", getNode().getNodeId(), reportNumber);
 
         getController().notifyEventListeners(
-                FirmwareUpdateEvent.forUpdateMdGet(
-                        getNode().getNodeId(),
-                        endpoint,
-                        reportNumber,
-                        numReports));
+                FirmwareUpdateEvent.forUpdateMdGet(getNode().getNodeId(), endpoint, reportNumber, numReports));
     }
 
     /**
@@ -338,10 +282,7 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         byte[] fragmentPayload = Arrays.copyOfRange(data, 2, data.length);
 
         getController().notifyEventListeners(
-                FirmwareUpdateEvent.forMDReport(
-                        getNode().getNodeId(),
-                        endpoint,
-                        fragmentPayload));
+                FirmwareUpdateEvent.forMDReport(getNode().getNodeId(), endpoint, fragmentPayload));
     }
 
     @ZWaveResponseHandler(id = FIRMWARE_UPDATE_MD_STATUS_REPORT, name = "FIRMWARE_UPDATE_MD_STATUS_REPORT")
@@ -363,11 +304,7 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
                 getNode().getNodeId(), status, waitTime);
 
         getController().notifyEventListeners(
-                FirmwareUpdateEvent.forUpdateMdStatusReport(
-                        getNode().getNodeId(),
-                        endpoint,
-                        status,
-                        waitTime));
+                FirmwareUpdateEvent.forUpdateMdStatusReport(getNode().getNodeId(), endpoint, status, waitTime));
     }
 
     /**
@@ -402,19 +339,11 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
 
         logger.debug(
                 "NODE {}: Received Firmware Activation Status Report: manufacturerId=0x{}, firmwareId=0x{}, checksum=0x{}, target={}, status={}, hwVersion={}",
-                getNode().getNodeId(),
-                Integer.toHexString(manufacturerId),
-                Integer.toHexString(firmwareId),
-                Integer.toHexString(checksum),
-                firmwareTarget,
-                status,
-                hardwareVersion);
+                getNode().getNodeId(), Integer.toHexString(manufacturerId), Integer.toHexString(firmwareId),
+                Integer.toHexString(checksum), firmwareTarget, status, hardwareVersion);
 
         getController().notifyEventListeners(
-                FirmwareUpdateEvent.forActivationStatusReport(
-                        getNode().getNodeId(),
-                        endpoint,
-                        status.getId()));
+                FirmwareUpdateEvent.forActivationStatusReport(getNode().getNodeId(), endpoint, status.getId()));
     }
 
     /**
@@ -439,18 +368,11 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         FirmwareDownloadStatus status = FirmwareDownloadStatus.from(bb.get() & 0xFF);
         int checksum = bb.getShort() & 0xFFFF;
 
-        logger.debug(
-                "NODE {}: Received Firmware Prepare Report: checksum=0x{}, status={}",
-                getNode().getNodeId(),
-                Integer.toHexString(checksum),
-                status);
+        logger.debug("NODE {}: Received Firmware Prepare Report: checksum=0x{}, status={}", getNode().getNodeId(),
+                Integer.toHexString(checksum), status);
 
         getController().notifyEventListeners(
-            FirmwareUpdateEvent.forUpdatePrepareReport(
-                getNode().getNodeId(),
-                endpoint,
-                status.getId(),
-                checksum));
+                FirmwareUpdateEvent.forUpdatePrepareReport(getNode().getNodeId(), endpoint, status.getId(), checksum));
     }
 
     public enum FirmwareDownloadStatus {

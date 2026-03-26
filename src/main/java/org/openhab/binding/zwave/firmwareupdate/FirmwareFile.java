@@ -69,9 +69,7 @@ public final class FirmwareFile {
 
         } else if (lower.endsWith(".gbl")) {
             if (rawData.length >= 4) {
-                int magic = ((rawData[0] & 0xff) << 24)
-                        | ((rawData[1] & 0xff) << 16)
-                        | ((rawData[2] & 0xff) << 8)
+                int magic = ((rawData[0] & 0xff) << 24) | ((rawData[1] & 0xff) << 16) | ((rawData[2] & 0xff) << 8)
                         | (rawData[3] & 0xff);
                 if (magic == 0xEB17A603) {
                     return FirmwareFileFormat.GBL;
@@ -146,9 +144,7 @@ public final class FirmwareFile {
     public static FirmwareFile extractHex(byte[] asciiBytes) {
         List<HexRecord> records = HexParser.parse(asciiBytes);
 
-        int maxAddress = records.stream()
-                .mapToInt(r -> r.address + r.data.length)
-                .max().orElse(0);
+        int maxAddress = records.stream().mapToInt(r -> r.address + r.data.length).max().orElse(0);
 
         byte[] image = new byte[maxAddress];
         Arrays.fill(image, (byte) 0xFF);
@@ -191,9 +187,8 @@ public final class FirmwareFile {
             while ((entry = zis.getNextEntry()) != null) {
                 String name = entry.getName().toLowerCase();
 
-                if (name.endsWith(".bin") || name.endsWith(".hex") || name.endsWith(".ota")
-                        || name.endsWith(".otz") || name.endsWith(".gbl")
-                        || name.endsWith(".exe") || name.endsWith(".ex_")) {
+                if (name.endsWith(".bin") || name.endsWith(".hex") || name.endsWith(".ota") || name.endsWith(".otz")
+                        || name.endsWith(".gbl") || name.endsWith(".exe") || name.endsWith(".ex_")) {
                     byte[] data = zis.readAllBytes();
                     FirmwareFileFormat format = detectFormat(name, data);
                     return Optional.of(new FirmwareFileContainer(name, format, data));
@@ -231,8 +226,7 @@ public final class FirmwareFile {
     private static final class HexParser {
 
         public static List<HexRecord> parse(byte[] asciiBytes) {
-            String text = new String(asciiBytes, StandardCharsets.US_ASCII)
-                    .replace("\r", ""); // normalize CRLF → LF
+            String text = new String(asciiBytes, StandardCharsets.US_ASCII).replace("\r", ""); // normalize CRLF → LF
 
             String[] lines = text.split("\n");
             List<HexRecord> records = new ArrayList<>();

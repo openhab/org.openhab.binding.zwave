@@ -90,7 +90,7 @@ public class ZWaveThingActions implements ThingActions {
             throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
         }
     }
-    
+
     public static String updateLoadedFirmware(ThingActions actions) {
         if (actions instanceof ZWaveThingActions nodeActions) {
             return nodeActions.updateLoadedFirmware();
@@ -189,8 +189,8 @@ public class ZWaveThingActions implements ThingActions {
         return "Thing handler is null, firmware update not possible";
     }
 
-    // This action is used to trigger the download of the firmware from the node,
-    // which is then stored in the handler and can be used for later update or comparison with the loaded firmware.
+    // This action is used to trigger the download of the firmware from the node.
+    // This is stored in the {userdata}/zwave/firmware folder and can be used for later firmware updates.
     // Very few Z-Wave devices support this feature, so is HIDDEN until validated with a real device.
     @RuleAction(label = "@text/actions.firmware-download.request.get.label", description = "@text/actions.firmware-download.request.get.description", visibility = Visibility.HIDDEN)
     public @ActionOutput(type = "String") String downloadFirmwareFromNode() {
