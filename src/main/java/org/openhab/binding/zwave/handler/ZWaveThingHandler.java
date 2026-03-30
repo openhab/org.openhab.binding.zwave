@@ -44,6 +44,9 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.actions.ZWaveThingActions;
 import org.openhab.binding.zwave.firmwareupdate.FirmwareFile;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareDownloadSession;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareEventType;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareUpdateEvent;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.UpdateMdStatusReport;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
@@ -95,6 +98,10 @@ import org.openhab.core.thing.ThingStatus;
 import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.binding.ConfigStatusThingHandler;
+import org.openhab.core.thing.binding.firmware.Firmware;
+import org.openhab.core.thing.binding.firmware.FirmwareUpdateHandler;
+import org.openhab.core.thing.binding.firmware.ProgressCallback;
+import org.openhab.core.thing.binding.firmware.ProgressStep;
 import org.openhab.core.thing.binding.ThingHandler;
 import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.thing.type.ThingType;
@@ -108,10 +115,11 @@ import org.slf4j.LoggerFactory;
  * Thing Handler for ZWave devices
  *
  * @author Chris Jackson - Initial contribution
- * @author Bob Eckoff - Added firmware update handling file import, and events
+ * @author Bob Eckhoff - Firmware update handling, file import, events
  *
  */
-public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWaveEventListener {
+public class ZWaveThingHandler extends ConfigStatusThingHandler
+    implements ZWaveEventListener, FirmwareUpdateHandler {
     private final Logger logger = LoggerFactory.getLogger(ZWaveThingHandler.class);
 
     private ZWaveControllerHandler controllerHandler;
@@ -119,7 +127,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     private byte[] pendingFirmwareBytes;
     private Integer pendingFirmwareTarget = 0;
     private @Nullable ZWaveFirmwareUpdateSession firmwareSession;
-    private @Nullable ZWaveFirmwareDownloadSession firmwareDownloadSession;
+    private @Nullable ZWaveFirmwareDownloadSession firmwareDownloadSession; //Future use maybe.
+    private @Nullable ProgressCallback firmwareProgressCallback;
+    private @Nullable Integer lastFirmwareUpdateProgressPercent;
+    private @Nullable String lastFirmwareFailureDescription;
     private boolean finalTypeSet = false;
 
     private int nodeId;
@@ -160,6 +171,42 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     public ZWaveThingHandler(Thing zwaveDevice) {
         super(zwaveDevice);
+    }
+
+    private void clearFirmwareUpdateProgressStatus() {
+        lastFirmwareUpdateProgressPercent = null;
+    }
+
+    private void restoreFirmwareUpdateProgressStatusIfNeeded() {
+        ZWaveFirmwareUpdateSession session = firmwareSession;
+        if (session == null) {
+            return;
+        }
+
+        if (!session.isActive()) {
+            // Session ended. If it failed, re-apply the failure status so that ALIVE/DONE
+            // events do not silently overwrite the failure message with plain ONLINE.
+            if (session.getState() == ZWaveFirmwareUpdateSession.State.FAILURE) {
+                String failDesc = lastFirmwareFailureDescription;
+                if (failDesc != null) {
+                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_ERROR, failDesc);
+                }
+            }
+            return;
+        }
+
+        // Session is active - restore progress display.
+        int sessionProgressPercent = session.getCurrentTransferProgressPercent();
+        if (sessionProgressPercent > 0) {
+            lastFirmwareUpdateProgressPercent = Integer.valueOf(sessionProgressPercent);
+        }
+        Integer progressPercent = lastFirmwareUpdateProgressPercent;
+        if (progressPercent != null) {
+            updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
+                    "Firmware update in progress (" + progressPercent + "%)");
+        } else {
+            updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING, "Firmware update in progress");
+        }
     }
 
     @Override
@@ -567,6 +614,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case AWAKE:
                 case ALIVE:
                     updateStatus(ThingStatus.ONLINE);
+                    restoreFirmwareUpdateProgressStatusIfNeeded();
                     break;
                 case DEAD:
                 case FAILED:
@@ -633,6 +681,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             firmwareDownloadSession.abort("handler disposed");
             firmwareDownloadSession = null;
         }
+
+        clearFirmwareUpdateProgressStatus();
 
         controllerHandler = null;
     }
@@ -1215,6 +1265,8 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             firmwareDownloadSession = null;
         }
 
+        clearFirmwareUpdateProgressStatus();
+
         firmwareSession = new ZWaveFirmwareUpdateSession(node, controllerHandler, pendingFirmwareBytes,
                 pendingFirmwareTarget);
 
@@ -1222,6 +1274,120 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         firmwareSession.start();
 
         return "Firmware upload started, check status for progress";
+    }
+
+    @Override
+    public void updateFirmware(Firmware firmware, ProgressCallback progressCallback) {
+        progressCallback.defineSequence(ProgressStep.TRANSFERRING, ProgressStep.UPDATING, ProgressStep.REBOOTING,
+                ProgressStep.WAITING);
+        progressCallback.next();
+
+        // Register callback only after a new session successfully starts.
+        // This avoids stale failure events from an aborted previous session
+        // consuming the callback for the new run.
+        this.firmwareProgressCallback = null;
+
+        // Start the existing firmware update method.
+        String result = updateLoadedFirmware();
+        if (!result.startsWith("Firmware upload started")) {
+            logger.warn("NODE {}: Firmware update failed: {}", nodeId, result);
+            progressCallback.failed("actions.firmware-update.error", result);
+            clearFirmwareUpdateProgressStatus();
+            this.firmwareProgressCallback = null;
+            return;
+        }
+
+        this.firmwareProgressCallback = progressCallback;
+    }
+
+    @Override
+    public void cancel() {
+        if (firmwareSession != null && firmwareSession.isActive()) {
+            firmwareSession.abort("cancelled by firmware update service");
+            firmwareSession = null;
+        }
+
+        ProgressCallback progressCallback = this.firmwareProgressCallback;
+        if (progressCallback != null) {
+            progressCallback.canceled();
+        }
+        this.firmwareProgressCallback = null;
+        clearFirmwareUpdateProgressStatus();
+    }
+
+    @Override
+    public boolean isUpdateExecutable() {
+        if (getThing().getStatus() != ThingStatus.ONLINE) {
+            return false;
+        }
+
+        ThingStatusInfo statusInfo = getThing().getStatusInfo();
+        if (statusInfo.getStatusDetail() == ThingStatusDetail.FIRMWARE_UPDATING) {
+            return false;
+        }
+
+        return (firmwareSession == null || !firmwareSession.isActive())
+                && (firmwareDownloadSession == null || !firmwareDownloadSession.isActive());
+    }
+
+    private void applyFirmwareTerminalFallbackFromRawEvent(ZWaveEvent incomingEvent) {
+        if (!(incomingEvent instanceof FirmwareUpdateEvent firmwareEvent)) {
+            return;
+        }
+
+        if (firmwareEvent.getType() == FirmwareEventType.UPDATE_MD_STATUS_REPORT) {
+            UpdateMdStatusReport statusReport = UpdateMdStatusReport.from(firmwareEvent.getStatus());
+            switch (statusReport) {
+                case OK_NO_RESTART:
+                case OK_RESTART_PENDING:
+                    clearFirmwareUpdateProgressStatus();
+                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, "Firmware update completed");
+                    ProgressCallback successCallback = this.firmwareProgressCallback;
+                    if (successCallback != null) {
+                        successCallback.success();
+                        this.firmwareProgressCallback = null;
+                    }
+                    break;
+                case OK_WAITING_FOR_ACTIVATION:
+                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
+                            "Firmware update waiting for activation");
+                    break;
+                default:
+                    clearFirmwareUpdateProgressStatus();
+                    String description = "Firmware update failed (" + statusReport + ")";
+                    String callbackFailureDetail = "status " + firmwareEvent.getStatus() + " (" + statusReport
+                            + ")";
+                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_ERROR, description);
+                    ProgressCallback failureCallback = this.firmwareProgressCallback;
+                    if (failureCallback != null) {
+                        failureCallback.failed("actions.firmware-update.error", callbackFailureDetail);
+                        this.firmwareProgressCallback = null;
+                    }
+                    break;
+            }
+            return;
+        }
+
+        if (firmwareEvent.getType() == FirmwareEventType.ACTIVATION_STATUS_REPORT) {
+            if (firmwareEvent.getStatus() == 0xFF) {
+                clearFirmwareUpdateProgressStatus();
+                updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, "Firmware update completed");
+                ProgressCallback successCallback = this.firmwareProgressCallback;
+                if (successCallback != null) {
+                    successCallback.success();
+                    this.firmwareProgressCallback = null;
+                }
+            } else {
+                clearFirmwareUpdateProgressStatus();
+                String description = "Firmware activation failed (status " + firmwareEvent.getStatus() + ")";
+                updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_ERROR, description);
+                ProgressCallback failureCallback = this.firmwareProgressCallback;
+                if (failureCallback != null) {
+                    failureCallback.failed("actions.firmware-update.error", "status " + firmwareEvent.getStatus());
+                    this.firmwareProgressCallback = null;
+                }
+            }
+        }
     }
 
     public String downloadFirmwareFromNode() {
@@ -1555,6 +1721,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         if (firmwareSession != null && firmwareSession.isActive()) {
             if (firmwareSession.handleEvent(incomingEvent)) {
+                applyFirmwareTerminalFallbackFromRawEvent(incomingEvent);
                 return;
             }
         }
@@ -1789,6 +1956,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 case ALIVE:
                     logger.debug("NODE {}: Setting ONLINE", nodeId);
                     updateStatus(ThingStatus.ONLINE);
+                    restoreFirmwareUpdateProgressStatusIfNeeded();
                     break;
                 case DEAD:
                 case FAILED:
@@ -1844,6 +2012,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     break;
                 case DONE:
                     updateStatus(ThingStatus.ONLINE);
+                    restoreFirmwareUpdateProgressStatusIfNeeded();
                     break;
                 default:
                     if (finalTypeSet) {
@@ -1869,8 +2038,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 if (networkEvent.getState() == ZWaveNetworkEvent.State.Progress) {
                     Object progressValue = networkEvent.getValue();
                     if (progressValue instanceof Number number) {
+                        int progressPercent = number.intValue();
+                            lastFirmwareUpdateProgressPercent = Integer.valueOf(progressPercent);
                         updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
-                                "Firmware update in progress (" + number.intValue() + "%)");
+                                "Firmware update in progress (" + progressPercent + "%)");
+                        ProgressCallback progressCallback = this.firmwareProgressCallback;
+                        if (progressCallback != null) {
+                            progressCallback.update(progressPercent);
+                        }
                     } else {
                         updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
                                 "Firmware update in progress");
@@ -1878,20 +2053,37 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 }
 
                 if (networkEvent.getState() == ZWaveNetworkEvent.State.Success) {
+                    clearFirmwareUpdateProgressStatus();
+                    lastFirmwareFailureDescription = null;
                     updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE, "Firmware update completed");
+                    ProgressCallback progressCallback = this.firmwareProgressCallback;
+                    if (progressCallback != null) {
+                        progressCallback.success();
+                        this.firmwareProgressCallback = null;
+                    }
                 }
 
                 if (networkEvent.getState() == ZWaveNetworkEvent.State.Failure) {
+                    clearFirmwareUpdateProgressStatus();
                     Object failureValue = networkEvent.getValue();
                     String description = "Firmware update failed";
+                    String callbackFailureDetail = description;
 
                     if (failureValue instanceof Number number) {
                         description = "Firmware update failed (status " + number.intValue() + ")";
+                        callbackFailureDetail = "status " + number.intValue();
                     } else if (failureValue instanceof String string && !string.isBlank()) {
                         description = "Firmware update failed: " + string;
+                        callbackFailureDetail = string;
                     }
 
+                    lastFirmwareFailureDescription = description;
                     updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_ERROR, description);
+                    ProgressCallback progressCallback = this.firmwareProgressCallback;
+                    if (progressCallback != null) {
+                        progressCallback.failed("actions.firmware-update.error", callbackFailureDetail);
+                        this.firmwareProgressCallback = null;
+                    }
                 }
             }
 
@@ -2019,6 +2211,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             properties.put(ZWaveBindingConstants.PROPERTY_DEVICEID, Integer.toString(node.getDeviceId()));
         }
         properties.put(ZWaveBindingConstants.PROPERTY_VERSION, node.getApplicationVersion());
+        properties.put(Thing.PROPERTY_FIRMWARE_VERSION, node.getApplicationVersion());
 
         properties.put(ZWaveBindingConstants.PROPERTY_CLASS_BASIC,
                 node.getDeviceClass().getBasicDeviceClass().toString());

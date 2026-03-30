@@ -31,11 +31,14 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
+import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.core.config.core.Configuration;
 import org.openhab.core.config.core.status.ConfigStatusMessage;
@@ -49,6 +52,7 @@ import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.ThingHandlerCallback;
+import org.openhab.core.thing.binding.firmware.ProgressCallback;
 import org.openhab.core.thing.binding.builder.ThingBuilder;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.thing.type.ThingTypeBuilder;
@@ -169,6 +173,26 @@ public class ZWaveThingHandlerTest {
             Field field = ZWaveThingHandler.class.getDeclaredField("nodeId");
             field.setAccessible(true);
             field.setInt(thingHandler, nodeId);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail(e);
+        }
+    }
+
+    private void setFirmwareProgressCallback(ZWaveThingHandler thingHandler, ProgressCallback progressCallback) {
+        try {
+            Field field = ZWaveThingHandler.class.getDeclaredField("firmwareProgressCallback");
+            field.setAccessible(true);
+            field.set(thingHandler, progressCallback);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail(e);
+        }
+    }
+
+    private void setFirmwareSession(ZWaveThingHandler thingHandler, ZWaveFirmwareUpdateSession firmwareSession) {
+        try {
+            Field field = ZWaveThingHandler.class.getDeclaredField("firmwareSession");
+            field.setAccessible(true);
+            field.set(thingHandler, firmwareSession);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             fail(e);
         }
@@ -369,5 +393,52 @@ public class ZWaveThingHandlerTest {
         assertEquals(ThingStatus.ONLINE, statusInfo.getStatus());
         assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusInfo.getStatusDetail());
         assertEquals("Firmware update failed (status 1)", statusInfo.getDescription());
+    }
+
+    @Test
+    public void testFirmwareUpdateFailureUsesLocalizedProgressCallbackFailure() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+
+        ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
+        ProgressCallback progressCallback = Mockito.mock(ProgressCallback.class);
+        setNodeId(handler, 1);
+        setFirmwareProgressCallback(handler, progressCallback);
+
+        handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 1,
+                ZWaveNetworkEvent.State.Failure, "ERROR_TRANSMISSION_FAILED"));
+
+        ThingStatusInfo statusInfo = handler.getCapturedStatusInfo();
+        assertEquals("Firmware update failed: ERROR_TRANSMISSION_FAILED", statusInfo.getDescription());
+        Mockito.verify(progressCallback).failed("actions.firmware-update.error", "ERROR_TRANSMISSION_FAILED");
+    }
+
+    @Test
+    public void testFirmwareUpdateProgressRestoredAfterCommunicationDrop() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+
+        ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
+        ZWaveFirmwareUpdateSession firmwareSession = Mockito.mock(ZWaveFirmwareUpdateSession.class);
+        Mockito.when(firmwareSession.isActive()).thenReturn(true);
+        Mockito.when(firmwareSession.getCurrentTransferProgressPercent()).thenReturn(79);
+
+        setNodeId(handler, 1);
+        setFirmwareSession(handler, firmwareSession);
+
+        handler.ZWaveIncomingEvent(
+                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 1, ZWaveNetworkEvent.State.Progress, 75));
+        assertEquals("Firmware update in progress (75%)", handler.getCapturedStatusInfo().getDescription());
+
+        handler.ZWaveIncomingEvent(new ZWaveNodeStatusEvent(1, ZWaveNodeState.DEAD));
+        assertEquals(ThingStatus.OFFLINE, handler.getCapturedStatusInfo().getStatus());
+        assertEquals(ThingStatusDetail.COMMUNICATION_ERROR, handler.getCapturedStatusInfo().getStatusDetail());
+
+        handler.ZWaveIncomingEvent(new ZWaveNodeStatusEvent(1, ZWaveNodeState.ALIVE));
+        assertEquals(ThingStatus.ONLINE, handler.getCapturedStatusInfo().getStatus());
+        assertEquals(ThingStatusDetail.CONFIGURATION_PENDING, handler.getCapturedStatusInfo().getStatusDetail());
+        assertEquals("Firmware update in progress (79%)", handler.getCapturedStatusInfo().getDescription());
     }
 }
