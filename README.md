@@ -317,6 +317,13 @@ Internally the binding holds a device state and these states are mapped to the s
 * FAILED - A device is considered FAILED if the controller can not communicate with the device. The binding does not control this. FAILED devices are treated in a similar way to DEAD devices however the controller will reduce communications to the device and will timeout quicker. It should be noted that the controller will generally not consider battery devices as failed. FAILED devices will be marked as OFFLINE within the system status.
 
 
+### Thing Firmware
+
+* A basic firmware update process is available for Z-Wave devices that support firmware updates (most older devices do not). Firmware files for the Z-Wave device need to be retrieved and downloaded from the manufacturer's site. Be very careful to get the right version for your device and right Z-wave frequency (US, EU, AU). Not all manufacturers provide firmware (or firmware updates). If you are not having an issue, Z-Wave firmware updates are not needed. There is always some risk of device malfunction, so there should be a reason.
+* Place the file you wish to upload in the OH {userdata}/zwave/firmware/node-xx location. It will be pulled into the UI and evaluated if it is above, below or the same version as the firmware currently on the device. That evaluation may not be accurate due to parsing different manufacturer's naming. If you are sure, proceed. Downgrade and Upgrade do the same thing, transfer the firmware to the device.
+* The process can take some time based on network traffic (best if less) and proximity to the controller. The UI will provide updates at 5% intervals and let you know if the upload was successful at the end. 
+
+
 ### Thing Actions
 
 At the bottom of the Thing UI page are actions, some advanced, which can be directed to a specific device (node).
