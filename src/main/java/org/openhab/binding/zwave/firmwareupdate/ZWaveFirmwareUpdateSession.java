@@ -79,9 +79,14 @@ public class ZWaveFirmwareUpdateSession {
     private final AtomicInteger inactivityTimeoutGeneration = new AtomicInteger(0);
     private final Map<Integer, Long> reportLastSentTimes = new ConcurrentHashMap<>();
 
-    // ---------------------------------------------------------
-    // Constructor
-    // ---------------------------------------------------------
+    /**
+     * Create a new firmware update session for the given node, controller, and firmware image.
+     * 
+     * @param node the Z-Wave node for which the firmware update session is created
+     * @param controller the Z-Wave controller handler
+     * @param firmwareBytes the firmware image bytes
+     * @param firmwareTarget the firmware target (0 = Zwave firmware, other values are vendor-specific)
+     */
     public ZWaveFirmwareUpdateSession(ZWaveNode node, ZWaveControllerHandler controller, byte[] firmwareBytes,
             int firmwareTarget) {
         this.node = node;
@@ -91,9 +96,9 @@ public class ZWaveFirmwareUpdateSession {
         this.firmwareTarget = firmwareTarget;
     }
 
-    // ---------------------------------------------------------
-    // Event Types
-    // ---------------------------------------------------------
+    /**
+     * Firmware update event types, used to route events from the Z-Wave protocol layer into the session logic.
+     */
     public enum FirmwareEventType {
         MD_REPORT,
         UPDATE_MD_REQUEST_REPORT,
@@ -103,9 +108,9 @@ public class ZWaveFirmwareUpdateSession {
         UPDATE_PREPARE_REPORT // Not implemented yet, but can be used to retrieve current firmware information.
     }
 
-    // ---------------------------------------------------------
-    // Session State
-    // ---------------------------------------------------------
+    /**
+     * Firmware update session states, used to track the progress of a firmware update for a node.
+     */
     public enum State {
         IDLE,
         WAITING_FOR_MD_REPORT,
@@ -120,9 +125,9 @@ public class ZWaveFirmwareUpdateSession {
         FAILURE
     }
 
-    // ---------------------------------------------------------
-    // Update MD Request Status
-    // ---------------------------------------------------------
+    /**
+     * Update MD request status values, used to indicate the result of a firmware update request.
+     */
     public enum UpdateMdRequestStatus {
         ERROR_INVALID_MANUFACTURER_OR_FIRMWARE_ID(0x00),
         ERROR_AUTHENTICATION_EXPECTED(0x01),
@@ -154,9 +159,9 @@ public class ZWaveFirmwareUpdateSession {
         }
     }
 
-    // ---------------------------------------------------------
-    // Firmware Update Status Report Values (for UPDATE_MD_STATUS_REPORT)
-    // ---------------------------------------------------------
+    /**
+     * Firmware update status report values, used to indicate the result of a firmware update status report.
+     */
     public enum UpdateMdStatusReport {
         ERROR_CHECKSUM(0x00),
         ERROR_TRANSMISSION_FAILED(0x01),
@@ -192,9 +197,9 @@ public class ZWaveFirmwareUpdateSession {
         }
     }
 
-    // ---------------------------------------------------------
-    // Event wrapper
-    // ---------------------------------------------------------
+    /**
+     * Firmware update event wrapper, used to encapsulate events related to a firmware update session.
+     */
     public static class FirmwareUpdateEvent extends ZWaveEvent {
         private final FirmwareEventType type;
 
@@ -283,9 +288,12 @@ public class ZWaveFirmwareUpdateSession {
         }
     }
 
-    // ---------------------------------------------------------
-    // Lifecycle
-    // ---------------------------------------------------------
+    /**
+     * Start the firmware update session. This will initiate the firmware update process by requesting metadata from the
+     * device.
+     * The session will then progress through the various states as it handles events and manages the firmware update
+     * process.
+     */
     public void start() {
         logger.info("NODE {}: Firmware session starting", node.getNodeId());
         active = true;
@@ -481,9 +489,11 @@ public class ZWaveFirmwareUpdateSession {
         return (percentComplete / PROGRESS_EVENT_STEP_PERCENT) * PROGRESS_EVENT_STEP_PERCENT;
     }
 
-    // ---------------------------------------------------------
-    // Internal Fragment
-    // ---------------------------------------------------------
+    /**
+     * Represents a fragment of the firmware being transmitted.
+     * Each fragment contains a portion of the firmware data along with its report number and a flag indicating if it is
+     * the last fragment.
+     */
     public static class FirmwareFragment {
         private final int reportNumber;
         private final boolean isLast;
@@ -508,9 +518,14 @@ public class ZWaveFirmwareUpdateSession {
         }
     }
 
-    // ---------------------------------------------------------
-    // Fragment preparation
-    // ---------------------------------------------------------
+    /**
+     * Prepares the firmware fragments for transmission based on the metadata.
+     * Each fragment contains a portion of the firmware data along with its report number and a flag indicating if it is
+     * the last fragment.
+     *
+     * @param metadata the firmware metadata containing information about the firmware update
+     * @return true if fragments were successfully prepared, false otherwise
+     */
     private boolean prepareFragments(FirmwareMetadata metadata) {
         fragments = new ArrayList<>();
 
@@ -554,13 +569,16 @@ public class ZWaveFirmwareUpdateSession {
         return true;
     }
 
-    // ---------------------------------------------------------
-    // Event Routing
-    // ---------------------------------------------------------
+    /**
+     * Firmware Update Event Routing
+     * Determines if the given transaction is related to firmware update based on its payload.
+     * 
+     * @param transaction the Z-Wave transaction to check
+     * @return true if the transaction is related to firmware update, false otherwise
+     */
     private boolean isFirmwareUpdateTransaction(ZWaveTransaction transaction) {
         byte[] txPayload = transaction.getPayloadBuffer();
-        return txPayload.length >= 2
-                && (txPayload[0] & 0xFF) == CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey();
+        return txPayload.length >= 2 && (txPayload[0] & 0xFF) == CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey();
     }
 
     private int getFirmwareUpdateTransactionCommand(ZWaveTransaction transaction) {
@@ -581,7 +599,8 @@ public class ZWaveFirmwareUpdateSession {
 
                 int txCommand = getFirmwareUpdateTransactionCommand(completedTransaction);
 
-                if (state == State.WAITING_FOR_MD_REPORT && txCommand == ZWaveFirmwareUpdateCommandClass.FIRMWARE_MD_GET) {
+                if (state == State.WAITING_FOR_MD_REPORT
+                        && txCommand == ZWaveFirmwareUpdateCommandClass.FIRMWARE_MD_GET) {
                     logger.debug("NODE {}: FIRMWARE_MD_GET transaction failed after all retries", node.getNodeId());
                     failFirmwareUpdate("FIRMWARE_MD_GET failed after all retries", Integer.valueOf(-1));
                     return true;
@@ -638,9 +657,17 @@ public class ZWaveFirmwareUpdateSession {
         return false;
     }
 
-    // ---------------------------------------------------------
-    // Event Handlers
-    // ---------------------------------------------------------
+    /**
+     * Handles the Metadata Report event. This is the first report received from the device
+     * after requesting metadata, and it contains important information about the firmware update
+     * process, such as the maximum fragment size and whether the firmware is upgradable.
+     * The handler parses the metadata, prepares the firmware fragments for transmission,
+     * and initiates the next step of the firmware update process by sending an UPDATE_MD_REQUEST_GET command to the
+     * device.
+     * 
+     * @param event the firmware update event containing the metadata report
+     * @return true if the event was handled, false otherwise
+     */
     private boolean handleMetadataReport(FirmwareUpdateEvent event) {
         if (state != State.WAITING_FOR_MD_REPORT) {
             return false;
@@ -731,10 +758,25 @@ public class ZWaveFirmwareUpdateSession {
         logger.debug("NODE {}: Received UPDATE_MD_GET for fragment {} (count={})", node.getNodeId(),
                 requestedStartReport, requestedCount);
 
-        // Some nodes may queue duplicate GETs for an already-sent report when there is
-        // a slight timing delay. Ignore these near-duplicates, but allow a late retry
-        // window so the device can recover from a truly missed report.
-        if (requestedStartReport <= highestTransmittedReportNumber) {
+        // Ignore clearly out-of-sequence forward jumps. They are usually stale GETs
+        // from a previous transfer session and must not move this session forward.
+        if (isOutOfSequenceForwardRequest(requestedStartReport)) {
+            return true;
+        }
+
+        // If a GET arrives for a fragment higher than what we're currently retrying,
+        // treat it as an implicit ACK of the fragment we were retrying. This is common
+        // in far-away nodes with occasional communication dropouts: we retry fragment N
+        // due to a perceived loss, but the device already received it and moved on to N+1.
+        if (requestedStartReport > startReportNumber && startReportNumber > 0) {
+            logger.debug(
+                    "NODE {}: Received UPDATE_MD_GET for fragment {} while retrying fragment {}; treating this as implicit ACK of fragment {} and continuing with the requested fragment",
+                    node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
+            duplicateGetsForSentReport = 0;
+        } else if (requestedStartReport <= highestTransmittedReportNumber) {
+            // Some nodes may queue duplicate GETs for an already-sent report when there is
+            // a slight timing delay. Ignore these near-duplicates, but allow a late retry
+            // window so the device can recover from a truly missed report.
             Long lastSentTime = reportLastSentTimes.get(requestedStartReport);
             long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue() : Long.MAX_VALUE;
 
@@ -819,13 +861,39 @@ public class ZWaveFirmwareUpdateSession {
         return true;
     }
 
-    private boolean handleUpdateMdStatusReport(FirmwareUpdateEvent event) {
-        // Some devices can send the final status report before we transition to
-        // WAITING_FOR_UPDATE_MD_STATUS_REPORT (for example after a resend/timeout path).
-        // Accept status while transfer is still active because this ends the session.
-        if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT && state != State.SENDING_FRAGMENTS
-                && state != State.WAITING_FOR_UPDATE_MD_GET) {
+    private boolean isOutOfSequenceForwardRequest(int requestedStartReport) {
+        if (requestedStartReport <= 1) {
             return false;
+        }
+
+        if (highestTransmittedReportNumber <= 0) {
+            logger.warn(
+                    "NODE {}: Ignoring out-of-sequence UPDATE_MD_GET for fragment {} before fragment 1 was transmitted",
+                    node.getNodeId(), requestedStartReport);
+            return true;
+        }
+
+        int nextExpectedReport = highestTransmittedReportNumber + 1;
+        if (requestedStartReport > nextExpectedReport) {
+            logger.warn(
+                    "NODE {}: Ignoring out-of-sequence UPDATE_MD_GET for fragment {} (highestTransmitted={}, nextExpected={})",
+                    node.getNodeId(), requestedStartReport, highestTransmittedReportNumber, nextExpectedReport);
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean handleUpdateMdStatusReport(FirmwareUpdateEvent event) {
+        // A status report is only valid after the last fragment has been sent and
+        // we are explicitly waiting for the device's final update status.
+        // Any out-of-sequence status report is treated as a protocol failure.
+        if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
+            if (!active) {
+                return false;
+            }
+            logger.warn("NODE {}: Received unexpected UPDATE_MD_STATUS_REPORT in state {} - treating as protocol error",
+                    node.getNodeId(), state);
         }
 
         // Any status report means the waiting timer is no longer authoritative.
@@ -845,7 +913,7 @@ public class ZWaveFirmwareUpdateSession {
             case ERROR_INSUFFICIENT_MEMORY:
             case ERROR_INVALID_HARDWARE_VERSION:
             case UNKNOWN:
-            failFirmwareUpdate("Device reported firmware update status: " + updateStatus, updateStatus.name());
+                failFirmwareUpdate("Device reported firmware update status: " + updateStatus, updateStatus.name());
                 return true;
 
             case OK_WAITING_FOR_ACTIVATION:

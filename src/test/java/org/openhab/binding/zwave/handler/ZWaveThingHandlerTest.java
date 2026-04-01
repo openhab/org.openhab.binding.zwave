@@ -28,11 +28,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
-import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
@@ -52,8 +52,8 @@ import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.ThingUID;
 import org.openhab.core.thing.binding.ThingHandlerCallback;
-import org.openhab.core.thing.binding.firmware.ProgressCallback;
 import org.openhab.core.thing.binding.builder.ThingBuilder;
+import org.openhab.core.thing.binding.firmware.ProgressCallback;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.thing.type.ThingTypeBuilder;
 import org.openhab.core.types.Command;
@@ -141,11 +141,11 @@ public class ZWaveThingHandlerTest {
             Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
                     .thenReturn(namingClass);
         } catch (NoSuchFieldException | SecurityException e) {
-            e.printStackTrace();
+            fail(e);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            fail(e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            fail(e);
         }
 
         Map<String, Object> config = new HashMap<String, Object>();

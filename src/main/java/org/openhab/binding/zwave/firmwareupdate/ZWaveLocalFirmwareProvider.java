@@ -41,8 +41,10 @@ import org.slf4j.LoggerFactory;
 /**
  * Exposes local Z-Wave firmware files to the openHAB firmware UI.
  *
- * This provider keeps the current Z-Wave storage model intact by sourcing firmware
+ * This provider implements the Z-Wave storage model intact by sourcing firmware
  * metadata and bytes from userdata/zwave/firmware/node-{nodeId}.
+ * Also supports some Zooz and Aeotec manufacturer-specific version patterns
+ * to compare firmware versions.
  * 
  * @author Bob Eckhoff - Initial contribution
  */
@@ -148,8 +150,7 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
         try {
             InputStream inputStream = Files.newInputStream(file);
             return FirmwareBuilder.create(thing.getThingTypeUID(), version)
-                    .withDescription("Local Z-Wave firmware file: " + fileName)
-                    .withInputStream(inputStream)
+                    .withDescription("Local Z-Wave firmware file: " + fileName).withInputStream(inputStream)
                     .withProperties(Map.of("zwave.firmware.file", fileName)).build();
         } catch (IOException e) {
             logger.warn("Cannot open local Z-Wave firmware file {}", file, e);

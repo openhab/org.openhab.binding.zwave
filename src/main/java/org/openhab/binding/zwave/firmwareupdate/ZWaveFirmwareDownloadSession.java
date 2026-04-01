@@ -165,10 +165,7 @@ public class ZWaveFirmwareDownloadSession {
         if (state == State.WAITING_FOR_MD_REPORT) {
             return handleMetadataReport(event.getPayload());
         }
-        if (state == State.WAITING_FOR_FRAGMENT_REPORT) {
-            return handleFragmentReport(event.getPayload());
-        }
-        return false;
+        return state == State.WAITING_FOR_FRAGMENT_REPORT && handleFragmentReport(event.getPayload());
     }
 
     private boolean handleMetadataReport(byte[] payload) {

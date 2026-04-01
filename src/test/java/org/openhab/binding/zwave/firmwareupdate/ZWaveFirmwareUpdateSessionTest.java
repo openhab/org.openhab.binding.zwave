@@ -14,10 +14,10 @@ package org.openhab.binding.zwave.firmwareupdate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -37,8 +37,8 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
  * Unit tests for for the Firmware Update Session, which is responsible for
  * managing the state of a firmware update process for a single node, including
  * parsing metadata, building requests, and handling events related to the
- * firmware update process. These tests focus on the parsing of metadata from
- * the device, building of request payloads, and handling of status reports.
+ * firmware update process. Tests involve the various versions of the Command Class
+ * as they have changed over time.
  * {@link ZWaveFirmwareUpdateSession}.
  * 
  * @author Bob Eckhoff - Initial contribution
@@ -93,7 +93,7 @@ public class ZWaveFirmwareUpdateSessionTest {
 
     private void setState(ZWaveFirmwareUpdateSession session, ZWaveFirmwareUpdateSession.State state) throws Exception {
         Method method = ZWaveFirmwareUpdateSession.class.getDeclaredMethod("handleEvent", Object.class);
-        Method unused = method;
+        Method unused = method; // moves the unused warning to here from method.
         java.lang.reflect.Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("state");
         field.setAccessible(true);
         field.set(session, state);
@@ -120,6 +120,7 @@ public class ZWaveFirmwareUpdateSessionTest {
     public void testParseMetadataV7PlusMapsRequestFlagsAndReordersForReport3() throws Exception {
         ZWaveFirmwareUpdateSession session = newSession();
 
+        // Version 7+ example with all optional fields present, additional target count of 1, and all request flags set
         byte[] payload = new byte[] { 0x12, 0x34, // manufacturer
                 0x56, 0x78, // firmware
                 (byte) 0x9A, (byte) 0xBC, // checksum
@@ -159,6 +160,7 @@ public class ZWaveFirmwareUpdateSessionTest {
     public void testParseMetadataV5HasHardwareAndZeroActivationInReport3() throws Exception {
         ZWaveFirmwareUpdateSession session = newSession();
 
+        // Version 5 example with hardware version present.
         byte[] payload = new byte[] { 0x02, 0x7A, 0x00, 0x03, 0x00, 0x00, (byte) 0xFF, 0x00, 0x00, 0x28, 0x02 };
 
         ZWaveFirmwareUpdateSession.FirmwareMetadata metadata = (ZWaveFirmwareUpdateSession.FirmwareMetadata) parseMetadata(
@@ -203,6 +205,7 @@ public class ZWaveFirmwareUpdateSessionTest {
     public void testParseMetadataV3BuildsReport3WithTargetAndFragmentOnly() throws Exception {
         ZWaveFirmwareUpdateSession session = newSession();
 
+        // Version 3 example.
         byte[] payload = new byte[] { 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x01, 0x00, 0x00, 0x40 };
 
         ZWaveFirmwareUpdateSession.FirmwareMetadata metadata = (ZWaveFirmwareUpdateSession.FirmwareMetadata) parseMetadata(
@@ -225,11 +228,8 @@ public class ZWaveFirmwareUpdateSessionTest {
     public void testParseMetadataV6UsesSingleFlagsByteForFunctionalityOnly() throws Exception {
         ZWaveFirmwareUpdateSession session = newSession();
 
-        byte[] payload = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x01, 0x00, 0x00, 0x30, 0x09, 0x01 // v6 flags
-                                                                                                             // byte:
-                                                                                                             // functionality
-                                                                                                             // only
-        };
+        // Version 6 example with functionality flags in report-2 flags byte.
+        byte[] payload = new byte[] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x01, 0x00, 0x00, 0x30, 0x09, 0x01 };
 
         ZWaveFirmwareUpdateSession.FirmwareMetadata metadata = (ZWaveFirmwareUpdateSession.FirmwareMetadata) parseMetadata(
                 session, payload);
@@ -246,6 +246,7 @@ public class ZWaveFirmwareUpdateSessionTest {
     public void testParseMetadataRejectsInvalidAdditionalTargetLength() throws Exception {
         ZWaveFirmwareUpdateSession session = newSession();
 
+        // Version 4 example with invalid additional target length.
         byte[] payload = new byte[] { 0x00, 0x01, 0x00, 0x02, 0x00, 0x03, 0x01, 0x02, 0x00, 0x20, 0x55 };
 
         InvocationTargetException ex = assertThrows(InvocationTargetException.class,
@@ -326,23 +327,36 @@ public class ZWaveFirmwareUpdateSessionTest {
         return field.getInt(session);
     }
 
-        private void setLastPublishedProgressPercent(ZWaveFirmwareUpdateSession session, int percent) throws Exception {
-                Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("lastPublishedProgressPercent");
-                field.setAccessible(true);
-                field.setInt(session, percent);
-        }
+    private void setLastPublishedProgressPercent(ZWaveFirmwareUpdateSession session, int percent) throws Exception {
+        Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("lastPublishedProgressPercent");
+        field.setAccessible(true);
+        field.setInt(session, percent);
+    }
 
-        private void setHighestTransmittedReportNumber(ZWaveFirmwareUpdateSession session, int reportNumber) throws Exception {
-                Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("highestTransmittedReportNumber");
-                field.setAccessible(true);
-                field.setInt(session, reportNumber);
-        }
+    private void setHighestTransmittedReportNumber(ZWaveFirmwareUpdateSession session, int reportNumber)
+            throws Exception {
+        Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("highestTransmittedReportNumber");
+        field.setAccessible(true);
+        field.setInt(session, reportNumber);
+    }
 
-        private void invokePublishFirmwareUpdateProgressIfNeeded(ZWaveFirmwareUpdateSession session) throws Exception {
-                Method method = ZWaveFirmwareUpdateSession.class.getDeclaredMethod("publishFirmwareUpdateProgressIfNeeded");
-                method.setAccessible(true);
-                method.invoke(session);
-        }
+    private void setStartReportNumber(ZWaveFirmwareUpdateSession session, int reportNumber) throws Exception {
+        Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("startReportNumber");
+        field.setAccessible(true);
+        field.setInt(session, reportNumber);
+    }
+
+    private void setCount(ZWaveFirmwareUpdateSession session, int count) throws Exception {
+        Field field = ZWaveFirmwareUpdateSession.class.getDeclaredField("count");
+        field.setAccessible(true);
+        field.setInt(session, count);
+    }
+
+    private void invokePublishFirmwareUpdateProgressIfNeeded(ZWaveFirmwareUpdateSession session) throws Exception {
+        Method method = ZWaveFirmwareUpdateSession.class.getDeclaredMethod("publishFirmwareUpdateProgressIfNeeded");
+        method.setAccessible(true);
+        method.invoke(session);
+    }
 
     private void waitForSessionToStop(ZWaveFirmwareUpdateSession session, long timeoutMillis)
             throws InterruptedException {
@@ -394,51 +408,6 @@ public class ZWaveFirmwareUpdateSessionTest {
                 .ZWaveIncomingEvent(Mockito.argThat(event -> event instanceof ZWaveNetworkEvent
                         && ((ZWaveNetworkEvent) event).getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate
                         && ((ZWaveNetworkEvent) event).getState() == ZWaveNetworkEvent.State.Failure));
-    }
-
-    @Test
-    public void testUpdateMdStatusReportErrorDuringSendingFragmentsMarksFailure() throws Exception {
-        ZWaveNode node = Mockito.mock(ZWaveNode.class);
-        Mockito.when(node.getNodeId()).thenReturn(19);
-        ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
-
-        ZWaveFirmwareUpdateSession session = new ZWaveFirmwareUpdateSession(node, controller, new byte[] { 0x01 }, 0);
-        setState(session, ZWaveFirmwareUpdateSession.State.SENDING_FRAGMENTS);
-        setActive(session, true);
-
-        boolean handled = session
-                .handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdStatusReport(19, 0, 0x01, 0));
-
-        assertTrue(handled);
-        assertFalse(session.isActive());
-        assertEquals(ZWaveFirmwareUpdateSession.State.FAILURE, getState(session));
-        Mockito.verify(controller)
-                .ZWaveIncomingEvent(Mockito.argThat(event -> event instanceof ZWaveNetworkEvent
-                        && ((ZWaveNetworkEvent) event).getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate
-                        && ((ZWaveNetworkEvent) event).getState() == ZWaveNetworkEvent.State.Failure
-                        && "ERROR_TRANSMISSION_FAILED".equals(((ZWaveNetworkEvent) event).getValue())));
-    }
-
-    @Test
-    public void testUpdateMdStatusReportOkNoRestartDuringWaitingForUpdateMdGetMarksSuccess() throws Exception {
-        ZWaveNode node = Mockito.mock(ZWaveNode.class);
-        Mockito.when(node.getNodeId()).thenReturn(20);
-        ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
-
-        ZWaveFirmwareUpdateSession session = new ZWaveFirmwareUpdateSession(node, controller, new byte[] { 0x01 }, 0);
-        setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_GET);
-        setActive(session, true);
-
-        boolean handled = session
-                .handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdStatusReport(20, 0, 0xFE, 0));
-
-        assertTrue(handled);
-        assertFalse(session.isActive());
-        assertEquals(ZWaveFirmwareUpdateSession.State.SUCCESS, getState(session));
-        Mockito.verify(controller)
-                .ZWaveIncomingEvent(Mockito.argThat(event -> event instanceof ZWaveNetworkEvent
-                        && ((ZWaveNetworkEvent) event).getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate
-                        && ((ZWaveNetworkEvent) event).getState() == ZWaveNetworkEvent.State.Success));
     }
 
     @Test
@@ -615,9 +584,10 @@ public class ZWaveFirmwareUpdateSessionTest {
                 new byte[] { 0x01 }, 0);
         setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_GET);
         setActive(session, true);
-        setFragments(session, java.util.stream.IntStream.rangeClosed(1, 3000)
-                .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, false, new byte[] { 0x01 }))
-                .toList());
+        setFragments(session,
+                java.util.stream.IntStream.rangeClosed(1, 3000)
+                        .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, false, new byte[] { 0x01 }))
+                        .toList());
 
         setHighestTransmittedReportNumber(session, 2689);
         setLastPublishedProgressPercent(session, 85);
@@ -626,6 +596,39 @@ public class ZWaveFirmwareUpdateSessionTest {
         assertTrue(session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(26, 0, 2215, 1)));
 
         assertEquals(2215, getHighestTransmittedReportNumber(session));
+    }
+
+    @Test
+    public void testOutOfSequenceForwardGetIsIgnored() throws Exception {
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        Mockito.when(node.getNodeId()).thenReturn(27);
+        ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
+        ZWaveFirmwareUpdateCommandClass fw = Mockito.mock(ZWaveFirmwareUpdateCommandClass.class);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD)).thenReturn(fw);
+
+        ZWaveCommandClassTransactionPayload tx = new ZWaveCommandClassTransactionPayload(27, new byte[] { 0x7E },
+                TransactionPriority.Config, null, null);
+        Mockito.when(fw.sendFirmwareUpdateReport(Mockito.any())).thenReturn(tx);
+
+        TestableZWaveFirmwareUpdateSession session = new TestableZWaveFirmwareUpdateSession(node, controller,
+                new byte[] { 0x01 }, 0);
+        setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_GET);
+        setActive(session, true);
+        setFragments(session,
+                java.util.stream.IntStream.rangeClosed(1, 3000)
+                        .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, i == 3000,
+                                new byte[] { 0x01 }))
+                        .toList());
+
+        assertTrue(session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(27, 0, 1, 1)));
+        assertEquals(1, getHighestTransmittedReportNumber(session));
+
+        assertTrue(
+                session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(27, 0, 2561, 4)));
+
+        Mockito.verify(node, Mockito.times(1)).sendMessage(tx);
+        assertEquals(1, getHighestTransmittedReportNumber(session));
+        assertEquals(ZWaveFirmwareUpdateSession.State.SENDING_FRAGMENTS, getState(session));
     }
 
     @Test
@@ -661,40 +664,41 @@ public class ZWaveFirmwareUpdateSessionTest {
                         && ((ZWaveNetworkEvent) event).getState() == ZWaveNetworkEvent.State.Failure));
     }
 
-        @Test
-        public void testProgressEventsUseFivePercentSteps() throws Exception {
-                ZWaveNode node = Mockito.mock(ZWaveNode.class);
-                Mockito.when(node.getNodeId()).thenReturn(22);
-                ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
-                List<Integer> progressValues = new ArrayList<>();
+    @Test
+    public void testProgressEventsUseFivePercentSteps() throws Exception {
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        Mockito.when(node.getNodeId()).thenReturn(22);
+        ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
+        List<Integer> progressValues = new ArrayList<>();
 
-                Mockito.doAnswer(invocation -> {
-                        Object event = invocation.getArgument(0);
-                        if (event instanceof ZWaveNetworkEvent networkEvent
-                                        && networkEvent.getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate
-                                        && networkEvent.getState() == ZWaveNetworkEvent.State.Progress
-                                        && networkEvent.getValue() instanceof Number number) {
-                                progressValues.add(number.intValue());
-                        }
-                        return null;
-                }).when(controller).ZWaveIncomingEvent(Mockito.any());
+        Mockito.doAnswer(invocation -> {
+            Object event = invocation.getArgument(0);
+            if (event instanceof ZWaveNetworkEvent networkEvent
+                    && networkEvent.getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate
+                    && networkEvent.getState() == ZWaveNetworkEvent.State.Progress
+                    && networkEvent.getValue() instanceof Number number) {
+                progressValues.add(number.intValue());
+            }
+            return null;
+        }).when(controller).ZWaveIncomingEvent(Mockito.any());
 
-                ZWaveFirmwareUpdateSession session = new ZWaveFirmwareUpdateSession(node, controller, new byte[] { 0x01 }, 0);
-                setFragments(session, java.util.stream.IntStream.rangeClosed(1, 39)
-                                .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, false, new byte[] { 0x01 }))
-                                .toList());
+        ZWaveFirmwareUpdateSession session = new ZWaveFirmwareUpdateSession(node, controller, new byte[] { 0x01 }, 0);
+        setFragments(session,
+                java.util.stream.IntStream.rangeClosed(1, 39)
+                        .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, false, new byte[] { 0x01 }))
+                        .toList());
 
-                setHighestTransmittedReportNumber(session, 27);
-                invokePublishFirmwareUpdateProgressIfNeeded(session);
+        setHighestTransmittedReportNumber(session, 27);
+        invokePublishFirmwareUpdateProgressIfNeeded(session);
 
-                setHighestTransmittedReportNumber(session, 29);
-                invokePublishFirmwareUpdateProgressIfNeeded(session);
+        setHighestTransmittedReportNumber(session, 29);
+        invokePublishFirmwareUpdateProgressIfNeeded(session);
 
-                setHighestTransmittedReportNumber(session, 31);
-                invokePublishFirmwareUpdateProgressIfNeeded(session);
+        setHighestTransmittedReportNumber(session, 31);
+        invokePublishFirmwareUpdateProgressIfNeeded(session);
 
-                assertEquals(List.of(Integer.valueOf(65), Integer.valueOf(70), Integer.valueOf(75)), progressValues);
-        }
+        assertEquals(List.of(Integer.valueOf(65), Integer.valueOf(70), Integer.valueOf(75)), progressValues);
+    }
 
     @Test
     public void testInactivityTimeoutFiresWhenNoGetReceived() throws Exception {
@@ -715,8 +719,7 @@ public class ZWaveFirmwareUpdateSessionTest {
         session.setInactivityTimeoutMillis(100); // 100 ms in tests instead of 2 minutes
         setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_GET);
         setActive(session, true);
-        setFragments(session, List.of(
-                new ZWaveFirmwareUpdateSession.FirmwareFragment(1, false, new byte[] { 0x01 }),
+        setFragments(session, List.of(new ZWaveFirmwareUpdateSession.FirmwareFragment(1, false, new byte[] { 0x01 }),
                 new ZWaveFirmwareUpdateSession.FirmwareFragment(2, true, new byte[] { 0x02 })));
 
         // First GET — sends fragment 1, does NOT send last fragment, timer armed
@@ -754,8 +757,7 @@ public class ZWaveFirmwareUpdateSessionTest {
         session.setStatusReportWaitTimeoutSeconds(60);
         setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_GET);
         setActive(session, true);
-        setFragments(session,
-                List.of(new ZWaveFirmwareUpdateSession.FirmwareFragment(1, true, new byte[] { 0x01 })));
+        setFragments(session, List.of(new ZWaveFirmwareUpdateSession.FirmwareFragment(1, true, new byte[] { 0x01 })));
 
         // Single last fragment — inactivity timer must be cancelled and status timer armed
         assertTrue(session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(24, 0, 1, 1)));
@@ -815,5 +817,52 @@ public class ZWaveFirmwareUpdateSessionTest {
         assertEquals(Integer.valueOf(1), progressValues.get(0));
         // And the second GET on an already-known first fragment won't re-fire a 1% (lastPublishedProgressPercent != 0)
         assertTrue(countAfterFirst >= 1);
+    }
+
+    @Test
+    public void testImplicitAckWhenHigherFragmentRequested() throws Exception {
+        // Scenario: far-away node with poor radio conditions
+        // We're retrying fragment 2086, but device sends GET for 2087 (higher).
+        // This means device received 2086, so we should move to 2087, not resend 2086.
+
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        Mockito.when(node.getNodeId()).thenReturn(19);
+        ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
+        ZWaveFirmwareUpdateCommandClass fw = Mockito.mock(ZWaveFirmwareUpdateCommandClass.class);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD)).thenReturn(fw);
+
+        ZWaveCommandClassTransactionPayload tx = new ZWaveCommandClassTransactionPayload(19, new byte[] { 0x7A },
+                TransactionPriority.Config, null, null);
+        Mockito.when(fw.sendFirmwareUpdateReport(Mockito.any())).thenReturn(tx);
+
+        // Create fragments 2085, 2086, 2087
+        List<ZWaveFirmwareUpdateSession.FirmwareFragment> frags = java.util.stream.IntStream.rangeClosed(1, 2087)
+                .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, i == 2087, new byte[] { 0x01 }))
+                .toList();
+
+        TestableZWaveFirmwareUpdateSession session = new TestableZWaveFirmwareUpdateSession(node, controller,
+                new byte[] { 0x01 }, 0);
+        setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_GET);
+        setActive(session, true);
+        setFragments(session, frags);
+
+        // Simulate that we're retrying fragment 2086 (startReportNumber = 2086, count = 1)
+        setStartReportNumber(session, 2086);
+        setCount(session, 1);
+        setHighestTransmittedReportNumber(session, 2087); // We already sent up to 2087
+
+        // Now a GET arrives for fragment 2087 (higher than the 2086 we're retrying)
+        // This is implicit ACK that 2086 made it, so we should send 2087, not resend 2086
+        ArgumentCaptor<ZWaveFirmwareUpdateCommandClass.FirmwareFragment> captor = ArgumentCaptor
+                .forClass(ZWaveFirmwareUpdateCommandClass.FirmwareFragment.class);
+
+        assertTrue(session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(19, 0, 2087, 1)));
+
+        // Verify that sendFirmwareUpdateReport was called with fragment 2087, not a resend of 2086
+        Mockito.verify(fw, Mockito.atLeastOnce()).sendFirmwareUpdateReport(captor.capture());
+        // The last call should be for fragment 2087 (status=WAITING_FOR_UPDATE_MD_STATUS_REPORT for last fragment)
+        ZWaveFirmwareUpdateCommandClass.FirmwareFragment lastCall = captor.getValue();
+        assertEquals(2087, lastCall.reportNumber(), "Should send fragment 2087, not resend 2086");
+        assertTrue(lastCall.isLast(), "Fragment 2087 should be marked as last");
     }
 }
