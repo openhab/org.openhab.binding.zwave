@@ -44,10 +44,10 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.actions.ZWaveThingActions;
 import org.openhab.binding.zwave.firmwareupdate.FirmwareFile;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareDownloadSession;
+import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareEventType;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareUpdateEvent;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.UpdateMdStatusReport;
-import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
@@ -98,12 +98,12 @@ import org.openhab.core.thing.ThingStatus;
 import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.binding.ConfigStatusThingHandler;
+import org.openhab.core.thing.binding.ThingHandler;
+import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.thing.binding.firmware.Firmware;
 import org.openhab.core.thing.binding.firmware.FirmwareUpdateHandler;
 import org.openhab.core.thing.binding.firmware.ProgressCallback;
 import org.openhab.core.thing.binding.firmware.ProgressStep;
-import org.openhab.core.thing.binding.ThingHandler;
-import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
@@ -118,8 +118,7 @@ import org.slf4j.LoggerFactory;
  * @author Bob Eckhoff - Firmware update handling, file import, events
  *
  */
-public class ZWaveThingHandler extends ConfigStatusThingHandler
-    implements ZWaveEventListener, FirmwareUpdateHandler {
+public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWaveEventListener, FirmwareUpdateHandler {
     private final Logger logger = LoggerFactory.getLogger(ZWaveThingHandler.class);
 
     private ZWaveControllerHandler controllerHandler;
@@ -127,7 +126,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler
     private byte[] pendingFirmwareBytes;
     private Integer pendingFirmwareTarget = 0;
     private @Nullable ZWaveFirmwareUpdateSession firmwareSession;
-    private @Nullable ZWaveFirmwareDownloadSession firmwareDownloadSession; //Future use maybe.
+    private @Nullable ZWaveFirmwareDownloadSession firmwareDownloadSession; // Future use maybe.
     private @Nullable ProgressCallback firmwareProgressCallback;
     private @Nullable Integer lastFirmwareUpdateProgressPercent;
     private @Nullable String lastFirmwareFailureDescription;
@@ -1355,8 +1354,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler
                 default:
                     clearFirmwareUpdateProgressStatus();
                     String description = "Firmware update failed (" + statusReport + ")";
-                    String callbackFailureDetail = "status " + firmwareEvent.getStatus() + " (" + statusReport
-                            + ")";
+                    String callbackFailureDetail = "status " + firmwareEvent.getStatus() + " (" + statusReport + ")";
                     updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_ERROR, description);
                     ProgressCallback failureCallback = this.firmwareProgressCallback;
                     if (failureCallback != null) {
@@ -2039,7 +2037,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler
                     Object progressValue = networkEvent.getValue();
                     if (progressValue instanceof Number number) {
                         int progressPercent = number.intValue();
-                            lastFirmwareUpdateProgressPercent = Integer.valueOf(progressPercent);
+                        lastFirmwareUpdateProgressPercent = Integer.valueOf(progressPercent);
                         updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
                                 "Firmware update in progress (" + progressPercent + "%)");
                         ProgressCallback progressCallback = this.firmwareProgressCallback;

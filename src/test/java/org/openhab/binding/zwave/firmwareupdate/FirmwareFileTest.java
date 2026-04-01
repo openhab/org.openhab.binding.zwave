@@ -27,7 +27,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit tests for the {@link FirmwareFile} class, which is responsible for
  * representing a firmware file and providing utilities to detect and extract
- * firmware data from various vendor formats (BIN, HEX, GBL, Aeotec EXE, ZIP).
+ * firmware data from various Zwave vendor firmware formats (BIN, HEX, GBL, Aeotec EXE, ZIP).
  * 
  * @author Bob Eckhoff - Initial contribution
  */

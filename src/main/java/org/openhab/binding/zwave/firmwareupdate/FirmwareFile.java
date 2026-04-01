@@ -45,9 +45,9 @@ public final class FirmwareFile {
         this.firmwareTarget = firmwareTarget;
     }
 
-    // -------------------------------------------------------------------------
-    // Supported formats
-    // -------------------------------------------------------------------------
+    /**
+     * Supported firmware file formats.
+     */
     public enum FirmwareFileFormat {
         BIN,
         HEX,
@@ -58,9 +58,9 @@ public final class FirmwareFile {
         ZIP
     }
 
-    // -------------------------------------------------------------------------
-    // Format detection
-    // -------------------------------------------------------------------------
+    /**
+     * Detects the firmware file format based on the filename and raw data.
+     */
     public static FirmwareFileFormat detectFormat(String filename, byte[] rawData) {
         String lower = filename.toLowerCase();
 
@@ -99,9 +99,9 @@ public final class FirmwareFile {
         throw new IllegalArgumentException("Unsupported firmware format: " + filename);
     }
 
-    // -------------------------------------------------------------------------
-    // Extraction entry point
-    // -------------------------------------------------------------------------
+    /**
+     * Extracts the firmware data from the given raw data based on the detected format.
+     */
     public static FirmwareFile extractFirmware(String filename, byte[] rawData) throws IOException {
         FirmwareFileFormat format = detectFormat(filename, rawData);
 
@@ -131,16 +131,16 @@ public final class FirmwareFile {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // BIN / GBL extraction
-    // -------------------------------------------------------------------------
+    /**
+     * Extracts the firmware data from a binary file.
+     */
     public static FirmwareFile extractBinary(byte[] data) {
         return new FirmwareFile(data, null);
     }
 
-    // -------------------------------------------------------------------------
-    // HEX extraction (Intel HEX)
-    // -------------------------------------------------------------------------
+    /**
+     * Extracts the firmware data from a HEX file (Intel HEX format).
+     */
     public static FirmwareFile extractHex(byte[] asciiBytes) {
         List<HexRecord> records = HexParser.parse(asciiBytes);
 
@@ -156,9 +156,9 @@ public final class FirmwareFile {
         return new FirmwareFile(image, null);
     }
 
-    // -------------------------------------------------------------------------
-    // Aeotec EXE extraction
-    // -------------------------------------------------------------------------
+    /**
+     * Extracts the firmware data from an Aeotec EXE file.
+     */
     public static FirmwareFile extractAeotec(byte[] data) {
         ByteBuffer buf = ByteBuffer.wrap(data).order(ByteOrder.BIG_ENDIAN);
 
@@ -178,9 +178,9 @@ public final class FirmwareFile {
         return new FirmwareFile(firmwareData, null);
     }
 
-    // -------------------------------------------------------------------------
-    // ZIP extraction
-    // -------------------------------------------------------------------------
+    /**
+     * Attempts to unzip a firmware file and return its contents if a valid firmware file is found.
+     */
     private static Optional<FirmwareFileContainer> tryUnzipFirmwareFile(byte[] zipBytes) throws IOException {
         try (ZipInputStream zis = new ZipInputStream(new ByteArrayInputStream(zipBytes))) {
             ZipEntry entry;
@@ -210,9 +210,9 @@ public final class FirmwareFile {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Intel HEX parser (minimal)
-    // -------------------------------------------------------------------------
+    /**
+     * Intel HEX parser
+     */
     private static final class HexRecord {
         final int address;
         final byte[] data;
@@ -304,9 +304,9 @@ public final class FirmwareFile {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Byte-array search helper
-    // -------------------------------------------------------------------------
+    /**
+     * Byte-array search helper
+     */
     private static int indexOf(byte[] data, byte[] pattern) {
         outer: for (int i = 0; i <= data.length - pattern.length; i++) {
             for (int j = 0; j < pattern.length; j++) {
@@ -317,17 +317,5 @@ public final class FirmwareFile {
             return i;
         }
         return -1;
-    }
-
-    public String getVersion() {
-        // This is a placeholder. In a real implementation, you would extract the version
-        // from the firmware data or metadata if available.
-        return "Unknown Version";
-    }
-
-    public String getManufacturerName() {
-        // This is a placeholder. In a real implementation, you would extract the manufacturer
-        // name from the firmware data or metadata if available.
-        return "Unknown Manufacturer";
     }
 }

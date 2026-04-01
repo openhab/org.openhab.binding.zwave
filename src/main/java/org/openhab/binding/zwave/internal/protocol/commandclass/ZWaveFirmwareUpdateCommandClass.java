@@ -116,7 +116,7 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
 
     /**
      * Create a transaction payload for Firmware Update MD Report (6).
-     * This sends a single firmware fragment to the device.
+     * This sends a single firmware fragment to the device. Retries are managed in the Session.
      */
     public ZWaveCommandClassTransactionPayload sendFirmwareUpdateReport(FirmwareFragment fragment) {
         logger.debug("NODE {}: Creating FIRMWARE_UPDATE_MD_REPORT for fragment {}, isLast={}", getNode().getNodeId(),
@@ -124,13 +124,18 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
 
         byte[] payload = fragment.toBytes(getVersion(), getCommandClass().getKey(), FIRMWARE_UPDATE_MD_REPORT);
 
-        return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
-                FIRMWARE_UPDATE_MD_REPORT).withPayload(payload).withPriority(TransactionPriority.Config).build();
+        ZWaveCommandClassTransactionPayload message = new ZWaveCommandClassTransactionPayloadBuilder(
+                getNode().getNodeId(), getCommandClass(), FIRMWARE_UPDATE_MD_REPORT).withPayload(payload)
+                .withPriority(TransactionPriority.Config).build();
+        message.setMaxAttempts(1);
+        return message;
     }
 
     /**
      * Create a transaction payload for Firmware Update MD Get (5).
      * This requests one or more firmware fragments from the node.
+     * This would be used for downloading firmware from the device,
+     * but is not currently used in the binding as we only support uploading.
      */
     public ZWaveCommandClassTransactionPayload sendFirmwareUpdateMdGet(int reportNumber, int numberOfReports) {
         logger.debug("NODE {}: Creating new message for FIRMWARE_UPDATE_MD_GET report={}, count={}",
