@@ -127,6 +127,7 @@ public class ZWaveFirmwareUpdateSession {
 
     /**
      * Update MD request status values, used to indicate the result of a firmware update request.
+     * OK = indicates that the firmware update request was accepted by the node.
      */
     public enum UpdateMdRequestStatus {
         ERROR_INVALID_MANUFACTURER_OR_FIRMWARE_ID(0x00),

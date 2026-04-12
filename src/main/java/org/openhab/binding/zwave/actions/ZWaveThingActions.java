@@ -91,14 +91,6 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
-    public static String updateLoadedFirmware(ThingActions actions) {
-        if (actions instanceof ZWaveThingActions nodeActions) {
-            return nodeActions.updateLoadedFirmware();
-        } else {
-            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
-        }
-    }
-
     public static String downloadFirmwareFromNode(ThingActions actions) {
         if (actions instanceof ZWaveThingActions nodeActions) {
             return nodeActions.downloadFirmwareFromNode();
@@ -178,15 +170,6 @@ public class ZWaveThingActions implements ThingActions {
             return handler.pollLinkedChannels();
         }
         return "Handler is null, cannot poll linked channels";
-    }
-
-    @RuleAction(label = "@text/actions.firmware-update.request.get.label", description = "@text/actions.firmware-update.request.get.description", visibility = Visibility.EXPERT)
-    public @ActionOutput(type = "String") String updateLoadedFirmware() {
-        ZWaveThingHandler handler = this.handler;
-        if (handler != null) {
-            return handler.updateLoadedFirmware();
-        }
-        return "Thing handler is null, firmware update not possible";
     }
 
     // This action is used to trigger the download of the firmware from the node.

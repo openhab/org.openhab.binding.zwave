@@ -59,6 +59,9 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
     /** Matches patterns like V02R40, v2r40, V1_06, V10_0 and extracts major/minor revision numbers. */
     private static final Pattern VERSION_PATTERN = Pattern.compile("[Vv](\\d+)[Rr_](\\d+)");
 
+    // TEMPORARY test toggle: set to true to restore regex-based version extraction.
+    private static final boolean ENABLE_VERSION_PATTERN_MATCHING = true;
+
     @Override
     public @Nullable Firmware getFirmware(Thing thing, String version) {
         return getFirmware(thing, version, null);
@@ -165,12 +168,16 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
      * Falls back to the bare filename (no extension) when no V##R## pattern is found.
      */
     private static String extractVersion(String fileName) {
-        Matcher matcher = VERSION_PATTERN.matcher(fileName);
-        if (matcher.find()) {
-            int major = Integer.parseInt(matcher.group(1));
-            int minor = Integer.parseInt(matcher.group(2));
-            return major + "." + minor;
+        if (ENABLE_VERSION_PATTERN_MATCHING) {
+            Matcher matcher = VERSION_PATTERN.matcher(fileName);
+            if (matcher.find()) {
+                int major = Integer.parseInt(matcher.group(1));
+                int minor = Integer.parseInt(matcher.group(2));
+                return major + "." + minor;
+            }
         }
+
+        // During test mode, keep raw filename (without extension) as the version token.
         return stripExtension(fileName);
     }
 

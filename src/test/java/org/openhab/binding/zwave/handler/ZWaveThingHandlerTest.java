@@ -22,8 +22,12 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
@@ -62,6 +66,7 @@ import org.openhab.core.types.Command;
  * Test of the ZWaveThingHandler
  *
  * @author Chris Jackson - Initial contribution
+ * @author Robert Eckhoff - Firmware update tests
  *
  */
 public class ZWaveThingHandlerTest {
@@ -377,41 +382,33 @@ public class ZWaveThingHandlerTest {
         assertNull(properties.get("arg4"));
     }
 
-    @Test
-    public void testFirmwareUpdateFailureSetsConfigurationErrorStatus() {
-        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
-        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
-                .withConfiguration(new Configuration()).build();
+        static Stream<Arguments> firmwareFailureCases() {
+        return Stream.of(Arguments.of(Integer.valueOf(1), "Firmware update failed (status 1)", "status 1"),
+            Arguments.of("ERROR_TRANSMISSION_FAILED", "Firmware update failed: ERROR_TRANSMISSION_FAILED",
+                "ERROR_TRANSMISSION_FAILED"));
+        }
 
-        ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
-        setNodeId(handler, 1);
-
-        handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 1,
-                ZWaveNetworkEvent.State.Failure, Integer.valueOf(1)));
-
-        ThingStatusInfo statusInfo = handler.getCapturedStatusInfo();
-        assertEquals(ThingStatus.ONLINE, statusInfo.getStatus());
-        assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusInfo.getStatusDetail());
-        assertEquals("Firmware update failed (status 1)", statusInfo.getDescription());
-    }
-
-    @Test
-    public void testFirmwareUpdateFailureUsesLocalizedProgressCallbackFailure() {
+        @ParameterizedTest
+        @MethodSource("firmwareFailureCases")
+        public void testFirmwareUpdateFailureSetsConfigurationErrorStatusAndReportsCallback(Object failureValue,
+            String expectedDescription, String expectedCallbackDetail) {
         ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
         Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
                 .withConfiguration(new Configuration()).build();
 
         ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
         ProgressCallback progressCallback = Mockito.mock(ProgressCallback.class);
-        setNodeId(handler, 1);
+        setNodeId(handler, 12);
         setFirmwareProgressCallback(handler, progressCallback);
 
-        handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 1,
-                ZWaveNetworkEvent.State.Failure, "ERROR_TRANSMISSION_FAILED"));
+        handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 12,
+            ZWaveNetworkEvent.State.Failure, failureValue));
 
         ThingStatusInfo statusInfo = handler.getCapturedStatusInfo();
-        assertEquals("Firmware update failed: ERROR_TRANSMISSION_FAILED", statusInfo.getDescription());
-        Mockito.verify(progressCallback).failed("actions.firmware-update.error", "ERROR_TRANSMISSION_FAILED");
+        assertEquals(ThingStatus.ONLINE, statusInfo.getStatus());
+        assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusInfo.getStatusDetail());
+        assertEquals(expectedDescription, statusInfo.getDescription());
+        Mockito.verify(progressCallback).failed("actions.firmware-update.error", expectedCallbackDetail);
     }
 
     @Test
@@ -425,18 +422,18 @@ public class ZWaveThingHandlerTest {
         Mockito.when(firmwareSession.isActive()).thenReturn(true);
         Mockito.when(firmwareSession.getCurrentTransferProgressPercent()).thenReturn(79);
 
-        setNodeId(handler, 1);
+        setNodeId(handler, 12);
         setFirmwareSession(handler, firmwareSession);
 
         handler.ZWaveIncomingEvent(
-                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 1, ZWaveNetworkEvent.State.Progress, 75));
+                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 12, ZWaveNetworkEvent.State.Progress, 75));
         assertEquals("Firmware update in progress (75%)", handler.getCapturedStatusInfo().getDescription());
 
-        handler.ZWaveIncomingEvent(new ZWaveNodeStatusEvent(1, ZWaveNodeState.DEAD));
+        handler.ZWaveIncomingEvent(new ZWaveNodeStatusEvent(12, ZWaveNodeState.DEAD));
         assertEquals(ThingStatus.OFFLINE, handler.getCapturedStatusInfo().getStatus());
         assertEquals(ThingStatusDetail.COMMUNICATION_ERROR, handler.getCapturedStatusInfo().getStatusDetail());
 
-        handler.ZWaveIncomingEvent(new ZWaveNodeStatusEvent(1, ZWaveNodeState.ALIVE));
+        handler.ZWaveIncomingEvent(new ZWaveNodeStatusEvent(12, ZWaveNodeState.ALIVE));
         assertEquals(ThingStatus.ONLINE, handler.getCapturedStatusInfo().getStatus());
         assertEquals(ThingStatusDetail.CONFIGURATION_PENDING, handler.getCapturedStatusInfo().getStatusDetail());
         assertEquals("Firmware update in progress (79%)", handler.getCapturedStatusInfo().getDescription());
