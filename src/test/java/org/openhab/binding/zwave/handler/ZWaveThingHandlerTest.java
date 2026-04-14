@@ -382,15 +382,15 @@ public class ZWaveThingHandlerTest {
         assertNull(properties.get("arg4"));
     }
 
-        static Stream<Arguments> firmwareFailureCases() {
+    static Stream<Arguments> firmwareFailureCases() {
         return Stream.of(Arguments.of(Integer.valueOf(1), "Firmware update failed (status 1)", "status 1"),
-            Arguments.of("ERROR_TRANSMISSION_FAILED", "Firmware update failed: ERROR_TRANSMISSION_FAILED",
-                "ERROR_TRANSMISSION_FAILED"));
-        }
+                Arguments.of("ERROR_TRANSMISSION_FAILED", "Firmware update failed: ERROR_TRANSMISSION_FAILED",
+                        "ERROR_TRANSMISSION_FAILED"));
+    }
 
-        @ParameterizedTest
-        @MethodSource("firmwareFailureCases")
-        public void testFirmwareUpdateFailureSetsConfigurationErrorStatusAndReportsCallback(Object failureValue,
+    @ParameterizedTest
+    @MethodSource("firmwareFailureCases")
+    public void testFirmwareUpdateFailureSetsConfigurationErrorStatusAndReportsCallback(Object failureValue,
             String expectedDescription, String expectedCallbackDetail) {
         ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
         Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
@@ -402,7 +402,7 @@ public class ZWaveThingHandlerTest {
         setFirmwareProgressCallback(handler, progressCallback);
 
         handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 12,
-            ZWaveNetworkEvent.State.Failure, failureValue));
+                ZWaveNetworkEvent.State.Failure, failureValue));
 
         ThingStatusInfo statusInfo = handler.getCapturedStatusInfo();
         assertEquals(ThingStatus.ONLINE, statusInfo.getStatus());
