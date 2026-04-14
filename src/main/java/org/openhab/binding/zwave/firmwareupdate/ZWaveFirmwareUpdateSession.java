@@ -619,6 +619,18 @@ public class ZWaveFirmwareUpdateSession {
                         && txCommand == ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_REPORT) {
                     int resendStart = Math.max(1, startReportNumber);
                     int resendCount = Math.max(1, count);
+                    Long lastSentTime = reportLastSentTimes.get(resendStart);
+                    long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue()
+                        : Long.MAX_VALUE;
+
+                    if (lastSentTime != null && elapsedMillis < DUPLICATE_GET_RESEND_DELAY_MS) {
+                    logger.debug(
+                        "NODE {}: Firmware fragment transaction failed/cancelled for fragment {}, but it was sent {}ms ago (<{}ms); skipping immediate requeue and waiting for next UPDATE_MD_GET",
+                        node.getNodeId(), resendStart, elapsedMillis, DUPLICATE_GET_RESEND_DELAY_MS);
+                    state = State.WAITING_FOR_UPDATE_MD_GET;
+                    return true;
+                    }
+
                     logger.debug(
                             "NODE {}: Firmware fragment transaction failed/cancelled; retrying fragment send from {} (count={})",
                             node.getNodeId(), resendStart, resendCount);
@@ -775,6 +787,18 @@ public class ZWaveFirmwareUpdateSession {
                     node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
             duplicateGetsForSentReport = 0;
         } else if (requestedStartReport <= highestTransmittedReportNumber) {
+            // Reject stale backward GETs: if the device had already advanced to request a
+            // higher fragment, this GET is a queued/replayed message from before that
+            // advance. Processing it would rewind highestTransmittedReportNumber and cause
+            // legitimate forward GETs (e.g. the next sequential fragment) to be rejected
+            // by isOutOfSequenceForwardRequest.
+            if (highestRequestedStartReport > 0 && requestedStartReport < highestRequestedStartReport) {
+                logger.debug(
+                        "NODE {}: Ignoring stale backward UPDATE_MD_GET for fragment {} (device previously requested fragment {}); skipping to avoid spurious progress rewind",
+                        node.getNodeId(), requestedStartReport, highestRequestedStartReport);
+                return true;
+            }
+
             // Some nodes may queue duplicate GETs for an already-sent report when there is
             // a slight timing delay. Ignore these near-duplicates, but allow a late retry
             // window so the device can recover from a truly missed report.

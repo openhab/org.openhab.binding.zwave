@@ -45,9 +45,7 @@ import org.openhab.binding.zwave.actions.ZWaveThingActions;
 import org.openhab.binding.zwave.firmwareupdate.FirmwareFile;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareDownloadSession;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
-import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareEventType;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.FirmwareUpdateEvent;
-import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession.UpdateMdStatusReport;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
@@ -1282,7 +1280,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     /**
      * Initiates a firmware download from the node to the local system
-     * This actionis currentky hidden, pending further testing.
+     * This action is currently hidden, pending further testing.
      * 
      * @return Status message indicating the result of the firmware download attempt
      */
@@ -1327,6 +1325,17 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         lastFirmwareUpdateProgressPercent = null;
     }
 
+    private int rememberFirmwareProgressPercentMonotonic(int candidatePercent) {
+        if (candidatePercent <= 0) {
+            return lastFirmwareUpdateProgressPercent != null ? lastFirmwareUpdateProgressPercent.intValue() : 0;
+        }
+
+        Integer knownPercent = lastFirmwareUpdateProgressPercent;
+        int effectivePercent = knownPercent == null ? candidatePercent : Math.max(knownPercent.intValue(), candidatePercent);
+        lastFirmwareUpdateProgressPercent = Integer.valueOf(effectivePercent);
+        return effectivePercent;
+    }
+
     private void resetFirmwareProgressSequence() {
         firmwareProgressStepIndex = -1;
     }
@@ -1350,7 +1359,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             return;
         }
 
-        if (Objects.equals(lastFirmwareUpdateProgressPercent, milestone)) {
+        Integer knownPercent = lastFirmwareUpdateProgressPercent;
+        int effectiveProgressPercent = rememberFirmwareProgressPercentMonotonic(milestone.intValue());
+        if (effectiveProgressPercent > milestone.intValue()) {
+            return;
+        }
+
+        if (Objects.equals(knownPercent, milestone)) {
             return;
         }
 
@@ -1593,60 +1608,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Session is active - restore progress display.
         int sessionProgressPercent = session.getCurrentTransferProgressPercent();
-        if (sessionProgressPercent > 0) {
-            lastFirmwareUpdateProgressPercent = Integer.valueOf(sessionProgressPercent);
-        }
+        rememberFirmwareProgressPercentMonotonic(sessionProgressPercent);
         Integer progressPercent = lastFirmwareUpdateProgressPercent;
         if (progressPercent != null) {
             updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
                     "Firmware update in progress (" + progressPercent + "%)");
         } else {
             updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING, "Firmware update in progress");
-        }
-    }
-
-    /**
-     * This captures a copy of the key final firmware events that indicate the
-     * completion, activation, or failure.
-     * to feedback to the OH core firmware process steps.
-     * 
-     * @param incomingEvent copy of event received from the Z-Wave network
-     */
-    private void applyFirmwareTerminalFallbackFromRawEvent(ZWaveEvent incomingEvent) {
-        if (!(incomingEvent instanceof FirmwareUpdateEvent firmwareEvent)) {
-            return;
-        }
-
-        if (firmwareEvent.getType() == FirmwareEventType.UPDATE_MD_STATUS_REPORT) {
-            UpdateMdStatusReport statusReport = UpdateMdStatusReport.from(firmwareEvent.getStatus());
-            switch (statusReport) {
-                case OK_NO_RESTART:
-                case OK_RESTART_PENDING:
-                    onFirmwareUpdateSucceeded();
-                    break;
-                case OK_WAITING_FOR_ACTIVATION:
-                    ProgressCallback activationCallback = this.firmwareProgressCallback;
-                    if (activationCallback != null && firmwareProgressStepIndex < 3) {
-                        advanceFirmwareProgressTo(3, activationCallback);
-                    }
-                    updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
-                            "Firmware update waiting for activation");
-                    break;
-                default:
-                    onFirmwareUpdateFailed("Firmware update failed (" + statusReport + ")",
-                            "status " + firmwareEvent.getStatus() + " (" + statusReport + ")");
-                    break;
-            }
-            return;
-        }
-
-        if (firmwareEvent.getType() == FirmwareEventType.ACTIVATION_STATUS_REPORT) {
-            if (firmwareEvent.getStatus() == 0xFF) {
-                onFirmwareUpdateSucceeded();
-            } else {
-                onFirmwareUpdateFailed("Firmware activation failed (status " + firmwareEvent.getStatus() + ")",
-                        "status " + firmwareEvent.getStatus());
-            }
         }
     }
 
@@ -1831,7 +1799,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         if (firmwareSession != null) {
             if (firmwareSession.isActive()) {
                 if (firmwareSession.handleEvent(incomingEvent)) {
-                    applyFirmwareTerminalFallbackFromRawEvent(incomingEvent);
                     return;
                 }
             } else if (incomingEvent instanceof FirmwareUpdateEvent firmwareEvent) {
