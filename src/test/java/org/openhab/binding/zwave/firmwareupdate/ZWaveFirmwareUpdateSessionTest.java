@@ -616,15 +616,14 @@ public class ZWaveFirmwareUpdateSessionTest {
         setActive(session, true);
         setFragments(session,
                 java.util.stream.IntStream.rangeClosed(1, 3000)
-                        .mapToObj(i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, i == 3000,
-                                new byte[] { 0x01 }))
+                        .mapToObj(
+                                i -> new ZWaveFirmwareUpdateSession.FirmwareFragment(i, i == 3000, new byte[] { 0x01 }))
                         .toList());
 
         assertTrue(session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(27, 0, 1, 1)));
         assertEquals(1, getHighestTransmittedReportNumber(session));
 
-        assertTrue(
-                session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(27, 0, 2561, 4)));
+        assertTrue(session.handleEvent(ZWaveFirmwareUpdateSession.FirmwareUpdateEvent.forUpdateMdGet(27, 0, 2561, 4)));
 
         Mockito.verify(node, Mockito.times(1)).sendMessage(tx);
         assertEquals(1, getHighestTransmittedReportNumber(session));
