@@ -145,29 +145,29 @@ public class ZWaveFirmwareUpdateCommandClassTest {
     }
 
     @Test
-        public void testHandleFirmwareUpdateMdStatusReportExtractsWaitTimeFromFrame() {
-                ZWaveController controller = Mockito.mock(ZWaveController.class);
-                ZWaveNode node = new ZWaveNode(0, 7, controller);
-                ZWaveEndpoint endpoint = new ZWaveEndpoint(0);
-                ZWaveFirmwareUpdateCommandClass cls = new ZWaveFirmwareUpdateCommandClass(node, controller, endpoint);
-                cls.setVersion(2);
+    public void testHandleFirmwareUpdateMdStatusReportExtractsWaitTimeFromFrame() {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = new ZWaveNode(0, 7, controller);
+        ZWaveEndpoint endpoint = new ZWaveEndpoint(0);
+        ZWaveFirmwareUpdateCommandClass cls = new ZWaveFirmwareUpdateCommandClass(node, controller, endpoint);
+        cls.setVersion(2);
 
-                byte[] frame = new byte[] { (byte) CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey(),
-                                (byte) ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_STATUS_REPORT, (byte) 0xFF, 0x01, 0x00 };
+        byte[] frame = new byte[] { (byte) CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey(),
+                (byte) ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_STATUS_REPORT, (byte) 0xFF, 0x01, 0x00 };
 
-                cls.handleFirmwareUpdateMdStatusReport(new ZWaveCommandClassPayload(frame), 0);
+        cls.handleFirmwareUpdateMdStatusReport(new ZWaveCommandClassPayload(frame), 0);
 
-                ArgumentCaptor<ZWaveEvent> eventCaptor = ArgumentCaptor.forClass(ZWaveEvent.class);
-                Mockito.verify(controller, Mockito.times(1)).notifyEventListeners(eventCaptor.capture());
+        ArgumentCaptor<ZWaveEvent> eventCaptor = ArgumentCaptor.forClass(ZWaveEvent.class);
+        Mockito.verify(controller, Mockito.times(1)).notifyEventListeners(eventCaptor.capture());
 
-                assertTrue(eventCaptor.getValue() instanceof FirmwareUpdateEvent);
-                FirmwareUpdateEvent event = (FirmwareUpdateEvent) eventCaptor.getValue();
-                assertEquals(FirmwareUpdateEvent.forUpdateMdStatusReport(7, 0, 0, 0).getType(), event.getType());
-                assertEquals(0xFF, event.getStatus());
-                assertEquals(0x0100, event.getWaitTime());
-        }
+        assertTrue(eventCaptor.getValue() instanceof FirmwareUpdateEvent);
+        FirmwareUpdateEvent event = (FirmwareUpdateEvent) eventCaptor.getValue();
+        assertEquals(FirmwareUpdateEvent.forUpdateMdStatusReport(7, 0, 0, 0).getType(), event.getType());
+        assertEquals(0xFF, event.getStatus());
+        assertEquals(0x0100, event.getWaitTime());
+    }
 
-        @Test
+    @Test
     public void testHandleFirmwarePrepareReportPublishesPrepareEvent() {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ZWaveNode node = new ZWaveNode(0, 7, controller);

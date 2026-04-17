@@ -1319,7 +1319,218 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         return "Firmware download started, check status bar for progress";
     }
 
-    // Start of firmware update methods
+    // Start of firmware update
+
+    /**
+     * Initiates an OH core firmware update for the given firmware object, reporting
+     * progress success and failure events back to the OH core through the provided
+     * ProgressCallback.
+     */
+    @Override
+    public void updateFirmware(Firmware firmware, ProgressCallback progressCallback) {
+        ProgressCallback activeProgressCallback = keepCallbackIfUsable(progressCallback, "defineSequence()",
+                () -> progressCallback.defineSequence(ProgressStep.DOWNLOADING, ProgressStep.WAITING,
+                        ProgressStep.TRANSFERRING, ProgressStep.UPDATING));
+        resetFirmwareProgressSequence();
+        activeProgressCallback = advanceFirmwareProgressTo(0, activeProgressCallback);
+
+        // Clear any previous callback state before arming this run.
+        this.firmwareProgressCallback = null;
+        this.lastFirmwareFailureDescription = null;
+
+        String loadError = loadPendingFirmwareFromRepository();
+        if (loadError != null) {
+            logger.warn("NODE {}: Firmware update failed: {}", nodeId, loadError);
+            ProgressCallback callbackRef = activeProgressCallback;
+            keepCallbackIfUsable(callbackRef, "failed()",
+                    () -> callbackRef.failed("actions.firmware-update.error", loadError));
+            clearFirmwareUpdateProgressStatus();
+            resetFirmwareProgressSequence();
+            this.firmwareProgressCallback = null;
+            return;
+        }
+
+        // Arm callback before start to avoid races where rapid terminal events arrive
+        // before callback assignment.
+        this.firmwareProgressCallback = activeProgressCallback;
+
+        String result = startFirmwareUpdateSession();
+        if (!result.startsWith("Firmware upload started")) {
+            logger.warn("NODE {}: Firmware update failed: {}", nodeId, result);
+            ProgressCallback callbackRef = activeProgressCallback;
+            keepCallbackIfUsable(callbackRef, "failed()",
+                    () -> callbackRef.failed("actions.firmware-update.error", result));
+            clearFirmwareUpdateProgressStatus();
+            resetFirmwareProgressSequence();
+            this.firmwareProgressCallback = null;
+            return;
+        }
+
+        activeProgressCallback = advanceFirmwareProgressTo(1, activeProgressCallback);
+        if (activeProgressCallback == null) {
+            this.firmwareProgressCallback = null;
+        }
+    }
+
+    /**
+     * Loads firmware bytes from userdata/zwave/firmware/node-<nodeId>.
+     * Policy: exactly one supported file must exist.
+     * 
+     * @return null on success, otherwise a user-facing error message.
+     */
+    private @Nullable String loadPendingFirmwareFromRepository() {
+        Path folder = getNodeFirmwareFolder();
+
+        if (!Files.exists(folder)) {
+            return "No firmware directory found for this node: " + folder;
+        }
+
+        if (!Files.isDirectory(folder)) {
+            return "Firmware path is not a directory: " + folder;
+        }
+
+        List<Path> candidates;
+        try (Stream<Path> files = Files.list(folder)) {
+            candidates = files.filter(Files::isRegularFile).filter(ZWaveThingHandler::isSupportedFirmwareFile)
+                    .sorted(Comparator.comparing(p -> p.getFileName().toString().toLowerCase(Locale.ROOT))).toList();
+        } catch (IOException e) {
+            logger.error("NODE {}: Error listing firmware directory {}", nodeId, folder, e);
+            return "Error reading firmware directory: " + folder;
+        }
+
+        if (candidates.isEmpty()) {
+            return "No firmware file found in " + folder;
+        }
+
+        if (candidates.size() > 1) {
+            String names = candidates.stream().map(p -> p.getFileName().toString()).collect(Collectors.joining(", "));
+            return "Multiple firmware files found for this node. Keep only one: " + names;
+        }
+
+        Path selected = candidates.get(0);
+        try {
+            byte[] raw = Files.readAllBytes(selected);
+            FirmwareFile parsed = FirmwareFile.extractFirmware(selected.getFileName().toString(), raw);
+
+            this.pendingFirmwareBytes = parsed.data;
+            this.pendingFirmwareTarget = (parsed.firmwareTarget != null ? parsed.firmwareTarget : 0);
+
+            logger.debug("NODE {}: Firmware file loaded from repository: {}", nodeId, selected);
+            logger.debug("NODE {}: Parsed firmware target={} size={} bytes", nodeId, pendingFirmwareTarget, raw.length);
+            return null;
+        } catch (Exception e) {
+            logger.error("NODE {}: Failed to load firmware file {}", nodeId, selected, e);
+            return "Failed to load firmware file: " + selected.getFileName();
+        }
+    }
+
+    private String startFirmwareUpdateSession() {
+        if (!isUpdateExecutable()) {
+            return "Firmware update is not executable in current thing state";
+        }
+
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (node == null) {
+            return "Node not available";
+        }
+
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+
+        if (fw == null) {
+            return "Firmware Update Metadata command class not supported on node";
+        }
+
+        // Request a version refresh to ensure we have the latest CC version information
+        // before we try to update. Previously included devices were set to Version 1,
+        // so this avoids a full device reinitialization.
+        // There are compatibility issues between version 1 and later versions of the
+        // Firmware Update CC, so knowing the device CC version is critical.
+        requestFirmwareUpdateVersionRefresh(node, fw);
+
+        if (pendingFirmwareBytes == null || pendingFirmwareBytes.length == 0) {
+            return "No firmware available";
+        }
+
+        clearFirmwareUpdateProgressStatus();
+
+        firmwareSession = new ZWaveFirmwareUpdateSession(node, controllerHandler, pendingFirmwareBytes,
+                pendingFirmwareTarget);
+
+        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING, "Firmware upload in progress (0%)");
+        firmwareSession.start();
+
+        return "Firmware upload started, check status for progress";
+    }
+
+    @Override
+    public boolean isUpdateExecutable() {
+        if (getThing().getStatus() != ThingStatus.ONLINE) {
+            return false;
+        }
+
+        ThingStatusInfo statusInfo = getThing().getStatusInfo();
+        if (statusInfo.getStatusDetail() == ThingStatusDetail.FIRMWARE_UPDATING) {
+            return false;
+        }
+
+        return (firmwareSession == null || !firmwareSession.isActive())
+                && (firmwareDownloadSession == null || !firmwareDownloadSession.isActive());
+    }
+
+    private int requestFirmwareUpdateVersionRefresh(ZWaveNode node,
+            ZWaveFirmwareUpdateCommandClass firmwareCommandClass) {
+        int versionBefore = firmwareCommandClass.getVersion();
+        if (versionBefore != 1) {
+            logger.debug(
+                    "NODE {}: Skipping Firmware Update command class version refresh because current version is {} (refresh is only needed for legacy version 1)",
+                    nodeId, versionBefore);
+            return versionBefore;
+        }
+
+        ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
+        if (versionCommandClass == null) {
+            logger.debug(
+                    "NODE {}: Cannot refresh Firmware Update command class version because VERSION CC is unavailable",
+                    nodeId);
+            return versionBefore;
+        }
+
+        ZWaveCommandClassTransactionPayload message = versionCommandClass.checkVersion(firmwareCommandClass);
+        if (message == null) {
+            return versionBefore;
+        }
+
+        node.sendMessage(message);
+        logger.debug("NODE {}: Requested Firmware Update command class version refresh", nodeId);
+
+        int currentVersion = firmwareCommandClass.getVersion();
+        logger.debug("NODE {}: Firmware Update command class version before refresh={}, after refresh={}", nodeId,
+                versionBefore, currentVersion);
+        return currentVersion;
+    }
+
+    private boolean isFirmwareSessionActive() {
+        ZWaveFirmwareUpdateSession session = firmwareSession;
+        return session != null && session.isActive();
+    }
+
+    @Override
+    public void cancel() {
+        if (firmwareSession != null && firmwareSession.isActive()) {
+            firmwareSession.abort("cancelled by firmware update service");
+            firmwareSession = null;
+        }
+
+        ProgressCallback progressCallback = this.firmwareProgressCallback;
+        if (progressCallback != null) {
+            keepCallbackIfUsable(progressCallback, "canceled()", progressCallback::canceled);
+        }
+        this.firmwareProgressCallback = null;
+        clearFirmwareUpdateProgressStatus();
+        resetFirmwareProgressSequence();
+    }
 
     private void clearFirmwareUpdateProgressStatus() {
         lastFirmwareUpdateProgressPercent = null;
@@ -1331,18 +1542,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         Integer knownPercent = lastFirmwareUpdateProgressPercent;
-        int effectivePercent = knownPercent == null ? candidatePercent : Math.max(knownPercent.intValue(), candidatePercent);
+        int effectivePercent = knownPercent == null ? candidatePercent
+                : Math.max(knownPercent.intValue(), candidatePercent);
         lastFirmwareUpdateProgressPercent = Integer.valueOf(effectivePercent);
         return effectivePercent;
     }
 
     private void resetFirmwareProgressSequence() {
         firmwareProgressStepIndex = -1;
-    }
-
-    private boolean isFirmwareSessionActive() {
-        ZWaveFirmwareUpdateSession session = firmwareSession;
-        return session != null && session.isActive();
     }
 
     private @Nullable ProgressCallback keepCallbackIfUsable(@Nullable ProgressCallback callback, String operation,
@@ -1416,212 +1623,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         return callback;
-    }
-
-    /**
-     * Initiates an OH core firmware update for the given firmware object, reporting
-     * progress success and failure events back to the OH core through the provided
-     * ProgressCallback.
-     */
-    @Override
-    public void updateFirmware(Firmware firmware, ProgressCallback progressCallback) {
-        ProgressCallback activeProgressCallback = keepCallbackIfUsable(progressCallback, "defineSequence()",
-                () -> progressCallback.defineSequence(ProgressStep.DOWNLOADING, ProgressStep.WAITING,
-                        ProgressStep.TRANSFERRING, ProgressStep.UPDATING));
-        resetFirmwareProgressSequence();
-        activeProgressCallback = advanceFirmwareProgressTo(0, activeProgressCallback);
-
-        // Clear any previous callback state before arming this run.
-        this.firmwareProgressCallback = null;
-        this.lastFirmwareFailureDescription = null;
-
-        String loadError = loadPendingFirmwareFromRepository();
-        if (loadError != null) {
-            logger.warn("NODE {}: Firmware update failed: {}", nodeId, loadError);
-            ProgressCallback callbackRef = activeProgressCallback;
-            keepCallbackIfUsable(callbackRef, "failed()",
-                    () -> callbackRef.failed("actions.firmware-update.error", loadError));
-            clearFirmwareUpdateProgressStatus();
-            resetFirmwareProgressSequence();
-            this.firmwareProgressCallback = null;
-            return;
-        }
-
-        // Arm callback before start to avoid races where rapid terminal events arrive
-        // before callback assignment.
-        this.firmwareProgressCallback = activeProgressCallback;
-
-        String result = startFirmwareUpdateSession();
-        if (!result.startsWith("Firmware upload started")) {
-            logger.warn("NODE {}: Firmware update failed: {}", nodeId, result);
-            ProgressCallback callbackRef = activeProgressCallback;
-            keepCallbackIfUsable(callbackRef, "failed()",
-                    () -> callbackRef.failed("actions.firmware-update.error", result));
-            clearFirmwareUpdateProgressStatus();
-            resetFirmwareProgressSequence();
-            this.firmwareProgressCallback = null;
-            return;
-        }
-
-        activeProgressCallback = advanceFirmwareProgressTo(1, activeProgressCallback);
-        if (activeProgressCallback == null) {
-            this.firmwareProgressCallback = null;
-        }
-    }
-
-    @Override
-    public void cancel() {
-        if (firmwareSession != null && firmwareSession.isActive()) {
-            firmwareSession.abort("cancelled by firmware update service");
-            firmwareSession = null;
-        }
-
-        ProgressCallback progressCallback = this.firmwareProgressCallback;
-        if (progressCallback != null) {
-            keepCallbackIfUsable(progressCallback, "canceled()", progressCallback::canceled);
-        }
-        this.firmwareProgressCallback = null;
-        clearFirmwareUpdateProgressStatus();
-        resetFirmwareProgressSequence();
-    }
-
-    @Override
-    public boolean isUpdateExecutable() {
-        if (getThing().getStatus() != ThingStatus.ONLINE) {
-            return false;
-        }
-
-        ThingStatusInfo statusInfo = getThing().getStatusInfo();
-        if (statusInfo.getStatusDetail() == ThingStatusDetail.FIRMWARE_UPDATING) {
-            return false;
-        }
-
-        return (firmwareSession == null || !firmwareSession.isActive())
-                && (firmwareDownloadSession == null || !firmwareDownloadSession.isActive());
-    }
-
-    private String startFirmwareUpdateSession() {
-        if (!isUpdateExecutable()) {
-            return "Firmware update is not executable in current thing state";
-        }
-
-        ZWaveNode node = controllerHandler.getNode(nodeId);
-        if (node == null) {
-            return "Node not available";
-        }
-
-        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
-
-        if (fw == null) {
-            return "Firmware Update Metadata command class not supported on node";
-        }
-
-        // Request a version refresh to ensure we have the latest CC version information
-        // before we try to update. Previously included devices were set to Version 1,
-        // so this avoids a full device reinitialization.
-        // There are compatibility issues between version 1 and later versions of the
-        // Firmware Update CC, so knowing the device CC version is critical.
-        requestFirmwareUpdateVersionRefresh(node, fw);
-
-        if (pendingFirmwareBytes == null || pendingFirmwareBytes.length == 0) {
-            return "No firmware available";
-        }
-
-        clearFirmwareUpdateProgressStatus();
-
-        firmwareSession = new ZWaveFirmwareUpdateSession(node, controllerHandler, pendingFirmwareBytes,
-                pendingFirmwareTarget);
-
-        updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING, "Firmware upload in progress (0%)");
-        firmwareSession.start();
-
-        return "Firmware upload started, check status for progress";
-    }
-
-    private int requestFirmwareUpdateVersionRefresh(ZWaveNode node,
-            ZWaveFirmwareUpdateCommandClass firmwareCommandClass) {
-        int versionBefore = firmwareCommandClass.getVersion();
-        if (versionBefore != 1) {
-            logger.debug(
-                    "NODE {}: Skipping Firmware Update command class version refresh because current version is {} (refresh is only needed for legacy version 1)",
-                    nodeId, versionBefore);
-            return versionBefore;
-        }
-
-        ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
-        if (versionCommandClass == null) {
-            logger.debug(
-                    "NODE {}: Cannot refresh Firmware Update command class version because VERSION CC is unavailable",
-                    nodeId);
-            return versionBefore;
-        }
-
-        ZWaveCommandClassTransactionPayload message = versionCommandClass.checkVersion(firmwareCommandClass);
-        if (message == null) {
-            return versionBefore;
-        }
-
-        node.sendMessage(message);
-        logger.debug("NODE {}: Requested Firmware Update command class version refresh", nodeId);
-
-        int currentVersion = firmwareCommandClass.getVersion();
-        logger.debug("NODE {}: Firmware Update command class version before refresh={}, after refresh={}", nodeId,
-                versionBefore, currentVersion);
-        return currentVersion;
-    }
-
-    /**
-     * Loads firmware bytes from userdata/zwave/firmware/node-<nodeId>.
-     * Policy: exactly one supported file must exist.
-     * 
-     * @return null on success, otherwise a user-facing error message.
-     */
-    private @Nullable String loadPendingFirmwareFromRepository() {
-        Path folder = getNodeFirmwareFolder();
-
-        if (!Files.exists(folder)) {
-            return "No firmware directory found for this node: " + folder;
-        }
-
-        if (!Files.isDirectory(folder)) {
-            return "Firmware path is not a directory: " + folder;
-        }
-
-        List<Path> candidates;
-        try (Stream<Path> files = Files.list(folder)) {
-            candidates = files.filter(Files::isRegularFile).filter(ZWaveThingHandler::isSupportedFirmwareFile)
-                    .sorted(Comparator.comparing(p -> p.getFileName().toString().toLowerCase(Locale.ROOT))).toList();
-        } catch (IOException e) {
-            logger.error("NODE {}: Error listing firmware directory {}", nodeId, folder, e);
-            return "Error reading firmware directory: " + folder;
-        }
-
-        if (candidates.isEmpty()) {
-            return "No firmware file found in " + folder;
-        }
-
-        if (candidates.size() > 1) {
-            String names = candidates.stream().map(p -> p.getFileName().toString()).collect(Collectors.joining(", "));
-            return "Multiple firmware files found for this node. Keep only one: " + names;
-        }
-
-        Path selected = candidates.get(0);
-        try {
-            byte[] raw = Files.readAllBytes(selected);
-            FirmwareFile parsed = FirmwareFile.extractFirmware(selected.getFileName().toString(), raw);
-
-            this.pendingFirmwareBytes = parsed.data;
-            this.pendingFirmwareTarget = (parsed.firmwareTarget != null ? parsed.firmwareTarget : 0);
-
-            logger.debug("NODE {}: Firmware file loaded from repository: {}", nodeId, selected);
-            logger.debug("NODE {}: Parsed firmware target={} size={} bytes", nodeId, pendingFirmwareTarget, raw.length);
-            return null;
-        } catch (Exception e) {
-            logger.error("NODE {}: Failed to load firmware file {}", nodeId, selected, e);
-            return "Failed to load firmware file: " + selected.getFileName();
-        }
     }
 
     /**
