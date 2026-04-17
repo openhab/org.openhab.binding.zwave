@@ -412,6 +412,29 @@ public class ZWaveThingHandlerTest {
     }
 
     @Test
+    public void testFirmwareUpdateFailureIgnoresCallbackRuntimeException() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+
+        ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
+        ProgressCallback progressCallback = Mockito.mock(ProgressCallback.class);
+        Mockito.doThrow(new IllegalStateException("Timer already cancelled.")).when(progressCallback)
+                .failed(Mockito.anyString(), Mockito.anyString());
+
+        setNodeId(handler, 12);
+        setFirmwareProgressCallback(handler, progressCallback);
+
+        assertDoesNotThrow(() -> handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate,
+                12, ZWaveNetworkEvent.State.Failure, "ERROR_TRANSMISSION_FAILED")));
+
+        ThingStatusInfo statusInfo = handler.getCapturedStatusInfo();
+        assertEquals(ThingStatus.ONLINE, statusInfo.getStatus());
+        assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusInfo.getStatusDetail());
+        assertEquals("Firmware update failed: ERROR_TRANSMISSION_FAILED", statusInfo.getDescription());
+    }
+
+    @Test
     public void testFirmwareUpdateProgressRestoredAfterCommunicationDrop() {
         ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
         Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
@@ -437,5 +460,33 @@ public class ZWaveThingHandlerTest {
         assertEquals(ThingStatus.ONLINE, handler.getCapturedStatusInfo().getStatus());
         assertEquals(ThingStatusDetail.CONFIGURATION_PENDING, handler.getCapturedStatusInfo().getStatusDetail());
         assertEquals("Firmware update in progress (79%)", handler.getCapturedStatusInfo().getDescription());
+    }
+
+    @Test
+    public void testFirmwareUpdateProgressIgnoredWhenSessionInactive() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+
+        ZWaveThingHandlerStatusCaptureTest handler = new ZWaveThingHandlerStatusCaptureTest(thing);
+        ZWaveFirmwareUpdateSession firmwareSession = Mockito.mock(ZWaveFirmwareUpdateSession.class);
+        Mockito.when(firmwareSession.isActive()).thenReturn(false);
+
+        setNodeId(handler, 12);
+        setFirmwareSession(handler, firmwareSession);
+
+        handler.ZWaveIncomingEvent(new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 12,
+                ZWaveNetworkEvent.State.Failure, "ERROR_TRANSMISSION_FAILED"));
+
+        ThingStatusInfo failedStatus = handler.getCapturedStatusInfo();
+        assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, failedStatus.getStatusDetail());
+        assertEquals("Firmware update failed: ERROR_TRANSMISSION_FAILED", failedStatus.getDescription());
+
+        handler.ZWaveIncomingEvent(
+                new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, 12, ZWaveNetworkEvent.State.Progress, 50));
+
+        ThingStatusInfo statusAfterProgress = handler.getCapturedStatusInfo();
+        assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusAfterProgress.getStatusDetail());
+        assertEquals("Firmware update failed: ERROR_TRANSMISSION_FAILED", statusAfterProgress.getDescription());
     }
 }

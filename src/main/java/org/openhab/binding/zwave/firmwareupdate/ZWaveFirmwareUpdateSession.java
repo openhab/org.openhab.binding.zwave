@@ -28,6 +28,9 @@ import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateActivationStatus;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateMdRequestStatus;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateMdStatusReport;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
@@ -37,25 +40,22 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The {@link ZWaveFirmwareUpdateSession} class represents an active firmware
- * update session for a Z-Wave node. Handles the state and logic of the firmware update process, including
- * managing firmware fragments, tracking progress, and handling events. Also handles timeouts and retries
- * for robustness against common issues during firmware updates.
+ * The {@link ZWaveFirmwareUpdateSession} class represents an active firmware update session for a Z-Wave node.
+ * Handles the state and the steps of the Z-Wave firmware update process, including managing firmware fragments,
+ * tracking progress, handling events, and applying timeout/retry behavior for robustness on noisy networks.
  *
  * @author Robert Eckhoff - Initial contribution
  */
 @NonNullByDefault
 public class ZWaveFirmwareUpdateSession {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveFirmwareUpdateSession.class);
-    private static final int DEFAULT_MAX_FRAGMENT_SIZE = 32;
+    private static final int DEFAULT_MAX_FRAGMENT_SIZE = 32; // Version 1 & 2 do not send this information.
     private static final int MAX_REPORT_NUMBER = 0x7FFF;
-    private static final int MULTI_FRAGMENT_INTERFRAME_DELAY_MS = 35;
+    private static final int MULTI_FRAGMENT_INTERFRAME_DELAY_MS = 35; // Per Spec
     private static final int IMAGE_CHECKSUM_INITIAL = 0x1D0F;
     private static final int STATUS_REPORT_WAIT_TIMEOUT_SECONDS = 30;
     private static final int INACTIVITY_TIMEOUT_MINUTES = 2;
     private static final int PROGRESS_EVENT_STEP_PERCENT = 5;
-    // Keep duplicate suppression conservative and rely on transaction-failure
-    // recovery to re-drive fragment send when a send actually fails.
     private static final long DUPLICATE_GET_RESEND_DELAY_MS = TimeUnit.SECONDS.toMillis(10);
 
     private int startReportNumber;
@@ -64,14 +64,14 @@ public class ZWaveFirmwareUpdateSession {
     private final ZWaveControllerHandler controller;
     private final byte[] firmwareBytes;
     private final int firmwareChecksum;
-    private final int firmwareTarget; // Z-Wave firmware target = 0
+    private final int firmwareTarget;
 
     private volatile boolean active = false;
     private volatile State state = State.IDLE;
 
     private List<FirmwareFragment> fragments = List.of();
     private @Nullable FirmwareMetadata sessionMetadata;
-    private int highestRequestedStartReport = -1;
+    private int highestAckedReportNumber = 0;
     private volatile int highestTransmittedReportNumber = 0;
     private int duplicateGetsForSentReport = 0;
     private int lastPublishedProgressPercent = 0;
@@ -81,11 +81,11 @@ public class ZWaveFirmwareUpdateSession {
 
     /**
      * Create a new firmware update session for the given node, controller, and firmware image.
-     * 
+     *
      * @param node the Z-Wave node for which the firmware update session is created
      * @param controller the Z-Wave controller handler
      * @param firmwareBytes the firmware image bytes
-     * @param firmwareTarget the firmware target (0 = Zwave firmware, other values are vendor-specific)
+     * @param firmwareTarget the firmware target (0 = Z-Wave firmware, other values not supported)
      */
     public ZWaveFirmwareUpdateSession(ZWaveNode node, ZWaveControllerHandler controller, byte[] firmwareBytes,
             int firmwareTarget) {
@@ -97,109 +97,54 @@ public class ZWaveFirmwareUpdateSession {
     }
 
     /**
-     * Firmware update event types, used to route events from the Z-Wave protocol layer into the session logic.
+     * Start the firmware update session by requesting metadata from the device.
+     * The session then progresses through its state machine as events are received.
      */
-    public enum FirmwareEventType {
-        MD_REPORT,
-        UPDATE_MD_REQUEST_REPORT,
-        UPDATE_MD_GET,
-        UPDATE_MD_STATUS_REPORT,
-        ACTIVATION_STATUS_REPORT, // optional, depending on your flow
-        UPDATE_PREPARE_REPORT // Not implemented yet, but can be used to retrieve current firmware information.
+    public void start() {
+        logger.info("NODE {}: Firmware session starting", node.getNodeId());
+        active = true;
+        state = State.WAITING_FOR_MD_REPORT;
+        invalidateStatusReportTimeout();
+        highestAckedReportNumber = 0;
+        highestTransmittedReportNumber = 0;
+        duplicateGetsForSentReport = 0;
+        lastPublishedProgressPercent = 0;
+        reportLastSentTimes.clear();
+
+        requestMetadata(); // (1) Start the process by requesting devicemetadata.
+        // Will be queued for battery devices. Not active update until the device wakes up.
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void abort(String reason) {
+        if (!active) {
+            return;
+        }
+
+        failFirmwareUpdate("Firmware update session aborted: " + reason);
+    }
+
+    // Sends the initial FIRMWARE_MD_GET to start the process
+    private void requestMetadata() {
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+
+        ZWaveCommandClassTransactionPayload msg = fw.sendMDGetMessage();
+        node.sendMessage(msg);
+
+        logger.debug("NODE {}: Sent Firmware MD Get", node.getNodeId());
     }
 
     /**
-     * Firmware update session states, used to track the progress of a firmware update for a node.
-     */
-    public enum State {
-        IDLE,
-        WAITING_FOR_MD_REPORT,
-        WAITING_FOR_UPDATE_MD_REQUEST_REPORT,
-        WAITING_FOR_UPDATE_MD_GET,
-        SENDING_FRAGMENTS,
-        WAITING_FOR_UPDATE_MD_STATUS_REPORT,
-        WAITING_FOR_ACTIVATION_STATUS_REPORT, // optional, depending on your flow
-        WAITING_FOR_UPDATE_PREPARE_REPORT, // Not implemented yet, but can be used to retrieve current firmware
-                                           // information.
-        SUCCESS,
-        FAILURE
-    }
-
-    /**
-     * Update MD request status values, used to indicate the result of a firmware update request.
-     * OK = indicates that the firmware update request was accepted by the node.
-     */
-    public enum UpdateMdRequestStatus {
-        ERROR_INVALID_MANUFACTURER_OR_FIRMWARE_ID(0x00),
-        ERROR_AUTHENTICATION_EXPECTED(0x01),
-        ERROR_FRAGMENT_SIZE_TOO_LARGE(0x02),
-        ERROR_NOT_UPGRADABLE(0x03),
-        ERROR_INVALID_HARDWARE_VERSION(0x04),
-        ERROR_FIRMWARE_UPGRADE_IN_PROGRESS(0x05),
-        ERROR_BATTERY_LOW(0x06),
-        OK(0xFF),
-        UNKNOWN(-1);
-
-        private final int id;
-
-        UpdateMdRequestStatus(int id) {
-            this.id = id;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public static UpdateMdRequestStatus from(int v) {
-            for (UpdateMdRequestStatus s : values()) {
-                if (s.id == v) {
-                    return s;
-                }
-            }
-            return UNKNOWN;
-        }
-    }
-
-    /**
-     * Firmware update status report values, used to indicate the result of a firmware update status report.
-     */
-    public enum UpdateMdStatusReport {
-        ERROR_CHECKSUM(0x00),
-        ERROR_TRANSMISSION_FAILED(0x01),
-        ERROR_INVALID_MANUFACTURER_ID(0x02),
-        ERROR_INVALID_FIRMWARE_ID(0x03),
-        ERROR_INVALID_FIRMWARE_TARGET(0x04),
-        ERROR_INVALID_HEADER_INFORMATION(0x05),
-        ERROR_INVALID_HEADER_FORMAT(0x06),
-        ERROR_INSUFFICIENT_MEMORY(0x07),
-        ERROR_INVALID_HARDWARE_VERSION(0x08),
-        OK_WAITING_FOR_ACTIVATION(0xFD),
-        OK_NO_RESTART(0xFE),
-        OK_RESTART_PENDING(0xFF),
-        UNKNOWN(-1);
-
-        private final int id;
-
-        UpdateMdStatusReport(int id) {
-            this.id = id;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public static UpdateMdStatusReport from(int v) {
-            for (UpdateMdStatusReport s : values()) {
-                if (s.id == v) {
-                    return s;
-                }
-            }
-            return UNKNOWN;
-        }
-    }
-
-    /**
-     * Firmware update event wrapper, used to encapsulate events related to a firmware update session.
+     * Firmware update events used to progress through the firmware update process.
+     * These are diverted from events normally received by the Z-Wave Thing Handler.
      */
     public static class FirmwareUpdateEvent extends ZWaveEvent {
         private final FirmwareEventType type;
@@ -290,308 +235,16 @@ public class ZWaveFirmwareUpdateSession {
     }
 
     /**
-     * Start the firmware update session. This will initiate the firmware update process by requesting metadata from the
-     * device.
-     * The session will then progress through the various states as it handles events and manages the firmware update
-     * process.
-     */
-    public void start() {
-        logger.info("NODE {}: Firmware session starting", node.getNodeId());
-        active = true;
-        state = State.WAITING_FOR_MD_REPORT;
-        invalidateStatusReportTimeout();
-        highestRequestedStartReport = -1;
-        highestTransmittedReportNumber = 0;
-        duplicateGetsForSentReport = 0;
-        lastPublishedProgressPercent = 0;
-        reportLastSentTimes.clear();
-
-        requestMetadata(); // (1) Start the process by requesting metadata.
-    }
-
-    private void scheduleStatusReportTimeout() {
-        int generation = statusReportTimeoutGeneration.incrementAndGet();
-
-        CompletableFuture.runAsync(() -> {
-            if (!active) {
-                return;
-            }
-            if (statusReportTimeoutGeneration.get() != generation) {
-                return;
-            }
-            if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
-                return;
-            }
-
-            logger.warn("NODE {}: Timed out waiting for Firmware Update MD Status Report", node.getNodeId());
-            failFirmwareUpdate("Timed out waiting for Firmware Update MD Status Report", Integer.valueOf(-1));
-        }, CompletableFuture.delayedExecutor(getStatusReportWaitTimeoutSeconds(), TimeUnit.SECONDS));
-    }
-
-    protected int getStatusReportWaitTimeoutSeconds() {
-        return STATUS_REPORT_WAIT_TIMEOUT_SECONDS;
-    }
-
-    protected int getInactivityTimeoutMinutes() {
-        return INACTIVITY_TIMEOUT_MINUTES;
-    }
-
-    protected long getInactivityTimeoutMillis() {
-        return TimeUnit.MINUTES.toMillis(getInactivityTimeoutMinutes());
-    }
-
-    private void scheduleInactivityTimeout() {
-        int generation = inactivityTimeoutGeneration.incrementAndGet();
-
-        CompletableFuture.runAsync(() -> {
-            if (!active) {
-                return;
-            }
-            if (inactivityTimeoutGeneration.get() != generation) {
-                return;
-            }
-
-            logger.warn("NODE {}: Firmware update inactivity timeout - no events received for {} minutes",
-                    node.getNodeId(), getInactivityTimeoutMinutes());
-            failFirmwareUpdate(
-                    "Firmware update timed out - no activity for " + getInactivityTimeoutMinutes() + " minutes",
-                    UpdateMdStatusReport.ERROR_TRANSMISSION_FAILED.name());
-        }, CompletableFuture.delayedExecutor(getInactivityTimeoutMillis(), TimeUnit.MILLISECONDS));
-    }
-
-    private void cancelInactivityTimeout() {
-        inactivityTimeoutGeneration.incrementAndGet();
-    }
-
-    private void invalidateStatusReportTimeout() {
-        statusReportTimeoutGeneration.incrementAndGet();
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public State getState() {
-        return state;
-    }
-
-    public void abort(String reason) {
-        if (!active) {
-            return;
-        }
-
-        failFirmwareUpdate("Firmware update session aborted: " + reason, Integer.valueOf(-1));
-    }
-
-    private void completeSuccess() {
-        logger.info("NODE {}: Firmware update completed", node.getNodeId());
-        invalidateStatusReportTimeout();
-        cancelInactivityTimeout();
-        node.setFirmwareUpdateInProgress(false);
-        state = State.SUCCESS;
-        active = false;
-    }
-
-    private void fail(String reason) {
-        logger.error("NODE {}: Firmware update failed: {}", node.getNodeId(), reason);
-        invalidateStatusReportTimeout();
-        cancelInactivityTimeout();
-        node.setFirmwareUpdateInProgress(false);
-        state = State.FAILURE;
-        active = false;
-    }
-
-    private void failFirmwareUpdate(String reason, Object value) {
-        publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Failure, value);
-        fail(reason);
-    }
-
-    private void publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State state, Object value) {
-        ZWaveNetworkEvent event = new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, node.getNodeId(), state,
-                value);
-
-        if (controller.getController() != null) {
-            controller.getController().notifyEventListeners(event);
-            return;
-        }
-
-        // Fallback for early-session or test scenarios where the internal controller is not available.
-        controller.ZWaveIncomingEvent(event);
-    }
-
-    private void publishFirmwareUpdateProgressIfNeeded() {
-        if (fragments.isEmpty()) {
-            return;
-        }
-
-        int steppedPercentComplete = getSteppedTransferProgressPercent();
-
-        // Keep 100% reserved for terminal success status event.
-        if (steppedPercentComplete >= 100) {
-            steppedPercentComplete = 95;
-        }
-
-        if (steppedPercentComplete <= 0
-                || steppedPercentComplete < lastPublishedProgressPercent + PROGRESS_EVENT_STEP_PERCENT) {
-            return;
-        }
-
-        lastPublishedProgressPercent = steppedPercentComplete;
-        publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(steppedPercentComplete));
-    }
-
-    private void rewindTransferProgressToReport(int requestedStartReport) {
-        int rewoundTransmitted = Math.max(0, requestedStartReport - 1);
-        if (rewoundTransmitted >= highestTransmittedReportNumber) {
-            return;
-        }
-
-        int previousHighest = highestTransmittedReportNumber;
-        highestTransmittedReportNumber = rewoundTransmitted;
-
-        int currentPercent = getCurrentTransferProgressPercent();
-        int steppedPercent = getSteppedTransferProgressPercent();
-        int previousPublished = lastPublishedProgressPercent;
-
-        if (steppedPercent < lastPublishedProgressPercent) {
-            lastPublishedProgressPercent = steppedPercent;
-        }
-
-        // Publish a rewind progress update so the UI reflects outage recovery instead of
-        // staying pinned to a stale higher percent.
-        int progressToPublish = currentPercent > 0 ? currentPercent : 1;
-        logger.debug(
-                "NODE {}: Rewinding transfer progress from highestTransmitted={} to {} due to UPDATE_MD_GET start {}; publishing adjusted progress {}% (previousPublishedStep={}%, newPublishedStep={}%)",
-                node.getNodeId(), previousHighest, highestTransmittedReportNumber, requestedStartReport,
-                progressToPublish, previousPublished, lastPublishedProgressPercent);
-        publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(progressToPublish));
-    }
-
-    /**
-     * Returns the current transfer progress based on sent fragments.
-     * This can be used by higher layers to restore UI status after transient communication drops.
+     * Handle firmware update events, including failed transaction completions and firmware-specific reports.
+     * Routes each event to the appropriate logic based on the current session state and event type.
      *
-     * @return progress percentage in range 0..99 while transfer is active
+     * @param event firmware update related event, either {@link ZWaveTransactionCompletedEvent} or
+     *            {@link FirmwareUpdateEvent}
+     * @return true if the event was handled as part of the firmware update session, false otherwise
      */
-    public int getCurrentTransferProgressPercent() {
-        if (fragments.isEmpty()) {
-            return 0;
-        }
-
-        int transmitted = Math.min(highestTransmittedReportNumber, fragments.size());
-        int percentComplete = (transmitted * 100) / fragments.size();
-
-        // Keep 100% reserved for terminal success status event.
-        return Math.min(percentComplete, 99);
-    }
-
-    private int getSteppedTransferProgressPercent() {
-        int percentComplete = getCurrentTransferProgressPercent();
-        return (percentComplete / PROGRESS_EVENT_STEP_PERCENT) * PROGRESS_EVENT_STEP_PERCENT;
-    }
-
-    /**
-     * Represents a fragment of the firmware being transmitted.
-     * Each fragment contains a portion of the firmware data along with its report number and a flag indicating if it is
-     * the last fragment.
-     */
-    public static class FirmwareFragment {
-        private final int reportNumber;
-        private final boolean isLast;
-        private final byte[] data;
-
-        public FirmwareFragment(int reportNumber, boolean isLast, byte[] data) {
-            this.reportNumber = reportNumber;
-            this.isLast = isLast;
-            this.data = data;
-        }
-
-        public int getReportNumber() {
-            return reportNumber;
-        }
-
-        public boolean isLast() {
-            return isLast;
-        }
-
-        public byte[] getData() {
-            return data;
-        }
-    }
-
-    /**
-     * Prepares the firmware fragments for transmission based on the metadata.
-     * Each fragment contains a portion of the firmware data along with its report number and a flag indicating if it is
-     * the last fragment.
-     *
-     * @param metadata the firmware metadata containing information about the firmware update
-     * @return true if fragments were successfully prepared, false otherwise
-     */
-    private boolean prepareFragments(FirmwareMetadata metadata) {
-        fragments = new ArrayList<>();
-
-        // maxFragmentSize specifies the firmware DATA bytes per fragment only;
-        // the CC/CMD/reportNum/CRC overhead is added by the serializer on top of this.
-        int usable = metadata.maxFragmentSize();
-
-        if (usable <= 0) {
-            failFirmwareUpdate(
-                    "Max fragment size too small for firmware update (max=" + metadata.maxFragmentSize() + ")",
-                    Integer.valueOf(metadata.maxFragmentSize()));
-            return false;
-        }
-
-        int offset = 0;
-        int reportNumber = 1;
-
-        while (offset < firmwareBytes.length) {
-            if (reportNumber > MAX_REPORT_NUMBER) {
-                failFirmwareUpdate("Firmware requires more than " + MAX_REPORT_NUMBER + " reports",
-                        Integer.valueOf(MAX_REPORT_NUMBER));
-                fragments = List.of();
-                return false;
-            }
-
-            int remaining = firmwareBytes.length - offset;
-            int chunkSize = Math.min(usable, remaining);
-
-            byte[] chunk = Arrays.copyOfRange(firmwareBytes, offset, offset + chunkSize);
-
-            boolean isLast = (offset + chunkSize) >= firmwareBytes.length;
-
-            fragments.add(new FirmwareFragment(reportNumber, isLast, chunk));
-
-            offset += chunkSize;
-            reportNumber++;
-        }
-
-        logger.debug("NODE {}: Prepared {} fragments (usable={} bytes each)", node.getNodeId(), fragments.size(),
-                usable);
-        return true;
-    }
-
-    /**
-     * Firmware Update Event Routing
-     * Determines if the given transaction is related to firmware update based on its payload.
-     * 
-     * @param transaction the Z-Wave transaction to check
-     * @return true if the transaction is related to firmware update, false otherwise
-     */
-    private boolean isFirmwareUpdateTransaction(ZWaveTransaction transaction) {
-        byte[] txPayload = transaction.getPayloadBuffer();
-        return txPayload.length >= 2 && (txPayload[0] & 0xFF) == CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey();
-    }
-
-    private int getFirmwareUpdateTransactionCommand(ZWaveTransaction transaction) {
-        byte[] txPayload = transaction.getPayloadBuffer();
-        if (txPayload.length < 2) {
-            return -1;
-        }
-        return txPayload[1] & 0xFF;
-    }
-
     public boolean handleEvent(Object event) {
         if (event instanceof ZWaveTransactionCompletedEvent tcEvent) {
+            // Handle failed Z-Wave transaction completion (!tcEvent)
             if (!tcEvent.getState() && tcEvent.getNodeId() == node.getNodeId()) {
                 ZWaveTransaction completedTransaction = tcEvent.getCompletedTransaction();
                 if (!isFirmwareUpdateTransaction(completedTransaction)) {
@@ -603,7 +256,7 @@ public class ZWaveFirmwareUpdateSession {
                 if (state == State.WAITING_FOR_MD_REPORT
                         && txCommand == ZWaveFirmwareUpdateCommandClass.FIRMWARE_MD_GET) {
                     logger.debug("NODE {}: FIRMWARE_MD_GET transaction failed after all retries", node.getNodeId());
-                    failFirmwareUpdate("FIRMWARE_MD_GET failed after all retries", Integer.valueOf(-1));
+                    failFirmwareUpdate("FIRMWARE_MD_GET failed after all retries");
                     return true;
                 }
 
@@ -611,24 +264,26 @@ public class ZWaveFirmwareUpdateSession {
                         && txCommand == ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_REQUEST_GET) {
                     logger.debug("NODE {}: FIRMWARE_UPDATE_MD_REQUEST_GET transaction failed after all retries",
                             node.getNodeId());
-                    failFirmwareUpdate("FIRMWARE_UPDATE_MD_REQUEST_GET failed after all retries", Integer.valueOf(-1));
+                    failFirmwareUpdate("FIRMWARE_UPDATE_MD_REQUEST_GET failed after all retries");
                     return true;
                 }
 
+                // If a firmware fragment transaction failed while sending fragments, attempt to
+                // resend when outside the duplicate resend delay window.
                 if ((state == State.SENDING_FRAGMENTS || state == State.WAITING_FOR_UPDATE_MD_GET)
                         && txCommand == ZWaveFirmwareUpdateCommandClass.FIRMWARE_UPDATE_MD_REPORT) {
                     int resendStart = Math.max(1, startReportNumber);
                     int resendCount = Math.max(1, count);
                     Long lastSentTime = reportLastSentTimes.get(resendStart);
                     long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue()
-                        : Long.MAX_VALUE;
+                            : Long.MAX_VALUE;
 
                     if (lastSentTime != null && elapsedMillis < DUPLICATE_GET_RESEND_DELAY_MS) {
-                    logger.debug(
-                        "NODE {}: Firmware fragment transaction failed/cancelled for fragment {}, but it was sent {}ms ago (<{}ms); skipping immediate requeue and waiting for next UPDATE_MD_GET",
-                        node.getNodeId(), resendStart, elapsedMillis, DUPLICATE_GET_RESEND_DELAY_MS);
-                    state = State.WAITING_FOR_UPDATE_MD_GET;
-                    return true;
+                        logger.debug(
+                                "NODE {}: Firmware fragment transaction failed/cancelled for fragment {}, but it was sent {}ms ago (<{}ms); skipping immediate requeue and waiting for next UPDATE_MD_GET",
+                                node.getNodeId(), resendStart, elapsedMillis, DUPLICATE_GET_RESEND_DELAY_MS);
+                        state = State.WAITING_FOR_UPDATE_MD_GET;
+                        return true;
                     }
 
                     logger.debug(
@@ -670,14 +325,23 @@ public class ZWaveFirmwareUpdateSession {
         return false;
     }
 
+    private boolean isFirmwareUpdateTransaction(ZWaveTransaction transaction) {
+        byte[] txPayload = transaction.getPayloadBuffer();
+        return txPayload.length >= 2 && (txPayload[0] & 0xFF) == CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD.getKey();
+    }
+
+    private int getFirmwareUpdateTransactionCommand(ZWaveTransaction transaction) {
+        byte[] txPayload = transaction.getPayloadBuffer();
+        if (txPayload.length < 2) {
+            return -1;
+        }
+        return txPayload[1] & 0xFF;
+    }
+
     /**
-     * Handles the Metadata Report event. This is the first report received from the device
-     * after requesting metadata, and it contains important information about the firmware update
-     * process, such as the maximum fragment size and whether the firmware is upgradable.
-     * The handler parses the metadata, prepares the firmware fragments for transmission,
-     * and initiates the next step of the firmware update process by sending an UPDATE_MD_REQUEST_GET command to the
-     * device.
-     * 
+     * Handle Metadata Report (2), the first report received after metadata is requested.
+     * Parses metadata, prepares firmware fragments, and sends UPDATE_MD_REQUEST_GET (3) to continue.
+     *
      * @param event the firmware update event containing the metadata report
      * @return true if the event was handled, false otherwise
      */
@@ -709,6 +373,7 @@ public class ZWaveFirmwareUpdateSession {
                 Integer.toHexString(metadata.requestFlags()));
 
         this.sessionMetadata = metadata;
+        // Disable sleep on battery devices while the firmware update is active.
         node.setFirmwareUpdateInProgress(true);
 
         // Prepare fragments using maxFragmentSize
@@ -716,436 +381,23 @@ public class ZWaveFirmwareUpdateSession {
             return true;
         }
 
-        // Build and send UPDATE_MD_REQUEST_GET
+        // Build and send UPDATE_MD_REQUEST_GET (3)
         sendFirmwareUpdateMdRequestGet(metadata);
 
         state = State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT;
         return true;
     }
 
-    private boolean handleUpdateMdRequestReport(FirmwareUpdateEvent event) {
-        if (state != State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT) {
-            return false;
-        }
-
-        // Version 8, resume = devices agrees to resume a previously interrupted update,
-        // nonSecure = device agrees to accept firmware without security encoding
-        UpdateMdRequestStatus requestStatus = UpdateMdRequestStatus.from(event.getStatus());
-        logger.debug("NODE {}: Received Update MD Request Report", node.getNodeId());
-        logger.debug("NODE {}: Status={} ({}), resume={}, nonSecure={}", node.getNodeId(), event.getStatus(),
-                requestStatus, event.getResume(), event.getNonSecure());
-
-        if (requestStatus != UpdateMdRequestStatus.OK) {
-            publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Failure, Integer.valueOf(event.getStatus()));
-            fail("Device rejected firmware update request: " + requestStatus);
-            return true;
-        }
-
-        state = State.WAITING_FOR_UPDATE_MD_GET;
-        return true;
-    }
-
-    private boolean handleUpdateMdGet(FirmwareUpdateEvent event) {
-        // Some devices skip UPDATE_MD_REQUEST_REPORT and request fragments directly.
-        // Accept UPDATE_MD_GET while waiting for the request report as an implicit OK.
-        if (state != State.WAITING_FOR_UPDATE_MD_GET && state != State.SENDING_FRAGMENTS
-                && state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT
-                && state != State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT) {
-            return false;
-        }
-
-        if (state == State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT) {
-            logger.debug(
-                    "NODE {}: Received UPDATE_MD_GET before UPDATE_MD_REQUEST_REPORT; treating as implicit request acceptance",
-                    node.getNodeId());
-        }
-
-        int requestedStartReport = event.getReportNumber();
-        int requestedCount = event.getNumReports();
-        if (requestedCount <= 0) {
-            logger.debug("NODE {}: Received UPDATE_MD_GET with invalid count {} - normalizing to 1", node.getNodeId(),
-                    requestedCount);
-            requestedCount = 1;
-        }
-
-        logger.debug("NODE {}: Received UPDATE_MD_GET for fragment {} (count={})", node.getNodeId(),
-                requestedStartReport, requestedCount);
-
-        // Ignore clearly out-of-sequence forward jumps. They are usually stale GETs
-        // from a previous transfer session and must not move this session forward.
-        if (isOutOfSequenceForwardRequest(requestedStartReport)) {
-            return true;
-        }
-
-        // If a GET arrives for a fragment higher than what we're currently retrying,
-        // treat it as an implicit ACK of the fragment we were retrying. This is common
-        // in far-away nodes with occasional communication dropouts: we retry fragment N
-        // due to a perceived loss, but the device already received it and moved on to N+1.
-        if (requestedStartReport > startReportNumber && startReportNumber > 0) {
-            logger.debug(
-                    "NODE {}: Received UPDATE_MD_GET for fragment {} while retrying fragment {}; treating this as implicit ACK of fragment {} and continuing with the requested fragment",
-                    node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
-            duplicateGetsForSentReport = 0;
-        } else if (requestedStartReport <= highestTransmittedReportNumber) {
-            // Reject stale backward GETs: if the device had already advanced to request a
-            // higher fragment, this GET is a queued/replayed message from before that
-            // advance. Processing it would rewind highestTransmittedReportNumber and cause
-            // legitimate forward GETs (e.g. the next sequential fragment) to be rejected
-            // by isOutOfSequenceForwardRequest.
-            if (highestRequestedStartReport > 0 && requestedStartReport < highestRequestedStartReport) {
-                logger.debug(
-                        "NODE {}: Ignoring stale backward UPDATE_MD_GET for fragment {} (device previously requested fragment {}); skipping to avoid spurious progress rewind",
-                        node.getNodeId(), requestedStartReport, highestRequestedStartReport);
-                return true;
-            }
-
-            // Some nodes may queue duplicate GETs for an already-sent report when there is
-            // a slight timing delay. Ignore these near-duplicates, but allow a late retry
-            // window so the device can recover from a truly missed report.
-            Long lastSentTime = reportLastSentTimes.get(requestedStartReport);
-            long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue() : Long.MAX_VALUE;
-
-            if (lastSentTime != null && elapsedMillis < DUPLICATE_GET_RESEND_DELAY_MS) {
-                duplicateGetsForSentReport++;
-                logger.debug(
-                        "NODE {}: Ignoring duplicate UPDATE_MD_GET for already-transmitted fragment {} (highestTransmitted={}, duplicateCount={}, elapsedMs={})",
-                        node.getNodeId(), requestedStartReport, highestTransmittedReportNumber,
-                        duplicateGetsForSentReport, elapsedMillis);
-                return true;
-            }
-
-            if (requestedStartReport < highestTransmittedReportNumber) {
-                rewindTransferProgressToReport(requestedStartReport);
-            }
-
-            logger.debug(
-                    "NODE {}: Re-sending previously transmitted fragment {} after duplicate UPDATE_MD_GET (elapsedMs={}, resendWindowMs={})",
-                    node.getNodeId(), requestedStartReport,
-                    lastSentTime != null ? Long.valueOf(elapsedMillis) : "unknown", DUPLICATE_GET_RESEND_DELAY_MS);
-
-            // Consume the resend window immediately so another closely-spaced GET
-            // does not trigger a second resend before transmission bookkeeping updates.
-            reportLastSentTimes.put(requestedStartReport, currentTimeMillis());
-            duplicateGetsForSentReport = 0;
-        }
-
-        // Ignore stale requests that arrive after the device has already advanced,
-        // unless they are for a transmitted fragment that we may need to resend.
-        if (requestedStartReport > highestTransmittedReportNumber && highestRequestedStartReport > 0
-                && requestedStartReport < highestRequestedStartReport) {
-            logger.debug(
-                    "NODE {}: Ignoring stale UPDATE_MD_GET for fragment {} because fragment {} was already requested",
-                    node.getNodeId(), requestedStartReport, highestRequestedStartReport);
-            return true;
-        }
-        if (requestedStartReport > highestRequestedStartReport) {
-            highestRequestedStartReport = requestedStartReport;
-        }
-        duplicateGetsForSentReport = 0;
-
-        if (requestedStartReport < 1 || requestedStartReport > MAX_REPORT_NUMBER) {
-            logger.warn("NODE {}: Received UPDATE_MD_GET with invalid start fragment {}", node.getNodeId(),
-                    requestedStartReport);
-            return true;
-        }
-
-        if (fragments.isEmpty()) {
-            fail("No fragments prepared");
-            return true;
-        }
-
-        int remainingFragments = fragments.size() - requestedStartReport + 1;
-        if (remainingFragments <= 0) {
-            logger.warn("NODE {}: Received UPDATE_MD_GET start {} beyond available fragments {}", node.getNodeId(),
-                    requestedStartReport, fragments.size());
-            return true;
-        }
-
-        int cappedCount = Math.min(requestedCount, remainingFragments);
-        if (cappedCount != requestedCount) {
-            logger.debug("NODE {}: Capping UPDATE_MD_GET count from {} to {} (remaining from start={} is {})",
-                    node.getNodeId(), requestedCount, cappedCount, requestedStartReport, remainingFragments);
-        }
-
-        // Publish an initial 1% progress event the first time we start sending fragments
-        // so the UI reflects activity before the first 5% step is reached.
-        if (lastPublishedProgressPercent == 0) {
-            publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(1));
-        }
-
-        // Start (or reset) the inactivity watchdog: if no further GET events arrive
-        // within the timeout window the session is declared dead.
-        scheduleInactivityTimeout();
-
-        // Device is asking for the next fragment.
-        this.startReportNumber = requestedStartReport;
-        this.count = cappedCount;
-        state = State.SENDING_FRAGMENTS;
-        sendNextFragment(startReportNumber, count);
-
-        return true;
-    }
-
-    private boolean isOutOfSequenceForwardRequest(int requestedStartReport) {
-        if (requestedStartReport <= 1) {
-            return false;
-        }
-
-        if (highestTransmittedReportNumber <= 0) {
-            logger.warn(
-                    "NODE {}: Ignoring out-of-sequence UPDATE_MD_GET for fragment {} before fragment 1 was transmitted",
-                    node.getNodeId(), requestedStartReport);
-            return true;
-        }
-
-        int nextExpectedReport = highestTransmittedReportNumber + 1;
-        if (requestedStartReport > nextExpectedReport) {
-            logger.warn(
-                    "NODE {}: Ignoring out-of-sequence UPDATE_MD_GET for fragment {} (highestTransmitted={}, nextExpected={})",
-                    node.getNodeId(), requestedStartReport, highestTransmittedReportNumber, nextExpectedReport);
-            return true;
-        }
-
-        return false;
-    }
-
-    private boolean handleUpdateMdStatusReport(FirmwareUpdateEvent event) {
-        // A status report is only valid after the last fragment has been sent and
-        // we are explicitly waiting for the device's final update status.
-        // Any out-of-sequence status report is treated as a protocol failure.
-        if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
-            if (!active) {
-                return false;
-            }
-            logger.warn("NODE {}: Received unexpected UPDATE_MD_STATUS_REPORT in state {} - treating as protocol error",
-                    node.getNodeId(), state);
-        }
-
-        // Any status report means the waiting timer is no longer authoritative.
-        invalidateStatusReportTimeout();
-
-        UpdateMdStatusReport updateStatus = UpdateMdStatusReport.from(event.getStatus());
-        logger.debug("NODE {}: Received Status Report: {}", node.getNodeId(), updateStatus);
-
-        switch (updateStatus) {
-            case ERROR_CHECKSUM:
-            case ERROR_TRANSMISSION_FAILED:
-            case ERROR_INVALID_MANUFACTURER_ID:
-            case ERROR_INVALID_FIRMWARE_ID:
-            case ERROR_INVALID_FIRMWARE_TARGET:
-            case ERROR_INVALID_HEADER_INFORMATION:
-            case ERROR_INVALID_HEADER_FORMAT:
-            case ERROR_INSUFFICIENT_MEMORY:
-            case ERROR_INVALID_HARDWARE_VERSION:
-            case UNKNOWN:
-                failFirmwareUpdate("Device reported firmware update status: " + updateStatus, updateStatus.name());
-                return true;
-
-            case OK_WAITING_FOR_ACTIVATION:
-                return handleWaitingForActivationStatus();
-
-            case OK_NO_RESTART:
-                publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
-                completeSuccess();
-                return true;
-
-            case OK_RESTART_PENDING:
-                scheduleNopAfterWaitTime(event.getWaitTime());
-                publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
-                completeSuccess();
-                return true;
-
-            default:
-                failFirmwareUpdate("Unhandled firmware update status: " + updateStatus,
-                        Integer.valueOf(event.getStatus()));
-                return true;
-        }
-    }
-
-    private boolean handleWaitingForActivationStatus() {
-        int ccVersion = getFirmwareUpdateMdVersion();
-        if (ccVersion < 4) {
-            failFirmwareUpdate("Device reported activation required, but Firmware Update MD CC version " + ccVersion
-                    + " does not support activation command", Integer.valueOf(ccVersion));
-            return true;
-        }
-
-        FirmwareMetadata metadata = sessionMetadata;
-        if (metadata == null) {
-            failFirmwareUpdate("Cannot send activation - metadata unavailable", Integer.valueOf(-1));
-            return true;
-        }
-
-        byte[] firmwareBaseData = buildFirmwareBaseData(metadata, ccVersion);
-
-        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
-        if (fw == null) {
-            failFirmwareUpdate("Firmware Update MD CC missing", Integer.valueOf(-1));
-            return true;
-        }
-
-        ZWaveCommandClassTransactionPayload msg = fw.setFirmwareActivation(firmwareBaseData);
-        node.sendMessage(msg);
-        state = State.WAITING_FOR_ACTIVATION_STATUS_REPORT;
-
-        logger.debug("NODE {}: Sent Firmware Update Activation Set", node.getNodeId());
-        return true;
-    }
-
-    private boolean handleActivationStatusReport(FirmwareUpdateEvent event) {
-        if (state != State.WAITING_FOR_ACTIVATION_STATUS_REPORT) {
-            return false;
-        }
-
-        if (event.getStatus() == 0xFF) {
-            publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
-            completeSuccess();
-            return true;
-        }
-
-        failFirmwareUpdate("Firmware activation failed", Integer.valueOf(event.getStatus()));
-        return true;
-    }
-
-    private void scheduleNopAfterWaitTime(int waitTimeSeconds) {
-        if (waitTimeSeconds < 0) {
-            waitTimeSeconds = 0;
-        }
-
-        final int delay = waitTimeSeconds;
-        logger.debug("NODE {}: Scheduling NOP ping after {} seconds", node.getNodeId(), delay);
-
-        CompletableFuture.runAsync(() -> {
-            logger.debug("NODE {}: Sending delayed NOP ping after firmware restart wait", node.getNodeId());
-            node.pingNode();
-        }, CompletableFuture.delayedExecutor(delay, TimeUnit.SECONDS));
-    }
-
     /**
-     * Sends one or more fragments in response to UPDATE_MD_GET.
-     * Supports:
-     * - Single fragment requests
-     * - Repeated fragment requests
-     * - Multi-fragment requests (with required 35ms delay)
+     * Parse the raw metadata-report payload into a structured {@link FirmwareMetadata} object.
+     * Handles legacy V1/V2 reports (6 bytes) and V3+ reports (10+ bytes), extracting manufacturer ID,
+     * firmware ID, checksum, maximum fragment size, hardware version, and optional feature flags.
+     * This parsed data is reused later when constructing request payloads.
+     *
+     * @param payload the raw payload from the MD Report
+     * @return a {@link FirmwareMetadata} object containing the parsed metadata
+     * @throws IllegalArgumentException if the payload is malformed or too short
      */
-    private void sendNextFragment(int startReportNumber, int count) {
-        if (fragments == null || fragments.isEmpty()) {
-            fail("No fragments prepared");
-            return;
-        }
-
-        if (count <= 0) {
-            logger.warn("NODE {}: Invalid fragment count request: {}", node.getNodeId(), count);
-            return;
-        }
-
-        // Defensive bounds check
-        if (startReportNumber < 1 || startReportNumber > fragments.size()) {
-            logger.warn("NODE {}: Invalid fragment request: {}", node.getNodeId(), startReportNumber);
-            return;
-        }
-
-        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
-
-        if (fw == null) {
-            fail("Firmware Update MD CC missing");
-            return;
-        }
-
-        // Multi-fragment request: device may ask for N fragments at once
-        for (int i = 0; i < count; i++) {
-
-            int reportNumber = startReportNumber + i;
-
-            if (reportNumber > fragments.size()) {
-                logger.warn("NODE {}: Device requested fragment {} beyond available {}", node.getNodeId(), reportNumber,
-                        fragments.size());
-                break;
-            }
-
-            FirmwareFragment fragment = fragments.get(reportNumber - 1);
-
-            logger.debug("NODE {}: Sending fragment {} (last={})", node.getNodeId(), fragment.getReportNumber(),
-                    fragment.isLast());
-
-            // Convert session fragment → CC fragment
-            ZWaveFirmwareUpdateCommandClass.FirmwareFragment ccFragment = new ZWaveFirmwareUpdateCommandClass.FirmwareFragment(
-                    fragment.isLast(), fragment.getReportNumber(), fragment.getData(), null);
-
-            ZWaveCommandClassTransactionPayload msg = fw.sendFirmwareUpdateReport(ccFragment);
-
-            if (logger.isTraceEnabled()) {
-                int advertisedMaxFragmentSize = sessionMetadata != null ? sessionMetadata.maxFragmentSize() : -1;
-                byte[] txPayload = msg.getPayloadBuffer();
-                int crcMsb = txPayload.length >= 2 ? txPayload[txPayload.length - 2] & 0xFF : -1;
-                int crcLsb = txPayload.length >= 1 ? txPayload[txPayload.length - 1] & 0xFF : -1;
-                logger.trace(
-                        "NODE {}: Fragment TX details report={}, isLast={}, advertisedMaxDataLen={}, dataLen={}, payloadLen={}, crc=0x{}{}, payload={}",
-                        node.getNodeId(), fragment.getReportNumber(), fragment.isLast(),
-                        advertisedMaxFragmentSize >= 0 ? advertisedMaxFragmentSize : null, fragment.getData().length,
-                        txPayload.length, crcMsb >= 0 ? String.format("%02X", crcMsb) : "??",
-                        crcLsb >= 0 ? String.format("%02X", crcLsb) : "??", toHex(txPayload));
-            }
-
-            node.sendMessage(msg);
-            long sentAtMillis = currentTimeMillis();
-            reportLastSentTimes.put(fragment.getReportNumber(), sentAtMillis);
-            highestTransmittedReportNumber = Math.max(highestTransmittedReportNumber, fragment.getReportNumber());
-            publishFirmwareUpdateProgressIfNeeded();
-
-            // If this was the last fragment, transition to waiting for status
-            if (fragment.isLast()) {
-                logger.debug("NODE {}: Last fragment sent, waiting for status report", node.getNodeId());
-                cancelInactivityTimeout();
-                state = State.WAITING_FOR_UPDATE_MD_STATUS_REPORT;
-                scheduleStatusReportTimeout();
-                return;
-            }
-
-            // Required delay when multiple fragments are requested
-            if (count > 1 && i < count - 1) {
-                try {
-                    Thread.sleep(MULTI_FRAGMENT_INTERFRAME_DELAY_MS);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
-        }
-
-        // Normal case: after sending a fragment, remain in SENDING_FRAGMENTS
-        state = State.SENDING_FRAGMENTS;
-    }
-
-    // Sends the initial FIRMWARE_MD_GET to start the process
-    private void requestMetadata() {
-        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
-
-        ZWaveCommandClassTransactionPayload msg = fw.sendMDGetMessage();
-        node.sendMessage(msg);
-
-        logger.debug("NODE {}: Sent Firmware MD Get", node.getNodeId());
-    }
-
-    // Sends the FIRMWARE_MD_REQUEST_GET with metadata from the initial report, to
-    // confirm update parameters
-    private void sendFirmwareUpdateMdRequestGet(FirmwareMetadata metadata) {
-        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
-                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
-
-        byte[] payload = buildMdRequestGet(metadata);
-
-        ZWaveCommandClassTransactionPayload msg = fw.sendMDRequestGetMessage(payload);
-
-        node.sendMessage(msg);
-
-        logger.debug("NODE {}: Sent Firmware MD RequestGet", node.getNodeId());
-    }
-
-    // Parses the raw payload of the initial MD Report into structured metadata
-    // for future use in creating payloads and preparing fragments.
     private FirmwareMetadata parseMetadata(byte[] payload) {
         if (payload.length < 6) {
             throw new IllegalArgumentException("payload too short (need at least 6 bytes, got " + payload.length + ")");
@@ -1156,7 +408,7 @@ public class ZWaveFirmwareUpdateSession {
         int checksum = ((payload[4] & 0xFF) << 8) | (payload[5] & 0xFF);
 
         // V1/V2 only provide the first 6 bytes; assume upgradable and use default
-        // fragment size.
+        // max fragment size.
         if (payload.length == 6) {
             byte[] report3Payload = buildLegacyReport3Payload(manufacturerId, firmwareId, checksum, false, false,
                     DEFAULT_MAX_FRAGMENT_SIZE, false, 0, 0);
@@ -1310,6 +562,646 @@ public class ZWaveFirmwareUpdateSession {
         return payload;
     }
 
+    /**
+     * Prepares the firmware fragments for transmission based on the metadata.
+     * Each fragment contains a portion of the firmware data along with its report
+     * number and a flag indicating if it is the last fragment.
+     *
+     * @param metadata the firmware metadata containing information about the
+     *                 firmware update
+     * @return true if fragments were successfully prepared, false otherwise
+     */
+    private boolean prepareFragments(FirmwareMetadata metadata) {
+        fragments = new ArrayList<>();
+
+        // maxFragmentSize specifies the firmware DATA bytes per fragment only;
+        // the CC/CMD/reportNum/CRC overhead is added by the serializer on top of this.
+        int usable = metadata.maxFragmentSize();
+
+        if (usable <= 0) {
+            failFirmwareUpdate(
+                    "Max fragment size too small for firmware update (max=" + metadata.maxFragmentSize() + ")",
+                    Integer.valueOf(metadata.maxFragmentSize()));
+            return false;
+        }
+
+        int offset = 0;
+        int reportNumber = 1;
+
+        while (offset < firmwareBytes.length) {
+            if (reportNumber > MAX_REPORT_NUMBER) {
+                failFirmwareUpdate("Firmware requires more than " + MAX_REPORT_NUMBER + " reports",
+                        Integer.valueOf(MAX_REPORT_NUMBER));
+                fragments = List.of();
+                return false;
+            }
+
+            int remaining = firmwareBytes.length - offset;
+            int chunkSize = Math.min(usable, remaining);
+
+            byte[] chunk = Arrays.copyOfRange(firmwareBytes, offset, offset + chunkSize);
+
+            boolean isLast = (offset + chunkSize) >= firmwareBytes.length;
+
+            fragments.add(new FirmwareFragment(reportNumber, isLast, chunk));
+
+            offset += chunkSize;
+            reportNumber++;
+        }
+
+        logger.debug("NODE {}: Prepared {} fragments (usable={} bytes each)", node.getNodeId(), fragments.size(),
+                usable);
+        return true;
+    }
+
+    /**
+     * Represents a fragment of the firmware being transmitted.
+     * Each fragment contains a portion of the firmware data along with its report
+     * number and a flag indicating if it is the last fragment.
+     */
+    public static class FirmwareFragment {
+        private final int reportNumber;
+        private final boolean isLast;
+        private final byte[] data;
+
+        public FirmwareFragment(int reportNumber, boolean isLast, byte[] data) {
+            this.reportNumber = reportNumber;
+            this.isLast = isLast;
+            this.data = data;
+        }
+
+        public int getReportNumber() {
+            return reportNumber;
+        }
+
+        public boolean isLast() {
+            return isLast;
+        }
+
+        public byte[] getData() {
+            return data;
+        }
+    }
+    
+    // Sends the FIRMWARE_MD_REQUEST_GET with metadata from the initial report, to
+    // confirm update parameters
+    private void sendFirmwareUpdateMdRequestGet(FirmwareMetadata metadata) {
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+
+        byte[] payload = buildMdRequestGet(metadata);
+
+        ZWaveCommandClassTransactionPayload msg = fw.sendMDRequestGetMessage(payload);
+
+        node.sendMessage(msg);
+
+        logger.debug("NODE {}: Sent Firmware MD RequestGet", node.getNodeId());
+    }
+
+    /**
+     * Handle Update MD Request Report (4) from the device.
+     * This indicates whether the device accepts the parameters from the earlier MD Request Get.
+     * If accepted, the device should next send UPDATE_MD_GET (5) frames.
+     *
+     * @param event the Update MD Request Report
+     * @return true if the event was handled in the current state, false otherwise
+     */
+    private boolean handleUpdateMdRequestReport(FirmwareUpdateEvent event) {
+        if (state != State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT) {
+            return false;
+        }
+
+        // Version 8, resume = devices agrees to resume a previously interrupted update,
+        // nonSecure = device agrees to accept firmware without security encoding
+        FirmwareUpdateMdRequestStatus requestStatus = FirmwareUpdateMdRequestStatus.from(event.getStatus());
+        logger.debug("NODE {}: Received Update MD Request Report", node.getNodeId());
+        logger.debug("NODE {}: Status={} ({}), resume={}, nonSecure={}", node.getNodeId(), event.getStatus(),
+                requestStatus, event.getResume(), event.getNonSecure());
+
+        if (requestStatus != FirmwareUpdateMdRequestStatus.OK) {
+            failFirmwareUpdate("Device rejected firmware update request: " + requestStatus, requestStatus.name());
+            return true;
+        }
+
+        state = State.WAITING_FOR_UPDATE_MD_GET;
+        return true;
+    }
+
+    /**
+     * Handle UPDATE_MD_GET from the device.
+     * Includes safeguards for out-of-sequence requests, duplicate report requests, implicit acknowledgments,
+     * and retry behavior under slow multi-hop paths and transient communication failures.
+     *
+     * @param event the firmware update event representing UPDATE_MD_GET
+     * @return true if the event was handled successfully, false otherwise
+     */
+    private boolean handleUpdateMdGet(FirmwareUpdateEvent event) {
+        if (state != State.WAITING_FOR_UPDATE_MD_GET && state != State.SENDING_FRAGMENTS
+                && state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT
+                && state != State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT) {
+            return false;
+        }
+        // Accept UPDATE_MD_GET as an implicit OK in case of missing
+        // UPDATE_MD_REQUEST_REPORT.
+        if (state == State.WAITING_FOR_UPDATE_MD_REQUEST_REPORT) {
+            logger.debug(
+                    "NODE {}: Received UPDATE_MD_GET before UPDATE_MD_REQUEST_REPORT; treating as implicit request acceptance",
+                    node.getNodeId());
+        }
+
+        int requestedStartReport = event.getReportNumber();
+        int requestedCount = event.getNumReports();
+        if (requestedCount <= 0) {
+            logger.debug("NODE {}: Received UPDATE_MD_GET with invalid count {} - normalizing to 1", node.getNodeId(),
+                    requestedCount);
+            requestedCount = 1;
+        }
+
+        if (requestedStartReport < 1 || requestedStartReport > MAX_REPORT_NUMBER) {
+            logger.warn("NODE {}: Received UPDATE_MD_GET with invalid start fragment {}", node.getNodeId(),
+                    requestedStartReport);
+            return true;
+        }
+
+        logger.debug("NODE {}: Received UPDATE_MD_GET for fragment {} (count={})", node.getNodeId(),
+                requestedStartReport, requestedCount);
+
+        // Ignore out-of-sequence forward jumps.
+        if (isOutOfSequenceForwardRequest(requestedStartReport)) {
+            return true;
+        }
+
+        // A higher requested start implies the previous fragment was accepted.
+        int impliedAckReport = Math.min(highestTransmittedReportNumber, requestedStartReport - 1);
+        if (impliedAckReport > highestAckedReportNumber) {
+            logger.debug(
+                    "NODE {}: Advancing ACK anchor from {} to {} based on UPDATE_MD_GET start {}",
+                    node.getNodeId(), highestAckedReportNumber, impliedAckReport, requestedStartReport);
+            highestAckedReportNumber = impliedAckReport;
+        }
+
+        if (requestedStartReport <= highestAckedReportNumber) {
+            logger.debug(
+                    "NODE {}: Ignoring UPDATE_MD_GET for already ACKed fragment {} (ackAnchor={})",
+                    node.getNodeId(), requestedStartReport, highestAckedReportNumber);
+            return true;
+        }
+
+        // If a GET arrives for an in-sequence fragment higher than what we're currently
+        // waiting on, treat it as an implicit ACK of that fragment.
+        if (requestedStartReport > startReportNumber && startReportNumber > 0) {
+            logger.debug(
+                    "NODE {}: Received UPDATE_MD_GET for fragment {} while retrying fragment {}; treating this as implicit ACK of fragment {} and continuing with the requested fragment",
+                    node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
+            duplicateGetsForSentReport = 0;
+        } else if (requestedStartReport <= highestTransmittedReportNumber) {
+            // Some nodes may send duplicate GETs for an already-sent report.
+            // Ignore these near-term duplicates, but allow a late retry
+            // so the device can recover from a truly missed report.
+            Long lastSentTime = reportLastSentTimes.get(requestedStartReport);
+            long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue() : Long.MAX_VALUE;
+
+            if (lastSentTime != null && elapsedMillis < DUPLICATE_GET_RESEND_DELAY_MS) {
+                duplicateGetsForSentReport++;
+                logger.debug(
+                        "NODE {}: Ignoring duplicate UPDATE_MD_GET for already-transmitted fragment {} (highestTransmitted={}, duplicateCount={}, elapsedMs={})",
+                        node.getNodeId(), requestedStartReport, highestTransmittedReportNumber,
+                        duplicateGetsForSentReport, elapsedMillis);
+                return true;
+            }
+
+            logger.debug(
+                    "NODE {}: Re-sending previously transmitted fragment {} after duplicate UPDATE_MD_GET (elapsedMs={}, resendWindowMs={})",
+                    node.getNodeId(), requestedStartReport,
+                    lastSentTime != null ? Long.valueOf(elapsedMillis) : "unknown", DUPLICATE_GET_RESEND_DELAY_MS);
+
+            // Consume the resend window immediately so another closely-spaced GET
+            // does not trigger a second resend before transmission bookkeeping updates.
+            reportLastSentTimes.put(requestedStartReport, currentTimeMillis());
+            duplicateGetsForSentReport = 0;
+        }
+        duplicateGetsForSentReport = 0;
+
+        if (fragments.isEmpty()) {
+            fail("No fragments prepared");
+            return true;
+        }
+
+        int remainingFragments = fragments.size() - requestedStartReport + 1;
+        if (remainingFragments <= 0) {
+            logger.warn("NODE {}: Received UPDATE_MD_GET start {} beyond available fragments {}", node.getNodeId(),
+                    requestedStartReport, fragments.size());
+            return true;
+        }
+
+        int cappedCount = Math.min(requestedCount, remainingFragments);
+        if (cappedCount != requestedCount) {
+            logger.debug("NODE {}: Capping UPDATE_MD_GET count from {} to {} (remaining from start={} is {})",
+                    node.getNodeId(), requestedCount, cappedCount, requestedStartReport, remainingFragments);
+        }
+
+        // Publish an initial 1% progress event the first time we start sending fragments
+        // so the UI reflects activity.
+        if (lastPublishedProgressPercent == 0) {
+            publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(1));
+        }
+
+        // Start (or reset) the inactivity watchdog: if no further GET events arrive
+        // within the timeout window the session is declared dead.
+        scheduleInactivityTimeout();
+
+        // Device is asking for the next fragment.
+        this.startReportNumber = requestedStartReport;
+        this.count = cappedCount;
+        state = State.SENDING_FRAGMENTS;
+        sendNextFragment(startReportNumber, count);
+
+        return true;
+    }
+
+    private boolean isOutOfSequenceForwardRequest(int requestedStartReport) {
+        if (requestedStartReport <= 1) {
+            return false;
+        }
+
+        if (highestTransmittedReportNumber <= 0) {
+            logger.warn(
+                    "NODE {}: Ignoring out-of-sequence UPDATE_MD_GET for fragment {} before fragment 1 was transmitted",
+                    node.getNodeId(), requestedStartReport);
+            return true;
+        }
+
+        int nextExpectedReport = highestTransmittedReportNumber + 1;
+        if (requestedStartReport > nextExpectedReport) {
+            logger.warn(
+                    "NODE {}: Ignoring out-of-sequence UPDATE_MD_GET for fragment {} (highestTransmitted={}, nextExpected={})",
+                    node.getNodeId(), requestedStartReport, highestTransmittedReportNumber, nextExpectedReport);
+            return true;
+        }
+
+        return false;
+    }
+    
+    protected int getInactivityTimeoutMinutes() {
+        return INACTIVITY_TIMEOUT_MINUTES;
+    }
+
+    protected long getInactivityTimeoutMillis() {
+        return TimeUnit.MINUTES.toMillis(getInactivityTimeoutMinutes());
+    }
+
+    private void scheduleInactivityTimeout() {
+        int generation = inactivityTimeoutGeneration.incrementAndGet();
+
+        CompletableFuture.runAsync(() -> {
+            if (!active) {
+                return;
+            }
+            if (inactivityTimeoutGeneration.get() != generation) {
+                return;
+            }
+
+            logger.warn("NODE {}: Firmware update inactivity timeout - no events received for {} minutes",
+                    node.getNodeId(), getInactivityTimeoutMinutes());
+            failFirmwareUpdate(
+                    "Firmware update timed out - no activity for " + getInactivityTimeoutMinutes() + " minutes",
+                    FirmwareUpdateMdStatusReport.ERROR_TRANSMISSION_FAILED.name());
+        }, CompletableFuture.delayedExecutor(getInactivityTimeoutMillis(), TimeUnit.MILLISECONDS));
+    }
+
+    private void cancelInactivityTimeout() {
+        inactivityTimeoutGeneration.incrementAndGet();
+    }
+
+    /**
+     * Sends one or more fragments in response to UPDATE_MD_GET.
+     * Supports:
+     * - Single fragment requests
+     * - Repeated fragment requests
+     * - Multi-fragment requests (with required 35ms delay)
+     */
+    private void sendNextFragment(int startReportNumber, int count) {
+        if (fragments == null || fragments.isEmpty()) {
+            fail("No fragments prepared");
+            return;
+        }
+
+        if (count <= 0) {
+            logger.warn("NODE {}: Invalid fragment count request: {}", node.getNodeId(), count);
+            return;
+        }
+
+        // Defensive bounds check
+        if (startReportNumber < 1 || startReportNumber > fragments.size()) {
+            logger.warn("NODE {}: Invalid fragment request: {}", node.getNodeId(), startReportNumber);
+            return;
+        }
+
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+
+        if (fw == null) {
+            fail("Firmware Update MD CC missing");
+            return;
+        }
+
+        // Multi-fragment request: device may ask for N fragments at once
+        for (int i = 0; i < count; i++) {
+
+            int reportNumber = startReportNumber + i;
+
+            if (reportNumber > fragments.size()) {
+                logger.warn("NODE {}: Device requested fragment {} beyond available {}", node.getNodeId(), reportNumber,
+                        fragments.size());
+                break;
+            }
+
+            FirmwareFragment fragment = fragments.get(reportNumber - 1);
+
+            logger.debug("NODE {}: Sending fragment {} (last={})", node.getNodeId(), fragment.getReportNumber(),
+                    fragment.isLast());
+
+            // Convert session fragment → CC fragment
+            ZWaveFirmwareUpdateCommandClass.FirmwareFragment ccFragment = new ZWaveFirmwareUpdateCommandClass.FirmwareFragment(
+                    fragment.isLast(), fragment.getReportNumber(), fragment.getData(), null);
+
+            ZWaveCommandClassTransactionPayload msg = fw.sendFirmwareUpdateReport(ccFragment);
+
+            if (logger.isTraceEnabled()) {
+                int advertisedMaxFragmentSize = sessionMetadata != null ? sessionMetadata.maxFragmentSize() : -1;
+                byte[] txPayload = msg.getPayloadBuffer();
+                int crcMsb = txPayload.length >= 2 ? txPayload[txPayload.length - 2] & 0xFF : -1;
+                int crcLsb = txPayload.length >= 1 ? txPayload[txPayload.length - 1] & 0xFF : -1;
+                logger.trace(
+                        "NODE {}: Fragment TX details report={}, isLast={}, advertisedMaxDataLen={}, dataLen={}, payloadLen={}, crc=0x{}{}, payload={}",
+                        node.getNodeId(), fragment.getReportNumber(), fragment.isLast(),
+                        advertisedMaxFragmentSize >= 0 ? advertisedMaxFragmentSize : null, fragment.getData().length,
+                        txPayload.length, crcMsb >= 0 ? String.format("%02X", crcMsb) : "??",
+                        crcLsb >= 0 ? String.format("%02X", crcLsb) : "??", toHex(txPayload));
+            }
+
+            node.sendMessage(msg);
+            long sentAtMillis = currentTimeMillis();
+            reportLastSentTimes.put(fragment.getReportNumber(), sentAtMillis);
+            highestTransmittedReportNumber = Math.max(highestTransmittedReportNumber, fragment.getReportNumber());
+            publishFirmwareUpdateProgressIfNeeded();
+
+            // If this was the last fragment, transition to waiting for status
+            if (fragment.isLast()) {
+                logger.debug("NODE {}: Last fragment sent, waiting for status report", node.getNodeId());
+                cancelInactivityTimeout();
+                state = State.WAITING_FOR_UPDATE_MD_STATUS_REPORT;
+                scheduleStatusReportTimeout();
+                return;
+            }
+
+            // Required delay when multiple fragments are requested
+            if (count > 1 && i < count - 1) {
+                try {
+                    Thread.sleep(MULTI_FRAGMENT_INTERFRAME_DELAY_MS);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+
+        // Normal case: after sending a fragment, remain in SENDING_FRAGMENTS
+        state = State.SENDING_FRAGMENTS;
+    }
+
+    private void scheduleStatusReportTimeout() {
+        int generation = statusReportTimeoutGeneration.incrementAndGet();
+
+        CompletableFuture.runAsync(() -> {
+            if (!active) {
+                return;
+            }
+            if (statusReportTimeoutGeneration.get() != generation) {
+                return;
+            }
+            if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
+                return;
+            }
+
+            logger.warn("NODE {}: Timed out waiting for Firmware Update MD Status Report", node.getNodeId());
+            failFirmwareUpdate("Timed out waiting for Firmware Update MD Status Report");
+        }, CompletableFuture.delayedExecutor(getStatusReportWaitTimeoutSeconds(), TimeUnit.SECONDS));
+    }
+
+    protected int getStatusReportWaitTimeoutSeconds() {
+        return STATUS_REPORT_WAIT_TIMEOUT_SECONDS;
+    }
+
+    private void invalidateStatusReportTimeout() {
+        statusReportTimeoutGeneration.incrementAndGet();
+    }
+
+    private boolean handleUpdateMdStatusReport(FirmwareUpdateEvent event) {
+        // A status report is only valid after the last fragment has been sent and
+        // we are explicitly waiting for the device's final update status.
+        // Any out-of-sequence status report is treated as a protocol failure.
+        if (state != State.WAITING_FOR_UPDATE_MD_STATUS_REPORT) {
+            if (!active) {
+                return false;
+            }
+            logger.warn("NODE {}: Received unexpected UPDATE_MD_STATUS_REPORT in state {} - treating as protocol error",
+                    node.getNodeId(), state);
+        }
+
+        // Any status report means the waiting timer is no longer authoritative.
+        invalidateStatusReportTimeout();
+
+        FirmwareUpdateMdStatusReport updateStatus = FirmwareUpdateMdStatusReport.from(event.getStatus());
+        logger.debug("NODE {}: Received Status Report: {}", node.getNodeId(), updateStatus);
+
+        switch (updateStatus) {
+            case ERROR_CHECKSUM:
+            case ERROR_TRANSMISSION_FAILED:
+            case ERROR_INVALID_MANUFACTURER_ID:
+            case ERROR_INVALID_FIRMWARE_ID:
+            case ERROR_INVALID_FIRMWARE_TARGET:
+            case ERROR_INVALID_HEADER_INFORMATION:
+            case ERROR_INVALID_HEADER_FORMAT:
+            case ERROR_INSUFFICIENT_MEMORY:
+            case ERROR_INVALID_HARDWARE_VERSION:
+            case UNKNOWN:
+                failFirmwareUpdate("Device reported firmware update status: " + updateStatus, updateStatus.name());
+                return true;
+
+            case OK_WAITING_FOR_ACTIVATION:
+                return handleWaitingForActivationStatus();
+
+            case OK_NO_RESTART:
+                publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
+                completeSuccess();
+                return true;
+
+            case OK_RESTART_PENDING:
+                scheduleNopAfterWaitTime(event.getWaitTime());
+                publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
+                completeSuccess();
+                return true;
+
+            default:
+                failFirmwareUpdate("Unhandled firmware update status: " + updateStatus,
+                        Integer.valueOf(event.getStatus()));
+                return true;
+        }
+    }
+
+    private boolean handleWaitingForActivationStatus() {
+        int ccVersion = getFirmwareUpdateMdVersion();
+        if (ccVersion < 4) {
+            failFirmwareUpdate("Device reported activation required, but Firmware Update MD CC version " + ccVersion
+                    + " does not support activation command", Integer.valueOf(ccVersion));
+            return true;
+        }
+
+        FirmwareMetadata metadata = sessionMetadata;
+        if (metadata == null) {
+            failFirmwareUpdate("Cannot send activation - metadata unavailable", Integer.valueOf(-1));
+            return true;
+        }
+
+        byte[] firmwareBaseData = buildFirmwareBaseData(metadata, ccVersion);
+
+        ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
+        if (fw == null) {
+            failFirmwareUpdate("Firmware Update MD CC missing", Integer.valueOf(-1));
+            return true;
+        }
+
+        ZWaveCommandClassTransactionPayload msg = fw.setFirmwareActivation(firmwareBaseData);
+        node.sendMessage(msg);
+        state = State.WAITING_FOR_ACTIVATION_STATUS_REPORT;
+
+        logger.debug("NODE {}: Sent Firmware Update Activation Set", node.getNodeId());
+        return true;
+    }
+
+    private boolean handleActivationStatusReport(FirmwareUpdateEvent event) {
+        if (state != State.WAITING_FOR_ACTIVATION_STATUS_REPORT) {
+            return false;
+        }
+
+        FirmwareUpdateActivationStatus activationStatus = FirmwareUpdateActivationStatus.from(event.getStatus());
+        logger.debug("NODE {}: Received Activation Status Report: {}", node.getNodeId(), activationStatus);
+
+        switch (activationStatus) {
+            case SUCCESS:
+                publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
+                completeSuccess();
+                return true;
+
+            case ERROR_ACTIVATING_FIRMWARE:
+            case INVALID_PAYLOAD:
+            case UNKNOWN:
+            default:
+                failFirmwareUpdate("Firmware activation failed: " + activationStatus, activationStatus.name());
+                return true;
+        }
+    }
+
+    private void scheduleNopAfterWaitTime(int waitTimeSeconds) {
+        if (waitTimeSeconds < 5) {
+            waitTimeSeconds = 5;
+        }
+
+        final int delay = waitTimeSeconds;
+        logger.debug("NODE {}: Scheduling NOP ping after {} seconds", node.getNodeId(), delay);
+
+        CompletableFuture.runAsync(() -> {
+            logger.debug("NODE {}: Sending delayed NOP ping after firmware restart wait", node.getNodeId());
+            node.pingNode();
+        }, CompletableFuture.delayedExecutor(delay, TimeUnit.SECONDS));
+    }
+
+    private void completeSuccess() {
+        logger.info("NODE {}: Firmware update completed", node.getNodeId());
+        invalidateStatusReportTimeout();
+        cancelInactivityTimeout();
+        node.setFirmwareUpdateInProgress(false);
+        state = State.SUCCESS;
+        active = false;
+    }
+
+    private void fail(String reason) {
+        logger.error("NODE {}: Firmware update failed: {}", node.getNodeId(), reason);
+        invalidateStatusReportTimeout();
+        cancelInactivityTimeout();
+        node.setFirmwareUpdateInProgress(false);
+        state = State.FAILURE;
+        active = false;
+    }
+
+    private void failFirmwareUpdate(String reason, Object value) {
+        publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Failure, value);
+        fail(reason);
+    }
+
+    private void failFirmwareUpdate(String reason) {
+        failFirmwareUpdate(reason, reason);
+    }
+
+    private void publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State state, Object value) {
+        ZWaveNetworkEvent event = new ZWaveNetworkEvent(ZWaveNetworkEvent.Type.FirmwareUpdate, node.getNodeId(), state,
+                value);
+
+        if (controller.getController() != null) {
+            controller.getController().notifyEventListeners(event);
+            return;
+        }
+
+        // Fallback for early-session or test scenarios where the internal controller is not available.
+        controller.ZWaveIncomingEvent(event);
+    }
+
+    private void publishFirmwareUpdateProgressIfNeeded() {
+        if (fragments.isEmpty()) {
+            return;
+        }
+
+        int steppedPercentComplete = getSteppedTransferProgressPercent();
+
+        // Keep 100% reserved for terminal success status event.
+        if (steppedPercentComplete >= 100) {
+            steppedPercentComplete = 95;
+        }
+
+        if (steppedPercentComplete <= 0
+                || steppedPercentComplete < lastPublishedProgressPercent + PROGRESS_EVENT_STEP_PERCENT) {
+            return;
+        }
+
+        lastPublishedProgressPercent = steppedPercentComplete;
+        publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(steppedPercentComplete));
+    }
+
+    /**
+     * Returns the current transfer progress based on sent fragments.
+     * This can be used by higher layers to restore UI status after transient
+     * communication drops.
+     *
+     * @return progress percentage in range 0..99 while transfer is active
+     */
+    public int getCurrentTransferProgressPercent() {
+        if (fragments.isEmpty()) {
+            return 0;
+        }
+
+        int transmitted = Math.min(highestTransmittedReportNumber, fragments.size());
+        int percentComplete = (transmitted * 100) / fragments.size();
+
+        // Keep 100% reserved for terminal success status event.
+        return Math.min(percentComplete, 99);
+    }
+
+    private int getSteppedTransferProgressPercent() {
+        int percentComplete = getCurrentTransferProgressPercent();
+        return (percentComplete / PROGRESS_EVENT_STEP_PERCENT) * PROGRESS_EVENT_STEP_PERCENT;
+    }
+
     private String toHex(byte[] data) {
         StringBuilder sb = new StringBuilder(data.length * 3);
         for (int i = 0; i < data.length; i++) {
@@ -1323,5 +1215,37 @@ public class ZWaveFirmwareUpdateSession {
 
     protected long currentTimeMillis() {
         return System.currentTimeMillis();
+    }
+
+    /**
+     * Firmware update event types, used to route events from the Z-Wave protocol
+     * layer into the session logic.
+     */
+    public enum FirmwareEventType {
+        MD_REPORT,
+        UPDATE_MD_REQUEST_REPORT,
+        UPDATE_MD_GET,
+        UPDATE_MD_STATUS_REPORT,
+        ACTIVATION_STATUS_REPORT, // optional, depending on your flow
+        UPDATE_PREPARE_REPORT // Not implemented yet, but can be used to retrieve current firmware
+                              // information.
+    }
+
+    /**
+     * Firmware update session states, used to track the progress of a firmware
+     * update for a node.
+     */
+    public enum State {
+        IDLE,
+        WAITING_FOR_MD_REPORT,
+        WAITING_FOR_UPDATE_MD_REQUEST_REPORT,
+        WAITING_FOR_UPDATE_MD_GET,
+        SENDING_FRAGMENTS,
+        WAITING_FOR_UPDATE_MD_STATUS_REPORT,
+        WAITING_FOR_ACTIVATION_STATUS_REPORT, // optional, depending on your flow
+        WAITING_FOR_UPDATE_PREPARE_REPORT, // Not implemented yet, but can be used to retrieve current firmware
+                                           // information.
+        SUCCESS,
+        FAILURE
     }
 }

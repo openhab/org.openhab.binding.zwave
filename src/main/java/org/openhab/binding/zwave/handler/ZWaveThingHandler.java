@@ -1340,6 +1340,32 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         firmwareProgressStepIndex = -1;
     }
 
+    private boolean isFirmwareSessionActive() {
+        ZWaveFirmwareUpdateSession session = firmwareSession;
+        return session != null && session.isActive();
+    }
+
+    private @Nullable ProgressCallback keepCallbackIfUsable(@Nullable ProgressCallback callback, String operation,
+            Runnable invocation) {
+        if (callback == null) {
+            return null;
+        }
+
+        try {
+            invocation.run();
+            return callback;
+        } catch (RuntimeException e) {
+            logger.warn("NODE {}: Firmware progress callback {} failed ({}); disabling callback for this run", nodeId,
+                    operation, e.getMessage());
+            logger.debug("NODE {}: Firmware progress callback {} failure detail", nodeId, operation, e);
+            if (this.firmwareProgressCallback == callback) {
+                this.firmwareProgressCallback = null;
+            }
+            resetFirmwareProgressSequence();
+            return null;
+        }
+    }
+
     // Reasonable (IMO) milestones for multi-minute firmware updates.
     private @Nullable Integer getFirmwareUiMilestone(int progressPercent) {
         Integer milestone = null;
@@ -1375,15 +1401,21 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     }
 
     // Advances the firmware progress sequence to the given step index.
-    private void advanceFirmwareProgressTo(int targetStepIndex, @Nullable ProgressCallback callback) {
+    private @Nullable ProgressCallback advanceFirmwareProgressTo(int targetStepIndex,
+            @Nullable ProgressCallback callback) {
         if (callback == null) {
-            return;
+            return null;
         }
 
         while (firmwareProgressStepIndex < targetStepIndex) {
-            callback.next();
+            ProgressCallback usableCallback = keepCallbackIfUsable(callback, "next()", callback::next);
+            if (usableCallback == null) {
+                return null;
+            }
             firmwareProgressStepIndex++;
         }
+
+        return callback;
     }
 
     /**
@@ -1393,10 +1425,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
      */
     @Override
     public void updateFirmware(Firmware firmware, ProgressCallback progressCallback) {
-        progressCallback.defineSequence(ProgressStep.DOWNLOADING, ProgressStep.WAITING, ProgressStep.TRANSFERRING,
-                ProgressStep.UPDATING);
+        ProgressCallback activeProgressCallback = keepCallbackIfUsable(progressCallback, "defineSequence()",
+                () -> progressCallback.defineSequence(ProgressStep.DOWNLOADING, ProgressStep.WAITING,
+                        ProgressStep.TRANSFERRING, ProgressStep.UPDATING));
         resetFirmwareProgressSequence();
-        advanceFirmwareProgressTo(0, progressCallback);
+        activeProgressCallback = advanceFirmwareProgressTo(0, activeProgressCallback);
 
         // Clear any previous callback state before arming this run.
         this.firmwareProgressCallback = null;
@@ -1405,7 +1438,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         String loadError = loadPendingFirmwareFromRepository();
         if (loadError != null) {
             logger.warn("NODE {}: Firmware update failed: {}", nodeId, loadError);
-            progressCallback.failed("actions.firmware-update.error", loadError);
+            ProgressCallback callbackRef = activeProgressCallback;
+            keepCallbackIfUsable(callbackRef, "failed()",
+                    () -> callbackRef.failed("actions.firmware-update.error", loadError));
             clearFirmwareUpdateProgressStatus();
             resetFirmwareProgressSequence();
             this.firmwareProgressCallback = null;
@@ -1414,19 +1449,24 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         // Arm callback before start to avoid races where rapid terminal events arrive
         // before callback assignment.
-        this.firmwareProgressCallback = progressCallback;
+        this.firmwareProgressCallback = activeProgressCallback;
 
         String result = startFirmwareUpdateSession();
         if (!result.startsWith("Firmware upload started")) {
             logger.warn("NODE {}: Firmware update failed: {}", nodeId, result);
-            progressCallback.failed("actions.firmware-update.error", result);
+            ProgressCallback callbackRef = activeProgressCallback;
+            keepCallbackIfUsable(callbackRef, "failed()",
+                    () -> callbackRef.failed("actions.firmware-update.error", result));
             clearFirmwareUpdateProgressStatus();
             resetFirmwareProgressSequence();
             this.firmwareProgressCallback = null;
             return;
         }
 
-        advanceFirmwareProgressTo(1, progressCallback);
+        activeProgressCallback = advanceFirmwareProgressTo(1, activeProgressCallback);
+        if (activeProgressCallback == null) {
+            this.firmwareProgressCallback = null;
+        }
     }
 
     @Override
@@ -1438,7 +1478,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
         ProgressCallback progressCallback = this.firmwareProgressCallback;
         if (progressCallback != null) {
-            progressCallback.canceled();
+            keepCallbackIfUsable(progressCallback, "canceled()", progressCallback::canceled);
         }
         this.firmwareProgressCallback = null;
         clearFirmwareUpdateProgressStatus();
@@ -1625,9 +1665,13 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         ProgressCallback progressCallback = this.firmwareProgressCallback;
         if (progressCallback != null) {
             if (firmwareProgressStepIndex < 3) {
-                advanceFirmwareProgressTo(3, progressCallback);
+                progressCallback = advanceFirmwareProgressTo(3, progressCallback);
             }
-            progressCallback.success();
+
+            ProgressCallback callbackRef = progressCallback;
+            if (callbackRef != null) {
+                keepCallbackIfUsable(callbackRef, "success()", callbackRef::success);
+            }
             this.firmwareProgressCallback = null;
             resetFirmwareProgressSequence();
         }
@@ -1639,7 +1683,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_ERROR, description);
         ProgressCallback progressCallback = this.firmwareProgressCallback;
         if (progressCallback != null) {
-            progressCallback.failed("actions.firmware-update.error", callbackFailureDetail);
+            ProgressCallback callbackRef = progressCallback;
+            keepCallbackIfUsable(callbackRef, "failed()",
+                    () -> callbackRef.failed("actions.firmware-update.error", callbackFailureDetail));
             this.firmwareProgressCallback = null;
         }
         resetFirmwareProgressSequence();
@@ -2125,19 +2171,28 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             // Firmware update events (Progress, success, failure).
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FirmwareUpdate) {
                 if (networkEvent.getState() == ZWaveNetworkEvent.State.Progress) {
-                    ProgressCallback progressCallback = this.firmwareProgressCallback;
-                    Object progressValue = networkEvent.getValue();
-                    if (progressValue instanceof Number number) {
-                        int progressPercent = number.intValue();
-                        updateFirmwareProgressStatusForUiMilestone(progressPercent);
-
-                        if (progressCallback != null && firmwareProgressStepIndex < 2) {
-                            advanceFirmwareProgressTo(2, progressCallback);
-                        }
+                    if (!isFirmwareSessionActive()) {
+                        logger.debug(
+                                "NODE {}: Ignoring firmware progress event because no active firmware session exists",
+                                nodeId);
                     } else {
-                        if (progressCallback == null) {
-                            updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
-                                    "Firmware update in progress");
+                        ProgressCallback progressCallback = this.firmwareProgressCallback;
+                        Object progressValue = networkEvent.getValue();
+                        if (progressValue instanceof Number number) {
+                            int progressPercent = number.intValue();
+                            updateFirmwareProgressStatusForUiMilestone(progressPercent);
+
+                            if (progressCallback != null && firmwareProgressStepIndex < 2) {
+                                progressCallback = advanceFirmwareProgressTo(2, progressCallback);
+                                if (progressCallback == null) {
+                                    this.firmwareProgressCallback = null;
+                                }
+                            }
+                        } else {
+                            if (progressCallback == null) {
+                                updateStatus(ThingStatus.ONLINE, ThingStatusDetail.CONFIGURATION_PENDING,
+                                        "Firmware update in progress");
+                            }
                         }
                     }
                 }
