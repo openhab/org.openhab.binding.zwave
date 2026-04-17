@@ -188,8 +188,9 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * The payload contains manufacturer ID, firmware ID, checksum, max fragment
      * size and optionally hardware version.
      * 
-     * @param payload
-     * @param endpoint
+     * @param payload the command payload containing manufacturer ID, firmware ID, checksum,
+     *                max fragment size and optionally hardware version
+     * @param endpoint the endpoint from which the MD Report was received
      */
     @ZWaveResponseHandler(id = FIRMWARE_MD_REPORT, name = "FIRMWARE_MD_REPORT")
     public void handleMetaDataReport(ZWaveCommandClassPayload payload, int endpoint) {
@@ -208,8 +209,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * receive the firmware data.
      * The payload contains status byte and optional flags for versions.
      * 
-     * @param payload
-     * @param endpoint
+     * @param payload the command payload containing the status byte and optional flags.
+     * @param endpoint the endpoint from which the report was received
      */
     @ZWaveResponseHandler(id = FIRMWARE_UPDATE_MD_REQUEST_REPORT, name = "FIRMWARE_UPDATE_MD_REQUEST_REPORT")
     public void handleMetaDataRequestReport(ZWaveCommandClassPayload payload, int endpoint) {
@@ -244,8 +245,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * device is ready to receive the next firmware fragment. The payload contains
      * the report number and total number of reports.
      * 
-     * @param payload
-     * @param endpoint
+     * @param payload the command payload containing the report number and total number of reports
+     * @param endpoint the endpoint from which the MD Get was received
      */
     @ZWaveResponseHandler(id = FIRMWARE_UPDATE_MD_GET, name = "FIRMWARE_UPDATE_MD_GET")
     public void handleFirmwareDownloadGet(ZWaveCommandClassPayload payload, int endpoint) {
@@ -301,7 +302,7 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
 
         int status = data[2] & 0xFF;
         int waitTime = 0;
-        if (getVersion() >= 3 && data.length >= 5) {
+        if (data.length >= 5) {
             waitTime = ((data[3] & 0xFF) << 8) | (data[4] & 0xFF);
         }
 
@@ -318,8 +319,9 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * The payload contains manufacturer ID, firmware ID, checksum, target,
      * activation status and optionally hardware version.
      * 
-     * @param payload
-     * @param endpoint
+     * @param payload the command payload containing manufacturer ID, firmware ID, checksum,
+     *                firmware target, activation status and optionally hardware version
+     * @param endpoint the endpoint from which the activation status report was received
      */
     @ZWaveResponseHandler(id = FIRMWARE_UPDATE_ACTIVATION_STATUS_REPORT, name = "FIRMWARE_UPDATE_ACTIVATION_STATUS_REPORT")
     public void handleFirmwareActivationStatusReport(ZWaveCommandClassPayload payload, int endpoint) {
@@ -356,8 +358,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
      * current firmware information of the device. The payload contains checksum and
      * status. Not implemented and used for now, but can be used to retrieve current firmware.
      * 
-     * @param payload
-     * @param endpoint
+     * @param payload the command payload containing the firmware checksum and status
+     * @param endpoint the endpoint from which the prepare report was received
      */
     @ZWaveResponseHandler(id = FIRMWARE_UPDATE_PREPARE_REPORT, name = "FIRMWARE_UPDATE_PREPARE_REPORT")
     public void handleFirmwarePrepareReport(ZWaveCommandClassPayload payload, int endpoint) {
@@ -401,6 +403,72 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
 
         public static FirmwareDownloadStatus from(int v) {
             for (FirmwareDownloadStatus status : values()) {
+                if (status.id == v) {
+                    return status;
+                }
+            }
+            return UNKNOWN;
+        }
+    }
+
+    public enum FirmwareUpdateMdRequestStatus {
+        ERROR_INVALID_MANUFACTURER_OR_FIRMWARE_ID(0x00),
+        ERROR_AUTHENTICATION_EXPECTED(0x01),
+        ERROR_FRAGMENT_SIZE_TOO_LARGE(0x02),
+        ERROR_NOT_UPGRADABLE(0x03),
+        ERROR_INVALID_HARDWARE_VERSION(0x04),
+        ERROR_FIRMWARE_UPGRADE_IN_PROGRESS(0x05),
+        ERROR_BATTERY_LOW(0x06),
+        OK(0xFF),
+        UNKNOWN(-1);
+
+        private final int id;
+
+        FirmwareUpdateMdRequestStatus(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public static FirmwareUpdateMdRequestStatus from(int v) {
+            for (FirmwareUpdateMdRequestStatus status : values()) {
+                if (status.id == v) {
+                    return status;
+                }
+            }
+            return UNKNOWN;
+        }
+    }
+
+    public enum FirmwareUpdateMdStatusReport {
+        ERROR_CHECKSUM(0x00),
+        ERROR_TRANSMISSION_FAILED(0x01),
+        ERROR_INVALID_MANUFACTURER_ID(0x02),
+        ERROR_INVALID_FIRMWARE_ID(0x03),
+        ERROR_INVALID_FIRMWARE_TARGET(0x04),
+        ERROR_INVALID_HEADER_INFORMATION(0x05),
+        ERROR_INVALID_HEADER_FORMAT(0x06),
+        ERROR_INSUFFICIENT_MEMORY(0x07),
+        ERROR_INVALID_HARDWARE_VERSION(0x08),
+        OK_WAITING_FOR_ACTIVATION(0xFD),
+        OK_NO_RESTART(0xFE),
+        OK_RESTART_PENDING(0xFF),
+        UNKNOWN(-1);
+
+        private final int id;
+
+        FirmwareUpdateMdStatusReport(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public static FirmwareUpdateMdStatusReport from(int v) {
+            for (FirmwareUpdateMdStatusReport status : values()) {
                 if (status.id == v) {
                     return status;
                 }

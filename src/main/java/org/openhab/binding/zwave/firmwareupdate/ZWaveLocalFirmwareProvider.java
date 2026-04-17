@@ -60,7 +60,7 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
     private static final Pattern VERSION_PATTERN = Pattern.compile("[Vv](\\d+)[Rr_](\\d+)");
 
     // TEMPORARY test toggle: set to true to restore regex-based version extraction.
-    private static final boolean ENABLE_VERSION_PATTERN_MATCHING = true;
+    private static final boolean ENABLE_VERSION_PATTERN_MATCHING = false;
 
     @Override
     public @Nullable Firmware getFirmware(Thing thing, String version) {
