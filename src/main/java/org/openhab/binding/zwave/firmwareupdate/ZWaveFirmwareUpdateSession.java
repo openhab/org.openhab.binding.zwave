@@ -28,10 +28,10 @@ import org.openhab.binding.zwave.handler.ZWaveControllerHandler;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateActivationStatus;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateMdRequestStatus;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateMdStatusReport;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveTransactionCompletedEvent;
@@ -54,7 +54,6 @@ public class ZWaveFirmwareUpdateSession {
     private static final int MULTI_FRAGMENT_INTERFRAME_DELAY_MS = 35; // Per Spec
     private static final int IMAGE_CHECKSUM_INITIAL = 0x1D0F;
     private static final int STATUS_REPORT_WAIT_TIMEOUT_SECONDS = 30;
-    private static final int INACTIVITY_TIMEOUT_MINUTES = 2;
     private static final int PROGRESS_EVENT_STEP_PERCENT = 5;
     private static final long DUPLICATE_GET_RESEND_DELAY_MS = TimeUnit.SECONDS.toMillis(10);
 
@@ -76,7 +75,6 @@ public class ZWaveFirmwareUpdateSession {
     private int duplicateGetsForSentReport = 0;
     private int lastPublishedProgressPercent = 0;
     private final AtomicInteger statusReportTimeoutGeneration = new AtomicInteger(0);
-    private final AtomicInteger inactivityTimeoutGeneration = new AtomicInteger(0);
     private final Map<Integer, Long> reportLastSentTimes = new ConcurrentHashMap<>();
 
     /**
@@ -568,7 +566,7 @@ public class ZWaveFirmwareUpdateSession {
      * number and a flag indicating if it is the last fragment.
      *
      * @param metadata the firmware metadata containing information about the
-     *                 firmware update
+     *            firmware update
      * @return true if fragments were successfully prepared, false otherwise
      */
     private boolean prepareFragments(FirmwareMetadata metadata) {
@@ -642,7 +640,7 @@ public class ZWaveFirmwareUpdateSession {
             return data;
         }
     }
-    
+
     // Sends the FIRMWARE_MD_REQUEST_GET with metadata from the initial report, to
     // confirm update parameters
     private void sendFirmwareUpdateMdRequestGet(FirmwareMetadata metadata) {
@@ -731,33 +729,34 @@ public class ZWaveFirmwareUpdateSession {
             return true;
         }
 
-        // A higher requested start implies the previous fragment was accepted.
+        // A GET for fragment N implicitly ACKs everything below N. Advance the ACK anchor
+        // accordingly, then ignore any GET at or below the new anchor — the device already
+        // confirmed receipt of those fragments by previously requesting something higher.
         int impliedAckReport = Math.min(highestTransmittedReportNumber, requestedStartReport - 1);
         if (impliedAckReport > highestAckedReportNumber) {
-            logger.debug(
-                    "NODE {}: Advancing ACK anchor from {} to {} based on UPDATE_MD_GET start {}",
+            logger.debug("NODE {}: Advancing ACK anchor from {} to {} based on UPDATE_MD_GET start {}",
                     node.getNodeId(), highestAckedReportNumber, impliedAckReport, requestedStartReport);
             highestAckedReportNumber = impliedAckReport;
         }
 
         if (requestedStartReport <= highestAckedReportNumber) {
-            logger.debug(
-                    "NODE {}: Ignoring UPDATE_MD_GET for already ACKed fragment {} (ackAnchor={})",
+            logger.debug("NODE {}: Ignoring UPDATE_MD_GET for already ACKed fragment {} (ackAnchor={})",
                     node.getNodeId(), requestedStartReport, highestAckedReportNumber);
             return true;
         }
 
-        // If a GET arrives for an in-sequence fragment higher than what we're currently
-        // waiting on, treat it as an implicit ACK of that fragment.
+        // If the device requests a fragment higher than the one that is currently
+        // sent, advance to that higher fragment for the next transmission.
+        // Some nodes send duplicate GETs for an already-sent report.
+        // Ignore these near-term, but allow a late
+        // retry so the device can recover if the fragment was truly missed.
         if (requestedStartReport > startReportNumber && startReportNumber > 0) {
             logger.debug(
-                    "NODE {}: Received UPDATE_MD_GET for fragment {} while retrying fragment {}; treating this as implicit ACK of fragment {} and continuing with the requested fragment",
+                    "NODE {}: Received UPDATE_MD_GET for fragment {} while trying fragment {}; treating this as implicit ACK of fragment {} and continuing with the higherfragment",
                     node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
             duplicateGetsForSentReport = 0;
         } else if (requestedStartReport <= highestTransmittedReportNumber) {
-            // Some nodes may send duplicate GETs for an already-sent report.
-            // Ignore these near-term duplicates, but allow a late retry
-            // so the device can recover from a truly missed report.
+
             Long lastSentTime = reportLastSentTimes.get(requestedStartReport);
             long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue() : Long.MAX_VALUE;
 
@@ -800,16 +799,6 @@ public class ZWaveFirmwareUpdateSession {
                     node.getNodeId(), requestedCount, cappedCount, requestedStartReport, remainingFragments);
         }
 
-        // Publish an initial 1% progress event the first time we start sending fragments
-        // so the UI reflects activity.
-        if (lastPublishedProgressPercent == 0) {
-            publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(1));
-        }
-
-        // Start (or reset) the inactivity watchdog: if no further GET events arrive
-        // within the timeout window the session is declared dead.
-        scheduleInactivityTimeout();
-
         // Device is asking for the next fragment.
         this.startReportNumber = requestedStartReport;
         this.count = cappedCount;
@@ -840,37 +829,6 @@ public class ZWaveFirmwareUpdateSession {
         }
 
         return false;
-    }
-    
-    protected int getInactivityTimeoutMinutes() {
-        return INACTIVITY_TIMEOUT_MINUTES;
-    }
-
-    protected long getInactivityTimeoutMillis() {
-        return TimeUnit.MINUTES.toMillis(getInactivityTimeoutMinutes());
-    }
-
-    private void scheduleInactivityTimeout() {
-        int generation = inactivityTimeoutGeneration.incrementAndGet();
-
-        CompletableFuture.runAsync(() -> {
-            if (!active) {
-                return;
-            }
-            if (inactivityTimeoutGeneration.get() != generation) {
-                return;
-            }
-
-            logger.warn("NODE {}: Firmware update inactivity timeout - no events received for {} minutes",
-                    node.getNodeId(), getInactivityTimeoutMinutes());
-            failFirmwareUpdate(
-                    "Firmware update timed out - no activity for " + getInactivityTimeoutMinutes() + " minutes",
-                    FirmwareUpdateMdStatusReport.ERROR_TRANSMISSION_FAILED.name());
-        }, CompletableFuture.delayedExecutor(getInactivityTimeoutMillis(), TimeUnit.MILLISECONDS));
-    }
-
-    private void cancelInactivityTimeout() {
-        inactivityTimeoutGeneration.incrementAndGet();
     }
 
     /**
@@ -949,7 +907,6 @@ public class ZWaveFirmwareUpdateSession {
             // If this was the last fragment, transition to waiting for status
             if (fragment.isLast()) {
                 logger.debug("NODE {}: Last fragment sent, waiting for status report", node.getNodeId());
-                cancelInactivityTimeout();
                 state = State.WAITING_FOR_UPDATE_MD_STATUS_REPORT;
                 scheduleStatusReportTimeout();
                 return;
@@ -1120,7 +1077,6 @@ public class ZWaveFirmwareUpdateSession {
     private void completeSuccess() {
         logger.info("NODE {}: Firmware update completed", node.getNodeId());
         invalidateStatusReportTimeout();
-        cancelInactivityTimeout();
         node.setFirmwareUpdateInProgress(false);
         state = State.SUCCESS;
         active = false;
@@ -1129,7 +1085,6 @@ public class ZWaveFirmwareUpdateSession {
     private void fail(String reason) {
         logger.error("NODE {}: Firmware update failed: {}", node.getNodeId(), reason);
         invalidateStatusReportTimeout();
-        cancelInactivityTimeout();
         node.setFirmwareUpdateInProgress(false);
         state = State.FAILURE;
         active = false;
@@ -1178,6 +1133,11 @@ public class ZWaveFirmwareUpdateSession {
         publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Progress, Integer.valueOf(steppedPercentComplete));
     }
 
+    private int getSteppedTransferProgressPercent() {
+        int percentComplete = getCurrentTransferProgressPercent();
+        return (percentComplete / PROGRESS_EVENT_STEP_PERCENT) * PROGRESS_EVENT_STEP_PERCENT;
+    }
+
     /**
      * Returns the current transfer progress based on sent fragments.
      * This can be used by higher layers to restore UI status after transient
@@ -1195,11 +1155,6 @@ public class ZWaveFirmwareUpdateSession {
 
         // Keep 100% reserved for terminal success status event.
         return Math.min(percentComplete, 99);
-    }
-
-    private int getSteppedTransferProgressPercent() {
-        int percentComplete = getCurrentTransferProgressPercent();
-        return (percentComplete / PROGRESS_EVENT_STEP_PERCENT) * PROGRESS_EVENT_STEP_PERCENT;
     }
 
     private String toHex(byte[] data) {
