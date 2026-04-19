@@ -378,8 +378,8 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         logger.debug("NODE {}: Received Firmware Prepare Report: checksum=0x{}, status={}", getNode().getNodeId(),
                 Integer.toHexString(checksum), status);
 
-        getController().notifyEventListeners(
-                FirmwareUpdateEvent.forUpdatePrepareReport(getNode().getNodeId(), endpoint, status.getId(), checksum));
+        //getController().notifyEventListeners(
+        //        FirmwareUpdateEvent.forUpdatePrepareReport(getNode().getNodeId(), endpoint, status.getId(), checksum));
     }
 
     public enum FirmwareDownloadStatus {

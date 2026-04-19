@@ -30,6 +30,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateActivationStatus;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateMdRequestStatus;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass.FirmwareUpdateMdStatusReport;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
@@ -194,11 +195,6 @@ public class ZWaveFirmwareUpdateSession {
                     0, new byte[0], null, null);
         }
 
-        public static FirmwareUpdateEvent forUpdatePrepareReport(int nodeId, int endpoint, int status, int checksum) {
-            return new FirmwareUpdateEvent(nodeId, endpoint, FirmwareEventType.UPDATE_PREPARE_REPORT, -1, 0, status, 0,
-                    new byte[] { (byte) ((checksum >> 8) & 0xFF), (byte) (checksum & 0xFF) }, null, null);
-        }
-
         public FirmwareEventType getType() {
             return type;
         }
@@ -314,8 +310,6 @@ public class ZWaveFirmwareUpdateSession {
 
             case ACTIVATION_STATUS_REPORT:
                 return handleActivationStatusReport(fwEvent);
-            case UPDATE_PREPARE_REPORT:
-                break;
             default:
                 break;
         }
@@ -1071,7 +1065,23 @@ public class ZWaveFirmwareUpdateSession {
         CompletableFuture.runAsync(() -> {
             logger.debug("NODE {}: Sending delayed NOP ping after firmware restart wait", node.getNodeId());
             node.pingNode();
+            scheduleVersionRefresh();
         }, CompletableFuture.delayedExecutor(delay, TimeUnit.SECONDS));
+    }
+
+    private void scheduleVersionRefresh() {
+        // Add a small delay to allow device to fully boot before requesting version
+        CompletableFuture.runAsync(() -> {
+            ZWaveVersionCommandClass versionCC = (ZWaveVersionCommandClass) node
+                    .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
+            if (versionCC != null) {
+                logger.debug("NODE {}: Requesting firmware version refresh after update", node.getNodeId());
+                ZWaveCommandClassTransactionPayload msg = versionCC.getVersionMessage();
+                node.sendMessage(msg);
+            } else {
+                logger.warn("NODE {}: Version command class not available for version refresh", node.getNodeId());
+            }
+        }, CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS));
     }
 
     private void completeSuccess() {
@@ -1181,9 +1191,7 @@ public class ZWaveFirmwareUpdateSession {
         UPDATE_MD_REQUEST_REPORT,
         UPDATE_MD_GET,
         UPDATE_MD_STATUS_REPORT,
-        ACTIVATION_STATUS_REPORT, // optional, depending on your flow
-        UPDATE_PREPARE_REPORT // Not implemented yet, but can be used to retrieve current firmware
-                              // information.
+        ACTIVATION_STATUS_REPORT // optional, depending on your flow
     }
 
     /**
@@ -1198,8 +1206,6 @@ public class ZWaveFirmwareUpdateSession {
         SENDING_FRAGMENTS,
         WAITING_FOR_UPDATE_MD_STATUS_REPORT,
         WAITING_FOR_ACTIVATION_STATUS_REPORT, // optional, depending on your flow
-        WAITING_FOR_UPDATE_PREPARE_REPORT, // Not implemented yet, but can be used to retrieve current firmware
-                                           // information.
         SUCCESS,
         FAILURE
     }

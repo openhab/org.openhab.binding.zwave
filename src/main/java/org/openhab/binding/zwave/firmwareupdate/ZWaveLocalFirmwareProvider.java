@@ -59,8 +59,14 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
     /** Matches patterns like V02R40, v2r40, V1_06, V10_0 and extracts major/minor revision numbers. */
     private static final Pattern VERSION_PATTERN = Pattern.compile("[Vv](\\d+)[Rr_](\\d+)");
 
+    /** Matches patterns like V403 (no separator) — first digit is major, last two digits are minor, e.g. 4.3. */
+    private static final Pattern VERSION_PATTERN_PLAIN = Pattern.compile("[Vv](\\d)(\\d{2})(?!\\d)");
+
+    /** Matches patterns like _5.54 (e.g. ZW4009_Jasco_46563_5.54.bin) and extracts major/minor numbers. */
+    private static final Pattern VERSION_PATTERN_DOTTED = Pattern.compile("(?:^|_)(\\d+)\\.(\\d+)(?=\\.[^.]+$|$)");
+
     // TEMPORARY test toggle: set to true to restore regex-based version extraction.
-    private static final boolean ENABLE_VERSION_PATTERN_MATCHING = false;
+    private static final boolean ENABLE_VERSION_PATTERN_MATCHING = true;
 
     @Override
     public @Nullable Firmware getFirmware(Thing thing, String version) {
@@ -163,9 +169,11 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
 
     /**
      * Extracts a numeric version from a firmware filename.
-     * Converts manufacturer patterns like "ZEN73_V02R40.gbl" → "2.40" so that
-     * openHAB Core can compare it numerically against the device's current firmware version.
-     * Falls back to the bare filename (no extension) when no V##R## pattern is found.
+     * Converts manufacturer patterns like "ZEN73_V02R40.gbl" → "2.40" and
+     * "ZEN23_V403.gbl" → "4.3" and "ZW4009_Jasco_46563_5.54.bin" → "5.54"
+     * so that openHAB Core can compare it numerically
+     * against the device's current firmware version.
+     * Falls back to the bare filename (no extension) when no version pattern is found.
      */
     private static String extractVersion(String fileName) {
         if (ENABLE_VERSION_PATTERN_MATCHING) {
@@ -173,6 +181,18 @@ public class ZWaveLocalFirmwareProvider implements FirmwareProvider {
             if (matcher.find()) {
                 int major = Integer.parseInt(matcher.group(1));
                 int minor = Integer.parseInt(matcher.group(2));
+                return major + "." + minor;
+            }
+            Matcher plainMatcher = VERSION_PATTERN_PLAIN.matcher(fileName);
+            if (plainMatcher.find()) {
+                int major = Integer.parseInt(plainMatcher.group(1));
+                int minor = Integer.parseInt(plainMatcher.group(2));
+                return major + "." + minor;
+            }
+            Matcher dottedMatcher = VERSION_PATTERN_DOTTED.matcher(fileName);
+            if (dottedMatcher.find()) {
+                int major = Integer.parseInt(dottedMatcher.group(1));
+                int minor = Integer.parseInt(dottedMatcher.group(2));
                 return major + "." + minor;
             }
         }
