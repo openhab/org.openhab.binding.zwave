@@ -382,35 +382,6 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
         //        FirmwareUpdateEvent.forUpdatePrepareReport(getNode().getNodeId(), endpoint, status.getId(), checksum));
     }
 
-    public enum FirmwareDownloadStatus {
-        INVALID_PAYLOAD(0x00),
-        EXPECTED_AUTHORIZATION_EVENT(0x01),
-        FRAGMENT_SIZE_EXCEEDED(0x02),
-        FIRMWARE_TARGET_NOT_DOWNLOADABLE(0x03),
-        INVALID_HARDWARE_VERSION(0x04),
-        SUCCESS(0xFF),
-        UNKNOWN(-1);
-
-        private final int id;
-
-        FirmwareDownloadStatus(int id) {
-            this.id = id;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public static FirmwareDownloadStatus from(int v) {
-            for (FirmwareDownloadStatus status : values()) {
-                if (status.id == v) {
-                    return status;
-                }
-            }
-            return UNKNOWN;
-        }
-    }
-
     public enum FirmwareUpdateMdRequestStatus {
         ERROR_INVALID_MANUFACTURER_OR_FIRMWARE_ID(0x00),
         ERROR_AUTHENTICATION_EXPECTED(0x01),
@@ -495,6 +466,35 @@ public class ZWaveFirmwareUpdateCommandClass extends ZWaveCommandClass {
 
         public static FirmwareUpdateActivationStatus from(int v) {
             for (FirmwareUpdateActivationStatus status : values()) {
+                if (status.id == v) {
+                    return status;
+                }
+            }
+            return UNKNOWN;
+        }
+    }
+    
+    public enum FirmwareDownloadStatus {
+        INVALID_PAYLOAD(0x00),
+        EXPECTED_AUTHORIZATION_EVENT(0x01),
+        FRAGMENT_SIZE_EXCEEDED(0x02),
+        FIRMWARE_TARGET_NOT_DOWNLOADABLE(0x03),
+        INVALID_HARDWARE_VERSION(0x04),
+        SUCCESS(0xFF),
+        UNKNOWN(-1);
+
+        private final int id;
+
+        FirmwareDownloadStatus(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public static FirmwareDownloadStatus from(int v) {
+            for (FirmwareDownloadStatus status : values()) {
                 if (status.id == v) {
                     return status;
                 }

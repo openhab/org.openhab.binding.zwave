@@ -120,17 +120,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private ZWaveControllerHandler controllerHandler;
 
-    private byte[] pendingFirmwareBytes;
-    private Integer pendingFirmwareTarget = 0;
-    private @Nullable ZWaveFirmwareUpdateSession firmwareSession;
-    private @Nullable ProgressCallback firmwareProgressCallback;
-    private int firmwareProgressStepIndex = -1;
-    private @Nullable Integer lastFirmwareUpdateProgressPercent;
-    private @Nullable String lastFirmwareFailureDescription;
-    private boolean finalTypeSet = false;
-
-    private static final List<Integer> FIRMWARE_PROGRESS_UI_MILESTONES = List.of(5, 25, 50, 75);
-
     private int nodeId;
     private List<ZWaveThingChannel> thingChannelsCmd = Collections.emptyList();
     private List<ZWaveThingChannel> thingChannelsState = Collections.emptyList();
@@ -139,15 +128,22 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private final Map<Integer, ZWaveConfigSubParameter> subParameters = new HashMap<Integer, ZWaveConfigSubParameter>();
     private final Map<String, Object> pendingCfg = new HashMap<String, Object>();
+    private boolean finalTypeSet = false;
 
+    private byte[] pendingFirmwareBytes;
+    private Integer pendingFirmwareTarget = 0;
+    private @Nullable ZWaveFirmwareUpdateSession firmwareSession;
+    private @Nullable ProgressCallback firmwareProgressCallback;
+    private int firmwareProgressStepIndex = -1;
+    private @Nullable Integer lastFirmwareUpdateProgressPercent;
+    private @Nullable String lastFirmwareFailureDescription;
+    private static final List<Integer> FIRMWARE_PROGRESS_UI_MILESTONES = List.of(5, 25, 50, 75);
     private static final Set<String> SUPPORTED_FIRMWARE_EXTENSIONS = Set.of(".bin", ".hex", ".ota", ".otz", ".gbl",
             ".zip", ".exe", ".ex_");
-
     private static boolean isSupportedFirmwareFile(Path file) {
         String name = file.getFileName().toString().toLowerCase(Locale.ROOT);
         return SUPPORTED_FIRMWARE_EXTENSIONS.stream().anyMatch(name::endsWith);
     }
-
     private Path getNodeFirmwareFolder() {
         return Paths.get(OpenHAB.getUserDataFolder(), "zwave", "firmware", "node-" + nodeId);
     }
@@ -2228,6 +2224,24 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
     }
 
+    // Advances the firmware progress sequence to the given step index.
+    private @Nullable ProgressCallback advanceFirmwareProgressTo(int targetStepIndex,
+            @Nullable ProgressCallback callback) {
+        if (callback == null) {
+            return null;
+        }
+
+        while (firmwareProgressStepIndex < targetStepIndex) {
+            ProgressCallback usableCallback = keepCallbackIfUsable(callback, "next()", callback::next);
+            if (usableCallback == null) {
+                return null;
+            }
+            firmwareProgressStepIndex++;
+        }
+
+        return callback;
+    }
+
     /**
      * Loads firmware bytes from userdata/zwave/firmware/node-<nodeId>.
      * Policy: exactly one supported file must exist.
@@ -2420,7 +2434,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             logger.warn("NODE {}: Firmware progress callback {} failed ({}); disabling callback for this run", nodeId,
                     operation, e.getMessage());
             logger.debug("NODE {}: Firmware progress callback {} failure detail", nodeId, operation, e);
-            if (this.firmwareProgressCallback == callback) {
+            if (Objects.equals(this.firmwareProgressCallback, callback)) {
                 this.firmwareProgressCallback = null;
             }
             resetFirmwareProgressSequence();
@@ -2462,27 +2476,9 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 "Firmware update in progress (" + milestone + "%)");
     }
 
-    // Advances the firmware progress sequence to the given step index.
-    private @Nullable ProgressCallback advanceFirmwareProgressTo(int targetStepIndex,
-            @Nullable ProgressCallback callback) {
-        if (callback == null) {
-            return null;
-        }
-
-        while (firmwareProgressStepIndex < targetStepIndex) {
-            ProgressCallback usableCallback = keepCallbackIfUsable(callback, "next()", callback::next);
-            if (usableCallback == null) {
-                return null;
-            }
-            firmwareProgressStepIndex++;
-        }
-
-        return callback;
-    }
-
     /**
-     * This overcomes a communication failure where the node is marked DEAD, but
-     * comes back online before the firmware update completes.
+     * Restores the last known firmware update progress status in the UI
+     * if a firmware update is in progress and the node comes back online.
      */
     private void restoreFirmwareUpdateProgressStatusIfNeeded() {
         ZWaveFirmwareUpdateSession session = firmwareSession;

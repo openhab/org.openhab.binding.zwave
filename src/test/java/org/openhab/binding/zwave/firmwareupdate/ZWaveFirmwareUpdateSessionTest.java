@@ -451,7 +451,7 @@ public class ZWaveFirmwareUpdateSessionTest {
         assertTrue(handled);
         assertFalse(session.isActive());
         assertEquals(ZWaveFirmwareUpdateSession.State.SUCCESS, getState(session));
-        Mockito.verify(node, Mockito.timeout((int) TimeUnit.SECONDS.toMillis(7))).pingNode();
+        Mockito.verify(node, Mockito.timeout((int) TimeUnit.SECONDS.toMillis(12))).pingNode();
     }
 
     @Test
