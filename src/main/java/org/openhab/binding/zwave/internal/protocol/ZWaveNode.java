@@ -54,8 +54,8 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 /**
  * Z-Wave node class. Represents a node in the Z-Wave network.
  *
- * @author Chris Jackson
- * @author Brian Crosby
+ * @author Chris Jackson - Initial contribution
+ * @author Brian Crosby - Contribution
  */
 @XStreamAlias("node")
 public class ZWaveNode {

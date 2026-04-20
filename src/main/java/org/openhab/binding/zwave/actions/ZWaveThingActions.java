@@ -163,5 +163,4 @@ public class ZWaveThingActions implements ThingActions {
         }
         return "Handler is null, cannot poll linked channels";
     }
-
 }

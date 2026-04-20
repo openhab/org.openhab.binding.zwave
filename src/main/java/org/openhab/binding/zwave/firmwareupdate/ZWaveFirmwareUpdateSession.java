@@ -130,7 +130,7 @@ public class ZWaveFirmwareUpdateSession {
         failFirmwareUpdate("Firmware update session aborted: " + reason);
     }
 
-    // Sends the initial FIRMWARE_MD_GET to start the process
+    // Sends or queues the initial FIRMWARE_MD_GET to start the process
     private void requestMetadata() {
         ZWaveFirmwareUpdateCommandClass fw = (ZWaveFirmwareUpdateCommandClass) node
                 .getCommandClass(CommandClass.COMMAND_CLASS_FIRMWARE_UPDATE_MD);
@@ -728,8 +728,16 @@ public class ZWaveFirmwareUpdateSession {
         // confirmed receipt of those fragments by previously requesting something higher.
         int impliedAckReport = Math.min(highestTransmittedReportNumber, requestedStartReport - 1);
         if (impliedAckReport > highestAckedReportNumber) {
-            logger.debug("NODE {}: Advancing ACK anchor from {} to {} based on UPDATE_MD_GET start {}",
-                    node.getNodeId(), highestAckedReportNumber, impliedAckReport, requestedStartReport);
+            if (requestedStartReport == highestTransmittedReportNumber + 1
+                    && highestTransmittedReportNumber == startReportNumber) {
+                logger.debug(
+                        "NODE {}: Advancing ACK anchor from {} to {} based on sequential UPDATE_MD_GET start {} after completed fragment {} transmission",
+                        node.getNodeId(), highestAckedReportNumber, impliedAckReport, requestedStartReport,
+                        highestTransmittedReportNumber);
+            } else {
+                logger.debug("NODE {}: Advancing ACK anchor from {} to {} based on UPDATE_MD_GET start {}",
+                        node.getNodeId(), highestAckedReportNumber, impliedAckReport, requestedStartReport);
+            }
             highestAckedReportNumber = impliedAckReport;
         }
 
@@ -745,12 +753,18 @@ public class ZWaveFirmwareUpdateSession {
         // Ignore these near-term, but allow a late
         // retry so the device can recover if the fragment was truly missed.
         if (requestedStartReport > startReportNumber && startReportNumber > 0) {
-            logger.debug(
-                    "NODE {}: Received UPDATE_MD_GET for fragment {} while trying fragment {}; treating this as implicit ACK of fragment {} and continuing with the higherfragment",
-                    node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
+            if (requestedStartReport == highestTransmittedReportNumber + 1
+                    && highestTransmittedReportNumber == startReportNumber) {
+                logger.debug(
+                        "NODE {}: Received sequential UPDATE_MD_GET for fragment {} after fragment {} transmission completion; continuing with requested fragment",
+                        node.getNodeId(), requestedStartReport, startReportNumber);
+            } else {
+                logger.debug(
+                        "NODE {}: Received UPDATE_MD_GET for fragment {} while trying fragment {}; treating this as implicit ACK of fragment {} and continuing with the higher fragment",
+                        node.getNodeId(), requestedStartReport, startReportNumber, startReportNumber);
+            }
             duplicateGetsForSentReport = 0;
         } else if (requestedStartReport <= highestTransmittedReportNumber) {
-
             Long lastSentTime = reportLastSentTimes.get(requestedStartReport);
             long elapsedMillis = lastSentTime != null ? currentTimeMillis() - lastSentTime.longValue() : Long.MAX_VALUE;
 
@@ -1059,7 +1073,7 @@ public class ZWaveFirmwareUpdateSession {
             waitTimeSeconds = 5;
         }
 
-        final int delay = waitTimeSeconds;
+        final int delay = waitTimeSeconds + 5;
         logger.debug("NODE {}: Scheduling NOP ping after {} seconds", node.getNodeId(), delay);
 
         CompletableFuture.runAsync(() -> {
@@ -1081,7 +1095,7 @@ public class ZWaveFirmwareUpdateSession {
             } else {
                 logger.warn("NODE {}: Version command class not available for version refresh", node.getNodeId());
             }
-        }, CompletableFuture.delayedExecutor(2, TimeUnit.SECONDS));
+        }, CompletableFuture.delayedExecutor(10, TimeUnit.SECONDS));
     }
 
     private void completeSuccess() {
