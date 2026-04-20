@@ -1298,12 +1298,15 @@ public class ZWaveNode {
             }
 
             // Check that the length is long enough for the encapsulated command to be included
-            if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 4) {
+            if (payload.getCommandClassCommand() == 6 && payload.getPayloadLength() > 4
+                    && !hasMultiInstanceAsMultiChannelQuirk()) {
                 // MULTI_INSTANCE_ENCAP
                 endpointNumber = payload.getPayloadByte(2);
 
                 payload = new ZWaveCommandClassPayload(payload, 3);
-            } else if (payload.getCommandClassCommand() == 13 && payload.getPayloadLength() > 5) {
+            } else if ((payload.getCommandClassCommand() == 13
+                    || payload.getCommandClassCommand() == 6 && hasMultiInstanceAsMultiChannelQuirk())
+                    && payload.getPayloadLength() > 5) {
                 // MULTI_CHANNEL_ENCAP
                 endpointNumber = multichannelCommandClass.getSourceEndpoint(payload);
                 payload = new ZWaveCommandClassPayload(payload, 4);
@@ -1556,5 +1559,10 @@ public class ZWaveNode {
             timerTask.cancel();
         }
         timerTask = null;
+    }
+
+    // The IRIS Radio Thermostat CT-101 has a bug where it sends an incorrect command class code.
+    private boolean hasMultiInstanceAsMultiChannelQuirk() {
+        return manufacturer == 0x98 && deviceType == 0x6501 && deviceId == 0xc;
     }
 }
