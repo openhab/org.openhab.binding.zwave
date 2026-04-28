@@ -1004,7 +1004,7 @@ public class ZWaveFirmwareUpdateSession {
             case OK_RESTART_PENDING:
                 scheduleNopAfterWaitTime(event.getWaitTime());
                 publishFirmwareUpdateNetworkEvent(ZWaveNetworkEvent.State.Success, Integer.valueOf(event.getStatus()));
-                completeSuccess();
+                completeSuccess(false);
                 return true;
 
             default:
@@ -1069,39 +1069,48 @@ public class ZWaveFirmwareUpdateSession {
     }
 
     private void scheduleNopAfterWaitTime(int waitTimeSeconds) {
-        if (waitTimeSeconds < 5) {
-            waitTimeSeconds = 5;
+        if (waitTimeSeconds < 2) {
+            waitTimeSeconds = 2;
         }
 
-        final int delay = waitTimeSeconds + 5;
+        final int delay = waitTimeSeconds;
         logger.debug("NODE {}: Scheduling NOP ping after {} seconds", node.getNodeId(), delay);
 
         CompletableFuture.runAsync(() -> {
             logger.debug("NODE {}: Sending delayed NOP ping after firmware restart wait", node.getNodeId());
-            node.pingNode();
-            scheduleVersionRefresh();
+            try {
+                node.pingNode();
+                scheduleVersionRefresh();
+            } finally {
+                // Keep the firmware-update awake hold active until the delayed post-restart
+                // follow-up has been queued/sent.
+                node.setFirmwareUpdateInProgress(false);
+            }
         }, CompletableFuture.delayedExecutor(delay, TimeUnit.SECONDS));
     }
 
     private void scheduleVersionRefresh() {
-        // Add a small delay to allow device to fully boot before requesting version
-        CompletableFuture.runAsync(() -> {
-            ZWaveVersionCommandClass versionCC = (ZWaveVersionCommandClass) node
-                    .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
-            if (versionCC != null) {
-                logger.debug("NODE {}: Requesting firmware version refresh after update", node.getNodeId());
-                ZWaveCommandClassTransactionPayload msg = versionCC.getVersionMessage();
-                node.sendMessage(msg);
-            } else {
-                logger.warn("NODE {}: Version command class not available for version refresh", node.getNodeId());
-            }
-        }, CompletableFuture.delayedExecutor(10, TimeUnit.SECONDS));
+        ZWaveVersionCommandClass versionCC = (ZWaveVersionCommandClass) node
+                .getCommandClass(CommandClass.COMMAND_CLASS_VERSION);
+        if (versionCC != null) {
+            logger.debug("NODE {}: Requesting firmware version refresh after update", node.getNodeId());
+            ZWaveCommandClassTransactionPayload msg = versionCC.getVersionMessage();
+            node.sendMessage(msg);
+        } else {
+            logger.warn("NODE {}: Version command class not available for version refresh", node.getNodeId());
+        }
     }
 
     private void completeSuccess() {
+        completeSuccess(true);
+    }
+
+    private void completeSuccess(boolean releaseFirmwareUpdateHold) {
         logger.info("NODE {}: Firmware update completed", node.getNodeId());
         invalidateStatusReportTimeout();
-        node.setFirmwareUpdateInProgress(false);
+        if (releaseFirmwareUpdateHold) {
+            node.setFirmwareUpdateInProgress(false);
+        }
         state = State.SUCCESS;
         active = false;
     }

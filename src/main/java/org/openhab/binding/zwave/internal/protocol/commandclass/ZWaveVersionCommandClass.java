@@ -20,6 +20,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveEndpoint;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 import org.slf4j.Logger;
@@ -91,6 +92,9 @@ public class ZWaveVersionCommandClass extends ZWaveCommandClass {
             hardwareVersion = payload.getPayloadByte(7);
             logger.debug("NODE {}: Hardware Version     = {}", getNode().getNodeId(), hardwareVersion);
         }
+
+        getController().notifyEventListeners(new ZWaveCommandClassValueEvent(getNode().getNodeId(), endpoint,
+                CommandClass.COMMAND_CLASS_VERSION, applicationVersion));
     }
 
     @ZWaveResponseHandler(id = VERSION_COMMAND_CLASS_REPORT, name = "VERSION_COMMAND_CLASS_REPORT")

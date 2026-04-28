@@ -1568,6 +1568,10 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     removePendingConfig(codeParameterName);
                     break;
 
+                case COMMAND_CLASS_VERSION:
+                    updateNodeProperties();
+                    break;
+
                 default:
                     break;
             }
@@ -2347,14 +2351,14 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         return firmwareSession == null || !firmwareSession.isActive();
     }
 
-    private int requestFirmwareUpdateVersionRefresh(ZWaveNode node,
+    private void requestFirmwareUpdateVersionRefresh(ZWaveNode node,
             ZWaveFirmwareUpdateCommandClass firmwareCommandClass) {
         int versionBefore = firmwareCommandClass.getVersion();
         if (versionBefore != 1) {
             logger.debug(
                     "NODE {}: Skipping Firmware Update command class version refresh because current version is {} (refresh is only needed for legacy version 1)",
                     nodeId, versionBefore);
-            return versionBefore;
+            return;
         }
 
         ZWaveVersionCommandClass versionCommandClass = (ZWaveVersionCommandClass) node
@@ -2363,21 +2367,16 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             logger.debug(
                     "NODE {}: Cannot refresh Firmware Update command class version because VERSION CC is unavailable",
                     nodeId);
-            return versionBefore;
+            return;
         }
 
         ZWaveCommandClassTransactionPayload message = versionCommandClass.checkVersion(firmwareCommandClass);
         if (message == null) {
-            return versionBefore;
+            return;
         }
 
         node.sendMessage(message);
         logger.debug("NODE {}: Requested Firmware Update command class version refresh", nodeId);
-
-        int currentVersion = firmwareCommandClass.getVersion();
-        logger.debug("NODE {}: Firmware Update command class version before refresh={}, after refresh={}", nodeId,
-                versionBefore, currentVersion);
-        return currentVersion;
     }
 
     private boolean isFirmwareSessionActive() {
