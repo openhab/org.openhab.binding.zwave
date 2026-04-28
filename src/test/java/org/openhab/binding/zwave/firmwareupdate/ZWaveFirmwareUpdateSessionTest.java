@@ -31,6 +31,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionPriority;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveFirmwareUpdateCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveTransactionCompletedEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -439,7 +440,13 @@ public class ZWaveFirmwareUpdateSessionTest {
     public void testUpdateMdStatusReportRestartPendingSchedulesNopPing() throws Exception {
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
         Mockito.when(node.getNodeId()).thenReturn(13);
+        ZWaveVersionCommandClass versionCC = Mockito.mock(ZWaveVersionCommandClass.class);
         ZWaveControllerHandler controller = Mockito.mock(ZWaveControllerHandler.class);
+
+        ZWaveCommandClassTransactionPayload versionTx = new ZWaveCommandClassTransactionPayload(13,
+                new byte[] { (byte) 0x86, 0x11 }, TransactionPriority.Config, null, null);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_VERSION)).thenReturn(versionCC);
+        Mockito.when(versionCC.getVersionMessage()).thenReturn(versionTx);
 
         ZWaveFirmwareUpdateSession session = new ZWaveFirmwareUpdateSession(node, controller, new byte[] { 0x01 }, 0);
         setState(session, ZWaveFirmwareUpdateSession.State.WAITING_FOR_UPDATE_MD_STATUS_REPORT);
@@ -451,7 +458,10 @@ public class ZWaveFirmwareUpdateSessionTest {
         assertTrue(handled);
         assertFalse(session.isActive());
         assertEquals(ZWaveFirmwareUpdateSession.State.SUCCESS, getState(session));
-        Mockito.verify(node, Mockito.timeout((int) TimeUnit.SECONDS.toMillis(12))).pingNode();
+        Mockito.verify(node, Mockito.after(200).never()).setFirmwareUpdateInProgress(false);
+                Mockito.verify(node, Mockito.timeout((int) TimeUnit.SECONDS.toMillis(3))).pingNode();
+                Mockito.verify(node, Mockito.timeout((int) TimeUnit.SECONDS.toMillis(3))).sendMessage(versionTx);
+                Mockito.verify(node, Mockito.timeout((int) TimeUnit.SECONDS.toMillis(3))).setFirmwareUpdateInProgress(false);
     }
 
     @Test

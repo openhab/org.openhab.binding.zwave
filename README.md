@@ -319,11 +319,10 @@ Internally the binding holds a device state and these states are mapped to the s
 
 ### Thing Firmware
 
-* A basic firmware update process is available for Z-Wave devices that support firmware updates (most older devices do not). Firmware files for the Z-Wave device need to be retrieved and downloaded from the manufacturer's site. Be very careful to get the right version for your device and right Z-wave frequency (US, EU, AU). Not all manufacturers provide firmware (or firmware updates). If you are not having an issue, Z-Wave firmware updates are not needed. There is always some risk of device malfunction, so there should be a reason.
+* A basic firmware update process is available for Z-Wave devices that support firmware updates (most older devices do not). Firmware files for the Z-Wave device need to be retrieved and downloaded from the manufacturer's site. Be very careful to get the right version for your device and right Z-wave frequency (US, EU, AU). Not all manufacturers provide firmware (or firmware updates). If you are not having an issue, Z-Wave firmware updates are not usually needed. There is always some risk of device malfunction, so you should have a reason.
 * Place the file you wish to upload in the OH {userdata}/zwave/firmware/node-xx location. It will be pulled into the UI and evaluated if it is above, below or the same version as the firmware currently on the device. That evaluation may not be accurate due to parsing different manufacturer's naming. If you are sure, proceed. Downgrade and Upgrade do the same thing, transfer the firmware to the device.
-* The process can take some time based on network traffic (best if less) and proximity to the controller. The UI will provide updates at intervals and let you know if the upload was successful at the end.
-* Battery devices will need be awake for the firmware update to proceed. It is advised to have a full or nearly full battery as the device will be awake for the duration of the
-update (several minutes).
+* The process can take some time (3 - 20 minutes) based on network traffic (best if less) and proximity to the controller. The UI will provide updates at intervals and let you know if the upload was successful at the end.
+* Battery devices will need be awakened for the firmware update to proceed. It is advised to have a full or nearly full battery as the device will stay awake for the duration of the update (several minutes). If possible, temporarily move the battery device closer to the controller for a faster update.
 
 
 ### Thing Actions

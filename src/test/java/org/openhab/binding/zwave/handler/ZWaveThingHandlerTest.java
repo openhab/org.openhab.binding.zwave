@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,12 +36,17 @@ import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.firmwareupdate.ZWaveFirmwareUpdateSession;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
+import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNodeState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNodeNamingCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNetworkEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
@@ -103,6 +109,27 @@ public class ZWaveThingHandlerTest {
 
         public ThingStatusInfo getCapturedStatusInfo() {
             return statusInfo;
+        }
+    }
+
+    class ZWaveThingHandlerPropertiesCaptureTest extends ZWaveThingHandler {
+        private Map<String, String> properties = Map.of();
+
+        public ZWaveThingHandlerPropertiesCaptureTest(Thing zwaveDevice) {
+            super(zwaveDevice);
+        }
+
+        @Override
+        protected void validateConfigurationParameters(Map<String, Object> configurationParameters) {
+        }
+
+        @Override
+        protected void updateProperties(Map<String, String> properties) {
+            this.properties = new HashMap<>(properties);
+        }
+
+        public Map<String, String> getCapturedProperties() {
+            return properties;
         }
     }
 
@@ -488,5 +515,52 @@ public class ZWaveThingHandlerTest {
         ThingStatusInfo statusAfterProgress = handler.getCapturedStatusInfo();
         assertEquals(ThingStatusDetail.CONFIGURATION_ERROR, statusAfterProgress.getStatusDetail());
         assertEquals("Firmware update failed: ERROR_TRANSMISSION_FAILED", statusAfterProgress.getDescription());
+    }
+
+    @Test
+    public void testVersionValueEventRefreshesFirmwareProperties() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+
+        ZWaveThingHandlerPropertiesCaptureTest handler = new ZWaveThingHandlerPropertiesCaptureTest(thing);
+        ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+
+        setNodeId(handler, 12);
+
+        try {
+            Field fieldControllerHandler = ZWaveThingHandler.class.getDeclaredField("controllerHandler");
+            fieldControllerHandler.setAccessible(true);
+            fieldControllerHandler.set(handler, controllerHandler);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            fail(e);
+        }
+
+        Mockito.when(controllerHandler.getNode(12)).thenReturn(node);
+        Mockito.when(node.getManufacturer()).thenReturn(Integer.MAX_VALUE);
+        Mockito.when(node.getDeviceType()).thenReturn(Integer.MAX_VALUE);
+        Mockito.when(node.getDeviceId()).thenReturn(Integer.MAX_VALUE);
+        Mockito.when(node.getApplicationVersion()).thenReturn("9.8");
+        Mockito.when(node.getDeviceClass()).thenReturn(new ZWaveDeviceClass(Basic.BASIC_TYPE_UNKNOWN,
+                Generic.GENERIC_TYPE_NOT_USED, Specific.SPECIFIC_TYPE_NOT_USED));
+        Mockito.when(node.isListening()).thenReturn(false);
+        Mockito.when(node.isFrequentlyListening()).thenReturn(false);
+        Mockito.when(node.isBeaming()).thenReturn(false);
+        Mockito.when(node.isRouting()).thenReturn(false);
+        Mockito.when(node.isSecure()).thenReturn(false);
+        Mockito.when(node.getAssociationGroups()).thenReturn(Collections.emptyMap());
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_ZWAVEPLUS_INFO)).thenReturn(null);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_CONFIGURATION)).thenReturn(null);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_WAKE_UP)).thenReturn(null);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_SWITCH_ALL)).thenReturn(null);
+        Mockito.when(node.getCommandClass(CommandClass.COMMAND_CLASS_NODE_NAMING)).thenReturn(null);
+
+        handler.ZWaveIncomingEvent(
+                new ZWaveCommandClassValueEvent(12, 0, CommandClass.COMMAND_CLASS_VERSION, "9.8"));
+
+        Map<String, String> properties = handler.getCapturedProperties();
+        assertEquals("9.8", properties.get(ZWaveBindingConstants.PROPERTY_VERSION));
+        assertEquals("9.8", properties.get(Thing.PROPERTY_FIRMWARE_VERSION));
     }
 }
