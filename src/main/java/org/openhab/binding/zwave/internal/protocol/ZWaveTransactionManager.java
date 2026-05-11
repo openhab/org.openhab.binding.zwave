@@ -603,7 +603,7 @@ public class ZWaveTransactionManager {
                                                 controller.handleTransactionComplete(transaction, incomingMessage);
 
                                                 // Remove the transaction from the outstanding transaction list
-                                                if (transaction == lastTransaction) {
+                                                if (transaction.equals(lastTransaction)) {
                                                     lastTransaction = null;
                                                 }
                                                 completed.add(transaction);
@@ -687,7 +687,7 @@ public class ZWaveTransactionManager {
                     switch (currentTransaction.getTransactionState()) {
                         case WAIT_DATA:
                             // No need to track this transaction now
-                            if (currentTransaction == lastTransaction
+                            if (currentTransaction.equals(lastTransaction)
                                     && currentTransaction.requiresDataBeforeNextRelease() == false) {
                                 lastTransaction = null;
                             } else if (currentTransaction.getWaitForResponse()) {
@@ -698,7 +698,7 @@ public class ZWaveTransactionManager {
                         case DONE:
                             // Remove the transaction from the outstanding transaction list
                             synchronized (sendQueue) {
-                                if (currentTransaction == lastTransaction) {
+                                if (currentTransaction.equals(lastTransaction)) {
                                     lastTransaction = null;
                                 }
 
@@ -725,7 +725,7 @@ public class ZWaveTransactionManager {
 
                             // Remove the transaction from the outstanding transaction list
                             synchronized (sendQueue) {
-                                if (currentTransaction == lastTransaction) {
+                                if (currentTransaction.equals(lastTransaction)) {
                                     lastTransaction = null;
                                 }
 
@@ -896,7 +896,7 @@ public class ZWaveTransactionManager {
                 transaction = secureQueue.poll();
                 if (transaction != null) {
                     logger.trace("Transaction from secureQueue");
-                } else if (outstandingTransactions.size() == 0) {
+                } else if (outstandingTransactions.isEmpty()) {
                     transaction = getMessageFromQueue(sendQueue);
                     if (transaction != null) {
                         logger.trace("Transaction from sendQueue");
@@ -1090,7 +1090,7 @@ public class ZWaveTransactionManager {
                             // Remove this transaction from the outstanding transactions list
                             iterator.remove();
 
-                            if (lastTransaction == transaction) {
+                            if (lastTransaction != null && lastTransaction.equals(transaction)) {
                                 // If this is the current transaction, then reset it.
                                 lastTransaction = null;
                                 logger.debug("TID {}: Transaction is current transaction, so clearing!!!!!",
