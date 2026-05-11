@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import java.lang.reflect.Field;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,6 +44,7 @@ import org.openhab.core.thing.type.ChannelTypeUID;
  *
  */
 public class ZWaveThermostatSetpointConverterTest {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveThermostatSetpointConverterTest.class);
     final ChannelUID uid = new ChannelUID("zwave:node:bridge:channel");
     final ChannelTypeUID typeUid = new ChannelTypeUID("zwave:channel");
 
@@ -56,11 +59,11 @@ public class ZWaveThermostatSetpointConverterTest {
             f.setAccessible(true);
             f.set(cls, setpoints);
         } catch (NoSuchFieldException x) {
-            x.printStackTrace();
+            logger.error("Exception during reflection setup", x);
         } catch (IllegalArgumentException x) {
-            x.printStackTrace();
+            logger.error("Exception during reflection setup", x);
         } catch (IllegalAccessException x) {
-            x.printStackTrace();
+            logger.error("Exception during reflection setup", x);
         }
 
         return cls;
