@@ -603,7 +603,7 @@ public class ZWaveTransactionManager {
                                                 controller.handleTransactionComplete(transaction, incomingMessage);
 
                                                 // Remove the transaction from the outstanding transaction list
-                                                if (transaction.equals(lastTransaction)) {
+                                                if (transaction == lastTransaction) {
                                                     lastTransaction = null;
                                                 }
                                                 completed.add(transaction);
