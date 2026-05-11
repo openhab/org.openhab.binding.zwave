@@ -725,7 +725,7 @@ public class ZWaveTransactionManager {
 
                             // Remove the transaction from the outstanding transaction list
                             synchronized (sendQueue) {
-                                if (currentTransaction.equals(lastTransaction)) {
+                                if (currentTransaction == lastTransaction) {
                                     lastTransaction = null;
                                 }
 
