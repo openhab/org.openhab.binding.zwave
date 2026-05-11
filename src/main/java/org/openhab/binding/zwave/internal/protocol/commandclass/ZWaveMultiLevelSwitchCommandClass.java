@@ -169,7 +169,7 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_MULTILEVEL_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(SWITCH_MULTILEVEL_REPORT).build();
+                .withExpectedResponseCommand(SWITCH_MULTILEVEL_REPORT).build();
     }
 
     @Override
@@ -231,7 +231,7 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_MULTILEVEL_START_LEVEL_CHANGE).withPayload(newPayload).withPriority(TransactionPriority.Set)
-                        .build();
+                .build();
     }
 
     /**
@@ -246,7 +246,7 @@ public class ZWaveMultiLevelSwitchCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_MULTILEVEL_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(SWITCH_MULTILEVEL_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(SWITCH_MULTILEVEL_SUPPORTED_REPORT).build();
     }
 
     @Override

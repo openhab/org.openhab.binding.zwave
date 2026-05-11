@@ -269,7 +269,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 NOTIFICATION_REPORT).withPayload(0, 0, 0, 0xff, notificationType.getKey(), event)
-                        .withPriority(TransactionPriority.High).build();
+                .withPriority(TransactionPriority.High).build();
     }
 
     /**
@@ -302,7 +302,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 NOTIFICATION_SUPPORTED_GET).withExpectedResponseCommand(NOTIFICATION_SUPPORTED_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -320,8 +320,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 EVENT_SUPPORTED_GET).withPayload(new byte[] { (byte) index })
-                        .withExpectedResponseCommand(EVENT_SUPPORTED_REPORT).withPriority(TransactionPriority.Config)
-                        .build();
+                .withExpectedResponseCommand(EVENT_SUPPORTED_REPORT).withPriority(TransactionPriority.Config).build();
     }
 
     /**
@@ -357,7 +356,7 @@ public class ZWaveAlarmCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 NOTIFICATION_GET).withPayload(outputData.toByteArray()).withExpectedResponseCommand(NOTIFICATION_REPORT)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPriority(TransactionPriority.Config).build();
     }
 
     @Override

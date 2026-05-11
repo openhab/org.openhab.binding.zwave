@@ -176,7 +176,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 WAKE_UP_INTERVAL_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(WAKE_UP_INTERVAL_REPORT).build();
+                .withExpectedResponseCommand(WAKE_UP_INTERVAL_REPORT).build();
     }
 
     /**
@@ -195,7 +195,7 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 WAKE_UP_INTERVAL_CAPABILITIES_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(WAKE_UP_INTERVAL_CAPABILITIES_REPORT).build();
+                .withExpectedResponseCommand(WAKE_UP_INTERVAL_CAPABILITIES_REPORT).build();
     }
 
     /**
@@ -276,8 +276,8 @@ public class ZWaveWakeUpCommandClass extends ZWaveCommandClass implements ZWaveC
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 WAKE_UP_INTERVAL_SET)
-                        .withPayload(((interval >> 16) & 0xff), ((interval >> 8) & 0xff), (interval & 0xff), nodeId)
-                        .withPriority(TransactionPriority.Config).build();
+                .withPayload(((interval >> 16) & 0xff), ((interval >> 8) & 0xff), (interval & 0xff), nodeId)
+                .withPriority(TransactionPriority.Config).build();
     }
 
     /**

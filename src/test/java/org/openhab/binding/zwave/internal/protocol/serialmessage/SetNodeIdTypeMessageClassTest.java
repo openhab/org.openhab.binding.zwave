@@ -29,7 +29,7 @@ import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 public class SetNodeIdTypeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 1, 5, 0, 11, -128, 1, 112};
+        byte[] expectedResponse = { 1, 5, 0, 11, -128, 1, 112 };
 
         SerialMessage msg;
         SetNodeIdTypeMessageClass handler = new SetNodeIdTypeMessageClass();

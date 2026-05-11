@@ -300,7 +300,7 @@ public class ZWaveMeterCommandClass extends ZWaveCommandClass
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 METER_SUPPORTED_GET).withPriority(TransactionPriority.Config)
-                        .withExpectedResponseCommand(METER_SUPPORTED_REPORT).build();
+                .withExpectedResponseCommand(METER_SUPPORTED_REPORT).build();
     }
 
     /**
