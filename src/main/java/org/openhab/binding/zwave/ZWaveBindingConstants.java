@@ -119,7 +119,8 @@ public class ZWaveBindingConstants {
     public final static String EVENT_EXCLUSION_STARTED = "@text/zwave.event.exclusion_started";
     public final static String EVENT_EXCLUSION_COMPLETED = "@text/zwave.event.exclusion_completed";
     public final static String EVENT_EXCLUSION_FAILED = "@text/zwave.event.exclusion_failed";
-    public final static String EVENT_EXCLUSION_NODEREMOVED = "z@text/wave.event.exclusion_noderemoved";
+    public final static String EVENT_EXCLUSION_NODEREMOVED = "@text/zwave.event.exclusion_noderemoved";
+    public final static String EVENT_MARKED_AS_FAILED = "@text/zwave.event.marked_as_failed";
 
     public final static String EVENT_NETWORKUPDATE_DONE = "@text/zwave.event.networkupdate_done";
     public final static String EVENT_NETWORKUPDATE_ABORT = "@text/zwave.event.networkupdate_abort";
@@ -136,6 +137,8 @@ public class ZWaveBindingConstants {
     public final static String EVENT_REMOVEFAILED_FAILED = "@text/zwave.event.removenode_failed";
     public final static String EVENT_REMOVEFAILED_BUSY = "@text/zwave.event.removenode_busy";
     public final static String EVENT_REMOVEFAILED_UNKNOWN = "@text/zwave.event.removenode_unknown";
+    public final static String EVENT_REPLACEMENT_STARTED = "@text/zwave.event.replacenode_started";
+    public final static String EVENT_REPLACEMENT_COMPLETED = "@text/zwave.event.replacenode_completed";
 
     public final static String EVENT_HEAL_START = "@text/zwave.event.heal_start";
     public final static String EVENT_HEAL_DONE = "@text/zwave.event.heal_done";

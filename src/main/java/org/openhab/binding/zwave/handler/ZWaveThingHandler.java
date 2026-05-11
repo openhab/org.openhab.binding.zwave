@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.actions.ZWaveThingActions;
 import org.openhab.binding.zwave.handler.ZWaveThingChannel.DataType;
 import org.openhab.binding.zwave.internal.ZWaveConfigProvider;
 import org.openhab.binding.zwave.internal.ZWaveProduct;
@@ -81,6 +82,7 @@ import org.openhab.core.thing.ThingStatusDetail;
 import org.openhab.core.thing.ThingStatusInfo;
 import org.openhab.core.thing.binding.ConfigStatusThingHandler;
 import org.openhab.core.thing.binding.ThingHandler;
+import org.openhab.core.thing.binding.ThingHandlerService;
 import org.openhab.core.thing.type.ThingType;
 import org.openhab.core.types.Command;
 import org.openhab.core.types.RefreshType;
@@ -127,6 +129,11 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     public ZWaveThingHandler(Thing zwaveDevice) {
         super(zwaveDevice);
+    }
+
+    @Override
+    public Collection<Class<? extends ThingHandlerService>> getServices() {
+        return List.of(ZWaveThingActions.class);
     }
 
     @Override
@@ -1026,34 +1033,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                     }
                     break;
 
-                case "action":
-                    if ("failed".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        controllerHandler.replaceFailedNode(nodeId);
-                        controllerHandler.checkNodeFailed(nodeId);
-                    }
-                    if ("remove".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        controllerHandler.removeFailedNode(nodeId);
-                    }
-                    if ("reinit".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        logger.debug("NODE {}: Re-initialising node!", nodeId);
-
-                        // Delete the saved XML
-                        ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
-                        nodeSerializer.deleteNode(node.getHomeId(), nodeId);
-
-                        controllerHandler.reinitialiseNode(nodeId);
-                    }
-
-                    if ("heal".equals(cfg[1]) && valueObject instanceof Boolean && ((Boolean) valueObject) == true) {
-                        logger.debug("NODE {}: Starting heal on node!", nodeId);
-
-                        controllerHandler.healNode(nodeId);
-                    }
-
-                    // Don't save the value
-                    valueObject = false;
-                    break;
-
                 default:
                     logger.debug("NODE {}: Configuration invalid {}", nodeId, configurationParameter.getKey());
             }
@@ -1121,6 +1100,98 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
                 node.sendMessage(wakeupCommandClass.getIntervalMessage());
             }
         }
+    }
+
+    public String checkIsNodeFailed() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be checked for failure";
+        }
+        if (controllerHandler.getNode(nodeId).getNodeState() != ZWaveNodeState.FAILED) {
+            controllerHandler.checkNodeFailed(nodeId);
+            return "Check for node failure started, check event log to confirm";
+        }
+        return "Node is already in FAILED state";
+    }
+
+    public String replaceFailedNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be replaced";
+        }
+        if (node.getNodeState() == ZWaveNodeState.FAILED) {
+            controllerHandler.replaceFailedNode(nodeId);
+            return "Failed node replace started, check status to confirm";
+        }
+        return "Node is not in FAILED state, cannot be replaced";
+    }
+
+    public String removeFailedNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be removed";
+        }
+        if (node.getNodeState() == ZWaveNodeState.FAILED) {
+            controllerHandler.removeFailedNode(nodeId);
+            return "Failed node remove started, check status to confirm";
+        }
+        return "Node is not in FAILED state, cannot be removed";
+    }
+
+    public String reinitNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+
+        if (!node.isInitializationComplete()) {
+            return "Initialization not complete, re-interview not possible";
+        }
+
+        logger.debug("NODE {}: Re-initialising node!", nodeId);
+
+        // Delete the saved XML
+        ZWaveNodeSerializer nodeSerializer = new ZWaveNodeSerializer();
+        nodeSerializer.deleteNode(node.getHomeId(), nodeId);
+
+        controllerHandler.reinitialiseNode(nodeId);
+        return "Re-interview started for node " + nodeId;
+    }
+
+    public String healNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+
+        if (!node.isInitializationComplete()) {
+            return "Initialization not complete, Heal not possible.";
+        }
+
+        logger.debug("NODE {}: Starting heal on node!", nodeId);
+        return controllerHandler.healNode(nodeId);
+    }
+
+    public String pingNode() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be pinged";
+        }
+        controllerHandler.pingNode(nodeId);
+        return "Ping command sent to node";
+    }
+
+    public String pollLinkedChannels() {
+        ZWaveNode node = controllerHandler.getNode(nodeId);
+
+        if (!node.isInitializationComplete()) {
+            return "Initialization not complete, Polling linked channels not possible.";
+        }
+
+        if (ThingStatus.OFFLINE.equals(thing.getStatus())) {
+            return "Node is OFFLINE, polling linked channels not possible.";
+        }
+
+        if (!node.isListening() && !node.isFrequentlyListening()) {
+            return "Battery (sleeping) nodes cannot be polled in a timely manner";
+        }
+
+        startPolling(REFRESH_POLL_DELAY);
+        return "NODE " + nodeId + " Starting refresh of pollable, linked channels on node";
     }
 
     private Object getAssociationConfigList(List<ZWaveAssociation> groupMembers) {
@@ -1573,7 +1644,33 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
             }
 
             if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.DeleteNode) {
-                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE); // TODO: Update to THING_GONE
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.NONE, ZWaveBindingConstants.OFFLINE_NODE_NOTFOUND);
+            }
+
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNode) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
+                        ZWaveBindingConstants.EVENT_MARKED_AS_FAILED);
+            }
+
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.ReplaceFailedNodeDone) {
+                updateStatus(ThingStatus.ONLINE, ThingStatusDetail.NONE,
+                        ZWaveBindingConstants.EVENT_REPLACEMENT_COMPLETED);
+                // Re-initialise the node now. Properties will be updated as part of this process
+                reinitNode();
+                logger.debug("NODE {}: Will need to delete Thing (not exclude) and do inbox SCAN to update UI page",
+                        nodeId);
+            }
+
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.ReplaceFailedStart) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.CONFIGURATION_PENDING,
+                        ZWaveBindingConstants.EVENT_REPLACEMENT_STARTED);
+            }
+
+            // Generic status for failed Remove or Replace Action
+            // Had to be offline to start the action, so this is to update the status line
+            if (networkEvent.getEvent() == ZWaveNetworkEvent.Type.FailedNodeFailed) {
+                updateStatus(ThingStatus.OFFLINE, ThingStatusDetail.COMMUNICATION_ERROR,
+                        ZWaveBindingConstants.EVENT_REMOVEFAILED_FAILED);
             }
         }
 

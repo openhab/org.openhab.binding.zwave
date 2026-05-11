@@ -24,13 +24,13 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
  * Test cases for RemoveFailedNodeMessageClass message.
  * This takes some example packets, processes them, and checks that the processing is correct.
  *
- * @author Chris Jackson
+ * @author Chris Jackson - Initial contribution
  *
  */
 public class RemoveFailedNodeMessageClassTest {
     @Test
     public void doRequest() {
-        byte[] expectedResponse = { 12, 1 };
+        byte[] expectedResponse = { 12 };
 
         RemoveFailedNodeMessageClass handler = new RemoveFailedNodeMessageClass();
         ZWaveSerialPayload msg = handler.doRequest(12);

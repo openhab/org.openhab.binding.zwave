@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Generic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Specific;
@@ -85,17 +86,20 @@ public class ZWaveInclusionController implements ZWaveEventListener {
 
     /**
      * Starts a network exclusion process
+     * 
+     * @return the time in seconds the controller stays in exclusion mode
      */
-    public void startExclusion() {
+    public @Nullable Integer startExclusion() {
         if (inclusionState != ZWaveInclusionState.Unknown) {
             logger.debug("ZWave controller unable to start exclusion - state is {}", inclusionState);
-            return;
+            return null;
         }
         inclusionState = ZWaveInclusionState.ExcludeSent;
         controller.addEventListener(this);
         logger.debug("ZWave controller start exclusion");
         startTimer(TIMER_MAIN);
         controller.enqueue(new RemoveNodeMessageClass().doRequestStart());
+        return TIMER_MAIN / 1000;
     }
 
     /**

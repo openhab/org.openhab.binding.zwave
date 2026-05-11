@@ -192,8 +192,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         List<ConfigDescriptionParameterGroup> groups = new ArrayList<ConfigDescriptionParameterGroup>();
-        groups.add(ConfigDescriptionParameterGroupBuilder.create("actions").withLabel("Actions")
-                .withDescription("Actions").build());
         groups.add(ConfigDescriptionParameterGroupBuilder.create("thingcfg").withContext("home")
                 .withLabel("Device Configuration").withDescription("Device Configuration").build());
 
@@ -307,27 +305,6 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
                         .withReadOnly(readOnly).withGroupName("usercode").build());
             }
         }
-
-        // If we're FAILED, allow removing from the controller
-        // if (node.getNodeState() == ZWaveNodeState.FAILED) {
-        parameters.add(ConfigDescriptionParameterBuilder.create("action_remove", Type.BOOLEAN)
-                .withLabel("Remove device from controller").withAdvanced(true).withOptions(options).withDefault("false")
-                .withGroupName("actions").build());
-        // } else {
-        // Otherwise, allow us to put this on the failed list
-        parameters.add(ConfigDescriptionParameterBuilder.create("action_failed", Type.BOOLEAN)
-                .withLabel("Set device as FAILed").withAdvanced(true).withOptions(options).withDefault("false")
-                .withGroupName("actions").build());
-        // }
-
-        if (node.isInitializationComplete() == true) {
-            parameters.add(ConfigDescriptionParameterBuilder.create("action_reinit", Type.BOOLEAN)
-                    .withLabel("Reinitialise the device").withAdvanced(true).withOptions(options).withDefault("false")
-                    .withGroupName("actions").build());
-        }
-        parameters
-                .add(ConfigDescriptionParameterBuilder.create("action_heal", Type.BOOLEAN).withLabel("Heal the device")
-                        .withAdvanced(true).withOptions(options).withDefault("false").withGroupName("actions").build());
 
         return ConfigDescriptionBuilder.create(uri).withParameters(parameters).withParameterGroups(groups).build();
     }
