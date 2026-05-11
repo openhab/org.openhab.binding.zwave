@@ -80,8 +80,6 @@ public class AddNodeMessageClassTest {
         SerialMessage incomingMessage = new SerialMessage(
                 new byte[] { 0x01, 0x07, 0x00, 0x4A, 0x01, 0x06, 0x11, 0x00, (byte) 0xA4 });
 
-        
-
         ZWaveSerialPayload payload = new AddNodeMessageClass().doRequestStop(false);
         payload.setCallbackId(1);
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
