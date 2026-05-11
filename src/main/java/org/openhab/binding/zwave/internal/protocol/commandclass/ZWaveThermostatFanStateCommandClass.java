@@ -133,7 +133,7 @@ public class ZWaveThermostatFanStateCommandClass extends ZWaveCommandClass imple
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 THERMOSTAT_FAN_STATE_GET).withPriority(TransactionPriority.Get)
-                        .withExpectedResponseCommand(THERMOSTAT_FAN_STATE_REPORT).build();
+                .withExpectedResponseCommand(THERMOSTAT_FAN_STATE_REPORT).build();
     }
 
     @Override

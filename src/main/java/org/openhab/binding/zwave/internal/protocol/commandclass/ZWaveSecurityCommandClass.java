@@ -128,8 +128,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public ZWaveCommandClassTransactionPayload getSecuritySchemeGetMessage() {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassSecurityV1.getSecuritySchemeGet(0))
-                        .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_SCHEME_REPORT)
-                        .withPriority(TransactionPriority.Immediate).build();
+                .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_SCHEME_REPORT)
+                .withPriority(TransactionPriority.Immediate).build();
     }
 
     /**
@@ -159,8 +159,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public ZWaveCommandClassTransactionPayload getSetSecurityKeyMessage() {
         ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(
                 getNode().getNodeId(), CommandClassSecurityV1.getNetworkKeySet(networkKey.getEncoded()))
-                        .withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
-                        .withPriority(TransactionPriority.Immediate).build();
+                .withExpectedResponseCommand(CommandClassSecurityV1.NETWORK_KEY_VERIFY)
+                .withPriority(TransactionPriority.Immediate).build();
         payload.setRequiresSecurity();
 
         return payload;
@@ -188,8 +188,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public ZWaveCommandClassTransactionPayload getSecurityCommandsSupportedMessage() {
         ZWaveCommandClassTransactionPayload payload = new ZWaveCommandClassTransactionPayloadBuilder(
                 getNode().getNodeId(), CommandClassSecurityV1.getSecurityCommandsSupportedGet())
-                        .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_REPORT)
-                        .withPriority(TransactionPriority.Immediate).build();
+                .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_COMMANDS_SUPPORTED_REPORT)
+                .withPriority(TransactionPriority.Immediate).build();
         payload.setRequiresSecurity();
 
         return payload;
@@ -249,8 +249,8 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
     public ZWaveCommandClassTransactionPayload getSecurityNonceGet() {
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassSecurityV1.getSecurityNonceGet())
-                        .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_NONCE_REPORT)
-                        .withPriority(TransactionPriority.High).build();
+                .withExpectedResponseCommand(CommandClassSecurityV1.SECURITY_NONCE_REPORT)
+                .withPriority(TransactionPriority.High).build();
     }
 
     @ZWaveResponseHandler(id = CommandClassSecurityV1.SECURITY_NONCE_REPORT, name = "SECURITY_NONCE_REPORT")
@@ -285,7 +285,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
         ourNonce = new ZWaveNonce();
         getController().enqueueNonce(new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(),
                 CommandClassSecurityV1.getSecurityNonceReport(ourNonce.getNonceBytes()))
-                        .withPriority(TransactionPriority.NonceResponse).build());
+                .withPriority(TransactionPriority.NonceResponse).build());
     }
 
     public byte[] getSecurityMessageDecapsulation(byte[] ciphertextBytes) { // Check if this is a decapsulation message

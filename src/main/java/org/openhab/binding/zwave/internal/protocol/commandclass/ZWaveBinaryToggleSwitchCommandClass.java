@@ -94,7 +94,7 @@ public class ZWaveBinaryToggleSwitchCommandClass extends ZWaveCommandClass imple
 
         return new ZWaveCommandClassTransactionPayloadBuilder(getNode().getNodeId(), getCommandClass(),
                 SWITCH_TOGGLE_GET).withExpectedResponseCommand(SWITCH_TOGGLE_REPORT)
-                        .withPriority(TransactionPriority.Get).build();
+                .withPriority(TransactionPriority.Get).build();
     }
 
     public ZWaveCommandClassTransactionPayload setValueMessage(int value) {
