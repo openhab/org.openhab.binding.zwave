@@ -687,7 +687,7 @@ public class ZWaveTransactionManager {
                     switch (currentTransaction.getTransactionState()) {
                         case WAIT_DATA:
                             // No need to track this transaction now
-                            if (currentTransaction.equals(lastTransaction)
+                            if (currentTransaction == lastTransaction
                                     && currentTransaction.requiresDataBeforeNextRelease() == false) {
                                 lastTransaction = null;
                             } else if (currentTransaction.getWaitForResponse()) {
@@ -698,7 +698,7 @@ public class ZWaveTransactionManager {
                         case DONE:
                             // Remove the transaction from the outstanding transaction list
                             synchronized (sendQueue) {
-                                if (currentTransaction.equals(lastTransaction)) {
+                                if (currentTransaction == lastTransaction) {
                                     lastTransaction = null;
                                 }
 
