@@ -1090,7 +1090,7 @@ public class ZWaveTransactionManager {
                             // Remove this transaction from the outstanding transactions list
                             iterator.remove();
 
-                            if (lastTransaction != null && lastTransaction.equals(transaction)) {
+                            if (lastTransaction != null && lastTransaction == transaction) {
                                 // If this is the current transaction, then reset it.
                                 lastTransaction = null;
                                 logger.debug("TID {}: Transaction is current transaction, so clearing!!!!!",
