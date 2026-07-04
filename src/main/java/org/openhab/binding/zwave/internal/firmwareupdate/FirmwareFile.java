@@ -10,7 +10,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.zwave.firmwareupdate;
+package org.openhab.binding.zwave.internal.firmwareupdate;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -190,8 +190,7 @@ public final class FirmwareFile {
                 if (name.endsWith(".bin") || name.endsWith(".hex") || name.endsWith(".ota") || name.endsWith(".otz")
                         || name.endsWith(".gbl") || name.endsWith(".exe") || name.endsWith(".ex_")) {
                     byte[] data = zis.readAllBytes();
-                    FirmwareFileFormat format = detectFormat(name, data);
-                    return Optional.of(new FirmwareFileContainer(name, format, data));
+                    return Optional.of(new FirmwareFileContainer(name, data));
                 }
             }
         }
@@ -200,12 +199,10 @@ public final class FirmwareFile {
 
     private static final class FirmwareFileContainer {
         final String filename;
-        final FirmwareFileFormat format;
         final byte[] rawData;
 
-        FirmwareFileContainer(String filename, FirmwareFileFormat format, byte[] rawData) {
+        FirmwareFileContainer(String filename, byte[] rawData) {
             this.filename = filename;
-            this.format = format;
             this.rawData = rawData;
         }
     }

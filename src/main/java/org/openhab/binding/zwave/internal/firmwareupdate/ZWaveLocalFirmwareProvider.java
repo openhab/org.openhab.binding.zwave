@@ -10,7 +10,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.zwave.firmwareupdate;
+package org.openhab.binding.zwave.internal.firmwareupdate;
 
 import java.io.IOException;
 import java.io.InputStream;
