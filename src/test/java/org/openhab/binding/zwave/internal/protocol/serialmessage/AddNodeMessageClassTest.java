@@ -12,7 +12,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 
@@ -24,6 +25,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Test cases for AddNodeMessageClass message.
@@ -33,6 +36,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
  *
  */
 public class AddNodeMessageClassTest {
+    private static final Logger logger = LoggerFactory.getLogger(AddNodeMessageClassTest.class);
+
     @Test
     public void doRequest() {
         byte[] expectedResponseStartLocal = { 1, };
@@ -75,8 +80,6 @@ public class AddNodeMessageClassTest {
         SerialMessage incomingMessage = new SerialMessage(
                 new byte[] { 0x01, 0x07, 0x00, 0x4A, 0x01, 0x06, 0x11, 0x00, (byte) 0xA4 });
 
-        System.out.println(incomingMessage);
-
         ZWaveSerialPayload payload = new AddNodeMessageClass().doRequestStop(false);
         payload.setCallbackId(1);
         ZWaveTransaction transaction = new ZWaveTransaction(payload);
@@ -84,7 +87,7 @@ public class AddNodeMessageClassTest {
         try {
             response.handleRequest(Mockito.mock(ZWaveController.class), transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {
-            e.printStackTrace();
+            logger.error("Exception during test", e);
             assertTrue(false);
         }
     }

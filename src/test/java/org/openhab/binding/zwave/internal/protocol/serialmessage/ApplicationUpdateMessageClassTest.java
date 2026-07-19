@@ -12,15 +12,18 @@
  */
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ApplicationUpdateMessageClassTest {
+    private static final Logger logger = LoggerFactory.getLogger(ApplicationUpdateMessageClassTest.class);
+
     @Test
     public void NodeInfoRequestFailed() {
         SerialMessage incomingMessage = new SerialMessage(
@@ -32,8 +35,7 @@ public class ApplicationUpdateMessageClassTest {
         try {
             appUpdate.handleRequest(null, transaction, incomingMessage);
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception during test", e);
             assertTrue(false);
         }
 
