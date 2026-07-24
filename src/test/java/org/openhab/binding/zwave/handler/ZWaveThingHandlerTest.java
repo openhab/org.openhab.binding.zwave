@@ -22,12 +22,14 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ScheduledExecutorService;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
+import org.openhab.binding.zwave.internal.converter.ZWaveCommandClassConverter;
 import org.openhab.binding.zwave.internal.protocol.ZWaveAssociationGroup;
 import org.openhab.binding.zwave.internal.protocol.ZWaveController;
 import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
@@ -41,6 +43,7 @@ import org.openhab.core.config.core.status.ConfigStatusMessage;
 import org.openhab.core.library.types.DecimalType;
 import org.openhab.core.library.types.QuantityType;
 import org.openhab.core.library.types.StopMoveType;
+import org.openhab.core.library.types.OnOffType;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.Thing;
 import org.openhab.core.thing.ThingUID;
@@ -315,5 +318,61 @@ public class ZWaveThingHandlerTest {
         assertEquals("val3", properties.get("arg3"));
         assertTrue(properties.containsKey("arg4"));
         assertNull(properties.get("arg4"));
+    }
+
+    @Test
+    public void testHandleCommandSkipsPollWhenSupervisionEncapsulationIsUsed() {
+        ThingType thingType = ThingTypeBuilder.instance("bindingId", "thingTypeId", "label").build();
+        Thing thing = ThingBuilder.create(thingType.getUID(), new ThingUID(thingType.getUID(), "thingId"))
+                .withConfiguration(new Configuration()).build();
+        ZWaveThingHandler sut = new ZWaveThingHandlerForTest(thing);
+
+        ZWaveControllerHandler controllerHandler = Mockito.mock(ZWaveControllerHandler.class);
+        ZWaveNode node = Mockito.mock(ZWaveNode.class);
+        ZWaveThingChannel channel = Mockito.mock(ZWaveThingChannel.class);
+        ZWaveCommandClassConverter converter = Mockito.mock(ZWaveCommandClassConverter.class);
+        ScheduledExecutorService scheduler = Mockito.mock(ScheduledExecutorService.class);
+
+        ChannelUID channelUID = new ChannelUID("zwave:device:controller:node5:switch_binary");
+        Mockito.when(channel.getUID()).thenReturn(channelUID);
+        Mockito.when(channel.getDataType()).thenReturn(ZWaveThingChannel.DataType.OnOffType);
+        Mockito.when(channel.getConverter()).thenReturn(converter);
+
+        ZWaveCommandClassTransactionPayload supervisedMessage = new ZWaveCommandClassTransactionPayload(5,
+                new byte[] { 0x25, 0x01, (byte) 0xFF }, null, null, null);
+        supervisedMessage.setSupervisionEncapsulated(true);
+        Mockito.when(converter.receiveCommand(ArgumentMatchers.any(), ArgumentMatchers.eq(node),
+                ArgumentMatchers.eq(OnOffType.ON))).thenReturn(List.of(supervisedMessage));
+
+        Mockito.when(controllerHandler.getNode(5)).thenReturn(node);
+
+        setFieldInHierarchy(sut, "controllerHandler", controllerHandler);
+        setFieldInHierarchy(sut, "nodeId", 5);
+        setFieldInHierarchy(sut, "thingChannelsCmd", List.of(channel));
+        setFieldInHierarchy(sut, "commandPollDelay", 1500L);
+        setFieldInHierarchy(sut, "scheduler", scheduler);
+
+        sut.handleCommand(channelUID, OnOffType.ON);
+
+        Mockito.verify(controllerHandler).sendData(supervisedMessage);
+        Mockito.verifyNoInteractions(scheduler);
+    }
+
+    private void setFieldInHierarchy(Object target, String fieldName, Object value) {
+        Class<?> current = target.getClass();
+        while (current != null) {
+            try {
+                Field field = current.getDeclaredField(fieldName);
+                field.setAccessible(true);
+                field.set(target, value);
+                return;
+            } catch (NoSuchFieldException e) {
+                current = current.getSuperclass();
+            } catch (IllegalAccessException e) {
+                fail("Unable to set field " + fieldName);
+            }
+        }
+
+        fail("Field not found: " + fieldName);
     }
 }

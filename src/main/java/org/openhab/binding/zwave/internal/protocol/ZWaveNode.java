@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.jdt.annotation.Nullable;
@@ -36,9 +37,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiComman
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSupervisionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveVersionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveWakeUpCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.impl.CommandClassSecurityV1;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveDelayedPollEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveNodeStatusEvent;
 import org.openhab.binding.zwave.internal.protocol.initialization.ZWaveNodeInitStage;
@@ -54,11 +57,17 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 /**
  * Z-Wave node class. Represents a node in the Z-Wave network.
  *
- * @author Chris Jackson
- * @author Brian Crosby
+ * @author Chris Jackson - Initial contribution
+ * @author Brian Crosby - Contribution
+ * @author Robert Eckhoff - Added Supervision support and other improvements
  */
 @XStreamAlias("node")
 public class ZWaveNode {
+
+    private static final long SUPERVISION_PENDING_TIMEOUT_MS = 60_000;
+    private static final long SUPERVISION_WORKING_EXTENSION_MARGIN_MS = 5_000;
+    private static final long SUPERVISION_PENDING_MAX_LIFETIME_MS = 10 * 60_000;
+    private static final int SUPERVISION_PENDING_MAX_ENTRIES = 63;
 
     @XStreamOmitField
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNode.class);
@@ -136,7 +145,27 @@ public class ZWaveNode {
     private int retryCount = 0;
 
     @XStreamOmitField
+    private int supervisionSessionId = 1;
+
+    @XStreamOmitField
+    private Map<Integer, PendingSupervisionCommand> pendingSupervisionCommands;
+
+    @XStreamOmitField
     Long inclusionTimer = null;
+
+    private static class PendingSupervisionCommand {
+        private final ZWaveCommandClassPayload payload;
+        private final int endpointId;
+        private final long createdAtMillis;
+        private long expiresAtMillis;
+
+        private PendingSupervisionCommand(ZWaveCommandClassPayload payload, int endpointId) {
+            this.payload = payload;
+            this.endpointId = endpointId;
+            this.createdAtMillis = System.currentTimeMillis();
+            this.expiresAtMillis = this.createdAtMillis + SUPERVISION_PENDING_TIMEOUT_MS;
+        }
+    }
 
     /**
      * Constructor. Creates a new instance of the ZWaveNode class.
@@ -154,6 +183,8 @@ public class ZWaveNode {
 
         ZWaveEndpoint endpoint0 = new ZWaveEndpoint(0);
         endpoints.put(0, endpoint0);
+
+        initializeSupervisionRuntimeState();
     }
 
     /**
@@ -182,6 +213,8 @@ public class ZWaveNode {
         // Create the initialisation advancer and tell it we've loaded from file
         nodeInitStageAdvancer = new ZWaveNodeInitStageAdvancer(this, controller);
         nodeInitStageAdvancer.setRestoredFromConfigfile();
+
+        initializeSupervisionRuntimeState();
     }
 
     /**
@@ -1127,6 +1160,9 @@ public class ZWaveNode {
      */
     public ZWaveCommandClassTransactionPayload encapsulate(ZWaveCommandClassTransactionPayload transaction,
             int endpointId) {
+        initializeSupervisionRuntimeState();
+        cleanupPendingSupervisionCommands();
+
         ZWaveMultiInstanceCommandClass multiInstanceCommandClass;
         logger.trace("NODE {}: Encapsulating message, endpoint {}", getNodeId(), endpointId);
 
@@ -1138,7 +1174,31 @@ public class ZWaveNode {
 
         // Encapsulation the COMMAND_CLASS_MULTI_CMD class
 
+        boolean supervisionEncapsulated = false;
+
         // Encapsulation the COMMAND_CLASS_SUPERVISION class
+        if (shouldUseSupervisionEncapsulation(transaction)) {
+            ZWaveSupervisionCommandClass supervisionCommandClass = (ZWaveSupervisionCommandClass) getOrAddCommandClass(
+                    endpoints.get(0), CommandClass.COMMAND_CLASS_SUPERVISION);
+
+            if (supervisionCommandClass == null) {
+                logger.debug("NODE {}: Failed to initialize COMMAND_CLASS_SUPERVISION encapsulation", getNodeId());
+                return null;
+            }
+
+            int sessionId = getNextSupervisionSessionId();
+            ZWaveCommandClassPayload supervisedCommand = new ZWaveCommandClassPayload(transaction.getPayloadBuffer());
+            logger.debug("NODE {}: Encapsulating message with COMMAND_CLASS_SUPERVISION (session={})", getNodeId(),
+                    sessionId);
+            transaction = supervisionCommandClass.getSupervisionGetEncapMessage(transaction, sessionId, true);
+            if (transaction == null) {
+                logger.debug("NODE {}: Failed to encapsulate supervision message", getNodeId());
+                return null;
+            }
+
+            pendingSupervisionCommands.put(sessionId, new PendingSupervisionCommand(supervisedCommand, endpointId));
+            supervisionEncapsulated = true;
+        }
 
         // Encapsulation the COMMAND_CLASS_MULTI_CHANNEL class
         if (endpointId != 0) {
@@ -1174,6 +1234,8 @@ public class ZWaveNode {
                     CommandClass.getCommandClass(transaction.getCommandClassId()));
             // Encapsulation the COMMAND_CLASS_CRC16 class if we don't utilise security
         }
+
+        transaction.setSupervisionEncapsulated(supervisionEncapsulated);
 
         return transaction;
     }
@@ -1316,6 +1378,23 @@ public class ZWaveNode {
 
         if (payload.getCommandClassId() == CommandClass.COMMAND_CLASS_SUPERVISION.getKey()) {
             logger.debug("NODE {}: Decapsulating COMMAND_CLASS_SUPERVISION", getNodeId());
+
+            if (payload.getCommandClassCommand() == ZWaveSupervisionCommandClass.SUPERVISION_GET) {
+                if (payload.getPayloadLength() < 4) {
+                    logger.debug("NODE {}: COMMAND_CLASS_SUPERVISION corrupted payload {}", getNodeId(),
+                            SerialMessage.bb2hex(payload.getPayloadBuffer()));
+                    return null;
+                }
+
+                int encapsulatedLength = payload.getPayloadByte(3);
+                if (payload.getPayloadLength() < 4 + encapsulatedLength) {
+                    logger.debug("NODE {}: COMMAND_CLASS_SUPERVISION invalid encapsulated length {} in payload {}",
+                            getNodeId(), encapsulatedLength, SerialMessage.bb2hex(payload.getPayloadBuffer()));
+                    return null;
+                }
+
+                payload = new ZWaveCommandClassPayload(payload, 4, 4 + encapsulatedLength);
+            }
         }
 
         List<ZWaveCommandClassPayload> commands = new ArrayList<ZWaveCommandClassPayload>();
@@ -1385,6 +1464,170 @@ public class ZWaveNode {
 
         // Return the list of commands we've processed
         return commands;
+    }
+
+    private synchronized int getNextSupervisionSessionId() {
+        int sessionId = supervisionSessionId;
+        supervisionSessionId++;
+        if (supervisionSessionId > 0x3F) {
+            supervisionSessionId = 1;
+        }
+
+        return sessionId;
+    }
+
+    private boolean shouldUseSupervisionEncapsulation(ZWaveCommandClassTransactionPayload transaction) {
+        if (!supportsCommandClass(CommandClass.COMMAND_CLASS_SUPERVISION)) {
+            return false;
+        }
+
+        if (transaction.getExpectedResponseCommandClass() != null) {
+            return false;
+        }
+
+        CommandClass commandClass = CommandClass.getCommandClass(transaction.getCommandClassId());
+        if (commandClass == null) {
+            return false;
+        }
+
+        // Keep supervision scope intentionally narrow for now.
+        // Only Binary Switch Set should be supervised until additional CCs are explicitly enabled.
+        return commandClass == CommandClass.COMMAND_CLASS_SWITCH_BINARY;
+    }
+
+    public void handleSupervisionReport(int sessionId, int status, int duration, boolean moreUpdatesFollow,
+            int endpoint) {
+        initializeSupervisionRuntimeState();
+        cleanupPendingSupervisionCommands();
+
+        if (status == ZWaveSupervisionCommandClass.SUPERVISION_STATUS_WORKING) {
+            extendPendingSupervisionExpiry(sessionId, duration);
+        }
+
+        if (moreUpdatesFollow || status == ZWaveSupervisionCommandClass.SUPERVISION_STATUS_WORKING) {
+            return;
+        }
+
+        PendingSupervisionCommand pending = pendingSupervisionCommands.remove(sessionId);
+        if (pending == null) {
+            logger.debug("NODE {}: Supervision report for unknown session {}", getNodeId(), sessionId);
+            return;
+        }
+
+        if (status != ZWaveSupervisionCommandClass.SUPERVISION_STATUS_SUCCESS) {
+            logger.debug("NODE {}: Supervision session {} completed with non-success status 0x{}", getNodeId(),
+                    sessionId, Integer.toHexString(status));
+
+            // For terminal non-success statuses we trigger a delayed poll so the UI/state can converge.
+            if (controller != null) {
+                controller.notifyEventListeners(new ZWaveDelayedPollEvent(getNodeId(), pending.endpointId, 125,
+                        TimeUnit.MILLISECONDS));
+            }
+            return;
+        }
+
+        ZWaveEndpoint targetEndpoint = getEndpoint(pending.endpointId);
+        if (targetEndpoint == null) {
+            logger.debug("NODE {}: Endpoint {} not found for supervised command replay", getNodeId(),
+                    pending.endpointId);
+            return;
+        }
+
+        CommandClass commandClass = CommandClass.getCommandClass(pending.payload.getCommandClassId());
+        if (commandClass == null) {
+            logger.debug("NODE {}: Unknown supervised command class 0x{}", getNodeId(),
+                    Integer.toHexString(pending.payload.getCommandClassId()));
+            return;
+        }
+
+        ZWaveCommandClass zwaveCommandClass = getOrAddCommandClass(targetEndpoint, commandClass);
+        if (zwaveCommandClass == null) {
+            return;
+        }
+
+        try {
+            zwaveCommandClass.handleApplicationCommandRequest(pending.payload, pending.endpointId);
+        } catch (ZWaveSerialMessageException e) {
+            logger.error("Exception processing supervised command replay", e);
+        }
+    }
+
+    private void initializeSupervisionRuntimeState() {
+        if (pendingSupervisionCommands == null) {
+            pendingSupervisionCommands = new ConcurrentHashMap<Integer, PendingSupervisionCommand>();
+        }
+        if (supervisionSessionId < 1 || supervisionSessionId > 0x3F) {
+            supervisionSessionId = 1;
+        }
+    }
+
+    private void cleanupPendingSupervisionCommands() {
+        if (pendingSupervisionCommands == null || pendingSupervisionCommands.isEmpty()) {
+            return;
+        }
+
+        long now = System.currentTimeMillis();
+
+        // Drop timed-out pending entries to prevent stale session replays.
+        pendingSupervisionCommands.entrySet().removeIf(entry -> now > entry.getValue().expiresAtMillis);
+
+        if (pendingSupervisionCommands.size() <= SUPERVISION_PENDING_MAX_ENTRIES) {
+            return;
+        }
+
+        // Safety guard: evict oldest entries if the map still grows beyond expected bounds.
+        while (pendingSupervisionCommands.size() > SUPERVISION_PENDING_MAX_ENTRIES) {
+            Integer oldestSessionId = null;
+            long oldestTimestamp = Long.MAX_VALUE;
+
+            for (Map.Entry<Integer, PendingSupervisionCommand> entry : pendingSupervisionCommands.entrySet()) {
+                if (entry.getValue().createdAtMillis < oldestTimestamp) {
+                    oldestTimestamp = entry.getValue().createdAtMillis;
+                    oldestSessionId = entry.getKey();
+                }
+            }
+
+            if (oldestSessionId == null) {
+                break;
+            }
+            pendingSupervisionCommands.remove(oldestSessionId);
+        }
+    }
+
+    private void extendPendingSupervisionExpiry(int sessionId, int duration) {
+        PendingSupervisionCommand pending = pendingSupervisionCommands.get(sessionId);
+        if (pending == null) {
+            return;
+        }
+
+        long now = System.currentTimeMillis();
+        long durationMillis = supervisionDurationToMillis(duration);
+
+        if (durationMillis <= 0) {
+            return;
+        }
+
+        long requestedExpiry = now + durationMillis + SUPERVISION_WORKING_EXTENSION_MARGIN_MS;
+        long maxAllowedExpiry = pending.createdAtMillis + SUPERVISION_PENDING_MAX_LIFETIME_MS;
+        long newExpiry = Math.min(requestedExpiry, maxAllowedExpiry);
+
+        if (newExpiry > pending.expiresAtMillis) {
+            pending.expiresAtMillis = newExpiry;
+        }
+    }
+
+    private long supervisionDurationToMillis(int duration) {
+        if (duration >= 0x00 && duration <= 0x7F) {
+            return duration * 1_000L;
+        }
+
+        if (duration >= 0x80 && duration <= 0xFD) {
+            int minutes = duration - 0x7F;
+            return minutes * 60_000L;
+        }
+
+        // 0xFE = unknown duration, 0xFF = reserved. Keep default timeout in those cases.
+        return 0;
     }
 
     public void sendMessage(ZWaveCommandClassTransactionPayload payload) {
