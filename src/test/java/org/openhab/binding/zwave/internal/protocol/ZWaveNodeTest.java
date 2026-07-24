@@ -14,8 +14,10 @@ package org.openhab.binding.zwave.internal.protocol;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
@@ -27,6 +29,7 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssoci
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSupervisionCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveDelayedPollEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
@@ -159,5 +162,68 @@ public class ZWaveNodeTest {
                 .processCommand(new ZWaveCommandClassPayload(supervisionMoreUpdates));
         assertNotNull(responseMoreUpdates);
         assertTrue(eventCaptor.getAllValues().isEmpty());
+    }
+
+    @Test
+    public void testSupervisionTerminalFailTriggersDelayedPollFallback() {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = new ZWaveNode(1, 2, controller);
+
+        ArgumentCaptor<ZWaveEvent> eventCaptor = ArgumentCaptor.forClass(ZWaveEvent.class);
+        Mockito.doNothing().when(controller).notifyEventListeners(eventCaptor.capture());
+
+        ZWaveBinarySwitchCommandClass switchClass = new ZWaveBinarySwitchCommandClass(node, controller, null);
+        ZWaveSupervisionCommandClass supervisionClass = new ZWaveSupervisionCommandClass(node, controller, null);
+        node.addCommandClass(switchClass);
+        node.addCommandClass(supervisionClass);
+
+        ZWaveCommandClassTransactionPayload setTransaction = switchClass.setValueMessage(0xFF);
+        ZWaveCommandClassTransactionPayload supervisedTransaction = node.encapsulate(setTransaction, 0);
+        assertNotNull(supervisedTransaction);
+
+        int sessionId = supervisedTransaction.getPayloadByte(2) & 0x3F;
+        byte[] supervisionFail = new byte[] { 0x6C, 0x02, (byte) (sessionId & 0x3F), 0x02, 0x00 };
+
+        List<ZWaveCommandClassPayload> response = node.processCommand(new ZWaveCommandClassPayload(supervisionFail));
+        assertNotNull(response);
+
+        List<ZWaveEvent> events = eventCaptor.getAllValues();
+        assertEquals(1, events.size());
+        assertTrue(events.get(0) instanceof ZWaveDelayedPollEvent);
+    }
+
+    @Test
+    public void testSupervisionWorkingDurationExtendsPendingExpiry() throws Exception {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = new ZWaveNode(1, 2, controller);
+
+        ZWaveBinarySwitchCommandClass switchClass = new ZWaveBinarySwitchCommandClass(node, controller, null);
+        ZWaveSupervisionCommandClass supervisionClass = new ZWaveSupervisionCommandClass(node, controller, null);
+        node.addCommandClass(switchClass);
+        node.addCommandClass(supervisionClass);
+
+        ZWaveCommandClassTransactionPayload setTransaction = switchClass.setValueMessage(0xFF);
+        ZWaveCommandClassTransactionPayload supervisedTransaction = node.encapsulate(setTransaction, 0);
+        assertNotNull(supervisedTransaction);
+
+        int sessionId = supervisedTransaction.getPayloadByte(2) & 0x3F;
+
+        Field pendingField = ZWaveNode.class.getDeclaredField("pendingSupervisionCommands");
+        pendingField.setAccessible(true);
+        Map<Integer, Object> pendingMap = (Map<Integer, Object>) pendingField.get(node);
+        Object pending = pendingMap.get(sessionId);
+        assertNotNull(pending);
+
+        Field expiresField = pending.getClass().getDeclaredField("expiresAtMillis");
+        expiresField.setAccessible(true);
+        long expiresBefore = (long) expiresField.get(pending);
+
+        // 0x81 means about 2 minutes in Z-Wave duration format.
+        byte[] supervisionWorking = new byte[] { 0x6C, 0x02, (byte) (sessionId & 0x3F), 0x01, (byte) 0x81 };
+        List<ZWaveCommandClassPayload> response = node.processCommand(new ZWaveCommandClassPayload(supervisionWorking));
+        assertNotNull(response);
+
+        long expiresAfter = (long) expiresField.get(pending);
+        assertTrue(expiresAfter > expiresBefore);
     }
 }

@@ -104,6 +104,6 @@ public class ZWaveSupervisionCommandClass extends ZWaveCommandClass {
                 "NODE {}: Supervision report endpoint={}, session={}, status=0x{}, moreUpdatesFollow={}, duration={}",
                 getNode().getNodeId(), endpoint, sessionId, Integer.toHexString(status), moreUpdatesFollow, duration);
 
-        getNode().handleSupervisionReport(sessionId, status, moreUpdatesFollow, endpoint);
+        getNode().handleSupervisionReport(sessionId, status, duration, moreUpdatesFollow, endpoint);
     }
 }
