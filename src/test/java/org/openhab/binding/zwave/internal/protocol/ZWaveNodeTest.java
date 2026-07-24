@@ -18,9 +18,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveAssociationCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveBinarySwitchCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass.CommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiAssociationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
+import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSupervisionCommandClass;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveCommandClassValueEvent;
+import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 
 /**
@@ -88,5 +95,69 @@ public class ZWaveNodeTest {
         List<ZWaveCommandClassPayload> response = processCommand(new byte[] { 0x60, 0x0D, 0x01 });
 
         assertNull(response);
+    }
+
+    @Test
+    public void testSupervisionSuccessReplaysSwitchSetAsValueEvent() {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = new ZWaveNode(1, 2, controller);
+
+        ArgumentCaptor<ZWaveEvent> eventCaptor = ArgumentCaptor.forClass(ZWaveEvent.class);
+        Mockito.doNothing().when(controller).notifyEventListeners(eventCaptor.capture());
+
+        ZWaveBinarySwitchCommandClass switchClass = new ZWaveBinarySwitchCommandClass(node, controller, null);
+        ZWaveSupervisionCommandClass supervisionClass = new ZWaveSupervisionCommandClass(node, controller, null);
+        node.addCommandClass(switchClass);
+        node.addCommandClass(supervisionClass);
+
+        ZWaveCommandClassTransactionPayload setTransaction = switchClass.setValueMessage(0xFF);
+        ZWaveCommandClassTransactionPayload supervisedTransaction = node.encapsulate(setTransaction, 0);
+        assertNotNull(supervisedTransaction);
+
+        int sessionId = supervisedTransaction.getPayloadByte(2) & 0x3F;
+        byte[] supervisionSuccess = new byte[] { 0x6C, 0x02, (byte) (sessionId & 0x3F), (byte) 0xFF, 0x00 };
+
+        List<ZWaveCommandClassPayload> response = node.processCommand(new ZWaveCommandClassPayload(supervisionSuccess));
+        assertNotNull(response);
+
+        List<ZWaveEvent> events = eventCaptor.getAllValues();
+        assertEquals(1, events.size());
+        assertTrue(events.get(0) instanceof ZWaveCommandClassValueEvent);
+
+        ZWaveCommandClassValueEvent valueEvent = (ZWaveCommandClassValueEvent) events.get(0);
+        assertEquals(CommandClass.COMMAND_CLASS_SWITCH_BINARY, valueEvent.getCommandClass());
+        assertEquals(0xFF, valueEvent.getValue());
+    }
+
+    @Test
+    public void testSupervisionWorkingAndMoreUpdatesDoNotReplaySwitchSet() {
+        ZWaveController controller = Mockito.mock(ZWaveController.class);
+        ZWaveNode node = new ZWaveNode(1, 2, controller);
+
+        ArgumentCaptor<ZWaveEvent> eventCaptor = ArgumentCaptor.forClass(ZWaveEvent.class);
+        Mockito.doNothing().when(controller).notifyEventListeners(eventCaptor.capture());
+
+        ZWaveBinarySwitchCommandClass switchClass = new ZWaveBinarySwitchCommandClass(node, controller, null);
+        ZWaveSupervisionCommandClass supervisionClass = new ZWaveSupervisionCommandClass(node, controller, null);
+        node.addCommandClass(switchClass);
+        node.addCommandClass(supervisionClass);
+
+        ZWaveCommandClassTransactionPayload setTransaction = switchClass.setValueMessage(0xFF);
+        ZWaveCommandClassTransactionPayload supervisedTransaction = node.encapsulate(setTransaction, 0);
+        assertNotNull(supervisedTransaction);
+
+        int sessionId = supervisedTransaction.getPayloadByte(2) & 0x3F;
+
+        byte[] supervisionWorking = new byte[] { 0x6C, 0x02, (byte) (sessionId & 0x3F), 0x01, 0x00 };
+        List<ZWaveCommandClassPayload> responseWorking = node.processCommand(new ZWaveCommandClassPayload(supervisionWorking));
+        assertNotNull(responseWorking);
+        assertTrue(eventCaptor.getAllValues().isEmpty());
+
+        byte[] supervisionMoreUpdates = new byte[] { 0x6C, 0x02, (byte) (0x40 | (sessionId & 0x3F)), (byte) 0xFF,
+                0x00 };
+        List<ZWaveCommandClassPayload> responseMoreUpdates = node
+                .processCommand(new ZWaveCommandClassPayload(supervisionMoreUpdates));
+        assertNotNull(responseMoreUpdates);
+        assertTrue(eventCaptor.getAllValues().isEmpty());
     }
 }
