@@ -17,7 +17,7 @@ Enbrighten Z-Wave 800 Series In-Wall Smart Switch<br /> <h1>Overview</h1><p>Enbr
       <channel id="switch_binary" typeId="switch_binary">
         <label>Switch</label>
         <properties>
-          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY</property>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY,COMMAND_CLASS_BASIC</property>
         </properties>
       </channel>
       <channel id="scene_number" typeId="scene_number">
@@ -33,7 +33,7 @@ Enbrighten Z-Wave 800 Series In-Wall Smart Switch<br /> <h1>Overview</h1><p>Enbr
       <property name="vendor">Jasco Products</property>
       <property name="modelId">76592/ZWN4016</property>
       <property name="manufacturerId">0063</property>
-      <property name="manufacturerRef">4952:3438</property>
+      <property name="manufacturerRef">4952:3437,4952:3438</property>
       <property name="dbReference">1685</property>
       <property name="defaultAssociations">1</property>
     </properties>
@@ -103,14 +103,18 @@ Enbrighten Z-Wave 800 Series In-Wall Smart Switch<br /> <h1>Overview</h1><p>Enbr
 
       <parameter name="config_35_1" type="integer" groupName="configuration">
         <label>35: LED Indicator Intensity</label>
-        <description>LED indicator intensity</description>
+        <description><![CDATA[
+LED indicator intensity<br /> <h1>Overview</h1><p>Minimum 1, Maximum 7</p>
+        ]]></description>
         <default>4</default>
         <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_36_1" type="integer" groupName="configuration">
         <label>36: Guidelight Mode Intensity</label>
-        <description>Guidelight mode intensity</description>
+        <description><![CDATA[
+Guidelight mode intensity<br /> <h1>Overview</h1><p>Minimum 1, Maximum 7</p>
+        ]]></description>
         <default>4</default>
         <limitToOptions>false</limitToOptions>
       </parameter>

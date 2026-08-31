@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
+
+  <thing-type id="shelly_waveprodim2pm_00_000" listed="false">
+    <label>Wave Pro Dimmer 2PM The Device is a DIN-rail mountable , two-channel smart dimmer. It can work as a standalone or it can also be operated through Z-WaveÂ® home automation</label>
+    <description><![CDATA[
+The Device is a DIN-rail mountable , two-channel smart dimmer. It can work as a standalone or it can also be operated through Z-WaveÂ® home automation<br /> <h1>Overview</h1><p>The Device is a DIN-rail mountable , two-channel smart dimmer. It can work as a standalone or it can also be operated through Z-Wave® home automation. The Device can be accessed, controlled, and monitored remotely from any place where the User has internet connectivity, provided that the module is connected to a Z-Wave Gateway with internet access. It is compatible with switches and push-buttons (default).</p> <br /> <h2>Inclusion Information</h2><p>SmartStart adding (inclusion)</p><p>SmartStart enabled products can be added into a Z-Wave™ network by scanning the Z-Wave™ QR Code present on the Device with a gateway providing SmartStart inclusion. No further action is required, and the SmartStart device will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>With the gateway application scan the QR code on the Device label and add the Security 2 (S2) Device Specific Key (DSK) to the provisioning list in the gateway.</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Adding will be initiated automatically within a few seconds after connecting the Device to a power supply, and the Device will be added to a Z-Wave™ network automatically.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking in slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Adding (inclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking slowly. Releasing the S button will start the Learn mode.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p><p>Adding (inclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2, etc.) 3 times within 3 seconds (this procedure puts the Device in Learn mode*). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>*Learn mode - a state that allows the Device to receive network information from the gateway.</p> <br /> <h2>Exclusion Information</h2><p>emoving the Device from a Z-Wave™ network (exclusion)</p><p>Note! The Device will be removed from your Z-wave™ network, but any custom configuration parameters will not be erased.</p><p>Note! All Device outputs (O, O1, O2, etc. - depending on the Device type) will turn the load 1s on/1s off /1s on/1s off if the Device is successfully added to/removed from a Z-Wave™ network.</p><p>Removing (exclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the green LED will be blinking slowly. If so, the Device is added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking slowly. Releasing the S button will start the LEARN MODE.</p><p>The blue LED will be blinking faster during the removing process.</p><p>The blue LED will be blinking slower if the Device is successfully removed from a Z-Wave™ network.</p><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p><p>Removing (exclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the green LED will be blinking slowly. If so, the Device is added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2,…) 3 times within 3 seconds (this procedure puts the Device in LEARN MODE). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking faster during the removing process.</p><p>The blue LED will be blinking slower if the Device is successfully removed from a Z-Wave™ network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p>
+    ]]></description>
+    <category>LightBulb</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat" typeId="alarm_heat">
+        <label>Alarm (heat)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer1" typeId="switch_dimmer">
+        <label>Dimmer 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh1" typeId="meter_kwh">
+        <label>Electric meter (kWh) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts1" typeId="meter_watts">
+        <label>Electric meter (watts) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power1" typeId="alarm_power">
+        <label>Alarm (power) 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer2" typeId="switch_dimmer">
+        <label>Dimmer 2</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:2</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh2" typeId="meter_kwh">
+        <label>Electric meter (kWh) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts2" typeId="meter_watts">
+        <label>Electric meter (watts) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power2" typeId="alarm_power">
+        <label>Alarm (power) 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:2;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary3" typeId="switch_binary">
+        <label>Switch 3</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary4" typeId="switch_binary">
+        <label>Switch 4</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:4</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary5" typeId="switch_binary">
+        <label>Switch 5</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:5</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary6" typeId="switch_binary">
+        <label>Switch 6</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:6</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Shelly</property>
+      <property name="modelId">Wave Pro Dimmer 2PM</property>
+      <property name="manufacturerId">0460</property>
+      <property name="manufacturerRef">0001:0082</property>
+      <property name="dbReference">1703</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

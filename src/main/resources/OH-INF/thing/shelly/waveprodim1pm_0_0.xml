@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
+
+  <thing-type id="shelly_waveprodim1pm_00_000" listed="false">
+    <label>Wave Pro Dimmer 1PM The Device is a DIN-rail mountable, one-channel smart dimmer. It can work as a standalone or it can also be operated through Z-WaveÂ® home automation.</label>
+    <description><![CDATA[
+The Device is a DIN-rail mountable, one-channel smart dimmer. It can work as a standalone or it can also be operated through Z-WaveÂ® home automation.<br /> <h1>Overview</h1><p>The Device is a DIN-rail mountable, one-channel smart dimmer. It can work as a standalone or it can also be operated through Z-Wave® home automation. The Device can be accessed, controlled, and monitored remotely from any place where the User has internet connectivity, provided that the module is connected to a Z-Wave Gateway with internet access. It is compatible with switches and push-buttons (default).</p><p>The Device is a DIN-rail mountable, one-channel smart dimmer. It can work as a standalone or it can also be operated through Z-Wave® home automation. The Device can be accessed, controlled, and monitored remotely from any place where the User has internet connectivity, provided that the module is connected to a Z-Wave Gateway with internet access. It is compatible with switches and push-buttons (default).</p><p>The Device is a DIN rail mountable smart switch with power measurement. It controls the on/off function for one electrical device with a load up to 16 A. It is compatible with switches (default) and push-buttons.</p><p>Switch connected to input terminal SW (SW1)</p><p>If the SW (SW1) is configured as a switch (default), each toggle of the switch will change the output O (O1) state to the opposite state - on, off, on, etc.</p><p>Change switch position once: Change the state of the output O (O1) state to the opposite state and send the command to the associated devices in associated groups 2 and 3 (check chapter Z-Wave Association).</p><p>Change switch position twice: If the delay between the first in the second click is less then 500ms, this is interpreted as “Change the switch possition twice”. Send command to the associated devices (dimmers, shutters,….) in associated groups 2 and 3 (check chapter Z-Wave Association).</p><p>Switch-memory connected to input terminal SW (SW1)</p><p>If the SW (SW1) is configured as a switch-memory, than:</p><p>Switching to Close switch-memory contact: Change the state of the output state O (O1) to the On state and send command to the associated devices in associated groups 2 and 3 (check chapter Z-Wave Association)</p><p>Switching to Open switch-memory contact: Change the state of the output state O (O1) to the Off state and send command to the associated devices in associated groups 2 and 3 (check chapter Z-Wave Association)</p><p>Push-button connected to input terminal SW (SW1)</p><p>If the SW (SW1) is configured as a push-button in the Device settings, each press of the push-button changes the output state O (O1) to opposite - ON, OFF, ON, etc.</p><p>Short press: Change the state of the output state O (O1) to the opposite one and send command to the associated devices in associated groups 2 and 3 (check chapter Z-Wave Association)</p><p>Hold: Send command to the associated devices in associated group 3 (check chapter Z-Wave Association)</p><p>Release: Send command to the associated devices in associated group 3 (check chapter Z-Wave Association)</p><p>Switching On/Off load connected to O (O1)</p><p>Load connected to O (O1) is possible to switch On/Off by:</p><p>by Z-Wave command</p><p>Automatically switching can be enabled by proper Parameters No. 19 and 20 settings.</p><p>pressing the switch/push-button SW (SW1): Change the state of the connected load to the opposite one</p> <br /> <h2>Inclusion Information</h2><p>SmartStart adding (inclusion)</p><p>SmartStart enabled products can be added into a Z-Wave™ network by scanning the Z-Wave™ QR Code present on the Device with a gateway providing SmartStart inclusion. No further action is required, and the SmartStart device will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>With the gateway application scan the QR code on the Device label and add the Security 2 (S2) Device Specific Key (DSK) to the provisioning list in the gateway.</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Adding will be initiated automatically within a few seconds after connecting the Device to a power supply, and the Device will be added to a Z-Wave™ network automatically.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking in slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Adding (inclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking slowly. Releasing the S button will start the Learn mode.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p><p>Adding (inclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2, etc.) 3 times within 3 seconds (this procedure puts the Device in Learn mode*). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>*Learn mode - a state that allows the Device to receive network information from the gateway</p><p>SmartStart adding (inclusion)</p><p>SmartStart enabled products can be added into a Z-Wave™ network by scanning the Z-Wave™ QR Code present on the Device with a gateway providing SmartStart inclusion. No further action is required, and the SmartStart device will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>With the gateway application scan the QR code on the Device label and add the Security 2 (S2) Device Specific Key (DSK) to the provisioning list in the gateway.</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Adding will be initiated automatically within a few seconds after connecting the Device to a power supply, and the Device will be added to a Z-Wave™ network automatically.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking in slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Adding (inclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking slowly. Releasing the S button will start the Learn mode.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p><p>Adding (inclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2, etc.) 3 times within 3 seconds (this procedure puts the Device in Learn mode*). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>*Learn mode - a state that allows the Device to receive network information from the gateway</p><p>SmartStart adding (inclusion)</p><p>SmartStart enabled products can be added into a Z-Wave® network by scanning the Z-Wave® QR Code present on the Device with a gateway providing SmartStart inclusion. No further action is required, and the SmartStart device will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>With the gateway application scan the QR code on the Device label and add the Security 2 (S2) Device Specific Key (DSK) to the provisioning list in the gateway.</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</p><p>Adding will be initiated automatically within a few seconds after connecting the Device to a power supply, and the Device will be added to a Z-Wave® network automatically.</p><p>The blue LED will be blinking in Mode 2 during the adding process.</p><p>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</p><p>Adding (inclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking in Mode 3. Releasing the S button will start the Learn mode.</p><p>The blue LED will be blinking in Mode 2 during the adding process.</p><p>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</p><p>Adding (inclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2, etc.) 3 times within 3 seconds (this procedure puts the Device in Learn mode*). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking in Mode 2 during the adding process.</p><p>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</p> <br /> <h2>Exclusion Information</h2><p>Removing the Device from a Z-Wave™ network (exclusion)</p><p>Note! The Device will be removed from your Z-wave™ network, but any custom configuration parameters will not be erased.</p><p>Note! All Device outputs (O, O1, O2, etc. - depending on the Device type) will turn the load 1s on/1s off /1s on/1s off if the Device is successfully added to/removed from a Z-Wave™ network.</p><p>Removing (exclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the green LED will be blinking slowly. If so, the Device is added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking slowly. Releasing the S button will start the LEARN MODE.</p><p>The blue LED will be blinking faster during the removing process.</p><p>The blue LED will be blinking slower if the Device is successfully removed from a Z-Wave™ network.</p><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p><p>Removing (exclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the green LED will be blinking slowly. If so, the Device is added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2,…) 3 times within 3 seconds (this procedure puts the Device in LEARN MODE). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking faster during the removing process.</p><p>The blue LED will be blinking slower if the Device is successfully removed from a Z-Wave™ network.</p><p>SmartStart adding (inclusion)</p><p>SmartStart enabled products can be added into a Z-Wave™ network by scanning the Z-Wave™ QR Code present on the Device with a gateway providing SmartStart inclusion. No further action is required, and the SmartStart device will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>With the gateway application scan the QR code on the Device label and add the Security 2 (S2) Device Specific Key (DSK) to the provisioning list in the gateway.</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Adding will be initiated automatically within a few seconds after connecting the Device to a power supply, and the Device will be added to a Z-Wave™ network automatically.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking in slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Adding (inclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking slowly. Releasing the S button will start the Learn mode.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>Note! In Setting mode, the Device has a timeout of 10s before entering again into Normal mode.</p><p>Adding (inclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking slowly. If so, the Device is not added to a Z-Wave™ network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2, etc.) 3 times within 3 seconds (this procedure puts the Device in Learn mode*). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking faster during the adding process.</p><p>The green LED will be blinking slowly if the Device is successfully added to a Z-Wave™ network.</p><p>*Learn mode - a state that allows the Device to receive network information from the gateway</p><p>SmartStart adding (inclusion)</p><p>SmartStart enabled products can be added into a Z-Wave® network by scanning the Z-Wave® QR Code present on the Device with a gateway providing SmartStart inclusion. No further action is required, and the SmartStart device will be added automatically within 10 minutes of being switched on in the network vicinity.</p><p>With the gateway application scan the QR code on the Device label and add the Security 2 (S2) Device Specific Key (DSK) to the provisioning list in the gateway.</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</p><p>Adding will be initiated automatically within a few seconds after connecting the Device to a power supply, and the Device will be added to a Z-Wave® network automatically.</p><p>The blue LED will be blinking in Mode 2 during the adding process.</p><p>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</p><p>Adding (inclusion) with the S button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</p><p>Enable add/remove mode on the gateway.</p><p>To enter the Setting mode, quickly press and hold the S button on the Device until the LED turns solid blue.</p><p>Quickly release and then press and hold (&gt; 2s) the S button on the Device until the blue LED starts blinking in Mode 3. Releasing the S button will start the Learn mode.</p><p>The blue LED will be blinking in Mode 2 during the adding process.</p><p>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</p><p>Adding (inclusion) with a switch/push-button</p><p>Connect the Device to a power supply.</p><p>Check if the blue LED is blinking in Mode 1. If so, the Device is not added to a Z-Wave® network.</p><p>Enable add/remove mode on the gateway.</p><p>Toggle the switch/push-button connected to any of the SW terminals (SW, SW1, SW2, etc.) 3 times within 3 seconds (this procedure puts the Device in Learn mode*). The Device must receive on/off signal 3 times, which means pressing the momentary switch 3 times, or toggling the switch on and off 3 times.</p><p>The blue LED will be blinking in Mode 2 during the adding process.</p><p>The green LED will be blinking in Mode 1 if the Device is successfully added to a Z-Wave® network.</p> <br /> <h2>Wakeup Information</h2><p><br /></p><p><br /></p><p><br /></p>
+    ]]></description>
+    <category>LightBulb</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="switch_dimmer" typeId="switch_dimmer">
+        <label>Dimmer</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh" typeId="meter_kwh">
+        <label>Electric meter (kWh)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts" typeId="meter_watts">
+        <label>Electric meter (watts)</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="scene_number" typeId="scene_number">
+        <label>Scene Number</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_CENTRAL_SCENE</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat" typeId="alarm_heat">
+        <label>Alarm (heat)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=HEAT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (power)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="switch_dimmer1" typeId="switch_dimmer">
+        <label>Dimmer 1</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+          <property name="binding:Command:OnOffType">COMMAND_CLASS_SWITCH_MULTILEVEL:1</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh1" typeId="meter_kwh">
+        <label>Electric meter (kWh) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts1" typeId="meter_watts">
+        <label>Electric meter (watts) 1</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:1;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="alarm_heat1" typeId="alarm_heat">
+        <label>Alarm (heat) 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=HEAT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power1" typeId="alarm_power">
+        <label>Alarm (power) 1</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM:1;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary2" typeId="switch_binary">
+        <label>Switch 2</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:2</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh2" typeId="meter_kwh">
+        <label>Electric meter (kWh) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts2" typeId="meter_watts">
+        <label>Electric meter (watts) 2</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:2;type=E_W</property>
+        </properties>
+      </channel>
+      <channel id="switch_binary3" typeId="switch_binary">
+        <label>Switch 3</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_SWITCH_BINARY:3</property>
+        </properties>
+      </channel>
+      <channel id="meter_kwh3" typeId="meter_kwh">
+        <label>Electric meter (kWh) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_KWh</property>
+        </properties>
+      </channel>
+      <channel id="meter_watts3" typeId="meter_watts">
+        <label>Electric meter (watts) 3</label>
+        <properties>
+          <property name="binding:*:DecimalType">COMMAND_CLASS_METER:3;type=E_W</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">Shelly</property>
+      <property name="modelId">Wave Pro Dimmer 1PM</property>
+      <property name="manufacturerId">0460</property>
+      <property name="manufacturerRef">0001:0081</property>
+      <property name="dbReference">1702</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: SW (SW1) Switch type</label>
+        <description><![CDATA[
+This parameter defines how the Device should treat the switch (which type) connected to the SW (SW1) terminal.<br /> <h1>Overview</h1><p>0 - momentary switch,</p><p>1 - toggle switch (contact closed - ON / contact opened - OFF),</p><p>2 - toggle switch (device changes status when switch changes status)</p>
+        ]]></description>
+        <default>2</default>
+        <options>
+          <option value="0">momentary switch</option>
+          <option value="1">toggle switch (contact closed - ON / contact opened - OFF)</option>
+          <option value="2">toggle switch (device changes status when switch changes status)</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_2" type="integer" groupName="configuration">
+        <label>2: SW2 Switch type</label>
+        <description>This parameter defines how the Device should treat the switch (which type) connected to the SW2 terminal.</description>
+        <default>0</default>
+        <options>
+          <option value="0">momentary switch (push button)</option>
+          <option value="1">toggle switch (contact closed - ON / contact opened - OFF)</option>
+          <option value="2">toggle switch (device changes status when switch changes status)</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: SW (SW1) detach mode</label>
+        <description><![CDATA[
+In this mode the input SW (SW1) is separated/not changing the state of the output.<br /> <h1>Overview</h1><p>0 - normal mode</p><p>1 - detached mode</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Normal mode</option>
+          <option value="1">Detached mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration">
+        <label>8: SW2 detach mode</label>
+        <description><![CDATA[
+In this mode the input SW 2 is separated/not changing the state of the output.<br /> <h1>Overview</h1><p>0 - normal mode</p><p>1 - detached mode</p><p>If SW2 is set to “normal mode - not detached”, Par. n. 131 must be set to dual mode “1 - Active”)</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Normal mode</option>
+          <option value="1">Detached mode</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_17_1" type="integer" groupName="configuration">
+        <label>17: Restore the O (O1) state after a power failure</label>
+        <description><![CDATA[
+This parameter determines if the on/off status is saved and restored for the load connected to O (O1) after a power failure.<br /> <h1>Overview</h1><p>0 - Device saves last on/off status and restores it after a power failure</p><p>1 - Device does not save on/off status and does not restore it after a power failure, it remains off</p><p>NOTE: This functionality does not apply when Parameter 1 is configured with the value "1 - toggle switch (contact closed - ON / contact opened - OFF)"</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Device saves last on/off status and restores it after a power failure</option>
+          <option value="1">NC</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_19_2" type="integer" groupName="configuration">
+        <label>19: O (O1) Auto OFF with timer</label>
+        <description><![CDATA[
+If the load O (O1) is ON, you can schedule it to turn OFF automatically after the period of time defined in this parameter. The timer resets to zero each time the Device receives an ON command, either remotely (from the gateway or associated device) or lo<br /> <h1>Overview</h1><p>0 - Auto OFF Disabled</p><p>1 - 32535 = 1 - 32535 seconds or milliseconds – see Parameter no. 25. Set timer units to s or ms for O (O1) resolution 100ms</p>
+        ]]></description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_20_2" type="integer" groupName="configuration">
+        <label>20: O (O1) Auto ON with timer</label>
+        <description><![CDATA[
+If the load O (O1) is OFF, you can schedule it to turn ON automatically after the period of time defined in this parameter. The timer resets to zero each time the Device receives an OFF command, either remotely (from the gateway or associated device) or l<br /> <h1>Overview</h1><p>0 = Auto ON Disabled</p><p>1 - 32535 seconds (or milliseconds – see Parameter no. 25. Auto ON tim</p>
+        ]]></description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_25_1" type="integer" groupName="configuration">
+        <label>25: Set timer units to s or ms for O (O1)</label>
+        <description>Set Timer Units to Seconds or Milliseconds Choose if you want to set the timer in seconds or milliseconds in Parameters No. 19, 20.</description>
+        <default>0</default>
+        <options>
+          <option value="0">timer set in seconds</option>
+          <option value="1">timer set in milliseconds</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_36_1" type="integer" groupName="configuration">
+        <label>36: O (O1) Power report on change - percentage</label>
+        <description><![CDATA[
+This parameter determines the minimum change in consumed power that will result in sending a new report to the gateway.<br /> <h1>Overview</h1><p>:0 - reports are disabled</p><p>1-100 (1-100%) - change in power</p>
+        ]]></description>
+        <default>10</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_39_1" type="integer" groupName="configuration">
+        <label>39: Minimal time between reports (O) O1</label>
+        <description><![CDATA[
+This parameter determines the minimum time that must elapse before a new power report on O (O1) is sent to the gateway.<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
+        <default>30</default>
+        <options>
+          <option value="0">reports are disabled</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_78_1" type="integer" groupName="configuration">
+        <label>78: Forced Dimmer calibration O (O1)</label>
+        <description><![CDATA[
+By setting this parameter to value 1 the Device will start executing force calibration procedure for channel O (O1). The parameter also reports the calibration status by sending the get parameter value command<br /> <h1>Overview</h1><p>1 - start calibration</p><p>2 - device is calibrated (read only)</p><p>3 - device is not calibrated (read only)</p><p>4 - calibration error (read only)</p>
+        ]]></description>
+        <default>3</default>
+        <options>
+          <option value="1">start calibration</option>
+          <option value="2">device is calibrated (read only)</option>
+          <option value="3">device is not calibrated (read only)</option>
+          <option value="4">calibration error (read only)</option>
+        </options>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_117_1" type="integer" groupName="configuration">
+        <label>117: Remote Device reboot</label>
+        <description><![CDATA[
+This parameter enable restarting or rebooting the Device without physical intervention. Use this parameter only for troubleshooting scope. After device reboot the parameter value will be set to default.<br /> <h1>Overview</h1><p>0 - function inactive</p><p>1 - Remote device reboot</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">function inactive</option>
+          <option value="1">Remote device reboot</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_118_1" type="integer" groupName="configuration">
+        <label>118: Enable SW for inclusion</label>
+        <description><![CDATA[
+This parameter defines whether the Device should allow exclusion over inputs (SW) when the device is already included.<br /> <h1>Overview</h1><p>0 - Don't allow exclusion</p><p>1 - Allow exclusion</p>
+        ]]></description>
+        <default>0</default>
+        <options>
+          <option value="0">Don't allow exclusion</option>
+          <option value="1">Allow exclusion</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_120_4" type="integer" groupName="configuration">
+        <label>120: Factory Reset</label>
+        <description>Reset to factory default settings and removed from the z-wave network</description>
+        <default>0</default>
+        <options>
+          <option value="0">Don’t do Factory reset</option>
+          <option value="1431655765">Do the Factory reset (hex 0x55555555)</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_121_1" type="integer" groupName="configuration">
+        <label>121: MAX dimming value O (O1)</label>
+        <description><![CDATA[
+The value set in this parameter determines the maximum dimming value (the highest value which can be set on the device, when, for example, dimming lights with wall switch or slider in the GUI (Gateway - hub)).<br /> <h1>Overview</h1><p>1 - 99% = 2% - 99%, step is 1%</p><p>NOTE: The maximum level may not be lower than the minimum level!</p><p>NOTE: The output level is automatically adjusted according to changed value.</p>
+        ]]></description>
+        <default>99</default>
+        <advanced>true</advanced>
+      </parameter>
+
+      <parameter name="config_123_1" type="integer" groupName="configuration">
+        <label>123: Min. dimming value dim specific par. O (O1)</label>
+        <description><![CDATA[
+The value set in this parameter determines the minimum dimming value (the lowest value which can be set on the device, when, for example, dimming lights with wall switch or slider in the GUI (Gateway - hub))<br /> <h1>Overview</h1><p>0 - 98 = 1 % - 98 %, step is 1 %. </p><p>Minimum dimming value is set by entering a value.</p><p>NOTE: The maximum level may not be higher than the minimum level!</p><p>NOTE: The output level is automatically adjusted according to changed value.</p>
+        ]]></description>
+        <default>15</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_125_1" type="integer" groupName="configuration">
+        <label>125: Dimming time (soft on/off) dim specific par. O (O1)</label>
+        <description><![CDATA[
+(Dimming time short click O (O1))Choose the time during which the device will move between the min. and max. dimming values by a short press of the momentary switch connected to input terminal.<br /> <h1>Overview</h1><p>1 - 10 = 1 seconds - 10 seconds, step is 1 second</p>
+        ]]></description>
+        <default>3</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_127_1" type="integer" groupName="configuration">
+        <label>127: Fade rate O (O1)</label>
+        <description><![CDATA[
+(Dimming time when key hold)Choose the time during which the Dimmer will move between the min. and max. dimming values during a continuous press of the momentary switch connected to terminal, by an associated device.<br /> <h1>Overview</h1><p>0 = non-dimmable load</p><p>1 = 5% / sec</p><p>2 = 7% / sec</p><p>3 = 10% /sec (default)</p><p>4 = 15% / sec</p><p>5 = 20% / sec</p>
+        ]]></description>
+        <default>3</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_129_1" type="integer" groupName="configuration">
+        <label>129: Minimum brightens on toggle O (O1) dim specific par.</label>
+        <description><![CDATA[
+Minimum brightness on toggle can be changed by the user to the desired level. It is applied on toggle on (Off → On state change) when the Light brightness &lt; min_brightness_on_toggle.<br /> <h1>Overview</h1><p>1 - 99 = 2 % - 99 %, </p><p>step is 1 %. </p>
+        ]]></description>
+        <default>15</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_131_1" type="integer" groupName="configuration">
+        <label>131: SW1 &amp; SW2 Dual Button Mode</label>
+        <description><![CDATA[
+W1 &amp; SW2 Dual button (only push button)<br /> <h1>Overview</h1><p>0 - Inactive</p><p>1 - Active</p>
+        ]]></description>
+        <default>0</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>

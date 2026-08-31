@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="zwave"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+  xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0
+                      https://openhab.org/schemas/thing-description/v1.0.0">
+
+  <thing-type id="smartwings_wm25lv_00_000" listed="false">
+    <label>WM25LV Motorized Window Treatments</label>
+    <description><![CDATA[
+Motorized Window Treatments<br /> <h1>Overview</h1><p>Motor control device that powers smart window treatments from brands such as SmartWings and Zemismart.</p> <br /> <h2>Inclusion Information</h2><p>Pairing Method 1:<br /></p><ol><li>Remove the back cover of the remote.</li><li>Briefly press the P button until the motor jogs once.</li><li>Press the UP button until the motor jogs again.</li><li>Press the P button once more until the motor jogs once.</li><li>A red LED light will illuminate, indicating the motor is in inclusion mode.</li></ol><p>Pairing Method 2:</p><ol><li> Press and hold the P1 button on the motor head for 6 seconds until the motor jogs twice.</li><li>A red LED light will illuminate, indicating the motor is in inclusion mode.</li></ol> <br /> <h2>Exclusion Information</h2><ol><li>Remove the back cover of the remote.</li><li>Briefly press the P button until the motor jogs once.</li><li>Press the DOWN button until the motor jogs again.</li><li>Press the P button once more until the motor jogs once.</li></ol> <br /> <h2>Wakeup Information</h2><p><br /></p>
+    ]]></description>
+    <category>Blinds</category>
+
+    <!-- CHANNEL DEFINITIONS -->
+    <channels>
+      <channel id="blinds_control" typeId="blinds_control">
+        <label>Blinds Control</label>
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_SWITCH_MULTILEVEL,COMMAND_CLASS_BASIC</property>
+          <property name="binding:Command:StopMoveType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+          <property name="binding:Command:UpDownType">COMMAND_CLASS_SWITCH_MULTILEVEL</property>
+        </properties>
+      </channel>
+      <channel id="alarm_power" typeId="alarm_power">
+        <label>Alarm (AC Mains)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="alarm_battery" typeId="alarm_battery">
+        <label>Alarm (battery)</label>
+        <properties>
+          <property name="binding:*:OnOffType">COMMAND_CLASS_ALARM;type=POWER_MANAGEMENT</property>
+        </properties>
+      </channel>
+      <channel id="battery-level" typeId="system.battery-level">
+        <properties>
+          <property name="binding:*:PercentType">COMMAND_CLASS_BATTERY</property>
+        </properties>
+      </channel>
+    </channels>
+
+    <!-- DEVICE PROPERTY DEFINITIONS -->
+    <properties>
+      <property name="vendor">SmartWings</property>
+      <property name="modelId">WM25LV</property>
+      <property name="manufacturerId">046A</property>
+      <property name="manufacturerRef">0004:050B</property>
+      <property name="dbReference">1704</property>
+    </properties>
+
+    <!-- CONFIGURATION DESCRIPTIONS -->
+    <config-description>
+
+      <!-- GROUP DEFINITIONS -->
+      <parameter-group name="configuration">
+        <context>setup</context>
+        <label>Configuration Parameters</label>
+      </parameter-group>
+
+      <parameter-group name="association">
+        <context>link</context>
+        <label>Association Groups</label>
+      </parameter-group>
+
+      <!-- PARAMETER DEFINITIONS -->
+      <parameter name="config_1_1" type="integer" groupName="configuration">
+        <label>1: Enable manual pull-start</label>
+        <description>Enable manual pull-start</description>
+        <default>1</default>
+        <options>
+          <option value="0">Close</option>
+          <option value="1">Open</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_2_1" type="integer" groupName="configuration">
+        <label>2: Set motor direction</label>
+        <description>This parameter can be used to set the motor rotation direction.</description>
+        <default>1</default>
+        <options>
+          <option value="1">Forward</option>
+          <option value="2">Opposite</option>
+          <option value="3">Reversing</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_3_1" type="integer" groupName="configuration">
+        <label>3: Manually set open borders</label>
+        <description>Manually set open borders</description>
+        <default>0</default>
+        <options>
+          <option value="0">Cancel</option>
+          <option value="1">Set</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_4_1" type="integer" groupName="configuration">
+        <label>4: Manually set close borders</label>
+        <description>Manually set close borders</description>
+        <default>0</default>
+        <options>
+          <option value="0">Cancel</option>
+          <option value="1">Set</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_5_1" type="integer" groupName="configuration">
+        <label>5: Set motor status</label>
+        <description>Set motor status</description>
+        <default>3</default>
+        <options>
+          <option value="1">Open (UP)</option>
+          <option value="2">Close (DOWN)</option>
+          <option value="3">Stop</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_6_1" type="integer" groupName="configuration">
+        <label>6: Calibrate the limit positions</label>
+        <description>Calibrate the limit positions</description>
+        <default>1</default>
+        <options>
+          <option value="1">Up limit position</option>
+          <option value="2">Down limit position</option>
+          <option value="3">Third limit position</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_7_1" type="integer" groupName="configuration">
+        <label>7: Delete the limit position</label>
+        <description>Delete the limit position</description>
+        <default>0</default>
+        <options>
+          <option value="0">Delete all limit position</option>
+          <option value="1">Delete up limit position</option>
+          <option value="2">Delete down limit position</option>
+          <option value="3">Delete third limit position</option>
+        </options>
+      </parameter>
+
+      <parameter name="config_8_1" type="integer" groupName="configuration">
+        <label>8: Low battery level alarm threshold</label>
+        <description>Configure low battery report threshold, sends low battery report via battery report when battery level drops under setting.</description>
+        <default>10</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_9_4" type="integer" groupName="configuration">
+        <label>9: Battery auto report interval time</label>
+        <description>Interval time set in seconds. Use 0 to disable</description>
+        <default>3600</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_10_1" type="integer" groupName="configuration">
+        <label>10: Battery change report threshold</label>
+        <description>Battery level range = 1% to 50%. Use 0 to disable</description>
+        <default>5</default>
+        <limitToOptions>false</limitToOptions>
+      </parameter>
+
+      <parameter name="config_11_1" type="integer" groupName="configuration">
+        <label>11: Curtain status report command setting</label>
+        <description>Curtain status report command setting</description>
+        <default>6</default>
+        <options>
+          <option value="0">Send Nothing</option>
+          <option value="1">Send Basic Report</option>
+          <option value="2">Send Switch Multilevel Report</option>
+          <option value="3">Send Window Covering Report</option>
+          <option value="4">Send Basic Report and Switch Multilevel Report</option>
+          <option value="5">Send Basic Report and Window Covering Report</option>
+          <option value="6">Send Switch Multilevel Report and Window Covering Report</option>
+          <option value="7">Send Basic Report, Switch Multilevel Report, and Window Covering Repor</option>
+        </options>
+      </parameter>
+
+      <!-- ASSOCIATION DEFINITIONS -->
+      <parameter name="group_1" type="text" groupName="association" multiple="true">
+        <label>1: Group 1</label>
+        <description><![CDATA[
+Switch Multilevel Report / Device Reset Locally / Indicator Report<br /> <h1>Overview</h1><p>1. Switch Multilevel Report.<br />Changings of curtain caused by user action or receiving of Multilevel Set or Basic Set or Window Covering Set will trigger.</p><p>2. Device Reset Locally.<br />Config Button is press and hold for 10 seconds.</p><p>3. Indicator Report<br />Receiving Indicator Set will trigger this CC.</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_2" type="text" groupName="association" multiple="true">
+        <label>2: Group 2</label>
+        <description><![CDATA[
+Basic set<br /> <h1>Overview</h1><p>Send Basic Set to Group 2 when receiving Basic Set</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_3" type="text" groupName="association" multiple="true">
+        <label>3: Group 3</label>
+        <description><![CDATA[
+Switch Multilevel Set<br /> <h1>Overview</h1><p>Send Switch Multilevel Set to Group 3 when receiving Switch Multilevel Set</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <parameter name="group_4" type="text" groupName="association" multiple="true">
+        <label>4: Group 4</label>
+        <description><![CDATA[
+Switch Multilevel Start Level Change / Stop Level Change<br /> <h1>Overview</h1><p>Send Switch Multilevel Start Level Change/Stop Level Change to Group 4 when receiving Switch Multilevel Start Level Change/Stop Level Change</p>
+        ]]></description>
+        <multipleLimit>5</multipleLimit>
+      </parameter>
+
+      <!-- STATIC DEFINITIONS -->
+      <parameter name="node_id" type="integer" min="1" max="232" readOnly="true" required="true">
+        <label>Node ID</label>
+        <advanced>true</advanced>
+      </parameter>
+
+    </config-description>
+
+  </thing-type>
+
+</thing:thing-descriptions>
