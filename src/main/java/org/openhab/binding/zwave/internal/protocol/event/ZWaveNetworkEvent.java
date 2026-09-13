@@ -68,6 +68,7 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
         AssociationUpdate,
         DeleteNode,
         FailedNode,
+        FirmwareUpdate,
         RequestNetworkUpdate,
         FailedNodeFailed,
         ReplaceFailedNode,
@@ -76,6 +77,7 @@ public class ZWaveNetworkEvent extends ZWaveEvent {
     }
 
     public enum State {
+        Progress,
         Success,
         Failure
     }
