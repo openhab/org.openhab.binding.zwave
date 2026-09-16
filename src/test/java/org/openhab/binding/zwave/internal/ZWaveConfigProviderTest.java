@@ -23,7 +23,8 @@ import org.openhab.core.config.core.ConfigDescriptionParameter;
 
 /**
  *
- * @author Chris Jackson
+ * @author Chris Jackson - Initial contribution
+ * @author Robert Eckhoff- Also non-numeric node suffix handling
  *
  */
 public class ZWaveConfigProviderTest {
@@ -70,5 +71,14 @@ public class ZWaveConfigProviderTest {
         // config = provider.getConfigDescription(uri, null);
         // parameter = config.getParameters().get(0);
         // assertEquals("node_id", parameter.getName());
+    }
+
+    @Test
+    public void getParameterOptionsIgnoresNonNumericNodeSuffix() throws URISyntaxException {
+        ZWaveConfigProvider provider = new ZWaveConfigProvider();
+
+        URI uri = new URI("thing:zwave:device:controller:node");
+
+        assertDoesNotThrow(() -> provider.getParameterOptions(uri, "group_1", null, null));
     }
 }

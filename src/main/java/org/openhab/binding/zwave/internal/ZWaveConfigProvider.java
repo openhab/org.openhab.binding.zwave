@@ -483,12 +483,21 @@ public class ZWaveConfigProvider implements ConfigDescriptionProvider, ConfigOpt
         }
 
         // And make sure this is a node because we want to get the id off the end...
-        if (!thingUID.getId().startsWith("node")) {
+        String thingId = thingUID.getId();
+        if (!thingId.startsWith("node")) {
             return null;
         }
-        int nodeId = Integer.parseInt(thingUID.getId().substring(4));
+
+        String nodeIdText = thingId.substring(4);
+        if (nodeIdText.isEmpty() || !nodeIdText.chars().allMatch(Character::isDigit)) {
+            return null;
+        }
+        int nodeId = Integer.parseInt(nodeIdText);
 
         Thing thing = getThing(thingUID);
+        if (thing == null) {
+            return null;
+        }
         ThingUID bridgeUID = thing.getBridgeUID();
 
         // Get the controller for this thing
