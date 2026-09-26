@@ -112,6 +112,7 @@ public abstract class ZWaveCommandProcessor {
                     DeleteSucReturnRouteMessageClass.class);
             messageMap.put(SerialMessage.SerialMessageClass.GetRoutingInfo, GetRoutingInfoMessageClass.class);
             messageMap.put(SerialMessage.SerialMessageClass.GetVersion, GetVersionMessageClass.class);
+            messageMap.put(SerialMessage.SerialMessageClass.GetRfRegion, GetRfRegionMessageClass.class);
             messageMap.put(SerialMessage.SerialMessageClass.GetSucNodeId, GetSucNodeIdMessageClass.class);
             messageMap.put(SerialMessage.SerialMessageClass.GetControllerCapabilities,
                     GetControllerCapabilitiesMessageClass.class);
