@@ -15,6 +15,8 @@ package org.openhab.binding.zwave.internal.protocol;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.List;
 
 import org.junit.jupiter.api.Disabled;
@@ -39,6 +41,7 @@ import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClass
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
 
 public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTest {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveTransactionManagerTestBasic.class);
 
     @Disabled
     @Test
@@ -710,7 +713,7 @@ public class ZWaveTransactionManagerTestBasic extends ZWaveTransactionManagerTes
         try {
             Thread.sleep(20);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Thread interrupted", e);
         }
 
         // Check that only one frame was sent

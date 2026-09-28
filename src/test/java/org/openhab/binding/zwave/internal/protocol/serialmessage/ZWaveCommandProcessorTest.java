@@ -13,7 +13,6 @@
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.mockito.Mockito;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageType;
@@ -22,8 +21,11 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveMessagePayloadTransactio
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ZWaveCommandProcessorTest {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandProcessorTest.class);
 
     void ProcessResponse(ZWaveCommandProcessor handler, byte[] packetData) {
         SerialMessage msg = new SerialMessage(packetData);
@@ -41,8 +43,7 @@ public class ZWaveCommandProcessorTest {
         try {
             handler.handleResponse(controller, transaction, msg);
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception during test", e);
         }
     }
 
@@ -59,8 +60,7 @@ public class ZWaveCommandProcessorTest {
         try {
             handler.handleRequest(controller, transaction, msg);
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception during test", e);
         }
     }
 }

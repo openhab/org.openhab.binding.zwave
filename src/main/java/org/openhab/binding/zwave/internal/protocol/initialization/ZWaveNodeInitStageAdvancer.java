@@ -1157,7 +1157,7 @@ public class ZWaveNodeInitStageAdvancer {
         }
 
         setCurrentStage(ZWaveNodeInitStage.DELETE_ROUTES);
-        if (node.getRoutingList().size() != 0) {
+        if (!node.getRoutingList().isEmpty()) {
             // Delete all the return routes for the node
             logger.debug("NODE {}: Node advancer is deleting return routes.", node.getNodeId());
             processTransaction(new DeleteReturnRouteMessageClass().doRequest(node.getNodeId()));

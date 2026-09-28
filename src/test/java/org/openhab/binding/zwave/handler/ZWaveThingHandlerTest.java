@@ -15,6 +15,8 @@ package org.openhab.binding.zwave.handler;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.lang.reflect.Field;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +59,7 @@ import org.openhab.core.types.Command;
  *
  */
 public class ZWaveThingHandlerTest {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveThingHandlerTest.class);
     private ArgumentCaptor<ZWaveCommandClassTransactionPayload> payloadCaptor;
     Configuration configResult;
 
@@ -111,11 +114,11 @@ public class ZWaveThingHandlerTest {
             Mockito.when(node.getCommandClass(ArgumentMatchers.eq(CommandClass.COMMAND_CLASS_NODE_NAMING)))
                     .thenReturn(namingClass);
         } catch (NoSuchFieldException | SecurityException e) {
-            e.printStackTrace();
+            logger.error("Exception during reflection setup", e);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            logger.error("Exception during reflection setup", e);
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            logger.error("Exception during reflection setup", e);
         }
 
         Map<String, Object> config = new HashMap<String, Object>();

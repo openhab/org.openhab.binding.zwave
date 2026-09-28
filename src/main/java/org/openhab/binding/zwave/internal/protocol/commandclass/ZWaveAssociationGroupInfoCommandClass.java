@@ -297,7 +297,7 @@ public class ZWaveAssociationGroupInfoCommandClass extends ZWaveCommandClass
         }
 
         // We need the number of groups as discovered by the AssociationCommandClass
-        if (getNode().getAssociationGroups().size() == 0) {
+        if (getNode().getAssociationGroups().isEmpty()) {
             return result;
         }
 

@@ -12,7 +12,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol.commandclass;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 
@@ -20,8 +21,12 @@ import org.junit.jupiter.api.Test;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
 import org.openhab.binding.zwave.internal.protocol.ZWaveCommandClassPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ZWaveCommandClassPayloadTest {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveCommandClassPayloadTest.class);
+
     @Test
     public void TestConstructors() {
         ZWaveCommandClassPayload payload1 = new ZWaveCommandClassPayload(new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
@@ -57,7 +62,7 @@ public class ZWaveCommandClassPayloadTest {
             assertTrue(Arrays.equals(payload4.getPayloadBuffer(), new byte[] { -127, 6, -127, 4, 127, 0 }));
         } catch (ZWaveSerialMessageException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception during test", e);
         }
     }
 }

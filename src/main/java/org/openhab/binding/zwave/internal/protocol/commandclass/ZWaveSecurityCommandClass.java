@@ -439,7 +439,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             }
             return keyBytes;
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Error parsing network key as an hex string. Parsed string was " + hexString, e);
+            throw new IllegalArgumentException("Error parsing network key as an hex string. Parsed string was " + hexString, e);
         }
     }
 
@@ -481,7 +481,7 @@ public class ZWaveSecurityCommandClass extends ZWaveCommandClass {
             rxAuthenticationKey = new SecretKeySpec(cipher.doFinal(DERIVE_AUTH_KEY), AES);
 
         } catch (GeneralSecurityException e) {
-            logger.error("NODE {}: Error building derived keys {}", getNode().getNodeId(), e);
+            logger.error("NODE {}: Error building derived keys", getNode().getNodeId(), e);
         }
     }
 

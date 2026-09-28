@@ -12,8 +12,8 @@
  */
 package org.openhab.binding.zwave.internal.protocol;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -23,8 +23,11 @@ import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClas
 import org.openhab.binding.zwave.internal.protocol.serialmessage.RequestNodeInfoMessageClass;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayload;
 import org.openhab.binding.zwave.internal.protocol.transaction.ZWaveCommandClassTransactionPayloadBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest {
+    private static final Logger logger = LoggerFactory.getLogger(ZWaveTransactionManagerTestSync.class);
     ZWaveTransactionResponse response1;
     ZWaveTransactionResponse response2;
 
@@ -73,8 +76,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
                 try {
                     Thread.sleep(400);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    logger.error("Thread interrupted", e);
                 }
 
                 // Check that this frame was sent
@@ -117,7 +119,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             syncThread.join(20000);
             messageThread.join(100);
         } catch (InterruptedException e1) {
-            e1.printStackTrace();
+            logger.error("Thread interrupted", e1);
         }
 
         assertNotNull(response1);
@@ -159,8 +161,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
+                    logger.error("Thread interrupted", e);
                 }
 
                 // Check that this frame was sent
@@ -195,7 +196,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             syncThread.join(20000);
             messageThread.join(100);
         } catch (InterruptedException e1) {
-            e1.printStackTrace();
+            logger.error("Thread interrupted", e1);
         }
 
         assertNotNull(response1);
@@ -285,7 +286,7 @@ public class ZWaveTransactionManagerTestSync extends ZWaveTransactionManagerTest
             syncThread1.join(20000);
             syncThread2.join(20000);
         } catch (InterruptedException e1) {
-            e1.printStackTrace();
+            logger.error("Thread interrupted", e1);
         }
 
         assertNotNull(response1);
