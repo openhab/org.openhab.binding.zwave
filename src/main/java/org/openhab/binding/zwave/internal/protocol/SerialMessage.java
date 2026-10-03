@@ -560,6 +560,7 @@ public class SerialMessage {
         LockRoute(0x90),
         GetPriorityRoute(0x92),
         SetPriorityRoute(0x93),
+        GetRfRegion(0x97, true, false, false), // Request the controller RF region.
         GetSecurityKeys(0x9C),
         SerialApiSlaveNodeInfo(0xA0), // Set application virtual slave node information
         ApplicationSlaveCommandHandler(0xA1), // Slave command handler

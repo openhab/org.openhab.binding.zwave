@@ -317,6 +317,16 @@ Internally the binding holds a device state and these states are mapped to the s
 * FAILED - A device is considered FAILED if the controller can not communicate with the device. The binding does not control this. FAILED devices are treated in a similar way to DEAD devices however the controller will reduce communications to the device and will timeout quicker. It should be noted that the controller will generally not consider battery devices as failed. FAILED devices will be marked as OFFLINE within the system status.
 
 
+### Thing Firmware
+
+* A firmware update process is available for devices that support that command class (older devices do not). The latest stable firmware files are retrieved from (https://firmware.zwave-js.io) shortly after startup. Not all manufacturers provide firmware, so the firmware section could be blank (unknown). 
+* If you are not having an issue, Z-Wave firmware updates are not usually needed. There is always some risk of device malfunction, so you should have a reason. Best to back-up openHAB first.
+* If a firmware file is present, the UI will check if the file is above, below or the same version as the firmware currently on the device. Use caution as parsing different manufacturer's naming is tricky. If you are sure, proceed.
+* As back-up if you have a firmware file that is not available on the zwave-js website, you can add it directly to the userdata_openhab/zwave/firmware/node{} folder.
+* The process can take some time (3 - 20 minutes) based on network traffic (best if traffic is low) and proximity to the controller. The UI will provide updates at intervals and let you know if the upload was successful.
+* Battery devices will need be awakened for the firmware update to start. It is advised to have a full or nearly full battery as the device will stay awake for the duration of the update (several minutes). If possible, temporarily move the battery device closer to the controller.
+
+
 ### Thing Actions
 
 At the bottom of the Thing UI page are actions, some advanced, which can be directed to a specific device (node).
@@ -326,6 +336,7 @@ At the bottom of the Thing UI page are actions, some advanced, which can be dire
 * Rebuild routing tables (nee Heal) - The node must be fully initialized to execute this action. This clears all current routes and establishes new routes for this device only. This action generates less network traffic than the network heal option but is only for one node. The new situation for this node will be reflected in the Network Map. Battery nodes will execute this action when they are next awake.
 * Ping the node (advanced) - Sends a ping to the node. If the node stays (or turns) ONLINE it has a network connection. Battery nodes will not be pinged.
 * Check if node is failed (advanced) - Noting the Thing States discussion above, this action asks if the OFFLINE node is in the controller failed list. This action is blocked for battery devices. It is best to have debug logging on while using this action.
+* Query the remote firmware repository for firmware (advanced) - Not usually needed as the firmware repository is accessed on start-up. Only checks the current node. Useful if no recent start-up.
 * Remove failed node from the controller (advanced) - Again for listening nodes only, after the controller has marked the node as failed, this will remove the node. To eliminate the Thing UI page after removal, use the Remove Thing button at the bottom of the UI Thing page.
 * Replace failed node with a new device, reusing the node ID (advanced) - For listening nodes, marked as failed, this allows a new device to be added with the same node ID. After triggering the action, pause a second or two, then put the replacement device into inclusion mode. It is best to have debug logging on while using this action. If the replacement device is not the same, use Remove Thing on the UI page and then go to Things > + sign in bottom right corner > Z-Wave Binding > Scan to get an updated UI page. The replacement device can be battery powered.
 

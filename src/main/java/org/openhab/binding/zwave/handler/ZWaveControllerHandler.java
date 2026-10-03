@@ -15,6 +15,10 @@ package org.openhab.binding.zwave.handler;
 import static org.openhab.binding.zwave.ZWaveBindingConstants.*;
 
 import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,6 +32,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.jdt.annotation.NonNull;
+import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.ZWaveBindingConstants;
 import org.openhab.binding.zwave.actions.ZWaveControllerActions;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage;
@@ -62,6 +67,9 @@ import org.slf4j.LoggerFactory;
 public abstract class ZWaveControllerHandler extends BaseBridgeHandler implements ZWaveEventListener, ZWaveIoHandler {
 
     private final Logger logger = LoggerFactory.getLogger(ZWaveControllerHandler.class);
+
+    private static final Duration STARTUP_FW_PREFETCH_INTERVAL = Duration.ofHours(24);
+    private volatile boolean startupRemoteFirmwareLookupAllowed;
 
     private volatile ZWaveController controller;
 
@@ -190,6 +198,10 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     protected void initializeNetwork() {
         logger.debug("Initialising ZWave controller");
 
+        startupRemoteFirmwareLookupAllowed = allowStartupRemoteFirmwareLookup();
+        logger.debug("Startup remote firmware lookup is {} for controller {}",
+                startupRemoteFirmwareLookupAllowed ? "enabled" : "suppressed", getThing().getUID());
+
         // Create config parameters
         Map<String, String> config = new HashMap<String, String>();
         config.put("masterController", isMaster.toString());
@@ -215,6 +227,36 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
         }
 
         initializeHeal();
+    }
+
+    boolean isStartupRemoteFirmwareLookupAllowed() {
+        return startupRemoteFirmwareLookupAllowed;
+    }
+
+    private boolean allowStartupRemoteFirmwareLookup() {
+        Instant now = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        String previousValue = getThing().getProperties().get(PROPERTY_LAST_STARTUP_FW_PREFETCH);
+
+        if (!isStartupRemoteFirmwareLookupDue(previousValue, now)) {
+            return false;
+        }
+
+        updateProperty(PROPERTY_LAST_STARTUP_FW_PREFETCH, now.toString());
+        return true;
+    }
+
+    static boolean isStartupRemoteFirmwareLookupDue(@Nullable String previousValue, Instant now) {
+        if (previousValue == null) {
+            return true;
+        }
+
+        try {
+            Instant previous = Instant.parse(previousValue);
+            return !previous.isAfter(now)
+                    && Duration.between(previous, now).compareTo(STARTUP_FW_PREFETCH_INTERVAL) >= 0;
+        } catch (DateTimeParseException e) {
+            return true;
+        }
     }
 
     /**
@@ -423,6 +465,14 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private void updateControllerProperties() {
         Configuration configuration = editConfiguration();
         configuration.put(ZWaveBindingConstants.CONFIGURATION_SISNODE, controller.getSucId());
+
+        String rfRegionName = controller.getRfRegionName();
+        if (rfRegionName != null) {
+            getThing().setProperty(ZWaveBindingConstants.PROPERTY_RF_REGION, rfRegionName);
+        } else {
+            getThing().setProperty(ZWaveBindingConstants.PROPERTY_RF_REGION, "unknown");
+        }
+
         try {
             // If the thing is defined statically, then this will fail and we will never start!
             updateConfiguration(configuration);
