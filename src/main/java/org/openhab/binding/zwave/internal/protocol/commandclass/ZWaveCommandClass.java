@@ -537,7 +537,7 @@ public abstract class ZWaveCommandClass {
         COMMAND_CLASS_MAILBOX(0x69, null),
         COMMAND_CLASS_WINDOW_COVERING(0x6A, null),
         COMMAND_CLASS_IRRIGATION(0x6B, null),
-        COMMAND_CLASS_SUPERVISION(0x6C, null),
+        COMMAND_CLASS_SUPERVISION(0x6C, ZWaveSupervisionCommandClass.class),
         COMMAND_CLASS_HUMIDITY_CONTROL_MODE(0x6D, null),
         COMMAND_CLASS_HUMIDITY_CONTROL_OPERATING_STATE(0x6E, null),
         COMMAND_CLASS_ENTRY_CONTROL(0x6F, null),
