@@ -356,6 +356,8 @@ The following table summarises the channels available for the Wave Pro Dimmer 1P
 | Dimmer | switch_dimmer | switch_dimmer | DimmableLight | Dimmer | 
 | Electric meter (kWh) | meter_kwh | meter_kwh | Energy | Number | 
 | Electric meter (watts) | meter_watts | meter_watts | Energy | Number | 
+| Electric meter (volts) | meter_voltage | meter_voltage | Energy | Number | 
+| Electric meter (amps) | meter_current | meter_current | Energy | Number | 
 | Scene Number | scene_number | scene_number |  | Number | 
 | Alarm (heat) | alarm_heat | alarm_heat | temperature_hot | Switch | 
 | Alarm (power) | alarm_power | alarm_power | Energy | Switch | 
@@ -386,6 +388,16 @@ The ```meter_kwh``` channel is of type ```meter_kwh``` and supports the ```Numbe
 Indicates the instantaneous power consumption.
 
 The ```meter_watts``` channel is of type ```meter_watts``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+
+### Electric meter (volts)
+Indicates the instantaneous voltage.
+
+The ```meter_voltage``` channel is of type ```meter_voltage``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
+
+### Electric meter (amps)
+Indicates the instantaneous current consumption.
+
+The ```meter_current``` channel is of type ```meter_current``` and supports the ```Number``` item and is in the ```Energy``` category. This is a read only channel so will only be updated following state changes from the device.
 
 ### Scene Number
 Triggers when a scene button is pressed.
@@ -525,7 +537,7 @@ Detailed information on each parameter can be found in the sections below.
 | 125 | Dimming time (soft on/off) dim specific par. O (O1) | (Dimming time short click O (O1))Choose the time during which the device will move between the min. and max. dimming values by a short press of the momentary switch connected to input terminal. |
 | 127 | Fade rate O (O1) | (Dimming time when key hold)Choose the time during which the Dimmer will move between the min. and max. dimming values during a continuous press of the momentary switch connected to terminal, by an associated device. |
 | 129 | Minimum brightens on toggle O (O1) dim specific par. | Minimum brightness on toggle can be changed by the user to the desired level. It is applied on toggle on (Off → On state change) when the Light brightness < min\_brightness\_on_toggle. |
-| 131 |  SW1 & SW2 Dual Button Mode | W1 & SW2 Dual button (only push button) |
+| 131 |  SW1 & SW2 Dual Button Mode | SW1 & SW2 Dual button (only push button) |
 
 ### Parameter 1: SW (SW1) Switch type
 
@@ -543,7 +555,7 @@ The following option values may be configured, in addition to values in the rang
 | 1 | toggle switch (contact closed - ON / contact opened - OFF) |
 | 2 | toggle switch (device changes status when switch changes status) |
 
-The manufacturer defined default value is ```2``` (toggle switch (device changes status when switch changes status)).
+The manufacturer defined default value is ```0``` (momentary switch).
 
 This parameter has the configuration ID ```config_1_1``` and is of type ```INTEGER```.
 
@@ -562,7 +574,7 @@ The following option values may be configured, in addition to values in the rang
 
 The manufacturer defined default value is ```0``` (momentary switch (push button)).
 
-This parameter has the configuration ID ```config_2_2``` and is of type ```INTEGER```.
+This parameter has the configuration ID ```config_2_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 7: SW (SW1) detach mode
@@ -756,17 +768,21 @@ This parameter has the configuration ID ```config_118_1``` and is of type ```INT
 ### Parameter 120: Factory Reset
 
 Reset to factory default settings and removed from the z-wave network
+0 - No action
 
+1 - Factory reset
+
+NOTE: After factory reset is performed, the parameter value is automatically set to 0.
 The following option values may be configured, in addition to values in the range 0 to 0 -:
 
 | Value  | Description |
 |--------|-------------|
 | 0 | Don’t do Factory reset |
-| 1431655765 | Do the Factory reset (hex 0x55555555) |
+| 1 | Factory reset |
 
 The manufacturer defined default value is ```0``` (Don’t do Factory reset).
 
-This parameter has the configuration ID ```config_120_4``` and is of type ```INTEGER```.
+This parameter has the configuration ID ```config_120_1``` and is of type ```INTEGER```.
 
 
 ### Parameter 121: MAX dimming value O (O1)
@@ -848,7 +864,7 @@ This parameter has the configuration ID ```config_129_1``` and is of type ```INT
 
 ### Parameter 131:  SW1 & SW2 Dual Button Mode
 
-W1 & SW2 Dual button (only push button)
+SW1 & SW2 Dual button (only push button)
 0 - Inactive
 
 1 - Active
