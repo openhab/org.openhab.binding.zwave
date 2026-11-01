@@ -67,8 +67,7 @@ public class ZWaveTransactionManagerTest {
             throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
-        Mockito.when(node.isAwake()).thenReturn(true);
-        Mockito.when(controller.getNode(Mockito.anyInt())).thenReturn(node);
+        setupZWaveNodeIsAwakeAndGetNodeStubs(node, controller);
         ZWaveTransactionManager manager = new ZWaveTransactionManager(controller);
 
         Field holdoffDelay = manager.getClass().getDeclaredField("holdoffDelay");
@@ -107,8 +106,7 @@ public class ZWaveTransactionManagerTest {
             IllegalAccessException, InterruptedException {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ZWaveNode node = Mockito.mock(ZWaveNode.class);
-        Mockito.when(node.isAwake()).thenReturn(true);
-        Mockito.when(controller.getNode(Mockito.anyInt())).thenReturn(node);
+        setupZWaveNodeIsAwakeAndGetNodeStubs(node, controller);
         ZWaveTransactionManager manager = new ZWaveTransactionManager(controller);
 
         // Set holdoff to prevent messages being sent
@@ -147,13 +145,11 @@ public class ZWaveTransactionManagerTest {
         ZWaveNode node1 = Mockito.mock(ZWaveNode.class);
         Mockito.when(node1.isAwake()).thenReturn(true);
         Mockito.when(controller.getNode(1)).thenReturn(node1);
-        Mockito.when(node1.isAwake()).thenReturn(false);
-        Mockito.when(node1.isListening()).thenReturn(true);
+        setupZWaveNodeIsAwakeAndIsListeningStubs(node1, false);
         ZWaveNode node2 = Mockito.mock(ZWaveNode.class);
         Mockito.when(node2.isAwake()).thenReturn(true);
         Mockito.when(controller.getNode(2)).thenReturn(node2);
-        Mockito.when(node2.isAwake()).thenReturn(true);
-        Mockito.when(node2.isListening()).thenReturn(true);
+        setupZWaveNodeIsAwakeAndIsListeningStubs(node2, true);
         ZWaveTransactionManager manager = new ZWaveTransactionManager(controller);
 
         PriorityBlockingQueue<ZWaveTransaction> queue = new PriorityBlockingQueue<>(10,
@@ -204,5 +200,15 @@ public class ZWaveTransactionManagerTest {
 
             manager.queueTransactionForSend(payload1);
         }
+    }
+
+    private void setupZWaveNodeIsAwakeAndGetNodeStubs(ZWaveNode node, ZWaveController controller) {
+        Mockito.when(node.isAwake()).thenReturn(true);
+        Mockito.when(controller.getNode(Mockito.anyInt())).thenReturn(node);
+    }
+
+    private void setupZWaveNodeIsAwakeAndIsListeningStubs(ZWaveNode node1, boolean isAwakeReturnValue) {
+        Mockito.when(node1.isAwake()).thenReturn(isAwakeReturnValue);
+        Mockito.when(node1.isListening()).thenReturn(true);
     }
 }
