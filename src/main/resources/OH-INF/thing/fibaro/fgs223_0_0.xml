@@ -147,7 +147,6 @@ Restore state after power failure<br /> <h1>Overview</h1><p>This parameter deter
           <option value="0">off after power loss</option>
           <option value="1">restore last state</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_10_1" type="integer" groupName="configuration">
@@ -164,7 +163,6 @@ First channel - operating mode<br /> <h1>Overview</h1><p>This parameter allows t
           <option value="4">auto OFF</option>
           <option value="5">flashing mode</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_11_1" type="integer" groupName="configuration">
@@ -178,7 +176,6 @@ First channel - reaction to switch for delay/auto ON/OFF modes<br /> <h1>Overvie
           <option value="1">no reaction to switch - mode runs until it ends</option>
           <option value="2">reset timer - start counting from the beginning</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_12_2" type="integer" groupName="configuration">
@@ -213,7 +210,6 @@ Second channel - operating mode<br /> <h1>Overview</h1><p>This parameter allows 
           <option value="4">auto OFF</option>
           <option value="5">flashing mode</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_16_1" type="integer" groupName="configuration">
@@ -227,7 +223,6 @@ Second channel - reaction to switch for delay/auto ON/OFF modes<br /> <h1>Overvi
           <option value="1">no reaction to switch - mode runs until it ends</option>
           <option value="2">reset timer - start counting from the beginning</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_17_2" type="integer" groupName="configuration">
@@ -259,18 +254,18 @@ Switch type<br /> <h1>Overview</h1><p>This parameter defines as what type the de
           <option value="1">toggle switch stable</option>
           <option value="2">toggle switch</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_21_1" type="integer" groupName="configuration">
         <label>21: Flashing mode - reports</label>
-        <description>Flashing mode - reports</description>
+        <description><![CDATA[
+Flashing mode - reports<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>0</default>
         <options>
           <option value="0">the device does not send reports</option>
           <option value="1">the device sends reports</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_27_1" type="integer" groupName="configuration">
@@ -422,12 +417,13 @@ Reaction to General Alarm<br /> <h1>Overview</h1><p>This parameter determines ho
           <option value="2">turn OFF after receiving the alarm frame</option>
           <option value="3">flash after receiving the alarm frame</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_41_1" type="integer" groupName="configuration">
         <label>41: Reaction to Flood Alarm</label>
-        <description>Reaction to Flood Alarm</description>
+        <description><![CDATA[
+Reaction to Flood Alarm<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>2</default>
         <options>
           <option value="0">alarm frame is ignored</option>
@@ -435,12 +431,13 @@ Reaction to General Alarm<br /> <h1>Overview</h1><p>This parameter determines ho
           <option value="2">turn OFF after receiving the alarm frame</option>
           <option value="3">flash after receiving the alarm frame</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_42_1" type="integer" groupName="configuration">
         <label>42: Reaction to CO/CO2/Smoke Alarm</label>
-        <description>Reaction to CO/CO2/Smoke Alarm</description>
+        <description><![CDATA[
+Reaction to CO/CO2/Smoke Alarm<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>3</default>
         <options>
           <option value="0">alarm frame is ignored</option>
@@ -448,12 +445,13 @@ Reaction to General Alarm<br /> <h1>Overview</h1><p>This parameter determines ho
           <option value="2">turn OFF after receiving the alarm frame</option>
           <option value="3">flash after receiving the alarm frame</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_43_1" type="integer" groupName="configuration">
         <label>43: Reaction to Heat Alarm</label>
-        <description>Reaction to Heat Alarm</description>
+        <description><![CDATA[
+Reaction to Heat Alarm<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>1</default>
         <options>
           <option value="0">alarm frame is ignored</option>
@@ -461,7 +459,6 @@ Reaction to General Alarm<br /> <h1>Overview</h1><p>This parameter determines ho
           <option value="2">turn OFF after receiving the alarm frame</option>
           <option value="3">flash after receiving the alarm frame</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_44_2" type="integer" groupName="configuration">
@@ -555,7 +552,6 @@ Measuring energy consumed by the device itself<br /> <h1>Overview</h1><p>This pa
           <option value="0">Disabled</option>
           <option value="1">Enabled</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <!-- ASSOCIATION DEFINITIONS -->
