@@ -104,19 +104,22 @@ Water / Electrical Heating Thermostat<br /> <h1>Overview</h1><p>MCOHome Water / 
       <!-- PARAMETER DEFINITIONS -->
       <parameter name="config_1_1" type="integer" groupName="configuration">
         <label>1: Upload temperature format automatically</label>
-        <description>Upload temperature format automatically</description>
+        <description><![CDATA[
+Upload temperature format automatically<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>2</default>
         <options>
           <option value="0">Celsius</option>
           <option value="1">Fahrenheit</option>
           <option value="2">Follow the main display</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_2_1" type="integer" groupName="configuration">
         <label>2: Upload temperature and humidity automatically</label>
-        <description>Upload temperature and humidity automatically</description>
+        <description><![CDATA[
+Upload temperature and humidity automatically<br /> <h1>Overview</h1><p><br /></p>
+        ]]></description>
         <default>3</default>
         <options>
           <option value="0">Off</option>
@@ -124,7 +127,6 @@ Water / Electrical Heating Thermostat<br /> <h1>Overview</h1><p>MCOHome Water / 
           <option value="2">Timing upload mode only</option>
           <option value="3">Upload the difference+timing upload mode</option>
         </options>
-        <limitToOptions>false</limitToOptions>
       </parameter>
 
       <parameter name="config_3_2" type="integer" groupName="configuration">
