@@ -1054,7 +1054,7 @@ public class ZWaveTransactionManager {
                 logger.trace("Transaction Timeout.......... {} outstanding transactions",
                         outstandingTransactions.size());
                 Date now = new Date();
-                // List<ZWaveTransaction> retries = new ArrayList<ZWaveTransaction>();
+                List<ZWaveTransaction> retries = new ArrayList<>();
 
                 // Loop through all outstanding transactions to see if any have timed out
                 Iterator<ZWaveTransaction> iterator = outstandingTransactions.iterator();
@@ -1065,6 +1065,7 @@ public class ZWaveTransactionManager {
                     }
                     ZWaveTransaction transaction = iterator.next();
                     Date timer = transaction.getTimeout();
+                    // Do we want to handle a partial timeout? if not this should be timer.after(now) == true
                     if (timer != null && timer.after(now) == false) {
                         // Timeout
                         logger.debug("NODE {}: TID {}: Timeout at state {}. {} retries remaining.",
@@ -1098,24 +1099,24 @@ public class ZWaveTransactionManager {
                             }
 
                             // Resend if there are still attempts remaining
-                            // if (transaction.decrementAttemptsRemaining() <= 0) {
-                            transaction.setTransactionCanceled();
-                            controller.handleTransactionComplete(transaction, null);
-                            notifyTransactionComplete(transaction);
-                            // } else {
-                            // Resend - add to a separate list so as not to impact iterator
-                            // transaction.resetTransaction();
-                            // retries.add(transaction);
-                            // }
+                            if (transaction.decrementAttemptsRemaining() <= 0) {
+                                transaction.setTransactionCanceled();
+                                controller.handleTransactionComplete(transaction, null);
+                                notifyTransactionComplete(transaction);
+                            } else {
+                                // Resend - add to a separate list so as not to impact iterator
+                                transaction.resetTransaction();
+                                retries.add(transaction);
+                            }
                         }
                     }
                 }
 
                 // Add retries to the queue
-                // for (ZWaveTransaction transaction : retries) {
-                // logger.debug("Resending... Transaction " + transaction.getTransactionId());
-                // addTransactionToQueue(transaction);
-                // }
+                for (ZWaveTransaction transaction : retries) {
+                    logger.debug("Resending... Transaction " + transaction.getTransactionId());
+                    addTransactionToQueue(transaction);
+                }
 
                 // If there's no outstanding transaction, try and send one
                 sendNextMessage();
