@@ -142,9 +142,8 @@ public class RemoveFailedNodeMessageClass extends ZWaveCommandProcessor {
             case FAILED_NODE_REMOVED:
                 logger.debug("NODE {}: Successfully removed node from controller!", nodeId);
                 zController.notifyEventListeners(new ZWaveNetworkEvent(Type.DeleteNode, nodeId, State.Success));
-                state = ZWaveNetworkEvent.State.Success;
-                report = Report.FAILED_NODE_REMOVED;
-                break;
+                transaction.setTransactionComplete();
+                return true;
             case FAILED_NODE_NOT_REMOVED:
                 logger.error("NODE {}: Unable to remove failed node!", nodeId);
                 state = ZWaveNetworkEvent.State.Failure;
