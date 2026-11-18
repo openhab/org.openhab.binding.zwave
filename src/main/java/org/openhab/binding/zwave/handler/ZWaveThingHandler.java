@@ -1288,20 +1288,23 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
         }
 
         // Send all the messages
+        boolean supervisionUsed = false;
         for (ZWaveCommandClassTransactionPayload message : messages) {
+            supervisionUsed |= message.isSupervisionEncapsulated();
             controllerHandler.sendData(message);
         }
 
         // Restart the polling so we get an update on the channel shortly after this command is sent
-        if (commandPollDelay != 0) {
+        if (commandPollDelay != 0 && !supervisionUsed) {
             startPolling(commandPollDelay);
+        } else if (supervisionUsed) {
+            logger.debug("NODE {}: Command poll skipped because COMMAND_CLASS_SUPERVISION is in use", nodeId);
         }
     }
 
     @Nullable
     Command convertCommandToDataType(ChannelUID channelUID, DataType channelDataType, Command command,
             DataType dataType) {
-
         if (!(command instanceof State)) {
             logger.debug("NODE {}: Received commands datatype {} doesn't support conversion", nodeId, dataType);
             return null;
@@ -1895,7 +1898,6 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
 
     private boolean updateConfigurationParameter(Configuration configuration, int paramIndex, int paramSize,
             int paramValue) {
-
         boolean cfgUpdated = false;
 
         for (String key : configuration.keySet()) {
@@ -2018,8 +2020,7 @@ public class ZWaveThingHandler extends ConfigStatusThingHandler implements ZWave
     /**
      * Return an ISO 8601 combined date and time string for specified date/time
      *
-     * @param date
-     *            Date
+     * @param date Date
      * @return String with format "yyyy-MM-dd'T'HH:mm:ss'Z'"
      */
     private static String getISO8601StringForDate(Date date) {

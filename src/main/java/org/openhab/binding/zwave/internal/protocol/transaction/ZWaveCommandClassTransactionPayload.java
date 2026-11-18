@@ -35,6 +35,7 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     private boolean requiresSecurity = false;
     private boolean requiresResponse = true;
+    private boolean supervisionEncapsulated = false;
 
     /**
      *
@@ -156,5 +157,13 @@ public class ZWaveCommandClassTransactionPayload extends ZWaveCommandClassPayloa
 
     public boolean getRequiresResponse() {
         return requiresResponse;
+    }
+
+    public void setSupervisionEncapsulated(boolean supervisionEncapsulated) {
+        this.supervisionEncapsulated = supervisionEncapsulated;
+    }
+
+    public boolean isSupervisionEncapsulated() {
+        return supervisionEncapsulated;
     }
 }
