@@ -13,7 +13,6 @@
 package org.openhab.binding.zwave.internal.protocol.serialmessage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
@@ -29,6 +28,8 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveNode;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialMessageException;
 import org.openhab.binding.zwave.internal.protocol.ZWaveSerialPayload;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Test cases for IdentifyNode message.
@@ -38,6 +39,7 @@ import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction;
  *
  */
 public class IdentifyNodeMessageClassTest {
+    private static final Logger logger = LoggerFactory.getLogger(IdentifyNodeMessageClassTest.class);
     ArgumentCaptor<Boolean> listening;
     ArgumentCaptor<Boolean> frequentlyListening;
     ArgumentCaptor<Boolean> routing;
@@ -104,8 +106,7 @@ public class IdentifyNodeMessageClassTest {
         try {
             handler.handleResponse(controller, transaction, incomingMsg);
         } catch (ZWaveSerialMessageException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            logger.error("Exception during test", e);
         }
         return node;
     }

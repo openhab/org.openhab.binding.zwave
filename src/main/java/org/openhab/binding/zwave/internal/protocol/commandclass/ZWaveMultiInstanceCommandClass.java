@@ -508,7 +508,7 @@ public class ZWaveMultiInstanceCommandClass extends ZWaveCommandClass {
                 } else {
                     // We know the number of endpoints, so request the capabilites of each
                     for (int endpoint = 1; endpoint < getNode().getEndpointCount(); endpoint++) {
-                        if (refresh == true || getNode().getCommandClasses(endpoint).size() == 0) {
+                        if (refresh == true || getNode().getCommandClasses(endpoint).isEmpty()) {
                             result.add(getMultiChannelCapabilityGetMessage(endpoint));
                         }
                     }
