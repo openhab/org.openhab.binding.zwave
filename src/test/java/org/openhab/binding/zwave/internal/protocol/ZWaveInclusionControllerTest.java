@@ -39,12 +39,11 @@ public class ZWaveInclusionControllerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ArgumentCaptor<ZWaveMessagePayloadTransaction> txCapture = ArgumentCaptor
                 .forClass(ZWaveMessagePayloadTransaction.class);
-        Mockito.doNothing().when(controller).enqueue(txCapture.capture());
 
         ArgumentCaptor<ZWaveEventListener> listenerCapture = ArgumentCaptor.forClass(ZWaveEventListener.class);
 
         ArgumentCaptor<ZWaveNode> nodeCapture = ArgumentCaptor.forClass(ZWaveNode.class);
-        Mockito.doNothing().when(controller).includeNode(nodeCapture.capture());
+        setupZWaveControllerEnqueueAndIncludeNodeStubs(controller, txCapture, nodeCapture);
 
         ZWaveInclusionController inclusionController = new ZWaveInclusionController(controller, "");
         assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
@@ -108,12 +107,11 @@ public class ZWaveInclusionControllerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ArgumentCaptor<ZWaveMessagePayloadTransaction> txCapture = ArgumentCaptor
                 .forClass(ZWaveMessagePayloadTransaction.class);
-        Mockito.doNothing().when(controller).enqueue(txCapture.capture());
 
         ArgumentCaptor<ZWaveEventListener> listenerCapture = ArgumentCaptor.forClass(ZWaveEventListener.class);
 
         ArgumentCaptor<ZWaveNode> nodeCapture = ArgumentCaptor.forClass(ZWaveNode.class);
-        Mockito.doNothing().when(controller).includeNode(nodeCapture.capture());
+        setupZWaveControllerEnqueueAndIncludeNodeStubs(controller, txCapture, nodeCapture);
 
         ZWaveInclusionController inclusionController = new ZWaveInclusionController(controller, "");
         assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
@@ -155,12 +153,11 @@ public class ZWaveInclusionControllerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ArgumentCaptor<ZWaveMessagePayloadTransaction> txCapture = ArgumentCaptor
                 .forClass(ZWaveMessagePayloadTransaction.class);
-        Mockito.doNothing().when(controller).enqueue(txCapture.capture());
 
         ArgumentCaptor<ZWaveEventListener> listenerCapture = ArgumentCaptor.forClass(ZWaveEventListener.class);
 
         ArgumentCaptor<ZWaveNode> nodeCapture = ArgumentCaptor.forClass(ZWaveNode.class);
-        Mockito.doNothing().when(controller).includeNode(nodeCapture.capture());
+        setupZWaveControllerEnqueueAndIncludeNodeStubs(controller, txCapture, nodeCapture);
 
         ZWaveInclusionController inclusionController = new ZWaveInclusionController(controller, "");
         assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
@@ -199,12 +196,11 @@ public class ZWaveInclusionControllerTest {
         ZWaveController controller = Mockito.mock(ZWaveController.class);
         ArgumentCaptor<ZWaveMessagePayloadTransaction> txCapture = ArgumentCaptor
                 .forClass(ZWaveMessagePayloadTransaction.class);
-        Mockito.doNothing().when(controller).enqueue(txCapture.capture());
 
         ArgumentCaptor<ZWaveEventListener> listenerCapture = ArgumentCaptor.forClass(ZWaveEventListener.class);
 
         ArgumentCaptor<ZWaveNode> nodeCapture = ArgumentCaptor.forClass(ZWaveNode.class);
-        Mockito.doNothing().when(controller).includeNode(nodeCapture.capture());
+        setupZWaveControllerEnqueueAndIncludeNodeStubs(controller, txCapture, nodeCapture);
 
         ZWaveInclusionController inclusionController = new ZWaveInclusionController(controller, "");
         assertEquals(ZWaveInclusionState.Unknown, inclusionController.getState());
@@ -230,5 +226,11 @@ public class ZWaveInclusionControllerTest {
         txFrame = txCapture.getAllValues().get(1);
         assertTrue(Arrays.equals(new byte[] { 5 }, txFrame.getPayloadBuffer()));
         assertTrue(txFrame.getSerialMessage().getCallbackId() != 0);
+    }
+
+    private void setupZWaveControllerEnqueueAndIncludeNodeStubs(ZWaveController controller,
+            ArgumentCaptor<ZWaveMessagePayloadTransaction> txCapture, ArgumentCaptor<ZWaveNode> nodeCapture) {
+        Mockito.doNothing().when(controller).enqueue(txCapture.capture());
+        Mockito.doNothing().when(controller).includeNode(nodeCapture.capture());
     }
 }
