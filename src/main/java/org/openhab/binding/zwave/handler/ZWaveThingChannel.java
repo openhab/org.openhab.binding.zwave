@@ -21,6 +21,7 @@ import org.openhab.core.library.types.*;
 import org.openhab.core.thing.ChannelUID;
 import org.openhab.core.thing.type.ChannelTypeUID;
 import org.openhab.core.types.Command;
+import org.openhab.core.types.Type;
 
 /**
  *
@@ -41,13 +42,13 @@ public class ZWaveThingChannel {
         QuantityType(QuantityType.class),
         StopMoveType(StopMoveType.class);
 
-        private final Class<? extends Command> typeClass;
+        private final Class<? extends Type> typeClass;
 
-        DataType(Class<? extends Command> typeClass) {
+        DataType(Class<? extends Type> typeClass) {
             this.typeClass = typeClass;
         }
 
-        public Class<? extends Command> getTypeClass() {
+        public Class<? extends Type> getTypeClass() {
             return this.typeClass;
         }
 
