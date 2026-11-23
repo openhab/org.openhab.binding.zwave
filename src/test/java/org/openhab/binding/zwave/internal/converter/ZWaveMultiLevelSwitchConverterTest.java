@@ -77,9 +77,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(0);
-        when(channel.getDataType()).thenReturn(DataType.PercentType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.PercentType, 0);
         State state = sut.handleEvent(channel, event);
         assertEquals(new PercentType(0), state);
     }
@@ -89,9 +87,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(99);
-        when(channel.getDataType()).thenReturn(DataType.PercentType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.PercentType, 99);
         State state = sut.handleEvent(channel, event);
         assertEquals(new PercentType(100), state);
     }
@@ -101,9 +97,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(99);
-        when(channel.getDataType()).thenReturn(DataType.PercentType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.PercentType, 99);
         State state = sut.handleEvent(channel, event);
         assertEquals(new PercentType(0), state);
     }
@@ -113,9 +107,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(0);
-        when(channel.getDataType()).thenReturn(DataType.PercentType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.PercentType, 0);
         State state = sut.handleEvent(channel, event);
         assertEquals(new PercentType(100), state);
     }
@@ -125,9 +117,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(1);
-        when(channel.getDataType()).thenReturn(DataType.PercentType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.PercentType, 1);
         State state = sut.handleEvent(channel, event);
         assertEquals(new PercentType(99), state);
     }
@@ -137,9 +127,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_control", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(0);
-        when(channel.getDataType()).thenReturn(DataType.OnOffType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.OnOffType, 0);
         State state = sut.handleEvent(channel, event);
         assertEquals(OnOffType.OFF, state);
     }
@@ -149,9 +137,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_control", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(1);
-        when(channel.getDataType()).thenReturn(DataType.OnOffType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.OnOffType, 1);
         State state = sut.handleEvent(channel, event);
         assertEquals(OnOffType.ON, state);
     }
@@ -161,9 +147,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_control", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(0);
-        when(channel.getDataType()).thenReturn(DataType.OnOffType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.OnOffType, 0);
         State state = sut.handleEvent(channel, event);
         assertEquals(OnOffType.ON, state);
     }
@@ -173,9 +157,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         ZWaveMultiLevelSwitchConverter sut = new ZWaveMultiLevelSwitchConverter(controller);
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_control", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(event.getValue()).thenReturn(1);
-        when(channel.getDataType()).thenReturn(DataType.OnOffType);
+        setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(configMap, DataType.OnOffType, 1);
         State state = sut.handleEvent(channel, event);
         assertEquals(OnOffType.OFF, state);
     }
@@ -186,8 +168,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         setupReceiveCommand();
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(percentType.intValue()).thenReturn(0);
+        setupZWaveThingChannelGetArgumentsAndIntValueStubs(configMap, 0);
         sut.receiveCommand(channel, node, percentType);
         verify(commandClass).setValueMessage(0);
     }
@@ -198,8 +179,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         setupReceiveCommand();
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(percentType.intValue()).thenReturn(0);
+        setupZWaveThingChannelGetArgumentsAndIntValueStubs(configMap, 0);
         sut.receiveCommand(channel, node, percentType);
         verify(commandClass).setValueMessage(99);
     }
@@ -210,8 +190,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         setupReceiveCommand();
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(percentType.intValue()).thenReturn(80);
+        setupZWaveThingChannelGetArgumentsAndIntValueStubs(configMap, 80);
         sut.receiveCommand(channel, node, percentType);
         verify(commandClass).setValueMessage(80);
     }
@@ -222,8 +201,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         setupReceiveCommand();
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "true");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(percentType.intValue()).thenReturn(80);
+        setupZWaveThingChannelGetArgumentsAndIntValueStubs(configMap, 80);
         sut.receiveCommand(channel, node, percentType);
         verify(commandClass).setValueMessage(20);
     }
@@ -234,8 +212,7 @@ public class ZWaveMultiLevelSwitchConverterTest {
         setupReceiveCommand();
         Map<String, String> configMap = new HashMap<>();
         configMap.put("config_invert_percent", "false");
-        when(channel.getArguments()).thenReturn(configMap);
-        when(percentType.intValue()).thenReturn(100);
+        setupZWaveThingChannelGetArgumentsAndIntValueStubs(configMap, 100);
         sut.receiveCommand(channel, node, percentType);
         verify(commandClass).setValueMessage(99);
     }
@@ -277,5 +254,18 @@ public class ZWaveMultiLevelSwitchConverterTest {
         channel = createChannel("switch_startstop", DataType.StringType);
         State state = sut.handleEvent(channel, event);
         assertEquals(new StringType("{\"direction\":\"STOP\"}"), state);
+    }
+
+    private void setupZWaveThingChannelGetDataTypeAndGetValueAndGetArgumentsStubs(Map<String, String> configMap,
+            ZWaveThingChannel.DataType getDataTypeReturnValue, int getValueReturnValue) {
+        when(channel.getArguments()).thenReturn(configMap);
+        when(event.getValue()).thenReturn(getValueReturnValue);
+        when(channel.getDataType()).thenReturn(getDataTypeReturnValue);
+    }
+
+    private void setupZWaveThingChannelGetArgumentsAndIntValueStubs(Map<String, String> configMap,
+            int intValueReturnValue) {
+        when(channel.getArguments()).thenReturn(configMap);
+        when(percentType.intValue()).thenReturn(intValueReturnValue);
     }
 }
