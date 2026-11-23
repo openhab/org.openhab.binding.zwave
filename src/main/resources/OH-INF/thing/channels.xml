@@ -21,7 +21,7 @@
         </description>
         <category>Door</category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -38,8 +38,8 @@
         </description>
         <category>LowBattery</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>LowBattery</tag>
+            <point>Alarm</point>
+            <property>LowBattery</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -57,7 +57,7 @@
         </description>
         <category>Door</category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -75,8 +75,8 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>CO</tag>
+            <point>Alarm</point>
+            <property>CO</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -94,8 +94,8 @@
         </description>
         <category>CarbonDioxide</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>CO2</tag>
+            <point>Alarm</point>
+            <property>CO2</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -113,8 +113,8 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Gas</tag>
+            <point>Alarm</point>
+            <property>Gas</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -132,7 +132,7 @@
         </description>
         <category>Alarm</category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -150,8 +150,8 @@
         </description>
         <category>Door</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>OpenState</tag>
+            <point>Alarm</point>
+            <property>OpenState</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -169,8 +169,8 @@
         </description>
         <category>Water</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Water</tag>
+            <point>Alarm</point>
+            <property>Water</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -188,7 +188,7 @@
         </description>
         <category>Alarm</category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -206,8 +206,8 @@
         </description>
         <category>temperature_hot</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Temperature</tag>
+            <point>Alarm</point>
+            <property>Temperature</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -225,8 +225,8 @@
         </description>
         <category>temperature_cold</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Temperature</tag>
+            <point>Alarm</point>
+            <property>Temperature</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -244,8 +244,8 @@
         </description>
         <category>Motion</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Presence</tag>
+            <point>Alarm</point>
+            <property>Presence</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -262,7 +262,7 @@
         <description>Provides the raw alarm value</description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
         </state>
@@ -276,8 +276,8 @@
         </description>
         <category>Energy</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Power</tag>
+            <point>Alarm</point>
+            <property>Power</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -295,7 +295,7 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
         </state>
@@ -309,8 +309,8 @@
         </description>
         <category>Smoke</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Smoke</tag>
+            <point>Alarm</point>
+            <property>Smoke</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -328,7 +328,7 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -346,8 +346,8 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Tampered</tag>
+            <point>Alarm</point>
+            <property>Tampered</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -365,8 +365,8 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Water</tag>
+            <point>Alarm</point>
+            <property>Water</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -384,7 +384,7 @@
         </description>
         <category>Humidity</category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -402,8 +402,8 @@
         </description>
         <category>Door</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>OpenLevel</tag>
+            <point>Measurement</point>
+            <property>OpenLevel</property>
         </tags>
     </channel-type>
 
@@ -415,7 +415,7 @@
         </description>
         <category>Door</category>
         <tags>
-            <tag>Status</tag>
+            <point>Status</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -436,8 +436,8 @@
         </description>
         <category>Blinds</category>
         <tags>
-            <tag>Control</tag>
-            <tag>OpenLevel</tag>
+            <point>Control</point>
+            <property>OpenLevel</property>
         </tags>
         <config-description>
             <parameter name="config_invert_control" type="boolean">
@@ -480,8 +480,8 @@
         <description>Sets the blinds lamella position</description>
         <category>Blinds</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Tilt</tag>
+            <point>Control</point>
+            <property>Tilt</property>
         </tags>
         <config-description>
             <parameter name="config_invert_percent" type="boolean">
@@ -503,8 +503,8 @@
         <description>Sets the blinds shutter position</description>
         <category>Blinds</category>
         <tags>
-            <tag>Control</tag>
-            <tag>OpenLevel</tag>
+            <point>Control</point>
+            <property>OpenLevel</property>
         </tags>
         <config-description>
             <parameter name="config_invert_percent" type="boolean">
@@ -529,8 +529,8 @@
         </description>
         <category>ColorLight</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Color</tag>
+            <point>Control</point>
+            <property>Color</property>
         </tags>
     </channel-type>
 
@@ -542,8 +542,8 @@
             temperature of a light from 0 (cold) to 100 (warm).</description>
         <category>ColorLight</category>
         <tags>
-            <tag>Control</tag>
-            <tag>ColorTemperature</tag>
+            <point>Control</point>
+            <property>ColorTemperature</property>
         </tags>
     </channel-type>
 
@@ -554,8 +554,8 @@
         <description>Sets the color from a comma delimited key=value string</description>
         <category></category>
         <tags>
-            <tag>Control</tag>
-            <tag>Color</tag>
+            <point>Control</point>
+            <property>Color</property>
         </tags>
     </channel-type>
 
@@ -574,8 +574,8 @@
         <description>Sets the indicator brightness</description>
         <category></category>
         <tags>
-            <tag>Control</tag>
-            <tag>Brightness</tag>
+            <point>Control</point>
+            <property>Brightness</property>
         </tags>
     </channel-type>
 
@@ -610,7 +610,7 @@
         <description>Lock and unlock the door</description>
         <category>Door</category>
         <tags>
-            <tag>Switch</tag>
+            <point>Switch</point>
         </tags>
         <state>
             <options>
@@ -627,8 +627,8 @@
         <description>Indicates the instantaneous current consumption</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Current</tag>
+            <point>Measurement</point>
+            <property>Current</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -641,8 +641,8 @@
         <description>Indicates the gas use in cubic meters</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Gas</tag>
+            <point>Measurement</point>
+            <property>Gas</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -655,8 +655,8 @@
         <description>Indicates the gas use in cubic feet</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Gas</tag>
+            <point>Measurement</point>
+            <property>Gas</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -669,8 +669,8 @@
         <description>Indicates the gas use in pulses</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Gas</tag>
+            <point>Measurement</point>
+            <property>Gas</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -683,8 +683,8 @@
         <description>Indicates the energy consumption (kVAh)</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Energy</tag>
+            <point>Measurement</point>
+            <property>Energy</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -697,8 +697,8 @@
         <description>Indicates the reactive power consumption</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Power</tag>
+            <point>Measurement</point>
+            <property>Power</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -711,8 +711,8 @@
         <description>Indicates the reactive energy consumption (kvarh)</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Energy</tag>
+            <point>Measurement</point>
+            <property>Energy</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -725,8 +725,8 @@
         <description>Indicates the energy consumption (kWh)</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Energy</tag>
+            <point>Measurement</point>
+            <property>Energy</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -739,7 +739,7 @@
         <description>Indicates the instantaneous power factor</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
+            <point>Measurement</point>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -752,8 +752,8 @@
         <description>Indicates the pulse count</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Energy</tag>
+            <point>Measurement</point>
+            <property>Energy</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -774,8 +774,8 @@
         <description>Indicates the instantaneous voltage</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Voltage</tag>
+            <point>Measurement</point>
+            <property>Voltage</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -788,8 +788,8 @@
         <description>Indicates the instantaneous water consumption</description>
         <category>Water</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Water</tag>
+            <point>Measurement</point>
+            <property>Water</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -802,8 +802,8 @@
         <description>Indicates the instantaneous water consumption</description>
         <category>Water</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Water</tag>
+            <point>Measurement</point>
+            <property>Water</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -816,8 +816,8 @@
         <description>Indicates the instantaneous water consumption</description>
         <category>Water</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Water</tag>
+            <point>Measurement</point>
+            <property>Water</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -830,8 +830,8 @@
         <description>Indicates the instantaneous water consumption</description>
         <category>Water</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Water</tag>
+            <point>Measurement</point>
+            <property>Water</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -844,8 +844,8 @@
         <description>Indicates the instantaneous power consumption</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Power</tag>
+            <point>Measurement</point>
+            <property>Power</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -858,8 +858,8 @@
         <description>Smoke Alarm</description>
         <category>Smoke</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Smoke</tag>
+            <point>Alarm</point>
+            <property>Smoke</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -878,8 +878,8 @@
         <label>CO Alarm</label>
         <description>CO Alarm</description>
         <tags>
-            <tag>Alarm</tag>
-            <tag>CO</tag>
+            <point>Alarm</point>
+            <property>CO</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -898,8 +898,8 @@
         <label>CO2 Alarm</label>
         <description>CO2 Alarm</description>
         <tags>
-            <tag>Alarm</tag>
-            <tag>CO2</tag>
+            <point>Alarm</point>
+            <property>CO2</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -918,7 +918,7 @@
         <label>Heat Alarm</label>
         <description>Heat Alarm</description>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -939,8 +939,8 @@
         <label>Water Alarm</label>
         <description>Water Alarm</description>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Water</tag>
+            <point>Alarm</point>
+            <property>Water</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -960,8 +960,8 @@
         <label>Access Control</label>
         <description>Access Control</description>
         <tags>
-            <tag>Status</tag>
-            <tag>Mode</tag>
+            <point>Status</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1012,8 +1012,8 @@
         <label>Home Security</label>
         <description>Home Security</description>
         <tags>
-            <tag>Status</tag>
-            <tag>Mode</tag>
+            <point>Status</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1036,8 +1036,8 @@
         <label>Power Management</label>
         <description>Power Management</description>
         <tags>
-            <tag>Status</tag>
-            <tag>Mode</tag>
+            <point>Status</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1067,8 +1067,8 @@
         <label>System</label>
         <description>System</description>
         <tags>
-            <tag>Status</tag>
-            <tag>Mode</tag>
+            <point>Status</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1087,8 +1087,8 @@
         <label>Emergency Alarm</label>
         <description>Emergency Alarm</description>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Mode</tag>
+            <point>Alarm</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1121,8 +1121,8 @@
         <label>Appliance</label>
         <description>Appliance</description>
         <tags>
-            <tag>Status</tag>
-            <tag>Mode</tag>
+            <point>Status</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1158,8 +1158,8 @@
         <label>Home Health</label>
         <description>Home Health</description>
         <tags>
-            <tag>Status</tag>
-            <tag>Mode</tag>
+            <point>Status</point>
+            <property>Mode</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1191,7 +1191,7 @@
         </description>
         <category></category>
         <tags>
-            <tag>Alarm</tag>
+            <point>Alarm</point>
         </tags>
         <state readOnly="true">
         </state>
@@ -1204,8 +1204,8 @@
         <description>Sets the local protection mode
         </description>
         <tags>
-            <tag>Control</tag>
-            <tag>Mode</tag>
+            <point>Control</point>
+            <property>Mode</property>
         </tags>
         <state>
             <options>
@@ -1223,8 +1223,8 @@
         <description>Sets the rf protection mode
         </description>
         <tags>
-            <tag>Control</tag>
-            <tag>Mode</tag>
+            <point>Control</point>
+            <property>Mode</property>
         </tags>
         <state>
             <options>
@@ -1250,8 +1250,8 @@
         <description>Indicates the barometric pressure</description>
         <category>Pressure</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Pressure</tag>
+            <point>Measurement</point>
+            <property>Pressure</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1265,7 +1265,7 @@
         </description>
         <category></category>
         <tags>
-            <tag>Status</tag>
+            <point>Status</point>
         </tags>
         <state readOnly="true">
             <options>
@@ -1282,8 +1282,8 @@
         <description>Indicates the CO level</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>CO</tag>
+            <point>Measurement</point>
+            <property>CO</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1296,8 +1296,8 @@
         <description>Indicates the CO2 level</description>
         <category>CarbonDioxide</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>CO2</tag>
+            <point>Measurement</point>
+            <property>CO2</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1310,8 +1310,8 @@
         <description>Indicates the dewpoint</description>
         <category>Temperature</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Temperature</tag>
+            <point>Measurement</point>
+            <property>Temperature</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1324,8 +1324,8 @@
         <description>Indicates the direction</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Wind</tag>
+            <point>Measurement</point>
+            <property>Wind</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1339,8 +1339,8 @@
         </description>
         <category>Door</category>
         <tags>
-            <tag>Status</tag>
-            <tag>OpenState</tag>
+            <point>Status</point>
+            <property>OpenState</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1357,8 +1357,8 @@
         <description>Indicates a flood sensor is activated</description>
         <category>Water</category>
         <tags>
-            <tag>Alarm</tag>
-            <tag>Water</tag>
+            <point>Alarm</point>
+            <property>Water</property>
         </tags>
         <state readOnly="true">
             <options>
@@ -1375,8 +1375,8 @@
         <description>Indicates the frequency</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Frequency</tag>
+            <point>Measurement</point>
+            <property>Frequency</property>
         </tags>
     </channel-type>
 
@@ -1387,7 +1387,7 @@
         <description></description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
+            <point>Measurement</point>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1400,8 +1400,8 @@
         <description>Boiler heating modulation in percent</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Power</tag>
+            <point>Measurement</point>
+            <property>Power</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1414,8 +1414,8 @@
         <description>Indicates the current light reading</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Illuminance</tag>
+            <point>Measurement</point>
+            <property>Illuminance</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1428,8 +1428,8 @@
         <description>Indicates the loudness</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>SoundVolume</tag>
+            <point>Measurement</point>
+            <property>SoundVolume</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1442,8 +1442,8 @@
         <description>Indicates the current moisture level</description>
         <category>Moisture</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Moisture</tag>
+            <point>Measurement</point>
+            <property>Moisture</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1456,8 +1456,8 @@
         <description>Indicates the level of particulate matter</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>ParticulateMatter</tag>
+            <point>Measurement</point>
+            <property>ParticulateMatter</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1470,8 +1470,8 @@
         <description>Indicates the energy consumption (kWh)</description>
         <category>Energy</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Energy</tag>
+            <point>Measurement</point>
+            <property>Energy</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1484,8 +1484,8 @@
         <description>Indicates the current relative humidity</description>
         <category>Humidity</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Humidity</tag>
+            <point>Measurement</point>
+            <property>Humidity</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1498,8 +1498,8 @@
         <description>Indicates the current relative humidity</description>
         <category>Humidity</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Rain</tag>
+            <point>Measurement</point>
+            <property>Rain</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1519,8 +1519,8 @@
         <description>Indicates the current seismic intensity level</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Vibration</tag>
+            <point>Measurement</point>
+            <property>Vibration</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1533,8 +1533,8 @@
         <description>Indicates the current smoke level</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Smoke</tag>
+            <point>Measurement</point>
+            <property>Smoke</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1547,8 +1547,8 @@
         <description>Indicates the current temperature</description>
         <category>Temperature</category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Temperature</tag>
+            <point>Measurement</point>
+            <property>Temperature</property>
         </tags>
         <state readOnly="true" pattern="%.1f %unit%" />
     </channel-type>
@@ -1560,7 +1560,7 @@
         <description>Volume of water in tank</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
+            <point>Measurement</point>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1573,8 +1573,8 @@
         <description>Indicates the current ultraviolet level</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Ultraviolet</tag>
+            <point>Measurement</point>
+            <property>Ultraviolet</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1587,8 +1587,8 @@
         <description>Indicates the current velocity</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Speed</tag>
+            <point>Measurement</point>
+            <property>Speed</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1601,8 +1601,8 @@
         <description>Indicates the Volatile Organic Compound level</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>VOC</tag>
+            <point>Measurement</point>
+            <property>VOC</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1615,8 +1615,8 @@
         <description>Indicates the current voltage</description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Voltage</tag>
+            <point>Measurement</point>
+            <property>Voltage</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1629,7 +1629,7 @@
         <description></description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
+            <point>Measurement</point>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1642,8 +1642,8 @@
         <description></description>
         <category></category>
         <tags>
-            <tag>Measurement</tag>
-            <tag>Pressure</tag>
+            <point>Measurement</point>
+            <property>Pressure</property>
         </tags>
         <state pattern="%.1f" readOnly="true">
         </state>
@@ -1672,8 +1672,8 @@
         <description>The sound volume channel allows control of the loudness</description>
         <category></category>
         <tags>
-            <tag>Control</tag>
-            <tag>SoundVolume</tag>
+            <point>Control</point>
+            <property>SoundVolume</property>
         </tags>
     </channel-type>
 
@@ -1692,8 +1692,8 @@
         <description>Switch the power on and off</description>
         <category>Switch</category>
         <tags>
-            <tag>Switch</tag>
-            <tag>Power</tag>
+            <point>Switch</point>
+            <property>Power</property>
         </tags>
     </channel-type>
 
@@ -1704,7 +1704,7 @@
         <description>Switch indicating direction</description>
         <category>Switch</category>
         <tags>
-            <tag>Switch</tag>
+            <point>Switch</point>
         </tags>
     </channel-type>
 
@@ -1717,8 +1717,8 @@
         </description>
         <category>DimmableLight</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Brightness</tag>
+            <point>Control</point>
+            <property>Brightness</property>
         </tags>
          <config-description>
             <parameter name="config_restorelastvalue" type="boolean">
@@ -1740,8 +1740,8 @@
         <description>Sets the thermostat setpoint</description>
         <category>Heating</category>
         <tags>
-            <tag>Setpoint</tag>
-            <tag>Temperature</tag>
+            <point>Setpoint</point>
+            <property>Temperature</property>
         </tags>
     </channel-type>
 
@@ -1752,8 +1752,8 @@
         <description>Sets the fan mode</description>
         <category>Temperature</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Airflow</tag>
+            <point>Control</point>
+            <property>Airflow</property>
         </tags>
         <state>
             <options>
@@ -1776,8 +1776,8 @@
         </description>
         <category>Temperature</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Mode</tag>
+            <point>Control</point>
+            <property>Mode</property>
         </tags>
         <state>
             <options>
@@ -1796,8 +1796,8 @@
         </description>
         <category>Temperature</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Mode</tag>
+            <point>Control</point>
+            <property>Mode</property>
         </tags>
         <state>
             <options>
@@ -1820,8 +1820,8 @@
         </description>
         <category>Temperature</category>
         <tags>
-            <tag>Control</tag>
-            <tag>Mode</tag>
+            <point>Control</point>
+            <property>Mode</property>
         </tags>
         <state>
             <options>
