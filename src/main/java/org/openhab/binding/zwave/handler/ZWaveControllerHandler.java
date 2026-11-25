@@ -423,6 +423,14 @@ public abstract class ZWaveControllerHandler extends BaseBridgeHandler implement
     private void updateControllerProperties() {
         Configuration configuration = editConfiguration();
         configuration.put(ZWaveBindingConstants.CONFIGURATION_SISNODE, controller.getSucId());
+
+        String rfRegionName = controller.getRfRegionName();
+        if (rfRegionName != null) {
+            getThing().setProperty(ZWaveBindingConstants.PROPERTY_RF_REGION, rfRegionName);
+        } else {
+            getThing().setProperty(ZWaveBindingConstants.PROPERTY_RF_REGION, "unknown");
+        }
+
         try {
             // If the thing is defined statically, then this will fail and we will never start!
             updateConfiguration(configuration);

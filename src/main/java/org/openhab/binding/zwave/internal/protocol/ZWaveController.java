@@ -15,6 +15,7 @@ package org.openhab.binding.zwave.internal.protocol;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +27,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.jdt.annotation.Nullable;
 import org.openhab.binding.zwave.internal.protocol.SerialMessage.SerialMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRfRegionMessageClass.ZWaveRegion;
 import org.openhab.binding.zwave.internal.protocol.ZWaveDeviceClass.Basic;
 import org.openhab.binding.zwave.internal.protocol.ZWaveTransaction.TransactionState;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveMultiInstanceCommandClass;
-import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveNoOperationCommandClass;
 import org.openhab.binding.zwave.internal.protocol.commandclass.ZWaveSecurityCommandClass;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveEvent;
 import org.openhab.binding.zwave.internal.protocol.event.ZWaveInclusionEvent;
@@ -47,6 +48,7 @@ import org.openhab.binding.zwave.internal.protocol.serialmessage.ControllerSetDe
 import org.openhab.binding.zwave.internal.protocol.serialmessage.DeleteReturnRouteMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetControllerCapabilitiesMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRoutingInfoMessageClass;
+import org.openhab.binding.zwave.internal.protocol.serialmessage.GetRfRegionMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetSucNodeIdMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.GetVersionMessageClass;
 import org.openhab.binding.zwave.internal.protocol.serialmessage.IdentifyNodeMessageClass;
@@ -92,6 +94,8 @@ public class ZWaveController {
     private String zwaveVersion = "Unknown";
     private String serialAPIVersion = "Unknown";
     private int homeId = 0;
+    private ZWaveRegion rfRegion = ZWaveRegion.UNKNOWN;
+    private Locale locale = Locale.getDefault();
     private int ownNodeId = 0;
     private int manufactureId = 0;
     private int deviceType = 0;
@@ -335,6 +339,27 @@ public class ZWaveController {
      */
     public int getHomeId() {
         return homeId;
+    }
+
+    public ZWaveRegion getRfRegion() {
+        return rfRegion;
+    }
+
+    public @Nullable String getRfRegionName() {
+        if (rfRegion != ZWaveRegion.UNKNOWN) {
+            return rfRegion.getLowerCaseName();
+        }
+
+        ZWaveRegion fallbackRegion = ZWaveRegion.fromLocale(locale);
+        return fallbackRegion == ZWaveRegion.UNKNOWN ? null : fallbackRegion.getLowerCaseName();
+    }
+
+    public void setRfRegion(ZWaveRegion region) {
+        this.rfRegion = region;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 
     // Controller methods
@@ -646,6 +671,7 @@ public class ZWaveController {
         enqueue(new SerialApiGetCapabilitiesMessageClass().doRequest());
         enqueue(new SerialApiSetTimeoutsMessageClass().doRequest(150, 15));
         enqueue(new GetSucNodeIdMessageClass().doRequest());
+        enqueue(new GetRfRegionMessageClass().doRequest());
     }
 
     /**

@@ -88,6 +88,7 @@ public class ZWaveBindingConstants {
     public final static String PROPERTY_LASTWAKEUP = "zwave_lastwakeup";
     public final static String PROPERTY_USINGSECURITY = "zwave_secure";
     public final static String PROPERTY_LASTHEAL = "zwave_lastheal";
+    public final static String PROPERTY_RF_REGION = "zwave_rf_region";
 
     public final static String CHANNEL_SERIAL_SOF = "serial_sof";
     public final static String CHANNEL_SERIAL_ACK = "serial_ack";
