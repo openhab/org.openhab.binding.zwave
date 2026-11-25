@@ -41,12 +41,14 @@ import com.thoughtworks.xstream.io.xml.StaxDriver;
  * ZWaveNodeSerializer class. Serializes nodes to XML and back again.
  *
  * @author Chris Jackson - Initial contribution
- * @author Jan-Willem Spuij
+ * @author Jan-Willem Spuij - Contribution
+ * @author Bob Eckhoff - Added firmware folder creation.
  */
 public class ZWaveNodeSerializer {
     private static final Logger logger = LoggerFactory.getLogger(ZWaveNodeSerializer.class);
     private final XStream stream = new XStream(new StaxDriver());
     private final String folderName;
+    private static final String FIRMWARE_FOLDER = "firmware";
 
     /**
      * Constructor. Creates a new instance of the {@link ZWaveNodeSerializer} class.
@@ -103,8 +105,8 @@ public class ZWaveNodeSerializer {
     /**
      * Serializes an XML tree of a {@link ZWaveNode}
      *
-     * @param node
-     *            the node to serialize
+     * @param node the node to serialize
+     *
      */
     public void serializeNode(ZWaveNode node) {
         synchronized (stream) {
@@ -115,6 +117,8 @@ public class ZWaveNodeSerializer {
                 logger.debug("NODE {}: Serialise aborted as static stages not complete", node.getNodeId());
                 return;
             }
+
+            ensureNodeFirmwareFolder(node.getNodeId());
 
             File file = new File(folderName,
                     String.format("network_%08x__node_%d.xml", node.getHomeId(), node.getNodeId()));
@@ -139,11 +143,29 @@ public class ZWaveNodeSerializer {
         }
     }
 
+    private void ensureNodeFirmwareFolder(int nodeId) {
+        if (nodeId == 1) {
+            return;
+        }
+
+        File firmwareFolder = new File(new File(folderName, FIRMWARE_FOLDER), "node-" + nodeId);
+        if (firmwareFolder.exists()) {
+            return;
+        }
+
+        if (firmwareFolder.mkdirs()) {
+            logger.debug("NODE {}: Created firmware folder {}", nodeId, firmwareFolder.getPath());
+            return;
+        }
+
+        logger.warn("NODE {}: Failed to create firmware folder {}", nodeId, firmwareFolder.getPath());
+    }
+
     /**
      * Deserializes an XML tree of a {@link ZWaveNode}
      *
-     * @param nodeId
-     *            the number of the node to deserialize
+     * @param homeId the home ID of the node
+     * @param nodeId the node ID to deserialize
      * @return returns the Node or null in case Serialization failed.
      */
     public ZWaveNode deserializeNode(int homeId, int nodeId) {
@@ -179,13 +201,37 @@ public class ZWaveNodeSerializer {
      * Deletes the persistence store for the specified node.
      *
      * @param nodeId The node ID to remove
-     * @return true if the file was deleted
+     * @return true if XML and node firmware folder are absent after cleanup
      */
     public boolean deleteNode(int homeId, int nodeId) {
         synchronized (stream) {
             File file = new File(folderName, String.format("network_%08x__node_%d.xml", homeId, nodeId));
+            File firmwareFolder = new File(new File(folderName, FIRMWARE_FOLDER), "node-" + nodeId);
 
-            return file.delete();
+            boolean xmlDeleted = !file.exists() || file.delete();
+            boolean firmwareDeleted = !firmwareFolder.exists() || deleteRecursively(firmwareFolder);
+
+            if (!xmlDeleted) {
+                logger.warn("NODE {}: Failed to delete node XML {}", nodeId, file.getPath());
+            }
+            if (!firmwareDeleted) {
+                logger.warn("NODE {}: Failed to delete firmware folder {}", nodeId, firmwareFolder.getPath());
+            }
+
+            return xmlDeleted && firmwareDeleted;
         }
+    }
+
+    private boolean deleteRecursively(File target) {
+        File[] children = target.listFiles();
+        if (children != null) {
+            for (File child : children) {
+                if (!deleteRecursively(child)) {
+                    return false;
+                }
+            }
+        }
+
+        return target.delete();
     }
 }

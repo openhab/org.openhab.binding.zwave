@@ -91,6 +91,14 @@ public class ZWaveThingActions implements ThingActions {
         }
     }
 
+    public static String checkRemoteFirmware(ThingActions actions) {
+        if (actions instanceof ZWaveThingActions nodeActions) {
+            return nodeActions.checkRemoteFirmware();
+        } else {
+            throw new IllegalArgumentException("The 'actions' argument is not an instance of ZWaveThingActions");
+        }
+    }
+
     @Override
     public void setThingHandler(ThingHandler thingHandler) {
         this.handler = (ZWaveThingHandler) thingHandler;
@@ -162,5 +170,14 @@ public class ZWaveThingActions implements ThingActions {
             return handler.pollLinkedChannels();
         }
         return "Handler is null, cannot poll linked channels";
+    }
+
+    @RuleAction(label = "@text/actions.check-remote-firmware.label", description = "@text/actions.check-remote-firmware.description", visibility = Visibility.EXPERT)
+    public @ActionOutput(type = "String") String checkRemoteFirmware() {
+        ZWaveThingHandler handler = this.handler;
+        if (handler != null) {
+            return handler.checkRemoteFirmware();
+        }
+        return "Handler is null, cannot check remote firmware";
     }
 }
